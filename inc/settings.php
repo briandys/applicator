@@ -1,0 +1,87 @@
+<?php
+
+//------------------------- Applicator only works in WordPress 4.7 or later.
+if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
+    require get_template_directory() . '/inc/back-compat.php';
+	return;
+}
+
+
+//------------------------- Sets up theme defaults and registers support for various WordPress features.
+function applicator_setup() {
+    
+    
+    //------------------------- Make theme available for translation.
+	load_theme_textdomain( 'applicator' );
+
+	
+    //------------------------- Add default posts and comments RSS feed links to head.
+	add_theme_support( 'automatic-feed-links' );
+
+	
+    //------------------------- Let WordPress manage the document title.
+	add_theme_support( 'title-tag' );
+    
+	
+    //------------------------- Enable support for Post Thumbnails on posts and pages.
+    add_theme_support( 'post-thumbnails' );
+    add_image_size( 'applicator-entry-banner-image', 1920, 1920, true );
+    
+    
+    //------------------------- Enable support for Custom Header
+    require get_parent_theme_file_path( '/inc/functions/custom-header.php' );
+    
+    
+    //------------------------- Sets the default sizes of images in Admin > Settings
+    update_option('thumbnail_size_w', 480);
+    update_option('thumbnail_size_h', 480);
+    update_option('thumbnail_crop', 1);
+    
+    update_option('medium_size_w', 1024);
+    update_option('medium_size_h', 1024);
+    
+    update_option('large_size_w', 1600);
+    update_option('large_size_h', 1600);
+
+	
+    // Set the default content width.
+	$GLOBALS['content_width'] = 320;
+
+	
+    //------------------------- Switch default core markup for search form, comment form, and comments to output valid HTML5.
+	add_theme_support( 'html5', array(
+		'search-form',
+		'comment-form',
+		'comment-list',
+		'gallery',
+		'caption',
+	) );
+    
+    
+    //------------------------- Enable support for Post Formats.
+	add_theme_support( 'post-formats', array(
+		'aside',
+		'image',
+		'video',
+		'quote',
+		'link',
+		'gallery',
+		'audio',
+	) );
+
+	
+    //------------------------- Add theme support for Custom Logo.
+	add_theme_support( 'custom-logo', array(
+		'width'       => 250,
+		'height'      => 250,
+		'flex-width'  => true,
+	) );
+
+
+	
+    //------------------------- Add theme support for selective refresh for widgets.
+	add_theme_support( 'customize-selective-refresh-widgets' );
+
+}
+
+add_action( 'after_setup_theme', 'applicator_setup' );
