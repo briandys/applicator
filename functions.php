@@ -7,17 +7,16 @@ require_once( get_template_directory() . '/inc/hooks.php');
 
 
 // Styles and Scripts
-require_once( get_template_directory() . '/inc/functions/html-body-class.php');
 require_once( get_template_directory() . '/inc/styles.php');
 require_once( get_template_directory() . '/inc/scripts.php');
 
 
 // Navigations
 require_once( get_template_directory() . '/inc/tags/main-nav.php');
+require_once( get_template_directory() . '/inc/tags/page-nav.php');
+require_once( get_template_directory() . '/inc/tags/entries-nav.php');
 require_once( get_template_directory() . '/inc/tags/entry-page-nav.php');
 require_once( get_template_directory() . '/inc/tags/breadcrumbs-nav.php');
-require_once( get_template_directory() . '/inc/tags/entries-nav.php');
-require_once( get_template_directory() . '/inc/tags/page-nav.php');
 
 
 // Entry Tags
@@ -36,11 +35,14 @@ require_once( get_template_directory() . '/inc/functions/comment-form.php');
 require_once( get_template_directory() . '/template-parts/entry-content.php');
 
 
-// Snap-ons
-require_once( get_template_directory() . '/applicator-snapons.php');
-
-
 // Functions
+require_once( get_template_directory() . '/inc/functions/html-body-class.php');
+require_once( get_template_directory() . '/inc/functions/custom-fonts.php');
 require_once( get_template_directory() . '/inc/functions/custom-visuals.php');
 require_once( get_template_directory() . '/inc/functions/aside.php');
 require_once( get_template_directory() . '/inc/functions/auto-copyright-year.php');
+require_once( get_template_directory() . '/inc/functions/excerpt-more.php');
+
+
+// Snap-ons
+require_once( get_template_directory() . '/applicator-snapons.php');

@@ -66,16 +66,6 @@ function applicator_setup() {
 	) );
 
 	
-    //------------------------- Add theme support for Custom Logo.
-    // header.php
-	add_theme_support( 'custom-logo', array(
-		'width'       => 320,
-		'height'      => 320,
-		'flex-width'  => true,
-	) );
-
-
-	
     //------------------------- Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
     

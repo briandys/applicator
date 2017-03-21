@@ -5,7 +5,7 @@
 if ( ! function_exists('applicator_entry_page_nav' ) ) :
     function applicator_entry_page_nav( $args = '' ) {
         
-        $entry_page_nav_start = '<div class="nav entry-page-nav" role="navigation">';
+        $entry_page_nav_start = '<div class="entry-page-nav" role="navigation" aria-label="' . esc_html__( 'Entry Page Navigation', 'applicator' ) . '">';
             $entry_page_nav_start .= '<div class="entry-page-nav--cr">';
                 $entry_page_nav_start .= '<div class="entry-page-nav--h">';
                     $entry_page_nav_start .= '<span class="h-l">';

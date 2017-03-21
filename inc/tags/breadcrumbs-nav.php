@@ -13,7 +13,7 @@ if ( ! function_exists( 'applicator_breadcrumbs_nav' ) ) :
             
             if ( is_page() ) {
             
-                echo '<div class="crumbs-nav">';
+                echo '<div class="crumbs-nav" role="navigation" aria-label="' . esc_html__( 'Breadcrumbs Navigation', 'applicator' ) . '">';
                 echo '<div class="crumbs-nav--cr">';
                 echo '<div class="crumbs-nav--h"><span class="h-l">' . esc_html__( 'Breadcrumbs Navigation', 'applicator' ) . '</span></div>';
 
@@ -53,9 +53,6 @@ if ( ! function_exists( 'applicator_breadcrumbs_nav' ) ) :
                 echo '</div>';
                 
             }
-            
         }
-    
     }
-
 endif;

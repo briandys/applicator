@@ -72,11 +72,11 @@
             <div class="entry--ct-cr">
 
                 <?php
-                if ( ! is_search() || ! is_author() || ! is_archive() ) :
+                //if ( ! is_search() || ! is_author() || ! is_archive() ) :
                     the_content();
-                else :
-                    the_excerpt();
-                endif;
+                //else :
+                    //the_excerpt();
+                //endif;
                 ?>
 
 

@@ -3,10 +3,10 @@
 
 
 <?php //------------------------- Secondary Content ------------------------- ?>
-<div class="sec-content" role="main">
+<div class="sec-content">
     <div class="sec-content--cr">
 
-        <aside id="main-content-aside" class="aside main-content-aside">
+        <aside id="main-content-aside" class="aside main-content-aside" role="complementary">
             <div class="main-content-aside--cr">
                 <h3 class="h main-content-aside--h"><span class="h-l"><?php esc_html_e( 'Aside: Main Content', 'applicator' ); ?></span></h3>
                 <?php dynamic_sidebar( 'main-content-aside' ); ?>

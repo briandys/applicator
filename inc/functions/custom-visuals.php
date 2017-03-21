@@ -1,10 +1,12 @@
 <?php
 
-//------------------------- Custom Header
+//------------------------- Custom Visuals
 
-if ( ! function_exists( 'applicator_custom_header_setup' ) ) :
-    function applicator_custom_header_setup() {
+if ( ! function_exists( 'applicator_custom_visuals_setup' ) ) :
+    function applicator_custom_visuals_setup() {
 
+        
+        //------------------------- Custom Header
         add_theme_support( 'custom-header', apply_filters( 'applicator_custom_header_args', array(
             'default-image'      => get_parent_theme_file_uri( '/assets/img/default-media-banner-image.jpg' ),
             'default_text_color' => 'black',
@@ -21,23 +23,20 @@ if ( ! function_exists( 'applicator_custom_header_setup' ) ) :
                 'description'   => __( 'Default Media Banner', 'applicator' ),
             ),
         ) );
-    
-    }
-    add_action( 'after_setup_theme', 'applicator_custom_header_setup' );
-endif;
-
-
-//------------------------- Custom Background
-
-if ( ! function_exists( 'applicator_custom_background_setup' ) ) :
-    function applicator_custom_background_setup() {
-    
-        add_theme_support( 'custom-background', apply_filters( 'applicator_custom_header_args', array( 
-            'default-color'     => 'ffffff',
+        
+        
+        //------------------------- Custom Logo
+        add_theme_support( 'custom-logo', apply_filters( 'applicator_custom_logo_args', array(
+            'width'       => 320,
+            'height'      => 320,
         ) ) );
+        
+        
+        //------------------------- Custom Background
+        add_theme_support( 'custom-background' );
     
     }
-    add_action( 'after_setup_theme', 'applicator_custom_background_setup' );
+    add_action( 'after_setup_theme', 'applicator_custom_visuals_setup' );
 endif;
 
 
@@ -45,58 +44,39 @@ endif;
 //------------------------- Custom Header Callback
 
 if ( ! function_exists( 'applicator_header_style' ) ) :
-/**
- * Styles the header image and text displayed on the blog.
- *
- * @see applicator_custom_header_setup().
- */
-function applicator_header_style() {
-	$header_text_color = get_header_textcolor();
+    function applicator_header_style() {
 
-	// If no custom options for text are set, let's bail.
-	// get_header_textcolor() options: add_theme_support( 'custom-header' ) is default, hide text (returns 'blank') or any hex value.
-	if ( get_theme_support( 'custom-header', 'default-text-color' ) === $header_text_color ) {
-		return;
-	}
+        $header_text_color = get_header_textcolor();
 
-	// If we get this far, we have custom styles. Let's do this.
-	?>
-	<style id="applicator-custom-header-styles" type="text/css">
-	<?php
-		// Has the text been hidden?
-		if ( 'blank' === $header_text_color ) :
-	?>
-		.site-title,
-		.site-description {
-			position: absolute;
-			clip: rect(1px, 1px, 1px, 1px);
-		}
-	<?php
-		// If the user has set a custom color for the text use that.
-		else :
-	?>
-		.site-title a,
-		.colors-dark .site-title a,
-		.colors-custom .site-title a,
-		body.has-header-image .site-title a,
-		body.has-header-video .site-title a,
-		body.has-header-image.colors-dark .site-title a,
-		body.has-header-video.colors-dark .site-title a,
-		body.has-header-image.colors-custom .site-title a,
-		body.has-header-video.colors-custom .site-title a,
-		.site-description,
-		.colors-dark .site-description,
-		.colors-custom .site-description,
-		body.has-header-image .site-description,
-		body.has-header-video .site-description,
-		body.has-header-image.colors-dark .site-description,
-		body.has-header-video.colors-dark .site-description,
-		body.has-header-image.colors-custom .site-description,
-		body.has-header-video.colors-custom .site-description {
-			color: #<?php echo esc_attr( $header_text_color ); ?>;
-		}
-	<?php endif; ?>
-	</style>
-	<?php
-}
+        if ( get_theme_support( 'custom-header', 'default-text-color' ) === $header_text_color ) {
+            return;
+        } ?>
+
+        <style id="applicator-custom-visuals-styles" type="text/css">
+
+        <?php // Customizer > Site Identity > Uncheck: Display Site Title and Description
+        if ( 'blank' === $header_text_color ) : ?>
+
+            .wp-name,
+            .wp-desc
+            {
+                /* WordPress Visually Hidden */
+                position: absolute;
+                clip: rect(1px, 1px, 1px, 1px);
+            }
+
+        <?php // If the user has set a custom color for the text use that.
+        else : ?>
+
+            .wp-name--a,
+            .wp-desc--l
+            {
+                color: #<?php echo esc_attr( $header_text_color ); ?>;
+            }
+
+        <?php endif; ?>
+
+        </style>
+
+    <?php }
 endif;

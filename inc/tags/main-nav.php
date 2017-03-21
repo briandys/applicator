@@ -9,10 +9,12 @@ if ( ! function_exists( 'applicator_func_main_nav' ) ) :
         
         
         <?php //------------------------- Sub-Constructor: Main Navigation ------------------------- ?>
-        <nav id="main-nav" class="nav main-nav">
+        <nav id="main-nav" class="main-nav" role="navigation" aria-label="<?php esc_html_e( 'Main Navigation', 'applicator' ); ?>">
             <div class="main-nav--cr">
                     
-                <h2 class="h main-nav--h"><?php _e( 'Main Navigation', 'applicator' ); ?></h2>
+                <h2 class="h main-nav--h">
+                    <span class="h-l"><?php esc_html_e( 'Main Navigation', 'applicator' ); ?></span>
+                </h2>
 
                 <?php if ( ! has_nav_menu( 'main-nav' ) ) {
                     

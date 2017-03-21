@@ -3,13 +3,13 @@
 
 
                 <?php //------------------------- Constructor: Main Footer ------------------------- ?>
-                <footer class="footer cn main-footer" data-name="Main Footer">
+                <footer class="footer cn main-footer" data-name="Main Footer" role="contentinfo">
                     <div class="main-footer--cr">
                         
                         
                         <?php //------------------------- Sub-Constructor: Main Footer Aside ------------------------- ?>
                         <?php if ( is_active_sidebar( 'main-footer-aside' )  ) : ?>
-                        <aside id="main-footer-aside" class="aside cn main-footer-aside" data-name="Main Footer Aside">
+                        <aside id="main-footer-aside" class="aside cn main-footer-aside" data-name="Main Footer Aside" role="complementary">
                             <div class="main-footer-aside--cr">
                                 <h3 class="h main-footer-aside--h"><?php _e( 'Aside: Main Footer', 'applicator' ); ?></h3>
                                 <?php dynamic_sidebar( 'main-footer-aside' ); ?>

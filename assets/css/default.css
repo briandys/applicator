@@ -13,6 +13,8 @@ fr: footer
 • Image width limit
 */
 
+
+/*
 .visuallyhidden,
 
 .wp-desc,
@@ -38,6 +40,13 @@ fr: footer
     padding: 0;
     position: absolute;
     width: 1px;
+}
+*/
+
+.wp-visuallyhidden
+{
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
 }
 
 

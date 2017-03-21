@@ -120,7 +120,7 @@
         
         <?php //------------------------- Sub-Constructor: Main Content Header Aside ------------------------- ?>
         <?php if ( is_active_sidebar( 'main-content-header-aside' )  ) : ?>
-        <aside id="main-content-header-aside" class="aside cn main-content-header-aside" data-name="Main Content Header Aside">
+        <aside id="main-content-header-aside" class="aside cn main-content-header-aside" data-name="Main Content Header Aside" role="complementary">
             <div class="main-content-header-aside--cr">
                 <h3 class="h main-content-header-aside--h"><span class="h-l"><?php esc_html_e( 'Aside: Main Content Header', 'applicator' ); ?></span></h3>
                 <?php dynamic_sidebar( 'main-content-header-aside' ); ?>
@@ -138,7 +138,7 @@
         
         
         <?php //------------------------- Primary Content ------------------------- ?>
-        <main id="content" class="cn pri-content" data-name="Primary Content">
+        <main id="content" class="cn pri-content" data-name="Primary Content" role="main">
             <div class="pri-content--cr">
                 
                 <?php //------------------------- single.php ------------------------- ?>

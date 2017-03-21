@@ -49,7 +49,7 @@
         
                 
                 <?php //------------------------- Constructor: Main Header ------------------------- ?>
-                <header class="header cn main-header" data-name="Main Header">
+                <header class="header cn main-header" data-name="Main Header" role="banner">
                     <div class="main-header--cr">
                         
                         
@@ -67,19 +67,19 @@
                                                 <span class="a-l"><?php bloginfo( 'name' ); ?></span>
                                             </a>
                                         </h1>
-                                        
-                                        <?php //------------------------- Customizer: Custom Logo ------------------------- ?>
-                                        <?php // inc settings.php ?>
-                                        <?php if ( has_custom_logo() ) { ?>
-                                        <div class="cp wp-logo" data-name="Web Product Logo">
-                                            <div class="wp-logo--cr">
-                                                <?php the_custom_logo(); ?>
-                                            </div>
-                                        </div>
-                                        <?php } ?>
                                     
                                     </div>
                                 </div><!-- wp-name -->
+                                        
+                                <?php //------------------------- Customizer: Custom Logo ------------------------- ?>
+                                <?php // inc settings.php ?>
+                                <?php if ( has_custom_logo() ) { ?>
+                                <div class="cp wp-logo" data-name="Web Product Logo">
+                                    <div class="wp-logo--cr">
+                                        <?php the_custom_logo(); ?>
+                                    </div>
+                                </div>
+                                <?php } ?>
                                 
                                 
                                 <?php //------------------------- Web Product Description ------------------------- ?>
@@ -114,7 +114,7 @@
                                 
                                 <?php //------------------------- Sub-Constructor: Main Header Aside ------------------------- ?>
                                 <?php if ( is_active_sidebar( 'main-header-aside' )  ) : ?>
-                                <aside id="main-header-aside" class="aside cn main-header-aside" data-name="Main Header Aside">
+                                <aside id="main-header-aside" class="aside cn main-header-aside" data-name="Main Header Aside" role="complementary">
                                     <div class="main-header-aside--cr">
                                         <h3 class="h main-header-aside--h">
                                             <span class="h-l"><?php esc_html_e( 'Aside: Main Header', 'applicator' ); ?></span>
