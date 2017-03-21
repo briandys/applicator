@@ -20,26 +20,7 @@ endif;
 
 
 //------------------------- Custom Fonts
-function applicator_fonts_url() {
-	$fonts_url = '';
-
-	$noto = _x( 'on', 'Noto Sans, Noto Serif font: on or off', 'applicator' );
-
-	if ( 'off' !== $noto ) {
-		$font_families = array();
-
-		$font_families[] = 'Noto Sans:400,700|Noto Serif:400,700';
-
-		$query_args = array(
-			'family' => urlencode( implode( '|', $font_families ) ),
-			'subset' => urlencode( 'latin,latin-ext' ),
-		);
-
-		$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
-	}
-
-	return esc_url_raw( $fonts_url );
-}
+require get_parent_theme_file_path( '/snapons/applicator/inc/functions/custom-fonts.php' );
 
 
 //------------------------- Styles
@@ -48,7 +29,7 @@ if ( ! function_exists( 'applicator_snapons_applicator_styles' ) ) :
 
         wp_enqueue_style( 'applicator-style-fonts', applicator_fonts_url(), array(), null );
         
-        wp_enqueue_style( 'applicator-snapons-applicator-style', get_template_directory_uri() . '/snapons/applicator/css/default.css', array(), '1.0', 'all' );
+        wp_enqueue_style( 'applicator-snapons-applicator-style', get_template_directory_uri() . '/snapons/applicator/assets/css/default.css', array(), '1.0', 'all' );
 
     }
     add_action( 'wp_enqueue_scripts', 'applicator_snapons_applicator_styles', 0);

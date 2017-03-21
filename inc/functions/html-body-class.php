@@ -123,6 +123,20 @@ if ( ! function_exists( 'applicator_html_class' ) ) :
         if ( is_customize_preview() ) {
             echo ' view--customizer';
         }
+        
+        
+        //------------------------- Customizer: Custom Header
+        if ( has_header_image() )
+            echo ' wp-media-banner' . $on;
+        else
+            echo ' wp-media-banner' . $off;
+        
+        
+        //------------------------- Customizer: Custom Logo
+        if ( has_custom_logo() )
+            echo ' wp-logo' . $on;
+        else
+            echo ' wp-logo' . $off;
     
     }
     add_action( 'applicator_hook_html_class', 'applicator_html_class');

@@ -53,9 +53,6 @@
                     <div class="main-header--cr">
                         
                         
-                        <?php the_custom_header_markup(); ?>
-                        
-                        
                         <?php //------------------------- Web Product Info ------------------------- ?>
                         <div class="cp wp-info" data-name="Web Product Info">
                             <div class="wp-info--cr">
@@ -70,6 +67,16 @@
                                                 <span class="a-l"><?php bloginfo( 'name' ); ?></span>
                                             </a>
                                         </h1>
+                                        
+                                        <?php //------------------------- Customizer: Custom Logo ------------------------- ?>
+                                        <?php // inc settings.php ?>
+                                        <?php if ( has_custom_logo() ) { ?>
+                                        <div class="cp wp-logo" data-name="Web Product Logo">
+                                            <div class="wp-logo--cr">
+                                                <?php the_custom_logo(); ?>
+                                            </div>
+                                        </div>
+                                        <?php } ?>
                                     
                                     </div>
                                 </div><!-- wp-name -->
@@ -119,6 +126,17 @@
                                 
                             </div>
                         </div><!-- main-nav--main-header-aside -->
+                        
+                  
+                        <?php //------------------------- Customizer: Custom Header ------------------------- ?>
+                        <?php // inc > functions > custom-header.php ?>
+                        <?php if ( has_header_image() ) { ?>
+                        <div class="cp wp-media-banner" data-name="Web Product Media Banner">
+                            <div class="wp-media-banner--cr">
+                                <?php the_custom_header_markup(); ?>
+                            </div>
+                        </div>
+                        <?php } ?>
                     
                     </div>
                 </header><!-- main-header -->

@@ -2,7 +2,7 @@
 
 //------------------------- Applicator only works in WordPress 4.7 or later.
 if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
-    require get_template_directory() . '/inc/back-compat.php';
+    require get_template_directory() . '/inc/functions/back-compatibility.php';
 	return;
 }
 
@@ -26,10 +26,6 @@ function applicator_setup() {
     //------------------------- Enable support for Post Thumbnails on posts and pages.
     add_theme_support( 'post-thumbnails' );
     add_image_size( 'applicator-entry-banner-image', 1920, 1920, true );
-    
-    
-    //------------------------- Enable support for Custom Header
-    require get_parent_theme_file_path( '/inc/functions/custom-header.php' );
     
     
     //------------------------- Sets the default sizes of images in Admin > Settings
@@ -71,9 +67,10 @@ function applicator_setup() {
 
 	
     //------------------------- Add theme support for Custom Logo.
+    // header.php
 	add_theme_support( 'custom-logo', array(
-		'width'       => 250,
-		'height'      => 250,
+		'width'       => 320,
+		'height'      => 320,
 		'flex-width'  => true,
 	) );
 
@@ -81,6 +78,9 @@ function applicator_setup() {
 	
     //------------------------- Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
+    
+    
+    add_editor_style( array( 'assets/css/editor-style.css', applicator_fonts_url() ) );
 
 }
 

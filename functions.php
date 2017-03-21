@@ -4,13 +4,10 @@
 require_once( get_template_directory() . '/inc/settings.php');
 
 require_once( get_template_directory() . '/inc/hooks.php');
-require_once( get_template_directory() . '/inc/aside.php');
 
 
 // Styles and Scripts
 require_once( get_template_directory() . '/inc/functions/html-body-class.php');
-require_once( get_template_directory() . '/inc/functions/custom-fonts.php');
-
 require_once( get_template_directory() . '/inc/styles.php');
 require_once( get_template_directory() . '/inc/scripts.php');
 
@@ -44,4 +41,6 @@ require_once( get_template_directory() . '/applicator-snapons.php');
 
 
 // Functions
+require_once( get_template_directory() . '/inc/functions/custom-visuals.php');
+require_once( get_template_directory() . '/inc/functions/aside.php');
 require_once( get_template_directory() . '/inc/functions/auto-copyright-year.php');
