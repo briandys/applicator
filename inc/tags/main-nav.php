@@ -9,7 +9,7 @@ if ( ! function_exists( 'applicator_func_main_nav' ) ) :
         
         
         <?php //------------------------- Sub-Constructor: Main Navigation ------------------------- ?>
-        <nav id="main-nav" class="main-nav" role="navigation" aria-label="<?php esc_html_e( 'Main Navigation', 'applicator' ); ?>">
+        <nav id="main-nav" class="main-nav">
             <div class="main-nav--cr">
                     
                 <h2 class="h main-nav--h">

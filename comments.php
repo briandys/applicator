@@ -128,11 +128,11 @@
                     'comment_field'             => sprintf(
                                                     '<div class="fs-item commenter-comment--fs-item">'
                                                         .'<div class="commenter-comment--fs-item--cr">'
-                                                            .'<label class="label commenter-comment--label" for="commenter-comment--input-text">'
+                                                            .'<label class="label commenter-comment--label" for="commenter-comment--input--text">'
                                                                 .'<span class="label-l">%2$s</span>'
                                                             .'</label>'
-                                                            .'<div class="input--text commenter-comment--input-text">'
-                                                                .'<textarea id="commenter-comment--input-text" class="textarea input--text commenter-comment--input--text" placeholder="%1$s" name="comment" title="%1$s" required></textarea>'
+                                                            .'<div class="input-text commenter-comment--input-text">'
+                                                                .'<textarea id="commenter-comment--input--text" class="textarea input--text input--textarea commenter-comment--input--text" placeholder="%1$s" name="comment" title="%1$s" required></textarea>'
                                                         .'</div>'
                                                     .'</div>',
                                                     esc_attr__( 'Comment', 'applicator' ),

@@ -49,7 +49,7 @@
         
                 
                 <?php //------------------------- Constructor: Main Header ------------------------- ?>
-                <header class="header cn main-header" data-name="Main Header" role="banner">
+                <header class="header cn main-header" data-name="Main Header">
                     <div class="main-header--cr">
                         
                         
@@ -110,6 +110,11 @@
 
                                 <?php //------------------------- Hook: After Main Navigation ------------------------- ?>
                                 <?php applicator_hook_after_main_nav(); ?>
+                                
+                                
+                                <?php //------------------------- Search ------------------------- ?>
+                                <?php // searchform.php ?>
+                                <?php get_search_form(); ?>
                                 
                                 
                                 <?php //------------------------- Sub-Constructor: Main Header Aside ------------------------- ?>
