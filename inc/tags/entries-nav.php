@@ -46,7 +46,7 @@ if ( ! function_exists('applicator_entries_nav' ) ) :
         
         if ( ! is_attachment() ) : ?>
 
-            <div class="entries-nav" role="navigation" aria-label="<?php esc_html_e( 'Entries Navigation', 'applicator' ); ?>">
+            <div class="nav entries-nav" role="navigation" aria-label="<?php esc_html_e( 'Entries Navigation', 'applicator' ); ?>">
                 <div class="entries-nav--cr">
                     <div class="entries-nav--h"><span class="h-l"><?php esc_html_e( 'Entries Navigation', 'applicator' ); ?></span></div>
                     <ul class="grp entries-nav--grp">

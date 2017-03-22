@@ -9,7 +9,7 @@ if ( ! function_exists( 'applicator_func_main_nav' ) ) :
         
         
         <?php //------------------------- Sub-Constructor: Main Navigation ------------------------- ?>
-        <nav id="main-nav" class="main-nav">
+        <nav id="main-nav" class="nav main-nav" role="navigation">
             <div class="main-nav--cr">
                     
                 <h2 class="h main-nav--h">

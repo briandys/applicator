@@ -3,7 +3,7 @@
 
 
                 <?php //------------------------- Constructor: Main Footer ------------------------- ?>
-                <footer class="footer cn main-footer" data-name="Main Footer">
+                <footer class="footer cn main-footer" data-name="Main Footer" role="contentinfo">
                     <div class="main-footer--cr">
                         
                         

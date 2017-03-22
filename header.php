@@ -49,7 +49,7 @@
         
                 
                 <?php //------------------------- Constructor: Main Header ------------------------- ?>
-                <header class="header cn main-header" data-name="Main Header">
+                <header class="header cn main-header" data-name="Main Header" role="banner">
                     <div class="main-header--cr">
                         
                         

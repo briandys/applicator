@@ -138,7 +138,7 @@
         
         
         <?php //------------------------- Primary Content ------------------------- ?>
-        <main id="content" class="cn pri-content" data-name="Primary Content">
+        <main id="content" class="cn pri-content" data-name="Primary Content" role="main">
             <div class="pri-content--cr">
                 
                 <?php //------------------------- single.php ------------------------- ?>

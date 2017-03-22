@@ -7,7 +7,7 @@
             <span class="h-l"><?php esc_html_e( 'Search', 'applicator'); ?></span>
         </h2>
         
-        <form class="search-form" method="get" role="search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+        <form class="search-form" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
             <fieldset class="fs grp fs--grp">
                 <legend><?php esc_html_e( 'Search Form', 'applicator'); ?></legend>
                 <div class="item fs-item search-term--fs-item">

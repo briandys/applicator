@@ -15,11 +15,11 @@ fr: footer
 
 
 /*
-.visuallyhidden,
+,
 
 .wbp-desc,
 
-.main-nav--h,
+,
 .main-content--h--pred-l,
 .main-content--h--colon-l,
 .entry-actions--h,
@@ -31,6 +31,15 @@ fr: footer
 .sub-entry .crumbs-nav,
 .sub-entry .pub-timestamp,
 .sub-entry .entry-author
+*/
+
+
+.visuallyhidden,
+
+.main-nav--h,
+.search--h,
+legend,
+.search-term--label
 {
     border: 0;
     clip: rect(0, 0, 0, 0);
@@ -41,7 +50,6 @@ fr: footer
     position: absolute;
     width: 1px;
 }
-*/
 
 .wbp-visuallyhidden
 {

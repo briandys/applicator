@@ -39,7 +39,7 @@ if ( ! function_exists( 'application_comments_nav' ) ) :
             esc_attr__( 'Previous Comments', 'applicator' )
         ); ?>
 
-        <div class="comments-nav" role="navigation" aria-label="<?php esc_html_e( 'Comments Navigation', 'applicator' ); ?>">
+        <div class="nav comments-nav" role="navigation" aria-label="<?php esc_html_e( 'Comments Navigation', 'applicator' ); ?>">
             <div class="comments-nav--cr">
                 <div class="h comments-nav--h">
                     <span class="h-l"><?php esc_html_e( 'Comments Navigation', 'applicator' ); ?></span>
