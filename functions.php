@@ -19,12 +19,14 @@ require_once( get_template_directory() . '/inc/tags/entry-page-nav.php');
 require_once( get_template_directory() . '/inc/tags/breadcrumbs-nav.php');
 
 
-// Entry Tags
+// Entry
 require_once( get_template_directory() . '/inc/tags/entry-actions.php');
 require_once( get_template_directory() . '/inc/tags/entry-timestamp.php');
 require_once( get_template_directory() . '/inc/tags/entry-author.php');
 require_once( get_template_directory() . '/inc/tags/entry-classification.php');
+require_once( get_template_directory() . '/inc/tags/entry-banner-image.php');
 
+// Comments
 require_once( get_template_directory() . '/inc/tags/comments-actions-snippet.php');
 require_once( get_template_directory() . '/inc/tags/comments-nav.php');
 require_once( get_template_directory() . '/inc/tags/comment-item.php');
@@ -41,7 +43,10 @@ require_once( get_template_directory() . '/inc/functions/custom-fonts.php');
 require_once( get_template_directory() . '/inc/functions/custom-visuals.php');
 require_once( get_template_directory() . '/inc/functions/aside.php');
 require_once( get_template_directory() . '/inc/functions/auto-copyright-year.php');
-require_once( get_template_directory() . '/inc/functions/excerpt-more.php');
+require_once( get_template_directory() . '/inc/functions/show-more.php');
+require_once( get_template_directory() . '/inc/functions/pingback-header.php');
+
+
 
 
 // Snap-ons

@@ -19,22 +19,22 @@
                         
                         
                         <?php //------------------------- Web Product Copyright ------------------------- ?>
-                        <div class="cp wp-copyright" data-name="Web Product Copyright">
-                            <div class="wp-copyright--cr">
+                        <div class="cp wbp-copyright" data-name="Web Product Copyright">
+                            <div class="wbp-copyright--cr">
                                 
-                                <div class="wp-copyright--l">
-                                    <span class="wp-copyright-line">
-                                        <span class="wp-copyright--name--l"><?php bloginfo( 'name' ); ?></span>
-                                        <span class="wp-copyright--copy--l"><?php esc_html_e( '&copy;', 'applicator' ); ?></span>
-                                        <span class="wp-copyright--year--l"><?php do_action( 'applicator_auto_copyright_year' ) ?>.</span>
+                                <div class="wbp-copyright--l">
+                                    <span class="wbp-copyright-line">
+                                        <span class="wbp-copyright--name--l"><?php bloginfo( 'name' ); ?></span>
+                                        <span class="wbp-copyright--copy--l"><?php esc_html_e( '&copy;', 'applicator' ); ?></span>
+                                        <span class="wbp-copyright--year--l"><?php do_action( 'applicator_auto_copyright_year' ) ?>.</span>
                                     </span>
-                                    <span class="wp-tm-line">
-                                        <span class="wp-copyright--olrayt--l"><?php esc_html_e( 'Olrayt reserved&trade;', 'applicator' ); ?>.</span>
+                                    <span class="wbp-tm-line">
+                                        <span class="wbp-copyright--olrayt--l"><?php esc_html_e( 'Olrayt reserved&trade;', 'applicator' ); ?>.</span>
                                     </span>
                                 </div>
 
                             </div>
-                        </div><!-- wp-copyright -->
+                        </div><!-- wbp-copyright -->
 
                     </div>
                 </footer><!-- main-footer -->
@@ -44,8 +44,8 @@
 
 
         <?php //------------------------- Web Product End ------------------------- ?>
-        <div class="cn wp-end" data-name="Web Product End">
-            <div class="wp-end--cr">
+        <div class="cn wbp-end" data-name="Web Product End">
+            <div class="wbp-end--cr">
                 
                 
                 <?php //------------------------- Go to Start ------------------------- ?>
@@ -60,7 +60,7 @@
                 </div><!-- go-start -->
                 
             </div>
-        </div><!-- wp-start -->
+        </div><!-- wbp-start -->
 
         <?php wp_footer(); ?>
     

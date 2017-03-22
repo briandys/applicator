@@ -25,19 +25,21 @@ function applicator_setup() {
 	
     //------------------------- Enable support for Post Thumbnails on posts and pages.
     add_theme_support( 'post-thumbnails' );
-    add_image_size( 'applicator-entry-banner-image', 1920, 1920, true );
+    
+    add_image_size( 'applicator-entry-banner-image-large', 1920, 1920, true );
+    add_image_size( 'applicator-entry-banner-image-thumbnail', 640, 640, true );
     
     
     //------------------------- Sets the default sizes of images in Admin > Settings
-    update_option('thumbnail_size_w', 480);
-    update_option('thumbnail_size_h', 480);
+    update_option('thumbnail_size_w', 640);
+    update_option('thumbnail_size_h', 640);
     update_option('thumbnail_crop', 1);
     
-    update_option('medium_size_w', 1024);
-    update_option('medium_size_h', 1024);
+    update_option('medium_size_w', 1280);
+    update_option('medium_size_h', 1280);
     
-    update_option('large_size_w', 1600);
-    update_option('large_size_h', 1600);
+    update_option('large_size_w', 1920);
+    update_option('large_size_h', 1920);
 
 	
     // Set the default content width.

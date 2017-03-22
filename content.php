@@ -13,22 +13,14 @@
                 applicator_hook_after_entry_heading(); ?>
                 
                 
-                <?php //------------------------- Entry Banner Image ------------------------- ?>
-                <?php if ( '' !== get_the_post_thumbnail() ) : ?>
-                <div class="cp entry-banner-image" data-name="Entry Banner Image">
-                    <div class="entry-banner-image--cr">
-                        <a class="a entry-banner-image--a" href="<?php the_permalink(); ?>" title="<?php get_the_title(); ?>">
-                            <span class="a-i"><?php the_post_thumbnail( 'applicator-entry-banner-image' ); ?></span>
-                        </a>
-                    </div>
-                </div><!-- entry-banner-image -->
-                <?php endif; ?>
-                
-                
                 <?php
                 // Entry Actions
                 // inc > tags > entry-actions.php
                 applicator_entry_actions();
+                
+                // Entry Banner Image
+                // inc > tags > entry-banner-image.php
+                applicator_entry_banner_image();
 
                 // Comments Actions Snippet
                 // inc > tags > comments-actions-snippet.php
@@ -70,14 +62,13 @@
 
         <div class="entry--ct">
             <div class="entry--ct-cr">
-
-                <?php
-                //if ( ! is_search() || ! is_author() || ! is_archive() ) :
+                
+                
+                <?php if ( is_home() || is_single() ) {
                     the_content();
-                //else :
-                    //the_excerpt();
-                //endif;
-                ?>
+                } else {
+                   the_excerpt();
+                }; ?>
 
 
                 <?php //------------------------- Entry Page Navigation ------------------------- ?>
@@ -85,9 +76,7 @@
 
 
                 <?php //------------------------- Sub-Entry ------------------------- ?>
-                <?php // Use Page Template: Applicator Page to display the page and all of its sub-pages. ?>
-
-                <?php if ( is_page_template( 'applicator-page.php' ) ) :
+                <?php if ( is_page_template( 'page-templates/sub-pages.php' ) ) :
                     $parent = $post->ID;
                     $args = array(
                         'post_type'     => 'page',
@@ -100,7 +89,7 @@
 
                     if ( $the_query->have_posts() ) : ?>
 
-                        <div class="sub-entry">
+                        <div class="cp sub-entry" data-name="Sub-Entry">
                             <div class="sub-entry--cr">
 
                                 <?php while ( $the_query->have_posts() ) :

@@ -13,7 +13,7 @@ if ( ! function_exists( 'applicator_custom_visuals_setup' ) ) :
             'width'              => 2000,
             'height'             => 1200,
             'flex-height'        => true,
-            'wp-head-callback'   => 'applicator_header_style',
+            'wbp-head-callback'   => 'applicator_header_style',
         ) ) );
 
         register_default_headers( array(
@@ -57,8 +57,8 @@ if ( ! function_exists( 'applicator_header_style' ) ) :
         <?php // Customizer > Site Identity > Uncheck: Display Site Title and Description
         if ( 'blank' === $header_text_color ) : ?>
 
-            .wp-name,
-            .wp-desc
+            .wbp-name,
+            .wbp-desc
             {
                 /* WordPress Visually Hidden */
                 position: absolute;
@@ -68,8 +68,8 @@ if ( ! function_exists( 'applicator_header_style' ) ) :
         <?php // If the user has set a custom color for the text use that.
         else : ?>
 
-            .wp-name--a,
-            .wp-desc--l
+            .wbp-name--a,
+            .wbp-desc--l
             {
                 color: #<?php echo esc_attr( $header_text_color ); ?>;
             }

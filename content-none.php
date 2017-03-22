@@ -18,9 +18,7 @@
         <div class="entry--ct">
             <div class="entry--ct-cr">
                 
-                <?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'applicator' ); ?>
-                        
-                <?php get_search_form(); ?>
+                <p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'applicator' ); ?></p>
 
             </div>
         </div><!-- entry--ct -->

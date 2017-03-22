@@ -16,71 +16,73 @@ if ( ! function_exists( 'applicator_html_class' ) ) :
         if ( is_front_page() )
         // if ( is_front_page() && ! is_home() )
         // if ( is_front_page() && 'posts' !== get_option( 'show_on_front' ) )
-            echo ' view--front';
+            echo ' ' . 'view--front';
         else
-            echo ' view--inner';
+            echo ' ' . 'view--inner';
         
         
         //------------------------- Browser Detection
         if ( $is_chrome )
-            echo ' browser--chrome';
+            echo ' ' . 'browser--chrome';
         elseif ( $is_gecko )
-            echo ' browser--gecko';
+            echo ' ' . 'browser--gecko';
         elseif ( $is_safari )
-            echo ' browser--safari';
+            echo ' ' . 'browser--safari';
         elseif ( $is_opera )
-            echo ' browser--opera';
+            echo ' ' . 'browser--opera';
         elseif ( $is_lynx )
-            echo ' browser--lynx';
+            echo ' ' . 'browser--lynx';
         elseif ( $is_NS4 )
-            echo ' browser--ns4';
+            echo ' ' . 'browser--ns4';
         elseif ( $is_IE )
-            echo ' browser--ie';
+            echo ' ' . 'browser--ie';
         elseif ( $is_macIE )
-            echo ' browser--mac-ie';
+            echo ' ' . 'browser--mac-ie';
         elseif ( $is_winIE )
-            echo ' browser--win-ie';
+            echo ' ' . 'browser--win-ie';
         elseif ( $is_edge )
-            echo ' browser--edge';
+            echo ' ' . 'browser--edge';
         elseif ( $is_iphone )
-            echo ' browser--iphone';
+            echo ' ' . 'browser--iphone';
         elseif ( $is_ipad )
-            echo ' browser--ipad';
+            echo ' ' . 'browser--ipad';
         else
-            echo ' browser--unlisted';
+            echo ' ' . 'browser--unlisted';
         
         //------------------------- Mobile Device Detection
         if ( wp_is_mobile() )
-            echo ' device--mobile';
+            echo ' ' . 'device--mobile';
         else
-            echo ' device--not-mobile';
+            echo ' ' . 'device--not-mobile';
         
         
         //------------------------- Theme Detection
         if ( ! is_child_theme() )
-            echo ' theme--parent';
+            echo ' ' . 'theme--parent';
         else
-            echo ' theme--child';
+            echo ' ' . 'theme--child';
         
         
         //------------------------- Menu Type Detection
         // If Default Menu or Custom Menu is used as Main Navigation
         if ( ! has_nav_menu( 'main-nav' ) )
-            echo ' main-nav--default';
+            echo ' ' . 'main-nav--default';
         else
-            echo ' main-nav--custom';
+            echo ' ' . 'main-nav--custom';
         
         
         //------------------------- Authorship Type
         if ( is_multi_author() )
-            echo ' authorship--multi';
+            echo ' ' . 'authorship--multi';
         else
-            echo ' authorship--single';
+            echo ' ' . 'authorship--single';
         
         
         //------------------------- Non-Singular Pages
         if ( ! is_singular() )
-            echo ' hfeed';
+            echo ' ' . 'view--category hfeed';
+        else
+            echo ' ' . 'view--detail';
         
         
         //------------------------- Aside Status
@@ -127,16 +129,16 @@ if ( ! function_exists( 'applicator_html_class' ) ) :
         
         //------------------------- Customizer: Custom Header
         if ( has_header_image() )
-            echo ' wp-media-banner' . $on;
+            echo ' wbp-media-banner' . $on;
         else
-            echo ' wp-media-banner' . $off;
+            echo ' wbp-media-banner' . $off;
         
         
         //------------------------- Customizer: Custom Logo
         if ( has_custom_logo() )
-            echo ' wp-logo' . $on;
+            echo ' wbp-logo' . $on;
         else
-            echo ' wp-logo' . $off;
+            echo ' wbp-logo' . $off;
     
     }
     add_action( 'applicator_hook_html_class', 'applicator_html_class');

@@ -8,10 +8,10 @@ if ( ! function_exists( 'applicator_comment_item' ) ) :
         
         if ( 'div' === $args['style'] ) {
             $tag       = 'div';
-            $add_below = 'comment-';
+            $add_below = 'comment';
         } else {
             $tag       = 'li';
-            $add_below = 'comment-';
+            $add_below = 'comment';
         } ?>
 
         <<?php echo $tag ?> id="comment-<?php comment_ID() ?>" <?php comment_class( empty( $args['has_children'] ) ? 'comment--single' : 'comment--parent' ) ?>>

@@ -17,7 +17,7 @@ fr: footer
 /*
 .visuallyhidden,
 
-.wp-desc,
+.wbp-desc,
 
 .main-nav--h,
 .main-content--h--pred-l,
@@ -43,7 +43,7 @@ fr: footer
 }
 */
 
-.wp-visuallyhidden
+.wbp-visuallyhidden
 {
     position: absolute;
     clip: rect(1px, 1px, 1px, 1px);

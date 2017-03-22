@@ -13,8 +13,8 @@
         
         
         <?php //------------------------- Web Product Start ------------------------- ?>
-        <div class="cn wp-start" data-name="Web Product Start">
-            <div class="wp-start--cr">
+        <div class="cn wbp-start" data-name="Web Product Start">
+            <div class="wbp-start--cr">
                 
                 <div class="cp go-content" data-name="Go to Content">
                     <div class="go-content--cr">
@@ -40,7 +40,7 @@
                 <![endif]-->
                 
             </div>
-        </div><!-- wp-start -->
+        </div><!-- wbp-start -->
         
         
         <?php //------------------------- Container ------------------------- ?>
@@ -54,28 +54,28 @@
                         
                         
                         <?php //------------------------- Web Product Info ------------------------- ?>
-                        <div class="cp wp-info" data-name="Web Product Info">
-                            <div class="wp-info--cr">
+                        <div class="cp wbp-info" data-name="Web Product Info">
+                            <div class="wbp-info--cr">
                                 
                                 
                                 <?php //------------------------- Web Product Name ------------------------- ?>
-                                <div class="cp wp-name" data-name="Web Product Name">
-                                    <div class="wp-name--cr">
+                                <div class="cp wbp-name" data-name="Web Product Name">
+                                    <div class="wbp-name--cr">
                                         
-                                        <h1 class="h wp-name--h">
-                                            <a class="a wp-name--a" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'name' ); ?>">
+                                        <h1 class="h wbp-name--h">
+                                            <a class="a wbp-name--a" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'name' ); ?>">
                                                 <span class="a-l"><?php bloginfo( 'name' ); ?></span>
                                             </a>
                                         </h1>
                                     
                                     </div>
-                                </div><!-- wp-name -->
+                                </div><!-- wbp-name -->
                                         
                                 <?php //------------------------- Customizer: Custom Logo ------------------------- ?>
                                 <?php // inc settings.php ?>
                                 <?php if ( has_custom_logo() ) { ?>
-                                <div class="cp wp-logo" data-name="Web Product Logo">
-                                    <div class="wp-logo--cr">
+                                <div class="cp wbp-logo" data-name="Web Product Logo">
+                                    <div class="wbp-logo--cr">
                                         <?php the_custom_logo(); ?>
                                     </div>
                                 </div>
@@ -83,19 +83,19 @@
                                 
                                 
                                 <?php //------------------------- Web Product Description ------------------------- ?>
-                                <div class="cp wp-desc" data-name="Web Product Description">
-                                    <div class="wp-desc--cr">
+                                <div class="cp wbp-desc" data-name="Web Product Description">
+                                    <div class="wbp-desc--cr">
                                         
                                         <?php $description = get_bloginfo( 'description', 'display' );
                                         if ( $description || is_customize_preview() ) : ?>
-                                            <div class="wp-desc--l"><?php echo $description; ?></div>
+                                            <div class="wbp-desc--l"><?php echo $description; ?></div>
                                         <?php endif; ?>
                                         
                                     </div>
-                                </div><!-- wp-desc -->
+                                </div><!-- wbp-desc -->
                                 
                             </div>
-                        </div><!-- wp-info -->
+                        </div><!-- wbp-info -->
                         
                         
                         <?php //------------------------- Main Nav | Main Header Aside ------------------------- ?>
@@ -136,8 +136,8 @@
                         <?php //------------------------- Customizer: Custom Header ------------------------- ?>
                         <?php // inc > functions > custom-header.php ?>
                         <?php if ( has_header_image() ) { ?>
-                        <div class="cp wp-media-banner" data-name="Web Product Media Banner">
-                            <div class="wp-media-banner--cr">
+                        <div class="cp wbp-media-banner" data-name="Web Product Media Banner">
+                            <div class="wbp-media-banner--cr">
                                 <?php the_custom_header_markup(); ?>
                             </div>
                         </div>
