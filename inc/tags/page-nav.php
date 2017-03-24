@@ -49,8 +49,8 @@ if ( ! function_exists( 'applicator_page_nav' ) ) :
         if ( $links ) : ?>
         
         <div class="nav page-nav" role="navigation" aria-label="<?php esc_html_e( 'Page Navigation', 'applicator' ); ?>">
-            <div class="page-nav--cr">
-                <div class="page-nav--h">
+            <div class="nav--cr page-nav--cr">
+                <div class="h page-nav--h">
                     <span class="h-l"><?php esc_html_e( 'Page Navigation', 'applicator' ); ?></span>
                 </div>
                 <?php echo $links; ?>

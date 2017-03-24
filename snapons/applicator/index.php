@@ -1,7 +1,7 @@
 <?php
 /*
 Snap-on Name: Applicator
-Description: Default Snap-on for Applicator Theme
+Description: Default Snap-on for Applicator WordPress Theme
 Author: Brian Dys Sahagun
 Version: 1.0
 Author URI: http://applicator.dysinelab.com
@@ -29,8 +29,27 @@ if ( ! function_exists( 'applicator_snapons_applicator_styles' ) ) :
 
         wp_enqueue_style( 'applicator-style-fonts', applicator_fonts_url(), array(), null );
         
-        wp_enqueue_style( 'applicator-snapons-applicator-style', get_template_directory_uri() . '/snapons/applicator/assets/css/default.css', array(), '1.0', 'all' );
+        add_editor_style( array( 'assets/css/editor-style.css', applicator_fonts_url() ) );
+        
+        wp_enqueue_style( 'applicator-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/css/default.css', array(), '1.4', 'all' );
 
     }
     add_action( 'wp_enqueue_scripts', 'applicator_snapons_applicator_styles', 0);
+endif;
+
+
+//------------------------- Scripts
+if ( ! function_exists( 'applicator_snapons_applicator_scripts' ) ) :
+    function applicator_snapons_applicator_scripts() {
+        
+        wp_enqueue_script( 'applicator-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/js/default.js' ), array( 'jquery' ), '2.0', true );
+        
+        // Localization
+        $applicator_l10n['searchShowLabel']      = __( 'Show Search', 'applicator' );
+        $applicator_l10n['searchHideLabel']      = __( 'Hide Search', 'applicator' );
+        
+        wp_localize_script( 'applicator-snapons-applicator-script-global', 'applicatorSearchLabel', $applicator_l10n );
+            
+    }
+    add_action( 'wp_enqueue_scripts', 'applicator_snapons_applicator_scripts' );
 endif;

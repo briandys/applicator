@@ -148,7 +148,7 @@ if ( ! function_exists( 'applicator_comment_item' ) ) :
                 </div><!-- comment--ct -->
 
                 
-                <?php if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) { ?>
+                <?php if ( is_singular() && comments_open() && get_option( 'thread_comments' ) && $depth < $args['max_depth'] ) { ?>
                 
                 <div class="comment--fr">
                     <div class="comment--fr-cr">

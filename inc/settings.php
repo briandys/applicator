@@ -70,9 +70,6 @@ function applicator_setup() {
 	
     //------------------------- Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
-    
-    
-    add_editor_style( array( 'assets/css/editor-style.css', applicator_fonts_url() ) );
 
 }
 

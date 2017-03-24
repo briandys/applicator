@@ -3,7 +3,7 @@
 
 
                 <?php //------------------------- Constructor: Main Footer ------------------------- ?>
-                <footer class="footer cn main-footer" data-name="Main Footer" role="contentinfo">
+                <footer id="colophon" class="footer cn main-footer site-footer" data-name="Main Footer" role="contentinfo">
                     <div class="main-footer--cr">
                         
                         
@@ -11,7 +11,9 @@
                         <?php if ( is_active_sidebar( 'main-footer-aside' )  ) : ?>
                         <aside id="main-footer-aside" class="aside cn main-footer-aside" data-name="Main Footer Aside" role="complementary">
                             <div class="main-footer-aside--cr">
-                                <h3 class="h main-footer-aside--h"><?php _e( 'Aside: Main Footer', 'applicator' ); ?></h3>
+                                <h3 class="h main-footer-aside--h">
+                                    <span class="main-footer-aside--h-l"><?php esc_html_e( 'Aside: Main Footer', 'applicator' ); ?></span>
+                                </h3>
                                 <?php dynamic_sidebar( 'main-footer-aside' ); ?>
                             </div>
                         </aside><!-- main-footer-aside -->
@@ -19,7 +21,7 @@
                         
                         
                         <?php //------------------------- Web Product Copyright ------------------------- ?>
-                        <div class="cp wbp-copyright" data-name="Web Product Copyright">
+                        <div class="cp wbp-copyright site-info" data-name="Web Product Copyright">
                             <div class="wbp-copyright--cr">
                                 
                                 <div class="wbp-copyright--l">

@@ -90,11 +90,23 @@ if ( ! function_exists( 'applicator_enqueue_scripts' ) ) :
         // Skip Link Focus Fix
         wp_enqueue_script( 'applicator-script-skip-link-focus-fix', get_theme_file_uri( '/assets/js/skip-link-focus-fix.js' ), array(), '1.0', true );
         
+        
+        // Navigation
+        wp_enqueue_script( 'applicator-script-navigation', get_theme_file_uri( '/assets/js/nav.js' ), array(), '1.6', true );
+        
+        // Localization
+        $applicator_l10n['subnavShowLabel']    = __( 'Show Sub-Nav', 'applicator' );
+		$applicator_l10n['subnavHideLabel']    = __( 'Hide Sub-Nav', 'applicator' );
+        
+        wp_localize_script( 'applicator-script-navigation', 'applicatorSubnavLabel', $applicator_l10n );
+        
+        
         // Plugins
         wp_enqueue_script( 'applicator-script-plugins', get_theme_file_uri( '/assets/js/plugins.js' ), array( 'jquery' ), '1.0', true );
         
         // Global
-        wp_enqueue_script( 'applicator-script-global', get_theme_file_uri( '/assets/js/global.js' ), array( 'jquery', 'applicator-script-plugins' ), '1.0', true );
+        wp_enqueue_script( 'applicator-script-global', get_theme_file_uri( '/assets/js/global.js' ), array( 'jquery', 'applicator-script-plugins' ), '1.9', true );
+        
         
         // Comment Reply
         if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

@@ -13,7 +13,7 @@ if ( ! function_exists( 'applicator_entry_categories' ) ) :
                 
                 $categories = '<div class="entry-classification categories">';
                     $categories .= '<div class="entry-classification--cr categories--cr">';
-                        $categories .= '<div class="entry-classification--h categories--h" title="%2$s"><span class="h-l">%2$s</span></div>';
+                        $categories .= '<div class="h entry-classification--h categories--h" title="%2$s"><span class="h-l">%2$s</span></div>';
                         $categories .= '%1$s';
                     $categories .= '</div>';
                 $categories .= '</div>';
@@ -43,7 +43,7 @@ if ( ! function_exists( 'applicator_entry_tags' ) ) :
                 
                 $tags = '<div class="entry-classification tags">';
                     $tags .= '<div class="entry-classification--cr tags--cr">';
-                        $tags .= '<div class="entry-classification--h tags--h" title="%2$s"><span class="tags--h-l">%2$s</span></div>';
+                        $tags .= '<div class="h entry-classification--h tags--h" title="%2$s"><span class="h-l">%2$s</span></div>';
                         $tags .= '%1$s';
                     $tags .= '</div>';
                 $tags .= '</div>';

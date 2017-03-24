@@ -1,10 +1,10 @@
 <article <?php post_class( 'entry' ); ?>>
     <div class="entry--cr">
 
-        <div class="entry--hr">
+        <header class="entry--hr entry-header">
             <div class="entry--hr--cr">
 
-                <?php the_title( '<h1 class="h entry--h"><a class="a entry--a" href="' . esc_url( get_permalink() ) . '" rel="bookmark" title="' . get_the_title() . '"><span class="a-l">', '</span></a></h1>' ); ?>
+                <?php the_title( '<h1 class="h entry--h entry-title"><a class="a entry--a" href="' . esc_url( get_permalink() ) . '" rel="bookmark" title="' . get_the_title() . '"><span class="a-l">', '</span></a></h1>' ); ?>
 
 
                 <?php
@@ -58,9 +58,9 @@
                 <?php applicator_hook_after_entry_meta(); ?>
 
             </div>
-        </div><!-- entry--hr -->
+        </header><!-- entry--hr -->
 
-        <div class="entry--ct">
+        <div class="entry--ct entry-content">
             <div class="entry--ct-cr">
                 
                 

@@ -1,21 +1,12 @@
-/*
-
-Accessibility
-
-Layout
-• Positions
-
-Nature
-• Spacings
-• Dimensions
-
-*/
-
-
-
-
 html
 {
     /* Typography */
     font-family: 'Noto Sans', sans-serif;
+}
+
+
+.dom--unready .search-form,
+.search--inactive .search-form
+{
+    display: none;
 }

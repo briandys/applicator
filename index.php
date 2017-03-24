@@ -7,51 +7,47 @@
         
         
         <h2 class="h main-content--h">
-            <span class="h-l">
+            <span class="main-content--h-l">
                 
-                <span class="main-content--h--pred-l"><?php esc_html_e( 'Main Content', 'applicator' ); ?></span><span class="main-content--h--colon-l"><?php esc_html_e( ':', 'applicator' ); ?></span>
-                
+                <span class="main-content--h--pred-l"><?php esc_html_e( 'Main Content:', 'applicator' ); ?></span>
                 <span class="main-content--h--subj-l">
 
     
-                    <?php //------------------------- Front Page (posts page is set at default) ------------------------- ?>
-                    <?php if ( is_front_page() ) : ?>
-                        <?php _e( 'Home', 'applicator' ); ?>
-
-
-                    <?php //------------------------- Home (posts page is customized) ------------------------- ?>
-                    <?php elseif ( is_home() ) : ?>
-                        <?php _e( 'Entries', 'applicator' ); ?>
-
-
-                    <?php //------------------------- Category ------------------------- ?>
-                    <?php elseif ( is_category() ) :
-                        printf( __( '<span class="pred-l">%s</span><span class="colon-l">:</span> <span class="subj-l">%s</span>', 'applicator' ), _e( 'Category', 'applicator'), single_cat_title( '', false ) ); ?>
-
-
-                    <?php //------------------------- Tag ------------------------- ?>
-                    <?php elseif ( is_tag() ) :
-                        printf( __( '<span class="pred-l">%s</span><span class="colon-l">:</span> <span class="subj-l">%s</span>', 'applicator' ), _e( 'Tag', 'applicator'), single_tag_title( '', false ) ); ?>
-
-
-                    <?php //------------------------- Archive ------------------------- ?>
-                    <?php elseif ( is_archive() && ! is_author() ) :
+                    <?php
+                    //------------------------- Front Page (posts page is set at default)
+                    
+                    if ( is_front_page() ) :
+                        esc_html_e( 'Home', 'applicator' );
+                    
+                    //------------------------- Home (posts page is customized)
+                    elseif ( is_home() ) :
+                        esc_html_e( 'Entries', 'applicator' );
+                    
+                    //------------------------- Category
+                    elseif ( is_category() ) :
+                        printf( __( '<span class="pred-l">%s</span><span class="colon-l">:</span> <span class="subj-l">%s</span>', 'applicator' ), esc_html_e( 'Category', 'applicator'), single_cat_title( '', false ) );
+                    
+                    //------------------------- Tag
+                    elseif ( is_tag() ) :
+                        printf( __( '<span class="pred-l">%s</span><span class="colon-l">:</span> <span class="subj-l">%s</span>', 'applicator' ), esc_html_e( 'Tag', 'applicator'), single_tag_title( '', false ) );
+                    
+                    //------------------------- Archive
+                    elseif ( is_archive() && ! is_author() ) :
                         echo '<span class="pred-l">';
                         if ( is_day() ) :
-                            printf( __( '%s</span><span class="colon-l">:</span> <span class="subj-l">%s</span>', 'applicator' ), _e( 'Daily Archive', 'applicator'), get_the_date() );
+                            printf( __( '%s</span><span class="colon-l">:</span> <span class="subj-l">%s</span>', 'applicator' ), esc_html_e( 'Daily Archive', 'applicator'), get_the_date() );
                         elseif ( is_month() ) :
-                            printf( __( '%s</span><span class="colon-l">:</span> <span class="subj-l">%s</span>', 'applicator' ), _e( 'Monthly Archive', 'applicator'), get_the_date( _x( 'F Y', 'Monthly archives date format', 'applicator' ) ) );
+                            printf( __( '%s</span><span class="colon-l">:</span> <span class="subj-l">%s</span>', 'applicator' ), esc_html_e( 'Monthly Archive', 'applicator'), get_the_date( _x( 'F Y', 'Monthly archives date format', 'applicator' ) ) );
                         elseif ( is_year() ) :
-                            printf( __( '%s</span><span class="colon-l">:</span> <span class="subj-l">%s</span>', 'applicator' ), _e( 'Yearly Archive', 'applicator'), get_the_date( _x( 'Y', 'Yearly archives date format', 'applicator' ) ) );
+                            printf( __( '%s</span><span class="colon-l">:</span> <span class="subj-l">%s</span>', 'applicator' ), esc_html_e( 'Yearly Archive', 'applicator'), get_the_date( _x( 'Y', 'Yearly archives date format', 'applicator' ) ) );
                         else :
-                            _e( 'Archive', 'applicator' );
+                            esc_html_e( 'Archive', 'applicator' );
                         echo '</span>';
                         endif;
-                    ?>
-
-
-                    <?php //------------------------- Search Results ------------------------- ?>
-                    <?php elseif ( is_search() ) :
+                    
+                    
+                    //------------------------- Search Results
+                    elseif ( is_search() ) :
 
                         $entrySearch = new WP_Query( array(
                             's'         => $s,
@@ -66,51 +62,51 @@
                         echo '<span class="pred-l">';
 
                         if ( $count == 0 )
-                            _e( 'No Search Results', 'applicator' );
+                            esc_html_e( 'No Search Results', 'applicator' );
 
                         elseif ( $count == 1 )
-                            _e( 'Search Result', 'applicator' );
+                            esc_html_e( 'Search Result', 'applicator' );
 
                         else
-                            _e( 'Search Results', 'applicator' );
+                            esc_html_e( 'Search Results', 'applicator' );
 
                         echo '</span> ';
 
                         echo '<span class="prep--l">';
-                        _e( 'for', 'applicator' );
+                        esc_html_e( 'for', 'applicator' );
                         echo '</span> ';
 
                         echo '<span class="subj-l">' . $key . '</span>';
 
-                        wp_reset_postdata(); ?>
-
-
-                    <?php //------------------------- Singular (is_single, is_page, is_attachment) ------------------------- ?>
-                    <?php elseif ( is_singular() ) :
+                        wp_reset_postdata();
+                    
+                    
+                    //------------------------- Singular (is_single, is_page, is_attachment)
+                    elseif ( is_singular() ) :
                     
                         if ( is_single() )
-                            _e( 'Entry', 'applicator' );
+                            esc_html_e( 'Entry', 'applicator' );
                     
                         elseif ( is_page() )
-                            _e( 'Page', 'applicator' );
+                            esc_html_e( 'Page', 'applicator' );
                     
                         elseif ( is_attachment() )
-                            _e( 'Attachment', 'applicator' );
+                            esc_html_e( 'Attachment', 'applicator' );
                     
                         else
-                            _e( 'Other', 'applicator' ); ?>
-
-
-                    <?php //------------------------- Author ------------------------- ?>
-                    <?php elseif ( is_author() ) : ?>
-                        <?php printf( __( '<span class="pred-l">%s</span> <span class="subj-l">%s</span>', 'applicator' ), _e( 'All Entries Posted by', 'applicator'), get_the_author() ); ?>
-
-
-                    <?php //------------------------- Other ------------------------- ?>
-                    <?php else : ?>
-                        <?php _e( 'Other', 'applicator' ); ?>
-
-                    <?php endif; ?>
+                            esc_html_e( 'Other', 'applicator' );
+                    
+                    
+                    //------------------------- Author
+                    elseif ( is_author() ) :
+                        printf( __( '<span class="pred-l">%s</span> <span class="subj-l">%s</span>', 'applicator' ), esc_html_e( 'All Entries Posted by', 'applicator'), get_the_author() );
+                    
+                    
+                    //------------------------- Other
+                    else :
+                        esc_html_e( 'Other', 'applicator' );
+                    
+                    endif; ?>
                     
                 </span>
                 
@@ -138,7 +134,7 @@
         
         
         <?php //------------------------- Primary Content ------------------------- ?>
-        <main id="content" class="cn pri-content" data-name="Primary Content" role="main">
+        <main id="main" class="cn pri-content site-main" data-name="Primary Content" role="main">
             <div class="pri-content--cr">
                 
                 <?php //------------------------- single.php ------------------------- ?>

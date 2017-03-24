@@ -46,8 +46,5 @@ require_once( get_template_directory() . '/inc/functions/auto-copyright-year.php
 require_once( get_template_directory() . '/inc/functions/show-more.php');
 require_once( get_template_directory() . '/inc/functions/pingback-header.php');
 
-
-
-
 // Snap-ons
-require_once( get_template_directory() . '/applicator-snapons.php');
+require_once( get_template_directory() . '/snapons.php');

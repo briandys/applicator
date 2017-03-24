@@ -2,7 +2,7 @@
 	return;
 } ?>
 
-<div id="comments" class="comments">
+<div id="comments" class="comments comments-area">
     <section class="comments--cr">
         
         <div class="comments--hr">
@@ -20,19 +20,6 @@
         
         <div class="comments--ct">
             <div class="comments--ct-cr">
-                
-                <?php // Closed Comments
-                if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
-                    
-                    <div class="note comments-closed--note">
-                        <div class="comments-closed--note--cr">
-                            <div class="comments-closed--note-l">
-                                <?php esc_html_e( 'Comments are closed.', 'applicator' ); ?>
-                            </div>
-                        </div>
-                    </div>
-                
-                <?php endif; ?>
                 
                 
                 <?php // With Comments
@@ -67,7 +54,7 @@
                 comment_form( array(
                     
                     // <form id="comment-form">
-                    'id_form'                   => 'comment-form',
+                    'id_form'                   => 'commentform',
                     
                     
                     // Initial
@@ -135,7 +122,7 @@
                                                                 .'<span class="label-l">%2$s</span>'
                                                             .'</label>'
                                                             .'<div class="input-text commenter-comment--input-text">'
-                                                                .'<textarea id="commenter-comment--input--text" class="textarea input--text input--textarea commenter-comment--input--text" placeholder="%1$s" name="comment" title="%1$s" required></textarea>'
+                                                                .'<textarea id="comment" class="textarea input--text input--textarea commenter-comment--input--text" placeholder="%1$s" name="comment" title="%1$s" maxlength="65525" required></textarea>'
                                                         .'</div>'
                                                     .'</div>',
                                                     esc_attr__( 'Comment', 'applicator' ),

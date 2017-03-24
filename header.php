@@ -16,10 +16,10 @@
         <div class="cn wbp-start" data-name="Web Product Start">
             <div class="wbp-start--cr">
                 
-                <div class="cp go-content" data-name="Go to Content">
+                <div id="go-content" class="cp go-content" data-name="Go to Content">
                     <div class="go-content--cr">
                         
-                        <a id="go-content--a" class="a go-content--a" href="#content" title="<?php esc_attr_e( 'Go to Content', 'applicator'); ?>">
+                        <a id="go-content--a" class="a go-content--a skip-link" href="#content" title="<?php esc_attr_e( 'Go to Content', 'applicator'); ?>">
                             <span class="a-l"><?php esc_html_e( 'Go to Content', 'applicator'); ?></span>
                         </a>
                     
@@ -44,12 +44,12 @@
         
         
         <?php //------------------------- Container ------------------------- ?>
-        <div class="cn container" data-name="Container">
+        <div id="page" class="cn container site" data-name="Container">
             <div class="container--cr">
         
                 
                 <?php //------------------------- Constructor: Main Header ------------------------- ?>
-                <header class="header cn main-header" data-name="Main Header" role="banner">
+                <header id="masthead" class="header cn main-header site-header" data-name="Main Header" role="banner">
                     <div class="main-header--cr">
                         
                         
@@ -62,7 +62,7 @@
                                 <div class="cp wbp-name" data-name="Web Product Name">
                                     <div class="wbp-name--cr">
                                         
-                                        <h1 class="h wbp-name--h">
+                                        <h1 class="h wbp-name--h site-title">
                                             <a class="a wbp-name--a" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'name' ); ?>">
                                                 <span class="a-l"><?php bloginfo( 'name' ); ?></span>
                                             </a>
@@ -71,14 +71,17 @@
                                     </div>
                                 </div><!-- wbp-name -->
                                         
-                                <?php //------------------------- Customizer: Custom Logo ------------------------- ?>
-                                <?php // inc settings.php ?>
-                                <?php if ( has_custom_logo() ) { ?>
+                                <?php
+                                //------------------------- Customizer: Custom Logo
+                                // inc settings.php
+                                if ( has_custom_logo() ) { ?>
+                                
                                 <div class="cp wbp-logo" data-name="Web Product Logo">
                                     <div class="wbp-logo--cr">
                                         <?php the_custom_logo(); ?>
                                     </div>
                                 </div>
+                                
                                 <?php } ?>
                                 
                                 
@@ -88,7 +91,7 @@
                                         
                                         <?php $description = get_bloginfo( 'description', 'display' );
                                         if ( $description || is_customize_preview() ) : ?>
-                                            <div class="wbp-desc--l"><?php echo $description; ?></div>
+                                            <div class="wbp-desc--l site-description"><?php echo $description; ?></div>
                                         <?php endif; ?>
                                         
                                     </div>
@@ -148,5 +151,5 @@
 
                 
                 <?php //------------------------- Constructor: Main Content ------------------------- ?>
-                <div class="cn main-content" data-name="Main Content">
+                <div id="content" class="cn main-content site-content" data-name="Main Content">
                     <section class="main-content--cr">

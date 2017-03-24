@@ -8,38 +8,32 @@ ct: content
 fr: footer
 
 • Hide headings, labels 
-• Reset nav lists
+• Reset lists
 • Include Theme Check required styles
 • Image width limit
 */
 
 
-/*
-,
-
-.wbp-desc,
-
-,
-.main-content--h--pred-l,
-.main-content--h--colon-l,
-.entry-actions--h,
-.entry-page-nav--h,
-.page-nav--h,
-.entries-nav--h,
-.crumbs-nav--h,
-
-.sub-entry .crumbs-nav,
-.sub-entry .pub-timestamp,
-.sub-entry .entry-author
-*/
-
+/* ------------------------- Visually Hidden ------------------------- */
+/* For Accessibility */
 
 .visuallyhidden,
 
 .main-nav--h,
 .search--h,
 legend,
-.search-term--label
+.search-term--label,
+.main-content--h--pred-l,
+
+.home .main-content--h--subj-l,
+.page .main-content--h--subj-l,
+
+.main-footer-aside--h-l,
+
+.widget_nav_menu .widget--h,
+
+.dom--unready .go-content,
+.go-content--inactive
 {
     border: 0;
     clip: rect(0, 0, 0, 0);
@@ -51,7 +45,9 @@ legend,
     width: 1px;
 }
 
-.wbp-visuallyhidden
+/* ------------------------- Visually Hidden ------------------------- */
+/* As used by WordPress Twenty Seventeen Theme */
+.wp--visuallyhidden
 {
     position: absolute;
     clip: rect(1px, 1px, 1px, 1px);
@@ -59,21 +55,16 @@ legend,
 
 
 
-/*
-.main-nav ul,
-.crumbs-nav ul,
-.categories ul,
-.page-nav ul,
-.entries-nav ul
+/* ------------------------- Reset Lists ------------------------- */
+.reset-list
 {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-*/
 
 
-.wp-caption,
+/* ------------------------- WordPress Required Selectors ------------------------- */
 .wp-caption-text,
 .sticky,
 .screen-reader-text,
@@ -86,10 +77,88 @@ legend,
 
 }
 
+
+/* ------------------------- Responsive Image ------------------------- */
 img
 {
     max-width: 100%;
     height: auto;
+}
+
+
+/* ------------------------- Image Alignments ------------------------- */
+.alignleft,
+.alignright
+{
+    display: inline;
+}
+
+.aligncenter
+{
+    clear: both;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* ------------------------- Image Captions ------------------------- */
+.wp-caption
+{
+    max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"]
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* ------------------------- Corrections ------------------------- */
+.entry--h
+{
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+}
+
+
+/* ------------------------- Sub-Navigations ------------------------- */
+
+.dom--unready .main-nav--ct > ul > .page_item_has_children > .children,
+.dom--unready .main-nav--ct > ul > .menu-item-has-children > .sub-menu,
+
+.dom--unready .widget_nav_menu .widget--cr > div > ul > .page_item_has_children > .children,
+.dom--unready .widget_nav_menu .widget--cr > div > ul > .menu-item-has-children > .sub-menu,
+
+.sub-nav--inactive > .children,
+.sub-nav--inactive > .sub-menu
+{
+    display: none;
+}
+
+.sub-nav--active > .children,
+.sub-nav--active > .sub-menu
+{
+    display: block;
+}
+
+
+/* ------------------------- Viewport Width: 560 ------------------------- */
+@media only screen and (min-width: 35em)
+{
+
+    img.alignleft
+    {
+        float: left;
+    }
+
+    img.alignright
+    {
+        float: right;
+    }
+    
 }
 
 
@@ -114,14 +183,14 @@ img
 
 [data-name]::before
 {
-    content: attr(data-name);
+    content: attr( data-name );
     display: block;
     padding: .25rem .5rem;
     
-    font-size: .75rem;
-    
     background-color: black;
     color: white;
+    
+    font-size: .75rem;
 }
 
 .cn[data-name]::before
