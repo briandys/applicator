@@ -13,33 +13,37 @@ if ( ! function_exists('applicator_entries_nav' ) ) :
         }
         
         // Next Label
-        $next_label = '<span class="a-l">';
-            $next_label .= '<span class="pred-l">';
-                $next_label .= __( 'Next', 'applicator' );
-            $next_label .= '</span> ';
-            $next_label .= '<span class="subj-l">';
-                $next_label .= __( 'Entry', 'applicator' );
+        $next_label = '<span class="next--entries-nav--a-l">';
+            $next_label .= '<span class="next--entries-nav--pred-l">';
+                $next_label .= '<span class="next-word--l">';
+                    $next_label .= __( 'Next', 'applicator' );
+                $next_label .= '</span> ';
+                $next_label .= '<span class="entry-word--l">';
+                    $next_label .= __( 'Entry', 'applicator' );
+                $next_label .= '</span>';
             $next_label .= '</span>';
-            $next_label .= '<span class="colon-l">';
+            $next_label .= '<span class="next--entries-nav--colon-l">';
                 $next_label .= __( ':', 'applicator' );
             $next_label .= '</span> ';
-            $next_label .= '<span class="entry-title--l">';
+            $next_label .= '<span class="next--entries-nav--subj-l entry-title--l">';
                 $next_label .= __( '%title', 'applicator' );
             $next_label .= '</span>';
         $next_label .= '</span>';
         
         // Previous Label
-        $prev_label = '<span class="a-l">';
-            $prev_label .= '<span class="pred-l">';
-                $prev_label .= __( 'Previous', 'applicator' );
-            $prev_label .= '</span> ';
-            $prev_label .= '<span class="subj-l">';
-                $prev_label .= __( 'Entry', 'applicator' );
+        $prev_label = '<span class="prev--entries-nav--a-l">';
+            $prev_label .= '<span class="prev--entries-nav--pred-l">';
+                $prev_label .= '<span class="prev-word--l">';
+                    $prev_label .= __( 'Previous', 'applicator' );
+                $prev_label .= '</span> ';
+                $prev_label .= '<span class="entry-word--l">';
+                    $prev_label .= __( 'Entry', 'applicator' );
+                $prev_label .= '</span>';
             $prev_label .= '</span>';
-            $prev_label .= '<span class="colon-l">';
+            $prev_label .= '<span class="prev--entries-nav--colon-l">';
                 $prev_label .= __( ':', 'applicator' );
             $prev_label .= '</span> ';
-            $prev_label .= '<span class="entry-title--l">';
+            $prev_label .= '<span class="prev--entries-nav--subj-l entry-title--l">';
                 $prev_label .= __( '%title', 'applicator' );
             $prev_label .= '</span>';
         $prev_label .= '</span>';

@@ -5,8 +5,10 @@ html
 }
 
 
-.dom--unready .search-form,
-.search--inactive .search-form
+/* ------------------------- Search ------------------------- */
+.dom--unready .main-nav--main-header-aside .search-form,
+.search--inactive .search-form,
+.search-input--empty .search-form-reset--a
 {
     display: none;
 }

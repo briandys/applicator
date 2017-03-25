@@ -1,13 +1,13 @@
 <?php $unique_id = esc_attr( uniqid( 'search-form-' ) ); ?>
 
-<div id="search" class="cp search" data-name="Search">
+<div class="cp search-cp" data-name="Search">
     <div class="search--cr">
         
         <h2 class="h search--h">
             <span class="h-l"><?php esc_html_e( 'Search', 'applicator'); ?></span>
         </h2>
         
-        <form id="search-form" class="search-form" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
+        <form class="search-form" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
             <fieldset class="fs grp fs--grp">
                 <legend><?php esc_html_e( 'Search Form', 'applicator'); ?></legend>
                 <div class="item fs-item search-term--fs-item">
@@ -44,4 +44,4 @@
         </form>
 
     </div>
-</div><!-- search -->
+</div><!-- search-cp -->

@@ -9,19 +9,27 @@
     
     function initGoContent( component ) {
         
-        var goContentActive = 'go-content--active',
-            goContentInactive = 'go-content--inactive';
+        var goContentAction = $( '#go-content--a' ),
+            goContentActiveClass = 'go-content--active',
+            goContentInactiveClass = 'go-content--inactive',
+            aplGoContentActiveClass = 'applicator--go-content--active',
+            aplGoContentInactiveClass = 'applicator--go-content--inactive';
         
-        component.addClass( goContentInactive );
+        component.addClass( goContentInactiveClass );
+        $html.addClass( aplGoContentInactiveClass );
         
-        $( '#go-content--a' ).on( 'focusin.applicator', function () {
-            component.toggleClass( 'go-content--active' );
-            component.toggleClass( 'go-content--inactive' );
+        goContentAction.on( 'focusin.applicator', function () {
+            component.addClass( goContentActiveClass );
+            component.removeClass( goContentInactiveClass );
+            $html.addClass( aplGoContentActiveClass );
+            $html.removeClass( aplGoContentInactiveClass );
         } );
 
-        $( '#go-content--a' ).on( 'focusout.applicator', function () {
-            component.toggleClass( goContentActive );
-            component.toggleClass( goContentInactive );
+        goContentAction.on( 'focusout.applicator', function () {
+            component.addClass( goContentInactiveClass );
+            component.removeClass( goContentActiveClass );
+            $html.addClass( aplGoContentInactiveClass );
+            $html.removeClass( aplGoContentActiveClass );
         } );
         
     }

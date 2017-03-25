@@ -64,7 +64,7 @@
             <div class="entry--ct-cr">
                 
                 
-                <?php if ( is_home() || is_single() ) {
+                <?php if ( is_home() || is_singular() ) {
                     the_content();
                 } else {
                    the_excerpt();

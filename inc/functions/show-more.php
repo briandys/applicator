@@ -34,10 +34,10 @@ if ( ! function_exists( 'applicator_show_more' ) ) :
         );
         
         /* Pattern after content.php the_content and the_excerpt */
-        if ( is_home() || is_single() ) {
+        if ( is_home() || is_singular() ) {
             return $link;
         } else {
-           return '&hellip; ' . $link;
+           return '<span class="delimiter">&hellip;</span> ' . $link;
         }
     
     }

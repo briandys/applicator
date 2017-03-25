@@ -139,6 +139,13 @@ if ( ! function_exists( 'applicator_html_class' ) ) :
             echo ' wbp-logo' . $on;
         else
             echo ' wbp-logo' . $off;
+        
+        
+        if ( isset( $post ) )
+            echo ' view--' . $post->post_type;
+        
+        if ( is_singular() )
+            echo ' view--' . $post->post_type . '--' . $post->post_name;
     
     }
     add_action( 'applicator_hook_html_class', 'applicator_html_class');
