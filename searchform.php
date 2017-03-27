@@ -23,8 +23,8 @@
             </fieldset>
             <div class="search-form--axns">
                 <div class="search-form--axns--cr">
-                    <div class="grp form-axn--grp">
-                        <div class="item form-axn-item search-form--axns--form-axn-item">
+                    <div class="grp search-form-axn--grp">
+                        <div class="item search-form-axn-item search-form--axns--form-axn-item">
                             <div class="btn search-form-submit--btn">
                                 <button class="b search-form-submit--b" type="submit">
                                     <span class="b-l"><?php esc_html_e( 'Search', 'applicator' ); ?></span>

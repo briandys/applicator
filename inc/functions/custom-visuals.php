@@ -27,8 +27,8 @@ if ( ! function_exists( 'applicator_custom_visuals_setup' ) ) :
         
         //------------------------- Custom Logo
         add_theme_support( 'custom-logo', apply_filters( 'applicator_custom_logo_args', array(
-            'width'       => 320,
-            'height'      => 320,
+            'width'       => 480,
+            'height'      => 480,
         ) ) );
         
         

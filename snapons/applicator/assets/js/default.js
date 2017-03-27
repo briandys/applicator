@@ -1,6 +1,11 @@
 (function( $ ) {
     
-    var $html = $( document.documentElement );
+    var $html = $( document.documentElement ),
+        $searchComponentParent = $( '.main-nav--main-header-aside' ),
+        $searchComponent = $searchComponentParent.find( '.search-cp' ).first();
+    
+    // Classify the built-in Search
+    $searchComponent.addClass( 'main-search' );
     
     function initSearch( component ) {
         
@@ -9,7 +14,8 @@
                 .append( $( '<div />', { 'class': 'search-toggle--cr' } ) ),
             
             searchToggleAction = $( '<button />', { 'class': 'b a search-toggle--a' } )
-                .append( $( '<span />', { 'class': 'search-toggle--a-l' } ) ),
+                .append( $( '<span />', { 'class': 'search-toggle--a-l' } ) )
+                .append( applicatorSearchLabel.searchIcon ),
             
             searchActiveClass = 'search--active',
             searchInactiveClass = 'search--inactive',
@@ -17,7 +23,7 @@
             aplSearchActiveClass = 'applicator--search--active',
             aplSearchInactiveClass = 'applicator--search--inactive',
             
-            $searchComponent = $( '.main-nav--main-header-aside .search-cp' ),
+            $searchComponent = $( '.main-search' ),
             $searchInput = component.find( '.search-term--input--text' ),
             $searchForm = component.find( '.search-form' ),
             $searchToggleLabel,
@@ -37,7 +43,7 @@
         $searchToggleResetAction = component.find( '.search-form-reset--a' );
         
         
-        // ------------------------- Deactivate Search Form
+        // ------------------------- Search Toggle Status
         function searchStatusToggle() {
             
             // Set defaults for text label and aria-expanded based on Status Class
@@ -106,7 +112,7 @@
         } );
         
         // ------------------------- Text Input Detection
-        $searchInput.on( 'input.applicator', function() {
+        $searchInput.on( 'keypress.applicator input.applicator', function() {
             searchInputStatus();
         } );
         
@@ -130,7 +136,7 @@
         // ------------------------- Deactivate Search on click outside the component itself
         $( document ).on( 'touchmove.applicator click.applicator', function ( e ) {
             var _this = $( this );
-            if ( ! $( e.target ).closest( '.main-nav--main-header-aside .search-cp' ).length ) {
+            if ( ! $( e.target ).closest( '.main-search' ).length && $searchComponent.hasClass( searchActiveClass ) ) {
                 searchDeactivate();
                 searchStatusToggle();
             }
@@ -140,7 +146,7 @@
         // ------------------------- Deactivate Search upon ESC key
         $( window ).load( function () {
             $( document ).on( 'keyup.applicator', function ( e ) {
-                if ( e.keyCode == 27 ) {
+                if ( e.keyCode == 27 && $searchComponent.hasClass( searchActiveClass ) ) {
                     searchDeactivate();
                     searchStatusToggle();
                 }
@@ -149,7 +155,7 @@
         
     }
     
-    initSearch( $( '.main-nav--main-header-aside .search-cp' ) );
+    initSearch( $( '.main-search' ) );
     
 
 })( jQuery );

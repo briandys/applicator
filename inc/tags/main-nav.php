@@ -28,9 +28,9 @@ if ( ! function_exists( 'applicator_func_main_nav' ) ) :
                         // Sub Navigation <ul class="children">
                         wp_page_menu( array(
                             'menu_class'        => 'main-nav--ct', // <div> class
-                            'link_before'       => '<span class="a-l">',
+                            'link_before'       => '<span class="main-nav--a-l">',
                             'link_after'        => '</span>',
-                            'show_home'         => true
+                            'show_home'         => true,
                         ) );
 
                     } else {
@@ -43,8 +43,8 @@ if ( ! function_exists( 'applicator_func_main_nav' ) ) :
                             'theme_location'    => $main_nav,
                             'container'         => 'div',
                             'container_class'   => 'main-nav--ct', // <div> class
-                            'link_before'       => '<span class="a-l">',
-                            'link_after'        => '</span>'
+                            'link_before'       => '<span class="main-nav--a-l">',
+                            'link_after'        => '</span>',
                         ) );
 
                     } ?>

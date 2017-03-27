@@ -24,6 +24,13 @@ if ( ! function_exists( 'applicator_default_classes' ) ) :
                 };
             };
             var applicatorDebounceTimeout = 250;
+            
+            
+            function supportsInlineSVG() {
+                var div = document.createElement( 'div' );
+                div.innerHTML = '<svg/>';
+                return 'http://www.w3.org/2000/svg' === ( 'undefined' !== typeof SVGRect && div.firstChild && div.firstChild.namespaceURI );
+            }
 
 
             ( function( html ) {
@@ -35,6 +42,10 @@ if ( ! function_exists( 'applicator_default_classes' ) ) :
 
                 // DOM Unready class name inserted via JS
                 html.classList.add( 'dom--unready' );
+                
+                if ( true === supportsInlineSVG() ) {
+                    document.documentElement.className = document.documentElement.className.replace( /(\s*)no-svg(\s*)/, '$1svg$2' );
+                }
 
 
                 //------------------------- Detect Viewport Width
@@ -83,6 +94,9 @@ endif;
 if ( ! function_exists( 'applicator_enqueue_scripts' ) ) :
     function applicator_enqueue_scripts() {
         
+        // Modernizr
+        // wp_enqueue_script( 'applicator-script-modernizr', get_theme_file_uri() . '/assets/js/modernizr.js', array(), '1.1', true );
+        
         // HTML5 Shiv
         wp_enqueue_script( 'html5', get_theme_file_uri( '/assets/js/html5.js' ), array(), '3.7.3' );
         wp_script_add_data( 'html5', 'conditional', 'lt IE 9' );
@@ -97,6 +111,7 @@ if ( ! function_exists( 'applicator_enqueue_scripts' ) ) :
         // Localization
         $applicator_l10n['subnavShowLabel']    = __( 'Show Sub-Nav', 'applicator' );
 		$applicator_l10n['subnavHideLabel']    = __( 'Hide Sub-Nav', 'applicator' );
+        $applicator_l10n['subnavIcon']         = applicator_get_svg( array( 'icon' => 'arrow--icon', 'fallback' => true ) );
         
         wp_localize_script( 'applicator-script-navigation', 'applicatorSubnavLabel', $applicator_l10n );
         

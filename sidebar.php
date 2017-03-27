@@ -8,7 +8,7 @@
 
         <aside id="main-content-aside" class="aside main-content-aside" role="complementary">
             <div class="main-content-aside--cr">
-                <h3 class="h main-content-aside--h"><span class="h-l"><?php esc_html_e( 'Aside: Main Content', 'applicator' ); ?></span></h3>
+                <h3 class="h main-content-aside--h"><span class="main-content-aside--h-l"><?php esc_html_e( 'Aside: Main Content', 'applicator' ); ?></span></h3>
                 <?php dynamic_sidebar( 'main-content-aside' ); ?>
             </div>
         </aside><!-- main-content-aside -->

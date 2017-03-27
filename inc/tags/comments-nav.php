@@ -41,8 +41,8 @@ if ( ! function_exists( 'application_comments_nav' ) ) :
 
         <div class="nav comments-nav" role="navigation" aria-label="<?php esc_html_e( 'Comments Navigation', 'applicator' ); ?>">
             <div class="comments-nav--cr">
-                <div class="h comments-nav--h">
-                    <span class="h-l"><?php esc_html_e( 'Comments Navigation', 'applicator' ); ?></span>
+                <div class="h nav--h comments-nav--h">
+                    <span class="comments-nav--h-l"><?php esc_html_e( 'Comments Navigation', 'applicator' ); ?></span>
                 </div>
                 <ul class="grp comments-nav--grp">
                     <?php if ( get_next_comments_link() ) : ?>

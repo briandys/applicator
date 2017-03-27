@@ -123,29 +123,29 @@ if ( ! function_exists( 'applicator_html_class' ) ) :
         
         //------------------------- In Customizer
         if ( is_customize_preview() ) {
-            echo ' view--customizer';
+            echo ' ' . 'view--customizer';
         }
         
         
         //------------------------- Customizer: Custom Header
         if ( has_header_image() )
-            echo ' wbp-media-banner' . $on;
+            echo ' ' . 'wbp-media-banner' . $on;
         else
-            echo ' wbp-media-banner' . $off;
+            echo ' ' . 'wbp-media-banner' . $off;
         
         
         //------------------------- Customizer: Custom Logo
         if ( has_custom_logo() )
-            echo ' wbp-logo' . $on;
+            echo ' ' . 'wbp-logo' . $on;
         else
-            echo ' wbp-logo' . $off;
+            echo ' ' . 'wbp-logo' . $off;
         
         
         if ( isset( $post ) )
-            echo ' view--' . $post->post_type;
+            echo ' ' . 'view--' . $post->post_type;
         
         if ( is_singular() )
-            echo ' view--' . $post->post_type . '--' . $post->post_name;
+            echo ' ' . 'view--' . $post->post_type . '--' . $post->post_name;
     
     }
     add_action( 'applicator_hook_html_class', 'applicator_html_class');

@@ -52,7 +52,7 @@ if ( ! function_exists('applicator_entries_nav' ) ) :
 
             <div class="nav entries-nav" role="navigation" aria-label="<?php esc_html_e( 'Entries Navigation', 'applicator' ); ?>">
                 <div class="entries-nav--cr">
-                    <div class="entries-nav--h"><span class="h-l"><?php esc_html_e( 'Entries Navigation', 'applicator' ); ?></span></div>
+                    <div class="h nav--h entries-nav--h"><span class="entries-nav--h-l"><?php esc_html_e( 'Entries Navigation', 'applicator' ); ?></span></div>
                     <ul class="grp entries-nav--grp">
                         <?php if ( get_next_post_link() ) : ?>
                         <li class="item entries-nav--item next--entries-nav--item">

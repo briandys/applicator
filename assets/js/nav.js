@@ -7,7 +7,8 @@
                 .append( $( '<div />', { 'class': 'sub-nav-toggle--cr' } ) ),
             
             subnavToggleAction = $( '<button />', { 'class': 'b a sub-nav-toggle--a' } )
-                .append( $( '<span />', { 'class': 'sub-nav-toggle--a-l', 'text': applicatorSubnavLabel.subnavShowLabel } ) ),
+                .append( $( '<span />', { 'class': 'sub-nav-toggle--a-l', 'text': applicatorSubnavLabel.subnavShowLabel } ) )
+                .append( applicatorSubnavLabel.subnavIcon ),
             
             subNavActive = 'sub-nav--active',
             subNavInactive = 'sub-nav--inactive';

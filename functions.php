@@ -15,7 +15,7 @@ require_once( get_template_directory() . '/inc/scripts.php');
 require_once( get_template_directory() . '/inc/tags/main-nav.php');
 require_once( get_template_directory() . '/inc/tags/page-nav.php');
 require_once( get_template_directory() . '/inc/tags/entries-nav.php');
-require_once( get_template_directory() . '/inc/tags/entry-page-nav.php');
+require_once( get_template_directory() . '/inc/tags/entry-nav.php');
 require_once( get_template_directory() . '/inc/tags/breadcrumbs-nav.php');
 
 
@@ -45,6 +45,7 @@ require_once( get_template_directory() . '/inc/functions/aside.php');
 require_once( get_template_directory() . '/inc/functions/auto-copyright-year.php');
 require_once( get_template_directory() . '/inc/functions/show-more.php');
 require_once( get_template_directory() . '/inc/functions/pingback-header.php');
+require_once( get_template_directory() . '/inc/functions/icons.php');
 
 
 // Snap-ons

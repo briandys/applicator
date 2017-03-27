@@ -28,12 +28,22 @@ legend,
 .home .main-content--h--subj-l,
 .page .main-content--h--subj-l,
 
-.main-footer-aside--h-l,
+.main-header-aside--h,
+.main-footer-aside--h,
 
 .widget_nav_menu .widget--h,
 
+/* Go to Content */
 .dom--unready .go-content,
-.go-content--inactive
+.go-content--inactive,
+
+/* Sub-Nav */
+.sub-nav-toggle--a-l,
+
+.nav--h,
+.axns--h,
+
+.entry.attachment .post-navigation .screen-reader-text
 {
     border: 0;
     clip: rect(0, 0, 0, 0);
@@ -47,20 +57,51 @@ legend,
 
 /* ------------------------- Visually Hidden ------------------------- */
 /* As used by WordPress Twenty Seventeen Theme */
+/*
 .wp--visuallyhidden
 {
     position: absolute;
     clip: rect(1px, 1px, 1px, 1px);
 }
+*/
 
 
 
-/* ------------------------- Reset Lists ------------------------- */
-.reset-list
+/* ------------------------- Clearfix ------------------------- */
+.clearfix:before,
+.clearfix:after,
+
+.entry--ct-cr:before,
+.entry--ct-cr:after
 {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    content: " ";
+    display: table;
+}
+
+.entry--ct-cr:after
+{
+    clear: both;
+}
+
+
+.svg-fallback
+{
+    display: none;
+}
+
+.sub-nav-toggle--a
+{
+    color: black;
+}
+
+.icon--vector
+{
+    display: inline-block;
+    position: relative;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
 }
 
 
@@ -143,6 +184,42 @@ img
 {
     display: block;
 }
+
+/* Layout */
+.page_item_has_children > a,
+.menu-item-has-children > a,
+.page_item_has_children > .sub-nav-toggle,
+.menu-item-has-children > .sub-nav-toggle
+{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.page_item > .sub-nav-toggle .arrow--icon,
+.menu-item > .sub-nav-toggle .arrow--icon
+{
+    transition: all 0.2s ease-in-out;
+}
+
+.sub-nav--active > .sub-nav-toggle .arrow--icon
+{
+    transform: rotate( 180deg );
+}
+
+.sub-nav-toggle--a
+{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    
+    min-width: 2rem;
+    min-height: 2rem;
+    
+    background-color: transparent;
+}
+
+
+
 
 
 /* ------------------------- Viewport Width: 560 ------------------------- */

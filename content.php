@@ -71,12 +71,12 @@
                 }; ?>
 
 
-                <?php //------------------------- Entry Page Navigation ------------------------- ?>
-                <?php applicator_entry_page_nav(); ?>
-
-
-                <?php //------------------------- Sub-Entry ------------------------- ?>
-                <?php if ( is_page_template( 'page-templates/sub-pages.php' ) ) :
+                <?php //------------------------- Entry Page Navigation
+                // inc > tags > entry-page-nav.php
+                applicator_entry_nav();
+                
+                //------------------------- Sub-Entry
+                if ( is_page_template( 'page-templates/sub-pages.php' ) ) :
                     $parent = $post->ID;
                     $args = array(
                         'post_type'     => 'page',
