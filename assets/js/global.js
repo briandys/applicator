@@ -15,8 +15,8 @@
             aplGoContentActiveClass = 'applicator--go-content--active',
             aplGoContentInactiveClass = 'applicator--go-content--inactive';
         
-        component.addClass( goContentInactiveClass );
         $html.addClass( aplGoContentInactiveClass );
+        component.addClass( goContentInactiveClass );
         
         goContentAction.on( 'focusin.applicator', function () {
             component.addClass( goContentActiveClass );

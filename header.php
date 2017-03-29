@@ -20,7 +20,7 @@
                     <div class="go-content--cr">
                         
                         <a id="go-content--a" class="a go-content--a skip-link" href="#content" title="<?php esc_attr_e( 'Go to Content', 'applicator'); ?>">
-                            <span class="a-l"><?php esc_html_e( 'Go to Content', 'applicator'); ?></span>
+                            <span class="go-content--a-l"><?php esc_html_e( 'Go to Content', 'applicator'); ?></span>
                         </a>
                     
                     </div>

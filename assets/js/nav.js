@@ -1,6 +1,6 @@
 (function( $ ) {
     
-    function initMainNav( component ) {
+    function initNav( component ) {
         
         // Create the markup of Sub-Nav Toggle
         var subnavToggle = $( '<div />', { 'class': 'cp sub-nav-toggle', 'data-name': 'Sub-Nav Toggle' } )
@@ -49,9 +49,7 @@
         
     }
     
-    initMainNav( $( '#main-nav' ) );
-    
-    // Include Navs in Widgets
-    initMainNav( $( '.widget_nav_menu' ) );
+    initNav( $( '#main-nav' ) );
+    initNav( $( '.widget_nav_menu' ) );
 
 })( jQuery );

@@ -26,14 +26,14 @@
                     <div class="grp search-form-axn--grp">
                         <div class="item search-form-axn-item search-form--axns--form-axn-item">
                             <div class="btn search-form-submit--btn">
-                                <button class="b search-form-submit--b" type="submit">
-                                    <span class="b-l"><?php esc_html_e( 'Search', 'applicator' ); ?></span>
+                                <button class="b a form--a search-form-submit--a" type="submit">
+                                    <span class="search-form-submit--a-l"><?php esc_html_e( 'Search', 'applicator' ); ?></span>
                                 </button>
                             </div>
                         </div>
                         <div class="item form-axn-item search-form--axns--form-axn-item">
                             <div class="btn search-form-reset--btn">
-                                <button class="b a search-form-reset--a" type="reset">
+                                <button class="b a form--a search-form-reset--a" type="reset">
                                     <span class="search-form-reset--a-l"><?php esc_html_e( 'Reset', 'applicator' ); ?></span>
                                 </button>
                             </div>

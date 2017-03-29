@@ -50,6 +50,23 @@ html
 }
 
 
+
+
+/* ------------------------- Reset Forms ------------------------- */
+.input--text
+{
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.input--text,
+.form--a
+{
+    width: 100%;
+}
+
+
 /* ------------------------- Anchors ------------------------- */
 
 /* Reset */
@@ -79,6 +96,18 @@ html
 .search-input--empty .search-form-reset--a
 {
     display: none;
+}
+
+.search-toggle--a
+{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    
+    min-width: 2rem;
+    min-height: 2rem;
+    
+    background-color: transparent;
 }
 
 
@@ -115,7 +144,7 @@ html
 .main-nav .sub-nav-toggle--a,
 .widget_nav_menu .sub-nav-toggle--a
 {
-    padding: .25rem .5rem;
+    padding: .5rem;
     min-height: 2rem;
 }
 

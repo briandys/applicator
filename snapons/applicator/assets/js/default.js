@@ -7,6 +7,35 @@
     // Classify the built-in Search
     $searchComponent.addClass( 'main-search' );
     
+    
+    
+    
+    
+    // ------------------------- Nav
+    function initNav( component ) {
+        var subNavActive = 'sub-nav--active',
+            subNavInactive = 'sub-nav--inactive';
+        
+        // Click Toggle Action
+        component.find( '.sub-nav-toggle--a' ).click( function( e ) {
+            var _this = $( this );
+            
+            e.preventDefault();
+            
+            // The Sub-Nav Toggle Component
+            _this.closest( '.page_item, .menu-item' ).siblings()
+                .addClass( subNavInactive )
+                .removeClass( subNavActive );
+        } );
+        
+    }
+    initNav( $( '#main-nav' ) );
+    initNav( $( '.widget_nav_menu' ) );
+    
+    
+    
+    
+    
     function initSearch( component ) {
         
         // ------------------------- Create Markup
@@ -154,7 +183,6 @@
         } );
         
     }
-    
     initSearch( $( '.main-search' ) );
     
 

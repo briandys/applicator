@@ -27,6 +27,7 @@ legend,
 
 .home .main-content--h--subj-l,
 .page .main-content--h--subj-l,
+.single .main-content--h--subj-l,
 
 .main-header-aside--h,
 .main-footer-aside--h,
@@ -35,7 +36,7 @@ legend,
 
 /* Go to Content */
 .dom--unready .go-content,
-.go-content--inactive,
+.go-content--inactive .go-content--a,
 
 /* Sub-Nav */
 .sub-nav-toggle--a-l,
@@ -222,6 +223,94 @@ img
 
 
 
+/* ------------------------- Overlays ------------------------- */
+
+/* Overlay Layout */
+.go-content
+{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.go-content,
+.go-content--cr
+{
+    width: 100%;
+    height: 100%;
+    
+    transition: all .2s ease-in-out;
+}
+
+/* Inactive */
+.applicator--go-content--inactive .go-content
+{
+    opacity: 0;
+    
+}
+
+.applicator--go-content--inactive .go-content--cr
+{
+    background-color: transparent;
+}
+
+/* Active */
+.applicator--go-content--active .go-content
+{
+    opacity: 1;
+    z-index: 99;
+}
+
+.applicator--go-content--active .go-content--cr
+{
+    background-color: white;
+    background-color: hsla(0, 100%, 100%, .75);
+}
+
+
+
+
+/* ------------------------- Go to Content ------------------------- */
+.applicator--go-content--active
+{
+    overflow: hidden;
+}
+
+.go-content--a-l
+{
+    box-sizing: border-box;
+    
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Accessibility: Size */
+    padding: .5rem 1rem;
+    min-width: 7.5rem;
+    min-height: 3rem;
+}
+
+
+.go-content--a
+{
+    display: inline-block;
+    text-decoration: none;
+}
+
+.applicator--go-content--active .go-content--a
+{    
+    /* Layout: xy Center */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+
 /* ------------------------- Viewport Width: 560 ------------------------- */
 @media only screen and (min-width: 35em)
 {
@@ -258,7 +347,7 @@ img
     border-color: red;
 }
 
-[data-name]::before
+[data-name]:before
 {
     content: attr( data-name );
     display: block;
@@ -270,13 +359,13 @@ img
     font-size: .75rem;
 }
 
-.cn[data-name]::before
+.cn[data-name]:before
 {
     
     background-color: blue;
 }
 
-.cp[data-name]::before
+.cp[data-name]:before
 {
     
     background-color: red;
