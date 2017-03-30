@@ -39,7 +39,7 @@ legend,
 .go-content--inactive .go-content--a,
 
 /* Sub-Nav */
-.sub-nav-toggle--a-l,
+.sub-nav-toggle--a--word--l,
 
 .nav--h,
 .axns--h,
@@ -106,18 +106,21 @@ legend,
 }
 
 
+
+
+
 /* ------------------------- WordPress Required Selectors ------------------------- */
 .wp-caption-text,
 .sticky,
 .screen-reader-text,
 .gallery-caption,
-.bypostauthor,
-.alignright,
-.alignleft,
-.aligncenter
+.bypostauthor
 {
 
 }
+
+
+
 
 
 /* ------------------------- Responsive Image ------------------------- */
@@ -126,6 +129,9 @@ img
     max-width: 100%;
     height: auto;
 }
+
+
+
 
 
 /* ------------------------- Image Alignments ------------------------- */
@@ -142,6 +148,9 @@ img
     margin-left: auto;
     margin-right: auto;
 }
+
+
+
 
 
 /* ------------------------- Image Captions ------------------------- */
@@ -163,6 +172,22 @@ img
 {
     -ms-word-wrap: break-word;
     word-wrap: break-word;
+}
+
+
+
+
+
+/* ------------------------- UI Template: Buttons ------------------------- */
+
+/* Reset */
+.sub-nav-toggle--a
+{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    
+    background-color: transparent;
 }
 
 
@@ -199,112 +224,14 @@ img
 .page_item > .sub-nav-toggle .arrow--icon,
 .menu-item > .sub-nav-toggle .arrow--icon
 {
+    /*
     transition: all 0.2s ease-in-out;
+    */
 }
 
 .sub-nav--active > .sub-nav-toggle .arrow--icon
 {
     transform: rotate( 180deg );
-}
-
-.sub-nav-toggle--a
-{
-    padding: 0;
-    margin: 0;
-    border: 0;
-    
-    min-width: 2rem;
-    min-height: 2rem;
-    
-    background-color: transparent;
-}
-
-
-
-
-
-/* ------------------------- Overlays ------------------------- */
-
-/* Overlay Layout */
-.go-content
-{
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: -1;
-}
-
-.go-content,
-.go-content--cr
-{
-    width: 100%;
-    height: 100%;
-    
-    transition: all .2s ease-in-out;
-}
-
-/* Inactive */
-.applicator--go-content--inactive .go-content
-{
-    opacity: 0;
-    
-}
-
-.applicator--go-content--inactive .go-content--cr
-{
-    background-color: transparent;
-}
-
-/* Active */
-.applicator--go-content--active .go-content
-{
-    opacity: 1;
-    z-index: 99;
-}
-
-.applicator--go-content--active .go-content--cr
-{
-    background-color: white;
-    background-color: hsla(0, 100%, 100%, .75);
-}
-
-
-
-
-/* ------------------------- Go to Content ------------------------- */
-.applicator--go-content--active
-{
-    overflow: hidden;
-}
-
-.go-content--a-l
-{
-    box-sizing: border-box;
-    
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    
-    /* Accessibility: Size */
-    padding: .5rem 1rem;
-    min-width: 7.5rem;
-    min-height: 3rem;
-}
-
-
-.go-content--a
-{
-    display: inline-block;
-    text-decoration: none;
-}
-
-.applicator--go-content--active .go-content--a
-{    
-    /* Layout: xy Center */
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
 }
 
 

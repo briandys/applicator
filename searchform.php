@@ -8,7 +8,7 @@
         </h2>
         
         <form class="search-form" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
-            <fieldset class="fs grp fs--grp">
+            <fieldset class="fs grp fs--grp search-term--fs-grp">
                 <legend><?php esc_html_e( 'Search Form', 'applicator'); ?></legend>
                 <div class="item fs-item search-term--fs-item">
                     <div class="search-term--fs-item--cr">
@@ -24,17 +24,21 @@
             <div class="search-form--axns">
                 <div class="search-form--axns--cr">
                     <div class="grp search-form-axn--grp">
-                        <div class="item search-form-axn-item search-form--axns--form-axn-item">
+                        <div class="item search-form-axn-item search-form--axns--form-axn-item search-form-submit--form-axn-item">
                             <div class="btn search-form-submit--btn">
                                 <button class="b a form--a search-form-submit--a" type="submit">
-                                    <span class="search-form-submit--a-l"><?php esc_html_e( 'Search', 'applicator' ); ?></span>
+                                    <span class="search-form-submit--a-l">
+                                        <span class="search-form-submit--a--word-l"><?php esc_html_e( 'Search', 'applicator' ); ?></span>
+                                    </span>
                                 </button>
                             </div>
                         </div>
-                        <div class="item form-axn-item search-form--axns--form-axn-item">
+                        <div class="item form-axn-item search-form--axns--form-axn-item search-form-reset--form-axn-item">
                             <div class="btn search-form-reset--btn">
                                 <button class="b a form--a search-form-reset--a" type="reset">
-                                    <span class="search-form-reset--a-l"><?php esc_html_e( 'Reset', 'applicator' ); ?></span>
+                                    <span class="search-form-reset--a-l">
+                                        <span class="search-form-reset--a--word-l"><?php esc_html_e( 'Reset', 'applicator' ); ?></span>
+                                    </span>
                                 </button>
                             </div>
                         </div>

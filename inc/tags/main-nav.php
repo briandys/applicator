@@ -55,6 +55,3 @@ if ( ! function_exists( 'applicator_func_main_nav' ) ) :
         <?php }
         }
 endif;
-
-
-    

@@ -105,22 +105,18 @@ if ( ! function_exists( 'applicator_enqueue_scripts' ) ) :
         wp_enqueue_script( 'applicator-script-skip-link-focus-fix', get_theme_file_uri( '/assets/js/skip-link-focus-fix.js' ), array(), '1.0', true );
         
         
-        // Navigation
-        wp_enqueue_script( 'applicator-script-navigation', get_theme_file_uri( '/assets/js/nav.js' ), array(), '1.6', true );
+        // Plugins
+        wp_enqueue_script( 'applicator-script-plugins', get_theme_file_uri( '/assets/js/plugins.js' ), array( 'jquery' ), '1.0', true );
+        
+        // Global
+        wp_enqueue_script( 'applicator-script-global', get_theme_file_uri( '/assets/js/global.js' ), array( 'jquery', 'applicator-script-plugins' ), '2.3', true );
         
         // Localization
         $applicator_l10n['subnavShowLabel']    = __( 'Show Sub-Nav', 'applicator' );
 		$applicator_l10n['subnavHideLabel']    = __( 'Hide Sub-Nav', 'applicator' );
         $applicator_l10n['subnavIcon']         = applicator_get_svg( array( 'icon' => 'arrow--icon', 'fallback' => true ) );
         
-        wp_localize_script( 'applicator-script-navigation', 'applicatorSubnavLabel', $applicator_l10n );
-        
-        
-        // Plugins
-        wp_enqueue_script( 'applicator-script-plugins', get_theme_file_uri( '/assets/js/plugins.js' ), array( 'jquery' ), '1.0', true );
-        
-        // Global
-        wp_enqueue_script( 'applicator-script-global', get_theme_file_uri( '/assets/js/global.js' ), array( 'jquery', 'applicator-script-plugins' ), '2.1', true );
+        wp_localize_script( 'applicator-script-global', 'applicatorSubnavLabel', $applicator_l10n );
         
         
         // Comment Reply

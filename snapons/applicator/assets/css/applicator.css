@@ -1,0 +1,324 @@
+/* Mobile First!!! */
+
+
+
+
+/* ------------------------- Visually Hidden ------------------------- */
+/* For Accessibility */
+
+.visuallyhidden,
+
+.wbp-desc,
+.main-search .search-toggle--a--word--l,
+
+.main-search .search-form-submit--a--word-l,
+.main-search .search-form-reset--a--word-l,
+
+.main-search.search--active .search-toggle
+{
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+
+
+
+html
+{
+    /* Typography */
+    font-family: 'Noto Sans', sans-serif;
+}
+
+
+
+/* ------------------------- Reset Lists ------------------------- */
+.reset-list,
+
+.main-nav ul,
+.widget_nav_menu ul
+{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+
+/* ------------------------- Forms, Active Objects ------------------------- */
+.input--text,
+.form--a,
+.main-search .search-toggle--a
+{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    
+    background-color: transparent;
+}
+
+/* Full-width */
+.main-search .search-term--input--text
+{
+    width: 100%;
+}
+
+/* Minimum height of the active area */
+.input--text,
+.form--a,
+.main-nav a,
+.widget_nav_menu a,
+
+.main-nav .sub-nav-toggle--a-l,
+.widget_nav_menu .sub-nav-toggle--a-l,
+
+.main-search .search-toggle--a-l,
+
+.main-search .search-form-submit--a-l,
+.main-search .search-form-reset--a-l,
+
+.main-search .search-term--input--text
+{
+    min-width: 2.25rem;
+    min-height: 2.25rem;
+}
+
+
+/* ------------------------- UI Template: Buttons ------------------------- */
+.main-nav a,
+.widget_nav_menu a,
+
+.main-nav .sub-nav-toggle--a-l,
+.widget_nav_menu .sub-nav-toggle--a-l,
+
+.main-search .search-toggle--a-l,
+
+.main-search .search-form-submit--a-l,
+.main-search .search-form-reset--a-l,
+
+.main-search .search-term--input--text
+{
+    display: flex;
+    align-items: center;
+}
+
+/* x Center */
+.main-nav .sub-nav-toggle--a-l,
+.widget_nav_menu .sub-nav-toggle--a-l,
+
+.main-search .search-toggle--a-l,
+
+.main-search .search-form-submit--a-l,
+.main-search .search-form-reset--a-l
+{
+    justify-content: center;
+}
+
+
+
+
+
+/* ------------------------- Anchors ------------------------- */
+
+/* Reset */
+.wbp-name--a,
+.entry--ct-cr a,
+.page_item a,
+.menu-item a
+{
+    text-decoration: none;
+}
+
+.entry--ct-cr a
+{
+    box-shadow: inset 0 -1px 0 black;
+    transition: color 160ms ease-in-out, box-shadow 160ms ease-in-out;
+}
+
+.entry--ct-cr a:hover
+{
+    box-shadow: inset 0 0 0 hsla(0, 0%, 0%, 0), 0 2px 0 hsla(0, 0%, 0%, 1);
+}
+
+
+/* ------------------------- Main Search ------------------------- */
+.dom--unready .main-nav--main-header-aside .search-form,
+.main-search.search--inactive .search-form,
+.main-search.search-input--empty .search-form-reset--a
+{
+    display: none;
+}
+
+.main-search.search--active .search-form,
+.main-search .search-form-axn--grp
+{
+    display: flex;
+    align-items: center;
+}
+
+.main-search .search-term--fs-grp
+{
+    flex-grow: 1;
+}
+
+.main-search .search-form-submit--form-axn-item
+{
+    order: 2;
+}
+
+.main-search .search-form-reset--form-axn-item
+{
+    order: 1;
+}
+
+.main-search .search-form-reset--a .dismiss--icon
+{
+    width: .75rem;
+    height: .75rem;
+}
+
+
+
+/* ------------------------- Nav ------------------------- */
+
+/* Positioning of nav items */
+/* flex-wrap enables the item with large width to wrap - in this case the Sub-Menu */
+.main-nav .page_item,
+.main-nav .menu-item,
+.widget_nav_menu .menu-item
+{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+/* To push the <button> to the right */
+.main-nav a,
+.widget_nav_menu a
+{
+    flex-grow: 1;
+}
+
+
+/* For flex-wrap to take effect */
+.main-nav .page_item_has_children > .children,
+.main-nav .menu-item-has-children > .sub-menu,
+
+.widget_nav_menu .menu-item-has-children > .sub-menu
+{
+    width: 100%;
+}
+
+.main-nav .page_item_has_children > .children > .page_item,
+.main-nav .menu-item-has-children > .sub-menu > .menu-item,
+
+.widget_nav_menu .menu-item-has-children > .sub-menu > .menu-item
+{
+    padding-left: .5rem;
+}
+
+/* Smaller icons */
+.main-nav .sub-nav-toggle--a .arrow--icon,
+.widget_nav_menu .sub-nav-toggle--a .arrow--icon
+{
+    width: .75rem;
+    height: .75rem;
+}
+
+
+
+
+
+/* ------------------------- Overlays ------------------------- */
+
+/* Overlay Layout */
+.go-content
+{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.go-content,
+.go-content--cr
+{
+    width: 100%;
+    height: 100%;
+    
+    /*
+    transition: all .2s ease-in-out;
+    */
+}
+
+/* Inactive */
+.applicator--go-content--inactive .go-content
+{
+    opacity: 0;
+    
+}
+
+.applicator--go-content--inactive .go-content--cr
+{
+    background-color: transparent;
+}
+
+/* Active */
+.applicator--go-content--active .go-content
+{
+    opacity: 1;
+    z-index: 99;
+}
+
+.applicator--go-content--active .go-content--cr
+{
+    background-color: white;
+    background-color: hsla(0, 100%, 100%, .75);
+}
+
+
+
+
+
+/* ------------------------- Go to Content ------------------------- */
+.applicator--go-content--active
+{
+    overflow: hidden;
+}
+
+.go-content--a-l
+{
+    box-sizing: border-box;
+    
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Accessibility: Size */
+    padding: .5rem 1rem;
+    min-width: 7.5rem;
+    min-height: 3rem;
+}
+
+
+.go-content--a
+{
+    display: inline-block;
+    text-decoration: none;
+}
+
+.applicator--go-content--active .go-content--a
+{    
+    /* Layout: xy Center */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

@@ -43,8 +43,9 @@
                 .append( $( '<div />', { 'class': 'search-toggle--cr' } ) ),
             
             searchToggleAction = $( '<button />', { 'class': 'b a search-toggle--a' } )
-                .append( $( '<span />', { 'class': 'search-toggle--a-l' } ) )
-                .append( applicatorSearchLabel.searchIcon ),
+                .append( $( '<span />', { 'class': 'search-toggle--a-l' } ) ),
+            
+            searchToggleActionLabel = $( '<span />', { 'class': 'search-toggle--a--word--l', 'text': applicatorSearchLabel.searchShowLabel } ),
             
             searchActiveClass = 'search--active',
             searchInactiveClass = 'search--inactive',
@@ -56,18 +57,32 @@
             $searchInput = component.find( '.search-term--input--text' ),
             $searchForm = component.find( '.search-form' ),
             $searchToggleLabel,
-            $searchToggleAction;
+            $searchToggleAction,
+            
+            $searchSubmit = component.find( '.search-form-submit--a-l' ),
+            $searchReset = component.find( '.search-form-reset--a-l' );
         
         // Attach Markup
         component.find( '.search-form' ).before( searchToggle );
         component.find( '.search-toggle--cr' ).append( searchToggleAction );
+        
+        component.find( '.search-toggle--a-l' )
+            .append( searchToggleActionLabel )
+            .append( ' ' )
+            .append( applicatorSearchLabel.searchIcon );
+        
+        $searchSubmit.append( ' ' )
+            .append( applicatorSearchLabel.searchIcon );
+        
+        $searchReset.append( ' ' )
+            .append( applicatorSearchLabel.searchDismissIcon );
         
         
         // ------------------------- Set Defaults
         component.addClass( searchInactiveClass );
         
         
-        $searchToggleLabel = component.find( '.search-toggle--a-l' );
+        $searchToggleLabel = component.find( '.search-toggle--a--word--l' );
         $searchToggleAction = component.find( '.search-toggle--a' );
         $searchToggleResetAction = component.find( '.search-form-reset--a' );
         
