@@ -49,6 +49,9 @@
             
             searchActiveClass = 'search--active',
             searchInactiveClass = 'search--inactive',
+            searchInputEmptyClass = 'search-input--empty',
+            
+            aplSearchClass = 'applicator--search',
             
             aplSearchActiveClass = 'applicator--search--active',
             aplSearchInactiveClass = 'applicator--search--inactive',
@@ -69,7 +72,8 @@
         component.find( '.search-toggle--a-l' )
             .append( searchToggleActionLabel )
             .append( ' ' )
-            .append( applicatorSearchLabel.searchIcon );
+            .append( applicatorSearchLabel.searchIcon )
+            .append( applicatorSearchLabel.searchDismissIcon );
         
         $searchSubmit.append( ' ' )
             .append( applicatorSearchLabel.searchIcon );
@@ -79,6 +83,8 @@
         
         
         // ------------------------- Set Defaults
+        $html.addClass( aplSearchClass );
+        
         component.addClass( searchInactiveClass );
         
         
@@ -141,6 +147,8 @@
             if ( $searchComponent.hasClass( searchActiveClass ) ) {
                 $searchInput.focus();
             }
+            
+            
         } );
         
         // ------------------------- Reset Action

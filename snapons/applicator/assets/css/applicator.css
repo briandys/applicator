@@ -8,13 +8,20 @@
 
 .visuallyhidden,
 
-.wbp-desc,
 .main-search .search-toggle--a--word--l,
-
 .main-search .search-form-submit--a--word-l,
 .main-search .search-form-reset--a--word-l,
 
-.main-search.search--active .search-toggle
+.widget_search .search-form-reset--form-axn-item,
+
+.commenter-comment--label,
+
+.applicator--search--active .wbp-name,
+.applicator--search--active .wbp-logo,
+.applicator--search--active .wbp-desc,
+
+.wbp-name-desc--disabled .wbp-name,
+.wbp-name-desc--disabled .wbp-desc
 {
     border: 0;
     clip: rect(0, 0, 0, 0);
@@ -37,11 +44,25 @@ html
 
 
 
+
+/* ------------------------- Reset Margins ------------------------- */
+/*
+h1, h2, h3, h4, h5, h6,
+p
+{
+    margin: 0;
+}
+*/
+
+
+
 /* ------------------------- Reset Lists ------------------------- */
 .reset-list,
 
 .main-nav ul,
-.widget_nav_menu ul
+.widget_nav_menu ul,
+
+.comments--grp
 {
     list-style: none;
     padding: 0;
@@ -51,11 +72,28 @@ html
 
 
 
+/* ------------------------- Highlight ------------------------- */
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+
+
+
 /* ------------------------- Forms, Active Objects ------------------------- */
 .input--text,
+.input--text[type="search"],
 .form--a,
 .main-search .search-toggle--a
 {
+    box-sizing: border-box;
+    
     padding: 0;
     margin: 0;
     border: 0;
@@ -64,26 +102,42 @@ html
 }
 
 /* Full-width */
-.main-search .search-term--input--text
+.main-search .search-term--input--text,
+
+.widget_search .search-term--input--text,
+.widget_search .search-form-submit--a,
+.widget_search .search-form-reset--a,
+.widget_search .search-form-submit--a-l,
+.widget_search .search-form-reset--a-l,
+
+.comment-submit--a,
+.commenter-comment--input--text
 {
     width: 100%;
 }
 
+.search-term--input--text
+{
+    padding-left: 0 .5rem;
+}
+
 /* Minimum height of the active area */
-.input--text,
-.form--a,
 .main-nav a,
 .widget_nav_menu a,
 
 .main-nav .sub-nav-toggle--a-l,
-.widget_nav_menu .sub-nav-toggle--a-l,
 
 .main-search .search-toggle--a-l,
-
 .main-search .search-form-submit--a-l,
 .main-search .search-form-reset--a-l,
+.main-search .search-term--input--text,
 
-.main-search .search-term--input--text
+.widget_nav_menu .sub-nav-toggle--a-l,
+.widget_search .search-term--input--text,
+.widget_search .search-form-submit--a-l,
+.widget_search .search-form-reset--a-l,
+
+.comment-submit--a
 {
     min-width: 2.25rem;
     min-height: 2.25rem;
@@ -92,17 +146,17 @@ html
 
 /* ------------------------- UI Template: Buttons ------------------------- */
 .main-nav a,
-.widget_nav_menu a,
-
 .main-nav .sub-nav-toggle--a-l,
+
+.widget_nav_menu a,
 .widget_nav_menu .sub-nav-toggle--a-l,
 
 .main-search .search-toggle--a-l,
-
 .main-search .search-form-submit--a-l,
 .main-search .search-form-reset--a-l,
 
-.main-search .search-term--input--text
+.widget_search .search-form-submit--a-l,
+.widget_search .search-form-reset--a-l
 {
     display: flex;
     align-items: center;
@@ -110,12 +164,15 @@ html
 
 /* x Center */
 .main-nav .sub-nav-toggle--a-l,
+
 .widget_nav_menu .sub-nav-toggle--a-l,
 
 .main-search .search-toggle--a-l,
-
 .main-search .search-form-submit--a-l,
-.main-search .search-form-reset--a-l
+.main-search .search-form-reset--a-l,
+
+.widget_search .search-form-submit--a-l,
+.widget_search .search-form-reset--a-l
 {
     justify-content: center;
 }
@@ -129,8 +186,8 @@ html
 /* Reset */
 .wbp-name--a,
 .entry--ct-cr a,
-.page_item a,
-.menu-item a
+.main-nav a,
+.widget_nav_menu a
 {
     text-decoration: none;
 }
@@ -147,24 +204,39 @@ html
 }
 
 
+
+
+
 /* ------------------------- Main Search ------------------------- */
 .dom--unready .main-nav--main-header-aside .search-form,
 .main-search.search--inactive .search-form,
-.main-search.search-input--empty .search-form-reset--a
+.main-search.search-input--empty .search-form-reset--a,
+.main-search.search--active .search-toggle--a .search--icon,
+.main-search.search--inactive .search-toggle--a .dismiss--icon,
+.main-search.search-input--populated .search-toggle--a .dismiss--icon
 {
     display: none;
 }
 
-.main-search.search--active .search-form,
-.main-search .search-form-axn--grp
+.main-search
+{
+    position: relative;
+}
+
+.main-search .search-form--axns,
+.main-search.search--active .search-toggle
+{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -1.125rem;
+}
+
+.main-search .search-form-axn--grp,
+.search-toggle--cr
 {
     display: flex;
     align-items: center;
-}
-
-.main-search .search-term--fs-grp
-{
-    flex-grow: 1;
 }
 
 .main-search .search-form-submit--form-axn-item
@@ -177,11 +249,63 @@ html
     order: 1;
 }
 
-.main-search .search-form-reset--a .dismiss--icon
+.main-search .dismiss--icon
 {
     width: .75rem;
     height: .75rem;
 }
+
+.main-search.search--active .search-term--input--text
+{
+    padding-right: 6rem;
+}
+
+.main-search.search--active .search-toggle
+{
+    margin-right: 3rem;
+}
+
+.main-search .search-term--input--text
+{
+    padding-left: 1rem;
+}
+
+
+
+/* ------------------------- Widget Search ------------------------- */
+.widget_search .search-term--input--text,
+.commenter-comment--input--text
+{
+    border: 1px solid black;
+    border-color: hsla(0, 0%, 0%, .5);
+}
+
+
+.widget_search .search-form-submit--a-l,
+.widget_search .search-form-reset--a-l,
+.comment-submit--a
+{
+    color: white;
+}
+
+.widget_search .search-term--input--text,
+.widget_search .search-form-submit--a-l,
+.widget_search .search-form-reset--a-l,
+
+.commenter-comment--input--text,
+.comment-submit--a
+{
+    border-radius: .125rem;
+}
+
+/* ------------------------- Input Text Padding ------------------------- */
+.commenter-comment--input--text
+{
+    min-height: 6rem;
+    line-height: 1.25;
+}
+
+
 
 
 
@@ -189,23 +313,20 @@ html
 
 /* Positioning of nav items */
 /* flex-wrap enables the item with large width to wrap - in this case the Sub-Menu */
-.main-nav .page_item,
-.main-nav .menu-item,
-.widget_nav_menu .menu-item
+.main-nav .page_item_has_children,
+.main-nav .menu-item-has-children,
+.widget_nav_menu .menu-item-has-children
 {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+    position: relative;
 }
 
-
-/* To push the <button> to the right */
-.main-nav a,
-.widget_nav_menu a
+.main-nav .sub-nav-toggle,
+.widget_nav_menu .sub-nav-toggle
 {
-    flex-grow: 1;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
-
 
 /* For flex-wrap to take effect */
 .main-nav .page_item_has_children > .children,
@@ -321,4 +442,320 @@ html
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+}
+
+
+
+
+
+/* ------------------------- Author ------------------------- */
+.comment-author--l
+{
+    display: flex;
+    align-items: center;
+}
+
+.comment-author--pred-l
+{
+    margin-right: .5rem;
+}
+
+.author-name--author-avatar--l
+{
+    display: inline-flex;
+    align-items: center;
+}
+
+.author-name--l
+{
+    order: 2
+}
+
+.author-avatar--img
+{
+    order: 1;
+    
+    margin-right: .25rem;
+    
+    width: 2rem;
+    height: 2rem;
+    
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+
+
+
+/* ------------------------- Spacing ------------------------- */
+
+.widget_search .search-form-submit--btn,
+.widget_search .search-form-reset--btn,
+
+.commenter-comment--input-text,
+.form-submit
+{
+    padding: 1rem;
+    margin-top: -1rem;
+}
+
+.widget_search .search-term--input-text,
+.wbp-copyright--cr
+{
+    padding: 1rem;
+}
+
+.main-nav a,
+.widget_nav_menu a,
+
+.wbp-name--a-l,
+.wbp-desc--a-l
+{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+
+.widget_search .search-term--input--text,
+.commenter-comment--input--text
+{
+    padding: 0 .5rem;
+}
+
+.commenter-comment--input--text
+{
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+
+
+
+
+
+/* ------------------------- Copyright Info ------------------------- */
+.wbp-copyright--l
+{
+    text-align: center;
+    
+    color: gray;
+    color: hsla(0, 0%, 0%, .5);
+    font-size: .75rem;
+}
+
+.wbp-copyright--name--l
+{
+    font-weight: bold;
+}
+
+
+
+
+
+/* ------------------------- Main Header ------------------------- */
+.main-header--cr
+{
+    position: relative;
+}
+
+.main-search
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+    
+    width: 100%;
+}
+
+.main-search .search-toggle--a
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.wbp-name--h
+{
+    margin: 0;
+}
+
+.wbp-info--cr
+{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    
+    height: 3rem;
+    overflow: hidden;
+}
+
+.main-search .search-toggle--a-l,
+.main-search .search-form-submit--a-l,
+.main-search .search-form-reset--a-l,
+.main-search .search-term--input--text
+{
+    min-width: 3rem;
+    min-height: 3rem;
+}
+
+.main-search .search-form--axns,
+.main-search.search--active .search-toggle
+{
+    margin-top: -1.5rem;
+}
+
+.wbp-name--h
+{
+    font-weight: normal;
+    font-size: 1.125rem;
+}
+
+.wbp-desc--a-l
+{
+    font-size: .75rem;
+}
+
+.wbp-name--a-l,
+.wbp-desc--a-l
+{
+    width: 100%;
+    overflow: hidden;
+    
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.wbp-name--a
+{
+    display: inline-block;
+}
+
+.wbp-name,
+.wbp-desc
+{
+    width: 100%;
+}
+
+.wbp-desc
+{
+    margin-top: -.25rem;
+}
+
+.wbp-desc--a
+{
+    text-decoration: none;
+}
+
+.applicator--search .wbp-info--cr
+{
+    padding-right: 3rem;
+}
+
+
+.wbp-desc--empty .wbp-name--a-l
+{
+    box-sizing: border-box;
+    
+    display: flex;
+    align-items: center;
+    min-height: 3rem;
+    
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+
+
+
+
+/* ------------------------- Logo ------------------------- */
+.wbp-logo--enabled .wbp-name
+{
+    order: 2;
+}
+
+
+.wbp-logo--enabled .wbp-logo
+{
+    order: 1;
+    height: 2.25rem;
+    margin-left: -.5rem;
+}
+
+.wbp-logo--enabled .wbp-logo--cr
+{
+    height: 100%;
+    margin-right: .5rem;
+}
+
+.wbp-logo--enabled .wbp-logo .custom-logo
+{
+    width: auto;
+    height: 100%;
+    max-width: none;
+}
+
+
+/* ------------------------- Color Scheme ------------------------- */
+.widget_search .search-form-submit--a-l,
+.widget_search .search-form-reset--a-l,
+.comment-submit--a,
+
+.wbp-info--cr
+{
+    background-color: #00aaff;
+}
+
+.main-search .search-toggle--a,
+.main-search .search-form-submit--a,
+.main-search .search-form-reset--a,
+.main-search .search-term--input--text,
+
+.wbp-name--a,
+.wbp-desc--a
+{
+    color: white;
+}
+
+.main-search .search-term--input--text::-webkit-input-placeholder
+{
+    color: white;
+}
+
+.main-search .search-term--input--text::-moz-placeholder
+{
+    color: white;
+}
+
+.main-search .search-term--input--text:-ms-input-placeholder
+{
+    color: white;
+}
+
+.main-search .search-term--input--text:-moz-placeholder
+{
+    color: white;
+}
+
+
+
+/* ------------------------- Placeholder Text ------------------------- */
+.main-search .search-term--input--text::-webkit-input-placeholder
+{
+    opacity: .5;
+}
+
+.main-search .search-term--input--text::-moz-placeholder
+{
+    opacity: .5;
+}
+
+.main-search .search-term--input--text:-ms-input-placeholder
+{
+    opacity: .5;
+}
+
+.main-search .search-term--input--text:-moz-placeholder
+{
+    opacity: .5;
 }

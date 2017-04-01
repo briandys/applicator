@@ -44,7 +44,11 @@ legend,
 .nav--h,
 .axns--h,
 
-.entry.attachment .post-navigation .screen-reader-text
+.entry.attachment .post-navigation .screen-reader-text,
+
+.comment--h,
+
+.axns--h
 {
     border: 0;
     clip: rect(0, 0, 0, 0);

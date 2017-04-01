@@ -64,15 +64,14 @@
                                         
                                         <h1 class="h wbp-name--h site-title">
                                             <a class="a wbp-name--a" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'name' ); ?>">
-                                                <span class="a-l"><?php bloginfo( 'name' ); ?></span>
+                                                <span class="a-l wbp-name--a-l"><?php bloginfo( 'name' ); ?></span>
                                             </a>
                                         </h1>
                                     
                                     </div>
                                 </div><!-- wbp-name -->
                                         
-                                <?php
-                                //------------------------- Customizer: Custom Logo
+                                <?php //------------------------- Customizer: Custom Logo
                                 // inc settings.php
                                 if ( has_custom_logo() ) { ?>
                                 
@@ -85,17 +84,19 @@
                                 <?php } ?>
                                 
                                 
-                                <?php //------------------------- Web Product Description ------------------------- ?>
+                                <?php //------------------------- Web Product Description
+                                $description = get_bloginfo( 'description', 'display' );
+                                if ( $description || is_customize_preview() ) { ?>
+                                
                                 <div class="cp wbp-desc" data-name="Web Product Description">
                                     <div class="wbp-desc--cr">
-                                        
-                                        <?php $description = get_bloginfo( 'description', 'display' );
-                                        if ( $description || is_customize_preview() ) : ?>
-                                            <div class="wbp-desc--l site-description"><?php echo $description; ?></div>
-                                        <?php endif; ?>
-                                        
+                                        <a class="a wbp-desc--a" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'description' ); ?>">
+                                            <span class="a-l wbp-desc--a-l site-description"><?php echo $description; ?></span>
+                                        </a>
                                     </div>
                                 </div><!-- wbp-desc -->
+                                
+                                <?php } ?>
                                 
                             </div>
                         </div><!-- wbp-info -->
@@ -121,7 +122,8 @@
                                 
                                 
                                 <?php //------------------------- Sub-Constructor: Main Header Aside ------------------------- ?>
-                                <?php if ( is_active_sidebar( 'main-header-aside' )  ) : ?>
+                                <?php if ( is_active_sidebar( 'main-header-aside' )  ) { ?>
+                                
                                 <aside id="main-header-aside" class="aside cn main-header-aside" data-name="Main Header Aside" role="complementary">
                                     <div class="main-header-aside--cr">
                                         <h3 class="h main-header-aside--h">
@@ -130,7 +132,8 @@
                                         <?php dynamic_sidebar( 'main-header-aside' ); ?>
                                     </div>
                                 </aside><!-- main-header-aside -->
-                                <?php endif; ?>
+                                
+                                <?php } ?>
                                 
                             </div>
                         </div><!-- main-nav--main-header-aside -->

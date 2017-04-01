@@ -146,6 +146,18 @@ if ( ! function_exists( 'applicator_html_class' ) ) :
         
         if ( is_singular() )
             echo ' ' . 'view--' . $post->post_type . '--' . $post->post_name;
+
+        if ( 'blank' === get_header_textcolor() ) {
+            echo ' ' . 'wbp-name-desc' . $off;
+        } else {
+            echo ' ' . 'wbp-name-desc' . $on;
+        }
+        
+        if ( get_bloginfo( 'description', 'display' ) ) {
+            echo ' ' . 'wbp-desc--populated';
+        } else {
+            echo ' ' . 'wbp-desc--empty';
+        }
     
     }
     add_action( 'applicator_hook_html_class', 'applicator_html_class');

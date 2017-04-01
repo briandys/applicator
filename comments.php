@@ -91,7 +91,7 @@
                                                         .'<div class="account-signed-in--cr">'
                                                             .'<div class="account-signed-in--l">'
                                                                 .'<span class="account-signed-in--pred-l">%1$s</span>'
-                                                                .'<span class="account-signed-in-account--l">'
+                                                                .' <span class="account-signed-in-account--l">'
                                                                     .'<a class="a account-signed-in--account--a" href="%3$s">'
                                                                         .'<span class="a-l">%2$s</span>'
                                                                     .'</a>'
@@ -107,7 +107,7 @@
                                                             .'</div>'
                                                         .'</div>'
                                                     .'</div><!-- account-signed-in -->',
-                                                    esc_html__( 'Signed in as&nbsp;', 'applicator' ),
+                                                    esc_html__( 'Signed in as', 'applicator' ),
                                                     $user_identity,
                                                     admin_url( 'profile.php' ),
                                                     wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) ),
@@ -130,8 +130,8 @@
                                                 ),
                     
                     // Submit Action
-                    'id_submit'                 => 'comment-submit--axn',
-                    'class_submit'              => 'a comment-submit--a',
+                    'id_submit'                 => 'comment-submit--a',
+                    'class_submit'              => 'a form--a comment-submit--a',
                     'label_submit'              => esc_attr__( 'Submit', 'applicator' ),
                     
                     

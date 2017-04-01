@@ -15,9 +15,9 @@ if ( ! function_exists( 'applicator_entry_author' ) ) :
             $entry_author .= '</div>';
         $entry_author .= '</div>';
         
-        $author_name_avatar = '<span class="author-name--avatar">';
-            $author_name_avatar .= '<a class="a author-name--avatar--a url fn n" href="%2$s" title="%1$s">';
-                $author_name_avatar .= '<span class="author-name--avatar--l">';
+        $author_name_avatar = '<span class="author-name--author-avatar">';
+            $author_name_avatar .= '<a class="a author-name--author-avatar--a url fn n" href="%2$s" title="%1$s">';
+                $author_name_avatar .= '<span class="author-name--author-avatar--l">';
                     $author_name_avatar .= '<span class="author-name--l">%1$s</span>';
                     $author_name_avatar .= '<span class="author-avatar--img">%3$s</span>';
                 $author_name_avatar .= '</span>';

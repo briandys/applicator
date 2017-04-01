@@ -33,7 +33,7 @@ if ( ! function_exists( 'applicator_comment_item' ) ) :
                         <div class="axns comment--axns">
                             <div class="comment--axns--cr">
 
-                                <div class="h comment--axns--h"><span class="h-l"><?php esc_html_e( 'Actions', 'applicator' ); ?></span></div>
+                                <div class="h axns--h"><span class="h-l"><?php esc_html_e( 'Actions', 'applicator' ); ?></span></div>
 
                                 <?php edit_comment_link( '<span class="a-l comment-edit--axn-l"><span class="comment-edit--axn--pred-l">' . esc_html__( 'Edit', 'applicator' ) . '</span> <span class="comment-edit--axn--subj-l">' . esc_html__( 'Comment', 'applicator' ) . '</span></span>', '', '' ); ?>
 
@@ -61,11 +61,11 @@ if ( ! function_exists( 'applicator_comment_item' ) ) :
                                     $time_string .= '<span class="time-l comment-pub-timestamp--time-l">';
                                         $time_string .= '<span class="comment-pub-timestamp--date">';
                                             $time_string .= '<span class="comment-pub-timestamp--day--l">%2$s</span>';
-                                            $time_string .= '&nbsp;<span class="comment-pub-timestamp--month--l">%3$s</span>';
-                                            $time_string .= '&nbsp;<span class="comment-pub-timestamp--year--l">%4$s</span>';
+                                            $time_string .= ' <span class="comment-pub-timestamp--month--l">%3$s</span>';
+                                            $time_string .= ' <span class="comment-pub-timestamp--year--l">%4$s</span>';
                                         $time_string .= '</span>';
                                         $time_string .= '<span class="comment-pub-timestamp--time">';
-                                            $time_string .= '&nbsp;<span class="comment-pub-timestamp--time--time--l">%5$s</span>';
+                                            $time_string .= ' <span class="comment-pub-timestamp--time--time--l">%5$s</span>';
                                         $time_string .= '</span>';
                                     $time_string .= '</span>';
                                 $time_string .= '</time>';
@@ -80,7 +80,7 @@ if ( ! function_exists( 'applicator_comment_item' ) ) :
 
                                 printf( $pub_timestamp,
                                     htmlspecialchars( get_comment_link( $comment->comment_ID ) ),
-                                    get_the_title() . esc_attr__( '&nbsp;|&nbsp;', 'applicator' ) . esc_attr__( 'Comment ID&nbsp;', 'applicator' ) . get_comment_ID(),
+                                    get_the_title() . esc_attr__( ' | ', 'applicator' ) . esc_attr__( 'Comment ID ', 'applicator' ) . get_comment_ID(),
                                     $time_string,
                                     __( 'Commented on ', 'applicator')
                                 ); ?>
@@ -156,7 +156,7 @@ if ( ! function_exists( 'applicator_comment_item' ) ) :
                         <div class="axns comment--axns">
                             <div class="comment--axns--cr">
 
-                                <div class="h comment--axns--h"><span class="h-l"><?php esc_html_e( 'Actions', 'applicator' ); ?></span></div>
+                                <div class="h axns--h"><span class="h-l"><?php esc_html_e( 'Actions', 'applicator' ); ?></span></div>
 
                                 <?php comment_reply_link( array_merge(
                                     $args,
