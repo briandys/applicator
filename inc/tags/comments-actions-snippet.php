@@ -3,26 +3,26 @@
 // Comments Actions Snippet
 // content.php
 
-if ( !function_exists( 'applicator_comments_actions_snippet' ) ) :
+if ( !function_exists( 'applicator_comments_actions_snippet' ) ) {
     function applicator_comments_actions_snippet() {
         
         $number = (int) get_comments_number( get_the_ID() ); ?>
 
-        <?php
-        // Comments State Class
-        if ( comments_open() )
+        <?php // Comments State Class
+        if ( comments_open() ) {
             $comments_state_class = 'comments--enabled';
-        else
+        } else {
             $comments_state_class = 'comments--disabled';
+        }
         
         // Comments Count
-        if ( 0 === $number )
-            $comments_count_class = 'comments-count--zero';
-        elseif ( 1 === $number )
-            $comments_count_class = 'comments-count--single';
-        elseif ( 1 < $number )
-            $comments_count_class = 'comments-count--multiple';
-        ?>
+        if ( 0 === $number ) {
+            $comments_count_class = 'comments-count--zero comments-count--empty';
+        } elseif ( 1 === $number ) {
+            $comments_count_class = 'comments-count--single comments-count--populated';
+        } elseif ( 1 < $number ) {
+            $comments_count_class = 'comments-count--multiple comments-count--populated';
+        } ?>
 
 
         <div class="comments-snippet <?php echo $comments_state_class . ' ' . $comments_count_class ?>">
@@ -33,20 +33,32 @@ if ( !function_exists( 'applicator_comments_actions_snippet' ) ) :
             
                     <?php // With Comments
                     
-                    $go_comments_label_markup_start = '<span class="a-l go-comments--a-l">';
-                    $go_comments_label_markup_end = '</span>';
+                    $go_comments_markup = '<span class="a-l go-comments--a-l">';
+                        $go_comments_markup .= '<span class="count go-comments--a--count">';
+                            $go_comments_markup .= '%1$s';
+                        $go_comments_markup .= '</span>';
+                        $go_comments_markup .= '<span class="go-comments--a--comments--words-l">';
+                            $go_comments_markup .= '%2$s';
+                        $go_comments_markup .= '</span>';
+                    $go_comments_markup .= '</span>';
             
-                    if( (int) get_comments_number( get_the_ID() ) >= 1 ) :
+                    if( (int) get_comments_number( get_the_ID() ) >= 1 ) {
         
                         comments_popup_link(
                         // Zero Comment
                         '',
 
                         // Single Comment
-                        $go_comments_label_markup_start . __( '1 Comment', 'applicator' ) . $go_comments_label_markup_end,
+                        sprintf( $go_comments_markup,
+                            __( '1', 'applicator' ),
+                            __( 'Comment', 'applicator' )
+                        ),
 
                         // Multiple Comments
-                        $go_comments_label_markup_start . __( '% Comments', 'applicator' ) . $go_comments_label_markup_end,
+                        sprintf( $go_comments_markup,
+                            __( '%', 'applicator' ),
+                            __( 'Comments', 'applicator' )
+                        ),
 
                         // CSS Class
                         'a go-comments--a',
@@ -55,17 +67,20 @@ if ( !function_exists( 'applicator_comments_actions_snippet' ) ) :
                         '' );
         
                     // No Comments
-                    else :
+                    } else { ?>
+                        
+                        <span class="a-l go-comments--a-l">
+                            <span class="count go-comments--a--count"><?php esc_html_e( '0', 'applicator' ); ?></span>
+                            <span class="go-comments--a--comments--words-l"><?php esc_html_e( 'Comment', 'applicator' ); ?></span>
+                        </span>
         
-                        echo $go_comments_label_markup_start . __( 'No Comments', 'applicator' ) . $go_comments_label_markup_end;
-        
-                    endif; ?>
+                    <?php } ?>
                         
                     </div>
                 </div>
                 
                 <?php // Open Comments ?>
-                <?php if ( comments_open() ) : ?>
+                <?php if ( comments_open() ) { ?>
 
                     <a class="a write-comment--a" href="<?php echo esc_url( get_permalink() ); ?>#respond" title="Write Comment">
                         <span class="a-l write-comment--a-l">
@@ -74,7 +89,7 @@ if ( !function_exists( 'applicator_comments_actions_snippet' ) ) :
                     </a>
 
                 <?php // Closed Comments ?>
-                <?php else : ?>
+                <?php  } else { ?>
 
                     <div class="note comments-closed--note">
                         <div class="comments-closed--note--cr">
@@ -84,10 +99,10 @@ if ( !function_exists( 'applicator_comments_actions_snippet' ) ) :
                         </div>
                     </div>
 
-                <?php endif; ?>
+                <?php } ?>
             
             </div>
         </div><!-- comments-snippet -->
             
     <?php }
-endif;
+}

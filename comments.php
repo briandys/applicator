@@ -65,7 +65,7 @@
                                                     '<div class="h comment-respond--h">'
                                                         .'<span class="h-l comment-respond--h-l">%s</span>'
                                                     .'</div>',
-                                                    esc_html__( 'Comment', 'applicator' )
+                                                    esc_html__( 'Write Comment', 'applicator' )
                                                 ),
                     
                     'must_log_in'               => sprintf(

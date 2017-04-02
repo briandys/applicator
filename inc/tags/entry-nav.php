@@ -9,8 +9,8 @@ if ( ! function_exists('applicator_entry_nav' ) ) :
             
             $entry_page_nav_start = '<div class="nav entry-page-nav" role="navigation" aria-label="' . esc_html__( 'Entry Page Navigation', 'applicator' ) . '">';
                 $entry_page_nav_start .= '<div class="entry-page-nav--cr">';
-                    $entry_page_nav_start .= '<div class="h entry-page-nav--h">';
-                        $entry_page_nav_start .= '<span class="h-l">';
+                    $entry_page_nav_start .= '<div class="h nav--h entry-page-nav--h">';
+                        $entry_page_nav_start .= '<span class="entry-page-nav--h-l">';
                             $entry_page_nav_start .= esc_html__( 'Entry Page Navigation', 'applicator' );
                         $entry_page_nav_start .= '</span>';
                     $entry_page_nav_start .= '</div>';

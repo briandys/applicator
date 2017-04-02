@@ -10,6 +10,10 @@ if ( ! function_exists( 'applicator_html_class' ) ) :
         
         $useragent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "";
         $is_ipad = preg_match('/ipad/i',$useragent);
+        
+        
+        // Default
+        echo ' ' . 'applicator-theme--default';
 
         
         //------------------------- View

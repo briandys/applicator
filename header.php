@@ -81,10 +81,10 @@
                                     </div>
                                 </div>
                                 
-                                <?php } ?>
+                                <?php }
                                 
                                 
-                                <?php //------------------------- Web Product Description
+                                //------------------------- Web Product Description
                                 $description = get_bloginfo( 'description', 'display' );
                                 if ( $description || is_customize_preview() ) { ?>
                                 
@@ -105,48 +105,56 @@
                         <?php //------------------------- Main Nav | Main Header Aside ------------------------- ?>
                         <div class="cp main-nav--main-header-aside" data-name="Main Nav | Main Header Aside">
                             <div class="main-nav--main-header-aside--cr">
-                                
-                                
-                                <?php //------------------------- Main Navigation ------------------------- ?>
-                                <?php // inc > tags > main-navigation.php ?>
-                                <?php applicator_func_main_nav(); ?>
+                                <div class="h main-nav--main-header-aside--h">
+                                    <span class="h-l">Main Nav | Main Header Aside</span>
+                                </div>
+                                <div class="main-nav--main-header-aside--ct">
+                                    <div class="main-nav--main-header-aside--ct-cr">
 
+                                        <?php //------------------------- Main Navigation
+                                        // inc > tags > main-navigation.php
+                                        applicator_func_main_nav();
+                                        
+                                        
+                                        //------------------------- Hook: After Main Navigation
+                                        applicator_hook_after_main_nav();
+                                        
+                                        
+                                        //------------------------- Sub-Constructor: Main Header Aside
+                                        if ( is_active_sidebar( 'main-header-aside' )  ) { ?>
 
-                                <?php //------------------------- Hook: After Main Navigation ------------------------- ?>
-                                <?php applicator_hook_after_main_nav(); ?>
-                                
-                                
-                                <?php //------------------------- Search ------------------------- ?>
-                                <?php // searchform.php ?>
-                                <?php get_search_form(); ?>
-                                
-                                
-                                <?php //------------------------- Sub-Constructor: Main Header Aside ------------------------- ?>
-                                <?php if ( is_active_sidebar( 'main-header-aside' )  ) { ?>
-                                
-                                <aside id="main-header-aside" class="aside cn main-header-aside" data-name="Main Header Aside" role="complementary">
-                                    <div class="main-header-aside--cr">
-                                        <h3 class="h main-header-aside--h">
-                                            <span class="h-l"><?php esc_html_e( 'Aside: Main Header', 'applicator' ); ?></span>
-                                        </h3>
-                                        <?php dynamic_sidebar( 'main-header-aside' ); ?>
+                                        <aside id="main-header-aside" class="aside cn main-header-aside" data-name="Main Header Aside" role="complementary">
+                                            <div class="main-header-aside--cr">
+                                                <h3 class="h main-header-aside--h">
+                                                    <span class="h-l"><?php esc_html_e( 'Aside: Main Header', 'applicator' ); ?></span>
+                                                </h3>
+                                                <?php dynamic_sidebar( 'main-header-aside' ); ?>
+                                            </div>
+                                        </aside><!-- main-header-aside -->
+
+                                        <?php } ?>
+
                                     </div>
-                                </aside><!-- main-header-aside -->
-                                
-                                <?php } ?>
-                                
+                                </div>
                             </div>
                         </div><!-- main-nav--main-header-aside -->
+
+
+                        <?php //------------------------- Search
+                        // searchform.php
+                        get_search_form();
                         
-                  
-                        <?php //------------------------- Customizer: Custom Header ------------------------- ?>
-                        <?php // inc > functions > custom-header.php ?>
-                        <?php if ( has_header_image() ) { ?>
+                        
+                        //------------------------- Customizer: Custom Header
+                        // inc > functions > custom-header.php
+                        if ( has_header_image() ) { ?>
+                        
                         <div class="cp wbp-media-banner" data-name="Web Product Media Banner">
                             <div class="wbp-media-banner--cr">
                                 <?php the_custom_header_markup(); ?>
                             </div>
                         </div>
+                        
                         <?php } ?>
                     
                     </div>

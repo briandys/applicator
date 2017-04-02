@@ -8,9 +8,36 @@
 
 .visuallyhidden,
 
-.main-search .search-toggle--a--word--l,
-.main-search .search-form-submit--a--word-l,
-.main-search .search-form-reset--a--word-l,
+.main-nav--h,
+.search--h,
+legend,
+.search-term--label,
+.main-content--h--pred-l,
+
+.home .main-content--h--subj-l,
+.page .main-content--h--subj-l,
+.single .main-content--h--subj-l,
+
+.main-header-aside--h,
+.main-footer-aside--h,
+
+.widget_nav_menu .widget--h,
+
+.dom--unready .go-content,
+.go-content--inactive .go-content--a,
+
+.sub-nav-toggle--a--word--l,
+.nav--h,
+.axns--h,
+.entry.attachment .post-navigation .screen-reader-text,
+.comment--h,
+.axns--h,
+.comments--h,
+.main-nav--main-header-aside--h,
+
+.arbitrary-nav .search-toggle--a--word--l,
+.arbitrary-nav .search-form-submit--a--words-l,
+.arbitrary-nav .search-form-reset--a--words-l,
 
 .widget_search .search-form-reset--form-axn-item,
 
@@ -21,7 +48,13 @@
 .applicator--search--active .wbp-desc,
 
 .wbp-name-desc--disabled .wbp-name,
-.wbp-name-desc--disabled .wbp-desc
+.wbp-name-desc--disabled .wbp-desc,
+
+.go-start--a--words-l,
+
+.go-start.go-start--inactive,
+
+.main-nav--header-aside--menu-toggle--a--word--l
 {
     border: 0;
     clip: rect(0, 0, 0, 0);
@@ -32,6 +65,7 @@
     position: absolute;
     width: 1px;
 }
+
 
 
 
@@ -86,11 +120,59 @@ p
 
 
 
+
+/* ------------------------- Sub-Navigations ------------------------- */
+.dom--unready .main-nav--ct > ul > .page_item_has_children > .children,
+.dom--unready .main-nav--ct > ul > .menu-item-has-children > .sub-menu,
+
+.dom--unready .widget_nav_menu .widget--cr > div > ul > .page_item_has_children > .children,
+.dom--unready .widget_nav_menu .widget--cr > div > ul > .menu-item-has-children > .sub-menu,
+
+.sub-nav--inactive > .children,
+.sub-nav--inactive > .sub-menu
+{
+    display: none;
+}
+
+.sub-nav--active > .children,
+.sub-nav--active > .sub-menu
+{
+    display: block;
+}
+
+/* Layout */
+.page_item_has_children > a,
+.menu-item-has-children > a,
+.page_item_has_children > .sub-nav-toggle,
+.menu-item-has-children > .sub-nav-toggle
+{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.page_item > .sub-nav-toggle .arrow--icon,
+.menu-item > .sub-nav-toggle .arrow--icon
+{
+    /*
+    transition: all 0.2s ease-in-out;
+    */
+}
+
+.sub-nav--active > .sub-nav-toggle .arrow--icon
+{
+    transform: rotate( 180deg );
+}
+
+
+
+
 /* ------------------------- Forms, Active Objects ------------------------- */
 .input--text,
 .input--text[type="search"],
 .form--a,
-.main-search .search-toggle--a
+.arbitrary-nav .search-toggle--a,
+.sub-nav-toggle--a,
+.main-nav--header-aside--menu-toggle--a
 {
     box-sizing: border-box;
     
@@ -102,7 +184,7 @@ p
 }
 
 /* Full-width */
-.main-search .search-term--input--text,
+.arbitrary-nav .search-term--input--text,
 
 .widget_search .search-term--input--text,
 .widget_search .search-form-submit--a,
@@ -127,20 +209,24 @@ p
 
 .main-nav .sub-nav-toggle--a-l,
 
-.main-search .search-toggle--a-l,
-.main-search .search-form-submit--a-l,
-.main-search .search-form-reset--a-l,
-.main-search .search-term--input--text,
+.arbitrary-nav .search-toggle--a-l,
+.arbitrary-nav .search-form-submit--a-l,
+.arbitrary-nav .search-form-reset--a-l,
+.arbitrary-nav .search-term--input--text,
 
 .widget_nav_menu .sub-nav-toggle--a-l,
 .widget_search .search-term--input--text,
 .widget_search .search-form-submit--a-l,
 .widget_search .search-form-reset--a-l,
 
-.comment-submit--a
+.comment-submit--a,
+
+.go-start--a-l,
+
+.main-nav--header-aside--menu-toggle--a-l
 {
-    min-width: 2.25rem;
-    min-height: 2.25rem;
+    min-width: 3rem;
+    min-height: 3rem;
 }
 
 
@@ -151,12 +237,16 @@ p
 .widget_nav_menu a,
 .widget_nav_menu .sub-nav-toggle--a-l,
 
-.main-search .search-toggle--a-l,
-.main-search .search-form-submit--a-l,
-.main-search .search-form-reset--a-l,
+.arbitrary-nav .search-toggle--a-l,
+.arbitrary-nav .search-form-submit--a-l,
+.arbitrary-nav .search-form-reset--a-l,
 
 .widget_search .search-form-submit--a-l,
-.widget_search .search-form-reset--a-l
+.widget_search .search-form-reset--a-l,
+
+.go-start--a-l,
+
+.main-nav--header-aside--menu-toggle--a-l
 {
     display: flex;
     align-items: center;
@@ -167,12 +257,16 @@ p
 
 .widget_nav_menu .sub-nav-toggle--a-l,
 
-.main-search .search-toggle--a-l,
-.main-search .search-form-submit--a-l,
-.main-search .search-form-reset--a-l,
+.arbitrary-nav .search-toggle--a-l,
+.arbitrary-nav .search-form-submit--a-l,
+.arbitrary-nav .search-form-reset--a-l,
 
 .widget_search .search-form-submit--a-l,
-.widget_search .search-form-reset--a-l
+.widget_search .search-form-reset--a-l,
+
+.go-start--a-l,
+
+.main-nav--header-aside--menu-toggle--a-l
 {
     justify-content: center;
 }
@@ -207,24 +301,24 @@ p
 
 
 
-/* ------------------------- Main Search ------------------------- */
-.dom--unready .main-nav--main-header-aside .search-form,
-.main-search.search--inactive .search-form,
-.main-search.search-input--empty .search-form-reset--a,
-.main-search.search--active .search-toggle--a .search--icon,
-.main-search.search--inactive .search-toggle--a .dismiss--icon,
-.main-search.search-input--populated .search-toggle--a .dismiss--icon
+
+
+
+
+
+
+/* ------------------------- Arbitrary Nav ------------------------- */
+.dom--unready .main-header--cr > .search-cp .search-form,
+.arbitrary-nav.search--inactive .search-form,
+.arbitrary-nav.search-input--empty .search-form-reset--a,
+.arbitrary-nav.search--active .search-toggle--a .search--icon,
+.arbitrary-nav.search--inactive .search-toggle--a .dismiss--icon
 {
     display: none;
 }
 
-.main-search
-{
-    position: relative;
-}
-
-.main-search .search-form--axns,
-.main-search.search--active .search-toggle
+.arbitrary-nav .search-form--axns,
+.arbitrary-nav.search--active .search-toggle
 {
     position: absolute;
     right: 0;
@@ -232,42 +326,52 @@ p
     margin-top: -1.125rem;
 }
 
-.main-search .search-form-axn--grp,
+.arbitrary-nav .search-form-axn--grp,
 .search-toggle--cr
 {
     display: flex;
     align-items: center;
 }
 
-.main-search .search-form-submit--form-axn-item
+.arbitrary-nav .search-form-submit--form-axn-item
 {
     order: 2;
 }
 
-.main-search .search-form-reset--form-axn-item
+.arbitrary-nav .search-form-reset--form-axn-item
 {
     order: 1;
 }
 
-.main-search .dismiss--icon
+.arbitrary-nav .dismiss--icon
 {
     width: .75rem;
     height: .75rem;
 }
 
-.main-search.search--active .search-term--input--text
+.arbitrary-nav.search--active .search-term--input--text
 {
     padding-right: 6rem;
 }
 
-.main-search.search--active .search-toggle
+.arbitrary-nav.search--active .search-toggle
 {
     margin-right: 3rem;
 }
 
-.main-search .search-term--input--text
+.arbitrary-nav .search-term--input--text
 {
     padding-left: 1rem;
+}
+
+.applicator--main-nav--header-aside--menu .arbitrary-nav .search-term--fs-grp
+{
+    padding-left: 3rem;
+}
+
+.applicator--main-nav--header-aside--menu .arbitrary-nav .search-term--input--text
+{
+    padding-left: 0;
 }
 
 
@@ -347,7 +451,8 @@ p
 
 /* Smaller icons */
 .main-nav .sub-nav-toggle--a .arrow--icon,
-.widget_nav_menu .sub-nav-toggle--a .arrow--icon
+.widget_nav_menu .sub-nav-toggle--a .arrow--icon,
+.main-nav--header-aside--menu-toggle .dismiss--icon
 {
     width: .75rem;
     height: .75rem;
@@ -360,7 +465,8 @@ p
 /* ------------------------- Overlays ------------------------- */
 
 /* Overlay Layout */
-.go-content
+.go-content,
+.go-start
 {
     position: fixed;
     left: 0;
@@ -369,7 +475,10 @@ p
 }
 
 .go-content,
-.go-content--cr
+.go-content--cr,
+
+.go-start,
+.go-start--cr
 {
     width: 100%;
     height: 100%;
@@ -380,7 +489,8 @@ p
 }
 
 /* Inactive */
-.applicator--go-content--inactive .go-content
+.applicator--go-content--inactive .go-content,
+.applicator--go-start--inactive .go-start
 {
     opacity: 0;
     
@@ -392,7 +502,8 @@ p
 }
 
 /* Active */
-.applicator--go-content--active .go-content
+.applicator--go-content--active .go-content,
+.applicator--go-start--active .go-start
 {
     opacity: 1;
     z-index: 99;
@@ -409,7 +520,8 @@ p
 
 
 /* ------------------------- Go to Content ------------------------- */
-.applicator--go-content--active
+.html.applicator--go-content--active,
+.html.applicator--main-nav--header-aside--menu--active
 {
     overflow: hidden;
 }
@@ -548,6 +660,11 @@ p
     font-weight: bold;
 }
 
+.wbp-tm-line
+{
+    white-space: nowrap;
+}
+
 
 
 
@@ -558,7 +675,7 @@ p
     position: relative;
 }
 
-.main-search
+.arbitrary-nav
 {
     position: absolute;
     right: 0;
@@ -567,7 +684,7 @@ p
     width: 100%;
 }
 
-.main-search .search-toggle--a
+.arbitrary-nav .search-toggle--a
 {
     position: absolute;
     right: 0;
@@ -589,17 +706,17 @@ p
     overflow: hidden;
 }
 
-.main-search .search-toggle--a-l,
-.main-search .search-form-submit--a-l,
-.main-search .search-form-reset--a-l,
-.main-search .search-term--input--text
+.arbitrary-nav .search-toggle--a-l,
+.arbitrary-nav .search-form-submit--a-l,
+.arbitrary-nav .search-form-reset--a-l,
+.arbitrary-nav .search-term--input--text
 {
     min-width: 3rem;
     min-height: 3rem;
 }
 
-.main-search .search-form--axns,
-.main-search.search--active .search-toggle
+.arbitrary-nav .search-form--axns,
+.arbitrary-nav.search--active .search-toggle
 {
     margin-top: -1.5rem;
 }
@@ -646,6 +763,11 @@ p
     text-decoration: none;
 }
 
+.applicator--main-nav--header-aside--menu .wbp-info--cr
+{
+    padding-left: 3rem;
+}
+
 .applicator--search .wbp-info--cr
 {
     padding-right: 3rem;
@@ -662,6 +784,93 @@ p
     
     padding-top: .5rem;
     padding-bottom: .5rem;
+}
+
+
+.applicator--main-nav--header-aside--menu .wbp-name--a-l
+{
+    padding-left: 0; /* Negate */
+}
+
+.applicator--main-nav--header-aside--menu--active .wbp-name,
+.applicator--main-nav--header-aside--menu--active .wbp-logo,
+.applicator--main-nav--header-aside--menu--active .wbp-desc
+{
+    position: relative;
+    z-index: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ------------------------- Main Nav | Header Aside - Menu ------------------------- */
+.main-nav--header-aside--active .main-nav--header-aside--menu-toggle .burger--icon,
+.main-nav--header-aside--inactive .main-nav--header-aside--menu-toggle .dismiss--icon,
+
+.applicator--main-nav--header-aside--menu.dom--unready .main-nav,
+.applicator--main-nav--header-aside--menu.dom--unready .main-header-aside,
+
+.applicator--main-nav--header-aside--menu--inactive .main-nav,
+.applicator--main-nav--header-aside--menu--inactive .main-header-aside
+{
+    display: none;
+}
+
+.main-nav--header-aside--menu-toggle
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.applicator--search--active .main-nav--header-aside--menu-toggle
+{
+    z-index: 1;
+}
+
+.main-nav--header-aside--active
+{
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.main-nav--header-aside--active,
+.main-nav--header-aside--active .main-nav--main-header-aside--cr,
+.main-nav--header-aside--active .main-nav--main-header-aside--ct,
+.main-nav--header-aside--active .main-nav--main-header-aside--ct-cr
+{
+    width: 100%;
+    height: 100%;
+}
+
+.main-nav--header-aside--active .main-nav--main-header-aside--ct
+{
+    box-sizing: border-box;
+    padding-right: 3rem;
+    margin-top: 3rem;
+}
+
+.main-nav--header-aside--active .main-nav--main-header-aside--cr
+{
+    background-color: black;
+    background-color: hsla(0, 0%, 0%, .75);
+    
+    cursor: pointer;
+}
+
+.main-nav--header-aside--active .main-nav--main-header-aside--ct-cr
+{
+    background-color: white;
+    overflow-y: auto;
+    cursor: auto;
 }
 
 
@@ -697,65 +906,105 @@ p
 
 
 /* ------------------------- Color Scheme ------------------------- */
+/*
+$white: #fff;
+$black: #222;
+$gray: #808080;
+$superhero-blue: #00aaff;
+$chikka-orange: #ff7f00;
+$record-red: #e53a2e;
+$go-green: #12b32d;
+*/
+
+.widget_search .search-form-submit--a-l,
+.widget_search .search-form-submit--a-l,
 .widget_search .search-form-submit--a-l,
 .widget_search .search-form-reset--a-l,
 .comment-submit--a,
 
-.wbp-info--cr
+.main-header--cr
 {
     background-color: #00aaff;
 }
 
-.main-search .search-toggle--a,
-.main-search .search-form-submit--a,
-.main-search .search-form-reset--a,
-.main-search .search-term--input--text,
+.arbitrary-nav .search-toggle--a,
+.arbitrary-nav .search-form-submit--a,
+.arbitrary-nav .search-form-reset--a,
+.arbitrary-nav .search-term--input--text,
 
 .wbp-name--a,
-.wbp-desc--a
+.wbp-desc--a,
+
+.main-nav--header-aside--menu-toggle--a-l
 {
     color: white;
 }
 
-.main-search .search-term--input--text::-webkit-input-placeholder
+.arbitrary-nav .search-term--input--text::-webkit-input-placeholder
 {
     color: white;
 }
 
-.main-search .search-term--input--text::-moz-placeholder
+.arbitrary-nav .search-term--input--text::-moz-placeholder
 {
     color: white;
 }
 
-.main-search .search-term--input--text:-ms-input-placeholder
+.arbitrary-nav .search-term--input--text:-ms-input-placeholder
 {
     color: white;
 }
 
-.main-search .search-term--input--text:-moz-placeholder
+.arbitrary-nav .search-term--input--text:-moz-placeholder
 {
     color: white;
+}
+
+.go-start--a-l
+{
+    color: black;
 }
 
 
 
 /* ------------------------- Placeholder Text ------------------------- */
-.main-search .search-term--input--text::-webkit-input-placeholder
+.arbitrary-nav .search-term--input--text::-webkit-input-placeholder
 {
     opacity: .5;
 }
 
-.main-search .search-term--input--text::-moz-placeholder
+.arbitrary-nav .search-term--input--text::-moz-placeholder
 {
     opacity: .5;
 }
 
-.main-search .search-term--input--text:-ms-input-placeholder
+.arbitrary-nav .search-term--input--text:-ms-input-placeholder
 {
     opacity: .5;
 }
 
-.main-search .search-term--input--text:-moz-placeholder
+.arbitrary-nav .search-term--input--text:-moz-placeholder
 {
     opacity: .5;
+}
+
+
+
+
+/* ------------------------- Main Footer ------------------------- */
+.go-start--a
+{
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+
+
+
+/* ------------------------- WordPress Widgets ------------------------- */
+.widget_calendar table
+{
+    width: 100%;
 }

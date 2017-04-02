@@ -14,61 +14,54 @@ fr: footer
 */
 
 
-/* ------------------------- Visually Hidden ------------------------- */
-/* For Accessibility */
 
-.visuallyhidden,
 
-.main-nav--h,
-.search--h,
-legend,
-.search-term--label,
-.main-content--h--pred-l,
-
-.home .main-content--h--subj-l,
-.page .main-content--h--subj-l,
-.single .main-content--h--subj-l,
-
-.main-header-aside--h,
-.main-footer-aside--h,
-
-.widget_nav_menu .widget--h,
-
-/* Go to Content */
-.dom--unready .go-content,
-.go-content--inactive .go-content--a,
-
-/* Sub-Nav */
-.sub-nav-toggle--a--word--l,
-
-.nav--h,
-.axns--h,
-
-.entry.attachment .post-navigation .screen-reader-text,
-
-.comment--h,
-
-.axns--h
+/* ------------------------- Visually Hidden Headings ------------------------- */
+.applicator-theme--default .main-nav--h,
+.applicator-theme--default .search--h,
+.applicator-theme--default .nav--h,
+.applicator-theme--default .comments--h,
+.applicator-theme--default .main-content--h--pred-l,
+.applicator-theme--default .axns--h,
+.applicator-theme--default .comment-respond--h,
+.applicator-theme--default .post-navigation h2.screen-reader-text
 {
-    border: 0;
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+    
+    display: inline-block;
+    padding: .25rem .75rem;
+    vertical-align: middle;
+    
+    background-color: black;
+    color: white;
+    
+    text-transform: uppercase;
+    
+    letter-spacing: .125rem;
+    word-spacing: .25rem;
+    
+    font-weight: normal;
+    font-size: .75rem;
 }
 
-/* ------------------------- Visually Hidden ------------------------- */
-/* As used by WordPress Twenty Seventeen Theme */
-/*
-.wp--visuallyhidden
+.applicator-theme--default .axns--h
 {
-    position: absolute;
-    clip: rect(1px, 1px, 1px, 1px);
+    padding: .125rem .5rem;
+    background-color: red;
+    font-size: .5rem;
 }
-*/
+
+
+
+
+
+html
+body
+{
+    height: 100%;
+}
+
+
+
 
 
 
@@ -94,11 +87,21 @@ legend,
     display: none;
 }
 
+
+
+
+
+/* ------------------------- Color Scheme ------------------------- */
 .sub-nav-toggle--a
 {
     color: black;
 }
 
+
+
+
+
+/* ------------------------- Icons ------------------------- */
 .icon--vector
 {
     display: inline-block;
@@ -171,71 +174,14 @@ img
 }
 
 
+
+
+
 /* ------------------------- Corrections ------------------------- */
 .entry--h
 {
     -ms-word-wrap: break-word;
     word-wrap: break-word;
-}
-
-
-
-
-
-/* ------------------------- UI Template: Buttons ------------------------- */
-
-/* Reset */
-.sub-nav-toggle--a
-{
-    padding: 0;
-    margin: 0;
-    border: 0;
-    
-    background-color: transparent;
-}
-
-
-/* ------------------------- Sub-Navigations ------------------------- */
-
-.dom--unready .main-nav--ct > ul > .page_item_has_children > .children,
-.dom--unready .main-nav--ct > ul > .menu-item-has-children > .sub-menu,
-
-.dom--unready .widget_nav_menu .widget--cr > div > ul > .page_item_has_children > .children,
-.dom--unready .widget_nav_menu .widget--cr > div > ul > .menu-item-has-children > .sub-menu,
-
-.sub-nav--inactive > .children,
-.sub-nav--inactive > .sub-menu
-{
-    display: none;
-}
-
-.sub-nav--active > .children,
-.sub-nav--active > .sub-menu
-{
-    display: block;
-}
-
-/* Layout */
-.page_item_has_children > a,
-.menu-item-has-children > a,
-.page_item_has_children > .sub-nav-toggle,
-.menu-item-has-children > .sub-nav-toggle
-{
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.page_item > .sub-nav-toggle .arrow--icon,
-.menu-item > .sub-nav-toggle .arrow--icon
-{
-    /*
-    transition: all 0.2s ease-in-out;
-    */
-}
-
-.sub-nav--active > .sub-nav-toggle .arrow--icon
-{
-    transform: rotate( 180deg );
 }
 
 

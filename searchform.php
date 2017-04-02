@@ -26,18 +26,18 @@
                     <div class="grp search-form-axn--grp">
                         <div class="item search-form-axn-item search-form--axns--form-axn-item search-form-submit--form-axn-item">
                             <div class="btn search-form-submit--btn">
-                                <button class="b a form--a search-form-submit--a" type="submit">
+                                <button class="b a form--a search-form-submit--a" type="submit" title="<?php esc_attr_e( 'Search', 'applicator' ); ?>">
                                     <span class="search-form-submit--a-l">
-                                        <span class="search-form-submit--a--word-l"><?php esc_html_e( 'Search', 'applicator' ); ?></span>
+                                        <span class="search-form-submit--a--words-l"><?php esc_html_e( 'Search', 'applicator' ); ?></span>
                                     </span>
                                 </button>
                             </div>
                         </div>
                         <div class="item form-axn-item search-form--axns--form-axn-item search-form-reset--form-axn-item">
                             <div class="btn search-form-reset--btn">
-                                <button class="b a form--a search-form-reset--a" type="reset">
+                                <button class="b a form--a search-form-reset--a" type="reset" title="<?php esc_attr_e( 'Reset', 'applicator' ); ?>">
                                     <span class="search-form-reset--a-l">
-                                        <span class="search-form-reset--a--word-l"><?php esc_html_e( 'Reset', 'applicator' ); ?></span>
+                                        <span class="search-form-reset--a--words-l"><?php esc_html_e( 'Reset', 'applicator' ); ?></span>
                                     </span>
                                 </button>
                             </div>
