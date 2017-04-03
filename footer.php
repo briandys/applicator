@@ -57,7 +57,7 @@
                         <a id="go-start--a" class="a go-start--a" href="#start" title="<?php esc_attr_e( 'Go to Start', 'applicator'); ?>">
                             <span class="go-start--a-l">
                                 <span class="go-start--a--words-l"><?php esc_html_e( 'Go to Start', 'applicator'); ?></span>
-                                <?php echo applicator_get_svg( array( 'icon' => 'arrow-up--icon', 'fallback' => true ) ); ?>
+                                <?php echo applicator_get_svg( array( 'icon' => 'arrow-up-2--icon', 'fallback' => true ) ); ?>
                             </span>
                         </a>
                     

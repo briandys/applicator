@@ -2,7 +2,7 @@
 
 //------------------------- HTML Classes
 
-if ( ! function_exists( 'applicator_html_class' ) ) :
+if ( ! function_exists( 'applicator_html_class' ) ) {
     function applicator_html_class() {
 		
         global $is_lynx, $is_gecko, $is_IE, $is_macIE, $is_winIE, $is_edge, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
@@ -17,76 +17,82 @@ if ( ! function_exists( 'applicator_html_class' ) ) :
 
         
         //------------------------- View
-        if ( is_front_page() )
+        if ( is_front_page() ) {
         // if ( is_front_page() && ! is_home() )
         // if ( is_front_page() && 'posts' !== get_option( 'show_on_front' ) )
             echo ' ' . 'view--front';
-        else
+        } else {
             echo ' ' . 'view--inner';
+        }
         
         
         //------------------------- Browser Detection
-        if ( $is_chrome )
+        if ( $is_chrome ) {
             echo ' ' . 'browser--chrome';
-        elseif ( $is_gecko )
+        } elseif ( $is_gecko ) {
             echo ' ' . 'browser--gecko';
-        elseif ( $is_safari )
+        } elseif ( $is_safari ) {
             echo ' ' . 'browser--safari';
-        elseif ( $is_opera )
+        } elseif ( $is_opera ) {
             echo ' ' . 'browser--opera';
-        elseif ( $is_lynx )
+        } elseif ( $is_lynx ) {
             echo ' ' . 'browser--lynx';
-        elseif ( $is_NS4 )
+        } elseif ( $is_NS4 ) {
             echo ' ' . 'browser--ns4';
-        elseif ( $is_IE )
+        } elseif ( $is_IE ) {
             echo ' ' . 'browser--ie';
-        elseif ( $is_macIE )
+        } elseif ( $is_macIE ) {
             echo ' ' . 'browser--mac-ie';
-        elseif ( $is_winIE )
+        } elseif ( $is_winIE ) {
             echo ' ' . 'browser--win-ie';
-        elseif ( $is_edge )
+        } elseif ( $is_edge ) {
             echo ' ' . 'browser--edge';
-        elseif ( $is_iphone )
+        } elseif ( $is_iphone ) {
             echo ' ' . 'browser--iphone';
-        elseif ( $is_ipad )
+        } elseif ( $is_ipad ) {
             echo ' ' . 'browser--ipad';
-        else
+        } else {
             echo ' ' . 'browser--unlisted';
+        }
         
         //------------------------- Mobile Device Detection
-        if ( wp_is_mobile() )
+        if ( wp_is_mobile() ) {
             echo ' ' . 'device--mobile';
-        else
+        } else {
             echo ' ' . 'device--not-mobile';
+        }
         
         
         //------------------------- Theme Detection
-        if ( ! is_child_theme() )
+        if ( ! is_child_theme() ){
             echo ' ' . 'theme--parent';
-        else
+        } else {
             echo ' ' . 'theme--child';
+        }
         
         
         //------------------------- Menu Type Detection
         // If Default Menu or Custom Menu is used as Main Navigation
-        if ( ! has_nav_menu( 'main-nav' ) )
+        if ( ! has_nav_menu( 'main-nav' ) ) {
             echo ' ' . 'main-nav--default';
-        else
+        } else {
             echo ' ' . 'main-nav--custom';
-        
+        }
         
         //------------------------- Authorship Type
-        if ( is_multi_author() )
+        if ( is_multi_author() ) {
             echo ' ' . 'authorship--multi';
-        else
+        } else {
             echo ' ' . 'authorship--single';
+        }
         
         
         //------------------------- Non-Singular Pages
-        if ( ! is_singular() )
+        if ( ! is_singular() ) {
             echo ' ' . 'view--category hfeed';
-        else
+        } else {
             echo ' ' . 'view--detail';
+        }
         
         
         //------------------------- Aside Status
@@ -101,28 +107,32 @@ if ( ! function_exists( 'applicator_html_class' ) ) :
         $off = '--disabled';
         
         // Main Header Aside
-        if ( is_active_sidebar( $main_header_aside ) )
+        if ( is_active_sidebar( $main_header_aside ) ) {
             echo ' ' . $main_header_aside . $on;
-        else
+        } else {
             echo ' ' . $main_header_aside . $off;
+        }
         
         // Main Content Header Aside
-        if ( is_active_sidebar( $main_header_content_aside ) )
+        if ( is_active_sidebar( $main_header_content_aside ) ) {
             echo ' ' . $main_header_content_aside . $on;
-        else
+        } else {
             echo ' ' . $main_header_content_aside . $off;
+        }
         
         // Main Content Aside
-        if ( is_active_sidebar( $main_content_aside ) )
+        if ( is_active_sidebar( $main_content_aside ) ) {
             echo ' ' . $main_content_aside . $on;
-        else
+        } else {
             echo ' ' . $main_content_aside . $off;
+        }
 
         // Main Footer Aside
-        if ( is_active_sidebar( $main_footer_aside ) )
+        if ( is_active_sidebar( $main_footer_aside ) ) {
             echo ' ' . $main_footer_aside . $on;
-        else
+        } else {
             echo ' ' . $main_footer_aside . $off;
+        }
         
         
         //------------------------- In Customizer
@@ -132,24 +142,28 @@ if ( ! function_exists( 'applicator_html_class' ) ) :
         
         
         //------------------------- Customizer: Custom Header
-        if ( has_header_image() )
+        if ( has_header_image() ) {
             echo ' ' . 'wbp-media-banner' . $on;
-        else
+        } else {
             echo ' ' . 'wbp-media-banner' . $off;
+        }
         
         
         //------------------------- Customizer: Custom Logo
-        if ( has_custom_logo() )
+        if ( has_custom_logo() ) {
             echo ' ' . 'wbp-logo' . $on;
-        else
+        } else {
             echo ' ' . 'wbp-logo' . $off;
+        }
         
         
-        if ( isset( $post ) )
+        if ( isset( $post ) ) {
             echo ' ' . 'view--' . $post->post_type;
+        }
         
-        if ( is_singular() )
+        if ( is_singular() ) {
             echo ' ' . 'view--' . $post->post_type . '--' . $post->post_name;
+        }
 
         if ( 'blank' === get_header_textcolor() ) {
             echo ' ' . 'wbp-name-desc' . $off;
@@ -162,15 +176,24 @@ if ( ! function_exists( 'applicator_html_class' ) ) :
         } else {
             echo ' ' . 'wbp-desc--empty';
         }
+        
+        
+        //------------------------- Admin Bar
+        if ( is_admin_bar_showing() ) {
+            echo ' ' . 'wp-admin-bar' . $on;
+        } else {
+            echo ' ' . 'wp-admin-bar' . $off;
+        }
     
     }
     add_action( 'applicator_hook_html_class', 'applicator_html_class');
-endif;
+
+}
 
 
 //------------------------- Body Class
 
-if ( ! function_exists( 'applicator_body_class' ) ) :
+if ( ! function_exists( 'applicator_body_class' ) ) {
     function applicator_body_class( $classes ) {
 
         $classes[] = 'body';
@@ -179,4 +202,4 @@ if ( ! function_exists( 'applicator_body_class' ) ) :
     }
     add_filter( 'body_class', 'applicator_body_class' );
 
-endif;
+}

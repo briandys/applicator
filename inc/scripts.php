@@ -56,23 +56,37 @@ if ( ! function_exists( 'applicator_default_classes' ) ) :
                         viewportMediumUpClass = 'vp--medium-up',
                         viewportWideClass = 'vp--wide',
                         viewportWideUpClass = 'vp--wide-up',
-
+                        
+                        vpWPAdminBarNarrowClass = 'vp--wp-admin-bar--narrow',
+                        vpWPAdminBarWideClass = 'vp--wp-admin-bar--wide',
+                        
+                        
+                        mqMedium = window.matchMedia( "( min-width: 560px )" ),
                         mqWide = window.matchMedia( "( min-width: 1024px )" ),
-                        mqMedium = window.matchMedia( "( min-width: 560px )" );
+                        
+                        mqWPAdminBarNarrow = window.matchMedia( "( max-width: 782px )" );
 
                     if ( mqWide.matches ) {
-                        html.classList.remove( viewportNarrowClass, viewportMediumClass );
                         html.classList.add( viewportNarrowUpClass, viewportMediumUpClass, viewportWideClass, viewportWideUpClass );
+                        html.classList.remove( viewportNarrowClass, viewportMediumClass );
                     } else if ( mqMedium.matches ) {
-                        html.classList.remove( viewportNarrowClass, viewportWideClass, viewportWideUpClass );
                         html.classList.add( viewportNarrowUpClass, viewportMediumClass, viewportMediumUpClass );
+                        html.classList.remove( viewportNarrowClass, viewportWideClass, viewportWideUpClass );
                     } else {
-                        html.classList.remove( viewportMediumClass, viewportMediumUpClass, viewportWideClass, viewportWideUpClass );
                         html.classList.add( viewportNarrowClass, viewportNarrowUpClass );
+                        html.classList.remove( viewportMediumClass, viewportMediumUpClass, viewportWideClass, viewportWideUpClass );
+                    }
+                    
+                    if ( mqWPAdminBarNarrow.matches ) {
+                        html.classList.add( vpWPAdminBarNarrowClass );
+                        html.classList.remove( vpWPAdminBarWideClass );
+                    } else {
+                        html.classList.add( vpWPAdminBarWideClass );
+                        html.classList.remove( vpWPAdminBarNarrowClass );
                     }
                 }
-
                 detectViewportWidth();
+                
 
                 // Viewport Width Debounce
                 var detectViewportWidthDebounce = debounce( function () {
@@ -109,7 +123,7 @@ if ( ! function_exists( 'applicator_enqueue_scripts' ) ) :
         wp_enqueue_script( 'applicator-script-plugins', get_theme_file_uri( '/assets/js/plugins.js' ), array( 'jquery' ), '1.0', true );
         
         // Global
-        wp_enqueue_script( 'applicator-script-global', get_theme_file_uri( '/assets/js/global.js' ), array( 'jquery', 'applicator-script-plugins' ), '2.6', true );
+        wp_enqueue_script( 'applicator-script-global', get_theme_file_uri( '/assets/js/global.js' ), array( 'jquery', 'applicator-script-plugins' ), '2.9', true );
         
         
         // Comment Reply

@@ -666,6 +666,13 @@ p
 }
 
 
+.applicator--go-start--active .wbp-copyright--cr
+{
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+
 
 
 
@@ -735,16 +742,12 @@ p
 .wbp-name--a-l,
 .wbp-desc--a-l
 {
+    display: block;
     width: 100%;
     overflow: hidden;
     
     white-space: nowrap;
     text-overflow: ellipsis;
-}
-
-.wbp-name--a
-{
-    display: inline-block;
 }
 
 .wbp-name,
@@ -755,7 +758,7 @@ p
 
 .wbp-desc
 {
-    margin-top: -.25rem;
+    margin-top: -.5rem;
 }
 
 .wbp-desc--a
@@ -787,7 +790,8 @@ p
 }
 
 
-.applicator--main-nav--header-aside--menu .wbp-name--a-l
+.applicator--main-nav--header-aside--menu .wbp-name--a-l,
+.applicator--main-nav--header-aside--menu .wbp-desc--a-l
 {
     padding-left: 0; /* Negate */
 }
@@ -897,23 +901,22 @@ p
 
 
 /* ------------------------- Logo ------------------------- */
-.wbp-logo--enabled .wbp-name
+.wbp-logo--enabled .wbp-info--cr
 {
-    order: 2;
+    position: relative;
 }
 
 
 .wbp-logo--enabled .wbp-logo
 {
-    order: 1;
-    height: 2.25rem;
-    margin-left: -.5rem;
+    position: absolute;
+    top: 50%;
+    margin-top: -1.125rem
 }
 
 .wbp-logo--enabled .wbp-logo--cr
 {
-    height: 100%;
-    margin-right: .5rem;
+    height: 2.25rem;
 }
 
 .wbp-logo--enabled .wbp-logo .custom-logo
@@ -921,6 +924,14 @@ p
     width: auto;
     height: 100%;
     max-width: none;
+}
+
+.wbp-logo--enabled .wbp-name--cr,
+.wbp-logo--enabled .wbp-desc--cr
+{
+    padding-left: .5rem;
+    padding-right: .5rem;
+    margin-left: 2.25rem
 }
 
 
@@ -1026,4 +1037,48 @@ $go-green: #12b32d;
 .widget_calendar table
 {
     width: 100%;
+}
+
+
+
+
+
+/* ------------------------- WordPress Admin Bar ------------------------- */
+.wp-admin-bar--enabled
+{
+    margin-top: auto !important;
+}
+
+.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .container--cr
+{
+    padding-top: 46px;
+}
+
+.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-nav--header-aside--active
+{
+    box-sizing: border-box;
+    padding-top: 46px;
+    padding-bottom: 46px;
+}
+
+.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-nav--header-aside--active .main-nav--header-aside--menu-toggle
+{
+    margin-top: 46px;
+}
+
+.wp-admin-bar--enabled.vp--wp-admin-bar--wide .container--cr
+{
+    padding-top: 32px;
+}
+
+.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-nav--header-aside--active
+{
+    box-sizing: border-box;
+    padding-top: 32px;
+    padding-bottom: 46px;
+}
+
+.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-nav--header-aside--active .main-nav--header-aside--menu-toggle
+{
+    margin-top: 32px;
 }
