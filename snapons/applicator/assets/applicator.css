@@ -95,6 +95,7 @@ p
 
 .main-nav ul,
 .widget_nav_menu ul,
+.widget_pages ul,
 
 .comments--grp
 {
@@ -122,20 +123,20 @@ p
 
 
 /* ------------------------- Sub-Navigations ------------------------- */
-.dom--unready .main-nav--ct > ul > .page_item_has_children > .children,
-.dom--unready .main-nav--ct > ul > .menu-item-has-children > .sub-menu,
+.applicator--sub-nav.dom--unready .main-nav--ct > ul > .page_item_has_children > .children,
+.applicator--sub-nav.dom--unready .main-nav--ct > ul > .menu-item-has-children > .sub-menu,
 
-.dom--unready .widget_nav_menu .widget--cr > div > ul > .page_item_has_children > .children,
-.dom--unready .widget_nav_menu .widget--cr > div > ul > .menu-item-has-children > .sub-menu,
+.applicator--sub-nav.dom--unready .widget_nav_menu .widget--cr > div > ul > .menu-item-has-children > .sub-menu,
+.applicator--sub-nav.dom--unready .widget_pages .widget--cr > ul > .page_item_has_children > .children,
 
-.sub-nav--inactive > .children,
-.sub-nav--inactive > .sub-menu
+.applicator--sub-nav .sub-nav--inactive > .children,
+.applicator--sub-nav .sub-nav--inactive > .sub-menu
 {
     display: none;
 }
 
-.sub-nav--active > .children,
-.sub-nav--active > .sub-menu
+.applicator--sub-nav .sub-nav--active > .children,
+.applicator--sub-nav .sub-nav--active > .sub-menu
 {
     display: block;
 }
@@ -150,15 +151,15 @@ p
     vertical-align: middle;
 }
 
-.page_item > .sub-nav-toggle .arrow--icon,
-.menu-item > .sub-nav-toggle .arrow--icon
+.applicator--sub-nav .page_item > .sub-nav-toggle .arrow--icon,
+.applicator--sub-nav .menu-item > .sub-nav-toggle .arrow--icon
 {
     /*
     transition: all 0.2s ease-in-out;
     */
 }
 
-.sub-nav--active > .sub-nav-toggle .arrow--icon
+.applicator--sub-nav .sub-nav--active > .sub-nav-toggle .arrow--icon
 {
     transform: rotate( 180deg );
 }
@@ -198,23 +199,18 @@ p
     width: 100%;
 }
 
-.search-term--input--text
-{
-    padding-left: 0 .5rem;
-}
-
 /* Minimum height of the active area */
 .main-nav a,
 .widget_nav_menu a,
+.widget_pages a,
 
-.main-nav .sub-nav-toggle--a-l,
+.applicator--sub-nav .sub-nav-toggle--a-l,
 
 .arbitrary-nav .search-toggle--a-l,
 .arbitrary-nav .search-form-submit--a-l,
 .arbitrary-nav .search-form-reset--a-l,
 .arbitrary-nav .search-term--input--text,
 
-.widget_nav_menu .sub-nav-toggle--a-l,
 .widget_search .search-term--input--text,
 .widget_search .search-form-submit--a-l,
 .widget_search .search-form-reset--a-l,
@@ -232,10 +228,11 @@ p
 
 /* ------------------------- UI Template: Buttons ------------------------- */
 .main-nav a,
-.main-nav .sub-nav-toggle--a-l,
 
 .widget_nav_menu a,
-.widget_nav_menu .sub-nav-toggle--a-l,
+.widget_pages a,
+
+.applicator--sub-nav .sub-nav-toggle--a-l,
 
 .arbitrary-nav .search-toggle--a-l,
 .arbitrary-nav .search-form-submit--a-l,
@@ -253,9 +250,7 @@ p
 }
 
 /* x Center */
-.main-nav .sub-nav-toggle--a-l,
-
-.widget_nav_menu .sub-nav-toggle--a-l,
+.applicator--sub-nav .sub-nav-toggle--a-l,
 
 .arbitrary-nav .search-toggle--a-l,
 .arbitrary-nav .search-form-submit--a-l,
@@ -281,7 +276,9 @@ p
 .wbp-name--a,
 .entry--ct-cr a,
 .main-nav a,
-.widget_nav_menu a
+.widget_nav_menu a,
+.widget_pages a,
+.entry--a
 {
     text-decoration: none;
 }
@@ -417,15 +414,13 @@ p
 
 /* Positioning of nav items */
 /* flex-wrap enables the item with large width to wrap - in this case the Sub-Menu */
-.main-nav .page_item_has_children,
-.main-nav .menu-item-has-children,
-.widget_nav_menu .menu-item-has-children
+.applicator--sub-nav .page_item_has_children,
+.applicator--sub-nav .menu-item-has-children
 {
     position: relative;
 }
 
-.main-nav .sub-nav-toggle,
-.widget_nav_menu .sub-nav-toggle
+.applicator--sub-nav .sub-nav-toggle
 {
     position: absolute;
     right: 0;
@@ -433,29 +428,16 @@ p
 }
 
 /* For flex-wrap to take effect */
-.main-nav .page_item_has_children > .children,
-.main-nav .menu-item-has-children > .sub-menu,
-
-.widget_nav_menu .menu-item-has-children > .sub-menu
+.applicator--sub-nav .page_item_has_children > .children,
+.applicator--sub-nav .menu-item-has-children > .sub-menu
 {
     width: 100%;
 }
 
-.main-nav .page_item_has_children > .children > .page_item,
-.main-nav .menu-item-has-children > .sub-menu > .menu-item,
-
-.widget_nav_menu .menu-item-has-children > .sub-menu > .menu-item
+.page_item_has_children > .children > .page_item,
+.menu-item-has-children > .sub-menu > .menu-item
 {
     padding-left: .5rem;
-}
-
-/* Smaller icons */
-.main-nav .sub-nav-toggle--a .arrow--icon,
-.widget_nav_menu .sub-nav-toggle--a .arrow--icon,
-.main-nav--header-aside--menu-toggle .dismiss--icon
-{
-    width: .75rem;
-    height: .75rem;
 }
 
 
@@ -465,8 +447,7 @@ p
 /* ------------------------- Overlays ------------------------- */
 
 /* Overlay Layout */
-.go-content,
-.go-start
+.go-content
 {
     position: fixed;
     left: 0;
@@ -475,10 +456,7 @@ p
 }
 
 .go-content,
-.go-content--cr,
-
-.go-start,
-.go-start--cr
+.go-content--cr
 {
     width: 100%;
     height: 100%;
@@ -489,8 +467,7 @@ p
 }
 
 /* Inactive */
-.applicator--go-content--inactive .go-content,
-.applicator--go-start--inactive .go-start
+.applicator--go-content--inactive .go-content
 {
     opacity: 0;
     
@@ -502,8 +479,7 @@ p
 }
 
 /* Active */
-.applicator--go-content--active .go-content,
-.applicator--go-start--active .go-start
+.applicator--go-content--active .go-content
 {
     opacity: 1;
     z-index: 99;
@@ -599,7 +575,7 @@ p
 
 
 
-/* ------------------------- Spacing ------------------------- */
+/* ------------------------- Spacing | Dimensions ------------------------- */
 
 .widget_search .search-form-submit--btn,
 .widget_search .search-form-reset--btn,
@@ -619,9 +595,7 @@ p
 
 .main-nav a,
 .widget_nav_menu a,
-
-.wbp-name--a-l,
-.wbp-desc--a-l
+.widget_pages a
 {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -638,6 +612,14 @@ p
 {
     padding-top: .5rem;
     padding-bottom: .5rem;
+}
+
+/* Smaller icons */
+.applicator--sub-nav .sub-nav-toggle--a .arrow--icon,
+.main-nav--header-aside--menu-toggle .dismiss--icon
+{
+    width: .75rem;
+    height: .75rem;
 }
 
 
@@ -739,11 +721,9 @@ p
     font-size: .75rem;
 }
 
-.wbp-name--a-l,
-.wbp-desc--a-l
+.wbp-name--cr,
+.wbp-desc--cr
 {
-    display: block;
-    width: 100%;
     overflow: hidden;
     
     white-space: nowrap;
@@ -759,6 +739,12 @@ p
 .wbp-desc
 {
     margin-top: -.5rem;
+}
+
+.wbp-name--h,
+.wbp-desc--a
+{
+    display: inline;
 }
 
 .wbp-desc--a
@@ -781,19 +767,12 @@ p
 {
     box-sizing: border-box;
     
-    display: flex;
+    display: inline-flex;
     align-items: center;
     min-height: 3rem;
     
     padding-top: .5rem;
     padding-bottom: .5rem;
-}
-
-
-.applicator--main-nav--header-aside--menu .wbp-name--a-l,
-.applicator--main-nav--header-aside--menu .wbp-desc--a-l
-{
-    padding-left: 0; /* Negate */
 }
 
 .applicator--main-nav--header-aside--menu--active .wbp-name,
@@ -957,6 +936,18 @@ $go-green: #12b32d;
     background-color: #00aaff;
 }
 
+.entry--a
+{
+    color: #00aaff;
+}
+
+.wbp-name--cr,
+.wbp-desc--cr
+{
+    color: white;
+    color: hsla(0, 100%, 100%, .75);
+}
+
 .arbitrary-nav .search-toggle--a,
 .arbitrary-nav .search-form-submit--a,
 .arbitrary-nav .search-form-reset--a,
@@ -1025,7 +1016,7 @@ $go-green: #12b32d;
 .go-start--a
 {
     display: inline-block;
-    position: absolute;
+    position: fixed;
     right: 0;
     bottom: 0;
 }
@@ -1049,36 +1040,45 @@ $go-green: #12b32d;
     margin-top: auto !important;
 }
 
-.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .container--cr
-{
-    padding-top: 46px;
-}
-
-.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-nav--header-aside--active
+.applicator--main-nav--header-aside--menu--active .main-nav--main-header-aside
 {
     box-sizing: border-box;
-    padding-top: 46px;
     padding-bottom: 46px;
 }
 
-.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-nav--header-aside--active .main-nav--header-aside--menu-toggle
+/* Narrow */
+.applicator--main-nav--header-aside--menu.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .container--cr
+{
+    padding-top: 46px;
+}
+
+.applicator--main-nav--header-aside--menu.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-nav--header-aside--active
+{
+    padding-top: 46px;
+}
+
+.applicator--main-nav--header-aside--menu.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-nav--header-aside--active .main-nav--header-aside--menu-toggle
 {
     margin-top: 46px;
 }
 
-.wp-admin-bar--enabled.vp--wp-admin-bar--wide .container--cr
+/* Wide */
+.applicator--main-nav--header-aside--menu.wp-admin-bar--enabled.vp--wp-admin-bar--wide .container--cr
 {
     padding-top: 32px;
 }
 
-.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-nav--header-aside--active
+.applicator--main-nav--header-aside--menu.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-nav--header-aside--active
 {
-    box-sizing: border-box;
     padding-top: 32px;
-    padding-bottom: 46px;
 }
 
-.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-nav--header-aside--active .main-nav--header-aside--menu-toggle
+.applicator--main-nav--header-aside--menu.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-nav--header-aside--active .main-nav--header-aside--menu-toggle
 {
     margin-top: 32px;
+}
+
+.applicator--go-content--active #wpadminbar
+{
+    z-index: 0;
 }

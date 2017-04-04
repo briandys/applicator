@@ -46,6 +46,10 @@
     // ------------------------- Sub-Navigation
     function initSubNav( component ) {
         
+        if ( ! $html.hasClass( 'applicator--sub-nav' ) ) {
+			return;
+		}
+        
         // Create the markup of Sub-Nav Toggle
         var subnavToggle = $( '<div />', { 'class': 'cp sub-nav-toggle', 'data-name': 'Sub-Nav Toggle' } )
                 .append( $( '<div />', { 'class': 'sub-nav-toggle--cr' } ) ),
@@ -83,7 +87,7 @@
         component.find( '.page_item_has_children, .menu-item-has-children' ).each( function() {
             var _this = $( this );
             if ( _this.hasClass( subNavInactive ) ) {
-                _this.find( '.sub-nav-toggle--a' ).attr( 'aria-expanded', 'false' );
+                _this.find( '.sub-nav-toggle--a' ).attr( 'aria-expanded', 'false' ).attr( 'title', applicatorSubnavLabel.subnavShowLabel );
             }
         } );
         
@@ -97,7 +101,10 @@
             
             // The <button> itself
             _this.attr( 'aria-expanded', _this.attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
+            
             subNavLabel.text( subNavLabel.text() === applicatorSubnavLabel.subnavShowLabel ? applicatorSubnavLabel.subnavHideLabel : applicatorSubnavLabel.subnavShowLabel );
+            
+            _this.attr( 'title', _this.attr( 'title' ) === applicatorSubnavLabel.subnavShowLabel ? applicatorSubnavLabel.subnavHideLabel : applicatorSubnavLabel.subnavShowLabel );
             
             // The Sub-Nav Toggle Component
             _this.closest( '.page_item, .menu-item' )
@@ -124,6 +131,7 @@
     }
     initSubNav( $( '#main-nav' ) );
     initSubNav( $( '.widget_nav_menu' ) );
+    initSubNav( $( '.widget_pages' ) );
     
     
     // ------------------------- Search
@@ -477,6 +485,10 @@
             
             if ( component.hasClass( mainNavHeaderAsideMenuActiveClass ) ) {
                 mnhaActivate();
+                
+                component.find( '.main-nav--main-header-aside--ct' ).attr( 'title', applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuHideLabel );
+                
+                component.find( '.main-nav--main-header-aside--ct-cr' ).attr( 'title', '' );
             
             } else if ( component.hasClass( mainNavHeaderAsideMenuInactiveClass ) ) {
                 mnhaDeactivate();
@@ -517,6 +529,7 @@
                 }
             } );
         } );
+        
         
     }
     initMainNavHeaderAsideMenu( $( '.main-nav--main-header-aside' ) );
