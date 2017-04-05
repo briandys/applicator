@@ -23,6 +23,8 @@ if ( ! function_exists( 'applicator_snapons_applicator_class' ) ) {
                 
                 html.classList.add( 'applicator--main-nav--header-aside--menu' );
                 
+                html.classList.add( '_applicator--article' );
+                
                 html.classList.remove( 'applicator-theme--default' );
             } )( document.documentElement );
         </script>

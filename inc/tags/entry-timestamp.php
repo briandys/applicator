@@ -9,9 +9,9 @@ if ( ! function_exists( 'applicator_pub_timestamp' ) ) :
         $pub_timestamp = '<div class="entry-timestamp pub-timestamp">';
             $pub_timestamp .= '<div class="entry-timestamp--cr pub-timestamp--cr">';
                 $pub_timestamp .= '<span class="entry-timestamp--l pub-timestamp--l">';
-                    $pub_timestamp .= '<span class="pub-timestamp--pred-l">%4$s</span>';
-                    $pub_timestamp .= '<span class="pub-timestamp--subj-l">';
-                        $pub_timestamp .= '<a class="a entry-timestamp--a pub-timestamp--a" href="%1$s" title="%2$s" rel="bookmark"><span class="a-l">%3$s</span></a>';
+                    $pub_timestamp .= '<span class="entry-timestamp--pred-l pub-timestamp--pred-l">%4$s</span>';
+                    $pub_timestamp .= '<span class="entry-timestamp--subj-l pub-timestamp--subj-l">';
+                        $pub_timestamp .= '<a class="a entry-timestamp--a pub-timestamp--a" href="%1$s" title="%2$s" rel="bookmark"><span class="entry-timestamp--a-l pub-timestamp--a-l">%3$s</span></a>';
                     $pub_timestamp .= '</span>';
                 $pub_timestamp .= '</span>';
             $pub_timestamp .= '</div>';
@@ -52,9 +52,9 @@ if ( ! function_exists( 'applicator_mod_timestamp' ) ) :
         $mod_timestamp = '<div class="entry-timestamp mod-timestamp">';
             $mod_timestamp .= '<div class="entry-timestamp--cr mod-timestamp--cr">';
                 $mod_timestamp .= '<span class="mod-timestamp--l">';
-                    $mod_timestamp .= '<span class="mod-timestamp--pred-l">%4$s</span>';
-                    $mod_timestamp .= '<span class="mod-timestamp--subj-l">';
-                        $mod_timestamp .= '<a class="a mod-timestamp--a" href="%1$s" title="%2$s" rel="bookmark"><span class="a-l">%3$s</span></a>';
+                    $mod_timestamp .= '<span class="entry-timestamp--pred-l mod-timestamp--pred-l">%4$s</span>';
+                    $mod_timestamp .= '<span class="entry-timestamp--subj-l mod-timestamp--subj-l">';
+                        $mod_timestamp .= '<a class="a entry-timestamp--a mod-timestamp--a" href="%1$s" title="%2$s" rel="bookmark"><span class="entry-timestamp--a-l mod-timestamp--a-l">%3$s</span></a>';
                     $mod_timestamp .= '</span>';
                 $mod_timestamp .= '</span>';
             $mod_timestamp .= '</div>';

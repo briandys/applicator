@@ -13,10 +13,10 @@ if ( ! function_exists( 'applicator_entry_actions' ) ) :
                     
                     <div class="h axns--h entry--axns--h"><span class="entry--axns--h-l">Actions</span></div>
                     <?php echo edit_post_link(
-                        __( '<span class="entry--axns--a-l"><span class="entry--axns--pred-l">Edit</span> <span class="entry--axns--subj-l">Entry</span></span>', 'applicator' ), '', ''); ?>
+                        __( '<span class="entry-edit--a-l"><span class="entry-edit--a--edit--word-l">Edit</span> <span class="entry-edit--a--entry--word-l">Entry</span></span>', 'applicator' ), '', ''); ?>
 
                 </div>
-            </div><!-- entry-actions -->
+            </div><!-- entry--axns -->
         
         <?php endif;
     

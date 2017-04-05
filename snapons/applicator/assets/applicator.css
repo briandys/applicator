@@ -16,7 +16,8 @@ legend,
 
 .home .main-content--h--subj-l,
 .page .main-content--h--subj-l,
-.single .main-content--h--subj-l,
+
+.single .main-content--h,
 
 .main-header-aside--h,
 .main-footer-aside--h,
@@ -54,7 +55,14 @@ legend,
 
 .go-start.go-start--inactive,
 
-.main-nav--header-aside--menu-toggle--a--word--l
+.main-nav--header-aside--menu-toggle--a--word--l,
+
+.applicator--article .entry-edit--a--entry--word-l,
+.applicator--article .entry-timestamp--pred-l,
+.applicator--article .go-comments--a--comments--words-l,
+.applicator--article .entry-author--pred-l,
+.applicator--article .mod-timestamp,
+.applicator--article .entry-header .write-comment--a
 {
     border: 0;
     clip: rect(0, 0, 0, 0);
@@ -278,7 +286,7 @@ p
 .main-nav a,
 .widget_nav_menu a,
 .widget_pages a,
-.entry--a
+.entry-title--a
 {
     text-decoration: none;
 }
@@ -823,6 +831,7 @@ p
     position: fixed;
     left: 0;
     top: 0;
+    z-index: 2;
 }
 
 .main-nav--header-aside--active,
@@ -936,7 +945,7 @@ $go-green: #12b32d;
     background-color: #00aaff;
 }
 
-.entry--a
+.entry-title--a
 {
     color: #00aaff;
 }
@@ -1081,4 +1090,191 @@ $go-green: #12b32d;
 .applicator--go-content--active #wpadminbar
 {
     z-index: 0;
+}
+
+
+
+
+/* ------------------------- Article ------------------------- */
+.applicator--article .entry-timestamp--time-l,
+.applicator--article .entry-edit--a-l
+{
+   border-radius: .125rem; 
+}
+
+.applicator--article .go-comments--a--count
+{
+   border-radius: .25rem; 
+}
+
+.applicator--article .entry-title
+{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.applicator--article .post-edit-link,
+.applicator--article .entry-timestamp--a,
+.applicator--article .go-comments--a
+{
+    text-decoration: none;
+}
+
+.applicator--article .post-edit-link
+{
+    display: inline-block;
+}
+
+.applicator--article .entry-edit--a-l
+{
+    box-sizing: border-box;
+    display: inline-block;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    padding: .25rem .5rem;
+    min-width: 3rem;
+    min-height: 1.5rem;
+    
+    text-align: center;
+    
+    background-color: black;
+    color: white;
+    
+    text-transform: uppercase;
+    font-size: .75rem;
+}
+
+.applicator--article .entry-timestamp--time-l
+{
+    box-sizing: border-box;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    
+    padding: .5rem;
+    width: 4rem;
+    height: 5rem;
+    
+    color: black;
+    
+    line-height: 1;
+    
+    border: 1px solid black;
+}
+
+.applicator--article .entry-timestamp--time-l .timestamp-day--l,
+.applicator--article .entry-timestamp--time-l .timestamp-month--l,
+.applicator--article .entry-timestamp--time-l .timestamp-year--l
+{
+    width: 100%;
+    text-align: center;
+}
+
+.applicator--article .entry-timestamp--time-l .timestamp-day--l
+{
+    font-size: 2.25rem;
+}
+.applicator--article .entry-timestamp--time-l .timestamp-month--l,
+.applicator--article .entry-timestamp--time-l .timestamp-year--l
+{
+    font-size: .75rem;
+}
+
+.applicator--article .entry-timestamp--time-l .timestamp-day--l
+{
+    font-weight: bold;
+}
+
+.applicator--article .entry-timestamp--time-l .timestamp-month--l
+{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.applicator--article .go-comments--a--count
+{
+    box-sizing: border-box;
+    
+    position: relative;
+    
+    display: block;
+    padding: .25rem;
+    margin-bottom: .5rem;
+    min-width: 2rem;
+    min-height: 1rem;
+    
+    text-align: center;
+    
+    background-color: black;
+    color: white;
+    
+    font-weight: bold;
+    font-size: .75rem;
+    
+    border-bottom-left-radius: 0;
+}
+
+.applicator--article .go-comments--a--count::before
+{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 100%;
+    
+    /* Triangle */
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: .5rem .5rem 0 0;
+    border-color: black transparent transparent transparent;
+}
+
+.applicator--article .entry-title--a-l
+{
+    display: inline-block;
+    
+    color: black;
+    
+    font-size: 1.5rem;
+}
+
+.applicator--article .entry--hr--cr
+{
+    position: relative;
+    padding-right: 4rem;
+    
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.applicator--article .pub-timestamp,
+.applicator--article .entry-header .comments-snippet
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.applicator--article .entry-header .comments-snippet
+{
+    margin-top: 5rem;
+    padding-top: .5rem;
+    
+    width: 4rem;
+}
+
+.applicator--article .entry-header .comments-snippet--cr
+{
+    position: absolute;
+}
+
+.applicator--article .entry-meta
+{
+    width: 100%;
 }

@@ -33,11 +33,11 @@ if ( !function_exists( 'applicator_comments_actions_snippet' ) ) {
             
                     <?php // With Comments
                     
-                    $go_comments_markup = '<span class="a-l go-comments--a-l">';
-                        $go_comments_markup .= '<span class="count go-comments--a--count">';
+                    $go_comments_markup = '<span class="a_l go-comments---a_l">';
+                        $go_comments_markup .= '<span class="count go-comments---count">';
                             $go_comments_markup .= '%1$s';
                         $go_comments_markup .= '</span>';
-                        $go_comments_markup .= '<span class="go-comments--a--comments--words-l">';
+                        $go_comments_markup .= ' <span class="go-comments---comments_word_l">';
                             $go_comments_markup .= '%2$s';
                         $go_comments_markup .= '</span>';
                     $go_comments_markup .= '</span>';
@@ -69,10 +69,12 @@ if ( !function_exists( 'applicator_comments_actions_snippet' ) ) {
                     // No Comments
                     } else { ?>
                         
-                        <span class="a-l go-comments--a-l">
-                            <span class="count go-comments--a--count"><?php esc_html_e( '0', 'applicator' ); ?></span>
-                            <span class="go-comments--a--comments--words-l"><?php esc_html_e( 'Comment', 'applicator' ); ?></span>
-                        </span>
+                        <a href="<?php echo esc_url( get_permalink() ); ?>#comments" class="a go-comments--a">
+                            <?php echo sprintf( $go_comments_markup,
+                                __( '0', 'applicator' ),
+                                __( 'Comment', 'applicator' )
+                            ); ?>
+                        </a>
         
                     <?php } ?>
                         

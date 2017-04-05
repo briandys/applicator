@@ -4,7 +4,7 @@
         <header class="entry--hr entry-header">
             <div class="entry--hr--cr">
 
-                <?php the_title( '<h1 class="h entry--h entry-title"><a class="a entry--a" href="' . esc_url( get_permalink() ) . '" rel="bookmark" title="' . get_the_title() . '"><span class="a-l">', '</span></a></h1>' ); ?>
+                <?php the_title( '<h1 class="h entry--h entry-title"><a class="a entry-title--a" href="' . esc_url( get_permalink() ) . '" rel="bookmark" title="' . get_the_title() . '"><span class="entry-title--a-l">', '</span></a></h1>' ); ?>
 
 
                 <?php
