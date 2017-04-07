@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html id="start" class="html<?php applicator_hook_html_class(); ?> view no-js no-svg" <?php language_attributes(); ?>>
     <head>
         <meta charset="<?php bloginfo( 'charset' ); ?>">
