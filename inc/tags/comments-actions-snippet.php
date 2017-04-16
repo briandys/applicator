@@ -1,110 +1,126 @@
-<?php
+<?php // Comments Actions Snippet | content.php
 
-// Comments Actions Snippet
-// content.php
-
-if ( !function_exists( 'applicator_comments_actions_snippet' ) ) {
+if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
     function applicator_comments_actions_snippet() {
         
-        $number = (int) get_comments_number( get_the_ID() ); ?>
+        $comments_count_int = (int) get_comments_number( get_the_ID() );
 
-        <?php // Comments State Class
+        $comment_creation_class = 'comment-creation';
+        $comments_count_class = 'comments-count';
+
+        $status_enabled_class = '--enabled';
+        $status_disabled_class = '--disabled';
+        $status_populated_class = '--populated';
+        $status_empty_class = '--empty';
+
+        // Comment Creation Ability Status Class
         if ( comments_open() ) {
-            $comments_state_class = 'comments--enabled';
+            $comment_creation_ability_stat_class = $comment_creation_class . $status_enabled_class;
         } else {
-            $comments_state_class = 'comments--disabled';
+            $comment_creation_ability_stat_class = $comment_creation_class . $status_disabled_class;
         }
-        
-        // Comments Count
-        if ( 0 === $number ) {
-            $comments_count_class = 'comments-count--zero comments-count--empty';
-        } elseif ( 1 === $number ) {
-            $comments_count_class = 'comments-count--single comments-count--populated';
-        } elseif ( 1 < $number ) {
-            $comments_count_class = 'comments-count--multiple comments-count--populated';
+
+        // Comments Count Population Status Class
+        if ( 0 === $comments_count_int ) {
+            $comments_count_pop_stat_class = $comments_count_class . $status_empty_class . ' ' . $comments_count_class . '--zero';
+        } elseif ( 1 === $comments_count_int ) {
+            $comments_count_pop_stat_class = $comments_count_class . $status_populated_class . ' ' . $comments_count_class . '--single';
+        } elseif ( 1 < $comments_count_int ) {
+            $comments_count_pop_stat_class = $comments_count_class . $status_populated_class . ' ' . $comments_count_class . '--multiple';
         } ?>
-
-
-        <div class="comments-snippet <?php echo $comments_state_class . ' ' . $comments_count_class ?>">
-            <div class="comments-snippet--cr">
-                
-                <div class="note <?php echo $comments_count_class ?>--note">
-                    <div class="<?php echo $comments_count_class ?>--note--cr">
-            
-                    <?php // With Comments
-                    
-                    $go_comments_markup = '<span class="a_l go-comments---a_l">';
-                        $go_comments_markup .= '<span class="count go-comments---count">';
-                            $go_comments_markup .= '%1$s';
-                        $go_comments_markup .= '</span>';
-                        $go_comments_markup .= ' <span class="go-comments---comments_word_l">';
-                            $go_comments_markup .= '%2$s';
-                        $go_comments_markup .= '</span>';
-                    $go_comments_markup .= '</span>';
-            
-                    if( (int) get_comments_number( get_the_ID() ) >= 1 ) {
         
-                        comments_popup_link(
-                        // Zero Comment
-                        '',
+        <?php // Component ?>
+        <div class="cp comments-actions-snippet <?php echo $comments_count_pop_stat_class . ' ' . $comment_creation_ability_stat_class ?>" data-name="Comments Actions Snippet">
+            <div class="cr coms-acts-snip---cr">
+                <div class="h coms-acts-snip---h"><span class="h_l coms-acts-snip---h_l">Comments Actions Snippet</span></div>
+                <div class="ct coms-acts-snip---ct">
+                    <div class="ct_cr coms-acts-snip---ct_cr">
 
-                        // Single Comment
-                        sprintf( $go_comments_markup,
-                            __( '1', 'applicator' ),
-                            __( 'Comment', 'applicator' )
-                        ),
+                        <?php // Object ?>
+                        <div class="obj comments-count---obj" data-name="Comments Count">
+                            <span class="g coms-cnt---g">
+                                <span class="g_l coms-cnt---g_l">
 
-                        // Multiple Comments
-                        sprintf( $go_comments_markup,
-                            __( '%', 'applicator' ),
-                            __( 'Comments', 'applicator' )
-                        ),
+                                <?php 
 
-                        // CSS Class
-                        'a go-comments--a',
+                                // Comments Count Markup
+                                $comments_count_obj_mu = '<span class="a_l coms-cnt---a_l">';
+                                    $comments_count_obj_mu .= '<span class="word coms-cnt--number---word">%1$s</span> <span class="word coms-cnt--%3$s---word">%2$s</span>';
+                                $comments_count_obj_mu .= '</span>';
 
-                        // Comments Disabled
-                        '' );
-        
-                    // No Comments
-                    } else { ?>
-                        
-                        <a href="<?php echo esc_url( get_permalink() ); ?>#comments" class="a go-comments--a">
-                            <?php echo sprintf( $go_comments_markup,
-                                __( '0', 'applicator' ),
-                                __( 'Comment', 'applicator' )
-                            ); ?>
-                        </a>
-        
-                    <?php } ?>
-                        
-                    </div>
-                </div>
-                
-                <?php // Open Comments ?>
-                <?php if ( comments_open() ) { ?>
+                                // Status: Populated
+                                if( $comments_count_int >= 1 ) {
 
-                    <a class="a write-comment--a" href="<?php echo esc_url( get_permalink() ); ?>#respond" title="Write Comment">
-                        <span class="a-l write-comment--a-l">
-                            <?php esc_html_e( 'Write Comment', 'applicator' ); ?>
-                        </span>
-                    </a>
+                                    comments_popup_link(
+                                    // Zero Comment
+                                    '',
 
-                <?php // Closed Comments ?>
-                <?php  } else { ?>
+                                    // Single Comment
+                                    sprintf( $comments_count_obj_mu,
+                                        __( '1', 'applicator' ),
+                                        __( 'Comment', 'applicator' ),
+                                        __( 'comment', 'applicator' )
+                                    ),
 
-                    <div class="note comments-closed--note">
-                        <div class="comments-closed--note--cr">
-                            <div class="note-l">
-                                <?php esc_html_e( 'Comments are closed.', 'applicator' ); ?>
+                                    // Multiple Comments
+                                    sprintf( $comments_count_obj_mu,
+                                        __( '%', 'applicator' ),
+                                        __( 'Comments', 'applicator' ),
+                                        __( 'comments', 'applicator' )
+                                    ),
+
+                                    // CSS Class
+                                    'a coms-cnt---a',
+
+                                    // Comments Disabled
+                                    '' );
+
+                                // Status: Empty
+                                } else { ?>
+
+                                    <a class="a coms-cnt---a" href="<?php echo esc_url( get_permalink() ); ?>#comments">
+                                        <?php echo sprintf( $comments_count_obj_mu,
+                                            __( '0', 'applicator' ),
+                                            __( 'Comment', 'applicator' ),
+                                            __( 'comment', 'applicator' )
+                                        ); ?>
+                                    </a>
+
+                                <?php } ?>
+
+                                </span>
+                            </span>
+                        </div><!-- comments-count---obj -->
+
+                        <?php // Status: Enabled
+                        if ( comments_open() ) { ?>
+
+                        <?php // Object ?>
+                        <div class="obj axn add-comment-axn" data-name="Add Comment Action">
+                            <a class="a add-com-axn---a" href="<?php echo esc_url( get_permalink() ); ?>#respond" title="<?php esc_attr_e( 'Add Comment', 'applicator' ); ?>">
+                                <span class="a_l add-com-axn---a_l">
+                                    <span class="word add-com-axn--add---word"><?php esc_html_e( 'Add', 'applicator' ); ?></span>
+                                    <span class="word add-com-axn--comment---word"><?php esc_html_e( 'Comment', 'applicator' ); ?></span>
+                                </span>
+                            </a>
+                        </div><!-- add-comment-axn -->
+
+                        <?php // Status: Disabled
+                        } else { ?>
+
+                        <?php // Object ?>
+                        <div class="obj note commenting-disabled-note---obj" data-name="Commenting Disabled Note">
+                            <div class="g commenting-disabled-note---g">
+                                <p><?php esc_html_e( 'Commenting is disabled.', 'applicator' ); ?></p>
                             </div>
-                        </div>
-                    </div>
+                        </div><!-- commenting-disabled-note---obj -->
 
-                <?php } ?>
-            
+                        <?php } ?>
+
+                    </div>
+                </div><!-- coms-acts-snip---ct -->
             </div>
-        </div><!-- comments-snippet -->
-            
+        </div><!-- comments-actions-snippet -->
+
     <?php }
 }

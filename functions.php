@@ -29,7 +29,7 @@ require_once( get_template_directory() . '/inc/tags/entry-banner-image.php');
 // Comments
 require_once( get_template_directory() . '/inc/tags/comments-actions-snippet.php');
 require_once( get_template_directory() . '/inc/tags/comments-nav.php');
-require_once( get_template_directory() . '/inc/tags/comment-item.php');
+require_once( get_template_directory() . '/inc/tags/comment.php');
 require_once( get_template_directory() . '/inc/functions/comment-form.php');
 
 
