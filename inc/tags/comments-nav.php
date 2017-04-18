@@ -2,8 +2,8 @@
 //------------------------- Comments Navigation
 // comments.php
 
-if ( ! function_exists( 'application_comments_nav' ) ) :
-    function application_comments_nav() {
+if ( ! function_exists( 'applicator_comments_nav' ) ) :
+    function applicator_comments_nav() {
         
         if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
 

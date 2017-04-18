@@ -39,21 +39,24 @@
                             <?php if ( have_comments() ) { ?>
                                 
                                 <?php // Component: Comment ?>
-                                <ol class="grp comments---grp">
+                                <ul class="grp comments---grp">
                                     <?php wp_list_comments( array(
-                                        'style'       => 'ol',
+                                        'style'       => 'ul',
                                         'avatar_size' => 48,
-                                        'reply_text'  => __( 'Reply', 'applicator' ),
                                         'callback' => 'applicator_comment'
                                     ) ); ?>
-                                </ol>
+                                </ul>
                                 
                                 <?php // Comments Navigation | inc > tags > comments-nav.php
-                                application_comments_nav(); ?>
+                                applicator_comments_nav(); ?>
                             
                             <?php } else { ?>
                                 
-                                Note: No comments.
+                                <div class="obj note comments-empty-note---obj" data-name="Comments Empty Note">
+                                    <div class="g comments-empty-note---g">
+                                        <p><?php esc_html_e( 'There are no comments.', 'applicator' ); ?></p>
+                                    </div>
+                                </div><!-- comments-empty-note---obj -->
                                 
                             <?php } ?>
                             
@@ -63,6 +66,27 @@
                 </div><!-- comments -->
                 
                 <?php // Comment Form | inc > functions > comment-form.php
+                
+                // Markup: Commenter Comment Creation
+                $commenter_comment_creation_mu = '<div class="cp fs-item commenter-comment-creation" data-name="Commenter Comment Creation">';
+                    $commenter_comment_creation_mu .= '<div class="cr commenter-com-crt---cr">';
+                        $commenter_comment_creation_mu .= '<div class="h commenter-com-crt---h"><span class="h_l commenter-com-crt---h_l">Commenter Comment Creation</span></div>';
+                        $commenter_comment_creation_mu .= '<div class="ct commenter-com-crt---ct">';
+                            $commenter_comment_creation_mu .= '<div class="ct_cr commenter-com-crt---ct_cr">';
+                                
+                                $commenter_comment_creation_mu .= '<span class="obj commenter-com-creation-label---obj" data-name="Commenter Comment Creation Label">';
+                                    $commenter_comment_creation_mu .= '<label class="label commenter-com-crt-lbl---label" for="comment"><span class="label_l commenter-name-crt-lbl---label_l">%2$s</span></label>';
+                                $commenter_comment_creation_mu .= '</span>';
+                                
+                                $commenter_comment_creation_mu .= '<span class="obj commenter-com-creation-input---obj" data-name="Commenter Comment Creation Input">';
+                                    $commenter_comment_creation_mu .= '<textarea id="comment" class="textarea input-text commenter-com-crt-inp--input-text" name="comment" placeholder="%1$s" title="%1$s" maxlength="65525" required></textarea>';
+                                $commenter_comment_creation_mu .= '</span>';
+                            
+                            $commenter_comment_creation_mu .= '</div>';
+                        $commenter_comment_creation_mu .= '</div>';
+                    $commenter_comment_creation_mu .= '</div>';
+                $commenter_comment_creation_mu .= '</div>';
+                
                 
                 comment_form( array(
                     
@@ -74,6 +98,7 @@
                     'title_reply_before'        => '',
                     'title_reply_after'         => '',
                     
+                    // Heading
                     'title_reply'               => sprintf(
                                                     '<div class="h comment-respond--h">'
                                                         .'<span class="h-l comment-respond--h-l">%s</span>'
@@ -81,6 +106,7 @@
                                                     esc_html__( 'Write Comment', 'applicator' )
                                                 ),
                     
+                    // Settings > Discussion
                     'must_log_in'               => sprintf(
                                                     '<div class="note comment--sign-in-required--note">'
                                                         .'<div class="comment--sign-in-required--note--cr">'
@@ -128,21 +154,12 @@
                                                 ), 
                     
                     // Textarea
-                    'comment_field'             => sprintf(
-                                                    '<div class="fs-item commenter-comment--fs-item">'
-                                                        .'<div class="commenter-comment--fs-item--cr">'
-                                                            .'<label class="label commenter-comment--label" for="commenter-comment--input--text">'
-                                                                .'<span class="label-l">%2$s</span>'
-                                                            .'</label>'
-                                                            .'<div class="input-text commenter-comment--input-text">'
-                                                                .'<textarea id="comment" class="textarea input--text input--textarea commenter-comment--input--text" placeholder="%1$s" name="comment" title="%1$s" maxlength="65525" required></textarea>'
-                                                        .'</div>'
-                                                    .'</div>',
+                    'comment_field'             => sprintf( $commenter_comment_creation_mu,
                                                     esc_attr__( 'Comment', 'applicator' ),
                                                     esc_html__( 'Comment', 'applicator' )
                                                 ),
                     
-                    // Submit Action
+                    // Submit Comment Action
                     'id_submit'                 => 'comment-submit--a',
                     'class_submit'              => 'a form--a comment-submit--a',
                     'label_submit'              => esc_attr__( 'Submit', 'applicator' ),

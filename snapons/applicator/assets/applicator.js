@@ -11,7 +11,8 @@
     }() );
     
     
-    // ------------------------- Go to Content
+    /*
+    // ------------------------- Temp: Go to Content
     function initGoContent( component ) {
         
         var goContentAction = $( '#go-content--a' ),
@@ -41,6 +42,53 @@
         
     }
     initGoContent( $( '#go-content' ) );
+    */
+    
+    
+    // ------------------------- Go to Content
+    function initGoContent( component ) {
+        
+        var $goCtNaviA = $( '#go-ct-navi---a' ),
+            
+            goCtActCss = 'go-content-nav--active',
+            goCtInactCss = 'go-content-nav--inactive',
+            
+            aplGoCtActCss = 'apl--go-content-nav--active',
+            aplGoCtInactCss = 'apl--go-content-nav--inactive';
+        
+        function goCtNaviActivate() {
+            component
+                .addClass( goCtActCss )
+                .removeClass( goCtInactCss );
+            $html
+                .addClass( aplGoCtActCss )
+                .removeClass( aplGoCtInactCss );
+        }
+        
+        function goCtNaviDeactivate() {
+            component
+                .addClass( goCtInactCss )
+                .removeClass( goCtActCss );
+            $html
+                .addClass( aplGoCtInactCss )
+                .removeClass( aplGoCtActCss );
+        }
+        
+        // Initiate
+        goCtNaviDeactivate();
+        
+        // Focus In > Activate
+        $goCtNaviA.on( 'focusin.applicator', function () {
+            goCtNaviActivate();
+        } );
+
+        // Focus Out > Deactivate
+        $goCtNaviA.on( 'focusout.applicator', function () {
+            goCtNaviDeactivate();
+        } );
+        
+    }
+    initGoContent( $( '#go-content-nav' ) );
     
     
     // ------------------------- Sub-Navigation

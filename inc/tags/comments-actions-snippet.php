@@ -44,9 +44,7 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
                                 <?php 
 
                                 // Comments Count Markup
-                                $comments_count_obj_mu = '<span class="a_l coms-cnt---a_l">';
-                                    $comments_count_obj_mu .= '<span class="word coms-cnt--number---word">%1$s</span> <span class="word coms-cnt--%3$s---word">%2$s</span>';
-                                $comments_count_obj_mu .= '</span>';
+                                $comments_count_obj_mu = '<span class="a_l coms-cnt---a_l"><span class="word coms-cnt--number---word">%1$s</span> <span class="word coms-cnt--%3$s---word">%2$s</span></span>';
 
                                 // Status: Populated
                                 if( $comments_count_int >= 1 ) {
@@ -78,8 +76,8 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
                                 // Status: Empty
                                 } else { ?>
 
-                                    <a class="a coms-cnt---a" href="<?php echo esc_url( get_permalink() ); ?>#comments">
-                                        <?php echo sprintf( $comments_count_obj_mu,
+                                    <a class="a coms-cnt---a" href="<?php if ( ! is_singular() ) { echo esc_url( get_permalink() ); } ?>#comments">
+                                        <?php printf( $comments_count_obj_mu,
                                             __( '0', 'applicator' ),
                                             __( 'Comment', 'applicator' ),
                                             __( 'comment', 'applicator' )
@@ -94,21 +92,14 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
 
                         <?php // Status: Enabled
                         if ( comments_open() ) { ?>
-
-                        <?php // Object ?>
+                        
                         <div class="obj axn add-comment-axn" data-name="Add Comment Action">
-                            <a class="a add-com-axn---a" href="<?php echo esc_url( get_permalink() ); ?>#respond" title="<?php esc_attr_e( 'Add Comment', 'applicator' ); ?>">
-                                <span class="a_l add-com-axn---a_l">
-                                    <span class="word add-com-axn--add---word"><?php esc_html_e( 'Add', 'applicator' ); ?></span>
-                                    <span class="word add-com-axn--comment---word"><?php esc_html_e( 'Comment', 'applicator' ); ?></span>
-                                </span>
-                            </a>
+                            <a class="a add-com-axn---a" href="<?php if ( ! is_singular() ) { echo esc_url( get_permalink() ); } ?>#comment" title="<?php esc_attr_e( 'Add Comment', 'applicator' ); ?>"><span class="a_l add-com-axn---a_l"><span class="word add-com-axn--add---word"><?php esc_html_e( 'Add', 'applicator' ); ?></span> <span class="word add-com-axn--comment---word"><?php esc_html_e( 'Comment', 'applicator' ); ?></span></span></a>
                         </div><!-- add-comment-axn -->
 
                         <?php // Status: Disabled
                         } else { ?>
 
-                        <?php // Object ?>
                         <div class="obj note commenting-disabled-note---obj" data-name="Commenting Disabled Note">
                             <div class="g commenting-disabled-note---g">
                                 <p><?php esc_html_e( 'Commenting is disabled.', 'applicator' ); ?></p>

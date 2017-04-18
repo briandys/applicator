@@ -46,7 +46,7 @@ if ( ! function_exists( 'applicator_snapons_applicator_styles' ) ) :
         
         add_editor_style( array( 'assets/css/editor-style.css', applicator_fonts_url() ) );
         
-        wp_enqueue_style( 'applicator-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '6.9', 'all' );
+        wp_enqueue_style( 'applicator-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '7.8', 'all' );
 
     }
     add_action( 'wp_enqueue_scripts', 'applicator_snapons_applicator_styles', 0);
@@ -57,7 +57,7 @@ endif;
 if ( ! function_exists( 'applicator_snapons_applicator_scripts' ) ) :
     function applicator_snapons_applicator_scripts() {
         
-        wp_enqueue_script( 'applicator-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/applicator.js' ), array( 'jquery' ), '6.7', true );
+        wp_enqueue_script( 'applicator-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/applicator.js' ), array( 'jquery' ), '6.9', true );
         
         // Localization
         $applicator_l10n['subnavShowLabel']    = __( 'Show Sub-Nav', 'applicator' );

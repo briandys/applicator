@@ -12,40 +12,49 @@
     <body <?php body_class(); ?>>
         
         
-        <?php //------------------------- Web Product Start ------------------------- ?>
-        <div class="cn wbp-start" data-name="Web Product Start">
-            <div class="wbp-start--cr">
+        <div id="page" class="wbp site" data-name="Web Product">
+            <div class="cr wbp_cr">
                 
-                <div id="go-content" class="cp go-content" data-name="Go to Content">
-                    <div class="go-content--cr">
+                <div class="cn wbp-start" data-name="Web Product Start">
+                    <div class="cr wbp-start---cr">
+
+                        <div id="go-content-nav" class="nav go-content-nav" data-name="Go to Content Navigation">
+                            <div class="cr go-ct-nav---cr">
+                                <div class="h go-ct-nav---h"><span class="h_l go-ct-nav---h_l"><?php esc_html_e( 'Go to Content Navigation', 'applicator'); ?></span></div>
+                                <div class="ct go-ct-nav---ct">
+                                    <div class="ct_cr go-ct-nav---ct_cr">
+                                        
+                                        <?php // Markup
+                                        $go_content_navi_mu = '<div class="obj navi go-content-navi" data-name="Go to Content Nav Item">';
+                                            $go_content_navi_mu .= '<a id="go-ct-navi---a" class="a go-ct-navi---a skip-link" href="#content" title="%1$s"><span class="a_l go-ct-navi---a_l"><span class="word go-ct-navi--show---word">%2$s</span> <span class="word go-ct-navi--to---word">%3$s</span> <span class="word go-ct-navi--content---word">%4$s</span></span></a>';
+                                        $go_content_navi_mu .= '</div>';
                         
-                        <a id="go-content--a" class="a go-content--a skip-link" href="#content" title="<?php esc_attr_e( 'Go to Content', 'applicator'); ?>">
-                            <span class="go-content--a-l"><?php esc_html_e( 'Go to Content', 'applicator'); ?></span>
-                        </a>
-                    
-                    </div>
-                </div><!-- go-content -->
-        
-        
-                <?php //------------------------- Browser Upgrade ------------------------- ?>
-                <!--[if lt IE 8]>
-                    <div class="cp browser-upgrade" data-name="Browser Upgrade">
-                        <div class="browser-upgrade--cr">
-                            <div class="browser-upgrade--l">
-                                <?php $url = 'http://browsehappy.com/';
-                                echo sprintf( __( 'You are using an <strong>outdated</strong> browser. Please <a href="%s" title="">upgrade your browser</a> to improve your experience.', 'applicator' ), esc_url( $url ) ); ?>
+                                        printf( $go_content_navi_mu,
+                                            esc_attr__( 'Go to Content', 'applicator'),
+                                            esc_html__( 'Go', 'applicator'),
+                                            esc_html__( 'to', 'applicator'),
+                                            esc_html__( 'Content', 'applicator')
+                                        ); ?>
+                                    
+                                    </div>
+                                </div><!-- go-ct-nav---ct -->
                             </div>
-                        </div>
+                        </div><!-- go-content-nav -->
+
+                        <?php //------------------------- Browser Upgrade ------------------------- ?>
+                        <!--[if lt IE 8]>
+                            <div class="cp browser-upgrade" data-name="Browser Upgrade">
+                                <div class="browser-upgrade--cr">
+                                    <div class="browser-upgrade--l">
+                                        <?php $url = 'http://browsehappy.com/';
+                                        echo sprintf( __( 'You are using an <strong>outdated</strong> browser. Please <a href="%s" title="">upgrade your browser</a> to improve your experience.', 'applicator' ), esc_url( $url ) ); ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <![endif]-->
+
                     </div>
-                <![endif]-->
-                
-            </div>
-        </div><!-- wbp-start -->
-        
-        
-        <?php //------------------------- Container ------------------------- ?>
-        <div id="page" class="cn container site" data-name="Container">
-            <div class="container--cr">
+                </div><!-- wbp-start -->
         
                 
                 <?php //------------------------- Constructor: Main Header ------------------------- ?>
