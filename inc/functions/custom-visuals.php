@@ -69,7 +69,7 @@ if ( ! function_exists( 'applicator_header_style' ) ) :
         else : ?>
 
             .wbp-name--a,
-            .wbp-desc--a-l
+            .wbp-desc---a_l
             {
                 color: #<?php echo esc_attr( $header_text_color ); ?>;
             }

@@ -11,14 +11,13 @@
     </head>
     <body <?php body_class(); ?>>
         
-        
         <div id="page" class="wbp site" data-name="Web Product">
-            <div class="cr wbp_cr">
+            <div class="cr wbp---cr">
                 
                 <div class="cn wbp-start" data-name="Web Product Start">
                     <div class="cr wbp-start---cr">
 
-                        <div id="go-content-nav" class="nav go-content-nav" data-name="Go to Content Navigation">
+                        <div id="go-content-nav" class="cp nav go-content-nav" data-name="Go to Content Navigation">
                             <div class="cr go-ct-nav---cr">
                                 <div class="h go-ct-nav---h"><span class="h_l go-ct-nav---h_l"><?php esc_html_e( 'Go to Content Navigation', 'applicator'); ?></span></div>
                                 <div class="ct go-ct-nav---ct">
@@ -41,106 +40,98 @@
                             </div>
                         </div><!-- go-content-nav -->
 
-                        <?php //------------------------- Browser Upgrade ------------------------- ?>
                         <!--[if lt IE 8]>
-                            <div class="cp browser-upgrade" data-name="Browser Upgrade">
-                                <div class="browser-upgrade--cr">
-                                    <div class="browser-upgrade--l">
-                                        <?php $url = 'http://browsehappy.com/';
-                                        echo sprintf( __( 'You are using an <strong>outdated</strong> browser. Please <a href="%s" title="">upgrade your browser</a> to improve your experience.', 'applicator' ), esc_url( $url ) ); ?>
-                                    </div>
-                                </div>
+                        <div class="obj note browser-upgrade-note---obj" data-name="Browser Upgrade">
+                            <div class="g browser-upg---g">
+                                <?php printf ( '<p>%1$s <a href="%2$s">%3$s</a></p>',
+                                    esc_html__( 'You are using an outdated browser. Please upgrade your browser to improve your experience.', 'applicator' ),
+                                    esc_url( 'http://browsehappy.com/' ),
+                                    esc_html__( 'Upgrade Browser', 'applicator' )
+                                ); ?>
                             </div>
+                        </div>
                         <![endif]-->
 
                     </div>
                 </div><!-- wbp-start -->
         
-                
-                <?php //------------------------- Constructor: Main Header ------------------------- ?>
-                <header id="masthead" class="header cn main-header site-header" data-name="Main Header" role="banner">
-                    <div class="main-header--cr">
+                <header id="masthead" class="cn header main-header site-header" data-name="Main Header" role="banner">
+                    <div class="cr main-header---cr">
                         
-                        
-                        <?php //------------------------- Web Product Info ------------------------- ?>
                         <div class="cp wbp-info" data-name="Web Product Info">
-                            <div class="wbp-info--cr">
+                            <div class="wbp-info---cr">
                                 
+                                <?php
                                 
-                                <?php //------------------------- Web Product Name ------------------------- ?>
-                                <div class="cp wbp-name" data-name="Web Product Name">
-                                    <div class="wbp-name--cr">
-                                        
-                                        <h1 class="h wbp-name--h site-title">
-                                            <a class="a wbp-name--a" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'name' ); ?>">
-                                                <span class="a-l wbp-name--a-l"><?php bloginfo( 'name' ); ?></span>
-                                            </a>
-                                        </h1>
-                                    
-                                    </div>
-                                </div><!-- wbp-name -->
-                                        
-                                <?php //------------------------- Customizer: Custom Logo
-                                // inc settings.php
+                                // Web Product Name
+                                // Markup
+                                $wbp_heading_obj_mu = '<div class="obj wbp-name" data-name="Web Product Name">';
+                                    $wbp_heading_obj_mu .= '<h1 class="h wbp-name--h site-title">';
+                                        $wbp_heading_obj_mu .= '<span class="h_l wbp-name---h_l">';
+                                            $wbp_heading_obj_mu .= '<a class="a wbp-name---a" href="%2$s" rel="home" title="%1$s"><span class="a_l wbp-name---a_l">%1$s</span></a>';
+                                        $wbp_heading_obj_mu .= '</span>';
+                                    $wbp_heading_obj_mu .= '</h1>';
+                                $wbp_heading_obj_mu .= '</div>';
+                                
+                                printf( $wbp_heading_obj_mu,
+                                    get_bloginfo( 'name' ),
+                                    esc_url( home_url( '/' ) )
+                                );
+                                
+                                // Web Product Custom Logo | Customizer > Site Identity | inc > settings.php
                                 if ( has_custom_logo() ) { ?>
-                                
-                                <div class="cp wbp-logo" data-name="Web Product Logo">
-                                    <div class="wbp-logo--cr">
+                                    <div class="obj wbp-logo" data-name="Web Product Logo" title="<?php bloginfo( 'name' ); ?>">
                                         <?php the_custom_logo(); ?>
                                     </div>
-                                </div>
-                                
                                 <?php }
                                 
-                                
-                                //------------------------- Web Product Description
+                                // Web Product Description
+                                // Markup
                                 $description = get_bloginfo( 'description', 'display' );
-                                if ( $description || is_customize_preview() ) { ?>
+                                if ( $description || is_customize_preview() ) {
+                                    
+                                    $wbp_desc_obj_mu = '<div class="obj wbp-desc" data-name="Web Product Description">';
+                                        $wbp_desc_obj_mu .= '<div class="g wbp-desc---g">';
+                                            $wbp_desc_obj_mu .= '<span class="g_l wbp-desc---g_l">';
+                                                $wbp_desc_obj_mu .= '<a class="a wbp-desc---a" href="%2$s" rel="home" title="%1$s"><span class="a_l wbp-desc---a_l">%1$s</span></a>';
+                                            $wbp_desc_obj_mu .= '</span>';
+                                        $wbp_desc_obj_mu .= '</div>';
+                                    $wbp_desc_obj_mu .= '</div>';
+
+                                    printf( $wbp_desc_obj_mu,
+                                        $description,
+                                        esc_url( home_url( '/' ) )
+                                    );
                                 
-                                <div class="cp wbp-desc" data-name="Web Product Description">
-                                    <div class="wbp-desc--cr">
-                                        <a class="a wbp-desc--a" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" title="<?php bloginfo( 'description' ); ?>">
-                                            <span class="a-l wbp-desc--a-l site-description"><?php echo $description; ?></span>
-                                        </a>
-                                    </div>
-                                </div><!-- wbp-desc -->
-                                
-                                <?php } ?>
+                                } ?>
                                 
                             </div>
                         </div><!-- wbp-info -->
                         
-                        
-                        <?php //------------------------- Main Nav | Main Header Aside ------------------------- ?>
-                        <div class="cp main-nav--main-header-aside" data-name="Main Nav | Main Header Aside">
-                            <div class="main-nav--main-header-aside--cr">
-                                <div class="h main-nav--main-header-aside--h">
-                                    <span class="h-l">Main Nav | Main Header Aside</span>
-                                </div>
-                                <div class="main-nav--main-header-aside--ct">
-                                    <div class="main-nav--main-header-aside--ct-cr">
+                        <div class="frame main-nav--main-header-aside" data-name="Main Nav | Main Header Aside">
+                            <div class="cr mn-mha---cr">
+                                <div class="h mn-mha---h"><span class="h_l mn-mha---h_l"><?php esc_html_e( 'Main Nav | Main Header Aside', 'applicator' ); ?></span></div>
+                                <div class="ct mn-mha---ct">
+                                    <div class="ct_cr mn-mha---ct-cr">
 
-                                        <?php //------------------------- Main Navigation
-                                        // inc > tags > main-navigation.php
+                                        <?php // Main Navigation | inc > tags > main-navigation.php
                                         applicator_func_main_nav();
                                         
-                                        
-                                        //------------------------- Hook: After Main Navigation
+                                        // Hook: After Main Navigation
                                         applicator_hook_after_main_nav();
                                         
-                                        
-                                        //------------------------- Sub-Constructor: Main Header Aside
+                                        // Main Header Aside
                                         if ( is_active_sidebar( 'main-header-aside' )  ) { ?>
-
-                                        <aside id="main-header-aside" class="aside cn main-header-aside" data-name="Main Header Aside" role="complementary">
-                                            <div class="main-header-aside--cr">
-                                                <h3 class="h main-header-aside--h">
-                                                    <span class="h-l"><?php esc_html_e( 'Aside: Main Header', 'applicator' ); ?></span>
-                                                </h3>
-                                                <?php dynamic_sidebar( 'main-header-aside' ); ?>
+                                        <aside id="main-header-aside" class="cn aside main-header-aside" data-name="Main Header Aside" role="complementary">
+                                            <div class="cr main-hr-as---cr">
+                                                <h3 class="h main-hr-as---h"><span class="h_l main-hr-as---h_l">Main Header Aside</span></h3>
+                                                <div class="ct main-hr-as---ct">
+                                                    <div class="ct_cr main-hr-as---ct_cr">
+                                                        <?php dynamic_sidebar( 'main-header-aside' ); ?>
+                                                    </div>
+                                                </div><!-- main-hr-as---ct -->
                                             </div>
                                         </aside><!-- main-header-aside -->
-
                                         <?php } ?>
 
                                     </div>

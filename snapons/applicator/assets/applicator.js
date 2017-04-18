@@ -7,42 +7,8 @@
     
     // Classify the built-in Search
     ( function() {
-        $( '.main-header--cr' ).children( '.search-cp' ).addClass( 'arbitrary-nav' ).attr( 'id', 'arbitrary-nav' );
+        $( '.main-header---cr' ).children( '.search-cp' ).addClass( 'arbitrary-nav' ).attr( 'id', 'arbitrary-nav' );
     }() );
-    
-    
-    /*
-    // ------------------------- Temp: Go to Content
-    function initGoContent( component ) {
-        
-        var goContentAction = $( '#go-content--a' ),
-            goContentActiveClass = 'go-content--active',
-            goContentInactiveClass = 'go-content--inactive',
-            
-            aplGoContentActiveClass = 'applicator--go-content--active',
-            aplGoContentInactiveClass = 'applicator--go-content--inactive';
-        
-        $html.addClass( aplGoContentInactiveClass );
-        
-        component.addClass( goContentInactiveClass );
-        
-        goContentAction.on( 'focusin.applicator', function () {
-            component.addClass( goContentActiveClass );
-            component.removeClass( goContentInactiveClass );
-            $html.addClass( aplGoContentActiveClass );
-            $html.removeClass( aplGoContentInactiveClass );
-        } );
-
-        goContentAction.on( 'focusout.applicator', function () {
-            component.addClass( goContentInactiveClass );
-            component.removeClass( goContentActiveClass );
-            $html.addClass( aplGoContentInactiveClass );
-            $html.removeClass( aplGoContentActiveClass );
-        } );
-        
-    }
-    initGoContent( $( '#go-content' ) );
-    */
     
     
     // ------------------------- Go to Content
@@ -198,8 +164,8 @@
             searchInactiveClass = 'search--inactive',
             searchInputEmptyClass = 'search-input--empty',
             
-            aplSearchActiveClass = 'applicator--search--active',
-            aplSearchInactiveClass = 'applicator--search--inactive',
+            aplSearchActiveClass = 'apl--search--active',
+            aplSearchInactiveClass = 'apl--search--inactive',
             
             $searchComponent = $( '.arbitrary-nav' ),
             $searchInput = component.find( '.search-term--input--text' ),
@@ -358,109 +324,76 @@
     // ------------------------- Go to Start
     function initGoStart( component ) {
         
-        var currentPos = $window.scrollTop(),
-            goStartCp = component.closest( '.go-start' ),
+        var $goStartNaviA = $( '#go-start-navi---a' ),
             
-            goStartActiveClass = 'go-start--active',
-            goStartInactiveClass = 'go-start--inactive',
+            goStartActCss = 'go-start-nav--active',
+            goStartInactCss = 'go-start-nav--inactive',
             
-            
-            aplGoStartActiveClass = 'applicator--go-start--active',
-            aplGoStartInactiveClass = 'applicator--go-start--inactive';
+            aplGoStartActCss = 'apl--go-start-nav--active',
+            aplGoStartInactCss = 'apl--go-start-nav--inactive';
         
-        function goStartActivate() {
-            goStartCp
-                .addClass( goStartActiveClass )
-                .removeClass( goStartInactiveClass );
+        function goStartNaviActivate() {
+            component
+                .addClass( goStartActCss )
+                .removeClass( goStartInactCss );
             $html
-                .addClass( aplGoStartActiveClass )
-                .removeClass( aplGoStartInactiveClass );
+                .addClass( aplGoStartActCss )
+                .removeClass( aplGoStartInactCss );
         }
         
-        function goStartDeactivate() {
-            goStartCp
-                .addClass( goStartInactiveClass )
-                .removeClass( goStartActiveClass );
+        function goStartNaviDeactivate() {
+            component
+                .addClass( goStartInactCss )
+                .removeClass( goStartActCss );
             $html
-                .addClass( aplGoStartInactiveClass )
-                .removeClass( aplGoStartActiveClass );
+                .addClass( aplGoStartInactCss )
+                .removeClass( aplGoStartActCss );
         }
         
+        // Initiate
+        goStartNaviDeactivate();
         
-        // Get document height (cross-browser)
-        // http://james.padolsey.com/javascript/get-document-height-cross-browser/
-        function documentHeight() {
-            var D = document;
-            return Math.max(
-                D.body.scrollHeight,
-                D.documentElement.scrollHeight,
-                D.body.offsetHeight,
-                D.documentElement.offsetHeight,
-                D.body.clientHeight,
-                D.documentElement.clientHeight
-            );
-        }
+        // http://stackoverflow.com/a/40370876
+        window.onscroll = function( ev ) {
+            if ( ( window.innerHeight + window.pageYOffset ) >= document.body.offsetHeight ) {
+                goStartNaviActivate();
+            }
+        };
 
-        // Calculate distance of scroll from bottom    
-        function scrollPosFromBottom( valueBottom ) {
-            return $window.scrollTop() + $window.height() > documentHeight() - valueBottom;
-        }
-
-        // Calculate distance of scroll from top    
-        function scrollPosFromTop( valueTop ) {
-            return $window.scrollTop() > valueTop;
-        }
         
-        // Activation based on scroll direction
-        function goStartToggleOnScroll() {
-            var scrollPos = $window.scrollTop();
-            if ( scrollPos > currentPos ) {
-                goStartDeactivate();
-            } else {
-                goStartActivate();
-            }
-            currentPos = scrollPos;
-        }
-        
-        // Sets the different conditions for activation
-        function goStartConditions() {
-
-            var topBuffer = $window.height(),
-                bottomBuffer = $window.height();
-
-            // If scrolled past top buffer
-            if ( scrollPosFromTop( topBuffer ) ) {
-                goStartToggleOnScroll();
-            } else {
-                goStartDeactivate();
-            }
-
-            // If scrolled within bottom buffer
-            if ( scrollPosFromBottom( bottomBuffer ) ) {
-                goStartActivate();
-            }
-
-            // Deactivate if whole page is too short for the top and bottom buffer
-            if ( topBuffer + bottomBuffer > documentHeight() ) {
-                goStartDeactivate();
-            }
-        }
-        goStartConditions();
-
-        // Action
-        component.click( function() {
-            goStartDeactivate();
+        /*
+        // Focus In > Activate
+        $goStartNaviA.on( 'focusin.applicator', function () {
+            goCtNaviActivate();
         } );
 
-        // Debounce
-        var goStartDebounce = debounce( function () {
-            goStartConditions();
-        }, applicatorDebounceTimeout );
+        // Focus Out > Deactivate
+        $goStartNaviA.on( 'focusout.applicator', function () {
+            goCtNaviDeactivate();
+        } );
+        */
+        
+        
+    
+    
+        // Smooth Scroll to #start
+        $( '#go-start-navi---a' ).bind( 'click', function( e ) {
 
-        window.addEventListener( 'scroll', goStartDebounce );
+            e.preventDefault();
+
+            var target = $( this ).attr( "href" );
+
+            $( 'html, body' ).stop().animate( {
+                scrollTop: $( target ).offset().top
+            }, 1000, function() {
+                location.hash = target;
+            } );
+
+            return false;
+        } );
         
     }
-    initGoStart( $( '#go-start--a' ) );
+    initGoStart( $( '#go-start-nav' ) );
     
     
     
@@ -478,8 +411,8 @@
             mainNavHeaderAsideMenuActiveClass = 'main-nav--header-aside--active',
             mainNavHeaderAsideMenuInactiveClass = 'main-nav--header-aside--inactive',
             
-            aplMainNavHeaderAsideMenuActiveClass = 'applicator--main-nav--header-aside--menu--active',
-            aplMainNavHeaderAsideMenuInactiveClass = 'applicator--main-nav--header-aside--menu--inactive',
+            aplMainNavHeaderAsideMenuActiveClass = 'apl--mnha--menu--active',
+            aplMainNavHeaderAsideMenuInactiveClass = 'apl--mnha--menu--inactive',
             
             $mnhaCp = $( '.main-nav--main-header-aside' ),
             
@@ -487,7 +420,7 @@
             $mainMenuTogAxnL;
         
         // Attach Markup
-        component.find( '.main-nav--main-header-aside--ct' ).before( mainNavHeaderAsideMenuToggle );
+        component.find( '.mn-mha---ct' ).before( mainNavHeaderAsideMenuToggle );
         component.find( '.main-nav--header-aside--menu-toggle--cr' ).append( mainNavHeaderAsideMenuToggleAction );
         component.find( '.main-nav--header-aside--menu-toggle--a-l' )
             .append( mainNavHeaderAsideMenuToggleActionLabel )
@@ -534,9 +467,9 @@
             if ( component.hasClass( mainNavHeaderAsideMenuActiveClass ) ) {
                 mnhaActivate();
                 
-                component.find( '.main-nav--main-header-aside--ct' ).attr( 'title', applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuHideLabel );
+                component.find( '.mn-mha---ct' ).attr( 'title', applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuHideLabel );
                 
-                component.find( '.main-nav--main-header-aside--ct-cr' ).attr( 'title', '' );
+                component.find( '.mn-mha---ct-cr' ).attr( 'title', '' );
             
             } else if ( component.hasClass( mainNavHeaderAsideMenuInactiveClass ) ) {
                 mnhaDeactivate();
@@ -563,7 +496,7 @@
         // ------------------------- Deactivate on Click Outside
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             var _this = $( this );
-            if ( ( ! $( e.target ).closest( '.main-nav--header-aside--menu-toggle' ).length && ! $( e.target ).closest( '.main-nav--main-header-aside--ct-cr' ).length ) && $mnhaCp.hasClass( mainNavHeaderAsideMenuActiveClass ) ) {
+            if ( ( ! $( e.target ).closest( '.main-nav--header-aside--menu-toggle' ).length && ! $( e.target ).closest( '.mn-mha---ct-cr' ).length ) && $mnhaCp.hasClass( mainNavHeaderAsideMenuActiveClass ) ) {
                 mnhaDeactivate();
             }
         } );

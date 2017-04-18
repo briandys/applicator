@@ -1,71 +1,76 @@
                     </section>
                 </div><!-- main-content -->
 
-
-                <?php //------------------------- Constructor: Main Footer ------------------------- ?>
-                <footer id="colophon" class="footer cn main-footer site-footer" data-name="Main Footer" role="contentinfo">
+                <footer id="colophon" class="cn footer main-footer site-footer" data-name="Main Footer" role="contentinfo">
                     <div class="main-footer--cr">
                         
-                        
-                        <?php //------------------------- Sub-Constructor: Main Footer Aside ------------------------- ?>
-                        <?php if ( is_active_sidebar( 'main-footer-aside' )  ) : ?>
-                        <aside id="main-footer-aside" class="aside cn main-footer-aside" data-name="Main Footer Aside" role="complementary">
-                            <div class="main-footer-aside--cr">
-                                <h3 class="h main-footer-aside--h">
-                                    <span class="main-footer-aside--h-l"><?php esc_html_e( 'Aside: Main Footer', 'applicator' ); ?></span>
-                                </h3>
-                                <?php dynamic_sidebar( 'main-footer-aside' ); ?>
+                        <?php // Main Footer Aside
+                        if ( is_active_sidebar( 'main-footer-aside' )  ) { ?>
+                        <aside id="main-footer-aside" class="cn aside main-footer-aside" data-name="Main Footer Aside" role="complementary">
+                            <div class="cr main-fr-as---cr">
+                                <h3 class="h main-fr-as---h"><span class="h_l main-fr-as---h_l">Main Footer Aside</span></h3>
+                                <div class="ct main-fr-as---ct">
+                                    <div class="ct_cr main-fr-as---ct_cr">
+                                        <?php dynamic_sidebar( 'main-footer-aside' ); ?>
+                                    </div>
+                                </div><!-- main-fr-as---ct -->
                             </div>
                         </aside><!-- main-footer-aside -->
-                        <?php endif; ?>
+                        <?php } ?>
                         
-                        
-                        <?php //------------------------- Web Product Copyright ------------------------- ?>
-                        <div class="cp wbp-copyright site-info" data-name="Web Product Copyright">
-                            <div class="wbp-copyright--cr">
-                                
-                                <div class="wbp-copyright--l">
-                                    <span class="wbp-copyright-line">
-                                        <span class="wbp-copyright--name--l"><?php bloginfo( 'name' ); ?></span>
-                                        <span class="wbp-copyright--copy--l"><?php esc_html_e( '&copy;', 'applicator' ); ?></span>
-                                        <span class="wbp-copyright--year--l"><?php do_action( 'applicator_auto_copyright_year' ) ?>.</span>
-                                    </span>
-                                    <span class="wbp-tm-line">
-                                        <span class="wbp-copyright--olrayt--l"><?php esc_html_e( 'Olrayt reserved&trade;', 'applicator' ); ?>.</span>
-                                    </span>
+                        <div class="obj wbp-copyright site-info" data-name="Web Product Copyright">
+                            <div class="g wbp-copyright---g">
+                                <div class="g_l wbp-copyright---g_l">
+                                    
+                                    <?php // Web Product Copyright Markup
+                                    $wbp_copyright_mu = '<span class="line wbp-copyright--name---line"><span class="word wbp-copyright--name---word">%1$s</span> <span class="word wbp-copyright--symbol---word">%2$s</span> <span class="word wbp-copyright--year---word">%3$s</span>.</span> <span class="line wbp-copyright--tm---line">%4$s</span>';
+                                    
+                                    printf( $wbp_copyright_mu,
+                                        get_bloginfo( 'name' ),
+                                        esc_html__( '&copy;', 'applicator' ),
+                                        date( 'Y' ),
+                                        esc_html__( 'Olrayt reserved&trade;.', 'applicator' )
+                                    );
+                                    ?>
                                 </div>
-
                             </div>
                         </div><!-- wbp-copyright -->
 
                     </div>
                 </footer><!-- main-footer -->
+
+                <div class="cn wbp-end" data-name="Web Product End">
+                    <div class="cr wbp-end---cr">
+
+                        <div id="go-start-nav" class="cp nav go-start-nav" data-name="Go to Start Navigation">
+                            <div class="cr go-start-nav---cr">
+                                <div class="h go-start-nav---h"><span class="h_l go-ct-nav---h_l"><?php esc_html_e( 'Go to Start Navigation', 'applicator'); ?></span></div>
+                                <div class="ct go-start-nav---ct">
+                                    <div class="ct_cr go-start-nav---ct_cr">
+
+                                        <?php // Markup
+                                        $go_start_navi_mu = '<div class="obj navi go-start-navi" data-name="Go to Start Nav Item">';
+                                            $go_start_navi_mu .= '<a id="go-start-navi---a" class="a go-start-navi---a" href="#start" title="%1$s"><span class="a_l go-start-navi---a_l"><span class="word go-start-navi--go---word">%2$s</span> <span class="word go-start-navi--to---word">%3$s</span> <span class="word go-start-navi--start---word">%4$s</span> %5$s</span></a>';
+                                        $go_start_navi_mu .= '</div>';
+
+                                        printf( $go_start_navi_mu,
+                                            esc_attr__( 'Go to Start', 'applicator'),
+                                            esc_html__( 'Go', 'applicator'),
+                                            esc_html__( 'to', 'applicator'),
+                                            esc_html__( 'Start', 'applicator'),
+                                            applicator_get_svg( array( 'icon' => 'arrow-up-2--icon' ) )
+                                        ); ?>
+
+                                    </div>
+                                </div><!-- go-start-nav---ct -->
+                            </div>
+                        </div><!-- go-start-nav -->
+
+                    </div>
+                </div><!-- wbp-end -->
             
             </div>
-        </div><!-- container -->
-
-
-        <?php //------------------------- Web Product End ------------------------- ?>
-        <div class="cn wbp-end" data-name="Web Product End">
-            <div class="wbp-end--cr">
-                
-                
-                <?php //------------------------- Go to Start ------------------------- ?>
-                <div class="cp go-start" data-name="Go to Start">
-                    <div class="go-start--cr">
-                        
-                        <a id="go-start--a" class="a go-start--a" href="#start" title="<?php esc_attr_e( 'Go to Start', 'applicator'); ?>">
-                            <span class="go-start--a-l">
-                                <span class="go-start--a--words-l"><?php esc_html_e( 'Go to Start', 'applicator'); ?></span>
-                                <?php echo applicator_get_svg( array( 'icon' => 'arrow-up-2--icon', 'fallback' => true ) ); ?>
-                            </span>
-                        </a>
-                    
-                    </div>
-                </div><!-- go-start -->
-                
-            </div>
-        </div><!-- wbp-start -->
+        </div><!-- wbp -->
 
         <?php wp_footer(); ?>
     

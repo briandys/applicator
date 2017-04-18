@@ -120,16 +120,19 @@
             </span>
         </h2><!-- main-content--h -->
         
-        
-        <?php //------------------------- Sub-Constructor: Main Content Header Aside ------------------------- ?>
-        <?php if ( is_active_sidebar( 'main-content-header-aside' )  ) : ?>
-        <aside id="main-content-header-aside" class="aside cn main-content-header-aside" data-name="Main Content Header Aside" role="complementary">
-            <div class="main-content-header-aside--cr">
-                <h3 class="h main-content-header-aside--h"><span class="h-l"><?php esc_html_e( 'Aside: Main Content Header', 'applicator' ); ?></span></h3>
-                <?php dynamic_sidebar( 'main-content-header-aside' ); ?>
+        <?php // Main Content Header Aside
+        if ( is_active_sidebar( 'main-content-header-aside' )  ) { ?>
+        <aside id="main-content-header-aside" class="cn aside main-content-header-aside" data-name="Main Content Header Aside" role="complementary">
+            <div class="cr main-ct-hr-as---cr">
+                <h3 class="h main-ct-hr-as---h"><span class="h_l main-ct-hr-as---h_l">Main Content Header Aside</span></h3>
+                <div class="ct main-ct-hr-as---ct">
+                    <div class="ct_cr main-ct-hr-as---ct_cr">
+                        <?php dynamic_sidebar( 'main-content-header-aside' ); ?>
+                    </div>
+                </div><!-- main-ct-hr-as---ct -->
             </div>
         </aside><!-- main-content-header-aside -->
-        <?php endif; ?>
+        <?php } ?>
 
     </div>
 </div><!-- main-content--hr -->
