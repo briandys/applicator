@@ -1036,15 +1036,14 @@ $go-green: #12b32d;
 .go-start-navi--to---word,
 .go-start-navi--start---word,
 .go-start-nav---h,
-.go-start-nav--inactive
+.dom--unready .go-start-nav
 {position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;}
 
 
 
 
 
-/* ------------------------- Show Content Nav */
-
+/* ------------------------- Go to Content Nav */
 .go-content-nav,
 .go-ct-nav---cr,
 .go-ct-nav---ct,
@@ -1326,8 +1325,7 @@ $go-green: #12b32d;
     white-space: nowrap;
 }
 
-
-.applicator--go-start--active .wbp-copyright
+.apl--go-start-nav--active .wbp-copyright
 {
     padding-left: 3rem;
     padding-right: 3rem;
@@ -1337,7 +1335,7 @@ $go-green: #12b32d;
 
 
 
-/* ------------------------- Go to Start */
+/* ------------------------- Go to Start Nav */
 .go-start-navi---a,
 .go-start-navi---a_l
 {
@@ -1362,6 +1360,8 @@ $go-green: #12b32d;
     position: fixed;
     right: 0;
     bottom: 0;
+    
+    transition: all 1s ease-in-out;
 }
 
 .go-start-navi---a
@@ -1369,4 +1369,14 @@ $go-green: #12b32d;
     display: inline-flex;
     justify-content: center;
     align-items: center;
+}
+
+.go-start-nav--inactive .go-start-navi
+{
+    transform: translateY( 100% );
+}
+
+.go-start-nav--active .go-start-navi
+{
+    transform: translateY( 0 );
 }

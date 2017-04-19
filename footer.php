@@ -48,7 +48,7 @@
                                 <div class="ct go-start-nav---ct">
                                     <div class="ct_cr go-start-nav---ct_cr">
 
-                                        <?php // Markup
+                                        <?php // Go to Start Nav Item Markup
                                         $go_start_navi_mu = '<div class="obj navi go-start-navi" data-name="Go to Start Nav Item">';
                                             $go_start_navi_mu .= '<a id="go-start-navi---a" class="a go-start-navi---a" href="#start" title="%1$s"><span class="a_l go-start-navi---a_l"><span class="word go-start-navi--go---word">%2$s</span> <span class="word go-start-navi--to---word">%3$s</span> <span class="word go-start-navi--start---word">%4$s</span> %5$s</span></a>';
                                         $go_start_navi_mu .= '</div>';

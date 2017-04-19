@@ -353,39 +353,34 @@
         // Initiate
         goStartNaviDeactivate();
         
-        // http://stackoverflow.com/a/40370876
-        window.onscroll = function( ev ) {
-            if ( ( window.innerHeight + window.pageYOffset ) >= document.body.offsetHeight ) {
-                goStartNaviActivate();
-            }
-        };
-
+        var $colophonHeight = $('#colophon').height(),
+            bodyOffsetCriteriaHeight = document.body.offsetHeight / 2,
+            bodyOffsetSliceHeight = document.body.offsetHeight / 2,
+            bodyOffsetMostHeight = document.body.offsetHeight - bodyOffsetSliceHeight;
         
-        /*
-        // Focus In > Activate
-        $goStartNaviA.on( 'focusin.applicator', function () {
-            goCtNaviActivate();
-        } );
-
-        // Focus Out > Deactivate
-        $goStartNaviA.on( 'focusout.applicator', function () {
-            goCtNaviDeactivate();
-        } );
-        */
-        
-        
-    
+        if ( ( window.innerHeight ) <= ( bodyOffsetCriteriaHeight ) ) {
+            
+            // http://stackoverflow.com/a/40370876
+            window.onscroll = function( ev ) {
+                if ( ( window.innerHeight + window.pageYOffset ) >= ( bodyOffsetMostHeight ) ) {
+                    goStartNaviActivate();
+                } else {
+                    goStartNaviDeactivate();
+                }
+            };
+            
+        }
     
         // Smooth Scroll to #start
-        $( '#go-start-navi---a' ).bind( 'click', function( e ) {
+        $goStartNaviA.bind( 'click', function( e ) {
 
             e.preventDefault();
-
+            
             var target = $( this ).attr( "href" );
 
             $( 'html, body' ).stop().animate( {
                 scrollTop: $( target ).offset().top
-            }, 1000, function() {
+            }, 1200, function() {
                 location.hash = target;
             } );
 
