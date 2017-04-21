@@ -7,7 +7,7 @@
     
     // Classify the built-in Search
     ( function() {
-        $( '.main-header---cr' ).children( '.search-cp' ).addClass( 'arbitrary-nav' ).attr( 'id', 'arbitrary-nav' );
+        $( '#masthead' ).find( $( '.main-header---cr' ) ).children( '.search-cp' ).addClass( 'arbitrary-nav' ).attr( 'id', 'arbitrary-nav' );
     }() );
     
     
@@ -380,7 +380,7 @@
 
             $( 'html, body' ).stop().animate( {
                 scrollTop: $( target ).offset().top
-            }, 1200, function() {
+            }, 600, 'linear', function() {
                 location.hash = target;
             } );
 
@@ -391,11 +391,167 @@
     initGoStart( $( '#go-start-nav' ) );
     
     
-    
-    // ------------------------- Main Nav | Header Aside - Menu
-    function initMainNavHeaderAsideMenu( component ) {
+    ( function() {
         
-        var mainNavHeaderAsideMenuToggle = $( '<div />', { 'class': 'cp main-nav--header-aside--menu-toggle', 'data-name': 'Main Navigation | Header Aside Toggle' } )
+        var $mnMha = $( '#main-nav--main-header-aside' ),
+            
+            mnMhaCtrlMu,
+            mnMhaCtrlHMu,
+            mnMhaCtrlCtMu,
+            mnMhaTogObjMu,
+            mnMhaTogBtnMu,
+            mnMhaTogBtnLmu,
+            mnMhaTogBtnLwordMu,
+            
+            mnMhaActCss = 'mn-mha--active',
+            mnMhaInactCss = 'mn-mha--inactive',
+            aplMnMhaActCss = 'apl--mn-mha--active',
+            aplMnMhaInactCss = 'apl--mn-mha--inactive',
+            
+            $mnMhaTogBtn,
+            $mnMhaTogBtnL,
+            $mnMhaTogBtnLword,
+            $mnMhaTogBtnIco;
+        
+        // Build Markup
+        ( function() {
+            
+            mnMhaTogBtnLwordMu = $( '<span />', {
+                'class': 'word show-hide-mn-mha---word',
+                'text': aplDataMnMhaTogL.mnMhaHideL
+            } );
+            
+            mnMhaTogBtnLmu = $( '<span />', {
+                'class': 'b_l mn-mha-tog---b_l'
+            } )
+                .append( mnMhaTogBtnLwordMu )
+                .append( aplDataMnMhaTogL.mnMhaHideIco );
+            
+            // Button
+            mnMhaTogBtnMu = $( '<button />', {
+                'id' : 'mn-mha-tog---b',
+                'class': 'b mn-mha-tog---b'
+            } )
+                .append( mnMhaTogBtnLmu );
+            
+            // Object
+            mnMhaTogObjMu = $( '<div />', {
+                'class': 'obj toggle main-nav--main-header-aside-toggle',
+                'data-name': 'Main Nav - Main Header Aside Toggle'
+            } ).append( mnMhaTogBtnMu );
+            
+            // Containers
+            mnMhaCtrlMu = $( '<div />', {
+                'class': 'ctrl main-nav--main-header-aside-ctrl',
+                'data-name': 'Main Nav - Main Header Aside Control'
+            } ).append( $( '<div />', {
+                'class': 'cr mn-mha-ctrl---cr'
+            } ) );
+            
+            mnMhaCtrlHMu = $( '<div />', {
+                'class': 'h mn-mha-ctrl---h'
+            } ).append( $( '<span />', {
+                'class': 'h_l mn-mha-ctrl---h_l',
+                'text': aplDataMnMhaTogL.mnMhaCtrlH
+            } ) );
+            
+            mnMhaCtrlCtMu = $( '<div />', {
+                'class': 'ct mn-mha-ctrl---ct'
+            } ).append( $( '<div />', {
+                'class': 'ct_cr mn-mha-ctrl---ct_cr'
+            } ) );
+            
+            $mnMha
+            .find( $( '.mn-mha---hr_cr' ) )
+                .append( mnMhaCtrlMu )
+            .find( $( '.mn-mha-ctrl---cr' ) )
+                .append( mnMhaCtrlHMu )
+                .append( mnMhaCtrlCtMu )
+            .find( $( '.mn-mha-ctrl---ct_cr' ) )
+                .append( mnMhaTogObjMu );
+            
+            console.log( 'mnMhaToggleObjMu30' );
+            
+        }() );
+        
+        $mnMhaTogBtn = $( '#mn-mha-tog---b' );
+        $mnMhaTogBtnL = $mnMhaTogBtn.find( $( '.mn-mha-tog---b_l' ) );
+        $mnMhaTogBtnLword = $mnMhaTogBtn.find( $( '.show-hide-mn-mha---word' ) );
+        $mnMhaTogBtnIco = $mnMhaTogBtn.find( $( '.icon' ) );
+        
+        // Activate
+        function mnMhaActivate() {
+            $mnMha
+                .addClass( mnMhaActCss )
+                .removeClass( mnMhaInactCss );
+            $html
+                .addClass( aplMnMhaActCss )
+                .removeClass( aplMnMhaInactCss );
+            
+            $mnMhaTogBtn.attr( {
+                 'aria-expanded': 'true',
+                 'title': aplDataMnMhaTogL.mnMhaHideL
+            } );
+            
+            $mnMhaTogBtnLword.text( aplDataMnMhaTogL.mnMhaHideL );
+            $mnMhaTogBtnIco.remove();
+            $mnMhaTogBtnL.append( aplDataMnMhaTogL.mnMhaHideIco );
+            
+            console.log( 'activate' );
+        }
+        
+        // Deactivate
+        function mnMhaDeactivate() {
+            $mnMha
+                .addClass( mnMhaInactCss )
+                .removeClass( mnMhaActCss );
+            $html
+                .addClass( aplMnMhaInactCss )
+                .removeClass( aplMnMhaActCss );
+            
+            $mnMhaTogBtn.attr( {
+                 'aria-expanded': 'false',
+                 'title': aplDataMnMhaTogL.mnMhaShowL
+            } );
+            
+            $mnMhaTogBtnLword.text( aplDataMnMhaTogL.mnMhaShowL );
+            $mnMhaTogBtnIco.remove();
+            $mnMhaTogBtnL.append( aplDataMnMhaTogL.mnMhaShowIco );
+            
+            console.log( 'deactivate' );
+        }
+        
+        // Initialize
+        mnMhaActivate();
+        
+        // Toggle
+        function mnMhaToggle() {
+            if ( $mnMha.hasClass( mnMhaActCss ) ) {
+                mnMhaDeactivate();
+            } else if ( $mnMha.hasClass( mnMhaInactCss ) ) {
+                mnMhaActivate();
+            }
+        }
+        
+        ( function() {
+            
+            $mnMhaTogBtn.click( function( e ){
+                e.preventDefault();
+                mnMhaToggle();
+                console.log( '$mnMhaTogBtn toggle' );
+            } );
+        
+        }() );
+        
+    }() );
+    
+    
+    
+    // ------------------------- Main Nav | Main Header Aside - Menu
+    ( function() {
+        
+        var $mnmha = $( '#main-nav--main-header-aside' ),
+            mainNavHeaderAsideMenuToggle = $( '<div />', { 'class': 'cp main-nav--header-aside--menu-toggle', 'data-name': 'Main Navigation | Header Aside Toggle' } )
                 .append( $( '<div />', { 'class': 'main-nav--header-aside--menu-toggle--cr' } ) ),
             
             mainNavHeaderAsideMenuToggleAction = $( '<button />', { 'class': 'b a main-nav--header-aside--menu-toggle--a' } )
@@ -409,15 +565,13 @@
             aplMainNavHeaderAsideMenuActiveClass = 'apl--mnha--menu--active',
             aplMainNavHeaderAsideMenuInactiveClass = 'apl--mnha--menu--inactive',
             
-            $mnhaCp = $( '.main-nav--main-header-aside' ),
-            
             $mainMenuTogAxn,
             $mainMenuTogAxnL;
         
         // Attach Markup
-        component.find( '.mn-mha---ct' ).before( mainNavHeaderAsideMenuToggle );
-        component.find( '.main-nav--header-aside--menu-toggle--cr' ).append( mainNavHeaderAsideMenuToggleAction );
-        component.find( '.main-nav--header-aside--menu-toggle--a-l' )
+        $mnmha.find( '.mn-mha---h' ).after( mainNavHeaderAsideMenuToggle );
+        $mnmha.find( '.main-nav--header-aside--menu-toggle--cr' ).append( mainNavHeaderAsideMenuToggleAction );
+        $mnmha.find( '.main-nav--header-aside--menu-toggle--a-l' )
             .append( mainNavHeaderAsideMenuToggleActionLabel )
             .append( ' ' )
             .append( applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuIcon )
@@ -425,16 +579,16 @@
         
         
         // Set Default State as Inactive
-        component.addClass( mainNavHeaderAsideMenuInactiveClass );
+        $mnmha.addClass( mainNavHeaderAsideMenuInactiveClass );
         $html.addClass( aplMainNavHeaderAsideMenuInactiveClass );
         
         
-        $mainMenuTogAxn = component.find( '.main-nav--header-aside--menu-toggle--a' );
+        $mainMenuTogAxn = $mnmha.find( '.main-nav--header-aside--menu-toggle--a' );
         $mainMenuTogAxnL = $mainMenuTogAxn.find( '.main-nav--header-aside--menu-toggle--a--word--l' );
         
         
         function mnhaActivate() {
-            $mnhaCp
+            $mnmha
                 .addClass( mainNavHeaderAsideMenuActiveClass )
                 .removeClass( mainNavHeaderAsideMenuInactiveClass );
             $mainMenuTogAxn.attr( 'aria-expanded', 'true' );
@@ -445,7 +599,7 @@
         }
         
         function mnhaDeactivate() {
-            $mnhaCp
+            $mnmha
                 .addClass( mainNavHeaderAsideMenuInactiveClass )
                 .removeClass( mainNavHeaderAsideMenuActiveClass );
             $mainMenuTogAxn.attr( 'aria-expanded', 'false' );
@@ -459,14 +613,14 @@
         // ------------------------- Main Menu Status
         function mainMenuToggle() {
             
-            if ( component.hasClass( mainNavHeaderAsideMenuActiveClass ) ) {
+            if ( $mnmha.hasClass( mainNavHeaderAsideMenuActiveClass ) ) {
                 mnhaActivate();
                 
-                component.find( '.mn-mha---ct' ).attr( 'title', applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuHideLabel );
+                $mnmha.find( '.mn-mha---ct' ).attr( 'title', applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuHideLabel );
                 
-                component.find( '.mn-mha---ct-cr' ).attr( 'title', '' );
+                $mnmha.find( '.mn-mha---ct-cr' ).attr( 'title', '' );
             
-            } else if ( component.hasClass( mainNavHeaderAsideMenuInactiveClass ) ) {
+            } else if ( $mnmha.hasClass( mainNavHeaderAsideMenuInactiveClass ) ) {
                 mnhaDeactivate();
             }
         }
@@ -474,12 +628,12 @@
         
         
         // Click Toggle Action
-        component.find( '.main-nav--header-aside--menu-toggle--a' ).click( function( e ) {
+        $mnmha.find( '.main-nav--header-aside--menu-toggle--a' ).click( function( e ) {
             var _this = $( this );
 
             e.preventDefault();
 
-            component
+            $mnmha
                 .toggleClass( mainNavHeaderAsideMenuActiveClass )
                 .toggleClass( mainNavHeaderAsideMenuInactiveClass );
 
@@ -491,7 +645,7 @@
         // ------------------------- Deactivate on Click Outside
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             var _this = $( this );
-            if ( ( ! $( e.target ).closest( '.main-nav--header-aside--menu-toggle' ).length && ! $( e.target ).closest( '.mn-mha---ct-cr' ).length ) && $mnhaCp.hasClass( mainNavHeaderAsideMenuActiveClass ) ) {
+            if ( ( ! $( e.target ).closest( '.main-nav--header-aside--menu-toggle' ).length && ! $( e.target ).closest( '.mn-mha---ct-cr' ).length ) && $mnmha.hasClass( mainNavHeaderAsideMenuActiveClass ) ) {
                 mnhaDeactivate();
             }
         } );
@@ -500,14 +654,12 @@
         // ------------------------- Deactivate on ESC Key
         $window.load( function () {
             $( document ).on( 'keyup.applicator', function ( e ) {
-                if ( e.keyCode == 27 && $mnhaCp.hasClass( mainNavHeaderAsideMenuActiveClass ) ) {
+                if ( e.keyCode == 27 && $mnmha.hasClass( mainNavHeaderAsideMenuActiveClass ) ) {
                     mnhaDeactivate();
                 }
             } );
         } );
         
-        
-    }
-    initMainNavHeaderAsideMenu( $( '.main-nav--main-header-aside' ) );
+    }() );
 
 })( jQuery );

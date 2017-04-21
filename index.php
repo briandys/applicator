@@ -1,124 +1,122 @@
 <?php
-    if ( function_exists( 'get_header' ) ) {
-        get_header();
+if ( function_exists( 'get_header' ) ) {
+    get_header();
+} else {
+    die();
+}
+
+$main_ct_hr_mu = '<div class="cn main-content---hr main-content--%2$s---hr" data-name="Main Content Header">';
+    $main_ct_hr_mu .= '<div class="cr main-ct---hr_cr">';
+        $main_ct_hr_mu .= '<h2 class="h main-ct---h"><span class="h_l main-ct---h_l">%1$s</span></h2>';
+    $main_ct_hr_mu .= '</div>';
+$main_ct_hr_mu .= '</div>';
+
+if ( is_front_page() ) {
+    printf ( $main_ct_hr_mu,
+        esc_html__( 'Home', 'applicator' ),
+        'home'
+    );
+} elseif ( is_home() ) {
+    printf ( $main_ct_hr_mu,
+        esc_html__( 'Entries', 'applicator' ),
+        'entries'
+    );
+} elseif ( is_category() ) {
+    printf ( $main_ct_hr_mu,
+        '<span class="prop category---prop">' . esc_html__( 'Category', 'applicator' ) . '</span><span class="sep colon---sep">:</span> <span class="val category-name---val">' . single_cat_title( '', false ) . '</span>',
+        'category'
+    );
+} elseif ( is_tag() ) {
+    printf ( $main_ct_hr_mu,
+        '<span class="prop tag---prop">' . esc_html__( 'Tag', 'applicator' ) . '</span><span class="sep colon---sep">:</span> <span class="val tag-name---val">' . single_tag_title( '', false ) . '</span>',
+        'category'
+    );
+} elseif ( is_archive() && ! is_author() ) {
+    if ( is_day() ) {
+        printf ( $main_ct_hr_mu,
+            '<span class="prop daily-archive---prop"><span class="word daily---word">' . esc_html__( 'Daily', 'applicator' ) . '</span> <span class="word archive---word">' . esc_html__( 'Archive', 'applicator' ) . '</span></span><span class="sep colon---sep">:</span> <span class="val timestamp-date---val">' . get_the_date( 'j M Y') . '</span>',
+            'daily-archive'
+        );
+    } elseif ( is_month() ) {
+        printf ( $main_ct_hr_mu,
+            '<span class="prop monthly-archive---prop"><span class="word monthly---word">' . esc_html__( 'Monthly', 'applicator' ) . '</span> <span class="word archive---word">' . esc_html__( 'Archive', 'applicator' ) . '</span></span><span class="sep colon---sep">:</span> <span class="val timestamp-month-year---val">' . get_the_date( 'F Y') . '</span>',
+            'monthly-archive'
+        );
+    } elseif ( is_year() ) {
+        printf ( $main_ct_hr_mu,
+            '<span class="prop yearly-archive---prop"><span class="word yearly---word">' . esc_html__( 'Yearly', 'applicator' ) . '</span> <span class="word archive---word">' . esc_html__( 'Archive', 'applicator' ) . '</span></span><span class="sep colon---sep">:</span> <span class="val timestamp-year---val">' . get_the_date( 'Y') . '</span>',
+            'yearly-archive'
+        );
     } else {
-        die();
+        printf ( $main_ct_hr_mu,
+            esc_html__( 'Archive', 'applicator' ),
+            'archive'
+        );
     }
-?>
+} elseif ( is_search() ) {
 
+    $entrySearch = new WP_Query( array(
+        's'         => $s,
+        'showposts' => -1,
+    ) );
+    $entrySearchKey = get_search_query();
+    $entrySearchCount = $entrySearch->post_count; ?>
 
+    <div class="cn main-content---hr main-content--search-results---hr" data-name="Main Content Header">
+        <div class="cr main-content---hr_cr">
+            <h2 class="h main-content---h"><span class="h_l main-content---h_l">
+            <?php
+            if ( ! $entrySearchCount == 0 ) {
+                echo '<span class="num search-results-count---num">' . $entrySearchCount . '</span> ';
+            }
 
-<?php //------------------------- Main Content Header ------------------------- ?>
-<div class="cn main-content--hr" data-name="Main Content Header">
-    <div class="main-content--hr--cr">
-        
-        
-        <h2 class="h main-content--h">
-            <span class="main-content--h-l">
+            if ( $entrySearchCount == 0 ) {
+                echo esc_html__( 'No Search Results', 'applicator' );
+            } elseif ( $entrySearchCount == 1 ) {
+                echo '<span class="word search-result---word">' . esc_html__( 'Search Result', 'applicator' ) . '</span> ';
+            } else {
+                echo '<span class="word search-results---word">' . esc_html__( 'Search Results', 'applicator' ) . '</span> ';
+            }
+
+            echo '<span class="word for---word">' . esc_html__( 'for', 'applicator' ) . '</span> <span class="word search-keyword---word">' . $entrySearchKey . '</span>';
+            ?>
+            </span></h2>
+        </div>
+    </div>
+
+    <?php wp_reset_postdata();
+
+} elseif ( is_singular() ) {
+    if ( is_single() ) {
+        printf ( $main_ct_hr_mu,
+            esc_html__( 'Entry', 'applicator' ),
+            'entry'
+        );
+    } elseif ( is_page() ) {
+        printf ( $main_ct_hr_mu,
+            esc_html__( 'Page', 'applicator' ),
+            'page'
+        );
+    } elseif ( is_attachment() ) {
+        printf ( $main_ct_hr_mu,
+            esc_html__( 'Attachment', 'applicator' ),
+            'attachment'
+        );
+    } else {
+        printf ( $main_ct_hr_mu,
+            esc_html__( 'Other', 'applicator' ),
+            'other'
+        );
+    }
+} elseif ( is_author() ) {
+    printf ( $main_ct_hr_mu,
+        '<span class="prop all-entries-posted-by---prop">' . esc_html__( 'All Entries Posted by', 'applicator' ) . '</span><span class="sep colon---sep">:</span> <span class="val author-name---val">' . get_the_author() . '</span>',
+        'category'
+    );
                 
-                <span class="main-content--h--pred-l"><?php esc_html_e( 'Main Content:', 'applicator' ); ?></span>
-                <span class="main-content--h--subj-l">
-
-    
-                    <?php
-                    //------------------------- Front Page (posts page is set at default)
-                    
-                    if ( is_front_page() ) :
-                        esc_html_e( 'Home', 'applicator' );
-                    
-                    //------------------------- Home (posts page is customized)
-                    elseif ( is_home() ) :
-                        esc_html_e( 'Entries', 'applicator' );
-                    
-                    //------------------------- Category
-                    elseif ( is_category() ) :
-                        printf( __( '<span class="pred-l">%s</span><span class="colon-l">:</span> <span class="subj-l">%s</span>', 'applicator' ), esc_html_e( 'Category', 'applicator'), single_cat_title( '', false ) );
-                    
-                    //------------------------- Tag
-                    elseif ( is_tag() ) :
-                        printf( __( '<span class="pred-l">%s</span><span class="colon-l">:</span> <span class="subj-l">%s</span>', 'applicator' ), esc_html_e( 'Tag', 'applicator'), single_tag_title( '', false ) );
-                    
-                    //------------------------- Archive
-                    elseif ( is_archive() && ! is_author() ) :
-                        echo '<span class="pred-l">';
-                        if ( is_day() ) :
-                            printf( __( '%s</span><span class="colon-l">:</span> <span class="subj-l">%s</span>', 'applicator' ), esc_html_e( 'Daily Archive', 'applicator'), get_the_date() );
-                        elseif ( is_month() ) :
-                            printf( __( '%s</span><span class="colon-l">:</span> <span class="subj-l">%s</span>', 'applicator' ), esc_html_e( 'Monthly Archive', 'applicator'), get_the_date( _x( 'F Y', 'Monthly archives date format', 'applicator' ) ) );
-                        elseif ( is_year() ) :
-                            printf( __( '%s</span><span class="colon-l">:</span> <span class="subj-l">%s</span>', 'applicator' ), esc_html_e( 'Yearly Archive', 'applicator'), get_the_date( _x( 'Y', 'Yearly archives date format', 'applicator' ) ) );
-                        else :
-                            esc_html_e( 'Archive', 'applicator' );
-                        echo '</span>';
-                        endif;
-                    
-                    
-                    //------------------------- Search Results
-                    elseif ( is_search() ) :
-
-                        $entrySearch = new WP_Query( array(
-                            's'         => $s,
-                            'showposts' => -1,
-                        ) );
-                        $key = get_search_query();
-                        $count = $entrySearch->post_count;
-
-                        if ( ! $count == 0 )
-                            echo '<span class="count-l">' . $count . '</span> ';
-
-                        echo '<span class="pred-l">';
-
-                        if ( $count == 0 )
-                            esc_html_e( 'No Search Results', 'applicator' );
-
-                        elseif ( $count == 1 )
-                            esc_html_e( 'Search Result', 'applicator' );
-
-                        else
-                            esc_html_e( 'Search Results', 'applicator' );
-
-                        echo '</span> ';
-
-                        echo '<span class="prep--l">';
-                        esc_html_e( 'for', 'applicator' );
-                        echo '</span> ';
-
-                        echo '<span class="subj-l">' . $key . '</span>';
-
-                        wp_reset_postdata();
-                    
-                    
-                    //------------------------- Singular (is_single, is_page, is_attachment)
-                    elseif ( is_singular() ) :
-                    
-                        if ( is_single() )
-                            esc_html_e( 'Entry', 'applicator' );
-                    
-                        elseif ( is_page() )
-                            esc_html_e( 'Page', 'applicator' );
-                    
-                        elseif ( is_attachment() )
-                            esc_html_e( 'Attachment', 'applicator' );
-                    
-                        else
-                            esc_html_e( 'Other', 'applicator' );
-                    
-                    
-                    //------------------------- Author
-                    elseif ( is_author() ) :
-                        printf( __( '<span class="pred-l">%s</span> <span class="subj-l">%s</span>', 'applicator' ), esc_html_e( 'All Entries Posted by', 'applicator'), get_the_author() );
-                    
-                    
-                    //------------------------- Other
-                    else :
-                        esc_html_e( 'Other', 'applicator' );
-                    
-                    endif; ?>
-                    
-                </span>
-                
-            </span>
-        </h2><!-- main-content--h -->
+} else {
+    echo esc_html__( 'Other', 'applicator' );
+} ?>
         
         <?php // Main Content Header Aside
         if ( is_active_sidebar( 'main-content-header-aside' )  ) { ?>
@@ -137,19 +135,16 @@
     </div>
 </div><!-- main-content--hr -->
 
-
-<?php //------------------------- Main Content - Content ------------------------- ?>
-<div class="cn main-content--ct" data-name="Main Content - Content">
-    <div class="main-content--ct--cr">
+<div class="cn main-content---ct" data-name="Main Content - Content">
+    <div class="cr main-content---ct_cr">
         
-        
-        <?php //------------------------- Primary Content ------------------------- ?>
-        <main id="main" class="cn pri-content site-main" data-name="Primary Content" role="main">
-            <div class="pri-content--cr">
+        <main id="main" class="cn pri-content site-main" role="main" data-name="Primary Content">
+            <div class="cr pri-content---cr">
                 
-                <?php //------------------------- single.php ------------------------- ?>
-                <?php if ( is_singular() ) :
-                    while ( have_posts() ) : the_post();
+                <?php // single.php
+                if ( is_singular() ) {
+                    while ( have_posts() ) {
+                        the_post();
 
                         // template-parts > entry-content.php
                         applicator_entry_content();
@@ -159,22 +154,19 @@
                 
                         // comments.php
                         comments_template();
-
-                    endwhile; ?>
-
-                <?php //------------------------- index.php ------------------------- ?>
-                <?php else :
-                    if ( have_posts() ) : ?>
+                    }
+                } else {
+                    if ( have_posts() ) { ?>
                         
                         <div class="cp entries" data-name="Entries">
-                            <div class="entries--cr">
+                            <div class="cr entries--cr">
                 
-                            <?php while ( have_posts() ) : the_post(); ?>
-                                
-                                <?php // template-parts > entry-content.php
-                                applicator_entry_content(); ?>
-
-                            <?php endwhile; ?>
+                        <?php while ( have_posts() ) {
+                            the_post();
+                        
+                            // template-parts > entry-content.php
+                            applicator_entry_content();
+                        } ?>
                                 
                             </div>
                         </div><!-- entries -->
@@ -182,13 +174,11 @@
                         <?php // inc > template-parts > page-nav.php
                         applicator_page_nav();
                     
-                    else :
-                
-                        // No Entry: content-none.php
+                    } else {
                         get_template_part( 'content', 'none' );
-                    endif;
+                    }
 
-                endif; ?>
+                } ?>
                 
             </div>
         </main><!-- pri-content -->

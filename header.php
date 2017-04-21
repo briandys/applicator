@@ -17,7 +17,7 @@
                 <div class="cn wbp-start" data-name="Web Product Start">
                     <div class="cr wbp-start---cr">
 
-                        <div id="go-content-nav" class="cp nav go-content-nav" data-name="Go to Content Navigation">
+                        <div id="go-content-nav" class="nav go-content-nav" role="navigation" data-name="Go to Content Navigation">
                             <div class="cr go-ct-nav---cr">
                                 <div class="h go-ct-nav---h"><span class="h_l go-ct-nav---h_l"><?php esc_html_e( 'Go to Content Navigation', 'applicator'); ?></span></div>
                                 <div class="ct go-ct-nav---ct">
@@ -25,7 +25,7 @@
                                         
                                         <?php // Markup
                                         $go_content_navi_mu = '<div class="obj navi go-content-navi" data-name="Go to Content Nav Item">';
-                                            $go_content_navi_mu .= '<a id="go-ct-navi---a" class="a go-ct-navi---a skip-link" href="#content" title="%1$s"><span class="a_l go-ct-navi---a_l"><span class="word go-ct-navi--show---word">%2$s</span> <span class="word go-ct-navi--to---word">%3$s</span> <span class="word go-ct-navi--content---word">%4$s</span></span></a>';
+                                            $go_content_navi_mu .= '<a id="go-ct-navi---a" class="a go-ct-navi---a skip-link" href="#content" title="%1$s"><span class="a_l go-ct-navi---a_l"><span class="word go---word">%2$s</span> <span class="word to---word">%3$s</span> <span class="word content---word">%4$s</span></span></a>';
                                         $go_content_navi_mu .= '</div>';
                         
                                         printf( $go_content_navi_mu,
@@ -59,7 +59,7 @@
                     <div class="cr main-header---cr">
                         
                         <div class="cp wbp-info" data-name="Web Product Info">
-                            <div class="wbp-info---cr">
+                            <div class="cr wbp-info---cr">
                                 
                                 <?php
                                 
@@ -108,9 +108,13 @@
                             </div>
                         </div><!-- wbp-info -->
                         
-                        <div class="frame main-nav--main-header-aside" data-name="Main Nav | Main Header Aside">
+                        <div id="main-nav--main-header-aside" class="frame main-nav--main-header-aside" data-name="Main Nav - Main Header Aside">
                             <div class="cr mn-mha---cr">
-                                <div class="h mn-mha---h"><span class="h_l mn-mha---h_l"><?php esc_html_e( 'Main Nav | Main Header Aside', 'applicator' ); ?></span></div>
+                                <div class="hr mn-mha---hr">
+                                    <div class="hr_cr mn-mha---hr_cr">
+                                        <div class="h mn-mha---h"><span class="h_l mn-mha---h_l"><?php esc_html_e( 'Main Nav - Main Header Aside', 'applicator' ); ?></span></div>
+                                    </div>
+                                </div>
                                 <div class="ct mn-mha---ct">
                                     <div class="ct_cr mn-mha---ct-cr">
 
@@ -124,7 +128,7 @@
                                         if ( is_active_sidebar( 'main-header-aside' )  ) { ?>
                                         <aside id="main-header-aside" class="cn aside main-header-aside" data-name="Main Header Aside" role="complementary">
                                             <div class="cr main-hr-as---cr">
-                                                <h3 class="h main-hr-as---h"><span class="h_l main-hr-as---h_l">Main Header Aside</span></h3>
+                                                <h3 class="h main-hr-as---h"><span class="h_l main-hr-as---h_l"><?php esc_html_e( 'Main Header Aside', 'applicator' ); ?></span></h3>
                                                 <div class="ct main-hr-as---ct">
                                                     <div class="ct_cr main-hr-as---ct_cr">
                                                         <?php dynamic_sidebar( 'main-header-aside' ); ?>
@@ -139,28 +143,20 @@
                             </div>
                         </div><!-- main-nav--main-header-aside -->
 
-
-                        <?php //------------------------- Search
-                        // searchform.php
+                        <?php // Search | searchform.php
                         get_search_form();
                         
-                        
-                        //------------------------- Customizer: Custom Header
-                        // inc > functions > custom-header.php
+                        // Custom Header | Customizer > Custom Header | inc > functions > custom-header.php
                         if ( has_header_image() ) { ?>
-                        
                         <div class="cp wbp-media-banner" data-name="Web Product Media Banner">
                             <div class="wbp-media-banner--cr">
                                 <?php the_custom_header_markup(); ?>
                             </div>
                         </div>
-                        
                         <?php } ?>
                     
                     </div>
                 </header><!-- main-header -->
-
                 
-                <?php //------------------------- Constructor: Main Content ------------------------- ?>
                 <div id="content" class="cn main-content site-content" data-name="Main Content">
-                    <section class="main-content--cr">
+                    <section class="cr main-content---cr">

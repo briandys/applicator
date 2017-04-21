@@ -1,65 +1,53 @@
-<?php
-//------------------------- Comments Navigation
-// comments.php
+<?php // Comments Navigation | comments.php
 
-if ( ! function_exists( 'applicator_comments_nav' ) ) :
+if ( ! function_exists( 'applicator_comments_nav' ) ) {
     function applicator_comments_nav() {
         
-        if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
+        if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) {
 
-        // Next Comments Label
-        $next_label = '<span class="a-l next--comments-nav--a-l">';
-            $next_label .= '<span class=" next--comments-nav--a--pred-l" title="%3$s">';
-                $next_label .= '%1$s';
-            $next_label .= '</span> ';
-            $next_label .= '<span class="next--comments-nav--a--subj-l">';
-                $next_label .= '%2$s';
-            $next_label .= '</span>';
-        $next_label .= '</span>';
-        
-        $next_label = sprintf( $next_label,
-            esc_html__( 'Next', 'applicator' ),
-            esc_html__( 'Comments', 'applicator' ),
-            esc_attr__( 'Next Comments', 'applicator' )
-        );
+            // Next Comments Nav Item Markup
+            $next_coms_navi_a_l_mu = '<span class="a_l next-coms-navi---a_l" title="%3$s"><span class="word next-coms-navi--next---word">%1$s</span> <span class="word next-coms-navi--comments---word">%2$s</span> %4$s</span>';
 
-        // Previous Comments Label
-        $prev_label = '<span class="a-l prev--comments-nav--a-l">';
-            $prev_label .= '<span class="prev--comments-nav--a--pred-l" title="%3$s">';
-                $prev_label .= '%1$s';
-            $prev_label .= '</span> ';
-            $prev_label .= '<span class="prev--comments-nav--a--subj-l">';
-                $prev_label .= '%2$s';
-            $prev_label .= '</span>';
-        $prev_label .= '</span>';
-        
-        $prev_label = sprintf( $prev_label,
-            esc_html__( 'Previous', 'applicator' ),
-            esc_html__( 'Comments', 'applicator' ),
-            esc_attr__( 'Previous Comments', 'applicator' )
-        ); ?>
+            $next_coms_navi_a = sprintf( $next_coms_navi_a_l_mu,
+                esc_html__( 'Next', 'applicator' ),
+                esc_html__( 'Comments', 'applicator' ),
+                esc_attr__( 'Next Comments', 'applicator' ),
+                applicator_get_svg( array( 'icon' => 'arrow--icon' ) )
+            );
 
-        <div class="nav comments-nav" role="navigation" aria-label="<?php esc_html_e( 'Comments Navigation', 'applicator' ); ?>">
-            <div class="comments-nav--cr">
-                <div class="h nav--h comments-nav--h">
-                    <span class="comments-nav--h-l"><?php esc_html_e( 'Comments Navigation', 'applicator' ); ?></span>
+            // Previous Comments Nav Item Markup
+            $prev_coms_navi_a_l_mu = '<span class="a_l prev-coms-navi---a_l" title="%3$s"><span class="word prev-coms-navi--next---word">%1$s</span> <span class="word prev-coms-navi--comments---word">%2$s</span> %4$s</span>';
+
+            $prev_coms_navi_a = sprintf( $prev_coms_navi_a_l_mu,
+                esc_html__( 'Previous', 'applicator' ),
+                esc_html__( 'Comments', 'applicator' ),
+                esc_attr__( 'Previous Comments', 'applicator' ),
+                applicator_get_svg( array( 'icon' => 'arrow--icon' ) )
+            ); ?>
+
+            <div class="nav comments-nav" role="navigation" data-name="Comments Navigation">
+                <div class="cr comments-nav---cr">
+                    <div class="h comments-nav---h"><span class="h_l comments-nav---h_l"><?php esc_html_e( 'Comments Navigation', 'applicator' ); ?></span></div>
+                    <div class="ct comments-nav---ct">
+                        <div class="ct_cr comments-nav---ct_cr">
+                            <ul class="grp comments-nav---grp">
+                            <?php if ( get_next_comments_link() ) { ?>
+                                <li class="item obj navi next-comments-navi" data-name="Next Comments Nav Item">
+                                    <?php next_comments_link( $next_coms_navi_a ); ?>
+                                </li>
+                            <?php }
+                            if ( get_previous_comments_link() ) { ?>
+                                <li class="item obj navi previous-comments-navi" data-name="Previous Comments Nav Item">
+                                    <?php previous_comments_link( $prev_coms_navi_a ); ?>
+                                </li>
+                            <?php } ?>
+                            </ul>
+                        </div>
+                    </div><!-- comments-nav---ct -->
                 </div>
-                <ul class="grp comments-nav--grp">
-                    <?php if ( get_next_comments_link() ) : ?>
-                    <li class="item comments-nav--item next--comments-nav--item">
-                        <?php next_comments_link( $next_label ); ?>
-                    </li>
-                    <?php endif; ?>
-                    <?php if ( get_previous_comments_link() ) : ?>
-                    <li class="item entries-nav--item prev--entries-nav--item">
-                        <?php previous_comments_link( $prev_label ); ?>
-                    </li>
-                    <?php endif; ?>
-                </ul>
-            </div>
-        </div><!-- comments-nav -->
+            </div><!-- comments-nav -->
         
-        <?php endif;
+        <?php }
     
     }
-endif;
+}

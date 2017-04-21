@@ -1,0 +1,47 @@
+( function() {
+            
+            // Button
+            mnMhaTogBtnMu = $( '<button />', {
+                'class': 'b mn-mha-toggle---b'
+            } ).append( $( '<span />', {
+                'class': 'b_l mn-mha-toggle---b_l',
+                'text' : 'Show / Hide'
+            } ) );
+            
+            // Object
+            mnMhaTogObjMu = $( '<div />', {
+                'class': 'obj toggle main-nav--main-header-aside-toggle',
+                'data-name': 'Main Nav - Main Header Aside Toggle'
+            } ).append( mnMhaTogBtnMu );
+            
+            
+            // Containers
+            mnMhaCtrlMu = $( '<div />', {
+                'class': 'ctrl main-nav--main-header-aside-ctrl',
+                'data-name': 'Main Nav - Main Header Aside Control'
+            } ).append( $( '<div />', {
+                'class': 'cr mn-mha-ctrl---cr'
+            } ) );
+            
+            mnMhaCtrlHMu = $( '<div />', {
+                'class': 'h mn-mha-ctrl---h'
+            } ).append( $( '<span />', {
+                'class': 'h_l mn-mha-ctrl---h_l',
+                'text': 'Main Nav - Main Header Aside Control'
+            } ) );
+            
+            mnMhaCtrlCtMu = $( '<div />', {
+                'class': 'ct mn-mha-ctrl---ct'
+            } ).append( $( '<div />', {
+                'class': 'ct_cr mn-mha-ctrl---ct_cr'
+            } ) );
+            
+            
+            
+            $mnMha.find( $( '.mn-mha---hr_cr' ) ).append( mnMhaCtrlMu );
+            $mnMha.find( $( '.mn-mha-ctrl---cr' ) ).append( mnMhaCtrlHMu ).append( mnMhaCtrlCtMu );
+            $mnMha.find( $( '.mn-mha-ctrl---ct_cr' ) ).append( mnMhaTogObjMu );
+            
+            console.log( 'mnMhaToggleObjMu3' );
+            
+        }() );

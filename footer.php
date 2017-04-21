@@ -42,7 +42,7 @@
                 <div class="cn wbp-end" data-name="Web Product End">
                     <div class="cr wbp-end---cr">
 
-                        <div id="go-start-nav" class="cp nav go-start-nav" data-name="Go to Start Navigation">
+                        <div id="go-start-nav" class="nav go-start-nav" role="navigation" data-name="Go to Start Navigation">
                             <div class="cr go-start-nav---cr">
                                 <div class="h go-start-nav---h"><span class="h_l go-ct-nav---h_l"><?php esc_html_e( 'Go to Start Navigation', 'applicator'); ?></span></div>
                                 <div class="ct go-start-nav---ct">

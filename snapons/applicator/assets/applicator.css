@@ -14,12 +14,6 @@
 .search--h,
 legend,
 .search-term--label,
-.main-content--h--pred-l,
-
-.home .main-content--h--subj-l,
-.page .main-content--h--subj-l,
-
-.single .main-content--h,
 
 .main-header-aside---h,
 .main-footer-aside--h,
@@ -64,6 +58,28 @@ legend,
     border: 0;
     word-wrap: normal;
 }
+
+/* ------------------------- Visually Hidden */
+
+/* Go to Content Nav */
+.dom--unready .go-content-nav,
+.go-content-nav--inactive,
+.go-ct-nav---h,
+
+/* Web Product Info */
+.apl--search--active .wbp-name,
+.apl--search--active .wbp-logo,
+.apl--search--active .wbp-desc,
+.wbp-name-desc--disabled .wbp-name,
+.wbp-name-desc--disabled .wbp-desc,
+
+/* Go to Start Nav */
+.go-start-navi--go---word,
+.go-start-navi--to---word,
+.go-start-navi--start---word,
+.go-start-nav---h,
+.dom--unready .go-start-nav
+{position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;}
 
 
 
@@ -1017,32 +1033,6 @@ $go-green: #12b32d;
 
 
 
-/* ------------------------- Visually Hidden */
-
-/* Go to Content Nav */
-.dom--unready .go-content-nav,
-.go-content-nav--inactive,
-.go-ct-nav---h,
-
-/* Web Product Info */
-.apl--search--active .wbp-name,
-.apl--search--active .wbp-logo,
-.apl--search--active .wbp-desc,
-.wbp-name-desc--disabled .wbp-name,
-.wbp-name-desc--disabled .wbp-desc,
-
-/* Go to Start Nav */
-.go-start-navi--go---word,
-.go-start-navi--to---word,
-.go-start-navi--start---word,
-.go-start-nav---h,
-.dom--unready .go-start-nav
-{position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;}
-
-
-
-
-
 /* ------------------------- Go to Content Nav */
 .go-content-nav,
 .go-ct-nav---cr,
@@ -1361,7 +1351,7 @@ $go-green: #12b32d;
     right: 0;
     bottom: 0;
     
-    transition: all 1s ease-in-out;
+    transition: all .2s ease-in-out;
 }
 
 .go-start-navi---a
@@ -1379,4 +1369,25 @@ $go-green: #12b32d;
 .go-start-nav--active .go-start-navi
 {
     transform: translateY( 0 );
+}
+
+
+.next-coms-navi---a_l .arrow--icon
+{
+    transform: rotate( -90deg );
+}
+
+
+.prev-coms-navi---a_l .arrow--icon
+{
+    transform: rotate( 90deg );
+}
+
+
+
+
+
+.apl--mnha--menu--active
+{
+    overflow: hidden;
 }
