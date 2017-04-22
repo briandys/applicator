@@ -1,47 +1,202 @@
-( function() {
+// ------------------------- Main Nav | Main Header Aside - Menu
+    ( function() {
+        
+        var $mnmha = $( '#main-nav--main-header-aside' ),
+            mainNavHeaderAsideMenuToggle = $( '<div />', { 'class': 'cp main-nav--header-aside--menu-toggle', 'data-name': 'Main Navigation | Header Aside Toggle' } )
+                .append( $( '<div />', { 'class': 'main-nav--header-aside--menu-toggle--cr' } ) ),
             
-            // Button
-            mnMhaTogBtnMu = $( '<button />', {
-                'class': 'b mn-mha-toggle---b'
-            } ).append( $( '<span />', {
-                'class': 'b_l mn-mha-toggle---b_l',
-                'text' : 'Show / Hide'
-            } ) );
+            mainNavHeaderAsideMenuToggleAction = $( '<button />', { 'class': 'b a main-nav--header-aside--menu-toggle--a' } )
+                .append( $( '<span />', { 'class': 'main-nav--header-aside--menu-toggle--a-l' } ) ),
             
-            // Object
-            mnMhaTogObjMu = $( '<div />', {
-                'class': 'obj toggle main-nav--main-header-aside-toggle',
-                'data-name': 'Main Nav - Main Header Aside Toggle'
-            } ).append( mnMhaTogBtnMu );
+            mainNavHeaderAsideMenuToggleActionLabel = $( '<span />', { 'class': 'main-nav--header-aside--menu-toggle--a--word--l', 'text': applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuShowLabel } ),
             
+            mainNavHeaderAsideMenuActiveClass = 'main-nav--header-aside--active',
+            mainNavHeaderAsideMenuInactiveClass = 'main-nav--header-aside--inactive',
             
-            // Containers
-            mnMhaCtrlMu = $( '<div />', {
-                'class': 'ctrl main-nav--main-header-aside-ctrl',
-                'data-name': 'Main Nav - Main Header Aside Control'
-            } ).append( $( '<div />', {
-                'class': 'cr mn-mha-ctrl---cr'
-            } ) );
+            aplMainNavHeaderAsideMenuActiveClass = 'apl--mnha--menu--active',
+            aplMainNavHeaderAsideMenuInactiveClass = 'apl--mnha--menu--inactive',
             
-            mnMhaCtrlHMu = $( '<div />', {
-                'class': 'h mn-mha-ctrl---h'
-            } ).append( $( '<span />', {
-                'class': 'h_l mn-mha-ctrl---h_l',
-                'text': 'Main Nav - Main Header Aside Control'
-            } ) );
+            $mainMenuTogAxn,
+            $mainMenuTogAxnL;
+        
+        // Attach Markup
+        $mnmha.find( '.mn-mha---h' ).after( mainNavHeaderAsideMenuToggle );
+        $mnmha.find( '.main-nav--header-aside--menu-toggle--cr' ).append( mainNavHeaderAsideMenuToggleAction );
+        $mnmha.find( '.main-nav--header-aside--menu-toggle--a-l' )
+            .append( mainNavHeaderAsideMenuToggleActionLabel )
+            .append( ' ' )
+            .append( applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuIcon )
+            .append( applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuDismissIcon );
+        
+        
+        // Set Default State as Inactive
+        $mnmha.addClass( mainNavHeaderAsideMenuInactiveClass );
+        $html.addClass( aplMainNavHeaderAsideMenuInactiveClass );
+        
+        
+        $mainMenuTogAxn = $mnmha.find( '.main-nav--header-aside--menu-toggle--a' );
+        $mainMenuTogAxnL = $mainMenuTogAxn.find( '.main-nav--header-aside--menu-toggle--a--word--l' );
+        
+        
+        function mnhaActivate() {
+            $mnmha
+                .addClass( mainNavHeaderAsideMenuActiveClass )
+                .removeClass( mainNavHeaderAsideMenuInactiveClass );
+            $mainMenuTogAxn.attr( 'aria-expanded', 'true' );
+            $mainMenuTogAxn.attr( 'title', applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuHideLabel );
+            $mainMenuTogAxnL.text( applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuHideLabel );
+            $html.addClass( aplMainNavHeaderAsideMenuActiveClass );
+            $html.removeClass( aplMainNavHeaderAsideMenuInactiveClass );
+        }
+        
+        function mnhaDeactivate() {
+            $mnmha
+                .addClass( mainNavHeaderAsideMenuInactiveClass )
+                .removeClass( mainNavHeaderAsideMenuActiveClass );
+            $mainMenuTogAxn.attr( 'aria-expanded', 'false' );
+            $mainMenuTogAxn.attr( 'title', applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuShowLabel );
+            $mainMenuTogAxnL.text( applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuShowLabel );
+            $html.addClass( aplMainNavHeaderAsideMenuInactiveClass );
+            $html.removeClass( aplMainNavHeaderAsideMenuActiveClass );
+        }
+        
+        
+        // ------------------------- Main Menu Status
+        function mainMenuToggle() {
             
-            mnMhaCtrlCtMu = $( '<div />', {
-                'class': 'ct mn-mha-ctrl---ct'
-            } ).append( $( '<div />', {
-                'class': 'ct_cr mn-mha-ctrl---ct_cr'
-            } ) );
+            if ( $mnmha.hasClass( mainNavHeaderAsideMenuActiveClass ) ) {
+                mnhaActivate();
+                
+                $mnmha.find( '.mn-mha---ct' ).attr( 'title', applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuHideLabel );
+                
+                $mnmha.find( '.mn-mha---ct-cr' ).attr( 'title', '' );
             
-            
-            
-            $mnMha.find( $( '.mn-mha---hr_cr' ) ).append( mnMhaCtrlMu );
-            $mnMha.find( $( '.mn-mha-ctrl---cr' ) ).append( mnMhaCtrlHMu ).append( mnMhaCtrlCtMu );
-            $mnMha.find( $( '.mn-mha-ctrl---ct_cr' ) ).append( mnMhaTogObjMu );
-            
-            console.log( 'mnMhaToggleObjMu3' );
-            
-        }() );
+            } else if ( $mnmha.hasClass( mainNavHeaderAsideMenuInactiveClass ) ) {
+                mnhaDeactivate();
+            }
+        }
+        mainMenuToggle();
+        
+        
+        // Click Toggle Action
+        $mnmha.find( '.main-nav--header-aside--menu-toggle--a' ).click( function( e ) {
+            var _this = $( this );
+
+            e.preventDefault();
+
+            $mnmha
+                .toggleClass( mainNavHeaderAsideMenuActiveClass )
+                .toggleClass( mainNavHeaderAsideMenuInactiveClass );
+
+            mainMenuToggle();
+        } );
+        
+        
+        
+        /* ------------------------- Deactivate on Click Outside
+        $document.on( 'touchmove.applicator click.applicator', function ( e ) {
+            var _this = $( this );
+            if ( ( ! $( e.target ).closest( '.main-nav--header-aside--menu-toggle' ).length && ! $( e.target ).closest( '.mn-mha---ct-cr' ).length ) && $mnmha.hasClass( mainNavHeaderAsideMenuActiveClass ) ) {
+                mnhaDeactivate();
+            }
+        } );
+
+
+        // ------------------------- Deactivate on ESC Key
+        $window.load( function () {
+            $( document ).on( 'keyup.applicator', function ( e ) {
+                if ( e.keyCode == 27 && $mnmha.hasClass( mainNavHeaderAsideMenuActiveClass ) ) {
+                    mnhaDeactivate();
+                }
+            } );
+        } );
+        */
+        
+    }() );
+
+
+
+/* OK */
+.main-nav--header-aside--active .main-nav--header-aside--menu-toggle .burger--icon,
+.main-nav--header-aside--inactive .main-nav--header-aside--menu-toggle .dismiss--icon,
+.apl--mnha--menu--inactive .main-nav,
+.apl--mnha--menu--inactive .main-header-aside
+{
+    display: none;
+}
+
+/* OK */
+.main-nav--header-aside--menu-toggle
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* OK */
+.apl--search--active .main-nav--header-aside--menu-toggle
+{
+    z-index: 1;
+}
+
+/* OK */
+.main-nav--header-aside--active
+{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+
+/* OK */
+.main-nav--header-aside--active,
+.main-nav--header-aside--active .mn-mha---cr,
+.main-nav--header-aside--active .mn-mha---ct,
+.main-nav--header-aside--active .mn-mha---ct-cr
+{
+    width: 100%;
+    height: 100%;
+}
+
+/* OK */
+.main-nav--header-aside--active .mn-mha---ct
+{
+    position: relative;
+    box-sizing: border-box;
+    padding-right: 3rem;
+    margin-top: 3rem;
+}
+
+/* OK */
+.main-nav--header-aside--active .mn-mha---ct::before
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 100%;
+    margin-left: -3rem;
+    
+    width: .5rem;
+    height: 100%;
+    
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.25+0,0+100 */
+    background: -moz-linear-gradient(left, hsla(0,0%,0%,0.25) 0%, hsla(0,0%,0%,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+}
+
+.main-nav--header-aside--active .mn-mha---cr
+{
+    background-color: black;
+    background-color: hsla(0, 0%, 0%, .75);
+    
+    cursor: pointer;
+}
+
+.main-nav--header-aside--active .mn-mha---ct-cr
+{
+    background-color: white;
+    overflow-y: auto;
+    cursor: auto;
+}

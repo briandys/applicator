@@ -108,7 +108,7 @@
                             </div>
                         </div><!-- wbp-info -->
                         
-                        <div id="main-nav--main-header-aside" class="frame main-nav--main-header-aside" data-name="Main Nav - Main Header Aside">
+                        <div id="main-nav--main-header-aside" class="main-nav--main-header-aside" data-name="Main Nav - Main Header Aside">
                             <div class="cr mn-mha---cr">
                                 <div class="hr mn-mha---hr">
                                     <div class="hr_cr mn-mha---hr_cr">

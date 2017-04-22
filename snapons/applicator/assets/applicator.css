@@ -78,7 +78,13 @@ legend,
 .go-start-navi--to---word,
 .go-start-navi--start---word,
 .go-start-nav---h,
-.dom--unready .go-start-nav
+.dom--unready.apl--go-start .go-start-nav,
+
+/* Main Nav - Main Header Aside */
+.mn-mha-ctrl---h,
+.mn-mha-tog---b_l .show-hide-mn-mha---word,
+.dom--unready.apl--mn-mha .main-nav,
+.dom--unready.apl--mn-mha .main-header-aside
 {position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;}
 
 
@@ -595,88 +601,7 @@ p
 
 
 
-/* ------------------------- Main Nav | Header Aside - Menu ------------------------- */
-.main-nav--header-aside--active .main-nav--header-aside--menu-toggle .burger--icon,
-.main-nav--header-aside--inactive .main-nav--header-aside--menu-toggle .dismiss--icon,
 
-.apl--mnha--menu.dom--unready .main-nav,
-.apl--mnha--menu.dom--unready .main-header-aside,
-
-.apl--mnha--menu--inactive .main-nav,
-.apl--mnha--menu--inactive .main-header-aside
-{
-    display: none;
-}
-
-.main-nav--header-aside--menu-toggle
-{
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-.apl--search--active .main-nav--header-aside--menu-toggle
-{
-    z-index: 1;
-}
-
-.main-nav--header-aside--active
-{
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 2;
-}
-
-.main-nav--header-aside--active,
-.main-nav--header-aside--active .mn-mha---cr,
-.main-nav--header-aside--active .mn-mha---ct,
-.main-nav--header-aside--active .mn-mha---ct-cr
-{
-    width: 100%;
-    height: 100%;
-}
-
-.main-nav--header-aside--active .mn-mha---ct
-{
-    position: relative;
-    box-sizing: border-box;
-    padding-right: 3rem;
-    margin-top: 3rem;
-}
-
-.main-nav--header-aside--active .mn-mha---ct::before
-{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 100%;
-    margin-left: -3rem;
-    
-    width: .5rem;
-    height: 100%;
-    
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.25+0,0+100 */
-    background: -moz-linear-gradient(left, hsla(0,0%,0%,0.25) 0%, hsla(0,0%,0%,0) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
-}
-
-.main-nav--header-aside--active .mn-mha---cr
-{
-    background-color: black;
-    background-color: hsla(0, 0%, 0%, .75);
-    
-    cursor: pointer;
-}
-
-.main-nav--header-aside--active .mn-mha---ct-cr
-{
-    background-color: white;
-    overflow-y: auto;
-    cursor: auto;
-}
 
 
 
@@ -702,10 +627,7 @@ $go-green: #12b32d;
 .widget_search .search-form-reset--a-l,
 .comment-submit--a,
 
-.main-header---cr
-{
-    background-color: #00aaff;
-}
+
 
 .entry-title--a
 {
@@ -1153,6 +1075,11 @@ $go-green: #12b32d;
     overflow: hidden;
 }
 
+.wbp-info---cr
+{
+    background-color: #00aaff;
+}
+
 .apl--mnha--menu .wbp-info---cr
 {
     padding-left: 3rem;
@@ -1391,3 +1318,129 @@ $go-green: #12b32d;
 {
     overflow: hidden;
 }
+
+
+/* ------------------------- Main Nav - Main Header Aside */
+.mn-mha-tog---b
+{
+    box-sizing: border-box;
+    
+    padding: 0;
+    margin: 0;
+    
+    min-width: 3rem;
+    min-height: 3rem;
+    
+    background-color: transparent;
+    
+    border: 0;
+}
+
+.mn-mha-tog---b_l
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    color: white;
+}
+
+.mn-mha-tog---b_l .dismiss--icon
+{
+    width: .75rem;
+    height: .75rem;
+}
+
+.main-nav--main-header-aside-ctrl
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.apl--search--active .main-nav--main-header-aside-ctrl
+{
+    z-index: 1;
+}
+
+
+/* ------------------------- Main Nav - Main Header Aside */
+.main-menu--inactive .main-nav,
+.main-menu--inactive .main-header-aside
+{
+    display: none;
+}
+
+.main-menu--active
+{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+
+.main-menu--active,
+.main-menu--active .mn-mha---cr,
+.main-menu--active .mn-mha---ct,
+.main-menu--active .mn-mha---ct-cr
+{
+    width: 100%;
+    height: 100%;
+}
+
+.main-menu--active .mn-mha---ct
+{
+    position: relative;
+    box-sizing: border-box;
+    padding-right: 3rem;
+    margin-top: 3rem;
+}
+
+.main-menu--active .mn-mha---ct::before
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 100%;
+    margin-left: -3rem;
+    
+    width: .5rem;
+    height: 100%;
+    
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.25+0,0+100 */
+    background: -moz-linear-gradient(left, hsla(0,0%,0%,0.25) 0%, hsla(0,0%,0%,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+}
+
+.main-menu--active .mn-mha---cr
+{
+    background-color: black;
+    background-color: hsla(0, 0%, 0%, .75);
+    
+    cursor: pointer;
+}
+
+.main-menu--active .mn-mha---ct-cr
+{
+    background-color: white;
+    overflow-y: auto;
+    cursor: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

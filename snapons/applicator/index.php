@@ -17,12 +17,22 @@ if ( ! function_exists( 'applicator_snapons_applicator_class' ) ) {
                 html.classList.add( 'applicator-theme--applicator' );
                 
                 html.classList.add( 'applicator--go-content' );
-                html.classList.add( 'applicator--go-start' );
+                html.classList.add( 'applicator--go-start' ); // Remove
                 html.classList.add( 'applicator--sub-nav' );
                 
                 html.classList.add( 'apl--search' );
                 
-                html.classList.add( 'apl--mnha--menu' );
+                html.classList.add( 'apl--mnha--menu' ); // Remove
+                
+                
+                
+                html.classList.add( 'apl--go-start' );
+                html.classList.add( 'apl--mn-mha' );
+                
+                // Official
+                html.classList.add( 'apl--default--mn-mha--main-menu' );
+                
+                
                 
                 html.classList.add( '_applicator--article' );
                 
@@ -47,7 +57,7 @@ if ( ! function_exists( 'applicator_snapons_applicator_styles' ) ) :
         
         add_editor_style( array( 'assets/css/editor-style.css', applicator_fonts_url() ) );
         
-        wp_enqueue_style( 'applicator-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '8.9', 'all' );
+        wp_enqueue_style( 'applicator-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '9.1', 'all' );
 
     }
     add_action( 'wp_enqueue_scripts', 'applicator_snapons_applicator_styles', 0);
