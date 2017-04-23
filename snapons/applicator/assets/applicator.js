@@ -4,21 +4,164 @@
         $document = $( document ),
         $window = $( window ),
         
-        $aplApplicatorMnMhaMainMenu = $( '.apl--applicator--mn-mha--main-menu' );
+        $aplApplicatorMnMhaMainMenu = $( '.apl--applicator--main-menu' );
     
     
     // Classify the built-in Search
     ( function() {
-        $( '#masthead' ).find( $( '.main-header---cr' ) ).children( '.search-cp' ).addClass( 'arbitrary-nav' ).attr( 'id', 'arbitrary-nav' );
+        var arbitNavCss = 'arbitrary-nav';
+        $( '#masthead' ).find( $( '.main-header---cr' ) ).children( '.search---cp' ).attr( 'id', arbitNavCss ).addClass( arbitNavCss );
     }() );
+    
+    
+    
+    
+    
+    // ------------------------- Go to Content Nav
+    function initGoContent( cp ) {
+        
+        if ( ! $( '.apl--applicator--go-content-nav' ).length ) {
+			return;
+		}
+        
+        var $goCtNaviA = $( '#go-ct-navi---a' ),
+            
+            goCtNavActCss = 'go-content-nav--active',
+            goCtNavInactCss = 'go-content-nav--inactive',
+            aplGoCtNavActCss = 'apl--go-content-nav--active',
+            aplGoCtNavInactCss = 'apl--go-content-nav--inactive';
+        
+        function goCtNavActivate() {
+            cp
+                .addClass( goCtNavActCss )
+                .removeClass( goCtNavInactCss );
+            $html
+                .addClass( aplGoCtNavActCss )
+                .removeClass( aplGoCtNavInactCss );
+        }
+        
+        function goCtNavDeactivate() {
+            cp
+                .addClass( goCtNavInactCss )
+                .removeClass( goCtNavActCss );
+            $html
+                .addClass( aplGoCtNavInactCss )
+                .removeClass( aplGoCtNavActCss );
+        }
+        
+        // Initiate
+        goCtNavDeactivate();
+        
+        // Focus In > Activate
+        $goCtNaviA.on( 'focusin.applicator', function() {
+            goCtNavActivate();
+            console.log( 'goCtNavActivate' );
+        } );
+
+        // Focus Out > Deactivate
+        $goCtNaviA.on( 'focusout.applicator', function() {
+            goCtNavDeactivate();
+            console.log( 'goCtNavDeactivate' );
+        } );
+        
+    } // Go to Content Nav
+    initGoContent( $( '#go-content-nav' ) );
+    
+    
+    
+    
+    
+    // ------------------------- Go to Start Nav
+    function initGoStart( cp ) {
+        
+        if ( ! $( '.apl--applicator--go-content-nav' ).length ) {
+			return;
+		}
+        
+        var $goStartNaviA = $( '#go-start-navi---a' ),
+            
+            goStartNavActCss = 'go-start-nav--active',
+            goStartNavInactCss = 'go-start-nav--inactive',
+            
+            aplgoStartNavActCss = 'apl--go-start-nav--active',
+            aplgoStartNavInactCss = 'apl--go-start-nav--inactive',
+            
+            $colophonHeight = $('#colophon').height(),
+            bodyOffsetCriteriaHeight,
+            bodyOffsetSliceHeight,
+            bodyOffsetMostHeight;
+        
+        function goStartNavActivate() {
+            cp
+                .addClass( goStartNavActCss )
+                .removeClass( goStartNavInactCss );
+            $html
+                .addClass( aplgoStartNavActCss )
+                .removeClass( aplgoStartNavInactCss );
+        }
+        
+        function goStartNavDeactivate() {
+            cp
+                .addClass( goStartNavInactCss )
+                .removeClass( goStartNavActCss );
+            $html
+                .addClass( aplgoStartNavInactCss )
+                .removeClass( aplgoStartNavActCss );
+        }
+        
+        // Initiate
+        goStartNavDeactivate();
+        
+        ( function() {
+            bodyOffsetCriteriaHeight = document.body.offsetHeight / 2;
+            bodyOffsetSliceHeight = document.body.offsetHeight / 2;
+            bodyOffsetMostHeight = document.body.offsetHeight - bodyOffsetSliceHeight;
+            
+            if ( ( window.innerHeight ) <= ( bodyOffsetCriteriaHeight ) ) {
+
+                // http://stackoverflow.com/a/40370876
+                $window.scroll( function( e ) {
+                    if ( ( window.innerHeight + window.pageYOffset ) >= ( bodyOffsetMostHeight ) ) {
+                        goStartNavActivate();
+                    } else {
+                        goStartNavDeactivate();
+                    }
+                } );
+            }
+        } () );
+        
+    
+        // Smooth Scroll to #start
+        $goStartNaviA.bind( 'click.applicator', function( e ) {
+
+            e.preventDefault();
+            
+            var target = $( this ).attr( "href" );
+
+            $( 'html, body' ).stop().animate( {
+                scrollTop: $( target ).offset().top
+            }, 600, 'linear', function() {
+                location.hash = target;
+            } );
+
+            return false;
+        } );
+    } // Go to Start Nav
+    
+    initGoStart( $( '#go-start-nav' ) );
+    
+    
+    
     
     
     // Main Menu | Main Nav - Main Header Aside
     function initMainMenu( cp ) {
         
-        if ( ! $( '.apl--applicator--mn-mha--main-menu' ).length ) {
+        if ( ! $( '.apl--applicator--main-menu' ).length ) {
 			return;
 		}
+        
+        cp.addClass( 'main-menu' );
         
         var mainMenuCtrlMu,
             mainMenuCtrlHMu,
@@ -33,21 +176,19 @@
             aplmainMenuActCss = 'apl--main-menu--active',
             aplmainMenuInactCss = 'apl--main-menu--inactive',
             
-            $mainMenuTogBtnHideIco = $( aplDatamainMenuTogL.mainMenuHideIco ),
-            $mainMenuTogBtnShowIco = $( aplDatamainMenuTogL.mainMenuShowIco ),
+            $mainMenuTogBtnHideIco = $( aplDataMainMenuTogL.mainMenuHideIco ),
+            $mainMenuTogBtnShowIco = $( aplDataMainMenuTogL.mainMenuShowIco ),
             
             $mainMenuTogBtn,
             $mainMenuTogBtnL,
             $mainMenuTogBtnLword;
-        
-        cp.addClass( 'main-menu' );
         
         // Build Markup
         ( function() {
             
             mainMenuTogBtnLwordMu = $( '<span />', {
                 'class': 'word show-hide-main-menu---word',
-                'text': aplDatamainMenuTogL.mainMenuHideL
+                'text': aplDataMainMenuTogL.mainMenuHideL
             } );
             
             mainMenuTogBtnLmu = $( '<span />', {
@@ -60,7 +201,7 @@
             mainMenuTogBtnMu = $( '<button />', {
                 'id' : 'main-menu-tog---b',
                 'class': 'b main-menu-tog---b',
-                'title': aplDatamainMenuTogL.mainMenuHideL
+                'title': aplDataMainMenuTogL.mainMenuHideL
             } ).append( mainMenuTogBtnLmu );
             
             // Object
@@ -81,7 +222,7 @@
                 'class': 'h main-menu-ctrl---h'
             } ).append( $( '<span />', {
                 'class': 'h_l main-menu-ctrl---h_l',
-                'text': aplDatamainMenuTogL.mainMenuCtrlH
+                'text': aplDataMainMenuTogL.mainMenuCtrlH
             } ) );
             
             mainMenuCtrlCtMu = $( '<div />', {
@@ -99,7 +240,7 @@
             .find( $( '.main-menu-ctrl---ct_cr' ) )
                 .append( mainMenuTogObjMu );
             
-            console.log( 'main-menu-ctrl abcdefg' );
+            console.log( 'main-menu-ctrl abcdefghij' );
             
         }() );
         
@@ -119,10 +260,10 @@
             
             $mainMenuTogBtn.attr( {
                  'aria-expanded': 'true',
-                 'title': aplDatamainMenuTogL.mainMenuHideL
+                 'title': aplDataMainMenuTogL.mainMenuHideL
             } );
             
-            $mainMenuTogBtnLword.text( aplDatamainMenuTogL.mainMenuHideL );
+            $mainMenuTogBtnLword.text( aplDataMainMenuTogL.mainMenuHideL );
             $mainMenuTogBtnL.append( $mainMenuTogBtnHideIco );
             $mainMenuTogBtnShowIco.remove();
             console.log( 'activate' );
@@ -139,10 +280,10 @@
             
             $mainMenuTogBtn.attr( {
                  'aria-expanded': 'false',
-                 'title': aplDatamainMenuTogL.mainMenuShowL
+                 'title': aplDataMainMenuTogL.mainMenuShowL
             } );
             
-            $mainMenuTogBtnLword.text( aplDatamainMenuTogL.mainMenuShowL );
+            $mainMenuTogBtnLword.text( aplDataMainMenuTogL.mainMenuShowL );
             $mainMenuTogBtnL.append( $mainMenuTogBtnShowIco );
             $mainMenuTogBtnHideIco.remove();
             console.log( 'deactivate' );
@@ -161,31 +302,31 @@
         }
         
         ( function() {
-            $mainMenuTogBtn.click( function( e ){
+            $mainMenuTogBtn.on( 'click.applicator', function( e ) {
                 e.preventDefault();
                 mainMenuToggle();
                 console.log( '$mainMenuTogBtn toggle' );
             } );
         }() );
         
-        /* Deactivate upon interaction outside other elements
+        // Deactivate upon interaction outside specified elements
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             var _this = $( this );
-            if ( ( ! $( e.target ).closest( '.main-nav--header-aside--menu-toggle' ).length && ! $( e.target ).closest( $mainMenuCtCr ).length ) && cp.hasClass( mainMenuActCss ) ) {
+            if ( cp.hasClass( mainMenuActCss ) && ( ! $( e.target ).closest( '.main-menu-ctrl' ).length && ! $( e.target ).closest( $mainMenuCtCr ).length ) ) {
                 mainMenuDeactivate();
+                console.log( 'Outside click' );
             }
         } );
-
 
         // Deactivate upon presseing ESC Key
         $window.load( function () {
             $( document ).on( 'keyup.applicator', function ( e ) {
-                if ( e.keyCode == 27 && cp.hasClass( mainMenuActCss ) ) {
+                if ( cp.hasClass( mainMenuActCss ) && e.keyCode == 27 ) {
                     mainMenuDeactivate();
+                    console.log( 'ESC' );
                 }
             } );
         } );
-        */
         
     } // Main Menu | Main Nav - Main Header Aside
 
@@ -195,58 +336,14 @@
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    // ------------------------- Go to Content
-    function initGoContent( component ) {
-        
-        var $goCtNaviA = $( '#go-ct-navi---a' ),
-            
-            goCtActCss = 'go-content-nav--active',
-            goCtInactCss = 'go-content-nav--inactive',
-            
-            aplGoCtActCss = 'apl--go-content-nav--active',
-            aplGoCtInactCss = 'apl--go-content-nav--inactive';
-        
-        function goCtNaviActivate() {
-            component
-                .addClass( goCtActCss )
-                .removeClass( goCtInactCss );
-            $html
-                .addClass( aplGoCtActCss )
-                .removeClass( aplGoCtInactCss );
-        }
-        
-        function goCtNaviDeactivate() {
-            component
-                .addClass( goCtInactCss )
-                .removeClass( goCtActCss );
-            $html
-                .addClass( aplGoCtInactCss )
-                .removeClass( aplGoCtActCss );
-        }
-        
-        // Initiate
-        goCtNaviDeactivate();
-        
-        // Focus In > Activate
-        $goCtNaviA.on( 'focusin.applicator', function () {
-            goCtNaviActivate();
-        } );
-
-        // Focus Out > Deactivate
-        $goCtNaviA.on( 'focusout.applicator', function () {
-            goCtNaviDeactivate();
-        } );
+    function initArbitSearch( cp ) {
         
     }
-    initGoContent( $( '#go-content-nav' ) );
+    initArbitSearch( $() );
+    
+    
+    
+    
     
     
     // ------------------------- Sub-Navigation
@@ -508,85 +605,6 @@
         
     }
     initSearch( $( '#arbitrary-nav' ) );
-    
-    
-    
-    
-    
-    // ------------------------- Go to Start
-    function initGoStart( component ) {
-        
-        var $goStartNaviA = $( '#go-start-navi---a' ),
-            
-            goStartActCss = 'go-start-nav--active',
-            goStartInactCss = 'go-start-nav--inactive',
-            
-            aplGoStartActCss = 'apl--go-start-nav--active',
-            aplGoStartInactCss = 'apl--go-start-nav--inactive';
-        
-        function goStartNaviActivate() {
-            component
-                .addClass( goStartActCss )
-                .removeClass( goStartInactCss );
-            $html
-                .addClass( aplGoStartActCss )
-                .removeClass( aplGoStartInactCss );
-        }
-        
-        function goStartNaviDeactivate() {
-            component
-                .addClass( goStartInactCss )
-                .removeClass( goStartActCss );
-            $html
-                .addClass( aplGoStartInactCss )
-                .removeClass( aplGoStartActCss );
-        }
-        
-        // Initiate
-        goStartNaviDeactivate();
-        
-        var $colophonHeight = $('#colophon').height(),
-            bodyOffsetCriteriaHeight = document.body.offsetHeight / 2,
-            bodyOffsetSliceHeight = document.body.offsetHeight / 2,
-            bodyOffsetMostHeight = document.body.offsetHeight - bodyOffsetSliceHeight;
-        
-        if ( ( window.innerHeight ) <= ( bodyOffsetCriteriaHeight ) ) {
-            
-            // http://stackoverflow.com/a/40370876
-            window.onscroll = function( ev ) {
-                if ( ( window.innerHeight + window.pageYOffset ) >= ( bodyOffsetMostHeight ) ) {
-                    goStartNaviActivate();
-                } else {
-                    goStartNaviDeactivate();
-                }
-            };
-            
-        }
-    
-        // Smooth Scroll to #start
-        $goStartNaviA.bind( 'click', function( e ) {
-
-            e.preventDefault();
-            
-            var target = $( this ).attr( "href" );
-
-            $( 'html, body' ).stop().animate( {
-                scrollTop: $( target ).offset().top
-            }, 600, 'linear', function() {
-                location.hash = target;
-            } );
-
-            return false;
-        } );
-        
-    }
-    initGoStart( $( '#go-start-nav' ) );
-    
-    
-    
-    
-    
-    
     
 
 })( jQuery );

@@ -62,9 +62,15 @@ legend,
 /* ------------------------- Visually Hidden */
 
 /* Go to Content Nav */
-.dom--unready .go-content-nav,
+.apl--applicator--go-content-nav.dom--unready .go-content-nav,
 .go-content-nav--inactive,
 .go-ct-nav---h,
+
+/*  Menu | Main Nav - Main Header Aside */
+.apl--applicator--main-menu.dom--unready .main-header-aside,
+.main-menu-ctrl---h,
+.main-menu-tog---b_l .show-hide-main-menu---word,
+.dom--unready.apl--applicator--main-menu .main-nav,
 
 /* Web Product Info */
 .apl--search--active .wbp-name,
@@ -74,17 +80,11 @@ legend,
 .wbp-name-desc--disabled .wbp-desc,
 
 /* Go to Start Nav */
+.apl--applicator--go-start-nav.dom--unready .go-start-nav,
 .go-start-navi--go---word,
 .go-start-navi--to---word,
 .go-start-navi--start---word,
-.go-start-nav---h,
-.dom--unready.apl--go-start .go-start-nav,
-
-/* Main Nav - Main Header Aside */
-.main-menu-ctrl---h,
-.main-menu-tog---b_l .show-hide-main-menu---word,
-.dom--unready.apl--applicator--mn-mha--main-menu .main-nav,
-.dom--unready.apl--applicator--mn-mha--main-menu .main-header-aside
+.go-start-nav---h
 {position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;}
 
 
@@ -319,7 +319,7 @@ p
 
 
 /* ------------------------- Arbitrary Nav ------------------------- */
-.dom--unready .main-header---cr > .search-cp .search-form,
+.dom--unready .main-header---cr > .search---cp .search-form,
 .arbitrary-nav.search--inactive .search-form,
 .arbitrary-nav.search-input--empty .search-form-reset--a,
 .arbitrary-nav.search--active .search-toggle--a .search--icon,
@@ -375,12 +375,12 @@ p
     padding-left: 1rem;
 }
 
-.apl--mnha--menu .arbitrary-nav .search-term--fs-grp
+.apl--applicator--main-menu .arbitrary-nav .search-term--fs-grp
 {
     padding-left: 3rem;
 }
 
-.apl--mnha--menu .arbitrary-nav .search-term--input--text
+.apl--applicator--main-menu .arbitrary-nav .search-term--input--text
 {
     padding-left: 0;
 }
@@ -715,54 +715,7 @@ $go-green: #12b32d;
 
 
 
-/* ------------------------- WordPress Admin Bar ------------------------- */
-.wp-admin-bar--enabled
-{
-    margin-top: auto !important;
-}
 
-.apl--mnha--menu--active .main-nav--main-header-aside
-{
-    box-sizing: border-box;
-    padding-bottom: 46px;
-}
-
-/* Narrow */
-.apl--mnha--menu.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .wbp---cr
-{
-    padding-top: 46px;
-}
-
-.apl--mnha--menu.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-nav--header-aside--active
-{
-    padding-top: 46px;
-}
-
-.apl--mnha--menu.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-nav--header-aside--active .main-nav--header-aside--menu-toggle
-{
-    margin-top: 46px;
-}
-
-/* Wide */
-.apl--mnha--menu.wp-admin-bar--enabled.vp--wp-admin-bar--wide .wbp---cr
-{
-    padding-top: 32px;
-}
-
-.apl--mnha--menu.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-nav--header-aside--active
-{
-    padding-top: 32px;
-}
-
-.apl--mnha--menu.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-nav--header-aside--active .main-nav--header-aside--menu-toggle
-{
-    margin-top: 32px;
-}
-
-.apl--go-content-nav--active #wpadminbar
-{
-    z-index: 0;
-}
 
 
 
@@ -1080,12 +1033,12 @@ $go-green: #12b32d;
     background-color: #00aaff;
 }
 
-.apl--mnha--menu .wbp-info---cr
+.apl--applicator--main-menu .wbp-info---cr
 {
     padding-left: 3rem;
 }
 
-.apl--search .wbp-info---cr
+.apl--applicator--arbit-nav .wbp-info---cr
 {
     padding-right: 3rem;
 }
@@ -1104,9 +1057,9 @@ $go-green: #12b32d;
     padding-right: .5rem;
 }
 
-.apl--mnha--menu--active .wbp-name,
-.apl--mnha--menu--active .wbp-logo,
-.apl--mnha--menu--active .wbp-desc
+.apl--main-menu--active .wbp-name,
+.apl--main-menu--active .wbp-logo,
+.apl--main-menu--active .wbp-desc
 {
     position: relative;
     z-index: 1;
@@ -1253,6 +1206,26 @@ $go-green: #12b32d;
 
 
 /* ------------------------- Go to Start Nav */
+.go-start-navi
+{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    
+    transition: all .2s ease-in-out;
+}
+
+.go-start-nav--active .go-start-navi
+{
+    transform: translateY( 0 );
+}
+
+.apl--applicator--go-start-nav.dom--unready .go-start-navi,
+.go-start-nav--inactive .go-start-navi
+{
+    transform: translateY( 100% );
+}
+
 .go-start-navi---a,
 .go-start-navi---a_l
 {
@@ -1263,6 +1236,10 @@ $go-green: #12b32d;
 
 .go-start-navi---a
 {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    
     color: black;
 }
 
@@ -1270,32 +1247,6 @@ $go-green: #12b32d;
 {
     min-width: 3rem;
     min-height: 3rem;    
-}
-
-.go-start-navi
-{
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    
-    transition: all .2s ease-in-out;
-}
-
-.go-start-navi---a
-{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.go-start-nav--inactive .go-start-navi
-{
-    transform: translateY( 100% );
-}
-
-.go-start-nav--active .go-start-navi
-{
-    transform: translateY( 0 );
 }
 
 
@@ -1314,13 +1265,19 @@ $go-green: #12b32d;
 
 
 
-.apl--mnha--menu--active
+/* ------------------------- Main Menu: Main Nav - Main Header Aside */
+.main-menu-ctrl
 {
-    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
+.apl--search--active .main-menu-ctrl
+{
+    z-index: 1;
+}
 
-/* ------------------------- Main Nav - Main Header Aside */
 .main-menu-tog---b
 {
     box-sizing: border-box;
@@ -1351,20 +1308,12 @@ $go-green: #12b32d;
     height: .75rem;
 }
 
-.main-menu-ctrl
+.main-menu-tog---b .icon
 {
-    position: absolute;
-    left: 0;
-    top: 0;
+    pointer-events: none;
+    /* Seems like <svg> does not detect jQuery .closest, so exclude it by removing pointer events. */
 }
 
-.apl--search--active .main-menu-ctrl
-{
-    z-index: 1;
-}
-
-
-/* ------------------------- Main Nav - Main Header Aside */
 .main-menu--inactive .main-nav,
 .main-menu--inactive .main-header-aside
 {
@@ -1386,6 +1335,12 @@ $go-green: #12b32d;
 {
     width: 100%;
     height: 100%;
+}
+
+.main-menu--active
+{
+    box-sizing: border-box;
+    padding-bottom: 48px;
 }
 
 .main-menu--active .mn-mha---ct
@@ -1429,18 +1384,46 @@ $go-green: #12b32d;
     cursor: auto;
 }
 
+.apl--main-menu--active
+{
+    overflow: hidden;
+}
 
 
 
 
 
+/* ------------------------- WordPress Admin Bar */
+.wp-admin-bar--enabled
+{
+    margin-top: auto !important;
+}
 
+/* WP Admin Bar - Narrow */
+.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .wbp---cr,
+.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-menu--active
+{
+    padding-top: 46px;
+}
 
+.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-menu--active .main-menu-ctrl
+{
+    margin-top: 46px;
+}
 
+/* WP Admin Bar - Wide */
+.wp-admin-bar--enabled.vp--wp-admin-bar--wide .wbp---cr,
+.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-menu--active
+{
+    padding-top: 32px;
+}
 
+.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-menu--active .main-menu-ctrl
+{
+    margin-top: 32px;
+}
 
-
-
-
-
-
+.apl--go-content-nav--active #wpadminbar
+{
+    z-index: 0;
+}

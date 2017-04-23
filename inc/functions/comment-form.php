@@ -1,7 +1,7 @@
 <?php // Comment Form | comments.php
 
 if ( ! function_exists( 'applicator_comment_form' ) ) {
-    function applicator_comment_form( $fields ){
+    function applicator_comment_form( $fields ) {
         
         $commenter = wp_get_current_commenter();
         $req = get_option( 'require_name_email' );

@@ -5,7 +5,7 @@
 if ( ! function_exists( 'applicator_resource_hints' ) ) :
     function applicator_resource_hints( $urls, $relation_type ) {
         
-        if ( wp_style_is( 'applicator-style-fonts', 'queue' ) && 'preconnect' === $relation_type ) {
+        if ( wp_style_is( 'apl-style-fonts', 'queue' ) && 'preconnect' === $relation_type ) {
             $urls[] = array(
                 'href' => 'https://fonts.gstatic.com',
                 'crossorigin',

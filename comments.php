@@ -90,9 +90,7 @@
                 
                 comment_form( array(
                     
-                    // <form id="comment-form">
                     'id_form'                   => 'commentform',
-                    
                     
                     // Initial
                     'title_reply_before'        => '',

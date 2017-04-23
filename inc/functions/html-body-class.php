@@ -187,7 +187,6 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
     
     }
     add_action( 'applicator_hook_html_class', 'applicator_html_class');
-
 }
 
 
@@ -197,9 +196,8 @@ if ( ! function_exists( 'applicator_body_class' ) ) {
     function applicator_body_class( $classes ) {
 
         $classes[] = 'body';
-	
         return $classes;
+    
     }
     add_filter( 'body_class', 'applicator_body_class' );
-
 }

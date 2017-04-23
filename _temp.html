@@ -1,202 +1,49 @@
-// ------------------------- Main Nav | Main Header Aside - Menu
-    ( function() {
-        
-        var $mnmha = $( '#main-nav--main-header-aside' ),
-            mainNavHeaderAsideMenuToggle = $( '<div />', { 'class': 'cp main-nav--header-aside--menu-toggle', 'data-name': 'Main Navigation | Header Aside Toggle' } )
-                .append( $( '<div />', { 'class': 'main-nav--header-aside--menu-toggle--cr' } ) ),
-            
-            mainNavHeaderAsideMenuToggleAction = $( '<button />', { 'class': 'b a main-nav--header-aside--menu-toggle--a' } )
-                .append( $( '<span />', { 'class': 'main-nav--header-aside--menu-toggle--a-l' } ) ),
-            
-            mainNavHeaderAsideMenuToggleActionLabel = $( '<span />', { 'class': 'main-nav--header-aside--menu-toggle--a--word--l', 'text': applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuShowLabel } ),
-            
-            mainNavHeaderAsideMenuActiveClass = 'main-nav--header-aside--active',
-            mainNavHeaderAsideMenuInactiveClass = 'main-nav--header-aside--inactive',
-            
-            aplMainNavHeaderAsideMenuActiveClass = 'apl--mnha--menu--active',
-            aplMainNavHeaderAsideMenuInactiveClass = 'apl--mnha--menu--inactive',
-            
-            $mainMenuTogAxn,
-            $mainMenuTogAxnL;
-        
-        // Attach Markup
-        $mnmha.find( '.mn-mha---h' ).after( mainNavHeaderAsideMenuToggle );
-        $mnmha.find( '.main-nav--header-aside--menu-toggle--cr' ).append( mainNavHeaderAsideMenuToggleAction );
-        $mnmha.find( '.main-nav--header-aside--menu-toggle--a-l' )
-            .append( mainNavHeaderAsideMenuToggleActionLabel )
-            .append( ' ' )
-            .append( applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuIcon )
-            .append( applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuDismissIcon );
-        
-        
-        // Set Default State as Inactive
-        $mnmha.addClass( mainNavHeaderAsideMenuInactiveClass );
-        $html.addClass( aplMainNavHeaderAsideMenuInactiveClass );
-        
-        
-        $mainMenuTogAxn = $mnmha.find( '.main-nav--header-aside--menu-toggle--a' );
-        $mainMenuTogAxnL = $mainMenuTogAxn.find( '.main-nav--header-aside--menu-toggle--a--word--l' );
-        
-        
-        function mnhaActivate() {
-            $mnmha
-                .addClass( mainNavHeaderAsideMenuActiveClass )
-                .removeClass( mainNavHeaderAsideMenuInactiveClass );
-            $mainMenuTogAxn.attr( 'aria-expanded', 'true' );
-            $mainMenuTogAxn.attr( 'title', applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuHideLabel );
-            $mainMenuTogAxnL.text( applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuHideLabel );
-            $html.addClass( aplMainNavHeaderAsideMenuActiveClass );
-            $html.removeClass( aplMainNavHeaderAsideMenuInactiveClass );
-        }
-        
-        function mnhaDeactivate() {
-            $mnmha
-                .addClass( mainNavHeaderAsideMenuInactiveClass )
-                .removeClass( mainNavHeaderAsideMenuActiveClass );
-            $mainMenuTogAxn.attr( 'aria-expanded', 'false' );
-            $mainMenuTogAxn.attr( 'title', applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuShowLabel );
-            $mainMenuTogAxnL.text( applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuShowLabel );
-            $html.addClass( aplMainNavHeaderAsideMenuInactiveClass );
-            $html.removeClass( aplMainNavHeaderAsideMenuActiveClass );
-        }
-        
-        
-        // ------------------------- Main Menu Status
-        function mainMenuToggle() {
-            
-            if ( $mnmha.hasClass( mainNavHeaderAsideMenuActiveClass ) ) {
-                mnhaActivate();
-                
-                $mnmha.find( '.mn-mha---ct' ).attr( 'title', applicatormainNavHeaderAsideMenuLabel.mainNavHeaderAsideMenuHideLabel );
-                
-                $mnmha.find( '.mn-mha---ct-cr' ).attr( 'title', '' );
-            
-            } else if ( $mnmha.hasClass( mainNavHeaderAsideMenuInactiveClass ) ) {
-                mnhaDeactivate();
-            }
-        }
-        mainMenuToggle();
-        
-        
-        // Click Toggle Action
-        $mnmha.find( '.main-nav--header-aside--menu-toggle--a' ).click( function( e ) {
-            var _this = $( this );
+<div class="cp search---cp" data-name="Search">
+    <div class="cr search---cr">
+        <div class="hr search---hr">
+            <div class="hr_cr search---hr_cr">
+                <div class="h search---h">
+                    <span class="h_l search---h_l">Search</span>
+                </div>
+            </div>
+        </div>
+        <div class="ct search---ct">
+            <div class="ct_cr search---ct_cr">
+                <form class="form search-form" action="" data-name="Search Form">
+                    <div class="fieldsets search-form---fieldsets">
+                        <div class="fieldsets---cr search-form---fieldsets---cr">
 
-            e.preventDefault();
+                            <div class="cp fs-item search-term-creation" data-name="Search Term Creation">
+                                <div class="cr search-term-crt---cr">
+                                    <div class="h search-term-crt---h"><span class="h_l search-term-crt---h_l">Search Term Creation</span></div>
+                                    <div class="ct search-term-crt---ct">
+                                        <div class="ct_cr search-term-crt---ct_cr">
+                                            <span class="obj search-term-creation-label---obj" data-name="Search Term Creation Label">
+                                                <label class="label search-term-crt-lbl---label"><span class="label_l search-term-crt-lbl---label_l">Search Term</span></label>
+                                            </span>
+                                            <span class="obj search-term-creation-input---obj" data-name="Search Term Creation Input">
+                                                <span class="ee--input-text search-term-crt-inp---ee--input-text"><input class="input-text search-term-crt-inp--input-text" type="text" placeholder="Enter Search Term"></span>
+                                            </span>
+                                        </div>
+                                    </div><!-- search-term-crt---ct -->
+                                </div>
+                            </div><!-- search-term-creation -->
 
-            $mnmha
-                .toggleClass( mainNavHeaderAsideMenuActiveClass )
-                .toggleClass( mainNavHeaderAsideMenuInactiveClass );
-
-            mainMenuToggle();
-        } );
-        
-        
-        
-        /* ------------------------- Deactivate on Click Outside
-        $document.on( 'touchmove.applicator click.applicator', function ( e ) {
-            var _this = $( this );
-            if ( ( ! $( e.target ).closest( '.main-nav--header-aside--menu-toggle' ).length && ! $( e.target ).closest( '.mn-mha---ct-cr' ).length ) && $mnmha.hasClass( mainNavHeaderAsideMenuActiveClass ) ) {
-                mnhaDeactivate();
-            }
-        } );
-
-
-        // ------------------------- Deactivate on ESC Key
-        $window.load( function () {
-            $( document ).on( 'keyup.applicator', function ( e ) {
-                if ( e.keyCode == 27 && $mnmha.hasClass( mainNavHeaderAsideMenuActiveClass ) ) {
-                    mnhaDeactivate();
-                }
-            } );
-        } );
-        */
-        
-    }() );
-
-
-
-/* OK */
-.main-nav--header-aside--active .main-nav--header-aside--menu-toggle .burger--icon,
-.main-nav--header-aside--inactive .main-nav--header-aside--menu-toggle .dismiss--icon,
-.apl--mnha--menu--inactive .main-nav,
-.apl--mnha--menu--inactive .main-header-aside
-{
-    display: none;
-}
-
-/* OK */
-.main-nav--header-aside--menu-toggle
-{
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-/* OK */
-.apl--search--active .main-nav--header-aside--menu-toggle
-{
-    z-index: 1;
-}
-
-/* OK */
-.main-nav--header-aside--active
-{
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 2;
-}
-
-/* OK */
-.main-nav--header-aside--active,
-.main-nav--header-aside--active .mn-mha---cr,
-.main-nav--header-aside--active .mn-mha---ct,
-.main-nav--header-aside--active .mn-mha---ct-cr
-{
-    width: 100%;
-    height: 100%;
-}
-
-/* OK */
-.main-nav--header-aside--active .mn-mha---ct
-{
-    position: relative;
-    box-sizing: border-box;
-    padding-right: 3rem;
-    margin-top: 3rem;
-}
-
-/* OK */
-.main-nav--header-aside--active .mn-mha---ct::before
-{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 100%;
-    margin-left: -3rem;
-    
-    width: .5rem;
-    height: 100%;
-    
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.25+0,0+100 */
-    background: -moz-linear-gradient(left, hsla(0,0%,0%,0.25) 0%, hsla(0,0%,0%,0) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
-}
-
-.main-nav--header-aside--active .mn-mha---cr
-{
-    background-color: black;
-    background-color: hsla(0, 0%, 0%, .75);
-    
-    cursor: pointer;
-}
-
-.main-nav--header-aside--active .mn-mha---ct-cr
-{
-    background-color: white;
-    overflow-y: auto;
-    cursor: auto;
-}
+                        </div>
+                    </div><!-- fieldsets -->
+                    <div class="axns search-form-axns" data-name="Search Form Actions">
+                        <div class="cr search-form-axns---cr">
+                            <div class="h search-form-axns---h"><span class="h_l search-form-axns---h_l">Search Form Actions</span></div>
+                            <div class="obj axn search-submit-axn" data-name="Search Submit Action">
+                                <button class="b search-submit-axn---b" type="submit" title="Search"><span class="b_l search-submit-axn---b_l">Search</span></button>
+                            </div><!-- search-submit-axn -->
+                            <div class="obj axn search-reset-axn" data-name="Search Reset Action">
+                                <button class="b search-reset-axn---b" type="reset"><span class="b_l search-reset-axn---b_l" title="Reset">Reset</span></button>
+                            </div><!-- search-reset-axn -->
+                        </div>
+                    </div><!-- search-form-axns -->
+                </form><!-- search-form -->
+            </div>
+        </div><!-- search---ct -->
+    </div>
+</div><!-- search---cp -->
