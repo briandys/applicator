@@ -4,14 +4,7 @@
         $document = $( document ),
         $window = $( window ),
         
-        $aplApplicatorMnMhaMainMenu = $( '.apl--applicator--main-menu' );
-    
-    
-    // Classify the built-in Search
-    ( function() {
-        var arbitNavCss = 'arbitrary-nav';
-        $( '#masthead' ).find( $( '.main-header---cr' ) ).children( '.search---cp' ).attr( 'id', arbitNavCss ).addClass( arbitNavCss );
-    }() );
+        aplApplicatorArbitNavCss = 'apl--applicator--arbitrary-nav'
     
     
     
@@ -74,7 +67,7 @@
     // ------------------------- Go to Start Nav
     function initGoStart( cp ) {
         
-        if ( ! $( '.apl--applicator--go-content-nav' ).length ) {
+        if ( ! $( '.apl--applicator--go-start-nav' ).length ) {
 			return;
 		}
         
@@ -336,11 +329,32 @@
     
     
     
-    function initArbitSearch( cp ) {
+    // Arbitrary Nav | Search
+    ( function() {
         
-    }
-    initArbitSearch( $() );
+        if ( ! aplApplicatorArbitNavCss.length ) {
+			return;
+		}
+        
+        var arbitNavCss = 'arbitrary-nav';
+        $( '#masthead' )
+            .find( $( '.main-header---cr' ) )
+                .children( '.search---cp' )
+                    .attr( 'id', arbitNavCss )
+                    .addClass( arbitNavCss );
+    }() );
     
+    function initArbitNav( cp ) {
+        
+        if ( ! aplApplicatorArbitNavCss.length ) {
+			return;
+		}
+        
+        console.log( 'Arbirary Nav Created' );
+        
+    } // Arbitrary Nav | Search
+
+    initArbitNav( $( '#arbitrary-nav' ) );
     
     
     
@@ -437,7 +451,7 @@
     initSubNav( $( '.widget_pages' ) );
     
     
-    // ------------------------- Search
+    /* ------------------------- Search
     function initSearch( component ) {
         
         // Create Markup
@@ -605,6 +619,7 @@
         
     }
     initSearch( $( '#arbitrary-nav' ) );
+    */
     
 
 })( jQuery );

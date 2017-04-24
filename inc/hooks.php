@@ -3,8 +3,8 @@
 //------------------------- Hooks
 
 // header.php
-function applicator_hook_html_class() {
-    do_action( 'applicator_hook_html_class' );
+function apl_hook_html_class() {
+    do_action( 'apl_hook_html_class' );
 }
 
 //  header.php

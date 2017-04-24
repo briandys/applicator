@@ -1,5 +1,5 @@
 <?php
-$unique_id = esc_attr( uniqid( 'search-form-' ) );
+$unique_id = esc_attr( uniqid( 'search-term-creation-input--' ) );
 ?>
 
 <div class="cp search---cp" data-name="Search">
@@ -36,12 +36,16 @@ $unique_id = esc_attr( uniqid( 'search-form-' ) );
                     <div class="axns search-form-axns" data-name="Search Form Actions">
                         <div class="cr search-form-axns---cr">
                             <div class="h search-form-axns---h"><span class="h_l search-form-axns---h_l">Search Form Actions</span></div>
-                            <div class="obj axn search-submit-axn" data-name="Search Submit Action">
-                                <button class="b search-submit-axn---b" type="submit" title="<?php esc_attr_e( 'Search', 'applicator' ); ?>"><span class="b_l search-submit-axn---b_l"><?php esc_html_e( 'Search', 'applicator' ); ?></span></button>
-                            </div><!-- search-submit-axn -->
-                            <div class="obj axn search-reset-axn" data-name="Search Reset Action">
-                                <button class="b search-reset-axn---b" type="reset" title="<?php esc_attr_e( 'Reset', 'applicator' ); ?>"><span class="b_l search-reset-axn---b_l"><?php esc_html_e( 'Reset', 'applicator' ); ?></span></button>
-                            </div><!-- search-reset-axn -->
+                            <div class="ct search-form-axns---ct">
+                                <div class="ct_cr search-form-axns---ct_cr">
+                                    <div class="obj axn search-submit-axn" data-name="Search Submit Action">
+                                        <button class="b search-submit-axn---b" type="submit" title="<?php esc_attr_e( 'Search', 'applicator' ); ?>"><span class="b_l search-submit-axn---b_l"><?php esc_html_e( 'Search', 'applicator' ); ?></span></button>
+                                    </div><!-- search-submit-axn -->
+                                    <div class="obj axn search-reset-axn" data-name="Search Reset Action">
+                                        <button class="b search-reset-axn---b" type="reset" title="<?php esc_attr_e( 'Reset', 'applicator' ); ?>"><span class="b_l search-reset-axn---b_l"><?php esc_html_e( 'Reset', 'applicator' ); ?></span></button>
+                                    </div><!-- search-reset-axn -->
+                                </div>
+                            </div><!-- search-form-axns---ct -->
                         </div>
                     </div><!-- search-form-axns -->
                 </form><!-- search-form -->
