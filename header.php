@@ -122,7 +122,7 @@
                                         applicator_func_main_nav();
                                         
                                         // Hook: After Main Navigation
-                                        applicator_hook_after_main_nav();
+                                        apl_hook_after_main_nav();
                                         
                                         // Main Header Aside
                                         if ( is_active_sidebar( 'main-header-aside' )  ) { ?>

@@ -66,19 +66,6 @@ legend,
 .go-content-nav--inactive,
 .go-ct-nav---h,
 
-/*  Menu | Main Nav - Main Header Aside */
-.apl--applicator--main-menu.dom--unready .main-header-aside,
-.main-menu-ctrl---h,
-.main-menu-tog---b_l .show-hide-main-menu---word,
-.dom--unready.apl--applicator--main-menu .main-nav,
-
-/* Web Product Info */
-.apl--search--active .wbp-name,
-.apl--search--active .wbp-logo,
-.apl--search--active .wbp-desc,
-.wbp-name-desc--disabled .wbp-name,
-.wbp-name-desc--disabled .wbp-desc,
-
 /* Go to Start Nav */
 .apl--applicator--go-start-nav.dom--unready .go-start-nav,
 .go-start-navi--go---word,
@@ -86,11 +73,29 @@ legend,
 .go-start-navi--start---word,
 .go-start-nav---h,
 
-/* Arbitrary Nav */
+/*  Menu | Main Nav - Main Header Aside */
+.apl--applicator--main-menu.dom--unready .main-header-aside,
+.main-menu-ctrl---h,
+.main-menu-tog---b_l .show-hide-main-menu---word,
+
+/* Search */
 .search---h,
 .search-term-crt---h,
 .search-form-axns---h,
-.search-term-creation-label---obj
+.search-term-creation-label---obj,
+
+/* Arbitrary Nav */
+.arbitrary-nav-ctrl---h,
+.arbitrary-nav-tog---b_l .show-hide-arbitrary-nav---word,
+.arbitrary-nav .search-submit-axn---b_l .search---word,
+.arbitrary-nav .search-reset-axn---b_l .reset---word,
+
+/* Web Product Info */
+.apl--search--active .wbp-name,
+.apl--search--active .wbp-logo,
+.apl--search--active .wbp-desc,
+.wbp-name-desc--disabled .wbp-name,
+.wbp-name-desc--disabled .wbp-desc
 {position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;}
 
 
@@ -1242,7 +1247,9 @@ $go-green: #12b32d;
 
 
 
-/* ------------------------- Main Menu: Main Nav - Main Header Aside */
+/* ------------------------- Main Menu | Main Nav - Main Header Aside */
+/* ------------------------- Arbitrary Nav | Search */
+
 .main-menu-ctrl
 {
     position: absolute;
@@ -1255,7 +1262,10 @@ $go-green: #12b32d;
     z-index: 1;
 }
 
-.main-menu-tog---b
+.main-menu-tog---b,
+.arbitrary-nav-tog---b,
+.arbitrary-nav .search-submit-axn---b,
+.arbitrary-nav .search-reset-axn---b
 {
     box-sizing: border-box;
     
@@ -1270,7 +1280,10 @@ $go-green: #12b32d;
     border: 0;
 }
 
-.main-menu-tog---b_l
+.main-menu-tog---b_l,
+.arbitrary-nav-tog---b_l,
+.arbitrary-nav .search-submit-axn---b_l,
+.arbitrary-nav .search-reset-axn---b_l
 {
     display: flex;
     justify-content: center;
@@ -1279,20 +1292,23 @@ $go-green: #12b32d;
     color: white;
 }
 
-.main-menu-tog---b_l .dismiss--icon
+.main-menu-tog---b_l .dismiss--icon,
+.arbitrary-nav-tog---b_l .dismiss--icon,
+.arbitrary-nav .search-reset-axn---b_l .dismiss--icon
 {
     width: .75rem;
     height: .75rem;
 }
 
-.main-menu-tog---b .icon
+.main-menu-tog---b .icon,
+.arbitrary-nav-tog---b .icon
 {
     pointer-events: none;
     /* Seems like <svg> does not detect jQuery .closest, so exclude it by removing pointer events. */
 }
 
-.main-menu--inactive .main-nav,
-.main-menu--inactive .main-header-aside
+.main-menu--inactive .mn-mha---ct,
+.arbitrary-nav--inactive .search---ct
 {
     display: none;
 }
@@ -1501,6 +1517,22 @@ $go-green: #12b32d;
     width: 100%;
 }
 
+
+
+
+
+/* ------------------------- Arbitrary Nav */
+.arbitrary-nav
+{
+    background-color: #00aaff;
+}
+
+.arbitrary-nav .search-term-crt-inp--input-text
+{
+    width: 100%;
+    
+    color: white;
+}
 
 
 

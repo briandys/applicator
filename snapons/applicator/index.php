@@ -11,6 +11,10 @@ if ( ! function_exists( 'apl_applicator_html_class' ) ) {
     function apl_applicator_html_class() {
 		
         // Arbitrary Nav
+        echo ' ' . 'apl--applicator';
+        echo ' ' . 'apl--applicator--go-content-nav';
+        echo ' ' . 'apl--applicator--go-start-nav';
+        echo ' ' . 'apl--applicator--main-menu';
         echo ' ' . 'apl--applicator--arbitrary-nav';
     
     }
@@ -24,19 +28,6 @@ if ( ! function_exists( 'applicator_snapons_applicator_class' ) ) {
 	   
         <script type="text/javascript">
             ( function( html ) {
-                
-                // Snap-on Name
-                html.classList.add( 'apl--applicator' );
-                
-                // Go to Content Nav
-                html.classList.add( 'apl--applicator--go-content-nav' );
-                
-                // Main Menu
-                html.classList.add( 'apl--applicator--main-menu' );
-                
-                // Go to Start Nav
-                html.classList.add( 'apl--applicator--go-start-nav' );
-                
                 
                 html.classList.add( 'applicator--sub-nav' );
                 
@@ -63,7 +54,7 @@ if ( ! function_exists( 'apl_snapons_applicator_styles' ) ) {
         
         add_editor_style( array( 'assets/css/editor-style.css', applicator_fonts_url() ) );
         
-        wp_enqueue_style( 'apl-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '10.3', 'all' );
+        wp_enqueue_style( 'apl-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '10.4', 'all' );
 
     }
     add_action( 'wp_enqueue_scripts', 'apl_snapons_applicator_styles', 0);
@@ -74,15 +65,29 @@ if ( ! function_exists( 'apl_snapons_applicator_styles' ) ) {
 if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
     function apl_snapons_applicator_scripts() {
         
-        wp_enqueue_script( 'apl-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/applicator.js' ), array( 'jquery' ), '9.3', true );
+        wp_enqueue_script( 'apl-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/applicator.js' ), array( 'jquery' ), '9.6', true );
+        
+        $search_icon = applicator_get_svg( array( 'icon' => 'search--icon' ) );
+        $dismiss_icon = applicator_get_svg( array( 'icon' => 'dismiss--icon' ) );
+        $burger_icon = applicator_get_svg( array( 'icon' => 'burger--icon' ) );
         
         // Main Menu Control
         $applicator_l10n['mainMenuCtrlH'] = __( 'Main Menu Control', 'applicator' );
         $applicator_l10n['mainMenuShowL'] = __( 'Show Main Menu ', 'applicator' );
         $applicator_l10n['mainMenuHideL'] = __( 'Hide Main Menu ', 'applicator' );
-        $applicator_l10n['mainMenuShowIco'] = applicator_get_svg( array( 'icon' => 'burger--icon' ) );
-        $applicator_l10n['mainMenuHideIco'] = applicator_get_svg( array( 'icon' => 'dismiss--icon' ) );
+        $applicator_l10n['mainMenuShowIco'] = $burger_icon;
+        $applicator_l10n['mainMenuHideIco'] = $dismiss_icon;
         wp_localize_script( 'apl-snapons-applicator-script-global', 'aplDataMainMenuTogL', $applicator_l10n );
+        
+        // Arbitrary Navigation Control
+        $applicator_l10n['arbitNavCtrlH'] = __( 'Arbitrary Navigation Control', 'applicator' );
+        $applicator_l10n['arbitNavShowL'] = __( 'Show Arbitrary Navigation ', 'applicator' );
+        $applicator_l10n['arbitNavHideL'] = __( 'Hide Arbitrary Navigation ', 'applicator' );
+        $applicator_l10n['arbitNavTogCtrlSearchIco'] = $search_icon;
+        $applicator_l10n['arbitNavTogCtrlDismissIco'] = $dismiss_icon;
+        $applicator_l10n['arbitNavSearchIco'] = $search_icon;
+        $applicator_l10n['arbitNavDismissIco'] = $dismiss_icon;
+        wp_localize_script( 'apl-snapons-applicator-script-global', 'aplDataArbitNav', $applicator_l10n );
         
         // Localization
         $applicator_l10n['subnavShowLabel']    = __( 'Show Sub-Nav', 'applicator' );

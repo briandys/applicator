@@ -4,7 +4,11 @@
         $document = $( document ),
         $window = $( window ),
         
-        aplApplicatorArbitNavCss = 'apl--applicator--arbitrary-nav'
+        aplApplicatorGoCtNavCss = 'apl--applicator--go-content-nav',
+        aplApplicatorGoStartNavCss = 'apl--applicator--go-start-nav',
+        aplApplicatorGoStartNavCss = 'apl--applicator--go-start-nav',
+        aplApplicatorMainMenuCss = 'apl--applicator--main-menu',
+        aplApplicatorArbitNavCss = 'apl--applicator--arbitrary-nav';
     
     
     
@@ -13,7 +17,7 @@
     // ------------------------- Go to Content Nav
     function initGoContent( cp ) {
         
-        if ( ! $( '.apl--applicator--go-content-nav' ).length ) {
+        if ( ! aplApplicatorGoCtNavCss.length ) {
 			return;
 		}
         
@@ -67,7 +71,7 @@
     // ------------------------- Go to Start Nav
     function initGoStart( cp ) {
         
-        if ( ! $( '.apl--applicator--go-start-nav' ).length ) {
+        if ( ! aplApplicatorGoStartNavCss.length ) {
 			return;
 		}
         
@@ -150,14 +154,14 @@
     // Main Menu | Main Nav - Main Header Aside
     function initMainMenu( cp ) {
         
-        if ( ! $( '.apl--applicator--main-menu' ).length ) {
+        if ( ! aplApplicatorMainMenuCss.length ) {
 			return;
 		}
         
         cp.addClass( 'main-menu' );
         
         var mainMenuCtrlMu,
-            mainMenuCtrlHMu,
+            mainMenuCtrlHmu,
             mainMenuCtrlCtMu,
             mainMenuTogObjMu,
             mainMenuTogBtnMu,
@@ -166,8 +170,8 @@
             
             mainMenuActCss = 'main-menu--active',
             mainMenuInactCss = 'main-menu--inactive',
-            aplmainMenuActCss = 'apl--main-menu--active',
-            aplmainMenuInactCss = 'apl--main-menu--inactive',
+            aplMainMenuActCss = 'apl--main-menu--active',
+            aplMainMenuInactCss = 'apl--main-menu--inactive',
             
             $mainMenuTogBtnHideIco = $( aplDataMainMenuTogL.mainMenuHideIco ),
             $mainMenuTogBtnShowIco = $( aplDataMainMenuTogL.mainMenuShowIco ),
@@ -211,7 +215,7 @@
                 'class': 'cr main-menu-ctrl---cr'
             } ) );
             
-            mainMenuCtrlHMu = $( '<div />', {
+            mainMenuCtrlHmu = $( '<div />', {
                 'class': 'h main-menu-ctrl---h'
             } ).append( $( '<span />', {
                 'class': 'h_l main-menu-ctrl---h_l',
@@ -228,7 +232,7 @@
             .find( $( '.mn-mha---hr_cr' ) )
                 .append( mainMenuCtrlMu )
             .find( $( '.main-menu-ctrl---cr' ) )
-                .append( mainMenuCtrlHMu )
+                .append( mainMenuCtrlHmu )
                 .append( mainMenuCtrlCtMu )
             .find( $( '.main-menu-ctrl---ct_cr' ) )
                 .append( mainMenuTogObjMu );
@@ -248,8 +252,8 @@
                 .addClass( mainMenuActCss )
                 .removeClass( mainMenuInactCss );
             $html
-                .addClass( aplmainMenuActCss )
-                .removeClass( aplmainMenuInactCss );
+                .addClass( aplMainMenuActCss )
+                .removeClass( aplMainMenuInactCss );
             
             $mainMenuTogBtn.attr( {
                  'aria-expanded': 'true',
@@ -268,8 +272,8 @@
                 .addClass( mainMenuInactCss )
                 .removeClass( mainMenuActCss );
             $html
-                .addClass( aplmainMenuInactCss )
-                .removeClass( aplmainMenuActCss );
+                .addClass( aplMainMenuInactCss )
+                .removeClass( aplMainMenuActCss );
             
             $mainMenuTogBtn.attr( {
                  'aria-expanded': 'false',
@@ -294,6 +298,7 @@
             }
         }
         
+        // Click
         ( function() {
             $mainMenuTogBtn.on( 'click.applicator', function( e ) {
                 e.preventDefault();
@@ -337,11 +342,13 @@
 		}
         
         var arbitNavCss = 'arbitrary-nav';
+        
         $( '#masthead' )
             .find( $( '.main-header---cr' ) )
-                .children( '.search---cp' )
+                .children( '.search---cp:first' )
                     .attr( 'id', arbitNavCss )
                     .addClass( arbitNavCss );
+        console.log( 'Arbirary Nav Created' );
     }() );
     
     function initArbitNav( cp ) {
@@ -351,6 +358,184 @@
 		}
         
         console.log( 'Arbirary Nav Created' );
+        
+        var arbitNavCtrlMu,
+            arbitNavCtrlHmu,
+            arbitNavCtrlCtMu,
+            arbitNavTogObjMu,
+            arbitNavTogBtnMu,
+            arbitNavTogBtnLmu,
+            arbitNavTogBtnLwordMu,
+            
+            arbitNavActCss = 'arbitrary-nav--active',
+            arbitNavInactCss = 'arbitrary-nav--inactive',
+            aplArbitNavActCss = 'apl--arbitrary-nav--active',
+            aplArbitNavInactCss = 'apl--arbitrary-nav--inactive',
+            
+            $arbitNavTogCtrlSearchIco = $( aplDataArbitNav.arbitNavTogCtrlSearchIco ),
+            $arbitNavTogCtrlDismissIco = $( aplDataArbitNav.arbitNavTogCtrlDismissIco ),
+            
+            $arbitNavSearchIco = $( aplDataArbitNav.arbitNavSearchIco ),
+            $arbitNavDismissIco = $( aplDataArbitNav.arbitNavDismissIco ),
+            
+            $arbitNavTogBtn,
+            $arbitNavTogBtnL,
+            $arbitNavTogBtnLword,
+            
+            $arbitNavSubmitAxnBl,
+            $arbitNavResetAxnBl;
+        
+        // Build Markup
+        ( function() {
+            
+            arbitNavTogBtnLwordMu = $( '<span />', {
+                'class': 'word show-hide-arbitrary-nav---word',
+                'text': aplDataArbitNav.arbitNavHideL
+            } );
+            
+            arbitNavTogBtnLmu = $( '<span />', {
+                'class': 'b_l arbitrary-nav-tog---b_l'
+            } )
+                .append( arbitNavTogBtnLwordMu )
+                .append( $arbitNavTogCtrlDismissIco );
+            
+            // Button
+            arbitNavTogBtnMu = $( '<button />', {
+                'id' : 'arbitrary-nav-tog---b',
+                'class': 'b arbitrary-nav-tog---b',
+                'title': aplDataArbitNav.arbitNavHideL
+            } ).append( arbitNavTogBtnLmu );
+            
+            // Object
+            arbitNavTogObjMu = $( '<div />', {
+                'class': 'obj toggle arbitrary-nav-toggle',
+                'data-name': 'Arbitrary Navigation Toggle'
+            } ).append( arbitNavTogBtnMu );
+            
+            // Containers
+            arbitNavCtrlMu = $( '<div />', {
+                'class': 'ctrl arbitrary-nav-ctrl',
+                'data-name': 'Arbitrary Navigation Control'
+            } ).append( $( '<div />', {
+                'class': 'cr arbitrary-nav-ctrl---cr'
+            } ) );
+            
+            arbitNavCtrlHmu = $( '<div />', {
+                'class': 'h arbitrary-nav-ctrl---h'
+            } ).append( $( '<span />', {
+                'class': 'h_l arbitrary-nav-ctrl---h_l',
+                'text': aplDataArbitNav.arbitNavCtrlH
+            } ) );
+            
+            arbitNavCtrlCtMu = $( '<div />', {
+                'class': 'ct arbitrary-nav-ctrl---ct'
+            } ).append( $( '<div />', {
+                'class': 'ct_cr arbitrary-nav-ctrl---ct_cr'
+            } ) );
+            
+            cp
+            .find( $( '.search---hr_cr' ) )
+                .append( arbitNavCtrlMu )
+            .find( $( '.arbitrary-nav-ctrl---cr' ) )
+                .append( arbitNavCtrlHmu )
+                .append( arbitNavCtrlCtMu )
+            .find( $( '.arbitrary-nav-ctrl---ct_cr' ) )
+                .append( arbitNavTogObjMu );
+            
+            console.log( 'arbitrary-nav-ctrl a' );
+            
+        }() );
+        
+        $arbitNavCtCr = cp.find( '.search---ct' );
+        $arbitNavTogBtn = $( '#arbitrary-nav-tog---b' );
+        $arbitNavTogBtnL = $arbitNavTogBtn.find( $( '.arbitrary-nav-tog---b_l' ) );
+        $arbitNavTogBtnLword = $arbitNavTogBtn.find( $( '.show-hide-arbitrary-nav---word' ) );
+        
+        // Activate
+        function arbitNavActivate() {
+            cp
+                .addClass( arbitNavActCss )
+                .removeClass( arbitNavInactCss );
+            $html
+                .addClass( aplArbitNavActCss )
+                .removeClass( aplArbitNavInactCss );
+            
+            $arbitNavTogBtn.attr( {
+                 'aria-expanded': 'true',
+                 'title': aplDataArbitNav.arbitNavHideL
+            } );
+            
+            $arbitNavTogBtnLword.text( aplDataArbitNav.arbitNavHideL );
+            $arbitNavTogBtnL.append( $arbitNavTogCtrlDismissIco );
+            $arbitNavTogCtrlSearchIco.remove();
+            console.log( 'activate' );
+        }
+        
+        // Deactivate
+        function arbitNavDeactivate() {
+            cp
+                .addClass( arbitNavInactCss )
+                .removeClass( arbitNavActCss );
+            $html
+                .addClass( aplArbitNavInactCss )
+                .removeClass( aplArbitNavActCss );
+            
+            $arbitNavTogBtn.attr( {
+                 'aria-expanded': 'false',
+                 'title': aplDataArbitNav.arbitNavShowL
+            } );
+            
+            $arbitNavTogBtnLword.text( aplDataArbitNav.arbitNavShowL );
+            $arbitNavTogBtnL.append( $arbitNavTogCtrlSearchIco );
+            $arbitNavTogCtrlDismissIco.remove();
+            console.log( 'deactivate' );
+        }
+        
+        // Initialize
+        arbitNavDeactivate();// Toggle
+        
+        // Toggle
+        function arbitNavToggle() {
+            if ( cp.hasClass( arbitNavActCss ) ) {
+                arbitNavDeactivate();
+            } else if ( cp.hasClass( arbitNavInactCss ) ) {
+                arbitNavActivate();
+            }
+        }
+        
+        // Click
+        ( function() {
+            $arbitNavTogBtn.on( 'click.applicator', function( e ) {
+                e.preventDefault();
+                arbitNavToggle();
+                console.log( '$arbitNavTogBtn toggle' );
+            } );
+        }() );
+        
+        // Deactivate upon interaction outside specified elements
+        $document.on( 'touchmove.applicator click.applicator', function ( e ) {
+            if ( cp.hasClass( arbitNavActCss ) && ( ! $( e.target ).closest( '.arbitrary-nav-ctrl' ).length && ! $( e.target ).closest( $arbitNavCtCr ).length ) ) {
+                arbitNavDeactivate();
+                console.log( 'Outside click' );
+            }
+        } );
+
+        // Deactivate upon presseing ESC Key
+        $window.load( function () {
+            $( document ).on( 'keyup.applicator', function ( e ) {
+                if ( cp.hasClass( arbitNavActCss ) && e.keyCode == 27 ) {
+                    arbitNavDeactivate();
+                    console.log( 'ESC' );
+                }
+            } );
+        } );
+        
+        // Add Icons to Buttons
+        $arbitNavSearchFormAxns = cp.find( '.search-form-axns' );
+        $arbitNavSearchBl = $arbitNavSearchFormAxns.find( '.search-submit-axn---b_l' );
+        $arbitNavResetBl = $arbitNavSearchFormAxns.find( '.search-reset-axn---b_l' );
+        $arbitNavSearchBl.append( $arbitNavSearchIco );
+        $arbitNavResetBl.append( $arbitNavDismissIco );
         
     } // Arbitrary Nav | Search
 

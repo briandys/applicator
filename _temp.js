@@ -17,8 +17,8 @@
             
             mainMenuActCss = 'main-menu--active',
             mainMenuInactCss = 'main-menu--inactive',
-            aplmainMenuActCss = 'apl--main-menu--active',
-            aplmainMenuInactCss = 'apl--main-menu--inactive',
+            aplMainMenuActCss = 'apl--main-menu--active',
+            aplMainMenuInactCss = 'apl--main-menu--inactive',
             
             $mainMenuTogBtnHideIco = $( aplDataMainMenuTogL.mainMenuHideIco ),
             $mainMenuTogBtnShowIco = $( aplDataMainMenuTogL.mainMenuShowIco ),
@@ -99,8 +99,8 @@
                 .addClass( mainMenuActCss )
                 .removeClass( mainMenuInactCss );
             $html
-                .addClass( aplmainMenuActCss )
-                .removeClass( aplmainMenuInactCss );
+                .addClass( aplMainMenuActCss )
+                .removeClass( aplMainMenuInactCss );
             
             $mainMenuTogBtn.attr( {
                  'aria-expanded': 'true',
@@ -119,8 +119,8 @@
                 .addClass( mainMenuInactCss )
                 .removeClass( mainMenuActCss );
             $html
-                .addClass( aplmainMenuInactCss )
-                .removeClass( aplmainMenuActCss );
+                .addClass( aplMainMenuInactCss )
+                .removeClass( aplMainMenuActCss );
             
             $mainMenuTogBtn.attr( {
                  'aria-expanded': 'false',

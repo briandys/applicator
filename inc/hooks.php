@@ -8,8 +8,8 @@ function apl_hook_html_class() {
 }
 
 //  header.php
-function applicator_hook_after_main_nav() {
-    do_action( 'applicator_hook_after_main_nav' );
+function apl_hook_after_main_nav() {
+    do_action( 'apl_hook_after_main_nav' );
 }
 
 // content.php
