@@ -8,7 +8,8 @@
         aplApplicatorGoStartNavCss = 'apl--applicator--go-start-nav',
         aplApplicatorGoStartNavCss = 'apl--applicator--go-start-nav',
         aplApplicatorMainMenuCss = 'apl--applicator--main-menu',
-        aplApplicatorArbitNavCss = 'apl--applicator--arbitrary-nav';
+        aplApplicatorArbitNavCss = 'apl--applicator--arbitrary-nav',
+        aplApplicatorSubNavCss = 'apl--applicator--sub-nav';
     
     
     
@@ -173,8 +174,8 @@
             aplMainMenuActCss = 'apl--main-menu--active',
             aplMainMenuInactCss = 'apl--main-menu--inactive',
             
-            $mainMenuTogBtnHideIco = $( aplDataMainMenuTogL.mainMenuHideIco ),
-            $mainMenuTogBtnShowIco = $( aplDataMainMenuTogL.mainMenuShowIco ),
+            $mainMenuTogBtnHideIco = $( aplDataMainMenu.mainMenuHideIco ),
+            $mainMenuTogBtnShowIco = $( aplDataMainMenu.mainMenuShowIco ),
             
             $mainMenuCtrl,
             $mainMenuTogBtn,
@@ -186,7 +187,7 @@
             
             mainMenuTogBtnLwordMu = $( '<span />', {
                 'class': 'word show-hide-main-menu---word',
-                'text': aplDataMainMenuTogL.mainMenuHideL
+                'text': aplDataMainMenu.mainMenuHideL
             } );
             
             mainMenuTogBtnLmu = $( '<span />', {
@@ -199,7 +200,7 @@
             mainMenuTogBtnMu = $( '<button />', {
                 'id' : 'main-menu-tog---b',
                 'class': 'b main-menu-tog---b',
-                'title': aplDataMainMenuTogL.mainMenuHideL
+                'title': aplDataMainMenu.mainMenuHideL
             } ).append( mainMenuTogBtnLmu );
             
             // Object
@@ -220,7 +221,7 @@
                 'class': 'h main-menu-ctrl---h'
             } ).append( $( '<span />', {
                 'class': 'h_l main-menu-ctrl---h_l',
-                'text': aplDataMainMenuTogL.mainMenuCtrlH
+                'text': aplDataMainMenu.mainMenuCtrlH
             } ) );
             
             mainMenuCtrlCtMu = $( '<div />', {
@@ -260,10 +261,10 @@
             
             $mainMenuTogBtn.attr( {
                  'aria-expanded': 'true',
-                 'title': aplDataMainMenuTogL.mainMenuHideL
+                 'title': aplDataMainMenu.mainMenuHideL
             } );
             
-            $mainMenuTogBtnLword.text( aplDataMainMenuTogL.mainMenuHideL );
+            $mainMenuTogBtnLword.text( aplDataMainMenu.mainMenuHideL );
             $mainMenuTogBtnL.append( $mainMenuTogBtnHideIco );
             $mainMenuTogBtnShowIco.remove();
             console.log( 'activate' );
@@ -280,10 +281,10 @@
             
             $mainMenuTogBtn.attr( {
                  'aria-expanded': 'false',
-                 'title': aplDataMainMenuTogL.mainMenuShowL
+                 'title': aplDataMainMenu.mainMenuShowL
             } );
             
-            $mainMenuTogBtnLword.text( aplDataMainMenuTogL.mainMenuShowL );
+            $mainMenuTogBtnLword.text( aplDataMainMenu.mainMenuShowL );
             $mainMenuTogBtnL.append( $mainMenuTogBtnShowIco );
             $mainMenuTogBtnHideIco.remove();
             console.log( 'deactivate' );
@@ -602,94 +603,164 @@
     
     
     // Sub-Nav | 
-    function initSubNav( component ) {
+    function initSubNav( $cp ) {
         
-        if ( ! $html.hasClass( 'applicator--sub-nav' ) ) {
+        if ( ! $html.hasClass( aplApplicatorSubNavCss ) ) {
 			return;
 		}
         
-        // Create the markup of Sub-Nav Toggle
-        var subnavToggle = $( '<div />', { 'class': '$cp sub-nav-toggle', 'data-name': 'Sub-Nav Toggle' } )
-                .append( $( '<div />', { 'class': 'sub-nav-toggle--cr' } ) ),
+        console.log( 'Sub-Nav Created' );
+        
+        var subNavTogObjMu,
+            subNavTogBtnMu,
+            subNavTogBtnLmu,
+            subNavTogBtnLwordMu,
             
-            subnavToggleAction = $( '<button />', { 'class': 'b a sub-nav-toggle--a' } )
-                .append( $( '<span />', { 'class': 'sub-nav-toggle--a-l' } ) ),
+            subNavActCss = 'sub-nav--active',
+            subNavInactCss = 'sub-nav--inactive',
+            aplSubNavActCss = 'apl--sub-nav--active',
+            aplSubNavInactCss = 'apl--sub-nav--inactive',
             
-            subnavToggleActionLabel = $( '<span />', { 'class': 'sub-nav-toggle--a--word--l', 'text': applicatorSubnavLabel.subnavShowLabel } ),
+            $subNavParentItems = $( '.page_item_has_children, .menu-item-has-children' ),
+            $subNavGrp = $( '.page_item_has_children > .children, .menu-item-has-children > .sub-menu' ),
             
-            subNavActive = 'sub-nav--active',
-            subNavInactive = 'sub-nav--inactive',
+            $subNavParent,
             
-            aplSubNavActiveClass = 'applicator--sub-nav--active',
-            aplSubNavInactiveClass = 'applicator--sub-nav--inactive';
+            $subNavTog,
+            $subNavTogBtn,
+            $subNavTogBtnL,
+            $subNavTogBtnLword,
+            
+            $subNavTogBtnIco = $( aplDataSubNav.subNavTogBtnIco );
         
+        // Build Markup
+        ( function() {
+            
+            subNavTogBtnLwordMu = $( '<span />', {
+                'class': 'word show-hide-sub-nav---word',
+                'text': aplDataSubNav.subNavTogBtnHideL
+            } );
+            
+            subNavTogBtnLmu = $( '<span />', {
+                'class': 'b_l sub-nav-tog---b_l'
+            } )
+                .append( subNavTogBtnLwordMu )
+                .append( $subNavTogBtnIco );
+            
+            // Button
+            subNavTogBtnMu = $( '<button />', {
+                'class': 'b sub-nav-tog---b',
+                'title': aplDataSubNav.subNavHideL
+            } ).append( subNavTogBtnLmu );
+            
+            // Object
+            subNavTogObjMu = $( '<span />', {
+                'class': 'obj toggle sub-nav-toggle',
+                'data-name': 'Sub-Nav Toggle'
+            } ).append( subNavTogBtnMu );
+            
+            $cp
+            .find( $subNavGrp )
+                .before( subNavTogObjMu );
+            
+            console.log( 'Sub-Nav Markup Attached and Created' );
+            
+        }() );
         
+        $subNavTog = $cp.find( '.sub-nav-tog---b' );
+        $subNavTogBtnLword = $cp.find( '.show-hide-sub-nav---word' );
         
-        component.find( '.page_item_has_children > a, .menu-item-has-children > a' ).after( subnavToggle );
-        
-        component.find( '.sub-nav-toggle--cr' ).append( subnavToggleAction );
-        
-        component.find( '.sub-nav-toggle--a-l' )
-            .append( subnavToggleActionLabel )
-            .append( ' ' )
-            .append( applicatorSubnavLabel.subnavIcon );
-        
-        
-        
-        // Set Default State of Sub-Nav Toggle
-        component.find( '.page_item_has_children, .menu-item-has-children' ).addClass( subNavInactive );
-        $html.addClass( aplSubNavInactiveClass );
-        
-        
-        // Deactivate Sub-Nav
-        component.find( '.page_item_has_children, .menu-item-has-children' ).each( function() {
+        // Activate
+        function subNavActivate() {
             var _this = $( this );
-            if ( _this.hasClass( subNavInactive ) ) {
-                _this.find( '.sub-nav-toggle--a' ).attr( 'aria-expanded', 'false' ).attr( 'title', applicatorSubnavLabel.subnavShowLabel );
-            }
-        } );
+            
+            $subNavParent = _this.closest( $subNavParentItems );
+            $subNavTogBtnLword = _this.find( $subNavTogBtnLword );
+            
+            $subNavParent
+                .addClass( subNavActCss )
+                .removeClass( subNavInactCss );
+            $html
+                .addClass( aplSubNavActCss )
+                .removeClass( aplSubNavInactCss );
+            
+            _this.attr( {
+                 'aria-expanded': 'true',
+                 'title': aplDataSubNav.subNavTogBtnHideL
+            } );
+            
+            $subNavTogBtnLword.text( aplDataSubNav.subNavTogBtnHideL );
+            
+            console.log( 'subNavActivate' );
+        }
         
+        // Deactivate
+        function subNavDeactivate() {
+            var _this = $( this );
+            
+            $subNavParent = _this.closest( $subNavParentItems );
+            $subNavTogBtnLword = _this.find( $subNavTogBtnLword );
+            
+            $subNavParent
+                .addClass( subNavInactCss )
+                .removeClass( subNavActCss );
+            $html
+                .addClass( aplSubNavInactCss )
+                .removeClass( aplSubNavActCss );
+            
+            _this.attr( {
+                 'aria-expanded': 'false',
+                 'title': aplDataSubNav.subNavTogBtnShowL
+            } );
+            
+            $subNavTogBtnLword.text( aplDataSubNav.subNavTogBtnShowL );
+            
+            console.log( 'subNavDeactivate' );
+        }
         
-        // Click Toggle Action
-        component.find( '.sub-nav-toggle--a' ).click( function( e ) {
-            var _this = $( this ),
-                subNavLabel = _this.find( '.sub-nav-toggle--a--word--l' );
+        // Initialize
+        subNavDeactivate();
+        
+        // Toggle
+        function subNavToggle() {
+            var _this = $( this );
             
-            e.preventDefault();
+            $subNavParent = _this.closest( $subNavParentItems );
             
-            // The <button> itself
-            _this.attr( 'aria-expanded', _this.attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
-            
-            subNavLabel.text( subNavLabel.text() === applicatorSubnavLabel.subnavShowLabel ? applicatorSubnavLabel.subnavHideLabel : applicatorSubnavLabel.subnavShowLabel );
-            
-            _this.attr( 'title', _this.attr( 'title' ) === applicatorSubnavLabel.subnavShowLabel ? applicatorSubnavLabel.subnavHideLabel : applicatorSubnavLabel.subnavShowLabel );
-            
-            // The Sub-Nav Toggle Component
-            _this.closest( '.page_item, .menu-item' )
-                .toggleClass( subNavActive )
-                .toggleClass( subNavInactive );
-            
-            // Deactivate Siblings
-            _this.closest( '.page_item, .menu-item' ).siblings()
-                .addClass( subNavInactive )
-                .removeClass( subNavActive );
-            
-            // Classify in <html>
-            if ( _this.closest( '.page_item, .menu-item' ).hasClass( subNavInactive ) ) {
-                $html
-                    .addClass( aplSubNavInactiveClass )
-                    .removeClass( aplSubNavActiveClass );
-            } else if ( _this.closest( '.page_item, .menu-item' ).hasClass( subNavActive ) ) {
-                $html
-                    .addClass( aplSubNavActiveClass )
-                    .removeClass( aplSubNavInactiveClass );
+            if ( $subNavParent.hasClass( subNavActCss ) ) {
+                subNavDeactivate.apply( this );
+            } else if ( $subNavParent.hasClass( subNavInactCss ) ) {
+                subNavActivate.apply( this );
             }
-        } );
+        }
+        
+        ( function() {
+            
+            $subNavTog.on( 'click.applicator', function( e ) {
+                e.preventDefault();
+                subNavToggle( );
+                console.log( 'subNavToggle click' );
+            } );
+            
+        }() );
+        
+        // Initialize
+        // mainMenuDeactivate();
+        
         
     }
+    
     initSubNav( $( '#main-nav' ) );
-    initSubNav( $( '.widget_nav_menu' ) );
-    initSubNav( $( '.widget_pages' ) );
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 
 })( jQuery );
