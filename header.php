@@ -36,7 +36,7 @@
                                         ); ?>
                                     
                                     </div>
-                                </div><!-- go-ct-nav---ct -->
+                                </div><!-- ct -->
                             </div>
                         </div><!-- go-content-nav -->
 
@@ -63,8 +63,7 @@
                                 
                                 <?php
                                 
-                                // Web Product Name
-                                // Markup
+                                // Web Product Name Markup
                                 $wbp_heading_obj_mu = '<div class="obj wbp-name" data-name="Web Product Name">';
                                     $wbp_heading_obj_mu .= '<h1 class="h wbp-name--h site-title">';
                                         $wbp_heading_obj_mu .= '<span class="h_l wbp-name---h_l">';
@@ -85,8 +84,7 @@
                                     </div>
                                 <?php }
                                 
-                                // Web Product Description
-                                // Markup
+                                // Web Product Description Markup
                                 $description = get_bloginfo( 'description', 'display' );
                                 if ( $description || is_customize_preview() ) {
                                     
@@ -128,12 +126,12 @@
                                         if ( is_active_sidebar( 'main-header-aside' )  ) { ?>
                                         <aside id="main-header-aside" class="cn aside main-header-aside" data-name="Main Header Aside" role="complementary">
                                             <div class="cr main-hr-as---cr">
-                                                <h3 class="h main-hr-as---h"><span class="h_l main-hr-as---h_l"><?php esc_html_e( 'Main Header Aside', 'applicator' ); ?></span></h3>
+                                                <div class="h main-hr-as---h"><span class="h_l main-hr-as---h_l"><?php esc_html_e( 'Main Header Aside', 'applicator' ); ?></span></div>
                                                 <div class="ct main-hr-as---ct">
                                                     <div class="ct_cr main-hr-as---ct_cr">
                                                         <?php dynamic_sidebar( 'main-header-aside' ); ?>
                                                     </div>
-                                                </div><!-- main-hr-as---ct -->
+                                                </div><!-- ct -->
                                             </div>
                                         </aside><!-- main-header-aside -->
                                         <?php } ?>
@@ -141,7 +139,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div><!-- main-nav--main-header-aside -->
+                        </div><!-- main-nav-/-main-header-aside -->
 
                         <?php // Search | searchform.php
                         get_search_form();

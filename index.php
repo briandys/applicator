@@ -122,7 +122,7 @@ if ( is_front_page() ) {
         if ( is_active_sidebar( 'main-content-header-aside' )  ) { ?>
         <aside id="main-content-header-aside" class="cn aside main-content-header-aside" data-name="Main Content Header Aside" role="complementary">
             <div class="cr main-ct-hr-as---cr">
-                <h3 class="h main-ct-hr-as---h"><span class="h_l main-ct-hr-as---h_l">Main Content Header Aside</span></h3>
+                <div class="h main-ct-hr-as---h"><span class="h_l main-ct-hr-as---h_l">Main Content Header Aside</span></div>
                 <div class="ct main-ct-hr-as---ct">
                     <div class="ct_cr main-ct-hr-as---ct_cr">
                         <?php dynamic_sidebar( 'main-content-header-aside' ); ?>

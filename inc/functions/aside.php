@@ -10,10 +10,8 @@ function applicator_aside_init() {
         $widget_end_mu = '</div>';
     $widget_end_mu .= '</div>';
     
-    $widget_h_start_mu = '<h4 class="h widget---h">';
-        $widget_h_start_mu .= '<span class="h_l widget---h_l">';
-        $widget_h_end_mu = '</span>';
-    $widget_h_end_mu .= '</h4>';
+    $widget_h_start_mu = '<h4 class="h widget---h"><span class="h_l widget---h_l">';
+    $widget_h_end_mu = '</span></h4>';
     
     register_sidebar( array(
 		'name'          => __( 'Main Header', 'applicator' ),

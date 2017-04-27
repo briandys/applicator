@@ -601,7 +601,7 @@
     
     
     
-    // ------------------------- Sub-Navigation
+    // Sub-Nav | 
     function initSubNav( component ) {
         
         if ( ! $html.hasClass( 'applicator--sub-nav' ) ) {

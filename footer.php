@@ -8,7 +8,7 @@
                         if ( is_active_sidebar( 'main-footer-aside' )  ) { ?>
                         <aside id="main-footer-aside" class="cn aside main-footer-aside" data-name="Main Footer Aside" role="complementary">
                             <div class="cr main-fr-as---cr">
-                                <h3 class="h main-fr-as---h"><span class="h_l main-fr-as---h_l">Main Footer Aside</span></h3>
+                                <div class="h main-fr-as---h"><span class="h_l main-fr-as---h_l">Main Footer Aside</span></div>
                                 <div class="ct main-fr-as---ct">
                                     <div class="ct_cr main-fr-as---ct_cr">
                                         <?php dynamic_sidebar( 'main-footer-aside' ); ?>

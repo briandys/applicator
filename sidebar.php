@@ -5,7 +5,7 @@ if ( is_active_sidebar( 'main-content-aside' )  ) { ?>
 
         <aside id="main-content-aside" class="cn aside main-content-aside" data-name="Main Content Aside" role="complementary">
             <div class="cr main-ct-as---cr">
-                <h3 class="h main-ct-as---h"><span class="h_l main-ct-as---h_l">Main Content Aside</span></h3>
+                <div class="h main-ct-as---h"><span class="h_l main-ct-as---h_l">Main Content Aside</span></div>
                 <div class="ct main-ct-as---ct">
                     <div class="ct_cr main-ct-as---ct_cr">
                         <?php dynamic_sidebar( 'main-content-aside' ); ?>
