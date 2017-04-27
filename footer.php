@@ -8,7 +8,7 @@
                         if ( is_active_sidebar( 'main-footer-aside' )  ) { ?>
                         <aside id="main-footer-aside" class="cn aside main-footer-aside" data-name="Main Footer Aside" role="complementary">
                             <div class="cr main-fr-as---cr">
-                                <div class="h main-fr-as---h"><span class="h_l main-fr-as---h_l">Main Footer Aside</span></div>
+                                <h3 class="h main-fr-as---h"><span class="h_l main-fr-as---h_l">Main Footer Aside</span></h3>
                                 <div class="ct main-fr-as---ct">
                                     <div class="ct_cr main-fr-as---ct_cr">
                                         <?php dynamic_sidebar( 'main-footer-aside' ); ?>
@@ -50,7 +50,7 @@
 
                                         <?php // Go to Start Nav Item Markup
                                         $go_start_navi_mu = '<div class="obj navi go-start-navi" data-name="Go to Start Nav Item">';
-                                            $go_start_navi_mu .= '<a id="go-start-navi---a" class="a go-start-navi---a" href="#start" title="%1$s"><span class="a_l go-start-navi---a_l"><span class="word go-start-navi--go---word">%2$s</span> <span class="word go-start-navi--to---word">%3$s</span> <span class="word go-start-navi--start---word">%4$s</span> %5$s</span></a>';
+                                            $go_start_navi_mu .= '<a id="go-start-navi---a" class="a go-start-navi---a" href="#start" title="%1$s"><span class="a_l go-start-navi---a_l"><span class="word go---word">%2$s</span> <span class="word to---word">%3$s</span> <span class="word start---word">%4$s</span> %5$s</span></a>';
                                         $go_start_navi_mu .= '</div>';
 
                                         printf( $go_start_navi_mu,
@@ -58,7 +58,7 @@
                                             esc_html__( 'Go', 'applicator'),
                                             esc_html__( 'to', 'applicator'),
                                             esc_html__( 'Start', 'applicator'),
-                                            applicator_get_svg( array( 'icon' => 'arrow-up-2--icon' ) )
+                                            applicator_get_svg( array( 'icon' => 'arrow-up-2-icon' ) )
                                         ); ?>
 
                                     </div>

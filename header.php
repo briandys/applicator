@@ -67,7 +67,7 @@
                                 $wbp_heading_obj_mu = '<div class="obj wbp-name" data-name="Web Product Name">';
                                     $wbp_heading_obj_mu .= '<h1 class="h wbp-name--h site-title">';
                                         $wbp_heading_obj_mu .= '<span class="h_l wbp-name---h_l">';
-                                            $wbp_heading_obj_mu .= '<a class="a wbp-name---a" href="%2$s" rel="home" title="%1$s"><span class="a_l wbp-name---a_l">%1$s</span></a>';
+                                            $wbp_heading_obj_mu .= '<a class="a wbp-name---a" href="%2$s" rel="home" title="%1$s"><span class="a_l wbp-name---a_l"><span class="word wbp-name---word">%1$s</span></span></a>';
                                         $wbp_heading_obj_mu .= '</span>';
                                     $wbp_heading_obj_mu .= '</h1>';
                                 $wbp_heading_obj_mu .= '</div>';
@@ -91,7 +91,7 @@
                                     $wbp_desc_obj_mu = '<div class="obj wbp-desc" data-name="Web Product Description">';
                                         $wbp_desc_obj_mu .= '<div class="g wbp-desc---g">';
                                             $wbp_desc_obj_mu .= '<span class="g_l wbp-desc---g_l">';
-                                                $wbp_desc_obj_mu .= '<a class="a wbp-desc---a" href="%2$s" rel="home" title="%1$s"><span class="a_l wbp-desc---a_l">%1$s</span></a>';
+                                                $wbp_desc_obj_mu .= '<a class="a wbp-desc---a" href="%2$s" rel="home" title="%1$s"><span class="a_l wbp-desc---a_l"><span class="word wbp-desc---word">%1$s</span></span></a>';
                                             $wbp_desc_obj_mu .= '</span>';
                                         $wbp_desc_obj_mu .= '</div>';
                                     $wbp_desc_obj_mu .= '</div>';
@@ -126,7 +126,7 @@
                                         if ( is_active_sidebar( 'main-header-aside' )  ) { ?>
                                         <aside id="main-header-aside" class="cn aside main-header-aside" data-name="Main Header Aside" role="complementary">
                                             <div class="cr main-hr-as---cr">
-                                                <div class="h main-hr-as---h"><span class="h_l main-hr-as---h_l"><?php esc_html_e( 'Main Header Aside', 'applicator' ); ?></span></div>
+                                                <h3 class="h main-hr-as---h"><span class="h_l main-hr-as---h_l"><?php esc_html_e( 'Main Header Aside', 'applicator' ); ?></span></h3>
                                                 <div class="ct main-hr-as---ct">
                                                     <div class="ct_cr main-hr-as---ct_cr">
                                                         <?php dynamic_sidebar( 'main-header-aside' ); ?>

@@ -8,8 +8,6 @@ if ( function_exists( 'get_header' ) ) {
 $main_ct_hr_mu = '<div class="cn main-content---hr main-content--%2$s---hr" data-name="Main Content Header">';
     $main_ct_hr_mu .= '<div class="cr main-ct---hr_cr">';
         $main_ct_hr_mu .= '<h2 class="h main-ct---h"><span class="h_l main-ct---h_l">%1$s</span></h2>';
-    $main_ct_hr_mu .= '</div>';
-$main_ct_hr_mu .= '</div>';
 
 if ( is_front_page() ) {
     printf ( $main_ct_hr_mu,
@@ -122,7 +120,7 @@ if ( is_front_page() ) {
         if ( is_active_sidebar( 'main-content-header-aside' )  ) { ?>
         <aside id="main-content-header-aside" class="cn aside main-content-header-aside" data-name="Main Content Header Aside" role="complementary">
             <div class="cr main-ct-hr-as---cr">
-                <div class="h main-ct-hr-as---h"><span class="h_l main-ct-hr-as---h_l">Main Content Header Aside</span></div>
+                <h3 class="h main-ct-hr-as---h"><span class="h_l main-ct-hr-as---h_l">Main Content Header Aside</span></h3>
                 <div class="ct main-ct-hr-as---ct">
                     <div class="ct_cr main-ct-hr-as---ct_cr">
                         <?php dynamic_sidebar( 'main-content-header-aside' ); ?>
@@ -133,7 +131,7 @@ if ( is_front_page() ) {
         <?php } ?>
 
     </div>
-</div><!-- main-content--hr -->
+</div><!-- main-content---hr -->
 
 <div class="cn main-content---ct" data-name="Main Content - Content">
     <div class="cr main-content---ct_cr">

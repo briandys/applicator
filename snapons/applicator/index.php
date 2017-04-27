@@ -69,9 +69,9 @@ if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
         
         wp_enqueue_script( 'apl-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/applicator.js' ), array( 'jquery' ), '9.8', true );
         
-        $search_icon = applicator_get_svg( array( 'icon' => 'search--icon' ) );
-        $dismiss_icon = applicator_get_svg( array( 'icon' => 'dismiss--icon' ) );
-        $burger_icon = applicator_get_svg( array( 'icon' => 'burger--icon' ) );
+        $search_icon = applicator_get_svg( array( 'icon' => 'search-icon' ) );
+        $dismiss_icon = applicator_get_svg( array( 'icon' => 'dismiss-icon' ) );
+        $burger_icon = applicator_get_svg( array( 'icon' => 'burger-icon' ) );
         
         // Main Menu Control
         $applicator_l10n['mainMenuCtrlH'] = __( 'Main Menu Control', 'applicator' );
@@ -94,23 +94,8 @@ if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
         // Localization
         $applicator_l10n['subnavShowLabel']    = __( 'Show Sub-Nav', 'applicator' );
 		$applicator_l10n['subnavHideLabel']    = __( 'Hide Sub-Nav', 'applicator' );
-        $applicator_l10n['subnavIcon']         = applicator_get_svg( array( 'icon' => 'arrow--icon' ) );
+        $applicator_l10n['subnavIcon']         = applicator_get_svg( array( 'icon' => 'arrow-icon' ) );
         wp_localize_script( 'apl-snapons-applicator-script-global', 'applicatorSubnavLabel', $applicator_l10n );
-        
-        
-        $applicator_l10n['searchShowLabel']      = __( 'Show Search', 'applicator' );
-        $applicator_l10n['searchHideLabel']      = __( 'Hide Search', 'applicator' );
-        $applicator_l10n['searchIcon']           = applicator_get_svg( array( 'icon' => 'search--icon', 'fallback' => true ) );
-        $applicator_l10n['searchDismissIcon']           = applicator_get_svg( array( 'icon' => 'dismiss--icon' ) );
-        wp_localize_script( 'apl-snapons-applicator-script-global', 'applicatorSearchLabel', $applicator_l10n );
-        
-        
-        $applicator_l10n['mainNavHeaderAsideMenuShowLabel']      = __( 'Show Main Navigation', 'applicator' );
-        $applicator_l10n['mainNavHeaderAsideMenuHideLabel']      = __( 'Hide Main Navigation', 'applicator' );
-        $applicator_l10n['mainNavHeaderAsideMenuIcon']           = applicator_get_svg( array( 'icon' => 'burger--icon', 'fallback' => true ) );
-        $applicator_l10n['mainNavHeaderAsideMenuDismissIcon']    = applicator_get_svg( array( 'icon' => 'dismiss--icon', 'fallback' => true ) );
-        
-        wp_localize_script( 'apl-snapons-applicator-script-global', 'applicatormainNavHeaderAsideMenuLabel', $applicator_l10n );
     }
     add_action( 'wp_enqueue_scripts', 'apl_snapons_applicator_scripts' );
 }

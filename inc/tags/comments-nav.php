@@ -12,7 +12,7 @@ if ( ! function_exists( 'applicator_comments_nav' ) ) {
                 esc_html__( 'Next', 'applicator' ),
                 esc_html__( 'Comments', 'applicator' ),
                 esc_attr__( 'Next Comments', 'applicator' ),
-                applicator_get_svg( array( 'icon' => 'arrow--icon' ) )
+                applicator_get_svg( array( 'icon' => 'arrow-icon' ) )
             );
 
             // Previous Comments Nav Item Markup
@@ -22,7 +22,7 @@ if ( ! function_exists( 'applicator_comments_nav' ) ) {
                 esc_html__( 'Previous', 'applicator' ),
                 esc_html__( 'Comments', 'applicator' ),
                 esc_attr__( 'Previous Comments', 'applicator' ),
-                applicator_get_svg( array( 'icon' => 'arrow--icon' ) )
+                applicator_get_svg( array( 'icon' => 'arrow-icon' ) )
             ); ?>
 
             <div class="nav comments-nav" role="navigation" data-name="Comments Navigation">
