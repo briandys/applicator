@@ -116,7 +116,7 @@
                                     </div>
                                 </div>
                                 <div class="ct mn-mha---ct">
-                                    <div class="ct_cr mn-mha---ct-cr">
+                                    <div class="ct_cr mn-mha---ct_cr">
 
                                         <?php // Main Navigation | inc > tags > main-navigation.php
                                         applicator_func_main_nav();

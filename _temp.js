@@ -1,177 +1,167 @@
-// Arbitrary Nav | Search
-    function initArbitNav( cp ) {
+function initSearch( component ) {
         
-        if ( ! $( '.apl--applicator--arbit-nav' ).length ) {
-			return;
-		}
+        // Create Markup
+        var searchToggle = $( '<div />', { 'class': 'cp search-toggle', 'data-name': 'Search Toggle' } )
+                .append( $( '<div />', { 'class': 'search-toggle--cr' } ) ),
+            
+            searchToggleAction = $( '<button />', { 'class': 'b a search-toggle--a' } )
+                .append( $( '<span />', { 'class': 'search-toggle--a-l' } ) ),
+            
+            searchToggleActionLabel = $( '<span />', { 'class': 'search-toggle--a--word--l', 'text': applicatorSearchLabel.searchShowLabel } ),
+            
+            searchActiveClass = 'search--active',
+            searchInactiveClass = 'search--inactive',
+            searchInputEmptyClass = 'search-input--empty',
+            
+            aplSearchActiveClass = 'apl--search--active',
+            aplSearchInactiveClass = 'apl--search--inactive',
+            
+            $searchComponent = $( '.arbitrary-nav' ),
+            $searchInput = component.find( '.search-term--input--text' ),
+            $searchForm = component.find( '.search-form' ),
+            $searchToggleLabel,
+            $searchToggleAction,
+            
+            $searchSubmit = component.find( '.search-form-submit--a-l' ),
+            $searchReset = component.find( '.search-form-reset--a-l' );
         
-        cp.addClass( 'arbitrary-nav' );
+        // Attach Markup
+        component.find( '.search-form' ).before( searchToggle );
+        component.find( '.search-toggle--cr' ).append( searchToggleAction );
         
-        var mainMenuCtrlMu,
-            mainMenuCtrlHMu,
-            mainMenuCtrlCtMu,
-            mainMenuTogObjMu,
-            mainMenuTogBtnMu,
-            mainMenuTogBtnLmu,
-            mainMenuTogBtnLwordMu,
-            
-            mainMenuActCss = 'main-menu--active',
-            mainMenuInactCss = 'main-menu--inactive',
-            aplMainMenuActCss = 'apl--main-menu--active',
-            aplMainMenuInactCss = 'apl--main-menu--inactive',
-            
-            $mainMenuTogBtnHideIco = $( aplDataMainMenuTogL.mainMenuHideIco ),
-            $mainMenuTogBtnShowIco = $( aplDataMainMenuTogL.mainMenuShowIco ),
-            
-            $mainMenuTogBtn,
-            $mainMenuTogBtnL,
-            $mainMenuTogBtnLword;
+        component.find( '.search-toggle--a-l' )
+            .append( searchToggleActionLabel )
+            .append( ' ' )
+            .append( applicatorSearchLabel.searchIcon )
+            .append( applicatorSearchLabel.searchDismissIcon );
         
-        // Build Markup
-        ( function() {
-            
-            mainMenuTogBtnLwordMu = $( '<span />', {
-                'class': 'word show-hide-main-menu---word',
-                'text': aplDataMainMenuTogL.mainMenuHideL
-            } );
-            
-            mainMenuTogBtnLmu = $( '<span />', {
-                'class': 'b_l main-menu-tog---b_l'
-            } )
-                .append( mainMenuTogBtnLwordMu )
-                .append( $mainMenuTogBtnHideIco );
-            
-            // Button
-            mainMenuTogBtnMu = $( '<button />', {
-                'id' : 'main-menu-tog---b',
-                'class': 'b main-menu-tog---b',
-                'title': aplDataMainMenuTogL.mainMenuHideL
-            } ).append( mainMenuTogBtnLmu );
-            
-            // Object
-            mainMenuTogObjMu = $( '<div />', {
-                'class': 'obj toggle main-menu-toggle',
-                'data-name': 'Main Menu Toggle'
-            } ).append( mainMenuTogBtnMu );
-            
-            // Containers
-            mainMenuCtrlMu = $( '<div />', {
-                'class': 'ctrl main-menu-ctrl',
-                'data-name': 'Main Menu Control'
-            } ).append( $( '<div />', {
-                'class': 'cr main-menu-ctrl---cr'
-            } ) );
-            
-            mainMenuCtrlHMu = $( '<div />', {
-                'class': 'h main-menu-ctrl---h'
-            } ).append( $( '<span />', {
-                'class': 'h_l main-menu-ctrl---h_l',
-                'text': aplDataMainMenuTogL.mainMenuCtrlH
-            } ) );
-            
-            mainMenuCtrlCtMu = $( '<div />', {
-                'class': 'ct main-menu-ctrl---ct'
-            } ).append( $( '<div />', {
-                'class': 'ct_cr main-menu-ctrl---ct_cr'
-            } ) );
-            
-            cp
-            .find( $( '.mn-mha---hr_cr' ) )
-                .append( mainMenuCtrlMu )
-            .find( $( '.main-menu-ctrl---cr' ) )
-                .append( mainMenuCtrlHMu )
-                .append( mainMenuCtrlCtMu )
-            .find( $( '.main-menu-ctrl---ct_cr' ) )
-                .append( mainMenuTogObjMu );
-            
-            console.log( 'main-menu-ctrl abcdefghij' );
-            
-        }() );
+        $searchSubmit.append( ' ' )
+            .append( applicatorSearchLabel.searchIcon );
         
-        $mainMenuCtCr = cp.find( '.mn-mha---ct-cr' );
-        $mainMenuTogBtn = $( '#main-menu-tog---b' );
-        $mainMenuTogBtnL = $mainMenuTogBtn.find( $( '.main-menu-tog---b_l' ) );
-        $mainMenuTogBtnLword = $mainMenuTogBtn.find( $( '.show-hide-main-menu---word' ) );
+        $searchReset.append( ' ' )
+            .append( applicatorSearchLabel.searchDismissIcon );
         
-        // Activate
-        function mainMenuActivate() {
-            cp
-                .addClass( mainMenuActCss )
-                .removeClass( mainMenuInactCss );
-            $html
-                .addClass( aplMainMenuActCss )
-                .removeClass( aplMainMenuInactCss );
-            
-            $mainMenuTogBtn.attr( {
-                 'aria-expanded': 'true',
-                 'title': aplDataMainMenuTogL.mainMenuHideL
-            } );
-            
-            $mainMenuTogBtnLword.text( aplDataMainMenuTogL.mainMenuHideL );
-            $mainMenuTogBtnL.append( $mainMenuTogBtnHideIco );
-            $mainMenuTogBtnShowIco.remove();
-            console.log( 'activate' );
-        }
         
-        // Deactivate
-        function mainMenuDeactivate() {
-            cp
-                .addClass( mainMenuInactCss )
-                .removeClass( mainMenuActCss );
-            $html
-                .addClass( aplMainMenuInactCss )
-                .removeClass( aplMainMenuActCss );
-            
-            $mainMenuTogBtn.attr( {
-                 'aria-expanded': 'false',
-                 'title': aplDataMainMenuTogL.mainMenuShowL
-            } );
-            
-            $mainMenuTogBtnLword.text( aplDataMainMenuTogL.mainMenuShowL );
-            $mainMenuTogBtnL.append( $mainMenuTogBtnShowIco );
-            $mainMenuTogBtnHideIco.remove();
-            console.log( 'deactivate' );
-        }
+        // ------------------------- Set Defaults
+        component.addClass( searchInactiveClass );
         
-        // Initialize
-        mainMenuDeactivate();
         
-        // Toggle
-        function mainMenuToggle() {
-            if ( cp.hasClass( mainMenuActCss ) ) {
-                mainMenuDeactivate();
-            } else if ( cp.hasClass( mainMenuInactCss ) ) {
-                mainMenuActivate();
+        $searchToggleLabel = component.find( '.search-toggle--a--word--l' );
+        $searchToggleAction = component.find( '.search-toggle--a' );
+        $searchToggleResetAction = component.find( '.search-form-reset--a' );
+        
+        
+        // ------------------------- Search Toggle Status
+        function searchStatusToggle() {
+            
+            // Set defaults for text label and aria-expanded based on Status Class
+            if ( $searchComponent.hasClass( searchInactiveClass ) ) {
+                $searchToggleAction.attr( 'aria-expanded', 'false' );
+                $searchToggleAction.attr( 'title', applicatorSearchLabel.searchShowLabel );
+                $searchToggleLabel.text( applicatorSearchLabel.searchShowLabel );
+                $html.addClass( aplSearchInactiveClass );
+                $html.removeClass( aplSearchActiveClass );
+            
+            } else if ( $searchComponent.hasClass( searchActiveClass ) ) {
+                $searchToggleAction.attr( 'aria-expanded', 'true' );
+                $searchToggleAction.attr( 'title', applicatorSearchLabel.searchHideLabel );
+                $searchToggleLabel.text( applicatorSearchLabel.searchHideLabel );
+                $html.addClass( aplSearchActiveClass );
+                $html.removeClass( aplSearchInactiveClass );
             }
         }
+        searchStatusToggle();
         
-        ( function() {
-            $mainMenuTogBtn.on( 'click.applicator', function( e ) {
-                e.preventDefault();
-                mainMenuToggle();
-                console.log( '$mainMenuTogBtn toggle' );
-            } );
-        }() );
+        // ------------------------- Function: Initial State of Input
+        function searchInputStatus() {
         
-        // Deactivate upon interaction outside specified elements
+            // Empty Input
+            if ( $searchInput.val() == '' ) {
+                component.addClass( 'search-input--empty' );
+                component.removeClass( 'search-input--populated' );
+            }
+
+            // Populated Input (as seen in Search Results page)
+            if ( ! $searchInput.val() == '' ) {
+                component.addClass( 'search-input--populated' );
+                component.removeClass( 'search-input--empty' );
+            }
+            
+        }
+        searchInputStatus();
+        
+        // ------------------------- Toggle Search
+        $searchToggleAction.click( function( e ) {
+            var _this = $( this );
+            
+            e.preventDefault();
+            
+            // Toggle Component Status
+            $searchComponent
+                .toggleClass( searchActiveClass )
+                .toggleClass( searchInactiveClass );
+            
+            searchStatusToggle();
+            
+            // Focus on Input
+            if ( $searchComponent.hasClass( searchActiveClass ) ) {
+                $searchInput.focus();
+            }
+            
+            
+        } );
+        
+        // ------------------------- Reset Action
+        $searchToggleResetAction.click( function( e ) {
+            var _this = $( this );
+            
+            e.preventDefault();
+            
+            // Reset value and focus on Input
+            $searchInput.val( '' ).focus();
+            
+            searchInputStatus();
+        } );
+        
+        // ------------------------- Text Input Detection
+        $searchInput.on( 'keypress.applicator input.applicator', function() {
+            searchInputStatus();
+        } );
+        
+        
+        // ------------------------- Function: Deactivate Search
+        function searchDeactivate() {
+            $searchComponent
+                .addClass( searchInactiveClass )
+                .removeClass( searchActiveClass );
+            
+            $searchToggleAction.attr( 'aria-expanded', 'false' );
+            
+            $searchToggleLabel.text( applicatorSearchLabel.searchShowLabel );
+            
+            $html
+                .addClass( aplSearchInactiveClass )
+                .removeClass( aplSearchActiveClass );
+        }
+        
+        
+        // ------------------------- Deactivate Search on click outside the component itself
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             var _this = $( this );
-            if ( cp.hasClass( mainMenuActCss ) && ( ! $( e.target ).closest( '.main-menu-ctrl' ).length && ! $( e.target ).closest( $mainMenuCtCr ).length ) ) {
-                mainMenuDeactivate();
-                console.log( 'Outside click' );
+            if ( ! $( e.target ).closest( '.arbitrary-nav' ).length && $searchComponent.hasClass( searchActiveClass ) ) {
+                searchDeactivate();
             }
         } );
 
-        // Deactivate upon presseing ESC Key
+
+        // ------------------------- Deactivate Search upon ESC key
         $window.load( function () {
             $( document ).on( 'keyup.applicator', function ( e ) {
-                if ( cp.hasClass( mainMenuActCss ) && e.keyCode == 27 ) {
-                    mainMenuDeactivate();
-                    console.log( 'ESC' );
+                if ( e.keyCode == 27 && $searchComponent.hasClass( searchActiveClass ) ) {
+                    searchDeactivate();
                 }
             } );
         } );
         
-    } // Main Menu | Main Nav - Main Header Aside
-
-    initArbitNav( $( '#main-nav--main-header-aside' ) );
+    }
+    initSearch( $( '#arbitrary-nav' ) );

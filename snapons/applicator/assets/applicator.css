@@ -8,13 +8,6 @@
 
 .visuallyhidden,
 
-
-
-.main-nav--h,
-.search--h,
-legend,
-.search-term--label,
-
 .main-header-aside---h,
 .main-footer-aside--h,
 
@@ -27,17 +20,13 @@ legend,
 .comment--h,
 .axns--h,
 .comments--h,
-.mn-mha---h,
 
-.arbitrary-nav .search-toggle--a--word--l,
-.arbitrary-nav .search-form-submit--a--words-l,
-.arbitrary-nav .search-form-reset--a--words-l,
 
-.widget_search .search-form-reset--form-axn-item,
+
 
 .commenter-comment--label,
 
-.main-nav--header-aside--menu-toggle--a--word--l,
+
 
 .applicator--article .entry-edit--a--entry--word-l,
 .applicator--article .entry-timestamp--pred-l,
@@ -61,6 +50,9 @@ legend,
 
 /* ------------------------- Visually Hidden */
 
+/* Web Info */
+.apl--arbitrary-nav--active .wbp-info,
+
 /* Go to Content Nav */
 .apl--applicator--go-content-nav.dom--unready .go-content-nav,
 .go-content-nav--inactive,
@@ -73,8 +65,13 @@ legend,
 .go-start-navi--start---word,
 .go-start-nav---h,
 
+/* Main Nav - Main Header Aside */
+.mn-mha---h,
+.main-nav--h,
+.main-hr-as---h,
+
 /*  Menu | Main Nav - Main Header Aside */
-.apl--applicator--main-menu.dom--unready .main-header-aside,
+.apl--applicator--main-menu.dom--unready .main-nav--main-header-aside,
 .main-menu-ctrl---h,
 .main-menu-tog---b_l .show-hide-main-menu---word,
 
@@ -85,6 +82,7 @@ legend,
 .search-term-creation-label---obj,
 
 /* Arbitrary Nav */
+.apl--applicator--arbitrary-nav.dom--unready .main-header---cr > .search---cp,
 .arbitrary-nav-ctrl---h,
 .arbitrary-nav-tog---b_l .show-hide-arbitrary-nav---word,
 .arbitrary-nav .search-submit-axn---b_l .search---word,
@@ -202,7 +200,6 @@ p
 .input--text,
 .input--text[type="search"],
 .form--a,
-.arbitrary-nav .search-toggle--a,
 .sub-nav-toggle--a,
 .main-nav--header-aside--menu-toggle--a
 {
@@ -216,8 +213,6 @@ p
 }
 
 /* Full-width */
-.arbitrary-nav .search-term--input--text,
-
 .widget_search .search-term--input--text,
 .widget_search .search-form-submit--a,
 .widget_search .search-form-reset--a,
@@ -263,10 +258,6 @@ p
 
 .applicator--sub-nav .sub-nav-toggle--a-l,
 
-.arbitrary-nav .search-toggle--a-l,
-.arbitrary-nav .search-form-submit--a-l,
-.arbitrary-nav .search-form-reset--a-l,
-
 .widget_search .search-form-submit--a-l,
 .widget_search .search-form-reset--a-l,
 
@@ -278,10 +269,6 @@ p
 
 /* x Center */
 .applicator--sub-nav .sub-nav-toggle--a-l,
-
-.arbitrary-nav .search-toggle--a-l,
-.arbitrary-nav .search-form-submit--a-l,
-.arbitrary-nav .search-form-reset--a-l,
 
 .widget_search .search-form-submit--a-l,
 .widget_search .search-form-reset--a-l,
@@ -321,80 +308,6 @@ p
 
 
 
-
-
-
-
-
-
-
-
-/* ------------------------- Arbitrary Nav ------------------------- */
-.dom--unready .main-header---cr > .search---cp .search-form,
-.arbitrary-nav.search--inactive .search-form,
-.arbitrary-nav.search-input--empty .search-form-reset--a,
-.arbitrary-nav.search--active .search-toggle--a .search--icon,
-.arbitrary-nav.search--inactive .search-toggle--a .dismiss--icon
-{
-    display: none;
-}
-
-.arbitrary-nav .search-form--axns,
-.arbitrary-nav.search--active .search-toggle
-{
-    position: absolute;
-    right: 0;
-    top: 50%;
-    margin-top: -1.125rem;
-}
-
-.arbitrary-nav .search-form-axn--grp,
-.search-toggle--cr
-{
-    display: flex;
-    align-items: center;
-}
-
-.arbitrary-nav .search-form-submit--form-axn-item
-{
-    order: 2;
-}
-
-.arbitrary-nav .search-form-reset--form-axn-item
-{
-    order: 1;
-}
-
-.arbitrary-nav .dismiss--icon
-{
-    width: .75rem;
-    height: .75rem;
-}
-
-.arbitrary-nav.search--active .search-term--input--text
-{
-    padding-right: 6rem;
-}
-
-.arbitrary-nav.search--active .search-toggle
-{
-    margin-right: 3rem;
-}
-
-.arbitrary-nav .search-term--input--text
-{
-    padding-left: 1rem;
-}
-
-.apl--applicator--main-menu .arbitrary-nav .search-term--fs-grp
-{
-    padding-left: 3rem;
-}
-
-.apl--applicator--main-menu .arbitrary-nav .search-term--input--text
-{
-    padding-left: 0;
-}
 
 
 
@@ -558,40 +471,6 @@ p
 
 
 
-
-
-
-
-
-
-
-/* ------------------------- Main Header ------------------------- */
-.main-header---cr
-{
-    position: relative;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ------------------------- Color Scheme ------------------------- */
 /*
 $white: #fff;
@@ -634,49 +513,6 @@ $go-green: #12b32d;
 .main-nav--header-aside--menu-toggle--a-l
 {
     color: white;
-}
-
-.arbitrary-nav .search-term--input--text::-webkit-input-placeholder
-{
-    color: white;
-}
-
-.arbitrary-nav .search-term--input--text::-moz-placeholder
-{
-    color: white;
-}
-
-.arbitrary-nav .search-term--input--text:-ms-input-placeholder
-{
-    color: white;
-}
-
-.arbitrary-nav .search-term--input--text:-moz-placeholder
-{
-    color: white;
-}
-
-
-
-/* ------------------------- Placeholder Text ------------------------- */
-.arbitrary-nav .search-term--input--text::-webkit-input-placeholder
-{
-    opacity: .5;
-}
-
-.arbitrary-nav .search-term--input--text::-moz-placeholder
-{
-    opacity: .5;
-}
-
-.arbitrary-nav .search-term--input--text:-ms-input-placeholder
-{
-    opacity: .5;
-}
-
-.arbitrary-nav .search-term--input--text:-moz-placeholder
-{
-    opacity: .5;
 }
 
 
@@ -890,6 +726,17 @@ $go-green: #12b32d;
 
 
 
+/* ------------------------- HTML */
+.apl--go-content-nav--active,
+.apl--main-menu--active
+{
+    overflow: hidden;
+}
+
+
+
+
+
 /* ------------------------- Go to Content Nav */
 .go-content-nav,
 .go-ct-nav---cr,
@@ -972,11 +819,6 @@ $go-green: #12b32d;
 
 
 /* Status */
-.apl--go-content-nav--active
-{
-    overflow: hidden;
-}
-
 .go-content-nav--inactive
 {
     opacity: 0;
@@ -998,6 +840,23 @@ $go-green: #12b32d;
 
 
 
+/* ------------------------- Masthead */
+.main-header
+{
+    position: relative;
+}
+
+.main-header---cr
+{
+    min-height: 3rem;
+    
+    background-color: #00aaff;
+}
+
+
+
+
+
 /* ------------------------- Web Product Info */
 .wbp-info---cr
 {
@@ -1010,19 +869,14 @@ $go-green: #12b32d;
     overflow: hidden;
 }
 
-.wbp-info---cr
-{
-    background-color: #00aaff;
-}
-
 .apl--applicator--main-menu .wbp-info---cr
 {
-    padding-left: 3rem;
+    margin-left: 3rem;
 }
 
-.apl--applicator--arbit-nav .wbp-info---cr
+.apl--applicator--arbitrary-nav .wbp-info---cr
 {
-    padding-right: 3rem;
+    margin-right: 3rem;
 }
 
 .wbp-logo--enabled .wbp-info---cr
@@ -1037,14 +891,6 @@ $go-green: #12b32d;
     
     padding-left: 2.75rem;
     padding-right: .5rem;
-}
-
-.apl--main-menu--active .wbp-name,
-.apl--main-menu--active .wbp-logo,
-.apl--main-menu--active .wbp-desc
-{
-    position: relative;
-    z-index: 1;
 }
 
 /* Text Truncate */
@@ -1250,18 +1096,6 @@ $go-green: #12b32d;
 /* ------------------------- Main Menu | Main Nav - Main Header Aside */
 /* ------------------------- Arbitrary Nav | Search */
 
-.main-menu-ctrl
-{
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-.apl--search--active .main-menu-ctrl
-{
-    z-index: 1;
-}
-
 .main-menu-tog---b,
 .arbitrary-nav-tog---b,
 .arbitrary-nav .search-submit-axn---b,
@@ -1307,8 +1141,45 @@ $go-green: #12b32d;
     /* Seems like <svg> does not detect jQuery .closest, so exclude it by removing pointer events. */
 }
 
-.main-menu--inactive .mn-mha---ct,
-.arbitrary-nav--inactive .search---ct
+/* Overlay */
+.main-menu,
+.main-menu .mn-mha---cr,
+.main-menu .mn-mha---ct,
+.main-menu .mn-mha---ct_cr
+{
+    height: 100%;
+}
+
+.main-menu .mn-mha---ct
+{
+    overflow-y: auto;
+}
+
+.main-menu .mn-mha---ct_cr
+{
+    box-sizing: border-box;
+    
+    position: relative;
+    
+    margin-right: 3rem;
+    padding-top: 3rem;
+    
+    width: auto;
+    
+    background-color: white;
+    
+    cursor: default;
+}
+
+.main-menu-ctrl
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.main-menu--inactive .mn-mha---ct
 {
     display: none;
 }
@@ -1318,39 +1189,27 @@ $go-green: #12b32d;
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 2;
-}
-
-.main-menu--active,
-.main-menu--active .mn-mha---cr,
-.main-menu--active .mn-mha---ct,
-.main-menu--active .mn-mha---ct-cr
-{
+    
     width: 100%;
-    height: 100%;
+    
+    background-color: black;
+    background-color: hsla(0, 0%, 0%, .75);
+    
+    cursor: pointer;
 }
 
-.main-menu--active
+.main-menu--active .main-menu-tog---b_l
 {
-    box-sizing: border-box;
-    padding-bottom: 48px;
+    color: black;
 }
 
-.main-menu--active .mn-mha---ct
-{
-    position: relative;
-    box-sizing: border-box;
-    padding-right: 3rem;
-    margin-top: 3rem;
-}
-
-.main-menu--active .mn-mha---ct::before
+/* Shadow Gradient */
+.main-menu .mn-mha---ct_cr::before
 {
     content: '';
     position: absolute;
     top: 0;
     left: 100%;
-    margin-left: -3rem;
     
     width: .5rem;
     height: 100%;
@@ -1362,25 +1221,6 @@ $go-green: #12b32d;
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
 }
 
-.main-menu--active .mn-mha---cr
-{
-    background-color: black;
-    background-color: hsla(0, 0%, 0%, .75);
-    
-    cursor: pointer;
-}
-
-.main-menu--active .mn-mha---ct-cr
-{
-    background-color: white;
-    overflow-y: auto;
-    cursor: auto;
-}
-
-.apl--main-menu--active
-{
-    overflow: hidden;
-}
 
 
 
@@ -1524,7 +1364,31 @@ $go-green: #12b32d;
 /* ------------------------- Arbitrary Nav */
 .arbitrary-nav
 {
-    background-color: #00aaff;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.arbitrary-nav--active
+{
+    width: 100%;
+}
+
+.arbitrary-nav .search---cr
+{
+    position: relative;
+    
+    height: 3rem;
+}
+
+.arbitrary-nav--active .search---cr
+{
+    padding-left: 3rem;
+}
+
+.arbitrary-nav--inactive .search---ct
+{
+    display: none;
 }
 
 .arbitrary-nav .search-term-crt-inp--input-text
@@ -1534,38 +1398,66 @@ $go-green: #12b32d;
     color: white;
 }
 
+.arbitrary-nav .search-form-axns---ct_cr
+{
+    display: flex;
+}
 
+.arbitrary-nav .search-submit-axn
+{
+    order: 1;
+}
 
-
-/*
-.arbitrary-nav
+.arbitrary-nav-ctrl,
+.arbitrary-nav .search-form-axns
 {
     position: absolute;
     right: 0;
     top: 0;
-    
-    width: 100%;
 }
 
-.arbitrary-nav .search-toggle--a
+.arbitrary-nav--active .arbitrary-nav-toggle
 {
-    position: absolute;
-    right: 0;
-    top: 0;
+    padding-right: 3rem;
 }
 
-.arbitrary-nav .search-toggle--a-l,
-.arbitrary-nav .search-form-submit--a-l,
-.arbitrary-nav .search-form-reset--a-l,
-.arbitrary-nav .search-term--input--text
+.arbitrary-nav .search-term-crt-inp--input-text
 {
-    min-width: 3rem;
-    min-height: 3rem;
+    padding-left: 1rem;
+    padding-right: 6rem;
 }
 
-.arbitrary-nav .search-form--axns,
-.arbitrary-nav.search--active .search-toggle
+.apl--applicator--main-menu .arbitrary-nav .search-term-crt-inp--input-text
 {
-    margin-top: -1.5rem;
+    padding-left: 0;
 }
-*/
+
+.arbitrary-nav--active.arbitrary-nav-input--empty .search-reset-axn
+{
+    display: none;
+}
+
+/* Placeholder Text */
+.arbitrary-nav .search-term-crt-inp--input-text::-webkit-input-placeholder
+{
+    color: white;
+    opacity: .5;
+}
+
+.arbitrary-nav .search-term-crt-inp--input-text::-moz-placeholder
+{
+    color: white;
+    opacity: .5;
+}
+
+.arbitrary-nav .search-term-crt-inp--input-text:-ms-input-placeholder
+{
+    color: white;
+    opacity: .5;
+}
+
+.arbitrary-nav .search-term-crt-inp--input-text:-moz-placeholder
+{
+    color: white;
+    opacity: .5;
+}

@@ -15,7 +15,7 @@
     
     
     // ------------------------- Go to Content Nav
-    function initGoContent( cp ) {
+    function initGoContent( $cp ) {
         
         if ( ! aplApplicatorGoCtNavCss.length ) {
 			return;
@@ -29,7 +29,7 @@
             aplGoCtNavInactCss = 'apl--go-content-nav--inactive';
         
         function goCtNavActivate() {
-            cp
+            $cp
                 .addClass( goCtNavActCss )
                 .removeClass( goCtNavInactCss );
             $html
@@ -38,7 +38,7 @@
         }
         
         function goCtNavDeactivate() {
-            cp
+            $cp
                 .addClass( goCtNavInactCss )
                 .removeClass( goCtNavActCss );
             $html
@@ -69,7 +69,7 @@
     
     
     // ------------------------- Go to Start Nav
-    function initGoStart( cp ) {
+    function initGoStart( $cp ) {
         
         if ( ! aplApplicatorGoStartNavCss.length ) {
 			return;
@@ -89,7 +89,7 @@
             bodyOffsetMostHeight;
         
         function goStartNavActivate() {
-            cp
+            $cp
                 .addClass( goStartNavActCss )
                 .removeClass( goStartNavInactCss );
             $html
@@ -98,7 +98,7 @@
         }
         
         function goStartNavDeactivate() {
-            cp
+            $cp
                 .addClass( goStartNavInactCss )
                 .removeClass( goStartNavActCss );
             $html
@@ -152,13 +152,13 @@
     
     
     // Main Menu | Main Nav - Main Header Aside
-    function initMainMenu( cp ) {
+    function initMainMenu( $cp ) {
         
         if ( ! aplApplicatorMainMenuCss.length ) {
 			return;
 		}
         
-        cp.addClass( 'main-menu' );
+        $cp.addClass( 'main-menu' );
         
         var mainMenuCtrlMu,
             mainMenuCtrlHmu,
@@ -176,6 +176,7 @@
             $mainMenuTogBtnHideIco = $( aplDataMainMenuTogL.mainMenuHideIco ),
             $mainMenuTogBtnShowIco = $( aplDataMainMenuTogL.mainMenuShowIco ),
             
+            $mainMenuCtrl,
             $mainMenuTogBtn,
             $mainMenuTogBtnL,
             $mainMenuTogBtnLword;
@@ -228,7 +229,7 @@
                 'class': 'ct_cr main-menu-ctrl---ct_cr'
             } ) );
             
-            cp
+            $cp
             .find( $( '.mn-mha---hr_cr' ) )
                 .append( mainMenuCtrlMu )
             .find( $( '.main-menu-ctrl---cr' ) )
@@ -241,14 +242,16 @@
             
         }() );
         
-        $mainMenuCtCr = cp.find( '.mn-mha---ct-cr' );
+        $mainMenuCtrl = $cp.find( '.main-menu-ctrl' );
+        
+        $mainMenuCtCr = $cp.find( '.mn-mha---ct_cr' );
         $mainMenuTogBtn = $( '#main-menu-tog---b' );
         $mainMenuTogBtnL = $mainMenuTogBtn.find( $( '.main-menu-tog---b_l' ) );
         $mainMenuTogBtnLword = $mainMenuTogBtn.find( $( '.show-hide-main-menu---word' ) );
         
         // Activate
         function mainMenuActivate() {
-            cp
+            $cp
                 .addClass( mainMenuActCss )
                 .removeClass( mainMenuInactCss );
             $html
@@ -268,7 +271,7 @@
         
         // Deactivate
         function mainMenuDeactivate() {
-            cp
+            $cp
                 .addClass( mainMenuInactCss )
                 .removeClass( mainMenuActCss );
             $html
@@ -291,9 +294,9 @@
         
         // Toggle
         function mainMenuToggle() {
-            if ( cp.hasClass( mainMenuActCss ) ) {
+            if ( $cp.hasClass( mainMenuActCss ) ) {
                 mainMenuDeactivate();
-            } else if ( cp.hasClass( mainMenuInactCss ) ) {
+            } else if ( $cp.hasClass( mainMenuInactCss ) ) {
                 mainMenuActivate();
             }
         }
@@ -301,16 +304,17 @@
         // Click
         ( function() {
             $mainMenuTogBtn.on( 'click.applicator', function( e ) {
+                var _this = $( this );
                 e.preventDefault();
                 mainMenuToggle();
-                console.log( '$mainMenuTogBtn toggle' );
+                $window.scrollTop( _this.position().top );
+                console.log( '$mainMenuTogBtn toggle focus' );
             } );
         }() );
         
         // Deactivate upon interaction outside specified elements
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
-            var _this = $( this );
-            if ( cp.hasClass( mainMenuActCss ) && ( ! $( e.target ).closest( '.main-menu-ctrl' ).length && ! $( e.target ).closest( $mainMenuCtCr ).length ) ) {
+            if ( $cp.hasClass( mainMenuActCss ) && ( ! $( e.target ).closest( $mainMenuCtrl ).length && ! $( e.target ).closest( $mainMenuCtCr ).length ) ) {
                 mainMenuDeactivate();
                 console.log( 'Outside click' );
             }
@@ -319,7 +323,7 @@
         // Deactivate upon presseing ESC Key
         $window.load( function () {
             $( document ).on( 'keyup.applicator', function ( e ) {
-                if ( cp.hasClass( mainMenuActCss ) && e.keyCode == 27 ) {
+                if ( $cp.hasClass( mainMenuActCss ) && e.keyCode == 27 ) {
                     mainMenuDeactivate();
                     console.log( 'ESC' );
                 }
@@ -351,7 +355,7 @@
         console.log( 'Arbirary Nav Created' );
     }() );
     
-    function initArbitNav( cp ) {
+    function initArbitNav( $cp ) {
         
         if ( ! aplApplicatorArbitNavCss.length ) {
 			return;
@@ -372,18 +376,26 @@
             aplArbitNavActCss = 'apl--arbitrary-nav--active',
             aplArbitNavInactCss = 'apl--arbitrary-nav--inactive',
             
+            arbitNavInputEmpCss = 'arbitrary-nav-input--empty',
+            arbitNavInputPopCss = 'arbitrary-nav-input--populated',
+            
             $arbitNavTogCtrlSearchIco = $( aplDataArbitNav.arbitNavTogCtrlSearchIco ),
             $arbitNavTogCtrlDismissIco = $( aplDataArbitNav.arbitNavTogCtrlDismissIco ),
             
             $arbitNavSearchIco = $( aplDataArbitNav.arbitNavSearchIco ),
             $arbitNavDismissIco = $( aplDataArbitNav.arbitNavDismissIco ),
             
+            $arbitNavCtrl,
+            
             $arbitNavTogBtn,
             $arbitNavTogBtnL,
             $arbitNavTogBtnLword,
             
             $arbitNavSubmitAxnBl,
-            $arbitNavResetAxnBl;
+            $arbitNavResetAxnBl,
+            
+            $arbitNavInput,
+            $arbitNavResetBtn;
         
         // Build Markup
         ( function() {
@@ -433,7 +445,7 @@
                 'class': 'ct_cr arbitrary-nav-ctrl---ct_cr'
             } ) );
             
-            cp
+            $cp
             .find( $( '.search---hr_cr' ) )
                 .append( arbitNavCtrlMu )
             .find( $( '.arbitrary-nav-ctrl---cr' ) )
@@ -446,14 +458,19 @@
             
         }() );
         
-        $arbitNavCtCr = cp.find( '.search---ct' );
+        $arbitNavCtrl = $cp.find( '.arbitrary-nav-ctrl' );
+        
+        $arbitNavCtCr = $cp.find( '.search---ct' );
         $arbitNavTogBtn = $( '#arbitrary-nav-tog---b' );
         $arbitNavTogBtnL = $arbitNavTogBtn.find( $( '.arbitrary-nav-tog---b_l' ) );
         $arbitNavTogBtnLword = $arbitNavTogBtn.find( $( '.show-hide-arbitrary-nav---word' ) );
         
+        $arbitNavInput = $cp.find( '.search-term-crt-inp--input-text' );
+        $arbitNavResetBtn = $cp.find( '.search-reset-axn---b' );
+        
         // Activate
         function arbitNavActivate() {
-            cp
+            $cp
                 .addClass( arbitNavActCss )
                 .removeClass( arbitNavInactCss );
             $html
@@ -468,12 +485,16 @@
             $arbitNavTogBtnLword.text( aplDataArbitNav.arbitNavHideL );
             $arbitNavTogBtnL.append( $arbitNavTogCtrlDismissIco );
             $arbitNavTogCtrlSearchIco.remove();
+            
+            // Focus on input and select content if any
+            $arbitNavInput.focus().select();
+            
             console.log( 'activate' );
         }
         
         // Deactivate
         function arbitNavDeactivate() {
-            cp
+            $cp
                 .addClass( arbitNavInactCss )
                 .removeClass( arbitNavActCss );
             $html
@@ -492,29 +513,64 @@
         }
         
         // Initialize
-        arbitNavDeactivate();// Toggle
+        arbitNavDeactivate();
         
         // Toggle
         function arbitNavToggle() {
-            if ( cp.hasClass( arbitNavActCss ) ) {
+            if ( $cp.hasClass( arbitNavActCss ) ) {
                 arbitNavDeactivate();
-            } else if ( cp.hasClass( arbitNavInactCss ) ) {
+            } else if ( $cp.hasClass( arbitNavInactCss ) ) {
                 arbitNavActivate();
             }
         }
         
-        // Click
+        // Input Status
+        function arbitNavInputStatus() {
+            
+            // Empty Input
+            if ( $arbitNavInput.val() == '' ) {
+                $cp.addClass( arbitNavInputEmpCss );
+                $cp.removeClass( arbitNavInputPopCss );
+                console.log( 'Input Empty' );
+            }
+
+            // Populated Input (as displayed by default in the input in Search Results page)
+            if ( ! $arbitNavInput.val() == '' ) {
+                $cp.addClass( arbitNavInputPopCss );
+                $cp.removeClass( arbitNavInputEmpCss );
+                console.log( 'Input Populated' );
+            }
+        }
+        
+        // Initialize
+        arbitNavInputStatus();
+        
+        // Clicks
         ( function() {
+            
             $arbitNavTogBtn.on( 'click.applicator', function( e ) {
                 e.preventDefault();
                 arbitNavToggle();
                 console.log( '$arbitNavTogBtn toggle' );
             } );
+            
+            $arbitNavResetBtn.on( 'click.applicator', function( e ) {
+                e.preventDefault();
+                $arbitNavInput.val( '' ).focus();
+                arbitNavInputStatus();
+                console.log( 'Input Reset' );
+            } );
+            
         }() );
+        
+        // Upon entering content in input
+        $arbitNavInput.on( 'keypress.applicator input.applicator', function() {
+            arbitNavInputStatus();
+        } );
         
         // Deactivate upon interaction outside specified elements
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
-            if ( cp.hasClass( arbitNavActCss ) && ( ! $( e.target ).closest( '.arbitrary-nav-ctrl' ).length && ! $( e.target ).closest( $arbitNavCtCr ).length ) ) {
+            if ( $cp.hasClass( arbitNavActCss ) && ( ! $( e.target ).closest( $arbitNavCtrl ).length && ! $( e.target ).closest( $arbitNavCtCr ).length ) ) {
                 arbitNavDeactivate();
                 console.log( 'Outside click' );
             }
@@ -523,7 +579,7 @@
         // Deactivate upon presseing ESC Key
         $window.load( function () {
             $( document ).on( 'keyup.applicator', function ( e ) {
-                if ( cp.hasClass( arbitNavActCss ) && e.keyCode == 27 ) {
+                if ( $cp.hasClass( arbitNavActCss ) && e.keyCode == 27 ) {
                     arbitNavDeactivate();
                     console.log( 'ESC' );
                 }
@@ -531,7 +587,7 @@
         } );
         
         // Add Icons to Buttons
-        $arbitNavSearchFormAxns = cp.find( '.search-form-axns' );
+        $arbitNavSearchFormAxns = $cp.find( '.search-form-axns' );
         $arbitNavSearchBl = $arbitNavSearchFormAxns.find( '.search-submit-axn---b_l' );
         $arbitNavResetBl = $arbitNavSearchFormAxns.find( '.search-reset-axn---b_l' );
         $arbitNavSearchBl.append( $arbitNavSearchIco );
@@ -553,7 +609,7 @@
 		}
         
         // Create the markup of Sub-Nav Toggle
-        var subnavToggle = $( '<div />', { 'class': 'cp sub-nav-toggle', 'data-name': 'Sub-Nav Toggle' } )
+        var subnavToggle = $( '<div />', { 'class': '$cp sub-nav-toggle', 'data-name': 'Sub-Nav Toggle' } )
                 .append( $( '<div />', { 'class': 'sub-nav-toggle--cr' } ) ),
             
             subnavToggleAction = $( '<button />', { 'class': 'b a sub-nav-toggle--a' } )
@@ -634,177 +690,6 @@
     initSubNav( $( '#main-nav' ) );
     initSubNav( $( '.widget_nav_menu' ) );
     initSubNav( $( '.widget_pages' ) );
-    
-    
-    /* ------------------------- Search
-    function initSearch( component ) {
-        
-        // Create Markup
-        var searchToggle = $( '<div />', { 'class': 'cp search-toggle', 'data-name': 'Search Toggle' } )
-                .append( $( '<div />', { 'class': 'search-toggle--cr' } ) ),
-            
-            searchToggleAction = $( '<button />', { 'class': 'b a search-toggle--a' } )
-                .append( $( '<span />', { 'class': 'search-toggle--a-l' } ) ),
-            
-            searchToggleActionLabel = $( '<span />', { 'class': 'search-toggle--a--word--l', 'text': applicatorSearchLabel.searchShowLabel } ),
-            
-            searchActiveClass = 'search--active',
-            searchInactiveClass = 'search--inactive',
-            searchInputEmptyClass = 'search-input--empty',
-            
-            aplSearchActiveClass = 'apl--search--active',
-            aplSearchInactiveClass = 'apl--search--inactive',
-            
-            $searchComponent = $( '.arbitrary-nav' ),
-            $searchInput = component.find( '.search-term--input--text' ),
-            $searchForm = component.find( '.search-form' ),
-            $searchToggleLabel,
-            $searchToggleAction,
-            
-            $searchSubmit = component.find( '.search-form-submit--a-l' ),
-            $searchReset = component.find( '.search-form-reset--a-l' );
-        
-        // Attach Markup
-        component.find( '.search-form' ).before( searchToggle );
-        component.find( '.search-toggle--cr' ).append( searchToggleAction );
-        
-        component.find( '.search-toggle--a-l' )
-            .append( searchToggleActionLabel )
-            .append( ' ' )
-            .append( applicatorSearchLabel.searchIcon )
-            .append( applicatorSearchLabel.searchDismissIcon );
-        
-        $searchSubmit.append( ' ' )
-            .append( applicatorSearchLabel.searchIcon );
-        
-        $searchReset.append( ' ' )
-            .append( applicatorSearchLabel.searchDismissIcon );
-        
-        
-        // ------------------------- Set Defaults
-        component.addClass( searchInactiveClass );
-        
-        
-        $searchToggleLabel = component.find( '.search-toggle--a--word--l' );
-        $searchToggleAction = component.find( '.search-toggle--a' );
-        $searchToggleResetAction = component.find( '.search-form-reset--a' );
-        
-        
-        // ------------------------- Search Toggle Status
-        function searchStatusToggle() {
-            
-            // Set defaults for text label and aria-expanded based on Status Class
-            if ( $searchComponent.hasClass( searchInactiveClass ) ) {
-                $searchToggleAction.attr( 'aria-expanded', 'false' );
-                $searchToggleAction.attr( 'title', applicatorSearchLabel.searchShowLabel );
-                $searchToggleLabel.text( applicatorSearchLabel.searchShowLabel );
-                $html.addClass( aplSearchInactiveClass );
-                $html.removeClass( aplSearchActiveClass );
-            
-            } else if ( $searchComponent.hasClass( searchActiveClass ) ) {
-                $searchToggleAction.attr( 'aria-expanded', 'true' );
-                $searchToggleAction.attr( 'title', applicatorSearchLabel.searchHideLabel );
-                $searchToggleLabel.text( applicatorSearchLabel.searchHideLabel );
-                $html.addClass( aplSearchActiveClass );
-                $html.removeClass( aplSearchInactiveClass );
-            }
-        }
-        searchStatusToggle();
-        
-        // ------------------------- Function: Initial State of Input
-        function searchInputStatus() {
-        
-            // Empty Input
-            if ( $searchInput.val() == '' ) {
-                component.addClass( 'search-input--empty' );
-                component.removeClass( 'search-input--populated' );
-            }
-
-            // Populated Input (as seen in Search Results page)
-            if ( ! $searchInput.val() == '' ) {
-                component.addClass( 'search-input--populated' );
-                component.removeClass( 'search-input--empty' );
-            }
-            
-        }
-        searchInputStatus();
-        
-        // ------------------------- Toggle Search
-        $searchToggleAction.click( function( e ) {
-            var _this = $( this );
-            
-            e.preventDefault();
-            
-            // Toggle Component Status
-            $searchComponent
-                .toggleClass( searchActiveClass )
-                .toggleClass( searchInactiveClass );
-            
-            searchStatusToggle();
-            
-            // Focus on Input
-            if ( $searchComponent.hasClass( searchActiveClass ) ) {
-                $searchInput.focus();
-            }
-            
-            
-        } );
-        
-        // ------------------------- Reset Action
-        $searchToggleResetAction.click( function( e ) {
-            var _this = $( this );
-            
-            e.preventDefault();
-            
-            // Reset value and focus on Input
-            $searchInput.val( '' ).focus();
-            
-            searchInputStatus();
-        } );
-        
-        // ------------------------- Text Input Detection
-        $searchInput.on( 'keypress.applicator input.applicator', function() {
-            searchInputStatus();
-        } );
-        
-        
-        // ------------------------- Function: Deactivate Search
-        function searchDeactivate() {
-            $searchComponent
-                .addClass( searchInactiveClass )
-                .removeClass( searchActiveClass );
-            
-            $searchToggleAction.attr( 'aria-expanded', 'false' );
-            
-            $searchToggleLabel.text( applicatorSearchLabel.searchShowLabel );
-            
-            $html
-                .addClass( aplSearchInactiveClass )
-                .removeClass( aplSearchActiveClass );
-        }
-        
-        
-        // ------------------------- Deactivate Search on click outside the component itself
-        $document.on( 'touchmove.applicator click.applicator', function ( e ) {
-            var _this = $( this );
-            if ( ! $( e.target ).closest( '.arbitrary-nav' ).length && $searchComponent.hasClass( searchActiveClass ) ) {
-                searchDeactivate();
-            }
-        } );
-
-
-        // ------------------------- Deactivate Search upon ESC key
-        $window.load( function () {
-            $( document ).on( 'keyup.applicator', function ( e ) {
-                if ( e.keyCode == 27 && $searchComponent.hasClass( searchActiveClass ) ) {
-                    searchDeactivate();
-                }
-            } );
-        } );
-        
-    }
-    initSearch( $( '#arbitrary-nav' ) );
-    */
     
 
 })( jQuery );
