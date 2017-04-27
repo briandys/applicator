@@ -523,11 +523,7 @@ $go-green: #12b32d;
 
 
 
-/* ------------------------- WordPress Widgets ------------------------- */
-.widget_calendar table
-{
-    width: 100%;
-}
+
 
 
 
@@ -737,109 +733,6 @@ $go-green: #12b32d;
 
 
 
-/* ------------------------- Go to Content Nav */
-.go-content-nav,
-.go-ct-nav---cr,
-.go-ct-nav---ct,
-.go-ct-nav---ct_cr
-{
-    width: 100%;
-    height: 100%;
-}
-
-.go-content-nav
-{
-    position: fixed;
-    left: 0;
-    top: 0;
-}
-
-.go-ct-nav---cr
-{
-    background-color: white;
-    background-color: hsla(0, 100%, 100%, .75);
-}
-
-.go-content-navi
-{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate( -50%, -50%);
-}
-
-.go-ct-navi---a,
-.go-ct-navi---a_l
-{
-    box-sizing: border-box;
-    
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.go-ct-navi---a
-{
-    padding: .25rem;
-    
-    min-width: 3rem;
-    min-height: 3rem;
-    
-    text-decoration: none;
-    
-    color: white;
-}
-
-.go-ct-navi---a_l
-{
-    padding: .5rem .75rem;
-    
-    min-height: 36px;
-    
-    background-color: #00aaff;
-    border-radius: .25rem;
-}
-
-/* Text Spacing */
-.go-ct-navi---a_l > *
-{
-    margin-left: .15em;
-    margin-right: .15em;
-}
-
-.go-ct-navi---a_l > *:first-child
-{
-    margin-left: 0;
-}
-
-.go-ct-navi---a_l > *:last-child
-{
-    margin-right: 0;
-}
-
-
-/* Status */
-.go-content-nav--inactive
-{
-    opacity: 0;
-    z-index: -1;
-}
-
-.go-content-nav--active
-{
-    opacity: 1;
-    z-index: 99;
-}
-
-.go-content-nav--inactive .go-ct-nav---cr
-{
-    background-color: transparent;
-}
-
-
-
-
-
 /* ------------------------- Masthead */
 .main-header
 {
@@ -949,26 +842,6 @@ $go-green: #12b32d;
 
 
 
-/* ------------------------- Web Product Logo  */
-.wbp-logo
-{
-    position: absolute;
-    top: 50%;
-    margin-top: -1.125rem;
-    height: 2.25rem;
-}
-
-.custom-logo
-{
-    width: auto;
-    height: 100%;
-    max-width: none;
-}
-
-
-
-
-
 /* ------------------------- Web Product Description */
 .wbp-desc
 {
@@ -983,6 +856,26 @@ $go-green: #12b32d;
 .wbp-desc---a_l
 {
     font-size: .75rem;
+}
+
+
+
+
+
+/* ------------------------- Web Product Logo  */
+.wbp-logo
+{
+    position: absolute;
+    top: 50%;
+    margin-top: -1.125rem;
+    height: 2.25rem;
+}
+
+.custom-logo
+{
+    width: auto;
+    height: 100%;
+    max-width: none;
 }
 
 
@@ -1027,6 +920,111 @@ $go-green: #12b32d;
 {
     padding-left: 3rem;
     padding-right: 3rem;
+}
+
+
+
+
+
+/* ------------------------- Go to Content Nav */
+.go-content-nav
+{
+    position: fixed;
+    left: 0;
+    top: 0;
+    
+    width: 100%;
+}
+
+.go-content-nav,
+.go-ct-nav---cr,
+.go-ct-nav---ct,
+.go-ct-nav---ct_cr
+{
+    
+    height: 100%;
+}
+
+.go-ct-nav---cr
+{
+    background-color: white;
+    background-color: hsla(0, 100%, 100%, .75);
+}
+
+.go-content-navi
+{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate( -50%, -50%);
+}
+
+.go-ct-navi---a,
+.go-ct-navi---a_l
+{
+    box-sizing: border-box;
+    
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.go-ct-navi---a
+{
+    padding: .25rem;
+    
+    min-width: 3rem;
+    min-height: 3rem;
+    
+    text-decoration: none;
+    
+    color: white;
+}
+
+.go-ct-navi---a_l
+{
+    padding: .5rem .75rem;
+    
+    min-height: 36px;
+    
+    background-color: #00aaff;
+    border-radius: .25rem;
+}
+
+/* Text Spacing */
+.go-ct-navi---a_l > *
+{
+    margin-left: .15em;
+    margin-right: .15em;
+}
+
+.go-ct-navi---a_l > *:first-child
+{
+    margin-left: 0;
+}
+
+.go-ct-navi---a_l > *:last-child
+{
+    margin-right: 0;
+}
+
+
+/* Status */
+.go-content-nav--inactive
+{
+    opacity: 0;
+    z-index: -1;
+}
+
+.go-content-nav--active
+{
+    opacity: 1;
+    z-index: 99;
+}
+
+.go-content-nav--inactive .go-ct-nav---cr
+{
+    background-color: transparent;
 }
 
 
@@ -1152,23 +1150,25 @@ $go-green: #12b32d;
 
 .main-menu .mn-mha---ct
 {
-    overflow-y: auto;
+    box-sizing: border-box;
+    
+    position: relative;
+    
+    margin-right: 3rem;
+    
+    width: auto;
+    
+    cursor: default;
+    background-color: white;
 }
 
 .main-menu .mn-mha---ct_cr
 {
     box-sizing: border-box;
     
-    position: relative;
-    
-    margin-right: 3rem;
     padding-top: 3rem;
     
-    width: auto;
-    
-    background-color: white;
-    
-    cursor: default;
+    overflow-y: auto;
 }
 
 .main-menu-ctrl
@@ -1236,24 +1236,24 @@ $go-green: #12b32d;
 .wp-admin-bar--enabled.vp--wp-admin-bar--narrow .wbp---cr,
 .wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-menu--active
 {
-    padding-top: 46px;
+    margin-top: 46px;
 }
 
-.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-menu--active .main-menu-ctrl
+.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-menu .mn-mha---ct
 {
-    margin-top: 46px;
+    padding-bottom: 46px;
 }
 
 /* WP Admin Bar - Wide */
 .wp-admin-bar--enabled.vp--wp-admin-bar--wide .wbp---cr,
 .wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-menu--active
 {
-    padding-top: 32px;
+    margin-top: 32px;
 }
 
-.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-menu--active .main-menu-ctrl
+.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-menu .mn-mha---ct
 {
-    margin-top: 32px;
+    padding-bottom: 32px;
 }
 
 .apl--go-content-nav--active #wpadminbar
@@ -1460,4 +1460,14 @@ $go-green: #12b32d;
 {
     color: white;
     opacity: .5;
+}
+
+
+
+
+
+/* ------------------------- WordPress Widgets */
+.widget_calendar table
+{
+    width: 100%;
 }
