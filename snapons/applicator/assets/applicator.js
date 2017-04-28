@@ -609,7 +609,7 @@
 			return;
 		}
         
-        console.log( 'Sub-Nav Created' );
+        console.log( 'Sub-Nav Enter Gate' );
         
         var subNavTogObjMu,
             subNavTogBtnMu,
@@ -621,6 +621,7 @@
             aplSubNavActCss = 'apl--sub-nav--active',
             aplSubNavInactCss = 'apl--sub-nav--inactive',
             
+            $navParentItems = $( '.page_item, .menu-item' ),
             $subNavParentItems = $( '.page_item_has_children, .menu-item-has-children' ),
             $subNavGrp = $( '.page_item_has_children > .children, .menu-item-has-children > .sub-menu' ),
             
@@ -632,6 +633,11 @@
             $subNavTogBtnLword,
             
             $subNavTogBtnIco = $( aplDataSubNav.subNavTogBtnIco );
+        
+        if ( $cp.has( $subNavParentItems ) ) {
+            console.log( 'Has $subNavParentItems' );
+            $cp.addClass( 'apl--sub-nav' );
+        }
         
         // Build Markup
         ( function() {
@@ -718,8 +724,31 @@
             console.log( 'subNavDeactivate' );
         }
         
-        // Initialize
-        subNavDeactivate();
+        // Deactivate all Sub-Nav
+        function subNavAllDeactivate() {
+            
+            $cp.find( $subNavParentItems ).each( function() {
+                var _this = $( this );
+                $subNavParentItems
+                    .addClass( subNavInactCss )
+                    .removeClass( subNavActCss );
+                $html
+                    .addClass( aplSubNavInactCss )
+                    .removeClass( aplSubNavActCss );
+                
+                $subNavTog.attr( {
+                    'aria-expanded': 'false',
+                    'title': aplDataSubNav.subNavTogBtnShowL
+                } );
+                
+                $subNavTogBtnLword.text( aplDataSubNav.subNavTogBtnShowL );
+                
+                console.log( '$subNavParentItems Deactivated' );
+            } );
+        }
+        
+        // Initiate
+        subNavAllDeactivate();
         
         // Toggle
         function subNavToggle() {
@@ -728,39 +757,72 @@
             $subNavParent = _this.closest( $subNavParentItems );
             
             if ( $subNavParent.hasClass( subNavActCss ) ) {
-                subNavDeactivate.apply( this );
+                
+                $subNavParent
+                    .addClass( subNavInactCss )
+                    .removeClass( subNavActCss );
+                $html
+                    .addClass( aplSubNavInactCss )
+                    .removeClass( aplSubNavActCss );
+
+                _this.attr( {
+                     'aria-expanded': 'false',
+                     'title': aplDataSubNav.subNavTogBtnShowL
+                } );
+                
             } else if ( $subNavParent.hasClass( subNavInactCss ) ) {
-                subNavActivate.apply( this );
+                
+                $subNavParent
+                    .addClass( subNavActCss )
+                    .removeClass( subNavInactCss );
+                $html
+                    .addClass( aplSubNavActCss )
+                    .removeClass( aplSubNavInactCss );
+
+                _this.attr( {
+                     'aria-expanded': 'true',
+                     'title': aplDataSubNav.subNavTogBtnHideL
+                } );
+                
             }
         }
         
+        // Click
         ( function() {
-            
             $subNavTog.on( 'click.applicator', function( e ) {
+                var _this = $( this );
                 e.preventDefault();
-                subNavToggle( );
-                console.log( 'subNavToggle click' );
+                $subNavParent = _this.closest( $subNavParentItems );
+                
+                if ( $subNavParent.hasClass( subNavInactCss ) ) {
+                    subNavActivate.apply( this );
+                    console.log( 'subNavActivate click' );
+                } else if ( $subNavParent.hasClass( subNavActCss ) ) {
+                    subNavDeactivate.apply( this );
+                    console.log( 'subNavDeactivate click' );
+                }
+                
+                // Deactivate Siblings
+                _this.closest( $subNavParentItems ).siblings()
+                    .addClass( subNavInactCss )
+                    .removeClass( subNavActCss );
+                console.log( '$subNavParentItems siblings Deactivated' );
             } );
-            
         }() );
         
-        // Initialize
-        // mainMenuDeactivate();
-        
-        
+        // Deactivate upon interaction outside specified elements
+        $document.on( 'touchmove.applicator click.applicator', function ( e ) {
+            if ( $html.hasClass( aplSubNavActCss ) && ! $( e.target ).closest( $subNavParentItems ).length ) {
+                subNavAllDeactivate();
+                console.log( 'subNavAllDeactivate Outside Click' );
+            }
+        } );
     }
     
     initSubNav( $( '#main-nav' ) );
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    /*
+    initSubNav( $( '.widget_nav_menu' ) );
+    initSubNav( $( '.widget_pages' ) );
+    */
 
 })( jQuery );

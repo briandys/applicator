@@ -54,12 +54,11 @@
 .apl--arbitrary-nav--active .wbp-info,
 
 /* Go to Content Nav */
-.apl--applicator--go-content-nav.dom--unready .go-content-nav,
+
 .go-content-nav--inactive,
 .go-ct-nav---h,
 
 /* Go to Start Nav */
-.apl--applicator--go-start-nav.dom--unready .go-start-nav,
 .go-start-navi---a_l .go---word,
 .go-start-navi---a_l .to---word,
 .go-start-navi---a_l .start---word,
@@ -71,7 +70,6 @@
 .main-hr-as---h,
 
 /*  Menu | Main Nav - Main Header Aside */
-.apl--applicator--main-menu.dom--unready .main-nav--main-header-aside,
 .main-menu-ctrl---h,
 .main-menu-tog---b_l .show-hide-main-menu---word,
 
@@ -82,7 +80,6 @@
 .search-term-creation-label---obj,
 
 /* Arbitrary Nav */
-.apl--applicator--arbitrary-nav.dom--unready .main-header---cr > .search---cp,
 .arbitrary-nav-ctrl---h,
 .arbitrary-nav-tog---b_l .show-hide-arbitrary-nav---word,
 .arbitrary-nav .search-submit-axn---b_l .search---word,
@@ -145,52 +142,6 @@ p
 ::selection {
     background: #b3d4fc;
     text-shadow: none;
-}
-
-
-
-
-
-/* ------------------------- Sub-Navigations ------------------------- */
-.applicator--sub-nav.dom--unready .main-nav--ct > ul > .page_item_has_children > .children,
-.applicator--sub-nav.dom--unready .main-nav--ct > ul > .menu-item-has-children > .sub-menu,
-
-.applicator--sub-nav.dom--unready .widget_nav_menu .widget---cr > div > ul > .menu-item-has-children > .sub-menu,
-.applicator--sub-nav.dom--unready .widget_pages .widget---cr > ul > .page_item_has_children > .children,
-
-.applicator--sub-nav .sub-nav--inactive > .children,
-.applicator--sub-nav .sub-nav--inactive > .sub-menu
-{
-    display: none;
-}
-
-.applicator--sub-nav .sub-nav--active > .children,
-.applicator--sub-nav .sub-nav--active > .sub-menu
-{
-    display: block;
-}
-
-/* Layout */
-.page_item_has_children > a,
-.menu-item-has-children > a,
-.page_item_has_children > .sub-nav-toggle,
-.menu-item-has-children > .sub-nav-toggle
-{
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.applicator--sub-nav .page_item > .sub-nav-toggle .arrow-icon,
-.applicator--sub-nav .menu-item > .sub-nav-toggle .arrow-icon
-{
-    /*
-    transition: all 0.2s ease-in-out;
-    */
-}
-
-.applicator--sub-nav .sub-nav--active > .sub-nav-toggle .arrow-icon
-{
-    transform: rotate( 180deg );
 }
 
 
@@ -348,35 +299,6 @@ p
 
 
 
-/* ------------------------- Nav ------------------------- */
-
-/* Positioning of nav items */
-/* flex-wrap enables the item with large width to wrap - in this case the Sub-Menu */
-.applicator--sub-nav .page_item_has_children,
-.applicator--sub-nav .menu-item-has-children
-{
-    position: relative;
-}
-
-.applicator--sub-nav .sub-nav-toggle
-{
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
-/* For flex-wrap to take effect */
-.applicator--sub-nav .page_item_has_children > .children,
-.applicator--sub-nav .menu-item-has-children > .sub-menu
-{
-    width: 100%;
-}
-
-.page_item_has_children > .children > .page_item,
-.menu-item-has-children > .sub-menu > .menu-item
-{
-    padding-left: .5rem;
-}
 
 
 
@@ -460,7 +382,6 @@ p
 }
 
 /* Smaller icons */
-.applicator--sub-nav .sub-nav-toggle--a .arrow-icon,
 .main-nav--header-aside--menu-toggle .dismiss-icon
 {
     width: .75rem;
@@ -1008,7 +929,6 @@ $go-green: #12b32d;
     margin-right: 0;
 }
 
-
 /* Status */
 .go-content-nav--inactive
 {
@@ -1027,6 +947,10 @@ $go-green: #12b32d;
     background-color: transparent;
 }
 
+.apl--applicator--go-content-nav.dom--unready .go-content-nav
+{
+    display: none;
+}
 
 
 
@@ -1075,16 +999,19 @@ $go-green: #12b32d;
     min-height: 3rem;    
 }
 
-
 .next-coms-navi---a_l .arrow-icon
 {
     transform: rotate( -90deg );
 }
 
-
 .prev-coms-navi---a_l .arrow-icon
 {
     transform: rotate( 90deg );
+}
+
+.apl--applicator--go-start-nav.dom--unready .go-start-nav
+{
+    display: none;
 }
 
 
@@ -1236,6 +1163,11 @@ $go-green: #12b32d;
     background: -webkit-linear-gradient(left, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to right, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+}
+
+.apl--applicator--main-menu.dom--unready .main-nav--main-header-aside
+{
+    display: none;
 }
 
 
@@ -1477,6 +1409,77 @@ $go-green: #12b32d;
 {
     color: white;
     opacity: .5;
+}
+
+.apl--applicator--arbitrary-nav.dom--unready .main-header---cr > .search---cp
+{
+    display: none;
+}
+
+
+
+
+
+/* ------------------------- Sub-Navigation */
+.sub-nav--inactive > .children,
+.sub-nav--inactive > .sub-menu
+{
+    display: none;
+}
+
+.page_item > .sub-nav-toggle .arrow-icon,
+.menu-item > .sub-nav-toggle .arrow-icon
+{
+    /*
+    transition: all 0.2s ease-in-out;
+    */
+}
+
+.sub-nav--active > .sub-nav-toggle---b .arrow-icon
+{
+    transform: rotate( 180deg );
+}
+
+/* Positioning of nav items */
+/* flex-wrap enables the item with large width to wrap - in this case the Sub-Menu */
+.apl--applicator--sub-nav .page_item_has_children,
+.apl--applicator--sub-nav .menu-item-has-children
+{
+    position: relative;
+}
+
+.apl--applicator--sub-nav .sub-nav-toggle
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+/* For flex-wrap to take effect */
+.apl--applicator--sub-nav .page_item_has_children > .children,
+.apl--applicator--sub-nav .menu-item-has-children > .sub-menu
+{
+    width: 100%;
+}
+
+.page_item_has_children > .children > .page_item,
+.menu-item-has-children > .sub-menu > .menu-item
+{
+    padding-left: .5rem;
+}
+
+.apl--applicator--sub-nav .sub-nav-toggle---b .arrow-icon
+{
+    width: .75rem;
+    height: .75rem;
+}
+
+.apl--applicator--sub-nav.dom--unready .main-nav--ct > ul > .page_item_has_children > .children,
+.apl--applicator--sub-nav.dom--unready .main-nav--ct > ul > .menu-item-has-children > .sub-menu,
+.apl--applicator--sub-nav.dom--unready .widget_nav_menu .widget---cr > div > ul > .menu-item-has-children > .sub-menu,
+.apl--applicator--sub-nav.dom--unready .widget_pages .widget---cr > ul > .page_item_has_children > .children
+{
+    display: none;
 }
 
 
