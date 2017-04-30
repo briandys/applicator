@@ -382,6 +382,8 @@
             arbitNavTogBtnLmu,
             arbitNavTogBtnLwordMu,
             
+            searchFuncCss = 'func--search',
+            
             arbitNavActCss = 'arbitrary-nav--active',
             arbitNavInactCss = 'arbitrary-nav--inactive',
             aplArbitNavActCss = 'apl--arbitrary-nav--active',
@@ -411,6 +413,8 @@
             
             $arbitNavInput,
             $arbitNavResetBtn;
+        
+        $cp.addClass( searchFuncCss );
         
         // Build Markup
         ( function() {
@@ -625,12 +629,12 @@
         
         console.log( 'Sub-Nav Enter Gate' );
         
-        var $subNavFunc,
-            
-            subNavTogObjMu,
+        var subNavTogObjMu,
             subNavTogBtnMu,
             subNavTogBtnLmu,
             subNavTogBtnLwordMu,
+            
+            subNavFuncCss = 'func--sub-nav',
             
             subNavActCss = 'sub-nav--active',
             subNavInactCss = 'sub-nav--inactive',
@@ -655,10 +659,8 @@
         
         if ( $cp.has( $subNavParentItems ) ) {
             console.log( 'Has $subNavParentItems' );
-            $cp.addClass( 'func--sub-nav' );
+            $cp.addClass( subNavFuncCss );
         }
-        
-        $subNavFunc = $( '.func--sub-nav' );
         
         // Build Markup
         ( function() {
