@@ -4,8 +4,9 @@
         $document = $( document ),
         $window = $( window ),
         
-        aplApplicatorGoCtNavCss = 'apl--applicator--go-content-nav',
-        aplApplicatorGoStartNavCss = 'apl--applicator--go-start-nav',
+        $aplApplicatorGoCtNav = $( '.apl--applicator--go-content-nav' ),
+        $aplApplicatorGoStartNav = $( '.apl--applicator--go-start-nav' ),
+        
         aplApplicatorGoStartNavCss = 'apl--applicator--go-start-nav',
         aplApplicatorMainMenuCss = 'apl--applicator--main-menu',
         aplApplicatorArbitNavCss = 'apl--applicator--arbitrary-nav',
@@ -18,16 +19,19 @@
     // ------------------------- Go to Content Nav
     function initGoContent( $cp ) {
         
-        if ( ! aplApplicatorGoCtNavCss.length ) {
+        if ( ! $aplApplicatorGoCtNav.length ) {
 			return;
 		}
         
-        var $goCtNaviA = $( '#go-ct-navi---a' ),
+        var $goCtNav = $( '#go-content-nav' ),
+            $goCtNaviA = $( '#go-ct-navi---a' ),
             
             goCtNavActCss = 'go-content-nav--active',
             goCtNavInactCss = 'go-content-nav--inactive',
             aplGoCtNavActCss = 'apl--go-content-nav--active',
             aplGoCtNavInactCss = 'apl--go-content-nav--inactive';
+        
+        $goCtNav.addClass( 'func--go-content-nav' );
         
         function goCtNavActivate() {
             $cp
@@ -72,11 +76,12 @@
     // ------------------------- Go to Start Nav
     function initGoStart( $cp ) {
         
-        if ( ! aplApplicatorGoStartNavCss.length ) {
+        if ( ! $aplApplicatorGoStartNav.length ) {
 			return;
 		}
         
-        var $goStartNaviA = $( '#go-start-navi---a' ),
+        var $goStartNav = $( '#go-start-nav' ),
+            $goStartNaviA = $( '#go-start-navi---a' ),
             
             goStartNavActCss = 'go-start-nav--active',
             goStartNavInactCss = 'go-start-nav--inactive',
@@ -88,6 +93,8 @@
             bodyOffsetCriteriaHeight,
             bodyOffsetSliceHeight,
             bodyOffsetMostHeight;
+        
+        $goStartNav.addClass( 'func--go-start-nav' );
         
         function goStartNavActivate() {
             $cp
@@ -632,11 +639,14 @@
             $subNavTogBtnL,
             $subNavTogBtnLword,
             
-            $subNavTogBtnIco = $( aplDataSubNav.subNavTogBtnIco );
+            $subNavTogBtnIco = $( aplDataSubNav.subNavTogBtnIco ),
+            
+            $subNavTogBtnShowL = aplDataSubNav.subNavTogBtnShowL,
+            $subNavTogBtnHideL = aplDataSubNav.subNavTogBtnHideL;
         
         if ( $cp.has( $subNavParentItems ) ) {
             console.log( 'Has $subNavParentItems' );
-            $cp.addClass( 'apl--sub-nav' );
+            $cp.addClass( 'func--sub-nav' );
         }
         
         // Build Markup
@@ -651,7 +661,7 @@
                 'class': 'b_l sub-nav-tog---b_l'
             } )
                 .append( subNavTogBtnLwordMu )
-                .append( $subNavTogBtnIco );
+                .clone().append( $subNavTogBtnIco );
             
             // Button
             subNavTogBtnMu = $( '<button />', {
@@ -660,7 +670,7 @@
             } ).append( subNavTogBtnLmu );
             
             // Object
-            subNavTogObjMu = $( '<span />', {
+            subNavTogObjMu = $( '<div />', {
                 'class': 'obj toggle sub-nav-toggle',
                 'data-name': 'Sub-Nav Toggle'
             } ).append( subNavTogBtnMu );
@@ -674,14 +684,12 @@
         }() );
         
         $subNavTog = $cp.find( '.sub-nav-tog---b' );
-        $subNavTogBtnLword = $cp.find( '.show-hide-sub-nav---word' );
+        $subNavShowHideWord = '.show-hide-sub-nav---word';
         
         // Activate
         function subNavActivate() {
             var _this = $( this );
-            
             $subNavParent = _this.closest( $subNavParentItems );
-            $subNavTogBtnLword = _this.find( $subNavTogBtnLword );
             
             $subNavParent
                 .addClass( subNavActCss )
@@ -695,7 +703,7 @@
                  'title': aplDataSubNav.subNavTogBtnHideL
             } );
             
-            $subNavTogBtnLword.text( aplDataSubNav.subNavTogBtnHideL );
+            _this.find( $subNavShowHideWord ).text( $subNavTogBtnHideL );
             
             console.log( 'subNavActivate' );
         }
@@ -703,9 +711,7 @@
         // Deactivate
         function subNavDeactivate() {
             var _this = $( this );
-            
             $subNavParent = _this.closest( $subNavParentItems );
-            $subNavTogBtnLword = _this.find( $subNavTogBtnLword );
             
             $subNavParent
                 .addClass( subNavInactCss )
@@ -719,13 +725,14 @@
                  'title': aplDataSubNav.subNavTogBtnShowL
             } );
             
-            $subNavTogBtnLword.text( aplDataSubNav.subNavTogBtnShowL );
+            _this.find( $subNavShowHideWord ).text( $subNavTogBtnShowL );
             
             console.log( 'subNavDeactivate' );
         }
         
         // Deactivate all Sub-Nav
         function subNavAllDeactivate() {
+            var _this = $( this );
             
             $cp.find( $subNavParentItems ).each( function() {
                 var _this = $( this );
@@ -741,7 +748,7 @@
                     'title': aplDataSubNav.subNavTogBtnShowL
                 } );
                 
-                $subNavTogBtnLword.text( aplDataSubNav.subNavTogBtnShowL );
+                _this.find( $subNavShowHideWord ).text( $subNavTogBtnShowL );
                 
                 console.log( '$subNavParentItems Deactivated' );
             } );
@@ -820,8 +827,9 @@
     }
     
     initSubNav( $( '#main-nav' ) );
-    /*
     initSubNav( $( '.widget_nav_menu' ) );
+    /*
+    
     initSubNav( $( '.widget_pages' ) );
     */
 
