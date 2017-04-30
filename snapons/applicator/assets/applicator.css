@@ -72,7 +72,9 @@
 /*  Menu | Main Nav - Main Header Aside */
 .main-menu-ctrl---h,
 .main-menu-tog---b_l .show-hide-main-menu---word,
-.func--sub-nav .show-hide-sub-nav---word,
+
+/* Sub-Nav | Main Nav | Widget > Custom Menu */
+.func--sub-nav .sub-nav-toggle .show-hide-sub-nav---word,
 
 /* Search */
 .search---h,
@@ -1477,41 +1479,41 @@ $go-green: #12b32d;
 
 
 /* ------------------------- Sub-Navigation - Functionality */
-.apl--applicator--sub-nav .sub-nav--inactive > .children,
-.apl--applicator--sub-nav .sub-nav--inactive > .sub-menu
+.func--sub-nav .sub-nav--inactive > .children,
+.func--sub-nav .sub-nav--inactive > .sub-menu
 {
     display: none;
 }
 
 /* Positioning of nav items */
 /* flex-wrap enables the item with large width to wrap - in this case the Sub-Menu */
-.apl--applicator--sub-nav .page_item_has_children,
-.apl--applicator--sub-nav .menu-item-has-children
+.func--sub-nav .page_item_has_children,
+.func--sub-nav .menu-item-has-children
 {
     position: relative;
 }
 
-.apl--applicator--sub-nav .sub-nav-toggle
+.func--sub-nav .sub-nav-toggle
 {
     position: absolute;
     right: 0;
     top: 0;
 }
 
-.apl--applicator--sub-nav .sub-nav-toggle .arrow-icon
+.func--sub-nav .sub-nav-toggle .arrow-icon
 {
     width: .75rem;
     height: .75rem;
 }
 
-.apl--applicator--sub-nav .sub-nav-toggle .arrow-icon
+.func--sub-nav .sub-nav-toggle .arrow-icon
 {
     /*
     transition: all 0.2s ease-in-out;
     */
 }
 
-.apl--applicator--sub-nav .sub-nav--active .sub-nav-toggle .arrow-icon
+.func--sub-nav .sub-nav--active > .sub-nav-toggle .arrow-icon
 {
     transform: rotate( 180deg );
 }

@@ -39,10 +39,10 @@ $unique_id = esc_attr( uniqid( 'search-term-creation-input--' ) );
                             <div class="ct search-form-axns---ct">
                                 <div class="ct_cr search-form-axns---ct_cr">
                                     <div class="obj axn search-submit-axn" data-name="Search Submit Action">
-                                        <button class="b search-submit-axn---b" type="submit" title="<?php esc_attr_e( 'Search', 'applicator' ); ?>"><span class="b_l search-submit-axn---b_l"><span class="word search---word"><?php esc_html_e( 'Search', 'applicator' ); ?></span></span></button>
+                                        <button class="b search-submit-axn---b" type="submit" title="<?php esc_attr_e( 'Submit Search Term', 'applicator' ); ?>"><span class="b_l search-submit-axn---b_l"><span class="word search---word"><?php esc_html_e( 'Submit Search Term', 'applicator' ); ?></span></span></button>
                                     </div><!-- search-submit-axn -->
                                     <div class="obj axn search-reset-axn" data-name="Search Reset Action">
-                                        <button class="b search-reset-axn---b" type="reset" title="<?php esc_attr_e( 'Reset', 'applicator' ); ?>"><span class="b_l search-reset-axn---b_l"><span class="word reset---word"><?php esc_html_e( 'Reset', 'applicator' ); ?></span></span></button>
+                                        <button class="b search-reset-axn---b" type="reset" title="<?php esc_attr_e( 'Reset Search Term', 'applicator' ); ?>"><span class="b_l search-reset-axn---b_l"><span class="word reset---word"><?php esc_html_e( 'Reset Search Term', 'applicator' ); ?></span></span></button>
                                     </div><!-- search-reset-axn -->
                                 </div>
                             </div><!-- search-form-axns---ct -->

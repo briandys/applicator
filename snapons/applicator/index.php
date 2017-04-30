@@ -55,7 +55,7 @@ if ( ! function_exists( 'apl_snapons_applicator_styles' ) ) {
         
         add_editor_style( array( 'assets/css/editor-style.css', applicator_fonts_url() ) );
         
-        wp_enqueue_style( 'apl-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '11.5', 'all' );
+        wp_enqueue_style( 'apl-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '12.2', 'all' );
 
     }
     add_action( 'wp_enqueue_scripts', 'apl_snapons_applicator_styles', 0);
@@ -66,7 +66,7 @@ if ( ! function_exists( 'apl_snapons_applicator_styles' ) ) {
 if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
     function apl_snapons_applicator_scripts() {
         
-        wp_enqueue_script( 'apl-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/applicator.js' ), array( 'jquery' ), '11.3', true );
+        wp_enqueue_script( 'apl-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/applicator.js' ), array( 'jquery' ), '12.3', true );
         
         $search_icon = applicator_get_svg( array( 'icon' => 'search-icon' ) );
         $dismiss_icon = applicator_get_svg( array( 'icon' => 'dismiss-icon' ) );
@@ -74,16 +74,16 @@ if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
         
         // Main Menu
         $applicator_l10n['mainMenuCtrlH'] = __( 'Main Menu Control', 'applicator' );
-        $applicator_l10n['mainMenuShowL'] = __( 'Show Main Menu ', 'applicator' );
-        $applicator_l10n['mainMenuHideL'] = __( 'Hide Main Menu ', 'applicator' );
+        $applicator_l10n['mainMenuShowL'] = __( 'Show Main Menu', 'applicator' );
+        $applicator_l10n['mainMenuHideL'] = __( 'Hide Main Menu', 'applicator' );
         $applicator_l10n['mainMenuShowIco'] = $burger_icon;
         $applicator_l10n['mainMenuHideIco'] = $dismiss_icon;
         wp_localize_script( 'apl-snapons-applicator-script-global', 'aplDataMainMenu', $applicator_l10n );
         
-        // Arbitrary Navigation
-        $applicator_l10n['arbitNavCtrlH'] = __( 'Arbitrary Navigation Control', 'applicator' );
-        $applicator_l10n['arbitNavShowL'] = __( 'Show Arbitrary Navigation ', 'applicator' );
-        $applicator_l10n['arbitNavHideL'] = __( 'Hide Arbitrary Navigation ', 'applicator' );
+        // Arbitrary Navigation | Search
+        $applicator_l10n['arbitNavCtrlH'] = __( 'Search Control', 'applicator' );
+        $applicator_l10n['arbitNavShowL'] = __( 'Show Search', 'applicator' );
+        $applicator_l10n['arbitNavHideL'] = __( 'Hide Search', 'applicator' );
         $applicator_l10n['arbitNavTogCtrlSearchIco'] = $search_icon;
         $applicator_l10n['arbitNavTogCtrlDismissIco'] = $dismiss_icon;
         $applicator_l10n['arbitNavSearchIco'] = $search_icon;

@@ -6,10 +6,11 @@
         
         $aplApplicatorGoCtNav = $( '.apl--applicator--go-content-nav' ),
         $aplApplicatorGoStartNav = $( '.apl--applicator--go-start-nav' ),
+        $aplApplicatorArbitNavCss = $( '.apl--applicator--arbitrary-nav' ),
         
         aplApplicatorGoStartNavCss = 'apl--applicator--go-start-nav',
         aplApplicatorMainMenuCss = 'apl--applicator--main-menu',
-        aplApplicatorArbitNavCss = 'apl--applicator--arbitrary-nav',
+        
         aplApplicatorSubNavCss = 'apl--applicator--sub-nav';
     
     
@@ -349,7 +350,7 @@
     // Arbitrary Nav | Search
     ( function() {
         
-        if ( ! aplApplicatorArbitNavCss.length ) {
+        if ( ! $aplApplicatorArbitNavCss.length ) {
 			return;
 		}
         
@@ -365,13 +366,15 @@
     
     function initArbitNav( $cp ) {
         
-        if ( ! aplApplicatorArbitNavCss.length ) {
+        if ( ! $aplApplicatorArbitNavCss.length ) {
 			return;
 		}
         
         console.log( 'Arbirary Nav Created' );
         
-        var arbitNavCtrlMu,
+        var $arbitNavFunc,
+            
+            arbitNavCtrlMu,
             arbitNavCtrlHmu,
             arbitNavCtrlCtMu,
             arbitNavTogObjMu,
@@ -393,6 +396,10 @@
             $arbitNavSearchIco = $( aplDataArbitNav.arbitNavSearchIco ),
             $arbitNavDismissIco = $( aplDataArbitNav.arbitNavDismissIco ),
             
+            $arbitNavCtrlH = aplDataArbitNav.arbitNavCtrlH,
+            $arbitNavShowL = aplDataArbitNav.arbitNavShowL,
+            $arbitNavHideL = aplDataArbitNav.arbitNavHideL,
+            
             $arbitNavCtrl,
             
             $arbitNavTogBtn,
@@ -410,7 +417,7 @@
             
             arbitNavTogBtnLwordMu = $( '<span />', {
                 'class': 'word show-hide-arbitrary-nav---word',
-                'text': aplDataArbitNav.arbitNavHideL
+                'text': $arbitNavHideL
             } );
             
             arbitNavTogBtnLmu = $( '<span />', {
@@ -423,19 +430,19 @@
             arbitNavTogBtnMu = $( '<button />', {
                 'id' : 'arbitrary-nav-tog---b',
                 'class': 'b arbitrary-nav-tog---b',
-                'title': aplDataArbitNav.arbitNavHideL
+                'title': $arbitNavHideL
             } ).append( arbitNavTogBtnLmu );
             
             // Object
             arbitNavTogObjMu = $( '<div />', {
                 'class': 'obj toggle arbitrary-nav-toggle',
-                'data-name': 'Arbitrary Navigation Toggle'
+                'data-name': 'Search Toggle'
             } ).append( arbitNavTogBtnMu );
             
             // Containers
             arbitNavCtrlMu = $( '<div />', {
                 'class': 'ctrl arbitrary-nav-ctrl',
-                'data-name': 'Arbitrary Navigation Control'
+                'data-name': 'Search Control'
             } ).append( $( '<div />', {
                 'class': 'cr arbitrary-nav-ctrl---cr'
             } ) );
@@ -444,7 +451,7 @@
                 'class': 'h arbitrary-nav-ctrl---h'
             } ).append( $( '<span />', {
                 'class': 'h_l arbitrary-nav-ctrl---h_l',
-                'text': aplDataArbitNav.arbitNavCtrlH
+                'text': $arbitNavCtrlH
             } ) );
             
             arbitNavCtrlCtMu = $( '<div />', {
@@ -487,10 +494,10 @@
             
             $arbitNavTogBtn.attr( {
                  'aria-expanded': 'true',
-                 'title': aplDataArbitNav.arbitNavHideL
+                 'title': $arbitNavHideL
             } );
             
-            $arbitNavTogBtnLword.text( aplDataArbitNav.arbitNavHideL );
+            $arbitNavTogBtnLword.text( $arbitNavHideL );
             $arbitNavTogBtnL.append( $arbitNavTogCtrlDismissIco );
             $arbitNavTogCtrlSearchIco.remove();
             
@@ -511,10 +518,10 @@
             
             $arbitNavTogBtn.attr( {
                  'aria-expanded': 'false',
-                 'title': aplDataArbitNav.arbitNavShowL
+                 'title': $arbitNavShowL
             } );
             
-            $arbitNavTogBtnLword.text( aplDataArbitNav.arbitNavShowL );
+            $arbitNavTogBtnLword.text( $arbitNavShowL );
             $arbitNavTogBtnL.append( $arbitNavTogCtrlSearchIco );
             $arbitNavTogCtrlDismissIco.remove();
             console.log( 'deactivate' );
@@ -618,7 +625,9 @@
         
         console.log( 'Sub-Nav Enter Gate' );
         
-        var subNavTogObjMu,
+        var $subNavFunc,
+            
+            subNavTogObjMu,
             subNavTogBtnMu,
             subNavTogBtnLmu,
             subNavTogBtnLwordMu,
@@ -648,6 +657,8 @@
             console.log( 'Has $subNavParentItems' );
             $cp.addClass( 'func--sub-nav' );
         }
+        
+        $subNavFunc = $( '.func--sub-nav' );
         
         // Build Markup
         ( function() {
@@ -819,7 +830,7 @@
         
         // Deactivate upon interaction outside specified elements
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
-            if ( $html.hasClass( aplSubNavActCss ) && ! $( e.target ).closest( $subNavParentItems ).length ) {
+            if ( $html.hasClass( aplSubNavActCss ) && ! $( e.target ).closest( $subNavParentItems ).length && ! $( e.target ).length ) {
                 subNavAllDeactivate();
                 console.log( 'subNavAllDeactivate Outside Click' );
             }
