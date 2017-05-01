@@ -21,14 +21,14 @@
 			return;
 		}
         
+        $cp.addClass( 'go-content-nav-func' );
+        
         var $goCtNaviA = $( '#go-ct-navi---a' ),
             
             goCtNavActCss = 'go-content-nav--active',
             goCtNavInactCss = 'go-content-nav--inactive',
             aplGoCtNavActCss = 'apl--go-content-nav--active',
             aplGoCtNavInactCss = 'apl--go-content-nav--inactive';
-        
-        $cp.addClass( 'go-content-nav-func' );
         
         function goCtNavActivate() {
             $cp
@@ -54,13 +54,11 @@
         // Focus In > Activate
         $goCtNaviA.on( 'focusin.applicator', function() {
             goCtNavActivate();
-            console.log( 'goCtNavActivate' );
         } );
 
         // Focus Out > Deactivate
         $goCtNaviA.on( 'focusout.applicator', function() {
             goCtNavDeactivate();
-            console.log( 'goCtNavDeactivate' );
         } );
         
     } // Go to Content Nav
@@ -77,6 +75,8 @@
 			return;
 		}
         
+        $cp.addClass( 'go-start-nav-func' );
+        
         var $goStartNaviA = $( '#go-start-navi---a' ),
             
             goStartNavActCss = 'go-start-nav--active',
@@ -91,8 +91,6 @@
             bodyOffsetCriteriaHeight,
             bodyOffsetSliceHeight,
             bodyOffsetMostHeight;
-        
-        $cp.addClass( 'go-start-nav-func' );
         
         function goStartNavActivate() {
             $cp
@@ -153,7 +151,6 @@
         // Add Icon to Button
         $goStartNaviAL = $goStartNaviA.find( '.go-start-navi---a_l' );
         $goStartNaviAL.append( $goStartNavArrowIco );
-        console.log( $goStartNavArrowIco );
     } // Go to Start Nav
     
     initGoStartNav( $( '#go-start-nav' ) );
@@ -169,7 +166,7 @@
 			return;
 		}
         
-        $cp.addClass( 'main-menu' );
+        $cp.addClass( 'main-menu-func' );
         
         var mainMenuCtrlMu,
             mainMenuCtrlHmu,
@@ -252,9 +249,6 @@
                 .append( mainMenuCtrlCtMu )
             .find( $( '.main-menu-ctrl---ct_cr' ) )
                 .append( mainMenuTogObjMu );
-            
-            console.log( 'main-menu-ctrl abcdefghij' );
-            
         }() );
         
         $mainMenuCtrl = $cp.find( '.main-menu-ctrl' );
@@ -281,7 +275,6 @@
             $mainMenuTogBtnLword.text( $mainMenuHideL );
             $mainMenuTogBtnL.append( $mainMenuTogBtnHideIco );
             $mainMenuTogBtnShowIco.remove();
-            console.log( 'activate' );
         }
         
         // Deactivate
@@ -301,7 +294,6 @@
             $mainMenuTogBtnLword.text( $mainMenuShowL );
             $mainMenuTogBtnL.append( $mainMenuTogBtnShowIco );
             $mainMenuTogBtnHideIco.remove();
-            console.log( 'deactivate' );
         }
         
         // Initialize
@@ -323,7 +315,6 @@
                 e.preventDefault();
                 mainMenuToggle();
                 $window.scrollTop( _this.position().top );
-                console.log( '$mainMenuTogBtn toggle focus' );
             } );
         }() );
         
@@ -331,7 +322,6 @@
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             if ( $cp.hasClass( mainMenuActCss ) && ( ! $( e.target ).closest( $mainMenuCtrl ).length && ! $( e.target ).closest( $mainMenuCtCr ).length ) ) {
                 mainMenuDeactivate();
-                console.log( 'Outside click' );
             }
         } );
 
@@ -340,7 +330,6 @@
             $( document ).on( 'keyup.applicator', function ( e ) {
                 if ( $cp.hasClass( mainMenuActCss ) && e.keyCode == 27 ) {
                     mainMenuDeactivate();
-                    console.log( 'ESC' );
                 }
             } );
         } );
@@ -367,7 +356,6 @@
                 .children( '.search-cp:first' )
                     .attr( 'id', mainSearchFuncCss )
                     .addClass( mainSearchFuncCss );
-        console.log( 'Main Search Function Class Added' );
     }() );
     
     function initMainSearch( $cp ) {
@@ -375,8 +363,6 @@
         if ( ! $aplApplicatorMainSearch.length ) {
 			return;
 		}
-        
-        console.log( 'Main Search Function Passed Gatekeeper' );
         
         var mainSearchCtrlMu,
             mainSearchCtrlHmu,
@@ -473,8 +459,6 @@
             .find( $( '.main-search-ctrl---ct_cr' ) )
                 .append( mainSearchTogObjMu );
             
-            console.log( 'main-search-ctrl a' );
-            
         }() );
         
         $mainSearchCtrl = $cp.find( '.main-search-ctrl' );
@@ -485,7 +469,7 @@
         $mainSearchTogBtnLword = $mainSearchTogBtn.find( $( '.show-hide-main-search---word' ) );
         
         $mainSearchInput = $cp.find( '.search-term-crt-inp--input-text' );
-        $mainSearchResetBtn = $cp.find( '.main-search-reset-axn---b' );
+        $mainSearchResetBtn = $cp.find( '.search-reset-axn---b' );
         
         // Activate
         function mainSearchActivate() {
@@ -507,8 +491,6 @@
             
             // Focus on input and select content if any
             $mainSearchInput.focus().select();
-            
-            console.log( 'activate' );
         }
         
         // Deactivate
@@ -528,7 +510,6 @@
             $mainSearchTogBtnLword.text( $mainSearchShowL );
             $mainSearchTogBtnL.append( $mainSearchTogCtrlSearchIco );
             $mainSearchTogCtrlDismissIco.remove();
-            console.log( 'deactivate' );
         }
         
         // Initialize
@@ -550,14 +531,12 @@
             if ( $mainSearchInput.val() == '' ) {
                 $cp.addClass( mainSearchInputEmpCss );
                 $cp.removeClass( mainSearchInputPopCss );
-                console.log( 'Input Empty' );
             }
 
             // Populated Input (as displayed by default in the input in Search Results page)
             if ( ! $mainSearchInput.val() == '' ) {
                 $cp.addClass( mainSearchInputPopCss );
                 $cp.removeClass( mainSearchInputEmpCss );
-                console.log( 'Input Populated' );
             }
         }
         
@@ -573,7 +552,6 @@
                 
                 $window.scrollTop( _this.position().top );
                 mainSearchToggle();
-                console.log( '$mainSearchTogBtn toggle' );
             } );
             
             $mainSearchResetBtn.on( 'click.applicator', function( e ) {
@@ -583,7 +561,6 @@
                 $window.scrollTop( _this.position().top );
                 $mainSearchInput.val( '' ).focus();
                 mainSearchInputStatus();
-                console.log( 'Input Reset' );
             } );
             
         }() );
@@ -597,7 +574,6 @@
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             if ( $cp.hasClass( mainSearchActCss ) && ( ! $( e.target ).closest( $mainSearchCtrl ).length && ! $( e.target ).closest( $mainSearchCtCr ).length ) ) {
                 mainSearchDeactivate();
-                console.log( 'Outside click' );
             }
         } );
 
@@ -606,15 +582,14 @@
             $( document ).on( 'keyup.applicator', function ( e ) {
                 if ( $cp.hasClass( mainSearchActCss ) && e.keyCode == 27 ) {
                     mainSearchDeactivate();
-                    console.log( 'ESC' );
                 }
             } );
         } );
         
         // Add Icons to Buttons
-        $mainSearchFormAxns = $cp.find( '.main-search-form-axns' );
-        $mainSearchBL = $mainSearchFormAxns.find( '.main-search-submit-axn---b_l' );
-        $mainSearchResetBL = $mainSearchFormAxns.find( '.main-search-reset-axn---b_l' );
+        $mainSearchFormAxns = $cp.find( '.search-form-axns' );
+        $mainSearchBL = $mainSearchFormAxns.find( '.search-submit-axn---b_l' );
+        $mainSearchResetBL = $mainSearchFormAxns.find( '.search-reset-axn---b_l' );
         $mainSearchBL.append( $mainSearchSearchIco );
         $mainSearchResetBL.append( $mainSearchDismissIco );
         
@@ -633,14 +608,10 @@
 			return;
 		}
         
-        console.log( 'Sub-Nav Enter Gate' );
-        
         var subNavTogObjMu,
             subNavTogBtnMu,
             subNavTogBtnLmu,
             subNavTogBtnLwordMu,
-            
-            subNavFuncCss = 'sub-nav-func',
             
             subNavActCss = 'sub-nav--active',
             subNavInactCss = 'sub-nav--inactive',
@@ -664,8 +635,7 @@
             $subNavTogBtnHideL = aplDataSubNav.subNavTogBtnHideL;
         
         if ( $cp.has( $subNavParentItems ) ) {
-            console.log( 'Has $subNavParentItems' );
-            $cp.addClass( subNavFuncCss );
+            $cp.addClass( 'sub-nav-func' );
         }
         
         // Build Markup
@@ -698,8 +668,6 @@
             .find( $subNavGrp )
                 .before( subNavTogObjMu );
             
-            console.log( 'Sub-Nav Markup Attached and Created' );
-            
         }() );
         
         $subNavTog = $cp.find( '.sub-nav-tog---b' );
@@ -723,8 +691,6 @@
             } );
             
             _this.find( $subNavShowHideWord ).text( $subNavTogBtnHideL );
-            
-            console.log( 'subNavActivate' );
         }
         
         // Deactivate
@@ -745,8 +711,6 @@
             } );
             
             _this.find( $subNavShowHideWord ).text( $subNavTogBtnShowL );
-            
-            console.log( 'subNavDeactivate' );
         }
         
         // Deactivate all Sub-Nav
@@ -768,8 +732,6 @@
                 } );
                 
                 _this.find( $subNavShowHideWord ).text( $subNavTogBtnShowL );
-                
-                console.log( '$subNavParentItems Deactivated' );
             } );
         }
         
@@ -822,17 +784,14 @@
                 
                 if ( $subNavParent.hasClass( subNavInactCss ) ) {
                     subNavActivate.apply( this );
-                    console.log( 'subNavActivate click' );
                 } else if ( $subNavParent.hasClass( subNavActCss ) ) {
                     subNavDeactivate.apply( this );
-                    console.log( 'subNavDeactivate click' );
                 }
                 
                 // Deactivate Siblings
                 _this.closest( $subNavParentItems ).siblings()
                     .addClass( subNavInactCss )
                     .removeClass( subNavActCss );
-                console.log( '$subNavParentItems siblings Deactivated' );
             } );
         }() );
         
@@ -840,7 +799,6 @@
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             if ( $html.hasClass( aplSubNavActCss ) && ! $( e.target ).closest( $subNavParentItems ).length && ! $( e.target ).is( 'a' ).length ) {
                 subNavAllDeactivate();
-                console.log( 'subNavAllDeactivate Outside Click' );
             }
         } );
     }

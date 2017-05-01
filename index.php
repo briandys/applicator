@@ -5,8 +5,8 @@ if ( function_exists( 'get_header' ) ) {
     die();
 }
 
-$main_ct_hr_mu = '<div class="cn main-content---hr main-content--%2$s---hr" data-name="Main Content Header">';
-    $main_ct_hr_mu .= '<div class="cr main-ct---hr_cr">';
+$main_ct_hr_mu = '<div class="hr main-content---hr main-content--%2$s---hr" data-name="Main Content Header">';
+    $main_ct_hr_mu .= '<div class="hr_cr main-ct---hr_cr">';
         $main_ct_hr_mu .= '<h2 class="h main-ct---h"><span class="h_l main-ct---h_l">%1$s</span></h2>';
 
 if ( is_front_page() ) {
@@ -60,8 +60,8 @@ if ( is_front_page() ) {
     $entrySearchKey = get_search_query();
     $entrySearchCount = $entrySearch->post_count; ?>
 
-    <div class="cn main-content---hr main-content--search-results---hr" data-name="Main Content Header">
-        <div class="cr main-content---hr_cr">
+    <div class="hr main-content---hr main-content--search-results---hr" data-name="Main Content Header">
+        <div class="hr_cr main-content---hr_cr">
             <h2 class="h main-content---h"><span class="h_l main-content---h_l">
             <?php
             if ( ! $entrySearchCount == 0 ) {
@@ -69,14 +69,14 @@ if ( is_front_page() ) {
             }
 
             if ( $entrySearchCount == 0 ) {
-                echo esc_html__( 'No Search Results', 'applicator' );
+                echo '<span class="word no-search-result---word">' . esc_html__( 'No Search Results', 'applicator' ) . '</span> ';
             } elseif ( $entrySearchCount == 1 ) {
                 echo '<span class="word search-result---word">' . esc_html__( 'Search Result', 'applicator' ) . '</span> ';
             } else {
                 echo '<span class="word search-results---word">' . esc_html__( 'Search Results', 'applicator' ) . '</span> ';
             }
 
-            echo '<span class="word for---word">' . esc_html__( 'for', 'applicator' ) . '</span> <span class="word search-keyword---word">' . $entrySearchKey . '</span>';
+            echo '<span class="word for---word">' . esc_html__( 'for', 'applicator' ) . '</span> <span class="word search-term---word">' . $entrySearchKey . '</span>';
             ?>
             </span></h2>
         </div>
