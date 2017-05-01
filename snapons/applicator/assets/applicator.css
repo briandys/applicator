@@ -50,9 +50,6 @@
 
 /* ------------------------- Visually Hidden */
 
-/* Web Info */
-.apl--main-search--active .wbp-info,
-
 /* Go to Content Nav */
 .go-ct-nav---h,
 .go-content-nav--inactive,
@@ -174,7 +171,7 @@ p
 /* Minimum height of the active area */
 .applicator--sub-nav .sub-nav-toggle--a-l,
 
-.main-search-func .search-toggle--a-l,
+.main-search-func .main-search-toggle--a-l,
 .main-search-func .search-form-submit--a-l,
 .main-search-func .search-form-reset--a-l,
 .main-search-func .search-term--input--text,
@@ -398,7 +395,7 @@ $go-green: #12b32d;
     color: hsla(0, 100%, 100%, .75);
 }
 
-.main-search-func .search-toggle--a,
+.main-search-func .main-search-toggle--a,
 .main-search-func .search-form-submit--a,
 .main-search-func .search-form-reset--a,
 .main-search-func .search-term--input--text,
@@ -630,21 +627,21 @@ $go-green: #12b32d;
 
 
 /* ------------------------- Text Spacing */
-.go-ct-navi---a_l > *,
-.go-start-navi---a_l > *
+.go-ct-navi---a_l > .word,
+.go-start-navi---a_l > .word
 {
     margin-left: .15em;
     margin-right: .15em;
 }
 
-.go-ct-navi---a_l > *:first-child,
-.go-start-navi---a_l > *:first-child
+.go-ct-navi---a_l > .word:first-child,
+.go-start-navi---a_l > .word:first-child
 {
     margin-left: 0;
 }
 
-.go-ct-navi---a_l > *:last-child,
-.go-start-navi---a_l > *:last-child
+.go-ct-navi---a_l > .word:last-child,
+.go-start-navi---a_l > .word:last-child
 {
     margin-right: 0;
 }
@@ -682,6 +679,11 @@ $go-green: #12b32d;
     overflow: hidden;
 }
 
+.wbp-logo--enabled .wbp-info---cr
+{
+    margin-left: 1rem;
+}
+
 .apl--applicator--main-menu .wbp-info---cr
 {
     margin-left: 3rem;
@@ -716,11 +718,25 @@ $go-green: #12b32d;
 .wbp-name---a_l,
 .wbp-desc---a_l
 {
+    box-sizing: border-box;
+    
     display: block;
+    
+    padding-left: 1rem;
+    
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+.apl--applicator--main-menu .wbp-name---a_l,
+.apl--applicator--main-menu .wbp-desc---a_l,
+.wbp-logo--enabled .wbp-name---a_l,
+.wbp-logo--enabled .wbp-desc---a_l
+{
+    padding-left: 0;
+}
+
 
 
 
@@ -746,8 +762,6 @@ $go-green: #12b32d;
 
 .wbp-desc--empty .wbp-name---a_l
 {
-    box-sizing: border-box;
-    
     display: inline-block;
     
     padding-top: .5rem;
@@ -756,6 +770,12 @@ $go-green: #12b32d;
     max-width: 100%;
     
     vertical-align: middle;
+}
+
+.apl--applicator--main-menu.wbp-desc--empty .wbp-name---a_l
+{
+    padding-left: 0;
+    padding-right: 0;
 }
 
 
@@ -847,7 +867,8 @@ $go-green: #12b32d;
 
 
 /* ------------------------- Go to Content Nav - Style */
-.go-ct-navi---a
+.go-ct-navi---a,
+.go-ct-navi---a_l
 {
     display: inline-flex;
     justify-content: center;
@@ -855,7 +876,10 @@ $go-green: #12b32d;
     
     min-width: 3rem;
     min-height: 3rem;
-    
+}
+
+.go-ct-navi---a
+{
     text-decoration: none;
 }
 
@@ -863,13 +887,7 @@ $go-green: #12b32d;
 {
     box-sizing: border-box;
     
-    display: inline-flex;
-    align-items: center;
-    
     padding: .5rem .75rem;
-    
-    min-width: 3rem;
-    min-height: 3rem;
 }
 
 
@@ -953,7 +971,8 @@ $go-green: #12b32d;
 
 
 /* ------------------------- Go to Start Nav - Style */
-.go-start-navi---a
+.go-start-navi---a,
+.go-start-navi---a_l
 {
     display: inline-flex;
     justify-content: center;
@@ -969,13 +988,7 @@ $go-green: #12b32d;
 {
     box-sizing: border-box;
     
-    display: inline-flex;
-    align-items: center;
-    
     padding: .5rem .75rem;
-    
-    min-width: 3rem;
-    min-height: 3rem;
 }
 
 
@@ -993,8 +1006,11 @@ $go-green: #12b32d;
     position: fixed;
     right: 0;
     bottom: 0;
-    
-    transition: all .2s ease-in-out;
+}
+
+.go-start-nav-func .go-start-navi
+{   
+    transition: transform .2s ease-in-out;
 }
 
 .go-start-nav-func .go-start-navi---a
@@ -1014,57 +1030,30 @@ $go-green: #12b32d;
     transform: translateY( 100% );
 }
 
-
-
-
-
-/* ------------------------- Main Menu | Main Nav - Main Header Aside */
-/* ------------------------- Arbitrary Nav | Search */
-/* ------------------------- Sub-Nav | Main Nav, Widget Menu */
-
-.main-menu-tog---b,
-.main-search-tog---b,
-.main-search-func .search-submit-axn---b,
-.main-search-func .main-search-reset-axn---b,
-.apl--applicator--sub-nav .sub-nav-tog---b
+.go-start-nav--active
 {
-    box-sizing: border-box;
-    
-    padding: 0;
-    margin: 0;
-    
-    min-width: 3rem;
-    min-height: 3rem;
-    
-    background-color: transparent;
-    
-    border: 0;
-}
-
-.main-menu-tog---b_l,
-.main-search-tog---b_l,
-.main-search-func .main-search-submit-axn---b_l,
-.main-search-func .main-search-reset-axn---b_l,
-.apl--applicator--sub-nav .sub-nav-tog---b_l
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.main-menu-toggle .icon,
-.search-toggle .icon,
-.sub-nav-toggle .icon
-{
-    pointer-events: none;
-    /* Seems like <svg> does not detect jQuery .closest, so exclude it by removing pointer events. */
+    z-index: 99;
 }
 
 
 
 
 
-/* ------------------------- Main Menu | Main Nav - Main Header Aside */
+/* ------------------------- Main Menu - Style */
+.mn-mha---ct_cr
+{
+    background-color: white;
+}
+
+
+
+
+
+/* ------------------------- Main Menu - Function */
+.apl--applicator--main-menu.dom--unready .main-nav--main-header-aside
+{
+    display: none;
+}
 
 /* Overlay */
 .main-menu,
@@ -1165,15 +1154,36 @@ $go-green: #12b32d;
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
 }
 
+.main-menu-tog---b
+{
+    padding: 0;
+    margin: 0;
+    
+    background-color: transparent;
+    
+    border: 0;
+}
+
+.main-menu-tog---b,
+.main-menu-tog---b_l
+{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    
+    min-width: 3rem;
+    min-height: 3rem;
+}
+
+.main-menu-toggle .icon
+{
+    pointer-events: none;
+}
+
 .main-menu-toggle .dismiss-icon
 {
     width: .75rem;
     height: .75rem;
-}
-
-.apl--applicator--main-menu.dom--unready .main-nav--main-header-aside
-{
-    display: none;
 }
 
 .main-menu-tog---b_l
@@ -1225,7 +1235,17 @@ $go-green: #12b32d;
 
 
 
-/* ------------------------- Search */
+/* ------------------------- Search - Style */
+.main-header---cr > .search-cp
+{
+    background-color: white;
+}
+
+.apl--applicator--main-search .main-header---cr > .search-cp
+{
+    background-color: transparent;
+}
+
 .search-term-creation-label---obj
 {
     display: block;
@@ -1236,7 +1256,7 @@ $go-green: #12b32d;
     display: block;
 }
 
-.main-search-term-crt-inp--input-text,
+.search-term-crt-inp--input-text,
 .search-submit-axn---b,
 .main-search-reset-axn---b
 {
@@ -1277,8 +1297,8 @@ $go-green: #12b32d;
 
 
 
-/* ------------------------- Search Widget */
-.widget_search .main-search-term-crt-inp--input-text
+/* ------------------------- Widget Search - Style */
+.widget_search .search-term-crt-inp--input-text
 {
     padding: 0 .5rem;
     
@@ -1301,14 +1321,14 @@ $go-green: #12b32d;
     color: hsla(0, 0%, 0%, .5);
 }
 
-.widget_search .main-search-term-crt-inp--input-text,
+.widget_search .search-term-crt-inp--input-text,
 .widget_search .main-search-submit-axn---b_l,
 .widget_search .main-search-reset-axn---b_l
 {   
     border-radius: .125rem;
 }
 
-.widget_search .main-search-term-crt-inp--input-text,
+.widget_search .search-term-crt-inp--input-text,
 .widget_search .search-submit-axn---b,
 .widget_search .main-search-reset-axn---b,
 .widget_search .main-search-submit-axn---b_l,
@@ -1322,6 +1342,11 @@ $go-green: #12b32d;
 
 
 /* ------------------------- Search - Functionality */
+.apl--applicator--main-search.dom--unready .main-header---cr > .search-cp
+{
+    display: none;
+}
+
 .main-search-func
 {
     position: absolute;
@@ -1329,7 +1354,7 @@ $go-green: #12b32d;
     top: 0;
 }
 
-.main-search-func.main-search--active
+.main-search--active
 {
     width: 100%;
 }
@@ -1341,17 +1366,17 @@ $go-green: #12b32d;
     height: 3rem;
 }
 
-.main-search-func.main-search--active .search---cr
+.apl--applicator--main-menu .main-search--active .search---cr
 {
     padding-left: 3rem;
 }
 
-.main-search-func.main-search--inactive .search---ct
+.main-search--inactive .search---ct
 {
     display: none;
 }
 
-.main-search-func .main-search-term-crt-inp--input-text
+.main-search-func .search-term-crt-inp--input-text
 {
     width: 100%;
     
@@ -1382,18 +1407,18 @@ $go-green: #12b32d;
     top: 0;
 }
 
-.main-search-func.main-search--active .search-toggle
+.main-search--active .main-search-toggle
 {
     padding-right: 3rem;
 }
 
-.main-search-func .main-search-term-crt-inp--input-text
+.main-search-func .search-term-crt-inp--input-text
 {
     padding-left: 1rem;
     padding-right: 6rem;
 }
 
-.apl--applicator--main-menu .main-search-func .main-search-term-crt-inp--input-text
+.apl--applicator--main-menu .main-search-func .search-term-crt-inp--input-text
 {
     padding-left: 0;
 }
@@ -1404,47 +1429,65 @@ $go-green: #12b32d;
 }
 
 /* Placeholder Text */
-.main-search-func .main-search-term-crt-inp--input-text::-webkit-input-placeholder
+.main-search-func .search-term-crt-inp--input-text::-webkit-input-placeholder
 {
     color: white;
     opacity: .5;
 }
 
-.main-search-func .main-search-term-crt-inp--input-text::-moz-placeholder
+.main-search-func .search-term-crt-inp--input-text::-moz-placeholder
 {
     color: white;
     opacity: .5;
 }
 
-.main-search-func .main-search-term-crt-inp--input-text:-ms-input-placeholder
+.main-search-func .search-term-crt-inp--input-text:-ms-input-placeholder
 {
     color: white;
     opacity: .5;
 }
 
-.apl--applicator--main-search .main-search-func .main-search-term-crt-inp--input-text:-moz-placeholder
+.apl--applicator--main-search .main-search-func .search-term-crt-inp--input-text:-moz-placeholder
 {
     color: white;
     opacity: .5;
 }
 
-.main-search-func .search-toggle .dismiss-icon,
-.main-search-func .search-reset-axn .dismiss-icon
+.main-search-func .dismiss-icon
 {
     width: .75rem;
     height: .75rem;
 }
 
-.apl--applicator--main-search.dom--unready .main-header---cr > .search-cp
+.main-search-func .b
 {
-    display: none;
+    padding: 0;
+    margin: 0;
+    
+    background-color: transparent;
+    
+    border: 0;
 }
 
-.main-search-func .main-search-tog---b_l,
-.main-search-func .main-search-submit-axn---b_l,
-.main-search-func .main-search-reset-axn---b_l
+.main-search-func .b_l
 {
     color: white;
+}
+
+.main-search-func .b,
+.main-search-func .b_l
+{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    
+    min-width: 3rem;
+    min-height: 3rem;
+}
+
+.main-search-func .main-search-toggle .icon
+{
+    pointer-events: none;
 }
 
 
@@ -1490,6 +1533,33 @@ $go-green: #12b32d;
 .menu-item-has-children > .sub-menu > .menu-item
 {
     padding-left: .5rem;
+}
+
+.sub-nav-func .sub-nav-tog---b
+{
+    box-sizing: border-box;
+    
+    padding: 0;
+    margin: 0;
+    
+    min-width: 3rem;
+    min-height: 3rem;
+    
+    background-color: transparent;
+    
+    border: 0;
+}
+
+.sub-nav-func .sub-nav-tog---b_l
+{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sub-nav-toggle .icon
+{
+    pointer-events: none;
 }
 
 

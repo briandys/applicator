@@ -55,9 +55,7 @@
 
                                         printf( $go_start_navi_mu,
                                             esc_attr__( 'Go to Start', 'applicator'),
-                                            esc_html__( 'Go to Start', 'applicator'),
-                                            esc_html__( 'to', 'applicator'),
-                                            esc_html__( 'Start', 'applicator')
+                                            esc_html__( 'Go to Start', 'applicator')
                                         ); ?>
 
                                     </div>

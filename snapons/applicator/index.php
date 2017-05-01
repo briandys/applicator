@@ -14,10 +14,10 @@ if ( ! function_exists( 'apl_applicator_func_class' ) ) {
         $snapon_name = 'apl--applicator';
         
         echo ' ' . $snapon_name;
-        echo ' ' . $snapon_name . '_--go-content-nav';
-        echo ' ' . $snapon_name . '_--go-start-nav';
+        echo ' ' . $snapon_name . '--go-content-nav';
+        echo ' ' . $snapon_name . '--go-start-nav';
         echo ' ' . $snapon_name . '--main-menu';
-        echo ' ' . $snapon_name . '--main-search';
+        echo ' ' . $snapon_name . '_--main-search';
         echo ' ' . $snapon_name . '--sub-nav';
     
     }
@@ -54,7 +54,7 @@ if ( ! function_exists( 'apl_snapons_applicator_styles' ) ) {
         
         add_editor_style( array( 'assets/css/editor-style.css', applicator_fonts_url() ) );
         
-        wp_enqueue_style( 'apl-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '13.3', 'all' );
+        wp_enqueue_style( 'apl-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '14.4', 'all' );
 
     }
     add_action( 'wp_enqueue_scripts', 'apl_snapons_applicator_styles', 0);
@@ -65,12 +65,17 @@ if ( ! function_exists( 'apl_snapons_applicator_styles' ) ) {
 if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
     function apl_snapons_applicator_scripts() {
         
-        wp_enqueue_script( 'apl-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/applicator.js' ), array( 'jquery' ), '13.3', true );
+        wp_enqueue_script( 'apl-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/applicator.js' ), array( 'jquery' ), '14.2', true );
         
         $arrow_icon = applicator_get_svg( array( 'icon' => 'arrow-icon' ) );
+        $arrow_up_2_icon = applicator_get_svg( array( 'icon' => 'arrow-up-2-icon' ) );
         $burger_icon = applicator_get_svg( array( 'icon' => 'burger-icon' ) );
         $dismiss_icon = applicator_get_svg( array( 'icon' => 'dismiss-icon' ) );
         $search_icon = applicator_get_svg( array( 'icon' => 'search-icon' ) );
+        
+        // Go to Start Nav
+        $applicator_l10n['goStartNavArrowIco'] = $arrow_up_2_icon;
+        wp_localize_script( 'apl-snapons-applicator-script-global', 'aplDataGoStartNav', $applicator_l10n );
         
         // Main Menu
         $applicator_l10n['mainMenuCtrlH'] = __( 'Main Menu Control', 'applicator' );

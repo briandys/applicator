@@ -85,6 +85,8 @@
             aplgoStartNavActCss = 'apl--go-start-nav--active',
             aplgoStartNavInactCss = 'apl--go-start-nav--inactive',
             
+            $goStartNavArrowIco = aplDataGoStartNav.goStartNavArrowIco,
+            
             $colophonHeight = $('#colophon').height(),
             bodyOffsetCriteriaHeight,
             bodyOffsetSliceHeight,
@@ -141,12 +143,17 @@
 
             $( 'html, body' ).stop().animate( {
                 scrollTop: $( target ).offset().top
-            }, 600, 'linear', function() {
+            }, 320, 'linear', function() {
                 location.hash = target;
             } );
 
             return false;
         } );
+        
+        // Add Icon to Button
+        $goStartNaviAL = $goStartNaviA.find( '.go-start-navi---a_l' );
+        $goStartNaviAL.append( $goStartNavArrowIco );
+        console.log( $goStartNavArrowIco );
     } // Go to Start Nav
     
     initGoStartNav( $( '#go-start-nav' ) );
@@ -432,7 +439,7 @@
             
             // Object
             mainSearchTogObjMu = $( '<div />', {
-                'class': 'obj toggle search-toggle',
+                'class': 'obj toggle main-search-toggle',
                 'data-name': 'Search Toggle'
             } ).append( mainSearchTogBtnMu );
             
@@ -477,7 +484,7 @@
         $mainSearchTogBtnL = $mainSearchTogBtn.find( $( '.main-search-tog---b_l' ) );
         $mainSearchTogBtnLword = $mainSearchTogBtn.find( $( '.show-hide-main-search---word' ) );
         
-        $mainSearchInput = $cp.find( '.main-search-term-crt-inp--input-text' );
+        $mainSearchInput = $cp.find( '.search-term-crt-inp--input-text' );
         $mainSearchResetBtn = $cp.find( '.main-search-reset-axn---b' );
         
         // Activate
@@ -831,7 +838,7 @@
         
         // Deactivate upon interaction outside specified elements
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
-            if ( $html.hasClass( aplSubNavActCss ) && ! $( e.target ).closest( $subNavParentItems ).length && ! $( e.target ).length ) {
+            if ( $html.hasClass( aplSubNavActCss ) && ! $( e.target ).closest( $subNavParentItems ).length && ! $( e.target ).is( 'a' ).length ) {
                 subNavAllDeactivate();
                 console.log( 'subNavAllDeactivate Outside Click' );
             }
