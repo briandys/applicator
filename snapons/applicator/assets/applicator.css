@@ -674,6 +674,8 @@ $go-green: #12b32d;
     align-items: center;
     flex-wrap: wrap;
     
+    margin-right: 1rem;
+    
     height: 3rem;
     
     overflow: hidden;
@@ -705,7 +707,6 @@ $go-green: #12b32d;
     box-sizing: border-box;
     
     padding-left: 2.75rem;
-    padding-right: .5rem;
 }
 
 /* Text Truncate */
@@ -786,6 +787,7 @@ $go-green: #12b32d;
 .wbp-desc
 {
     margin-top: -.5rem;
+    width: 100%;
 }
 
 .wbp-desc---a
