@@ -6,33 +6,29 @@
         
         $aplApplicatorGoCtNav = $( '.apl--applicator--go-content-nav' ),
         $aplApplicatorGoStartNav = $( '.apl--applicator--go-start-nav' ),
-        $aplApplicatorArbitNavCss = $( '.apl--applicator--arbitrary-nav' ),
-        
-        aplApplicatorGoStartNavCss = 'apl--applicator--go-start-nav',
-        aplApplicatorMainMenuCss = 'apl--applicator--main-menu',
-        
-        aplApplicatorSubNavCss = 'apl--applicator--sub-nav';
+        $aplApplicatorMainSearch = $( '.apl--applicator--main-search' ),
+        $aplApplicatorSubNav = $( '.apl--applicator--sub-nav' ),
+        $aplApplicatorMainMenu = $( '.apl--applicator--main-menu' );
     
     
     
     
     
     // ------------------------- Go to Content Nav
-    function initGoContent( $cp ) {
+    function initGoContentNav( $cp ) {
         
         if ( ! $aplApplicatorGoCtNav.length ) {
 			return;
 		}
         
-        var $goCtNav = $( '#go-content-nav' ),
-            $goCtNaviA = $( '#go-ct-navi---a' ),
+        var $goCtNaviA = $( '#go-ct-navi---a' ),
             
             goCtNavActCss = 'go-content-nav--active',
             goCtNavInactCss = 'go-content-nav--inactive',
             aplGoCtNavActCss = 'apl--go-content-nav--active',
             aplGoCtNavInactCss = 'apl--go-content-nav--inactive';
         
-        $goCtNav.addClass( 'func--go-content-nav' );
+        $cp.addClass( 'go-content-nav-func' );
         
         function goCtNavActivate() {
             $cp
@@ -68,21 +64,20 @@
         } );
         
     } // Go to Content Nav
-    initGoContent( $( '#go-content-nav' ) );
+    initGoContentNav( $( '#go-content-nav' ) );
     
     
     
     
     
     // ------------------------- Go to Start Nav
-    function initGoStart( $cp ) {
+    function initGoStartNav( $cp ) {
         
         if ( ! $aplApplicatorGoStartNav.length ) {
 			return;
 		}
         
-        var $goStartNav = $( '#go-start-nav' ),
-            $goStartNaviA = $( '#go-start-navi---a' ),
+        var $goStartNaviA = $( '#go-start-navi---a' ),
             
             goStartNavActCss = 'go-start-nav--active',
             goStartNavInactCss = 'go-start-nav--inactive',
@@ -95,7 +90,7 @@
             bodyOffsetSliceHeight,
             bodyOffsetMostHeight;
         
-        $goStartNav.addClass( 'func--go-start-nav' );
+        $cp.addClass( 'go-start-nav-func' );
         
         function goStartNavActivate() {
             $cp
@@ -154,7 +149,7 @@
         } );
     } // Go to Start Nav
     
-    initGoStart( $( '#go-start-nav' ) );
+    initGoStartNav( $( '#go-start-nav' ) );
     
     
     
@@ -163,7 +158,7 @@
     // Main Menu | Main Nav - Main Header Aside
     function initMainMenu( $cp ) {
         
-        if ( ! aplApplicatorMainMenuCss.length ) {
+        if ( ! $aplApplicatorMainMenu.length ) {
 			return;
 		}
         
@@ -185,6 +180,10 @@
             $mainMenuTogBtnHideIco = $( aplDataMainMenu.mainMenuHideIco ),
             $mainMenuTogBtnShowIco = $( aplDataMainMenu.mainMenuShowIco ),
             
+            $mainMenuCtrlH = aplDataMainMenu.mainMenuCtrlH,
+            $mainMenuShowL = aplDataMainMenu.mainMenuShowL,
+            $mainMenuHideL = aplDataMainMenu.mainMenuHideL,
+            
             $mainMenuCtrl,
             $mainMenuTogBtn,
             $mainMenuTogBtnL,
@@ -195,7 +194,7 @@
             
             mainMenuTogBtnLwordMu = $( '<span />', {
                 'class': 'word show-hide-main-menu---word',
-                'text': aplDataMainMenu.mainMenuHideL
+                'text': $mainMenuHideL
             } );
             
             mainMenuTogBtnLmu = $( '<span />', {
@@ -208,7 +207,7 @@
             mainMenuTogBtnMu = $( '<button />', {
                 'id' : 'main-menu-tog---b',
                 'class': 'b main-menu-tog---b',
-                'title': aplDataMainMenu.mainMenuHideL
+                'title': $mainMenuHideL
             } ).append( mainMenuTogBtnLmu );
             
             // Object
@@ -229,7 +228,7 @@
                 'class': 'h main-menu-ctrl---h'
             } ).append( $( '<span />', {
                 'class': 'h_l main-menu-ctrl---h_l',
-                'text': aplDataMainMenu.mainMenuCtrlH
+                'text': $mainMenuCtrlH
             } ) );
             
             mainMenuCtrlCtMu = $( '<div />', {
@@ -269,10 +268,10 @@
             
             $mainMenuTogBtn.attr( {
                  'aria-expanded': 'true',
-                 'title': aplDataMainMenu.mainMenuHideL
+                 'title': $mainMenuHideL
             } );
             
-            $mainMenuTogBtnLword.text( aplDataMainMenu.mainMenuHideL );
+            $mainMenuTogBtnLword.text( $mainMenuHideL );
             $mainMenuTogBtnL.append( $mainMenuTogBtnHideIco );
             $mainMenuTogBtnShowIco.remove();
             console.log( 'activate' );
@@ -289,10 +288,10 @@
             
             $mainMenuTogBtn.attr( {
                  'aria-expanded': 'false',
-                 'title': aplDataMainMenu.mainMenuShowL
+                 'title': $mainMenuShowL
             } );
             
-            $mainMenuTogBtnLword.text( aplDataMainMenu.mainMenuShowL );
+            $mainMenuTogBtnLword.text( $mainMenuShowL );
             $mainMenuTogBtnL.append( $mainMenuTogBtnShowIco );
             $mainMenuTogBtnHideIco.remove();
             console.log( 'deactivate' );
@@ -347,250 +346,250 @@
     
     
     
-    // Arbitrary Nav | Search
+    // Main Search
     ( function() {
         
-        if ( ! $aplApplicatorArbitNavCss.length ) {
+        if ( ! $aplApplicatorMainSearch.length ) {
 			return;
 		}
         
-        var arbitNavCss = 'arbitrary-nav';
+        var mainSearchFuncCss = 'main-search-func';
         
         $( '#masthead' )
             .find( $( '.main-header---cr' ) )
-                .children( '.search---cp:first' )
-                    .attr( 'id', arbitNavCss )
-                    .addClass( arbitNavCss );
-        console.log( 'Arbirary Nav Created' );
+                .children( '.search-cp:first' )
+                    .attr( 'id', mainSearchFuncCss )
+                    .addClass( mainSearchFuncCss );
+        console.log( 'Main Search Function Class Added' );
     }() );
     
-    function initArbitNav( $cp ) {
+    function initMainSearch( $cp ) {
         
-        if ( ! $aplApplicatorArbitNavCss.length ) {
+        if ( ! $aplApplicatorMainSearch.length ) {
 			return;
 		}
         
-        console.log( 'Arbirary Nav Created' );
+        console.log( 'Main Search Function Passed Gatekeeper' );
         
-        var $arbitNavFunc,
+        var mainSearchCtrlMu,
+            mainSearchCtrlHmu,
+            mainSearchCtrlCtMu,
+            mainSearchTogObjMu,
+            mainSearchTogBtnMu,
+            mainSearchTogBtnLmu,
+            mainSearchTogBtnLwordMu,
             
-            arbitNavCtrlMu,
-            arbitNavCtrlHmu,
-            arbitNavCtrlCtMu,
-            arbitNavTogObjMu,
-            arbitNavTogBtnMu,
-            arbitNavTogBtnLmu,
-            arbitNavTogBtnLwordMu,
+            mainSearchActCss = 'main-search--active',
+            mainSearchInactCss = 'main-search--inactive',
+            aplmainSearchActCss = 'apl--main-search--active',
+            aplmainSearchInactCss = 'apl--main-search--inactive',
             
-            searchFuncCss = 'func--search',
+            mainSearchInputEmpCss = 'main-search-input--empty',
+            mainSearchInputPopCss = 'main-search-input--populated',
             
-            arbitNavActCss = 'arbitrary-nav--active',
-            arbitNavInactCss = 'arbitrary-nav--inactive',
-            aplArbitNavActCss = 'apl--arbitrary-nav--active',
-            aplArbitNavInactCss = 'apl--arbitrary-nav--inactive',
+            $mainSearchTogCtrlSearchIco = $( aplDataArbitNav.mainSearchTogCtrlSearchIco ),
+            $mainSearchTogCtrlDismissIco = $( aplDataArbitNav.mainSearchTogCtrlDismissIco ),
             
-            arbitNavInputEmpCss = 'arbitrary-nav-input--empty',
-            arbitNavInputPopCss = 'arbitrary-nav-input--populated',
+            $mainSearchSearchIco = $( aplDataArbitNav.mainSearchSearchIco ),
+            $mainSearchDismissIco = $( aplDataArbitNav.mainSearchDismissIco ),
             
-            $arbitNavTogCtrlSearchIco = $( aplDataArbitNav.arbitNavTogCtrlSearchIco ),
-            $arbitNavTogCtrlDismissIco = $( aplDataArbitNav.arbitNavTogCtrlDismissIco ),
+            $mainSearchCtrlH = aplDataArbitNav.mainSearchCtrlH,
+            $mainSearchShowL = aplDataArbitNav.mainSearchShowL,
+            $mainSearchHideL = aplDataArbitNav.mainSearchHideL,
             
-            $arbitNavSearchIco = $( aplDataArbitNav.arbitNavSearchIco ),
-            $arbitNavDismissIco = $( aplDataArbitNav.arbitNavDismissIco ),
+            $mainSearchCtrl,
             
-            $arbitNavCtrlH = aplDataArbitNav.arbitNavCtrlH,
-            $arbitNavShowL = aplDataArbitNav.arbitNavShowL,
-            $arbitNavHideL = aplDataArbitNav.arbitNavHideL,
-            
-            $arbitNavCtrl,
-            
-            $arbitNavTogBtn,
-            $arbitNavTogBtnL,
-            $arbitNavTogBtnLword,
+            $mainSearchTogBtn,
+            $mainSearchTogBtnL,
+            $mainSearchTogBtnLword,
             
             $arbitNavSubmitAxnBl,
             $arbitNavResetAxnBl,
             
-            $arbitNavInput,
-            $arbitNavResetBtn;
-        
-        $cp.addClass( searchFuncCss );
+            $mainSearchInput,
+            $mainSearchResetBtn;
         
         // Build Markup
         ( function() {
             
-            arbitNavTogBtnLwordMu = $( '<span />', {
-                'class': 'word show-hide-arbitrary-nav---word',
-                'text': $arbitNavHideL
+            mainSearchTogBtnLwordMu = $( '<span />', {
+                'class': 'word show-hide-main-search---word',
+                'text': $mainSearchHideL
             } );
             
-            arbitNavTogBtnLmu = $( '<span />', {
-                'class': 'b_l arbitrary-nav-tog---b_l'
+            mainSearchTogBtnLmu = $( '<span />', {
+                'class': 'b_l main-search-tog---b_l'
             } )
-                .append( arbitNavTogBtnLwordMu )
-                .append( $arbitNavTogCtrlDismissIco );
+                .append( mainSearchTogBtnLwordMu )
+                .append( $mainSearchTogCtrlDismissIco );
             
             // Button
-            arbitNavTogBtnMu = $( '<button />', {
-                'id' : 'arbitrary-nav-tog---b',
-                'class': 'b arbitrary-nav-tog---b',
-                'title': $arbitNavHideL
-            } ).append( arbitNavTogBtnLmu );
+            mainSearchTogBtnMu = $( '<button />', {
+                'id' : 'main-search-tog---b',
+                'class': 'b main-search-tog---b',
+                'title': $mainSearchHideL
+            } ).append( mainSearchTogBtnLmu );
             
             // Object
-            arbitNavTogObjMu = $( '<div />', {
-                'class': 'obj toggle arbitrary-nav-toggle',
+            mainSearchTogObjMu = $( '<div />', {
+                'class': 'obj toggle search-toggle',
                 'data-name': 'Search Toggle'
-            } ).append( arbitNavTogBtnMu );
+            } ).append( mainSearchTogBtnMu );
             
             // Containers
-            arbitNavCtrlMu = $( '<div />', {
-                'class': 'ctrl arbitrary-nav-ctrl',
+            mainSearchCtrlMu = $( '<div />', {
+                'class': 'ctrl main-search-ctrl',
                 'data-name': 'Search Control'
             } ).append( $( '<div />', {
-                'class': 'cr arbitrary-nav-ctrl---cr'
+                'class': 'cr main-search-ctrl---cr'
             } ) );
             
-            arbitNavCtrlHmu = $( '<div />', {
-                'class': 'h arbitrary-nav-ctrl---h'
+            mainSearchCtrlHmu = $( '<div />', {
+                'class': 'h main-search-ctrl---h'
             } ).append( $( '<span />', {
-                'class': 'h_l arbitrary-nav-ctrl---h_l',
-                'text': $arbitNavCtrlH
+                'class': 'h_l main-search-ctrl---h_l',
+                'text': $mainSearchCtrlH
             } ) );
             
-            arbitNavCtrlCtMu = $( '<div />', {
-                'class': 'ct arbitrary-nav-ctrl---ct'
+            mainSearchCtrlCtMu = $( '<div />', {
+                'class': 'ct main-search-ctrl---ct'
             } ).append( $( '<div />', {
-                'class': 'ct_cr arbitrary-nav-ctrl---ct_cr'
+                'class': 'ct_cr main-search-ctrl---ct_cr'
             } ) );
             
             $cp
             .find( $( '.search---hr_cr' ) )
-                .append( arbitNavCtrlMu )
-            .find( $( '.arbitrary-nav-ctrl---cr' ) )
-                .append( arbitNavCtrlHmu )
-                .append( arbitNavCtrlCtMu )
-            .find( $( '.arbitrary-nav-ctrl---ct_cr' ) )
-                .append( arbitNavTogObjMu );
+                .append( mainSearchCtrlMu )
+            .find( $( '.main-search-ctrl---cr' ) )
+                .append( mainSearchCtrlHmu )
+                .append( mainSearchCtrlCtMu )
+            .find( $( '.main-search-ctrl---ct_cr' ) )
+                .append( mainSearchTogObjMu );
             
-            console.log( 'arbitrary-nav-ctrl a' );
+            console.log( 'main-search-ctrl a' );
             
         }() );
         
-        $arbitNavCtrl = $cp.find( '.arbitrary-nav-ctrl' );
+        $mainSearchCtrl = $cp.find( '.main-search-ctrl' );
         
-        $arbitNavCtCr = $cp.find( '.search---ct' );
-        $arbitNavTogBtn = $( '#arbitrary-nav-tog---b' );
-        $arbitNavTogBtnL = $arbitNavTogBtn.find( $( '.arbitrary-nav-tog---b_l' ) );
-        $arbitNavTogBtnLword = $arbitNavTogBtn.find( $( '.show-hide-arbitrary-nav---word' ) );
+        $mainSearchCtCr = $cp.find( '.search---ct' );
+        $mainSearchTogBtn = $( '#main-search-tog---b' );
+        $mainSearchTogBtnL = $mainSearchTogBtn.find( $( '.main-search-tog---b_l' ) );
+        $mainSearchTogBtnLword = $mainSearchTogBtn.find( $( '.show-hide-main-search---word' ) );
         
-        $arbitNavInput = $cp.find( '.search-term-crt-inp--input-text' );
-        $arbitNavResetBtn = $cp.find( '.search-reset-axn---b' );
+        $mainSearchInput = $cp.find( '.main-search-term-crt-inp--input-text' );
+        $mainSearchResetBtn = $cp.find( '.main-search-reset-axn---b' );
         
         // Activate
-        function arbitNavActivate() {
+        function mainSearchActivate() {
             $cp
-                .addClass( arbitNavActCss )
-                .removeClass( arbitNavInactCss );
+                .addClass( mainSearchActCss )
+                .removeClass( mainSearchInactCss );
             $html
-                .addClass( aplArbitNavActCss )
-                .removeClass( aplArbitNavInactCss );
+                .addClass( aplmainSearchActCss )
+                .removeClass( aplmainSearchInactCss );
             
-            $arbitNavTogBtn.attr( {
+            $mainSearchTogBtn.attr( {
                  'aria-expanded': 'true',
-                 'title': $arbitNavHideL
+                 'title': $mainSearchHideL
             } );
             
-            $arbitNavTogBtnLword.text( $arbitNavHideL );
-            $arbitNavTogBtnL.append( $arbitNavTogCtrlDismissIco );
-            $arbitNavTogCtrlSearchIco.remove();
+            $mainSearchTogBtnLword.text( $mainSearchHideL );
+            $mainSearchTogBtnL.append( $mainSearchTogCtrlDismissIco );
+            $mainSearchTogCtrlSearchIco.remove();
             
             // Focus on input and select content if any
-            $arbitNavInput.focus().select();
+            $mainSearchInput.focus().select();
             
             console.log( 'activate' );
         }
         
         // Deactivate
-        function arbitNavDeactivate() {
+        function mainSearchDeactivate() {
             $cp
-                .addClass( arbitNavInactCss )
-                .removeClass( arbitNavActCss );
+                .addClass( mainSearchInactCss )
+                .removeClass( mainSearchActCss );
             $html
-                .addClass( aplArbitNavInactCss )
-                .removeClass( aplArbitNavActCss );
+                .addClass( aplmainSearchInactCss )
+                .removeClass( aplmainSearchActCss );
             
-            $arbitNavTogBtn.attr( {
+            $mainSearchTogBtn.attr( {
                  'aria-expanded': 'false',
-                 'title': $arbitNavShowL
+                 'title': $mainSearchShowL
             } );
             
-            $arbitNavTogBtnLword.text( $arbitNavShowL );
-            $arbitNavTogBtnL.append( $arbitNavTogCtrlSearchIco );
-            $arbitNavTogCtrlDismissIco.remove();
+            $mainSearchTogBtnLword.text( $mainSearchShowL );
+            $mainSearchTogBtnL.append( $mainSearchTogCtrlSearchIco );
+            $mainSearchTogCtrlDismissIco.remove();
             console.log( 'deactivate' );
         }
         
         // Initialize
-        arbitNavDeactivate();
+        mainSearchDeactivate();
         
         // Toggle
-        function arbitNavToggle() {
-            if ( $cp.hasClass( arbitNavActCss ) ) {
-                arbitNavDeactivate();
-            } else if ( $cp.hasClass( arbitNavInactCss ) ) {
-                arbitNavActivate();
+        function mainSearchToggle() {
+            if ( $cp.hasClass( mainSearchActCss ) ) {
+                mainSearchDeactivate();
+            } else if ( $cp.hasClass( mainSearchInactCss ) ) {
+                mainSearchActivate();
             }
         }
         
         // Input Status
-        function arbitNavInputStatus() {
+        function mainSearchInputStatus() {
             
             // Empty Input
-            if ( $arbitNavInput.val() == '' ) {
-                $cp.addClass( arbitNavInputEmpCss );
-                $cp.removeClass( arbitNavInputPopCss );
+            if ( $mainSearchInput.val() == '' ) {
+                $cp.addClass( mainSearchInputEmpCss );
+                $cp.removeClass( mainSearchInputPopCss );
                 console.log( 'Input Empty' );
             }
 
             // Populated Input (as displayed by default in the input in Search Results page)
-            if ( ! $arbitNavInput.val() == '' ) {
-                $cp.addClass( arbitNavInputPopCss );
-                $cp.removeClass( arbitNavInputEmpCss );
+            if ( ! $mainSearchInput.val() == '' ) {
+                $cp.addClass( mainSearchInputPopCss );
+                $cp.removeClass( mainSearchInputEmpCss );
                 console.log( 'Input Populated' );
             }
         }
         
         // Initialize
-        arbitNavInputStatus();
+        mainSearchInputStatus();
         
         // Clicks
         ( function() {
             
-            $arbitNavTogBtn.on( 'click.applicator', function( e ) {
+            $mainSearchTogBtn.on( 'click.applicator', function( e ) {
+                var _this = $( this );
                 e.preventDefault();
-                arbitNavToggle();
-                console.log( '$arbitNavTogBtn toggle' );
+                
+                $window.scrollTop( _this.position().top );
+                mainSearchToggle();
+                console.log( '$mainSearchTogBtn toggle' );
             } );
             
-            $arbitNavResetBtn.on( 'click.applicator', function( e ) {
+            $mainSearchResetBtn.on( 'click.applicator', function( e ) {
+                var _this = $( this );
                 e.preventDefault();
-                $arbitNavInput.val( '' ).focus();
-                arbitNavInputStatus();
+                
+                $window.scrollTop( _this.position().top );
+                $mainSearchInput.val( '' ).focus();
+                mainSearchInputStatus();
                 console.log( 'Input Reset' );
             } );
             
         }() );
         
         // Upon entering content in input
-        $arbitNavInput.on( 'keypress.applicator input.applicator', function() {
-            arbitNavInputStatus();
+        $mainSearchInput.on( 'keypress.applicator input.applicator', function() {
+            mainSearchInputStatus();
         } );
         
         // Deactivate upon interaction outside specified elements
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
-            if ( $cp.hasClass( arbitNavActCss ) && ( ! $( e.target ).closest( $arbitNavCtrl ).length && ! $( e.target ).closest( $arbitNavCtCr ).length ) ) {
-                arbitNavDeactivate();
+            if ( $cp.hasClass( mainSearchActCss ) && ( ! $( e.target ).closest( $mainSearchCtrl ).length && ! $( e.target ).closest( $mainSearchCtCr ).length ) ) {
+                mainSearchDeactivate();
                 console.log( 'Outside click' );
             }
         } );
@@ -598,32 +597,32 @@
         // Deactivate upon presseing ESC Key
         $window.load( function () {
             $( document ).on( 'keyup.applicator', function ( e ) {
-                if ( $cp.hasClass( arbitNavActCss ) && e.keyCode == 27 ) {
-                    arbitNavDeactivate();
+                if ( $cp.hasClass( mainSearchActCss ) && e.keyCode == 27 ) {
+                    mainSearchDeactivate();
                     console.log( 'ESC' );
                 }
             } );
         } );
         
         // Add Icons to Buttons
-        $arbitNavSearchFormAxns = $cp.find( '.search-form-axns' );
-        $arbitNavSearchBl = $arbitNavSearchFormAxns.find( '.search-submit-axn---b_l' );
-        $arbitNavResetBl = $arbitNavSearchFormAxns.find( '.search-reset-axn---b_l' );
-        $arbitNavSearchBl.append( $arbitNavSearchIco );
-        $arbitNavResetBl.append( $arbitNavDismissIco );
+        $mainSearchFormAxns = $cp.find( '.main-search-form-axns' );
+        $mainSearchBL = $mainSearchFormAxns.find( '.main-search-submit-axn---b_l' );
+        $mainSearchResetBL = $mainSearchFormAxns.find( '.main-search-reset-axn---b_l' );
+        $mainSearchBL.append( $mainSearchSearchIco );
+        $mainSearchResetBL.append( $mainSearchDismissIco );
         
-    } // Arbitrary Nav | Search
+    } // Main Search | Search
 
-    initArbitNav( $( '#arbitrary-nav' ) );
+    initMainSearch( $( '#main-search-func' ) );
     
     
     
     
     
-    // Sub-Nav | 
+    // Sub-Nav | Main Menu, Widget Menu
     function initSubNav( $cp ) {
         
-        if ( ! $html.hasClass( aplApplicatorSubNavCss ) ) {
+        if ( ! $aplApplicatorSubNav.length ) {
 			return;
 		}
         
@@ -634,7 +633,7 @@
             subNavTogBtnLmu,
             subNavTogBtnLwordMu,
             
-            subNavFuncCss = 'func--sub-nav',
+            subNavFuncCss = 'sub-nav-func',
             
             subNavActCss = 'sub-nav--active',
             subNavInactCss = 'sub-nav--inactive',
@@ -667,7 +666,7 @@
             
             subNavTogBtnLwordMu = $( '<span />', {
                 'class': 'word show-hide-sub-nav---word',
-                'text': aplDataSubNav.subNavTogBtnHideL
+                'text': $subNavTogBtnHideL
             } );
             
             subNavTogBtnLmu = $( '<span />', {
@@ -679,7 +678,7 @@
             // Button
             subNavTogBtnMu = $( '<button />', {
                 'class': 'b sub-nav-tog---b',
-                'title': aplDataSubNav.subNavHideL
+                'title': $subNavTogBtnHideL
             } ).append( subNavTogBtnLmu );
             
             // Object
@@ -713,7 +712,7 @@
             
             _this.attr( {
                  'aria-expanded': 'true',
-                 'title': aplDataSubNav.subNavTogBtnHideL
+                 'title': $subNavTogBtnHideL
             } );
             
             _this.find( $subNavShowHideWord ).text( $subNavTogBtnHideL );
@@ -735,7 +734,7 @@
             
             _this.attr( {
                  'aria-expanded': 'false',
-                 'title': aplDataSubNav.subNavTogBtnShowL
+                 'title': $subNavTogBtnShowL
             } );
             
             _this.find( $subNavShowHideWord ).text( $subNavTogBtnShowL );
@@ -758,7 +757,7 @@
                 
                 $subNavTog.attr( {
                     'aria-expanded': 'false',
-                    'title': aplDataSubNav.subNavTogBtnShowL
+                    'title': $subNavTogBtnShowL
                 } );
                 
                 _this.find( $subNavShowHideWord ).text( $subNavTogBtnShowL );
@@ -787,7 +786,7 @@
 
                 _this.attr( {
                      'aria-expanded': 'false',
-                     'title': aplDataSubNav.subNavTogBtnShowL
+                     'title': $subNavTogBtnShowL
                 } );
                 
             } else if ( $subNavParent.hasClass( subNavInactCss ) ) {
@@ -801,7 +800,7 @@
 
                 _this.attr( {
                      'aria-expanded': 'true',
-                     'title': aplDataSubNav.subNavTogBtnHideL
+                     'title': $subNavTogBtnHideL
                 } );
                 
             }
@@ -841,9 +840,6 @@
     
     initSubNav( $( '#main-nav' ) );
     initSubNav( $( '.widget_nav_menu' ) );
-    /*
-    
     initSubNav( $( '.widget_pages' ) );
-    */
 
 })( jQuery );

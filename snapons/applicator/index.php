@@ -7,25 +7,25 @@ Version: 1.0
 Author URI: http://applicator.dysinelab.com
 */
 
-if ( ! function_exists( 'apl_applicator_html_class' ) ) {
-    function apl_applicator_html_class() {
+// Functionalities
+if ( ! function_exists( 'apl_applicator_func_class' ) ) {
+    function apl_applicator_func_class() {
 		
         $snapon_name = 'apl--applicator';
         
-        // Arbitrary Nav
         echo ' ' . $snapon_name;
-        echo ' ' . $snapon_name . '--go-content-nav';
+        echo ' ' . $snapon_name . '_--go-content-nav';
         echo ' ' . $snapon_name . '_--go-start-nav';
         echo ' ' . $snapon_name . '--main-menu';
-        echo ' ' . $snapon_name . '--arbitrary-nav';
+        echo ' ' . $snapon_name . '--main-search';
         echo ' ' . $snapon_name . '--sub-nav';
     
     }
-    add_action( 'apl_hook_html_class', 'apl_applicator_html_class');
+    add_action( 'apl_hook_html_class', 'apl_applicator_func_class');
 }
 
 
-//------------------------- Default Class via JS
+// Default Class via JS
 if ( ! function_exists( 'applicator_snapons_applicator_class' ) ) {
     function applicator_snapons_applicator_class() { ?>
 	   
@@ -43,11 +43,10 @@ if ( ! function_exists( 'applicator_snapons_applicator_class' ) ) {
 }
 
 
-//------------------------- Custom Fonts
+// Custom Fonts
 require get_parent_theme_file_path( '/snapons/applicator/functions/custom-fonts.php' );
 
-
-//------------------------- Styles
+// Styles
 if ( ! function_exists( 'apl_snapons_applicator_styles' ) ) {
     function apl_snapons_applicator_styles() {
 
@@ -55,22 +54,23 @@ if ( ! function_exists( 'apl_snapons_applicator_styles' ) ) {
         
         add_editor_style( array( 'assets/css/editor-style.css', applicator_fonts_url() ) );
         
-        wp_enqueue_style( 'apl-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '12.4', 'all' );
+        wp_enqueue_style( 'apl-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '13.3', 'all' );
 
     }
     add_action( 'wp_enqueue_scripts', 'apl_snapons_applicator_styles', 0);
 }
 
 
-//------------------------- Scripts
+// Scripts
 if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
     function apl_snapons_applicator_scripts() {
         
-        wp_enqueue_script( 'apl-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/applicator.js' ), array( 'jquery' ), '12.6', true );
+        wp_enqueue_script( 'apl-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/applicator.js' ), array( 'jquery' ), '13.3', true );
         
-        $search_icon = applicator_get_svg( array( 'icon' => 'search-icon' ) );
-        $dismiss_icon = applicator_get_svg( array( 'icon' => 'dismiss-icon' ) );
+        $arrow_icon = applicator_get_svg( array( 'icon' => 'arrow-icon' ) );
         $burger_icon = applicator_get_svg( array( 'icon' => 'burger-icon' ) );
+        $dismiss_icon = applicator_get_svg( array( 'icon' => 'dismiss-icon' ) );
+        $search_icon = applicator_get_svg( array( 'icon' => 'search-icon' ) );
         
         // Main Menu
         $applicator_l10n['mainMenuCtrlH'] = __( 'Main Menu Control', 'applicator' );
@@ -80,20 +80,20 @@ if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
         $applicator_l10n['mainMenuHideIco'] = $dismiss_icon;
         wp_localize_script( 'apl-snapons-applicator-script-global', 'aplDataMainMenu', $applicator_l10n );
         
-        // Arbitrary Navigation | Search
-        $applicator_l10n['arbitNavCtrlH'] = __( 'Search Control', 'applicator' );
-        $applicator_l10n['arbitNavShowL'] = __( 'Show Search', 'applicator' );
-        $applicator_l10n['arbitNavHideL'] = __( 'Hide Search', 'applicator' );
-        $applicator_l10n['arbitNavTogCtrlSearchIco'] = $search_icon;
-        $applicator_l10n['arbitNavTogCtrlDismissIco'] = $dismiss_icon;
-        $applicator_l10n['arbitNavSearchIco'] = $search_icon;
-        $applicator_l10n['arbitNavDismissIco'] = $dismiss_icon;
+        // Main Search
+        $applicator_l10n['mainSearchCtrlH'] = __( 'Main Search Control', 'applicator' );
+        $applicator_l10n['mainSearchShowL'] = __( 'Show Main Search', 'applicator' );
+        $applicator_l10n['mainSearchHideL'] = __( 'Hide Main Search', 'applicator' );
+        $applicator_l10n['mainSearchTogCtrlSearchIco'] = $search_icon;
+        $applicator_l10n['mainSearchTogCtrlDismissIco'] = $dismiss_icon;
+        $applicator_l10n['mainSearchSearchIco'] = $search_icon;
+        $applicator_l10n['mainSearchDismissIco'] = $dismiss_icon;
         wp_localize_script( 'apl-snapons-applicator-script-global', 'aplDataArbitNav', $applicator_l10n );
         
         // Sub-Navigation
         $applicator_l10n['subNavTogBtnShowL']    = __( 'Show Sub-Nav', 'applicator' );
 		$applicator_l10n['subNavTogBtnHideL']    = __( 'Hide Sub-Nav', 'applicator' );
-        $applicator_l10n['subNavTogBtnIco']         = applicator_get_svg( array( 'icon' => 'arrow-icon' ) );
+        $applicator_l10n['subNavTogBtnIco']      = $arrow_icon;
         wp_localize_script( 'apl-snapons-applicator-script-global', 'aplDataSubNav', $applicator_l10n );
     }
     add_action( 'wp_enqueue_scripts', 'apl_snapons_applicator_scripts' );

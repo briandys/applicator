@@ -5,7 +5,7 @@
     top: 0;
 }
 
-.apl--search--active .main-menu-ctrl
+.apl--main-search--active .main-menu-ctrl
 {
     z-index: 1;
 }

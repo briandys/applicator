@@ -51,18 +51,15 @@
 /* ------------------------- Visually Hidden */
 
 /* Web Info */
-.apl--arbitrary-nav--active .wbp-info,
+.apl--main-search--active .wbp-info,
 
 /* Go to Content Nav */
-
-.go-content-nav--inactive,
 .go-ct-nav---h,
+.go-content-nav--inactive,
 
 /* Go to Start Nav */
-.go-start-navi---a_l .go---word,
-.go-start-navi---a_l .to---word,
-.go-start-navi---a_l .start---word,
 .go-start-nav---h,
+.go-start-nav-func .go-start-navi .word,
 
 /* Main Nav - Main Header Aside */
 .mn-mha---h,
@@ -74,24 +71,24 @@
 .main-menu-tog---b_l .show-hide-main-menu---word,
 
 /* Sub-Nav | Main Nav | Widget > Custom Menu */
-.func--sub-nav .sub-nav-toggle .show-hide-sub-nav---word,
+.sub-nav-func .sub-nav-toggle .show-hide-sub-nav---word,
 
 /* Search */
 .search---h,
 .search-term-crt---h,
-.search-form-axns---h,
+.main-search-form-axns---h,
 .search-term-creation-label---obj,
 
 /* Arbitrary Nav */
-.arbitrary-nav-ctrl---h,
-.arbitrary-nav-tog---b_l .show-hide-arbitrary-nav---word,
-.arbitrary-nav .search-submit-axn---b_l .search---word,
-.arbitrary-nav .search-reset-axn---b_l .reset---word,
+.main-search-ctrl---h,
+.main-search-tog---b_l .show-hide-main-search---word,
+.main-search-func .main-search-submit-axn---b_l .search---word,
+.main-search-func .main-search-reset-axn---b_l .reset---word,
 
 /* Web Product Info */
-.apl--search--active .wbp-name,
-.apl--search--active .wbp-logo,
-.apl--search--active .wbp-desc,
+.apl--main-search--active .wbp-name,
+.apl--main-search--active .wbp-logo,
+.apl--main-search--active .wbp-desc,
 .wbp-name-desc--disabled .wbp-name,
 .wbp-name-desc--disabled .wbp-desc
 {position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;}
@@ -177,10 +174,10 @@ p
 /* Minimum height of the active area */
 .applicator--sub-nav .sub-nav-toggle--a-l,
 
-.arbitrary-nav .search-toggle--a-l,
-.arbitrary-nav .search-form-submit--a-l,
-.arbitrary-nav .search-form-reset--a-l,
-.arbitrary-nav .search-term--input--text,
+.main-search-func .search-toggle--a-l,
+.main-search-func .search-form-submit--a-l,
+.main-search-func .search-form-reset--a-l,
+.main-search-func .search-term--input--text,
 
 .widget_search .search-term--input--text,
 .widget_search .search-form-submit--a-l,
@@ -401,10 +398,10 @@ $go-green: #12b32d;
     color: hsla(0, 100%, 100%, .75);
 }
 
-.arbitrary-nav .search-toggle--a,
-.arbitrary-nav .search-form-submit--a,
-.arbitrary-nav .search-form-reset--a,
-.arbitrary-nav .search-term--input--text,
+.main-search-func .search-toggle--a,
+.main-search-func .search-form-submit--a,
+.main-search-func .search-form-reset--a,
+.main-search-func .search-term--input--text,
 
 .wbp-name--a,
 .wbp-desc---a,
@@ -632,6 +629,30 @@ $go-green: #12b32d;
 
 
 
+/* ------------------------- Text Spacing */
+.go-ct-navi---a_l > *,
+.go-start-navi---a_l > *
+{
+    margin-left: .15em;
+    margin-right: .15em;
+}
+
+.go-ct-navi---a_l > *:first-child,
+.go-start-navi---a_l > *:first-child
+{
+    margin-left: 0;
+}
+
+.go-ct-navi---a_l > *:last-child,
+.go-start-navi---a_l > *:last-child
+{
+    margin-right: 0;
+}
+
+
+
+
+
 /* ------------------------- Masthead */
 .main-header
 {
@@ -666,7 +687,7 @@ $go-green: #12b32d;
     margin-left: 3rem;
 }
 
-.apl--applicator--arbitrary-nav .wbp-info---cr
+.apl--applicator--main-search .wbp-info---cr
 {
     margin-right: 3rem;
 }
@@ -851,35 +872,17 @@ $go-green: #12b32d;
     min-height: 3rem;
 }
 
-/* Text Spacing */
-.go-ct-navi---a_l > *
-{
-    margin-left: .15em;
-    margin-right: .15em;
-}
-
-.go-ct-navi---a_l > *:first-child
-{
-    margin-left: 0;
-}
-
-.go-ct-navi---a_l > *:last-child
-{
-    margin-right: 0;
-}
-
 
 
 
 
 /* ------------------------- Go to Content Nav - Function */
-
 .apl--applicator--go-content-nav.dom--unready .go-content-nav
 {
     display: none;
 }
 
-.func--go-content-nav.go-content-nav
+.go-content-nav-func
 {
     position: fixed;
     left: 0;
@@ -888,21 +891,21 @@ $go-green: #12b32d;
     width: 100%;
 }
 
-.func--go-content-nav.go-content-nav,
-.func--go-content-nav .go-ct-nav---cr,
-.func--go-content-nav .go-ct-nav---ct,
-.func--go-content-nav .go-ct-nav---ct_cr
+.go-content-nav-func,
+.go-content-nav-func .go-ct-nav---cr,
+.go-content-nav-func .go-ct-nav---ct,
+.go-content-nav-func .go-ct-nav---ct_cr
 {
     height: 100%;
 }
 
-.func--go-content-nav .go-ct-nav---cr
+.go-content-nav-func .go-ct-nav---cr
 {
     background-color: white;
     background-color: hsla(0, 100%, 100%, .75);
 }
 
-.func--go-content-nav .go-content-navi
+.go-content-nav-func .go-content-navi
 {
     position: absolute;
     left: 50%;
@@ -910,7 +913,7 @@ $go-green: #12b32d;
     transform: translate( -50%, -50%);
 }
 
-.func--go-content-nav .go-ct-navi---a
+.go-content-nav-func .go-ct-navi---a
 {
     box-sizing: border-box;
     
@@ -921,7 +924,7 @@ $go-green: #12b32d;
     color: white;
 }
 
-.func--go-content-nav .go-ct-navi---a_l
+.go-content-nav-func .go-ct-navi---a_l
 {
     min-height: 2.25rem;
     
@@ -929,19 +932,18 @@ $go-green: #12b32d;
     border-radius: .25rem;
 }
 
-/* Status */
-.func--go-content-nav.go-content-nav--inactive
+.go-content-nav--inactive
 {
     opacity: 0;
     z-index: -1;
 }
 
-.func--go-content-nav.go-content-nav--inactive .go-ct-nav---cr
+.go-content-nav--inactive .go-ct-nav---cr
 {
     background-color: transparent;
 }
 
-.func--go-content-nav.go-content-nav--active
+.go-content-nav--active
 {
     opacity: 1;
     z-index: 99;
@@ -951,7 +953,42 @@ $go-green: #12b32d;
 
 
 /* ------------------------- Go to Start Nav - Style */
-.func--go-start-nav .go-start-navi
+.go-start-navi---a
+{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    
+    min-width: 3rem;
+    min-height: 3rem;
+    
+    text-decoration: none;
+}
+
+.go-start-navi---a_l
+{
+    box-sizing: border-box;
+    
+    display: inline-flex;
+    align-items: center;
+    
+    padding: .5rem .75rem;
+    
+    min-width: 3rem;
+    min-height: 3rem;
+}
+
+
+
+
+
+/* ------------------------- Go to Start Nav - Function */
+.apl--applicator--go-start-nav.dom--unready .go-start-nav
+{
+    display: none;
+}
+
+.go-start-nav-func
 {
     position: fixed;
     right: 0;
@@ -960,46 +997,21 @@ $go-green: #12b32d;
     transition: all .2s ease-in-out;
 }
 
-.func--go-start-nav.go-start-nav--active .go-start-navi
-{
-    transform: translateY( 0 );
-}
-
-.apl--applicator--go-start-nav.dom--unready .go-start-navi,
-.func--go-start-nav.go-start-nav--inactive .go-start-navi
-{
-    transform: translateY( 100% );
-}
-
-.go-start-navi---a
-{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.go-start-navi---a_l
-{
-    display: inline-flex;
-    align-items: center;
-    
-    min-width: 3rem;
-    min-height: 3rem;
-}
-
-.go-start-navi---a
+.go-start-nav-func .go-start-navi---a
 {   
     color: black;
 }
 
-.go-start-navi---a_l
+.go-start-nav--active .go-start-navi
 {
-        
+    transform: translateY( 0 );
 }
 
-.apl--applicator--go-start-nav.dom--unready .go-start-nav
+
+.apl--applicator--go-start-nav.dom--unready .go-start-navi,
+.go-start-nav--inactive .go-start-navi
 {
-    display: none;
+    transform: translateY( 100% );
 }
 
 
@@ -1011,9 +1023,9 @@ $go-green: #12b32d;
 /* ------------------------- Sub-Nav | Main Nav, Widget Menu */
 
 .main-menu-tog---b,
-.arbitrary-nav-tog---b,
-.arbitrary-nav .search-submit-axn---b,
-.arbitrary-nav .search-reset-axn---b,
+.main-search-tog---b,
+.main-search-func .search-submit-axn---b,
+.main-search-func .main-search-reset-axn---b,
 .apl--applicator--sub-nav .sub-nav-tog---b
 {
     box-sizing: border-box;
@@ -1030,9 +1042,9 @@ $go-green: #12b32d;
 }
 
 .main-menu-tog---b_l,
-.arbitrary-nav-tog---b_l,
-.arbitrary-nav .search-submit-axn---b_l,
-.arbitrary-nav .search-reset-axn---b_l,
+.main-search-tog---b_l,
+.main-search-func .main-search-submit-axn---b_l,
+.main-search-func .main-search-reset-axn---b_l,
 .apl--applicator--sub-nav .sub-nav-tog---b_l
 {
     display: flex;
@@ -1041,7 +1053,7 @@ $go-green: #12b32d;
 }
 
 .main-menu-toggle .icon,
-.arbitrary-nav-toggle .icon,
+.search-toggle .icon,
 .sub-nav-toggle .icon
 {
     pointer-events: none;
@@ -1224,9 +1236,9 @@ $go-green: #12b32d;
     display: block;
 }
 
-.search-term-crt-inp--input-text,
+.main-search-term-crt-inp--input-text,
 .search-submit-axn---b,
-.search-reset-axn---b
+.main-search-reset-axn---b
 {
     box-sizing: border-box;
     
@@ -1241,16 +1253,16 @@ $go-green: #12b32d;
 }
 
 .search-submit-axn---b,
-.search-reset-axn---b,
-.search-submit-axn---b_l,
-.search-reset-axn---b_l
+.main-search-reset-axn---b,
+.main-search-submit-axn---b_l,
+.main-search-reset-axn---b_l
 {
     display: inline-flex;
     align-items: center;
 }
 
-.search-submit-axn---b_l,
-.search-reset-axn---b_l
+.main-search-submit-axn---b_l,
+.main-search-reset-axn---b_l
 {
     box-sizing: border-box;
     
@@ -1266,7 +1278,7 @@ $go-green: #12b32d;
 
 
 /* ------------------------- Search Widget */
-.widget_search .search-term-crt-inp--input-text
+.widget_search .main-search-term-crt-inp--input-text
 {
     padding: 0 .5rem;
     
@@ -1274,13 +1286,13 @@ $go-green: #12b32d;
     border-color: hsla(0, 0%, 0%, .5);
 }
 
-.widget_search .search-submit-axn---b_l
+.widget_search .main-search-submit-axn---b_l
 {
     background-color: #00aaff;
     color: white;
 }
 
-.widget_search .search-reset-axn---b_l
+.widget_search .main-search-reset-axn---b_l
 {
     border: 2px solid black;
     border-color: hsla(0, 0%, 0%, .25);
@@ -1289,18 +1301,18 @@ $go-green: #12b32d;
     color: hsla(0, 0%, 0%, .5);
 }
 
-.widget_search .search-term-crt-inp--input-text,
-.widget_search .search-submit-axn---b_l,
-.widget_search .search-reset-axn---b_l
+.widget_search .main-search-term-crt-inp--input-text,
+.widget_search .main-search-submit-axn---b_l,
+.widget_search .main-search-reset-axn---b_l
 {   
     border-radius: .125rem;
 }
 
-.widget_search .search-term-crt-inp--input-text,
+.widget_search .main-search-term-crt-inp--input-text,
 .widget_search .search-submit-axn---b,
-.widget_search .search-reset-axn---b,
-.widget_search .search-submit-axn---b_l,
-.widget_search .search-reset-axn---b_l
+.widget_search .main-search-reset-axn---b,
+.widget_search .main-search-submit-axn---b_l,
+.widget_search .main-search-reset-axn---b_l
 {
     width: 100%;
 }
@@ -1310,127 +1322,127 @@ $go-green: #12b32d;
 
 
 /* ------------------------- Search - Functionality */
-.func--search
+.main-search-func
 {
     position: absolute;
     right: 0;
     top: 0;
 }
 
-.func--search.arbitrary-nav--active
+.main-search-func.main-search--active
 {
     width: 100%;
 }
 
-.func--search .search---cr
+.main-search-func .search---cr
 {
     position: relative;
     
     height: 3rem;
 }
 
-.func--search.arbitrary-nav--active .search---cr
+.main-search-func.main-search--active .search---cr
 {
     padding-left: 3rem;
 }
 
-.func--search.arbitrary-nav--inactive .search---ct
+.main-search-func.main-search--inactive .search---ct
 {
     display: none;
 }
 
-.func--search .search-term-crt-inp--input-text
+.main-search-func .main-search-term-crt-inp--input-text
 {
     width: 100%;
     
     color: white;
 }
 
-.func--search .search-form-axns---ct_cr
+.main-search-func .main-search-form-axns---ct_cr
 {
     display: flex;
 }
 
-.func--search .search-submit-axn
+.main-search-func .search-submit-axn
 {
     order: 1;
 }
 
-.func--search .arbitrary-nav-ctrl
+.main-search-func .main-search-ctrl
 {
     position: absolute;
     right: 0;
     top: 0;
 }
 
-.func--search .search-form-axns
+.main-search-func .main-search-form-axns
 {
     position: absolute;
     right: 0;
     top: 0;
 }
 
-.func--search.arbitrary-nav--active .arbitrary-nav-toggle
+.main-search-func.main-search--active .search-toggle
 {
     padding-right: 3rem;
 }
 
-.func--search .search-term-crt-inp--input-text
+.main-search-func .main-search-term-crt-inp--input-text
 {
     padding-left: 1rem;
     padding-right: 6rem;
 }
 
-.apl--applicator--main-menu .func--search .search-term-crt-inp--input-text
+.apl--applicator--main-menu .main-search-func .main-search-term-crt-inp--input-text
 {
     padding-left: 0;
 }
 
-.func--search.arbitrary-nav--active.arbitrary-nav-input--empty .search-reset-axn
+.main-search-func.main-search--active.main-search-input--empty .search-reset-axn
 {
     display: none;
 }
 
 /* Placeholder Text */
-.func--search .search-term-crt-inp--input-text::-webkit-input-placeholder
+.main-search-func .main-search-term-crt-inp--input-text::-webkit-input-placeholder
 {
     color: white;
     opacity: .5;
 }
 
-.func--search .search-term-crt-inp--input-text::-moz-placeholder
+.main-search-func .main-search-term-crt-inp--input-text::-moz-placeholder
 {
     color: white;
     opacity: .5;
 }
 
-.func--search .search-term-crt-inp--input-text:-ms-input-placeholder
+.main-search-func .main-search-term-crt-inp--input-text:-ms-input-placeholder
 {
     color: white;
     opacity: .5;
 }
 
-.apl--applicator--arbitrary-nav .func--search .search-term-crt-inp--input-text:-moz-placeholder
+.apl--applicator--main-search .main-search-func .main-search-term-crt-inp--input-text:-moz-placeholder
 {
     color: white;
     opacity: .5;
 }
 
-.func--search .arbitrary-nav-toggle .dismiss-icon,
-.func--search .search-reset-axn .dismiss-icon
+.main-search-func .search-toggle .dismiss-icon,
+.main-search-func .search-reset-axn .dismiss-icon
 {
     width: .75rem;
     height: .75rem;
 }
 
-.apl--applicator--arbitrary-nav.dom--unready .main-header---cr > .search---cp
+.apl--applicator--main-search.dom--unready .main-header---cr > .search-cp
 {
     display: none;
 }
 
-.func--search .arbitrary-nav-tog---b_l,
-.func--search .search-submit-axn---b_l,
-.func--search .search-reset-axn---b_l
+.main-search-func .main-search-tog---b_l,
+.main-search-func .main-search-submit-axn---b_l,
+.main-search-func .main-search-reset-axn---b_l
 {
     color: white;
 }
@@ -1485,41 +1497,41 @@ $go-green: #12b32d;
 
 
 /* ------------------------- Sub-Navigation - Functionality */
-.func--sub-nav .sub-nav--inactive > .children,
-.func--sub-nav .sub-nav--inactive > .sub-menu
+.sub-nav-func .sub-nav--inactive > .children,
+.sub-nav-func .sub-nav--inactive > .sub-menu
 {
     display: none;
 }
 
 /* Positioning of nav items */
 /* flex-wrap enables the item with large width to wrap - in this case the Sub-Menu */
-.func--sub-nav .page_item_has_children,
-.func--sub-nav .menu-item-has-children
+.sub-nav-func .page_item_has_children,
+.sub-nav-func .menu-item-has-children
 {
     position: relative;
 }
 
-.func--sub-nav .sub-nav-toggle
+.sub-nav-func .sub-nav-toggle
 {
     position: absolute;
     right: 0;
     top: 0;
 }
 
-.func--sub-nav .sub-nav-toggle .arrow-icon
+.sub-nav-func .sub-nav-toggle .arrow-icon
 {
     width: .75rem;
     height: .75rem;
 }
 
-.func--sub-nav .sub-nav-toggle .arrow-icon
+.sub-nav-func .sub-nav-toggle .arrow-icon
 {
     /*
     transition: all 0.2s ease-in-out;
     */
 }
 
-.func--sub-nav .sub-nav--active > .sub-nav-toggle .arrow-icon
+.sub-nav-func .sub-nav--active > .sub-nav-toggle .arrow-icon
 {
     transform: rotate( 180deg );
 }

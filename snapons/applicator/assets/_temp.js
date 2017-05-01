@@ -1,5 +1,5 @@
 // ------------------------- Go to Start
-    function initGoStart( component ) {
+    function initGoStartNav( component ) {
         
         var currentPos = $window.scrollTop(),
             goStartCp = component.closest( '.go-start' ),
@@ -100,4 +100,4 @@
         window.addEventListener( 'scroll', goStartDebounce );
         
     }
-    initGoStart( $( '#go-start--a' ) );
+    initGoStartNav( $( '#go-start--a' ) );

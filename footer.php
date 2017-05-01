@@ -50,12 +50,12 @@
 
                                         <?php // Go to Start Nav Item Markup
                                         $go_start_navi_mu = '<div class="obj navi go-start-navi" data-name="Go to Start Nav Item">';
-                                            $go_start_navi_mu .= '<a id="go-start-navi---a" class="a go-start-navi---a" href="#start" title="%1$s"><span class="a_l go-start-navi---a_l"><span class="word go---word">%2$s</span> <span class="word to---word">%3$s</span> <span class="word start---word">%4$s</span></span></a>';
+                                            $go_start_navi_mu .= '<a id="go-start-navi---a" class="a go-start-navi---a" href="#start" title="%1$s"><span class="a_l go-start-navi---a_l"><span class="word go-to-start---word">%2$s</span></span></a>';
                                         $go_start_navi_mu .= '</div>';
 
                                         printf( $go_start_navi_mu,
                                             esc_attr__( 'Go to Start', 'applicator'),
-                                            esc_html__( 'Go', 'applicator'),
+                                            esc_html__( 'Go to Start', 'applicator'),
                                             esc_html__( 'to', 'applicator'),
                                             esc_html__( 'Start', 'applicator')
                                         ); ?>
