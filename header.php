@@ -117,24 +117,15 @@
                                     <div class="ct_cr mn-mha---ct_cr">
 
                                         <?php // Main Navigation | inc > tags > main-navigation.php
-                                        applicator_func_main_nav();
+                                        apl_func_main_nav();
                                         
                                         // Hook: After Main Navigation
                                         apl_hook_after_main_nav();
                                         
-                                        // Main Header Aside
-                                        if ( is_active_sidebar( 'main-header-aside' )  ) { ?>
-                                        <aside id="main-header-aside" class="cn aside main-header-aside" data-name="Main Header Aside" role="complementary">
-                                            <div class="cr main-hr-as---cr">
-                                                <h3 class="h main-hr-as---h"><span class="h_l main-hr-as---h_l"><?php esc_html_e( 'Main Header Aside', 'applicator' ); ?></span></h3>
-                                                <div class="ct main-hr-as---ct">
-                                                    <div class="ct_cr main-hr-as---ct_cr">
-                                                        <?php dynamic_sidebar( 'main-header-aside' ); ?>
-                                                    </div>
-                                                </div><!-- ct -->
-                                            </div>
-                                        </aside><!-- main-header-aside -->
-                                        <?php } ?>
+                                        // Aside | inc > aside.php
+                                        apl_func_main_header_aside(); ?>
+                                        
+                                        
 
                                     </div>
                                 </div>

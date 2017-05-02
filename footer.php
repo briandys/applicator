@@ -5,18 +5,7 @@
                     <div class="main-footer--cr">
                         
                         <?php // Main Footer Aside
-                        if ( is_active_sidebar( 'main-footer-aside' )  ) { ?>
-                        <aside id="main-footer-aside" class="cn aside main-footer-aside" data-name="Main Footer Aside" role="complementary">
-                            <div class="cr main-fr-as---cr">
-                                <h3 class="h main-fr-as---h"><span class="h_l main-fr-as---h_l">Main Footer Aside</span></h3>
-                                <div class="ct main-fr-as---ct">
-                                    <div class="ct_cr main-fr-as---ct_cr">
-                                        <?php dynamic_sidebar( 'main-footer-aside' ); ?>
-                                    </div>
-                                </div><!-- main-fr-as---ct -->
-                            </div>
-                        </aside><!-- main-footer-aside -->
-                        <?php } ?>
+                        apl_func_main_footer_aside(); ?>
                         
                         <div class="obj wbp-copyright site-info" data-name="Web Product Copyright">
                             <div class="g wbp-copyright---g">

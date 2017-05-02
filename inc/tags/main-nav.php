@@ -1,12 +1,10 @@
-<?php
-
-//------------------------- Register Main Navigation
+<?php // Register Main Navigation
 register_nav_menu( 'main-nav', __( 'Main Navigation', 'applicator' ) );
 
 
-//------------------------- Primary Navigation
-if ( ! function_exists( 'applicator_func_main_nav' ) ) {
-    function applicator_func_main_nav() {
+// Primary Navigation
+if ( ! function_exists( 'apl_func_main_nav' ) ) {
+    function apl_func_main_nav() {
         
         $main_nav_css = 'main-nav';
         $main_nav_ct_cr_css = 'ct_cr main-nav---ct_cr';

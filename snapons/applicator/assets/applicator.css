@@ -575,7 +575,7 @@ $go-green: #12b32d;
     font-size: 1.5rem;
 }
 
-.applicator--article .entry--hr--cr
+.applicator--article .entry---hr_cr
 {
     position: relative;
     padding-right: 4rem;
@@ -668,6 +668,7 @@ $go-green: #12b32d;
 
 
 /* ------------------------- Web Product Info */
+/*
 .wbp-info---cr
 {
     display: flex;
@@ -679,6 +680,12 @@ $go-green: #12b32d;
     height: 3rem;
     
     overflow: hidden;
+}
+*/
+
+.wbp-info---cr
+{
+    min-height: 3rem;
 }
 
 .wbp-logo--enabled .wbp-info---cr
@@ -701,8 +708,8 @@ $go-green: #12b32d;
     position: relative;
 }
 
-.wbp-logo--enabled .wbp-name,
-.wbp-logo--enabled .wbp-desc
+.wbp-name-desc--enabled.wbp-logo--enabled .wbp-name,
+.wbp-name-desc--enabled.wbp-logo--enabled .wbp-desc
 {
     box-sizing: border-box;
     
@@ -710,8 +717,8 @@ $go-green: #12b32d;
 }
 
 /* Text Truncate */
-.wbp-name,
-.wbp-desc
+.wbp-name--h,
+.wbp-desc---g
 {
     max-width: 100%;
 }
@@ -724,6 +731,7 @@ $go-green: #12b32d;
     display: block;
     
     padding-left: 1rem;
+    padding-right: 1rem;
     
     overflow: hidden;
     white-space: nowrap;
@@ -736,6 +744,12 @@ $go-green: #12b32d;
 .wbp-logo--enabled .wbp-desc---a_l
 {
     padding-left: 0;
+}
+
+.apl--applicator--main-search .wbp-name---a_l,
+.apl--applicator--main-search .wbp-desc---a_l
+{
+    padding-right: 0;
 }
 
 
@@ -754,6 +768,22 @@ $go-green: #12b32d;
     font-size: 1.125rem;
 }
 
+.wbp-name
+{
+    display: flex;
+    
+    max-width: 100%;
+    
+    transform: translateY( .125rem );
+}
+
+.wbp-desc--empty .wbp-name
+{
+    align-items: center;
+    height: 3rem;
+    transform: translateY( 0 );
+}
+
 .wbp-name---a
 {
     color: white;
@@ -761,6 +791,7 @@ $go-green: #12b32d;
     text-decoration: none;
 }
 
+/*
 .wbp-desc--empty .wbp-name---a_l
 {
     display: inline-block;
@@ -778,16 +809,28 @@ $go-green: #12b32d;
     padding-left: 0;
     padding-right: 0;
 }
+*/
 
 
 
 
 
 /* ------------------------- Web Product Description */
+/*
 .wbp-desc
 {
     margin-top: -.5rem;
     width: 100%;
+}
+*/
+
+.wbp-desc
+{
+    display: flex;
+    
+    max-width: 100%;
+    
+    transform: translateY( .125rem );
 }
 
 .wbp-desc---a
@@ -809,8 +852,12 @@ $go-green: #12b32d;
 {
     position: absolute;
     top: 50%;
+    
     margin-top: -1.125rem;
+    
     height: 2.25rem;
+    
+    z-index: 1;
 }
 
 .custom-logo
@@ -1079,7 +1126,7 @@ $go-green: #12b32d;
     
     background-color: white;
     
-    cursor: default;
+    cursor: initial;
 }
 
 .main-menu-func .mn-mha---ct_cr
@@ -1129,6 +1176,8 @@ $go-green: #12b32d;
     margin-right: 3rem;
     
     background-color: white;
+    
+    cursor: initial;
 }
 
 .main-menu--active .main-menu-tog---b_l

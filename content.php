@@ -1,10 +1,10 @@
-<article <?php post_class( 'entry' ); ?>>
-    <div class="entry--cr">
+<article <?php post_class( 'cp entry' ); ?>>
+    <div class="cr entry---cr">
 
-        <header class="entry--hr entry-header">
-            <div class="entry--hr--cr">
+        <header class="entry---hr entry-header">
+            <div class="hr_cr entry---hr_cr">
 
-                <?php the_title( '<h1 class="h entry--h entry-title"><a class="a entry-title--a" href="' . esc_url( get_permalink() ) . '" rel="bookmark" title="' . get_the_title() . '"><span class="entry-title--a-l">', '</span></a></h1>' ); ?>
+                <?php the_title( '<h1 class="h entry---h entry-title"><a class="a entry-title--a" href="' . esc_url( get_permalink() ) . '" rel="bookmark" title="' . get_the_title() . '"><span class="entry-title--a-l">', '</span></a></h1>' ); ?>
 
 
                 <?php
@@ -58,7 +58,7 @@
                 <?php applicator_hook_after_entry_meta(); ?>
 
             </div>
-        </header><!-- entry--hr -->
+        </header><!-- entry---hr -->
 
         <div class="entry--ct entry-content">
             <div class="entry--ct-cr">
@@ -90,7 +90,7 @@
                     if ( $the_query->have_posts() ) : ?>
 
                         <div class="cp sub-entry" data-name="Sub-Entry">
-                            <div class="sub-entry--cr">
+                            <div class="cr sub-entry---cr">
 
                                 <?php while ( $the_query->have_posts() ) :
                                     $the_query->the_post();

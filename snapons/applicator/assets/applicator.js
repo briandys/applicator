@@ -252,6 +252,7 @@
         }() );
         
         $mainMenuCtrl = $cp.find( '.main-menu-ctrl' );
+        $mainMenuCtrlCtCr = $mainMenuCtrl.find( '.main-menu-ctrl---ct_cr' );
         
         $mainMenuCtCr = $cp.find( '.mn-mha---ct_cr' );
         $mainMenuTogBtn = $( '#main-menu-tog---b' );
@@ -320,7 +321,7 @@
         
         // Deactivate upon interaction outside specified elements
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
-            if ( $cp.hasClass( mainMenuActCss ) && ( ! $( e.target ).closest( $mainMenuCtrl ).length && ! $( e.target ).closest( $mainMenuCtCr ).length ) ) {
+            if ( $cp.hasClass( mainMenuActCss ) && ( ! $( e.target ).closest( $mainMenuCtrlCtCr ).length && ! $( e.target ).closest( $mainMenuCtCr ).length ) ) {
                 mainMenuDeactivate();
             }
         } );
@@ -775,6 +776,14 @@
             }
         }
         
+        // Deactivate Siblings
+        function siblingsDeactivate() {
+            var _this = $( this );
+            _this.closest( $subNavParentItems ).siblings()
+                .addClass( subNavInactCss )
+                .removeClass( subNavActCss );
+        }
+        
         // Click
         ( function() {
             $subNavTog.on( 'click.applicator', function( e ) {
@@ -788,19 +797,18 @@
                     subNavDeactivate.apply( this );
                 }
                 
-                // Deactivate Siblings
-                _this.closest( $subNavParentItems ).siblings()
-                    .addClass( subNavInactCss )
-                    .removeClass( subNavActCss );
+                // siblingsDeactivate.apply( this );
             } );
         }() );
         
+        /*
         // Deactivate upon interaction outside specified elements
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             if ( $html.hasClass( aplSubNavActCss ) && ! $( e.target ).closest( $subNavParentItems ).length && ! $( e.target ).is( 'a' ).length ) {
                 subNavAllDeactivate();
             }
         } );
+        */
     }
     
     initSubNav( $( '#main-nav' ) );
