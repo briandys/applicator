@@ -101,7 +101,7 @@ body
 
 
 
-/* ------------------------- Icons ------------------------- */
+/* ------------------------- Fixes */
 .icon--vector
 {
     display: inline-block;
@@ -110,6 +110,17 @@ body
     height: 1em;
     vertical-align: middle;
     fill: currentColor;
+}
+
+.entry--ct figure
+{
+    /* Reset */
+    margin: 0;
+}
+
+figure.wp-caption
+{
+    max-width: 100%;
 }
 
 

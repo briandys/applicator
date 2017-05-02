@@ -1073,6 +1073,7 @@ $go-green: #12b32d;
     position: relative;
     
     margin-right: 3rem;
+    padding-bottom: 3rem;
     
     width: auto;
     
@@ -1085,7 +1086,7 @@ $go-green: #12b32d;
 {
     box-sizing: border-box;
     
-    padding-top: 3rem;
+    margin-top: 3rem;
     
     overflow-y: auto;
 }
@@ -1116,6 +1117,18 @@ $go-green: #12b32d;
     background-color: hsla(0, 0%, 0%, .75);
     
     cursor: pointer;
+}
+
+.main-menu--active .main-menu-ctrl
+{
+    width: 100%;
+}
+
+.main-menu--active .main-menu-ctrl---ct_cr
+{
+    margin-right: 3rem;
+    
+    background-color: white;
 }
 
 .main-menu--active .main-menu-tog---b_l

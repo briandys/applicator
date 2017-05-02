@@ -115,7 +115,7 @@
         
         ( function() {
             bodyOffsetCriteriaHeight = document.body.offsetHeight / 2;
-            bodyOffsetSliceHeight = document.body.offsetHeight / 2;
+            bodyOffsetSliceHeight = document.body.offsetHeight / 1.5;
             bodyOffsetMostHeight = document.body.offsetHeight - bodyOffsetSliceHeight;
             
             if ( ( window.innerHeight ) <= ( bodyOffsetCriteriaHeight ) ) {
