@@ -69,14 +69,14 @@ body
 .clearfix:before,
 .clearfix:after,
 
-.entry--ct-cr:before,
-.entry--ct-cr:after
+.entry---ct_cr:before,
+.entry---ct_cr:after
 {
     content: " ";
     display: table;
 }
 
-.entry--ct-cr:after
+.entry---ct_cr:after
 {
     clear: both;
 }

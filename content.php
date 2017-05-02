@@ -33,35 +33,31 @@
 
 
                 <div class="entry-meta">
-                    <div class="entry-meta--cr">
+                    <div class="cr entry-meta---cr">
 
-
-                        <?php //------------------------- Published Timestamp ------------------------- ?>
-                        <?php applicator_pub_timestamp(); ?>
-
-
-                        <?php //------------------------- Modified Timestamp ------------------------- ?>
-                        <?php applicator_mod_timestamp(); ?>
-
-
-                        <?php //------------------------- Author ------------------------- ?>
-                        <?php applicator_entry_author(); ?>
-
-
-                        <?php //------------------------- Categories ------------------------- ?>
-                        <?php applicator_entry_categories(); ?>
+                        <?php // Published Timestamp
+                        applicator_pub_timestamp();
+                        
+                        // Modified Timestamp
+                        applicator_mod_timestamp();
+                        
+                        // Author
+                        applicator_entry_author();
+                        
+                        // Categories
+                        applicator_entry_categories(); ?>
 
                     </div>
                 </div><!-- entry-meta -->
 
-                <?php //------------------------- Hook: After Entry Meta ------------------------- ?>
-                <?php applicator_hook_after_entry_meta(); ?>
+                <?php // Hook: After Entry Meta
+                applicator_hook_after_entry_meta(); ?>
 
             </div>
         </header><!-- entry---hr -->
 
-        <div class="entry--ct entry-content">
-            <div class="entry--ct-cr">
+        <div class="ct entry--ct entry-content">
+            <div class="ct_cr entry---ct_cr">
                 
                 
                 <?php if ( is_home() || is_singular() ) {
@@ -71,11 +67,11 @@
                 }; ?>
 
 
-                <?php //------------------------- Entry Page Navigation
+                <?php // Entry Page Navigation
                 // inc > tags > entry-page-nav.php
                 applicator_entry_nav();
                 
-                //------------------------- Sub-Entry
+                // Sub-Entry
                 if ( is_page_template( 'page-templates/sub-pages.php' ) ) :
                     $parent = $post->ID;
                     $args = array(
@@ -110,21 +106,21 @@
         <?php if ( 'post' === get_post_type() ) {
             if ( get_the_tag_list('', '', '') ) { ?>
 
-        <div class="entry--ft">
-            <div class="entry--ft-cr">
+        <div class="ft entry---ft">
+            <div class="ft_cr entry---ft_cr">
 
                 <div class="entry-meta">
-                    <div class="entry-meta--cr">
+                    <div class="cr entry-meta---cr">
 
 
-                        <?php //------------------------- Tags ------------------------- ?>
-                        <?php applicator_entry_tags(); ?>
+                        <?php // Tags
+                        applicator_entry_tags(); ?>
 
                     </div>
                 </div><!-- entry-meta -->
 
             </div>
-        </div><!-- entry--ft -->
+        </div><!-- entry---ft -->
 
         <?php }
         } ?>  

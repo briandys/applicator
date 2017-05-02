@@ -15,8 +15,8 @@
             </div>
         </div><!-- entry---hr -->
 
-        <div class="entry--ct">
-            <div class="entry--ct-cr">
+        <div class="ct entry--ct">
+            <div class="ct_cr entry---ct_cr">
                 
                 <p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'applicator' ); ?></p>
 
