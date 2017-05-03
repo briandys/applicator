@@ -24,7 +24,7 @@ require_once( get_template_directory() . '/inc/tags/entry-actions.php');
 require_once( get_template_directory() . '/inc/tags/entry-timestamp.php');
 require_once( get_template_directory() . '/inc/tags/entry-author.php');
 require_once( get_template_directory() . '/inc/tags/entry-classification.php');
-require_once( get_template_directory() . '/inc/tags/entry-banner-image.php');
+require_once( get_template_directory() . '/inc/tags/post-banner-visual.php');
 
 // Comments
 require_once( get_template_directory() . '/inc/tags/comments-actions-snippet.php');

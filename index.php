@@ -139,8 +139,8 @@ if ( function_exists( 'get_header' ) ) {
                     while ( have_posts() ) { ?>
                         
                         <div id="entry" class="cp entry" data-name="Entry">
-                            <div class="cr entry---cr">
-                                <div class="h entry---h"><span class="h_l entry---h_l"><?php esc_html_e( 'Entry', 'applicator' ); ?></span></div>
+                            <div class="cr post---cr">
+                                <div class="h post---h"><span class="h_l post---h_l"><?php esc_html_e( 'Entry', 'applicator' ); ?></span></div>
                                 <div class="ct entry---ct">
                                     <div class="ct_cr entry---ct_cr">
                                 

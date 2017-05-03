@@ -122,9 +122,9 @@
 
                 // http://stackoverflow.com/a/40370876
                 $window.scroll( function( e ) {
-                    if ( ( window.innerHeight + window.pageYOffset ) >= ( bodyOffsetMostHeight ) ) {
+                    if ( ( ( window.innerHeight + window.pageYOffset ) >= ( bodyOffsetMostHeight ) ) && ( ! window.pageYOffset == 0 ) ) {
                         goStartNavActivate();
-                    } else {
+                    } else if ( ( ( window.innerHeight + window.pageYOffset ) < ( bodyOffsetMostHeight ) ) || ( window.pageYOffset == 0 ) ) {
                         goStartNavDeactivate();
                     }
                 } );
@@ -145,8 +145,6 @@
                 location.hash = target;
             } );
             
-            goStartNavDeactivate();
-
             return false;
         } );
         

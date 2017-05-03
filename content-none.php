@@ -1,10 +1,10 @@
 <article <?php post_class( 'cp entry entry--none' ); ?>>
-    <div class="cr entry---cr">
+    <div class="cr post---cr">
 
-        <div class="entry---hr">
-            <div class="hr_cr entry---hr_cr">
+        <div class="post---hr">
+            <div class="hr_cr post---hr_cr">
 
-                <h1 class="h entry---h"><span class="entry---h-l"><?php esc_html_e( 'Nothing Found', 'applicator' ); ?></span></h1>
+                <h1 class="h post---h"><span class="post---h-l"><?php esc_html_e( 'Nothing Found', 'applicator' ); ?></span></h1>
 
 
                 <?php
@@ -13,7 +13,7 @@
                 applicator_hook_after_entry_heading(); ?>
 
             </div>
-        </div><!-- entry---hr -->
+        </div><!-- post---hr -->
 
         <div class="ct entry--ct">
             <div class="ct_cr entry---ct_cr">
