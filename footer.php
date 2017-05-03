@@ -1,8 +1,8 @@
-                    </section>
-                </div><!-- main-content -->
+                    </div>
+                </section><!-- main-content -->
 
                 <footer id="colophon" class="cn footer main-footer site-footer" data-name="Main Footer" role="contentinfo">
-                    <div class="main-footer--cr">
+                    <div class="cr main-footer---cr">
                         
                         <?php // Main Footer Aside
                         apl_func_main_footer_aside(); ?>

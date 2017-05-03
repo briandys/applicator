@@ -2,23 +2,23 @@
 
 //------------------------- Custom Visuals
 
-if ( ! function_exists( 'applicator_custom_visuals_setup' ) ) :
-    function applicator_custom_visuals_setup() {
+if ( ! function_exists( 'apl_custom_visuals_setup' ) ) {
+    function apl_custom_visuals_setup() {
 
         
         //------------------------- Custom Header
         add_theme_support( 'custom-header', apply_filters( 'applicator_custom_header_args', array(
             'default-image'      => get_parent_theme_file_uri( '/assets/img/default-media-banner-image.jpg' ),
             'default_text_color' => 'black',
-            'width'              => 2000,
-            'height'             => 1200,
+            'width'              => 1280,
+            'height'             => 800,
             'flex-height'        => true,
-            'wbp-head-callback'   => 'applicator_header_style',
+            'wbp-head-callback'   => 'apl_header_style',
         ) ) );
 
         register_default_headers( array(
             'default-image' => array(
-                'url'           => '%s/assets/img/default-media-banner-image.jpg',
+                'url'           => '%s/assets/img/default-media-banner-image--tn.jpg',
                 'thumbnail_url' => '%s/assets/img/default-media-banner-image.jpg',
                 'description'   => __( 'Default Media Banner', 'applicator' ),
             ),
@@ -36,15 +36,15 @@ if ( ! function_exists( 'applicator_custom_visuals_setup' ) ) :
         add_theme_support( 'custom-background' );
     
     }
-    add_action( 'after_setup_theme', 'applicator_custom_visuals_setup' );
-endif;
+    add_action( 'after_setup_theme', 'apl_custom_visuals_setup' );
+}
 
 
 
 //------------------------- Custom Header Callback
 
-if ( ! function_exists( 'applicator_header_style' ) ) :
-    function applicator_header_style() {
+if ( ! function_exists( 'apl_header_style' ) ) {
+    function apl_header_style() {
 
         $header_text_color = get_header_textcolor();
 
@@ -79,4 +79,4 @@ if ( ! function_exists( 'applicator_header_style' ) ) :
         </style>
 
     <?php }
-endif;
+}

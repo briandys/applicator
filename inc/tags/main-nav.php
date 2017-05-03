@@ -8,7 +8,7 @@ if ( ! function_exists( 'apl_func_main_nav' ) ) {
         
         $main_nav_css = 'main-nav';
         $main_nav_ct_cr_css = 'ct_cr main-nav---ct_cr';
-        $main_nav_a_l_start_mu = '<span class="a_l main-nav---a_l"><span class="word nav---word">';
+        $main_nav_a_l_start_mu = '<span class="a_l main-nav---a_l"><span class="word navi---word">';
         $main_nav_a_l_end_mu = '</span></span>';
         
         if ( wp_nav_menu( array( 'theme_location' => $main_nav_css, 'echo' => false ) ) !== false) { ?>

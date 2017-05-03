@@ -16,7 +16,7 @@ if ( function_exists( 'get_header' ) ) {
             );
         } elseif ( is_home() ) {
             printf ( $main_ct_hr_mu,
-                esc_html__( 'Entries', 'applicator' ),
+                esc_html__( 'Home', 'applicator' ),
                 'entries'
             );
         } elseif ( is_category() ) {
@@ -87,7 +87,7 @@ if ( function_exists( 'get_header' ) ) {
         } elseif ( is_singular() ) {
             if ( is_single() ) {
                 printf ( $main_ct_hr_mu,
-                    esc_html__( 'Entry', 'applicator' ),
+                    esc_html__( 'Single', 'applicator' ),
                     'entry'
                 );
             } elseif ( is_page() ) {
@@ -122,31 +122,53 @@ if ( function_exists( 'get_header' ) ) {
     </div>
 </div><!-- main-content---hr -->
 
-<div class="cn main-content---ct" data-name="Main Content - Content">
-    <div class="cr main-content---ct_cr">
+<div class="ct main-content---ct" data-name="Main Content - Content">
+    <div class="ct_cr main-content---ct_cr">
         
         <main id="main" class="cn pri-content site-main" role="main" data-name="Primary Content">
             <div class="cr pri-content---cr">
                 
+                <div class="md entry-md" data-name="Entry Module">
+                    <div class="cr entry-md---cr">
+                        <div class="h entry-md---h"><span class="h_l entry-md---h_l"><?php esc_html_e( 'Entry Module', 'applicator' ); ?></span></div>
+                        <div class="ct entry-md---ct">
+                            <div class="ct_cr entry-md---ct_cr">
+                
                 <?php // single.php
                 if ( is_singular() ) {
-                    while ( have_posts() ) {
-                        the_post();
+                    while ( have_posts() ) { ?>
+                        
+                        <div id="entry" class="cp entry" data-name="Entry">
+                            <div class="cr entry---cr">
+                                <div class="h entry---h"><span class="h_l entry---h_l"><?php esc_html_e( 'Entry', 'applicator' ); ?></span></div>
+                                <div class="ct entry---ct">
+                                    <div class="ct_cr entry---ct_cr">
+                                
+                        <?php the_post();
 
                         // template-parts > entry-content.php
                         apl_entry_content();
 
                         // inc > tags > entries-nav.php
-                        applicator_entries_nav();
+                        apl_entries_nav();
                 
                         // comments.php
-                        comments_template();
-                    }
+                        comments_template(); ?>
+                                        
+                                    </div>
+                                </div><!-- ct -->
+                            </div>
+                        </div><!-- entry -->
+                    
+                    <?php }
                 } else {
                     if ( have_posts() ) { ?>
-                        
-                        <div class="cp entries" data-name="Entries">
-                            <div class="cr entries--cr">
+                                        
+                                <div class="cp entries" data-name="Entries">
+                                    <div class="cr entries---cr">
+                                        <div class="h entries---h"><span class="h_l entries---h_l"><?php esc_html_e( 'Entries', 'applicator' ); ?></span></div>
+                                        <div class="ct entries---ct">
+                                            <div class="ct_cr entries---ct_cr">
                 
                         <?php while ( have_posts() ) {
                             the_post();
@@ -154,9 +176,11 @@ if ( function_exists( 'get_header' ) ) {
                             // template-parts > entry-content.php
                             apl_entry_content();
                         } ?>
-                                
-                            </div>
-                        </div><!-- entries -->
+
+                                            </div>
+                                        </div><!-- ct -->
+                                    </div>
+                                </div><!-- entries -->
 
                         <?php // inc > template-parts > page-nav.php
                         applicator_page_nav();
@@ -166,6 +190,11 @@ if ( function_exists( 'get_header' ) ) {
                     }
 
                 } ?>
+                                
+                        </div>
+                        </div><!-- ct -->
+                    </div>
+                </div><!-- entry-md -->
                 
             </div>
         </main><!-- pri-content -->

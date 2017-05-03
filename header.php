@@ -11,7 +11,7 @@
     </head>
     <body <?php body_class(); ?>>
         
-        <div id="page" class="wbp site" data-name="Web Product">
+        <div id="page" class="cn wbp site" data-name="Web Product">
             <div class="cr wbp---cr">
                 
                 <div class="cn wbp-start" data-name="Web Product Start">
@@ -106,7 +106,7 @@
                             </div>
                         </div><!-- wbp-info -->
                         
-                        <div id="main-nav--main-header-aside" class="main-nav--main-header-aside" data-name="Main Nav - Main Header Aside">
+                        <div id="main-nav--main-header-aside" class="cp main-nav--main-header-aside" data-name="Main Nav - Main Header Aside">
                             <div class="cr mn-mha---cr">
                                 <div class="hr mn-mha---hr">
                                     <div class="hr_cr mn-mha---hr_cr">
@@ -138,7 +138,7 @@
                         // Custom Header | Customizer > Custom Header | inc > functions > custom-header.php
                         if ( has_header_image() ) { ?>
                         <div class="cp wbp-media-banner" data-name="Web Product Media Banner">
-                            <div class="wbp-media-banner--cr">
+                            <div class="cr wbp-media-banner--cr">
                                 <?php the_custom_header_markup(); ?>
                             </div>
                         </div>
@@ -147,5 +147,5 @@
                     </div>
                 </header><!-- main-header -->
                 
-                <div id="content" class="cn main-content site-content" data-name="Main Content">
-                    <section class="cr main-content---cr">
+                <section id="content" class="cn main-content site-content" data-name="Main Content">
+                    <div class="cr main-content---cr">

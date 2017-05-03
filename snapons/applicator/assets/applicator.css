@@ -871,6 +871,36 @@ $go-green: #12b32d;
 
 
 
+.wbp-media-banner--cr
+{
+    position: fixed;
+    left: 0;
+    top: 0;
+    
+    height: 100vh;
+    
+    background-color: white;
+}
+
+.wp-custom-header
+{
+    height: 100%;
+}
+
+.wp-custom-header img
+{
+    width: auto;
+    height: 100%;
+    
+    max-width: none;
+    
+    object-fit: cover;
+}
+
+
+
+
+
 /* ------------------------- Copyright Info */
 .wbp-copyright
 {
@@ -1103,6 +1133,11 @@ $go-green: #12b32d;
 .apl--applicator--main-menu.dom--unready .main-nav--main-header-aside
 {
     display: none;
+}
+
+.main-menu--active
+{
+    -webkit-tap-highlight-color: transparent;
 }
 
 .main-menu-func,

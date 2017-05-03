@@ -144,6 +144,8 @@
             }, 320, 'linear', function() {
                 location.hash = target;
             } );
+            
+            goStartNavDeactivate();
 
             return false;
         } );

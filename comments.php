@@ -2,35 +2,25 @@
 	return;
 } ?>
 
-<div id="comments" class="md comments---md comments-area" data-name="Comments Module">
-    <section class="md_cr comments---md_cr">
-        <h2 class="md_h comments---md_h"><span class="md_h_l comments---md_h_l"><?php esc_html_e( 'Comments Module', 'applicator' ); ?></span></h2>
-        <div class="md_ct comments---md_ct">
-            <div class="md_ct_cr comments---md_ct_cr">
+<div class="md comment-md comments-area" data-name="Comment Module">
+    <div class="cr comment-md_cr">
+        <div class="h comment-md---h"><span class="h_l comment-md---h_l"><?php esc_html_e( 'Comment Module', 'applicator' ); ?></span></div>
+        <div class="ct comment-md---ct">
+            <div class="ct_cr comment-md---ct_cr">
                 
-                <?php // Component: Comments ?>
-                <div class="cp comments" data-name="Comments">
+                <div id="comments" class="cp comments" data-name="Comments">
                     <div class="cr comments---cr">
                         <div class="hr comments---hr">
                             <div class="hr_cr comments---hr_cr">
-                                <div class="h comments---h">
-                                    <span class="h_l comments---h_l">Comments</span>
-                                </div>
-                                <aside class="aside comments--hr---aside" data-name="Comments Header Aside">
-                                    <div class="aside_cr comments--hr---aside_cr">
-                                        <div class="aside_h comments--hr---aside_h">
-                                            <span class="aside_h_l comments--hr---aside_h_l">Comments Header Aside</span>
-                                        </div>
-                                        <div class="aside_ct comments--hr---aside_ct">
-                                            <div class="aside_ct_cr comments--hr---aside_ct_cr">
-                                                
-                                                <?php // inc > tags > comments-actions-snippet.php
-                                                applicator_comments_actions_snippet(); ?>
-                                                
-                                            </div>
-                                        </div><!-- comments--hr---aside_ct -->
+                                <div class="h comments---h"><span class="h_l comments---h_l">Comments</span></div>
+                                <aside class="cn aside comments-hr-aside" data-name="Comments Header Aside" role="complementary">
+                                    <div class="cr comments-hr-aside---cr">
+                                    
+                                        <?php // inc > tags > comments-actions-snippet.php
+                                        applicator_comments_actions_snippet(); ?>
+                                    
                                     </div>
-                                </aside><!-- comments--hr---aside -->
+                                </aside><!-- comments-hr-aside -->
                             </div><!-- comments---hr_cr -->
                         </div>
                         <div class="ct comments---ct">
@@ -195,5 +185,5 @@
                 
             </div>
         </div>
-    </section>
-</div><!-- comments---md -->
+    </div>
+</div><!-- comment-md -->

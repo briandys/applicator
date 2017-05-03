@@ -1,9 +1,7 @@
-<?php
-//------------------------- Entries Navigation
-// index.php
+<?php // Entries Navigation | index.php
 
-if ( ! function_exists('applicator_entries_nav' ) ) :
-    function applicator_entries_nav() {
+if ( ! function_exists('apl_entries_nav' ) ) {
+    function apl_entries_nav() {
         
         $previous = get_adjacent_post( false, '', true );
         $next     = get_adjacent_post( false, '', false );
@@ -48,7 +46,7 @@ if ( ! function_exists('applicator_entries_nav' ) ) :
             $prev_label .= '</span>';
         $prev_label .= '</span>';
         
-        if ( ! is_attachment() ) : ?>
+        if ( ! is_attachment() ) { ?>
 
             <div class="nav entries-nav" role="navigation" aria-label="<?php esc_html_e( 'Entries Navigation', 'applicator' ); ?>">
                 <div class="entries-nav--cr">
@@ -68,6 +66,6 @@ if ( ! function_exists('applicator_entries_nav' ) ) :
                 </div>
             </div><!-- entries-nav -->
         
-        <?php endif;
+        <?php }
     }
-endif;
+}
