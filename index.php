@@ -142,7 +142,7 @@ if ( function_exists( 'get_header' ) ) {
                             <div class="cr post---cr">
                                 <div class="h post---h"><span class="h_l post---h_l"><?php esc_html_e( 'Entry', 'applicator' ); ?></span></div>
                                 <div class="ct entry---ct">
-                                    <div class="ct_cr entry---ct_cr">
+                                    <div class="ct_cr post---ct_cr">
                                 
                         <?php the_post();
 

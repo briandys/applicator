@@ -3,8 +3,8 @@
 //------------------------- Entry Actions
 // content.php
 
-if ( ! function_exists( 'applicator_entry_actions' ) ) :
-    function applicator_entry_actions() {
+if ( ! function_exists( 'apl_post_actions' ) ) :
+    function apl_post_actions() {
         
         if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) : ?>
         

@@ -18,6 +18,8 @@ require_once( get_template_directory() . '/inc/tags/entries-nav.php');
 require_once( get_template_directory() . '/inc/tags/entry-nav.php');
 require_once( get_template_directory() . '/inc/tags/breadcrumbs-nav.php');
 
+// Aside
+require_once( get_template_directory() . '/inc/tags/aside.php');
 
 // Entry
 require_once( get_template_directory() . '/inc/tags/entry-actions.php');
@@ -32,7 +34,6 @@ require_once( get_template_directory() . '/inc/tags/comments-nav.php');
 require_once( get_template_directory() . '/inc/tags/comment.php');
 require_once( get_template_directory() . '/inc/functions/comment-form.php');
 
-
 // Template Parts
 require_once( get_template_directory() . '/template-parts/entry-content.php');
 
@@ -41,7 +42,7 @@ require_once( get_template_directory() . '/template-parts/entry-content.php');
 require_once( get_template_directory() . '/inc/functions/html-body-class.php');
 require_once( get_template_directory() . '/inc/functions/custom-fonts.php');
 require_once( get_template_directory() . '/inc/functions/custom-visuals.php');
-require_once( get_template_directory() . '/inc/functions/aside.php');
+require_once( get_template_directory() . '/inc/functions/widgets-init.php');
 require_once( get_template_directory() . '/inc/functions/auto-copyright-year.php');
 require_once( get_template_directory() . '/inc/functions/show-more.php');
 require_once( get_template_directory() . '/inc/functions/pingback-header.php');

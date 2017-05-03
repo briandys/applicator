@@ -4,8 +4,8 @@
 // content.php
 // https://www.thewebtaylor.com/articles/wordpress-creating-breadcrumbs-without-a-plugin
 
-if ( ! function_exists( 'applicator_breadcrumbs_nav' ) ) :
-    function applicator_breadcrumbs_nav() {    
+if ( ! function_exists( 'apl_breadcrumbs_nav' ) ) :
+    function apl_breadcrumbs_nav() {    
         
         global $post;
 

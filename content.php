@@ -1,4 +1,4 @@
-<article <?php post_class( 'cp' ); ?>>
+<article <?php post_class( 'cp' ); ?> data-name="Post">
     <div class="cr post---cr">
 
         <header class="hr post---hr entry-header">
@@ -8,16 +8,16 @@
                 the_title( '<div class="obj post-title" data-name="Post Title"><h1 class="h post-title---h entry-title"><span class="h_l post-title---h_l"><a class="a post-title---a" href="' . esc_url( get_permalink() ) . '" rel="bookmark" title="' . get_the_title() . '"><span class="a_l post-title---a_l">', '</span></a></span></h1></div>' );
                 
                 // Hook: After Entry Heading | inc > hooks.php
-                applicator_hook_after_entry_heading();
+                apl_hook_after_entry_heading();
                 
                 // Entry Actions | inc > tags > entry-actions.php
-                applicator_entry_actions();
+                apl_post_actions();
 
                 // Breadcrumbs Navigation | inc > tags > breadcumbs-nav.php
-                applicator_breadcrumbs_nav();
+                apl_breadcrumbs_nav();
                 ?>
                 
-                <aside class="aside post-header-aside" data-name="Post Header Aside">
+                <div class="aside post-header-aside" data-name="Post Header Aside">
                     <div class="cr post-hr-as---cr">
                         <?php
                         // Post Banner Visual | inc > tags > post-banner-visual.php
@@ -39,43 +39,38 @@
                                         applicator_mod_timestamp();
 
                                         // Author
-                                        applicator_entry_author();
+                                        apl_post_author();
 
                                         // Categories
-                                        applicator_entry_categories();
+                                        apl_post_categories();
                                         ?>
                                     </div>
                                 </div><!-- ct -->
                             </div>
-                        </div><!-- post-meta -->
+                        </div><!-- Post Meta -->
                     </div>
-                </aside><!-- post-header-aside -->
-
-
-                
+                </div><!-- Post Header Aside -->
 
                 <?php // Hook: After Entry Meta
-                applicator_hook_after_entry_meta(); ?>
+                apl_hook_after_post_header_aside(); ?>
 
             </div>
-        </header><!-- post---hr -->
-
-        <div class="ct entry--ct entry-content">
-            <div class="ct_cr entry---ct_cr">
+        </header>
+        <div class="ct post---ct entry-content">
+            <div class="ct_cr post---ct_cr">
                 
-                
-                <?php if ( is_home() || is_singular() ) {
+                <?php
+                if ( is_home() || is_singular() ) {
                     the_content();
                 } else {
                    the_excerpt();
-                }; ?>
-
-
-                <?php // Entry Page Navigation
+                };
+                
+                // Entry Page Navigation
                 // inc > tags > entry-page-nav.php
                 applicator_entry_nav();
                 
-                // Sub-Entry
+                // sub-post
                 if ( is_page_template( 'page-templates/sub-pages.php' ) ) :
                     $parent = $post->ID;
                     $args = array(
@@ -89,7 +84,7 @@
 
                     if ( $the_query->have_posts() ) : ?>
 
-                        <div class="cp sub-entry" data-name="Sub-Entry">
+                        <div class="cp sub-post" data-name="Sub-Post">
                             <div class="cr sub-post---cr">
 
                                 <?php while ( $the_query->have_posts() ) :
@@ -98,20 +93,20 @@
                                 endwhile; ?>
 
                             </div>
-                        </div><!-- sub-entry -->
+                        </div><!-- Sub-Post -->
 
                     <?php endif;
                     wp_reset_postdata();
                 endif; ?>
 
             </div>
-        </div><!-- entry--ct -->
+        </div><!-- ct -->
 
         <?php if ( 'post' === get_post_type() ) {
             if ( get_the_tag_list('', '', '') ) { ?>
 
-        <div class="ft entry---ft">
-            <div class="ft_cr entry---ft_cr">
+        <div class="ft post---ft">
+            <div class="ft_cr post---ft_cr">
 
                 <div class="entry-meta">
                     <div class="cr entry-meta---cr">
@@ -124,10 +119,10 @@
                 </div><!-- entry-meta -->
 
             </div>
-        </div><!-- entry---ft -->
+        </div><!-- post---ft -->
 
         <?php }
         } ?>  
 
     </div>
-</article><!-- entry -->
+</article><!-- Post -->

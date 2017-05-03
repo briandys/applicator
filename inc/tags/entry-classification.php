@@ -2,9 +2,9 @@
 
 //------------------------- Entry Categories
 // content.php
-if ( ! function_exists( 'applicator_entry_categories' ) ) :
+if ( ! function_exists( 'apl_post_categories' ) ) :
     
-    function applicator_entry_categories() {        
+    function apl_post_categories() {        
         
         $categories_list = get_the_category_list();
         

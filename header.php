@@ -106,33 +106,14 @@
                             </div>
                         </div><!-- wbp-info -->
                         
-                        <div id="main-nav--main-header-aside" class="cp main-nav--main-header-aside" data-name="Main Nav - Main Header Aside">
-                            <div class="cr mn-mha---cr">
-                                <div class="hr mn-mha---hr">
-                                    <div class="hr_cr mn-mha---hr_cr">
-                                        <div class="h mn-mha---h"><span class="h_l mn-mha---h_l"><?php esc_html_e( 'Main Nav - Main Header Aside', 'applicator' ); ?></span></div>
-                                    </div>
-                                </div>
-                                <div class="ct mn-mha---ct">
-                                    <div class="ct_cr mn-mha---ct_cr">
+                        <?php
+                        // Main Navigation | inc > tags > main-navigation.php
+                        apl_func_main_nav();
 
-                                        <?php // Main Navigation | inc > tags > main-navigation.php
-                                        apl_func_main_nav();
-                                        
-                                        // Hook: After Main Navigation
-                                        apl_hook_after_main_nav();
-                                        
-                                        // Aside | inc > aside.php
-                                        apl_func_main_header_aside(); ?>
-                                        
-                                        
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- main-nav-/-main-header-aside -->
-
-                        <?php // Search | searchform.php
+                        // After Main Navigation Hook
+                        apl_hook_after_main_nav();
+                        
+                        // Search | searchform.php
                         get_search_form();
                         
                         // Custom Header | Customizer > Custom Header | inc > functions > custom-header.php
@@ -142,7 +123,11 @@
                                 <?php the_custom_header_markup(); ?>
                             </div>
                         </div>
-                        <?php } ?>
+                        <?php }
+                        
+                        // Aside | inc > aside.php
+                        apl_func_main_header_aside();
+                        ?>
                     
                     </div>
                 </header><!-- main-header -->

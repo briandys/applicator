@@ -3,8 +3,8 @@
 //------------------------- Author
 // content.php
 
-if ( ! function_exists( 'applicator_entry_author' ) ) :
-    function applicator_entry_author() {
+if ( ! function_exists( 'apl_post_author' ) ) :
+    function apl_post_author() {
         
         $entry_author = '<div class="entry-author">';
             $entry_author .= '<div class="entry-author--cr">';

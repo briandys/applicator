@@ -4,11 +4,12 @@
         $document = $( document ),
         $window = $( window ),
         
-        $aplApplicatorGoCtNav = $( '.apl--applicator--go-content-nav' ),
-        $aplApplicatorGoStartNav = $( '.apl--applicator--go-start-nav' ),
-        $aplApplicatorMainSearch = $( '.apl--applicator--main-search' ),
-        $aplApplicatorSubNav = $( '.apl--applicator--sub-nav' ),
-        $aplApplicatorMainMenu = $( '.apl--applicator--main-menu' );
+        $aplApplicatorGoCtNav = $html.closest( '.apl--applicator--go-content-nav' ),
+        $aplApplicatorGoStartNav = $html.closest( '.apl--applicator--go-start-nav' ),
+        $aplApplicatorMainSearch = $html.closest( '.apl--applicator--main-search' ),
+        $aplApplicatorSubNav = $html.closest( '.apl--applicator--sub-nav' ),
+        $aplApplicatorMainMenu = $html.closest( '.apl--applicator--main-menu' ),
+        $mainHrAsEnabled = $html.closest( '.main-header-aside--enabled' );
     
     
     
@@ -166,11 +167,13 @@
 			return;
 		}
         
+        if ( ! $mainHrAsEnabled.length ) {
+			return;
+		}
+        
         $cp.addClass( 'main-menu-func' );
         
         var mainMenuCtrlMu,
-            mainMenuCtrlHmu,
-            mainMenuCtrlCtMu,
             mainMenuTogObjMu,
             mainMenuTogBtnMu,
             mainMenuTogBtnLmu,
@@ -184,7 +187,6 @@
             $mainMenuTogBtnHideIco = $( aplDataMainMenu.mainMenuHideIco ),
             $mainMenuTogBtnShowIco = $( aplDataMainMenu.mainMenuShowIco ),
             
-            $mainMenuCtrlH = aplDataMainMenu.mainMenuCtrlH,
             $mainMenuShowL = aplDataMainMenu.mainMenuShowL,
             $mainMenuHideL = aplDataMainMenu.mainMenuHideL,
             
@@ -228,33 +230,17 @@
                 'class': 'cr main-menu-ctrl---cr'
             } ) );
             
-            mainMenuCtrlHmu = $( '<div />', {
-                'class': 'h main-menu-ctrl---h'
-            } ).append( $( '<span />', {
-                'class': 'h_l main-menu-ctrl---h_l',
-                'text': $mainMenuCtrlH
-            } ) );
-            
-            mainMenuCtrlCtMu = $( '<div />', {
-                'class': 'ct main-menu-ctrl---ct'
-            } ).append( $( '<div />', {
-                'class': 'ct_cr main-menu-ctrl---ct_cr'
-            } ) );
-            
             $cp
-            .find( $( '.mn-mha---hr_cr' ) )
+            .find( $( '.main-hr-as---hr_cr' ) )
                 .append( mainMenuCtrlMu )
             .find( $( '.main-menu-ctrl---cr' ) )
-                .append( mainMenuCtrlHmu )
-                .append( mainMenuCtrlCtMu )
-            .find( $( '.main-menu-ctrl---ct_cr' ) )
                 .append( mainMenuTogObjMu );
         }() );
         
         $mainMenuCtrl = $cp.find( '.main-menu-ctrl' );
-        $mainMenuCtrlCtCr = $mainMenuCtrl.find( '.main-menu-ctrl---ct_cr' );
+        $mainMenuCtrlCr = $mainMenuCtrl.find( '.main-menu-ctrl---cr' );
         
-        $mainMenuCtCr = $cp.find( '.mn-mha---ct_cr' );
+        $mnMhAsCtCr = $cp.find( '.main-hr-as---ct_cr' );
         $mainMenuTogBtn = $( '#main-menu-tog---b' );
         $mainMenuTogBtnL = $mainMenuTogBtn.find( $( '.main-menu-tog---b_l' ) );
         $mainMenuTogBtnLword = $mainMenuTogBtn.find( $( '.show-hide-main-menu---word' ) );
@@ -321,7 +307,7 @@
         
         // Deactivate upon interaction outside specified elements
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
-            if ( $cp.hasClass( mainMenuActCss ) && ( ! $( e.target ).closest( $mainMenuCtrlCtCr ).length && ! $( e.target ).closest( $mainMenuCtCr ).length ) ) {
+            if ( $cp.hasClass( mainMenuActCss ) && ( ! $( e.target ).closest( $mainMenuCtrlCr ).length && ! $( e.target ).closest( $mnMhAsCtCr ).length ) ) {
                 mainMenuDeactivate();
             }
         } );
@@ -337,7 +323,7 @@
         
     } // Main Menu | Main Nav - Main Header Aside
 
-    initMainMenu( $( '#main-nav--main-header-aside' ) );
+    initMainMenu( $( '#main-header-aside' ) );
     
     
     
@@ -366,8 +352,6 @@
 		}
         
         var mainSearchCtrlMu,
-            mainSearchCtrlHmu,
-            mainSearchCtrlCtMu,
             mainSearchTogObjMu,
             mainSearchTogBtnMu,
             mainSearchTogBtnLmu,
@@ -387,7 +371,6 @@
             $mainSearchSearchIco = $( aplDataArbitNav.mainSearchSearchIco ),
             $mainSearchDismissIco = $( aplDataArbitNav.mainSearchDismissIco ),
             
-            $mainSearchCtrlH = aplDataArbitNav.mainSearchCtrlH,
             $mainSearchShowL = aplDataArbitNav.mainSearchShowL,
             $mainSearchHideL = aplDataArbitNav.mainSearchHideL,
             
@@ -438,26 +421,10 @@
                 'class': 'cr main-search-ctrl---cr'
             } ) );
             
-            mainSearchCtrlHmu = $( '<div />', {
-                'class': 'h main-search-ctrl---h'
-            } ).append( $( '<span />', {
-                'class': 'h_l main-search-ctrl---h_l',
-                'text': $mainSearchCtrlH
-            } ) );
-            
-            mainSearchCtrlCtMu = $( '<div />', {
-                'class': 'ct main-search-ctrl---ct'
-            } ).append( $( '<div />', {
-                'class': 'ct_cr main-search-ctrl---ct_cr'
-            } ) );
-            
             $cp
             .find( $( '.search---hr_cr' ) )
                 .append( mainSearchCtrlMu )
             .find( $( '.main-search-ctrl---cr' ) )
-                .append( mainSearchCtrlHmu )
-                .append( mainSearchCtrlCtMu )
-            .find( $( '.main-search-ctrl---ct_cr' ) )
                 .append( mainSearchTogObjMu );
             
         }() );
