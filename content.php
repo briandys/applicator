@@ -33,7 +33,7 @@
                                     <div class="ct_cr">
                                         <?php
                                         // Published Timestamp
-                                        applicator_pub_timestamp();
+                                        apl_post_pub_mod();
 
                                         // Modified Timestamp
                                         applicator_mod_timestamp();
