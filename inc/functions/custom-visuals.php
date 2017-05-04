@@ -1,19 +1,16 @@
-<?php
+<?php // Custom Visuals
 
-//------------------------- Custom Visuals
-
-if ( ! function_exists( 'apl_custom_visuals_setup' ) ) {
-    function apl_custom_visuals_setup() {
-
+if ( ! function_exists( 'apl_func_custom_visuals_setup' ) ) {
+    function apl_func_custom_visuals_setup() {
         
-        //------------------------- Custom Header
+        // Custom Header
         add_theme_support( 'custom-header', apply_filters( 'applicator_custom_header_args', array(
             'default-image'      => get_parent_theme_file_uri( '/assets/img/default-media-banner-image.jpg' ),
             'default_text_color' => 'black',
             'width'              => 1280,
             'height'             => 800,
             'flex-height'        => true,
-            'wbp-head-callback'   => 'apl_header_style',
+            'wbp-head-callback'   => 'apl_func_header_style',
         ) ) );
 
         register_default_headers( array(
@@ -24,27 +21,22 @@ if ( ! function_exists( 'apl_custom_visuals_setup' ) ) {
             ),
         ) );
         
-        
-        //------------------------- Custom Logo
+        // Custom Logo
         add_theme_support( 'custom-logo', apply_filters( 'applicator_custom_logo_args', array(
             'width'       => 480,
             'height'      => 480,
         ) ) );
         
-        
-        //------------------------- Custom Background
+        // Custom Background
         add_theme_support( 'custom-background' );
     
     }
-    add_action( 'after_setup_theme', 'apl_custom_visuals_setup' );
+    add_action( 'after_setup_theme', 'apl_func_custom_visuals_setup' );
 }
 
-
-
-//------------------------- Custom Header Callback
-
-if ( ! function_exists( 'apl_header_style' ) ) {
-    function apl_header_style() {
+// Custom Header Callback
+if ( ! function_exists( 'apl_func_header_style' ) ) {
+    function apl_func_header_style() {
 
         $header_text_color = get_header_textcolor();
 
@@ -55,7 +47,7 @@ if ( ! function_exists( 'apl_header_style' ) ) {
         <style id="applicator-custom-visuals-styles" type="text/css">
 
         <?php // Customizer > Site Identity > Uncheck: Display Site Title and Description
-        if ( 'blank' === $header_text_color ) : ?>
+        if ( 'blank' === $header_text_color ) { ?>
 
             .wbp-name,
             .wbp-desc
@@ -66,7 +58,7 @@ if ( ! function_exists( 'apl_header_style' ) ) {
             }
 
         <?php // If the user has set a custom color for the text use that.
-        else : ?>
+        } else { ?>
 
             .wbp-name--a,
             .wbp-desc---a_l
@@ -74,7 +66,7 @@ if ( ! function_exists( 'apl_header_style' ) ) {
                 color: #<?php echo esc_attr( $header_text_color ); ?>;
             }
 
-        <?php endif; ?>
+        <?php } ?>
 
         </style>
 

@@ -7,38 +7,45 @@ if ( ! function_exists('apl_post_nav' ) ) {
         
         if ( is_singular() && ! is_singular( 'attachment' ) ) {
             
-            $entry_page_nav_start = '<div class="nav entry-page-nav" role="navigation" aria-label="' . esc_html__( 'Entry Page Navigation', 'applicator' ) . '">';
-                $entry_page_nav_start .= '<div class="entry-page-nav--cr">';
-                    $entry_page_nav_start .= '<div class="h nav--h entry-page-nav--h">';
-                        $entry_page_nav_start .= '<span class="entry-page-nav--h-l">';
-                            $entry_page_nav_start .= esc_html__( 'Entry Page Navigation', 'applicator' );
-                        $entry_page_nav_start .= '</span>';
-                    $entry_page_nav_start .= '</div>';
-
-                $entry_page_nav_end = '</div>';
-            $entry_page_nav_end .= '</div>';
-
+            $post_nav_start_mu = '<div class="nav %3$s" role="navigation" aria-label="%1$s" data-name="Post Navigation">';
+                $post_nav_start_mu .= '<div class="cr %3$s---cr">';
+                    $post_nav_start_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h_l">%2$s</span></div>';
+                $post_nav_end_mu = '</div>';
+            $post_nav_end_mu .= '</div>';
+            
+            $post_nav_start = sprintf( $post_nav_start_mu,
+                esc_attr__( 'Post Navigation', 'applicator' ),
+                esc_html__( 'Post Navigation', 'applicator' ),
+                'post-nav'
+            );
+            
+            $post_pagi_navi_a_l_mu = '<span class="a_l post-pagi-navi---a_l"><span class="word page---word">%2$s</span> <span class="num page-num---num">%1$s</span></span></span>';
+            
+            $post_pagi_navi_a_l = sprintf( $post_pagi_navi_a_l_mu,
+                '%',
+                esc_html__( 'Page', 'applicator' )
+            );
+            
             wp_link_pages( array(
-                'before'          => $entry_page_nav_start,
-                'after'          => $entry_page_nav_end,
-                'pagelink'       => '<span class="pred-l">Page</span> <span class="subj-l">' . esc_html__( '%', 'applicator' ) . '</span></span>',
-                'separator'      => '<span class="comma-sep">' . esc_html__( ', ', 'applicator' ) . '</span>',
-                'link_before'   => '<span class="a-l">',
-                'link_after'    => '</span>'
+                'before'          => $post_nav_start,
+                'after'          => $post_nav_end_mu,
+                'pagelink'       => $post_pagi_navi_a_l,
+                'separator'      => '<span class="sep comma---sep">, </span>'
             ) );
         
         } elseif ( is_singular( 'attachment' ) ) {
             
-            $entry_pub_in = '<span class="entry-published-in--a-l">';
-                $entry_pub_in .= '<span class="entry-published-in--pred-l">' . esc_html__( 'Published in', 'applicator' ) . '</span> ';
-                $entry_pub_in .= '<span class="entry-published-in--subj-l">%title</span>';
-            $entry_pub_in .= '</span>';
+            $post_published_in_mu = '<span class="a_l post-published-in---a_l">';
+                $post_published_in_mu .= '<span class="word post-title---word">%title</span>';
+            $post_published_in_mu .= '</span>'; ?>
             
-            the_post_navigation( array(
-                'prev_text' => $entry_pub_in,
+            <span class="line posted-in---line">Posted in</span>
+            
+            <?php the_post_navigation( array(
+                'prev_text' => $post_published_in_mu,
+                'screen_reader_text' => __( 'Post Navigation' )
             ) );
         
         }
-
     }
 }

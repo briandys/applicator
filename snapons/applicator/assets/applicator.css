@@ -1,62 +1,16 @@
 /* Mobile First!!! */
 
-
-
-
-/* ------------------------- Visually Hidden ------------------------- */
-/* For Accessibility */
-
-.visuallyhidden,
-
-.main-header-aside---h,
-.main-footer-aside--h,
-
-.widget_nav_menu .widget---h,
-
-.sub-nav-toggle--a--word--l,
-.nav--h,
-.axns--h,
-.entry.attachment .post-navigation .screen-reader-text,
-.comment--h,
-.axns--h,
-.comments--h,
-
-
-
-
-.commenter-comment--label,
-
-
-
-.applicator--article .entry-edit--a--entry--word-l,
-.applicator--article .entry-timestamp--pred-l,
-.applicator--article .go-comments--a--comments--words-l,
-.applicator--article .entry-author--pred-l,
-.applicator--article .mod-timestamp,
-.applicator--article .entry-header .write-comment--a
-{
-    position: absolute;
-    margin: -1px;
-    padding: 0;
-    width: 1px;
-    height: 1px;
-    
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    
-    border: 0;
-    word-wrap: normal;
-}
-
 /* ------------------------- Visually Hidden */
 
+/* Headings */
 .entry-md---h,
 .entries---h,
-
 .entry---h,
-
 .page-nav---h,
 .entry-nav---h,
+.error404 .main-ct---h,
+.crumbs-nav---h,
+.post-admin-axns---h,
 
 /* Go to Content Nav */
 .go-ct-nav---h,
@@ -101,39 +55,19 @@
 
 
 
+
 html
 {
     /* Typography */
     font-family: 'Noto Sans', sans-serif;
+    text-rendering: geometricPrecision;
 }
 
 
 
 
-/* ------------------------- Reset Margins ------------------------- */
-/*
-h1, h2, h3, h4, h5, h6,
-p
-{
-    margin: 0;
-}
-*/
 
-
-
-/* ------------------------- Reset Lists ------------------------- */
-.reset-list,
-.comments--grp
-{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-
-
-
-/* ------------------------- Highlight ------------------------- */
+/* ------------------------- Highlight
 ::-moz-selection {
     background: #b3d4fc;
     text-shadow: none;
@@ -143,7 +77,7 @@ p
     background: #b3d4fc;
     text-shadow: none;
 }
-
+ */
 
 
 
@@ -928,10 +862,19 @@ $go-green: #12b32d;
 {
     text-align: center;
     
+    font-size: .75rem;
+}
+
+.wbp-copyright--name---a,
+.wbp-copyright---g_l
+{
     color: gray;
     color: hsla(0, 0%, 0%, .5);
-    
-    font-size: .75rem;
+}
+
+.wbp-copyright--name---a
+{
+    text-decoration: none;
 }
 
 .wbp-copyright--name---word
@@ -1706,10 +1649,4 @@ $go-green: #12b32d;
 .main-nav---cr
 {
     background-color: white;
-}
-
-
-.post-title---val
-{
-    word-break: break-all;
 }

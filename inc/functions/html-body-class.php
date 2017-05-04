@@ -1,6 +1,7 @@
-<?php //------------------------- HTML Classes
-if ( ! function_exists( 'apl_html_class' ) ) {
-    function apl_html_class() {
+<?php // HTML Classes
+
+if ( ! function_exists( 'apl_func_html_class' ) ) {
+    function apl_func_html_class() {
 		
         global $is_lynx, $is_gecko, $is_IE, $is_macIE, $is_winIE, $is_edge, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
         global $post;
@@ -13,7 +14,7 @@ if ( ! function_exists( 'apl_html_class' ) ) {
         echo ' ' . 'applicator-theme--default';
 
         
-        //------------------------- View
+        // View
         if ( is_front_page() ) {
         // if ( is_front_page() && ! is_home() )
         // if ( is_front_page() && 'posts' !== get_option( 'show_on_front' ) )
@@ -23,7 +24,7 @@ if ( ! function_exists( 'apl_html_class' ) ) {
         }
         
         
-        //------------------------- Browser Detection
+        // Browser Detection
         if ( $is_chrome ) {
             echo ' ' . 'browser--chrome';
         } elseif ( $is_gecko ) {
@@ -52,7 +53,7 @@ if ( ! function_exists( 'apl_html_class' ) ) {
             echo ' ' . 'browser--unlisted';
         }
         
-        //------------------------- Mobile Device Detection
+        // Mobile Device Detection
         if ( wp_is_mobile() ) {
             echo ' ' . 'device--mobile';
         } else {
@@ -60,7 +61,7 @@ if ( ! function_exists( 'apl_html_class' ) ) {
         }
         
         
-        //------------------------- Theme Detection
+        // Theme Detection
         if ( ! is_child_theme() ){
             echo ' ' . 'theme--parent';
         } else {
@@ -68,7 +69,7 @@ if ( ! function_exists( 'apl_html_class' ) ) {
         }
         
         
-        //------------------------- Menu Type Detection
+        // Menu Type Detection
         // If Default Menu or Custom Menu is used as Main Navigation
         if ( ! has_nav_menu( 'main-nav' ) ) {
             echo ' ' . 'main-nav--default';
@@ -84,7 +85,7 @@ if ( ! function_exists( 'apl_html_class' ) ) {
         }
         
         
-        //------------------------- Non-Singular Pages
+        // Non-Singular Pages
         if ( ! is_singular() ) {
             echo ' ' . 'view--category hfeed';
         } else {
@@ -92,7 +93,7 @@ if ( ! function_exists( 'apl_html_class' ) ) {
         }
         
         
-        //------------------------- Aside Status
+        // Aside Status
         // Enable or display Sidebars via Appearance > Widgets
             
         $main_header_aside = 'main-header-aside';
@@ -132,13 +133,13 @@ if ( ! function_exists( 'apl_html_class' ) ) {
         }
         
         
-        //------------------------- In Customizer
+        // In Customizer
         if ( is_customize_preview() ) {
             echo ' ' . 'view--customizer';
         }
         
         
-        //------------------------- Customizer: Custom Header
+        // Customizer: Custom Header
         if ( has_header_image() ) {
             echo ' ' . 'wbp-media-banner' . $on;
         } else {
@@ -146,7 +147,7 @@ if ( ! function_exists( 'apl_html_class' ) ) {
         }
         
         
-        //------------------------- Customizer: Custom Logo
+        // Customizer: Custom Logo
         if ( has_custom_logo() ) {
             echo ' ' . 'wbp-logo' . $on;
         } else {
@@ -175,7 +176,7 @@ if ( ! function_exists( 'apl_html_class' ) ) {
         }
         
         
-        //------------------------- Admin Bar
+        // Admin Bar
         if ( is_admin_bar_showing() ) {
             echo ' ' . 'wp-admin-bar' . $on;
         } else {
@@ -183,17 +184,17 @@ if ( ! function_exists( 'apl_html_class' ) ) {
         }
     
     }
-    add_action( 'apl_hook_html_class', 'apl_html_class');
+    add_action( 'apl_hook_html_class', 'apl_func_html_class');
 }
 
 
-//------------------------- Body Class
-if ( ! function_exists( 'apl_body_class' ) ) {
-    function apl_body_class( $classes ) {
+// Body Class
+if ( ! function_exists( 'apl_func_body_class' ) ) {
+    function apl_func_body_class( $classes ) {
 
         $classes[] = 'body';
         return $classes;
     
     }
-    add_filter( 'body_class', 'apl_body_class' );
+    add_filter( 'body_class', 'apl_func_body_class' );
 }

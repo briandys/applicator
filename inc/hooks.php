@@ -1,6 +1,4 @@
-<?php
-
-//------------------------- Hooks
+<?php // Hooks
 
 // header.php
 function apl_hook_html_class() {
@@ -13,8 +11,8 @@ function apl_hook_after_main_nav() {
 }
 
 // content.php
-function apl_hook_after_entry_heading() {
-    do_action( 'apl_hook_after_entry_heading' );
+function apl_hook_after_post_heading() {
+    do_action( 'apl_hook_after_post_heading' );
 }
 
 // content.php

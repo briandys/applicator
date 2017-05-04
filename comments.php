@@ -2,13 +2,13 @@
 	return;
 } ?>
 
-<div class="md comment-md comments-area" data-name="Comment Module">
+<div class="md comment-md" data-name="Comment Module">
     <div class="cr comment-md_cr">
         <div class="h comment-md---h"><span class="h_l comment-md---h_l"><?php esc_html_e( 'Comment Module', 'applicator' ); ?></span></div>
         <div class="ct comment-md---ct">
             <div class="ct_cr comment-md---ct_cr">
                 
-                <div id="comments" class="cp comments" data-name="Comments">
+                <div id="comments" class="cp comments comments-area" data-name="Comments">
                     <div class="cr comments---cr">
                         <div class="hr comments---hr">
                             <div class="hr_cr comments---hr_cr">

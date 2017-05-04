@@ -21,9 +21,9 @@ if ( ! function_exists( 'applicator_comment' ) ) {
 
         <<?php echo $tag ?> id="comment-<?php comment_ID() ?>" <?php comment_class( 'item cp comment' .  $comment_has_children_class ) ?> data-name="Comment">
             
-        <?php if ( 'div' != $args['style'] ) : ?>
+        <?php if ( 'div' != $args['style'] ) { ?>
             <article class="cr comment---cr">
-        <?php endif; ?>
+        <?php } ?>
                 
                 <div class="hr comment---hr">
                     <div class="hr_cr comment---hr_cr">
@@ -218,9 +218,9 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                 </div><!-- comment---fr -->
                 <?php  } ?>
                     
-            <?php if ( 'div' != $args['style'] ) : ?>
+            <?php if ( 'div' != $args['style'] ) { ?>
             </article>
-            <?php endif; ?>
+            <?php } ?>
             
     <?php }
 }

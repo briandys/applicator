@@ -1,15 +1,12 @@
-<?php
-
-//------------------------- Entry Categories
-// content.php
-if ( ! function_exists( 'apl_post_categories' ) ) :
+<?php // Entry Categories | content.php
+if ( ! function_exists( 'apl_post_categories' ) ) {
     
     function apl_post_categories() {        
         
         $categories_list = get_the_category_list();
         
         if ( 'post' === get_post_type() ) {
-            if ( $categories_list && applicator_categorized_blog() ) {
+            if ( $categories_list && apl_func_categorized_blog() ) {
                 
                 $categories = '<div class="entry-classification categories">';
                     $categories .= '<div class="entry-classification--cr categories--cr">';
@@ -26,15 +23,13 @@ if ( ! function_exists( 'apl_post_categories' ) ) :
             }
         }
     }
+}
 
-endif;
 
-
-//------------------------- Entry Tags
-// content.php
-if ( ! function_exists( 'apl_post_tags' ) ) :
+// Entry Tags | content.php
+if ( ! function_exists( 'apl_func_post_tags' ) ) {
     
-    function apl_post_tags() {        
+    function apl_func_post_tags() {        
         
         $tags_list = get_the_tag_list('<ul class="grp entry-classification--grp tags--grp"><li class="item tags--item">', '</li><li class="item tags--item">', '</li></ul>');
         
@@ -56,12 +51,11 @@ if ( ! function_exists( 'apl_post_tags' ) ) :
             }
         }  
     }
-
-endif;
+}
 
 
 // Determine whether site has more than one category.
-function applicator_categorized_blog() {
+function apl_func_categorized_blog() {
 	
     $category_count = get_transient( 'applicator_categories' );
     
@@ -84,11 +78,11 @@ function applicator_categorized_blog() {
 }
 
 
-function applicator_category_transient_flusher() {
+function apl_func_category_transient_flusher() {
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return;
 	}
 	delete_transient( 'applicator_categories' );
 }
-add_action( 'edit_category', 'applicator_category_transient_flusher' );
-add_action( 'save_post',     'applicator_category_transient_flusher' );
+add_action( 'edit_category', 'apl_func_category_transient_flusher' );
+add_action( 'save_post',     'apl_func_category_transient_flusher' );

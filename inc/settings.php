@@ -1,25 +1,24 @@
 <?php
 
-//------------------------- Applicator only works in WordPress 4.7 or later.
+// Applicator only works in WordPress 4.7 or later.
 if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
     require get_template_directory() . '/inc/functions/back-compatibility.php';
 	return;
 }
 
 
-//------------------------- Sets up theme defaults and registers support for various WordPress features.
-function applicator_setup() {
+// Sets up theme defaults and registers support for various WordPress features.
+function apl_func_setup() {
     
-    
-    //------------------------- Make theme available for translation.
+    // Make theme available for translation.
 	load_theme_textdomain( 'applicator' );
 
 	
-    //------------------------- Add default posts and comments RSS feed links to head.
+    // Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
 
 	
-    //------------------------- Let WordPress manage the document title.
+    // Let WordPress manage the document title.
 	add_theme_support( 'title-tag' );
 	
     
@@ -27,7 +26,7 @@ function applicator_setup() {
 	$GLOBALS['content_width'] = 1920;
     
 	
-    //------------------------- Enable support for Post Thumbnails on posts and pages.
+    // Enable support for Post Thumbnails on posts and pages.
     add_theme_support( 'post-thumbnails' );
     
     add_image_size( 'applicator-entry-banner-image-large', 1920, 1920, true );
@@ -36,7 +35,7 @@ function applicator_setup() {
     add_image_size( 'applicator-image-thumbnail-hd', 640, 360, true );
     
     
-    //------------------------- Sets the default sizes of images in Admin > Settings
+    // Sets the default sizes of images in Admin > Settings
     update_option('thumbnail_size_w', 640);
     update_option('thumbnail_size_h', 640);
     update_option('thumbnail_crop', 1);
@@ -48,11 +47,11 @@ function applicator_setup() {
     update_option('large_size_h', 1920);
     
     
-    //------------------------- Sets the default link of images to None
+    // Sets the default link of images to None
     update_option('image_default_link_type','none');
 
 	
-    //------------------------- Switch default core markup for search form, comment form, and comments to output valid HTML5.
+    // Switch default core markup for search form, comment form, and comments to output valid HTML5.
 	add_theme_support( 'html5', array(
 		'search-form',
 		'comment-form',
@@ -62,7 +61,7 @@ function applicator_setup() {
 	) );
     
     
-    //------------------------- Enable support for Post Formats.
+    // Enable support for Post Formats.
 	add_theme_support( 'post-formats', array(
 		'aside',
 		'image',
@@ -74,17 +73,17 @@ function applicator_setup() {
 	) );
 
 	
-    //------------------------- Add theme support for selective refresh for widgets.
+    // Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
 
 }
 
-add_action( 'after_setup_theme', 'applicator_setup' );
+add_action( 'after_setup_theme', 'apl_func_setup' );
 
 
-//------------------------- Add the size as one of the options in Admin
-if ( ! function_exists( 'applicator_custom_image_sizes_choose' ) ) :
-    function applicator_custom_image_sizes_choose( $sizes ) {
+// Add the size as one of the options in Admin
+if ( ! function_exists( 'apl_func_custom_image_sizes_choose' ) ) {
+    function apl_func_custom_image_sizes_choose( $sizes ) {
         
         $custom_sizes = array(
             'applicator-image-thumbnail-hd' => 'Thumbnail (16:9)'
@@ -92,5 +91,5 @@ if ( ! function_exists( 'applicator_custom_image_sizes_choose' ) ) :
         return array_merge( $sizes, $custom_sizes );
     
     }
-    add_filter( 'image_size_names_choose', 'applicator_custom_image_sizes_choose' );
-endif;
+    add_filter( 'image_size_names_choose', 'apl_func_custom_image_sizes_choose' );
+}

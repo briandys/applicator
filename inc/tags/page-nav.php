@@ -42,7 +42,7 @@ if ( ! function_exists( 'applicator_page_nav' ) ) {
             
             'before_page_number'  => sprintf( $page_num_navi_start_mu,
                                        esc_html__( 'Page', 'applicator' ),
-                                       'page-num-navi'
+                                       'page-pagi-navi'
                                        ),
             
             'after_page_number'   => $page_num_navi_end_mu,

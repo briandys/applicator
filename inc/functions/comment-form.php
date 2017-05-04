@@ -1,7 +1,7 @@
 <?php // Comment Form | comments.php
 
-if ( ! function_exists( 'applicator_comment_form' ) ) {
-    function applicator_comment_form( $fields ) {
+if ( ! function_exists( 'apl_func_comment_form' ) ) {
+    function apl_func_comment_form( $fields ) {
         
         $commenter = wp_get_current_commenter();
         $req = get_option( 'require_name_email' );
@@ -97,5 +97,5 @@ if ( ! function_exists( 'applicator_comment_form' ) ) {
         return $fields;
     
     }
-    add_filter( 'comment_form_default_fields', 'applicator_comment_form' );
+    add_filter( 'comment_form_default_fields', 'apl_func_comment_form' );
 }

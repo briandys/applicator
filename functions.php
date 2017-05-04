@@ -43,7 +43,6 @@ require_once( get_template_directory() . '/inc/functions/html-body-class.php');
 require_once( get_template_directory() . '/inc/functions/custom-fonts.php');
 require_once( get_template_directory() . '/inc/functions/custom-visuals.php');
 require_once( get_template_directory() . '/inc/functions/widgets-init.php');
-require_once( get_template_directory() . '/inc/functions/auto-copyright-year.php');
 require_once( get_template_directory() . '/inc/functions/show-more.php');
 require_once( get_template_directory() . '/inc/functions/pingback-header.php');
 require_once( get_template_directory() . '/inc/functions/icons.php');

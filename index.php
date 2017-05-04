@@ -100,7 +100,9 @@ if ( function_exists( 'get_header' ) ) {
             );
 
         } else {
-            echo esc_html__( 'Other', 'applicator' );
+            printf ( $main_ct_hr_mu,
+                esc_html__( 'Other', 'applicator' )
+            );
         }
 
         // Main Content Header Aside

@@ -1,6 +1,6 @@
 <?php
 
-function applicator_include_svg_icons() {
+function apl_func_include_svg_icons() {
         
     $svg_icons = get_parent_theme_file_path( '/assets/img/svg-icons.svg' );
 
@@ -9,7 +9,7 @@ function applicator_include_svg_icons() {
     }
 
 }
-add_action( 'wp_footer', 'applicator_include_svg_icons', 9999 );
+add_action( 'wp_footer', 'apl_func_include_svg_icons', 9999 );
 
 
 /**
@@ -24,7 +24,7 @@ add_action( 'wp_footer', 'applicator_include_svg_icons', 9999 );
  * }
  * @return string SVG markup.
  */
-function applicator_get_svg( $args = array() ) {
+function apl_func_get_svg( $args = array() ) {
 	// Make sure $args are an array.
 	if ( empty( $args ) ) {
 		return __( 'Please define default parameters in the form of an array.', 'applicator' );
@@ -57,9 +57,9 @@ function applicator_get_svg( $args = array() ) {
 	 *
 	 * However, child themes can use the title and description to add information to non-decorative SVG icons to improve accessibility.
 	 *
-	 * Example 1 with title: <?php echo applicator_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'textdomain' ) ) ); ?>
+	 * Example 1 with title: <?php echo apl_func_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'textdomain' ) ) ); ?>
 	 *
-	 * Example 2 with title and description: <?php echo applicator_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'textdomain' ), 'desc' => __( 'This is the description', 'textdomain' ) ) ); ?>
+	 * Example 2 with title and description: <?php echo apl_func_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'textdomain' ), 'desc' => __( 'This is the description', 'textdomain' ) ) ); ?>
 	 *
 	 * See https://www.paciellogroup.com/blog/2013/12/using-aria-enhance-svg-accessibility/.
 	 */
@@ -104,26 +104,3 @@ function applicator_get_svg( $args = array() ) {
 
 	return $svg;
 }
-
-
-/**
- * Add dropdown icon if menu item has children.
- *
- * @param  string $title The menu item's title.
- * @param  object $item  The current menu item.
- * @param  array  $args  An array of wp_nav_menu() arguments.
- * @param  int    $depth Depth of menu item. Used for padding.
- * @return string $title The menu item's title with dropdown icon.
- */
-function applicator_dropdown_icon_to_menu_link( $title, $item, $args, $depth ) {
-	if ( 'main-menu' === $args->theme_location ) {
-		foreach ( $item->classes as $value ) {
-			if ( 'menu-item-has-children' === $value || 'page_item_has_children' === $value ) {
-				$title = $title . applicator_get_svg( array( 'icon' => 'arrow-right--icon' ) );
-			}
-		}
-	}
-
-	return $title;
-}
-add_filter( 'nav_menu_item_title', 'applicator_dropdown_icon_to_menu_link', 10, 4 );

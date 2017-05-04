@@ -1,10 +1,7 @@
-<?php
+<?php // Author | content.php
 
-//------------------------- Author
-// content.php
-
-if ( ! function_exists( 'apl_post_author' ) ) :
-    function apl_post_author() {
+if ( ! function_exists( 'apl_func_post_author' ) ) {
+    function apl_func_post_author() {
         
         $entry_author = '<div class="entry-author">';
             $entry_author .= '<div class="entry-author--cr">';
@@ -40,5 +37,5 @@ if ( ! function_exists( 'apl_post_author' ) ) :
             __( 'Published by ', 'applicator')
         );
         
+    }
 }
-endif;

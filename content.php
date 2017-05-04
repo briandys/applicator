@@ -8,24 +8,20 @@
                 the_title( '<div class="obj post-title" data-name="Post Title"><h1 class="h post-title---h entry-title"><span class="h_l post-title---h_l"><a class="a post-title---a" href="' . esc_url( get_permalink() ) . '" rel="bookmark" title="' . get_the_title() . '"><span class="a_l post-title---a_l">', '</span></a></span></h1></div>' );
                 
                 // Hook: After Entry Heading | inc > hooks.php
-                apl_hook_after_entry_heading();
+                apl_hook_after_post_heading();
                 
                 // Entry Actions | inc > tags > entry-actions.php
-                apl_post_actions();
+                apl_func_post_actions();
 
                 // Breadcrumbs Navigation | inc > tags > breadcumbs-nav.php
-                apl_breadcrumbs_nav();
+                apl_func_breadcrumbs_nav();
                 ?>
                 
                 <div class="aside post-header-aside" data-name="Post Header Aside">
                     <div class="cr post-hr-as---cr">
-                        <?php
-                        // Post Banner Visual | inc > tags > post-banner-visual.php
-                        apl_post_banner_visual();
-
-                        // Comments Actions Snippet | inc > tags > comments-actions-snippet.php
-                        applicator_comments_actions_snippet();
-                        ?>
+                        <?php // Post Banner Visual | inc > tags > post-banner-visual.php
+                        apl_post_banner_visual(); ?>
+                        
                         <div class="cp post-meta entry-meta" data-name="Post Meta">
                             <div class="cr post-meta---cr">
                                 <div class="h post-meta---h"><span class="h_l post-meta---h_l"><?php esc_html_e( 'Post Meta', 'applicator' ); ?></span></div>
@@ -36,7 +32,7 @@
                                         apl_post_pub_mod();
 
                                         // Author
-                                        apl_post_author();
+                                        apl_func_post_author();
 
                                         // Categories
                                         apl_post_categories();
@@ -45,6 +41,10 @@
                                 </div><!-- ct -->
                             </div>
                         </div><!-- Post Meta -->
+
+                        <?php // Comments Actions Snippet | inc > tags > comments-actions-snippet.php
+                        applicator_comments_actions_snippet();
+                        ?>
                     </div>
                 </div><!-- Post Header Aside -->
 
@@ -68,7 +68,7 @@
                 apl_post_nav();
                 
                 // sub-post
-                if ( is_page_template( 'page-templates/sub-pages.php' ) ) :
+                if ( is_page_template( 'page-templates/sub-pages.php' ) ) {
                     $parent = $post->ID;
                     $args = array(
                         'post_type'     => 'page',
@@ -79,22 +79,22 @@
 
                     $the_query = new WP_Query( $args );
 
-                    if ( $the_query->have_posts() ) : ?>
+                    if ( $the_query->have_posts() ) { ?>
 
                         <div class="cp sub-post" data-name="Sub-Post">
                             <div class="cr sub-post---cr">
 
-                                <?php while ( $the_query->have_posts() ) :
-                                    $the_query->the_post();
-                                    get_template_part( 'content', get_post_format() );
-                                endwhile; ?>
+                        <?php while ( $the_query->have_posts() ) {
+                            $the_query->the_post();
+                            get_template_part( 'content', get_post_format() );
+                        } ?>
 
                             </div>
                         </div><!-- Sub-Post -->
 
-                    <?php endif;
+                    <?php }
                     wp_reset_postdata();
-                endif; ?>
+                } ?>
 
             </div>
         </div><!-- ct -->
@@ -104,18 +104,21 @@
 
         <footer class="fr post---fr">
             <div class="fr_cr post---fr_cr">
-
-                <div class="entry-meta">
-                    <div class="cr entry-meta---cr">
-
-                        <?php // Tags
-                        apl_post_tags(); ?>
-
+                
+                <div class="cp post-meta entry-meta" data-name="Post Meta">
+                    <div class="cr post-meta---cr">
+                        <div class="h post-meta---h"><span class="h_l post-meta---h_l"><?php esc_html_e( 'Post Meta', 'applicator' ); ?></span></div>
+                        <div class="ct post-meta---ct">
+                            <div class="ct_cr post-meta---ct_cr">
+                                <?php // Tags
+                                apl_func_post_tags(); ?>
+                            </div>
+                        </div><!-- ct -->
                     </div>
-                </div><!-- entry-meta -->
+                </div><!-- Post Meta -->
 
             </div>
-        </footer><!-- post---fr -->
+        </footer><!-- Post Footer -->
 
         <?php }
         } ?>  

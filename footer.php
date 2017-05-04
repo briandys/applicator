@@ -1,5 +1,5 @@
                     </div>
-                </section><!-- main-content -->
+                </section><!-- Main Content -->
 
                 <footer id="colophon" class="cn footer main-footer site-footer" data-name="Main Footer" role="contentinfo">
                     <div class="cr main-footer---cr">
@@ -12,21 +12,22 @@
                                 <div class="g_l wbp-copyright---g_l">
                                     
                                     <?php // Web Product Copyright Markup
-                                    $wbp_copyright_mu = '<span class="line wbp-copyright--name---line"><span class="word wbp-copyright--name---word">%1$s</span> <span class="word wbp-copyright--symbol---word">%2$s</span> <span class="word wbp-copyright--year---word">%3$s</span>.</span> <span class="line wbp-copyright--tm---line">%4$s</span>';
+                                    $wbp_copyright_mu = '<span class="line wbp-copyright--name---line"><a class="a wbp-copyright--name---a" href="%5$s" rel="home" title="%1$s"><span class="a_l wbp-copyright--name---a_l"><span class="word wbp-name---word">%1$s</span></span></a> <span class="word copyright-symbol---word">%2$s</span> <span class="word copyright-year---word">%3$s</span>.</span> <span class="line wbp-copyright--tm---line">%4$s</span>';
                                     
                                     printf( $wbp_copyright_mu,
                                         get_bloginfo( 'name' ),
                                         esc_html__( '&copy;', 'applicator' ),
                                         date( 'Y' ),
-                                        esc_html__( 'Olrayt reserved&trade;.', 'applicator' )
+                                        esc_html__( 'Olrayt reserved&trade;.', 'applicator' ),
+                                        esc_url( home_url( '/' ) )
                                     );
                                     ?>
                                 </div>
                             </div>
-                        </div><!-- wbp-copyright -->
+                        </div><!-- Web Product Copyright -->
 
                     </div>
-                </footer><!-- main-footer -->
+                </footer><!-- Main Footer -->
 
                 <div class="cn wbp-end" data-name="Web Product End">
                     <div class="cr wbp-end---cr">
