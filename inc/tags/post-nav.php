@@ -1,11 +1,11 @@
-<?php
-//------------------------- Entry Page Navigation
-// index.php
+<?php // Post Navigation | index.php
+// Created via <!--nextpage-->
+// For Attachment Page, show which Post it belongs
 
-if ( ! function_exists('apl_post_nav' ) ) :
+if ( ! function_exists('apl_post_nav' ) ) {
     function apl_post_nav( $args = '' ) {
         
-        if ( is_singular( 'post' ) ) {
+        if ( is_singular() && ! is_singular( 'attachment' ) ) {
             
             $entry_page_nav_start = '<div class="nav entry-page-nav" role="navigation" aria-label="' . esc_html__( 'Entry Page Navigation', 'applicator' ) . '">';
                 $entry_page_nav_start .= '<div class="entry-page-nav--cr">';
@@ -41,4 +41,4 @@ if ( ! function_exists('apl_post_nav' ) ) :
         }
 
     }
-endif;
+}

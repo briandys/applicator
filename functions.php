@@ -14,7 +14,7 @@ require_once( get_template_directory() . '/inc/scripts.php');
 // Navigations
 require_once( get_template_directory() . '/inc/tags/main-nav.php');
 require_once( get_template_directory() . '/inc/tags/page-nav.php');
-require_once( get_template_directory() . '/inc/tags/entries-nav.php');
+require_once( get_template_directory() . '/inc/tags/entry-nav.php');
 require_once( get_template_directory() . '/inc/tags/post-nav.php');
 require_once( get_template_directory() . '/inc/tags/breadcrumbs-nav.php');
 

@@ -91,7 +91,7 @@
                                     $wbp_desc_obj_mu = '<div class="obj wbp-desc" data-name="Web Product Description">';
                                         $wbp_desc_obj_mu .= '<div class="g wbp-desc---g">';
                                             $wbp_desc_obj_mu .= '<span class="g_l wbp-desc---g_l">';
-                                                $wbp_desc_obj_mu .= '<a class="a wbp-desc---a" href="%2$s" rel="home" title="%1$s"><span class="a_l wbp-desc---a_l"><span class="word wbp-desc---word">%1$s</span></span></a>';
+                                                $wbp_desc_obj_mu .= '<a class="a wbp-desc---a" href="%2$s" rel="home" title="%1$s"><span class="a_l wbp-desc---a_l"><span class="word desc---word">%1$s</span></span></a>';
                                             $wbp_desc_obj_mu .= '</span>';
                                         $wbp_desc_obj_mu .= '</div>';
                                     $wbp_desc_obj_mu .= '</div>';

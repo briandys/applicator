@@ -108,7 +108,6 @@
                 <div class="entry-meta">
                     <div class="cr entry-meta---cr">
 
-
                         <?php // Tags
                         apl_post_tags(); ?>
 

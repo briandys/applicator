@@ -53,6 +53,11 @@
 .entry-md---h,
 .entries---h,
 
+.entry---h,
+
+.page-nav---h,
+.entry-nav---h,
+
 /* Go to Content Nav */
 .go-ct-nav---h,
 .go-content-nav--inactive,
@@ -843,6 +848,7 @@ $go-green: #12b32d;
 
 .wbp-desc---a_l
 {
+    color: hsla( 100, 100%, 100%, .75 );
     font-size: .75rem;
 }
 
@@ -1700,4 +1706,10 @@ $go-green: #12b32d;
 .main-nav---cr
 {
     background-color: white;
+}
+
+
+.post-title---val
+{
+    word-break: break-all;
 }
