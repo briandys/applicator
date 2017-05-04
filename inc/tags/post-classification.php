@@ -32,9 +32,9 @@ endif;
 
 //------------------------- Entry Tags
 // content.php
-if ( ! function_exists( 'applicator_entry_tags' ) ) :
+if ( ! function_exists( 'apl_post_tags' ) ) :
     
-    function applicator_entry_tags() {        
+    function apl_post_tags() {        
         
         $tags_list = get_the_tag_list('<ul class="grp entry-classification--grp tags--grp"><li class="item tags--item">', '</li><li class="item tags--item">', '</li></ul>');
         

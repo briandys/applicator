@@ -5,50 +5,42 @@ if ( function_exists( 'get_header' ) ) {
     die();
 }
 
-        $main_ct_hr_mu = '<div class="hr main-content---hr main-content--%2$s---hr" data-name="Main Content Header">';
+        $main_ct_hr_mu = '<div class="hr main-content---hr" data-name="Main Content Header">';
             $main_ct_hr_mu .= '<div class="hr_cr main-ct---hr_cr">';
                 $main_ct_hr_mu .= '<h2 class="h main-ct---h"><span class="h_l main-ct---h_l">%1$s</span></h2>';
 
         if ( is_front_page() ) {
             printf ( $main_ct_hr_mu,
-                esc_html__( 'Home', 'applicator' ),
-                'home'
+                esc_html__( 'Home', 'applicator' )
             );
         } elseif ( is_home() ) {
             printf ( $main_ct_hr_mu,
-                esc_html__( 'Home', 'applicator' ),
-                'entries'
+                esc_html__( 'Home', 'applicator' )
             );
         } elseif ( is_category() ) {
             printf ( $main_ct_hr_mu,
-                '<span class="prop category---prop">' . esc_html__( 'Category', 'applicator' ) . '</span><span class="sep colon---sep">:</span> <span class="val category-name---val">' . single_cat_title( '', false ) . '</span>',
-                'category'
+                '<span class="prop category---prop">' . esc_html__( 'Category', 'applicator' ) . '</span><span class="sep colon---sep">:</span> <span class="val category-name---val">' . single_cat_title( '', false ) . '</span>'
             );
         } elseif ( is_tag() ) {
             printf ( $main_ct_hr_mu,
-                '<span class="prop tag---prop">' . esc_html__( 'Tag', 'applicator' ) . '</span><span class="sep colon---sep">:</span> <span class="val tag-name---val">' . single_tag_title( '', false ) . '</span>',
-                'category'
+                '<span class="prop tag---prop">' . esc_html__( 'Tag', 'applicator' ) . '</span><span class="sep colon---sep">:</span> <span class="val tag-name---val">' . single_tag_title( '', false ) . '</span>'
             );
         } elseif ( is_archive() && ! is_author() ) {
             if ( is_day() ) {
                 printf ( $main_ct_hr_mu,
-                    '<span class="prop daily-archive---prop"><span class="word daily---word">' . esc_html__( 'Daily', 'applicator' ) . '</span> <span class="word archive---word">' . esc_html__( 'Archive', 'applicator' ) . '</span></span><span class="sep colon---sep">:</span> <span class="val timestamp-date---val">' . get_the_date( 'j M Y') . '</span>',
-                    'daily-archive'
+                    '<span class="prop daily-archive---prop"><span class="word daily---word">' . esc_html__( 'Daily', 'applicator' ) . '</span> <span class="word archive---word">' . esc_html__( 'Archive', 'applicator' ) . '</span></span><span class="sep colon---sep">:</span> <span class="val date---val">' . get_the_date( 'j M Y') . '</span>'
                 );
             } elseif ( is_month() ) {
                 printf ( $main_ct_hr_mu,
-                    '<span class="prop monthly-archive---prop"><span class="word monthly---word">' . esc_html__( 'Monthly', 'applicator' ) . '</span> <span class="word archive---word">' . esc_html__( 'Archive', 'applicator' ) . '</span></span><span class="sep colon---sep">:</span> <span class="val timestamp-month-year---val">' . get_the_date( 'F Y') . '</span>',
-                    'monthly-archive'
+                    '<span class="prop monthly-archive---prop"><span class="word monthly---word">' . esc_html__( 'Monthly', 'applicator' ) . '</span> <span class="word archive---word">' . esc_html__( 'Archive', 'applicator' ) . '</span></span><span class="sep colon---sep">:</span> <span class="val month-year---val">' . get_the_date( 'F Y') . '</span>'
                 );
             } elseif ( is_year() ) {
                 printf ( $main_ct_hr_mu,
-                    '<span class="prop yearly-archive---prop"><span class="word yearly---word">' . esc_html__( 'Yearly', 'applicator' ) . '</span> <span class="word archive---word">' . esc_html__( 'Archive', 'applicator' ) . '</span></span><span class="sep colon---sep">:</span> <span class="val timestamp-year---val">' . get_the_date( 'Y') . '</span>',
-                    'yearly-archive'
+                    '<span class="prop yearly-archive---prop"><span class="word yearly---word">' . esc_html__( 'Yearly', 'applicator' ) . '</span> <span class="word archive---word">' . esc_html__( 'Archive', 'applicator' ) . '</span></span><span class="sep colon---sep">:</span> <span class="val year---val">' . get_the_date( 'Y') . '</span>'
                 );
             } else {
                 printf ( $main_ct_hr_mu,
-                    esc_html__( 'Archive', 'applicator' ),
-                    'archive'
+                    esc_html__( 'Archive', 'applicator' )
                 );
             }
         } elseif ( is_search() ) {
@@ -60,7 +52,7 @@ if ( function_exists( 'get_header' ) ) {
             $entrySearchKey = get_search_query();
             $entrySearchCount = $entrySearch->post_count; ?>
 
-            <div class="hr main-content---hr main-content--search-results---hr" data-name="Main Content Header">
+            <div class="hr main-content---hr" data-name="Main Content Header">
                 <div class="hr_cr main-content---hr_cr">
                     <h2 class="h main-content---h"><span class="h_l main-content---h_l">
                     <?php
@@ -87,29 +79,24 @@ if ( function_exists( 'get_header' ) ) {
         } elseif ( is_singular() ) {
             if ( is_single() ) {
                 printf ( $main_ct_hr_mu,
-                    esc_html__( 'Single', 'applicator' ),
-                    'entry'
+                    esc_html__( 'Single', 'applicator' )
                 );
             } elseif ( is_page() ) {
                 printf ( $main_ct_hr_mu,
-                    esc_html__( 'Page', 'applicator' ),
-                    'page'
+                    esc_html__( 'Page', 'applicator' )
                 );
             } elseif ( is_attachment() ) {
                 printf ( $main_ct_hr_mu,
-                    esc_html__( 'Attachment', 'applicator' ),
-                    'attachment'
+                    esc_html__( 'Attachment', 'applicator' )
                 );
             } else {
                 printf ( $main_ct_hr_mu,
-                    esc_html__( 'Other', 'applicator' ),
-                    'other'
+                    esc_html__( 'Other', 'applicator' )
                 );
             }
         } elseif ( is_author() ) {
             printf ( $main_ct_hr_mu,
-                '<span class="prop all-entries-posted-by---prop">' . esc_html__( 'All Entries Posted by', 'applicator' ) . '</span><span class="sep colon---sep">:</span> <span class="val author-name---val">' . get_the_author() . '</span>',
-                'category'
+                '<span class="prop all-entries-posted-by---prop">' . esc_html__( 'All Entries Posted by', 'applicator' ) . '</span><span class="sep colon---sep">:</span> <span class="val author-name---val">' . get_the_author() . '</span>'
             );
 
         } else {
@@ -122,7 +109,7 @@ if ( function_exists( 'get_header' ) ) {
     </div>
 </div><!-- main-content---hr -->
 
-<div class="ct main-content---ct" data-name="Main Content - Content">
+<div class="ct main-content---ct">
     <div class="ct_cr main-content---ct_cr">
         
         <main id="main" class="cn pri-content site-main" role="main" data-name="Primary Content">

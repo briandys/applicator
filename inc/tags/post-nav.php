@@ -2,8 +2,8 @@
 //------------------------- Entry Page Navigation
 // index.php
 
-if ( ! function_exists('applicator_entry_nav' ) ) :
-    function applicator_entry_nav( $args = '' ) {
+if ( ! function_exists('apl_post_nav' ) ) :
+    function apl_post_nav( $args = '' ) {
         
         if ( is_singular( 'post' ) ) {
             

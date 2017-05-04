@@ -28,15 +28,12 @@
                         ?>
                         <div class="cp post-meta entry-meta" data-name="Post Meta">
                             <div class="cr post-meta---cr">
-                                <div class="h post-meta---h"><span class="h_l post-meta---h_l">Post Meta</span></div>
-                                <div class="ct">
-                                    <div class="ct_cr">
+                                <div class="h post-meta---h"><span class="h_l post-meta---h_l"><?php esc_html_e( 'Post Meta', 'applicator' ); ?></span></div>
+                                <div class="ct post-meta---ct">
+                                    <div class="ct_cr post-meta---ct_cr">
                                         <?php
-                                        // Published Timestamp
+                                        // Published / Modified Timestamp
                                         apl_post_pub_mod();
-
-                                        // Modified Timestamp
-                                        applicator_mod_timestamp();
 
                                         // Author
                                         apl_post_author();
@@ -68,7 +65,7 @@
                 
                 // Entry Page Navigation
                 // inc > tags > entry-page-nav.php
-                applicator_entry_nav();
+                apl_post_nav();
                 
                 // sub-post
                 if ( is_page_template( 'page-templates/sub-pages.php' ) ) :
@@ -105,21 +102,21 @@
         <?php if ( 'post' === get_post_type() ) {
             if ( get_the_tag_list('', '', '') ) { ?>
 
-        <div class="ft post---ft">
-            <div class="ft_cr post---ft_cr">
+        <footer class="fr post---fr">
+            <div class="fr_cr post---fr_cr">
 
                 <div class="entry-meta">
                     <div class="cr entry-meta---cr">
 
 
                         <?php // Tags
-                        applicator_entry_tags(); ?>
+                        apl_post_tags(); ?>
 
                     </div>
                 </div><!-- entry-meta -->
 
             </div>
-        </div><!-- post---ft -->
+        </footer><!-- post---fr -->
 
         <?php }
         } ?>  

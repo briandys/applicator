@@ -15,17 +15,17 @@ require_once( get_template_directory() . '/inc/scripts.php');
 require_once( get_template_directory() . '/inc/tags/main-nav.php');
 require_once( get_template_directory() . '/inc/tags/page-nav.php');
 require_once( get_template_directory() . '/inc/tags/entries-nav.php');
-require_once( get_template_directory() . '/inc/tags/entry-nav.php');
+require_once( get_template_directory() . '/inc/tags/post-nav.php');
 require_once( get_template_directory() . '/inc/tags/breadcrumbs-nav.php');
 
 // Aside
 require_once( get_template_directory() . '/inc/tags/aside.php');
 
 // Entry
-require_once( get_template_directory() . '/inc/tags/entry-actions.php');
-require_once( get_template_directory() . '/inc/tags/entry-timestamp.php');
-require_once( get_template_directory() . '/inc/tags/entry-author.php');
-require_once( get_template_directory() . '/inc/tags/entry-classification.php');
+require_once( get_template_directory() . '/inc/tags/post-actions.php');
+require_once( get_template_directory() . '/inc/tags/post-timestamp.php');
+require_once( get_template_directory() . '/inc/tags/post-author.php');
+require_once( get_template_directory() . '/inc/tags/post-classification.php');
 require_once( get_template_directory() . '/inc/tags/post-banner-visual.php');
 
 // Comments
