@@ -11,7 +11,7 @@
                 apl_hook_after_post_heading();
                 
                 // Entry Actions | inc > tags > entry-actions.php
-                apl_func_post_actions();
+                apl_func_post_admin_actions();
 
                 // Breadcrumbs Navigation | inc > tags > breadcumbs-nav.php
                 apl_func_breadcrumbs_nav();
@@ -20,7 +20,7 @@
                 <div class="aside post-header-aside" data-name="Post Header Aside">
                     <div class="cr post-hr-as---cr">
                         <?php // Post Banner Visual | inc > tags > post-banner-visual.php
-                        apl_post_banner_visual(); ?>
+                        apl_func_post_banner_visual(); ?>
                         
                         <div class="cp post-meta entry-meta" data-name="Post Meta">
                             <div class="cr post-meta---cr">
@@ -29,13 +29,13 @@
                                     <div class="ct_cr post-meta---ct_cr">
                                         <?php
                                         // Published / Modified Timestamp
-                                        apl_post_pub_mod();
+                                        apl_post_pub_mod_ts();
 
                                         // Author
                                         apl_func_post_author();
 
                                         // Categories
-                                        apl_post_categories();
+                                        apl_func_post_categories();
                                         ?>
                                     </div>
                                 </div><!-- ct -->

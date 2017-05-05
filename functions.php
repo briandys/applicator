@@ -35,7 +35,7 @@ require_once( get_template_directory() . '/inc/tags/comment.php');
 require_once( get_template_directory() . '/inc/functions/comment-form.php');
 
 // Template Parts
-require_once( get_template_directory() . '/template-parts/entry-content.php');
+require_once( get_template_directory() . '/template-parts/post-content.php');
 
 
 // Functions

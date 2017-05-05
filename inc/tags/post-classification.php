@@ -1,23 +1,27 @@
 <?php // Entry Categories | content.php
-if ( ! function_exists( 'apl_post_categories' ) ) {
+if ( ! function_exists( 'apl_func_post_categories' ) ) {
     
-    function apl_post_categories() {        
+    function apl_func_post_categories() {        
         
         $categories_list = get_the_category_list();
         
         if ( 'post' === get_post_type() ) {
             if ( $categories_list && apl_func_categorized_blog() ) {
                 
-                $categories = '<div class="entry-classification categories">';
-                    $categories .= '<div class="entry-classification--cr categories--cr">';
-                        $categories .= '<div class="h entry-classification--h categories--h" title="%2$s"><span class="h-l">%2$s</span></div>';
-                        $categories .= '%1$s';
-                    $categories .= '</div>';
-                $categories .= '</div>';
+                $post_class_mu = '<div class="cp %3$s">';
+                    $post_class_mu .= '<div class="cr %4$s---cr">';
+                        $post_class_mu .= '<div class="h %4$s---h"><span class="h-l %4$s---h_l">%1$s</span></div>';
+                        $post_class_mu .= '<div class="ct %4$s---ct">';
+                            $post_class_mu .= '<div class="ct_cr %4$s---ct_cr">%2$s</div>';
+                        $post_class_mu .= '</div>';
+                    $post_class_mu .= '</div>';
+                $post_class_mu .= '</div>';
                 
-                printf( $categories,
+                printf( $post_class_mu,
+                    esc_html__( 'Post Classification', 'applicator' ),
                     $categories_list,
-                    __( 'Categories', 'applicator')
+                    'post-classification',
+                    'post-class'
                 );
             
             }

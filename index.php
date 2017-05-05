@@ -4,7 +4,6 @@ if ( function_exists( 'get_header' ) ) {
 } else {
     die();
 }
-
         $main_ct_hr_mu = '<div class="hr main-content---hr" data-name="Main Content Header">';
             $main_ct_hr_mu .= '<div class="hr_cr main-ct---hr_cr">';
                 $main_ct_hr_mu .= '<h2 class="h main-ct---h"><span class="h_l main-ct---h_l">%1$s</span></h2>';
@@ -141,8 +140,8 @@ if ( function_exists( 'get_header' ) ) {
                                 
                         <?php the_post();
 
-                        // template-parts > entry-content.php
-                        apl_entry_content();
+                        // template-parts > post-content.php
+                        apl_func_post_content();
                 
                         // comments.php
                         comments_template(); ?>
@@ -177,8 +176,8 @@ if ( function_exists( 'get_header' ) ) {
                         <?php while ( have_posts() ) {
                             the_post();
                         
-                            // template-parts > entry-content.php
-                            apl_entry_content();
+                            // template-parts > post-content.php
+                            apl_func_post_content();
                         } ?>
 
                                             </div>
