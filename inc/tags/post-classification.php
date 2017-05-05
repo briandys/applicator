@@ -1,4 +1,14 @@
-<?php // Entry Categories | content.php
+<?php // Post Categories | content.php
+
+$GLOBALS['post_cat_tag_mu'] = '<div class="cp %3$s">';
+    $GLOBALS['post_cat_tag_mu'] .= '<div class="cr %4$s---cr">';
+        $GLOBALS['post_cat_tag_mu'] .= '<div class="h %4$s---h"><span class="h-l %4$s---h_l">%1$s</span></div>';
+        $GLOBALS['post_cat_tag_mu'] .= '<div class="ct %4$s---ct">';
+            $GLOBALS['post_cat_tag_mu'] .= '<div class="ct_cr %4$s---ct_cr">%2$s</div>';
+        $GLOBALS['post_cat_tag_mu'] .= '</div>';
+    $GLOBALS['post_cat_tag_mu'] .= '</div>';
+$GLOBALS['post_cat_tag_mu'] .= '</div>';
+
 if ( ! function_exists( 'apl_func_post_categories' ) ) {
     
     function apl_func_post_categories() {        
@@ -8,20 +18,11 @@ if ( ! function_exists( 'apl_func_post_categories' ) ) {
         if ( 'post' === get_post_type() ) {
             if ( $categories_list && apl_func_categorized_blog() ) {
                 
-                $post_class_mu = '<div class="cp %3$s">';
-                    $post_class_mu .= '<div class="cr %4$s---cr">';
-                        $post_class_mu .= '<div class="h %4$s---h"><span class="h-l %4$s---h_l">%1$s</span></div>';
-                        $post_class_mu .= '<div class="ct %4$s---ct">';
-                            $post_class_mu .= '<div class="ct_cr %4$s---ct_cr">%2$s</div>';
-                        $post_class_mu .= '</div>';
-                    $post_class_mu .= '</div>';
-                $post_class_mu .= '</div>';
-                
-                printf( $post_class_mu,
-                    esc_html__( 'Post Classification', 'applicator' ),
+                printf( $GLOBALS['post_cat_tag_mu'],
+                    esc_html__( 'Post Categories', 'applicator' ),
                     $categories_list,
-                    'post-classification',
-                    'post-class'
+                    'post-category',
+                    'post-cat'
                 );
             
             }
@@ -29,34 +30,27 @@ if ( ! function_exists( 'apl_func_post_categories' ) ) {
     }
 }
 
-
-// Entry Tags | content.php
+// Post Tags | content.php
 if ( ! function_exists( 'apl_func_post_tags' ) ) {
     
     function apl_func_post_tags() {        
         
-        $tags_list = get_the_tag_list('<ul class="grp entry-classification--grp tags--grp"><li class="item tags--item">', '</li><li class="item tags--item">', '</li></ul>');
+        $tags_list = get_the_tag_list('<ul class="grp post-tag---grp"><li class="item obj post-tag-item">', '</li><li class="item obj post-tag-item">', '</li></ul>');
         
         if ( 'post' === get_post_type() ) {
             if ( $tags_list ) {
                 
-                $tags = '<div class="entry-classification tags">';
-                    $tags .= '<div class="entry-classification--cr tags--cr">';
-                        $tags .= '<div class="h entry-classification--h tags--h" title="%2$s"><span class="h-l">%2$s</span></div>';
-                        $tags .= '%1$s';
-                    $tags .= '</div>';
-                $tags .= '</div>';
-                
-                printf( $tags,
+                printf( $GLOBALS['post_cat_tag_mu'],
+                    esc_html__( 'Post Tags', 'applicator' ),
                     $tags_list,
-                    __( 'Tags', 'applicator')
+                    'post-tag',
+                    'post-tag'
                 );
             
             }
         }  
     }
 }
-
 
 // Determine whether site has more than one category.
 function apl_func_categorized_blog() {
