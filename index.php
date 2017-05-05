@@ -18,11 +18,11 @@ if ( function_exists( 'get_header' ) ) {
             );
         } elseif ( is_category() ) {
             printf ( $main_ct_hr_mu,
-                '<span class="prop category---prop">' . esc_html__( 'Category', 'applicator' ) . '</span><span class="sep colon---sep">:</span> <span class="val category-name---val">' . single_cat_title( '', false ) . '</span>'
+                '<span class="prop category---prop"><span class="word category---word">' . esc_html__( 'Category', 'applicator' ) . '</span><span class="sep colon---sep">:</span></span> <span class="val category-name---val"><span class="word category-name---word">' . single_cat_title( '', false ) . '</span></span>'
             );
         } elseif ( is_tag() ) {
             printf ( $main_ct_hr_mu,
-                '<span class="prop tag---prop">' . esc_html__( 'Tag', 'applicator' ) . '</span><span class="sep colon---sep">:</span> <span class="val tag-name---val">' . single_tag_title( '', false ) . '</span>'
+                '<span class="prop tag---prop"><span class="word tag---word">' . esc_html__( 'Tag', 'applicator' ) . '</span><span class="sep colon---sep">:</span></span> <span class="val tag-name---val"><span class="word tag-name---word">' . single_tag_title( '', false ) . '</span></span>'
             );
         } elseif ( is_archive() && ! is_author() ) {
             if ( is_day() ) {

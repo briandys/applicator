@@ -1,13 +1,17 @@
 <?php // Post Categories | content.php
 
-$GLOBALS['post_cat_tag_mu'] = '<div class="cp %3$s">';
-    $GLOBALS['post_cat_tag_mu'] .= '<div class="cr %4$s---cr">';
-        $GLOBALS['post_cat_tag_mu'] .= '<div class="h %4$s---h"><span class="h-l %4$s---h_l">%1$s</span></div>';
-        $GLOBALS['post_cat_tag_mu'] .= '<div class="ct %4$s---ct">';
-            $GLOBALS['post_cat_tag_mu'] .= '<div class="ct_cr %4$s---ct_cr">%2$s</div>';
-        $GLOBALS['post_cat_tag_mu'] .= '</div>';
-    $GLOBALS['post_cat_tag_mu'] .= '</div>';
-$GLOBALS['post_cat_tag_mu'] .= '</div>';
+$GLOBALS['post_classification_mu'] = '<div class="cp %3$s">';
+    $GLOBALS['post_classification_mu'] .= '<div class="cr %4$s---cr">';
+        $GLOBALS['post_classification_mu'] .= '<div class="h %4$s---h"><span class="h-l %4$s---h_l">%1$s</span></div>';
+        $GLOBALS['post_classification_mu'] .= '<div class="ct %4$s---ct">';
+            $GLOBALS['post_classification_mu'] .= '<div class="ct_cr %4$s---ct_cr">%5$s %2$s</div>';
+        $GLOBALS['post_classification_mu'] .= '</div>';
+    $GLOBALS['post_classification_mu'] .= '</div>';
+$GLOBALS['post_classification_mu'] .= '</div>';
+
+$GLOBALS['post_classification_lbl_mu'] = '<span class="obj %2$s" data-name="Post %1$s Label">';
+    $GLOBALS['post_classification_lbl_mu'] .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l"><span class="word %5$s---word">%4$s</span><span class="sep colon---sep">:</span></span></span>';
+$GLOBALS['post_classification_lbl_mu'] .= '</span>';
 
 if ( ! function_exists( 'apl_func_post_categories' ) ) {
     
@@ -18,11 +22,20 @@ if ( ! function_exists( 'apl_func_post_categories' ) ) {
         if ( 'post' === get_post_type() ) {
             if ( $categories_list && apl_func_categorized_blog() ) {
                 
-                printf( $GLOBALS['post_cat_tag_mu'],
-                    esc_html__( 'Post Categories', 'applicator' ),
+                $post_cat_lbl = sprintf( $GLOBALS['post_classification_lbl_mu'],
+                    'Category',
+                    'post-category-label',
+                    'post-cat-lbl',
+                    esc_html__( 'Categories', 'applicator' ),
+                    'categories'
+                );
+                
+                printf( $GLOBALS['post_classification_mu'],
+                    esc_html__( 'Post Category Classification', 'applicator' ),
                     $categories_list,
-                    'post-category',
-                    'post-cat'
+                    'post-category-classification',
+                    'post-cat-class',
+                    $post_cat_lbl
                 );
             
             }
@@ -35,16 +48,25 @@ if ( ! function_exists( 'apl_func_post_tags' ) ) {
     
     function apl_func_post_tags() {        
         
-        $tags_list = get_the_tag_list('<ul class="grp post-tag---grp"><li class="item obj post-tag-item">', '</li><li class="item obj post-tag-item">', '</li></ul>');
+        $tags_list = get_the_tag_list('<ul class="grp post-tag---grp"><li class="item obj post-tag">', '</li><li class="item obj post-tag">', '</li></ul>');
         
         if ( 'post' === get_post_type() ) {
             if ( $tags_list ) {
                 
-                printf( $GLOBALS['post_cat_tag_mu'],
-                    esc_html__( 'Post Tags', 'applicator' ),
+                $post_tag_lbl = sprintf( $GLOBALS['post_classification_lbl_mu'],
+                    'Tag',
+                    'post-tag-label',
+                    'post-tag-lbl',
+                    esc_html__( 'Tags', 'applicator' ),
+                    'tags'
+                );
+                
+                printf( $GLOBALS['post_classification_mu'],
+                    esc_html__( 'Post Tag Classification', 'applicator' ),
                     $tags_list,
-                    'post-tag',
-                    'post-tag'
+                    'post-tag-classification',
+                    'post-tag-class',
+                    $post_tag_lbl
                 );
             
             }
