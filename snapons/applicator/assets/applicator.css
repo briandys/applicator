@@ -10,14 +10,24 @@
 .entry-nav---h,
 .error404 .main-ct---h,
 .crumbs-nav---h,
+
 .post-admin-axns---h,
-.post-auth---h,
+.post-pub-auth---h,
+.post-author-name-obj---h,
 .post-meta---h,
 .post-pub-mod-info---h,
 .post-pub---h,
 .post-mod---h,
 .post-cat-class---h,
 .post-tag-class---h,
+.post-nav---h,
+.parent-post---h,
+
+.coms-acts-snip---h,
+.comment-md---h,
+.comment---h,
+.com-axns---h,
+.com-admin-axns---h,
 
 /* Go to Content Nav */
 .go-ct-nav---h,
@@ -821,6 +831,7 @@ $go-green: #12b32d;
 
 
 
+/*
 .wbp-media-banner--cr
 {
     position: fixed;
@@ -846,6 +857,7 @@ $go-green: #12b32d;
     
     object-fit: cover;
 }
+*/
 
 
 

@@ -44,7 +44,10 @@ if ( ! function_exists( 'apl_func_breadcrumbs_nav' ) ) {
                     $anc = array_reverse( $anc );
                     
                     // Parent page loop
-                    if ( !isset( $parents ) ) $parents = null;
+                    if ( !isset( $parents ) ) {
+                        $parents = null;
+                    }
+                    
                     foreach ( $anc as $ancestor ) {
                         
                         $crumbs_navi_start_mu = '<li class="item obj navi %1$s %1$s--%2$s" data-name="Breadcrumbs Navigation Item">';
@@ -66,11 +69,6 @@ if ( ! function_exists( 'apl_func_breadcrumbs_nav' ) ) {
                     // Current page
                     echo $crumbs_navi;
                     
-                } else {
-                    
-                    // Just display current page if not parents
-                    echo $crumbs_navi;
-
                 }
             
                 echo $crumbs_nav_end_mu;

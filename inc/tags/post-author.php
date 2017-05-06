@@ -3,61 +3,93 @@
 if ( ! function_exists( 'apl_func_post_author' ) ) {
     function apl_func_post_author() {
         
-        $post_author_mu = '<div class="cp %2$s" data-name="Post Author">';
+        // Markup
+        $post_pub_author_mu = '<div class="cp %2$s" data-name="%1$s">';
+            $post_pub_author_mu .= '<div class="cr %3$s---cr">';
+                $post_pub_author_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h_l">%4$s</span></div>';
+                $post_pub_author_mu .= '<div class="ct %3$s---ct">';
+                        $post_pub_author_mu .= '<div class="ct_cr %3$s---ct_cr">%5$s %6$s</div>';
+                $post_pub_author_mu .= '</div><!-- ct -->';
+            $post_pub_author_mu .= '</div>';
+        $post_pub_author_mu .= '</div>';
+        
+        // Markup
+        $post_author_mu = '<div class="cp %2$s" data-name="%1$s">';
             $post_author_mu .= '<div class="cr %3$s---cr">';
-                $post_author_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h_l">%1$s</span></div>';
+                $post_author_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h_l">%4$s</span></div>';
                 $post_author_mu .= '<div class="ct %3$s---ct">';
-                        $post_author_mu .= '<div class="ct_cr %3$s---ct_cr">%4$s %5$s %6$s</div>';
+                        $post_author_mu .= '<div class="ct_cr %3$s---ct_cr">%5$s %6$s</div>';
                 $post_author_mu .= '</div><!-- ct -->';
             $post_author_mu .= '</div>';
-        $post_author_mu .= '</div><!-- Post Author -->';
+        $post_author_mu .= '</div>';
         
-        $pub_lbl_mu = '<span class="obj %2$s" data-name="Published by Label">';
-            $pub_lbl_mu .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l">%1$s</span></span>';
-        $pub_lbl_mu .= '</span>';
+        // Markup
+        $post_pub_lbl_mu = '<span class="obj %2$s" data-name="%1$s">';
+            $post_pub_lbl_mu .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l">%4$s</span></span>';
+        $post_pub_lbl_mu .= '</span>';
         
-        $post_auth_name_mu = '<span class="obj %2$s" title="%1$s" data-name="Post Author Name">';
-            $post_auth_name_mu .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l"><a class="a %3$s---a" href="%4$s">';
-            $post_auth_name_mu .= '<span class="a_l %3$s---a_l">%1$s</span></a></span></span>';
-        $post_auth_name_mu .= '</span>';
-        
-        $post_auth_avatar_mu = '<span class="obj %2$s" title="%1$s" data-name="Post Author Avatar">';
-            $post_auth_avatar_mu .= '<a class="a %3$s---a" href="%4$"><span class="a_l %3$s---a_l"><span class="ee--img %3$s---ee--img">%5$s</span></span></a>';
-        $post_auth_avatar_mu .= '</span>';
-        
-        $pub_lbl = sprintf( $pub_lbl_mu,
-            esc_html__( 'Published by', 'applicator' ),
-            'published-by-label',
-            'pub-lbl'
+        // Content
+        $post_pub_lbl = sprintf( $post_pub_lbl_mu,
+            'Published By Label Object',
+            'published-by-label-obj',
+            'pub-lbl-obj',
+            esc_html__( 'Published by', 'applicator' )
         );
         
-        $post_auth_name = sprintf( $post_auth_name_mu,
+        // Markup
+        $post_pub_auth_name_mu = '<span class="obj %2$s" title="%4$s" data-name="%1$s">';
+            $post_pub_auth_name_mu .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l"><a class="a %3$s---a" href="%6$s">';
+            $post_pub_auth_name_mu .= '<span class="a_l %3$s---a_l"><span class="word %4$s---word">%5$s</span></span></a></span></span>';
+        $post_pub_auth_name_mu .= '</span>';
+        
+        // Content
+        $post_pub_auth_name = sprintf( $post_pub_auth_name_mu,
+            'Post Author Name Object',
+            'post-published-author-name-obj',
+            'post-pub-author-name-obj',
+            'author-name',
             get_the_author(),
-            'post-author-name',
-            'post-auth-name',
             esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) )
         );
         
-        $post_auth_avatar = sprintf( $post_auth_avatar_mu,
-            get_the_author(),
-            'post-author-avatar',
-            'post-auth-av',
-            esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+        // Markup
+        $post_pub_author_avatar_mu = '<span class="obj %2$s" title="%5$s" data-name="%1$s">';
+            $post_pub_author_avatar_mu .= '<a class="a %3$s---a" href="%6$s"><span class="a_l %3$s---a_l"><span class="ee--img %3$s---ee--img">%4$s</span></span></a>';
+        $post_pub_author_avatar_mu .= '</span>';
+        
+        // Content
+        $post_pub_author_avatar = sprintf( $post_pub_author_avatar_mu,
+            'Post Author Avatar Object',
+            'post-published-author-avatar-obj',
+            'post-pub-author-avatar-obj',
             get_avatar(
                 get_the_author_meta( 'ID' ),
                 $size = '48',
                 $default = '',
                 $alt = get_the_author_meta( 'display_name' ) . ' ' . esc_attr__( 'Avatar', 'applicator' )
-            )
+            ),
+            get_the_author(),
+            esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) )
         );
         
-        printf( $post_author_mu,
+        // Content
+        $post_author = sprintf( $post_author_mu,
+            'Post Author',
+            'post-author-name-obj',
+            'post-author-name-obj',
             esc_html__( 'Post Author', 'applicator' ),
-            'post-author',
-            'post-auth',
-            $pub_lbl,
-            $post_auth_name,
-            $post_auth_avatar
+            $post_pub_auth_name,
+            $post_pub_author_avatar
+        );
+        
+        // Content
+        printf( $post_pub_author_mu,
+            'Post Published Author',
+            'post-published-author',
+            'post-pub-auth',
+            esc_html__( 'Post Published Author', 'applicator' ),
+            $post_pub_lbl,
+            $post_author
         );
         
     }

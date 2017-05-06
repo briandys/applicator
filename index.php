@@ -76,7 +76,7 @@ if ( function_exists( 'get_header' ) ) {
             <?php wp_reset_postdata();
 
         } elseif ( is_singular() ) {
-            if ( is_single() ) {
+            if ( is_single() && ! is_attachment() ) {
                 printf ( $main_ct_hr_mu,
                     esc_html__( 'Single', 'applicator' )
                 );

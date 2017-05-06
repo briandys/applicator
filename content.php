@@ -65,7 +65,7 @@
                 
                 // Entry Page Navigation
                 // inc > tags > entry-page-nav.php
-                apl_post_nav();
+                apl_func_post_nav();
                 
                 // sub-post
                 if ( is_page_template( 'page-templates/sub-pages.php' ) ) {

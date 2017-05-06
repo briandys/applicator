@@ -90,7 +90,7 @@
             </div>
         </div>
         <div class="fr comment---fr">
-            <div class="fr_cr comment---fr_cr">
+            <div class="cr comment---cr">
                 <div class="axns comment---axns">
                     <div class="axns_cr comment---axns_cr">
                         <div class="axns_h comment---axns_h">

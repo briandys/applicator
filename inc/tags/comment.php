@@ -19,7 +19,7 @@ if ( ! function_exists( 'applicator_comment' ) ) {
 
         ?>
 
-        <<?php echo $tag ?> id="comment-<?php comment_ID() ?>" <?php comment_class( 'item cp comment' .  $comment_has_children_class ) ?> data-name="Comment">
+        <<?php echo $tag ?> id="comment-<?php comment_ID() ?>" <?php comment_class( 'item cp comment' . ' ' . $comment_has_children_class ) ?> data-name="Comment">
             
         <?php if ( 'div' != $args['style'] ) { ?>
             <article class="cr comment---cr">
@@ -29,25 +29,30 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                     <div class="hr_cr comment---hr_cr">
                         <div class="h comment---h">
                             <span class="h_l comment---h_l">
-                                <a class="a comment---h_a" href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>">
-                                    <span class="a_l comment---h_a_l"><?php esc_html_e( 'Comment', 'applicator' ); ?> <?php comment_ID() ?></span>
+                                <a class="a comment---a" href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>">
+                                    <span class="a_l comment---a_l"><?php esc_html_e( 'Comment', 'applicator' ); ?> <?php comment_ID() ?></span>
                                 </a>
                             </span>
-                        </div><!-- comment---h -->
+                        </div>
                         
                         <?php if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) { ?>
-                        <div class="axns comment---axns">
-                            <div class="axns_cr comment---axns_cr">
-                                <div class="axns_h comment---axns_h"><span class="axns_h_l comment---axns_h_l"><?php esc_html_e( 'Actions', 'applicator' ); ?></span></div>
+                        <div class="axns comment-admin-axns" data-name="Comment Admin Actions">
+                            <div class="cr com-admin-axns---cr">
+                                <div class="h com-admin-axns---h"><span class="h_l com-admin-axns---h_l"><?php esc_html_e( 'Comment Admin Actions', 'applicator' ); ?></span></div>
                                 <div class="obj axn edit-comment-axn" data-name="Edit Comment Action">
+                                    <?php
+                                    // Markup
+                                    $edit_comment_axn_a_l_mu = '<span class="a_l edit-com-axn---a_l" title="%3$s"><span class="word edit---word">%1$s</span> <span class="word comment---word">%2$s</span></span>';
                                     
-                                    <?php // Markup
-                                    $edit_comment_axn_mu = '<span class="a_l edit-com-axn---a_l">';
-                                        $edit_comment_axn_mu .= '<span class="word edit-com-axn--edit---word">%1$s</span> <span class="word edit-com-axn--comment---word">%2$s</span>';
-                                    $edit_comment_axn_mu .= '</span>';
+                                    // Content
+                                    $edit_comment_axn_a_l = sprintf( $edit_comment_axn_a_l_mu,
+                                        esc_html__( 'Edit', 'applicator' ),
+                                        esc_html__( 'Comment', 'applicator' ),
+                                        esc_attr__( 'Edit Comment', 'applicator' )
+                                    );
+                                                                                                          
+                                    edit_comment_link( $edit_comment_axn_a_l, '', '' );                  
                                     ?>
-                                    
-                                    <?php edit_comment_link( sprintf( $edit_comment_axn_mu, esc_html__( 'Edit', 'applicator' ), esc_html__( 'Comment', 'applicator' ) ), '', '' ); ?>
                                 </div><!-- edit-comment-axn -->
                             </div>
                         </div><!-- comment---axns -->
@@ -181,12 +186,46 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                 <?php if ( is_singular() && comments_open() && get_option( 'thread_comments' ) && $depth < $args['max_depth'] ) { ?>
                 <div class="fr comment---fr">
                     <div class="fr_cr comment---fr_cr">
-                        <div class="axns comment---axns">
-                            <div class="axns_cr comment---axns_cr">
-                                <div class="axns_h comment---axns_h">
-                                    <span class="axns_h_l comment---axns_h_l"><?php esc_html_e( 'Actions', 'applicator' ); ?></span>
+                        <div class="axns comment-axns" data-name="Comment Actions">
+                            <div class="cr com-axns---cr">
+                                <div class="h com-axns---h">
+                                    <span class="h_l com-axns---h_l"><?php esc_html_e( 'Comment Actions', 'applicator' ); ?></span>
                                 </div>
-                                <div class="obj axn reply-comment-axn" data-name="Reply to Comment Action">
+                                <div class="obj axn reply-comment-axn" title="Reply to Comment" data-name="Reply To Comment Action">
+                                    
+                                    <?php
+                                                                                                                                 
+                                    // Markup
+                                    $reply_com_axn_a_l_mu = '<span class="a_l reply-com-axn---a_l">%1$s</span>';
+                                    
+                                    // Markup
+                                    $reply_com_axn_a_l_reply_mu = '<span class="word reply---word">%1$s</span>';
+                                    $reply_com_axn_a_l_reply_mu .= ' <span class="word to---word">%2$s</span>';
+                                    $reply_com_axn_a_l_reply_mu .= ' <span class="word comment---word">%3$s</span>';    
+                                    
+                                    // Markup
+                                    $reply_com_axn_a_l_login_mu = '<span class="word reply---word">%1$s</span>';
+                                    $reply_com_axn_a_l_login_mu .= ' <span class="word requires-sign-in---word">%2$s</span>';                                                                                 
+                                    // Content 
+                                    $reply_com_axn_a_l_reply = sprintf( $reply_com_axn_a_l_reply_mu,
+                                        esc_html__( 'Reply', 'applicator' ),
+                                        esc_html__( 'to', 'applicator' ),
+                                        esc_html__( 'Comment', 'applicator' )
+                                    );                                                                               
+                                    // Content 
+                                    $reply_com_axn_a_l_login = sprintf( $reply_com_axn_a_l_login_mu,
+                                        esc_html__( 'Reply', 'applicator' ),
+                                        esc_html__( '(requires Sign In)', 'applicator' )
+                                    );       
+                                                                                                                                 
+                                    $reply_com_axn_a_l_reply_text = sprintf( $reply_com_axn_a_l_mu,
+                                        $reply_com_axn_a_l_reply
+                                    );     
+                                                                                                                                 
+                                    $reply_com_axn_a_l_login_text = sprintf( $reply_com_axn_a_l_mu,
+                                        $reply_com_axn_a_l_login
+                                    );
+                                    ?>
                                     
                                     <?php comment_reply_link( array_merge(
                                         $args,
@@ -195,27 +234,17 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                                             'depth'         => $depth,
                                             'max_depth'     => $args['max_depth'],
 
-                                            'reply_text'    => sprintf(
-                                                                '<span class="a_l reply-com-axn---a_l">'
-                                                                    .'<span class="word reply-com-axn--reply---word">%1$s</span> <span class="word reply-com-axn--to---word">%2$s</span> <span class="word reply-com-axn--comment---word">%3$s</span>'
-                                                                .'</span>',
-                                                                esc_html__( 'Reply', 'applicator' ),
-                                                                esc_html__( 'to', 'applicator' ),
-                                                                esc_html__( 'Comment', 'applicator' )
-                                                            ),
+                                            'reply_text'    => $reply_com_axn_a_l_reply_text,
 
-                                            'login_text'    => sprintf(
-                                                                '<span class="a_l reply-com-axn---a_l">%1$s</span>',
-                                                                esc_html__( 'Reply (requires Sign In)', 'applicator' )
-                                                            )
+                                            'login_text'    => $reply_com_axn_a_l_login_text
                                         )
                                     ) ); ?>
 
-                                </div><!-- reply-comment-axn -->
+                                </div><!-- Reply To Comment Action -->
                             </div>
-                        </div><!-- comment---axns -->
+                        </div><!-- Comment Actions -->
                     </div>
-                </div><!-- comment---fr -->
+                </div>
                 <?php  } ?>
                     
             <?php if ( 'div' != $args['style'] ) { ?>

@@ -15,8 +15,8 @@ if ( ! function_exists( 'apl_func_custom_visuals_setup' ) ) {
 
         register_default_headers( array(
             'default-image' => array(
-                'url'           => '%s/assets/img/default-media-banner-image--tn.jpg',
-                'thumbnail_url' => '%s/assets/img/default-media-banner-image.jpg',
+                'url'           => '%s/assets/img/default-media-banner-image.jpg',
+                'thumbnail_url' => '%s/assets/img/default-media-banner-image--tn.jpg',
                 'description'   => __( 'Default Media Banner', 'applicator' ),
             ),
         ) );
