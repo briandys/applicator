@@ -27,44 +27,50 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                 
                 <div class="hr comment---hr">
                     <div class="hr_cr comment---hr_cr">
-                        <div class="h comment---h">
-                            <span class="h_l comment---h_l">
-                                <a class="a comment---a" href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>">
-                                    <span class="a_l comment---a_l"><?php esc_html_e( 'Comment', 'applicator' ); ?> <?php comment_ID() ?></span>
-                                </a>
-                            </span>
-                        </div>
+                        <div class="obj comment-title-obj" data-name="Comment Title Object">
+                            <h2 class="h comment---h">
+                                <span class="h_l comment---h_l">
+                                    <a class="a comment---a" href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>">
+                                        <span class="a_l comment---a_l"><span class="word comment-title---word"><?php esc_html_e( 'Comment', 'applicator' ); ?> <?php comment_ID() ?></span></span>
+                                    </a>
+                                </span>
+                            </h2>
+                        </div><!-- Comment Title Object -->
                         
                         <?php if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) { ?>
                         <div class="axns comment-admin-axns" data-name="Comment Admin Actions">
                             <div class="cr com-admin-axns---cr">
                                 <div class="h com-admin-axns---h"><span class="h_l com-admin-axns---h_l"><?php esc_html_e( 'Comment Admin Actions', 'applicator' ); ?></span></div>
-                                <div class="obj axn edit-comment-axn" data-name="Edit Comment Action">
-                                    <?php
-                                    // Markup
-                                    $edit_comment_axn_a_l_mu = '<span class="a_l edit-com-axn---a_l" title="%3$s"><span class="word edit---word">%1$s</span> <span class="word comment---word">%2$s</span></span>';
-                                    
-                                    // Content
-                                    $edit_comment_axn_a_l = sprintf( $edit_comment_axn_a_l_mu,
-                                        esc_html__( 'Edit', 'applicator' ),
-                                        esc_html__( 'Comment', 'applicator' ),
-                                        esc_attr__( 'Edit Comment', 'applicator' )
-                                    );
-                                                                                                          
-                                    edit_comment_link( $edit_comment_axn_a_l, '', '' );                  
-                                    ?>
-                                </div><!-- edit-comment-axn -->
+                                <div class="ct com-admin-axns---ct">
+                                    <div class="ct_cr com-admin-axns---ct_cr">
+                                        <span class="obj axn edit-comment-axn" data-name="Edit Comment Action">
+                                            <?php
+                                            // Markup
+                                            $edit_comment_axn_a_l_mu = '<span class="a_l edit-com-axn---a_l" title="%5$s"><span class="word %2$s---word">%1$s</span> <span class="word %4$s---word">%3$s</span></span>';
+
+                                            // Content
+                                            $edit_comment_axn_a_l = sprintf( $edit_comment_axn_a_l_mu,
+                                                esc_html__( 'Edit', 'applicator' ),
+                                                'edit',
+                                                esc_html__( 'Comment', 'applicator' ) . ' ' . $comment->comment_ID,
+                                                'comment-title',
+                                                esc_attr__( 'Edit Comment', 'applicator' )
+                                            );
+
+                                            edit_comment_link( $edit_comment_axn_a_l, '', '' );                  
+                                            ?>
+                                        </span><!-- Edit Comment Action -->
+                                    </div>
+                                </div><!-- ct -->
                             </div>
-                        </div><!-- comment---axns -->
+                        </div><!-- Comment Admin Actions -->
                         <?php } ?>
                         
-                        <aside class="aside comment--hr---aside" data-name="Comment Header Aside">
-                            <div class="aside_cr comment--hr---aside_cr">
-                                <div class="aside_h comment--hr---aside_h">
-                                    <span class="aside_h_l comment--hr---aside_h_l"><?php esc_html_e( 'Comment Header Aside', 'applicator' ); ?></span>
-                                </div>
-                                <div class="aside_ct comment--hr---aside_ct">
-                                    <div class="aside_ct_cr comment--hr---aside_ct_cr">
+                        <div class="aside comment-header-aside" data-name="Comment Header Aside">
+                            <div class="cr com-hr-as---cr">
+                                <div class="h com-hr-as---h"><span class="h_l com-hr-as---h_l"><?php esc_html_e( 'Comment Header Aside', 'applicator' ); ?></span></div>
+                                <div class="ct com-hr-as---ct">
+                                    <div class="ct_cr com-hr-as---ct_cr">
                                         <div class="cp comment-published-timestamp" data-name="Comment Published Timestamp">
                                             <div class="cr com-pub-ts---cr">
                                                 <div class="h com-pub-ts---h"><span class="h_l com-pub-ts---h_l"><?php esc_html_e( 'Comment Published Timestamp', 'applicator' ); ?></span></div>
@@ -73,9 +79,7 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                                                             
                                                     <?php
         
-                                                    // Comment Published Date
-
-                                                    // Markup
+                                                    // Markup: Comment Published Date
                                                     $comment_pub_date_mu = '<span class="obj comment-published-date---obj" data-name="Comment Published Date">';
                                                         $comment_pub_date_mu .= '<time class="time com-pub-date---time" datetime="%1$s">';
                                                             $comment_pub_date_mu .= '<span class="time_l com-pub-date---time_l">';
@@ -91,11 +95,8 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                                                         get_comment_date( 'M' ), // Month (mmm)
                                                         get_comment_date( 'Y' ) // Year (yyyy)
                                                     );
-                                                    
         
-                                                    // Comment Published Time
-                                                    
-                                                    // Markup    
+                                                    // Markup: Comment Published Time
                                                     $comment_pub_time_mu = ' ' . '<span class="obj comment-published-time---obj" data-name="Comment Published Time">';
                                                         $comment_pub_time_mu .= '<time class="time com-pub-time---time" datetime="%1$s">';
                                                             $comment_pub_time_mu .= '<span class="time_l com-pub-time---time_l">';
@@ -114,7 +115,7 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div><!-- com-pub-ts -->
+                                        </div><!-- Comment Published Timestamp -->
                                         <div class="cp commenter" data-name="Commenter">
                                             <div class="cr commenter---cr">
                                                 <div class="h commenter---h">
@@ -160,11 +161,11 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div><!-- commenter -->
+                                        </div><!-- Commenter -->
                                     </div>
                                 </div>
                             </div>
-                        </aside><!-- comment--hr---aside -->
+                        </div><!-- Comment Header Aside -->
                     </div>
                 </div><!-- comment--hr -->
                 <div class="ct comment---ct">
@@ -181,7 +182,7 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                         <?php comment_text(); ?>
                     
                     </div>
-                </div><!-- comment---ct -->
+                </div><!-- ct -->
                 
                 <?php if ( is_singular() && comments_open() && get_option( 'thread_comments' ) && $depth < $args['max_depth'] ) { ?>
                 <div class="fr comment---fr">

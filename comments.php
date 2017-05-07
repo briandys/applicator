@@ -12,16 +12,16 @@
                     <div class="cr comments---cr">
                         <div class="hr comments---hr">
                             <div class="hr_cr comments---hr_cr">
-                                <div class="h comments---h"><span class="h_l comments---h_l">Comments</span></div>
-                                <aside class="cn aside comments-hr-aside" data-name="Comments Header Aside" role="complementary">
-                                    <div class="cr comments-hr-aside---cr">
+                                <div class="h comments---h"><span class="h_l comments---h_l"><?php esc_html_e( 'Comments', 'applicator' ); ?></span></div>
+                                <div class="aside comments-hr-aside" role="complementary" data-name="Comments Header Aside">
+                                    <div class="cr coms-hr-as---cr">
                                     
                                         <?php // inc > tags > comments-actions-snippet.php
-                                        applicator_comments_actions_snippet(); ?>
+                                        apl_func_comments_actions_snippet(); ?>
                                     
                                     </div>
-                                </aside><!-- comments-hr-aside -->
-                            </div><!-- comments---hr_cr -->
+                                </div><!-- Comments Header Aside -->
+                            </div>
                         </div>
                         <div class="ct comments---ct">
                             <div class="ct_cr comments---ct_cr">
@@ -171,9 +171,9 @@
                 $signed_in_acct_axns_mu .= '</div>';
                 
                 // Markup
-                $sign_out_axn_mu = '<div class="obj axn %2$s" title="%6$s" data-name="%1$s">';
+                $sign_out_axn_mu = '<span class="obj axn %2$s" title="%6$s" data-name="%1$s">';
                     $sign_out_axn_mu .= '<a class="a %3$s---a" href="%5$s"><span class="a_l %3$s---a_l">%4$s</span></a>';
-                $sign_out_axn_mu .= '</div>';
+                $sign_out_axn_mu .= '</span>';
                 
                 // Content
                 $sign_out_axn = sprintf( $sign_out_axn_mu,

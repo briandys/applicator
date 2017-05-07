@@ -77,7 +77,7 @@ if ( ! function_exists( 'apl_func_html_class' ) ) {
             echo ' ' . 'main-nav--custom';
         }
         
-        //------------------------- Authorship Type
+        // Authorship Type
         if ( is_multi_author() ) {
             echo ' ' . 'authorship--multi';
         } else {
@@ -92,6 +92,14 @@ if ( ! function_exists( 'apl_func_html_class' ) ) {
             echo ' ' . 'view--detail';
         }
         
+        // Password Protection
+        if ( is_singular() ) {
+            if (! post_password_required() ) {
+                echo ' ' . 'view--password-not-required';
+            } else {
+                echo ' ' . 'view--password-required';
+            }
+        }
         
         // Aside Status
         // Enable or display Sidebars via Appearance > Widgets
@@ -132,12 +140,10 @@ if ( ! function_exists( 'apl_func_html_class' ) ) {
             echo ' ' . $main_footer_aside . $off;
         }
         
-        
         // In Customizer
         if ( is_customize_preview() ) {
             echo ' ' . 'view--customizer';
         }
-        
         
         // Customizer: Custom Header
         if ( has_header_image() ) {
@@ -146,14 +152,12 @@ if ( ! function_exists( 'apl_func_html_class' ) ) {
             echo ' ' . 'wbp-media-banner' . $off;
         }
         
-        
         // Customizer: Custom Logo
         if ( has_custom_logo() ) {
             echo ' ' . 'wbp-logo' . $on;
         } else {
             echo ' ' . 'wbp-logo' . $off;
         }
-        
         
         if ( isset( $post ) ) {
             echo ' ' . 'view--' . $post->post_type;

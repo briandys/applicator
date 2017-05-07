@@ -5,7 +5,28 @@
             <div class="hr_cr post---hr_cr">
                 
                 <?php
-                the_title( '<div class="obj post-title" data-name="Post Title"><h1 class="h post-title---h entry-title"><span class="h_l post-title---h_l"><a class="a post-title---a" href="' . esc_url( get_permalink() ) . '" rel="bookmark" title="' . get_the_title() . '"><span class="a_l post-title---a_l">', '</span></a></span></h1></div>' );
+                
+                // Markup
+                $post_title_obj_start_mu = '<div class="obj %2$s" data-name="%1$s">';
+                    $post_title_obj_start_mu .= '<h1 class="h %3$s---h entry-title"><span class="h_l %3$s---h_l">';
+                        $post_title_obj_start_mu .= '<a class="a %3$s---a" href="%4$s" rel="bookmark" title="%5$s"><span class="a_l %3$s---a_l">';
+                        $post_title_obj_end_mu = '</span></a>';
+                    $post_title_obj_end_mu .= '</span></h1>';
+                $post_title_obj_end_mu .= '</div>';
+                
+                // Content
+                $post_title_obj_start = sprintf( $post_title_obj_start_mu,
+                    'Post Title Object',
+                    'post-title-obj',
+                    'post-title-obj',
+                    esc_url( get_permalink() ),
+                    get_the_title()
+                );
+                
+                // Content
+                $post_title_obj_end = sprintf( $post_title_obj_end_mu );
+                
+                the_title( $post_title_obj_start, $post_title_obj_end );
                 
                 // Hook: After Entry Heading | inc > hooks.php
                 apl_hook_after_post_heading();
@@ -43,7 +64,7 @@
                         </div><!-- Post Meta -->
 
                         <?php // Comments Actions Snippet | inc > tags > comments-actions-snippet.php
-                        applicator_comments_actions_snippet();
+                        apl_func_comments_actions_snippet();
                         ?>
                     </div>
                 </div><!-- Post Header Aside -->
