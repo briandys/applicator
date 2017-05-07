@@ -205,16 +205,21 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                                     
                                     // Markup
                                     $reply_com_axn_a_l_login_mu = '<span class="word reply---word">%1$s</span>';
-                                    $reply_com_axn_a_l_login_mu .= ' <span class="word requires-sign-in---word">%2$s</span>';                                                                                 
+                                    $reply_com_axn_a_l_login_mu .= ' <span class="word to---word">%2$s</span>';
+                                    $reply_com_axn_a_l_login_mu .= ' <span class="word comment---word">%3$s</span>';
+                                    $reply_com_axn_a_l_login_mu .= ' <span class="line requires-sign-in---line">%4$s</span>';                                                                      
                                     // Content 
                                     $reply_com_axn_a_l_reply = sprintf( $reply_com_axn_a_l_reply_mu,
                                         esc_html__( 'Reply', 'applicator' ),
                                         esc_html__( 'to', 'applicator' ),
                                         esc_html__( 'Comment', 'applicator' )
-                                    );                                                                               
+                                    );
+                                                                                                                                 
                                     // Content 
                                     $reply_com_axn_a_l_login = sprintf( $reply_com_axn_a_l_login_mu,
                                         esc_html__( 'Reply', 'applicator' ),
+                                        esc_html__( 'to', 'applicator' ),
+                                        esc_html__( 'Comment', 'applicator' ),
                                         esc_html__( '(requires Sign In)', 'applicator' )
                                     );       
                                                                                                                                  

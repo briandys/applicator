@@ -90,13 +90,64 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
                         </div><!-- Comments Count -->
 
                         <?php // Status: Enabled
-                        if ( comments_open() ) { ?>
+                        if ( comments_open() ) {
+                            
+                            // Markup
+                            $add_com_axn_mu = '<span class="obj axn %2$s" title="%9$s" data-name="%1$s">';
+                                $add_com_axn_mu .= '<a class="a %3$s---a" href="%8$s"><span class="a_l %3$s---a_l">';
+                                    $add_com_axn_mu .= '<span class="word %5$s---word">%4$s</span>';
+                                    $add_com_axn_mu .= ' <span class="word %7$s---word">%6$s</span>';
+                                $add_com_axn_mu .= '</span></a>';
+                            $add_com_axn_mu .= '</span><!-- %1$s -->';
+                            
+                            // Markup
+                            $req_sign_in_lbl_obj_mu = '<span class="obj note %2$s" data-name="%1$s">';
+                                $req_sign_in_lbl_obj_mu .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l">%4$s</span></span>';
+                            $req_sign_in_lbl_obj_mu .= '</span><!-- %1$s -->';
+                            
+                            // Add Comment Action Anchor
+                            if ( is_singular() ) {
+                                if ( ! is_user_logged_in() && get_option( 'comment_registration' ) ) {
+                                    $add_com_axn_anchor = '#respond';
+                                } else {
+                                    $add_com_axn_anchor = '#comment';
+                                }
+                            } else {
+                                if ( ! is_user_logged_in() && get_option( 'comment_registration' ) ) {
+                                    $add_com_axn_anchor = esc_url( get_permalink() ) . '#respond';
+                                } else {
+                                    $add_com_axn_anchor = esc_url( get_permalink() ) . '#comment';
+                                }
+                            }
+                            
+                            // Content
+                            $req_sign_in_lbl_obj = sprintf( $req_sign_in_lbl_obj_mu,
+                                'Requires Sign In Label Object',
+                                'requires-sign-in-label-obj',
+                                'req-sign-in-lbl-obj',
+                                esc_html__( '(requires Sign In)', 'applicator' )
+                            );
+                            
+                            // Content
+                            $add_com_axn = sprintf( $add_com_axn_mu,
+                                'Add Comment Action',
+                                'add-comment-axn',
+                                'add-com-axn',
+                                esc_html__( 'Add', 'applicator' ),
+                                'add',
+                                esc_html__( 'Comment', 'applicator' ),
+                                'comment',
+                                $add_com_axn_anchor,
+                                esc_attr__( 'Add Comment', 'applicator' )
+                            );
                         
-                        <div class="obj axn add-comment-axn" data-name="Add Comment Action">
-                            <a class="a add-com-axn---a" href="<?php if ( ! is_singular() ) { echo esc_url( get_permalink() ); } ?>#comment" title="<?php esc_attr_e( 'Add Comment', 'applicator' ); ?>"><span class="a_l add-com-axn---a_l"><span class="word add---word"><?php esc_html_e( 'Add', 'applicator' ); ?></span> <span class="word comment---word"><?php esc_html_e( 'Comment', 'applicator' ); ?></span></span></a>
-                        </div><!-- Add Comment Action -->
-
-                        <?php // Status: Disabled
+                            printf( $add_com_axn );
+                            
+                            if ( ! is_user_logged_in() && get_option( 'comment_registration' ) ) {
+                                printf( $req_sign_in_lbl_obj );
+                            }
+                        
+                        // Status: Disabled
                         } else { ?>
 
                         <div class="obj note commenting-disabled-note" data-name="Commenting Disabled Note">

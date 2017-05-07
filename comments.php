@@ -57,7 +57,7 @@
                 
                 <?php // Comment Form | inc > functions > comment-form.php
                 
-                // Markup: Commenter Comment Creation
+                // Markup
                 $commenter_comment_creation_mu = '<div class="cp fs-item commenter-comment-creation" data-name="Commenter Comment Creation">';
                     $commenter_comment_creation_mu .= '<div class="cr commenter-com-crt---cr">';
                         $commenter_comment_creation_mu .= '<div class="h commenter-com-crt---h"><span class="h_l commenter-com-crt---h_l">Commenter Comment Creation</span></div>';
@@ -77,6 +77,133 @@
                     $commenter_comment_creation_mu .= '</div>';
                 $commenter_comment_creation_mu .= '</div>';
                 
+                $commenter_comment_creation = sprintf( $commenter_comment_creation_mu,
+                    esc_attr__( 'Comment', 'applicator' ),
+                    esc_html__( 'Comment', 'applicator' )
+                );
+                
+                // Markup
+                $com_crt_h_mu = '<div class="h %1$s---h"><span class="h_l %1$s---h_l">%2$s</span></div>';
+                
+                // Content
+                $com_crt_h_ = sprintf( $com_crt_h_mu,
+                    'com-crt',
+                    esc_html__( 'Comment Creation', 'applicator' )
+                );
+                
+                // Markup
+                $sign_in_req_note_mu = '<div class="obj note %2$s" data-name="%1$s">';
+                    $sign_in_req_note_mu .= '<div class="g %3$s---g">';
+                        $sign_in_req_note_mu .= '<div class="g_l %3$s---g_l">';
+                            $sign_in_req_note_mu .= '<p><a class="a %3$s---a" href="%6$s"><span class="a_l %3$s---a_l"><span class="word sign-in---word">%4$s</span></span></a> <span class="line to-comment---line">%5$s</span></p>';
+                        $sign_in_req_note_mu .= '</div>';
+                    $sign_in_req_note_mu .= '</div>';
+                $sign_in_req_note_mu .= '</div><!-- Sign In Required Note -->';
+                
+                // Content
+                $sign_in_req_note = sprintf( $sign_in_req_note_mu,
+                    'Sign In Required Note',
+                    'sign-in-required-note',
+                    'sign-in-req-note',
+                    esc_html__( 'Sign In', 'applicator' ),
+                    esc_html__( 'to comment.', 'applicator' ),
+                    wp_login_url( apply_filters( 'the_permalink', get_permalink() ) )
+                );
+                
+                // Markup
+                $cancel_reply_com_axn_a_l_mu = '<span class="a_l cancel-reply-com-axn---a_l" title="%5$s">';
+                    $cancel_reply_com_axn_a_l_mu .= '<span class="word cancel---word">%1$s</span>';
+                    $cancel_reply_com_axn_a_l_mu .= ' <span class="word reply---word">%2$s</span>';
+                    $cancel_reply_com_axn_a_l_mu .= ' <span class="word to---word">%3$s</span>';
+                    $cancel_reply_com_axn_a_l_mu .= ' <span class="word comment---word">%4$s</span>';
+                $cancel_reply_com_axn_a_l_mu .= '</span>';
+                
+                // Markup
+                $signed_in_acct_mu = '<div class="cp %2$s" data-name="%1$s">';
+                    $signed_in_acct_mu .= '<div class="cr %3$s---cr">';
+                        $signed_in_acct_mu .= '<div class="hr %3$s---hr">';
+                            $signed_in_acct_mu .= '<div class="hr_cr %3$s---hr_cr">';
+                                $signed_in_acct_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h">%4$s</span></div>';
+                                $signed_in_acct_mu .= '%7$s';
+                            $signed_in_acct_mu .= '</div>';
+                        $signed_in_acct_mu .= '</div>';
+                        $signed_in_acct_mu .= '<div class="ct %3$s---ct">';
+                            $signed_in_acct_mu .= '<div class="ct_cr %3$s---ct_cr">%5$s %6$s</div>';
+                        $signed_in_acct_mu .= '</div>';
+                    $signed_in_acct_mu .= '</div>';
+                $signed_in_acct_mu .= '</div>';
+                
+                // Markup
+                $signed_in_as_label_obj_mu = '<span class="obj %2$s" data-name="%1$s">';
+                    $signed_in_as_label_obj_mu .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l"><span class="line signed-in-as---line">%4$s</span></span></span>';
+                $signed_in_as_label_obj_mu .= '</span>';
+                
+                // Content
+                $signed_in_as_label_obj = sprintf( $signed_in_as_label_obj_mu,
+                    'Signed In As Label Object',
+                    'signed-in-as-label-obj',
+                    'signed-in-as-lbl-obj',
+                    esc_html__( 'Signed in as', 'applicator' )
+                );
+                
+                // Markup
+                $acct_name_obj_mu = '<span class="obj %2$s" title="%4$s" data-name="%1$s">';
+                    $acct_name_obj_mu .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l">';
+                        $acct_name_obj_mu .= '<a class="a %3$s---a" href="%5$s"><span class="a_l %3$s---a_l"><span class="line account-name---line">%4$s</span></span></a>';
+                    $acct_name_obj_mu .= '</span></span>';
+                $acct_name_obj_mu .= '</span>';
+                
+                // Content
+                $acct_name_obj = sprintf( $acct_name_obj_mu,
+                    'Account Name Object',
+                    'account-name-obj',
+                    'acct-name-obj',
+                    $user_identity,
+                    admin_url( 'profile.php' )
+                );
+                
+                // Markup
+                $signed_in_acct_axns_mu = '<div class="axns %2$s" data-name="%1$s">';
+                    $signed_in_acct_axns_mu .= '<div class="cr %3$s---cr">';
+                        $signed_in_acct_axns_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h_l">%4$s</span></div>';
+                        $signed_in_acct_axns_mu .= '%5$s';
+                    $signed_in_acct_axns_mu .= '</div>';
+                $signed_in_acct_axns_mu .= '</div>';
+                
+                // Markup
+                $sign_out_axn_mu = '<div class="obj axn %2$s" title="%6$s" data-name="%1$s">';
+                    $sign_out_axn_mu .= '<a class="a %3$s---a" href="%5$s"><span class="a_l %3$s---a_l">%4$s</span></a>';
+                $sign_out_axn_mu .= '</div>';
+                
+                // Content
+                $sign_out_axn = sprintf( $sign_out_axn_mu,
+                    'Sign Out Action',
+                    'sign-out-axn',
+                    'sign-out-axn',
+                    esc_html__( 'Sign Out', 'applicator' ),
+                    wp_logout_url( apply_filters( 'the_permalink', get_permalink() ) ),
+                    esc_attr__( 'Sign Out', 'applicator' )
+                );
+                
+                // Content
+                $signed_in_acct_axns = sprintf( $signed_in_acct_axns_mu,
+                    'Signed In Account Actions',
+                    'signed-in-account-axns',
+                    'signed-in-acct-axns',
+                    esc_html__( 'Signed In Account Actions', 'applicator' ),
+                    $sign_out_axn
+                );
+                
+                // Content
+                $signed_in_acct = sprintf( $signed_in_acct_mu,
+                    'Signed In Account',
+                    'signed-in-account',
+                    'signed-in-acct',
+                    esc_html__( 'Signed In Account', 'applicator' ),
+                    $signed_in_as_label_obj,
+                    $acct_name_obj,
+                    $signed_in_acct_axns
+                );
                 
                 comment_form( array(
                     
@@ -87,65 +214,16 @@
                     'title_reply_after'         => '',
                     
                     // Heading
-                    'title_reply'               => sprintf(
-                                                    '<div class="h comment-respond--h">'
-                                                        .'<span class="h-l comment-respond--h-l">%s</span>'
-                                                    .'</div>',
-                                                    esc_html__( 'Write Comment', 'applicator' )
-                                                ),
+                    'title_reply'               => $com_crt_h_,
                     
                     // Settings > Discussion
-                    'must_log_in'               => sprintf(
-                                                    '<div class="note comment--sign-in-required--note">'
-                                                        .'<div class="comment--sign-in-required--note--cr">'
-                                                            .'<div class="comment--sign-in-required--note--l">'
-                                                                .'<span class="comment--sign-in-required--note--subj-l">'
-                                                                    .'<a class="a comment--sign-in-required--sign-in--a" href="%3$s">'
-                                                                        .'<span class="a-l">%1$s</span>'
-                                                                    .'</a>'
-                                                                .' <span class="comment--sign-in-required--note--pred-l">%2$s</span>'
-                                                            .'</div>'
-                                                        .'</div>'
-                                                    .'</div><!-- comment--sign-in-required--note -->',
-                                                    esc_html__( 'Sign In', 'applicator' ),
-                                                    esc_html__( 'to comment', 'applicator' ),
-                                                    wp_login_url( apply_filters( 'the_permalink', get_permalink() ) )
-                                                ),
+                    'must_log_in'               => $sign_in_req_note,
                     
                     // Signed in as "Account Name"
-                    'logged_in_as'              => sprintf(
-                                                    '<div class="account-signed-in">'
-                                                        .'<div class="account-signed-in--cr">'
-                                                            .'<div class="account-signed-in--l">'
-                                                                .'<span class="account-signed-in--pred-l">%1$s</span>'
-                                                                .' <span class="account-signed-in-account--l">'
-                                                                    .'<a class="a account-signed-in--account--a" href="%3$s">'
-                                                                        .'<span class="a-l">%2$s</span>'
-                                                                    .'</a>'
-                                                                .'</span>'
-                                                            .'</div>'
-                                                            .'<div class="axns account-signed-in--axns">'
-                                                                .'<div class="axns--cr account-signed-in--axns--cr">'
-                                                                    .'<div class="h axns--h"><span class="h-l">Actions</span></div>'
-                                                                    .'<a class="a account-signed-in--sign-out--a" href="%4$s">'
-                                                                        .'<span class="a-l">%5$s</span>'
-                                                                    .'</a>'
-                                                                .'</div>'
-                                                            .'</div>'
-                                                        .'</div>'
-                                                    .'</div><!-- account-signed-in -->',
-                                                    esc_html__( 'Signed in as', 'applicator' ),
-                                                    $user_identity,
-                                                    admin_url( 'profile.php' ),
-                                                    wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) ),
-                                                    esc_html__( 'Sign Out', 'applicator' )
-                                                ), 
+                    'logged_in_as'              => $signed_in_acct, 
                     
                     // Textarea
-                    'comment_field'             => sprintf( $commenter_comment_creation_mu,
-                                                    esc_attr__( 'Comment', 'applicator' ),
-                                                    esc_html__( 'Comment', 'applicator' )
-                                                ),
+                    'comment_field'             => $commenter_comment_creation,
                     
                     // Submit Comment Action
                     'id_submit'                 => 'comment-submit--a',
@@ -168,13 +246,12 @@
                     'cancel_reply_before'       => '',
                     'cancel_reply_after'       => '',
                     
-                    'cancel_reply_link'         => sprintf(
-                                                    '<span class="a-l comment-reply--cancel--a-l">'
-                                                        .'<span class="comment-reply--cancel--a--pred-l">%1$s</span>'
-                                                        .' <span class="comment-reply--cancel--a--subj-l">%2$s</span>'
-                                                    .'</span>',
-                                                    esc_html__( 'Cancel', 'applicator' ),
-                                                    esc_html__( 'Reply', 'applicator' )
+                    'cancel_reply_link'         => sprintf( $cancel_reply_com_axn_a_l_mu,
+                                                           esc_html__( 'Cancel', 'applicator' ),
+                                                           esc_html__( 'Reply', 'applicator' ),
+                                                           esc_html__( 'to', 'applicator' ),
+                                                           esc_html__( 'Comment', 'applicator' ),
+                                                           esc_attr__( 'Cancel Reply to Comment', 'applicator' )
                                                 ),
                     
                     // Notes

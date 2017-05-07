@@ -3,6 +3,14 @@
 if ( ! function_exists( 'apl_func_post_author' ) ) {
     function apl_func_post_author() {
         
+        $post_author_avatar_default_pre_css = 'post-author-avatar-default';
+        
+        if ( get_option( 'avatar_default' ) == 'blank' ) {
+            $post_author_avatar_default_css = $post_author_avatar_default_pre_css . '--blank';
+        } else {
+            $post_author_avatar_default_css = $post_author_avatar_default_pre_css . '--custom';
+        }
+        
         // Markup
         $post_pub_author_mu = '<div class="cp %2$s" data-name="%1$s">';
             $post_pub_author_mu .= '<div class="cr %3$s---cr">';
@@ -14,7 +22,7 @@ if ( ! function_exists( 'apl_func_post_author' ) ) {
         $post_pub_author_mu .= '</div>';
         
         // Markup
-        $post_author_mu = '<div class="cp %2$s" data-name="%1$s">';
+        $post_author_mu = '<div class="cp %2$s' . ' ' . $post_author_avatar_default_css . '" data-name="%1$s">';
             $post_author_mu .= '<div class="cr %3$s---cr">';
                 $post_author_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h_l">%4$s</span></div>';
                 $post_author_mu .= '<div class="ct %3$s---ct">';
@@ -37,31 +45,31 @@ if ( ! function_exists( 'apl_func_post_author' ) ) {
         );
         
         // Markup
-        $post_pub_auth_name_mu = '<span class="obj %2$s" title="%4$s" data-name="%1$s">';
-            $post_pub_auth_name_mu .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l"><a class="a %3$s---a" href="%6$s">';
-            $post_pub_auth_name_mu .= '<span class="a_l %3$s---a_l"><span class="word %4$s---word">%5$s</span></span></a></span></span>';
-        $post_pub_auth_name_mu .= '</span>';
+        $post_author_name_mu = '<span class="obj %2$s" title="%4$s" data-name="%1$s">';
+            $post_author_name_mu .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l"><a class="a %3$s---a" href="%6$s">';
+            $post_author_name_mu .= '<span class="a_l %3$s---a_l"><span class="word %4$s---word">%5$s</span></span></a></span></span>';
+        $post_author_name_mu .= '</span>';
         
         // Content
-        $post_pub_auth_name = sprintf( $post_pub_auth_name_mu,
+        $post_author_name = sprintf( $post_author_name_mu,
             'Post Author Name Object',
-            'post-published-author-name-obj',
-            'post-pub-author-name-obj',
+            'post-author-name-obj',
+            'post-author-name-obj',
             'author-name',
             get_the_author(),
             esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) )
         );
         
         // Markup
-        $post_pub_author_avatar_mu = '<span class="obj %2$s" title="%5$s" data-name="%1$s">';
-            $post_pub_author_avatar_mu .= '<a class="a %3$s---a" href="%6$s"><span class="a_l %3$s---a_l"><span class="ee--img %3$s---ee--img">%4$s</span></span></a>';
-        $post_pub_author_avatar_mu .= '</span>';
+        $post_author_avatar_mu = '<span class="obj %2$s" title="%5$s" data-name="%1$s">';
+            $post_author_avatar_mu .= '<a class="a %3$s---a" href="%6$s"><span class="a_l %3$s---a_l"><span class="ee--img %3$s---ee--img">%4$s</span></span></a>';
+        $post_author_avatar_mu .= '</span>';
         
         // Content
-        $post_pub_author_avatar = sprintf( $post_pub_author_avatar_mu,
+        $post_author_avatar = sprintf( $post_author_avatar_mu,
             'Post Author Avatar Object',
-            'post-published-author-avatar-obj',
-            'post-pub-author-avatar-obj',
+            'post-author-avatar-obj',
+            'post-author-avatar-obj',
             get_avatar(
                 get_the_author_meta( 'ID' ),
                 $size = '48',
@@ -75,11 +83,11 @@ if ( ! function_exists( 'apl_func_post_author' ) ) {
         // Content
         $post_author = sprintf( $post_author_mu,
             'Post Author',
-            'post-author-name-obj',
-            'post-author-name-obj',
+            'post-author',
+            'post-author',
             esc_html__( 'Post Author', 'applicator' ),
-            $post_pub_auth_name,
-            $post_pub_author_avatar
+            $post_author_name,
+            $post_author_avatar
         );
         
         // Content
