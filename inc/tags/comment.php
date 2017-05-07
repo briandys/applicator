@@ -71,11 +71,73 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                                 <div class="h com-hr-as---h"><span class="h_l com-hr-as---h_l"><?php esc_html_e( 'Comment Header Aside', 'applicator' ); ?></span></div>
                                 <div class="ct com-hr-as---ct">
                                     <div class="ct_cr com-hr-as---ct_cr">
-                                        <div class="cp comment-published-timestamp" data-name="Comment Published Timestamp">
-                                            <div class="cr com-pub-ts---cr">
-                                                <div class="h com-pub-ts---h"><span class="h_l com-pub-ts---h_l"><?php esc_html_e( 'Comment Published Timestamp', 'applicator' ); ?></span></div>
-                                                <div class="ct com-pub-ts---ct">
-                                                    <div class="ct_cr com-pub-ts---ct_cr">
+                                        <div class="cp comment-published-info" data-name="Comment Published Info">
+                                            <div class="cr com-pub-info---cr">
+                                                <div class="h com-pub-info---h"><span class="h_l com-pub-info---h_l"><?php esc_html_e( 'Comment Published Info', 'applicator' ); ?></span></div>
+                                                <div class="ct com-pub-info---ct">
+                                                    <div class="ct_cr com-pub-info---ct_cr">
+          
+                                                        
+                                                        <?php
+        
+        $com_pub_mu = '<div class="%2$s" data-name="%1$s">';
+            $com_pub_mu .= '<div class="cr %3$s---cr">';
+                $com_pub_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h_l">%4$s</span></div>';
+                $com_pub_mu .= '<div class="ct %3$s---ct">';
+                    $com_pub_mu .= '<div class="ct_cr %3$s---ct_cr">';
+                        $com_pub_mu .= '%5$s %6$s';
+                    $com_pub_mu .= '</div>';
+                $com_pub_mu .= '</div><!-- ct -->';
+            $com_pub_mu .= '</div>';
+        $com_pub_mu .= '</div><!-- %1$s -->';
+        
+        $com_pub_lbl_mu = '<span class="%2$s" data-name="%1$s">';
+            $com_pub_lbl_mu .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l"><span class="word %5$s---word">%4$s</span> <span class="word %7$s---word">%6$s</span></span></span>';
+        $com_pub_lbl_mu .= '</span><!-- %1$s -->';
+        
+        $com_pub_ts_mu = '<span class="%2$s" data-name="%1$s">';
+            $com_pub_ts_mu .= '<time class="time %3$s---time" datetime="%11$s">';
+                $com_pub_ts_mu .= '<span class="time_l %3$s---time_l">';
+                    $com_pub_ts_mu .= '<a class="a %3$s---a" href="%10$s" title="%12$s"><span class="a_l %3$s---a_l"><span class="word %5$s---word">%4$s</span> <span class="word %7$s---word">%6$s</span> <span class="word %9$s---word">%8$s</span></span></a>';
+                $com_pub_ts_mu .= '</span>';
+            $com_pub_ts_mu .= '</time>';
+        $com_pub_ts_mu .= '</span><!-- %1$s -->';
+        
+        $com_pub_ts = sprintf( $com_pub_ts_mu,
+            'Comment Published Timestamp',
+            'obj comment-published-timestamp',
+            'com-pub-ts',
+            get_the_date( 'j' ), // Day (d)
+            'day',
+            get_the_date( 'M' ), // Month (mmm)
+            'month',
+            get_the_date( 'Y' ), // Year (yyyy)
+            'year',
+            esc_url( get_permalink() ),
+            get_the_date( DATE_W3C ),
+            get_the_date( 'j F Y')
+        );
+        
+        $com_pub_lbl = sprintf( $com_pub_lbl_mu,
+            'Comment Published Timestamp Label',
+            'obj comment-published-timestamp-label',
+            'comment-pub-ts-lbl',
+            esc_html__( 'Commented', 'applicator' ),
+            'published',
+            esc_html__( 'on', 'applicator' ),
+            'on'
+        );
+        
+        printf( $com_pub_mu,
+            'Comment Published',
+            'cp comment-published',
+            'com-pub',
+            esc_html__( 'Comment Published', 'applicator' ),
+            $com_pub_lbl,
+            $com_pub_ts
+        );
+        
+        ?>
                                                             
                                                     <?php
         

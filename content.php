@@ -40,9 +40,6 @@
                 
                 <div class="aside post-header-aside" data-name="Post Header Aside">
                     <div class="cr post-hr-as---cr">
-                        <?php // Post Banner Visual | inc > tags > post-banner-visual.php
-                        apl_func_post_banner_visual(); ?>
-                        
                         <div class="cp post-meta entry-meta" data-name="Post Meta">
                             <div class="cr post-meta---cr">
                                 <div class="h post-meta---h"><span class="h_l post-meta---h_l"><?php esc_html_e( 'Post Meta', 'applicator' ); ?></span></div>
@@ -62,8 +59,12 @@
                                 </div><!-- ct -->
                             </div>
                         </div><!-- Post Meta -->
-
-                        <?php // Comments Actions Snippet | inc > tags > comments-actions-snippet.php
+                        
+                        <?php
+                        // Post Banner Visual | inc > tags > post-banner-visual.php
+                        apl_func_post_banner_visual();
+                        
+                        // Comments Actions Snippet | inc > tags > comments-actions-snippet.php
                         apl_func_comments_actions_snippet();
                         ?>
                     </div>
