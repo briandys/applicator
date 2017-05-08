@@ -1,7 +1,7 @@
 <?php // Comment Item | comments.php
 
-if ( ! function_exists( 'applicator_comment' ) ) {
-    function applicator_comment( $comment, $args, $depth ) {
+if ( ! function_exists( 'apl_func_comment' ) ) {
+    function apl_func_comment( $comment, $args, $depth ) {
         
         if ( 'div' === $args['style'] ) {
             $tag       = 'div';
@@ -12,14 +12,14 @@ if ( ! function_exists( 'applicator_comment' ) ) {
         }
         
         if ( true === $args['has_children'] ) {
-            $comment_has_children_class = 'comment--parent';
+            $comment_has_children_css = 'comment--parent';
         } else {
-            $comment_has_children_class = 'comment--solo';
+            $comment_has_children_css = 'comment--solo';
         }
 
         ?>
 
-        <<?php echo $tag ?> id="comment-<?php comment_ID() ?>" <?php comment_class( 'item cp comment' . ' ' . $comment_has_children_class ) ?> data-name="Comment">
+        <<?php echo $tag ?> id="comment-<?php comment_ID() ?>" <?php comment_class( 'item cp comment' . ' ' . $comment_has_children_css ) ?> data-name="Comment">
             
         <?php if ( 'div' != $args['style'] ) { ?>
             <article class="cr comment---cr">
@@ -71,159 +71,162 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                                 <div class="h com-hr-as---h"><span class="h_l com-hr-as---h_l"><?php esc_html_e( 'Comment Header Aside', 'applicator' ); ?></span></div>
                                 <div class="ct com-hr-as---ct">
                                     <div class="ct_cr com-hr-as---ct_cr">
-                                        <div class="cp comment-published-info" data-name="Comment Published Info">
-                                            <div class="cr com-pub-info---cr">
-                                                <div class="h com-pub-info---h"><span class="h_l com-pub-info---h_l"><?php esc_html_e( 'Comment Published Info', 'applicator' ); ?></span></div>
-                                                <div class="ct com-pub-info---ct">
-                                                    <div class="ct_cr com-pub-info---ct_cr">
-          
-                                                        
-                                                        <?php
-        
-        $com_pub_mu = '<div class="%2$s" data-name="%1$s">';
-            $com_pub_mu .= '<div class="cr %3$s---cr">';
-                $com_pub_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h_l">%4$s</span></div>';
-                $com_pub_mu .= '<div class="ct %3$s---ct">';
-                    $com_pub_mu .= '<div class="ct_cr %3$s---ct_cr">';
-                        $com_pub_mu .= '%5$s %6$s';
-                    $com_pub_mu .= '</div>';
-                $com_pub_mu .= '</div><!-- ct -->';
-            $com_pub_mu .= '</div>';
-        $com_pub_mu .= '</div><!-- %1$s -->';
-        
-        $com_pub_lbl_mu = '<span class="%2$s" data-name="%1$s">';
-            $com_pub_lbl_mu .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l"><span class="word %5$s---word">%4$s</span> <span class="word %7$s---word">%6$s</span></span></span>';
-        $com_pub_lbl_mu .= '</span><!-- %1$s -->';
-        
-        $com_pub_ts_mu = '<span class="%2$s" data-name="%1$s">';
-            $com_pub_ts_mu .= '<time class="time %3$s---time" datetime="%11$s">';
-                $com_pub_ts_mu .= '<span class="time_l %3$s---time_l">';
-                    $com_pub_ts_mu .= '<a class="a %3$s---a" href="%10$s" title="%12$s"><span class="a_l %3$s---a_l"><span class="word %5$s---word">%4$s</span> <span class="word %7$s---word">%6$s</span> <span class="word %9$s---word">%8$s</span></span></a>';
-                $com_pub_ts_mu .= '</span>';
-            $com_pub_ts_mu .= '</time>';
-        $com_pub_ts_mu .= '</span><!-- %1$s -->';
-        
-        $com_pub_ts = sprintf( $com_pub_ts_mu,
-            'Comment Published Timestamp',
-            'obj comment-published-timestamp',
-            'com-pub-ts',
-            get_the_date( 'j' ), // Day (d)
-            'day',
-            get_the_date( 'M' ), // Month (mmm)
-            'month',
-            get_the_date( 'Y' ), // Year (yyyy)
-            'year',
-            esc_url( get_permalink() ),
-            get_the_date( DATE_W3C ),
-            get_the_date( 'j F Y')
-        );
-        
-        $com_pub_lbl = sprintf( $com_pub_lbl_mu,
-            'Comment Published Timestamp Label',
-            'obj comment-published-timestamp-label',
-            'comment-pub-ts-lbl',
-            esc_html__( 'Commented', 'applicator' ),
-            'published',
-            esc_html__( 'on', 'applicator' ),
-            'on'
-        );
-        
-        printf( $com_pub_mu,
-            'Comment Published',
-            'cp comment-published',
-            'com-pub',
-            esc_html__( 'Comment Published', 'applicator' ),
-            $com_pub_lbl,
-            $com_pub_ts
-        );
-        
-        ?>
-                                                            
-                                                    <?php
-        
-                                                    // Markup: Comment Published Date
-                                                    $comment_pub_date_mu = '<span class="obj comment-published-date---obj" data-name="Comment Published Date">';
-                                                        $comment_pub_date_mu .= '<time class="time com-pub-date---time" datetime="%1$s">';
-                                                            $comment_pub_date_mu .= '<span class="time_l com-pub-date---time_l">';
-                                                                $comment_pub_date_mu .= '<a class="a com-pub-date---time_a" href="%2$s"><span class="a_l com-pub-date---time_a_l"><span class="word com-pub-date--day---word">%3$s</span> <span class="word com-pub-date--month---word">%4$s</span> <span class="word com-pub-date--year---word">%5$s</span></span></a>';
-                                                            $comment_pub_date_mu .= '</span>';
-                                                        $comment_pub_date_mu .= '</time>';
-                                                    $comment_pub_date_mu .= '</span>';
+                                        
+                                        <div class="cp comment-meta" data-name="Comment Meta">
+                                            <div class="cr com-meta---cr">
+                                                <div class="h com-meta---h"><span class="h_l com-meta---h_l">Comment Meta</span></div>
+                                                <div class="ct com-meta---ct">
+                                                    <div class="ct_cr com-meta---ct_cr">
+                                        
+                                                        <?php // Comment Published Info
+                                                        $com_pub_mu = '<div class="%2$s" data-name="%1$s">';
+                                                            $com_pub_mu .= '<div class="cr %3$s---cr">';
+                                                                $com_pub_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h_l">%4$s</span></div>';
+                                                                $com_pub_mu .= '<div class="ct %3$s---ct">';
+                                                                    $com_pub_mu .= '<div class="ct_cr %3$s---ct_cr">';
+                                                                        $com_pub_mu .= '%5$s %6$s';
+                                                                    $com_pub_mu .= '</div>';
+                                                                $com_pub_mu .= '</div><!-- ct -->';
+                                                            $com_pub_mu .= '</div>';
+                                                        $com_pub_mu .= '</div><!-- %1$s -->';
 
-                                                    printf( $comment_pub_date_mu,
-                                                        get_comment_date( DATE_W3C ),
-                                                        htmlspecialchars( get_comment_link( $comment->comment_ID ) ),
-                                                        get_comment_date( 'j' ), // Day (d)
-                                                        get_comment_date( 'M' ), // Month (mmm)
-                                                        get_comment_date( 'Y' ) // Year (yyyy)
-                                                    );
-        
-                                                    // Markup: Comment Published Time
-                                                    $comment_pub_time_mu = ' ' . '<span class="obj comment-published-time---obj" data-name="Comment Published Time">';
-                                                        $comment_pub_time_mu .= '<time class="time com-pub-time---time" datetime="%1$s">';
-                                                            $comment_pub_time_mu .= '<span class="time_l com-pub-time---time_l">';
-                                                                $comment_pub_time_mu .= '<a class="a com-pub-time---time_a" href="%2$s"><span class="a_l com-pub-time---time_a_l">%3$s</span></a>';
-                                                            $comment_pub_time_mu .= '</span>';
-                                                        $comment_pub_time_mu .= '</time>';
-                                                    $comment_pub_time_mu .= '</span>';
-                                                        
-                                                    printf( $comment_pub_time_mu,
-                                                        get_comment_date( DATE_W3C ),
-                                                        htmlspecialchars( get_comment_link( $comment->comment_ID ) ),
-                                                        get_comment_time( 'H:i' ) // Time (24:00)
-                                                    );
-                                                    ?>
-                                                    
+                                                                $com_pub_lbl_mu = '<span class="%2$s" data-name="%1$s">';
+                                                                    $com_pub_lbl_mu .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l"><span class="word %5$s---word">%4$s</span> <span class="word %7$s---word">%6$s</span></span></span>';
+                                                                $com_pub_lbl_mu .= '</span><!-- %1$s -->';
+
+                                                                $com_pub_date_time_mu = '<div class="%2$s" data-name="%1$s">';
+                                                                    $com_pub_date_time_mu .= '<div class="cr %3$s---cr">';
+                                                                        $com_pub_date_time_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h_l">%4$s</span></div>';
+                                                                        $com_pub_date_time_mu .= '<div class="ct %3$s---ct">';
+                                                                            $com_pub_date_time_mu .= '<div class="ct_cr %3$s---ct_cr">%5$s %6$s</div>';
+                                                                        $com_pub_date_time_mu .= '</div>';
+                                                                    $com_pub_date_time_mu .= '</div>';
+                                                                $com_pub_date_time_mu .= '</div><!-- %1$s -->';
+
+                                                                        $com_pub_date_mu = '<span class="%2$s" data-name="%1$s">';
+                                                                            $com_pub_date_mu .= '<time class="time %3$s---time" datetime="%11$s">';
+                                                                                $com_pub_date_mu .= '<span class="time_l %3$s---time_l">';
+                                                                                    $com_pub_date_mu .= '<a class="a %3$s---a" href="%10$s" title="%12$s"><span class="a_l %3$s---a_l"><span class="word %5$s---word">%4$s</span> <span class="word %7$s---word">%6$s</span> <span class="word %9$s---word">%8$s</span></span></a>';
+                                                                                $com_pub_date_mu .= '</span>';
+                                                                            $com_pub_date_mu .= '</time>';
+                                                                        $com_pub_date_mu .= '</span><!-- %1$s -->';
+
+                                                                        $com_pub_time_mu = '<span class="%2$s" data-name="%1$s">';
+                                                                            $com_pub_time_mu .= '<time class="time %3$s---time" datetime="%11$s">';
+                                                                                $com_pub_time_mu .= '<span class="time_l %3$s---time_l">';
+                                                                                    $com_pub_time_mu .= '<a class="a %3$s---a" href="%10$s" title="%12$s"><span class="a_l %3$s---a_l"><span class="word %5$s---word">%4$s</span><span class="sep colon---sep">:</span><span class="word %7$s---word">%6$s</span><span class="sep colon---sep">:</span><span class="word %9$s---word">%8$s</span></span></a>';
+                                                                                $com_pub_time_mu .= '</span>';
+                                                                            $com_pub_time_mu .= '</time>';
+                                                                        $com_pub_time_mu .= '</span><!-- %1$s -->';
+
+                                                        // Comment Published Label
+                                                        $com_pub_lbl_NAME = 'Comment Published Date and Time Stamp Label';
+                                                        $com_pub_lbl = sprintf( $com_pub_lbl_mu,
+                                                            $com_pub_lbl_NAME,
+                                                            'obj comment-published-timestamp-label',
+                                                            'com-pub-ts-lbl',
+                                                            esc_html__( 'Commented', $GLOBALS['apl_textdomain'] ),
+                                                            'published',
+                                                            esc_html__( 'on', 'applicator' ),
+                                                            'on'
+                                                        );
+
+                                                        // Comment Published Date
+                                                        $com_pub_date_NAME = 'Comment Published Date Stamp';
+                                                        $com_pub_date = sprintf( $com_pub_date_mu,
+                                                            $com_pub_lbl_NAME,
+                                                            'obj comment-published-date-stamp',
+                                                            'com-pub-ds',
+                                                            get_comment_date( 'j' ), // Day (d)
+                                                            'day',
+                                                            get_comment_date( 'M' ), // Month (mmm)
+                                                            'month',
+                                                            get_comment_date( 'Y' ), // Year (yyyy)
+                                                            'year',
+                                                            htmlspecialchars( get_comment_link( $comment->comment_ID ) ),
+                                                            get_comment_date( DATE_W3C ),
+                                                            get_comment_date( 'j F Y')
+                                                        );
+
+                                                        // Comment Published Time
+                                                        $com_pub_time_NAME = 'Comment Published Time Stamp';
+                                                        $com_pub_time = sprintf( $com_pub_time_mu,
+                                                            $com_pub_time_NAME,
+                                                            'obj comment-published-time-stamp',
+                                                            'com-pub-ts',
+                                                            get_comment_time( 'H' ), // Day (d)
+                                                            'hours',
+                                                            get_comment_time( 'i' ), // Month (mmm)
+                                                            'minutes',
+                                                            get_comment_time( 's' ), // Year (yyyy)
+                                                            'seconds',
+                                                            esc_url( get_permalink() ),
+                                                            get_comment_time( DATE_W3C ),
+                                                            get_comment_time( 'H:i:s')
+                                                        );
+
+                                                        // Comment Published Date Time Component
+                                                        $com_pub_date_time_NAME = 'Comment Published Date and Time Stamp';
+                                                        $com_pub_date_time = sprintf( $com_pub_date_time_mu,
+                                                            $com_pub_date_time_NAME,
+                                                            'cp comment-published-date-time-stamp',
+                                                            'com-pub-dts',
+                                                            esc_html__( $com_pub_date_time_NAME, $GLOBALS['apl_textdomain'] ),
+                                                            $com_pub_date,
+                                                            $com_pub_time
+                                                        );
+
+                                                        // Comment Published Info Component
+                                                        $com_pub_NAME = 'Comment Published Info';
+                                                        printf( $com_pub_mu,
+                                                            $com_pub_NAME,
+                                                            'cp comment-published-info',
+                                                            'com-pub-info',
+                                                            esc_html__( $com_pub_NAME, $GLOBALS['apl_textdomain'] ),
+                                                            $com_pub_lbl,
+                                                            $com_pub_date_time
+                                                        );
+                                                        ?>
+
+                                                        <div class="cp comment-published-author" data-name="Comment Published Author">
+                                                            <div class="cr com-pub-author---cr">
+                                                                <div class="h com-pub-author---h"><span class="h_l com-pub-author---h_l"><?php esc_html_e( 'Comment Published Author ', 'applicator' ); ?></span></div>
+                                                                <div class="ct com-pub-author---ct">
+                                                                    <div class="ct_cr com-pub-author---ct_cr">
+
+                                                                        <span class="obj comment-published-author-label-obj" data-name="Comment Published Author Label Object">
+                                                                            <span class="g com-pub-author-lbl-obj---g"><span class="g_l com-pub-author-lbl-obj---g_l"><?php esc_html_e( 'Commented by', 'applicator' ); ?></span></span>
+                                                                        </span><!-- Comment Published Author Label Object -->
+
+                                                                        <div class="cp comment-author" data-name="Comment Author">
+                                                                            <div class="cr com-author---cr">
+                                                                                <div class="h com-author---h"><span class="h_l com-author---h_l"><?php esc_html_e( 'Comment Author', 'applicator' ); ?></span></div>
+                                                                                <div class="ct com-author---ct">
+                                                                                    <div class="ct_cr com-author---ct_cr">
+                                                                                        <span class="obj comment-author-name-obj" title="" data-name="Comment Author Name Object">
+                                                                                            <span class="g com-author-name-obj---g"><span class="g_l com-author-name-obj---g_l">
+                                                                                                <a class="a com-author-name-obj---a" href="<?php echo get_comment_author_url(); ?>"><span class="a_l com-author-name-obj---a-l"><?php echo get_comment_author(); ?></span></a>
+                                                                                            </span></span>
+                                                                                        </span><!-- Comment Author Name Object -->
+                                                                                        <span class="obj comment-author-avatar-obj" title="" data-name="Comment Author Avatar Object">
+                                                                                            <a class="a com-author-avatar-obj---a" href="<?php echo get_comment_author_url(); ?>">
+                                                                                                <span class="a_l com-author-avatar-obj---a_l">
+                                                                                                    <span class="ee--img com-author-avatar-obj---ee--img"><?php echo get_avatar( $comment, $args['avatar_size'] ); ?></span>
+                                                                                                </span>
+                                                                                            </a>
+                                                                                        </span><!-- Comment Author Avatar Object -->
+                                                                                    </div>
+                                                                                </div><!-- ct -->
+                                                                            </div>
+                                                                        </div><!-- Comment Author -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- Comment Published Author -->
                                                     </div>
-                                                </div>
+                                                </div><!-- ct -->
                                             </div>
-                                        </div><!-- Comment Published Timestamp -->
-                                        <div class="cp commenter" data-name="Commenter">
-                                            <div class="cr commenter---cr">
-                                                <div class="h commenter---h">
-                                                    <span class="h_l commenter---h_l"><?php esc_html_e( 'Commenter ', 'applicator' ); ?></span>
-                                                </div>
-                                                <div class="ct commenter---ct">
-                                                    <div class="ct_cr commenter---ct_cr">
-                                                        <span class="obj commenter-name---obj" data-name="Commenter Name">
-                                                            <span class="g commenter-name---g">
-                                                                <span class="g_l commenter-name---g_l">
-                                                                    
-                                                                    <?php
-        
-                                                                    $commenter_name_a_mu = '<a class="a commenter-name---a" href="%1$s"><span class="a_l commenter-name---a_l">%2$s</span></a>';
-        
-                                                                    printf( $commenter_name_a_mu,
-                                                                        get_comment_author_url(),
-                                                                        get_comment_author()
-                                                                    );
-                                                                    
-                                                                    ?>
-                                                                
-                                                                </span>
-                                                            </span>
-                                                        </span><!-- commenter-avatar---obj -->
-                                                        <span class="obj commenter-avatar---obj" data-name="Commenter Avatar">
-                                                            
-                                                            <?php
-                                                            
-                                                            $commenter_avatar_a_mu = '<a class="a commenter-avatar---a" href="%1$s"><span class="a_l commenter-avatar---a_l"><span class="ee--img commenter-avatar---ee--img">%2$s</span></span></a>';
-        
-                                                            printf( $commenter_avatar_a_mu,
-                                                                get_comment_author_url(),
-                                                                get_avatar(
-                                                                    $comment,
-                                                                    $args['avatar_size']
-                                                                )
-                                                            );
-                                                            
-                                                            ?>
-                                                        
-                                                        </span><!-- commenter-avatar---obj -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><!-- Commenter -->
+                                        </div><!-- Comment Meta -->
                                     </div>
                                 </div>
                             </div>
@@ -234,11 +237,11 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                     <div class="ct_cr comment---ct_cr">
                         
                         <?php if ( $comment->comment_approved == '0' ) { ?>
-                        <div class="obj note comment-unapproved-note---obj" data-name="Comment Unapproved Note">
+                        <div class="obj note comment-unapproved-note---obj" data-name="Comment Unapproved Note Object">
                             <div class="g comment-unapproved-note---g">
                                 <p><?php esc_html_e( 'Your comment is awaiting moderation.', 'applicator' ); ?></p>
                             </div>
-                        </div>
+                        </div><!-- Comment Unapproved Note Object -->
                         <?php } ?>
                         
                         <?php comment_text(); ?>

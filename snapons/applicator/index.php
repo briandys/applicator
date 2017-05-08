@@ -53,7 +53,7 @@ if ( ! function_exists( 'apl_snapons_applicator_func_styles' ) ) {
         wp_enqueue_style( 'apl-style-fonts', applicator_fonts_url(), array(), null );
         add_editor_style( array( 'assets/css/editor-style.css', applicator_fonts_url() ) );
         
-        wp_enqueue_style( 'apl-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '16.7', 'all' );
+        wp_enqueue_style( 'apl-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '17.2', 'all' );
 
     }
     add_action( 'wp_enqueue_scripts', 'apl_snapons_applicator_func_styles', 0);
@@ -65,6 +65,9 @@ if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
     function apl_snapons_applicator_scripts() {
         
         wp_enqueue_script( 'apl-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/applicator.js' ), array( 'jquery' ), '16.3', true );
+        
+        // EQCSS
+        // wp_enqueue_script( 'apl-snapons-applicator-script-eqcss', get_theme_file_uri( '/snapons/applicator/assets/eqcss.min.js' ), array(), '1.0', true );
         
         $arrow_icon = apl_func_get_svg( array( 'icon' => 'arrow-icon' ) );
         $arrow_up_2_icon = apl_func_get_svg( array( 'icon' => 'arrow-up-2-icon' ) );
@@ -100,3 +103,21 @@ if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
     }
     add_action( 'wp_enqueue_scripts', 'apl_snapons_applicator_scripts' );
 }
+
+/*
+// EQCSS Style
+// https://discourse.wicg.io/t/position-an-element-relatively-to-another-element-from-anywhere-in-the-dom/968/49
+if ( ! function_exists( 'apl_snapons_applicator_eqcss' ) ) {
+    function apl_snapons_applicator_eqcss() { ?>
+	   
+        <script type="text/eqcss">
+            <?php
+            $eqcss = file_get_contents( get_theme_file_uri() . '/snapons/applicator/assets/applicator.eqcss' );
+            echo $eqcss;
+            ?>
+        </script>
+    
+    <?php }
+    add_action( 'wp_footer', 'apl_snapons_applicator_eqcss' );
+}
+*/

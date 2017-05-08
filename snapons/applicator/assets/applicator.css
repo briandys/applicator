@@ -15,14 +15,17 @@
 .post-pub-auth---h,
 .post-author-name-obj---h,
 .post-meta---h,
-.post-pub-mod-info---h,
-.post-pub---h,
-.post-mod---h,
+.post-pub-mod-dts-info---h,
+.post-pub-info---h,
+.post-pub-dts---h,
+.post-mod-info---h,
+.post-mod-dts---h,
 .post-cat-class---h,
 .post-tag-class---h,
 .post-nav---h,
 .parent-post---h,
 .post-author---h,
+.post-pub-date-time---h,
 
 .coms-acts-snip---h,
 .comment-md---h,
@@ -33,7 +36,16 @@
 .signed-in-acct-axns---h,
 .coms-cnt---h,
 .signed-in-acct---h,
-.post-pub-date-time---h,
+.com-pub-dts---h,
+.com-pub-info---h,
+.com-pub-author---h,
+.com-author---h,
+.com-meta---h,
+.com-hr-as---h,
+.comment-form .h,
+.com-crt---h,
+
+.main-ct-hr-as---h,
 
 /* Go to Content Nav */
 .go-ct-nav---h,
@@ -288,42 +300,7 @@ html
 
 
 
-/* ------------------------- Spacing | Dimensions ------------------------- */
 
-.widget_search .search-form-submit--btn,
-.widget_search .search-form-reset--btn,
-
-.commenter-comment--input-text,
-.form-submit
-{
-    padding: 1rem;
-    margin-top: -1rem;
-}
-
-.widget_search .search-term--input-text
-{
-    padding: 1rem;
-}
-
-
-.widget_search .search-term--input--text,
-.commenter-comment--input--text
-{
-    padding: 0 .5rem;
-}
-
-.commenter-comment--input--text
-{
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-}
-
-/* Smaller icons */
-.main-nav--header-aside--menu-toggle .dismiss-icon
-{
-    width: .75rem;
-    height: .75rem;
-}
 
 
 
@@ -1300,7 +1277,10 @@ $go-green: #12b32d;
 /* ------------------------- Search - Style > Nature */
 
 .search-cp .input-text,
-.search-cp .b
+.search-cp .b,
+
+.comment-form .input-text,
+.com-sub-axn---b
 {
     /* Reset */
     margin: 0;
@@ -1311,7 +1291,10 @@ $go-green: #12b32d;
 
 .search-cp .input-text,
 .search-cp .b,
-.search-cp .b_l
+.search-cp .b_l,
+
+.comment-form .input-text,
+.com-sub-axn---b
 {
     box-sizing: border-box;
     
@@ -1325,7 +1308,9 @@ $go-green: #12b32d;
     width: 100%;
 }
 
-.search-cp .b_l
+.search-cp .b_l,
+
+.com-sub-axn---b
 {
     padding: .5rem 1rem;
 }
@@ -1341,7 +1326,9 @@ $go-green: #12b32d;
 
 
 /* ------------------------- Search - Style > Decorations */
-.search-cp .input-text
+.search-cp .input-text,
+
+.comment-form .input-text
 {
     padding: 0 .5rem;
     
@@ -1349,7 +1336,9 @@ $go-green: #12b32d;
     border-color: hsla(0, 0%, 0%, .5);
 }
 
-.search-cp .search-submit-axn---b_l
+.search-cp .search-submit-axn---b_l,
+
+.com-sub-axn---b
 {
     background-color: #00aaff;
     color: white;
@@ -1365,7 +1354,10 @@ $go-green: #12b32d;
 }
 
 .search-cp .input-text,
-.search-cp .b_l
+.search-cp .b_l,
+
+.comment-form .input-text,
+.com-sub-axn---b
 {   
     border-radius: .125rem;
 }
@@ -1655,6 +1647,31 @@ $go-green: #12b32d;
 .sub-nav--inactive > .sub-menu
 {
     display: none;
+}
+
+
+
+
+
+/* ------------------------- Comments - Style */
+.comment-form .input-text
+{
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.comments---grp,
+.comment .children
+{
+    /* Reset */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.comment .comment
+{
+    padding-left: 1rem;
 }
 
 

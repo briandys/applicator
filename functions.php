@@ -51,10 +51,4 @@ require_once( get_template_directory() . '/inc/functions/icons.php');
 // Snap-ons
 require_once( get_template_directory() . '/snapons.php');
 
-
-
-$GLOBALS['sample_markup'] = '<div class="%2$s" data-name="%1$s">';
-$GLOBALS['sample_markup'] .= '<div class="cr %3$s---cr">';
-$GLOBALS['sample_markup'] .= '%4$s';
-$GLOBALS['sample_markup'] .= '</div>';
-$GLOBALS['sample_markup'] .= '</div>';
+require_once( get_template_directory() . '/inc/functions/markup.php');

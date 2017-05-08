@@ -33,20 +33,20 @@
                                     <?php wp_list_comments( array(
                                         'style'       => 'ul',
                                         'avatar_size' => 48,
-                                        'callback' => 'applicator_comment'
+                                        'callback' => 'apl_func_comment'
                                     ) ); ?>
                                 </ul>
                                 
                                 <?php // Comments Navigation | inc > tags > comments-nav.php
-                                applicator_comments_nav(); ?>
+                                apl_func_comments_nav(); ?>
                             
                             <?php } else { ?>
                                 
-                                <div class="obj note comments-empty-note---obj" data-name="Comments Empty Note">
+                                <div class="obj note comments-empty-note-obj" data-name="Comments Empty Note">
                                     <div class="g comments-empty-note---g">
                                         <p><?php esc_html_e( 'There are no comments.', 'applicator' ); ?></p>
                                     </div>
-                                </div><!-- comments-empty-note---obj -->
+                                </div><!-- comments-empty-note-obj -->
                                 
                             <?php } ?>
                             
@@ -58,26 +58,28 @@
                 <?php // Comment Form | inc > functions > comment-form.php
                 
                 // Markup
-                $commenter_comment_creation_mu = '<div class="cp fs-item commenter-comment-creation" data-name="Commenter Comment Creation">';
-                    $commenter_comment_creation_mu .= '<div class="cr commenter-com-crt---cr">';
-                        $commenter_comment_creation_mu .= '<div class="h commenter-com-crt---h"><span class="h_l commenter-com-crt---h_l">Commenter Comment Creation</span></div>';
-                        $commenter_comment_creation_mu .= '<div class="ct commenter-com-crt---ct">';
-                            $commenter_comment_creation_mu .= '<div class="ct_cr commenter-com-crt---ct_cr">';
+                $com_author_comment_creation_mu = '<div class="cp fs-item comment-author-comment-creation" data-name="Comment Author Comment Creation">';
+                    $com_author_comment_creation_mu .= '<div class="cr com-author-com-crt---cr">';
+                        $com_author_comment_creation_mu .= '<div class="h com-author-com-crt---h"><span class="h_l com-author-com-crt---h_l">Commenter Comment Creation</span></div>';
+                        $com_author_comment_creation_mu .= '<div class="ct com-author-com-crt---ct">';
+                            $com_author_comment_creation_mu .= '<div class="ct_cr com-author-com-crt---ct_cr">';
                                 
-                                $commenter_comment_creation_mu .= '<span class="obj commenter-com-creation-label---obj" data-name="Commenter Comment Creation Label">';
-                                    $commenter_comment_creation_mu .= '<label class="label commenter-com-crt-lbl---label" for="comment"><span class="label_l commenter-name-crt-lbl---label_l">%2$s</span></label>';
-                                $commenter_comment_creation_mu .= '</span>';
+                                $com_author_comment_creation_mu .= '<span class="obj com-author-com-creation-label-obj" data-name="Commenter Comment Creation Label">';
+                                    $com_author_comment_creation_mu .= '<label class="label com-author-com-crt-lbl-obj---label" for="comment"><span class="label_l com-author-name-crt-lbl-obj---label_l">%2$s</span></label>';
+                                $com_author_comment_creation_mu .= '</span>';
                                 
-                                $commenter_comment_creation_mu .= '<span class="obj commenter-com-creation-input---obj" data-name="Commenter Comment Creation Input">';
-                                    $commenter_comment_creation_mu .= '<textarea id="comment" class="textarea input-text commenter-com-crt-inp--input-text" name="comment" placeholder="%1$s" title="%1$s" maxlength="65525" required></textarea>';
-                                $commenter_comment_creation_mu .= '</span>';
+                                $com_author_comment_creation_mu .= '<span class="obj com-author-com-creation-input-obj" data-name="Commenter Comment Creation Input">';
+                                    $com_author_comment_creation_mu .= '<span class="ee--textarea com-author-com-creation-input-obj---ee--textarea">';
+                                        $com_author_comment_creation_mu .= '<textarea id="comment" class="textarea input-text com-author-com-crt-inp-obj--input-text" name="comment" placeholder="%1$s" title="%1$s" maxlength="65525" required></textarea>';
+                                    $com_author_comment_creation_mu .= '</span>';
+                                $com_author_comment_creation_mu .= '</span>';
                             
-                            $commenter_comment_creation_mu .= '</div>';
-                        $commenter_comment_creation_mu .= '</div>';
-                    $commenter_comment_creation_mu .= '</div>';
-                $commenter_comment_creation_mu .= '</div>';
+                            $com_author_comment_creation_mu .= '</div>';
+                        $com_author_comment_creation_mu .= '</div>';
+                    $com_author_comment_creation_mu .= '</div>';
+                $com_author_comment_creation_mu .= '</div>';
                 
-                $commenter_comment_creation = sprintf( $commenter_comment_creation_mu,
+                $com_author_comment_creation = sprintf( $com_author_comment_creation_mu,
                     esc_attr__( 'Comment', 'applicator' ),
                     esc_html__( 'Comment', 'applicator' )
                 );
@@ -205,6 +207,14 @@
                     $signed_in_acct_axns
                 );
                 
+                $cancel_reply_com_axn_a_l = sprintf( $cancel_reply_com_axn_a_l_mu,
+                    esc_html__( 'Cancel', 'applicator' ),
+                    esc_html__( 'Reply', 'applicator' ),
+                    esc_html__( 'to', 'applicator' ),
+                    esc_html__( 'Comment', 'applicator' ),
+                    esc_attr__( 'Cancel Reply to Comment', 'applicator' )
+                );
+                
                 comment_form( array(
                     
                     'id_form'                   => 'commentform',
@@ -223,11 +233,11 @@
                     'logged_in_as'              => $signed_in_acct, 
                     
                     // Textarea
-                    'comment_field'             => $commenter_comment_creation,
+                    'comment_field'             => $com_author_comment_creation,
                     
                     // Submit Comment Action
-                    'id_submit'                 => 'comment-submit--a',
-                    'class_submit'              => 'a form--a comment-submit--a',
+                    'id_submit'                 => 'com-sub-axn---b',
+                    'class_submit'              => 'b com-sub-axn---b',
                     'label_submit'              => esc_attr__( 'Submit', 'applicator' ),
                     
                     
@@ -246,13 +256,7 @@
                     'cancel_reply_before'       => '',
                     'cancel_reply_after'       => '',
                     
-                    'cancel_reply_link'         => sprintf( $cancel_reply_com_axn_a_l_mu,
-                                                           esc_html__( 'Cancel', 'applicator' ),
-                                                           esc_html__( 'Reply', 'applicator' ),
-                                                           esc_html__( 'to', 'applicator' ),
-                                                           esc_html__( 'Comment', 'applicator' ),
-                                                           esc_attr__( 'Cancel Reply to Comment', 'applicator' )
-                                                ),
+                    'cancel_reply_link'         => $cancel_reply_com_axn_a_l,
                     
                     // Notes
                     'comment_notes_before'      => '',

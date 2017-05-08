@@ -1,0 +1,16 @@
+/*
+@element is basis
+Nested is target
+*/
+
+/*
+@element '.post-title-obj---h_l'
+{
+    .post-admin-axns
+    {
+        position: absolute;
+        left: eval('offsetLeft + offsetWidth')px;
+        bottom: eval('offsetTop + offsetHeight')px;
+    }
+}
+*/
