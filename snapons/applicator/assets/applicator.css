@@ -1403,7 +1403,7 @@ $go-green: #12b32d;
     height: 3rem;
 }
 
-.apl--applicator--main-menu .main-search--active .search---cr
+.apl--applicator--main-menu.main-header-aside--enabled .main-search--active .search---cr
 {
     padding-left: 3rem;
 }
@@ -1458,7 +1458,7 @@ $go-green: #12b32d;
     padding-right: 6rem;
 }
 
-.apl--applicator--main-menu .main-search-func .search-term-crt-inp--input-text
+.apl--applicator--main-menu.main-header-aside--enabled .main-search-func .search-term-crt-inp--input-text
 {
     padding-left: 0;
 }
