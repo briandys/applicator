@@ -168,15 +168,15 @@ if ( ! function_exists( 'apl_func_html_class' ) ) {
         }
 
         if ( 'blank' === get_header_textcolor() ) {
-            echo ' ' . 'wbp-name-desc' . $off;
+            echo ' ' . 'wbp-main-name-desc' . $off;
         } else {
-            echo ' ' . 'wbp-name-desc' . $on;
+            echo ' ' . 'wbp-main-name-desc' . $on;
         }
         
         if ( get_bloginfo( 'description', 'display' ) ) {
-            echo ' ' . 'wbp-desc--populated';
+            echo ' ' . 'wbp-main-desc--populated';
         } else {
-            echo ' ' . 'wbp-desc--empty';
+            echo ' ' . 'wbp-main-desc--empty';
         }
         
         
