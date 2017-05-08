@@ -2,15 +2,11 @@
 
 // Aside Constructor Markup
 $GLOBALS['aside_constructor_mu'] = '<aside id="%2$s" class="cn aside %2$s" data-name="%1$s" role="complementary">';
-    $GLOBALS['aside_constructor_mu'] .= '<div class="cr %3$s---cr">';
-        $GLOBALS['aside_constructor_mu'] .= '<div class="hr %3$s---hr">';
-            $GLOBALS['aside_constructor_mu'] .= '<div class="hr_cr %3$s---hr_cr">';
-                $GLOBALS['aside_constructor_mu'] .= '<h2 class="h %3$s---h"><span class="h_l %3$s---h_l">%1$s</span></h2>';
-            $GLOBALS['aside_constructor_mu'] .= '</div>';
-        $GLOBALS['aside_constructor_mu'] .= '</div>';
-        $GLOBALS['aside_constructor_mu'] .= '<div class="ct %3$s---ct">';
-            $GLOBALS['aside_constructor_mu'] .= '<div class="ct_cr %3$s---ct_cr">%4$s</div>';
-        $GLOBALS['aside_constructor_mu'] .= '</div>';
+    $GLOBALS['aside_constructor_mu'] .= '<div class="hr %3$s---hr">';
+        $GLOBALS['aside_constructor_mu'] .= '<h2 class="h %3$s---h">%1$s</h2>';
+    $GLOBALS['aside_constructor_mu'] .= '</div>';
+    $GLOBALS['aside_constructor_mu'] .= '<div class="ct %3$s---ct">';
+        $GLOBALS['aside_constructor_mu'] .= '<div class="ct_cr %3$s---ct_cr">%4$s</div>';
     $GLOBALS['aside_constructor_mu'] .= '</div>';
 $GLOBALS['aside_constructor_mu'] .= '</aside>';
 

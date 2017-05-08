@@ -26,7 +26,7 @@
                                     $go_ct_navi_mu .= '<a id="%3$s---a" class="a %3$s---a skip-link" href="%6$s" title="%7$s"><span class="a_l %3$s---a_l"><span class="txt %5$s---txt">';
                                         $go_ct_navi_mu .= '%4$s';
                                     $go_ct_navi_mu .= '</span></a>';
-                                $go_ct_navi_mu .= '</div>';
+                                $go_ct_navi_mu .= '</div><!-- %1$s -->';
                                 
                                 // Content
                                 $go_ct_navi = sprintf( $go_ct_navi_mu,
@@ -51,11 +51,9 @@
                         // Markup
                         $browser_up_note_mu = '<div class="%2$s" data-name="%1$s">';
                             $browser_up_note_mu .= '<div class="g %3$s---g">';
-                                $browser_up_note_mu .= '<a class="a %3$s---a" href="%6$s" rel="home" title="%4$s"><span class="a_l %3$s---a_l"><span class="txt %5$s---txt">';
-                                    $browser_up_note_mu .= '<p>%4$s <a href="%6$s">%5$s</a></p>';
-                                $browser_up_note_mu .= '</span></span></a>';
+                                $browser_up_note_mu .= '<p>%4$s <a href="%6$s">%5$s</a></p>';
                             $browser_up_note_mu .= '</div>';
-                        $browser_up_note_mu .= '</div>';
+                        $browser_up_note_mu .= '</div><!-- %1$s -->';
 
                         // Content
                         $browser_up_note = sprintf( $browser_up_note_mu,
@@ -89,7 +87,7 @@
                                         $wbp_main_name_obj_mu .= '%4$s';
                                     $wbp_main_name_obj_mu .= '</span></span></a>';
                                 $wbp_main_name_obj_mu .= '</h1>';
-                            $wbp_main_name_obj_mu .= '</div>';
+                            $wbp_main_name_obj_mu .= '</div><!-- %1$s -->';
 
                             // Content
                             $wbp_main_name_obj = sprintf( $wbp_main_name_obj_mu,
@@ -136,7 +134,7 @@
                                             $wbp_main_desc_obj_mu .= '%4$s';
                                         $wbp_main_desc_obj_mu .= '</span></span></a>';
                                     $wbp_main_desc_obj_mu .= '</div>';
-                                $wbp_main_desc_obj_mu .= '</div>';
+                                $wbp_main_desc_obj_mu .= '</div><!-- %1$s -->';
 
                                 // Content
                                 $wbp_main_desc_obj = sprintf( $wbp_main_desc_obj_mu,
@@ -165,20 +163,30 @@
                         get_search_form();
                         
                         // Custom Header | Customizer > Custom Header | inc > functions > custom-header.php
-                        if ( has_header_image() ) { ?>
-                        <div class="cp wbp-media-banner" data-name="Web Product Media Banner">
-                            <div class="cr wbp-media-banner--cr">
-                                <?php the_custom_header_markup(); ?>
-                            </div>
-                        </div>
-                        <?php }
+                        if ( has_header_image() ) {
+                            
+                            // Markup
+                            $wbp_media_banner_mu = '<div class="%2$s" data-name="%1$s">';
+                                $wbp_media_banner_mu .= '%3$s';
+                            $wbp_media_banner_mu .= '</div>';
+                            
+                            // Content
+                            $wbp_media_banner = sprintf( $wbp_media_banner_mu,
+                                'Web Product Media Banner',
+                                'cp wbp-media-banner',
+                                get_custom_header_markup()
+                            );
+                            
+                            // Display
+                            printf( $wbp_media_banner );
+                        }
                         
                         // Aside | inc > aside.php
                         apl_func_main_header_aside();
                         ?>
                     
                     </div>
-                </header><!-- main-header -->
+                </header><!-- Main Header -->
                 
                 <section id="content" class="cn main-content site-content" data-name="Main Content">
                     <div class="cr main-content---cr">

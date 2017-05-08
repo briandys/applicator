@@ -231,7 +231,7 @@
             } ) );
             
             $cp
-            .find( $( '.main-hr-as---hr_cr' ) )
+            .find( $( '.main-hr-as---hr' ) )
                 .append( mainMenuCtrlMu )
             .find( $( '.main-menu-ctrl---cr' ) )
                 .append( mainMenuTogObjMu );
