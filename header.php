@@ -20,36 +20,60 @@
                         <div id="go-content-nav" class="nav go-content-nav" role="navigation" data-name="Go to Content Nav">
                             <div class="h go-ct-nav---h"><?php esc_html_e( 'Go to Content Navigation', 'applicator'); ?></div>
                             <div class="ct go-ct-nav---ct">
-
-                                    <?php // Markup
-                                    $go_content_navi_mu = '<div class="obj navi go-content-navi" data-name="Go to Content Nav Item">';
-                                        $go_content_navi_mu .= '<a id="go-ct-navi---a" class="a go-ct-navi---a skip-link" href="#content" title="%1$s"><span class="a_l go-ct-navi---a_l"><span class="word go---word">%2$s</span> <span class="word to---word">%3$s</span> <span class="word content---word">%4$s</span></span></a>';
-                                    $go_content_navi_mu .= '</div>';
-
-                                    printf( $go_content_navi_mu,
-                                        esc_attr__( 'Go to Content', 'applicator'),
-                                        esc_html__( 'Go', 'applicator'),
-                                        esc_html__( 'to', 'applicator'),
-                                        esc_html__( 'Content', 'applicator')
-                                    ); ?>
+                                <?php
+                                // Markup
+                                $go_ct_navi_mu = '<div class="navi %2$s" data-name="%1$s">';
+                                    $go_ct_navi_mu .= '<a id="%3$s---a" class="a %3$s---a skip-link" href="%6$s" title="%7$s"><span class="a_l %3$s---a_l"><span class="txt %5$s---txt">';
+                                        $go_ct_navi_mu .= '%4$s';
+                                    $go_ct_navi_mu .= '</span></a>';
+                                $go_ct_navi_mu .= '</div>';
+                                
+                                // Content
+                                $go_ct_navi = sprintf( $go_ct_navi_mu,
+                                    'Go to Content Nav Item',
+                                        'navi go-content-navi',
+                                        'go-ct-navi',
+                                    esc_html__( 'Go to Content', 'applicator'),
+                                        'go-to-content',
+                                    '#content',
+                                    esc_attr__( 'Go to Content', 'applicator')
+                                );
+                                
+                                // Display
+                                printf( $go_ct_navi );
+                                ?>
                                 
                             </div>
                         </div><!-- Go to Content Nav -->
 
                         <!--[if lt IE 8]>
-                        <div class="obj note browser-upgrade-note---obj" data-name="Browser Upgrade">
-                            <div class="g browser-upg---g">
-                                <?php printf ( '<p>%1$s <a href="%2$s">%3$s</a></p>',
-                                    esc_html__( 'You are using an outdated browser. Please upgrade your browser to improve your experience.', 'applicator' ),
-                                    esc_url( 'http://browsehappy.com/' ),
-                                    esc_html__( 'Upgrade Browser', 'applicator' )
-                                ); ?>
-                            </div>
-                        </div>
+                        <?php
+                        // Markup
+                        $browser_up_note_mu = '<div class="%2$s" data-name="%1$s">';
+                            $browser_up_note_mu .= '<div class="g %3$s---g">';
+                                $browser_up_note_mu .= '<a class="a %3$s---a" href="%6$s" rel="home" title="%4$s"><span class="a_l %3$s---a_l"><span class="txt %5$s---txt">';
+                                    $browser_up_note_mu .= '<p>%4$s <a href="%6$s">%5$s</a></p>';
+                                $browser_up_note_mu .= '</span></span></a>';
+                            $browser_up_note_mu .= '</div>';
+                        $browser_up_note_mu .= '</div>';
+
+                        // Content
+                        $browser_up_note = sprintf( $browser_up_note_mu,
+                            'Browser Upgrade Note Object',
+                                'note browser-upgrade-note',
+                                'browser-up-note',
+                            esc_html__( 'You are using an outdated browser. Please upgrade your browser to improve your experience.', 'applicator' ),
+                            esc_html__( 'Upgrade Browser', 'applicator' ),
+                            esc_url( 'http://browsehappy.com/' )
+                        );
+
+                        // Display
+                        printf( $browser_up_note );
+                        ?>
                         <![endif]-->
 
                     </div>
-                </div><!-- wbp-start -->
+                </div><!-- Web Product Start -->
         
                 <header id="masthead" class="cn header main-header site-header" data-name="Main Header" role="banner">
                     <div class="cr main-header---cr">
@@ -106,7 +130,7 @@
                             if ( $description || is_customize_preview() ) {
 
                                 // Markup
-                                $wbp_main_desc_obj_mu = '<div class="obj %2$s" data-name="%1$s">';
+                                $wbp_main_desc_obj_mu = '<div class="%2$s" data-name="%1$s">';
                                     $wbp_main_desc_obj_mu .= '<div class="g %3$s---g">';
                                         $wbp_main_desc_obj_mu .= '<a class="a %3$s---a" href="%6$s" rel="home" title="%4$s"><span class="a_l %3$s---a_l"><span class="txt %5$s---txt">';
                                             $wbp_main_desc_obj_mu .= '%4$s';
