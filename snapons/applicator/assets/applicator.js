@@ -173,8 +173,7 @@
         
         $cp.addClass( 'main-menu-func' );
         
-        var mainMenuCtrlMu,
-            mainMenuTogObjMu,
+        var mainMenuTogObjMu,
             mainMenuTogBtnMu,
             mainMenuTogBtnLmu,
             mainMenuTogBtnLwordMu,
@@ -190,7 +189,9 @@
             $mainMenuShowL = aplDataMainMenu.mainMenuShowL,
             $mainMenuHideL = aplDataMainMenu.mainMenuHideL,
             
-            $mainMenuCtrl,
+            $mainHrAsH,
+            $mainHrAsCt,
+            
             $mainMenuTogBtn,
             $mainMenuTogBtnL,
             $mainMenuTogBtnLword;
@@ -222,25 +223,13 @@
                 'data-name': 'Main Menu Toggle'
             } ).append( mainMenuTogBtnMu );
             
-            // Containers
-            mainMenuCtrlMu = $( '<div />', {
-                'class': 'ctrl main-menu-ctrl',
-                'data-name': 'Main Menu Control'
-            } ).append( $( '<div />', {
-                'class': 'cr main-menu-ctrl---cr'
-            } ) );
-            
-            $cp
-            .find( $( '.main-hr-as---hr' ) )
-                .append( mainMenuCtrlMu )
-            .find( $( '.main-menu-ctrl---cr' ) )
-                .append( mainMenuTogObjMu );
+            $mainHrAsH = $cp.find( $( '.main-hr-as---h' ) );
+            $mainHrAsH.after( mainMenuTogObjMu );
         }() );
         
-        $mainMenuCtrl = $cp.find( '.main-menu-ctrl' );
-        $mainMenuCtrlCr = $mainMenuCtrl.find( '.main-menu-ctrl---cr' );
+        $mainHrAsCt = $cp.find( '.main-hr-as---ct' );
         
-        $mnMhAsCtCr = $cp.find( '.main-hr-as---ct_cr' );
+        $mainMenuTog = $cp.find( '.main-menu-toggle' );
         $mainMenuTogBtn = $( '#main-menu-tog---b' );
         $mainMenuTogBtnL = $mainMenuTogBtn.find( $( '.main-menu-tog---b_l' ) );
         $mainMenuTogBtnLword = $mainMenuTogBtn.find( $( '.show-hide-main-menu---word' ) );
@@ -307,7 +296,7 @@
         
         // Deactivate upon interaction outside specified elements
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
-            if ( $cp.hasClass( mainMenuActCss ) && ( ! $( e.target ).closest( $mainMenuCtrlCr ).length && ! $( e.target ).closest( $mnMhAsCtCr ).length ) ) {
+            if ( $cp.hasClass( mainMenuActCss ) && ( ! $( e.target ).closest( $mainMenuTog ).length ) && ( ! $( e.target ).closest( $mainHrAsCt ).length ) ) {
                 mainMenuDeactivate();
             }
         } );
