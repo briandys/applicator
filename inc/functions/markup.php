@@ -21,42 +21,93 @@ function applicator_html( $args = '' ) {
     
     $r = wp_parse_args( $args, $defaults );
     
+    $type_name = '';
+    $type_css = '';
+    $type_trailing_css = '';
+    
+    $name = '';
+    $sanitized_name = '';
+    $pri_css = '';
+    $sec_css = '';
+    
+    $component_variations = array( 'component', 'cp', 'c' );
+    $object_variations = array( 'object', 'obj', 'o' );
+    
+    
     // Type
-    if ( 'component' == $r['type'] ) {
-        $type_name = '';
-        $type_css = 'cp';
-    } else if ( 'object' == $r['type'] ) {
-        $type_name = 'Object';
-        $type_css = 'obj';
-    } else {
-        $type_css = '';
+    if ( in_array( $r['type'], $component_variations, true ) ) {
+        $type_css = 'cp ';
+    } else if ( in_array( $r['type'], $object_variations, true ) ) {
+        $type_name = ' Object';
+        $type_css = 'obj ';
+        $type_trailing_css = '-obj';
     }
     
-    $sanitized_name = sanitize_title( $r['name'] );
+    if ( ! empty( $r['name'] ) ) {
+        $name = preg_replace('/\s\s+/', ' ', trim( $r['name'] ) );
+        $sanitized_name = sanitize_title( ' ' . $r['name'] );
+    }
+    
+    if ( ! empty( $r['pri_css'] ) ) {
+        $pri_css = ' ' . trim( $r['pri_css'] );
+    }
+    
+    if ( ! empty( $r['sec_css'] ) ) {
+        $sec_css = ' ' . trim( $r['sec_css'] );
+    }
     
     // Markup
     $output = '';
-    $output .= '<div class="' . $type_css . ' ' . esc_attr( $sanitized_name ) . '-' . $type_css . ' ' . esc_attr( $r['pri_css'] ) . '" data-name="' . esc_attr( $r['name'] ) . ' ' . $type_name . '">';
+    $output .= '<div class="' . $type_css . esc_attr( $sanitized_name ) . $type_trailing_css . esc_attr( $pri_css ) . '" data-name="' . esc_attr( $name ) . $type_name . '">';
     
-    if ( 'component' == $r['type'] ) {
-        $output .= '<div class="h ' . esc_attr( $r['sec_css'] ) . '---h">' . esc_html( $r['name'] ) . '</div>';
-        $output .= '<div class="ct ' . esc_attr( $r['sec_css'] ) . '---ct">' . $r['content'] . '</div>';
+    if ( in_array( $r['type'], $component_variations, true ) ) {
+        $output .= '<div class="h ' . esc_attr( $sec_css ) . '---h">' . esc_html( $name ) . '</div>';
+        $output .= '<div class="ct ' . esc_attr( $sec_css ) . '---ct">' . $r['content'] . '</div>';
     } else {
         $output .= $r['content'];
     }
     
-    $output .= '</div><!-- ' . esc_html( $r['name'] ) . ' -->';
+    $output .= '</div><!-- ' . esc_html( $name ) . $type_name . ' -->';
     
     $html = apply_filters( 'applicator_html', $output, $args );
     
-    if ( ! $r['echo'] ) {
-        return $html;
-    } else {
+    if ( $r['echo'] ) {
         echo $html;
+    } else {
+        return $html;
     }
 }
 
-<?php
+/*
+
+$wbp_main_name_sec_css = 'wpb-main-name';
+                            
+$wbp_main_name_mu = '<h1 class="h %4$s---h site-title">';
+    $wbp_main_name_mu .= '<a class="a %4$s---a" href="%3$s" rel="home" title="%1$s">';
+        $wbp_main_name_mu .= '<span class="a_l %4$s---a_l">';
+            $wbp_main_name_mu .= '<span class="txt %2$s---txt">';
+                $wbp_main_name_mu .= '%1$s';
+            $wbp_main_name_mu .= '</span>';
+        $wbp_main_name_mu .= '</span>';
+    $wbp_main_name_mu .= '</a>';
+$wbp_main_name_mu .= '</h1>';
+
+$wbp_main_name_ct = sprintf( $wbp_main_name_mu,
+    get_bloginfo( 'name' ),
+        'wbp-name',
+    esc_url( home_url( '/' ) ),
+    $wbp_main_name_sec_css
+);
+
+$wbp_main_name_html = applicator_html( array (
+    'type'      => 'o',
+    'name'      => 'Web Product Main Name',
+    'sec_css'   => $wbp_main_name_sec_css,
+    'content'   => $wbp_main_name_ct,
+) );
+
+echo $wbp_main_name_html;
+
 //----- Content
 $wbp_title_sec_css = 'wbp-title';
 

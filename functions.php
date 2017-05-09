@@ -51,4 +51,4 @@ require_once( get_template_directory() . '/inc/functions/icons.php');
 // Snap-ons
 require_once( get_template_directory() . '/snapons.php');
 
-// require_once( get_template_directory() . '/inc/functions/markup.php');
+require_once( get_template_directory() . '/inc/functions/markup.php');

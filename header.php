@@ -49,14 +49,14 @@
                         <!--[if lt IE 8]>
                         <?php
                         // Markup
-                        $browser_up_note_mu = '<div class="%2$s" data-name="%1$s">';
-                            $browser_up_note_mu .= '<div class="g %3$s---g">';
-                                $browser_up_note_mu .= '<p>%4$s <a href="%6$s">%5$s</a></p>';
-                            $browser_up_note_mu .= '</div>';
-                        $browser_up_note_mu .= '</div><!-- %1$s -->';
+                        $browser_upg_note_mu = '<div class="%2$s" data-name="%1$s">';
+                            $browser_upg_note_mu .= '<div class="g %3$s---g">';
+                                $browser_upg_note_mu .= '<p>%4$s <a href="%6$s">%5$s</a></p>';
+                            $browser_upg_note_mu .= '</div>';
+                        $browser_upg_note_mu .= '</div><!-- %1$s -->';
 
                         // Content
-                        $browser_up_note = sprintf( $browser_up_note_mu,
+                        $browser_upg_note = sprintf( $browser_upg_note_mu,
                             'Browser Upgrade Note Object',
                                 'note browser-upgrade-note',
                                 'browser-up-note',
@@ -66,7 +66,7 @@
                         );
 
                         // Display
-                        printf( $browser_up_note );
+                        printf( $browser_upg_note );
                         ?>
                         <![endif]-->
 
@@ -78,7 +78,7 @@
                         
                         <div class="cp wbp-main-info" data-name="Web Product Main Info">
                             <?php
-
+                            
                             // Web Product Main Name
                             // Markup
                             $wbp_main_name_obj_mu = '<div class="%2$s" data-name="%1$s">';
