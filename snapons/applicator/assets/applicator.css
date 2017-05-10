@@ -621,6 +621,7 @@ $go-green: #12b32d;
     min-height: 3rem;
 }
 
+/* Mod */
 .apl--applicator--main-search--default .wbp-main-info
 {
     margin-right: 3rem;
@@ -629,11 +630,6 @@ $go-green: #12b32d;
 .wbp-logo--enabled .wbp-main-info
 {
     margin-left: 1rem;
-}
-
-.main-header-aside--enabled.apl--applicator--main-menu--default .wbp-main-info
-{
-    margin-left: 3rem;
 }
 
 .wbp-logo--enabled .wbp-main-info
@@ -671,10 +667,14 @@ $go-green: #12b32d;
     text-overflow: ellipsis;
 }
 
-.main-header-aside--enabled.apl--applicator--main-menu--default .wbp-main-name-obj---a_l,
-.main-header-aside--enabled.apl--applicator--main-menu--default .wbp-main-desc-obj---a_l,
+/* Mod */
+.apl--applicator--main-menu--default.main-header-aside--enabled .wbp-main-name-obj---a_l,
+.apl--applicator--main-menu--default.main-header-aside--enabled .wbp-main-desc-obj---a_l,
+
 .wbp-logo--enabled .wbp-main-name-obj---a_l,
 .wbp-logo--enabled .wbp-main-desc-obj---a_l,
+
+/* Mod */
 .apl--applicator--main-search--left .wbp-main-name-obj---a_l,
 .apl--applicator--main-search--left .wbp-main-desc-obj---a_l
 {
@@ -685,6 +685,20 @@ $go-green: #12b32d;
 .apl--applicator--main-search .wbp-main-desc-obj---a_l
 {
     padding-right: 0;
+}
+
+
+/* ------------------------- Mod */
+
+.apl--applicator--main-menu.main-header-aside--enabled.apl--applicator--main-menu--default .wbp-main-info,
+.apl--applicator--main-search.apl--applicator--main-search--left .wbp-main-info
+{
+    margin-left: 3rem;
+}
+
+.apl--applicator--main-search.apl--applicator--main-search--left .wbp-main-info
+{
+    margin-right: 1rem;
 }
 
 
@@ -877,11 +891,6 @@ $go-green: #12b32d;
     font-weight: bold;
 }
 
-.wbp-copyright--tm---line
-{
-    white-space: nowrap;
-}
-
 .apl--go-start-nav--active .wbp-copyright
 {
     padding-left: 3rem;
@@ -1056,7 +1065,7 @@ $go-green: #12b32d;
 
 .go-start-nav--active
 {
-    z-index: 1;
+    z-index: 99;
 }
 
 
@@ -1124,69 +1133,6 @@ $go-green: #12b32d;
     z-index: 1;
 }
 
-/* Mod: Default */
-.apl--applicator--main-menu--default .main-menu-func .main-hr-as---ct
-{
-    margin-right: 3rem;
-}
-
-.apl--applicator--main-menu--default .main-menu-func .main-menu-toggle
-{
-    left: 0;
-}
-
-.apl--applicator--main-menu--default .main-menu-func .main-hr-as---ct_cr::before
-{
-    left: 100%;
-    
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.25+0,0+100 */
-    background: -moz-linear-gradient(left, hsla(0,0%,0%,0.25) 0%, hsla(0,0%,0%,0) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
-}
-
-.apl--applicator--main-menu--default .main-menu--active .main-menu-toggle
-{
-    width: calc( 100% - 3rem );
-}
-
-/* Mod: Right */
-.apl--applicator--main-menu--right .main-menu-func .main-menu-toggle
-{
-    right: 0;
-}
-
-.apl--applicator--main-menu--right .main-menu-func .main-hr-as---ct
-{
-    margin-left: 3rem;
-}
-
-.apl--applicator--main-menu--right .main-menu-func .main-menu-tog---b
-{
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
-.apl--applicator--main-menu--right .main-menu-func .main-hr-as---ct_cr::before
-{
-    right: 100%;
-    
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.25+0,0+100 */
-    background: -moz-linear-gradient(left, hsla(0,0%,0%,0.25) 0%, hsla(0,0%,0%,0) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
-    
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    filter: FlipH;
-    -ms-filter: 'FlipH';
-}
-
 .main-menu--inactive .main-hr-as---ct
 {
     display: none;
@@ -1197,7 +1143,7 @@ $go-green: #12b32d;
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 1;
+    z-index: 99;
     
     width: 100%;
     
@@ -1286,6 +1232,79 @@ $go-green: #12b32d;
 {
     position: relative;
     z-index: 1;
+}
+
+
+
+
+
+/* ------------------------- Main Menu - Function - Modification */
+
+.apl--applicator--main-menu--default .main-menu-func .main-hr-as---ct
+{
+    margin-right: 3rem;
+}
+
+.apl--applicator--main-menu--default .main-menu-func .main-menu-toggle
+{
+    left: 0;
+}
+
+.apl--applicator--main-menu--default .main-menu-func .main-hr-as---ct_cr::before
+{
+    left: 100%;
+    
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.25+0,0+100 */
+    background: -moz-linear-gradient(left, hsla(0,0%,0%,0.25) 0%, hsla(0,0%,0%,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+}
+
+.apl--applicator--main-menu--default .main-menu--active .main-menu-toggle
+{
+    width: calc( 100% - 3rem );
+}
+
+/* Mod: Right */
+.apl--applicator--main-menu--right .main-menu-func .main-menu-toggle
+{
+    right: 0;
+}
+
+.apl--applicator--main-menu--right .main-menu-func .main-hr-as---ct
+{
+    margin-left: 3rem;
+}
+
+.apl--applicator--main-menu--right .main-menu-func .main-menu-tog---b
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.apl--applicator--main-menu--right .main-menu-func .main-hr-as---ct_cr::before
+{
+    right: 100%;
+    
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.25+0,0+100 */
+    background: -moz-linear-gradient(left, hsla(0,0%,0%,0.25) 0%, hsla(0,0%,0%,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+    
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: 'FlipH';
+}
+
+.apl--applicator--main-menu--right .main-menu--active .main-menu-toggle
+{
+    width: calc( 100% - 3rem );
 }
 
 
@@ -1498,10 +1517,6 @@ $go-green: #12b32d;
     width: auto;
 }
 
-
-
-
-
 .apl--applicator--main-menu.main-header-aside--enabled .main-search-func .search-term-crt-inp--input-text
 {
     padding-left: 0;
@@ -1562,8 +1577,9 @@ $go-green: #12b32d;
     opacity: .5;
 }
 
-/* ------------------------- Main Search - Functionality Modification */
+/* ------------------------- Main Search - Functionality - Modification */
 
+/* Default */
 .apl--applicator--main-search--default .main-search-func,
 .apl--applicator--main-search--default .main-search-func .main-search-toggle,
 .apl--applicator--main-search--default .main-search-func .search-form-axns
@@ -1582,11 +1598,12 @@ $go-green: #12b32d;
     padding-right: 6rem;
 }
 
-.apl--applicator--main-menu.main-header-aside--enabled.apl--applicator--main-search--default .main-search--active .search---cr
+.apl--applicator--main-search--default.apl--applicator--main-menu.main-header-aside--enabled .main-search--active .search---cr
 {
     padding-left: 3rem;
 }
 
+/* Left */
 .apl--applicator--main-search--left .main-search-func
 {
     left: 0;
@@ -1607,11 +1624,6 @@ $go-green: #12b32d;
     padding-left: 3rem;
     padding-right: 6rem;
 }
-
-
-.apl--applicator--main-search--left .main-search-func .search-form-axns
-
-{}
 
 
 
@@ -1783,7 +1795,42 @@ $go-green: #12b32d;
 
 
 
+/* ------------------------- Main Nav - Style */
+
 .main-nav---cr
 {
     background-color: white;
+}
+
+/* Initialize */
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul
+{
+    display: flex;
+}
+
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li
+{
+    flex-grow: 1;
+}
+
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a
+{
+    display: flex;
+    justify-content: center;
+}
+
+.apl--applicator--easy-access-nav .main-nav---ct_cr
+{
+    border-bottom: 1px solid black;
+    border-bottom-color: hsla( 0, 0%, 0%, .125 );
+}
+
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul a
+{
+    color: black;
+}
+
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul a:hover
+{
+    background-color: aqua;
 }

@@ -31,7 +31,7 @@
         </header>
         <div class="ct post---ct entry-content">
             <div class="ct_cr post---ct_cr">
-                <p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'applicator' ); ?></p>
+                <p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for.', 'applicator' ); ?></p>
             </div>
         </div><!-- ct -->
     </div>

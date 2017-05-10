@@ -9,10 +9,11 @@
         $aplApplicatorMainSearch = $html.closest( '.apl--applicator--main-search' ),
         $aplApplicatorSubNav = $html.closest( '.apl--applicator--sub-nav' ),
         $aplApplicatorMainMenu = $html.closest( '.apl--applicator--main-menu' ),
+        $aplApplicatorEasyAccessNav = $html.closest( '.apl--applicator--easy-access-nav' ),
+        
         $mainHrAsEnabled = $html.closest( '.main-header-aside--enabled' ),
         
         mainSearchFuncCss = 'main-search-func',
-        
         funcCss = 'func';
     
     
@@ -773,5 +774,23 @@
     initSubNav( $( '#main-nav' ) );
     initSubNav( $( '.widget_nav_menu' ) );
     initSubNav( $( '.widget_pages' ) );
+    
+    
+    
+    
+    
+    // ------------------------- Easy Access Nav
+    function initEasyAccessNav( $cp ) {
+        
+        if ( ! $aplApplicatorEasyAccessNav.length ) {
+			return;
+		}
+        
+        $cp
+            .addClass( 'easy-access-nav-func' )
+            .addClass( funcCss );
+    }
+    
+    initEasyAccessNav( $( '#main-nav' ) );
 
 })( jQuery );
