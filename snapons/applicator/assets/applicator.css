@@ -1806,6 +1806,7 @@ $go-green: #12b32d;
 .apl--applicator--easy-access-nav .main-nav---ct_cr > ul
 {
     display: flex;
+    align-items: center;
 }
 
 .apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li
@@ -1833,4 +1834,9 @@ $go-green: #12b32d;
 .apl--applicator--easy-access-nav .main-nav---ct_cr > ul a:hover
 {
     background-color: aqua;
+}
+
+.apl--applicator--easy-access-nav .main-nav---a_l
+{
+    justify-content: center;
 }
