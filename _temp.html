@@ -1,36 +1,21 @@
-<div class="cp post-published" data-name="Post Published">
-    <div class="cr post-pub---cr">
-        <div class="h post-pub---h"><span class="h_l post-pub---h_l"><?php esc_html_e( 'Post Published', 'applicator' ); ?></span></div>
-        <div class="ct post-pub---ct">
-            <div class="ct_cr post-pub---ct_cr">
-                <span class="obj post-published-timestamp" data-name="Post Published Timestamp">
-                    <time class="time post-pub-ts---time" title="22 March 2017">
-                        <span class="time_l post-pub-ts---time_l">
-                            <a class="a post-pub-ts---a"><span class="a_l post-pub-ts---a_l"><span class="word date---word">22</span> <span class="word month---word">Mar</span> <span class="word year---word">2017</span></span></a>
-                        </span>
-                    </time>
-                </span><!-- Post Published Timestamp -->
+<div class="hr main-content---hr" data-name="Main Content Header">
+                <div class="hr_cr main-content---hr_cr">
+                    <h2 class="h main-content---h"><span class="h_l main-content---h_l">
+                    <?php
+                    if ( ! $entry_search_count == 0 ) {
+                        echo '<span class="num search-results-count---num">' . $entry_search_count . '</span> ';
+                    }
+
+                    if ( $entry_search_count == 0 ) {
+                        echo '<span class="word no-search-result---word">' . esc_html__( 'No Search Results', 'applicator' ) . '</span> ';
+                    } elseif ( $entry_search_count == 1 ) {
+                        echo '<span class="word search-result---word">' . esc_html__( 'Search Result', 'applicator' ) . '</span> ';
+                    } else {
+                        echo '<span class="word search-results---word">' . esc_html__( 'Search Results', 'applicator' ) . '</span> ';
+                    }
+
+                    echo '<span class="word for---word">' . esc_html__( 'for', 'applicator' ) . '</span> <span class="word search-term---word">' . strip_tags( $entry_search_key ) . '</span>';
+                    ?>
+                    </span></h2>
+                </div>
             </div>
-        </div><!-- ct -->
-    </div>
-</div><!-- Post Published -->
-
-
-
-
-<div id="main-nav--main-header-aside" class="cp main-nav--main-header-aside" data-name="Main Nav - Main Header Aside">
-                            <div class="cr mn-mha---cr">
-                                <div class="hr mn-mha---hr">
-                                    <div class="hr_cr mn-mha---hr_cr">
-                                        <div class="h mn-mha---h"><span class="h_l mn-mha---h_l"><?php esc_html_e( 'Main Nav - Main Header Aside', 'applicator' ); ?></span></div>
-                                    </div>
-                                </div>
-                                <div class="ct mn-mha---ct">
-                                    <div class="ct_cr mn-mha---ct_cr">
-                                        
-                                        
-                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- main-nav-/-main-header-aside -->

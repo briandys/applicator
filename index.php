@@ -12,69 +12,6 @@ if ( function_exists( 'get_header' ) ) {
             printf ( $main_ct_hr_mu,
                 esc_html__( 'Home', 'applicator' )
             );
-        } elseif ( is_home() ) {
-            printf ( $main_ct_hr_mu,
-                esc_html__( 'Home', 'applicator' )
-            );
-        } elseif ( is_category() ) {
-            printf ( $main_ct_hr_mu,
-                '<span class="prop category---prop"><span class="word category---word">' . esc_html__( 'Category', 'applicator' ) . '</span><span class="sep colon---sep">:</span></span> <span class="val category-name---val"><span class="word category-name---word">' . single_cat_title( '', false ) . '</span></span>'
-            );
-        } elseif ( is_tag() ) {
-            printf ( $main_ct_hr_mu,
-                '<span class="prop tag---prop"><span class="word tag---word">' . esc_html__( 'Tag', 'applicator' ) . '</span><span class="sep colon---sep">:</span></span> <span class="val tag-name---val"><span class="word tag-name---word">' . single_tag_title( '', false ) . '</span></span>'
-            );
-        } elseif ( is_archive() && ! is_author() ) {
-            if ( is_day() ) {
-                printf ( $main_ct_hr_mu,
-                    '<span class="prop daily-archive---prop"><span class="word daily---word">' . esc_html__( 'Daily', 'applicator' ) . '</span> <span class="word archive---word">' . esc_html__( 'Archive', 'applicator' ) . '</span></span><span class="sep colon---sep">:</span> <span class="val date---val">' . get_the_date( 'j M Y') . '</span>'
-                );
-            } elseif ( is_month() ) {
-                printf ( $main_ct_hr_mu,
-                    '<span class="prop monthly-archive---prop"><span class="word monthly---word">' . esc_html__( 'Monthly', 'applicator' ) . '</span> <span class="word archive---word">' . esc_html__( 'Archive', 'applicator' ) . '</span></span><span class="sep colon---sep">:</span> <span class="val month-year---val">' . get_the_date( 'F Y') . '</span>'
-                );
-            } elseif ( is_year() ) {
-                printf ( $main_ct_hr_mu,
-                    '<span class="prop yearly-archive---prop"><span class="word yearly---word">' . esc_html__( 'Yearly', 'applicator' ) . '</span> <span class="word archive---word">' . esc_html__( 'Archive', 'applicator' ) . '</span></span><span class="sep colon---sep">:</span> <span class="val year---val">' . get_the_date( 'Y') . '</span>'
-                );
-            } else {
-                printf ( $main_ct_hr_mu,
-                    esc_html__( 'Archive', 'applicator' )
-                );
-            }
-        } elseif ( is_search() ) {
-
-            $entrySearch = new WP_Query( array(
-                's'         => $s,
-                'showposts' => -1,
-            ) );
-            $entrySearchKey = get_search_query();
-            $entrySearchCount = $entrySearch->post_count; ?>
-
-            <div class="hr main-content---hr" data-name="Main Content Header">
-                <div class="hr_cr main-content---hr_cr">
-                    <h2 class="h main-content---h"><span class="h_l main-content---h_l">
-                    <?php
-                    if ( ! $entrySearchCount == 0 ) {
-                        echo '<span class="num search-results-count---num">' . $entrySearchCount . '</span> ';
-                    }
-
-                    if ( $entrySearchCount == 0 ) {
-                        echo '<span class="word no-search-result---word">' . esc_html__( 'No Search Results', 'applicator' ) . '</span> ';
-                    } elseif ( $entrySearchCount == 1 ) {
-                        echo '<span class="word search-result---word">' . esc_html__( 'Search Result', 'applicator' ) . '</span> ';
-                    } else {
-                        echo '<span class="word search-results---word">' . esc_html__( 'Search Results', 'applicator' ) . '</span> ';
-                    }
-
-                    echo '<span class="word for---word">' . esc_html__( 'for', 'applicator' ) . '</span> <span class="word search-term---word">' . $entrySearchKey . '</span>';
-                    ?>
-                    </span></h2>
-                </div>
-            </div>
-
-            <?php wp_reset_postdata();
-
         } elseif ( is_singular() ) {
             if ( is_single() && ! is_attachment() ) {
                 printf ( $main_ct_hr_mu,
@@ -93,15 +30,587 @@ if ( function_exists( 'get_header' ) ) {
                     esc_html__( 'Other', 'applicator' )
                 );
             }
-        } elseif ( is_author() ) {
-            printf ( $main_ct_hr_mu,
-                '<span class="prop all-entries-posted-by---prop">' . esc_html__( 'All Entries Posted by', 'applicator' ) . '</span><span class="sep colon---sep">:</span> <span class="val author-name---val">' . get_the_author() . '</span>'
-            );
-
         } else {
             printf ( $main_ct_hr_mu,
                 esc_html__( 'Other', 'applicator' )
             );
+        }
+
+        // Post
+        if ( is_single() || ( is_home() && ! is_front_page() ) || ( is_page() && ! is_front_page() ) ) {
+            
+            $title = '';
+            $prop = 'Entry';
+            $label = $prop;
+            $val = 'Single';
+            
+            // Markup
+            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
+            
+            // Content
+            $val_content = sprintf( $val_mu,
+                $val,
+                sanitize_title( $val )
+            );
+            
+            // Markup
+            $prop_mu = '<span class="txt %2$s---txt">%1$s</span>';
+            
+            // Content
+            $prop_content = sprintf( $prop_mu,
+                esc_html__( $label, 'applicator' ),
+                sanitize_title( $label )
+            );
+            
+            // Markup
+            $main_ct_h_l_mu = '<span class="prop %2$s---prop" title="%5$s">';
+                $main_ct_h_l_mu .= '%4$s';
+                $main_ct_h_l_mu .= '%6$s';
+            $main_ct_h_l_mu .= '</span>';
+            $main_ct_h_l_mu .= ' <span class="val %2$s---val" title="%3$s">';
+                $main_ct_h_l_mu .= '%1$s';
+            $main_ct_h_l_mu .= '</span>';
+            
+            // Content
+            $title = sprintf( $main_ct_h_l_mu,
+                $val_content,
+                sanitize_title( $prop ),
+                esc_attr__( $val, 'applicator' ),
+                $prop_content,
+                esc_attr__( $prop, 'applicator' ),
+                $GLOBALS['colon_sep_mu']
+            );
+            
+            // Display
+            printf ( $main_ct_hr_mu,
+                $title
+            );
+        }
+
+        // Post Type Archive
+        if ( is_post_type_archive() ) {
+            
+            $title = '';
+            $prop = 'Post Type Archive';
+            $label = $prop;
+            
+            $post_type = get_query_var( 'post_type' );
+            if ( is_array( $post_type ) ) {
+                $post_type = reset( $post_type );
+            }
+            
+            $post_type_object = get_post_type_object( $post_type );
+            if ( ! $post_type_object->has_archive ) {
+                $val = post_type_archive_title( '', false );
+            }
+            
+            // Markup
+            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
+            
+            // Content
+            $val_content = sprintf( $val_mu,
+                $val,
+                sanitize_title( $val )
+            );
+            
+            // Markup
+            $prop_mu = '<span class="txt %2$s---txt">%1$s</span>';
+            
+            // Content
+            $prop_content = sprintf( $prop_mu,
+                esc_html__( $label, 'applicator' ),
+                sanitize_title( $label )
+            );
+            
+            // Markup
+            $main_ct_h_l_mu = '<span class="prop %2$s---prop" title="%5$s">';
+                $main_ct_h_l_mu .= '%4$s';
+                $main_ct_h_l_mu .= '%6$s';
+            $main_ct_h_l_mu .= '</span>';
+            $main_ct_h_l_mu .= ' <span class="val %2$s---val" title="%3$s">';
+                $main_ct_h_l_mu .= '%1$s';
+            $main_ct_h_l_mu .= '</span>';
+            
+            // Content
+            $title = sprintf( $main_ct_h_l_mu,
+                $val_content,
+                sanitize_title( $prop ),
+                esc_attr__( $val, 'applicator' ),
+                $prop_content,
+                esc_attr__( $prop, 'applicator' ),
+                $GLOBALS['colon_sep_mu']
+            );
+            
+            // Display
+            printf ( $main_ct_hr_mu,
+                $title
+            );
+        }
+
+        // Category or Tag
+        if ( is_category() || is_tag() ) {
+            
+            $title = '';
+            
+            $prop = '';
+            if ( is_category() ) {
+                $prop = 'Category';
+            }
+            if ( is_tag() ) {
+                $prop = 'Tag';
+            }
+            
+            $label = $prop;
+            $val = single_term_title( '', false );
+            
+            // Markup
+            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
+            
+            // Content
+            $val_content = sprintf( $val_mu,
+                $val,
+                sanitize_title( $val )
+            );
+            
+            // Markup
+            $prop_mu = '<span class="txt %2$s---txt">%1$s</span>';
+            
+            // Content
+            $prop_content = sprintf( $prop_mu,
+                esc_html__( $label, 'applicator' ),
+                sanitize_title( $label )
+            );
+            
+            // Markup
+            $main_ct_h_l_mu = '<span class="prop %2$s---prop" title="%5$s">';
+                $main_ct_h_l_mu .= '%4$s';
+                $main_ct_h_l_mu .= '%6$s';
+            $main_ct_h_l_mu .= '</span>';
+            $main_ct_h_l_mu .= ' <span class="val %2$s---val" title="%3$s">';
+                $main_ct_h_l_mu .= '%1$s';
+            $main_ct_h_l_mu .= '</span>';
+            
+            // Content
+            $title = sprintf( $main_ct_h_l_mu,
+                $val_content,
+                sanitize_title( $prop ),
+                esc_attr__( $val, 'applicator' ),
+                $prop_content,
+                esc_attr__( $prop, 'applicator' ),
+                $GLOBALS['colon_sep_mu']
+            );
+            
+            // Display
+            printf ( $main_ct_hr_mu,
+                $title
+            );
+        }
+
+        // Taxonomy
+        if ( is_tax() ) {
+            
+            $title = '';
+            $prop = 'Taxonomy';
+            $label = $prop;
+            $sep = ', ';
+            
+            $term = get_queried_object();
+            if ( $term ) {
+                $tax   = get_taxonomy( $term->taxonomy );
+                $val = single_term_title( $tax->labels->name . $sep, false );
+            }
+            
+            // Markup
+            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
+            
+            // Content
+            $val_content = sprintf( $val_mu,
+                $val,
+                sanitize_title( $val )
+            );
+            
+            // Markup
+            $prop_mu = '<span class="txt %2$s---txt">%1$s</span>';
+            
+            // Content
+            $prop_content = sprintf( $prop_mu,
+                esc_html__( $label, 'applicator' ),
+                sanitize_title( $label )
+            );
+            
+            // Markup
+            $main_ct_h_l_mu = '<span class="prop %2$s---prop" title="%5$s">';
+                $main_ct_h_l_mu .= '%4$s';
+                $main_ct_h_l_mu .= '%6$s';
+            $main_ct_h_l_mu .= '</span>';
+            $main_ct_h_l_mu .= ' <span class="val %2$s---val" title="%3$s">';
+                $main_ct_h_l_mu .= '%1$s';
+            $main_ct_h_l_mu .= '</span>';
+            
+            // Content
+            $title = sprintf( $main_ct_h_l_mu,
+                $val_content,
+                sanitize_title( $prop ),
+                esc_attr__( $val, 'applicator' ),
+                $prop_content,
+                esc_attr__( $prop, 'applicator' ),
+                $GLOBALS['colon_sep_mu']
+            );
+            
+            // Display
+            printf ( $main_ct_hr_mu,
+                $title
+            );
+        }
+
+        // Author
+        if ( is_author() && ! is_post_type_archive() ) {
+            
+            $title = '';
+            $prop = 'Author';
+            $label = 'All Entries Published by';
+            
+            $author = get_queried_object();
+            if ( $author ) {
+                $val = $author->display_name;
+            }
+            
+            // Markup
+            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
+            
+            // Content
+            $val_content = sprintf( $val_mu,
+                $val,
+                sanitize_title( $val )
+            );
+            
+            // Markup
+            $prop_mu = '<span class="txt %2$s---txt">%1$s</span>';
+            
+            // Content
+            $prop_content = sprintf( $prop_mu,
+                esc_html__( $label, 'applicator' ),
+                sanitize_title( $label )
+            );
+            
+            // Markup
+            $main_ct_h_l_mu = '<span class="prop %2$s---prop" title="%5$s">';
+                $main_ct_h_l_mu .= '%4$s';
+                $main_ct_h_l_mu .= '%6$s';
+            $main_ct_h_l_mu .= '</span>';
+            $main_ct_h_l_mu .= ' <span class="val %2$s---val" title="%3$s">';
+                $main_ct_h_l_mu .= '%1$s';
+            $main_ct_h_l_mu .= '</span>';
+            
+            // Content
+            $title = sprintf( $main_ct_h_l_mu,
+                $val_content,
+                sanitize_title( $prop ),
+                esc_attr__( $val, 'applicator' ),
+                $prop_content,
+                esc_attr__( $prop, 'applicator' ),
+                $GLOBALS['colon_sep_mu']
+            );
+            
+            // Display
+            printf ( $main_ct_hr_mu,
+                $title
+            );
+        }
+
+        // Post Type Archive with has_archive should override terms.
+        if ( is_post_type_archive() && $post_type_object->has_archive ) {
+            
+            $title = '';
+            $prop = 'Post Type Archive';
+            $label = $prop;
+            $val = post_type_archive_title( '', false );
+            
+            // Markup
+            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
+            
+            // Content
+            $val_content = sprintf( $val_mu,
+                $val,
+                sanitize_title( $val )
+            );
+            
+            // Markup
+            $prop_mu = '<span class="txt %2$s---txt">%1$s</span>';
+            
+            // Content
+            $prop_content = sprintf( $prop_mu,
+                esc_html__( $label, 'applicator' ),
+                sanitize_title( $label )
+            );
+            
+            // Markup
+            $main_ct_h_l_mu = '<span class="prop %2$s---prop" title="%5$s">';
+                $main_ct_h_l_mu .= '%4$s';
+                $main_ct_h_l_mu .= '%6$s';
+            $main_ct_h_l_mu .= '</span>';
+            $main_ct_h_l_mu .= ' <span class="val %2$s---val" title="%3$s">';
+                $main_ct_h_l_mu .= '%1$s';
+            $main_ct_h_l_mu .= '</span>';
+            
+            // Content
+            $title = sprintf( $main_ct_h_l_mu,
+                $val_content,
+                sanitize_title( $prop ),
+                esc_attr__( $val, 'applicator' ),
+                $prop_content,
+                esc_attr__( $prop, 'applicator' ),
+                $GLOBALS['colon_sep_mu']
+            );
+            
+            // Display
+            printf ( $main_ct_hr_mu,
+                $title
+            );
+        }
+
+        // Daily Archive
+        if ( is_archive() && is_day() ) {
+            
+            $title = '';
+            $prop = 'Daily Archive';
+            $label = $prop;
+            $val = get_the_date( 'j F Y' );
+            $val_d = get_the_date( 'j' );
+            $val_d_prefix = 'day';
+            $val_m = get_the_date( 'F' );
+            $val_m_prefix = 'month';
+            $val_y = get_the_date( 'Y' );
+            $val_y_prefix = 'year';
+            $val_txt_suffix = '---txt';
+            
+            // Markup
+            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
+            $val_mu .= ' <span class="txt %4$s---txt">%3$s</span>';
+            $val_mu .= ' <span class="txt %6$s---txt">%5$s</span>';
+            
+            // Content
+            $val_content = sprintf( $val_mu,
+                $val_d,
+                $val_d_prefix . $val_txt_suffix . ' ' . $val_d_prefix . '-' . sanitize_title( $val_d ),
+                $val_m,
+                $val_m_prefix . $val_txt_suffix . ' ' . sanitize_title( $val_m ),
+                $val_y,
+                $val_y_prefix . $val_txt_suffix . ' ' . $val_y_prefix . '-' . sanitize_title( $val_y )
+            );
+            
+            // Markup
+            $prop_mu = '<span class="txt %2$s---txt">%1$s</span>';
+            
+            // Content
+            $prop_content = sprintf( $prop_mu,
+                esc_html__( $label, 'applicator' ),
+                sanitize_title( $label )
+            );
+            
+            // Markup
+            $main_ct_h_l_mu = '<span class="prop %2$s---prop" title="%5$s">';
+                $main_ct_h_l_mu .= '%4$s';
+                $main_ct_h_l_mu .= '%6$s';
+            $main_ct_h_l_mu .= '</span>';
+            $main_ct_h_l_mu .= ' <span class="val %2$s---val" title="%3$s">';
+                $main_ct_h_l_mu .= '%1$s';
+            $main_ct_h_l_mu .= '</span>';
+            
+            // Content
+            $title = sprintf( $main_ct_h_l_mu,
+                $val_content,
+                sanitize_title( $prop ),
+                esc_attr__( $val, 'applicator' ),
+                $prop_content,
+                esc_attr__( $prop, 'applicator' ),
+                $GLOBALS['colon_sep_mu']
+            );
+            
+            // Display
+            printf ( $main_ct_hr_mu,
+                $title
+            );
+        }
+
+        // Monthly Archive
+        if ( is_archive() && is_month() ) {
+            
+            $title = '';
+            $prop = 'Monthly Archive';
+            $label = $prop;
+            $val = get_the_date( 'F Y' );
+            $val_m = get_the_date( 'F' );
+            $val_m_prefix = 'month';
+            $val_y = get_the_date( 'Y' );
+            $val_y_prefix = 'year';
+            $val_txt_suffix = '---txt';
+            
+            // Markup
+            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
+            $val_mu .= ' <span class="txt %4$s---txt">%3$s</span>';
+            
+            // Content
+            $val_content = sprintf( $val_mu,
+                $val_m,
+                $val_m_prefix . $val_txt_suffix . ' ' . sanitize_title( $val_m ),
+                $val_y,
+                $val_y_prefix . $val_txt_suffix . ' ' . $val_y_prefix . '-' . sanitize_title( $val_y )
+            );
+            
+            // Markup
+            $prop_mu = '<span class="txt %2$s---txt">%1$s</span>';
+            
+            // Content
+            $prop_content = sprintf( $prop_mu,
+                esc_html__( $label, 'applicator' ),
+                sanitize_title( $label )
+            );
+            
+            // Markup
+            $main_ct_h_l_mu = '<span class="prop %2$s---prop" title="%5$s">';
+                $main_ct_h_l_mu .= '%4$s';
+                $main_ct_h_l_mu .= '%6$s';
+            $main_ct_h_l_mu .= '</span>';
+            $main_ct_h_l_mu .= ' <span class="val %2$s---val" title="%3$s">';
+                $main_ct_h_l_mu .= '%1$s';
+            $main_ct_h_l_mu .= '</span>';
+            
+            // Content
+            $title = sprintf( $main_ct_h_l_mu,
+                $val_content,
+                sanitize_title( $prop ),
+                esc_attr__( $val, 'applicator' ),
+                $prop_content,
+                esc_attr__( $prop, 'applicator' ),
+                $GLOBALS['colon_sep_mu']
+            );
+            
+            // Display
+            printf ( $main_ct_hr_mu,
+                $title
+            );
+        }
+
+        // Yearly Archive
+        if ( is_archive() && is_year() ) {
+            
+            $title = '';
+            $prop = 'Yearly Archive';
+            $label = $prop;
+            $val = get_the_date( 'Y' );
+            $val_y_prefix = 'year';
+            $val_txt_suffix = '---txt';
+            
+            // Markup
+            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
+            
+            // Content
+            $val_content = sprintf( $val_mu,
+                $val,
+                $val_y_prefix . $val_txt_suffix . ' ' . $val_y_prefix . '-' . sanitize_title( $val )
+            );
+            
+            // Markup
+            $prop_mu = '<span class="txt %2$s---txt">%1$s</span>';
+            
+            // Content
+            $prop_content = sprintf( $prop_mu,
+                esc_html__( $label, 'applicator' ),
+                sanitize_title( $label )
+            );
+            
+            // Markup
+            $main_ct_h_l_mu = '<span class="prop %2$s---prop" title="%5$s">';
+                $main_ct_h_l_mu .= '%4$s';
+                $main_ct_h_l_mu .= '%6$s';
+            $main_ct_h_l_mu .= '</span>';
+            $main_ct_h_l_mu .= ' <span class="val %2$s---val" title="%3$s">';
+                $main_ct_h_l_mu .= '%1$s';
+            $main_ct_h_l_mu .= '</span>';
+            
+            // Content
+            $title = sprintf( $main_ct_h_l_mu,
+                $val_content,
+                sanitize_title( $prop ),
+                esc_attr__( $val, 'applicator' ),
+                $prop_content,
+                esc_attr__( $prop, 'applicator' ),
+                $GLOBALS['colon_sep_mu']
+            );
+            
+            // Display
+            printf ( $main_ct_hr_mu,
+                $title
+            );
+        }
+
+        // Search
+        if ( is_search() ) {
+            
+            $title = '';
+            $prop = 'Search Results';
+            $label = $prop;
+            $label_for = 'for';
+            
+            $entry_search = new WP_Query( array(
+                's'         => $s,
+                'showposts' => -1,
+            ) );
+            
+            $val = get_search_query();
+            $entry_search_count = $entry_search->post_count;
+            $entry_search_count_prefix = 'count';
+            
+            // Markup
+            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
+            
+            // Content
+            $val_content = sprintf( $val_mu,
+                strip_tags( $val ),
+                sanitize_title( $val )
+            );
+            
+            // Markup
+            $prop_mu = '<span class="txt %2$s---txt">%1$s</span>';
+            $prop_mu .= ' <span class="txt %4$s---txt">%3$s</span>';
+            $prop_mu .= ' <span class="txt %6$s---txt">%5$s</span>';
+            
+            // Content
+            $prop_content = sprintf( $prop_mu,
+                $entry_search_count,
+                $entry_search_count_prefix . '---txt' . $entry_search_count_prefix . '-' . sanitize_title( $entry_search_count ),
+                esc_html__( $label, 'applicator' ),
+                sanitize_title( $label ),
+                esc_html__( $label_for, 'applicator' ),
+                sanitize_title( $label_for )
+            );
+            
+            // Markup
+            $main_ct_h_l_mu = '<span class="prop %2$s---prop" title="%5$s">';
+                $main_ct_h_l_mu .= '%4$s';
+                $main_ct_h_l_mu .= '%6$s';
+            $main_ct_h_l_mu .= '</span>';
+            $main_ct_h_l_mu .= ' <span class="val %2$s---val" title="%3$s">';
+                $main_ct_h_l_mu .= '%1$s';
+            $main_ct_h_l_mu .= '</span>';
+            
+            // Content
+            $title = sprintf( $main_ct_h_l_mu,
+                $val_content,
+                sanitize_title( $prop ),
+                esc_attr__( $val, 'applicator' ),
+                $prop_content,
+                esc_attr__( $prop, 'applicator' ),
+                $GLOBALS['colon_sep_mu']
+            );
+            
+            // Display
+            printf ( $main_ct_hr_mu,
+                $title
+            );
+            
+            wp_reset_postdata();
         }
 
         // Main Content Header Aside
