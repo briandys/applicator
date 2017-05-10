@@ -1840,3 +1840,15 @@ $go-green: #12b32d;
 {
     justify-content: center;
 }
+
+.apl--applicator--easy-access-nav .sub-nav--active
+{
+    position: relative;
+}
+
+.apl--applicator--easy-access-nav .sub-nav--active > ul
+{
+    position: absolute;
+    right: 0;
+    top: 100%;
+}
