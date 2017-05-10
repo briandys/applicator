@@ -621,7 +621,7 @@ $go-green: #12b32d;
     min-height: 3rem;
 }
 
-.apl--applicator--main-search .wbp-main-info
+.apl--applicator--main-search--default .wbp-main-info
 {
     margin-right: 3rem;
 }
@@ -631,7 +631,7 @@ $go-green: #12b32d;
     margin-left: 1rem;
 }
 
-.apl--applicator--main-menu.main-header-aside--enabled.apl--applicator--main-menu--default .wbp-main-info
+.main-header-aside--enabled.apl--applicator--main-menu--default .wbp-main-info
 {
     margin-left: 3rem;
 }
@@ -671,10 +671,12 @@ $go-green: #12b32d;
     text-overflow: ellipsis;
 }
 
-.apl--applicator--main-menu.main-header-aside--enabled.apl--applicator--main-menu--default .wbp-main-name-obj---a_l,
-.apl--applicator--main-menu.main-header-aside--enabled.apl--applicator--main-menu--default .wbp-main-desc-obj---a_l,
+.main-header-aside--enabled.apl--applicator--main-menu--default .wbp-main-name-obj---a_l,
+.main-header-aside--enabled.apl--applicator--main-menu--default .wbp-main-desc-obj---a_l,
 .wbp-logo--enabled .wbp-main-name-obj---a_l,
-.wbp-logo--enabled .wbp-main-desc-obj---a_l
+.wbp-logo--enabled .wbp-main-desc-obj---a_l,
+.apl--applicator--main-search--left .wbp-main-name-obj---a_l,
+.apl--applicator--main-search--left .wbp-main-desc-obj---a_l
 {
     padding-left: 0;
 }
@@ -1443,7 +1445,6 @@ $go-green: #12b32d;
 .main-search-func
 {
     position: absolute;
-    right: 0;
     top: 0;
 }
 
@@ -1457,11 +1458,6 @@ $go-green: #12b32d;
     position: relative;
     
     height: 3rem;
-}
-
-.apl--applicator--main-menu.main-header-aside--enabled .main-search--active .search---cr
-{
-    padding-left: 3rem;
 }
 
 .main-search--inactive .search---ct
@@ -1483,7 +1479,6 @@ $go-green: #12b32d;
 .main-search-func .search-form-axns
 {
     position: absolute;
-    right: 0;
     top: 0;
 }
 
@@ -1503,16 +1498,9 @@ $go-green: #12b32d;
     width: auto;
 }
 
-.main-search--active .main-search-toggle
-{
-    padding-right: 3rem;
-}
 
-.main-search-func .search-term-crt-inp--input-text
-{
-    padding-left: 1rem;
-    padding-right: 6rem;
-}
+
+
 
 .apl--applicator--main-menu.main-header-aside--enabled .main-search-func .search-term-crt-inp--input-text
 {
@@ -1573,6 +1561,57 @@ $go-green: #12b32d;
     color: white;
     opacity: .5;
 }
+
+/* ------------------------- Main Search - Functionality Modification */
+
+.apl--applicator--main-search--default .main-search-func,
+.apl--applicator--main-search--default .main-search-func .main-search-toggle,
+.apl--applicator--main-search--default .main-search-func .search-form-axns
+{
+    right: 0;
+}
+
+.apl--applicator--main-search--default .main-search--active .main-search-toggle
+{
+    padding-right: 3rem;
+}
+
+.apl--applicator--main-search--default .main-search-func .search-term-crt-inp--input-text
+{
+    padding-left: 1rem;
+    padding-right: 6rem;
+}
+
+.apl--applicator--main-menu.main-header-aside--enabled.apl--applicator--main-search--default .main-search--active .search---cr
+{
+    padding-left: 3rem;
+}
+
+.apl--applicator--main-search--left .main-search-func
+{
+    left: 0;
+}
+
+.apl--applicator--main-search--left .main-search--active .main-search-toggle
+{
+    left: 0;
+}
+
+.apl--applicator--main-search--left .main-search-func .search-form-axns
+{
+    right: 0;
+}
+
+.apl--applicator--main-search--left .main-search--active .search-term-crt-inp--input-text
+{
+    padding-left: 3rem;
+    padding-right: 6rem;
+}
+
+
+.apl--applicator--main-search--left .main-search-func .search-form-axns
+
+{}
 
 
 
