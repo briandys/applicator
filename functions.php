@@ -28,6 +28,7 @@ require_once( get_template_directory() . '/inc/tags/post-timestamp.php');
 require_once( get_template_directory() . '/inc/tags/post-author.php');
 require_once( get_template_directory() . '/inc/tags/post-classification.php');
 require_once( get_template_directory() . '/inc/tags/post-banner-visual.php');
+require_once( get_template_directory() . '/inc/tags/main-content-headings.php');
 
 // Comments
 require_once( get_template_directory() . '/inc/tags/comments-actions-snippet.php');

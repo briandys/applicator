@@ -9,7 +9,11 @@
         $aplApplicatorMainSearch = $html.closest( '.apl--applicator--main-search' ),
         $aplApplicatorSubNav = $html.closest( '.apl--applicator--sub-nav' ),
         $aplApplicatorMainMenu = $html.closest( '.apl--applicator--main-menu' ),
-        $mainHrAsEnabled = $html.closest( '.main-header-aside--enabled' );
+        $mainHrAsEnabled = $html.closest( '.main-header-aside--enabled' ),
+        
+        mainSearchFuncCss = 'main-search-func',
+        
+        funcCss = 'func';
     
     
     
@@ -22,7 +26,9 @@
 			return;
 		}
         
-        $cp.addClass( 'go-content-nav-func' );
+        $cp
+            .addClass( 'go-content-nav-func' )
+            .addClass( funcCss );
         
         var $goCtNaviA = $( '#go-ct-navi---a' ),
             
@@ -76,7 +82,9 @@
 			return;
 		}
         
-        $cp.addClass( 'go-start-nav-func' );
+        $cp
+            .addClass( 'go-start-nav-func' )
+            .addClass( funcCss );
         
         var $goStartNaviA = $( '#go-start-navi---a' ),
             
@@ -171,7 +179,9 @@
 			return;
 		}
         
-        $cp.addClass( 'main-menu-func' );
+        $cp
+            .addClass( 'main-menu-func' )
+            .addClass( funcCss );
         
         var mainMenuTogObjMu,
             mainMenuTogBtnMu,
@@ -325,13 +335,10 @@
 			return;
 		}
         
-        var mainSearchFuncCss = 'main-search-func';
-        
         $( '#masthead' )
             .find( $( '.main-header---cr' ) )
                 .children( '.search-cp:first' )
-                    .attr( 'id', mainSearchFuncCss )
-                    .addClass( mainSearchFuncCss );
+                    .attr( 'id', mainSearchFuncCss );
     }() );
     
     function initMainSearch( $cp ) {
@@ -340,8 +347,11 @@
 			return;
 		}
         
-        var mainSearchCtrlMu,
-            mainSearchTogObjMu,
+        $cp
+            .addClass( mainSearchFuncCss )
+            .addClass( funcCss );
+        
+        var mainSearchTogObjMu,
             mainSearchTogBtnMu,
             mainSearchTogBtnLmu,
             mainSearchTogBtnLwordMu,
@@ -354,8 +364,8 @@
             mainSearchInputEmpCss = 'main-search-input--empty',
             mainSearchInputPopCss = 'main-search-input--populated',
             
-            $mainSearchTogCtrlSearchIco = $( aplDataArbitNav.mainSearchTogCtrlSearchIco ),
-            $mainSearchTogCtrlDismissIco = $( aplDataArbitNav.mainSearchTogCtrlDismissIco ),
+            $mainSearchTogSearchIco = $( aplDataArbitNav.mainSearchTogCtrlSearchIco ),
+            $mainSearchTogDismissIco = $( aplDataArbitNav.mainSearchTogDismissIco ),
             
             $mainSearchSearchIco = $( aplDataArbitNav.mainSearchSearchIco ),
             $mainSearchDismissIco = $( aplDataArbitNav.mainSearchDismissIco ),
@@ -363,8 +373,10 @@
             $mainSearchShowL = aplDataArbitNav.mainSearchShowL,
             $mainSearchHideL = aplDataArbitNav.mainSearchHideL,
             
-            $mainSearchCtrl,
+            $mainSearchH,
+            $mainSearchCt,
             
+            $mainSearchTog,
             $mainSearchTogBtn,
             $mainSearchTogBtnL,
             $mainSearchTogBtnLword,
@@ -387,7 +399,7 @@
                 'class': 'b_l main-search-tog---b_l'
             } )
                 .append( mainSearchTogBtnLwordMu )
-                .append( $mainSearchTogCtrlDismissIco );
+                .append( $mainSearchTogDismissIco );
             
             // Button
             mainSearchTogBtnMu = $( '<button />', {
@@ -402,25 +414,14 @@
                 'data-name': 'Search Toggle'
             } ).append( mainSearchTogBtnMu );
             
-            // Containers
-            mainSearchCtrlMu = $( '<div />', {
-                'class': 'ctrl main-search-ctrl',
-                'data-name': 'Search Control'
-            } ).append( $( '<div />', {
-                'class': 'cr main-search-ctrl---cr'
-            } ) );
-            
-            $cp
-            .find( $( '.search---hr_cr' ) )
-                .append( mainSearchCtrlMu )
-            .find( $( '.main-search-ctrl---cr' ) )
-                .append( mainSearchTogObjMu );
-            
         }() );
         
-        $mainSearchCtrl = $cp.find( '.main-search-ctrl' );
+        $mainSearchCt = $cp.find( '.search---ct' );
         
-        $mainSearchCtCr = $cp.find( '.search---ct' );
+        $mainSearchH = $cp.find( $( '.search---h' ) );
+        $mainSearchH.after( mainSearchTogObjMu );
+        
+        $mainSearchTog = $cp.find( '.main-search-toggle' );
         $mainSearchTogBtn = $( '#main-search-tog---b' );
         $mainSearchTogBtnL = $mainSearchTogBtn.find( $( '.main-search-tog---b_l' ) );
         $mainSearchTogBtnLword = $mainSearchTogBtn.find( $( '.show-hide-main-search---word' ) );
@@ -443,8 +444,8 @@
             } );
             
             $mainSearchTogBtnLword.text( $mainSearchHideL );
-            $mainSearchTogBtnL.append( $mainSearchTogCtrlDismissIco );
-            $mainSearchTogCtrlSearchIco.remove();
+            $mainSearchTogBtnL.append( $mainSearchTogDismissIco );
+            $mainSearchTogSearchIco.remove();
             
             // Focus on input and select content if any
             $mainSearchInput.focus().select();
@@ -465,8 +466,8 @@
             } );
             
             $mainSearchTogBtnLword.text( $mainSearchShowL );
-            $mainSearchTogBtnL.append( $mainSearchTogCtrlSearchIco );
-            $mainSearchTogCtrlDismissIco.remove();
+            $mainSearchTogBtnL.append( $mainSearchTogSearchIco );
+            $mainSearchTogDismissIco.remove();
         }
         
         // Initialize
@@ -529,7 +530,7 @@
         
         // Deactivate upon interaction outside specified elements
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
-            if ( $cp.hasClass( mainSearchActCss ) && ( ! $( e.target ).closest( $mainSearchCtrl ).length && ! $( e.target ).closest( $mainSearchCtCr ).length ) ) {
+            if ( $cp.hasClass( mainSearchActCss ) && ( ! $( e.target ).closest( $mainSearchTog ).length && ! $( e.target ).closest( $mainSearchCt ).length ) ) {
                 mainSearchDeactivate();
             }
         } );
@@ -592,7 +593,9 @@
             $subNavTogBtnHideL = aplDataSubNav.subNavTogBtnHideL;
         
         if ( $cp.has( $subNavParentItems ) ) {
-            $cp.addClass( 'sub-nav-func' );
+            $cp
+                .addClass( 'sub-nav-func' )
+                .addClass( funcCss );
         }
         
         // Build Markup

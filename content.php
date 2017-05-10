@@ -1,6 +1,5 @@
 <article <?php post_class( 'cp' ); ?> data-name="Post">
     <div class="cr post---cr">
-
         <header class="hr post---hr entry-header">
             <div class="hr_cr post---hr_cr">
                 
@@ -70,7 +69,7 @@
                     </div>
                 </div><!-- Post Header Aside -->
 
-                <?php // Hook: After Entry Meta
+                <?php // Hook: After Post Header Aside
                 apl_hook_after_post_header_aside(); ?>
 
             </div>
