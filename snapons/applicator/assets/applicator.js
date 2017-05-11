@@ -576,6 +576,7 @@
             
             subNavActCss = 'sub-nav--active',
             subNavInactCss = 'sub-nav--inactive',
+            subNavNegLeftCss = 'sub-nav--negative-left-offset',
             aplSubNavActCss = 'apl--sub-nav--active',
             aplSubNavInactCss = 'apl--sub-nav--inactive',
             
@@ -633,12 +634,13 @@
             
         }() );
         
-        $subNavTog = $cp.find( '.sub-nav-tog---b' );
+        $subNavTogBtn = $cp.find( '.sub-nav-tog---b' );
         $subNavShowHideWord = '.show-hide-sub-nav---word';
         
         // Activate
         function subNavActivate() {
             var _this = $( this );
+            
             $subNavParent = _this.closest( $subNavParentItems );
             
             $subNavParent
@@ -654,6 +656,15 @@
             } );
             
             _this.find( $subNavShowHideWord ).text( $subNavTogBtnHideL );
+            
+            
+            var subNavOffset = $subNavParent.find( $subNavGrp ).offset(),
+                subNavLeftOffset = subNavOffset.left;
+            
+            // If left offset is negative 
+            if ( subNavLeftOffset < 0 ) {
+                $subNavParent.addClass( subNavNegLeftCss );
+            }
         }
         
         // Deactivate
@@ -674,6 +685,8 @@
             } );
             
             _this.find( $subNavShowHideWord ).text( $subNavTogBtnShowL );
+            
+            $subNavParent.removeClass( subNavNegLeftCss );
         }
         
         // Deactivate all Sub-Nav
@@ -688,7 +701,7 @@
                     .addClass( aplSubNavInactCss )
                     .removeClass( aplSubNavActCss );
                 
-                $subNavTog.attr( {
+                $subNavTogBtn.attr( {
                     'aria-expanded': 'false',
                     'title': $subNavTogBtnShowL
                 } );
@@ -747,7 +760,7 @@
         
         // Click
         ( function() {
-            $subNavTog.on( 'click.applicator', function( e ) {
+            $subNavTogBtn.on( 'click.applicator', function( e ) {
                 var _this = $( this );
                 e.preventDefault();
                 $subNavParent = _this.closest( $subNavParentItems );
@@ -818,7 +831,6 @@
         }, function() {
             navHoverDeactivate.apply( this );
         } );
-        
     }
     initEasyAccessNav( $( '#main-nav' ) );
 

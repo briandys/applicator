@@ -1598,13 +1598,16 @@ $go-green: #12b32d;
 {
     position: absolute;
     right: 0;
-    top: 50%;
+    top: 0;
     
+    /*
     transform: translateY( -1.5rem );
-    
+    */
     /* Or to have an absolute number like 3rem which we can store in a variable. */
     /* We use "time point five" instead of "divided by two" to be consistent with top: 50%. */
+    /*
     transform: translateY( calc( -3rem * .5 ) );
+    */
 }
 
 .sub-nav-func .sub-nav-tog---b
@@ -1716,6 +1719,7 @@ $go-green: #12b32d;
 {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a
@@ -1724,7 +1728,7 @@ $go-green: #12b32d;
     justify-content: center;
 }
 
-.apl--applicator--easy-access-nav .main-nav---a_l
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-nav---a_l
 {
     justify-content: center;
 }
@@ -1741,11 +1745,71 @@ $go-green: #12b32d;
     top: 100%;
 }
 
+.apl--applicator--easy-access-nav .sub-nav--negative-left-offset > ul
+{
+    right: auto;
+    left: 0;
+}
+
 .apl--applicator--easy-access-nav .main-nav---ct_cr a
 {
     color: black;
 }
 
+.easy-access-nav-func .sub-nav-toggle:hover .icon
+{
+    width: calc( .75rem + .1rem );
+    height: calc( .75rem + .1rem );
+}
+
+/* Underline */
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > .nav-hover--active::before
+{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    
+    width: 100%;
+    height: .125rem;
+    
+    background-color: black;
+    background-color: hsla( 0, 0%, 0%, .125 );
+}
+
+.easy-access-nav-func .page_item_has_children > .children > .page_item,
+.easy-access-nav-func .menu-item-has-children > .sub-menu > .menu-item
+{
+    padding-left: initial;
+}
+
+.easy-access-nav-func .sub-nav--active > .children > .page_item,
+.easy-access-nav-func .sub-nav--active > .sub-menu > .menu-item
+{
+    background-color: white;
+}
+
+.apl--applicator--easy-access-nav .main-nav .sub-nav-toggle
+{
+    top: auto;
+    bottom: 0;
+}
+
+.easy-access-nav-func .children,
+.easy-access-nav-func .sub-menu
+{
+    min-width: 100%;
+    min-width: 15rem;
+}
+
+.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children .children,
+.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu .sub-menu
+{
+    
+    transform: translate( -.5rem, -.5rem );
+}
+
+/*
 .apl--applicator--easy-access-nav .nav-hover--active a,
 .easy-access-nav-func .nav-hover--active .sub-nav-toggle
 {
@@ -1757,11 +1821,14 @@ $go-green: #12b32d;
 {
     background-color: hsla( 0, 0%, 0%, .0625 );
 }
+*/
 
 /* Space between Nav Item and Sub-Nav Toggle */
+/*
 .apl--applicator--easy-access-nav .page_item_has_children > a,
 .apl--applicator--easy-access-nav .menu-item-has-children > a
 {
     padding-right: 3rem;
     padding-right: calc( 3rem + .5rem );
 }
+*/
