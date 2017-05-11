@@ -1,5 +1,5 @@
 === Applicator ===
-Contributors: the WordPress team
+Contributors: Brian Dys Sahagun
 Requires at least: WordPress 4.7
 Tested up to: WordPress 4.7
 Version: 0
@@ -52,3 +52,39 @@ Source: https://unsplash.com/@bogs?photo=vXpcpTl2Tt4
 * Released: March 22, 2017
 
 Initial release
+
+== Structure, Components, Objects ==
+
+
+Name: Web Product
+Type: Constructor
+Class: .wbp
+Structure:
+cn
+* cr
+
+
+Name: Web Product Start
+Type: Constructor
+Class: .wbp-start
+Structure:
+cn
+* cr
+
+
+Name: Main Header
+Type: Constructor
+Class: .main-header
+Structure:
+cn
+* cr
+
+
+Name: Main Content
+Type: Constructor
+Class: .main-content
+Structure:
+cn
+* cr
+** hr
+** ct

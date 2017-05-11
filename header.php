@@ -73,7 +73,7 @@
                     </div>
                 </div><!-- Web Product Start -->
         
-                <header id="masthead" class="cn header main-header site-header" data-name="Main Header" role="banner">
+                <header id="masthead" class="cn main-header site-header" data-name="Main Header" role="banner">
                     <div class="cr main-header---cr">
                         
                         <div class="cp wbp-main-info" data-name="Web Product Main Info">

@@ -622,7 +622,7 @@ $go-green: #12b32d;
 }
 
 /* Mod */
-.apl--applicator--main-search--default .wbp-main-info
+.apl--applicator--main-search .wbp-main-info
 {
     margin-right: 3rem;
 }
@@ -667,16 +667,11 @@ $go-green: #12b32d;
     text-overflow: ellipsis;
 }
 
-/* Mod */
-.apl--applicator--main-menu--default.main-header-aside--enabled .wbp-main-name-obj---a_l,
-.apl--applicator--main-menu--default.main-header-aside--enabled .wbp-main-desc-obj---a_l,
+.apl--applicator--main-menu.main-header-aside--enabled .wbp-main-name-obj---a_l,
+.apl--applicator--main-menu.main-header-aside--enabled .wbp-main-desc-obj---a_l,
 
 .wbp-logo--enabled .wbp-main-name-obj---a_l,
-.wbp-logo--enabled .wbp-main-desc-obj---a_l,
-
-/* Mod */
-.apl--applicator--main-search--left .wbp-main-name-obj---a_l,
-.apl--applicator--main-search--left .wbp-main-desc-obj---a_l
+.wbp-logo--enabled .wbp-main-desc-obj---a_l
 {
     padding-left: 0;
 }
@@ -687,18 +682,9 @@ $go-green: #12b32d;
     padding-right: 0;
 }
 
-
-/* ------------------------- Mod */
-
-.apl--applicator--main-menu.main-header-aside--enabled.apl--applicator--main-menu--default .wbp-main-info,
-.apl--applicator--main-search.apl--applicator--main-search--left .wbp-main-info
+.apl--applicator--main-menu.main-header-aside--enabled .wbp-main-info
 {
     margin-left: 3rem;
-}
-
-.apl--applicator--main-search.apl--applicator--main-search--left .wbp-main-info
-{
-    margin-right: 1rem;
 }
 
 
@@ -1108,6 +1094,7 @@ $go-green: #12b32d;
     
     position: relative;
     
+    margin-right: 3rem;
     padding-bottom: 3rem;
     
     width: auto;
@@ -1129,6 +1116,7 @@ $go-green: #12b32d;
 .main-menu-func .main-menu-toggle
 {
     position: absolute;
+    left: 0;
     top: 0;
     z-index: 1;
 }
@@ -1155,7 +1143,7 @@ $go-green: #12b32d;
 
 .main-menu--active .main-menu-toggle
 {
-    width: 100%;
+    width: calc( 100% - 3rem );
 }
 
 .main-menu--active .main-menu-toggle::before
@@ -1184,10 +1172,17 @@ $go-green: #12b32d;
 {
     content: '';
     position: absolute;
+    left: 100%;
     top: -3rem;
     
     width: .5rem;
     height: 100%;
+    
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.25+0,0+100 */
+    background: -moz-linear-gradient(left, hsla(0,0%,0%,0.25) 0%, hsla(0,0%,0%,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
 }
 
 .main-menu-tog---b
@@ -1232,79 +1227,6 @@ $go-green: #12b32d;
 {
     position: relative;
     z-index: 1;
-}
-
-
-
-
-
-/* ------------------------- Main Menu - Function - Modification */
-
-.apl--applicator--main-menu--default .main-menu-func .main-hr-as---ct
-{
-    margin-right: 3rem;
-}
-
-.apl--applicator--main-menu--default .main-menu-func .main-menu-toggle
-{
-    left: 0;
-}
-
-.apl--applicator--main-menu--default .main-menu-func .main-hr-as---ct_cr::before
-{
-    left: 100%;
-    
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.25+0,0+100 */
-    background: -moz-linear-gradient(left, hsla(0,0%,0%,0.25) 0%, hsla(0,0%,0%,0) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
-}
-
-.apl--applicator--main-menu--default .main-menu--active .main-menu-toggle
-{
-    width: calc( 100% - 3rem );
-}
-
-/* Mod: Right */
-.apl--applicator--main-menu--right .main-menu-func .main-menu-toggle
-{
-    right: 0;
-}
-
-.apl--applicator--main-menu--right .main-menu-func .main-hr-as---ct
-{
-    margin-left: 3rem;
-}
-
-.apl--applicator--main-menu--right .main-menu-func .main-menu-tog---b
-{
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
-.apl--applicator--main-menu--right .main-menu-func .main-hr-as---ct_cr::before
-{
-    right: 100%;
-    
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.25+0,0+100 */
-    background: -moz-linear-gradient(left, hsla(0,0%,0%,0.25) 0%, hsla(0,0%,0%,0) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
-    
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    filter: FlipH;
-    -ms-filter: 'FlipH';
-}
-
-.apl--applicator--main-menu--right .main-menu--active .main-menu-toggle
-{
-    width: calc( 100% - 3rem );
 }
 
 
@@ -1464,6 +1386,7 @@ $go-green: #12b32d;
 .main-search-func
 {
     position: absolute;
+    right: 0;
     top: 0;
 }
 
@@ -1498,6 +1421,7 @@ $go-green: #12b32d;
 .main-search-func .search-form-axns
 {
     position: absolute;
+    right: 0;
     top: 0;
 }
 
@@ -1522,9 +1446,25 @@ $go-green: #12b32d;
     padding-left: 0;
 }
 
+.apl--applicator--main-menu.main-header-aside--enabled .main-search--active .search---cr
+{
+    padding-left: 3rem;
+}
+
+.main-search-func .search-term-crt-inp--input-text
+{
+    padding-left: 1rem;
+    padding-right: 6rem;
+}
+
 .main-search--active.main-search-input--empty .search-reset-axn
 {
     display: none;
+}
+
+.main-search--active .main-search-toggle
+{
+    padding-right: 3rem;
 }
 
 .main-search-func .dismiss-icon
@@ -1575,54 +1515,6 @@ $go-green: #12b32d;
 {
     color: white;
     opacity: .5;
-}
-
-/* ------------------------- Main Search - Functionality - Modification */
-
-/* Default */
-.apl--applicator--main-search--default .main-search-func,
-.apl--applicator--main-search--default .main-search-func .main-search-toggle,
-.apl--applicator--main-search--default .main-search-func .search-form-axns
-{
-    right: 0;
-}
-
-.apl--applicator--main-search--default .main-search--active .main-search-toggle
-{
-    padding-right: 3rem;
-}
-
-.apl--applicator--main-search--default .main-search-func .search-term-crt-inp--input-text
-{
-    padding-left: 1rem;
-    padding-right: 6rem;
-}
-
-.apl--applicator--main-search--default.apl--applicator--main-menu.main-header-aside--enabled .main-search--active .search---cr
-{
-    padding-left: 3rem;
-}
-
-/* Left */
-.apl--applicator--main-search--left .main-search-func
-{
-    left: 0;
-}
-
-.apl--applicator--main-search--left .main-search--active .main-search-toggle
-{
-    left: 0;
-}
-
-.apl--applicator--main-search--left .main-search-func .search-form-axns
-{
-    right: 0;
-}
-
-.apl--applicator--main-search--left .main-search--active .search-term-crt-inp--input-text
-{
-    padding-left: 3rem;
-    padding-right: 6rem;
 }
 
 
@@ -1677,6 +1569,7 @@ $go-green: #12b32d;
 
 /* ------------------------- Sub-Navigation - Functionality */
 
+/* Initialize */
 .apl--applicator--sub-nav.dom--unready .main-nav .children,
 .apl--applicator--sub-nav.dom--unready .main-nav .sub-menu,
 .apl--applicator--sub-nav.dom--unready .widget_nav_menu .sub-menu,
@@ -1685,16 +1578,16 @@ $go-green: #12b32d;
     display: none;
 }
 
+.apl--applicator--sub-nav .page_item_has_children > a,
+.apl--applicator--sub-nav .menu-item-has-children > a
+{
+    padding-right: 3rem;
+}
+
 .sub-nav-func .page_item_has_children,
 .sub-nav-func .menu-item-has-children
 {
     position: relative;
-}
-
-.sub-nav-func .page_item_has_children > a,
-.sub-nav-func .menu-item-has-children > a
-{
-    padding-right: 3rem;
 }
 
 .sub-nav-func .sub-nav-toggle
