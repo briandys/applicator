@@ -1,56 +1,109 @@
-<?php
+<?php // Functions
 
+$globals = get_parent_theme_file_path( '/inc/globals.php' );
+if ( file_exists( $globals ) ) { require_once( $globals ); }
 
-require_once( get_template_directory() . '/inc/globals.php');
-require_once( get_template_directory() . '/inc/settings.php');
+$settings = get_parent_theme_file_path( '/inc/settings.php' );
+if ( file_exists( $settings ) ) { require_once( $settings ); }
 
-require_once( get_template_directory() . '/inc/hooks.php');
+$hooks = get_parent_theme_file_path( '/inc/hooks.php' );
+if ( file_exists( $hooks ) ) { require_once( $hooks ); }
 
 
 // Styles and Scripts
-require_once( get_template_directory() . '/inc/styles.php');
-require_once( get_template_directory() . '/inc/scripts.php');
+$styles = get_parent_theme_file_path( '/inc/styles.php' );
+if ( file_exists( $styles ) ) { require_once( $styles ); }
+
+$scripts = get_parent_theme_file_path( '/inc/scripts.php' );
+if ( file_exists( $scripts ) ) { require_once( $scripts ); }
 
 
 // Navigations
-require_once( get_template_directory() . '/inc/tags/main-nav.php');
-require_once( get_template_directory() . '/inc/tags/page-nav.php');
-require_once( get_template_directory() . '/inc/tags/entry-nav.php');
-require_once( get_template_directory() . '/inc/tags/post-nav.php');
-require_once( get_template_directory() . '/inc/tags/breadcrumbs-nav.php');
+$main_nav = get_parent_theme_file_path( '/inc/tags/main-nav.php' );
+if ( file_exists( $main_nav ) ) { require_once( $main_nav ); }
+
+$page_nav = get_parent_theme_file_path( '/inc/tags/page-nav.php' );
+if ( file_exists( $page_nav ) ) { require_once( $page_nav ); }
+
+$entry_nav = get_parent_theme_file_path( '/inc/tags/entry-nav.php' );
+if ( file_exists( $entry_nav ) ) { require_once( $entry_nav ); }
+
+$post_nav = get_parent_theme_file_path( '/inc/tags/post-nav.php' );
+if ( file_exists( $post_nav ) ) { require_once( $post_nav ); }
+
+$breadcrumbs_nav = get_parent_theme_file_path( '/inc/tags/breadcrumbs-nav.php' );
+if ( file_exists( $breadcrumbs_nav ) ) { require_once( $breadcrumbs_nav ); }
+
 
 // Aside
-require_once( get_template_directory() . '/inc/tags/aside.php');
+$aside = get_parent_theme_file_path( '/inc/tags/aside.php' );
+if ( file_exists( $aside ) ) { require_once( $aside ); }
+
 
 // Entry
-require_once( get_template_directory() . '/inc/tags/post-actions.php');
-require_once( get_template_directory() . '/inc/tags/post-timestamp.php');
-require_once( get_template_directory() . '/inc/tags/post-author.php');
-require_once( get_template_directory() . '/inc/tags/post-classification.php');
-require_once( get_template_directory() . '/inc/tags/post-banner-visual.php');
-require_once( get_template_directory() . '/inc/tags/main-content-headings.php');
+$post_actions = get_parent_theme_file_path( '/inc/tags/post-actions.php' );
+if ( file_exists( $post_actions ) ) { require_once( $post_actions ); }
+
+$post_timestamp = get_parent_theme_file_path( '/inc/tags/post-timestamp.php' );
+if ( file_exists( $post_timestamp ) ) { require_once( $post_timestamp ); }
+
+$post_author = get_parent_theme_file_path( '/inc/tags/post-author.php' );
+if ( file_exists( $post_author ) ) { require_once( $post_author ); }
+
+$post_classification = get_parent_theme_file_path( '/inc/tags/post-classification.php' );
+if ( file_exists( $post_classification ) ) { require_once( $post_classification ); }
+
+$post_banner_visual = get_parent_theme_file_path( '/inc/tags/post-banner-visual.php' );
+if ( file_exists( $post_banner_visual ) ) { require_once( $post_banner_visual ); }
+
+$main_content_headings = get_parent_theme_file_path( '/inc/tags/main-content-headings.php' );
+if ( file_exists( $main_content_headings ) ) { require_once( $main_content_headings ); }
+
 
 // Comments
-require_once( get_template_directory() . '/inc/tags/comments-actions-snippet.php');
-require_once( get_template_directory() . '/inc/tags/comments-nav.php');
-require_once( get_template_directory() . '/inc/tags/comment.php');
-require_once( get_template_directory() . '/inc/functions/comment-form.php');
+$comments_actions_snippet = get_parent_theme_file_path( '/inc/tags/comments-actions-snippet.php' );
+if ( file_exists( $comments_actions_snippet ) ) { require_once( $comments_actions_snippet ); }
+
+$comments_nav = get_parent_theme_file_path( '/inc/tags/comments-nav.php' );
+if ( file_exists( $comments_nav ) ) { require_once( $comments_nav ); }
+
+$comment = get_parent_theme_file_path( '/inc/tags/comment.php' );
+if ( file_exists( $comment ) ) { require_once( $comment ); }
+
+$comment_form = get_parent_theme_file_path( '/inc/functions/comment-form.php' );
+if ( file_exists( $comment_form ) ) { require_once( $comment_form ); }
 
 // Template Parts
 require_once( get_template_directory() . '/template-parts/post-content.php');
 
 
 // Functions
-require_once( get_template_directory() . '/inc/functions/html-body-class.php');
-require_once( get_template_directory() . '/inc/functions/custom-fonts.php');
-require_once( get_template_directory() . '/inc/functions/custom-visuals.php');
-require_once( get_template_directory() . '/inc/functions/widgets-init.php');
-require_once( get_template_directory() . '/inc/functions/show-more.php');
-require_once( get_template_directory() . '/inc/functions/pingback-header.php');
-require_once( get_template_directory() . '/inc/functions/icons.php');
+$html_body_class = get_parent_theme_file_path( '/inc/functions/html-body-class.php' );
+if ( file_exists( $html_body_class ) ) { require_once( $html_body_class ); }
+
+$custom_fonts = get_parent_theme_file_path( '/inc/functions/custom-fonts.php' );
+if ( file_exists( $custom_fonts ) ) { require_once( $custom_fonts ); }
+
+$custom_visuals = get_parent_theme_file_path( '/inc/functions/custom-visuals.php' );
+if ( file_exists( $custom_visuals ) ) { require_once( $custom_visuals ); }
+
+$widgets_init = get_parent_theme_file_path( '/inc/functions/widgets-init.php' );
+if ( file_exists( $widgets_init ) ) { require_once( $widgets_init ); }
+
+$show_more = get_parent_theme_file_path( '/inc/functions/show-more.php' );
+if ( file_exists( $show_more ) ) { require_once( $show_more ); }
+
+$pingback_header = get_parent_theme_file_path( '/inc/functions/pingback-header.php' );
+if ( file_exists( $pingback_header ) ) { require_once( $pingback_header ); }
+
+$icons = get_parent_theme_file_path( '/inc/functions/icons.php' );
+if ( file_exists( $icons ) ) { require_once( $icons ); }
 
 
 // Snap-ons
-require_once( get_template_directory() . '/snapons.php');
+$snapons = get_parent_theme_file_path( '/snapons.php' );
+if ( file_exists( $snapons ) ) { require_once( $snapons ); }
 
-require_once( get_template_directory() . '/inc/functions/markup.php');
+
+$apl_html_markup = get_parent_theme_file_path( '/inc/functions/applicator-html-markup.php' );
+if ( file_exists( $apl_html_markup ) ) { require_once( $apl_html_markup ); }

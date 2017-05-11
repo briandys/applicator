@@ -54,8 +54,8 @@ fr: footer
 
 
 
-html
-body
+.html,
+.body
 {
     height: 100%;
 }
@@ -65,7 +65,7 @@ body
 
 
 
-/* ------------------------- Clearfix ------------------------- */
+/* ------------------------- Clearfix */
 .clearfix:before,
 .clearfix:after,
 
@@ -82,52 +82,16 @@ body
 }
 
 
-.svg-fallback
-{
-    display: none;
-}
 
 
 
 
 
-/* ------------------------- Color Scheme ------------------------- */
-.sub-nav-toggle--a
-{
-    color: black;
-}
 
 
 
 
-
-/* ------------------------- Fixes */
-.icon--vector
-{
-    display: inline-block;
-    position: relative;
-    width: 1em;
-    height: 1em;
-    vertical-align: middle;
-    fill: currentColor;
-}
-
-.post---ct figure
-{
-    /* Reset */
-    margin: 0;
-}
-
-figure.wp-caption
-{
-    max-width: 100%;
-}
-
-
-
-
-
-/* ------------------------- WordPress Required Selectors ------------------------- */
+/* ------------------------- WordPress Required Selectors */
 .wp-caption-text,
 .sticky,
 .screen-reader-text,
@@ -141,7 +105,7 @@ figure.wp-caption
 
 
 
-/* ------------------------- Responsive Image ------------------------- */
+/* ------------------------- Responsive Image */
 img
 {
     max-width: 100%;
@@ -152,7 +116,7 @@ img
 
 
 
-/* ------------------------- Image Alignments ------------------------- */
+/* ------------------------- WordPress Image Alignments */
 .alignleft,
 .alignright
 {
@@ -171,7 +135,7 @@ img
 
 
 
-/* ------------------------- Image Captions ------------------------- */
+/* ------------------------- Image Captions */
 .wp-caption
 {
     max-width: 100%;
@@ -188,18 +152,45 @@ img
 
 
 
-/* ------------------------- Corrections ------------------------- */
+/* ------------------------- Fixes */
+.icon--vector
+{
+    display: inline-block;
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: middle;
+    fill: currentColor;
+}
+
+.post---ct figure
+{
+    /* Reset */
+    margin: 0;
+}
+
+figure.wp-caption
+{
+    max-width: 100%;
+}
+
 .post---h
 {
     -ms-word-wrap: break-word;
     word-wrap: break-word;
 }
 
+.svg-fallback
+{
+    display: none;
+}
 
 
 
 
-/* ------------------------- Viewport Width: 560 ------------------------- */
+
+/* ------------------------- Viewport Width: 560 */
+
 @media only screen and (min-width: 35em)
 {
 
@@ -216,7 +207,7 @@ img
 }
 
 
-/* ------------------------- Constructor - Component Color Coding ------------------------- */
+/* ------------------------- Constructor - Component Color Coding */
 /*
 .cn,
 .cp

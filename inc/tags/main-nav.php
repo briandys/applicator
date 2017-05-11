@@ -6,9 +6,12 @@ register_nav_menu( 'main-nav', __( 'Main Navigation', 'applicator' ) );
 if ( ! function_exists( 'apl_func_main_nav' ) ) {
     function apl_func_main_nav() {
         
+        
         $main_nav_css = 'main-nav';
         $main_nav_ct_cr_css = 'ct_cr main-nav---ct_cr';
-        $main_nav_a_l_start_mu = '<span class="a_l main-nav---a_l"><span class="word navi---word">';
+        
+        // Markup
+        $main_nav_a_l_start_mu = '<span class="a_l main-nav---a_l"><span class="txt navi---txt">';
         $main_nav_a_l_end_mu = '</span></span>';
         
         if ( wp_nav_menu( array( 'theme_location' => $main_nav_css, 'echo' => false ) ) !== false) { ?>
@@ -16,7 +19,11 @@ if ( ! function_exists( 'apl_func_main_nav' ) ) {
             <?php //------------------------- Sub-Constructor: Main Navigation ------------------------- ?>
             <nav id="main-nav" class="nav main-nav" role="navigation" aria-label="Main Navigation" data-name="Main Navigation">
                 <div class="cr main-nav---cr">
-                    <h2 class="h main-nav---h"><span class="h_l main-nav---h_l"><?php esc_html_e( 'Main Navigation', 'applicator' ); ?></span></h2>
+                    <div class="hr main-nav---hr">
+                        <div class="hr_cr main-nav---hr_cr">
+                            <h2 class="h main-nav---h"><span class="h_l main-nav---h_l"><?php esc_html_e( 'Main Navigation', 'applicator' ); ?></span></h2>
+                        </div>
+                    </div>
                     <div class="ct main-nav---ct">
                     <?php if ( ! has_nav_menu( 'main-nav' ) ) {
 
@@ -46,9 +53,9 @@ if ( ! function_exists( 'apl_func_main_nav' ) ) {
                         ) );
 
                     } ?>
-                    </div>
+                    </div><!-- ct -->
                 </div>
-            </nav><!-- main-nav -->
+            </nav><!-- Main Navigation -->
         
         <?php }
     }

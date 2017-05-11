@@ -25,7 +25,7 @@ if ( ! function_exists( 'apl_func_breadcrumbs_nav' ) ) {
 
                 $crumbs_grp_mu = '<ul class="grp crumbs-nav---grp">';
                 
-                $crumbs_navi_mu = '<li class="item obj navi %1$s %1$s--%2$s %1$s--current" data-name="Breadcrumbs Nav Item"><span class="g %1$s---g"><span class="g_l %1$s---g_l"><span class="word navi---word">%3$s</span></span></span></li></ul>';
+                $crumbs_navi_mu = '<li class="item obj navi %1$s %1$s--%2$s %1$s--current" data-name="Breadcrumbs Nav Item"><span class="g %1$s---g"><span class="g_l %1$s---g_l"><span class="txt navi---txt">%3$s</span></span></span></li></ul>';
                 
                 $crumbs_navi = sprintf( $crumbs_navi_mu,
                     'crumbs-navi',
@@ -51,7 +51,7 @@ if ( ! function_exists( 'apl_func_breadcrumbs_nav' ) ) {
                     foreach ( $anc as $ancestor ) {
                         
                         $crumbs_navi_start_mu = '<li class="item obj navi %1$s %1$s--%2$s" data-name="Breadcrumbs Nav Item">';
-                            $crumbs_navi_start_mu .= '<a class="a %1$s---a" href="%3$s" title="%4$s"><span class="a_l %1$s---a_l"><span class="word navi---word">%4$s</span></span></a>';
+                            $crumbs_navi_start_mu .= '<a class="a %1$s---a" href="%3$s" title="%4$s"><span class="a_l %1$s---a_l"><span class="txt navi---txt">%4$s</span></span></a>';
 
                         $crumbs_navi_start = sprintf( $crumbs_navi_start_mu,
                             'crumbs-navi',

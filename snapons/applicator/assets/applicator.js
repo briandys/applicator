@@ -3,6 +3,7 @@
     var $html = $( document.documentElement ),
         $document = $( document ),
         $window = $( window ),
+        $body = $( document.body ),
         
         $aplApplicatorGoCtNav = $html.closest( '.apl--applicator--go-content-nav' ),
         $aplApplicatorGoStartNav = $html.closest( '.apl--applicator--go-start-nav' ),
@@ -124,6 +125,7 @@
         goStartNavDeactivate();
         
         ( function() {
+            
             bodyOffsetCriteriaHeight = document.body.offsetHeight / 2;
             bodyOffsetSliceHeight = document.body.offsetHeight / 1.5;
             bodyOffsetMostHeight = document.body.offsetHeight - bodyOffsetSliceHeight;
@@ -139,7 +141,7 @@
                     }
                 } );
             }
-        } () );
+        }() );
         
     
         // Smooth Scroll to #start
@@ -676,7 +678,6 @@
         
         // Deactivate all Sub-Nav
         function subNavAllDeactivate() {
-            var _this = $( this );
             
             $cp.find( $subNavParentItems ).each( function() {
                 var _this = $( this );
@@ -761,14 +762,14 @@
             } );
         }() );
         
-        /*
+        
         // Deactivate upon interaction outside specified elements
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             if ( $html.hasClass( aplSubNavActCss ) && ! $( e.target ).closest( $subNavParentItems ).length && ! $( e.target ).is( 'a' ).length ) {
                 subNavAllDeactivate();
             }
         } );
-        */
+        
     }
     
     initSubNav( $( '#main-nav' ) );
@@ -786,11 +787,39 @@
 			return;
 		}
         
+        var $mainNavItem = $cp.find( '.menu-item, .page_item' ),
+            $navParentItems = $( '.page_item, .menu-item' ),
+            navHoverActiveCss = 'nav-hover--active',
+            navHoverInactiveCss = 'nav-hover--inactive';
+        
         $cp
             .addClass( 'easy-access-nav-func' )
             .addClass( funcCss );
+        
+        // Activate
+        function navHoverActivate() {
+            var _this = $( this );
+            _this.closest( $navParentItems )
+                .addClass( navHoverActiveCss )
+                .removeClass( navHoverInactiveCss );
+        }
+        
+        // Deactivate
+        function navHoverDeactivate() {
+            var _this = $( this );
+            _this.closest( $navParentItems )
+                .addClass( navHoverInactiveCss )
+                .removeClass( navHoverActiveCss );
+        }
+        
+        // Action
+        $( $mainNavItem ).hover( function () {
+            navHoverActivate.apply( this );
+        }, function() {
+            navHoverDeactivate.apply( this );
+        } );
+        
     }
-    
     initEasyAccessNav( $( '#main-nav' ) );
 
 })( jQuery );

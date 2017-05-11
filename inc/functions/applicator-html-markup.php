@@ -1,24 +1,50 @@
 <?php // Applicator HTML Markup
 
-/* References:
+/*
+References:
 https://developer.wordpress.org/reference/functions/wp_list_categories/
 https://codex.wordpress.org/Function_Reference/wp_parse_args
 https://developer.wordpress.org/reference/functions/apply_filters/
 https://nacin.com/2010/05/11/in-wordpress-prefix-everything/
 https://codex.wordpress.org/Function_Reference/sanitize_title
 
-*/
+/**
+ * Return Applicator HTML markup.
+ *
+ * @param array $args {
+ *     Parameters needed to display HTML markup.
+ *
+ *     @type string $type       Component | Object
+ *     @type string $name       Element Name
+ *     @type string $pri_css    Primary CSS Class Name
+ *     @type string $sec_css    Secondary CSS Class Name
+ *     @type string $content    Markup Content
+ * }
+ * @return string HTML markup.
+ */
 
-function applicator_html( $args = '' ) {
+function applicator_html( $args = array() ) {
+    
+    // Make sure $args are an array.
+	if ( empty( $args ) ) {
+		return esc_html__( 'Please define default parameters in the form of an array.', 'applicator' );
+	}
+
+	// Define an icon.
+	if ( false === array_key_exists( 'type', $args ) ) {
+		return esc_html__( 'Please define type of Element.', 'applicator' );
+	}
+    
     $defaults = array(
-        'type'      => '', // component | object
-        'name'      => '', // Name of Element
-        'pri_css'   => '', // Full Name of CSS
-        'sec_css'   => '', // Short Name of CSS
-        'content'   => '', // HTML or Text Content
-        'echo'      => FALSE, // Return by Default
+        'type'      => '',
+        'name'      => '',
+        'pri_css'   => '',
+        'sec_css'   => '',
+        'content'   => '',
+        'echo'      => false,
     );
     
+    // Parse args
     $r = wp_parse_args( $args, $defaults );
     
     $type_name = '';

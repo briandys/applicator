@@ -53,7 +53,7 @@ function apl_func_get_svg( $args = array() ) {
 	$aria_labelledby = '';
 
 	/*
-	 * Twenty Seventeen doesn't use the SVG title or description attributes; non-decorative icons are described with .screen-reader-text.
+	 * (Based on Twenty Seventeen) It doesn't use the SVG title or description attributes; non-decorative icons are described with .screen-reader-text.
 	 *
 	 * However, child themes can use the title and description to add information to non-decorative SVG icons to improve accessibility.
 	 *

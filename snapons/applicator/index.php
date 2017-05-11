@@ -14,20 +14,14 @@ if ( ! function_exists( 'apl_applicator_func_class' ) ) {
         $applicator_name = 'apl';
         $snapon_name = $applicator_name . '--' . 'applicator';
         
-        // Settings
-        $main_menu_setting = 'default'; // default | right
-        // $main_search_setting = 'default'; // default | left
-        
         
         echo ' ' . $snapon_name;
         echo ' ' . $snapon_name . '--' . 'go-content-nav';
         echo ' ' . $snapon_name . '--' . 'go-start-nav';
         
         echo ' ' . $snapon_name . '--' . 'main-menu';
-        // echo ' ' . $snapon_name . '--' . 'main-menu' . '--' . $main_menu_setting;
         
         echo ' ' . $snapon_name . '--' . 'main-search';
-        // echo ' ' . $snapon_name . '--' . 'main-search' . '--' . $main_search_setting;
         
         echo ' ' . $snapon_name . '--' . 'sub-nav';
         
@@ -66,7 +60,7 @@ if ( ! function_exists( 'apl_snapons_applicator_func_styles' ) ) {
         wp_enqueue_style( 'apl-style-fonts', applicator_fonts_url(), array(), null );
         add_editor_style( array( 'assets/css/editor-style.css', applicator_fonts_url() ) );
         
-        wp_enqueue_style( 'apl-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '19.3', 'all' );
+        wp_enqueue_style( 'apl-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '19.9', 'all' );
 
     }
     add_action( 'wp_enqueue_scripts', 'apl_snapons_applicator_func_styles', 0);
@@ -77,7 +71,7 @@ if ( ! function_exists( 'apl_snapons_applicator_func_styles' ) ) {
 if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
     function apl_snapons_applicator_scripts() {
         
-        wp_enqueue_script( 'apl-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/applicator.js' ), array( 'jquery' ), '17.7', true );
+        wp_enqueue_script( 'apl-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/applicator.js' ), array( 'jquery' ), '18.2', true );
         
         // EQCSS
         // wp_enqueue_script( 'apl-snapons-applicator-script-eqcss', get_theme_file_uri( '/snapons/applicator/assets/eqcss.min.js' ), array(), '1.0', true );
