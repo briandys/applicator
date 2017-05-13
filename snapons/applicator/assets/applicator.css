@@ -1733,11 +1733,6 @@ $go-green: #12b32d;
     justify-content: center;
 }
 
-.apl--applicator--easy-access-nav .sub-nav--active
-{
-    position: relative;
-}
-
 .apl--applicator--easy-access-nav .sub-nav--active > ul
 {
     position: absolute;
@@ -1745,7 +1740,7 @@ $go-green: #12b32d;
     top: 100%;
 }
 
-.apl--applicator--easy-access-nav .sub-nav--negative-left-offset > ul
+.apl--applicator--easy-access-nav .sub-nav--outbound-left > ul
 {
     right: auto;
     left: 0;
@@ -1798,8 +1793,18 @@ $go-green: #12b32d;
 .easy-access-nav-func .children,
 .easy-access-nav-func .sub-menu
 {
+    /* Take the whole width of parent nav item */
     min-width: 100%;
+    
+    /* Specific width */
     min-width: 15rem;
+}
+
+.easy-access-nav-func .sub-nav--outbound-left.sub-nav--outbound-right .children,
+.easy-access-nav-func .sub-menu
+{
+    width: 100%;
+    min-width: inherit;
 }
 
 .easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children .children,
@@ -1807,6 +1812,20 @@ $go-green: #12b32d;
 {
     
     transform: translate( -.5rem, -.5rem );
+}
+
+.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children .sub-nav--outbound-left .children,
+.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu .sub-nav--outbound-left .sub-menu
+{
+    
+    transform: translatex( .5rem );
+}
+
+.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children .sub-nav--outbound-left.sub-nav--outbound-right .children,
+.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu .sub-nav--outbound-left.sub-nav--outbound-right .sub-menu
+{
+    
+    transform: translate( 0 );
 }
 
 /*

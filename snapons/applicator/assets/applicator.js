@@ -576,7 +576,9 @@
             
             subNavActCss = 'sub-nav--active',
             subNavInactCss = 'sub-nav--inactive',
-            subNavNegLeftCss = 'sub-nav--negative-left-offset',
+            subNavIbCss = 'sub-nav--inbound',
+            subNavObLeftCss = 'sub-nav--outbound-left',
+            subNavObRightCss = 'sub-nav--outbound-right',
             aplSubNavActCss = 'apl--sub-nav--active',
             aplSubNavInactCss = 'apl--sub-nav--inactive',
             
@@ -639,7 +641,11 @@
         
         // Activate
         function subNavActivate() {
-            var _this = $( this );
+            var _this = $( this ),
+                subNavOffset,
+                subNavLeftOffset,
+                bodyWidth,
+                elemWidth;
             
             $subNavParent = _this.closest( $subNavParentItems );
             
@@ -656,15 +662,40 @@
             } );
             
             _this.find( $subNavShowHideWord ).text( $subNavTogBtnHideL );
+        }
+        
+        // Detect Element Bounds
+        function subNavItemDetectBounds() {
+            var _this = $( this ),
+                subNavOffset,
+                subNavLeftOffset,
+                bodyWidth,
+                elemWidth;
             
+            $subNavParent = _this.closest( $subNavParentItems );
             
-            var subNavOffset = $subNavParent.find( $subNavGrp ).offset(),
-                subNavLeftOffset = subNavOffset.left;
+            elem = $subNavParent.find( $subNavGrp );
+            subNavOffset = elem.offset();
+            subNavLeftOffset = subNavOffset.left;
+            bodyWidth = $body.width();
+            elemWidth = elem.width();
             
-            // If left offset is negative 
+            // If outbound left
             if ( subNavLeftOffset < 0 ) {
-                $subNavParent.addClass( subNavNegLeftCss );
+                $subNavParent.addClass( subNavObLeftCss );
+                console.log( subNavObLeftCss );
             }
+            
+            // If oubound right
+            if ( ( elemWidth > bodyWidth ) || ( parseInt( elemWidth, 10 ) + parseInt( subNavLeftOffset, 10 ) ) > bodyWidth ) {
+                $subNavParent.addClass( subNavObRightCss );
+                console.log( subNavObRightCss );
+            }
+            
+            console.log( 'Body' + ' ' + bodyWidth );
+            console.log( 'Elem' + ' ' + elemWidth );
+            console.log( 'subNavLeftOffset' + ' ' + subNavLeftOffset );
+            console.log( 'Elem + Left Offset' + ' ' + ( parseInt( elemWidth, 10 ) + parseInt( subNavLeftOffset, 10 ) ) );
         }
         
         // Deactivate
@@ -686,7 +717,8 @@
             
             _this.find( $subNavShowHideWord ).text( $subNavTogBtnShowL );
             
-            $subNavParent.removeClass( subNavNegLeftCss );
+            $subNavParent.removeClass( subNavObLeftCss );
+            $subNavParent.removeClass( subNavObRightCss );
         }
         
         // Deactivate all Sub-Nav
@@ -713,43 +745,6 @@
         // Initiate
         subNavAllDeactivate();
         
-        // Toggle
-        function subNavToggle() {
-            var _this = $( this );
-            
-            $subNavParent = _this.closest( $subNavParentItems );
-            
-            if ( $subNavParent.hasClass( subNavActCss ) ) {
-                
-                $subNavParent
-                    .addClass( subNavInactCss )
-                    .removeClass( subNavActCss );
-                $html
-                    .addClass( aplSubNavInactCss )
-                    .removeClass( aplSubNavActCss );
-
-                _this.attr( {
-                     'aria-expanded': 'false',
-                     'title': $subNavTogBtnShowL
-                } );
-                
-            } else if ( $subNavParent.hasClass( subNavInactCss ) ) {
-                
-                $subNavParent
-                    .addClass( subNavActCss )
-                    .removeClass( subNavInactCss );
-                $html
-                    .addClass( aplSubNavActCss )
-                    .removeClass( aplSubNavInactCss );
-
-                _this.attr( {
-                     'aria-expanded': 'true',
-                     'title': $subNavTogBtnHideL
-                } );
-                
-            }
-        }
-        
         // Deactivate Siblings
         function siblingsDeactivate() {
             var _this = $( this );
@@ -767,6 +762,7 @@
                 
                 if ( $subNavParent.hasClass( subNavInactCss ) ) {
                     subNavActivate.apply( this );
+                    subNavItemDetectBounds.apply( this );
                 } else if ( $subNavParent.hasClass( subNavActCss ) ) {
                     subNavDeactivate.apply( this );
                 }
