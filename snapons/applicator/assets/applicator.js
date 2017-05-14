@@ -579,10 +579,15 @@
             subNavIbCss = 'sub-nav--inbound',
             subNavObLeftCss = 'sub-nav--outbound-left',
             subNavObRightCss = 'sub-nav--outbound-right',
+            navHoverActiveCss = 'nav-hover--active',
+            navHoverInactiveCss = 'nav-hover--inactive',
             aplSubNavActCss = 'apl--sub-nav--active',
             aplSubNavInactCss = 'apl--sub-nav--inactive',
             
             $navParentItems = $( '.page_item, .menu-item' ),
+            
+            $mainNavItem = $cp.find( $navParentItems ),
+            
             $subNavParentItems = $( '.page_item_has_children, .menu-item-has-children' ),
             $subNavGrp = $( '.page_item_has_children > .children, .menu-item-has-children > .sub-menu' ),
             
@@ -641,11 +646,7 @@
         
         // Activate
         function subNavActivate() {
-            var _this = $( this ),
-                subNavOffset,
-                subNavLeftOffset,
-                bodyWidth,
-                elemWidth;
+            var _this = $( this );
             
             $subNavParent = _this.closest( $subNavParentItems );
             
@@ -664,38 +665,53 @@
             _this.find( $subNavShowHideWord ).text( $subNavTogBtnHideL );
         }
         
+        // Activate
+        function navHoverActivate() {
+            var _this = $( this );
+            _this.closest( $navParentItems )
+                .addClass( navHoverActiveCss )
+                .removeClass( navHoverInactiveCss );
+        }
+        
+        // Deactivate
+        function navHoverDeactivate() {
+            var _this = $( this );
+            _this.closest( $navParentItems )
+                .addClass( navHoverInactiveCss )
+                .removeClass( navHoverActiveCss );
+        }
+        
+        $cp.find( $subNavParentItems ).each( function() {
+            $subNavParentItems.addClass( subNavIbCss );
+        } );
+        
         // Detect Element Bounds
         function subNavItemDetectBounds() {
             var _this = $( this ),
                 subNavOffset,
                 subNavLeftOffset,
-                bodyWidth,
+                containerWidth,
                 elemWidth;
             
             $subNavParent = _this.closest( $subNavParentItems );
             
-            elem = $subNavParent.find( $subNavGrp );
-            subNavOffset = elem.offset();
+            $elem = $subNavParent.find( $subNavGrp );
+            subNavOffset = $elem.offset();
             subNavLeftOffset = subNavOffset.left;
-            bodyWidth = $body.width();
-            elemWidth = elem.width();
+            containerWidth = $body.width();
+            elemWidth = $elem.width();
             
             // If outbound left
             if ( subNavLeftOffset < 0 ) {
                 $subNavParent.addClass( subNavObLeftCss );
-                console.log( subNavObLeftCss );
+                $subNavParent.removeClass( subNavIbCss );
             }
             
             // If oubound right
-            if ( ( elemWidth > bodyWidth ) || ( parseInt( elemWidth, 10 ) + parseInt( subNavLeftOffset, 10 ) ) > bodyWidth ) {
+            if ( ( elemWidth > containerWidth ) || ( parseInt( elemWidth, 10 ) + parseInt( subNavLeftOffset, 10 ) ) > containerWidth ) {
                 $subNavParent.addClass( subNavObRightCss );
-                console.log( subNavObRightCss );
+                $subNavParent.removeClass( subNavIbCss );
             }
-            
-            console.log( 'Body' + ' ' + bodyWidth );
-            console.log( 'Elem' + ' ' + elemWidth );
-            console.log( 'subNavLeftOffset' + ' ' + subNavLeftOffset );
-            console.log( 'Elem + Left Offset' + ' ' + ( parseInt( elemWidth, 10 ) + parseInt( subNavLeftOffset, 10 ) ) );
         }
         
         // Deactivate
@@ -767,9 +783,20 @@
                     subNavDeactivate.apply( this );
                 }
                 
-                // siblingsDeactivate.apply( this );
+                if ( $cp.hasClass( 'easy-access-nav-func' ) ) {
+                    siblingsDeactivate.apply( this );
+                }
+                
+                siblingsDeactivate.apply( this );
             } );
         }() );
+        
+        // Hover
+        $( $mainNavItem ).hover( function () {
+            navHoverActivate.apply( this );
+        }, function() {
+            navHoverDeactivate.apply( this );
+        } );
         
         
         // Deactivate upon interaction outside specified elements
@@ -796,37 +823,9 @@
 			return;
 		}
         
-        var $mainNavItem = $cp.find( '.menu-item, .page_item' ),
-            $navParentItems = $( '.page_item, .menu-item' ),
-            navHoverActiveCss = 'nav-hover--active',
-            navHoverInactiveCss = 'nav-hover--inactive';
-        
         $cp
             .addClass( 'easy-access-nav-func' )
             .addClass( funcCss );
-        
-        // Activate
-        function navHoverActivate() {
-            var _this = $( this );
-            _this.closest( $navParentItems )
-                .addClass( navHoverActiveCss )
-                .removeClass( navHoverInactiveCss );
-        }
-        
-        // Deactivate
-        function navHoverDeactivate() {
-            var _this = $( this );
-            _this.closest( $navParentItems )
-                .addClass( navHoverInactiveCss )
-                .removeClass( navHoverActiveCss );
-        }
-        
-        // Action
-        $( $mainNavItem ).hover( function () {
-            navHoverActivate.apply( this );
-        }, function() {
-            navHoverDeactivate.apply( this );
-        } );
     }
     initEasyAccessNav( $( '#main-nav' ) );
 

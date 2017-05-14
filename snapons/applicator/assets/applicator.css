@@ -1733,11 +1733,9 @@ $go-green: #12b32d;
     justify-content: center;
 }
 
-.apl--applicator--easy-access-nav .sub-nav--active > ul
+.apl--applicator--easy-access-nav .sub-nav--inbound > ul
 {
-    position: absolute;
     right: 0;
-    top: 100%;
 }
 
 .apl--applicator--easy-access-nav .sub-nav--outbound-left > ul
@@ -1749,6 +1747,21 @@ $go-green: #12b32d;
 .apl--applicator--easy-access-nav .main-nav---ct_cr a
 {
     color: black;
+}
+
+.easy-access-nav-func .sub-nav--active
+{
+    z-index: 99;
+}
+
+.easy-access-nav-func .sub-nav--active > .children,
+.easy-access-nav-func .sub-nav--active > .sub-menu
+{
+    position: absolute;
+    top: 100%;
+    z-index: 99;
+    
+    border: 1px solid hsla( 0, 0%, 0%, .125 );
 }
 
 .easy-access-nav-func .sub-nav-toggle:hover .icon
@@ -1792,40 +1805,30 @@ $go-green: #12b32d;
 
 .easy-access-nav-func .children,
 .easy-access-nav-func .sub-menu
-{
-    /* Take the whole width of parent nav item */
-    min-width: 100%;
-    
+{   
     /* Specific width */
     min-width: 15rem;
 }
 
 .easy-access-nav-func .sub-nav--outbound-left.sub-nav--outbound-right .children,
-.easy-access-nav-func .sub-menu
+.easy-access-nav-func .sub-nav--outbound-left.sub-nav--outbound-right .sub-menu
 {
-    width: 100%;
-    min-width: inherit;
+    /* Take the whole width of parent nav item */
+    min-width: 100%;
 }
 
-.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children .children,
-.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu .sub-menu
+.easy-access-nav-func .page_item_has_children .children,
+.easy-access-nav-func .menu-item-has-children .sub-menu
 {
     
     transform: translate( -.5rem, -.5rem );
 }
 
-.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children .sub-nav--outbound-left .children,
-.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu .sub-nav--outbound-left .sub-menu
+.easy-access-nav-func .sub-nav--outbound-left .children,
+.easy-access-nav-func .sub-nav--outbound-left .sub-menu
 {
     
-    transform: translatex( .5rem );
-}
-
-.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children .sub-nav--outbound-left.sub-nav--outbound-right .children,
-.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu .sub-nav--outbound-left.sub-nav--outbound-right .sub-menu
-{
-    
-    transform: translate( 0 );
+    transform: translate( .5rem, -.5rem );
 }
 
 /*
