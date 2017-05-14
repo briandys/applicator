@@ -1733,17 +1733,6 @@ $go-green: #12b32d;
     justify-content: center;
 }
 
-.apl--applicator--easy-access-nav .sub-nav--inbound > ul
-{
-    right: 0;
-}
-
-.apl--applicator--easy-access-nav .sub-nav--outbound-left > ul
-{
-    right: auto;
-    left: 0;
-}
-
 .apl--applicator--easy-access-nav .main-nav---ct_cr a
 {
     color: black;
@@ -1764,6 +1753,16 @@ $go-green: #12b32d;
     border: 1px solid hsla( 0, 0%, 0%, .125 );
 }
 
+.easy-access-nav-func .sub-nav--inbound > ul
+{
+    right: 0;
+}
+
+.easy-access-nav-func .sub-nav--outbound-left > ul
+{
+    left: 0;
+}
+
 .easy-access-nav-func .sub-nav-toggle:hover .icon
 {
     width: calc( .75rem + .1rem );
@@ -1771,7 +1770,18 @@ $go-green: #12b32d;
 }
 
 /* Underline */
-.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > .nav-hover--active::before
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-nav---a_l
+{
+    padding-left: .25rem;
+    padding-right: .25rem;
+}
+
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-nav---a_l:hover
+{
+    position: relative;
+}
+
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-nav---a_l:hover::before
 {
     content: '';
     position: absolute;
@@ -1784,6 +1794,7 @@ $go-green: #12b32d;
     background-color: black;
     background-color: hsla( 0, 0%, 0%, .125 );
 }
+/* /Underline */
 
 .easy-access-nav-func .page_item_has_children > .children > .page_item,
 .easy-access-nav-func .menu-item-has-children > .sub-menu > .menu-item
