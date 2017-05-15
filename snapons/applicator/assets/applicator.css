@@ -1848,6 +1848,14 @@ $go-green: #12b32d;
 {
     background-color: #00aaff;
 }
+
+/*
+.easy-access-nav-func .main-nav---ct_cr > ul > .current_page_ancestor > a .navi---txt,
+.easy-access-nav-func .main-nav---ct_cr > ul > .current-menu-ancestor > a .navi---txt
+{
+    font-weight: bold;
+}
+*/
 /* /Menu Indicator */
 
 .easy-access-nav-func .page_item_has_children > .children > .page_item,
