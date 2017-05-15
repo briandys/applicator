@@ -55,36 +55,43 @@ Initial release
 
 == Structure, Components, Objects ==
 
+* wbp (cn)
 
-Name: Web Product
-Type: Constructor
-Class: .wbp
-Structure:
-cn
-* cr
+** wbp-start (cn)
+
+** main-header (cn)
+    
+    *** wbp-main-info (cp)
+    
+        **** wbp-main-name-obj (obj)
+        **** wbp-main-logo-obj (obj)
+        **** wbp-main-desc-obj (obj)
+    
+    *** main-nav (nav)
+    
+        **** WP Generated: ul
+            ***** WP Generated: li (cp)
+                ****** [main-navi (navi)] > WP Generated: a [main-navi---a] > main-navi---a_l > navi---txt
+                ****** sub-nav-toggle (obj) > .sub-nav-tog---b > .sub-nav-tog---b_l
+    
+    *** search-cp (cp)
+    
+        **** search---h
+        **** main-search---toggle
+        
+        **** search-form
+
+** main-content (cn)
 
 
-Name: Web Product Start
-Type: Constructor
-Class: .wbp-start
-Structure:
-cn
-* cr
 
+** main-footer (cn)
 
-Name: Main Header
-Type: Constructor
-Class: .main-header
-Structure:
-cn
-* cr
+** wbp-end (cn)
 
+== HTML Attribute to Check ==
 
-Name: Main Content
-Type: Constructor
-Class: .main-content
-Structure:
-cn
-* cr
-** hr
-** ct
+Navigation
+* class="nav"
+* role="navigation"
+* aria-label="Nav Name"

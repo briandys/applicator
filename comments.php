@@ -4,7 +4,7 @@
 
 <div class="md comment-md" data-name="Comment Module">
     <div class="cr comment-md_cr">
-        <div class="h comment-md---h"><span class="h_l comment-md---h_l"><?php esc_html_e( 'Comment Module', 'applicator' ); ?></span></div>
+        <div class="h comment-md---h"><span class="h_l comment-md---h_l"><?php esc_html_e( 'Comment Module', $GLOBALS['apl_textdomain'] ); ?></span></div>
         <div class="ct comment-md---ct">
             <div class="ct_cr comment-md---ct_cr">
                 
@@ -12,7 +12,7 @@
                     <div class="cr comments---cr">
                         <div class="hr comments---hr">
                             <div class="hr_cr comments---hr_cr">
-                                <div class="h comments---h"><span class="h_l comments---h_l"><?php esc_html_e( 'Comments', 'applicator' ); ?></span></div>
+                                <div class="h comments---h"><span class="h_l comments---h_l"><?php esc_html_e( 'Comments', $GLOBALS['apl_textdomain'] ); ?></span></div>
                                 <div class="aside comments-hr-aside" role="complementary" data-name="Comments Header Aside">
                                     <div class="cr coms-hr-as---cr">
                                     
@@ -44,7 +44,7 @@
                                 
                                 <div class="obj note comments-empty-note-obj" data-name="Comments Empty Note">
                                     <div class="g comments-empty-note---g">
-                                        <p><?php esc_html_e( 'There are no comments.', 'applicator' ); ?></p>
+                                        <p><?php esc_html_e( 'There are no comments.', $GLOBALS['apl_textdomain'] ); ?></p>
                                     </div>
                                 </div><!-- comments-empty-note-obj -->
                                 

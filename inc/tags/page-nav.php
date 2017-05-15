@@ -68,10 +68,10 @@ if ( ! function_exists( 'applicator_page_nav' ) ) {
 
         if ( $page_nav_grp ) { ?>
         
-        <div class="nav page-nav" role="navigation" aria-label="<?php esc_html_e( 'Page Navigation', 'applicator' ); ?>" data-name="Page Navigation">
+        <div class="nav page-nav" role="navigation" aria-label="<?php esc_html_e( 'Page Navigation', $GLOBALS['apl_textdomain'] ); ?>" data-name="Page Navigation">
             <div class="cr page-nav---cr">
                 <div class="h page-nav---h">
-                    <span class="h_l page-nav---h_l"><?php esc_html_e( 'Page Navigation', 'applicator' ); ?></span>
+                    <span class="h_l page-nav---h_l"><?php esc_html_e( 'Page Navigation', $GLOBALS['apl_textdomain'] ); ?></span>
                 </div>
                 <div class="ct page-nav---ct">
                     <div class="ct_cr page-nav---ct_cr">

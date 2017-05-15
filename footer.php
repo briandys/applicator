@@ -32,9 +32,9 @@
                 <div class="cn wbp-end" data-name="Web Product End">
                     <div class="cr wbp-end---cr">
 
-                        <div id="go-start-nav" class="nav go-start-nav" role="navigation" data-name="Go to Start Navigation">
+                        <div id="go-start-nav" class="nav go-start-nav" role="navigation" data-name="Go to Start Nav">
                             <div class="cr go-start-nav---cr">
-                                <div class="h go-start-nav---h"><span class="h_l go-ct-nav---h_l"><?php esc_html_e( 'Go to Start Navigation', 'applicator'); ?></span></div>
+                                <div class="h go-start-nav---h"><span class="h_l go-ct-nav---h_l"><?php esc_html_e( 'Go to Start Navigation', $GLOBALS['apl_textdomain'] ); ?></span></div>
                                 <div class="ct go-start-nav---ct">
                                     <div class="ct_cr go-start-nav---ct_cr">
 
@@ -49,15 +49,15 @@
                                         ); ?>
 
                                     </div>
-                                </div><!-- go-start-nav---ct -->
+                                </div><!-- ct -->
                             </div>
-                        </div><!-- go-start-nav -->
+                        </div><!-- Go to Start Nav -->
 
                     </div>
-                </div><!-- wbp-end -->
+                </div><!-- Web Product End -->
             
             </div>
-        </div><!-- wbp -->
+        </div><!-- Web Product -->
 
         <?php wp_footer(); ?>
     

@@ -154,9 +154,9 @@ if ( ! function_exists( 'apl_func_html_class' ) ) {
         
         // Customizer: Custom Logo
         if ( has_custom_logo() ) {
-            echo ' ' . 'wbp-logo' . $on;
+            echo ' ' . 'wbp-main-logo' . $on;
         } else {
-            echo ' ' . 'wbp-logo' . $off;
+            echo ' ' . 'wbp-main-logo' . $off;
         }
         
         if ( isset( $post ) ) {

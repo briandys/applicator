@@ -189,7 +189,7 @@
         var mainMenuTogObjMu,
             mainMenuTogBtnMu,
             mainMenuTogBtnLmu,
-            mainMenuTogBtnLwordMu,
+            mainMenuTogBtnLTxtMu,
             
             mainMenuActCss = 'main-menu--active',
             mainMenuInactCss = 'main-menu--inactive',
@@ -207,20 +207,20 @@
             
             $mainMenuTogBtn,
             $mainMenuTogBtnL,
-            $mainMenuTogBtnLword;
+            $mainMenuTogBtnLTxt;
         
         // Build Markup
         ( function() {
             
-            mainMenuTogBtnLwordMu = $( '<span />', {
-                'class': 'word show-hide-main-menu---word',
+            mainMenuTogBtnLTxtMu = $( '<span />', {
+                'class': 'word show-hide---txt',
                 'text': $mainMenuHideL
             } );
             
             mainMenuTogBtnLmu = $( '<span />', {
                 'class': 'b_l main-menu-tog---b_l'
             } )
-                .append( mainMenuTogBtnLwordMu )
+                .append( mainMenuTogBtnLTxtMu )
                 .append( $mainMenuTogBtnHideIco );
             
             // Button
@@ -245,7 +245,7 @@
         $mainMenuTog = $cp.find( '.main-menu-toggle' );
         $mainMenuTogBtn = $( '#main-menu-tog---b' );
         $mainMenuTogBtnL = $mainMenuTogBtn.find( $( '.main-menu-tog---b_l' ) );
-        $mainMenuTogBtnLword = $mainMenuTogBtn.find( $( '.show-hide-main-menu---word' ) );
+        $mainMenuTogBtnLTxt = $mainMenuTogBtn.find( $( '.show-hide---txt' ) );
         
         // Activate
         function mainMenuActivate() {
@@ -261,7 +261,7 @@
                  'title': $mainMenuHideL
             } );
             
-            $mainMenuTogBtnLword.text( $mainMenuHideL );
+            $mainMenuTogBtnLTxt.text( $mainMenuHideL );
             $mainMenuTogBtnL.append( $mainMenuTogBtnHideIco );
             $mainMenuTogBtnShowIco.remove();
         }
@@ -280,7 +280,7 @@
                  'title': $mainMenuShowL
             } );
             
-            $mainMenuTogBtnLword.text( $mainMenuShowL );
+            $mainMenuTogBtnLTxt.text( $mainMenuShowL );
             $mainMenuTogBtnL.append( $mainMenuTogBtnShowIco );
             $mainMenuTogBtnHideIco.remove();
         }
@@ -357,7 +357,7 @@
         var mainSearchTogObjMu,
             mainSearchTogBtnMu,
             mainSearchTogBtnLmu,
-            mainSearchTogBtnLwordMu,
+            mainSearchTogBtnLTxtMu,
             
             mainSearchActCss = 'main-search--active',
             mainSearchInactCss = 'main-search--inactive',
@@ -382,7 +382,7 @@
             $mainSearchTog,
             $mainSearchTogBtn,
             $mainSearchTogBtnL,
-            $mainSearchTogBtnLword,
+            $mainSearchTogBtnLTxt,
             
             $arbitNavSubmitAxnBl,
             $arbitNavResetAxnBl,
@@ -393,15 +393,15 @@
         // Build Markup
         ( function() {
             
-            mainSearchTogBtnLwordMu = $( '<span />', {
-                'class': 'word show-hide-main-search---word',
+            mainSearchTogBtnLTxtMu = $( '<span />', {
+                'class': 'word show-hide---txt',
                 'text': $mainSearchHideL
             } );
             
             mainSearchTogBtnLmu = $( '<span />', {
                 'class': 'b_l main-search-tog---b_l'
             } )
-                .append( mainSearchTogBtnLwordMu )
+                .append( mainSearchTogBtnLTxtMu )
                 .append( $mainSearchTogDismissIco );
             
             // Button
@@ -427,7 +427,7 @@
         $mainSearchTog = $cp.find( '.main-search-toggle' );
         $mainSearchTogBtn = $( '#main-search-tog---b' );
         $mainSearchTogBtnL = $mainSearchTogBtn.find( $( '.main-search-tog---b_l' ) );
-        $mainSearchTogBtnLword = $mainSearchTogBtn.find( $( '.show-hide-main-search---word' ) );
+        $mainSearchTogBtnLTxt = $mainSearchTogBtn.find( $( '.show-hide---txt' ) );
         
         $mainSearchInput = $cp.find( '.search-term-crt-inp--input-text' );
         $mainSearchResetBtn = $cp.find( '.search-reset-axn---b' );
@@ -446,7 +446,7 @@
                  'title': $mainSearchHideL
             } );
             
-            $mainSearchTogBtnLword.text( $mainSearchHideL );
+            $mainSearchTogBtnLTxt.text( $mainSearchHideL );
             $mainSearchTogBtnL.append( $mainSearchTogDismissIco );
             $mainSearchTogSearchIco.remove();
             
@@ -468,7 +468,7 @@
                  'title': $mainSearchShowL
             } );
             
-            $mainSearchTogBtnLword.text( $mainSearchShowL );
+            $mainSearchTogBtnLTxt.text( $mainSearchShowL );
             $mainSearchTogBtnL.append( $mainSearchTogSearchIco );
             $mainSearchTogDismissIco.remove();
         }
@@ -572,7 +572,7 @@
         var subNavTogObjMu,
             subNavTogBtnMu,
             subNavTogBtnLmu,
-            subNavTogBtnLwordMu,
+            subNavTogBtnLTxtMu,
             
             subNavActCss = 'sub-nav--active',
             subNavInactCss = 'sub-nav--inactive',
@@ -588,7 +588,7 @@
             $subNavTog,
             $subNavTogBtn,
             $subNavTogBtnL,
-            $subNavTogBtnLword,
+            $subNavTogBtnLTxt,
             
             $subNavTogBtnIco = $( aplDataSubNav.subNavTogBtnIco ),
             
@@ -604,15 +604,15 @@
         // Build Markup
         ( function() {
             
-            subNavTogBtnLwordMu = $( '<span />', {
-                'class': 'word show-hide-sub-nav---word',
+            subNavTogBtnLTxtMu = $( '<span />', {
+                'class': 'word show-hide---txt',
                 'text': $subNavTogBtnHideL
             } );
             
             subNavTogBtnLmu = $( '<span />', {
                 'class': 'b_l sub-nav-tog---b_l'
             } )
-                .append( subNavTogBtnLwordMu )
+                .append( subNavTogBtnLTxtMu )
                 .clone().append( $subNavTogBtnIco );
             
             // Button
@@ -634,7 +634,7 @@
         }() );
         
         $subNavTogBtn = $cp.find( '.sub-nav-tog---b' );
-        $subNavShowHideWord = '.show-hide-sub-nav---word';
+        $subNavShowHideTxt = '.show-hide---txt';
         
         // Activate
         function subNavActivate() {
@@ -654,7 +654,7 @@
                  'title': $subNavTogBtnHideL
             } );
             
-            _this.find( $subNavShowHideWord ).text( $subNavTogBtnHideL );
+            _this.find( $subNavShowHideTxt ).text( $subNavTogBtnHideL );
         }
         
         // Deactivate
@@ -674,7 +674,7 @@
                  'title': $subNavTogBtnShowL
             } );
             
-            _this.find( $subNavShowHideWord ).text( $subNavTogBtnShowL );
+            _this.find( $subNavShowHideTxt ).text( $subNavTogBtnShowL );
         }
         
         // Deactivate all Sub-Nav
@@ -694,7 +694,7 @@
                     'title': $subNavTogBtnShowL
                 } );
                 
-                _this.find( $subNavShowHideWord ).text( $subNavTogBtnShowL );
+                _this.find( $subNavShowHideTxt ).text( $subNavTogBtnShowL );
             } );
         }
         // Initiate

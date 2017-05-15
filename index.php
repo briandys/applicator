@@ -26,13 +26,16 @@ if ( function_exists( 'get_header' ) ) {
                 
                 $entry_search_count = $entry_search->post_count;
                 
+                $search_result_label = 'Search Result';
+                $search_results_label = 'Search Results';
+                
                 $prop = '';
                 if ( $entry_search_count == 0 ) {
-                    $prop = 'Search Result';
+                    $prop = $search_result_label;
                 } elseif ( $entry_search_count == 1 ) {
-                    $prop = 'Search Result';
+                    $prop = $search_result_label;
                 } else {
-                    $prop = 'Search Results';
+                    $prop = $search_results_label;
                 }
                 
                 $label = $prop;
@@ -105,7 +108,7 @@ if ( function_exists( 'get_header' ) ) {
                 
                 <div class="md entry-md" data-name="Entry Module">
                     <div class="cr entry-md---cr">
-                        <div class="h entry-md---h"><span class="h_l entry-md---h_l"><?php esc_html_e( 'Entry Module', 'applicator' ); ?></span></div>
+                        <div class="h entry-md---h"><span class="h_l entry-md---h_l"><?php esc_html_e( 'Entry Module', $GLOBALS['apl_textdomain'] ); ?></span></div>
                         <div class="ct entry-md---ct">
                             <div class="ct_cr entry-md---ct_cr">
                 
@@ -117,7 +120,7 @@ if ( function_exists( 'get_header' ) ) {
                             <div class="cr entry---cr">
                                 <div class="hr entry---hr">
                                     <div class="hr_cr entry---hr_cr">
-                                        <div class="h entry---h"><span class="h_l entry---h_l"><?php esc_html_e( 'Entry', 'applicator' ); ?></span></div>
+                                        <div class="h entry---h"><span class="h_l entry---h_l"><?php esc_html_e( 'Entry', $GLOBALS['apl_textdomain'] ); ?></span></div>
                                         <?php // inc > tags > entry-nav.php
                                         apl_entry_nav(); ?>
                                     </div>
@@ -152,7 +155,7 @@ if ( function_exists( 'get_header' ) ) {
                                     <div class="cr entries---cr">
                                         <div class="hr entries---hr">
                                             <div class="hr_cr entries---hr_cr">
-                                                <div class="h entries---h"><span class="h_l entries---h_l"><?php esc_html_e( 'Entries', 'applicator' ); ?></span></div>
+                                                <div class="h entries---h"><span class="h_l entries---h_l"><?php esc_html_e( 'Entries', $GLOBALS['apl_textdomain'] ); ?></span></div>
                                                 <?php // inc > template-parts > page-nav.php
                                                 applicator_page_nav(); ?>
                                             </div>

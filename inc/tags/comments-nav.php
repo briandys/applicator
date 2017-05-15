@@ -27,7 +27,7 @@ if ( ! function_exists( 'apl_func_comments_nav' ) ) {
 
             <div class="nav comments-nav" role="navigation" data-name="Comments Navigation">
                 <div class="cr comments-nav---cr">
-                    <div class="h comments-nav---h"><span class="h_l comments-nav---h_l"><?php esc_html_e( 'Comments Navigation', 'applicator' ); ?></span></div>
+                    <div class="h comments-nav---h"><span class="h_l comments-nav---h_l"><?php esc_html_e( 'Comments Navigation', $GLOBALS['apl_textdomain'] ); ?></span></div>
                     <div class="ct comments-nav---ct">
                         <div class="ct_cr comments-nav---ct_cr">
                             <ul class="grp comments-nav---grp">

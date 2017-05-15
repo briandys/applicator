@@ -152,7 +152,7 @@ img
 
 
 
-/* ------------------------- Fixes */
+/* ------------------------- Enhancements */
 .icon--vector
 {
     display: inline-block;
@@ -183,6 +183,11 @@ figure.wp-caption
 .svg-fallback
 {
     display: none;
+}
+
+.main-content
+{
+    display: flex; /* Contains margins of nested elements to bleed out of the container. */
 }
 
 

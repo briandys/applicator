@@ -31,7 +31,7 @@ if ( ! function_exists( 'apl_func_comments_actions_snippet' ) ) {
         
         <div class="cp comments-actions-snippet <?php echo $comments_count_pop_stat_css . ' ' . $comment_creation_ability_stat_css ?>" data-name="Comments Actions Snippet">
             <div class="cr coms-acts-snip---cr">
-                <div class="h coms-acts-snip---h"><span class="h_l coms-acts-snip---h_l"><?php esc_html_e( 'Comments Actions Snippet', 'applicator' ); ?></span></div>
+                <div class="h coms-acts-snip---h"><span class="h_l coms-acts-snip---h_l"><?php esc_html_e( 'Comments Actions Snippet', $GLOBALS['apl_textdomain'] ); ?></span></div>
                 <div class="ct coms-acts-snip---ct">
                     <div class="ct_cr coms-acts-snip---ct_cr">
                         
@@ -183,7 +183,7 @@ if ( ! function_exists( 'apl_func_comments_actions_snippet' ) ) {
                         <div class="obj note commenting-disabled-note" data-name="Commenting Disabled Note">
                             <div class="g commenting-disabled-note---g">
                                 <div class="g_l commenting-disabled-note---g_l">
-                                    <p><?php esc_html_e( 'Commenting is disabled.', 'applicator' ); ?></p>
+                                    <p><?php esc_html_e( 'Commenting is disabled.', $GLOBALS['apl_textdomain'] ); ?></p>
                                 </div>
                             </div>
                         </div><!-- Commenting Disabled Note -->

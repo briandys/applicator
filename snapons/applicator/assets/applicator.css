@@ -10,6 +10,7 @@
 .entry-nav---h,
 .error404 .main-ct---h,
 .crumbs-nav---h,
+.wbp-main-info---h,
 
 .post-admin-axns---h,
 .post-pub-auth---h,
@@ -62,10 +63,10 @@
 
 /*  Menu | Main Nav - Main Header Aside */
 .main-menu-ctrl---h,
-.main-menu-tog---b_l .show-hide-main-menu---word,
+.main-menu-tog---b_l .show-hide---txt,
 
 /* Sub-Nav | Main Nav | Widget > Custom Menu */
-.sub-nav-func .sub-nav-toggle .show-hide-sub-nav---word,
+.sub-nav-func .sub-nav-toggle .show-hide---txt,
 
 /* Search */
 .search---h,
@@ -74,13 +75,13 @@
 .search-term-creation-label---obj,
 
 /* Main Search */
-.main-search-tog---b_l .show-hide-main-search---word,
+.main-search-tog---b_l .show-hide---txt,
 .main-search-func .search-submit-axn---b_l .search---word,
 .main-search-func .search-reset-axn---b_l .reset---word,
 
 /* Web Product Info */
 .apl--main-search--active .wbp-main-name-obj,
-.apl--main-search--active .wbp-logo-obj,
+.apl--main-search--active .wbp-main-logo-obj,
 .apl--main-search--active .wbp-main-desc-obj,
 .wbp-main-name-desc--disabled .wbp-main-name-obj,
 .wbp-main-name-desc--disabled .wbp-main-desc-obj
@@ -626,18 +627,18 @@ $go-green: #12b32d;
     margin-right: 3rem;
 }
 
-.wbp-logo--enabled .wbp-main-info
+.wbp-main-logo--enabled .wbp-main-info
 {
     margin-left: 1rem;
 }
 
-.wbp-logo--enabled .wbp-main-info
+.wbp-main-logo--enabled .wbp-main-info
 {
     position: relative;
 }
 
-.wbp-main-name-desc--enabled.wbp-logo--enabled .wbp-main-name-obj,
-.wbp-main-name-desc--enabled.wbp-logo--enabled .wbp-main-desc-obj
+.wbp-main-name-desc--enabled.wbp-main-logo--enabled .wbp-main-name-obj,
+.wbp-main-name-desc--enabled.wbp-main-logo--enabled .wbp-main-desc-obj
 {
     box-sizing: border-box;
     
@@ -669,8 +670,8 @@ $go-green: #12b32d;
 .apl--applicator--main-menu.main-header-aside--enabled .wbp-main-name-obj---a_l,
 .apl--applicator--main-menu.main-header-aside--enabled .wbp-main-desc-obj---a_l,
 
-.wbp-logo--enabled .wbp-main-name-obj---a_l,
-.wbp-logo--enabled .wbp-main-desc-obj---a_l
+.wbp-main-logo--enabled .wbp-main-name-obj---a_l,
+.wbp-main-logo--enabled .wbp-main-desc-obj---a_l
 {
     padding-left: 0;
 }
@@ -691,7 +692,7 @@ $go-green: #12b32d;
 
 
 
-/* ------------------------- Web Product Name */
+/* ------------------------- Web Product Main Name */
 .wbp-main-name-obj---h
 {
     /* Reset */
@@ -749,7 +750,7 @@ $go-green: #12b32d;
 
 
 
-/* ------------------------- Web Product Description */
+/* ------------------------- Web Product Main Description */
 /*
 .wbp-main-desc-obj
 {
@@ -782,8 +783,8 @@ $go-green: #12b32d;
 
 
 
-/* ------------------------- Web Product Logo  */
-.wbp-logo-obj
+/* ------------------------- Web Product Main Logo  */
+.wbp-main-logo-obj
 {
     position: absolute;
     top: 50%;
@@ -795,7 +796,7 @@ $go-green: #12b32d;
     z-index: 1;
 }
 
-.custom-logo
+.wbp-main-logo-obj .custom-logo
 {
     width: auto;
     height: 100%;
@@ -1538,7 +1539,7 @@ $go-green: #12b32d;
 }
 
 .main-nav a,
-.main-nav---a_l,
+.main-navi---a_l,
 .widget_nav_menu a,
 .widget_pages a
 {
@@ -1620,7 +1621,7 @@ $go-green: #12b32d;
 }
 
 .sub-nav-func a,
-.sub-nav-func .main-nav---a_l
+.sub-nav-func .main-navi---a_l
 {
     display: flex;
 }
@@ -1728,7 +1729,7 @@ $go-green: #12b32d;
     justify-content: center;
 }
 
-.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-nav---a_l
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-navi---a_l
 {
     justify-content: center;
 }
@@ -1754,12 +1755,14 @@ $go-green: #12b32d;
     border-radius: .125rem;
 }
 
-.easy-access-nav-func .sub-nav--inbound > ul
+.easy-access-nav-func .sub-nav--inbound > .children,
+.easy-access-nav-func .sub-nav--inbound > .sub-menu
 {
     right: 0;
 }
 
-.easy-access-nav-func .sub-nav--outbound-left > ul
+.easy-access-nav-func .sub-nav--outbound-left > .children,
+.easy-access-nav-func .sub-nav--outbound-left > .sub-menu
 {
     left: 0;
 }
@@ -1771,18 +1774,18 @@ $go-green: #12b32d;
 }
 
 /* Menu Indicator */
-.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-nav---a_l
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-navi---a_l
 {
     padding-left: .25rem;
     padding-right: .25rem;
 }
 
-.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-nav---a_l:hover,
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-navi---a_l:hover,
 
 .easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children a:hover,
 .easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu a:hover,
 
-.easy-access-nav-func .main-nav---ct_cr > ul > .current_page_item > a > .main-nav---a_l,
+.easy-access-nav-func .main-nav---ct_cr > ul > .current_page_item > a > .main-navi---a_l,
 
 .easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children .current_page_item > a,
 .easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu .current-menu-item > a
@@ -1790,12 +1793,12 @@ $go-green: #12b32d;
     position: relative;
 }
 
-.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-nav---a_l:hover::before,
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-navi---a_l:hover::before,
 
 .easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children a:hover::before,
 .easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu a:hover::before,
 
-.easy-access-nav-func .main-nav---ct_cr > ul > .current_page_item > a > .main-nav---a_l::before,
+.easy-access-nav-func .main-nav---ct_cr > ul > .current_page_item > a > .main-navi---a_l::before,
 
 .easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children .current_page_item > a::before,
 .easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu .current-menu-item > a::before
@@ -1805,8 +1808,8 @@ $go-green: #12b32d;
     left: 0;
 }
 
-.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-nav---a_l:hover::before,
-.easy-access-nav-func .main-nav---ct_cr > ul > .current_page_item > a > .main-nav---a_l::before
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-navi---a_l:hover::before,
+.easy-access-nav-func .main-nav---ct_cr > ul > .current_page_item > a > .main-navi---a_l::before
 {
     bottom: 0;
     
@@ -1829,7 +1832,7 @@ $go-green: #12b32d;
     border-bottom-left-radius: .125rem;
 }
 
-.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-nav---a_l:hover::before,
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-navi---a_l:hover::before,
 .easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children a:hover::before,
 .easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu a:hover::before
 {    
@@ -1837,8 +1840,8 @@ $go-green: #12b32d;
     background-color: hsla( 0, 0%, 0%, .125 );
 }
 
-.easy-access-nav-func .main-nav---ct_cr > ul > .page_item.current_page_item > a > .main-nav---a_l::before,
-.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item.current-menu-item > a > .main-nav---a_l::before,
+.easy-access-nav-func .main-nav---ct_cr > ul > .page_item.current_page_item > a > .main-navi---a_l::before,
+.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item.current-menu-item > a > .main-navi---a_l::before,
 
 .easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children .current_page_item > a::before,
 .easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu .current-menu-item > a::before
@@ -1875,7 +1878,7 @@ $go-green: #12b32d;
 
 .apl--applicator--easy-access-nav .main-nav .sub-nav-toggle
 {
-    top: auto;
+    top: initial;
     bottom: 0;
 }
 

@@ -17,7 +17,7 @@ if ( ! function_exists( 'apl_func_post_admin_actions' ) ) {
             
             <div class="axns post-admin-axns" data-name="Post Admin Actions">
                 <div class="cr post-admin-axns---cr">
-                    <div class="h post-admin-axns---h"><span class="h_l post-admin-axns---h_l"><?php esc_html_e( 'Post Admin Actions', 'applicator' ); ?></span></div>
+                    <div class="h post-admin-axns---h"><span class="h_l post-admin-axns---h_l"><?php esc_html_e( 'Post Admin Actions', $GLOBALS['apl_textdomain'] ); ?></span></div>
                     <div class="ct post-admin-axns---ct">
                         <div class="ct_cr post-admin-axns---ct_cr">
                             <span class="obj axn edit-post-axn" data-name="Edit Post Action">

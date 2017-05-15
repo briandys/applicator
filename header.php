@@ -18,7 +18,7 @@
                     <div class="cr wbp-start---cr">
 
                         <div id="go-content-nav" class="nav go-content-nav" role="navigation" data-name="Go to Content Nav">
-                            <div class="h go-ct-nav---h"><?php esc_html_e( 'Go to Content Navigation', 'applicator'); ?></div>
+                            <div class="h go-ct-nav---h"><?php esc_html_e( 'Go to Content Navigation', $GLOBALS['apl_textdomain'] ); ?></div>
                             <div class="ct go-ct-nav---ct">
                                 <?php
                                 // Markup
@@ -77,79 +77,89 @@
                     <div class="cr main-header---cr">
                         
                         <div class="cp wbp-main-info" data-name="Web Product Main Info">
-                            <?php
-                            
-                            // Web Product Main Name
-                            // Markup
-                            $wbp_main_name_obj_mu = '<div class="%2$s" data-name="%1$s">';
-                                $wbp_main_name_obj_mu .= '<h1 class="h %3$s---h site-title">';
-                                    $wbp_main_name_obj_mu .= '<a class="a %3$s---a" href="%6$s" rel="home" title="%4$s"><span class="a_l %3$s---a_l"><span class="txt %5$s---txt">';
-                                        $wbp_main_name_obj_mu .= '%4$s';
-                                    $wbp_main_name_obj_mu .= '</span></span></a>';
-                                $wbp_main_name_obj_mu .= '</h1>';
-                            $wbp_main_name_obj_mu .= '</div><!-- %1$s -->';
+                            <div class="cr wbp-main-info---cr">
+                                <div class="hr wbp-main-info---hr">
+                                    <div class="hr_cr wbp-main-info---hr_cr">
+                                        <div class="h wbp-main-info---h"><span class="h_l wbp-main-info---h_l"><?php esc_html_e( 'Web Product Main Info', $GLOBALS['apl_textdomain'] ); ?></span></div>
+                                    </div>
+                                </div>
+                                <div class="ct wbp-main-info---ct">
+                                    <div class="ct_cr wbp-main-info---ct_cr">
+                                        <?php
+                                        // Web Product Main Name
+                                        // Markup
+                                        $wbp_main_name_obj_mu = '<div class="%2$s" data-name="%1$s">';
+                                            $wbp_main_name_obj_mu .= '<h1 class="h %3$s---h site-title">';
+                                                $wbp_main_name_obj_mu .= '<a class="a %3$s---a" href="%6$s" rel="home" title="%4$s"><span class="a_l %3$s---a_l"><span class="txt %5$s---txt">';
+                                                    $wbp_main_name_obj_mu .= '%4$s';
+                                                $wbp_main_name_obj_mu .= '</span></span></a>';
+                                            $wbp_main_name_obj_mu .= '</h1>';
+                                        $wbp_main_name_obj_mu .= '</div><!-- %1$s -->';
 
-                            // Content
-                            $wbp_main_name_obj = sprintf( $wbp_main_name_obj_mu,
-                                'Web Product Main Name Object',
-                                    'obj wbp-main-name-obj',
-                                    'wbp-main-name-obj',
-                                get_bloginfo( 'name' ),
-                                    'wbp-name',
-                                esc_url( home_url( '/' ) )
-                            );
-                            
-                            // Display
-                            printf( $wbp_main_name_obj );
+                                        // Content
+                                        $wbp_main_name_obj = sprintf( $wbp_main_name_obj_mu,
+                                            'Web Product Main Name Object',
+                                                'obj wbp-main-name-obj',
+                                                'wbp-main-name-obj',
+                                            get_bloginfo( 'name' ),
+                                                'wbp-main-name',
+                                            esc_url( home_url( '/' ) )
+                                        );
 
-                            // Web Product Custom Logo | inc > settings.php | Customizer > Site Identity
-                            if ( has_custom_logo() ) {
-                                
-                                // Markup
-                                $wbp_main_logo_obj_mu = '<div class="%2$s" title="%4$s" data-name="%1$s">';
-                                    $wbp_main_logo_obj_mu .= '%3$s';
-                                $wbp_main_logo_obj_mu .= '</div>';
+                                        // Display
+                                        printf( $wbp_main_name_obj );
 
-                                // Content
-                                $wbp_main_logo_obj = sprintf( $wbp_main_logo_obj_mu,
-                                    'Web Product Main Logo Object',
-                                        'obj wbp-logo-obj',
-                                    get_custom_logo(),
-                                    get_bloginfo( 'name' )
-                                );
-                            
-                                // Display
-                                printf( $wbp_main_logo_obj );
-                            }
-                            
-                            // Web Product Main Description
-                            $description = get_bloginfo( 'description', 'display' );
-                            
-                            if ( $description || is_customize_preview() ) {
+                                        // Web Product Custom Logo | inc > settings.php | Customizer > Site Identity
+                                        if ( has_custom_logo() ) {
 
-                                // Markup
-                                $wbp_main_desc_obj_mu = '<div class="%2$s" data-name="%1$s">';
-                                    $wbp_main_desc_obj_mu .= '<div class="g %3$s---g">';
-                                        $wbp_main_desc_obj_mu .= '<a class="a %3$s---a" href="%6$s" rel="home" title="%4$s"><span class="a_l %3$s---a_l"><span class="txt %5$s---txt">';
-                                            $wbp_main_desc_obj_mu .= '%4$s';
-                                        $wbp_main_desc_obj_mu .= '</span></span></a>';
-                                    $wbp_main_desc_obj_mu .= '</div>';
-                                $wbp_main_desc_obj_mu .= '</div><!-- %1$s -->';
+                                            // Markup
+                                            $wbp_main_logo_obj_mu = '<div class="%2$s" title="%4$s" data-name="%1$s">';
+                                                $wbp_main_logo_obj_mu .= '%3$s';
+                                            $wbp_main_logo_obj_mu .= '</div>';
 
-                                // Content
-                                $wbp_main_desc_obj = sprintf( $wbp_main_desc_obj_mu,
-                                    'Web Product Main Description Object',
-                                        'obj wbp-main-desc-obj',
-                                        'wbp-main-desc-obj',
-                                    $description,
-                                        'wbp-desc',
-                                    esc_url( home_url( '/' ) )
-                                );
-                            
-                                // Display
-                                printf( $wbp_main_desc_obj );
-                            }
-                            ?>
+                                            // Content
+                                            $wbp_main_logo_obj = sprintf( $wbp_main_logo_obj_mu,
+                                                'Web Product Main Logo Object',
+                                                    'obj wbp-main-logo-obj',
+                                                get_custom_logo(),
+                                                get_bloginfo( 'name' )
+                                            );
+
+                                            // Display
+                                            printf( $wbp_main_logo_obj );
+                                        }
+
+                                        // Web Product Main Description
+                                        $description = get_bloginfo( 'description', 'display' );
+
+                                        if ( $description || is_customize_preview() ) {
+
+                                            // Markup
+                                            $wbp_main_desc_obj_mu = '<div class="%2$s" data-name="%1$s">';
+                                                $wbp_main_desc_obj_mu .= '<div class="g %3$s---g">';
+                                                    $wbp_main_desc_obj_mu .= '<a class="a %3$s---a" href="%6$s" rel="home" title="%4$s"><span class="a_l %3$s---a_l"><span class="txt %5$s---txt">';
+                                                        $wbp_main_desc_obj_mu .= '%4$s';
+                                                    $wbp_main_desc_obj_mu .= '</span></span></a>';
+                                                $wbp_main_desc_obj_mu .= '</div>';
+                                            $wbp_main_desc_obj_mu .= '</div><!-- %1$s -->';
+
+                                            // Content
+                                            $wbp_main_desc_obj = sprintf( $wbp_main_desc_obj_mu,
+                                                'Web Product Main Description Object',
+                                                    'obj wbp-main-desc-obj',
+                                                    'wbp-main-desc-obj',
+                                                $description,
+                                                    'wbp-main-desc',
+                                                esc_url( home_url( '/' ) )
+                                            );
+
+                                            // Display
+                                            printf( $wbp_main_desc_obj );
+                                        }
+                                        ?>
+                                    </div>
+                                </div><!-- ct -->
+                            </div>
                         </div><!-- Web Product Main Info -->
                         
                         <?php

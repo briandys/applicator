@@ -41,7 +41,7 @@
                     <div class="cr post-hr-as---cr">
                         <div class="cp post-meta entry-meta" data-name="Post Meta">
                             <div class="cr post-meta---cr">
-                                <div class="h post-meta---h"><span class="h_l post-meta---h_l"><?php esc_html_e( 'Post Meta', 'applicator' ); ?></span></div>
+                                <div class="h post-meta---h"><span class="h_l post-meta---h_l"><?php esc_html_e( 'Post Meta', $GLOBALS['apl_textdomain'] ); ?></span></div>
                                 <div class="ct post-meta---ct">
                                     <div class="ct_cr post-meta---ct_cr">
                                         <?php
@@ -128,7 +128,7 @@
                 
                 <div class="cp post-meta entry-meta" data-name="Post Meta">
                     <div class="cr post-meta---cr">
-                        <div class="h post-meta---h"><span class="h_l post-meta---h_l"><?php esc_html_e( 'Post Meta', 'applicator' ); ?></span></div>
+                        <div class="h post-meta---h"><span class="h_l post-meta---h_l"><?php esc_html_e( 'Post Meta', $GLOBALS['apl_textdomain'] ); ?></span></div>
                         <div class="ct post-meta---ct">
                             <div class="ct_cr post-meta---ct_cr">
                                 <?php // Tags

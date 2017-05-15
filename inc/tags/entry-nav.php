@@ -32,9 +32,9 @@ if ( ! function_exists('apl_entry_nav' ) ) {
         
         if ( ! is_attachment() ) { ?>
 
-            <div class="nav entry-nav" role="navigation" aria-label="<?php esc_html_e( 'Entry Navigation', 'applicator' ); ?>" data-name="Entry Navigation">
+            <div class="nav entry-nav" role="navigation" aria-label="<?php esc_html_e( 'Entry Navigation', $GLOBALS['apl_textdomain'] ); ?>" data-name="Entry Navigation">
                 <div class="cr entry-nav---cr">
-                    <div class="h entry-nav---h"><span class="h_l entry-nav---h_l"><?php esc_html_e( 'Entry Navigation', 'applicator' ); ?></span></div>
+                    <div class="h entry-nav---h"><span class="h_l entry-nav---h_l"><?php esc_html_e( 'Entry Navigation', $GLOBALS['apl_textdomain'] ); ?></span></div>
                     <div class="ct entry-nav---ct">
                         <div class="ct_cr entry-nav---ct_cr">
                             <ul class="grp entry-nav--grp">
