@@ -816,7 +816,7 @@
     
     
     
-    // ------------------------- Easy Access Nav
+    // ------------------------- Easy Access Nav | Main Menu
     function initEasyAccessNav( $cp ) {
         
         if ( ! $aplApplicatorEasyAccessNav.length ) {
@@ -828,5 +828,58 @@
             .addClass( funcCss );
     }
     initEasyAccessNav( $( '#main-nav' ) );
+    
+    
+    
+    
+    
+    // ------------------------- Page Height Detection
+    ( function() {
+        
+        function pageHeightDetection() {
+            var $page = $( '#page' ),
+                $colophon = $( '#colophon' ),
+                $pageHeight = $page.height(),
+                $colophonHeight = $colophon.height(),
+                $windowHeight = window.innerHeight;
+
+            if ( ( $pageHeight - $colophonHeight ) <= $windowHeight ) {
+                $html.addClass( 'page--short' );
+            } else {
+                $html.addClass( 'page--long' );
+            }
+        }
+        pageHeightDetection();
+        
+        // Debounce
+        var pageHeightDetectionDebounce = debounce( function () {
+            pageHeightDetection();
+        }, applicatorDebounceTimeout );
+
+        window.addEventListener( 'resize', pageHeightDetectionDebounce );
+    
+    } )();
+    
+    
+    
+    /*
+    var actions = {
+      edit:   function (event) { ... },
+      cancel: function (event) { ... },
+      save:   function (event) { ... }
+    };
+
+    $("a[data-action]").on("click", function (event) {
+      var link = $(this),
+          action = link.data("action");
+
+      event.preventDefault();
+
+      // If there's an action with the given name, call it
+      if( typeof actions[action] === "function" ) {
+        actions[action].call(this, event);
+      }
+    });
+    */
 
 })( jQuery );

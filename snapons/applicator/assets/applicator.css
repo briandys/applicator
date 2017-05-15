@@ -1743,14 +1743,15 @@ $go-green: #12b32d;
     z-index: 99;
 }
 
-.easy-access-nav-func .sub-nav--active > .children,
-.easy-access-nav-func .sub-nav--active > .sub-menu
+.easy-access-nav-func .page_item_has_children > .children,
+.easy-access-nav-func .menu-item-has-children > .sub-menu
 {
     position: absolute;
     top: 100%;
     z-index: 99;
     
     border: 1px solid hsla( 0, 0%, 0%, .125 );
+    border-radius: .125rem;
 }
 
 .easy-access-nav-func .sub-nav--inbound > ul
@@ -1769,32 +1770,82 @@ $go-green: #12b32d;
     height: calc( .75rem + .1rem );
 }
 
-/* Underline */
+/* Menu Indicator */
 .apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-nav---a_l
 {
     padding-left: .25rem;
     padding-right: .25rem;
 }
 
-.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-nav---a_l:hover
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-nav---a_l:hover,
+
+.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children a:hover,
+.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu a:hover,
+
+.easy-access-nav-func .main-nav---ct_cr > ul > .current_page_item > a > .main-nav---a_l,
+
+.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children .current_page_item > a,
+.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu .current-menu-item > a
 {
     position: relative;
 }
 
-.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-nav---a_l:hover::before
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-nav---a_l:hover::before,
+
+.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children a:hover::before,
+.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu a:hover::before,
+
+.easy-access-nav-func .main-nav---ct_cr > ul > .current_page_item > a > .main-nav---a_l::before,
+
+.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children .current_page_item > a::before,
+.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu .current-menu-item > a::before
 {
     content: '';
     position: absolute;
     left: 0;
+}
+
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-nav---a_l:hover::before,
+.easy-access-nav-func .main-nav---ct_cr > ul > .current_page_item > a > .main-nav---a_l::before
+{
     bottom: 0;
     
     width: 100%;
     height: .125rem;
+}
+
+.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children a:hover::before,
+.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu a:hover::before,
+
+.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children .current_page_item > a::before,
+.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu .current-menu-item > a::before
+{
+    top: 0;
     
+    width: .125rem;
+    height: 100%;
+    
+    border-top-left-radius: .125rem;
+    border-bottom-left-radius: .125rem;
+}
+
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-nav---a_l:hover::before,
+.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children a:hover::before,
+.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu a:hover::before
+{    
     background-color: black;
     background-color: hsla( 0, 0%, 0%, .125 );
 }
-/* /Underline */
+
+.easy-access-nav-func .main-nav---ct_cr > ul > .page_item.current_page_item > a > .main-nav---a_l::before,
+.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item.current-menu-item > a > .main-nav---a_l::before,
+
+.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children .current_page_item > a::before,
+.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu .current-menu-item > a::before
+{
+    background-color: #00aaff;
+}
+/* /Menu Indicator */
 
 .easy-access-nav-func .page_item_has_children > .children > .page_item,
 .easy-access-nav-func .menu-item-has-children > .sub-menu > .menu-item
@@ -1802,10 +1853,24 @@ $go-green: #12b32d;
     padding-left: initial;
 }
 
-.easy-access-nav-func .sub-nav--active > .children > .page_item,
-.easy-access-nav-func .sub-nav--active > .sub-menu > .menu-item
+.easy-access-nav-func .page_item_has_children > .children > .page_item,
+.easy-access-nav-func .menu-item-has-children > .sub-menu > .menu-item
 {
     background-color: white;
+}
+
+.easy-access-nav-func .page_item_has_children > .children > .page_item:first-child,
+.easy-access-nav-func .menu-item-has-children > .sub-menu > .menu-item:first-child
+{
+    border-top-left-radius: .125rem;
+    border-top-right-radius: .125rem;
+}
+
+.easy-access-nav-func .page_item_has_children > .children > .page_item:last-child,
+.easy-access-nav-func .menu-item-has-children > .sub-menu > .menu-item:last-child
+{
+    border-bottom-left-radius: .125rem;
+    border-bottom-right-radius: .125rem;
 }
 
 .apl--applicator--easy-access-nav .main-nav .sub-nav-toggle
@@ -1828,8 +1893,8 @@ $go-green: #12b32d;
     min-width: 100%;
 }
 
-.easy-access-nav-func .page_item_has_children .children,
-.easy-access-nav-func .menu-item-has-children .sub-menu
+.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children .children,
+.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu .sub-menu
 {
     
     transform: translate( -.5rem, -.5rem );
@@ -1842,26 +1907,21 @@ $go-green: #12b32d;
     transform: translate( .5rem, -.5rem );
 }
 
-/*
-.apl--applicator--easy-access-nav .nav-hover--active a,
-.easy-access-nav-func .nav-hover--active .sub-nav-toggle
+
+
+
+
+/* Main Footer */
+.dom--unready .main-footer
 {
-    background-color: #00aaff;
-    color: white;
+    display: none;
 }
 
-.easy-access-nav-func .sub-nav-toggle:hover
+.page--short .main-footer
 {
-    background-color: hsla( 0, 0%, 0%, .0625 );
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    
+    width: 100%;
 }
-*/
-
-/* Space between Nav Item and Sub-Nav Toggle */
-/*
-.apl--applicator--easy-access-nav .page_item_has_children > a,
-.apl--applicator--easy-access-nav .menu-item-has-children > a
-{
-    padding-right: 3rem;
-    padding-right: calc( 3rem + .5rem );
-}
-*/

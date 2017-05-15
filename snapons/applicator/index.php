@@ -60,7 +60,7 @@ if ( ! function_exists( 'apl_snapons_applicator_func_styles' ) ) {
         wp_enqueue_style( 'apl-style-fonts', applicator_fonts_url(), array(), null );
         add_editor_style( array( 'assets/css/editor-style.css', applicator_fonts_url() ) );
         
-        wp_enqueue_style( 'apl-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '21.6', 'all' );
+        wp_enqueue_style( 'apl-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '21.7', 'all' );
 
     }
     add_action( 'wp_enqueue_scripts', 'apl_snapons_applicator_func_styles', 0);
@@ -71,7 +71,7 @@ if ( ! function_exists( 'apl_snapons_applicator_func_styles' ) ) {
 if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
     function apl_snapons_applicator_scripts() {
         
-        wp_enqueue_script( 'apl-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/applicator.js' ), array( 'jquery' ), '20.1', true );
+        wp_enqueue_script( 'apl-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/applicator.js' ), array( 'jquery' ), '20.3', true );
         
         // EQCSS
         // wp_enqueue_script( 'apl-snapons-applicator-script-eqcss', get_theme_file_uri( '/snapons/applicator/assets/eqcss.min.js' ), array(), '1.0', true );
@@ -87,15 +87,15 @@ if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
         wp_localize_script( 'apl-snapons-applicator-script-global', 'aplDataGoStartNav', $applicator_l10n );
         
         // Main Menu
-        $applicator_l10n['mainMenuShowL'] = __( 'Show Main Menu', 'applicator' );
-        $applicator_l10n['mainMenuHideL'] = __( 'Hide Main Menu', 'applicator' );
+        $applicator_l10n['mainMenuShowL'] = __( 'Show Menu', 'applicator' );
+        $applicator_l10n['mainMenuHideL'] = __( 'Hide Menu', 'applicator' );
         $applicator_l10n['mainMenuShowIco'] = $burger_icon;
         $applicator_l10n['mainMenuHideIco'] = $dismiss_icon;
         wp_localize_script( 'apl-snapons-applicator-script-global', 'aplDataMainMenu', $applicator_l10n );
         
         // Main Search
-        $applicator_l10n['mainSearchShowL'] = __( 'Show Main Search', 'applicator' );
-        $applicator_l10n['mainSearchHideL'] = __( 'Hide Main Search', 'applicator' );
+        $applicator_l10n['mainSearchShowL'] = __( 'Show Search', 'applicator' );
+        $applicator_l10n['mainSearchHideL'] = __( 'Hide Search', 'applicator' );
         $applicator_l10n['mainSearchTogCtrlSearchIco'] = $search_icon;
         $applicator_l10n['mainSearchTogDismissIco'] = $dismiss_icon;
         $applicator_l10n['mainSearchSearchIco'] = $search_icon;
