@@ -107,6 +107,12 @@ Initial release
                 ***** post (cp)
                     ****** post-title-obj (obj)
                     ****** post-admin-axns (axns)
+                    ****** post-header-aside (cn)
+                    
+                        ******* post-meta (cp)
+                        ******* comments-actions-snippet (cp)
+                    
+                    ****** edit-post-axn (axn)
 
 
 

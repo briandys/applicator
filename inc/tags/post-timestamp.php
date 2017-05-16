@@ -1,7 +1,7 @@
 <?php // Published Timestamp | content.php
 
-if ( ! function_exists( 'apl_post_pub_mod_ts' ) ) {
-    function apl_post_pub_mod_ts() {
+if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
+    function applicator_func_post_pub_mod_ts() {
         
         $post_pub_mod_info_mu = '<div class="%2$s" data-name="%1$s">';
             $post_pub_mod_info_mu .= '<div class="cr %3$s---cr">';

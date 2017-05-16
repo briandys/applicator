@@ -38,39 +38,52 @@
                 applicator_func_breadcrumbs_nav();
                 ?>
                 
-                <div class="aside post-header-aside" data-name="Post Header Aside">
+                <div class="cn aside post-header-aside" data-name="Post Header Aside">
                     <div class="cr post-hr-as---cr">
-                        <div class="cp post-meta entry-meta" data-name="Post Meta">
-                            <div class="cr post-meta---cr">
-                                <div class="h post-meta---h"><span class="h_l post-meta---h_l"><?php esc_html_e( 'Post Meta', $GLOBALS['apl_textdomain'] ); ?></span></div>
-                                <div class="ct post-meta---ct">
-                                    <div class="ct_cr post-meta---ct_cr">
-                                        <?php
-                                        // Published / Modified Timestamp
-                                        apl_post_pub_mod_ts();
-
-                                        // Author
-                                        applicator_func_post_author();
-
-                                        // Categories
-                                        applicator_func_post_categories();
-                                        ?>
-                                    </div>
-                                </div><!-- ct -->
+                        <div class="hr post-hr-as---hr">
+                            <div class="hr_cr post-hr-as---hr_cr">
+                                <div class="h post-hr-as---h"><span class="h_l post-hr-as---h_l"><?php esc_html_e( 'Post Header Aside', $GLOBALS['apl_textdomain'] ); ?></span></div>
                             </div>
-                        </div><!-- Post Meta -->
-                        
-                        <?php
-                        // Post Banner Visual | inc > tags > post-banner-visual.php
-                        applicator_func_post_banner_visual();
-                        
-                        // Comments Actions Snippet | inc > tags > comments-actions-snippet.php
-                        applicator_func_comments_actions_snippet();
-                        ?>
+                        </div>
+                        <div class="ct post-hr-as---ct">
+                            <div class="ct_cr post-hr-as---ct_cr">
+                                <div class="cp post-meta entry-meta" data-name="Post Meta">
+                                    <div class="cr post-meta---cr">
+                                        <div class="hr post-meta---hr">
+                                            <div class="hr_cr post-meta---hr_cr">
+                                                <div class="h post-meta---h"><span class="h_l post-meta---h_l"><?php esc_html_e( 'Post Meta', $GLOBALS['apl_textdomain'] ); ?></span></div>
+                                            </div>
+                                        </div>
+                                        <div class="ct post-meta---ct">
+                                            <div class="ct_cr post-meta---ct_cr">
+                                                <?php
+                                                // Published / Modified Timestamp
+                                                applicator_func_post_pub_mod_ts();
+
+                                                // Author
+                                                applicator_func_post_author();
+
+                                                // Categories
+                                                applicator_func_post_categories();
+                                                ?>
+                                            </div>
+                                        </div><!-- ct -->
+                                    </div>
+                                </div><!-- Post Meta -->
+
+                                <?php
+                                // Post Banner Visual | inc > tags > post-banner-visual.php
+                                applicator_func_post_banner_visual();
+
+                                // Comments Actions Snippet | inc > tags > comments-actions-snippet.php
+                                applicator_func_comments_actions_snippet();
+                                ?>
+                            </div>
+                        </div><!-- ct -->
                     </div>
                 </div><!-- Post Header Aside -->
 
-                <?php // Hook: After Post Header Aside
+                <?php // After Post Header Aside Hook
                 applicator_hook_after_post_header_aside(); ?>
 
             </div>
