@@ -21,7 +21,7 @@ if ( ! function_exists('applicator_func_post_nav' ) ) {
             'post-nav'
         );
         
-        if ( is_singular() && ! is_singular( 'attachment' ) ) {
+        if ( ! is_singular( 'attachment' ) ) {
             
             $post_pagi_navi_a_l_mu = '<span class="a_l post-pagi-navi---a_l"><span class="word page---word">%2$s</span> <span class="num page-num---num">%1$s</span></span></span>';
             

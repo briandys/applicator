@@ -90,8 +90,8 @@ if ( file_exists( $custom_visuals ) ) { require_once( $custom_visuals ); }
 $widgets_init = get_parent_theme_file_path( '/inc/functions/widgets-init.php' );
 if ( file_exists( $widgets_init ) ) { require_once( $widgets_init ); }
 
-$show_more = get_parent_theme_file_path( '/inc/functions/show-more.php' );
-if ( file_exists( $show_more ) ) { require_once( $show_more ); }
+$excerpt = get_parent_theme_file_path( '/inc/functions/excerpt.php' );
+if ( file_exists( $excerpt ) ) { require_once( $excerpt ); }
 
 $pingback_header = get_parent_theme_file_path( '/inc/functions/pingback-header.php' );
 if ( file_exists( $pingback_header ) ) { require_once( $pingback_header ); }

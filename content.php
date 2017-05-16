@@ -79,21 +79,40 @@
             <div class="ct_cr post---ct_cr">
                 
                 <?php if ( is_home() || is_singular() || ( is_front_page() && ! is_page() ) ) { ?>
-                    
-                    <div class="cp post-content" data-name="Post Content">
-                        <div class="cr post-ct---cr">
-                            <div class="hr post-ct---hr">
-                                <div class="hr_cr post-ct---hr_cr">
-                                    <div class="h post-ct---h"><span class="h_l post-ct---h_l"><?php esc_html_e( 'Post Content', $GLOBALS['apl_textdomain'] ); ?></span></div>
+                
+                    <?php if ( has_excerpt() ) { ?>
+                
+                    <div class="cp post-excerpt" data-name="Post Excerpt">
+                        <div class="cr post-ex---cr">
+                            <div class="hr post-ex---hr">
+                                <div class="hr_cr post-ex---hr_cr">
+                                    <div class="h post-ex---h"><span class="h_l post-ex---h_l"><?php esc_html_e( 'Post Excerpt', $GLOBALS['apl_textdomain'] ); ?></span></div>
                                 </div>
                             </div>
-                            <div class="ct post-ct---ct">
-                                <div class="ct_cr post-ct---ct_cr">
-                                    <?php the_content(); ?>
+                            <div class="ct post-ex---ct">
+                                <div class="ct_cr post-ex---ct_cr">
+                                    <?php the_excerpt(); ?>
                                 </div>
                             </div><!-- ct -->
                         </div>
-                    </div><!-- Post Content -->
+                    </div><!-- Post Excerpt -->
+                
+                    <?php } ?>
+                    
+                <div class="cp post-content" data-name="Post Content">
+                    <div class="cr post-ct---cr">
+                        <div class="hr post-ct---hr">
+                            <div class="hr_cr post-ct---hr_cr">
+                                <div class="h post-ct---h"><span class="h_l post-ct---h_l"><?php esc_html_e( 'Post Content', $GLOBALS['apl_textdomain'] ); ?></span></div>
+                            </div>
+                        </div>
+                        <div class="ct post-ct---ct">
+                            <div class="ct_cr post-ct---ct_cr">
+                                <?php the_content(); ?>
+                            </div>
+                        </div><!-- ct -->
+                    </div>
+                </div><!-- Post Content -->
                     
                 <?php } else { ?>
                 
@@ -106,7 +125,7 @@
                             </div>
                             <div class="ct post-ex---ct">
                                 <div class="ct_cr post-ex---ct_cr">
-                                    <span class="obj post-ex-link-obj" data-name="Post Excerpt Link"><a class="a post-ex-link---a" href="<?php esc_url( the_permalink() ); ?>"><span class="a_l post-ex-link---a_l"><span class="txt post-ex---txt"><?php echo ( get_the_excerpt() ); ?></span></span></a></span></span>
+                                    <?php echo ( get_the_excerpt() ); ?>
                                 </div>
                             </div><!-- ct -->
                         </div>
@@ -114,7 +133,7 @@
                 <?php }
                 
                 // Entry Page Navigation
-                // inc > tags > entry-page-nav.php
+                // inc > tags > post-nav.php
                 applicator_func_post_nav();
                 
                 // sub-post
