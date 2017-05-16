@@ -1,7 +1,7 @@
 <?php // Post Author | content.php
 
-if ( ! function_exists( 'apl_func_post_author' ) ) {
-    function apl_func_post_author() {
+if ( ! function_exists( 'applicator_func_post_author' ) ) {
+    function applicator_func_post_author() {
         
         $post_author_avatar_default_pre_css = 'post-author-avatar-default';
         

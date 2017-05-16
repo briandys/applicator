@@ -1,7 +1,7 @@
 <?php // Post Actions | content.php
 
-if ( ! function_exists( 'apl_func_post_admin_actions' ) ) {
-    function apl_func_post_admin_actions() {
+if ( ! function_exists( 'applicator_func_post_admin_actions' ) ) {
+    function applicator_func_post_admin_actions() {
         
         if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) {
             

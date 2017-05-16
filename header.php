@@ -1,5 +1,5 @@
 <!doctype html>
-<html id="start" class="html<?php apl_hook_html_class(); ?> view no-js no-svg" <?php language_attributes(); ?>>
+<html id="start" class="html<?php applicator_hook_html_class(); ?> view no-js no-svg" <?php language_attributes(); ?>>
     <head>
         <meta charset="<?php bloginfo( 'charset' ); ?>">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -164,10 +164,10 @@
                         
                         <?php
                         // Main Navigation | inc > tags > main-navigation.php
-                        apl_func_main_nav();
+                        applicator_func_main_nav();
 
                         // After Main Navigation Hook
-                        apl_hook_after_main_nav();
+                        applicator_hook_after_main_nav();
                         
                         // Search | searchform.php
                         get_search_form();
@@ -192,7 +192,7 @@
                         }
                         
                         // Aside | inc > aside.php
-                        apl_func_main_header_aside();
+                        applicator_func_main_header_aside();
                         ?>
                     
                     </div>

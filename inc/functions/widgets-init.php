@@ -1,6 +1,6 @@
 <?php // Aside Registrations
 
-function apl_func_aside_init() {
+function applicator_func_aside_init() {
     
     // Widget HTML Markup
     $widget_start_mu = '<div id="%1$s" class="cp widget %2$s" data-name="Widget">';
@@ -51,4 +51,4 @@ function apl_func_aside_init() {
 		'after_title'   => $widget_h_end_mu,
 	) );
 }
-add_action( 'widgets_init', 'apl_func_aside_init' );
+add_action( 'widgets_init', 'applicator_func_aside_init' );

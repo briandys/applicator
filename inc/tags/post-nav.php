@@ -2,8 +2,8 @@
 // Created via <!--nextpage-->
 // For Attachment Page, show which Post it belongs
 
-if ( ! function_exists('apl_func_post_nav' ) ) {
-    function apl_func_post_nav( $args = '' ) {
+if ( ! function_exists('applicator_func_post_nav' ) ) {
+    function applicator_func_post_nav( $args = '' ) {
         
         $GLOBALS['post_nav_start_mu'] = '<div class="nav %3$s" role="navigation" aria-label="%1$s" data-name="Post Navigation">';
             $GLOBALS['post_nav_start_mu'] .= '<div class="cr %3$s---cr">';

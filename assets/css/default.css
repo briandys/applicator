@@ -138,6 +138,7 @@ img
 /* ------------------------- Image Captions */
 .wp-caption
 {
+    width: 100% !important;
     max-width: 100%;
 }
 
@@ -167,11 +168,6 @@ img
 {
     /* Reset */
     margin: 0;
-}
-
-figure.wp-caption
-{
-    max-width: 100%;
 }
 
 .post---h

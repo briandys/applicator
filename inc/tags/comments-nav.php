@@ -1,7 +1,7 @@
 <?php // Comments Navigation | comments.php
 
-if ( ! function_exists( 'apl_func_comments_nav' ) ) {
-    function apl_func_comments_nav() {
+if ( ! function_exists( 'applicator_func_comments_nav' ) ) {
+    function applicator_func_comments_nav() {
         
         if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) {
 
@@ -12,7 +12,7 @@ if ( ! function_exists( 'apl_func_comments_nav' ) ) {
                 esc_html__( 'Next', 'applicator' ),
                 esc_html__( 'Comments', 'applicator' ),
                 esc_attr__( 'Next Comments', 'applicator' ),
-                apl_func_get_svg( array( 'icon' => 'arrow-icon' ) )
+                applicator_func_get_svg( array( 'icon' => 'arrow-icon' ) )
             );
 
             // Previous Comments Nav Item Markup
@@ -22,7 +22,7 @@ if ( ! function_exists( 'apl_func_comments_nav' ) ) {
                 esc_html__( 'Previous', 'applicator' ),
                 esc_html__( 'Comments', 'applicator' ),
                 esc_attr__( 'Previous Comments', 'applicator' ),
-                apl_func_get_svg( array( 'icon' => 'arrow-icon' ) )
+                applicator_func_get_svg( array( 'icon' => 'arrow-icon' ) )
             ); ?>
 
             <div class="nav comments-nav" role="navigation" data-name="Comments Navigation">

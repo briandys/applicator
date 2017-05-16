@@ -8,7 +8,7 @@ if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
 
 
 // Sets up theme defaults and registers support for various WordPress features.
-function apl_func_setup() {
+function applicator_func_setup() {
     
     // Make theme available for translation.
 	load_theme_textdomain( $GLOBALS['apl_textdomain'] );
@@ -22,7 +22,9 @@ function apl_func_setup() {
 	
     
     // Set the default content width.
-	$GLOBALS['content_width'] = 1920;
+	if ( ! isset( $content_width ) ) {
+        $content_width = 1920;
+    }
     
 	
     // Enable support for Post Thumbnails on posts and pages.
@@ -186,12 +188,12 @@ function apl_func_setup() {
 
 }
 
-add_action( 'after_setup_theme', 'apl_func_setup' );
+add_action( 'after_setup_theme', 'applicator_func_setup' );
 
 
 // Add the size as one of the options in Admin
-if ( ! function_exists( 'apl_func_custom_image_sizes_choose' ) ) {
-    function apl_func_custom_image_sizes_choose( $sizes ) {
+if ( ! function_exists( 'applicator_func_custom_image_sizes_choose' ) ) {
+    function applicator_func_custom_image_sizes_choose( $sizes ) {
         
         $custom_sizes = array(
             'applicator-image-thumbnail-hd' => 'Thumbnail (16:9)'
@@ -199,5 +201,5 @@ if ( ! function_exists( 'apl_func_custom_image_sizes_choose' ) ) {
         return array_merge( $sizes, $custom_sizes );
     
     }
-    add_filter( 'image_size_names_choose', 'apl_func_custom_image_sizes_choose' );
+    add_filter( 'image_size_names_choose', 'applicator_func_custom_image_sizes_choose' );
 }

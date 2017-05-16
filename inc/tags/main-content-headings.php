@@ -1,7 +1,7 @@
 <?php // Main Content Headings | index.php
 
-if ( ! function_exists( 'apl_func_main_content_headings' ) ) {
-    function apl_func_main_content_headings() {
+if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
+    function applicator_func_main_content_headings() {
         
         $title = '';
         $label = '';
@@ -9,13 +9,83 @@ if ( ! function_exists( 'apl_func_main_content_headings' ) ) {
         $val = '';
         $val_content = '';
         $colon_sep = '';
+        
+        $entry_label = 'Entry';
+        $entries_label = 'Entries';
+        $posts_label = 'Posts';
+                
+        // Home
+        if ( is_home() ) {
+
+            $prop = $entries_label;
+            $label = $prop;
+            $val = $posts_label;
+            $colon_sep = $GLOBALS['colon_sep_mu'];
+
+            // Markup
+            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
+
+            // Content
+            $val_content = sprintf( $val_mu,
+                $val,
+                sanitize_title( $val )
+            );
+        }
+                
+        // Front Page | Settings > Reading > Your Latest Post
+        if ( is_front_page() && ! is_page() ) {
+
+            $prop = $entries_label;
+            $label = $prop;
+            $val = $posts_label;
+            $colon_sep = $GLOBALS['colon_sep_mu'];
+
+            // Markup
+            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
+
+            // Content
+            $val_content = sprintf( $val_mu,
+                $val,
+                sanitize_title( $val )
+            );
+        } elseif ( is_front_page() && is_page() ) {
+
+            $prop = 'Home';
+            $label = $prop;
+            $val = 'Page';
+            $colon_sep = $GLOBALS['colon_sep_mu'];
+
+            // Markup
+            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
+
+            // Content
+            $val_content = sprintf( $val_mu,
+                $val,
+                sanitize_title( $val )
+            );
+        }
                 
         // Single
-        if ( is_single() || ( is_home() && ! is_front_page() ) || ( is_page() && ! is_front_page() ) ) {
+        if ( is_single() && ! is_attachment() ) {
 
-            $prop = 'Entry';
+            $prop = $entry_label;
             $label = $prop;
-            $val = 'Single';
+            $val = 'Post';
+            $colon_sep = $GLOBALS['colon_sep_mu'];
+
+            // Markup
+            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
+
+            // Content
+            $val_content = sprintf( $val_mu,
+                $val,
+                sanitize_title( $val )
+            );
+        } elseif ( is_attachment() ) {
+
+            $prop = $entry_label;
+            $label = $prop;
+            $val = 'Attachment';
             $colon_sep = $GLOBALS['colon_sep_mu'];
 
             // Markup
@@ -27,24 +97,15 @@ if ( ! function_exists( 'apl_func_main_content_headings' ) ) {
                 sanitize_title( $val )
             );
         }
+                
+        // Page
+        if ( is_page() && ! is_front_page() ) {
 
-        // Post Type Archive
-        if ( is_post_type_archive() ) {
-            
-            $prop = 'Post Type Archive';
+            $prop = $entry_label;
             $label = $prop;
+            $val = 'Page';
             $colon_sep = $GLOBALS['colon_sep_mu'];
 
-            $post_type = get_query_var( 'post_type' );
-            if ( is_array( $post_type ) ) {
-                $post_type = reset( $post_type );
-            }
-
-            $post_type_object = get_post_type_object( $post_type );
-            if ( ! $post_type_object->has_archive ) {
-                $val = post_type_archive_title( '', false );
-            }
-
             // Markup
             $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
 
@@ -54,85 +115,13 @@ if ( ! function_exists( 'apl_func_main_content_headings' ) ) {
                 sanitize_title( $val )
             );
         }
+                
+        // Singular
+        if ( is_singular() && ! is_single() && ! is_page() ) {
 
-        // Category or Tag
-        if ( is_category() || is_tag() ) {
-            
-            $colon_sep = $GLOBALS['colon_sep_mu'];
-
-            $prop = '';
-            if ( is_category() ) {
-                $prop = 'Category';
-            }
-            if ( is_tag() ) {
-                $prop = 'Tag';
-            }
-
+            $prop = $entry_label;
             $label = $prop;
-            $val = single_term_title( '', false );
-
-            // Markup
-            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
-
-            // Content
-            $val_content = sprintf( $val_mu,
-                $val,
-                sanitize_title( $val )
-            );
-        }
-
-        // Taxonomy
-        if ( is_tax() ) {
-            
-            $prop = 'Taxonomy';
-            $label = $prop;
-            $sep = ', ';
-            $colon_sep = $GLOBALS['colon_sep_mu'];
-
-            $term = get_queried_object();
-            if ( $term ) {
-                $tax   = get_taxonomy( $term->taxonomy );
-                $val = single_term_title( $tax->labels->name . $sep, false );
-            }
-
-            // Markup
-            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
-
-            // Content
-            $val_content = sprintf( $val_mu,
-                $val,
-                sanitize_title( $val )
-            );
-        }
-
-        // Author
-        if ( is_author() && ! is_post_type_archive() ) {
-
-            $title = '';
-            $prop = 'Author';
-            $label = 'All Entries Published by';
-
-            $author = get_queried_object();
-            if ( $author ) {
-                $val = $author->display_name;
-            }
-
-            // Markup
-            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
-
-            // Content
-            $val_content = sprintf( $val_mu,
-                $val,
-                sanitize_title( $val )
-            );
-        }
-
-        // Post Type Archive with has_archive should override terms.
-        if ( is_post_type_archive() && $post_type_object->has_archive ) {
-            
-            $prop = 'Post Type Archive';
-            $label = $prop;
-            $val = post_type_archive_title( '', false );
+            $val = 'Singular';
             $colon_sep = $GLOBALS['colon_sep_mu'];
 
             // Markup
@@ -216,6 +205,123 @@ if ( ! function_exists( 'apl_func_main_content_headings' ) ) {
                     $val_y_prefix . $val_txt_suffix . ' ' . $val_y_prefix . '-' . sanitize_title( $val )
                 );
             }
+        }
+
+        // Author
+        if ( is_author() && ! is_post_type_archive() ) {
+
+            $title = '';
+            $prop = 'Author';
+            $label = 'Entries Published by';
+
+            $author = get_queried_object();
+            if ( $author ) {
+                $val = $author->display_name;
+            }
+
+            // Markup
+            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
+
+            // Content
+            $val_content = sprintf( $val_mu,
+                $val,
+                sanitize_title( $val )
+            );
+        }
+
+        // Category or Tag
+        if ( is_category() || is_tag() ) {
+            
+            $colon_sep = $GLOBALS['colon_sep_mu'];
+
+            $prop = '';
+            if ( is_category() ) {
+                $prop = 'Category';
+            }
+            if ( is_tag() ) {
+                $prop = 'Tag';
+            }
+
+            $label = $prop;
+            $val = single_term_title( '', false );
+
+            // Markup
+            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
+
+            // Content
+            $val_content = sprintf( $val_mu,
+                $val,
+                sanitize_title( $val )
+            );
+        }
+
+        // Taxonomy
+        if ( is_tax() ) {
+            
+            $prop = 'Taxonomy';
+            $label = $prop;
+            $sep = ', ';
+            $colon_sep = $GLOBALS['colon_sep_mu'];
+
+            $term = get_queried_object();
+            if ( $term ) {
+                $tax   = get_taxonomy( $term->taxonomy );
+                $val = single_term_title( $tax->labels->name . $sep, false );
+            }
+
+            // Markup
+            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
+
+            // Content
+            $val_content = sprintf( $val_mu,
+                $val,
+                sanitize_title( $val )
+            );
+        }
+
+        // Post Type Archive
+        if ( is_post_type_archive() ) {
+            
+            $prop = 'Post Type Archive';
+            $label = $prop;
+            $colon_sep = $GLOBALS['colon_sep_mu'];
+
+            $post_type = get_query_var( 'post_type' );
+            if ( is_array( $post_type ) ) {
+                $post_type = reset( $post_type );
+            }
+
+            $post_type_object = get_post_type_object( $post_type );
+            if ( ! $post_type_object->has_archive ) {
+                $val = post_type_archive_title( '', false );
+            }
+
+            // Markup
+            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
+
+            // Content
+            $val_content = sprintf( $val_mu,
+                $val,
+                sanitize_title( $val )
+            );
+        }
+
+        // Post Type Archive with has_archive should override terms.
+        if ( is_post_type_archive() && $post_type_object->has_archive ) {
+            
+            $prop = 'Post Type Archive';
+            $label = $prop;
+            $val = post_type_archive_title( '', false );
+            $colon_sep = $GLOBALS['colon_sep_mu'];
+
+            // Markup
+            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
+
+            // Content
+            $val_content = sprintf( $val_mu,
+                $val,
+                sanitize_title( $val )
+            );
         }
 
         // Markup

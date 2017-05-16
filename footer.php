@@ -5,7 +5,7 @@
                     <div class="cr main-footer---cr">
                         
                         <?php // Main Footer Aside
-                        apl_func_main_footer_aside(); ?>
+                        applicator_func_main_footer_aside(); ?>
                         
                         <div class="obj wbp-copyright site-info" data-name="Web Product Copyright">
                             <div class="g wbp-copyright---g">

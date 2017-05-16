@@ -2,8 +2,8 @@
 register_nav_menu( 'main-nav', __( 'Main Navigation', 'applicator' ) );
 
 // Main Nav
-if ( ! function_exists( 'apl_func_main_nav' ) ) {
-    function apl_func_main_nav() {
+if ( ! function_exists( 'applicator_func_main_nav' ) ) {
+    function applicator_func_main_nav() {
         
         $main_nav = 'main-nav';
         $main_nav_css = $main_nav;
@@ -62,8 +62,8 @@ if ( ! function_exists( 'apl_func_main_nav' ) ) {
     }
 }
 
-if ( ! function_exists( 'apl_func_nav_menu_link_atts' ) ) {
-    function apl_func_nav_menu_link_atts( $atts, $item, $args, $depth ) {
+if ( ! function_exists( 'applicator_func_nav_menu_link_atts' ) ) {
+    function applicator_func_nav_menu_link_atts( $atts, $item, $args, $depth ) {
         
         $new_atts = array( 'class' => 'main-navi---a' );
         if ( isset( $atts['href'] ) ) {
@@ -72,5 +72,5 @@ if ( ! function_exists( 'apl_func_nav_menu_link_atts' ) ) {
         return $new_atts;
     
     }
-    add_filter( 'nav_menu_link_attributes', 'apl_func_nav_menu_link_atts', 10, 4 );
+    add_filter( 'nav_menu_link_attributes', 'applicator_func_nav_menu_link_atts', 10, 4 );
 }

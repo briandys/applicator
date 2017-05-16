@@ -28,7 +28,7 @@ if ( ! function_exists( 'apl_applicator_func_class' ) ) {
         echo ' ' . $snapon_name . '--' . 'easy-access-nav';
     
     }
-    add_action( 'apl_hook_html_class', 'apl_applicator_func_class');
+    add_action( 'applicator_hook_html_class', 'apl_applicator_func_class');
 }
 
 
@@ -76,11 +76,11 @@ if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
         // EQCSS
         // wp_enqueue_script( 'apl-snapons-applicator-script-eqcss', get_theme_file_uri( '/snapons/applicator/assets/eqcss.min.js' ), array(), '1.0', true );
         
-        $arrow_icon = apl_func_get_svg( array( 'icon' => 'arrow-icon' ) );
-        $arrow_up_2_icon = apl_func_get_svg( array( 'icon' => 'arrow-up-2-icon' ) );
-        $burger_icon = apl_func_get_svg( array( 'icon' => 'burger-icon' ) );
-        $dismiss_icon = apl_func_get_svg( array( 'icon' => 'dismiss-icon' ) );
-        $search_icon = apl_func_get_svg( array( 'icon' => 'search-icon' ) );
+        $arrow_icon = applicator_func_get_svg( array( 'icon' => 'arrow-icon' ) );
+        $arrow_up_2_icon = applicator_func_get_svg( array( 'icon' => 'arrow-up-2-icon' ) );
+        $burger_icon = applicator_func_get_svg( array( 'icon' => 'burger-icon' ) );
+        $dismiss_icon = applicator_func_get_svg( array( 'icon' => 'dismiss-icon' ) );
+        $search_icon = applicator_func_get_svg( array( 'icon' => 'search-icon' ) );
         
         // Go to Start Nav
         $applicator_l10n['goStartNavArrowIco'] = $arrow_up_2_icon;

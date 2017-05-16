@@ -1,7 +1,7 @@
 <?php // Entry Banner Image
 
-if ( ! function_exists( 'apl_func_post_banner_visual' ) ) {
-    function apl_func_post_banner_visual() {
+if ( ! function_exists( 'applicator_func_post_banner_visual' ) ) {
+    function applicator_func_post_banner_visual() {
         
         if ( '' !== get_the_post_thumbnail() ) {
             $post_banner_image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'applicator-entry-banner-image-large' ); ?>

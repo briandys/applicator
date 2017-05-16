@@ -1,7 +1,7 @@
 <?php // Comment Item | comments.php
 
-if ( ! function_exists( 'apl_func_comment' ) ) {
-    function apl_func_comment( $comment, $args, $depth ) {
+if ( ! function_exists( 'applicator_func_comment' ) ) {
+    function applicator_func_comment( $comment, $args, $depth ) {
         
         if ( 'div' === $args['style'] ) {
             $tag       = 'div';

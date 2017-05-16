@@ -1,6 +1,6 @@
 <?php
 
-function apl_func_include_svg_icons() {
+function applicator_func_include_svg_icons() {
         
     $svg_icons = get_parent_theme_file_path( '/assets/img/svg-icons.svg' );
 
@@ -9,7 +9,7 @@ function apl_func_include_svg_icons() {
     }
 
 }
-add_action( 'wp_footer', 'apl_func_include_svg_icons', 9999 );
+add_action( 'wp_footer', 'applicator_func_include_svg_icons', 9999 );
 
 
 /**
@@ -24,7 +24,7 @@ add_action( 'wp_footer', 'apl_func_include_svg_icons', 9999 );
  * }
  * @return string SVG markup.
  */
-function apl_func_get_svg( $args = array() ) {
+function applicator_func_get_svg( $args = array() ) {
 	// Make sure $args are an array.
 	if ( empty( $args ) ) {
 		return __( 'Please define default parameters in the form of an array.', 'applicator' );
@@ -57,9 +57,9 @@ function apl_func_get_svg( $args = array() ) {
 	 *
 	 * However, child themes can use the title and description to add information to non-decorative SVG icons to improve accessibility.
 	 *
-	 * Example 1 with title: <?php echo apl_func_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'textdomain' ) ) ); ?>
+	 * Example 1 with title: <?php echo applicator_func_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'textdomain' ) ) ); ?>
 	 *
-	 * Example 2 with title and description: <?php echo apl_func_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'textdomain' ), 'desc' => __( 'This is the description', 'textdomain' ) ) ); ?>
+	 * Example 2 with title and description: <?php echo applicator_func_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'textdomain' ), 'desc' => __( 'This is the description', 'textdomain' ) ) ); ?>
 	 *
 	 * See https://www.paciellogroup.com/blog/2013/12/using-aria-enhance-svg-accessibility/.
 	 */

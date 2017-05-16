@@ -1,7 +1,7 @@
 <?php // Comments Actions Snippet | content.php
 
-if ( ! function_exists( 'apl_func_comments_actions_snippet' ) ) {
-    function apl_func_comments_actions_snippet() {
+if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
+    function applicator_func_comments_actions_snippet() {
         
         $comments_count_int = (int) get_comments_number( get_the_ID() );
 

@@ -26,7 +26,7 @@
                 printf( $post_title_obj_start . $post_title_obj_end );
                 
                  // Hook: After Entry Heading | inc > hooks.php
-                apl_hook_after_post_heading(); ?>
+                applicator_hook_after_post_heading(); ?>
             </div>
         </header>
         <div class="ct post---ct entry-content">

@@ -13,14 +13,14 @@ $GLOBALS['post_classification_lbl_mu'] = '<span class="obj %2$s" data-name="Post
     $GLOBALS['post_classification_lbl_mu'] .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l"><span class="word %5$s---word">%4$s</span><span class="sep colon---sep">:</span></span></span>';
 $GLOBALS['post_classification_lbl_mu'] .= '</span>';
 
-if ( ! function_exists( 'apl_func_post_categories' ) ) {
+if ( ! function_exists( 'applicator_func_post_categories' ) ) {
     
-    function apl_func_post_categories() {        
+    function applicator_func_post_categories() {        
         
         $categories_list = get_the_category_list();
         
         if ( 'post' === get_post_type() ) {
-            if ( $categories_list && apl_func_categorized_blog() ) {
+            if ( $categories_list && applicator_func_categorized_blog() ) {
                 
                 $post_cat_lbl = sprintf( $GLOBALS['post_classification_lbl_mu'],
                     'Category',
@@ -44,9 +44,9 @@ if ( ! function_exists( 'apl_func_post_categories' ) ) {
 }
 
 // Post Tags | content.php
-if ( ! function_exists( 'apl_func_post_tags' ) ) {
+if ( ! function_exists( 'applicator_func_post_tags' ) ) {
     
-    function apl_func_post_tags() {        
+    function applicator_func_post_tags() {        
         
         $tags_list = get_the_tag_list('<ul class="grp post-tag---grp"><li class="item obj post-tag">', '</li><li class="item obj post-tag">', '</li></ul>');
         
@@ -75,7 +75,7 @@ if ( ! function_exists( 'apl_func_post_tags' ) ) {
 }
 
 // Determine whether site has more than one category.
-function apl_func_categorized_blog() {
+function applicator_func_categorized_blog() {
 	
     $category_count = get_transient( 'applicator_categories' );
     
@@ -98,11 +98,11 @@ function apl_func_categorized_blog() {
 }
 
 
-function apl_func_category_transient_flusher() {
+function applicator_func_category_transient_flusher() {
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return;
 	}
 	delete_transient( 'applicator_categories' );
 }
-add_action( 'edit_category', 'apl_func_category_transient_flusher' );
-add_action( 'save_post',     'apl_func_category_transient_flusher' );
+add_action( 'edit_category', 'applicator_func_category_transient_flusher' );
+add_action( 'save_post',     'applicator_func_category_transient_flusher' );

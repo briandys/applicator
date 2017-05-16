@@ -1,7 +1,7 @@
 <?php // HTML Classes
 
-if ( ! function_exists( 'apl_func_html_class' ) ) {
-    function apl_func_html_class() {
+if ( ! function_exists( 'applicator_func_html_class' ) ) {
+    function applicator_func_html_class() {
 		
         global $is_lynx, $is_gecko, $is_IE, $is_macIE, $is_winIE, $is_edge, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
         global $post;
@@ -188,17 +188,17 @@ if ( ! function_exists( 'apl_func_html_class' ) ) {
         }
     
     }
-    add_action( 'apl_hook_html_class', 'apl_func_html_class');
+    add_action( 'applicator_hook_html_class', 'applicator_func_html_class');
 }
 
 
 // Body Class
-if ( ! function_exists( 'apl_func_body_class' ) ) {
-    function apl_func_body_class( $classes ) {
+if ( ! function_exists( 'applicator_func_body_class' ) ) {
+    function applicator_func_body_class( $classes ) {
 
         $classes[] = 'body';
         return $classes;
     
     }
-    add_filter( 'body_class', 'apl_func_body_class' );
+    add_filter( 'body_class', 'applicator_func_body_class' );
 }

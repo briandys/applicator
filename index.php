@@ -12,7 +12,7 @@ if ( function_exists( 'get_header' ) ) {
             <?php
             
             // Main Content Headings
-            apl_func_main_content_headings();
+            applicator_func_main_content_headings();
 
             // Search
             if ( is_search() ) {
@@ -95,7 +95,7 @@ if ( function_exists( 'get_header' ) ) {
         </span></h2>
 
         <?php // Main Content Header Aside
-        apl_func_main_content_header_aside(); ?> 
+        applicator_func_main_content_header_aside(); ?> 
         
     </div>
 </div><!-- Main Content Header -->
@@ -108,7 +108,11 @@ if ( function_exists( 'get_header' ) ) {
                 
                 <div class="md entry-md" data-name="Entry Module">
                     <div class="cr entry-md---cr">
-                        <div class="h entry-md---h"><span class="h_l entry-md---h_l"><?php esc_html_e( 'Entry Module', $GLOBALS['apl_textdomain'] ); ?></span></div>
+                        <div class="hr entry-md---hr">
+                            <div class="hr_cr entry-md---hr_cr">
+                                <div class="h entry-md---h"><span class="h_l entry-md---h_l"><?php esc_html_e( 'Entry Module', $GLOBALS['apl_textdomain'] ); ?></span></div>
+                            </div>
+                        </div>
                         <div class="ct entry-md---ct">
                             <div class="ct_cr entry-md---ct_cr">
                 
@@ -128,13 +132,15 @@ if ( function_exists( 'get_header' ) ) {
                                 <div class="ct entry---ct">
                                     <div class="ct_cr entry---ct_cr">
                                 
-                        <?php the_post();
+                                        <?php
+                                        the_post();
 
-                        // template-parts > post-content.php
-                        apl_func_post_content();
-                
-                        // comments.php
-                        comments_template(); ?>
+                                        // template-parts > post-content.php
+                                        applicator_func_post_content();
+
+                                        // comments.php
+                                        comments_template();
+                                        ?>
                                         
                                     </div>
                                 </div><!-- ct -->
@@ -157,7 +163,7 @@ if ( function_exists( 'get_header' ) ) {
                                             <div class="hr_cr entries---hr_cr">
                                                 <div class="h entries---h"><span class="h_l entries---h_l"><?php esc_html_e( 'Entries', $GLOBALS['apl_textdomain'] ); ?></span></div>
                                                 <?php // inc > template-parts > page-nav.php
-                                                applicator_page_nav(); ?>
+                                                applicator_func_page_nav(); ?>
                                             </div>
                                         </div>
                                         <div class="ct entries---ct">
@@ -167,7 +173,7 @@ if ( function_exists( 'get_header' ) ) {
                             the_post();
                         
                             // template-parts > post-content.php
-                            apl_func_post_content();
+                            applicator_func_post_content();
                         } ?>
 
                                             </div>
@@ -175,7 +181,7 @@ if ( function_exists( 'get_header' ) ) {
                                         <div class="fr entries---fr">
                                             <div class="fr_cr entries---fr_cr">
                                                 <?php // inc > template-parts > page-nav.php
-                                                applicator_page_nav(); ?>
+                                                applicator_func_page_nav(); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -198,6 +204,6 @@ if ( function_exists( 'get_header' ) ) {
         <?php get_sidebar(); ?>
 
     </div>
-</div><!-- ct -->
+</div><!-- Main Content Content -->
 
 <?php get_footer();

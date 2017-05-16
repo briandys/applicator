@@ -867,12 +867,18 @@
                 $colophon = $( '#colophon' ),
                 $pageHeight = $page.height(),
                 $colophonHeight = $colophon.height(),
-                $windowHeight = window.innerHeight;
+                $windowHeight = window.innerHeight,
+                pageShortCss = 'page--short',
+                pageLongCss = 'page--long';
 
             if ( ( $pageHeight - $colophonHeight ) <= $windowHeight ) {
-                $html.addClass( 'page--short' );
+                $html
+                    .addClass( pageShortCss )
+                    .removeClass( pageLongCss );
             } else {
-                $html.addClass( 'page--long' );
+                $html
+                    .addClass( pageLongCss )
+                    .removeClass( pageShortCss );
             }
         }
         pageHeightDetection();

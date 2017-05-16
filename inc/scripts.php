@@ -1,6 +1,6 @@
 <?php // Default Classes
-if ( ! function_exists( 'apl_func_default_classes' ) ) {
-    function apl_func_default_classes() { ?>
+if ( ! function_exists( 'applicator_func_default_classes' ) ) {
+    function applicator_func_default_classes() { ?>
         
         <script type="text/javascript">
             
@@ -92,13 +92,13 @@ if ( ! function_exists( 'apl_func_default_classes' ) ) {
         </script>
     
     <?php }
-    add_action( 'wp_head', 'apl_func_default_classes', 0 );
+    add_action( 'wp_head', 'applicator_func_default_classes', 0 );
 }
 
 
 // Enqueue Scripts
-if ( ! function_exists( 'apl_func_enqueue_scripts' ) ) {
-    function apl_func_enqueue_scripts() {
+if ( ! function_exists( 'applicator_func_enqueue_scripts' ) ) {
+    function applicator_func_enqueue_scripts() {
         
         // Modernizr
         // wp_enqueue_script( 'apl-script-modernizr', get_theme_file_uri() . '/assets/js/modernizr.js', array(), '1.1', true );
@@ -122,5 +122,5 @@ if ( ! function_exists( 'apl_func_enqueue_scripts' ) ) {
         }
             
     }
-    add_action( 'wp_enqueue_scripts', 'apl_func_enqueue_scripts' );
+    add_action( 'wp_enqueue_scripts', 'applicator_func_enqueue_scripts' );
 }

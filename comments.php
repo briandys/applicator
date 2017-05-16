@@ -17,7 +17,7 @@
                                     <div class="cr coms-hr-as---cr">
                                     
                                         <?php // inc > tags > comments-actions-snippet.php
-                                        apl_func_comments_actions_snippet(); ?>
+                                        applicator_func_comments_actions_snippet(); ?>
                                     
                                     </div>
                                 </div><!-- Comments Header Aside -->
@@ -33,12 +33,12 @@
                                     <?php wp_list_comments( array(
                                         'style'       => 'ul',
                                         'avatar_size' => 48,
-                                        'callback' => 'apl_func_comment'
+                                        'callback' => 'applicator_func_comment'
                                     ) ); ?>
                                 </ul>
                                 
                                 <?php // Comments Navigation | inc > tags > comments-nav.php
-                                apl_func_comments_nav(); ?>
+                                applicator_func_comments_nav(); ?>
                             
                             <?php } else { ?>
                                 

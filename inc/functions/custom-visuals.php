@@ -1,7 +1,7 @@
 <?php // Custom Visuals
 
-if ( ! function_exists( 'apl_func_custom_visuals_setup' ) ) {
-    function apl_func_custom_visuals_setup() {
+if ( ! function_exists( 'applicator_func_custom_visuals_setup' ) ) {
+    function applicator_func_custom_visuals_setup() {
         
         // Custom Header
         add_theme_support( 'custom-header', apply_filters( 'applicator_custom_header_args', array(
@@ -10,7 +10,7 @@ if ( ! function_exists( 'apl_func_custom_visuals_setup' ) ) {
             'width'              => 1280,
             'height'             => 800,
             'flex-height'        => true,
-            'wbp-head-callback'   => 'apl_func_header_style',
+            'wbp-head-callback'   => 'applicator_func_header_style',
         ) ) );
 
         register_default_headers( array(
@@ -31,12 +31,12 @@ if ( ! function_exists( 'apl_func_custom_visuals_setup' ) ) {
         add_theme_support( 'custom-background' );
     
     }
-    add_action( 'after_setup_theme', 'apl_func_custom_visuals_setup' );
+    add_action( 'after_setup_theme', 'applicator_func_custom_visuals_setup' );
 }
 
 // Custom Header Callback
-if ( ! function_exists( 'apl_func_header_style' ) ) {
-    function apl_func_header_style() {
+if ( ! function_exists( 'applicator_func_header_style' ) ) {
+    function applicator_func_header_style() {
 
         $header_text_color = get_header_textcolor();
 

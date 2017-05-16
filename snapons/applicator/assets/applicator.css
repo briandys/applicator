@@ -27,6 +27,8 @@
 .parent-post---h,
 .post-author---h,
 .post-pub-date-time---h,
+.post-ct---h,
+.post-ex---h,
 
 .coms-acts-snip---h,
 .comment-md---h,
@@ -76,8 +78,8 @@
 
 /* Main Search */
 .main-search-tog---b_l .show-hide---txt,
-.main-search-func .search-submit-axn---b_l .search---word,
-.main-search-func .search-reset-axn---b_l .reset---word,
+.main-search-func .search-submit-axn---b_l .search---txt,
+.main-search-func .search-reset-axn---b_l .reset---txt,
 
 /* Web Product Info */
 .apl--main-search--active .wbp-main-name-obj,

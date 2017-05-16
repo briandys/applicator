@@ -57,38 +57,61 @@ Initial release
 
 * wbp (cn)
 
-** wbp-start (cn)
+    ** wbp-start (cn)
 
-** main-header (cn)
+    ** main-header (cn)
+
+        *** wbp-main-info (cp)
+
+            **** wbp-main-name-obj (obj)
+            **** wbp-main-logo-obj (obj)
+            **** wbp-main-desc-obj (obj)
+
+        *** main-nav (nav)
+
+            **** WP Generated: ul
+                ***** WP Generated: li (cp)
+                    ****** [main-navi (navi)] > WP Generated: a [main-navi---a]
+                    ****** sub-nav-toggle (obj)
+
+        *** main-search-func (cp)
+
+            **** search---h (h)
+            **** main-search-toggle (obj)
+
+            **** search-form
+                ***** search-term-creation (cp)
+                    ****** search-term-creation-label (obj)
+                    ****** search-term-creation-input (obj)
+
+                ***** search-form-axns (axns)
+                    ****** search-submit-axn (axn)
+                    ****** search-reset-axn (axn)
+
+        *** main-header-aside (cn)
+
+            **** main-hr-as---h (h)
+            **** main-menu-toggle (obj)
+
+            **** widget (cp)
+                ***** WP Generated: div
+
+    ** main-content (cn)
     
-    *** wbp-main-info (cp)
-    
-        **** wbp-main-name-obj (obj)
-        **** wbp-main-logo-obj (obj)
-        **** wbp-main-desc-obj (obj)
-    
-    *** main-nav (nav)
-    
-        **** WP Generated: ul
-            ***** WP Generated: li (cp)
-                ****** [main-navi (navi)] > WP Generated: a [main-navi---a] > main-navi---a_l > navi---txt
-                ****** sub-nav-toggle (obj) > .sub-nav-tog---b > .sub-nav-tog---b_l
-    
-    *** search-cp (cp)
-    
-        **** search---h
-        **** main-search---toggle
+        *** main-ct---h (h)
         
-        **** search-form
-            ***** search-term-creation (cp)
+        *** pri-content (cn)
+        
+            **** entry-md (md)
+            
+                ***** post (cp)
+                    ****** post-title-obj (obj)
 
-** main-content (cn)
 
 
+    ** main-footer (cn)
 
-** main-footer (cn)
-
-** wbp-end (cn)
+    ** wbp-end (cn)
 
 == HTML Attribute to Check ==
 
