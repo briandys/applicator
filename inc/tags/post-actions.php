@@ -8,11 +8,11 @@ if ( ! function_exists( 'applicator_func_post_admin_actions' ) ) {
             $edit_post_axn_a_l_mu = '<span class="a_l edit-post-axn---a_l" title="%5$s"><span class="word %2$s---word">%1$s</span> <span class="word %4$s---word">%3$s</span></span>';
         
             $edit_post_axn_a_l = sprintf( $edit_post_axn_a_l_mu,
-                esc_html__( 'Edit', 'applicator' ),
+                esc_html__( 'Edit', $GLOBALS['apl_textdomain'] ),
                 'edit',
                 get_the_title(),
                 'post-title',
-                esc_attr__( 'Edit', 'applicator' ) . ' ' . get_the_title()
+                esc_attr__( 'Edit', $GLOBALS['apl_textdomain'] ) . ' ' . get_the_title()
             ); ?>
             
             <div class="axns post-admin-axns" data-name="Post Admin Actions">

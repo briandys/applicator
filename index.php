@@ -62,9 +62,9 @@ if ( function_exists( 'get_header' ) ) {
                 $prop_content = sprintf( $prop_mu,
                     $entry_search_count,
                     $entry_search_count_prefix . '---txt' . $entry_search_count_prefix . '-' . sanitize_title( $entry_search_count ),
-                    esc_html__( $label, 'applicator' ),
+                    esc_html__( $label, $GLOBALS['apl_textdomain'] ),
                     sanitize_title( $label ),
-                    esc_html__( $label_for, 'applicator' ),
+                    esc_html__( $label_for, $GLOBALS['apl_textdomain'] ),
                     sanitize_title( $label_for )
                 );
 
@@ -80,9 +80,9 @@ if ( function_exists( 'get_header' ) ) {
                 $title = sprintf( $main_ct_h_l_mu,
                     $val_content,
                     sanitize_title( $prop ),
-                    esc_attr__( $val, 'applicator' ),
+                    esc_attr__( $val, $GLOBALS['apl_textdomain'] ),
                     $prop_content . $colon_sep,
-                    esc_attr__( $prop, 'applicator' )
+                    esc_attr__( $prop, $GLOBALS['apl_textdomain'] )
                 );
 
                 // Display

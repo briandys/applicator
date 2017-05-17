@@ -41,7 +41,7 @@ if ( ! function_exists( 'applicator_func_page_nav' ) ) {
             'type'          => 'list',
             
             'before_page_number'  => sprintf( $page_num_navi_start_mu,
-                                       esc_html__( 'Page', 'applicator' ),
+                                       esc_html__( 'Page', $GLOBALS['apl_textdomain'] ),
                                        'page-pagi-navi'
                                        ),
             
@@ -50,17 +50,17 @@ if ( ! function_exists( 'applicator_func_page_nav' ) ) {
             'prev_next'     => true,
             
             'prev_text'     => sprintf( $adjacent_navi_mu,
-                                       esc_attr__( 'Previous Page', 'applicator' ),
-                                       esc_html__( 'Previous', 'applicator' ),
-                                       esc_html__( 'Page', 'applicator' ),
+                                       esc_attr__( 'Previous Page', $GLOBALS['apl_textdomain'] ),
+                                       esc_html__( 'Previous', $GLOBALS['apl_textdomain'] ),
+                                       esc_html__( 'Page', $GLOBALS['apl_textdomain'] ),
                                        'prev-page',
                                        'prev'
                                        ),
             
             'next_text'     => sprintf( $adjacent_navi_mu,
-                                       esc_attr__( 'Next Page', 'applicator' ),
-                                       esc_html__( 'Next', 'applicator' ),
-                                       esc_html__( 'Page', 'applicator' ),
+                                       esc_attr__( 'Next Page', $GLOBALS['apl_textdomain'] ),
+                                       esc_html__( 'Next', $GLOBALS['apl_textdomain'] ),
+                                       esc_html__( 'Page', $GLOBALS['apl_textdomain'] ),
                                        'next-page',
                                        'next'
                                        )

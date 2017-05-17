@@ -1,5 +1,5 @@
 <?php // Register Main Navigation
-register_nav_menu( 'main-nav', __( 'Main Navigation', 'applicator' ) );
+register_nav_menu( 'main-nav', __( 'Main Navigation', $GLOBALS['apl_textdomain'] ) );
 
 // Main Nav
 if ( ! function_exists( 'applicator_func_main_nav' ) ) {

@@ -16,9 +16,9 @@
                                     
                                     printf( $wbp_copyright_mu,
                                         get_bloginfo( 'name' ),
-                                        esc_html__( '&copy;', 'applicator' ),
+                                        esc_html__( '&copy;', $GLOBALS['apl_textdomain'] ),
                                         date( 'Y' ),
-                                        esc_html__( 'Olrayt reserved&trade;.', 'applicator' ),
+                                        esc_html__( 'Olrayt reserved&trade;.', $GLOBALS['apl_textdomain'] ),
                                         esc_url( home_url( '/' ) )
                                     );
                                     ?>

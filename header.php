@@ -60,8 +60,8 @@
                             'Browser Upgrade Note Object',
                                 'note browser-upgrade-note',
                                 'browser-up-note',
-                            esc_html__( 'You are using an outdated browser. Please upgrade your browser to improve your experience.', 'applicator' ),
-                            esc_html__( 'Upgrade Browser', 'applicator' ),
+                            esc_html__( 'You are using an outdated browser. Please upgrade your browser to improve your experience.', $GLOBALS['apl_textdomain'] ),
+                            esc_html__( 'Upgrade Browser', $GLOBALS['apl_textdomain'] ),
                             esc_url( 'http://browsehappy.com/' )
                         );
 

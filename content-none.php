@@ -16,7 +16,7 @@
                     'Post Title Object',
                     'post-title-obj',
                     'post-title-obj',
-                    esc_html__( 'Nothing Found', 'applicator' )
+                    esc_html__( 'Nothing Found', $GLOBALS['apl_textdomain'] )
                 );
                 
                 // Content

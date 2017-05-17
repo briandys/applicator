@@ -12,9 +12,9 @@ function applicator_func_aside_init() {
     $widget_h_end_mu = '</span></h3>';
     
     register_sidebar( array(
-		'name'          => __( 'Main Header', 'applicator' ),
+		'name'          => __( 'Main Header', $GLOBALS['apl_textdomain'] ),
 		'id'            => 'main-header-aside',
-		'description'   => __( 'Located at the Main Header', 'applicator' ),
+		'description'   => __( 'Located at the Main Header', $GLOBALS['apl_textdomain'] ),
 		'before_widget' => $widget_start_mu,
 		'after_widget'  => $widget_end_mu,
 		'before_title'  => $widget_h_start_mu,
@@ -22,9 +22,9 @@ function applicator_func_aside_init() {
 	) );
     
     register_sidebar( array(
-		'name'          => __( 'Main Content Header', 'applicator' ),
+		'name'          => __( 'Main Content Header', $GLOBALS['apl_textdomain'] ),
 		'id'            => 'main-content-header-aside',
-		'description'   => __( 'Located at the Main Content Header', 'applicator' ),
+		'description'   => __( 'Located at the Main Content Header', $GLOBALS['apl_textdomain'] ),
 		'before_widget' => $widget_start_mu,
 		'after_widget'  => $widget_end_mu,
 		'before_title'  => $widget_h_start_mu,
@@ -32,9 +32,9 @@ function applicator_func_aside_init() {
 	) );
     
     register_sidebar( array(
-		'name'          => __( 'Secondary Content', 'applicator' ),
+		'name'          => __( 'Secondary Content', $GLOBALS['apl_textdomain'] ),
 		'id'            => 'main-content-aside',
-		'description'   => __( 'Located after Primary Content', 'applicator' ),
+		'description'   => __( 'Located after Primary Content', $GLOBALS['apl_textdomain'] ),
 		'before_widget' => $widget_start_mu,
 		'after_widget'  => $widget_end_mu,
 		'before_title'  => $widget_h_start_mu,
@@ -42,9 +42,9 @@ function applicator_func_aside_init() {
 	) );
     
     register_sidebar( array(
-		'name'          => __( 'Main Footer', 'applicator' ),
+		'name'          => __( 'Main Footer', $GLOBALS['apl_textdomain'] ),
 		'id'            => 'main-footer-aside',
-		'description'   => __( 'Located at the Main Footer', 'applicator' ),
+		'description'   => __( 'Located at the Main Footer', $GLOBALS['apl_textdomain'] ),
 		'before_widget' => $widget_start_mu,
 		'after_widget'  => $widget_end_mu,
 		'before_title'  => $widget_h_start_mu,

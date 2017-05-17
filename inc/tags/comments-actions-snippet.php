@@ -31,91 +31,97 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
         
         <div class="cp comments-actions-snippet <?php echo $comments_count_pop_stat_css . ' ' . $comment_creation_ability_stat_css ?>" data-name="Comments Actions Snippet">
             <div class="cr coms-acts-snip---cr">
-                <div class="h coms-acts-snip---h"><span class="h_l coms-acts-snip---h_l"><?php esc_html_e( 'Comments Actions Snippet', $GLOBALS['apl_textdomain'] ); ?></span></div>
+                <div class="hr coms-acts-snip---hr">
+                    <div class="hr_cr coms-acts-snip---hr_cr">
+                        <div class="h coms-acts-snip---h"><span class="h_l coms-acts-snip---h_l"><?php esc_html_e( 'Comments Actions Snippet', $GLOBALS['apl_textdomain'] ); ?></span></div>
+                    </div>
+                </div>
                 <div class="ct coms-acts-snip---ct">
                     <div class="ct_cr coms-acts-snip---ct_cr">
                         
                         <div class="cp comments-count" data-name="Comments Count">
                             <div class="cr coms-cnt---cr">
-                                <div class="h coms-cnt---h"><span class="h_l coms-cnt---h_l">Comments Count</span></div>
+                                <div class="hr coms-cnt---hr">
+                                    <div class="hr_cr coms-cnt---hr_cr">
+                                        <div class="h coms-cnt---h"><span class="h_l coms-cnt---h_l">Comments Count</span></div>
+                                    </div>
+                                </div>
                                 <div class="ct coms-cnt---ct">
                                     <div class="ct_cr coms-cnt---ct_cr">
                                         <div class="obj comments-count-number-obj" data-name="Comments Count Object">
                                             <span class="g coms-cnt-num-obj---g">
-                                                <span class="g_l coms-cnt-num-obj---g_l">
 
-                                                <?php
-                                                // Markup
-                                                $coms_cnt_num_obj_a_l_mu = '<span class="a_l coms-cnt-num-obj---a_l" title="%5$s"><span class="num %2$s---num">%1$s</span> <span class="word %4$s---word">%3$s</span></span>';
-        
-                                                if ( ! is_singular() ) {
-                                                    $coms_cnt_num_obj_a_zero_link = esc_url( get_permalink() );
-                                                } else {
-                                                    $coms_cnt_num_obj_a_zero_link = '';
-                                                }
-        
-                                                // Markup
-                                                $coms_cnt_num_obj_a_zero_mu = '<a class="a coms-cnt-num-obj---a" href="%2$s#comments">%1$s</a>';
-        
-                                                $comments_count_zero = sprintf( $coms_cnt_num_obj_a_l_mu,
-                                                    esc_html__( '0', 'applicator' ),
-                                                    'comments-count',
-                                                    esc_html__( 'Comment', 'applicator' ),
-                                                    'comment',
-                                                    esc_attr__( '0 Comment', 'applicator' )
+                                            <?php
+                                            // Markup
+                                            $coms_cnt_num_obj_a_l_mu = '<span class="a_l coms-cnt-num-obj---a_l" title="%5$s"><span class="num %2$s---num">%1$s</span> <span class="txt %4$s---txt">%3$s</span></span>';
+
+                                            if ( ! is_singular() ) {
+                                                $coms_cnt_num_obj_a_zero_link = esc_url( get_permalink() );
+                                            } else {
+                                                $coms_cnt_num_obj_a_zero_link = '';
+                                            }
+
+                                            // Markup
+                                            $coms_cnt_num_obj_a_zero_mu = '<a class="a coms-cnt-num-obj---a" href="%2$s#comments">%1$s</a>';
+
+                                            $comments_count_zero = sprintf( $coms_cnt_num_obj_a_l_mu,
+                                                esc_html__( '0', $GLOBALS['apl_textdomain'] ),
+                                                'comments-count',
+                                                esc_html__( 'Comment', $GLOBALS['apl_textdomain'] ),
+                                                'comment',
+                                                esc_attr__( '0 Comment', $GLOBALS['apl_textdomain'] )
+                                            );
+
+                                            $comments_count_single = sprintf( $coms_cnt_num_obj_a_l_mu,
+                                                esc_html__( '1', $GLOBALS['apl_textdomain'] ),
+                                                'comments-count',
+                                                esc_html__( 'Comment', $GLOBALS['apl_textdomain'] ),
+                                                'comment',
+                                                esc_attr__( '1 Comment', $GLOBALS['apl_textdomain'] )
+                                            );
+
+                                            $comments_count_multi = sprintf( $coms_cnt_num_obj_a_l_mu,
+                                                esc_html__( '%', $GLOBALS['apl_textdomain'] ),
+                                                'comments-count',
+                                                esc_html__( 'Comments', $GLOBALS['apl_textdomain'] ),
+                                                'comments',
+                                                esc_attr__( '% Comments', $GLOBALS['apl_textdomain'] )
+                                            );
+
+                                            $coms_cnt_num_obj_a_zero = sprintf( $coms_cnt_num_obj_a_zero_mu,
+                                                $comments_count_zero,
+                                                $coms_cnt_num_obj_a_zero_link
+                                            );
+
+                                            // Status: Populated
+                                            if( $comments_count_int >= 1 ) {
+
+                                                comments_popup_link(
+                                                    // Zero Comment
+                                                    '',
+
+                                                    // Single Comment
+                                                    $comments_count_single,
+
+                                                    // Multiple Comments
+                                                    $comments_count_multi,
+
+                                                    // CSS Class
+                                                    'a coms-cnt-num-obj---a',
+
+                                                    // Comments Disabled
+                                                    ''
                                                 );
-        
-                                                $comments_count_single = sprintf( $coms_cnt_num_obj_a_l_mu,
-                                                    esc_html__( '1', 'applicator' ),
-                                                    'comments-count',
-                                                    esc_html__( 'Comment', 'applicator' ),
-                                                    'comment',
-                                                    esc_attr__( '1 Comment', 'applicator' )
-                                                );
-        
-                                                $comments_count_multi = sprintf( $coms_cnt_num_obj_a_l_mu,
-                                                    esc_html__( '%', 'applicator' ),
-                                                    'comments-count',
-                                                    esc_html__( 'Comments', 'applicator' ),
-                                                    'comments',
-                                                    esc_attr__( '% Comments', 'applicator' )
-                                                );
-        
-                                                $coms_cnt_num_obj_a_zero = sprintf( $coms_cnt_num_obj_a_zero_mu,
-                                                    $comments_count_zero,
-                                                    $coms_cnt_num_obj_a_zero_link
-                                                );
 
-                                                // Status: Populated
-                                                if( $comments_count_int >= 1 ) {
-
-                                                    comments_popup_link(
-                                                        // Zero Comment
-                                                        '',
-
-                                                        // Single Comment
-                                                        $comments_count_single,
-
-                                                        // Multiple Comments
-                                                        $comments_count_multi,
-
-                                                        // CSS Class
-                                                        'a coms-cnt-num-obj---a',
-
-                                                        // Comments Disabled
-                                                        ''
-                                                    );
-
-                                                // Status: Empty
-                                                } else {
-                                                    printf( $coms_cnt_num_obj_a_zero );
-                                                } ?>
-
-                                                </span>
+                                            // Status: Empty
+                                            } else {
+                                                printf( $coms_cnt_num_obj_a_zero );
+                                            } ?>
+                                                
                                             </span>
                                         </div><!-- Comments Count Object -->
                                     </div>
-                                </div>
+                                </div><!-- ct -->
                             </div>
                         </div><!-- Comments Count -->
 
@@ -125,8 +131,8 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
                             // Markup
                             $add_com_axn_mu = '<span class="obj axn %2$s" title="%9$s" data-name="%1$s">';
                                 $add_com_axn_mu .= '<a class="a %3$s---a" href="%8$s"><span class="a_l %3$s---a_l">';
-                                    $add_com_axn_mu .= '<span class="word %5$s---word">%4$s</span>';
-                                    $add_com_axn_mu .= ' <span class="word %7$s---word">%6$s</span>';
+                                    $add_com_axn_mu .= '<span class="txt %5$s---txt">%4$s</span>';
+                                    $add_com_axn_mu .= ' <span class="txt %7$s---txt">%6$s</span>';
                                 $add_com_axn_mu .= '</span></a>';
                             $add_com_axn_mu .= '</span><!-- %1$s -->';
                             
@@ -155,7 +161,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
                                 'Requires Sign In Label Object',
                                 'requires-sign-in-label-obj',
                                 'req-sign-in-lbl-obj',
-                                esc_html__( '(requires Sign In)', 'applicator' )
+                                esc_html__( '(requires Sign In)', $GLOBALS['apl_textdomain'] )
                             );
                             
                             // Content
@@ -163,12 +169,12 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
                                 'Add Comment Action',
                                 'add-comment-axn',
                                 'add-com-axn',
-                                esc_html__( 'Add', 'applicator' ),
+                                esc_html__( 'Add', $GLOBALS['apl_textdomain'] ),
                                 'add',
-                                esc_html__( 'Comment', 'applicator' ),
+                                esc_html__( 'Comment', $GLOBALS['apl_textdomain'] ),
                                 'comment',
                                 $add_com_axn_anchor,
-                                esc_attr__( 'Add Comment', 'applicator' )
+                                esc_attr__( 'Add Comment', $GLOBALS['apl_textdomain'] )
                             );
                         
                             printf( $add_com_axn );

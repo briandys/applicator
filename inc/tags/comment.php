@@ -50,11 +50,11 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
 
                                             // Content
                                             $edit_comment_axn_a_l = sprintf( $edit_comment_axn_a_l_mu,
-                                                esc_html__( 'Edit', 'applicator' ),
+                                                esc_html__( 'Edit', $GLOBALS['apl_textdomain'] ),
                                                 'edit',
-                                                esc_html__( 'Comment', 'applicator' ) . ' ' . $comment->comment_ID,
+                                                esc_html__( 'Comment', $GLOBALS['apl_textdomain'] ) . ' ' . $comment->comment_ID,
                                                 'comment-title',
-                                                esc_attr__( 'Edit Comment', 'applicator' )
+                                                esc_attr__( 'Edit Comment', $GLOBALS['apl_textdomain'] )
                                             );
 
                                             edit_comment_link( $edit_comment_axn_a_l, '', '' );                  
@@ -127,7 +127,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                                                             'com-pub-ts-lbl',
                                                             esc_html__( 'Commented', $GLOBALS['apl_textdomain'] ),
                                                             'published',
-                                                            esc_html__( 'on', 'applicator' ),
+                                                            esc_html__( 'on', $GLOBALS['apl_textdomain'] ),
                                                             'on'
                                                         );
 
@@ -276,17 +276,17 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                                     $reply_com_axn_a_l_login_mu .= ' <span class="line requires-sign-in---line">%4$s</span>';                                                                      
                                     // Content 
                                     $reply_com_axn_a_l_reply = sprintf( $reply_com_axn_a_l_reply_mu,
-                                        esc_html__( 'Reply', 'applicator' ),
-                                        esc_html__( 'to', 'applicator' ),
-                                        esc_html__( 'Comment', 'applicator' )
+                                        esc_html__( 'Reply', $GLOBALS['apl_textdomain'] ),
+                                        esc_html__( 'to', $GLOBALS['apl_textdomain'] ),
+                                        esc_html__( 'Comment', $GLOBALS['apl_textdomain'] )
                                     );
                                                                                                                                  
                                     // Content 
                                     $reply_com_axn_a_l_login = sprintf( $reply_com_axn_a_l_login_mu,
-                                        esc_html__( 'Reply', 'applicator' ),
-                                        esc_html__( 'to', 'applicator' ),
-                                        esc_html__( 'Comment', 'applicator' ),
-                                        esc_html__( '(requires Sign In)', 'applicator' )
+                                        esc_html__( 'Reply', $GLOBALS['apl_textdomain'] ),
+                                        esc_html__( 'to', $GLOBALS['apl_textdomain'] ),
+                                        esc_html__( 'Comment', $GLOBALS['apl_textdomain'] ),
+                                        esc_html__( '(requires Sign In)', $GLOBALS['apl_textdomain'] )
                                     );       
                                                                                                                                  
                                     $reply_com_axn_a_l_reply_text = sprintf( $reply_com_axn_a_l_mu,

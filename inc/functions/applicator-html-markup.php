@@ -27,12 +27,12 @@ function applicator_html( $args = array() ) {
     
     // Make sure $args are an array.
 	if ( empty( $args ) ) {
-		return esc_html__( 'Please define default parameters in the form of an array.', 'applicator' );
+		return esc_html__( 'Please define default parameters in the form of an array.', $GLOBALS['apl_textdomain'] );
 	}
 
 	// Define an icon.
 	if ( false === array_key_exists( 'type', $args ) ) {
-		return esc_html__( 'Please define type of Element.', 'applicator' );
+		return esc_html__( 'Please define type of Element.', $GLOBALS['apl_textdomain'] );
 	}
     
     $defaults = array(
@@ -162,11 +162,11 @@ $wbp_desc_mu = '<a class="%4$s---a" href="%3$s" title="%5$s">';
 $wbp_desc_mu .= '</a>';
 
 $wbp_desc_ct = sprintf( $wbp_desc_mu,
-    esc_html__( 'This is the description.', 'applicator' ),
+    esc_html__( 'This is the description.', $GLOBALS['apl_textdomain'] ),
         'desc',
     esc_url( '#' ),
     $wbp_desc_sec_css,
-    esc_attr__( 'This is the Title.', 'applicator' )
+    esc_attr__( 'This is the Title.', $GLOBALS['apl_textdomain'] )
 );
 
 // Info

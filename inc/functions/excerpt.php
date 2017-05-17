@@ -30,20 +30,20 @@ if ( ! function_exists( 'applicator_func_show_more' ) ) {
         $show_more_axn = sprintf( $show_more_axn_mu,
             get_the_title( get_the_ID() ),
             'show-more-axn',
-            esc_html__( 'Show', 'applicator' ),
-            esc_html__( 'More', 'applicator' ),
-            esc_html__( 'of', 'applicator' ),
+            esc_html__( 'Show', $GLOBALS['apl_textdomain'] ),
+            esc_html__( 'More', $GLOBALS['apl_textdomain'] ),
+            esc_html__( 'of', $GLOBALS['apl_textdomain'] ),
             esc_url( get_permalink( get_the_ID() ) ),
-            esc_attr__( 'Show More of', 'applicator' )
+            esc_attr__( 'Show More of', $GLOBALS['apl_textdomain'] )
         );
         
         $show_more_label = sprintf( $show_more_label_mu,
             get_the_title( get_the_ID() ),
             'show-more-axn',
-            esc_html__( 'Show', 'applicator' ),
-            esc_html__( 'More', 'applicator' ),
-            esc_html__( 'of', 'applicator' ),
-            esc_attr__( 'Show More of', 'applicator' )
+            esc_html__( 'Show', $GLOBALS['apl_textdomain'] ),
+            esc_html__( 'More', $GLOBALS['apl_textdomain'] ),
+            esc_html__( 'of', $GLOBALS['apl_textdomain'] ),
+            esc_attr__( 'Show More of', $GLOBALS['apl_textdomain'] )
         );
         
         // Pattern after content.php

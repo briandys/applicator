@@ -7,14 +7,14 @@
                     }
 
                     if ( $entry_search_count == 0 ) {
-                        echo '<span class="word no-search-result---word">' . esc_html__( 'No Search Results', 'applicator' ) . '</span> ';
+                        echo '<span class="word no-search-result---word">' . esc_html__( 'No Search Results', $GLOBALS['apl_textdomain'] ) . '</span> ';
                     } elseif ( $entry_search_count == 1 ) {
-                        echo '<span class="word search-result---word">' . esc_html__( 'Search Result', 'applicator' ) . '</span> ';
+                        echo '<span class="word search-result---word">' . esc_html__( 'Search Result', $GLOBALS['apl_textdomain'] ) . '</span> ';
                     } else {
-                        echo '<span class="word search-results---word">' . esc_html__( 'Search Results', 'applicator' ) . '</span> ';
+                        echo '<span class="word search-results---word">' . esc_html__( 'Search Results', $GLOBALS['apl_textdomain'] ) . '</span> ';
                     }
 
-                    echo '<span class="word for---word">' . esc_html__( 'for', 'applicator' ) . '</span> <span class="word search-term---word">' . strip_tags( $entry_search_key ) . '</span>';
+                    echo '<span class="word for---word">' . esc_html__( 'for', $GLOBALS['apl_textdomain'] ) . '</span> <span class="word search-term---word">' . strip_tags( $entry_search_key ) . '</span>';
                     ?>
                     </span></h2>
                 </div>

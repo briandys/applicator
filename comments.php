@@ -80,8 +80,8 @@
                 $com_author_comment_creation_mu .= '</div>';
                 
                 $com_author_comment_creation = sprintf( $com_author_comment_creation_mu,
-                    esc_attr__( 'Comment', 'applicator' ),
-                    esc_html__( 'Comment', 'applicator' )
+                    esc_attr__( 'Comment', $GLOBALS['apl_textdomain'] ),
+                    esc_html__( 'Comment', $GLOBALS['apl_textdomain'] )
                 );
                 
                 // Markup
@@ -90,7 +90,7 @@
                 // Content
                 $com_crt_h_ = sprintf( $com_crt_h_mu,
                     'com-crt',
-                    esc_html__( 'Comment Creation', 'applicator' )
+                    esc_html__( 'Comment Creation', $GLOBALS['apl_textdomain'] )
                 );
                 
                 // Markup
@@ -107,8 +107,8 @@
                     'Sign In Required Note',
                     'sign-in-required-note',
                     'sign-in-req-note',
-                    esc_html__( 'Sign In', 'applicator' ),
-                    esc_html__( 'to comment.', 'applicator' ),
+                    esc_html__( 'Sign In', $GLOBALS['apl_textdomain'] ),
+                    esc_html__( 'to comment.', $GLOBALS['apl_textdomain'] ),
                     wp_login_url( apply_filters( 'the_permalink', get_permalink() ) )
                 );
                 
@@ -145,7 +145,7 @@
                     'Signed In As Label Object',
                     'signed-in-as-label-obj',
                     'signed-in-as-lbl-obj',
-                    esc_html__( 'Signed in as', 'applicator' )
+                    esc_html__( 'Signed in as', $GLOBALS['apl_textdomain'] )
                 );
                 
                 // Markup
@@ -182,9 +182,9 @@
                     'Sign Out Action',
                     'sign-out-axn',
                     'sign-out-axn',
-                    esc_html__( 'Sign Out', 'applicator' ),
+                    esc_html__( 'Sign Out', $GLOBALS['apl_textdomain'] ),
                     wp_logout_url( apply_filters( 'the_permalink', get_permalink() ) ),
-                    esc_attr__( 'Sign Out', 'applicator' )
+                    esc_attr__( 'Sign Out', $GLOBALS['apl_textdomain'] )
                 );
                 
                 // Content
@@ -192,7 +192,7 @@
                     'Signed In Account Actions',
                     'signed-in-account-axns',
                     'signed-in-acct-axns',
-                    esc_html__( 'Signed In Account Actions', 'applicator' ),
+                    esc_html__( 'Signed In Account Actions', $GLOBALS['apl_textdomain'] ),
                     $sign_out_axn
                 );
                 
@@ -201,18 +201,18 @@
                     'Signed In Account',
                     'signed-in-account',
                     'signed-in-acct',
-                    esc_html__( 'Signed In Account', 'applicator' ),
+                    esc_html__( 'Signed In Account', $GLOBALS['apl_textdomain'] ),
                     $signed_in_as_label_obj,
                     $acct_name_obj,
                     $signed_in_acct_axns
                 );
                 
                 $cancel_reply_com_axn_a_l = sprintf( $cancel_reply_com_axn_a_l_mu,
-                    esc_html__( 'Cancel', 'applicator' ),
-                    esc_html__( 'Reply', 'applicator' ),
-                    esc_html__( 'to', 'applicator' ),
-                    esc_html__( 'Comment', 'applicator' ),
-                    esc_attr__( 'Cancel Reply to Comment', 'applicator' )
+                    esc_html__( 'Cancel', $GLOBALS['apl_textdomain'] ),
+                    esc_html__( 'Reply', $GLOBALS['apl_textdomain'] ),
+                    esc_html__( 'to', $GLOBALS['apl_textdomain'] ),
+                    esc_html__( 'Comment', $GLOBALS['apl_textdomain'] ),
+                    esc_attr__( 'Cancel Reply to Comment', $GLOBALS['apl_textdomain'] )
                 );
                 
                 comment_form( array(
@@ -238,14 +238,14 @@
                     // Submit Comment Action
                     'id_submit'                 => 'com-sub-axn---b',
                     'class_submit'              => 'b com-sub-axn---b',
-                    'label_submit'              => esc_attr__( 'Submit', 'applicator' ),
+                    'label_submit'              => esc_attr__( 'Submit', $GLOBALS['apl_textdomain'] ),
                     
                     
                     // Reply
                     'title_reply_to'            =>  '<div class="note comment-recipient--note">'
                                                         .'<div class="comment-recipient--note-cr">'
                                                             .'<div class="comment-recipient--note--l">'
-                                                                .'<span class="comment-recipient--pred-l">' . esc_html__( 'Reply to', 'applicator' ) . '</span>'
+                                                                .'<span class="comment-recipient--pred-l">' . esc_html__( 'Reply to', $GLOBALS['apl_textdomain'] ) . '</span>'
                                                                 .' <span class="comment-recipient--subj-l">%s</span>'
                                                             .'</div>'
                                                         .'</div>'

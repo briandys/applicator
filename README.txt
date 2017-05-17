@@ -79,7 +79,7 @@ Initial release
             **** search---h (h)
             **** main-search-toggle (obj)
 
-            **** search-form
+            **** search-form <form>
                 ***** search-term-creation (cp)
                     ****** search-term-creation-label (obj)
                     ****** search-term-creation-input (obj)
@@ -107,12 +107,51 @@ Initial release
                 ***** post (cp)
                     ****** post-title-obj (obj)
                     ****** post-admin-axns (axns)
+                    
                     ****** post-header-aside (cn)
                     
                         ******* post-meta (cp)
+                            ******** post-published-modified-date-time-stamp-info (cp)
+                                
+                                ********* post-published (cp)
+                                    ********** post-published-time-stamp-label (obj)
+                                    
+                                    ********** post-published-date-time-stamp (cp)
+                                        *********** post-published-date-stamp (obj)
+                                        *********** post-published-time-stamp (obj)
+                                
+                                
+                                ********* post-modified (cp)
+                                    ********** post-modified-time-stamp-label (obj)
+                                    
+                                    ********** post-modified-date-time-stamp (cp)
+                                        *********** post-modified-date-stamp (obj)
+                                        *********** post-modified-time-stamp (obj)
+                            
+                            
+                            ******** post-published-author (cp)
+                                ********* published-by-label-obj (obj)
+                                ********* post-author (cp)
+                                    ********** post-author-name-obj (obj)
+                                    ********** post-author-avatar-obj (obj)
+                            
+                            ******** post-category-classification (cp)
+                                ********* post-category-label (obj)
+                                ********* post-categories <ul>
+                        
+                        
+                        ******* post-banner-visual-obj (obj)
+                        
                         ******* comments-actions-snippet (cp)
+                            ******** comments-count (cp)
+                                ********* comments-count-number-obj (obj)
+                            ******** add-comment-axn (axn)
                     
                     ****** edit-post-axn (axn)
+                    
+                    ****** post-content (cp)
+                    
+                ***** comment-md (md)
 
 
 

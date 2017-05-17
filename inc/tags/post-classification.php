@@ -1,16 +1,21 @@
 <?php // Post Categories | content.php
 
+// Markup
 $GLOBALS['post_classification_mu'] = '<div class="cp %3$s">';
     $GLOBALS['post_classification_mu'] .= '<div class="cr %4$s---cr">';
-        $GLOBALS['post_classification_mu'] .= '<div class="h %4$s---h"><span class="h-l %4$s---h_l">%1$s</span></div>';
+        $GLOBALS['post_classification_mu'] .= '<div class="hr %4$s---hr">';
+            $GLOBALS['post_classification_mu'] .= '<div class="hr_cr %4$s---hr_cr">';
+                $GLOBALS['post_classification_mu'] .= '<div class="h %4$s---h"><span class="h-l %4$s---h_l">%1$s</span></div>';
+            $GLOBALS['post_classification_mu'] .= '</div>';
+        $GLOBALS['post_classification_mu'] .= '</div>';
         $GLOBALS['post_classification_mu'] .= '<div class="ct %4$s---ct">';
             $GLOBALS['post_classification_mu'] .= '<div class="ct_cr %4$s---ct_cr">%5$s %2$s</div>';
         $GLOBALS['post_classification_mu'] .= '</div>';
     $GLOBALS['post_classification_mu'] .= '</div>';
-$GLOBALS['post_classification_mu'] .= '</div>';
+$GLOBALS['post_classification_mu'] .= '</div><!-- %1$s -->';
 
 $GLOBALS['post_classification_lbl_mu'] = '<span class="obj %2$s" data-name="Post %1$s Label">';
-    $GLOBALS['post_classification_lbl_mu'] .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l"><span class="word %5$s---word">%4$s</span><span class="sep colon---sep">:</span></span></span>';
+    $GLOBALS['post_classification_lbl_mu'] .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l"><span class="txt %5$s---txt">%4$s</span><span class="sep colon---sep">:</span></span></span>';
 $GLOBALS['post_classification_lbl_mu'] .= '</span>';
 
 if ( ! function_exists( 'applicator_func_post_categories' ) ) {
@@ -22,16 +27,18 @@ if ( ! function_exists( 'applicator_func_post_categories' ) ) {
         if ( 'post' === get_post_type() ) {
             if ( $categories_list && applicator_func_categorized_blog() ) {
                 
+                // Content
                 $post_cat_lbl = sprintf( $GLOBALS['post_classification_lbl_mu'],
                     'Category',
                     'post-category-label',
                     'post-cat-lbl',
-                    esc_html__( 'Categories', 'applicator' ),
+                    esc_html__( 'Categories', $GLOBALS['apl_textdomain'] ),
                     'categories'
                 );
                 
+                // Display
                 printf( $GLOBALS['post_classification_mu'],
-                    esc_html__( 'Post Category Classification', 'applicator' ),
+                    esc_html__( 'Post Category Classification', $GLOBALS['apl_textdomain'] ),
                     $categories_list,
                     'post-category-classification',
                     'post-cat-class',
@@ -57,12 +64,12 @@ if ( ! function_exists( 'applicator_func_post_tags' ) ) {
                     'Tag',
                     'post-tag-label',
                     'post-tag-lbl',
-                    esc_html__( 'Tags', 'applicator' ),
+                    esc_html__( 'Tags', $GLOBALS['apl_textdomain'] ),
                     'tags'
                 );
                 
                 printf( $GLOBALS['post_classification_mu'],
-                    esc_html__( 'Post Tag Classification', 'applicator' ),
+                    esc_html__( 'Post Tag Classification', $GLOBALS['apl_textdomain'] ),
                     $tags_list,
                     'post-tag-classification',
                     'post-tag-class',

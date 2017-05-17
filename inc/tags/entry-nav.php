@@ -13,18 +13,18 @@ if ( ! function_exists('apl_entry_nav' ) ) {
         $adjacent_navi_mu = '<span class="a_l %4$s-navi---a_l" rel="%5$s" title="%1$s"><span class="prop adjacent-navi---prop"><span class="word %5$s---word">%2$s</span> <span class="word entry---word">%3$s</span></span><span class="sep colon-sep">:</span> <span class="val post-title---val">%6$s</span></span>';
         
         $next_entry_navi = sprintf( $adjacent_navi_mu,
-            esc_attr__( 'Next Entry', 'applicator' ),
-            esc_html__( 'Next', 'applicator' ),
-            esc_html__( 'Entry', 'applicator' ),
+            esc_attr__( 'Next Entry', $GLOBALS['apl_textdomain'] ),
+            esc_html__( 'Next', $GLOBALS['apl_textdomain'] ),
+            esc_html__( 'Entry', $GLOBALS['apl_textdomain'] ),
             'next-entry',
             'next',
             '%title'
         );
         
         $prev_entry_navi = sprintf( $adjacent_navi_mu,
-            esc_attr__( 'Previous Entry', 'applicator' ),
-            esc_html__( 'Previous', 'applicator' ),
-            esc_html__( 'Entry', 'applicator' ),
+            esc_attr__( 'Previous Entry', $GLOBALS['apl_textdomain'] ),
+            esc_html__( 'Previous', $GLOBALS['apl_textdomain'] ),
+            esc_html__( 'Entry', $GLOBALS['apl_textdomain'] ),
             'prev-entry',
             'prev',
             '%title'
