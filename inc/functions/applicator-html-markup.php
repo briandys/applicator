@@ -31,12 +31,13 @@ function applicator_html( $args = array() ) {
 	}
 
 	// Define an icon.
-	if ( false === array_key_exists( 'type', $args ) ) {
-		return esc_html__( 'Please define type of Element.', $GLOBALS['apl_textdomain'] );
+	if ( false === array_key_exists( 'name', $args ) ) {
+		return esc_html__( 'Please define name of Element.', $GLOBALS['apl_textdomain'] );
 	}
     
     $defaults = array(
-        'type'      => '',
+        'type'      => 'c',
+        'elem'      => 'false',
         'name'      => '',
         'pri_css'   => '',
         'sec_css'   => '',
@@ -58,52 +59,72 @@ function applicator_html( $args = array() ) {
     
     $component_term_variations = array( 'component', 'cp', 'c' );
     $object_term_variations = array( 'object', 'obj', 'o' );
+    $element_a_term_variations = array( 'anchor', 'a' );
     
     
-    // Type
+    // Type: Component
     if ( in_array( $r['type'], $component_term_variations, true ) ) {
         $type_css = 'cp ';
-    } else if ( in_array( $r['type'], $object_term_variations, true ) ) {
-        $type_name = ' Object';
-        $type_css = 'obj ';
+    }
+    
+    // Type: Object
+    if ( in_array( $r['type'], $object_term_variations, true ) ) {
+        $type_name = ' ' . 'Object';
+        $type_css = 'obj' . ' ';
         $type_trailing_css = '-obj';
+    }
+    
+    // Type: Anchor
+    if ( in_array( $r['type'], $element_a_term_variations, true ) ) {
+        $type_css = 'a' . ' ';
     }
     
     if ( ! empty( $r['name'] ) ) {
         $name = preg_replace('/\s\s+/', ' ', trim( $r['name'] ) );
-        $sanitized_name = sanitize_title( ' ' . $r['name'] );
+        $sanitized_name = sanitize_title( $r['name'] );
     }
     
     if ( ! empty( $r['pri_css'] ) ) {
-        $pri_css = trim( $r['pri_css'] );
+        $pri_css = ' ' . trim( $r['pri_css'] );
     }
     
     if ( ! empty( $r['sec_css'] ) ) {
-        $sec_css = trim( $r['sec_css'] );
+        $sec_css = ' ' . trim( $r['sec_css'] );
     }
     
-    // Markup
     $output = '';
-    $output .= '<div class="' . $type_css . esc_attr( $sanitized_name ) . $type_trailing_css . esc_attr( $pri_css ) . '" data-name="' . esc_attr( $name ) . $type_name . '">';
+    
+    // Markup
+    if ( ! $r['elem'] ) {
+        $output .= '<div class="' . $type_css . esc_attr( $sanitized_name ) . $type_trailing_css . esc_attr( $pri_css ) . '" data-name="' . esc_attr( $name ) . $type_name . '">';
+    }
     
     if ( in_array( $r['type'], $component_term_variations, true ) ) {
-        $output .= '<div class="cr' . ' ' . esc_attr( $sec_css ) . '---cr">';
-            $output .= '<div class="hr' . ' ' . esc_attr( $sec_css ) . '---hr">';
-                $output .= '<div class="hr_cr' . ' ' . esc_attr( $sec_css ) . '---hr_cr">';
-                    $output .= '<div class="h' . ' ' . esc_attr( $sec_css ) . '---h"><span class="h_l' . ' ' . esc_attr( $sec_css ) . '---h_l">' . esc_html( $name ) . '</span></div>';
+        $output .= '<div class="cr' . esc_attr( $sec_css ) . '---cr">';
+            $output .= '<div class="hr' . esc_attr( $sec_css ) . '---hr">';
+                $output .= '<div class="hr_cr' . esc_attr( $sec_css ) . '---hr_cr">';
+                    $output .= '<div class="h' . esc_attr( $sec_css ) . '---h"><span class="h_l' . esc_attr( $sec_css ) . '---h_l">' . esc_html( $name ) . '</span></div>';
                 $output .= '</div>';
             $output .= '</div>';
-            $output .= '<div class="ct ' . esc_attr( $sec_css ) . '---ct">';
-                $output .= '<div class="ct_cr ' . esc_attr( $sec_css ) . '---ct_cr">';
+            $output .= '<div class="ct' . esc_attr( $sec_css ) . '---ct">';
+                $output .= '<div class="ct_cr' . esc_attr( $sec_css ) . '---ct_cr">';
                     $output .= $r['content'];
                 $output .= '</div>';
             $output .= '</div><!-- ct -->';
         $output .= '</div>';
-    } else {
+    }
+    
+    if ( in_array( $r['type'], $object_term_variations, true ) ) {
         $output .= $r['content'];
     }
     
-    $output .= '</div><!-- ' . esc_html( $name ) . $type_name . ' -->';
+    if ( in_array( $r['type'], $element_a_term_variations, true ) ) {
+        $output .= $r['content'];
+    }
+    
+    if ( ! $r['elem'] ) {
+        $output .= '</div><!-- ' . esc_html( $name ) . $type_name . ' -->';
+    }
     
     $html = apply_filters( 'applicator_html', $output, $args );
     

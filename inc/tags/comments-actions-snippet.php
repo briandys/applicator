@@ -246,31 +246,30 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
         // Status: Disabled
         } else {
             
-            // Display
-            $comments_ability_status = sprintf( $commenting_disabled_note_mu,
-                'Commenting Disabled Note',
-                'commenting-disabled-note',
-                'commenting-disabled-note',
-                '<p>' . esc_html__( 'Commenting is disabled.', $GLOBALS['apl_textdomain'] ) . '</p>'
-            );
+            // Content
+            $comments_ability_status = applicator_html( array (
+                'type'      => 'o',
+                'name'      => 'Commenting Disabled Note',
+                'sec_css'   => 'commenting-disabled-note',
+                'content'   => '<p>' . esc_html__( 'Commenting is disabled!', $GLOBALS['apl_textdomain'] ) . '</p>'
+            ) );
+            
         }
         
         // Content
-        $comments_ability = sprintf( $comments_ability_mu,
-            'Comments Ability',
-            'comments-ability',
-            'coms-ability',
-            $comments_ability_status
-        );
+        $comments_ability = applicator_html( array (
+            'name'      => 'Comments Ability',
+            'sec_css'   => 'coms-ability',
+            'content'   => $comments_ability_status
+        ) );
         
         // Display
         applicator_html( array (
-            'type'      => 'c',
             'name'      => 'Comments Actions Snippet',
-            'comments-actions-snippet' . ' ' . $comments_count_pop_stat_css . ' ' . $comment_creation_ability_stat_css,
+            'pri_css'   => $comments_count_pop_stat_css . ' ' . $comment_creation_ability_stat_css,
             'sec_css'   => 'coms-acts-snip',
             'content'   => $comments_population . $comments_ability,
-            'echo'   => true
+            'echo'      => true
         ) );
     }
 }
