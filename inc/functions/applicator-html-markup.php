@@ -56,14 +56,14 @@ function applicator_html( $args = array() ) {
     $pri_css = '';
     $sec_css = '';
     
-    $component_variations = array( 'component', 'cp', 'c' );
-    $object_variations = array( 'object', 'obj', 'o' );
+    $component_term_variations = array( 'component', 'cp', 'c' );
+    $object_term_variations = array( 'object', 'obj', 'o' );
     
     
     // Type
-    if ( in_array( $r['type'], $component_variations, true ) ) {
+    if ( in_array( $r['type'], $component_term_variations, true ) ) {
         $type_css = 'cp ';
-    } else if ( in_array( $r['type'], $object_variations, true ) ) {
+    } else if ( in_array( $r['type'], $object_term_variations, true ) ) {
         $type_name = ' Object';
         $type_css = 'obj ';
         $type_trailing_css = '-obj';
@@ -75,20 +75,30 @@ function applicator_html( $args = array() ) {
     }
     
     if ( ! empty( $r['pri_css'] ) ) {
-        $pri_css = ' ' . trim( $r['pri_css'] );
+        $pri_css = trim( $r['pri_css'] );
     }
     
     if ( ! empty( $r['sec_css'] ) ) {
-        $sec_css = ' ' . trim( $r['sec_css'] );
+        $sec_css = trim( $r['sec_css'] );
     }
     
     // Markup
     $output = '';
     $output .= '<div class="' . $type_css . esc_attr( $sanitized_name ) . $type_trailing_css . esc_attr( $pri_css ) . '" data-name="' . esc_attr( $name ) . $type_name . '">';
     
-    if ( in_array( $r['type'], $component_variations, true ) ) {
-        $output .= '<div class="h ' . esc_attr( $sec_css ) . '---h">' . esc_html( $name ) . '</div>';
-        $output .= '<div class="ct ' . esc_attr( $sec_css ) . '---ct">' . $r['content'] . '</div>';
+    if ( in_array( $r['type'], $component_term_variations, true ) ) {
+        $output .= '<div class="cr' . ' ' . esc_attr( $sec_css ) . '---cr">';
+            $output .= '<div class="hr' . ' ' . esc_attr( $sec_css ) . '---hr">';
+                $output .= '<div class="hr_cr' . ' ' . esc_attr( $sec_css ) . '---hr_cr">';
+                    $output .= '<div class="h' . ' ' . esc_attr( $sec_css ) . '---h"><span class="h_l' . ' ' . esc_attr( $sec_css ) . '---h_l">' . esc_html( $name ) . '</span></div>';
+                $output .= '</div>';
+            $output .= '</div>';
+            $output .= '<div class="ct ' . esc_attr( $sec_css ) . '---ct">';
+                $output .= '<div class="ct_cr ' . esc_attr( $sec_css ) . '---ct_cr">';
+                    $output .= $r['content'];
+                $output .= '</div>';
+            $output .= '</div><!-- ct -->';
+        $output .= '</div>';
     } else {
         $output .= $r['content'];
     }

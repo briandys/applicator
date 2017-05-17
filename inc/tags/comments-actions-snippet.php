@@ -264,11 +264,13 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
         );
         
         // Display
-        printf( $comments_actions_snippet_mu,
-            'Comments Actions Snippet',
+        applicator_html( array (
+            'type'      => 'c',
+            'name'      => 'Comments Actions Snippet',
             'comments-actions-snippet' . ' ' . $comments_count_pop_stat_css . ' ' . $comment_creation_ability_stat_css,
-            'coms-acts-snip',
-            $comments_population . $comments_ability
-        );
+            'sec_css'   => 'coms-acts-snip',
+            'content'   => $comments_population . $comments_ability,
+            'echo'   => true
+        ) );
     }
 }
