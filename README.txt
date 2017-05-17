@@ -143,9 +143,8 @@ Initial release
                         ******* post-banner-visual-obj (obj)
                         
                         ******* comments-actions-snippet (cp)
-                            ******** comments-count (cp)
-                                ********* comments-count-number-obj (obj)
-                            ******** add-comment-axn (axn)
+                            ******** comments-population (cp)
+                            ******** comments-ability (cp)
                     
                     ****** edit-post-axn (axn)
                     

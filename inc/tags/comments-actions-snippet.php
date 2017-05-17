@@ -3,6 +3,84 @@
 if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
     function applicator_func_comments_actions_snippet() {
         
+        // Markup
+        $comments_actions_snippet_mu = '<div class="cp %2$s" data-name="%1$s">';
+            $comments_actions_snippet_mu .= '<div class="cr %3$s---cr">';
+                $comments_actions_snippet_mu .= '<div class="hr %3$s---hr">';
+                    $comments_actions_snippet_mu .= '<div class="hr_cr %3$s---hr_cr">';
+                        $comments_actions_snippet_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h_l">%1$s</span></div>';
+                    $comments_actions_snippet_mu .= '</div>';
+                $comments_actions_snippet_mu .= '</div>';
+                $comments_actions_snippet_mu .= '<div class="ct %3$s---ct">';
+                        $comments_actions_snippet_mu .= '<div class="ct_cr %3$s---ct_cr">%4$s</div>';
+                $comments_actions_snippet_mu .= '</div><!-- ct -->';
+            $comments_actions_snippet_mu .= '</div>';
+        $comments_actions_snippet_mu .= '</div><!-- %1$s -->';
+        
+        // Markup
+        $comments_population_mu = '<div class="cp %2$s" data-name="%1$s">';
+            $comments_population_mu .= '<div class="cr %3$s---cr">';
+                $comments_population_mu .= '<div class="hr %3$s---hr">';
+                    $comments_population_mu .= '<div class="hr_cr %3$s---hr_cr">';
+                        $comments_population_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h_l">%1$s</span></div>';
+                    $comments_population_mu .= '</div>';
+                $comments_population_mu .= '</div>';
+                $comments_population_mu .= '<div class="ct %3$s---ct">';
+                        $comments_population_mu .= '<div class="ct_cr %3$s---ct_cr">%4$s</div>';
+                $comments_population_mu .= '</div><!-- ct -->';
+            $comments_population_mu .= '</div>';
+        $comments_population_mu .= '</div><!-- %1$s -->';
+        
+        // Markup
+        $comments_count_number_obj_mu = '<div class="obj %2$s" data-name="%1$s">';
+            $comments_count_number_obj_mu .= '<div class="g %3$s---g">%4$s</div>';
+        $comments_count_number_obj_mu .= '</div>';
+
+        // Markup
+        $coms_cnt_num_obj_a_l_mu = '<span class="a_l %6$s---a_l" title="%5$s"><span class="num %2$s---num">%1$s</span> <span class="txt %4$s---txt">%3$s</span></span>';
+
+        // Markup
+        $coms_cnt_num_obj_a_zero_mu = '<a class="a %3$s---a" href="%2$s#comments">%1$s</a>';
+        
+        // Markup
+        $comments_ability_mu = '<div class="cp %2$s" data-name="%1$s">';
+            $comments_ability_mu .= '<div class="cr %3$s---cr">';
+                $comments_ability_mu .= '<div class="hr %3$s---hr">';
+                    $comments_ability_mu .= '<div class="hr_cr %3$s---hr_cr">';
+                        $comments_ability_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h_l">%1$s</span></div>';
+                    $comments_ability_mu .= '</div>';
+                $comments_ability_mu .= '</div>';
+                $comments_ability_mu .= '<div class="ct %3$s---ct">';
+                        $comments_ability_mu .= '<div class="ct_cr %3$s---ct_cr">%4$s</div>';
+                $comments_ability_mu .= '</div><!-- ct -->';
+            $comments_ability_mu .= '</div>';
+        $comments_ability_mu .= '</div><!-- %1$s -->';
+
+        // Markup
+        $add_com_axn_mu = '<span class="obj axn %2$s" title="%9$s" data-name="%1$s">';
+            $add_com_axn_mu .= '<a class="a %3$s---a" href="%8$s"><span class="a_l %3$s---a_l">';
+                $add_com_axn_mu .= '<span class="txt %5$s---txt">%4$s</span>';
+                $add_com_axn_mu .= ' <span class="txt %7$s---txt">%6$s</span>';
+            $add_com_axn_mu .= '</span></a>';
+        $add_com_axn_mu .= '</span><!-- %1$s -->';
+
+        // Markup
+        $req_sign_in_lbl_obj_mu = ' <span class="obj note %2$s" data-name="%1$s">';
+            $req_sign_in_lbl_obj_mu .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l">';
+                $req_sign_in_lbl_obj_mu .= '%4$s';
+            $req_sign_in_lbl_obj_mu .= '</span></span>';
+        $req_sign_in_lbl_obj_mu .= '</span><!-- %1$s -->';
+        
+        // Markup
+        $commenting_disabled_note_mu = '<div class="obj note %2$s" data-name="%1$s">';
+            $commenting_disabled_note_mu .= '<div class="g %3$s---g">';
+                $commenting_disabled_note_mu .= '<div class="g_l %3$s---g_l">';
+                    $commenting_disabled_note_mu .= '%4$s';
+                $commenting_disabled_note_mu .= '</div>';
+            $commenting_disabled_note_mu .= '</div>';
+        $commenting_disabled_note_mu .= '</div><!-- %1$s -->';
+        
+        
         $comments_count_int = (int) get_comments_number( get_the_ID() );
 
         $comment_creation_css = 'comment-creation';
@@ -27,179 +105,170 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
             $comments_count_pop_stat_css = $comments_count_css . $status_populated_css . ' ' . $comments_count_css . '--single';
         } elseif ( 1 < $comments_count_int ) {
             $comments_count_pop_stat_css = $comments_count_css . $status_populated_css . ' ' . $comments_count_css . '--multiple';
-        } ?>
+        }
         
-        <div class="cp comments-actions-snippet <?php echo $comments_count_pop_stat_css . ' ' . $comment_creation_ability_stat_css ?>" data-name="Comments Actions Snippet">
-            <div class="cr coms-acts-snip---cr">
-                <div class="hr coms-acts-snip---hr">
-                    <div class="hr_cr coms-acts-snip---hr_cr">
-                        <div class="h coms-acts-snip---h"><span class="h_l coms-acts-snip---h_l"><?php esc_html_e( 'Comments Actions Snippet', $GLOBALS['apl_textdomain'] ); ?></span></div>
-                    </div>
-                </div>
-                <div class="ct coms-acts-snip---ct">
-                    <div class="ct_cr coms-acts-snip---ct_cr">
-                        
-                        <div class="cp comments-count" data-name="Comments Count">
-                            <div class="cr coms-cnt---cr">
-                                <div class="hr coms-cnt---hr">
-                                    <div class="hr_cr coms-cnt---hr_cr">
-                                        <div class="h coms-cnt---h"><span class="h_l coms-cnt---h_l">Comments Count</span></div>
-                                    </div>
-                                </div>
-                                <div class="ct coms-cnt---ct">
-                                    <div class="ct_cr coms-cnt---ct_cr">
-                                        <div class="obj comments-count-number-obj" data-name="Comments Count Object">
-                                            <span class="g coms-cnt-num-obj---g">
+        
+        // Comments Population
+        if ( ! is_singular() ) {
+            $coms_cnt_num_obj_a_zero_link = esc_url( get_permalink() );
+        } else {
+            $coms_cnt_num_obj_a_zero_link = '';
+        }
+        
+        $coms_cnt_num_obj = 'coms-cnt-num-obj';
 
-                                            <?php
-                                            // Markup
-                                            $coms_cnt_num_obj_a_l_mu = '<span class="a_l coms-cnt-num-obj---a_l" title="%5$s"><span class="num %2$s---num">%1$s</span> <span class="txt %4$s---txt">%3$s</span></span>';
+        $comments_count_zero = sprintf( $coms_cnt_num_obj_a_l_mu,
+            esc_html__( '0', $GLOBALS['apl_textdomain'] ),
+            'comments-count',
+            esc_html__( 'Comment', $GLOBALS['apl_textdomain'] ),
+            'comment',
+            esc_attr__( '0 Comment', $GLOBALS['apl_textdomain'] ),
+            $coms_cnt_num_obj
+        );
 
-                                            if ( ! is_singular() ) {
-                                                $coms_cnt_num_obj_a_zero_link = esc_url( get_permalink() );
-                                            } else {
-                                                $coms_cnt_num_obj_a_zero_link = '';
-                                            }
+        $comments_count_single = sprintf( $coms_cnt_num_obj_a_l_mu,
+            esc_html__( '1', $GLOBALS['apl_textdomain'] ),
+            'comments-count',
+            esc_html__( 'Comment', $GLOBALS['apl_textdomain'] ),
+            'comment',
+            esc_attr__( '1 Comment', $GLOBALS['apl_textdomain'] ),
+            $coms_cnt_num_obj
+        );
 
-                                            // Markup
-                                            $coms_cnt_num_obj_a_zero_mu = '<a class="a coms-cnt-num-obj---a" href="%2$s#comments">%1$s</a>';
+        $comments_population_multi = sprintf( $coms_cnt_num_obj_a_l_mu,
+            esc_html__( '%', $GLOBALS['apl_textdomain'] ),
+            'comments-count',
+            esc_html__( 'Comments', $GLOBALS['apl_textdomain'] ),
+            'comments',
+            esc_attr__( '% Comments', $GLOBALS['apl_textdomain'] ),
+            $coms_cnt_num_obj
+        );
+        
+        // Content
+        $coms_cnt_num_obj_a_zero = sprintf( $coms_cnt_num_obj_a_zero_mu,
+            $comments_count_zero,
+            $coms_cnt_num_obj_a_zero_link,
+            $coms_cnt_num_obj
+        );
 
-                                            $comments_count_zero = sprintf( $coms_cnt_num_obj_a_l_mu,
-                                                esc_html__( '0', $GLOBALS['apl_textdomain'] ),
-                                                'comments-count',
-                                                esc_html__( 'Comment', $GLOBALS['apl_textdomain'] ),
-                                                'comment',
-                                                esc_attr__( '0 Comment', $GLOBALS['apl_textdomain'] )
-                                            );
+        // Status: Populated
+        if( $comments_count_int >= 1 ) {
 
-                                            $comments_count_single = sprintf( $coms_cnt_num_obj_a_l_mu,
-                                                esc_html__( '1', $GLOBALS['apl_textdomain'] ),
-                                                'comments-count',
-                                                esc_html__( 'Comment', $GLOBALS['apl_textdomain'] ),
-                                                'comment',
-                                                esc_attr__( '1 Comment', $GLOBALS['apl_textdomain'] )
-                                            );
+            // Content
+            $comments_count = sprintf( get_comments_popup_link(
+                // Zero Comment
+                '',
 
-                                            $comments_count_multi = sprintf( $coms_cnt_num_obj_a_l_mu,
-                                                esc_html__( '%', $GLOBALS['apl_textdomain'] ),
-                                                'comments-count',
-                                                esc_html__( 'Comments', $GLOBALS['apl_textdomain'] ),
-                                                'comments',
-                                                esc_attr__( '% Comments', $GLOBALS['apl_textdomain'] )
-                                            );
+                // Single Comment
+                $comments_count_single,
 
-                                            $coms_cnt_num_obj_a_zero = sprintf( $coms_cnt_num_obj_a_zero_mu,
-                                                $comments_count_zero,
-                                                $coms_cnt_num_obj_a_zero_link
-                                            );
+                // Multiple Comments
+                $comments_population_multi,
 
-                                            // Status: Populated
-                                            if( $comments_count_int >= 1 ) {
+                // CSS Class
+                'a' . ' ' . $coms_cnt_num_obj . '---a',
 
-                                                comments_popup_link(
-                                                    // Zero Comment
-                                                    '',
+                // Comments Disabled
+                ''
+            ) );
 
-                                                    // Single Comment
-                                                    $comments_count_single,
+        // Status: Empty
+        } else {
 
-                                                    // Multiple Comments
-                                                    $comments_count_multi,
+            // Content
+            $comments_count = sprintf( $coms_cnt_num_obj_a_zero );
+        }
+        
+        // Content
+        $comments_count_number_obj = sprintf( $comments_count_number_obj_mu,
+            'Comments Count Number Object',
+            'comments-count-number-obj',
+            'coms-cnt-num-obj',
+            $comments_count
+        );
+        
+        // Content
+        $comments_population = sprintf( $comments_population_mu,
+            'Comments Count',
+            'comments-count',
+            'coms-cnt',
+            $comments_count_number_obj
+        );
+        
+        
+        // Comments Ability
+        // Status: Enabled
+        if ( comments_open() ) {
 
-                                                    // CSS Class
-                                                    'a coms-cnt-num-obj---a',
+            // Add Comment Action Anchor
+            if ( is_singular() ) {
+                if ( ! is_user_logged_in() && get_option( 'comment_registration' ) ) {
+                    $add_com_axn_anchor = '#respond';
+                } else {
+                    $add_com_axn_anchor = '#comment';
+                }
+            } else {
+                if ( ! is_user_logged_in() && get_option( 'comment_registration' ) ) {
+                    $add_com_axn_anchor = esc_url( get_permalink() ) . '#respond';
+                } else {
+                    $add_com_axn_anchor = esc_url( get_permalink() ) . '#comment';
+                }
+            }
 
-                                                    // Comments Disabled
-                                                    ''
-                                                );
+            // Content
+            $add_com_axn = sprintf( $add_com_axn_mu,
+                'Add Comment Action',
+                'add-comment-axn',
+                'add-com-axn',
+                esc_html__( 'Add', $GLOBALS['apl_textdomain'] ),
+                'add',
+                esc_html__( 'Comment', $GLOBALS['apl_textdomain'] ),
+                'comment',
+                $add_com_axn_anchor,
+                esc_attr__( 'Add Comment', $GLOBALS['apl_textdomain'] )
+            );
 
-                                            // Status: Empty
-                                            } else {
-                                                printf( $coms_cnt_num_obj_a_zero );
-                                            } ?>
-                                                
-                                            </span>
-                                        </div><!-- Comments Count Object -->
-                                    </div>
-                                </div><!-- ct -->
-                            </div>
-                        </div><!-- Comments Count -->
+            if ( ! is_user_logged_in() && get_option( 'comment_registration' ) ) {
 
-                        <?php // Status: Enabled
-                        if ( comments_open() ) {
-                            
-                            // Markup
-                            $add_com_axn_mu = '<span class="obj axn %2$s" title="%9$s" data-name="%1$s">';
-                                $add_com_axn_mu .= '<a class="a %3$s---a" href="%8$s"><span class="a_l %3$s---a_l">';
-                                    $add_com_axn_mu .= '<span class="txt %5$s---txt">%4$s</span>';
-                                    $add_com_axn_mu .= ' <span class="txt %7$s---txt">%6$s</span>';
-                                $add_com_axn_mu .= '</span></a>';
-                            $add_com_axn_mu .= '</span><!-- %1$s -->';
-                            
-                            // Markup
-                            $req_sign_in_lbl_obj_mu = ' <span class="obj note %2$s" data-name="%1$s">';
-                                $req_sign_in_lbl_obj_mu .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l">%4$s</span></span>';
-                            $req_sign_in_lbl_obj_mu .= '</span><!-- %1$s -->';
-                            
-                            // Add Comment Action Anchor
-                            if ( is_singular() ) {
-                                if ( ! is_user_logged_in() && get_option( 'comment_registration' ) ) {
-                                    $add_com_axn_anchor = '#respond';
-                                } else {
-                                    $add_com_axn_anchor = '#comment';
-                                }
-                            } else {
-                                if ( ! is_user_logged_in() && get_option( 'comment_registration' ) ) {
-                                    $add_com_axn_anchor = esc_url( get_permalink() ) . '#respond';
-                                } else {
-                                    $add_com_axn_anchor = esc_url( get_permalink() ) . '#comment';
-                                }
-                            }
-                            
-                            // Content
-                            $req_sign_in_lbl_obj = sprintf( $req_sign_in_lbl_obj_mu,
-                                'Requires Sign In Label Object',
-                                'requires-sign-in-label-obj',
-                                'req-sign-in-lbl-obj',
-                                esc_html__( '(requires Sign In)', $GLOBALS['apl_textdomain'] )
-                            );
-                            
-                            // Content
-                            $add_com_axn = sprintf( $add_com_axn_mu,
-                                'Add Comment Action',
-                                'add-comment-axn',
-                                'add-com-axn',
-                                esc_html__( 'Add', $GLOBALS['apl_textdomain'] ),
-                                'add',
-                                esc_html__( 'Comment', $GLOBALS['apl_textdomain'] ),
-                                'comment',
-                                $add_com_axn_anchor,
-                                esc_attr__( 'Add Comment', $GLOBALS['apl_textdomain'] )
-                            );
-                        
-                            printf( $add_com_axn );
-                            
-                            if ( ! is_user_logged_in() && get_option( 'comment_registration' ) ) {
-                                printf( $req_sign_in_lbl_obj );
-                            }
-                        
-                        // Status: Disabled
-                        } else { ?>
+                // Content
+                $req_sign_in_lbl_obj = sprintf( $req_sign_in_lbl_obj_mu,
+                    'Requires Sign In Label Object',
+                    'requires-sign-in-label-obj',
+                    'req-sign-in-lbl-obj',
+                    esc_html__( '(requires Sign In)', $GLOBALS['apl_textdomain'] )
+                );
+            } else {
+                $req_sign_in_lbl_obj = '';
+            }
 
-                        <div class="obj note commenting-disabled-note" data-name="Commenting Disabled Note">
-                            <div class="g commenting-disabled-note---g">
-                                <div class="g_l commenting-disabled-note---g_l">
-                                    <p><?php esc_html_e( 'Commenting is disabled.', $GLOBALS['apl_textdomain'] ); ?></p>
-                                </div>
-                            </div>
-                        </div><!-- Commenting Disabled Note -->
+            $comments_ability_status = sprintf( $add_com_axn . $req_sign_in_lbl_obj );
 
-                        <?php } ?>
-
-                    </div>
-                </div><!-- ct -->
-            </div>
-        </div><!-- Comments Actions Snippet -->
-
-    <?php }
+        // Status: Disabled
+        } else {
+            
+            // Display
+            $comments_ability_status = sprintf( $commenting_disabled_note_mu,
+                'Commenting Disabled Note',
+                'commenting-disabled-note',
+                'commenting-disabled-note',
+                '<p>' . esc_html__( 'Commenting is disabled.', $GLOBALS['apl_textdomain'] ) . '</p>'
+            );
+        }
+        
+        // Content
+        $comments_ability = sprintf( $comments_ability_mu,
+            'Comments Ability',
+            'comments-ability',
+            'coms-ability',
+            $comments_ability_status
+        );
+        
+        // Display
+        printf( $comments_actions_snippet_mu,
+            'Comments Actions Snippet',
+            'comments-actions-snippet' . ' ' . $comments_count_pop_stat_css . ' ' . $comment_creation_ability_stat_css,
+            'coms-acts-snip',
+            $comments_population . $comments_ability
+        );
+    }
 }

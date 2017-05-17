@@ -15,7 +15,7 @@ $GLOBALS['post_classification_mu'] = '<div class="cp %3$s">';
 $GLOBALS['post_classification_mu'] .= '</div><!-- %1$s -->';
 
 $GLOBALS['post_classification_lbl_mu'] = '<span class="obj %2$s" data-name="Post %1$s Label">';
-    $GLOBALS['post_classification_lbl_mu'] .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l"><span class="txt %5$s---txt">%4$s</span><span class="sep colon---sep">:</span></span></span>';
+    $GLOBALS['post_classification_lbl_mu'] .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l"><span class="txt %5$s---txt">%4$s</span></span></span>';
 $GLOBALS['post_classification_lbl_mu'] .= '</span>';
 
 if ( ! function_exists( 'applicator_func_post_categories' ) ) {

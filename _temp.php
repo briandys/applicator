@@ -1,75 +1,81 @@
-<?php
+<?php // Status: Enabled
+if ( comments_open() ) {
 
-// If there is a post
-    if ( is_single() || ( is_home() && ! is_front_page() ) || ( is_page() && ! is_front_page() ) ) {
-        $title = single_post_title( '', false );
-    }
- 
-    // If there's a post type archive
-    if ( is_post_type_archive() ) {
-        $post_type = get_query_var( 'post_type' );
-        if ( is_array( $post_type ) ) {
-            $post_type = reset( $post_type );
+    // Add Comment Action Anchor
+    if ( is_singular() ) {
+        if ( ! is_user_logged_in() && get_option( 'comment_registration' ) ) {
+            $add_com_axn_anchor = '#respond';
+        } else {
+            $add_com_axn_anchor = '#comment';
         }
-        $post_type_object = get_post_type_object( $post_type );
-        if ( ! $post_type_object->has_archive ) {
-            $title = post_type_archive_title( '', false );
+    } else {
+        if ( ! is_user_logged_in() && get_option( 'comment_registration' ) ) {
+            $add_com_axn_anchor = esc_url( get_permalink() ) . '#respond';
+        } else {
+            $add_com_axn_anchor = esc_url( get_permalink() ) . '#comment';
         }
     }
- 
-    // If there's a category or tag
-    if ( is_category() || is_tag() ) {
-        $title = single_term_title( '', false );
+
+    // Markup
+    $add_com_axn_mu = '<div class="obj axn %2$s" title="%9$s" data-name="%1$s">';
+        $add_com_axn_mu .= '<a class="a %3$s---a" href="%8$s"><span class="a_l %3$s---a_l">';
+            $add_com_axn_mu .= '<span class="txt %5$s---txt">%4$s</span>';
+            $add_com_axn_mu .= ' <span class="txt %7$s---txt">%6$s</span>';
+        $add_com_axn_mu .= '</span></a>';
+    $add_com_axn_mu .= '</div><!-- %1$s -->';
+
+    // Markup
+    $req_sign_in_lbl_obj_mu = ' <span class="obj note %2$s" data-name="%1$s">';
+        $req_sign_in_lbl_obj_mu .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l">';
+            $req_sign_in_lbl_obj_mu .= '%4$s';
+        $req_sign_in_lbl_obj_mu .= '</span></span>';
+    $req_sign_in_lbl_obj_mu .= '</span><!-- %1$s -->';
+
+    // Content
+    $add_com_axn = sprintf( $add_com_axn_mu,
+        'Add Comment Action',
+        'add-comment-axn',
+        'add-com-axn',
+        esc_html__( 'Add', $GLOBALS['apl_textdomain'] ),
+        'add',
+        esc_html__( 'Comment', $GLOBALS['apl_textdomain'] ),
+        'comment',
+        $add_com_axn_anchor,
+        esc_attr__( 'Add Comment', $GLOBALS['apl_textdomain'] )
+    );
+
+    if ( ! is_user_logged_in() && get_option( 'comment_registration' ) ) {
+        
+        // Content
+        $req_sign_in_lbl_obj = sprintf( $req_sign_in_lbl_obj_mu,
+            'Requires Sign In Label Object',
+            'requires-sign-in-label-obj',
+            'req-sign-in-lbl-obj',
+            esc_html__( '(requires Sign In)', $GLOBALS['apl_textdomain'] )
+        );
+    } else {
+        $req_sign_in_lbl_obj = '';
     }
- 
-    // If there's a taxonomy
-    if ( is_tax() ) {
-        $term = get_queried_object();
-        if ( $term ) {
-            $tax   = get_taxonomy( $term->taxonomy );
-            $title = single_term_title( $tax->labels->name . $t_sep, false );
-        }
-    }
- 
-    // If there's an author
-    if ( is_author() && ! is_post_type_archive() ) {
-        $author = get_queried_object();
-        if ( $author ) {
-            $title = $author->display_name;
-        }
-    }
- 
-    // Post type archives with has_archive should override terms.
-    if ( is_post_type_archive() && $post_type_object->has_archive ) {
-        $title = post_type_archive_title( '', false );
-    }
- 
-    // If there's a month
-    if ( is_archive() && ! empty( $m ) ) {
-        $my_year  = substr( $m, 0, 4 );
-        $my_month = $wp_locale->get_month( substr( $m, 4, 2 ) );
-        $my_day   = intval( substr( $m, 6, 2 ) );
-        $title    = $my_year . ( $my_month ? $t_sep . $my_month : '' ) . ( $my_day ? $t_sep . $my_day : '' );
-    }
- 
-    // If there's a year
-    if ( is_archive() && ! empty( $year ) ) {
-        $title = $year;
-        if ( ! empty( $monthnum ) ) {
-            $title .= $t_sep . $wp_locale->get_month( $monthnum );
-        }
-        if ( ! empty( $day ) ) {
-            $title .= $t_sep . zeroise( $day, 2 );
-        }
-    }
- 
-    // If it's a search
-    if ( is_search() ) {
-        /* translators: 1: separator, 2: search phrase */
-        $title = sprintf( __( 'Search Results %1$s %2$s' ), $t_sep, strip_tags( $search ) );
-    }
- 
-    // If it's a 404 page
-    if ( is_404() ) {
-        $title = __( 'Page not found' );
-    }
+    
+    printf( $add_com_axn . $req_sign_in_lbl_obj );
+
+// Status: Disabled
+} else {
+
+    // Markup
+    $commenting_disabled_note_mu = '<div class="obj note %2$s" data-name="%1$s">';
+        $commenting_disabled_note_mu .= '<div class="g %3$s---g">';
+            $commenting_disabled_note_mu .= '<div class="g_l %3$s---g_l">';
+                $commenting_disabled_note_mu .= '%4$s';
+            $commenting_disabled_note_mu .= '</div>';
+        $commenting_disabled_note_mu .= '</div>';
+    $commenting_disabled_note_mu .= '</div><!-- %1$s -->';
+
+    // Display
+    printf( $commenting_disabled_note_mu,
+        'Commenting Disabled Note',
+        'commenting-disabled-note',
+        'commenting-disabled-note',
+        '<p>' . esc_html__( 'Commenting is disabled.', $GLOBALS['apl_textdomain'] ) . '</p>'
+    );
+}

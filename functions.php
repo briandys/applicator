@@ -61,6 +61,9 @@ if ( file_exists( $main_content_headings ) ) { require_once( $main_content_headi
 
 
 // Comments
+$comments = get_parent_theme_file_path( '/inc/functions/comments.php' );
+if ( file_exists( $comments ) ) { require_once( $comments ); }
+
 $comments_actions_snippet = get_parent_theme_file_path( '/inc/tags/comments-actions-snippet.php' );
 if ( file_exists( $comments_actions_snippet ) ) { require_once( $comments_actions_snippet ); }
 
