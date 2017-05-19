@@ -85,23 +85,23 @@ function applicator_html_mco( $args = array() ) {
     
     
     // Type: Component
-    if ( in_array( $r['type'], $component_term_variations, true ) == $r['type'] ) {
+    if ( in_array( $r['type'], $component_term_variations, true ) ) {
         $type_css = 'cp ';
         $layout_tag = $div;
         
-        if ( in_array( $r['layout'], $inline_term_variations, true ) == $r['layout'] ) {
+        if ( in_array( $r['layout'], $inline_term_variations, true ) ) {
             $layout_tag = $span;
         }
     }
     
     // Type: Object
-    if ( in_array( $r['type'], $object_term_variations, true ) == $r['type'] ) {
+    if ( in_array( $r['type'], $object_term_variations, true ) ) {
         $type_name = ' ' . 'Object';
         $type_css = $obj_css . ' ';
         $type_trailing_css = '-' . $obj_css;
         $layout_tag = $span;
         
-        if ( in_array( $r['layout'], $block_term_variations, true ) == $r['layout'] ) {
+        if ( in_array( $r['layout'], $block_term_variations, true ) ) {
             $layout_tag = $div;
         }
         
@@ -136,7 +136,7 @@ function applicator_html_mco( $args = array() ) {
         // Markup
         $output .= '<' . $layout_tag . ' class="' . $type_css . esc_attr( $sanitized_name ) . $type_trailing_css . esc_attr( $pri_css ) . '"' . $title . ' data-name="' . esc_attr( $name ) . $type_name . '">';
 
-        if ( ! in_array( $r['type'], $object_term_variations, true ) == $r['type'] ) {
+        if ( ! in_array( $r['type'], $object_term_variations, true ) ) {
             $output .= '<' . $layout_tag . ' class="cr' . esc_attr( $sec_css ) . '---cr">';
                 $output .= '<' . $layout_tag . ' class="hr' . esc_attr( $sec_css ) . '---hr">';
                     $output .= '<' . $layout_tag . ' class="hr_cr' . esc_attr( $sec_css ) . '---hr_cr">';
@@ -151,7 +151,7 @@ function applicator_html_mco( $args = array() ) {
             $output .= '</' . $layout_tag . '>';
         }
 
-        if ( in_array( $r['type'], $object_term_variations, true ) == $r['type'] ) {
+        if ( in_array( $r['type'], $object_term_variations, true ) ) {
             $output .= $r['content'];
         }
 
@@ -185,8 +185,10 @@ function applicator_html_e( $args = array() ) {
     $defaults = array(
         'type'      => '',
         'linked'    => false,
-        'datetime'  => '',
-        'href'      => '',
+        'attr'      => array(
+            'datetime'  => '',
+            'href'      => ''
+        ),
         'sec_css'   => '',
         'content'   => '',
         'version'   => '',
@@ -210,12 +212,12 @@ function applicator_html_e( $args = array() ) {
         $sec_css = ' ' . trim( $r['type'] );
     }
     
-    if ( $r['datetime'] ) {
-        $datetime_attr = 'datetime="' . trim( $r['datetime'] ) . '"';
+    if ( $r['attr']['datetime'] ) {
+        $datetime_attr = 'datetime="' . trim( $r['attr']['datetime'] ) . '"';
     }
     
-    if ( $r['href'] ) {
-        $href_attr = 'href="' . trim( $r['href'] ) . '"';
+    if ( $r['attr']['href'] ) {
+        $href_attr = 'href="' . trim( $r['attr']['href'] ) . '"';
     }
     
     
@@ -234,7 +236,7 @@ function applicator_html_e( $args = array() ) {
         
         $output = '';
         
-        if ( in_array( $r['type'], $generic_term_variations, true ) == $r['type'] ) {
+        if ( in_array( $r['type'], $generic_term_variations, true ) ) {
             
             // Markup
             $output .= '<span class="g' . esc_attr( $sec_css ) . '---g">';
@@ -251,7 +253,7 @@ function applicator_html_e( $args = array() ) {
             
         }
     
-        if ( in_array( $r['type'], $time_term_variations, true ) == $r['type'] ) {
+        if ( in_array( $r['type'], $time_term_variations, true ) ) {
             
             // Markup
             $output .= '<time class="time' . esc_attr( $sec_css ) . '---time" ' . $datetime_attr . '>';
@@ -268,7 +270,7 @@ function applicator_html_e( $args = array() ) {
             
         }
     
-        if ( in_array( $r['type'], $anchor_term_variations, true ) == $r['type'] ) {
+        if ( in_array( $r['type'], $anchor_term_variations, true ) ) {
             
             // Markup
             $output .= $anchor_mu;
@@ -278,6 +280,66 @@ function applicator_html_e( $args = array() ) {
     }
     
     $html = apply_filters( 'applicator_html_e', $output, $args );
+    
+    if ( $r['echo'] ) {
+        echo $html;
+    } else {
+        return $html;
+    }
+}
+
+
+function applicator_html_t( $args = array() ) {
+    
+    // Make sure $args are an array.
+	if ( empty( $args ) ) {
+		return esc_html_e( 'Please define default parameters in the form of an array.', $GLOBALS['apl_textdomain'] );
+	}
+    
+    // Require Type
+	if ( false === array_key_exists( 'type', $args ) ) {
+		return esc_html_e( 'Please define Type.', $GLOBALS['apl_textdomain'] );
+	}
+    
+    $defaults = array(
+        'type'      => '',
+        'txt_css'   => '',
+        'content'   => '',
+        'version'   => '',
+        'echo'      => false
+    );
+    
+    // Parse args
+    $r = wp_parse_args( $args, $defaults );
+    
+    
+    $txt_css = '';
+    
+    $text_term_variations = array( 'text', 'txt', 't' );
+    
+    if ( $r['content'] ) {
+        $content = preg_replace('/\s\s+/', ' ', trim( $r['content'] ) );
+        $sanitized_content = sanitize_title( $content );
+    }
+    
+    if ( $r['txt_css'] ) {
+        $txt_css = ' ' . trim( $r['txt_css'] ) . ' ' . $sanitized_content;
+    } else {
+        $txt_css = ' ' . $sanitized_content;
+    }
+    
+    
+    if ( '0.1' == $r['version'] ) {
+        
+        $output = '';
+        
+    } else {
+        
+        $output = '<span class="txt' . esc_attr( $txt_css ) . '---txt">' . $r['content'] . '</span>';
+        
+    }
+    
+    $html = apply_filters( 'applicator_html_t', $output, $args );
     
     if ( $r['echo'] ) {
         echo $html;

@@ -42,32 +42,34 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         
         $post_published_sec_css = 'post-pub';
         $post_published_label_obj_sec_css = $post_published_sec_css . '-lbl-obj';
+        $post_published_date_stamp_obj_sec_css = $post_published_sec_css . '-ds-obj';
+        $post_published_time_stamp_obj_sec_css = $post_published_sec_css . '-ts-obj';
         
         
         /* ------------ Post Published Label (obj) ---------- */
         
-        // Markup - Text
-        $post_published_modified_label_obj_txt_mu = '<span class="txt %2$s---txt">%1$s</span>';
-        $post_published_modified_label_obj_txt_mu .= ' <span class="txt %4$s---txt">%3$s</span>';
-        
         // Content - Text
-        $post_published_label_obj_txt = sprintf( $post_published_modified_label_obj_txt_mu,
-            esc_html__( 'Published', $GLOBALS['apl_textdomain'] ),
-                'published',
-            esc_html__( 'on', $GLOBALS['apl_textdomain'] ),
-                'on'
-        );
+        $published_txt = applicator_html_t( array(
+            'type'      => 't',
+            'content'   => esc_html__( 'Published', $GLOBALS['apl_textdomain'] )
+        ) );
+        
+        $on_txt = applicator_html_t( array(
+            'type'      => 't',
+            'content'   => esc_html__( 'on', $GLOBALS['apl_textdomain'] )
+        ) );
         
         // Content - Element
         $post_published_label_obj_elem = applicator_html_e( array(
             'type'      => 'g',
             'sec_css'   => $post_published_label_obj_sec_css,
-            'content'   => $post_published_label_obj_txt
+            'content'   => $published_txt . ' ' . $on_txt
         ) );
         
         // Content - Object
         $post_published_label_obj = applicator_html_mco( array(
             'type'      => 'o',
+            'layout'      => 'i',
             'name'      => 'Post Published Label',
             'sec_css'   => $post_published_label_obj_sec_css,
             'content'   => $post_published_label_obj_elem
@@ -91,24 +93,17 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
                 'year'
         );
         
-        // Markup - Element
-        $post_published_modified_date_time_stamp_obj_elem_mu = '<time class="time %2$s---time" datetime="%3$s">';
-            $post_published_modified_date_time_stamp_obj_elem_mu .= '<a class="a %2$s---a" href="%4$s">';
-                $post_published_modified_date_time_stamp_obj_elem_mu .= '<span class="a_l %2$s---a_l">';
-                    $post_published_modified_date_time_stamp_obj_elem_mu .= '%1$s';
-                $post_published_modified_date_time_stamp_obj_elem_mu .= '</span>';
-            $post_published_modified_date_time_stamp_obj_elem_mu .= '</a>';
-        $post_published_modified_date_time_stamp_obj_elem_mu .= '</time>';
-        
-        $post_published_date_stamp_obj_sec_css = $post_published_sec_css . '-ds-obj';
-        
         // Content - Element
-        $post_published_date_stamp_obj_elem = sprintf( $post_published_modified_date_time_stamp_obj_elem_mu,
-            $post_published_date_stamp_obj_txt,
-            $post_published_date_stamp_obj_sec_css,
-            get_the_date( DATE_W3C ),
-            esc_url( get_permalink() )
-        );
+        $post_published_date_stamp_obj_elem = applicator_html_e( array(
+            'type'      => 't',
+            'linked'    => true,
+            'attr'      => array(
+                'datetime'  => get_the_date( DATE_W3C ),
+                'href'      => esc_url( get_permalink() )
+            ),
+            'sec_css'   => $post_published_date_stamp_obj_sec_css,
+            'content'   => $post_published_date_stamp_obj_txt
+        ) );
         
         // Content - Object
         $post_published_date_stamp_obj = applicator_html_mco( array(
@@ -139,15 +134,17 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
                 'seconds'
         );
         
-        $post_published_time_stamp_obj_sec_css = $post_published_sec_css . '-ts-obj';
-        
         // Content - Element
-        $post_published_time_stamp_obj_elem = sprintf( $post_published_modified_date_time_stamp_obj_elem_mu,
-            $post_published_time_stamp_obj_txt,
-            $post_published_time_stamp_obj_sec_css,
-            get_the_date( DATE_W3C ),
-            esc_url( get_permalink() )
-        );
+        $post_published_time_stamp_obj_elem = applicator_html_e( array(
+            'type'      => 't',
+            'linked'    => true,
+            'attr'      => array(
+                'datetime'  => get_the_date( DATE_W3C ),
+                'href'      => esc_url( get_permalink() )
+            ),
+            'sec_css'   => $post_published_time_stamp_obj_sec_css,
+            'content'   => $post_published_time_stamp_obj_txt
+        ) );
         
         // Content - Object
         $post_published_time_stamp_obj = applicator_html_mco( array(
@@ -184,6 +181,8 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         
         $post_modified_sec_css = 'post-mod';
         $post_modified_label_obj_sec_css = $post_modified_sec_css . '-lbl-obj';
+        $post_modified_date_stamp_obj_sec_css = $post_modified_sec_css . '-ds-obj';
+        $post_modified_time_stamp_obj_sec_css = $post_modified_sec_css . '-ts-obj';
         
         
         /* ------------ Post Modified Label (obj) ---------- */
@@ -224,15 +223,17 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
                 'year'
         );
         
-        $post_modified_date_stamp_obj_sec_css = 'post-mod-ds-obj';
-        
         // Content - Element
-        $post_modified_date_stamp_obj_elem = sprintf( $post_published_modified_date_time_stamp_obj_elem_mu,
-            $post_modified_date_stamp_obj_txt,
-            $post_modified_date_stamp_obj_sec_css,
-            get_the_modified_date( DATE_W3C ),
-            esc_url( get_permalink() )
-        );
+        $post_modified_date_stamp_obj_elem = applicator_html_e( array(
+            'type'      => 't',
+            'linked'    => true,
+            'attr'      => array(
+                'datetime'  => get_the_modified_date( DATE_W3C ),
+                'href'      => esc_url( get_permalink() )
+            ),
+            'sec_css'   => $post_modified_date_stamp_obj_sec_css,
+            'content'   => $post_modified_date_stamp_obj_txt
+        ) );
         
         // Content - Object
         $post_modified_date_stamp_obj = applicator_html_mco( array(
@@ -256,15 +257,17 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
                 'seconds'
         );
         
-        $post_modified_time_stamp_obj_sec_css = $post_modified_sec_css . '-ts-obj';
-        
         // Content - Element
-        $post_modified_time_stamp_obj_elem = sprintf( $post_published_modified_date_time_stamp_obj_elem_mu,
-            $post_modified_time_stamp_obj_txt,
-            $post_modified_time_stamp_obj_sec_css,
-            get_the_modified_date( DATE_W3C ),
-            esc_url( get_permalink() )
-        );
+        $post_modified_time_stamp_obj_elem = applicator_html_e( array(
+            'type'      => 't',
+            'linked'    => true,
+            'attr'      => array(
+                'datetime'  => get_the_modified_date( DATE_W3C ),
+                'href'      => esc_url( get_permalink() )
+            ),
+            'sec_css'   => $post_modified_time_stamp_obj_sec_css,
+            'content'   => $post_modified_time_stamp_obj_txt
+        ) );
         
         // Content - Object
         $post_modified_time_stamp_obj = applicator_html_mco( array(
@@ -303,36 +306,6 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
             'name'      => 'Post Published, Modified',
             'sec_css'   => 'post-pub-mod',
             'content'   => $post_published . $post_modified,
-            'echo'      => true
-        ) );
-        
-        
-        
-        
-        // Content - Component
-        $post_published_modifiedx = applicator_html_e( array(
-            'type'      => 'g',
-            'sec_css'   => 'boo-yeah',
-            'content'   => 'Boo Yeah',
-            'echo'      => true
-        ) );
-        
-        // Content - Component
-        $post_published_modifiedxx = applicator_html_e( array(
-            'type'      => 't',
-            'linked'    => true,
-            'href'      => '#',
-            'sec_css'   => 'super-time',
-            'datetime'  => 'Time to Sleep',
-            'content'   => 'Ow Clock',
-            'echo'      => true
-        ) );
-        
-        // Content - Component
-        $post_published_modifiedxxx = applicator_html_e( array(
-            'type'      => 'a',
-            'href'      => '#',
-            'content'   => 'This is a link.',
             'echo'      => true
         ) );
     
