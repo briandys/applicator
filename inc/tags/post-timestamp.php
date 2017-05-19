@@ -1,216 +1,340 @@
 <?php // Published Timestamp | content.php
 
+/*
+Structure
+
+* Post Published, Modified (cp)
+
+    ** Post Published (cp) | $post_published
+    
+        *** Post Published Label (obj) | $post_published_label_obj
+            • Published on
+        
+        *** Post Published Date, Time Stamp (cp) | $post_published_date_time_stamp
+            
+            **** Post Published Date Stamp (obj) | $post_published_date_stamp_obj
+                • [1 January 2020]
+            
+            **** Post Published Time Stamp (obj) | $post_published_time_stamp_obj
+                • [00:00:00]
+
+    ** Post Modified (cp) | $post_modified
+    
+        *** Post Modified Label (obj) | $post_modified_label_obj
+            • Published on
+        
+        *** Post Modified Date, Time Stamp (cp) | $post_modified_date_time_stamp
+            
+            **** Post Modified Date Stamp (obj) | $post_modified_date_stamp_obj
+                • [1 January 2020]
+            
+            **** Post Modified Time Stamp (obj) | $post_modified_time_stamp_obj
+                • [00:00:00]
+
+*/
+
 if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
     function applicator_func_post_pub_mod_ts() {
         
-        // Markup
-        $post_pub_mod_lbl_mu = '<span class="%2$s" data-name="%1$s">';
-            $post_pub_mod_lbl_mu .= '<span class="g %3$s---g"><span class="txt %5$s---txt">%4$s</span> <span class="txt %7$s---txt">%6$s</span></span>';
-        $post_pub_mod_lbl_mu .= '</span><!-- %1$s -->';
         
-        // Content
-        $post_pub_lbl = sprintf( $post_pub_mod_lbl_mu,
-            'Post Published Date and Time Stamp Label',
-            'obj post-published-time-stamp-label',
-            'post-pub-ts-lbl',
+        /* ------------ Post Published ---------- */
+        
+        
+        $post_published_sec_css = 'post-pub';
+        $post_published_label_obj_sec_css = $post_published_sec_css . '-lbl-obj';
+        
+        
+        /* ------------ Post Published Label (obj) ---------- */
+        
+        // Markup - Text
+        $post_published_modified_label_obj_txt_mu = '<span class="txt %2$s---txt">%1$s</span>';
+        $post_published_modified_label_obj_txt_mu .= ' <span class="txt %4$s---txt">%3$s</span>';
+        
+        // Content - Text
+        $post_published_label_obj_txt = sprintf( $post_published_modified_label_obj_txt_mu,
             esc_html__( 'Published', $GLOBALS['apl_textdomain'] ),
-            'published',
+                'published',
             esc_html__( 'on', $GLOBALS['apl_textdomain'] ),
-            'on'
+                'on'
         );
         
-        // Content
-        $post_mod_lbl = sprintf( $post_pub_mod_lbl_mu,
-            'Post Modified Date and Time Stamp Label',
-            'obj post-modified-time-stamp-label',
-            'post-mod-ts-lbl',
-            esc_html__( 'Modified', $GLOBALS['apl_textdomain'] ),
-            'modified',
-            esc_html__( 'on', $GLOBALS['apl_textdomain'] ),
-            'on'
-        );
+        // Content - Element
+        $post_published_label_obj_elem = applicator_html_e( array(
+            'type'      => 'g',
+            'sec_css'   => $post_published_label_obj_sec_css,
+            'content'   => $post_published_label_obj_txt
+        ) );
+        
+        // Content - Object
+        $post_published_label_obj = applicator_html_mco( array(
+            'type'      => 'o',
+            'name'      => 'Post Published Label',
+            'sec_css'   => $post_published_label_obj_sec_css,
+            'content'   => $post_published_label_obj_elem
+        ) );
         
         
-        // Markup
-        $post_pub_mod_date_mu = '<span class="%2$s" data-name="%1$s">';
-            $post_pub_mod_date_mu .= '<time class="time %3$s---time" datetime="%11$s">';
-                $post_pub_mod_date_mu .= '<span class="time_l %3$s---time_l">';
-                    $post_pub_mod_date_mu .= '<a class="a %3$s---a" href="%10$s" title="%12$s"><span class="a_l %3$s---a_l"><span class="txt %5$s---txt">%4$s</span> <span class="txt %7$s---txt">%6$s</span> <span class="txt %9$s---txt">%8$s</span></span></a>';
-                $post_pub_mod_date_mu .= '</span>';
-            $post_pub_mod_date_mu .= '</time>';
-        $post_pub_mod_date_mu .= '</span><!-- %1$s -->';
+        /* ------------ Post Published Date Stamp (obj) ---------- */
         
-        // Content
-        $post_pub_date = sprintf( $post_pub_mod_date_mu,
-            'Post Published Date Stamp',
-            'obj post-published-date-stamp',
-            'post-pub-ds',
+        // Markup - Text
+        $post_published_modified_date_stamp_obj_txt_mu = '<span class="txt %2$s---txt">%1$s</span>';
+        $post_published_modified_date_stamp_obj_txt_mu .= ' <span class="txt %4$s---txt">%3$s</span>';
+        $post_published_modified_date_stamp_obj_txt_mu .= ' <span class="txt %6$s---txt">%5$s</span>';
+        
+        // Content - Text
+        $post_published_date_stamp_obj_txt = sprintf( $post_published_modified_date_stamp_obj_txt_mu,
             get_the_date( 'j' ), // Day (d)
-            'day',
+                'day',
             get_the_date( 'M' ), // Month (mmm)
-            'month',
+                'month',
             get_the_date( 'Y' ), // Year (yyyy)
-            'year',
-            esc_url( get_permalink() ),
-            get_the_date( DATE_W3C ),
-            get_the_date( 'j F Y')
+                'year'
         );
         
-        // Content
-        $post_mod_date = sprintf( $post_pub_mod_date_mu,
-            'Post Modified Date Stamp',
-            'obj post-modified-date-stamp',
-            'post-mod-ds',
+        // Markup - Element
+        $post_published_modified_date_time_stamp_obj_elem_mu = '<time class="time %2$s---time" datetime="%3$s">';
+            $post_published_modified_date_time_stamp_obj_elem_mu .= '<a class="a %2$s---a" href="%4$s">';
+                $post_published_modified_date_time_stamp_obj_elem_mu .= '<span class="a_l %2$s---a_l">';
+                    $post_published_modified_date_time_stamp_obj_elem_mu .= '%1$s';
+                $post_published_modified_date_time_stamp_obj_elem_mu .= '</span>';
+            $post_published_modified_date_time_stamp_obj_elem_mu .= '</a>';
+        $post_published_modified_date_time_stamp_obj_elem_mu .= '</time>';
+        
+        $post_published_date_stamp_obj_sec_css = $post_published_sec_css . '-ds-obj';
+        
+        // Content - Element
+        $post_published_date_stamp_obj_elem = sprintf( $post_published_modified_date_time_stamp_obj_elem_mu,
+            $post_published_date_stamp_obj_txt,
+            $post_published_date_stamp_obj_sec_css,
+            get_the_date( DATE_W3C ),
+            esc_url( get_permalink() )
+        );
+        
+        // Content - Object
+        $post_published_date_stamp_obj = applicator_html_mco( array(
+            'type'      => 'o',
+            'name'      => 'Post Published Date Stamp',
+            'sec_css'   => $post_published_date_stamp_obj_sec_css,
+            'title'     => get_the_date( 'j F Y'),
+            'content'   => $post_published_date_stamp_obj_elem
+        ) );
+        
+        
+        /* ------------ Post Published Time Stamp (obj) ---------- */
+        
+        // Markup - Text
+        $post_published_modified_time_stamp_obj_txt_mu = '<span class="txt %2$s---txt">%1$s</span>';
+        $post_published_modified_time_stamp_obj_txt_mu .= '<span class="sep colon---sep">:</span>';
+        $post_published_modified_time_stamp_obj_txt_mu .= '<span class="txt %4$s---txt">%3$s</span>';
+        $post_published_modified_time_stamp_obj_txt_mu .= '<span class="sep colon---sep">:</span>';
+        $post_published_modified_time_stamp_obj_txt_mu .= '<span class="txt %6$s---txt">%5$s</span>';
+        
+        // Content - Text
+        $post_published_time_stamp_obj_txt = sprintf( $post_published_modified_time_stamp_obj_txt_mu,
+            get_the_date( 'H' ), // Day (d)
+                'hours',
+            get_the_date( 'i' ), // Month (mmm)
+                'minutes',
+            get_the_date( 's' ), // Year (yyyy)
+                'seconds'
+        );
+        
+        $post_published_time_stamp_obj_sec_css = $post_published_sec_css . '-ts-obj';
+        
+        // Content - Element
+        $post_published_time_stamp_obj_elem = sprintf( $post_published_modified_date_time_stamp_obj_elem_mu,
+            $post_published_time_stamp_obj_txt,
+            $post_published_time_stamp_obj_sec_css,
+            get_the_date( DATE_W3C ),
+            esc_url( get_permalink() )
+        );
+        
+        // Content - Object
+        $post_published_time_stamp_obj = applicator_html_mco( array(
+            'type'      => 'o',
+            'name'      => 'Post Published Time Stamp',
+            'sec_css'   => $post_published_time_stamp_obj_sec_css,
+            'title'     => get_the_date( 'H:i:s'),
+            'content'   => $post_published_time_stamp_obj_elem
+        ) );
+        
+        
+        /* ------------ Post Published Date, Time Stamp (cp) ---------- */
+        
+        // Content - Component
+        $post_published_date_time_stamp = applicator_html_mco( array(
+            'name'      => 'Post Published Date, Time Stamp',
+            'sec_css'   => $post_published_sec_css . '-dts',
+            'content'   => $post_published_date_stamp_obj . ' ' . $post_published_time_stamp_obj
+        ) );
+        
+        
+        /* ------------ Post Published (cp) ---------- */
+        
+        // Content - Component
+        $post_published = applicator_html_mco( array(
+            'name'      => 'Post Published',
+            'sec_css'   => $post_published_sec_css,
+            'content'   => $post_published_label_obj . $post_published_date_time_stamp
+        ) );
+        
+        
+        /* ------------ Post Modified ---------- */
+        
+        
+        $post_modified_sec_css = 'post-mod';
+        $post_modified_label_obj_sec_css = $post_modified_sec_css . '-lbl-obj';
+        
+        
+        /* ------------ Post Modified Label (obj) ---------- */
+        
+        // Content - Text
+        $post_modified_label_obj_txt = sprintf( $post_published_modified_label_obj_txt_mu,
+            esc_html__( 'Modified', $GLOBALS['apl_textdomain'] ),
+                'modified',
+            esc_html__( 'on', $GLOBALS['apl_textdomain'] ),
+                'on'
+        );
+        
+        // Content - Element
+        $post_modified_label_obj_elem = applicator_html_e( array(
+            'type'      => 'g',
+            'sec_css'   => $post_modified_label_obj_sec_css,
+            'content'   => $post_modified_label_obj_txt
+        ) );
+        
+        // Content - Object
+        $post_modified_label_obj = applicator_html_mco( array(
+            'type'      => 'o',
+            'name'      => 'Post Modified Label',
+            'sec_css'   => $post_modified_label_obj_sec_css,
+            'content'   => $post_modified_label_obj_elem
+        ) );
+        
+        
+        /* ------------ Post Modified Date Stamp (obj) ---------- */
+        
+        // Content - Text
+        $post_modified_date_stamp_obj_txt = sprintf( $post_published_modified_date_stamp_obj_txt_mu,
             get_the_modified_date( 'j' ), // Day (d)
-            'day',
+                'day',
             get_the_modified_date( 'M' ), // Month (mmm)
-            'month',
+                'month',
             get_the_modified_date( 'Y' ), // Year (yyyy)
-            'year',
-            esc_url( get_permalink() ),
+                'year'
+        );
+        
+        $post_modified_date_stamp_obj_sec_css = 'post-mod-ds-obj';
+        
+        // Content - Element
+        $post_modified_date_stamp_obj_elem = sprintf( $post_published_modified_date_time_stamp_obj_elem_mu,
+            $post_modified_date_stamp_obj_txt,
+            $post_modified_date_stamp_obj_sec_css,
             get_the_modified_date( DATE_W3C ),
-            get_the_modified_date( 'j F Y')
+            esc_url( get_permalink() )
         );
         
+        // Content - Object
+        $post_modified_date_stamp_obj = applicator_html_mco( array(
+            'type'      => 'o',
+            'name'      => 'Post Modified Date Stamp',
+            'sec_css'   => $post_modified_date_stamp_obj_sec_css,
+            'title'     => get_the_modified_date( 'j F Y'),
+            'content'   => $post_modified_date_stamp_obj_elem
+        ) );
         
-        // Markup
-        $post_pub_mod_time_mu = '<span class="%2$s" data-name="%1$s">';
-            $post_pub_mod_time_mu .= '<time class="time %3$s---time" datetime="%11$s">';
-                $post_pub_mod_time_mu .= '<span class="time_l %3$s---time_l">';
-                    $post_pub_mod_time_mu .= '<a class="a %3$s---a" href="%10$s" title="%12$s"><span class="a_l %3$s---a_l"><span class="txt %5$s---txt">%4$s</span><span class="sep colon---sep">:</span><span class="txt %7$s---txt">%6$s</span><span class="sep colon---sep">:</span><span class="txt %9$s---txt">%8$s</span></span></a>';
-                $post_pub_mod_time_mu .= '</span>';
-            $post_pub_mod_time_mu .= '</time>';
-        $post_pub_mod_time_mu .= '</span><!-- %1$s -->';
-
-        // Content
-        $post_pub_time = sprintf( $post_pub_mod_time_mu,
-            'Post Published Time Stamp',
-            'obj post-published-time-stamp',
-            'post-pub-ts',
-            get_the_date( 'H' ), // Day (d)
-            'hours',
-            get_the_date( 'i' ), // Month (mmm)
-            'minutes',
-            get_the_date( 's' ), // Year (yyyy)
-            'seconds',
-            esc_url( get_permalink() ),
-            get_the_date( DATE_W3C ),
-            get_the_date( 'H:i:s')
+        
+        /* ------------ Post Modified Time Stamp (obj) ---------- */
+        
+        // Content - Text
+        $post_modified_time_stamp_obj_txt = sprintf( $post_published_modified_time_stamp_obj_txt_mu,
+            get_the_modified_time( 'H' ), // Day (d)
+                'hours',
+            get_the_modified_time( 'i' ), // Month (mmm)
+                'minutes',
+            get_the_modified_time( 's' ), // Year (yyyy)
+                'seconds'
         );
         
-        // Content
-        $post_mod_time = sprintf( $post_pub_mod_time_mu,
-            'Post Modified Time Stamp',
-            'obj post-modified-time-stamp',
-            'post-mod-ts',
-            get_the_date( 'H' ), // Day (d)
-            'hours',
-            get_the_date( 'i' ), // Month (mmm)
-            'minutes',
-            get_the_date( 's' ), // Year (yyyy)
-            'seconds',
-            esc_url( get_permalink() ),
-            get_the_date( DATE_W3C ),
-            get_the_date( 'H:i:s')
+        $post_modified_time_stamp_obj_sec_css = $post_modified_sec_css . '-ts-obj';
+        
+        // Content - Element
+        $post_modified_time_stamp_obj_elem = sprintf( $post_published_modified_date_time_stamp_obj_elem_mu,
+            $post_modified_time_stamp_obj_txt,
+            $post_modified_time_stamp_obj_sec_css,
+            get_the_modified_date( DATE_W3C ),
+            esc_url( get_permalink() )
         );
         
-        
-        // Markup
-        $post_pub_date_time_mu = '<div class="%2$s" data-name="%1$s">';
-            $post_pub_date_time_mu .= '<div class="cr %3$s---cr">';
-                $post_pub_date_time_mu .= '<div class="hr %3$s---hr">';
-                    $post_pub_date_time_mu .= '<div class="hr_cr %3$s---hr_cr">';
-                        $post_pub_date_time_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h_l">%4$s</span></div>';
-                    $post_pub_date_time_mu .= '</div>';
-                $post_pub_date_time_mu .= '</div>';
-                $post_pub_date_time_mu .= '<div class="ct %3$s---ct">';
-                    $post_pub_date_time_mu .= '<div class="ct_cr %3$s---ct_cr">%5$s %6$s</div>';
-                $post_pub_date_time_mu .= '</div>';
-            $post_pub_date_time_mu .= '</div>';
-        $post_pub_date_time_mu .= '</div><!-- %1$s -->';
-        
-        // Content
-        $post_pub_date_time = sprintf( $post_pub_date_time_mu,
-            'Post Published Date and Time Stamp',
-            'cp post-published-date-time-stamp',
-            'post-pub-dts',
-            esc_html__( 'Post Published Date and Time', $GLOBALS['apl_textdomain'] ),
-            $post_pub_date,
-            $post_pub_time
-        );
-        
-        // Content
-        $post_mod_date_time = sprintf( $post_pub_date_time_mu,
-            'Post Modified Date and Time Stamp',
-            'cp post-modified-date-time-stamp',
-            'post-mod-dts',
-            esc_html__( 'Post Modified Date and Time', $GLOBALS['apl_textdomain'] ),
-            $post_mod_date,
-            $post_mod_time
-        );
+        // Content - Object
+        $post_modified_time_stamp_obj = applicator_html_mco( array(
+            'type'      => 'o',
+            'name'      => 'Post Modified Time Stamp',
+            'sec_css'   => $post_modified_time_stamp_obj_sec_css,
+            'title'     => get_the_modified_time( 'H:i:s'),
+            'content'   => $post_modified_time_stamp_obj_elem
+        ) );
         
         
-        // Markup
-        $post_pub_mod_mu = '<div class="%2$s" data-name="%1$s">';
-            $post_pub_mod_mu .= '<div class="cr %3$s---cr">';
-                $post_pub_mod_mu .= '<div class="hr %3$s---hr">';
-                    $post_pub_mod_mu .= '<div class="hr_cr %3$s---hr_cr">';
-                        $post_pub_mod_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h_l">%4$s</span></div>';
-                    $post_pub_mod_mu .= '</div>';
-                $post_pub_mod_mu .= '</div>';
-                $post_pub_mod_mu .= '<div class="ct %3$s---ct">';
-                    $post_pub_mod_mu .= '<div class="ct_cr %3$s---ct_cr">';
-                        $post_pub_mod_mu .= '%5$s %6$s';
-                    $post_pub_mod_mu .= '</div>';
-                $post_pub_mod_mu .= '</div><!-- ct -->';
-            $post_pub_mod_mu .= '</div>';
-        $post_pub_mod_mu .= '</div><!-- %1$s -->';
+        /* ------------ Post Modified Date, Time Stamp (cp) ---------- */
         
-        // Content
-        $post_pub = sprintf( $post_pub_mod_mu,
-            'Post Published',
-            'cp post-published',
-            'post-pub',
-            esc_html__( 'Post Published', $GLOBALS['apl_textdomain'] ),
-            $post_pub_lbl,
-            $post_pub_date_time
-        );
-        
-        // Content
-        $post_mod = sprintf( $post_pub_mod_mu,
-            'Post Modified',
-            'cp post-modified',
-            'post-mod',
-            esc_html__( 'Post Modified', $GLOBALS['apl_textdomain'] ),
-            $post_mod_lbl,
-            $post_mod_date_time
-        );
+        // Content - Component
+        $post_modified_date_time_stamp = applicator_html_mco( array(
+            'name'      => 'Post Modified Date, Time Stamp',
+            'sec_css'   => $post_modified_sec_css . '-dts',
+            'content'   => $post_modified_date_stamp_obj . ' ' . $post_modified_time_stamp_obj
+        ) );
         
         
-        // Markup
-        $post_pub_mod_info_mu = '<div class="%2$s" data-name="%1$s">';
-            $post_pub_mod_info_mu .= '<div class="cr %3$s---cr">';
-                $post_pub_mod_info_mu .= '<div class="hr %3$s---hr">';
-                    $post_pub_mod_info_mu .= '<div class="hr_cr %3$s---hr_cr">';
-                        $post_pub_mod_info_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h_l">%4$s</span></div>';
-                    $post_pub_mod_info_mu .= '</div>';
-                $post_pub_mod_info_mu .= '</div>';
-                $post_pub_mod_info_mu .= '<div class="ct %3$s---ct">';
-                    $post_pub_mod_info_mu .= '<div class="ct_cr %3$s---ct_cr">%5$s %6$s</div>';
-                $post_pub_mod_info_mu .= '</div>';
-            $post_pub_mod_info_mu .= '</div>';
-        $post_pub_mod_info_mu .= '</div><!-- %1$s -->';
+        /* ------------ Post Modified (cp) ---------- */
         
-        // Display
-        $post_pub_mod_info_NAME = 'Post Published and Modified Date and Time Stamp';
-        printf( $post_pub_mod_info_mu,
-            $post_pub_mod_info_NAME,
-            'cp post-published-modified-date-time-stamp',
-            'post-pub-mod-dts',
-            esc_html__( $post_pub_mod_info_NAME, $GLOBALS['apl_textdomain'] ),
-            $post_pub,
-            $post_mod
-        );
+        // Content - Component
+        $post_modified = applicator_html_mco( array(
+            'name'      => 'Post Modified',
+            'sec_css'   => $post_modified_sec_css,
+            'content'   => $post_modified_label_obj . $post_modified_date_time_stamp
+        ) );
+        
+        
+        /* ------------ Post Published, Modified (cp) ---------- */
+        
+        // Content - Component
+        $post_published_modified = applicator_html_mco( array(
+            'name'      => 'Post Published, Modified',
+            'sec_css'   => 'post-pub-mod',
+            'content'   => $post_published . $post_modified,
+            'echo'      => true
+        ) );
+        
+        
+        
+        
+        // Content - Component
+        $post_published_modifiedx = applicator_html_e( array(
+            'type'      => 'g',
+            'sec_css'   => 'boo-yeah',
+            'content'   => 'Boo Yeah',
+            'echo'      => true
+        ) );
+        
+        // Content - Component
+        $post_published_modifiedxx = applicator_html_e( array(
+            'type'      => 't',
+            'linked'    => true,
+            'href'      => '#',
+            'sec_css'   => 'super-time',
+            'datetime'  => 'Time to Sleep',
+            'content'   => 'Ow Clock',
+            'echo'      => true
+        ) );
+        
+        // Content - Component
+        $post_published_modifiedxxx = applicator_html_e( array(
+            'type'      => 'a',
+            'href'      => '#',
+            'content'   => 'This is a link.',
+            'echo'      => true
+        ) );
     
     }
 }

@@ -83,7 +83,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
         $comments_count_a_l_multi = sprintf( $comments_count_obj_a_l_mu,
             esc_html__( $comments_count_multi_txt, $GLOBALS['apl_textdomain'] ),
                 $comments_count_num_css,
-            esc_html__( $comment_plural_txt_css, $GLOBALS['apl_textdomain'] ),
+            esc_html__( $comment_plural_txt, $GLOBALS['apl_textdomain'] ),
                 $comment_plural_txt_css,
             $comments_count_sec_css,
             esc_attr__( $comments_count_multi_txt . ' ' . $comment_plural_txt, $GLOBALS['apl_textdomain'] )
@@ -149,7 +149,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
         }
         
         // Markup
-        $comments_count_obj = applicator_html( array(
+        $comments_count_obj = applicator_html_mco( array(
             'type'      => 'o',
             'name'      => 'Comments Count',
             'sec_css'   => $comments_count_sec_css,
@@ -157,7 +157,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
         ) );
         
         // Markup
-        $comments_population = applicator_html( array(
+        $comments_population = applicator_html_mco( array(
             'name'      => 'Comments Population',
             'sec_css'   => 'coms-population',
             'content'   => $comments_count_obj
@@ -204,7 +204,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
             );
             
             // Markup
-            $add_comment_axn = applicator_html( array(
+            $add_comment_axn = applicator_html_mco( array(
                 'type'      => 'o',
                 'name'      => 'Add Comment Action',
                 'sec_css'   => 'add-com-axn',
@@ -227,7 +227,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
                 );
                 
                 // Markup
-                $sign_in_required_label_obj = applicator_html( array(
+                $sign_in_required_label_obj = applicator_html_mco( array(
                     'type'      => 'o',
                     'name'      => 'Sign In Required Label',
                     'sec_css'   => 'sign-in-req-lbl'
@@ -256,7 +256,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
             );
             
             // Content
-            $commenting_disabled_note_obj = applicator_html( array(
+            $commenting_disabled_note_obj = applicator_html_mco( array(
                 'type'      => 'o',
                 'name'      => 'Commenting Disabled Note',
                 'sec_css'   => 'commenting-disabled-note',
@@ -269,7 +269,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
         }
         
         // Content
-        $comment_creation_ability = applicator_html( array (
+        $comment_creation_ability = applicator_html_mco( array (
             'name'      => 'Comment Creation Ability',
             'sec_css'   => 'com-crt-ability',
             'content'   => $comment_creation_ability_content
@@ -314,7 +314,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
         }
         
         // Display
-        $comments_actions_snippet = applicator_html( array (
+        $comments_actions_snippet = applicator_html_mco( array (
             'name'      => 'Comments Actions Snippet',
             'pri_css'   => $comments_population_status_css . ' ' . $comment_creation_ability_status_css,
             'sec_css'   => 'coms-acts-snip',
