@@ -54,6 +54,7 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
             'content'   => esc_html__( 'Published', $GLOBALS['apl_textdomain'] )
         ) );
         
+        // Content - Text
         $on_txt = applicator_html_t( array(
             'type'      => 't',
             'content'   => esc_html__( 'on', $GLOBALS['apl_textdomain'] )
@@ -117,22 +118,26 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         
         /* ------------ Post Published Time Stamp (obj) ---------- */
         
-        // Markup - Text
-        $post_published_modified_time_stamp_obj_txt_mu = '<span class="txt %2$s---txt">%1$s</span>';
-        $post_published_modified_time_stamp_obj_txt_mu .= '<span class="sep colon---sep">:</span>';
-        $post_published_modified_time_stamp_obj_txt_mu .= '<span class="txt %4$s---txt">%3$s</span>';
-        $post_published_modified_time_stamp_obj_txt_mu .= '<span class="sep colon---sep">:</span>';
-        $post_published_modified_time_stamp_obj_txt_mu .= '<span class="txt %6$s---txt">%5$s</span>';
+        // Content - Text
+        $published_hours_txt = applicator_html_t( array(
+            'type'      => 't',
+            'txt_css'   => 'hours',
+            'content'   => get_the_date( 'H' )
+        ) );
         
         // Content - Text
-        $post_published_time_stamp_obj_txt = sprintf( $post_published_modified_time_stamp_obj_txt_mu,
-            get_the_date( 'H' ), // Day (d)
-                'hours',
-            get_the_date( 'i' ), // Month (mmm)
-                'minutes',
-            get_the_date( 's' ), // Year (yyyy)
-                'seconds'
-        );
+        $published_minutes_txt = applicator_html_t( array(
+            'type'      => 't',
+            'txt_css'   => 'minutes',
+            'content'   => get_the_date( 'i' )
+        ) );
+        
+        // Content - Text
+        $published_seconds_txt = applicator_html_t( array(
+            'type'      => 't',
+            'txt_css'   => 'seconds',
+            'content'   => get_the_date( 's' )
+        ) );
         
         // Content - Element
         $post_published_time_stamp_obj_elem = applicator_html_e( array(
@@ -143,7 +148,7 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
                 'href'      => esc_url( get_permalink() )
             ),
             'sec_css'   => $post_published_time_stamp_obj_sec_css,
-            'content'   => $post_published_time_stamp_obj_txt
+            'content'   => $published_hours_txt . $GLOBALS['colon_sep_mu'] . $published_minutes_txt . $GLOBALS['colon_sep_mu'] . $published_seconds_txt
         ) );
         
         // Content - Object
@@ -188,18 +193,16 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         /* ------------ Post Modified Label (obj) ---------- */
         
         // Content - Text
-        $post_modified_label_obj_txt = sprintf( $post_published_modified_label_obj_txt_mu,
-            esc_html__( 'Modified', $GLOBALS['apl_textdomain'] ),
-                'modified',
-            esc_html__( 'on', $GLOBALS['apl_textdomain'] ),
-                'on'
-        );
+        $modified_txt = applicator_html_t( array(
+            'type'      => 't',
+            'content'   => esc_html__( 'Modified', $GLOBALS['apl_textdomain'] )
+        ) );
         
         // Content - Element
         $post_modified_label_obj_elem = applicator_html_e( array(
             'type'      => 'g',
             'sec_css'   => $post_modified_label_obj_sec_css,
-            'content'   => $post_modified_label_obj_txt
+            'content'   => $modified_txt . ' ' . $on_txt
         ) );
         
         // Content - Object
@@ -248,14 +251,25 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         /* ------------ Post Modified Time Stamp (obj) ---------- */
         
         // Content - Text
-        $post_modified_time_stamp_obj_txt = sprintf( $post_published_modified_time_stamp_obj_txt_mu,
-            get_the_modified_time( 'H' ), // Day (d)
-                'hours',
-            get_the_modified_time( 'i' ), // Month (mmm)
-                'minutes',
-            get_the_modified_time( 's' ), // Year (yyyy)
-                'seconds'
-        );
+        $modified_hours_txt = applicator_html_t( array(
+            'type'      => 't',
+            'txt_css'   => 'hours',
+            'content'   => get_the_modified_time( 'H' )
+        ) );
+        
+        // Content - Text
+        $modified_minutes_txt = applicator_html_t( array(
+            'type'      => 't',
+            'txt_css'   => 'minutes',
+            'content'   => get_the_modified_time( 'i' )
+        ) );
+        
+        // Content - Text
+        $modified_seconds_txt = applicator_html_t( array(
+            'type'      => 't',
+            'txt_css'   => 'seconds',
+            'content'   => get_the_modified_time( 's' )
+        ) );
         
         // Content - Element
         $post_modified_time_stamp_obj_elem = applicator_html_e( array(
@@ -266,7 +280,7 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
                 'href'      => esc_url( get_permalink() )
             ),
             'sec_css'   => $post_modified_time_stamp_obj_sec_css,
-            'content'   => $post_modified_time_stamp_obj_txt
+            'content'   => $modified_hours_txt . $GLOBALS['colon_sep_mu'] . $modified_minutes_txt . $GLOBALS['colon_sep_mu'] . $modified_seconds_txt
         ) );
         
         // Content - Object
