@@ -50,27 +50,23 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         
         // Content - Text
         $published_txt = applicator_html_t( array(
-            'type'      => 't',
-            'content'   => esc_html__( 'Published', $GLOBALS['apl_textdomain'] )
-        ) );
-        
-        // Content - Text
-        $on_txt = applicator_html_t( array(
-            'type'      => 't',
-            'content'   => esc_html__( 'on', $GLOBALS['apl_textdomain'] )
+            'content' => array(
+                esc_html__( 'Published', $GLOBALS['apl_textdomain'] ),
+                esc_html__( 'on', $GLOBALS['apl_textdomain'] )
+            )
         ) );
         
         // Content - Element
         $post_published_label_obj_elem = applicator_html_e( array(
             'type'      => 'g',
             'sec_css'   => $post_published_label_obj_sec_css,
-            'content'   => $published_txt . ' ' . $on_txt
+            'content'   => $published_txt
         ) );
         
         // Content - Object
         $post_published_label_obj = applicator_html_mco( array(
             'type'      => 'o',
-            'layout'      => 'i',
+            'layout'    => 'i',
             'name'      => 'Post Published Label',
             'sec_css'   => $post_published_label_obj_sec_css,
             'content'   => $post_published_label_obj_elem
@@ -202,7 +198,7 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         $post_modified_label_obj_elem = applicator_html_e( array(
             'type'      => 'g',
             'sec_css'   => $post_modified_label_obj_sec_css,
-            'content'   => $modified_txt . ' ' . $on_txt
+            'content'   => $modified_txt
         ) );
         
         // Content - Object

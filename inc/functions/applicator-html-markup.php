@@ -296,13 +296,13 @@ function applicator_html_t( $args = array() ) {
 		return esc_html_e( 'Please define default parameters in the form of an array.', $GLOBALS['apl_textdomain'] );
 	}
     
-    // Require Type
-	if ( false === array_key_exists( 'type', $args ) ) {
-		return esc_html_e( 'Please define Type.', $GLOBALS['apl_textdomain'] );
+    // Require Content
+	if ( false === array_key_exists( 'content', $args ) ) {
+		return esc_html_e( 'Please define Content.', $GLOBALS['apl_textdomain'] );
 	}
     
     $defaults = array(
-        'type'      => '',
+        'type'      => 't',
         'txt_css'   => '',
         'content'   => '',
         'version'   => '',
@@ -312,22 +312,21 @@ function applicator_html_t( $args = array() ) {
     // Parse args
     $r = wp_parse_args( $args, $defaults );
     
+    // Require Type
+	if ( empty( $r['type'] ) ) {
+		return esc_html_e( 'Please define Type.', $GLOBALS['apl_textdomain'] );
+	}
     
-    $txt_css = '';
+    $content = $r['content'];
+    $txt_css = $r['txt_css'];
+    
+    $manual_txt_css = '';
+    $dynamic_txt_css = '';
+    
+    $trimmed_content = '';
+    $sanitized_content = '';
     
     $text_term_variations = array( 'text', 'txt', 't' );
-    
-    if ( $r['content'] ) {
-        $content = preg_replace('/\s\s+/', ' ', trim( $r['content'] ) );
-        $sanitized_content = sanitize_title( $content );
-    }
-    
-    if ( $r['txt_css'] ) {
-        $txt_css = ' ' . trim( $r['txt_css'] ) . ' ' . $sanitized_content;
-    } else {
-        $txt_css = ' ' . $sanitized_content;
-    }
-    
     
     if ( '0.1' == $r['version'] ) {
         
@@ -335,7 +334,21 @@ function applicator_html_t( $args = array() ) {
         
     } else {
         
-        $output = '<span class="txt' . esc_attr( $txt_css ) . '---txt">' . $r['content'] . '</span>';
+        $output = '';
+        
+        foreach ( (array) $content as $txt_content ) {
+            
+            if ( $txt_css ) {
+                $manual_txt_css = ' ' . $txt_css;
+            } else {
+                $manual_txt_css = '';
+            }
+            
+            $trimmed_content = preg_replace('/\s\s+/', ' ', trim( $txt_content ) );
+            $dynamic_txt_css = ' ' . sanitize_title( $trimmed_content );
+            
+            $output .= ' <span class="txt' . $manual_txt_css . $dynamic_txt_css . '---txt">' . $txt_content . '</span>';
+        }
         
     }
     
