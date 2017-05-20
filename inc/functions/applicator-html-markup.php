@@ -289,7 +289,7 @@ function applicator_html_e( $args = array() ) {
 }
 
 
-function applicator_html_t( $args = array() ) {
+function applicator_html_ok_txt( $args = array() ) {
     
     // Make sure $args are an array.
 	if ( empty( $args ) ) {
@@ -301,6 +301,7 @@ function applicator_html_t( $args = array() ) {
 		return esc_html_e( 'Please define Content.', $GLOBALS['apl_textdomain'] );
 	}
     
+    // Defaults
     $defaults = array(
         'type'      => 't',
         'txt_css'   => '',
@@ -309,29 +310,27 @@ function applicator_html_t( $args = array() ) {
         'echo'      => false
     );
     
-    // Parse args
+    // Parse Arguments
     $r = wp_parse_args( $args, $defaults );
     
-    // Require Type
-	if ( empty( $r['type'] ) ) {
-		return esc_html_e( 'Please define Type.', $GLOBALS['apl_textdomain'] );
-	}
-    
-    $content = $r['content'];
+    $type = $r['type'];
     $txt_css = $r['txt_css'];
+    $content = $r['content'];
+    $echo = $r['echo'];
     
+    // Unset Variables
     $manual_txt_css = '';
+    $trimmed_txt = '';
     $dynamic_txt_css = '';
     
-    $trimmed_content = '';
-    $sanitized_content = '';
-    
+    // Acceptable Terms
     $text_term_variations = array( 'text', 'txt', 't' );
     
+    // New Version
     if ( '0.1' == $r['version'] ) {
-        
         $output = '';
-        
+    
+    // Original Version
     } else {
         
         $output = '';
@@ -344,17 +343,17 @@ function applicator_html_t( $args = array() ) {
                 $manual_txt_css = '';
             }
             
-            $trimmed_content = preg_replace('/\s\s+/', ' ', trim( $txt_content ) );
-            $dynamic_txt_css = ' ' . sanitize_title( $trimmed_content );
+            $trimmed_txt = preg_replace('/\s\s+/', ' ', trim( $txt_content ) );
+            $dynamic_txt_css = ' ' . sanitize_title( $trimmed_txt );
             
             $output .= ' <span class="txt' . $manual_txt_css . $dynamic_txt_css . '---txt">' . $txt_content . '</span>';
         }
         
     }
     
-    $html = apply_filters( 'applicator_html_t', $output, $args );
+    $html = apply_filters( 'applicator_html_ok_txt', $output, $args );
     
-    if ( $r['echo'] ) {
+    if ( $echo ) {
         echo $html;
     } else {
         return $html;

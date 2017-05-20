@@ -39,7 +39,7 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         
         /* ------------ Post Published ---------- */
         
-        
+        // Class Name Variables
         $post_published_sec_css = 'post-pub';
         $post_published_label_obj_sec_css = $post_published_sec_css . '-lbl-obj';
         $post_published_date_stamp_obj_sec_css = $post_published_sec_css . '-ds-obj';
@@ -49,7 +49,7 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         /* ------------ Post Published Label (obj) ---------- */
         
         // Content - Text
-        $published_txt = applicator_html_t( array(
+        $published_txt = applicator_html_ok_txt( array(
             'content' => array(
                 esc_html__( 'Published', $GLOBALS['apl_textdomain'] ),
                 esc_html__( 'on', $GLOBALS['apl_textdomain'] )
@@ -80,15 +80,17 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         $post_published_modified_date_stamp_obj_txt_mu .= ' <span class="txt %4$s---txt">%3$s</span>';
         $post_published_modified_date_stamp_obj_txt_mu .= ' <span class="txt %6$s---txt">%5$s</span>';
         
+        
+        
         // Content - Text
-        $post_published_date_stamp_obj_txt = sprintf( $post_published_modified_date_stamp_obj_txt_mu,
-            get_the_date( 'j' ), // Day (d)
-                'day',
-            get_the_date( 'M' ), // Month (mmm)
-                'month',
-            get_the_date( 'Y' ), // Year (yyyy)
-                'year'
-        );
+        $post_published_date_stamp_obj_txt = applicator_html_ok_txt( array(
+            'content' => array(
+                get_the_date( 'j' ), // Day (d)
+                get_the_date( 'M' ), // Month (mmm)
+                get_the_date( 'Y' ) // Year (yyyy)
+            ),
+            'txt_css' => 'date'
+        ) );
         
         // Content - Element
         $post_published_date_stamp_obj_elem = applicator_html_e( array(
@@ -115,21 +117,21 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         /* ------------ Post Published Time Stamp (obj) ---------- */
         
         // Content - Text
-        $published_hours_txt = applicator_html_t( array(
+        $published_hours_txt = applicator_html_ok_txt( array(
             'type'      => 't',
             'txt_css'   => 'hours',
             'content'   => get_the_date( 'H' )
         ) );
         
         // Content - Text
-        $published_minutes_txt = applicator_html_t( array(
+        $published_minutes_txt = applicator_html_ok_txt( array(
             'type'      => 't',
             'txt_css'   => 'minutes',
             'content'   => get_the_date( 'i' )
         ) );
         
         // Content - Text
-        $published_seconds_txt = applicator_html_t( array(
+        $published_seconds_txt = applicator_html_ok_txt( array(
             'type'      => 't',
             'txt_css'   => 'seconds',
             'content'   => get_the_date( 's' )
@@ -189,7 +191,7 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         /* ------------ Post Modified Label (obj) ---------- */
         
         // Content - Text
-        $modified_txt = applicator_html_t( array(
+        $modified_txt = applicator_html_ok_txt( array(
             'type'      => 't',
             'content'   => esc_html__( 'Modified', $GLOBALS['apl_textdomain'] )
         ) );
@@ -247,21 +249,21 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         /* ------------ Post Modified Time Stamp (obj) ---------- */
         
         // Content - Text
-        $modified_hours_txt = applicator_html_t( array(
+        $modified_hours_txt = applicator_html_ok_txt( array(
             'type'      => 't',
             'txt_css'   => 'hours',
             'content'   => get_the_modified_time( 'H' )
         ) );
         
         // Content - Text
-        $modified_minutes_txt = applicator_html_t( array(
+        $modified_minutes_txt = applicator_html_ok_txt( array(
             'type'      => 't',
             'txt_css'   => 'minutes',
             'content'   => get_the_modified_time( 'i' )
         ) );
         
         // Content - Text
-        $modified_seconds_txt = applicator_html_t( array(
+        $modified_seconds_txt = applicator_html_ok_txt( array(
             'type'      => 't',
             'txt_css'   => 'seconds',
             'content'   => get_the_modified_time( 's' )

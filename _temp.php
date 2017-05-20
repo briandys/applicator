@@ -1,5 +1,17 @@
 <?php 
 
+
+if ( $txt_css ) {
+                $manual_txt_css = ' ' . $txt_css;
+            } else {
+                $manual_txt_css = '';
+            }
+
+
+
+
+
+
 function wp_insert_post( $postarr, $wp_error = false ) {
     global $wpdb;
  
