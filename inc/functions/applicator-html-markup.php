@@ -289,7 +289,7 @@ function applicator_html_e( $args = array() ) {
 }
 
 
-function applicator_html_ok_txt( $args = array() ) {
+function applicator_html_ok_txtx( $args = array() ) {
     
     // Make sure $args are an array.
 	if ( empty( $args ) ) {
@@ -335,6 +335,21 @@ function applicator_html_ok_txt( $args = array() ) {
         
         $output = '';
         
+        foreach ( (array) array_combine( $content, $txt_css ) as $v => $t) {
+            
+            if ( $txt_css ) {
+                $manual_txt_css = ' ' . $t . '---txt';
+            } else {
+                $manual_txt_css = '';
+            }
+            
+            $trimmed_txt = preg_replace('/\s\s+/', ' ', trim( $v ) );
+            $dynamic_txt_css = ' ' . sanitize_title( $trimmed_txt );
+            
+            $output .= ' <span class="txt' . $manual_txt_css . $dynamic_txt_css . '---txt">' . $v . '</span>';
+        }
+
+        /*
         foreach ( (array) $content as $txt_content ) {
             
             if ( $txt_css ) {
@@ -347,6 +362,109 @@ function applicator_html_ok_txt( $args = array() ) {
             $dynamic_txt_css = ' ' . sanitize_title( $trimmed_txt );
             
             $output .= ' <span class="txt' . $manual_txt_css . $dynamic_txt_css . '---txt">' . $txt_content . '</span>';
+        }
+        */
+        
+    }
+    
+    $html = apply_filters( 'applicator_html_ok_txtx', $output, $args );
+    
+    if ( $echo ) {
+        echo $html;
+    } else {
+        return $html;
+    }
+}
+
+
+function applicator_html_ok_txt( $args = array() ) {
+    
+    // Make sure $args are an array.
+	if ( empty( $args ) ) {
+		return esc_html_e( 'Please define default parameters in the form of an array.', $GLOBALS['apl_textdomain'] );
+	}
+    
+    // Require Content
+	if ( false === array_key_exists( 'content', $args ) ) {
+		return esc_html_e( 'Please define Content.', $GLOBALS['apl_textdomain'] );
+	}
+    
+    // Defaults
+    $defaults = array(
+        'content'   => array(
+            array(
+                'txt'   => '',
+                'css'   => '',
+                'sep'   => '',
+            ),
+        ),
+        'version'   => '',
+        'echo'      => false
+    );
+    
+    // Parse Arguments
+    $r = wp_parse_args( $args, $defaults );
+    
+    $content = $r['content'];
+    $version = $r['version'];
+    $echo = $r['echo'];
+    
+    // Unset Variables
+    $num_txt_css = '';
+    $manual_txt_css = '';
+    $trimmed_txt = '';
+    $dynamic_txt_css = '';
+    
+    // New Version
+    if ( '0.1' == $r['version'] ) {
+        $output = '';
+    
+    // Original Version
+    } else {
+        
+        $output = '';
+        
+        foreach ( (array) $content as $val ) {
+            
+            if ( $val['txt'] ) {
+                $txt = $val['txt'];
+            } else {
+                $txt = '';
+            }
+            
+            if ( $val['css'] ) {
+                $css = $val['css'];
+            } else {
+                $css = '';
+            }
+            
+            if ( $val['sep'] ) {
+                $sep = $val['sep'];
+            } else {
+                $sep = '';
+            }
+            
+            if ( is_numeric( $txt ) ) {
+                $num_txt_css = ' ' . 'num';
+            } else {
+                $num_txt_css = '';
+            }
+            
+            if ( $css ) {
+                $manual_txt_css = ' ' . $css . '---txt';
+            } else {
+                $manual_txt_css = '';
+            }
+            
+            $trimmed_txt = preg_replace('/\s\s+/', ' ', trim( $txt ) );
+            
+            if ( is_numeric( $trimmed_txt ) ) {
+                $dynamic_txt_css = ' ' . 'n' . '-' . sanitize_title( $trimmed_txt );
+            } else {
+                $dynamic_txt_css = ' ' . sanitize_title( $trimmed_txt );
+            }
+            
+            $output .= $sep . '<span class="txt' . $num_txt_css . $manual_txt_css . $dynamic_txt_css . '---txt">' . $txt . '</span>';
         }
         
     }

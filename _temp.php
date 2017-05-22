@@ -1,6 +1,36 @@
 <?php 
 
 
+
+
+
+// Content - Text
+        $post_published_date_stamp_obj_txt = applicator_html_ok_txt( array(
+            'content' => array(
+                get_the_date( 'j' ), // Day (d)
+                get_the_date( 'M' ), // Month (mmm)
+                get_the_date( 'Y' ) // Year (yyyy)
+            ),
+            'content' => array(
+                'txt'   => array(
+                    get_the_date( 'j' ), // Day (d)
+                    get_the_date( 'M' ), // Month (mmm)
+                    get_the_date( 'Y' ) // Year (yyyy)
+                ),
+                'txt_css' => array(
+                    'day',
+                    'month',
+                    'year',
+                ),
+            ),
+            'txt_css' => array(
+                'day',
+                'month',
+                'year'
+            )
+        ) );
+
+
 if ( $txt_css ) {
                 $manual_txt_css = ' ' . $txt_css;
             } else {
