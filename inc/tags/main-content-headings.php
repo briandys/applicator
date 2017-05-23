@@ -20,7 +20,7 @@ if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
             $prop = $entries_label;
             $label = $prop;
             $val = $posts_label;
-            $colon_sep = $GLOBALS['colon_sep_mu'];
+            $colon_sep = $GLOBALS['colon_sep'];
 
             // Markup
             $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
@@ -38,7 +38,7 @@ if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
             $prop = $entries_label;
             $label = $prop;
             $val = $posts_label;
-            $colon_sep = $GLOBALS['colon_sep_mu'];
+            $colon_sep = $GLOBALS['colon_sep'];
 
             // Markup
             $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
@@ -53,7 +53,7 @@ if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
             $prop = 'Home';
             $label = $prop;
             $val = 'Page';
-            $colon_sep = $GLOBALS['colon_sep_mu'];
+            $colon_sep = $GLOBALS['colon_sep'];
 
             // Markup
             $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
@@ -71,7 +71,7 @@ if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
             $prop = $entry_label;
             $label = $prop;
             $val = 'Post';
-            $colon_sep = $GLOBALS['colon_sep_mu'];
+            $colon_sep = $GLOBALS['colon_sep'];
 
             // Markup
             $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
@@ -86,7 +86,7 @@ if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
             $prop = $entry_label;
             $label = $prop;
             $val = 'Attachment';
-            $colon_sep = $GLOBALS['colon_sep_mu'];
+            $colon_sep = $GLOBALS['colon_sep'];
 
             // Markup
             $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
@@ -104,7 +104,7 @@ if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
             $prop = $entry_label;
             $label = $prop;
             $val = 'Page';
-            $colon_sep = $GLOBALS['colon_sep_mu'];
+            $colon_sep = $GLOBALS['colon_sep'];
 
             // Markup
             $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
@@ -122,7 +122,7 @@ if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
             $prop = $entry_label;
             $label = $prop;
             $val = 'Singular';
-            $colon_sep = $GLOBALS['colon_sep_mu'];
+            $colon_sep = $GLOBALS['colon_sep'];
 
             // Markup
             $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
@@ -144,7 +144,7 @@ if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
             $val_m_prefix = 'month';
             $val_y = get_the_date( 'Y' );
             $val_y_prefix = 'year';
-            $colon_sep = $GLOBALS['colon_sep_mu'];
+            $colon_sep = $GLOBALS['colon_sep'];
 
             // Daily Archive
             if ( is_day() ) {
@@ -232,7 +232,7 @@ if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
         // Category or Tag
         if ( is_category() || is_tag() ) {
             
-            $colon_sep = $GLOBALS['colon_sep_mu'];
+            $colon_sep = $GLOBALS['colon_sep'];
 
             $prop = '';
             if ( is_category() ) {
@@ -261,7 +261,7 @@ if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
             $prop = 'Taxonomy';
             $label = $prop;
             $sep = ', ';
-            $colon_sep = $GLOBALS['colon_sep_mu'];
+            $colon_sep = $GLOBALS['colon_sep'];
 
             $term = get_queried_object();
             if ( $term ) {
@@ -284,7 +284,7 @@ if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
             
             $prop = 'Post Type Archive';
             $label = $prop;
-            $colon_sep = $GLOBALS['colon_sep_mu'];
+            $colon_sep = $GLOBALS['colon_sep'];
 
             $post_type = get_query_var( 'post_type' );
             if ( is_array( $post_type ) ) {
@@ -312,7 +312,7 @@ if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
             $prop = 'Post Type Archive';
             $label = $prop;
             $val = post_type_archive_title( '', false );
-            $colon_sep = $GLOBALS['colon_sep_mu'];
+            $colon_sep = $GLOBALS['colon_sep'];
 
             // Markup
             $val_mu = '<span class="txt %2$s---txt">%1$s</span>';

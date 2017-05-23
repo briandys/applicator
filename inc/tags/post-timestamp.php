@@ -125,24 +125,23 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         /* ------------ Post Published Time Stamp (obj) ---------- */
         
         // Content - Text
-        $published_hours_txt = applicator_html_ok_txt( array(
-            'type'      => 't',
-            'txt_css'   => 'hours',
-            'content'   => get_the_date( 'H' )
-        ) );
-        
-        // Content - Text
-        $published_minutes_txt = applicator_html_ok_txt( array(
-            'type'      => 't',
-            'txt_css'   => 'minutes',
-            'content'   => get_the_date( 'i' )
-        ) );
-        
-        // Content - Text
-        $published_seconds_txt = applicator_html_ok_txt( array(
-            'type'      => 't',
-            'txt_css'   => 'seconds',
-            'content'   => get_the_date( 's' )
+        $post_published_time_stamp_txt = applicator_html_ok_txt( array(
+            'content' => array(
+                array(
+                    'txt' => get_the_date( 'H' ),
+                    'css' => 'hours',
+                ),
+                array(
+                    'txt' => get_the_date( 'i' ),
+                    'css' => 'minutes',
+                    'sep' => $GLOBALS['colon_sep'],
+                ),
+                array(
+                    'txt' => get_the_date( 's' ),
+                    'css' => 'seconds',
+                    'sep' => $GLOBALS['colon_sep'],
+                ),
+            ),
         ) );
         
         // Content - Element
@@ -154,7 +153,7 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
                 'href'      => esc_url( get_permalink() )
             ),
             'sec_css'   => $post_published_time_stamp_obj_sec_css,
-            'content'   => $published_hours_txt . $GLOBALS['colon_sep_mu'] . $published_minutes_txt . $GLOBALS['colon_sep_mu'] . $published_seconds_txt
+            'content'   => $post_published_time_stamp_txt,
         ) );
         
         // Content - Object
@@ -277,18 +276,18 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         $post_modified_time_stamp_txt = applicator_html_ok_txt( array(
             'content' => array(
                 array(
-                    'txt' => get_the_modified_time( 'H' ),
-                    'css' => 'hours',
+                    'txt'   => get_the_modified_time( 'H' ),
+                    'css'   => 'hours',
                 ),
                 array(
-                    'txt' => get_the_modified_time( 'i' ),
-                    'css' => 'minutes',
-                    'sep' => $GLOBALS['colon_sep_mu'],
+                    'txt'   => get_the_modified_time( 'i' ),
+                    'css'   => 'minutes',
+                    'sep'   => $GLOBALS['colon_sep'],
                 ),
                 array(
-                    'txt' => get_the_modified_time( 's' ),
-                    'css' => 'seconds',
-                    'sep' => $GLOBALS['colon_sep_mu'],
+                    'txt'   => get_the_modified_time( 's' ),
+                    'css'   => 'seconds',
+                    'sep'   => $GLOBALS['colon_sep'],
                 ),
             ),
         ) );
@@ -343,27 +342,6 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
             'sec_css'   => 'post-pub-mod',
             'content'   => $post_published . $post_modified,
             'echo'      => true,
-        ) );
-        
-        
-        
-        
-        // Content - Text
-        $test = applicator_html_ok_txt_test( array(
-            'content' => array(
-                array(
-                    'txt' => get_the_modified_date( 'j' ), // Day (d)
-                    'css' => 'day',
-                ),
-                array(
-                    'txt' => get_the_modified_date( 'M' ), // Month (mmm)
-                    'css' => 'month',
-                ),
-                array(
-                    'txt' => get_the_modified_date( 'Y' ), // Year (yyyy)
-                    'css' => 'year',
-                ),
-            ),
         ) );
     
     }

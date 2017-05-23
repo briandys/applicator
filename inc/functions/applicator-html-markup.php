@@ -376,7 +376,6 @@ function applicator_html_ok_txtx( $args = array() ) {
     }
 }
 
-
 function applicator_html_ok_txt( $args = array() ) {
     
     // Make sure $args are an array.
@@ -426,19 +425,19 @@ function applicator_html_ok_txt( $args = array() ) {
         
         foreach ( (array) $content as $val ) {
             
-            if ( $val['txt'] ) {
+            if ( ! empty( $val['txt'] ) ) {
                 $txt = $val['txt'];
             } else {
                 $txt = '';
             }
             
-            if ( $val['css'] ) {
+            if ( ! empty( $val['css'] ) ) {
                 $css = $val['css'];
             } else {
                 $css = '';
             }
             
-            if ( $val['sep'] ) {
+            if ( ! empty( $val['sep'] ) ) {
                 $sep = $val['sep'];
             } else {
                 $sep = '';
