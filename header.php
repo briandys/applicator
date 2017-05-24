@@ -108,6 +108,14 @@
 
                                         // Display
                                         printf( $wbp_main_name_obj );
+                                        
+                                        $test = applicator_html_ok_mco_test( array(
+                                            'type'      => 'c',
+                                            'name'      => 'Web Product Main Name',
+                                            'css'       => 'manual-css',
+                                            'sec_css'   => 'tst',
+                                            'content'   => 'Hello',
+                                        ) );
 
                                         // Web Product Custom Logo | inc > settings.php | Customizer > Site Identity
                                         if ( has_custom_logo() ) {

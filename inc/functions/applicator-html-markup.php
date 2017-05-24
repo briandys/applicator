@@ -27,7 +27,7 @@ https://codex.wordpress.org/Function_Reference/sanitize_title
  *     @type string $type       Module | Component | Object
  *     @type string $layout     Block | Inline
  *     @type string $name       Element Name
- *     @type string $pri_css    Primary CSS Class Name
+ *     @type string $css    Primary CSS Class Name
  *     @type string $sec_css    Secondary CSS Class Name
  *     @type string $content    Markup Content
  *     @type string $title      Title Attribute (title="")
@@ -37,6 +37,110 @@ https://codex.wordpress.org/Function_Reference/sanitize_title
  * }
  * @return string HTML markup.
  */
+
+
+function applicator_html_ok_mco_test( $args = array() ) {
+    
+    // Require Array
+	if ( empty( $args ) ) {
+		return esc_html_e( 'Please define default parameters in the form of an array.', $GLOBALS['apl_textdomain'] );
+	}
+    
+    // Require Content
+	if ( empty( $args['content'] ) ) {
+		return esc_html_e( 'Please define Content.', $GLOBALS['apl_textdomain'] );
+	}
+    
+    $defaults = array(
+        'type'      => '',
+        'layout'    => '',
+        'name'      => '',
+        'css'       => '',
+        'sec_css'   => '',
+        'content'   => '',
+        'version'   => '',
+        'echo'      => false,
+    );
+    
+    // Parse Arguments
+    $r = wp_parse_args( $args, $defaults );
+    
+    $r_version = $r['version'];
+    $r_echo = $r['echo'];
+    $r_layout = $r['layout'];
+    $r_type = $r['type'];
+    
+    $r_name = $r['name'];
+    $r_css = $r['css'];
+    
+    $layout_inline_term_variations = ['inline', 'i'];
+    $layout_block_term_variations = ['block', 'b'];
+    
+    $type_module_term_variations = ['module', 'md', 'm'];
+    $type_component_term_variations = ['component', 'cp', 'c'];
+    $type_object_term_variations = ['object', 'obj', 'o'];
+    
+    $tag = '';
+    
+    // Layout
+    if ( in_array( $r_layout, $layout_inline_term_variations, true ) ) {
+        $tag = 'span';
+    } else {
+        $tag = 'div';
+    }
+    
+    // Type
+    if ( in_array( $r_type, $type_component_term_variations, true ) ) {
+        $tag = 'div';
+        $css = 'cp' . ' ' . preg_replace( '/\s\s+/', ' ', trim( $r_css ) );
+        $dynamic_css = ' ' . sanitize_title( preg_replace( '/\s\s+/', ' ', trim( $r_name ) ) );
+    }
+    
+    // New Version
+    if ( '0.1' == $r_version ) {
+        
+        $output = '';
+    
+    // Original Version    
+    } else {
+        
+        $output = '';
+        
+        $output .= '<' . $tag . ' class="' . $css . $dynamic_css . '" data-name="' . $r_name . '">';
+        
+            if ( ! in_array( $r_type, $type_object_term_variations, true ) ) {
+                $output .= '<' . $tag . ' class="cr ' . $r['sec_css'] . '---cr">';
+                
+                    $output .= '<' . $tag . ' class="hr ' . $r['sec_css'] . '---hr">';
+                        $output .= '<' . $tag . ' class="hr_cr ' . $r['sec_css'] . '---hr_cr">';
+                            $output .= '<' . $tag . ' class="h ' . $r['sec_css'] . '---h"><span class="h_l ' . $r['sec_css'] . '---h_l">' . $r['name'] . '</span></' . $tag . '>';
+                        $output .= '</' . $tag . '>';
+                    $output .= '</' . $tag . '>';
+                
+                    $output .= '<' . $tag . ' class="ct ' . $r['sec_css'] . '---ct">';
+                        $output .= '<' . $tag . ' class="ct_cr ' . $r['sec_css'] . '---ct_cr">';
+                            $output .= $r['content'];
+                        $output .= '</' . $tag . '>';
+                    $output .= '</' . $tag . '>';
+            
+            } else {
+                $output .= $r['content'];
+            }
+        
+        $output .= '</' . $tag . '>';
+    
+    }
+    
+    $html = apply_filters( 'applicator_html_ok_mco_test', $output, $args );
+    
+    if ( $r_echo ) {
+        echo $html;
+    } else {
+        return $html;
+    }
+    
+}
+
 
 function applicator_html_ok_mco( $args = array() ) {
     
@@ -54,7 +158,7 @@ function applicator_html_ok_mco( $args = array() ) {
         'type'      => '',
         'layout'    => '',
         'name'      => '',
-        'pri_css'   => '',
+        'css'   => '',
         'sec_css'   => '',
         'title'     => '',
         'content'   => '',
@@ -65,13 +169,6 @@ function applicator_html_ok_mco( $args = array() ) {
     // Parse Arguments
     $r = wp_parse_args( $args, $defaults );
     
-    $r_echo = $r['echo'];
-    
-    $md_css = 'md';
-    $obj_css = 'obj';
-    $div = 'div';
-    $span = 'span';
-    
     $type_name = '';
     $type_css = '';
     $type_trailing_css = '';
@@ -80,9 +177,17 @@ function applicator_html_ok_mco( $args = array() ) {
     
     $name = '';
     $sanitized_name = '';
-    $pri_css = '';
+    $css = '';
     $sec_css = '';
     $title = '';
+    
+    $r_echo = $r['echo'];
+    $r_type = $r['type'];
+    
+    $md_css = 'md';
+    $obj_css = 'obj';
+    $div = 'div';
+    $span = 'span';
     
     $module_term_variations = [ 'module', 'md', 'm', ];
     $component_term_variations = [ 'component', 'cp', 'c', ];
@@ -93,7 +198,7 @@ function applicator_html_ok_mco( $args = array() ) {
     
     
     // Type: Module
-    if ( in_array( $r['type'], $module_term_variations, true ) == $r['type'] ) {
+    if ( $r_type == in_array( $r_type, $module_term_variations, true ) ) {
         $type_name = ' ' . 'Module';
         $type_css = $md_css . ' ';
         $type_trailing_css = '-' . $md_css;
@@ -103,7 +208,9 @@ function applicator_html_ok_mco( $args = array() ) {
     
     // Type: Component
     if ( in_array( $r['type'], $component_term_variations, true ) ) {
+        $type_name = '';
         $type_css = 'cp ';
+        $type_trailing_css = '';
         $layout_tag = $div;
         
         if ( in_array( $r['layout'], $inline_term_variations, true ) ) {
@@ -132,10 +239,10 @@ function applicator_html_ok_mco( $args = array() ) {
         $sanitized_name = '';
     }
     
-    if ( ! empty( $r['pri_css'] ) ) {
-        $pri_css = ' ' . trim( $r['pri_css'] );
+    if ( ! empty( $r['css'] ) ) {
+        $css = ' ' . trim( $r['css'] );
     } else {
-        $pri_css = '';
+        $css = '';
     }
     
     if ( ! empty( $r['sec_css'] ) ) {
@@ -161,17 +268,17 @@ function applicator_html_ok_mco( $args = array() ) {
         $output = '';
     
         // Markup
-        $output .= '<' . $layout_tag . ' class="' . $type_css . $sanitized_name . $type_trailing_css . $pri_css . '"' . $title . ' data-name="' . $name . $type_name . '">';
+        $output .= '<' . $layout_tag . ' class="' . $type_css . $sanitized_name . $type_trailing_css . $css . '"' . $title . ' data-name="' . $name . $type_name . '">';
 
         if ( ! in_array( $r['type'], $object_term_variations, true ) ) {
             $output .= '<' . $layout_tag . ' class="cr' . $sec_css . '---cr">';
                 $output .= '<' . $layout_tag . ' class="hr' . $sec_css . '---hr">';
                     $output .= '<' . $layout_tag . ' class="hr_cr' . $sec_css . '---hr_cr">';
-                        $output .= '<' . $layout_tag . ' class="h' . $sec_css . '---h"><span class="h_l' . esc_attr( $sec_css ) . '---h_l">' . esc_html( $name ) . '</span></' . $layout_tag . '>';
+                        $output .= '<' . $layout_tag . ' class="h' . $sec_css . '---h"><span class="h_l' . $sec_css . '---h_l">' . esc_html( $name ) . '</span></' . $layout_tag . '>';
                     $output .= '</' . $layout_tag . '>';
                 $output .= '</' . $layout_tag . '>';
-                $output .= '<' . $layout_tag . ' class="ct' . esc_attr( $sec_css ) . '---ct">';
-                    $output .= '<' . $layout_tag . ' class="ct_cr' . esc_attr( $sec_css ) . '---ct_cr">';
+                $output .= '<' . $layout_tag . ' class="ct' . $sec_css . '---ct">';
+                    $output .= '<' . $layout_tag . ' class="ct_cr' . $sec_css . '---ct_cr">';
                         $output .= $r['content'];
                     $output .= '</' . $layout_tag . '>';
                 $output .= '</' . $layout_tag . '><!-- ct -->';
