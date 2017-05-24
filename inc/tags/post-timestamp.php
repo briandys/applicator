@@ -62,9 +62,9 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         ) );
         
         // Content - Element
-        $post_published_label_obj_elem = applicator_html_e( array(
+        $post_published_label_obj_elem = applicator_html_ok_e( array(
             'type'      => 'g',
-            'sec_css'   => $post_published_label_obj_sec_css,
+            'css'       => $post_published_label_obj_sec_css,
             'content'   => $published_txt
         ) );
         
@@ -101,15 +101,17 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         ) );
         
         // Content - Element
-        $post_published_date_stamp_obj_elem = applicator_html_e( array(
-            'type'      => 't',
+        $post_published_date_stamp_obj_elem = applicator_html_ok_e( array(
+            'type'      => 'h',
             'linked'    => true,
             'attr'      => array(
                 'datetime'  => get_the_date( DATE_W3C ),
-                'href'      => esc_url( get_permalink() )
+                'href'      => esc_url( get_permalink() ),
+                'htag'      => 'h',
+                'hlevel'      => '1',
             ),
-            'sec_css'   => $post_published_date_stamp_obj_sec_css,
-            'content'   => $post_published_date_stamp_obj_txt
+            'css'       => $post_published_date_stamp_obj_sec_css,
+            'content'   => $post_published_date_stamp_obj_txt,
         ) );
         
         // Content - Object
@@ -145,14 +147,14 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         ) );
         
         // Content - Element
-        $post_published_time_stamp_obj_elem = applicator_html_e( array(
+        $post_published_time_stamp_obj_elem = applicator_html_ok_e( array(
             'type'      => 't',
             'linked'    => true,
             'attr'      => array(
                 'datetime'  => get_the_date( DATE_W3C ),
                 'href'      => esc_url( get_permalink() )
             ),
-            'sec_css'   => $post_published_time_stamp_obj_sec_css,
+            'css'       => $post_published_time_stamp_obj_sec_css,
             'content'   => $post_published_time_stamp_txt,
         ) );
         
@@ -211,9 +213,9 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         ) );
         
         // Content - Element
-        $post_modified_label_obj_elem = applicator_html_e( array(
+        $post_modified_label_obj_elem = applicator_html_ok_e( array(
             'type'      => 'g',
-            'sec_css'   => $post_modified_label_obj_sec_css,
+            'css'       => $post_modified_label_obj_sec_css,
             'content'   => $modified_txt
         ) );
         
@@ -249,14 +251,14 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         ) );
         
         // Content - Element
-        $post_modified_date_stamp_obj_elem = applicator_html_e( array(
+        $post_modified_date_stamp_obj_elem = applicator_html_ok_e( array(
             'type'      => 't',
             'linked'    => true,
             'attr'      => array(
                 'datetime'  => get_the_modified_date( DATE_W3C ),
                 'href'      => esc_url( get_permalink() )
             ),
-            'sec_css'   => $post_modified_date_stamp_obj_sec_css,
+            'css'       => $post_modified_date_stamp_obj_sec_css,
             'content'   => $post_modified_date_stamp_obj_txt
         ) );
         
@@ -293,14 +295,14 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         ) );
         
         // Content - Element
-        $post_modified_time_stamp_obj_elem = applicator_html_e( array(
+        $post_modified_time_stamp_obj_elem = applicator_html_ok_e( array(
             'type'      => 't',
             'linked'    => true,
             'attr'      => array(
                 'datetime'  => get_the_modified_date( DATE_W3C ),
                 'href'      => esc_url( get_permalink() )
             ),
-            'sec_css'   => $post_modified_time_stamp_obj_sec_css,
+            'css'       => $post_modified_time_stamp_obj_sec_css,
             'content'   => $post_modified_time_stamp_txt,
         ) );
         
