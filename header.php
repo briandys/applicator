@@ -109,13 +109,43 @@
                                         // Display
                                         printf( $wbp_main_name_obj );
                                         
-                                        $test = applicator_html_ok_mco_test( array(
-                                            'type'      => 'c',
-                                            'name'      => 'Web Product Main Name',
-                                            'css'       => 'manual-css',
-                                            'sec_css'   => 'tst',
-                                            'content'   => 'Hello',
+                                        $web_product_main_name_obj_sec_css = 'wbp-main-name-obj';
+                                        
+                                        // Content - Text
+                                        $web_product_main_name_txt = applicator_html_ok_txt( array(
+                                            'content' => array(
+                                                array(
+                                                    'txt'   => get_bloginfo( 'name' ),
+                                                    'css'   => 'wbp-name',
+                                                ),
+                                            ),
                                         ) );
+        
+                                        // Content - Element
+                                        $web_product_main_name_obj = applicator_html_ok_el( array(
+                                            'name'      => 'Web Product Main Name',
+                                            'elem'      => 'h',
+                                            'linked'    => true,
+                                            'attr'      => array(
+                                                'htag'      => 'h1',
+                                                'href'      => esc_url( home_url( '/' ) ),
+                                            ),
+                                            'css'       => $web_product_main_name_obj_sec_css,
+                                            'extra_css' => 'site-title',
+                                            'content'   => $web_product_main_name_txt,
+                                            'echo'      => false,
+                                        ) );
+                                        
+                                        /*
+                                        // Content - Object
+                                        $web_product_main_name_obj = applicator_html_ok_mco_test( array(
+                                            'type'          => 'o',
+                                            'layout'        => 'b',
+                                            'name'          => 'Web Product Main Name',
+                                            'sec_css'       => $web_product_main_name_obj_sec_css,
+                                            'content'       => $web_product_main_name_obj,
+                                        ) );
+                                        */
 
                                         // Web Product Custom Logo | inc > settings.php | Customizer > Site Identity
                                         if ( has_custom_logo() ) {
