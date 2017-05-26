@@ -11,12 +11,12 @@ Structure
 
             • Populated (status) | comments-population--populated
                 
-                • Single: 1 Comment | $comments_count_a_l_single | comments-population--populated--single
-                • Multiple: 2 Comments | $comments_count_a_l_multi | comments-population--populated--multiple
+                • Single: 1 Comment | $comments_count_single_txt | comments-population--populated--single
+                • Multiple: 2 Comments | $comments_count_multi_txt | comments-population--populated--multiple
         
             • Empty (status) | comments-population--empty
                 
-                • Zero: 0 Comment | $comments_count_a_l_zero | comments-population--empty--zero
+                • Zero: 0 Comment | $comments_count_zero_txt | comments-population--empty--zero
 
     
     ** Comment Creation Ability (cp) | $comment_creation_ability
@@ -42,56 +42,56 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
         
         $comments_count_sec_css = 'coms-cnt-obj'; // 5
         
-        $comments_count_single_txt = '1'; // 1
-        $comments_count_multi_txt = '%';
-        $comments_count_zero_txt = '0';
+        $comments_count_single_text = '1'; // 1
+        $comments_count_multi_text = '%';
+        $comments_count_zero_text = '0';
         
         $comments_count_num_css = 'comments-count'; // 2
         
-        $comment_singular_txt = 'Comment'; // 3
-        $comment_plural_txt = 'Comments';
+        $comment_singular_text = 'Comment'; // 3
+        $comment_plural_text = 'Comments';
         
-        $comment_singular_txt_css = 'comment'; // 4
-        $comment_plural_txt_css = 'comments';
+        $comment_singular_text_css = 'comment'; // 4
+        $comment_plural_text_css = 'comments';
         
         
         // Comments Count: Single - Text
-        $comments_count_a_l_single = applicator_html_ok_txt( array(
+        $comments_count_single_txt = applicator_html_ok_txt( array(
             'content' => array(
                 array(
-                    'txt' => esc_html__( $comments_count_single_txt, $GLOBALS['apl_textdomain'] ),
+                    'txt' => esc_html__( $comments_count_single_text, $GLOBALS['apl_textdomain'] ),
                     'css' => $comments_count_num_css,
                 ),
                 array(
-                    'txt' => esc_html__( $comment_singular_txt, $GLOBALS['apl_textdomain'] ),
+                    'txt' => esc_html__( $comment_singular_text, $GLOBALS['apl_textdomain'] ),
                     'sep' => $GLOBALS['space_sep'],
                 ),
             ),
         ) );
         
         // Comments Count: Multiple - Text
-        $comments_count_a_l_multi = applicator_html_ok_txt( array(
+        $comments_count_multi_txt = applicator_html_ok_txt( array(
             'content' => array(
                 array(
-                    'txt' => esc_html__( $comments_count_multi_txt, $GLOBALS['apl_textdomain'] ),
+                    'txt' => esc_html__( $comments_count_multi_text, $GLOBALS['apl_textdomain'] ),
                     'css' => $comments_count_num_css,
                 ),
                 array(
-                    'txt' => esc_html__( $comment_plural_txt, $GLOBALS['apl_textdomain'] ),
+                    'txt' => esc_html__( $comment_plural_text, $GLOBALS['apl_textdomain'] ),
                     'sep' => $GLOBALS['space_sep'],
                 ),
             ),
         ) );
         
         // Comments Count: Zero - Text
-        $comments_count_a_l_zero = applicator_html_ok_txt( array(
+        $comments_count_zero_txt = applicator_html_ok_txt( array(
             'content' => array(
                 array(
-                    'txt' => esc_html__( '0', $GLOBALS['apl_textdomain'] ),
+                    'txt' => esc_html__( $comments_count_zero_text, $GLOBALS['apl_textdomain'] ),
                     'css' => $comments_count_num_css,
                 ),
                 array(
-                    'txt' => esc_html__( $comment_singular_txt, $GLOBALS['apl_textdomain'] ),
+                    'txt' => esc_html__( $comment_singular_text, $GLOBALS['apl_textdomain'] ),
                     'sep' => $GLOBALS['space_sep'],
                 ),
             ),
@@ -108,10 +108,10 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
                 '',
 
                 // Comments Count: Single
-                $comments_count_a_l_single,
+                $comments_count_single_txt,
 
                 // Comments Count: Multiple
-                $comments_count_a_l_multi,
+                $comments_count_multi_txt,
 
                 // Class Name for <a> (WP-Generated or WPG)
                 'a' . ' ' . $comments_count_sec_css . '---a',
@@ -119,6 +119,8 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
                 // Comment Creation Disabled
                 ''
             ) );
+            
+            $comments_count_obj_a_link = '';
 
         // Comments Empty
         } else {
@@ -132,7 +134,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
                 $comments_count_obj_a_link = '';
             }
             
-            $comments_count_obj_a = $comments_count_a_l_zero;
+            $comments_count_obj_a = $comments_count_zero_txt;
         
         }
         
@@ -184,6 +186,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
                 $add_comment_axn_a_mu .= '</span>';
             $add_comment_axn_a_mu .= '</a>';
             
+            /*
             // Content
             $add_comment_axn_a = sprintf( $add_comment_axn_a_mu,
                 esc_html__( 'Add', $GLOBALS['apl_textdomain'] ),
@@ -193,13 +196,40 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
                 'add-comment-axn',
                 $add_comment_axn_a_href
             );
+            */
             
+            /*
             // Markup
             $add_comment_axn = applicator_html_ok_mco( array(
                 'type'      => 'o',
                 'name'      => 'Add Comment Action',
                 'sec_css'   => 'add-com-axn',
                 'content'   => $add_comment_axn_a
+            ) );
+            */
+            
+            // Text
+            $add_comment_axn_txt = applicator_html_ok_txt( array(
+                'content' => array(
+                    array(
+                        'txt' => esc_html__( 'Add', $GLOBALS['apl_textdomain'] ),
+                    ),
+                    array(
+                        'txt' => esc_html__( 'Comment', $GLOBALS['apl_textdomain'] ),
+                        'sep' => $GLOBALS['space_sep'],
+                    ),
+                ),
+            ) );
+            
+            // Object
+            $add_comment_axn = applicator_html_ok_obj( array(
+                'name'      => 'Add Comment Action',
+                'elem'      => 'a',
+                'css'       => 'add-com-axn',
+                'attr'      => array(
+                    'href'      => $add_comment_axn_a_href,
+                ),
+                'content'   => $add_comment_axn_txt,
             ) );
 
             
