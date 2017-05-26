@@ -41,15 +41,16 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         
         // Class Name Variables
         $post_published_sec_css = 'post-pub';
-        $post_published_label_obj_sec_css = $post_published_sec_css . '-lbl-obj';
-        $post_published_date_stamp_obj_sec_css = $post_published_sec_css . '-ds-obj';
-        $post_published_time_stamp_obj_sec_css = $post_published_sec_css . '-ts-obj';
+        $post_published_label_obj_sec_css = $post_published_sec_css . '-lbl';
+        $post_published_date_stamp_obj_sec_css = $post_published_sec_css . '-ds';
+        $post_published_time_stamp_obj_sec_css = $post_published_sec_css . '-ts';
+        $post_published_date_time_stamp_sec_css = $post_published_sec_css . '-dts';
         
         
         /* ------------ Post Published Label (obj) ---------- */
         
         // Content - Text
-        $published_txt = applicator_html_ok_txt( array(
+        $post_published_label_txt = applicator_html_ok_txt( array(
             'content' => array(
                 array(
                     'txt' => esc_html__( 'Published', $GLOBALS['apl_textdomain'] ),
@@ -62,19 +63,12 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         ) );
         
         // Content - Element
-        $post_published_label_obj_elem = applicator_html_ok_el( array(
-            'type'      => 'g',
-            'css'       => $post_published_label_obj_sec_css,
-            'content'   => $published_txt
-        ) );
-        
-        // Content - Object
-        $post_published_label_obj = applicator_html_ok_mco( array(
-            'type'      => 'o',
-            'layout'    => 'i',
+        $post_published_label_obj = applicator_html_ok_obj( array(
             'name'      => 'Post Published Label',
-            'sec_css'   => $post_published_label_obj_sec_css,
-            'content'   => $post_published_label_obj_elem
+            'layout'    => 'i',
+            'elem'      => 'g',
+            'css'       => $post_published_label_obj_sec_css,
+            'content'   => $post_published_label_txt,
         ) );
         
         
@@ -101,24 +95,19 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         ) );
         
         // Content - Element
-        $post_published_date_stamp_obj_elem = applicator_html_ok_el( array(
-            'type'      => 't',
+        $post_published_date_stamp_obj = applicator_html_ok_obj( array(
+            'name'      => 'Post Published Date Stamp',
+            'layout'    => 'i',
+            'elem'      => 't',
+            'css'       => $post_published_date_stamp_obj_sec_css,
             'linked'    => true,
             'attr'      => array(
+                'title'  => get_the_date( 'j F Y'),
                 'datetime'  => get_the_date( DATE_W3C ),
                 'href'      => esc_url( get_permalink() ),
             ),
-            'css'       => $post_published_date_stamp_obj_sec_css,
             'content'   => $post_published_date_stamp_obj_txt,
-        ) );
-        
-        // Content - Object
-        $post_published_date_stamp_obj = applicator_html_ok_mco( array(
-            'type'      => 'o',
-            'name'      => 'Post Published Date Stamp',
-            'sec_css'   => $post_published_date_stamp_obj_sec_css,
-            'title'     => get_the_date( 'j F Y'),
-            'content'   => $post_published_date_stamp_obj_elem
+            'echo'      => false,
         ) );
         
         
@@ -144,45 +133,40 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
             ),
         ) );
         
-        // Content - Element
-        $post_published_time_stamp_obj_elem = applicator_html_ok_el( array(
-            'type'      => 't',
+        // Content - Object
+        $post_published_time_stamp_obj = applicator_html_ok_obj( array(
+            'name'      => 'Post Published Time Stamp',
+            'layout'    => 'i',
+            'elem'      => 't',
+            'css'       => $post_published_time_stamp_obj_sec_css,
             'linked'    => true,
             'attr'      => array(
+                'title'  => get_the_date( 'H:i:s'),
                 'datetime'  => get_the_date( DATE_W3C ),
                 'href'      => esc_url( get_permalink() ),
             ),
-            'css'       => $post_published_time_stamp_obj_sec_css,
             'content'   => $post_published_time_stamp_txt,
-        ) );
-        
-        // Content - Object
-        $post_published_time_stamp_obj = applicator_html_ok_mco( array(
-            'type'      => 'o',
-            'name'      => 'Post Published Time Stamp',
-            'sec_css'   => $post_published_time_stamp_obj_sec_css,
-            'title'     => get_the_date( 'H:i:s'),
-            'content'   => $post_published_time_stamp_obj_elem
+            'echo'      => false,
         ) );
         
         
         /* ------------ Post Published Date, Time Stamp (cp) ---------- */
         
         // Content - Component
-        $post_published_date_time_stamp = applicator_html_ok_mco( array(
-            'name'      => 'Post Published Date, Time Stamp',
-            'sec_css'   => $post_published_sec_css . '-dts',
-            'content'   => $post_published_date_stamp_obj . ' ' . $post_published_time_stamp_obj
+        $post_published_date_time_stamp = applicator_html_ok_mco_test( array(
+            'name'          => 'Post Published Date, Time Stamp',
+            'sec_css'       => $post_published_date_time_stamp_sec_css,
+            'content'       => $post_published_date_stamp_obj . $post_published_time_stamp_obj,
         ) );
         
         
         /* ------------ Post Published (cp) ---------- */
         
         // Content - Component
-        $post_published = applicator_html_ok_mco( array(
+        $post_published = applicator_html_ok_mco_test( array(
             'name'      => 'Post Published',
             'sec_css'   => $post_published_sec_css,
-            'content'   => $post_published_label_obj . $post_published_date_time_stamp
+            'content'   => $post_published_label_obj . $post_published_date_time_stamp,
         ) );
         
         
@@ -190,15 +174,16 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         
         
         $post_modified_sec_css = 'post-mod';
-        $post_modified_label_obj_sec_css = $post_modified_sec_css . '-lbl-obj';
-        $post_modified_date_stamp_obj_sec_css = $post_modified_sec_css . '-ds-obj';
-        $post_modified_time_stamp_obj_sec_css = $post_modified_sec_css . '-ts-obj';
+        $post_modified_label_obj_sec_css = $post_modified_sec_css . '-lbl';
+        $post_modified_date_stamp_obj_sec_css = $post_modified_sec_css . '-ds';
+        $post_modified_time_stamp_obj_sec_css = $post_modified_sec_css . '-ts';
+        $post_modified_date_time_stamp_sec_css = $post_modified_sec_css . '-dts';
         
         
         /* ------------ Post Modified Label (obj) ---------- */
         
         // Content - Text
-        $modified_txt = applicator_html_ok_txt( array(
+        $post_modified_label_txt = applicator_html_ok_txt( array(
             'content' => array(
                 array(
                     'txt' => esc_html__( 'Modified', $GLOBALS['apl_textdomain'] ),
@@ -211,18 +196,12 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         ) );
         
         // Content - Element
-        $post_modified_label_obj_elem = applicator_html_ok_el( array(
-            'type'      => 'g',
-            'css'       => $post_modified_label_obj_sec_css,
-            'content'   => $modified_txt
-        ) );
-        
-        // Content - Object
-        $post_modified_label_obj = applicator_html_ok_mco( array(
-            'type'      => 'o',
+        $post_modified_label_obj = applicator_html_ok_obj( array(
             'name'      => 'Post Modified Label',
-            'sec_css'   => $post_modified_label_obj_sec_css,
-            'content'   => $post_modified_label_obj_elem
+            'layout'    => 'i',
+            'elem'      => 'g',
+            'css'       => $post_modified_label_obj_sec_css,
+            'content'   => $post_modified_label_txt,
         ) );
         
         
@@ -248,25 +227,20 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
             ),
         ) );
         
-        // Content - Element
-        $post_modified_date_stamp_obj_elem = applicator_html_ok_el( array(
-            'type'      => 't',
+        // Content - Object
+        $post_modified_date_stamp_obj = applicator_html_ok_obj( array(
+            'name'      => 'Post Modified Date Stamp',
+            'layout'    => 'i',
+            'elem'      => 't',
+            'css'       => $post_modified_date_stamp_obj_sec_css,
             'linked'    => true,
             'attr'      => array(
+                'title'  => get_the_modified_date( 'j F Y'),
                 'datetime'  => get_the_modified_date( DATE_W3C ),
-                'href'      => esc_url( get_permalink() )
+                'href'      => esc_url( get_permalink() ),
             ),
-            'css'       => $post_modified_date_stamp_obj_sec_css,
-            'content'   => $post_modified_date_stamp_obj_txt
-        ) );
-        
-        // Content - Object
-        $post_modified_date_stamp_obj = applicator_html_ok_mco( array(
-            'type'      => 'o',
-            'name'      => 'Post Modified Date Stamp',
-            'sec_css'   => $post_modified_date_stamp_obj_sec_css,
-            'title'     => get_the_modified_date( 'j F Y'),
-            'content'   => $post_modified_date_stamp_obj_elem
+            'content'   => $post_modified_date_stamp_obj_txt,
+            'echo'      => false,
         ) );
         
         
@@ -276,58 +250,53 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         $post_modified_time_stamp_txt = applicator_html_ok_txt( array(
             'content' => array(
                 array(
-                    'txt'   => get_the_modified_time( 'H' ),
-                    'css'   => 'hours',
+                    'txt' => get_the_modified_time( 'H' ),
+                    'css' => 'hours',
                 ),
                 array(
-                    'txt'   => get_the_modified_time( 'i' ),
-                    'css'   => 'minutes',
-                    'sep'   => $GLOBALS['colon_sep'],
+                    'txt' => get_the_modified_time( 'i' ),
+                    'css' => 'minutes',
+                    'sep' => $GLOBALS['colon_sep'],
                 ),
                 array(
-                    'txt'   => get_the_modified_time( 's' ),
-                    'css'   => 'seconds',
-                    'sep'   => $GLOBALS['colon_sep'],
+                    'txt' => get_the_modified_time( 's' ),
+                    'css' => 'seconds',
+                    'sep' => $GLOBALS['colon_sep'],
                 ),
             ),
-        ) );
-        
-        // Content - Element
-        $post_modified_time_stamp_obj_elem = applicator_html_ok_el( array(
-            'type'      => 't',
-            'linked'    => true,
-            'attr'      => array(
-                'datetime'  => get_the_modified_date( DATE_W3C ),
-                'href'      => esc_url( get_permalink() )
-            ),
-            'css'       => $post_modified_time_stamp_obj_sec_css,
-            'content'   => $post_modified_time_stamp_txt,
         ) );
         
         // Content - Object
-        $post_modified_time_stamp_obj = applicator_html_ok_mco( array(
-            'type'      => 'o',
+        $post_modified_time_stamp_obj = applicator_html_ok_obj( array(
             'name'      => 'Post Modified Time Stamp',
-            'sec_css'   => $post_modified_time_stamp_obj_sec_css,
-            'title'     => get_the_modified_time( 'H:i:s'),
-            'content'   => $post_modified_time_stamp_obj_elem,
+            'layout'    => 'i',
+            'elem'      => 't',
+            'css'       => $post_modified_time_stamp_obj_sec_css,
+            'linked'    => true,
+            'attr'      => array(
+                'title'  => get_the_modified_time( 'H:i:s'),
+                'datetime'  => get_the_modified_date( DATE_W3C ),
+                'href'      => esc_url( get_permalink() ),
+            ),
+            'content'   => $post_modified_time_stamp_txt,
+            'echo'      => false,
         ) );
         
         
         /* ------------ Post Modified Date, Time Stamp (cp) ---------- */
         
         // Content - Component
-        $post_modified_date_time_stamp = applicator_html_ok_mco( array(
-            'name'      => 'Post Modified Date, Time Stamp',
-            'sec_css'   => $post_modified_sec_css . '-dts',
-            'content'   => $post_modified_date_stamp_obj . ' ' . $post_modified_time_stamp_obj,
+        $post_modified_date_time_stamp = applicator_html_ok_mco_test( array(
+            'name'          => 'Post Modified Date, Time Stamp',
+            'sec_css'       => $post_modified_date_time_stamp_sec_css,
+            'content'       => $post_modified_date_stamp_obj . $post_modified_time_stamp_obj,
         ) );
         
         
         /* ------------ Post Modified (cp) ---------- */
         
         // Content - Component
-        $post_modified = applicator_html_ok_mco( array(
+        $post_modified = applicator_html_ok_mco_test( array(
             'name'      => 'Post Modified',
             'sec_css'   => $post_modified_sec_css,
             'content'   => $post_modified_label_obj . $post_modified_date_time_stamp,
@@ -337,7 +306,7 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         /* ------------ Post Published, Modified (cp) ---------- */
         
         // Content - Component
-        $post_published_modified = applicator_html_ok_mco( array(
+        $post_published_modified = applicator_html_ok_mco_test( array(
             'name'      => 'Post Published, Modified',
             'sec_css'   => 'post-pub-mod',
             'content'   => $post_published . $post_modified,

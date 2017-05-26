@@ -87,29 +87,6 @@
                                     <div class="ct_cr wbp-main-info---ct_cr">
                                         <?php
                                         // Web Product Main Name
-                                        // Markup
-                                        $wbp_main_name_obj_mu = '<div class="%2$s" data-name="%1$s">';
-                                            $wbp_main_name_obj_mu .= '<h1 class="h %3$s---h site-title">';
-                                                $wbp_main_name_obj_mu .= '<a class="a %3$s---a" href="%6$s" rel="home" title="%4$s"><span class="a_l %3$s---a_l"><span class="txt %5$s---txt">';
-                                                    $wbp_main_name_obj_mu .= '%4$s';
-                                                $wbp_main_name_obj_mu .= '</span></span></a>';
-                                            $wbp_main_name_obj_mu .= '</h1>';
-                                        $wbp_main_name_obj_mu .= '</div><!-- %1$s -->';
-
-                                        // Content
-                                        $wbp_main_name_obj = sprintf( $wbp_main_name_obj_mu,
-                                            'Web Product Main Name Object',
-                                                'obj wbp-main-name-obj',
-                                                'wbp-main-name-obj',
-                                            get_bloginfo( 'name' ),
-                                                'wbp-main-name',
-                                            esc_url( home_url( '/' ) )
-                                        );
-
-                                        // Display
-                                        printf( $wbp_main_name_obj );
-                                        
-                                        $web_product_main_name_obj_sec_css = 'wbp-main-name-obj';
                                         
                                         // Content - Text
                                         $web_product_main_name_txt = applicator_html_ok_txt( array(
@@ -121,50 +98,37 @@
                                             ),
                                         ) );
         
-                                        // Content - Element
-                                        $web_product_main_name_obj = applicator_html_ok_el( array(
+                                        // Content - Object
+                                        $web_product_main_name_obj = applicator_html_ok_obj( array(
                                             'name'      => 'Web Product Main Name',
                                             'elem'      => 'h',
+                                            'elem_css'  => 'site-title',
+                                            'css'       => 'wbp-main-name',
                                             'linked'    => true,
                                             'attr'      => array(
-                                                'htag'      => 'h1',
                                                 'href'      => esc_url( home_url( '/' ) ),
+                                                'htag'      => 'h1',
+                                                'title'     => get_bloginfo( 'name' ),
                                             ),
-                                            'css'       => $web_product_main_name_obj_sec_css,
-                                            'extra_css' => 'site-title',
                                             'content'   => $web_product_main_name_txt,
-                                            'echo'      => false,
+                                            'echo'      => true,
                                         ) );
-                                        
-                                        /*
-                                        // Content - Object
-                                        $web_product_main_name_obj = applicator_html_ok_mco_test( array(
-                                            'type'          => 'o',
-                                            'layout'        => 'b',
-                                            'name'          => 'Web Product Main Name',
-                                            'sec_css'       => $web_product_main_name_obj_sec_css,
-                                            'content'       => $web_product_main_name_obj,
-                                        ) );
-                                        */
 
                                         // Web Product Custom Logo | inc > settings.php | Customizer > Site Identity
                                         if ( has_custom_logo() ) {
-
-                                            // Markup
-                                            $wbp_main_logo_obj_mu = '<div class="%2$s" title="%4$s" data-name="%1$s">';
-                                                $wbp_main_logo_obj_mu .= '%3$s';
-                                            $wbp_main_logo_obj_mu .= '</div>';
-
-                                            // Content
-                                            $wbp_main_logo_obj = sprintf( $wbp_main_logo_obj_mu,
-                                                'Web Product Main Logo Object',
-                                                    'obj wbp-main-logo-obj',
-                                                get_custom_logo(),
-                                                get_bloginfo( 'name' )
-                                            );
-
-                                            // Display
-                                            printf( $wbp_main_logo_obj );
+                                            
+                                            // Content - Object
+                                            $web_product_main_logo_obj = applicator_html_ok_obj( array(
+                                                'name'      => 'Web Product Main Logo',
+                                                'elem'      => 'wp',
+                                                'css'       => 'wbp-main-logo',
+                                                'attr'      => array(
+                                                    'title'     => get_bloginfo( 'name' ),
+                                                ),
+                                                'content'   => get_custom_logo(),
+                                                'echo'      => true,
+                                            ) );
+                                            
                                         }
 
                                         // Web Product Main Description
@@ -172,27 +136,29 @@
 
                                         if ( $description || is_customize_preview() ) {
 
-                                            // Markup
-                                            $wbp_main_desc_obj_mu = '<div class="%2$s" data-name="%1$s">';
-                                                $wbp_main_desc_obj_mu .= '<div class="g %3$s---g">';
-                                                    $wbp_main_desc_obj_mu .= '<a class="a %3$s---a" href="%6$s" rel="home" title="%4$s"><span class="a_l %3$s---a_l"><span class="txt %5$s---txt">';
-                                                        $wbp_main_desc_obj_mu .= '%4$s';
-                                                    $wbp_main_desc_obj_mu .= '</span></span></a>';
-                                                $wbp_main_desc_obj_mu .= '</div>';
-                                            $wbp_main_desc_obj_mu .= '</div><!-- %1$s -->';
+                                            // Content - Text
+                                            $web_product_main_description_txt = applicator_html_ok_txt( array(
+                                                'content' => array(
+                                                    array(
+                                                        'txt'   => $description,
+                                                        'css'   => 'wbp-desc',
+                                                    ),
+                                                ),
+                                            ) );
 
-                                            // Content
-                                            $wbp_main_desc_obj = sprintf( $wbp_main_desc_obj_mu,
-                                                'Web Product Main Description Object',
-                                                    'obj wbp-main-desc-obj',
-                                                    'wbp-main-desc-obj',
-                                                $description,
-                                                    'wbp-main-desc',
-                                                esc_url( home_url( '/' ) )
-                                            );
-
-                                            // Display
-                                            printf( $wbp_main_desc_obj );
+                                            // Content - Object
+                                            $web_product_main_description_obj = applicator_html_ok_obj( array(
+                                                'name'      => 'Web Product Main Description',
+                                                'elem'      => 'g',
+                                                'css'       => 'wbp-main-desc',
+                                                'linked'    => true,
+                                                'attr'      => array(
+                                                    'href'      => esc_url( home_url( '/' ) ),
+                                                    'title'     => $description,
+                                                ),
+                                                'content'   => $web_product_main_description_txt,
+                                                'echo'      => true,
+                                            ) );
                                         }
                                         ?>
                                     </div>
