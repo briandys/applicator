@@ -37,20 +37,6 @@ Structure
 if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
     function applicator_func_comments_actions_snippet() {
         
-        /* Start with setting up objects */
-        
-        /* First is Comments Count Object */
-        
-        /* Let's put here the markup first because this will be used by the objects. */
-        
-        // Markup
-        $comments_count_obj_a_l_mu = '<span class="a_l %5$s---a_l" title="%6$s">';
-            $comments_count_obj_a_l_mu .= '<span class="num %2$s---num">%1$s</span>';
-            $comments_count_obj_a_l_mu .= ' <span class="txt %4$s---txt">%3$s</span>';
-        $comments_count_obj_a_l_mu .= '</span>';
-        
-        
-        // Content
         $comments_population_pri_css = 'comments-population';
         $comment_creation_ability_pri_css = 'comment-creation-ability';
         
@@ -69,35 +55,47 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
         $comment_plural_txt_css = 'comments';
         
         
-        // Comments Count: Single
-        $comments_count_a_l_single = sprintf( $comments_count_obj_a_l_mu,
-            esc_html__( $comments_count_single_txt, $GLOBALS['apl_textdomain'] ),
-                $comments_count_num_css,
-            esc_html__( $comment_singular_txt, $GLOBALS['apl_textdomain'] ),
-                $comment_singular_txt_css,
-            $comments_count_sec_css,
-            esc_attr__( $comments_count_single_txt . ' ' . $comment_singular_txt, $GLOBALS['apl_textdomain'] )
-        );
+        // Comments Count: Single - Text
+        $comments_count_a_l_single = applicator_html_ok_txt( array(
+            'content' => array(
+                array(
+                    'txt' => esc_html__( $comments_count_single_txt, $GLOBALS['apl_textdomain'] ),
+                    'css' => $comments_count_num_css,
+                ),
+                array(
+                    'txt' => esc_html__( $comment_singular_txt, $GLOBALS['apl_textdomain'] ),
+                    'sep' => $GLOBALS['space_sep'],
+                ),
+            ),
+        ) );
         
-        // Comments Count: Multiple
-        $comments_count_a_l_multi = sprintf( $comments_count_obj_a_l_mu,
-            esc_html__( $comments_count_multi_txt, $GLOBALS['apl_textdomain'] ),
-                $comments_count_num_css,
-            esc_html__( $comment_plural_txt, $GLOBALS['apl_textdomain'] ),
-                $comment_plural_txt_css,
-            $comments_count_sec_css,
-            esc_attr__( $comments_count_multi_txt . ' ' . $comment_plural_txt, $GLOBALS['apl_textdomain'] )
-        );
+        // Comments Count: Multiple - Text
+        $comments_count_a_l_multi = applicator_html_ok_txt( array(
+            'content' => array(
+                array(
+                    'txt' => esc_html__( $comments_count_multi_txt, $GLOBALS['apl_textdomain'] ),
+                    'css' => $comments_count_num_css,
+                ),
+                array(
+                    'txt' => esc_html__( $comment_plural_txt, $GLOBALS['apl_textdomain'] ),
+                    'sep' => $GLOBALS['space_sep'],
+                ),
+            ),
+        ) );
         
-        // Comments Count: Zero
-        $comments_count_a_l_zero = sprintf( $comments_count_obj_a_l_mu,
-            esc_html__( $comments_count_zero_txt, $GLOBALS['apl_textdomain'] ),
-                $comments_count_num_css,
-            esc_html__( $comment_singular_txt, $GLOBALS['apl_textdomain'] ),
-                $comment_singular_txt_css,
-            $comments_count_sec_css,
-            esc_attr__( $comments_count_zero_txt . ' ' . $comment_singular_txt, $GLOBALS['apl_textdomain'] )
-        );
+        // Comments Count: Zero - Text
+        $comments_count_a_l_zero = applicator_html_ok_txt( array(
+            'content' => array(
+                array(
+                    'txt' => esc_html__( '0', $GLOBALS['apl_textdomain'] ),
+                    'css' => $comments_count_num_css,
+                ),
+                array(
+                    'txt' => esc_html__( $comment_singular_txt, $GLOBALS['apl_textdomain'] ),
+                    'sep' => $GLOBALS['space_sep'],
+                ),
+            ),
+        ) );
         
         
         $comments_count_int = (int) get_comments_number( get_the_ID() );
@@ -127,39 +125,32 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
             
             /* If there are no Comments, make the text a link like get_comments_popup_link(). */
             
-            // Markup
-            $comments_count_obj_a_mu = '<a class="a %2$s---a" href="%3$s#comments">';
-                $comments_count_obj_a_mu .= '%1$s';
-            $comments_count_obj_a_mu .= '</a>';
-            
             /* If Comments Actions Snippet is in index, use permalink. */
             if ( ! is_singular() ) {
                 $comments_count_obj_a_link = esc_url( get_permalink() );
             } else {
                 $comments_count_obj_a_link = '';
             }
-
-            // Comments Count: Zero
-            $comments_count_obj_a = sprintf( $comments_count_obj_a_mu,
-                $comments_count_a_l_zero,
-                $comments_count_sec_css,
-                $comments_count_obj_a_link
-            );
+            
+            $comments_count_obj_a = $comments_count_a_l_zero;
         
         }
         
-        // Markup
-        $comments_count_obj = applicator_html_ok_mco( array(
-            'type'      => 'o',
+        // Object
+        $comments_count_obj = applicator_html_ok_obj( array(
             'name'      => 'Comments Count',
-            'sec_css'   => $comments_count_sec_css,
-            'content'   => $comments_count_obj_a
+            'elem'      => 'a',
+            'css'       => $comments_count_sec_css,
+            'attr'      => array(
+                'href'      => $comments_count_obj_a_link . '#comments',
+            ),
+            'content'   => $comments_count_obj_a,
         ) );
         
-        // Markup
-        $comments_population = applicator_html_ok_mco( array(
+        // Component
+        $comments_population = applicator_html_ok_mco_test( array(
             'name'      => 'Comments Population',
-            'sec_css'   => 'coms-population',
+            'css'       => 'coms-population',
             'content'   => $comments_count_obj
         ) );
         

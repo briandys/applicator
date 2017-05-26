@@ -657,7 +657,7 @@ function applicator_html_ok_txt( $args = array() ) {
         foreach ( (array) $r_content as $val ) {
             
             // Text
-            if ( ! empty( $val['txt'] ) ) {
+            if ( ! empty( $val['txt'] ) || '0' === $val['txt'] ) {
                 
                 $txt = preg_replace('/\s\s+/', ' ', trim( $val['txt'] ) );
                 
