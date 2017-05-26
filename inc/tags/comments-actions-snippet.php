@@ -242,34 +242,21 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
         // Comment Creation Disabled
         } else {
             
-            // Markup
-            $commenting_disabled_note_obj_g_mu = '<div class="g %2$s---g">';
-                $commenting_disabled_note_obj_g_mu .= '<div class="g_l %2$s---g_l">';
-                    $commenting_disabled_note_obj_g_mu .= '%1$s';
-                $commenting_disabled_note_obj_g_mu .= '</div>';
-            $commenting_disabled_note_obj_g_mu .= '</div>';
-            
-            // Content
-            $commenting_disabled_note_obj_g = sprintf( $commenting_disabled_note_obj_g_mu,
-                '<p>' . esc_html__( 'Commenting is disabled.', $GLOBALS['apl_textdomain'] ) . '</p>',
-                'commenting-disabled-note-obj'
-            );
-            
-            // Content
-            $commenting_disabled_note_obj = applicator_html_ok_mco( array(
-                'type'      => 'o',
+            // Object
+            $commenting_disabled_note_obj = applicator_html_ok_obj( array(
                 'name'      => 'Commenting Disabled Note',
-                'sec_css'   => 'commenting-disabled-note',
-                'content'   => $commenting_disabled_note_obj_g
+                'elem'      => 'n',
+                'obj_css'   => 'note',
+                'css'       => 'commenting-disabled-note',
+                'content'   => '<p>' . esc_html__( 'Commenting is disabled.', $GLOBALS['apl_textdomain'] ) . '</p>',
             ) );
             
-            // Markup
-            $comment_creation_ability_content = sprintf( $commenting_disabled_note_obj );
+            $comment_creation_ability_content = $commenting_disabled_note_obj;
             
         }
         
-        // Content
-        $comment_creation_ability = applicator_html_ok_mco( array (
+        // Component
+        $comment_creation_ability = applicator_html_ok_mco_test( array (
             'name'      => 'Comment Creation Ability',
             'sec_css'   => 'com-crt-ability',
             'content'   => $comment_creation_ability_content
@@ -313,13 +300,13 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
             $comment_creation_ability_status_css = $comment_creation_ability_pri_css . '--' . $comment_creation_ability_disabled_css;
         }
         
-        // Display
-        $comments_actions_snippet = applicator_html_ok_mco( array (
+        // Content - Component
+        $comments_actions_snippet = applicator_html_ok_mco_test( array(
             'name'      => 'Comments Actions Snippet',
-            'pri_css'   => $comments_population_status_css . ' ' . $comment_creation_ability_status_css,
+            'css'       => $comments_population_status_css . ' ' . $comment_creation_ability_status_css,
             'sec_css'   => 'coms-acts-snip',
             'content'   => $comments_population . $comment_creation_ability,
-            'echo'      => true
+            'echo'      => true,
         ) );
         
     }

@@ -108,5 +108,5 @@ $snapons = get_parent_theme_file_path( '/snapons.php' );
 if ( file_exists( $snapons ) ) { require_once( $snapons ); }
 
 
-$apl_html_markup = get_parent_theme_file_path( '/inc/functions/applicator-html-markup.php' );
-if ( file_exists( $apl_html_markup ) ) { require_once( $apl_html_markup ); }
+$apl_html_ok = get_parent_theme_file_path( '/inc/functions/applicator-html-ok.php' );
+if ( file_exists( $apl_html_ok ) ) { require_once( $apl_html_ok ); }
