@@ -150,7 +150,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
         ) );
         
         // Component
-        $comments_population = applicator_html_ok_mco_test( array(
+        $comments_population = applicator_html_ok_cp( array(
             'name'      => 'Comments Population',
             'css'       => 'coms-population',
             'content'   => $comments_count_obj
@@ -178,36 +178,6 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
                 }
             }
             
-            // Markup
-            $add_comment_axn_a_mu = '<a class="a %5$s---a" href="%6$s">';
-                $add_comment_axn_a_mu .= '<span class="a_l %5$s---a_l">';
-                    $add_comment_axn_a_mu .= '<span class="txt %2$s---txt">%1$s</span>';
-                    $add_comment_axn_a_mu .= ' <span class="txt %4$s---txt">%3$s</span>';
-                $add_comment_axn_a_mu .= '</span>';
-            $add_comment_axn_a_mu .= '</a>';
-            
-            /*
-            // Content
-            $add_comment_axn_a = sprintf( $add_comment_axn_a_mu,
-                esc_html__( 'Add', $GLOBALS['apl_textdomain'] ),
-                    'add',
-                esc_html__( 'Comment', $GLOBALS['apl_textdomain'] ),
-                    'comment',        
-                'add-comment-axn',
-                $add_comment_axn_a_href
-            );
-            */
-            
-            /*
-            // Markup
-            $add_comment_axn = applicator_html_ok_mco( array(
-                'type'      => 'o',
-                'name'      => 'Add Comment Action',
-                'sec_css'   => 'add-com-axn',
-                'content'   => $add_comment_axn_a
-            ) );
-            */
-            
             // Text
             $add_comment_axn_txt = applicator_html_ok_txt( array(
                 'content' => array(
@@ -224,7 +194,9 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
             // Object
             $add_comment_axn = applicator_html_ok_obj( array(
                 'name'      => 'Add Comment Action',
+                'layout'    => 'i',
                 'elem'      => 'a',
+                'obj_css'   => 'add-comment-axn',
                 'css'       => 'add-com-axn',
                 'attr'      => array(
                     'href'      => $add_comment_axn_a_href,
@@ -234,7 +206,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
 
             
             if ( ! is_user_logged_in() && get_option( 'comment_registration' ) ) {
-                
+                /*
                 // Markup
                 $sign_in_required_label_obj_g_mu = '<span class="g %2$s---g">';
                     $sign_in_required_label_obj_g_mu .= '<span class="g_l %2$s---g_l">';
@@ -253,12 +225,31 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
                     'name'      => 'Sign In Required Label',
                     'sec_css'   => 'sign-in-req-lbl'
                 ) );
+                */
+                
+                // Text
+                $sign_in_required_label_txt = applicator_html_ok_txt( array(
+                    'content' => array(
+                        array(
+                            'txt' => esc_html__( '(requires Sign In)', $GLOBALS['apl_textdomain'] ),
+                        ),
+                    ),
+                ) );
+
+                // Object
+                $sign_in_required_label_obj = applicator_html_ok_obj( array(
+                    'name'      => 'Sign In Required Label',
+                    'layout'    => 'i',
+                    'elem'      => 'g',
+                    'css'       => 'sign-in-req-lbl',
+                    'content'   => $sign_in_required_label_txt,
+                ) );
             
             } else {
                 $sign_in_required_label_obj = '';
             }
 
-            $comment_creation_ability_content = sprintf( $add_comment_axn . $sign_in_required_label_obj );
+            $comment_creation_ability_content = $add_comment_axn . $sign_in_required_label_obj;
 
         // Comment Creation Disabled
         } else {
@@ -277,9 +268,9 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
         }
         
         // Component
-        $comment_creation_ability = applicator_html_ok_mco_test( array (
+        $comment_creation_ability = applicator_html_ok_cp( array (
             'name'      => 'Comment Creation Ability',
-            'sec_css'   => 'com-crt-ability',
+            'css'   => 'com-crt-ability',
             'content'   => $comment_creation_ability_content
         ) );
         
@@ -321,11 +312,11 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
             $comment_creation_ability_status_css = $comment_creation_ability_pri_css . '--' . $comment_creation_ability_disabled_css;
         }
         
-        // Content - Component
-        $comments_actions_snippet = applicator_html_ok_mco_test( array(
+        // Component
+        $comments_actions_snippet = applicator_html_ok_cp( array(
             'name'      => 'Comments Actions Snippet',
-            'css'       => $comments_population_status_css . ' ' . $comment_creation_ability_status_css,
-            'sec_css'   => 'coms-acts-snip',
+            'cp_css'    => $comments_population_status_css . ' ' . $comment_creation_ability_status_css,
+            'css'       => 'coms-acts-snip',
             'content'   => $comments_population . $comment_creation_ability,
             'echo'      => true,
         ) );

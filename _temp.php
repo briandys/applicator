@@ -1,6 +1,6 @@
 <?php
 
-function applicator_html_ok_mco_test( $args = array() ) {
+function applicator_html_ok_cp( $args = array() ) {
     
     // Require Array
 	if ( empty( $args ) ) {
@@ -108,7 +108,7 @@ function applicator_html_ok_mco_test( $args = array() ) {
     
     }
     
-    $html = apply_filters( 'applicator_html_ok_mco_test', $output, $args );
+    $html = apply_filters( 'applicator_html_ok_cp', $output, $args );
     
     if ( $r_echo ) {
         echo $html;

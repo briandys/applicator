@@ -151,7 +151,7 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         /* ------------ Post Published Date, Time Stamp (cp) ---------- */
         
         // Content - Component
-        $post_published_date_time_stamp = applicator_html_ok_mco_test( array(
+        $post_published_date_time_stamp = applicator_html_ok_cp( array(
             'name'          => 'Post Published Date, Time Stamp',
             'css'       => $post_published_date_time_stamp_css,
             'content'       => $post_published_date_stamp_obj . $post_published_time_stamp_obj,
@@ -161,7 +161,7 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         /* ------------ Post Published (cp) ---------- */
         
         // Content - Component
-        $post_published = applicator_html_ok_mco_test( array(
+        $post_published = applicator_html_ok_cp( array(
             'name'      => 'Post Published',
             'css'   => $post_published_css,
             'content'   => $post_published_label_obj . $post_published_date_time_stamp,
@@ -282,7 +282,7 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         /* ------------ Post Modified Date, Time Stamp (cp) ---------- */
         
         // Content - Component
-        $post_modified_date_time_stamp = applicator_html_ok_mco_test( array(
+        $post_modified_date_time_stamp = applicator_html_ok_cp( array(
             'name'          => 'Post Modified Date, Time Stamp',
             'css'       => $post_modified_date_time_stamp_css,
             'content'       => $post_modified_date_stamp_obj . $post_modified_time_stamp_obj,
@@ -292,7 +292,7 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         /* ------------ Post Modified (cp) ---------- */
         
         // Content - Component
-        $post_modified = applicator_html_ok_mco_test( array(
+        $post_modified = applicator_html_ok_cp( array(
             'name'      => 'Post Modified',
             'css'   => $post_modified_css,
             'content'   => $post_modified_label_obj . $post_modified_date_time_stamp,
@@ -302,7 +302,7 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         /* ------------ Post Published, Modified (cp) ---------- */
         
         // Content - Component
-        $post_published_modified = applicator_html_ok_mco_test( array(
+        $post_published_modified = applicator_html_ok_cp( array(
             'name'      => 'Post Published, Modified',
             'css'   => 'post-pub-mod',
             'content'   => $post_published . $post_modified,
