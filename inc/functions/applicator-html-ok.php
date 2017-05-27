@@ -250,6 +250,7 @@ function applicator_html_ok_obj( $args = array() ) {
     $generic_term_variations = [ 'generic', 'g', ];
     $time_term_variations = [ 'time', 't', ];
     $anchor_term_variations = [ 'anchor', 'a', ];
+    $anchor_label_term_variations = [ 'anchor_label', 'al', ];
     $wordpress_term_variations = [ 'wordpress', 'wp', ];
     $note_term_variations = [ 'note', 'n', ];
     
@@ -278,6 +279,10 @@ function applicator_html_ok_obj( $args = array() ) {
         }
     } else {
         $tag = 'div';
+    }
+    
+    if ( in_array( $r_elem, $anchor_label_term_variations, true ) ) {
+        $tag = 'span';
     }
     
     // Object CSS
@@ -351,7 +356,9 @@ function applicator_html_ok_obj( $args = array() ) {
         
         $output = '';
         
-        $output .= $spacer . '<' . $tag . ' class="obj' . $dynamic_css . $obj_css . '"' . $attr_title . ' data-name="' . $name . '">';
+        if ( ! in_array( $r_elem, $anchor_label_term_variations, true ) ) {
+            $output .= $spacer . '<' . $tag . ' class="obj' . $dynamic_css . $obj_css . '"' . $attr_title . ' data-name="' . $name . '">';
+        }
         
         // Generic
         if ( in_array( $r_elem, $generic_term_variations, true ) ) {
@@ -415,6 +422,15 @@ function applicator_html_ok_obj( $args = array() ) {
             
         }
         
+        // Anchor Label
+        if ( in_array( $r_elem, $anchor_label_term_variations, true ) ) {
+            
+            $output .= '<span class="a_l' . $css . '---a_l">';
+                $output .= $r_content;
+            $output .= '</span>';
+            
+        }
+        
         // WordPress
         if ( in_array( $r_elem, $wordpress_term_variations, true ) ) {
             $output .= $r_content;
@@ -429,7 +445,9 @@ function applicator_html_ok_obj( $args = array() ) {
             
         }
         
-        $output .= '</' . $tag . '><!-- ' . $name . ' -->';
+        if ( ! in_array( $r_elem, $anchor_label_term_variations, true ) ) {
+            $output .= '</' . $tag . '><!-- ' . $name . ' -->';
+        }
         
     }
     

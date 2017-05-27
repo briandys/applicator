@@ -28,7 +28,6 @@
                                 
                             <?php if ( have_comments() ) { ?>
                                 
-                                <?php // Component: Comment ?>
                                 <ul class="grp comments---grp">
                                     <?php wp_list_comments( array(
                                         'style'       => 'ul',
@@ -38,17 +37,19 @@
                                 </ul>
                                 
                                 <?php // Comments Navigation | inc > tags > comments-nav.php
-                                applicator_func_comments_nav(); ?>
-                            
-                            <?php } else { ?>
+                                applicator_func_comments_nav();
+                                                         
+                            } else {
                                 
-                                <div class="obj note comments-empty-note-obj" data-name="Comments Empty Note">
-                                    <div class="g comments-empty-note---g">
-                                        <p><?php esc_html_e( 'There are no comments.', $GLOBALS['apl_textdomain'] ); ?></p>
-                                    </div>
-                                </div><!-- comments-empty-note-obj -->
-                                
-                            <?php } ?>
+                                $comments_empty_note_obj = applicator_html_ok_obj( array(
+                                    'name' => 'Comments Empty Note',
+                                    'elem' => 'n',
+                                    'css' => 'com-empty-note',
+                                    'content' => '<p>' . esc_html__( 'There are no comments.', $GLOBALS['apl_textdomain'] ) . '</p>',
+                                    'echo' => true,
+                                ) );
+
+                            } ?>
                             
                             </div>
                         </div><!-- comments---ct -->
@@ -135,6 +136,7 @@
                     $signed_in_acct_mu .= '</div>';
                 $signed_in_acct_mu .= '</div>';
                 
+                /*
                 // Markup
                 $signed_in_as_label_obj_mu = '<span class="obj %2$s" data-name="%1$s">';
                     $signed_in_as_label_obj_mu .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l"><span class="line signed-in-as---line">%4$s</span></span></span>';
@@ -147,6 +149,7 @@
                     'signed-in-as-lbl-obj',
                     esc_html__( 'Signed in as', $GLOBALS['apl_textdomain'] )
                 );
+                */
                 
                 // Markup
                 $acct_name_obj_mu = '<span class="obj %2$s" title="%4$s" data-name="%1$s">';
@@ -155,6 +158,7 @@
                     $acct_name_obj_mu .= '</span></span>';
                 $acct_name_obj_mu .= '</span>';
                 
+                /*
                 // Content
                 $acct_name_obj = sprintf( $acct_name_obj_mu,
                     'Account Name Object',
@@ -163,6 +167,7 @@
                     $user_identity,
                     admin_url( 'profile.php' )
                 );
+                */
                 
                 // Markup
                 $signed_in_acct_axns_mu = '<div class="axns %2$s" data-name="%1$s">';
@@ -196,6 +201,52 @@
                     $sign_out_axn
                 );
                 
+                
+                
+                
+                
+                // logged_in_as
+                $signed_in_as_label_txt = applicator_html_ok_txt( array(
+                    'content' => array(
+                        array(
+                            'txt' => esc_html__( 'Signed in as', $GLOBALS['apl_textdomain'] ),
+                        ),
+                    ),
+                ) );
+                
+                // logged_in_as
+                $signed_in_as_label_obj = applicator_html_ok_obj( array(
+                    'name' => 'Signed In As Label',
+                    'layout' => 'i',
+                    'elem' => 'g',
+                    'css' => 'signed-in-as-lbl',
+                    'content' => $signed_in_as_label_txt,
+                ) );
+                
+                // logged_in_as
+                $signed_in_account_name_obj = applicator_html_ok_obj( array(
+                    'name' => 'Sign In Account Name',
+                    'layout' => 'i',
+                    'elem' => 'a',
+                    'attr' => array(
+                        'href' => admin_url( 'profile.php' ),
+                    ),
+                    'content' => $user_identity,
+                ) );
+                
+                
+                $signed_in_acct = applicator_html_ok_cp( array(
+                    'name' => 'Signed In Account',
+                    'css' => 'signed-in-acct',
+                    'content' => $signed_in_as_label_obj . $signed_in_account_name_obj,
+                ) );
+                
+                
+                
+                
+                
+                
+                /*
                 // Content
                 $signed_in_acct = sprintf( $signed_in_acct_mu,
                     'Signed In Account',
@@ -206,7 +257,36 @@
                     $acct_name_obj,
                     $signed_in_acct_axns
                 );
+                */
                 
+                // cancel_reply_link - Text
+                $cancel_reply_comment_action_txt = applicator_html_ok_txt( array(
+                    'content' => array(
+                        array(
+                            'txt' => esc_html__( 'Cancel', $GLOBALS['apl_textdomain'] ),
+                        ),
+                        array(
+                            'txt' => esc_html__( 'Reply', $GLOBALS['apl_textdomain'] ),
+                            'sep' => $GLOBALS['space_sep'],
+                        ),
+                        array(
+                            'txt' => esc_html__( 'to', $GLOBALS['apl_textdomain'] ),
+                            'sep' => $GLOBALS['space_sep'],
+                        ),
+                        array(
+                            'txt' => esc_html__( 'Comment', $GLOBALS['apl_textdomain'] ),
+                            'sep' => $GLOBALS['space_sep'],
+                        ),
+                    ),
+                ) );
+                
+                // cancel_reply_link - Object
+                $cancel_reply_comment_action_label = applicator_html_ok_obj( array(
+                    'elem' => 'al',
+                    'css' => 'cancel-reply-com-axn',
+                    'content' => $cancel_reply_comment_action_txt,
+                ) );
+                /*
                 $cancel_reply_com_axn_a_l = sprintf( $cancel_reply_com_axn_a_l_mu,
                     esc_html__( 'Cancel', $GLOBALS['apl_textdomain'] ),
                     esc_html__( 'Reply', $GLOBALS['apl_textdomain'] ),
@@ -214,6 +294,27 @@
                     esc_html__( 'Comment', $GLOBALS['apl_textdomain'] ),
                     esc_attr__( 'Cancel Reply to Comment', $GLOBALS['apl_textdomain'] )
                 );
+                */
+                
+                // title_reply_to - Text
+                $comment_recipient_note_txt = applicator_html_ok_txt( array(
+                    'content' => array(
+                        array(
+                            'txt' => esc_html__( 'Reply to', $GLOBALS['apl_textdomain'] ),
+                        ),
+                        array(
+                            'txt' => '%s',
+                        ),
+                    ),
+                ) );
+                
+                // title_reply_to - Object
+                $comment_recipient_note_obj = applicator_html_ok_obj( array(
+                    'name'      => 'Comment Recipient Note',
+                    'elem' => 'n',
+                    'css'       => 'com-recipient-note',
+                    'content'   => $comment_recipient_note_txt,
+                ) );
                 
                 comment_form( array(
                     
@@ -242,21 +343,14 @@
                     
                     
                     // Reply
-                    'title_reply_to'            =>  '<div class="note comment-recipient--note">'
-                                                        .'<div class="comment-recipient--note-cr">'
-                                                            .'<div class="comment-recipient--note--l">'
-                                                                .'<span class="comment-recipient--pred-l">' . esc_html__( 'Reply to', $GLOBALS['apl_textdomain'] ) . '</span>'
-                                                                .' <span class="comment-recipient--subj-l">%s</span>'
-                                                            .'</div>'
-                                                        .'</div>'
-                                                    .'</div><!-- comment-recipient--note -->',
+                    'title_reply_to'            =>  $comment_recipient_note_obj,
                                                     
                     
                     // Cancel Reply Action
                     'cancel_reply_before'       => '',
                     'cancel_reply_after'       => '',
                     
-                    'cancel_reply_link'         => $cancel_reply_com_axn_a_l,
+                    'cancel_reply_link'         => $cancel_reply_comment_action_label,
                     
                     // Notes
                     'comment_notes_before'      => '',
