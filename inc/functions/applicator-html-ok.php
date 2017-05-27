@@ -47,12 +47,13 @@ function applicator_html_ok_cp( $args = array() ) {
 	}
     
     // Require Content
-	if ( empty( $args['content'] ) ) {
+	if ( empty( $args['content'] ) && empty( $args['cn_type'] ) ) {
 		return esc_html_e( 'Please define Content.', $GLOBALS['apl_textdomain'] );
 	}
     
     $defaults = array(
         'type'          => 'c',
+        'cn_type'       => '',
         'name'          => '',
         'cp_css'        => '',
         'css'           => '',
@@ -69,6 +70,7 @@ function applicator_html_ok_cp( $args = array() ) {
     $r_version = $r['version'];
     $r_echo = $r['echo'];
     $r_type = $r['type'];
+    $r_cn_type = $r['cn_type'];
     
     $r_name = $r['name'];
     $r_cp_css = $r['cp_css'];
@@ -77,6 +79,8 @@ function applicator_html_ok_cp( $args = array() ) {
     
     $type_module_term_variations = ['module', 'md', 'm'];
     $type_component_term_variations = ['component', 'cp', 'c'];
+    
+    $cn_type_header_term_variations = ['header', 'hr'];
     
     $name = '';
     $cp_css = '';
@@ -113,37 +117,47 @@ function applicator_html_ok_cp( $args = array() ) {
         
         $output = '';
         
-        $output .= '<div class="' . $cp_css . $dynamic_css . '" data-name="' . $name . '">';
+        // Header Markup
+        $hr_mu = '';
+        $hr_mu .= '<div class="hr ' . $css . '---hr">';
+            $hr_mu .= '<div class="hr_cr ' . $css . '---hr_cr">';
+                $hr_mu .= '<div class="h ' . $css . '---h"><span class="h_l ' . $css . '---h_l">' . $name . '</span></div>';
+                $hr_mu .= $r['hr_content'];
+            $hr_mu .= '</div>';
+        $hr_mu .= '</div>';
         
-            $output .= '<div class="cr ' . $css . '---cr">';
-
-                // Header
-                $output .= '<div class="hr ' . $css . '---hr">';
-                    $output .= '<div class="hr_cr ' . $css . '---hr_cr">';
-                        $output .= '<div class="h ' . $css . '---h"><span class="h_l ' . $css . '---h_l">' . $name . '</span></div>';
-                        $output .= $r['hr_content'];
-                    $output .= '</div>';
-                $output .= '</div>';
-
-                // Content
-                $output .= '<div class="ct ' . $css . '---ct">';
-                    $output .= '<div class="ct_cr ' . $css . '---ct_cr">';
-                        $output .= $r['content'];
-                    $output .= '</div>';
-                $output .= '</div>';
-
-            if ( ! empty( $r_fr_content ) ) {
-                // Footer
-                $output .= '<div class="fr ' . $css . '---fr">';
-                    $output .= '<div class="fr_cr ' . $css . '---fr_cr">';
-                        $output .= $r['fr_content'];
-                    $output .= '</div>';
-                $output .= '</div>';
-            }
-
-            $output .= '</div>';
+        if ( ! in_array( $r_cn_type, $cn_type_header_term_variations, true ) ) {
         
-        $output .= '</div><!-- ' . $name . ' -->';
+            $output .= '<div class="' . $cp_css . $dynamic_css . '" data-name="' . $name . '">';
+
+                $output .= '<div class="cr ' . $css . '---cr">';
+
+                    // Header
+                    $output .= $hr_mu;
+
+                    // Content
+                    $output .= '<div class="ct ' . $css . '---ct">';
+                        $output .= '<div class="ct_cr ' . $css . '---ct_cr">';
+                            $output .= $r['content'];
+                        $output .= '</div>';
+                    $output .= '</div>';
+
+                if ( ! empty( $r_fr_content ) ) {
+                    // Footer
+                    $output .= '<div class="fr ' . $css . '---fr">';
+                        $output .= '<div class="fr_cr ' . $css . '---fr_cr">';
+                            $output .= $r['fr_content'];
+                        $output .= '</div>';
+                    $output .= '</div>';
+                }
+
+                $output .= '</div>';
+
+            $output .= '</div><!-- ' . $name . ' -->';
+            
+        } elseif ( in_array( $r_cn_type, $cn_type_header_term_variations, true ) ) {
+            $output .= $hr_mu;
+        }
     
     }
     
@@ -249,8 +263,10 @@ function applicator_html_ok_obj( $args = array() ) {
     
     $generic_term_variations = [ 'generic', 'g', ];
     $time_term_variations = [ 'time', 't', ];
+    
     $anchor_term_variations = [ 'anchor', 'a', ];
     $anchor_label_term_variations = [ 'anchor_label', 'al', ];
+    
     $wordpress_term_variations = [ 'wordpress', 'wp', ];
     $note_term_variations = [ 'note', 'n', ];
     

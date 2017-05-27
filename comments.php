@@ -85,33 +85,7 @@
                     esc_html__( 'Comment', $GLOBALS['apl_textdomain'] )
                 );
                 
-                // Markup
-                $com_crt_h_mu = '<div class="h %1$s---h"><span class="h_l %1$s---h_l">%2$s</span></div>';
                 
-                // Content
-                $com_crt_h_ = sprintf( $com_crt_h_mu,
-                    'com-crt',
-                    esc_html__( 'Comment Creation', $GLOBALS['apl_textdomain'] )
-                );
-                
-                // Markup
-                $sign_in_req_note_mu = '<div class="obj note %2$s" data-name="%1$s">';
-                    $sign_in_req_note_mu .= '<div class="g %3$s---g">';
-                        $sign_in_req_note_mu .= '<div class="g_l %3$s---g_l">';
-                            $sign_in_req_note_mu .= '<p><a class="a %3$s---a" href="%6$s"><span class="a_l %3$s---a_l"><span class="word sign-in---word">%4$s</span></span></a> <span class="line to-comment---line">%5$s</span></p>';
-                        $sign_in_req_note_mu .= '</div>';
-                    $sign_in_req_note_mu .= '</div>';
-                $sign_in_req_note_mu .= '</div><!-- Sign In Required Note -->';
-                
-                // Content
-                $sign_in_req_note = sprintf( $sign_in_req_note_mu,
-                    'Sign In Required Note',
-                    'sign-in-required-note',
-                    'sign-in-req-note',
-                    esc_html__( 'Sign In', $GLOBALS['apl_textdomain'] ),
-                    esc_html__( 'to comment.', $GLOBALS['apl_textdomain'] ),
-                    wp_login_url( apply_filters( 'the_permalink', get_permalink() ) )
-                );
                 
                 // Markup
                 $cancel_reply_com_axn_a_l_mu = '<span class="a_l cancel-reply-com-axn---a_l" title="%5$s">';
@@ -205,59 +179,83 @@
                 
                 
                 
-                // logged_in_as
-                $signed_in_as_label_txt = applicator_html_ok_txt( array(
+                
+                
+                
+                // title_reply - Component Header
+                $comment_creation_header = applicator_html_ok_cp( array(
+                    'name'      => 'Comment Creation',
+                    'cn_type'   => 'hr',
+                    'css'       => 'com-crt-hr',
+                ) );
+                
+                // must_log_in - Text
+                $sign_in_required_note_txt = applicator_html_ok_txt( array(
                     'content' => array(
                         array(
-                            'txt' => esc_html__( 'Signed in as', $GLOBALS['apl_textdomain'] ),
+                            'txt' => esc_html__( 'Sign In', $GLOBALS['apl_textdomain'] ),
+                        ),
+                        array(
+                            'sep' => $GLOBALS['space_sep'],
+                            'txt' => esc_html__( 'to comment.', $GLOBALS['apl_textdomain'] ),
                         ),
                     ),
                 ) );
                 
-                // logged_in_as
-                $signed_in_as_label_obj = applicator_html_ok_obj( array(
-                    'name' => 'Signed In As Label',
-                    'layout' => 'i',
-                    'elem' => 'g',
-                    'css' => 'signed-in-as-lbl',
-                    'content' => $signed_in_as_label_txt,
+                // must_log_in - Object
+                $sign_in_req_note_obj = applicator_html_ok_obj( array(
+                    'name'      => 'Sign In Required Note',
+                    'elem'      => 'n',
+                    'obj_css'   => 'note',
+                    'css'       => 'sign-in-req-note',
+                    'content'   => $sign_in_required_note_txt,
                 ) );
                 
-                // logged_in_as
-                $signed_in_account_name_obj = applicator_html_ok_obj( array(
-                    'name' => 'Sign In Account Name',
-                    'layout' => 'i',
-                    'elem' => 'a',
-                    'attr' => array(
-                        'href' => admin_url( 'profile.php' ),
+                // logged_in_as - Text
+                $signed_in_as_label_txt = applicator_html_ok_txt( array(
+                    'content' => array(
+                        array(
+                            'txt'   => esc_html__( 'Signed in as', $GLOBALS['apl_textdomain'] ),
+                        ),
                     ),
-                    'content' => $user_identity,
                 ) );
                 
+                // logged_in_as - Object
+                $signed_in_as_label_obj = applicator_html_ok_obj( array(
+                    'name'      => 'Signed In As Label',
+                    'layout'    => 'i',
+                    'elem'      => 'g',
+                    'css'       => 'signed-in-as-lbl',
+                    'content'   => $signed_in_as_label_txt,
+                ) );
                 
+                // logged_in_as - Text
+                $signed_in_account_name_txt = applicator_html_ok_txt( array(
+                    'content' => array(
+                        array(
+                            'txt'   => $user_identity,
+                            'css'   => 'author-name',
+                        ),
+                    ),
+                ) );
+                
+                // logged_in_as - Object
+                $signed_in_account_name_obj = applicator_html_ok_obj( array(
+                    'name'      => 'Sign In Account Name',
+                    'layout'    => 'i',
+                    'elem'      => 'a',
+                    'attr'      => array(
+                        'href'  => admin_url( 'profile.php' ),
+                    ),
+                    'content'   => $signed_in_account_name_txt,
+                ) );
+                
+                // logged_in_as - Component
                 $signed_in_acct = applicator_html_ok_cp( array(
-                    'name' => 'Signed In Account',
-                    'css' => 'signed-in-acct',
-                    'content' => $signed_in_as_label_obj . $signed_in_account_name_obj,
+                    'name'      => 'Signed In Account',
+                    'css'       => 'signed-in-acct',
+                    'content'   => $signed_in_as_label_obj . $signed_in_account_name_obj,
                 ) );
-                
-                
-                
-                
-                
-                
-                /*
-                // Content
-                $signed_in_acct = sprintf( $signed_in_acct_mu,
-                    'Signed In Account',
-                    'signed-in-account',
-                    'signed-in-acct',
-                    esc_html__( 'Signed In Account', $GLOBALS['apl_textdomain'] ),
-                    $signed_in_as_label_obj,
-                    $acct_name_obj,
-                    $signed_in_acct_axns
-                );
-                */
                 
                 // cancel_reply_link - Text
                 $cancel_reply_comment_action_txt = applicator_html_ok_txt( array(
@@ -286,15 +284,6 @@
                     'css' => 'cancel-reply-com-axn',
                     'content' => $cancel_reply_comment_action_txt,
                 ) );
-                /*
-                $cancel_reply_com_axn_a_l = sprintf( $cancel_reply_com_axn_a_l_mu,
-                    esc_html__( 'Cancel', $GLOBALS['apl_textdomain'] ),
-                    esc_html__( 'Reply', $GLOBALS['apl_textdomain'] ),
-                    esc_html__( 'to', $GLOBALS['apl_textdomain'] ),
-                    esc_html__( 'Comment', $GLOBALS['apl_textdomain'] ),
-                    esc_attr__( 'Cancel Reply to Comment', $GLOBALS['apl_textdomain'] )
-                );
-                */
                 
                 // title_reply_to - Text
                 $comment_recipient_note_txt = applicator_html_ok_txt( array(
@@ -311,7 +300,7 @@
                 // title_reply_to - Object
                 $comment_recipient_note_obj = applicator_html_ok_obj( array(
                     'name'      => 'Comment Recipient Note',
-                    'elem' => 'n',
+                    'elem'      => 'n',
                     'css'       => 'com-recipient-note',
                     'content'   => $comment_recipient_note_txt,
                 ) );
@@ -325,10 +314,10 @@
                     'title_reply_after'         => '',
                     
                     // Heading
-                    'title_reply'               => $com_crt_h_,
+                    'title_reply'               => $comment_creation_header,
                     
                     // Settings > Discussion
-                    'must_log_in'               => $sign_in_req_note,
+                    'must_log_in'               => $sign_in_req_note_obj,
                     
                     // Signed in as "Account Name"
                     'logged_in_as'              => $signed_in_acct, 
