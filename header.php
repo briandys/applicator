@@ -14,68 +14,70 @@
         <div id="page" class="cn wbp site" data-name="Web Product">
             <div class="cr wbp---cr">
                 
-                <div class="cn wbp-start" data-name="Web Product Start">
-                    <div class="cr wbp-start---cr">
+                <?php
+                // Go to Content Nav - Nav
+                // Text
+                $go_content_nav_item_txt = applicator_html_ok_txt( array(
+                    'content'       => array(
+                        array(
+                            'txt'   => 'Go to Content',
+                        ),
+                    ),
+                ) );
 
-                        <?php
-                        // Text
-                        $go_content_nav_item_txt = applicator_html_ok_txt( array(
-                            'content'       => array(
-                                array(
-                                    'txt'   => 'Go to Content',
-                                ),
-                            ),
-                        ) );
+                // Object
+                $go_content_nav_item_obj = applicator_html_ok_obj( array(
+                    'elem'      => 'navi',
+                    'name'      => 'Go to Content',
+                    'css'       => 'go-ct',
+                    'elem_css'  => 'skip-link',
+                    'attr'      => array(
+                        'id'    => 'go-ct-navi---a',
+                        'href'  => '#content',
+                        'title' => 'Go to Content',
+                    ),
+                    'content'   => $go_content_nav_item_txt,
+                ) );
 
-                        // Object
-                        $go_content_nav_item_obj = applicator_html_ok_obj( array(
-                            'elem'      => 'navi',
-                            'name'      => 'Go to Content',
-                            'css'       => 'go-ct',
-                            'elem_css'  => 'skip-link',
-                            'attr'      => array(
-                                'id'    => 'go-ct-navi---a',
-                                'href'  => '#content',
-                                'title' => 'Go to Content',
-                            ),
-                            'content'   => $go_content_nav_item_txt,
-                        ) );
+                // Component
+                $go_content_nav = applicator_html_ok_cp( array(
+                    'type'      => 'nav',
+                    'name'      => 'Go to Content',
+                    'cp_css'    => 'go-content-nav',
+                    'css'       => 'go-ct',
+                    'attr'      => array(
+                        'id'    => 'go-content-nav',
+                    ),
+                    'content'   => $go_content_nav_item_obj,
+                ) );
 
-                        // Component
-                        $go_content_nav = applicator_html_ok_cp( array(
-                            'type'      => 'nav',
-                            'name'      => 'Go to Content',
-                            'cp_css'    => 'go-content-nav',
-                            'css'       => 'go-ct',
-                            'attr'      => array(
-                                'id'    => 'go-content-nav',
-                            ),
-                            'content'   => $go_content_nav_item_obj,
-                            'echo'      => true,
-                        ) );
-                        ?>
-                        
-                        <!--[if lt IE 8]>
-                        <?php
-                        // Text
-                        $browser_upgrade_note_txt = sprintf( '<p>%1$s <a href="%3$s">%2$s</a></p>',
-                            esc_html__( 'You are using an outdated browser. Please upgrade your browser to improve your experience.', $GLOBALS['apl_textdomain'] ),
-                            esc_html__( 'Upgrade Browser', $GLOBALS['apl_textdomain'] ),
-                            esc_url( 'http://browsehappy.com/' )
-                        );
-                                                            
-                        // Object
-                        $browser_upgrade_note_obj = applicator_html_ok_obj( array(
-                            'elem'      => 'note',
-                            'name'      => 'Browser Upgrade',
-                            'css'       => 'browser-upgrade',
-                            'content'   => $browser_upgrade_note_txt,
-                            'echo'      => true,
-                        ) ); ?>
-                        <![endif]-->
+                // Web Browser Upgrade - Object
+                // Text
+                $browser_upgrade_note_txt = sprintf( '<p>%1$s <a href="%3$s">%2$s</a></p>',
+                    esc_html__( 'You are using an outdated browser. Please upgrade your browser to improve your experience.', $GLOBALS['apl_textdomain'] ),
+                    esc_html__( 'Upgrade Browser', $GLOBALS['apl_textdomain'] ),
+                    esc_url( 'http://browsehappy.com/' )
+                );
 
-                    </div>
-                </div><!-- Web Product Start -->
+                // Object
+                $browser_upgrade_note_obj = applicator_html_ok_obj( array(
+                    'elem'      => 'note',
+                    'name'      => 'Browser Upgrade',
+                    'css'       => 'browser-upgrade',
+                    'content'   => $browser_upgrade_note_txt,
+                    'ct_before' => '<!--[if lt IE 8]>',
+                    'ct_after' => '<![endif]-->',
+                ) );
+
+                // Web Product Start
+                // Constructor
+                $web_product_start = htmlok_cn( array(
+                    'name'      => 'Web Product Start',
+                    'css'       => 'wbp-start',
+                    'content'   => $go_content_nav . $browser_upgrade_note_obj,
+                    'echo'      => true,
+                ) );
+                ?>
         
                 <header id="masthead" class="cn main-header site-header" data-name="Main Header" role="banner">
                     <div class="cr main-header---cr">

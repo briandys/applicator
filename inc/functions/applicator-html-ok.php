@@ -38,6 +38,100 @@ https://codex.wordpress.org/Function_Reference/sanitize_title
  * @return string HTML markup.
  */
 
+// Constructor
+
+function htmlok_cn( $args = array() ) {
+    
+    // Require Array
+	if ( empty( $args ) ) {
+		return esc_html_e( 'Please define default parameters in the form of an array.', $GLOBALS['apl_textdomain'] );
+	}
+    
+    // Require Name
+	if ( empty( $args['name'] ) ) {
+		return esc_html_e( 'Please define Name.', $GLOBALS['apl_textdomain'] );
+	}
+    
+    // Require Content
+	if ( empty( $args['content'] ) ) {
+		return esc_html_e( 'Please define Content.', $GLOBALS['apl_textdomain'] );
+	}
+    
+    $defaults = array(
+        'elem'      => '', // header | main | footer | aside
+        'name'      => '',
+        'cn_css'    => '',
+        'css'       => '',
+        'content'   => '',
+        'echo'      => false,
+    );
+    
+    $r = wp_parse_args( $args, $defaults );
+    
+    // Variables
+    $r_elem = $r['elem'];
+    $r_name = $r['name'];
+    $r_cn_css = $r['cn_css'];
+    $r_css = $r['css'];
+    $r_content = $r['content'];
+    $r_echo = $r['echo'];
+    
+    // Initialize Trimmed Keys
+    $trimmed_name = '';
+    $sanitized_name = '';
+    $trimmed_cn_css = '';
+    $trimmed_css = '';
+    $trimmed_content = '';
+    
+    // Initialize Keys
+    $name = '';
+    $dynamic_css = '';
+    $cn_css = '';
+    $css = '';
+    
+    // Trimmed Keys
+    $trimmed_name = preg_replace( '/\s\s+/', ' ', trim( $r_name ) );
+    $sanitized_name = sanitize_title( $trimmed_name );
+    $trimmed_cn_css = preg_replace( '/\s\s+/', ' ', trim( $r_cn_css ) );
+    $trimmed_css = preg_replace( '/\s\s+/', ' ', trim( $r_css ) );
+    $trimmed_content = preg_replace( '/\s\s+/', ' ', trim( $r_content ) );
+    
+    // Keys
+    $name = $trimmed_name;
+    $dynamic_css = ' ' . $sanitized_name;
+    $cn_css = ' ' . $trimmed_cn_css;
+    $css = ' ' . $trimmed_css;
+    $content = $trimmed_content;
+    
+    if ( empty( $r_cn_css ) ) {
+        $cn_css = '';
+    }
+    
+    if ( empty( $r_css ) ) {
+        $css = $dynamic_css;
+    }
+    
+    // Output
+    $output = '';
+    
+    $output .= '<div id="" class="cn' . $dynamic_css . $cn_css . '" data-name="' . $name . '">';
+    $output .= '<div class="cr' . $css . '---cr">';
+    $output .= $content;
+    $output .= '</div>';
+    $output .= '</div><!-- ' . $name . ' -->';
+    
+    // Apply Filters
+    $html = apply_filters( 'htmlok_cn', $output, $args );
+    
+    // Echo or Return
+    if ( $r_echo ) {
+        echo $html;
+    } else {
+        return $html;
+    }
+    
+}
+
 // Component
 function applicator_html_ok_cp( $args = array() ) {
     
@@ -240,6 +334,8 @@ function applicator_html_ok_obj( $args = array() ) {
             'htag'      => '', // h1 | h2 | h3 | h4 | h5 | h6
         ),
         'content'   => '',
+        'ct_before' => '',
+        'ct_after'  => '',
         'version'   => '',
         'echo'      => false,
     );
@@ -278,6 +374,8 @@ function applicator_html_ok_obj( $args = array() ) {
     }
     
     $r_content = $r['content'];
+    $r_ct_before = $r['ct_before'];
+    $r_ct_after = $r['ct_after'];
     $r_version = $r['version'];
     $r_echo = $r['echo'];
     
@@ -290,6 +388,9 @@ function applicator_html_ok_obj( $args = array() ) {
     $elem_css = '';
     $css = '';
     $obj_type_css = '';
+    
+    $ct_before = '';
+    $ct_after = '';
     
     $attr_title = '';
     $attr_datetime = '';
@@ -314,6 +415,9 @@ function applicator_html_ok_obj( $args = array() ) {
     
     $wordpress_term_variations = [ 'wordpress', 'wp', ];
     $note_term_variations = [ 'note', 'n', ];
+    
+    $ct_before = preg_replace( '/\s\s+/', ' ', trim( $r_ct_before ) );
+    $ct_after = preg_replace( '/\s\s+/', ' ', trim( $r_ct_after ) );
     
     
     // Name
@@ -441,6 +545,8 @@ function applicator_html_ok_obj( $args = array() ) {
         
         $output = '';
         
+        $output .= $ct_before;
+        
         if ( ! in_array( $r_elem, $anchor_label_term_variations, true ) ) {
             $output .= $spacer . '<' . $tag . ' class="obj' . $obj_type_css . $dynamic_css . $obj_css . '"' . $attr_title . ' data-name="' . $name . '">';
         }
@@ -555,6 +661,8 @@ function applicator_html_ok_obj( $args = array() ) {
         if ( ! in_array( $r_elem, $anchor_label_term_variations, true ) ) {
             $output .= '</' . $tag . '><!-- ' . $name . ' -->';
         }
+        
+        $output .= $ct_after;
         
     }
     
