@@ -415,6 +415,14 @@ function applicator_html_ok_obj( $args = array() ) {
         $css = ' ' . preg_replace( '/\s\s+/', ' ', trim( $r_css ) ) . '-navi';
     }
     
+    // Element: Note
+    if ( in_array( $r_elem, $note_term_variations, true ) ) {
+        $obj_type_css = ' ' . 'note';
+        $name = preg_replace( '/\s\s+/', ' ', trim( $r_name ) ) . ' ' . 'Note';
+        $dynamic_css = ' ' . sanitize_title( preg_replace( '/\s\s+/', ' ', trim( $r_name ) ) ) . '-note';
+        $css = ' ' . preg_replace( '/\s\s+/', ' ', trim( $r_css ) ) . '-note';
+    }
+    
     
     // New Version
     if ( '0.1' == $r_version ) {

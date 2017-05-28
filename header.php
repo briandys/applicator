@@ -18,6 +18,7 @@
                     <div class="cr wbp-start---cr">
 
                         <?php
+                        // Text
                         $go_content_nav_item_txt = applicator_html_ok_txt( array(
                             'content'       => array(
                                 array(
@@ -26,6 +27,7 @@
                             ),
                         ) );
 
+                        // Object
                         $go_content_nav_item_obj = applicator_html_ok_obj( array(
                             'elem'      => 'navi',
                             'name'      => 'Go to Content',
@@ -39,41 +41,37 @@
                             'content'   => $go_content_nav_item_txt,
                         ) );
 
+                        // Component
                         $go_content_nav = applicator_html_ok_cp( array(
-                            'type'      => 'n',
+                            'type'      => 'nav',
                             'name'      => 'Go to Content',
                             'cp_css'    => 'go-content-nav',
                             'css'       => 'go-ct',
-                            'attr'      => [
+                            'attr'      => array(
                                 'id'    => 'go-content-nav',
-                            ],
+                            ),
                             'content'   => $go_content_nav_item_obj,
                             'echo'      => true,
                         ) );
                         ?>
-
+                        
                         <!--[if lt IE 8]>
                         <?php
-                        // Markup
-                        $browser_upg_note_mu = '<div class="%2$s" data-name="%1$s">';
-                            $browser_upg_note_mu .= '<div class="g %3$s---g">';
-                                $browser_upg_note_mu .= '<p>%4$s <a href="%6$s">%5$s</a></p>';
-                            $browser_upg_note_mu .= '</div>';
-                        $browser_upg_note_mu .= '</div><!-- %1$s -->';
-
-                        // Content
-                        $browser_upg_note = sprintf( $browser_upg_note_mu,
-                            'Browser Upgrade Note Object',
-                                'note browser-upgrade-note',
-                                'browser-up-note',
+                        // Text
+                        $browser_upgrade_note_txt = sprintf( '<p>%1$s <a href="%3$s">%2$s</a></p>',
                             esc_html__( 'You are using an outdated browser. Please upgrade your browser to improve your experience.', $GLOBALS['apl_textdomain'] ),
                             esc_html__( 'Upgrade Browser', $GLOBALS['apl_textdomain'] ),
                             esc_url( 'http://browsehappy.com/' )
                         );
-
-                        // Display
-                        printf( $browser_upg_note );
-                        ?>
+                                                            
+                        // Object
+                        $browser_upgrade_note_obj = applicator_html_ok_obj( array(
+                            'elem'      => 'note',
+                            'name'      => 'Browser Upgrade',
+                            'css'       => 'browser-upgrade',
+                            'content'   => $browser_upgrade_note_txt,
+                            'echo'      => true,
+                        ) ); ?>
                         <![endif]-->
 
                     </div>
