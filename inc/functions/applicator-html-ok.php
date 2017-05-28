@@ -179,11 +179,11 @@ function applicator_html_ok_cp( $args = array() ) {
     $r_content = $r['content'];
     $r_fr_content = $r['fr_content'];
     
-    $type_module_term_variations = ['module', 'md', 'm'];
-    $type_component_term_variations = ['component', 'cp', 'c'];
-    $type_nav_term_variations = ['navigation', 'nav', 'n'];
+    $type_module_term_variations = array( 'module', 'md', 'm', );
+    $type_component_term_variations = array( 'component', 'cp', 'c', );
+    $type_nav_term_variations = array( 'navigation', 'nav', 'n', );
     
-    $cn_type_header_term_variations = ['header', 'hr'];
+    $cn_type_header_term_variations = array( 'header', 'hr', );
     
     $name = '';
     $cp_css = '';
@@ -398,23 +398,23 @@ function applicator_html_ok_obj( $args = array() ) {
     $attr_htag = '';
     $attr_id = '';
     
-    $layout_inline_term_variations = ['inline', 'i'];
-    $layout_block_term_variations = ['block', 'b'];
+    $layout_inline_term_variations = array( 'inline', 'i', );
+    $layout_block_term_variations = array( 'block', 'b', );
     
-    $heading_term_variations = ['heading', 'h'];
-    $heading_tag_term_variations = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+    $heading_term_variations = array( 'heading', 'h', );
+    $heading_tag_term_variations = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', );
     
-    $generic_term_variations = [ 'generic', 'g', ];
-    $time_term_variations = [ 'time', 't', ];
-    $label_term_variations = [ 'label', 'l', ];
+    $generic_term_variations = array( 'generic', 'g', );
+    $time_term_variations = array( 'time', 't', );
+    $label_term_variations = array( 'label', 'l', );
     
-    $anchor_term_variations = [ 'anchor', 'a', ];
-    $navi_term_variations = [ 'nav_item', 'navi', ];
+    $anchor_term_variations = array( 'anchor', 'a', );
+    $navi_term_variations = array( 'nav_item', 'navi', );
     
-    $anchor_label_term_variations = [ 'anchor_label', 'al', ];
+    $anchor_label_term_variations = array( 'anchor_label', 'al', );
     
-    $wordpress_term_variations = [ 'wordpress', 'wp', ];
-    $note_term_variations = [ 'note', 'n', ];
+    $wordpress_term_variations = array( 'wordpress', 'wp', );
+    $note_term_variations = array( 'note', 'n', );
     
     $ct_before = preg_replace( '/\s\s+/', ' ', trim( $r_ct_before ) );
     $ct_after = preg_replace( '/\s\s+/', ' ', trim( $r_ct_after ) );
