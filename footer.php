@@ -7,6 +7,18 @@
                         <?php // Main Footer Aside
                         applicator_func_main_footer_aside(); ?>
                         
+                        <?php
+                        
+                        $web_product_fineprint = applicator_html_ok_txt( array(
+                            'content'   => array(
+                                array(
+                                    'txt'   => ''
+                                ),
+                            ),
+                        ) );
+                        
+                        ?>
+                        
                         <div class="obj wbp-copyright site-info" data-name="Web Product Copyright">
                             <div class="g wbp-copyright---g">
                                 <div class="g_l wbp-copyright---g_l">
@@ -29,32 +41,53 @@
                     </div>
                 </footer><!-- Main Footer -->
 
-                <div class="cn wbp-end" data-name="Web Product End">
-                    <div class="cr wbp-end---cr">
+                <?php
+                        
+                // Go to Start Nav
+                // Text
+                $go_start_nav_item_txt = applicator_html_ok_txt( array(
+                    'content'       => array(
+                        array(
+                            'txt'   => 'Go to Start',
+                        ),
+                    ),
+                ) );
 
-                        <div id="go-start-nav" class="nav go-start-nav" role="navigation" data-name="Go to Start Nav">
-                            <div class="cr go-start-nav---cr">
-                                <div class="h go-start-nav---h"><span class="h_l go-ct-nav---h_l"><?php esc_html_e( 'Go to Start Navigation', $GLOBALS['apl_textdomain'] ); ?></span></div>
-                                <div class="ct go-start-nav---ct">
-                                    <div class="ct_cr go-start-nav---ct_cr">
+                // Object
+                $go_start_nav_item_obj = applicator_html_ok_obj( array(
+                    'elem'      => 'navi',
+                    'name'      => 'Go to Start',
+                    'css'       => 'go-start',
+                    'attr'      => array(
+                        'id'    => 'go-start-navi---a',
+                        'href'  => '#start',
+                        'title' => 'Go to Start',
+                    ),
+                    'content'   => $go_start_nav_item_txt,
+                ) );
 
-                                        <?php // Go to Start Nav Item Markup
-                                        $go_start_navi_mu = '<div class="obj navi go-start-navi" data-name="Go to Start Nav Item">';
-                                            $go_start_navi_mu .= '<a id="go-start-navi---a" class="a go-start-navi---a" href="#start" title="%1$s"><span class="a_l go-start-navi---a_l"><span class="word go-to-start---word">%2$s</span></span></a>';
-                                        $go_start_navi_mu .= '</div>';
+                // Component
+                $go_start_nav = applicator_html_ok_cp( array(
+                    'type'      => 'nav',
+                    'name'      => 'Go to Start',
+                    'cp_css'    => 'go-start-nav',
+                    'css'       => 'go-start',
+                    'attr'      => array(
+                        'id'    => 'go-start-nav',
+                    ),
+                    'content'   => $go_start_nav_item_obj,
+                ) );
 
-                                        printf( $go_start_navi_mu,
-                                            esc_attr__( 'Go to Start', 'applicator'),
-                                            esc_html__( 'Go to Start', 'applicator')
-                                        ); ?>
+                // Web Product End
+                // Constructor
+                $web_product_end = htmlok_cn( array(
+                    'name'      => 'Web Product End',
+                    'css'       => 'wbp-end',
+                    'content'   => $go_start_nav,
+                    'echo'      => true,
+                ) );
 
-                                    </div>
-                                </div><!-- ct -->
-                            </div>
-                        </div><!-- Go to Start Nav -->
-
-                    </div>
-                </div><!-- Web Product End -->
+                ?>
             
             </div>
         </div><!-- Web Product -->

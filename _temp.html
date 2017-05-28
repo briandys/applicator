@@ -1,21 +1,28 @@
-<div class="hr main-content---hr" data-name="Main Content Header">
-                <div class="hr_cr main-content---hr_cr">
-                    <h2 class="h main-content---h"><span class="h_l main-content---h_l">
-                    <?php
-                    if ( ! $entry_search_count == 0 ) {
-                        echo '<span class="num search-results-count---num">' . $entry_search_count . '</span> ';
-                    }
+<div class="cn wbp-end" data-name="Web Product End">
+                    <div class="cr wbp-end---cr">
+                        
+                        
 
-                    if ( $entry_search_count == 0 ) {
-                        echo '<span class="word no-search-result---word">' . esc_html__( 'No Search Results', $GLOBALS['apl_textdomain'] ) . '</span> ';
-                    } elseif ( $entry_search_count == 1 ) {
-                        echo '<span class="word search-result---word">' . esc_html__( 'Search Result', $GLOBALS['apl_textdomain'] ) . '</span> ';
-                    } else {
-                        echo '<span class="word search-results---word">' . esc_html__( 'Search Results', $GLOBALS['apl_textdomain'] ) . '</span> ';
-                    }
+                        <div id="go-start-nav" class="nav go-start-nav" role="navigation" data-name="Go to Start Nav">
+                            <div class="cr go-start-nav---cr">
+                                <div class="h go-start-nav---h"><span class="h_l go-ct-nav---h_l"><?php esc_html_e( 'Go to Start Navigation', $GLOBALS['apl_textdomain'] ); ?></span></div>
+                                <div class="ct go-start-nav---ct">
+                                    <div class="ct_cr go-start-nav---ct_cr">
 
-                    echo '<span class="word for---word">' . esc_html__( 'for', $GLOBALS['apl_textdomain'] ) . '</span> <span class="word search-term---word">' . strip_tags( $entry_search_key ) . '</span>';
-                    ?>
-                    </span></h2>
-                </div>
-            </div>
+                                        <?php // Go to Start Nav Item Markup
+                                        $go_start_navi_mu = '<div class="obj navi go-start-navi" data-name="Go to Start Nav Item">';
+                                            $go_start_navi_mu .= '<a id="go-start-navi---a" class="a go-start-navi---a" href="#start" title="%1$s"><span class="a_l go-start-navi---a_l"><span class="word go-to-start---word">%2$s</span></span></a>';
+                                        $go_start_navi_mu .= '</div>';
+
+                                        printf( $go_start_navi_mu,
+                                            esc_attr__( 'Go to Start', 'applicator'),
+                                            esc_html__( 'Go to Start', 'applicator')
+                                        ); ?>
+
+                                    </div>
+                                </div><!-- ct -->
+                            </div>
+                        </div><!-- Go to Start Nav -->
+
+                    </div>
+                </div><!-- Web Product End -->

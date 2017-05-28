@@ -66,7 +66,7 @@
 
 /* Go to Start Nav */
 .go-start-nav---h,
-.go-start-nav-func .go-start-navi .word,
+.go-start-nav-func .go-to-start---txt,
 
 /* Main Nav - Main Header Aside */
 .main-hr-as---h,
@@ -1062,7 +1062,7 @@ $go-green: #12b32d;
     bottom: 0;
 }
 
-.go-start-nav-func .go-start-navi
+.go-start-nav-func .go-to-start-navi
 {   
     transition: transform .2s ease-in-out;
 }
@@ -1072,14 +1072,14 @@ $go-green: #12b32d;
     color: black;
 }
 
-.go-start-nav--active .go-start-navi
+.go-start-nav--active .go-to-start-navi
 {
     transform: translateY( 0 );
 }
 
 
-.apl--applicator--go-start-nav.dom--unready .go-start-navi,
-.go-start-nav--inactive .go-start-navi
+.apl--applicator--go-start-nav.dom--unready .go-to-start-navi,
+.go-start-nav--inactive .go-to-start-navi
 {
     transform: translateY( 100% );
 }
@@ -1804,7 +1804,8 @@ $go-green: #12b32d;
 }
 
 /* Menu Indicator */
-.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-navi---a_l
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > .page_item_has_children > a > .main-navi---a_l,
+.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > .menu-item-has-children > a > .main-navi---a_l
 {
     padding-left: .25rem;
     padding-right: .25rem;
