@@ -108,6 +108,7 @@
                         ) );
 
                         // Web Product Custom Logo | inc > settings.php | Customizer > Site Identity
+                        $web_product_main_logo_obj = '';
                         if ( has_custom_logo() ) {
                             // Object
                             $web_product_main_logo_obj = applicator_html_ok_obj( array(
@@ -119,11 +120,10 @@
                                 ),
                                 'content'   => get_custom_logo(),
                             ) );
-                        } else {
-                            $web_product_main_logo_obj = '';
                         }
 
                         // Web Product Main Description
+                        $web_product_main_description_obj = '';
                         $description = get_bloginfo( 'description', 'display' );
                         if ( $description || is_customize_preview() ) {
 
@@ -149,11 +149,11 @@
                                 ),
                                 'content'   => $web_product_main_description_txt,
                             ) );
-                        } else {
-                            $web_product_main_description_obj = '';
                         }
                         
-                        // Web Product Main Info - Component
+                        // Web Product Main Info
+                        
+                        //Component
                         $web_product_main_info = applicator_html_ok_cp( array(
                             'name'      => 'Web Product Main Info',
                             'css'       => 'wbp-main-info',

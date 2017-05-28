@@ -318,8 +318,10 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
             'cp_css'    => $comments_population_status_css . ' ' . $comment_creation_ability_status_css,
             'css'       => 'coms-acts-snip',
             'content'   => $comments_population . $comment_creation_ability,
-            'echo'      => true,
+            //'echo'      => true,
         ) );
+        
+        return $comments_actions_snippet;
         
     }
 }

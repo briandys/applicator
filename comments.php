@@ -8,151 +8,54 @@
         <div class="ct comment-md---ct">
             <div class="ct_cr comment-md---ct_cr">
                 
-                <div id="comments" class="cp comments comments-area" data-name="Comments">
-                    <div class="cr comments---cr">
-                        <div class="hr comments---hr">
-                            <div class="hr_cr comments---hr_cr">
-                                <div class="h comments---h"><span class="h_l comments---h_l"><?php esc_html_e( 'Comments', $GLOBALS['apl_textdomain'] ); ?></span></div>
-                                <div class="aside comments-hr-aside" role="complementary" data-name="Comments Header Aside">
-                                    <div class="cr coms-hr-as---cr">
-                                    
-                                        <?php // inc > tags > comments-actions-snippet.php
-                                        applicator_func_comments_actions_snippet(); ?>
-                                    
-                                    </div>
-                                </div><!-- Comments Header Aside -->
-                            </div>
-                        </div>
-                        <div class="ct comments---ct">
-                            <div class="ct_cr comments---ct_cr">
-                                
-                            <?php if ( have_comments() ) { ?>
-                                
-                                <ul class="grp comments---grp">
-                                    <?php wp_list_comments( array(
-                                        'style'       => 'ul',
-                                        'avatar_size' => 48,
-                                        'callback' => 'applicator_func_comment'
-                                    ) ); ?>
-                                </ul>
-                                
-                                <?php // Comments Navigation | inc > tags > comments-nav.php
-                                applicator_func_comments_nav();
-                                                         
-                            } else {
-                                
-                                $comments_empty_note_obj = applicator_html_ok_obj( array(
-                                    'name' => 'Comments Empty Note',
-                                    'elem' => 'n',
-                                    'css' => 'com-empty-note',
-                                    'content' => '<p>' . esc_html__( 'There are no comments.', $GLOBALS['apl_textdomain'] ) . '</p>',
-                                    'echo' => true,
-                                ) );
-
-                            } ?>
-                            
-                            </div>
-                        </div><!-- comments---ct -->
-                    </div>
-                </div><!-- comments -->
+                <?php
+                
+                if ( have_comments() ) {
+                
+                    $comments_content = '<ul class="grp comments---grp">';
+                    $comments_content .= wp_list_comments( array(
+                        'style'       => 'ul',
+                        'avatar_size' => 48,
+                        'callback' => 'applicator_func_comment'
+                    ) );
+                    $comments_content .= '</ul>';
+                    $comments_content .= applicator_func_comments_nav();
+                    
+                } else {
+                    
+                    $comments_content = applicator_html_ok_obj( array(
+                        'name' => 'Comments Empty Note',
+                        'elem' => 'n',
+                        'css' => 'com-empty-note',
+                        'content' => '<p>' . esc_html__( 'There are no comments.', $GLOBALS['apl_textdomain'] ) . '</p>',
+                    ) );
+                    
+                }
+                
+                $comments_header_aside_mu = '<div class="aside comments-hr-aside" role="complementary" data-name="Comments Header Aside">';
+                $comments_header_aside_mu .= '<div class="cr coms-hr-as---cr">';
+                $comments_header_aside_mu .=  applicator_func_comments_actions_snippet();
+                $comments_header_aside_mu .= '</div>';
+                $comments_header_aside_mu .= '</div><!-- Comments Header Aside -->';
+                
+                $comments = applicator_html_ok_cp( array(
+                    'name'          => 'Comments',
+                    'cp_css'        => 'comments-area',
+                    'css'           => 'comments',
+                    'hr_content'    => $comments_header_aside_mu,
+                    'attr'          => array(
+                        'id'        => 'comments',
+                    ),
+                    'content'       => $comments_content,
+                    'echo'          => true,
+                ) );
+                
+                ?>
+                
+                <?php // echo applicator_func_comments_actions_snippet(); ?>
+                <?php // applicator_func_comments_actions_snippet(); ?>
                 
                 <?php // Comment Form | inc > functions > comment-form.php
-                
-                
-                // Markup
-                $cancel_reply_com_axn_a_l_mu = '<span class="a_l cancel-reply-com-axn---a_l" title="%5$s">';
-                    $cancel_reply_com_axn_a_l_mu .= '<span class="word cancel---word">%1$s</span>';
-                    $cancel_reply_com_axn_a_l_mu .= ' <span class="word reply---word">%2$s</span>';
-                    $cancel_reply_com_axn_a_l_mu .= ' <span class="word to---word">%3$s</span>';
-                    $cancel_reply_com_axn_a_l_mu .= ' <span class="word comment---word">%4$s</span>';
-                $cancel_reply_com_axn_a_l_mu .= '</span>';
-                
-                // Markup
-                $signed_in_acct_mu = '<div class="cp %2$s" data-name="%1$s">';
-                    $signed_in_acct_mu .= '<div class="cr %3$s---cr">';
-                        $signed_in_acct_mu .= '<div class="hr %3$s---hr">';
-                            $signed_in_acct_mu .= '<div class="hr_cr %3$s---hr_cr">';
-                                $signed_in_acct_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h">%4$s</span></div>';
-                                $signed_in_acct_mu .= '%7$s';
-                            $signed_in_acct_mu .= '</div>';
-                        $signed_in_acct_mu .= '</div>';
-                        $signed_in_acct_mu .= '<div class="ct %3$s---ct">';
-                            $signed_in_acct_mu .= '<div class="ct_cr %3$s---ct_cr">%5$s %6$s</div>';
-                        $signed_in_acct_mu .= '</div>';
-                    $signed_in_acct_mu .= '</div>';
-                $signed_in_acct_mu .= '</div>';
-                
-                /*
-                // Markup
-                $signed_in_as_label_obj_mu = '<span class="obj %2$s" data-name="%1$s">';
-                    $signed_in_as_label_obj_mu .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l"><span class="line signed-in-as---line">%4$s</span></span></span>';
-                $signed_in_as_label_obj_mu .= '</span>';
-                
-                // Content
-                $signed_in_as_label_obj = sprintf( $signed_in_as_label_obj_mu,
-                    'Signed In As Label Object',
-                    'signed-in-as-label-obj',
-                    'signed-in-as-lbl-obj',
-                    esc_html__( 'Signed in as', $GLOBALS['apl_textdomain'] )
-                );
-                */
-                
-                // Markup
-                $acct_name_obj_mu = '<span class="obj %2$s" title="%4$s" data-name="%1$s">';
-                    $acct_name_obj_mu .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l">';
-                        $acct_name_obj_mu .= '<a class="a %3$s---a" href="%5$s"><span class="a_l %3$s---a_l"><span class="line account-name---line">%4$s</span></span></a>';
-                    $acct_name_obj_mu .= '</span></span>';
-                $acct_name_obj_mu .= '</span>';
-                
-                /*
-                // Content
-                $acct_name_obj = sprintf( $acct_name_obj_mu,
-                    'Account Name Object',
-                    'account-name-obj',
-                    'acct-name-obj',
-                    $user_identity,
-                    admin_url( 'profile.php' )
-                );
-                */
-                
-                // Markup
-                $signed_in_acct_axns_mu = '<div class="axns %2$s" data-name="%1$s">';
-                    $signed_in_acct_axns_mu .= '<div class="cr %3$s---cr">';
-                        $signed_in_acct_axns_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h_l">%4$s</span></div>';
-                        $signed_in_acct_axns_mu .= '%5$s';
-                    $signed_in_acct_axns_mu .= '</div>';
-                $signed_in_acct_axns_mu .= '</div>';
-                
-                // Markup
-                $sign_out_axn_mu = '<span class="obj axn %2$s" title="%6$s" data-name="%1$s">';
-                    $sign_out_axn_mu .= '<a class="a %3$s---a" href="%5$s"><span class="a_l %3$s---a_l">%4$s</span></a>';
-                $sign_out_axn_mu .= '</span>';
-                
-                // Content
-                $sign_out_axn = sprintf( $sign_out_axn_mu,
-                    'Sign Out Action',
-                    'sign-out-axn',
-                    'sign-out-axn',
-                    esc_html__( 'Sign Out', $GLOBALS['apl_textdomain'] ),
-                    wp_logout_url( apply_filters( 'the_permalink', get_permalink() ) ),
-                    esc_attr__( 'Sign Out', $GLOBALS['apl_textdomain'] )
-                );
-                
-                // Content
-                $signed_in_acct_axns = sprintf( $signed_in_acct_axns_mu,
-                    'Signed In Account Actions',
-                    'signed-in-account-axns',
-                    'signed-in-acct-axns',
-                    esc_html__( 'Signed In Account Actions', $GLOBALS['apl_textdomain'] ),
-                    $sign_out_axn
-                );
-                
-                
-                
-                
-                
-                
-                
                 
                 // title_reply - Component Header
                 $comment_creation_header = applicator_html_ok_cp( array(
@@ -329,7 +232,7 @@
                     
                     // Cancel Reply Action
                     'cancel_reply_before'       => '',
-                    'cancel_reply_after'       => '',
+                    'cancel_reply_after'        => '',
                     
                     'cancel_reply_link'         => $cancel_reply_comment_action_label_obj,
                     
