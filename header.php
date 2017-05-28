@@ -17,34 +17,40 @@
                 <div class="cn wbp-start" data-name="Web Product Start">
                     <div class="cr wbp-start---cr">
 
-                        <div id="go-content-nav" class="nav go-content-nav" role="navigation" data-name="Go to Content Nav">
-                            <div class="h go-ct-nav---h"><?php esc_html_e( 'Go to Content Navigation', $GLOBALS['apl_textdomain'] ); ?></div>
-                            <div class="ct go-ct-nav---ct">
-                                <?php
-                                // Markup
-                                $go_ct_navi_mu = '<div class="navi %2$s" data-name="%1$s">';
-                                    $go_ct_navi_mu .= '<a id="%3$s---a" class="a %3$s---a skip-link" href="%6$s" title="%7$s"><span class="a_l %3$s---a_l"><span class="txt %5$s---txt">';
-                                        $go_ct_navi_mu .= '%4$s';
-                                    $go_ct_navi_mu .= '</span></a>';
-                                $go_ct_navi_mu .= '</div><!-- %1$s -->';
-                                
-                                // Content
-                                $go_ct_navi = sprintf( $go_ct_navi_mu,
-                                    'Go to Content Nav Item',
-                                        'navi go-content-navi',
-                                        'go-ct-navi',
-                                    esc_html__( 'Go to Content', 'applicator'),
-                                        'go-to-content',
-                                    '#content',
-                                    esc_attr__( 'Go to Content', 'applicator')
-                                );
-                                
-                                // Display
-                                printf( $go_ct_navi );
-                                ?>
-                                
-                            </div>
-                        </div><!-- Go to Content Nav -->
+                        <?php
+                        $go_content_nav_item_txt = applicator_html_ok_txt( array(
+                            'content'       => array(
+                                array(
+                                    'txt'   => 'Go to Content',
+                                ),
+                            ),
+                        ) );
+
+                        $go_content_nav_item_obj = applicator_html_ok_obj( array(
+                            'elem'      => 'navi',
+                            'name'      => 'Go to Content',
+                            'css'       => 'go-ct',
+                            'elem_css'  => 'skip-link',
+                            'attr'      => array(
+                                'id'    => 'go-ct-navi---a',
+                                'href'  => '#content',
+                                'title' => 'Go to Content',
+                            ),
+                            'content'   => $go_content_nav_item_txt,
+                        ) );
+
+                        $go_content_nav = applicator_html_ok_cp( array(
+                            'type'      => 'n',
+                            'name'      => 'Go to Content',
+                            'cp_css'    => 'go-content-nav',
+                            'css'       => 'go-ct',
+                            'attr'      => [
+                                'id'    => 'go-content-nav',
+                            ],
+                            'content'   => $go_content_nav_item_obj,
+                            'echo'      => true,
+                        ) );
+                        ?>
 
                         <!--[if lt IE 8]>
                         <?php
@@ -76,97 +82,87 @@
                 <header id="masthead" class="cn main-header site-header" data-name="Main Header" role="banner">
                     <div class="cr main-header---cr">
                         
-                        <div class="cp wbp-main-info" data-name="Web Product Main Info">
-                            <div class="cr wbp-main-info---cr">
-                                <div class="hr wbp-main-info---hr">
-                                    <div class="hr_cr wbp-main-info---hr_cr">
-                                        <div class="h wbp-main-info---h"><span class="h_l wbp-main-info---h_l"><?php esc_html_e( 'Web Product Main Info', $GLOBALS['apl_textdomain'] ); ?></span></div>
-                                    </div>
-                                </div>
-                                <div class="ct wbp-main-info---ct">
-                                    <div class="ct_cr wbp-main-info---ct_cr">
-                                        <?php
-                                        // Web Product Main Name
-                                        
-                                        // Content - Text
-                                        $web_product_main_name_txt = applicator_html_ok_txt( array(
-                                            'content' => array(
-                                                array(
-                                                    'txt'   => get_bloginfo( 'name' ),
-                                                    'css'   => 'wbp-name',
-                                                ),
-                                            ),
-                                        ) );
-        
-                                        // Content - Object
-                                        $web_product_main_name_obj = applicator_html_ok_obj( array(
-                                            'name'      => 'Web Product Main Name',
-                                            'elem'      => 'h',
-                                            'elem_css'  => 'site-title',
-                                            'css'       => 'wbp-main-name',
-                                            'linked'    => true,
-                                            'attr'      => array(
-                                                'href'      => esc_url( home_url( '/' ) ),
-                                                'htag'      => 'h1',
-                                                'title'     => get_bloginfo( 'name' ),
-                                            ),
-                                            'content'   => $web_product_main_name_txt,
-                                            'echo'      => true,
-                                        ) );
-
-                                        // Web Product Custom Logo | inc > settings.php | Customizer > Site Identity
-                                        if ( has_custom_logo() ) {
-                                            
-                                            // Content - Object
-                                            $web_product_main_logo_obj = applicator_html_ok_obj( array(
-                                                'name'      => 'Web Product Main Logo',
-                                                'elem'      => 'wp',
-                                                'css'       => 'wbp-main-logo',
-                                                'attr'      => array(
-                                                    'title'     => get_bloginfo( 'name' ),
-                                                ),
-                                                'content'   => get_custom_logo(),
-                                                'echo'      => true,
-                                            ) );
-                                            
-                                        }
-
-                                        // Web Product Main Description
-                                        $description = get_bloginfo( 'description', 'display' );
-
-                                        if ( $description || is_customize_preview() ) {
-
-                                            // Content - Text
-                                            $web_product_main_description_txt = applicator_html_ok_txt( array(
-                                                'content' => array(
-                                                    array(
-                                                        'txt'   => $description,
-                                                        'css'   => 'wbp-desc',
-                                                    ),
-                                                ),
-                                            ) );
-
-                                            // Content - Object
-                                            $web_product_main_description_obj = applicator_html_ok_obj( array(
-                                                'name'      => 'Web Product Main Description',
-                                                'elem'      => 'g',
-                                                'css'       => 'wbp-main-desc',
-                                                'linked'    => true,
-                                                'attr'      => array(
-                                                    'href'      => esc_url( home_url( '/' ) ),
-                                                    'title'     => $description,
-                                                ),
-                                                'content'   => $web_product_main_description_txt,
-                                                'echo'      => true,
-                                            ) );
-                                        }
-                                        ?>
-                                    </div>
-                                </div><!-- ct -->
-                            </div>
-                        </div><!-- Web Product Main Info -->
-                        
                         <?php
+                        // Web Product Main Name
+                        // Text
+                        $web_product_main_name_txt = applicator_html_ok_txt( array(
+                            'content' => array(
+                                array(
+                                    'txt'   => get_bloginfo( 'name' ),
+                                    'css'   => 'wbp-name',
+                                ),
+                            ),
+                        ) );
+
+                        // Object
+                        $web_product_main_name_obj = applicator_html_ok_obj( array(
+                            'name'      => 'Web Product Main Name',
+                            'elem'      => 'h',
+                            'elem_css'  => 'site-title',
+                            'css'       => 'wbp-main-name',
+                            'linked'    => true,
+                            'attr'      => array(
+                                'href'      => esc_url( home_url( '/' ) ),
+                                'htag'      => 'h1',
+                                'title'     => get_bloginfo( 'name' ),
+                            ),
+                            'content'   => $web_product_main_name_txt,
+                        ) );
+
+                        // Web Product Custom Logo | inc > settings.php | Customizer > Site Identity
+                        if ( has_custom_logo() ) {
+                            // Object
+                            $web_product_main_logo_obj = applicator_html_ok_obj( array(
+                                'name'      => 'Web Product Main Logo',
+                                'elem'      => 'wp',
+                                'css'       => 'wbp-main-logo',
+                                'attr'      => array(
+                                    'title'     => get_bloginfo( 'name' ),
+                                ),
+                                'content'   => get_custom_logo(),
+                            ) );
+                        } else {
+                            $web_product_main_logo_obj = '';
+                        }
+
+                        // Web Product Main Description
+                        $description = get_bloginfo( 'description', 'display' );
+                        if ( $description || is_customize_preview() ) {
+
+                            // Text
+                            $web_product_main_description_txt = applicator_html_ok_txt( array(
+                                'content' => array(
+                                    array(
+                                        'txt'   => $description,
+                                        'css'   => 'wbp-desc',
+                                    ),
+                                ),
+                            ) );
+
+                            // Object
+                            $web_product_main_description_obj = applicator_html_ok_obj( array(
+                                'name'      => 'Web Product Main Description',
+                                'elem'      => 'g',
+                                'css'       => 'wbp-main-desc',
+                                'linked'    => true,
+                                'attr'      => array(
+                                    'href'      => esc_url( home_url( '/' ) ),
+                                    'title'     => $description,
+                                ),
+                                'content'   => $web_product_main_description_txt,
+                            ) );
+                        } else {
+                            $web_product_main_description_obj = '';
+                        }
+                        
+                        // Web Product Main Info - Component
+                        $web_product_main_info = applicator_html_ok_cp( array(
+                            'name'      => 'Web Product Main Info',
+                            'css'       => 'wbp-main-info',
+                            'content'   => $web_product_main_name_obj . $web_product_main_logo_obj . $web_product_main_description_obj,
+                            'echo'      => true,
+                        ) );
+                        
                         // Main Navigation | inc > tags > main-navigation.php
                         applicator_func_main_nav();
 
@@ -179,20 +175,14 @@
                         // Custom Header | Customizer > Custom Header | inc > functions > custom-header.php
                         if ( has_header_image() ) {
                             
-                            // Markup
-                            $wbp_media_banner_mu = '<div class="%2$s" data-name="%1$s">';
-                                $wbp_media_banner_mu .= '%3$s';
-                            $wbp_media_banner_mu .= '</div>';
-                            
-                            // Content
-                            $wbp_media_banner = sprintf( $wbp_media_banner_mu,
-                                'Web Product Media Banner',
-                                'cp wbp-media-banner',
-                                get_custom_header_markup()
-                            );
-                            
-                            // Display
-                            printf( $wbp_media_banner );
+                            // Object
+                            $web_product_main_media_banner_obj = applicator_html_ok_obj( array(
+                                'name'      => 'Web Product Main Media Banner',
+                                'elem'      => 'wp',
+                                'css'       => 'wbp-main-media-banner',
+                                'content'   => get_custom_header_markup(),
+                                'echo'      => true,
+                            ) );
                         }
                         
                         // Aside | inc > aside.php

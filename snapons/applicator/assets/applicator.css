@@ -10,7 +10,7 @@
 .entry-nav---h,
 .error404 .main-ct---h,
 .crumbs-nav---h,
-.wbp-main-info---h,
+
 
 .post-admin-axns---h,
 .post-pub-auth---h,
@@ -55,6 +55,10 @@
 
 .main-ct-hr-as---h,
 */
+
+
+/* Heading */
+.wbp-main-info---h,
 
 /* Go to Content Nav */
 .go-ct-nav---h,
@@ -629,22 +633,26 @@ $go-green: #12b32d;
 }
 */
 
+.web-product-main-info,
 .wbp-main-info
 {
     min-height: 3rem;
 }
 
 /* Mod */
+.apl--applicator--main-search .web-product-main-info,
 .apl--applicator--main-search .wbp-main-info
 {
     margin-right: 3rem;
 }
 
+.wbp-main-logo--enabled .web-product-main-info,
 .wbp-main-logo--enabled .wbp-main-info
 {
     margin-left: 1rem;
 }
 
+.wbp-main-logo--enabled .web-product-main-info,
 .wbp-main-logo--enabled .wbp-main-info
 {
     position: relative;
@@ -697,6 +705,7 @@ $go-green: #12b32d;
     padding-right: 0;
 }
 
+.apl--applicator--main-menu.main-header-aside--enabled .web-product-main-info,
 .apl--applicator--main-menu.main-header-aside--enabled .wbp-main-info
 {
     margin-left: 3rem;
@@ -962,6 +971,7 @@ $go-green: #12b32d;
     background-color: hsla(0, 100%, 100%, .75);
 }
 
+.go-content-nav-func .go-to-content-navi,
 .go-content-nav-func .go-content-navi
 {
     position: absolute;
@@ -1924,8 +1934,8 @@ $go-green: #12b32d;
     min-width: 100%;
 }
 
-.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children .children,
-.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu .sub-menu
+.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children .children,
+.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children .sub-menu
 {
     
     transform: translate( -.5rem, -.5rem );

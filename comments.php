@@ -58,34 +58,6 @@
                 
                 <?php // Comment Form | inc > functions > comment-form.php
                 
-                // Markup
-                $com_author_comment_creation_mu = '<div class="cp fs-item comment-author-comment-creation" data-name="Comment Author Comment Creation">';
-                    $com_author_comment_creation_mu .= '<div class="cr com-author-com-crt---cr">';
-                        $com_author_comment_creation_mu .= '<div class="h com-author-com-crt---h"><span class="h_l com-author-com-crt---h_l">Commenter Comment Creation</span></div>';
-                        $com_author_comment_creation_mu .= '<div class="ct com-author-com-crt---ct">';
-                            $com_author_comment_creation_mu .= '<div class="ct_cr com-author-com-crt---ct_cr">';
-                                
-                                $com_author_comment_creation_mu .= '<span class="obj com-author-com-creation-label-obj" data-name="Commenter Comment Creation Label">';
-                                    $com_author_comment_creation_mu .= '<label class="label com-author-com-crt-lbl-obj---label" for="comment"><span class="label_l com-author-name-crt-lbl-obj---label_l">%2$s</span></label>';
-                                $com_author_comment_creation_mu .= '</span>';
-                                
-                                $com_author_comment_creation_mu .= '<span class="obj com-author-com-creation-input-obj" data-name="Commenter Comment Creation Input">';
-                                    $com_author_comment_creation_mu .= '<span class="ee--textarea com-author-com-creation-input-obj---ee--textarea">';
-                                        $com_author_comment_creation_mu .= '<textarea id="comment" class="textarea input-text com-author-com-crt-inp-obj--input-text" name="comment" placeholder="%1$s" title="%1$s" maxlength="65525" required></textarea>';
-                                    $com_author_comment_creation_mu .= '</span>';
-                                $com_author_comment_creation_mu .= '</span>';
-                            
-                            $com_author_comment_creation_mu .= '</div>';
-                        $com_author_comment_creation_mu .= '</div>';
-                    $com_author_comment_creation_mu .= '</div>';
-                $com_author_comment_creation_mu .= '</div>';
-                
-                $com_author_comment_creation = sprintf( $com_author_comment_creation_mu,
-                    esc_attr__( 'Comment', $GLOBALS['apl_textdomain'] ),
-                    esc_html__( 'Comment', $GLOBALS['apl_textdomain'] )
-                );
-                
-                
                 
                 // Markup
                 $cancel_reply_com_axn_a_l_mu = '<span class="a_l cancel-reply-com-axn---a_l" title="%5$s">';
@@ -257,6 +229,26 @@
                     'content'   => $signed_in_as_label_obj . $signed_in_account_name_obj,
                 ) );
                 
+                $comment_author_comment_creation_input_label_obj = applicator_html_ok_obj( array(
+                    'name'      => 'Comment Author Comment Creation Input Label',
+                    'elem'      => 'l',
+                    'css'       => 'com-author-com-crt-input',
+                    'content'   => '<label class="label com-author-com-crt-lbl-obj---label" for="comment"><span class="label_l com-author-name-crt-lbl-obj---label_l">Commentx</span></label>',
+                ) );
+                
+                $comment_author_comment_creation_input_obj = applicator_html_ok_obj( array(
+                    'name'      => 'Comment Author Comment Creation Input',
+                    'elem'      => 'l',
+                    'css'       => 'com-author-com-crt-input',
+                    'content'   => '<textarea id="comment" class="textarea input-text com-author-com-crt-inp-obj--input-text" name="comment" placeholder="Commentx" title="Comment" maxlength="65525" required></textarea>',
+                ) );
+                
+                $comment_author_comment_creation = applicator_html_ok_cp( array(
+                    'name'      => 'Comment Author Comment Creation',
+                    'css'       => 'com-auth-com-crt',
+                    'content'   => $comment_author_comment_creation_input_label_obj . $comment_author_comment_creation_input_obj,
+                ) );
+                
                 // cancel_reply_link - Text
                 $cancel_reply_comment_action_txt = applicator_html_ok_txt( array(
                     'content' => array(
@@ -276,13 +268,6 @@
                             'sep' => $GLOBALS['space_sep'],
                         ),
                     ),
-                ) );
-                
-                // cancel_reply_link - Object
-                $cancel_reply_comment_action_label = applicator_html_ok_obj( array(
-                    'elem' => 'al',
-                    'css' => 'cancel-reply-com-axn',
-                    'content' => $cancel_reply_comment_action_txt,
                 ) );
                 
                 // title_reply_to - Text
@@ -305,6 +290,13 @@
                     'content'   => $comment_recipient_note_txt,
                 ) );
                 
+                // cancel_reply_link - Object
+                $cancel_reply_comment_action_label_obj = applicator_html_ok_obj( array(
+                    'elem' => 'al',
+                    'css' => 'cancel-reply-com-axn',
+                    'content' => $cancel_reply_comment_action_txt,
+                ) );
+                
                 comment_form( array(
                     
                     'id_form'                   => 'commentform',
@@ -323,7 +315,7 @@
                     'logged_in_as'              => $signed_in_acct, 
                     
                     // Textarea
-                    'comment_field'             => $com_author_comment_creation,
+                    'comment_field'             => $comment_author_comment_creation,
                     
                     // Submit Comment Action
                     'id_submit'                 => 'com-sub-axn---b',
@@ -339,7 +331,7 @@
                     'cancel_reply_before'       => '',
                     'cancel_reply_after'       => '',
                     
-                    'cancel_reply_link'         => $cancel_reply_comment_action_label,
+                    'cancel_reply_link'         => $cancel_reply_comment_action_label_obj,
                     
                     // Notes
                     'comment_notes_before'      => '',
