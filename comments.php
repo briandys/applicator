@@ -65,7 +65,7 @@
                 ) );
                 
                 // must_log_in - Text
-                $sign_in_required_note_txt = applicator_html_ok_txt( array(
+                $sign_in_required_note_txt = htmlok_txt( array(
                     'content' => array(
                         array(
                             'txt' => esc_html__( 'Sign In', $GLOBALS['apl_textdomain'] ),
@@ -87,7 +87,7 @@
                 ) );
                 
                 // logged_in_as - Text
-                $signed_in_as_label_txt = applicator_html_ok_txt( array(
+                $signed_in_as_label_txt = htmlok_txt( array(
                     'content' => array(
                         array(
                             'txt'   => esc_html__( 'Signed in as', $GLOBALS['apl_textdomain'] ),
@@ -105,7 +105,7 @@
                 ) );
                 
                 // logged_in_as - Text
-                $signed_in_account_name_txt = applicator_html_ok_txt( array(
+                $signed_in_account_name_txt = htmlok_txt( array(
                     'content' => array(
                         array(
                             'txt'   => $user_identity,
@@ -153,7 +153,7 @@
                 ) );
                 
                 // cancel_reply_link - Text
-                $cancel_reply_comment_action_txt = applicator_html_ok_txt( array(
+                $cancel_reply_comment_action_txt = htmlok_txt( array(
                     'content' => array(
                         array(
                             'txt' => esc_html__( 'Cancel', $GLOBALS['apl_textdomain'] ),
@@ -174,7 +174,7 @@
                 ) );
                 
                 // title_reply_to - Text
-                $comment_recipient_note_txt = applicator_html_ok_txt( array(
+                $comment_recipient_note_txt = htmlok_txt( array(
                     'content' => array(
                         array(
                             'txt' => esc_html__( 'Reply to', $GLOBALS['apl_textdomain'] ),

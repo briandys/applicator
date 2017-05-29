@@ -56,7 +56,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
         
         
         // Comments Count: Single - Text
-        $comments_count_single_txt = applicator_html_ok_txt( array(
+        $comments_count_single_txt = htmlok_txt( array(
             'content' => array(
                 array(
                     'txt' => esc_html__( $comments_count_single_text, $GLOBALS['apl_textdomain'] ),
@@ -70,7 +70,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
         ) );
         
         // Comments Count: Multiple - Text
-        $comments_count_multi_txt = applicator_html_ok_txt( array(
+        $comments_count_multi_txt = htmlok_txt( array(
             'content' => array(
                 array(
                     'txt' => esc_html__( $comments_count_multi_text, $GLOBALS['apl_textdomain'] ),
@@ -84,7 +84,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
         ) );
         
         // Comments Count: Zero - Text
-        $comments_count_zero_txt = applicator_html_ok_txt( array(
+        $comments_count_zero_txt = htmlok_txt( array(
             'content' => array(
                 array(
                     'txt' => esc_html__( $comments_count_zero_text, $GLOBALS['apl_textdomain'] ),
@@ -179,7 +179,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
             }
             
             // Text
-            $add_comment_axn_txt = applicator_html_ok_txt( array(
+            $add_comment_axn_txt = htmlok_txt( array(
                 'content' => array(
                     array(
                         'txt' => esc_html__( 'Add', $GLOBALS['apl_textdomain'] ),
@@ -228,7 +228,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
                 */
                 
                 // Text
-                $sign_in_required_label_txt = applicator_html_ok_txt( array(
+                $sign_in_required_label_txt = htmlok_txt( array(
                     'content' => array(
                         array(
                             'txt' => esc_html__( '(requires Sign In)', $GLOBALS['apl_textdomain'] ),

@@ -1,47 +1,18 @@
-<div id="comments" class="cp comments comments-area" data-name="Comments">
-                    <div class="cr comments---cr">
-                        <div class="hr comments---hr">
-                            <div class="hr_cr comments---hr_cr">
-                                <div class="h comments---h"><span class="h_l comments---h_l"><?php esc_html_e( 'Comments', $GLOBALS['apl_textdomain'] ); ?></span></div>
-                                <div class="aside comments-hr-aside" role="complementary" data-name="Comments Header Aside">
-                                    <div class="cr coms-hr-as---cr">
+<div class="obj wbp-copyright site-info" data-name="Web Product Copyright">
+                            <div class="g wbp-copyright---g">
+                                <div class="g_l wbp-copyright---g_l">
                                     
-                                        <?php // inc > tags > comments-actions-snippet.php
-                                        applicator_func_comments_actions_snippet(); ?>
+                                    <?php // Web Product Copyright Markup
+                                    $wbp_copyright_mu = '<span class="line wbp-copyright--name---line"><a class="a wbp-copyright--name---a" href="%5$s" rel="home" title="%1$s"><span class="a_l wbp-copyright--name---a_l"><span class="word wbp-name---word">%1$s</span></span></a> <span class="word copyright-symbol---word">%2$s</span> <span class="word copyright-year---word">%3$s</span>.</span> <span class="line wbp-copyright--tm---line">%4$s</span>';
                                     
-                                    </div>
-                                </div><!-- Comments Header Aside -->
+                                    printf( $wbp_copyright_mu,
+                                        get_bloginfo( 'name' ),
+                                        esc_html__( '&copy;', $GLOBALS['apl_textdomain'] ),
+                                        date( 'Y' ),
+                                        esc_html__( 'Olrayt reserved&trade;.', $GLOBALS['apl_textdomain'] ),
+                                        esc_url( home_url( '/' ) )
+                                    );
+                                    ?>
+                                </div>
                             </div>
-                        </div>
-                        <div class="ct comments---ct">
-                            <div class="ct_cr comments---ct_cr">
-                                
-                            <?php if ( have_comments() ) { ?>
-                                
-                                <ul class="grp comments---grp">
-                                    <?php wp_list_comments( array(
-                                        'style'       => 'ul',
-                                        'avatar_size' => 48,
-                                        'callback' => 'applicator_func_comment'
-                                    ) ); ?>
-                                </ul>
-                                
-                                <?php // Comments Navigation | inc > tags > comments-nav.php
-                                applicator_func_comments_nav();
-                                                         
-                            } else {
-                                
-                                $comments_empty_note_obj = applicator_html_ok_obj( array(
-                                    'name' => 'Comments Empty Note',
-                                    'elem' => 'n',
-                                    'css' => 'com-empty-note',
-                                    'content' => '<p>' . esc_html__( 'There are no comments.', $GLOBALS['apl_textdomain'] ) . '</p>',
-                                    'echo' => true,
-                                ) );
-
-                            } ?>
-                            
-                            </div>
-                        </div><!-- comments---ct -->
-                    </div>
-                </div><!-- comments -->
+                        </div><!-- Web Product Copyright -->

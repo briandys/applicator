@@ -50,7 +50,7 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         /* ------------ Post Published Label (obj) ---------- */
         
         // Content - Text
-        $post_published_label_txt = applicator_html_ok_txt( array(
+        $post_published_label_txt = htmlok_txt( array(
             'content' => array(
                 array(
                     'txt' => esc_html__( 'Published', $GLOBALS['apl_textdomain'] ),
@@ -75,7 +75,7 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         /* ------------ Post Published Date Stamp (obj) ---------- */
         
         // Content - Text
-        $post_published_date_stamp_obj_txt = applicator_html_ok_txt( array(
+        $post_published_date_stamp_obj_txt = htmlok_txt( array(
             'content' => array(
                 array(
                     'txt' => get_the_date( 'j' ),
@@ -113,7 +113,7 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         /* ------------ Post Published Time Stamp (obj) ---------- */
         
         // Content - Text
-        $post_published_time_stamp_txt = applicator_html_ok_txt( array(
+        $post_published_time_stamp_txt = htmlok_txt( array(
             'content' => array(
                 array(
                     'txt' => get_the_date( 'H' ),
@@ -181,7 +181,7 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         /* ------------ Post Modified Label (obj) ---------- */
         
         // Content - Text
-        $post_modified_label_txt = applicator_html_ok_txt( array(
+        $post_modified_label_txt = htmlok_txt( array(
             'content' => array(
                 array(
                     'txt' => esc_html__( 'Modified', $GLOBALS['apl_textdomain'] ),
@@ -206,7 +206,7 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         /* ------------ Post Modified Date Stamp (obj) ---------- */
         
         // Content - Text
-        $post_modified_date_stamp_obj_txt = applicator_html_ok_txt( array(
+        $post_modified_date_stamp_obj_txt = htmlok_txt( array(
             'content' => array(
                 array(
                     'txt' => get_the_modified_date( 'j' ),
@@ -244,7 +244,7 @@ if ( ! function_exists( 'applicator_func_post_pub_mod_ts' ) ) {
         /* ------------ Post Modified Time Stamp (obj) ---------- */
         
         // Content - Text
-        $post_modified_time_stamp_txt = applicator_html_ok_txt( array(
+        $post_modified_time_stamp_txt = htmlok_txt( array(
             'content' => array(
                 array(
                     'txt' => get_the_modified_time( 'H' ),

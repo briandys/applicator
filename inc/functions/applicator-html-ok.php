@@ -38,8 +38,6 @@ https://codex.wordpress.org/Function_Reference/sanitize_title
  * @return string HTML markup.
  */
 
-// Constructor
-
 function htmlok_cn( $args = array() ) {
     
     // Require Array
@@ -89,12 +87,16 @@ function htmlok_cn( $args = array() ) {
     $cn_css = '';
     $css = '';
     
+    // preg_replace
+    $pat_trim = '/\s\s+/';
+    $rep_trim = ' ';
+    
     // Trimmed Keys
-    $trimmed_name = preg_replace( '/\s\s+/', ' ', trim( $r_name ) );
+    $trimmed_name = preg_replace( $pat_trim, $rep_trim, trim( $r_name ) );
     $sanitized_name = sanitize_title( $trimmed_name );
-    $trimmed_cn_css = preg_replace( '/\s\s+/', ' ', trim( $r_cn_css ) );
-    $trimmed_css = preg_replace( '/\s\s+/', ' ', trim( $r_css ) );
-    $trimmed_content = preg_replace( '/\s\s+/', ' ', trim( $r_content ) );
+    $trimmed_cn_css = preg_replace( $pat_trim, $rep_trim, trim( $r_cn_css ) );
+    $trimmed_css = preg_replace( $pat_trim, $rep_trim, trim( $r_css ) );
+    $trimmed_content = preg_replace( $pat_trim, $rep_trim, trim( $r_content ) );
     
     // Keys
     $name = $trimmed_name;
@@ -676,7 +678,7 @@ function applicator_html_ok_obj( $args = array() ) {
 }
 
 
-function applicator_html_ok_txt( $args = array() ) {
+function htmlok_txt( $args = array() ) {
     
     // Require Array
 	if ( empty( $args ) ) {
@@ -695,6 +697,16 @@ function applicator_html_ok_txt( $args = array() ) {
                 'txt'   => '',
                 'css'   => '',
                 'sep'   => '',
+                'line'      => array(
+                    array(
+                        array(
+                            'sep' => '',
+                            'txt' => '',
+                            'css' => '',
+                            'esc' => true,
+                        ),
+                    ),
+                ),
             ),
         ),
         'version'   => '',
@@ -727,8 +739,20 @@ function applicator_html_ok_txt( $args = array() ) {
         
         foreach ( (array) $r_content as $val ) {
             
+            $txt = '';
+            $sep = '';
+            $css = '';
+            $num_txt_css = '';
+            $dynamic_txt_css = '';
+            
+            $val_txt = '';
+            
+            if ( ! empty( $val['txt'] ) ) {
+                $val_txt = $val['txt'];
+            }
+            
             // Text
-            if ( ! empty( $val['txt'] ) || '0' === $val['txt'] ) {
+            if ( ! empty( $val_txt ) || '0' === $val_txt ) {
                 $trimmed_txt = preg_replace('/\s\s+/', ' ', trim( $val['txt'] ) );
                 $txt = esc_html__( $trimmed_txt, $GLOBALS['apl_textdomain'] );
                 
@@ -738,39 +762,100 @@ function applicator_html_ok_txt( $args = array() ) {
                     $dynamic_txt_css = ' ' . 'n' . '-' . sanitize_title( $txt );
                 
                 } else {
-                    
-                    $num_txt_css = '';
                     $dynamic_txt_css = ' ' . sanitize_title( $txt );
-                
                 }
-                
-            } else {
-                
-                $txt = '';
-                $dynamic_txt_css = '';
-            
             }
             
             // CSS
             if ( ! empty( $val['css'] ) ) {
                 $css = ' ' . sanitize_title( preg_replace('/\s\s+/', ' ', trim( $val['css'] ) ) ) . '---txt';
-            } else {
-                $css = '';
             }
             
             // Separator
             if ( ! empty( $val['sep'] ) ) {
                 $sep = preg_replace('/\s\s+/', ' ', $val['sep'] );
-            } else {
-                $sep = '';
             }
             
-            $output .= $sep . '<span class="txt' . $num_txt_css . $css . $dynamic_txt_css . '---txt">' . $txt . '</span>';
+            if ( empty( $val['line'] ) ) {
+                $output .= $sep . '<span class="txt' . $num_txt_css . $css . $dynamic_txt_css . '---txt">' . $txt . '</span>';
+            }
+            
+            // Line
+            if ( ! empty( $val['line'] ) ) {
+                
+                foreach ( (array) $val['line'] as $line_item ) {
+                    
+                    $line_css = '';
+                    
+                    if ( ! empty( $line_item[0]['txt'] ) ) {
+                        $txt = preg_replace('/\s\s+/', ' ', trim( $line_item[0]['txt'] ) );
+                        $line_css = ' ' . sanitize_title( $txt );
+                    }
+                    
+                    $output .= '<span class="line' . $line_css . '---line">';
+                    
+                    foreach ( (array) $line_item as $line_txt_item ) {
+                        
+                        $sep = '';
+                        $txt = '';
+                        $css = '';
+                        $num_txt_css = '';
+                        $dynamic_txt_css = '';
+                        
+                        $line_txt_item_esc = '';
+                        
+                        if ( ! empty( $line_txt_item['esc'] ) ) {
+                            $line_txt_item_esc = $line_txt_item['esc'];
+                        }
+                        
+                        
+                        if ( ! empty( $line_txt_item['sep'] ) ) {
+                            $sep = preg_replace('/\s\s+/', ' ', trim( $line_txt_item['sep'] ) );
+                        }
+                        
+                        // Text
+                        if ( ! empty( $line_txt_item['txt'] ) || '0' === $line_txt_item['txt'] ) {
+                            $trimmed_txt = preg_replace('/\s\s+/', ' ', trim( $line_txt_item['txt'] ) );
+                            
+                            // Escaping
+                            if ( $line_txt_item_esc ) {
+                                $txt = esc_html__( $trimmed_txt, $GLOBALS['apl_textdomain'] );
+                            } else {
+                                $txt = $trimmed_txt;
+                            }
+                            
+
+                            if ( is_numeric( $txt ) ) {
+
+                                $num_txt_css = ' ' . 'num';
+                                $dynamic_txt_css = ' ' . 'n' . '-' . sanitize_title( $txt ) . '---txt';
+
+                            } else {
+                                
+                                if ( '' == sanitize_title( $txt ) ) {
+                                    $dynamic_txt_css = '';
+                                } else {
+                                    $dynamic_txt_css = ' ' . sanitize_title( $txt ) . '---txt';
+                                }
+                            }
+                        }
+                        
+                        if ( ! empty( $line_txt_item['css'] ) ) {
+                            $css = ' ' . preg_replace('/\s\s+/', ' ', trim( $line_txt_item['css'] ) ) . '---txt';
+                        }
+                    
+                        $output .= $sep . '<span class="txt' . $num_txt_css . $css . $dynamic_txt_css . '">' . $txt . '</span>';
+
+                    }
+                    
+                    $output .= '</span>';
+                }
+            } // Line
+            
         }
-        
     }
     
-    $html = apply_filters( 'applicator_html_ok_txt', $output, $args );
+    $html = apply_filters( 'htmlok_txt', $output, $args );
     
     if ( $r_echo ) {
         echo $html;

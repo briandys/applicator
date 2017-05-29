@@ -869,7 +869,7 @@ $go-green: #12b32d;
 
 
 /* ------------------------- Copyright Info */
-.wbp-copyright
+.web-product-copyright-obj
 {
     box-sizing: border-box;
     
@@ -882,31 +882,31 @@ $go-green: #12b32d;
     min-height: 3rem;
 }
 
-.wbp-copyright---g_l
+.wbp-copyright-obj---g_l
 {
     text-align: center;
     
     font-size: .75rem;
 }
 
-.wbp-copyright--name---a,
-.wbp-copyright---g_l
+.web-product-copyright-obj .wbp-name---txt a,
+.wbp-copyright-obj---g_l
 {
     color: gray;
     color: hsla(0, 0%, 0%, .5);
 }
 
-.wbp-copyright--name---a
+.web-product-copyright-obj .wbp-name---txt a
 {
     text-decoration: none;
 }
 
-.wbp-copyright--name---word
+.web-product-copyright-obj .wbp-name---txt
 {
     font-weight: bold;
 }
 
-.apl--go-start-nav--active .wbp-copyright
+.apl--go-start-nav--active .web-product-copyright-obj
 {
     padding-left: 3rem;
     padding-right: 3rem;

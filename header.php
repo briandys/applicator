@@ -17,7 +17,7 @@
                 <?php
                 // Go to Content Nav - Nav
                 // Text
-                $go_content_nav_item_txt = applicator_html_ok_txt( array(
+                $go_content_nav_item_txt = htmlok_txt( array(
                     'content'       => array(
                         array(
                             'txt'   => 'Go to Content',
@@ -85,7 +85,7 @@
                         <?php
                         // Web Product Main Name
                         // Text
-                        $web_product_main_name_txt = applicator_html_ok_txt( array(
+                        $web_product_main_name_txt = htmlok_txt( array(
                             'content' => array(
                                 array(
                                     'txt'   => get_bloginfo( 'name' ),
@@ -130,7 +130,7 @@
                         if ( $description || is_customize_preview() ) {
 
                             // Text
-                            $web_product_main_description_txt = applicator_html_ok_txt( array(
+                            $web_product_main_description_txt = htmlok_txt( array(
                                 'content' => array(
                                     array(
                                         'txt'   => $description,

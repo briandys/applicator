@@ -4,40 +4,74 @@
                 <footer id="colophon" class="cn main-footer site-footer" data-name="Main Footer" role="contentinfo">
                     <div class="cr main-footer---cr">
                         
-                        <?php // Main Footer Aside
-                        applicator_func_main_footer_aside(); ?>
-                        
                         <?php
                         
-                        $web_product_fineprint = applicator_html_ok_txt( array(
+                        // Main Footer Aside
+                        applicator_func_main_footer_aside();
+                        
+                        // Web Product Copyright
+                        // Markup
+                        $web_product_name_mu = sprintf( '<a href="%2$s" rel="home" title="%1$s">%1$s</a>',
+                            get_bloginfo( 'name' ),
+                            esc_url( home_url( '/' ) )
+                        );
+                        
+                        // Text
+                        $web_product_copyright_txt = htmlok_txt( array(
                             'content'   => array(
                                 array(
-                                    'txt'   => ''
+                                    'line'      => array(
+                                        // Line 1
+                                        array(
+                                            array(
+                                                'txt' => $web_product_name_mu,
+                                                'css' => 'wbp-name',
+                                                'esc' => false,
+                                            ),
+                                            array(
+                                                'sep' => $GLOBALS['space_sep'],
+                                                'txt' => '&copy;',
+                                                'css' => 'copyright-symbol',
+                                            ),
+                                            array(
+                                                'sep' => $GLOBALS['space_sep'],
+                                                'txt' => date( 'Y' ),
+                                                'css' => 'year',
+                                            ),
+                                            array(
+                                                'txt' => '.',
+                                                'css' => 'period-symbol',
+                                            ),
+                                        ),
+                                        // Line 2
+                                        array(
+                                            array(
+                                                'sep' => $GLOBALS['space_sep'],
+                                                'txt' => 'Olrayt reserved.',
+                                            ),
+                                            array(
+                                                'sep' => $GLOBALS['space_sep'],
+                                                'txt' => '&trade;',
+                                                'css' => 'trademark-symbol',
+                                            ),
+                                        ),
+                                    ),
                                 ),
                             ),
                         ) );
                         
-                        ?>
+                        // Object
+                        $web_product_copyright_obj = applicator_html_ok_obj( array(
+                            'name'      => 'Web Product Copyright',
+                            'elem'      => 'g',
+                            'obj_css'   => 'site-info',
+                            'css'       => 'wbp-copyright',
+                            'content'   => $web_product_copyright_txt,
+                            'echo'      => true,
+                        ) );
                         
-                        <div class="obj wbp-copyright site-info" data-name="Web Product Copyright">
-                            <div class="g wbp-copyright---g">
-                                <div class="g_l wbp-copyright---g_l">
-                                    
-                                    <?php // Web Product Copyright Markup
-                                    $wbp_copyright_mu = '<span class="line wbp-copyright--name---line"><a class="a wbp-copyright--name---a" href="%5$s" rel="home" title="%1$s"><span class="a_l wbp-copyright--name---a_l"><span class="word wbp-name---word">%1$s</span></span></a> <span class="word copyright-symbol---word">%2$s</span> <span class="word copyright-year---word">%3$s</span>.</span> <span class="line wbp-copyright--tm---line">%4$s</span>';
-                                    
-                                    printf( $wbp_copyright_mu,
-                                        get_bloginfo( 'name' ),
-                                        esc_html__( '&copy;', $GLOBALS['apl_textdomain'] ),
-                                        date( 'Y' ),
-                                        esc_html__( 'Olrayt reserved&trade;.', $GLOBALS['apl_textdomain'] ),
-                                        esc_url( home_url( '/' ) )
-                                    );
-                                    ?>
-                                </div>
-                            </div>
-                        </div><!-- Web Product Copyright -->
-
+                        ?>
+                    
                     </div>
                 </footer><!-- Main Footer -->
 
@@ -45,7 +79,7 @@
                         
                 // Go to Start Nav
                 // Text
-                $go_start_nav_item_txt = applicator_html_ok_txt( array(
+                $go_start_nav_item_txt = htmlok_txt( array(
                     'content'       => array(
                         array(
                             'txt'   => 'Go to Start',
