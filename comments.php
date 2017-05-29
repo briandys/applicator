@@ -3,8 +3,12 @@
 } ?>
 
 <div class="md comment-md" data-name="Comment Module">
-    <div class="cr comment-md_cr">
-        <div class="h comment-md---h"><span class="h_l comment-md---h_l"><?php esc_html_e( 'Comment Module', $GLOBALS['apl_textdomain'] ); ?></span></div>
+    <div class="cr comment-md---cr">
+        <div class="hr comment-md---hr">
+            <div class="hr_cr comment-md---hr_cr">
+                <?php esc_html_e( 'Comment Module', $GLOBALS['apl_textdomain'] ); ?>
+            </div>
+        </div>
         <div class="ct comment-md---ct">
             <div class="ct_cr comment-md---ct_cr">
                 
@@ -14,16 +18,17 @@
                 
                     $comments_content = '<ul class="grp comments---grp">';
                     $comments_content .= wp_list_comments( array(
-                        'style'       => 'ul',
-                        'avatar_size' => 48,
-                        'callback' => 'applicator_func_comment'
+                        'style'         => 'ul',
+                        'avatar_size'   => 48,
+                        'callback'      => 'applicator_func_comment',
+                        'echo'          => false,
                     ) );
                     $comments_content .= '</ul>';
                     $comments_content .= applicator_func_comments_nav();
                     
                 } else {
                     
-                    $comments_content = applicator_html_ok_obj( array(
+                    $comments_content = htmlok_obj( array(
                         'name' => 'Comments Empty Note',
                         'elem' => 'n',
                         'css' => 'com-empty-note',
@@ -32,17 +37,17 @@
                     
                 }
                 
-                $comments_header_aside_mu = '<div class="aside comments-hr-aside" role="complementary" data-name="Comments Header Aside">';
-                $comments_header_aside_mu .= '<div class="cr coms-hr-as---cr">';
-                $comments_header_aside_mu .=  applicator_func_comments_actions_snippet();
-                $comments_header_aside_mu .= '</div>';
-                $comments_header_aside_mu .= '</div><!-- Comments Header Aside -->';
+                $comments_header_content = '<div class="aside comments-hr-aside" role="complementary" data-name="Comments Header Aside">';
+                $comments_header_content .= '<div class="cr coms-hr-as---cr">';
+                $comments_header_content .=  applicator_func_comments_actions_snippet_cp();
+                $comments_header_content .= '</div>';
+                $comments_header_content .= '</div><!-- Comments Header Aside -->';
                 
-                $comments = applicator_html_ok_cp( array(
-                    'name'          => 'Comments',
+                $comments = htmlok_cp( array(
+                    'name'          => 'Comments!!',
                     'cp_css'        => 'comments-area',
                     'css'           => 'comments',
-                    'hr_content'    => $comments_header_aside_mu,
+                    'hr_content'    => $comments_header_content,
                     'attr'          => array(
                         'id'        => 'comments',
                     ),
@@ -50,15 +55,10 @@
                     'echo'          => true,
                 ) );
                 
-                ?>
                 
-                <?php // echo applicator_func_comments_actions_snippet(); ?>
-                <?php // applicator_func_comments_actions_snippet(); ?>
-                
-                <?php // Comment Form | inc > functions > comment-form.php
-                
+                // inc > functions > comment-form.php
                 // title_reply - Component Header
-                $comment_creation_header = applicator_html_ok_cp( array(
+                $comment_creation_header = htmlok_cp( array(
                     'name'      => 'Comment Creation',
                     'cn_type'   => 'hr',
                     'css'       => 'com-crt-hr',
@@ -78,7 +78,7 @@
                 ) );
                 
                 // must_log_in - Object
-                $sign_in_req_note_obj = applicator_html_ok_obj( array(
+                $sign_in_req_note_obj = htmlok_obj( array(
                     'name'      => 'Sign In Required Note',
                     'elem'      => 'n',
                     'obj_css'   => 'note',
@@ -96,7 +96,7 @@
                 ) );
                 
                 // logged_in_as - Object
-                $signed_in_as_label_obj = applicator_html_ok_obj( array(
+                $signed_in_as_label_obj = htmlok_obj( array(
                     'name'      => 'Signed In As Label',
                     'layout'    => 'i',
                     'elem'      => 'g',
@@ -115,7 +115,7 @@
                 ) );
                 
                 // logged_in_as - Object
-                $signed_in_account_name_obj = applicator_html_ok_obj( array(
+                $signed_in_account_name_obj = htmlok_obj( array(
                     'name'      => 'Sign In Account Name',
                     'layout'    => 'i',
                     'elem'      => 'a',
@@ -126,27 +126,27 @@
                 ) );
                 
                 // logged_in_as - Component
-                $signed_in_acct = applicator_html_ok_cp( array(
+                $signed_in_acct = htmlok_cp( array(
                     'name'      => 'Signed In Account',
                     'css'       => 'signed-in-acct',
                     'content'   => $signed_in_as_label_obj . $signed_in_account_name_obj,
                 ) );
                 
-                $comment_author_comment_creation_input_label_obj = applicator_html_ok_obj( array(
+                $comment_author_comment_creation_input_label_obj = htmlok_obj( array(
                     'name'      => 'Comment Author Comment Creation Input Label',
                     'elem'      => 'l',
                     'css'       => 'com-author-com-crt-input',
                     'content'   => '<label class="label com-author-com-crt-lbl-obj---label" for="comment"><span class="label_l com-author-name-crt-lbl-obj---label_l">Commentx</span></label>',
                 ) );
                 
-                $comment_author_comment_creation_input_obj = applicator_html_ok_obj( array(
+                $comment_author_comment_creation_input_obj = htmlok_obj( array(
                     'name'      => 'Comment Author Comment Creation Input',
                     'elem'      => 'l',
                     'css'       => 'com-author-com-crt-input',
                     'content'   => '<textarea id="comment" class="textarea input-text com-author-com-crt-inp-obj--input-text" name="comment" placeholder="Commentx" title="Comment" maxlength="65525" required></textarea>',
                 ) );
                 
-                $comment_author_comment_creation = applicator_html_ok_cp( array(
+                $comment_author_comment_creation = htmlok_cp( array(
                     'name'      => 'Comment Author Comment Creation',
                     'css'       => 'com-auth-com-crt',
                     'content'   => $comment_author_comment_creation_input_label_obj . $comment_author_comment_creation_input_obj,
@@ -186,7 +186,7 @@
                 ) );
                 
                 // title_reply_to - Object
-                $comment_recipient_note_obj = applicator_html_ok_obj( array(
+                $comment_recipient_note_obj = htmlok_obj( array(
                     'name'      => 'Comment Recipient Note',
                     'elem'      => 'n',
                     'css'       => 'com-recipient-note',
@@ -194,7 +194,7 @@
                 ) );
                 
                 // cancel_reply_link - Object
-                $cancel_reply_comment_action_label_obj = applicator_html_ok_obj( array(
+                $cancel_reply_comment_action_label_obj = htmlok_obj( array(
                     'elem' => 'al',
                     'css' => 'cancel-reply-com-axn',
                     'content' => $cancel_reply_comment_action_txt,
@@ -238,9 +238,11 @@
                     
                     // Notes
                     'comment_notes_before'      => '',
-                    'comment_notes_after'       => ''
+                    'comment_notes_after'       => '',
                     
-                ) ); ?>
+                ) );
+                
+                ?>
                 
             </div>
         </div>

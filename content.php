@@ -57,8 +57,8 @@
                                         <div class="ct post-meta---ct">
                                             <div class="ct_cr post-meta---ct_cr">
                                                 <?php
-                                                // Published / Modified Timestamp
-                                                applicator_func_post_pub_mod_ts();
+                                                // inc > tags > post-published-modified-cp.php
+                                                echo applicator_func_post_published_modified_cp();
 
                                                 // Author
                                                 applicator_func_post_author();
@@ -75,8 +75,8 @@
                                 // Post Banner Visual | inc > tags > post-banner-visual.php
                                 applicator_func_post_banner_visual();
 
-                                // Comments Actions Snippet | inc > tags > comments-actions-snippet.php
-                                applicator_func_comments_actions_snippet();
+                                // inc > tags > comments-actions-snippet-cp.php
+                                echo applicator_func_comments_actions_snippet_cp();
                                 ?>
                             </div>
                         </div><!-- ct -->

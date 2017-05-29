@@ -26,7 +26,7 @@
                 ) );
 
                 // Object
-                $go_content_nav_item_obj = applicator_html_ok_obj( array(
+                $go_content_nav_item_obj = htmlok_obj( array(
                     'elem'      => 'navi',
                     'name'      => 'Go to Content',
                     'css'       => 'go-ct',
@@ -40,7 +40,7 @@
                 ) );
 
                 // Component
-                $go_content_nav = applicator_html_ok_cp( array(
+                $go_content_nav = htmlok_cp( array(
                     'type'      => 'nav',
                     'name'      => 'Go to Content',
                     'cp_css'    => 'go-content-nav',
@@ -60,7 +60,7 @@
                 );
 
                 // Object
-                $browser_upgrade_note_obj = applicator_html_ok_obj( array(
+                $browser_upgrade_note_obj = htmlok_obj( array(
                     'elem'      => 'note',
                     'name'      => 'Browser Upgrade',
                     'css'       => 'browser-upgrade',
@@ -95,7 +95,7 @@
                         ) );
 
                         // Object
-                        $web_product_main_name_obj = applicator_html_ok_obj( array(
+                        $web_product_main_name_obj = htmlok_obj( array(
                             'name'      => 'Web Product Main Name',
                             'elem'      => 'h',
                             'elem_css'  => 'site-title',
@@ -113,7 +113,7 @@
                         $web_product_main_logo_obj = '';
                         if ( has_custom_logo() ) {
                             // Object
-                            $web_product_main_logo_obj = applicator_html_ok_obj( array(
+                            $web_product_main_logo_obj = htmlok_obj( array(
                                 'name'      => 'Web Product Main Logo',
                                 'elem'      => 'wp',
                                 'css'       => 'wbp-main-logo',
@@ -140,7 +140,7 @@
                             ) );
 
                             // Object
-                            $web_product_main_description_obj = applicator_html_ok_obj( array(
+                            $web_product_main_description_obj = htmlok_obj( array(
                                 'name'      => 'Web Product Main Description',
                                 'elem'      => 'g',
                                 'css'       => 'wbp-main-desc',
@@ -156,7 +156,7 @@
                         // Web Product Main Info
                         
                         //Component
-                        $web_product_main_info = applicator_html_ok_cp( array(
+                        $web_product_main_info = htmlok_cp( array(
                             'name'      => 'Web Product Main Info',
                             'css'       => 'wbp-main-info',
                             'content'   => $web_product_main_name_obj . $web_product_main_logo_obj . $web_product_main_description_obj,
@@ -176,7 +176,7 @@
                         if ( has_header_image() ) {
                             
                             // Object
-                            $web_product_main_media_banner_obj = applicator_html_ok_obj( array(
+                            $web_product_main_media_banner_obj = htmlok_obj( array(
                                 'name'      => 'Web Product Main Media Banner',
                                 'elem'      => 'wp',
                                 'css'       => 'wbp-main-media-banner',

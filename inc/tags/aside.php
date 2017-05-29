@@ -90,12 +90,14 @@ if ( ! function_exists( 'applicator_func_main_footer_aside' ) ) {
         ob_end_clean();
         
         if ( is_active_sidebar( 'main-footer-aside' )  ) {
-            printf( $GLOBALS['aside_cn_mu'],
+            $main_footer_aside = sprintf( $GLOBALS['aside_cn_mu'],
                 esc_html__( 'Main Footer Aside', $GLOBALS['apl_textdomain'] ),
                 'main-footer-aside',
                 'main-fr-as',
                 $aside
             );
+            
+            return $main_footer_aside;
         }
     
     }

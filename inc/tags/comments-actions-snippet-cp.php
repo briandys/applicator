@@ -34,8 +34,8 @@ Structure
                 • Commenting is disabled.
 */
 
-if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
-    function applicator_func_comments_actions_snippet() {
+if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
+    function applicator_func_comments_actions_snippet_cp() {
         
         $comments_population_pri_css = 'comments-population';
         $comment_creation_ability_pri_css = 'comment-creation-ability';
@@ -139,7 +139,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
         }
         
         // Object
-        $comments_count_obj = applicator_html_ok_obj( array(
+        $comments_count_obj = htmlok_obj( array(
             'name'      => 'Comments Count',
             'elem'      => 'a',
             'css'       => $comments_count_sec_css,
@@ -150,7 +150,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
         ) );
         
         // Component
-        $comments_population = applicator_html_ok_cp( array(
+        $comments_population = htmlok_cp( array(
             'name'      => 'Comments Population',
             'css'       => 'coms-population',
             'content'   => $comments_count_obj
@@ -192,7 +192,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
             ) );
             
             // Object
-            $add_comment_axn = applicator_html_ok_obj( array(
+            $add_comment_axn = htmlok_obj( array(
                 'name'      => 'Add Comment Action',
                 'layout'    => 'i',
                 'elem'      => 'a',
@@ -237,7 +237,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
                 ) );
 
                 // Object
-                $sign_in_required_label_obj = applicator_html_ok_obj( array(
+                $sign_in_required_label_obj = htmlok_obj( array(
                     'name'      => 'Sign In Required Label',
                     'layout'    => 'i',
                     'elem'      => 'g',
@@ -255,7 +255,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
         } else {
             
             // Object
-            $commenting_disabled_note_obj = applicator_html_ok_obj( array(
+            $commenting_disabled_note_obj = htmlok_obj( array(
                 'name'      => 'Commenting Disabled Note',
                 'elem'      => 'n',
                 'obj_css'   => 'note',
@@ -268,7 +268,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
         }
         
         // Component
-        $comment_creation_ability = applicator_html_ok_cp( array (
+        $comment_creation_ability = htmlok_cp( array (
             'name'      => 'Comment Creation Ability',
             'css'   => 'com-crt-ability',
             'content'   => $comment_creation_ability_content
@@ -313,7 +313,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet' ) ) {
         }
         
         // Component
-        $comments_actions_snippet = applicator_html_ok_cp( array(
+        $comments_actions_snippet = htmlok_cp( array(
             'name'      => 'Comments Actions Snippet',
             'cp_css'    => $comments_population_status_css . ' ' . $comment_creation_ability_status_css,
             'css'       => 'coms-acts-snip',

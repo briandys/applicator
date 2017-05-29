@@ -60,6 +60,18 @@
 /* Heading */
 .wbp-main-info---h,
 
+/* Post Published, Modified - Component */
+.post-pub-mod---h,
+.post-pub---h,
+.post-pub-dts---h,
+.post-mod---h,
+.post-mod-dts---h,
+
+/* Comments Actions Snippet - Component */
+.coms-acts-snip---h,
+.coms-population---h,
+.com-crt-ability---h,
+
 /* Go to Content Nav */
 .go-ct-nav---h,
 .go-content-nav--inactive,

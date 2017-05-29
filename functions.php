@@ -44,8 +44,10 @@ if ( file_exists( $aside ) ) { require_once( $aside ); }
 $post_actions = get_parent_theme_file_path( '/inc/tags/post-actions.php' );
 if ( file_exists( $post_actions ) ) { require_once( $post_actions ); }
 
-$post_timestamp = get_parent_theme_file_path( '/inc/tags/post-timestamp.php' );
-if ( file_exists( $post_timestamp ) ) { require_once( $post_timestamp ); }
+$post_published_modified_cp = get_parent_theme_file_path( '/inc/tags/post-published-modified-cp.php' );
+if ( file_exists( $post_published_modified_cp ) ) {
+    require_once( $post_published_modified_cp );
+}
 
 $post_author = get_parent_theme_file_path( '/inc/tags/post-author.php' );
 if ( file_exists( $post_author ) ) { require_once( $post_author ); }
@@ -64,8 +66,16 @@ if ( file_exists( $main_content_headings ) ) { require_once( $main_content_headi
 $comments = get_parent_theme_file_path( '/inc/functions/comments.php' );
 if ( file_exists( $comments ) ) { require_once( $comments ); }
 
-$comments_actions_snippet = get_parent_theme_file_path( '/inc/tags/comments-actions-snippet.php' );
-if ( file_exists( $comments_actions_snippet ) ) { require_once( $comments_actions_snippet ); }
+
+
+
+$comments_actions_snippet = get_parent_theme_file_path( '/inc/tags/comments-actions-snippet-cp.php' );
+if ( file_exists( $comments_actions_snippet ) ) {
+    require_once( $comments_actions_snippet );
+}
+
+
+
 
 $comments_nav = get_parent_theme_file_path( '/inc/tags/comments-nav.php' );
 if ( file_exists( $comments_nav ) ) { require_once( $comments_nav ); }
@@ -77,7 +87,20 @@ $comment_form = get_parent_theme_file_path( '/inc/functions/comment-form.php' );
 if ( file_exists( $comment_form ) ) { require_once( $comment_form ); }
 
 // Template Parts
-require_once( get_template_directory() . '/template-parts/post-content.php');
+$post_content = get_parent_theme_file_path( '/template-parts/post-content.php' );
+if ( file_exists( $post_content ) ) { require_once( $post_content ); }
+
+// Constructor
+$web_product_end_cn = get_parent_theme_file_path( '/template-parts/web-product-end-cn.php' );
+if ( file_exists( $web_product_end_cn ) ) {
+    require_once( $web_product_end_cn );
+}
+
+// Objects
+$web_product_copyright_obj = get_parent_theme_file_path( '/inc/tags/web-product-copyright-obj.php' );
+if ( file_exists( $web_product_copyright_obj ) ) {
+    require_once( $web_product_copyright_obj );
+}
 
 
 // Functions
