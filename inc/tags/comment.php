@@ -31,7 +31,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                             <h2 class="h comment---h">
                                 <span class="h_l comment---h_l">
                                     <a class="a comment---a" href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>">
-                                        <span class="a_l comment---a_l"><span class="word comment-title---word"><?php esc_html_e( 'Comment', $GLOBALS['apl_textdomain'] ); ?> <?php comment_ID() ?></span></span>
+                                        <span class="a_l comment---a_l"><span class="word comment-title---word"><?php esc_html_e( 'Comment', $GLOBALS['applicator_td'] ); ?> <?php comment_ID() ?></span></span>
                                     </a>
                                 </span>
                             </h2>
@@ -40,7 +40,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                         <?php if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) { ?>
                         <div class="axns comment-admin-axns" data-name="Comment Admin Actions">
                             <div class="cr com-admin-axns---cr">
-                                <div class="h com-admin-axns---h"><span class="h_l com-admin-axns---h_l"><?php esc_html_e( 'Comment Admin Actions', $GLOBALS['apl_textdomain'] ); ?></span></div>
+                                <div class="h com-admin-axns---h"><span class="h_l com-admin-axns---h_l"><?php esc_html_e( 'Comment Admin Actions', $GLOBALS['applicator_td'] ); ?></span></div>
                                 <div class="ct com-admin-axns---ct">
                                     <div class="ct_cr com-admin-axns---ct_cr">
                                         <span class="obj axn edit-comment-axn" data-name="Edit Comment Action">
@@ -50,11 +50,11 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
 
                                             // Content
                                             $edit_comment_axn_a_l = sprintf( $edit_comment_axn_a_l_mu,
-                                                esc_html__( 'Edit', $GLOBALS['apl_textdomain'] ),
+                                                esc_html__( 'Edit', $GLOBALS['applicator_td'] ),
                                                 'edit',
-                                                esc_html__( 'Comment', $GLOBALS['apl_textdomain'] ) . ' ' . $comment->comment_ID,
+                                                esc_html__( 'Comment', $GLOBALS['applicator_td'] ) . ' ' . $comment->comment_ID,
                                                 'comment-title',
-                                                esc_attr__( 'Edit Comment', $GLOBALS['apl_textdomain'] )
+                                                esc_attr__( 'Edit Comment', $GLOBALS['applicator_td'] )
                                             );
 
                                             edit_comment_link( $edit_comment_axn_a_l, '', '' );                  
@@ -68,7 +68,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                         
                         <div class="aside comment-header-aside" data-name="Comment Header Aside">
                             <div class="cr com-hr-as---cr">
-                                <div class="h com-hr-as---h"><span class="h_l com-hr-as---h_l"><?php esc_html_e( 'Comment Header Aside', $GLOBALS['apl_textdomain'] ); ?></span></div>
+                                <div class="h com-hr-as---h"><span class="h_l com-hr-as---h_l"><?php esc_html_e( 'Comment Header Aside', $GLOBALS['applicator_td'] ); ?></span></div>
                                 <div class="ct com-hr-as---ct">
                                     <div class="ct_cr com-hr-as---ct_cr">
                                         
@@ -125,9 +125,9 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                                                             $com_pub_lbl_NAME,
                                                             'obj comment-published-timestamp-label',
                                                             'com-pub-ts-lbl',
-                                                            esc_html__( 'Commented', $GLOBALS['apl_textdomain'] ),
+                                                            esc_html__( 'Commented', $GLOBALS['applicator_td'] ),
                                                             'published',
-                                                            esc_html__( 'on', $GLOBALS['apl_textdomain'] ),
+                                                            esc_html__( 'on', $GLOBALS['applicator_td'] ),
                                                             'on'
                                                         );
 
@@ -171,7 +171,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                                                             $com_pub_date_time_NAME,
                                                             'cp comment-published-date-time-stamp',
                                                             'com-pub-dts',
-                                                            esc_html__( $com_pub_date_time_NAME, $GLOBALS['apl_textdomain'] ),
+                                                            esc_html__( $com_pub_date_time_NAME, $GLOBALS['applicator_td'] ),
                                                             $com_pub_date,
                                                             $com_pub_time
                                                         );
@@ -182,7 +182,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                                                             $com_pub_NAME,
                                                             'cp comment-published-info',
                                                             'com-pub-info',
-                                                            esc_html__( $com_pub_NAME, $GLOBALS['apl_textdomain'] ),
+                                                            esc_html__( $com_pub_NAME, $GLOBALS['applicator_td'] ),
                                                             $com_pub_lbl,
                                                             $com_pub_date_time
                                                         );
@@ -190,17 +190,17 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
 
                                                         <div class="cp comment-published-author" data-name="Comment Published Author">
                                                             <div class="cr com-pub-author---cr">
-                                                                <div class="h com-pub-author---h"><span class="h_l com-pub-author---h_l"><?php esc_html_e( 'Comment Published Author ', $GLOBALS['apl_textdomain'] ); ?></span></div>
+                                                                <div class="h com-pub-author---h"><span class="h_l com-pub-author---h_l"><?php esc_html_e( 'Comment Published Author ', $GLOBALS['applicator_td'] ); ?></span></div>
                                                                 <div class="ct com-pub-author---ct">
                                                                     <div class="ct_cr com-pub-author---ct_cr">
 
                                                                         <span class="obj comment-published-author-label-obj" data-name="Comment Published Author Label Object">
-                                                                            <span class="g com-pub-author-lbl-obj---g"><span class="g_l com-pub-author-lbl-obj---g_l"><?php esc_html_e( 'Commented by', $GLOBALS['apl_textdomain'] ); ?></span></span>
+                                                                            <span class="g com-pub-author-lbl-obj---g"><span class="g_l com-pub-author-lbl-obj---g_l"><?php esc_html_e( 'Commented by', $GLOBALS['applicator_td'] ); ?></span></span>
                                                                         </span><!-- Comment Published Author Label Object -->
 
                                                                         <div class="cp comment-author" data-name="Comment Author">
                                                                             <div class="cr com-author---cr">
-                                                                                <div class="h com-author---h"><span class="h_l com-author---h_l"><?php esc_html_e( 'Comment Author', $GLOBALS['apl_textdomain'] ); ?></span></div>
+                                                                                <div class="h com-author---h"><span class="h_l com-author---h_l"><?php esc_html_e( 'Comment Author', $GLOBALS['applicator_td'] ); ?></span></div>
                                                                                 <div class="ct com-author---ct">
                                                                                     <div class="ct_cr com-author---ct_cr">
                                                                                         <span class="obj comment-author-name-obj" title="" data-name="Comment Author Name Object">
@@ -239,7 +239,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                         <?php if ( $comment->comment_approved == '0' ) { ?>
                         <div class="obj note comment-unapproved-note---obj" data-name="Comment Unapproved Note Object">
                             <div class="g comment-unapproved-note---g">
-                                <p><?php esc_html_e( 'Your comment is awaiting moderation.', $GLOBALS['apl_textdomain'] ); ?></p>
+                                <p><?php esc_html_e( 'Your comment is awaiting moderation.', $GLOBALS['applicator_td'] ); ?></p>
                             </div>
                         </div><!-- Comment Unapproved Note Object -->
                         <?php } ?>
@@ -255,7 +255,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                         <div class="axns comment-axns" data-name="Comment Actions">
                             <div class="cr com-axns---cr">
                                 <div class="h com-axns---h">
-                                    <span class="h_l com-axns---h_l"><?php esc_html_e( 'Comment Actions', $GLOBALS['apl_textdomain'] ); ?></span>
+                                    <span class="h_l com-axns---h_l"><?php esc_html_e( 'Comment Actions', $GLOBALS['applicator_td'] ); ?></span>
                                 </div>
                                 <div class="obj axn reply-comment-axn" title="Reply to Comment" data-name="Reply To Comment Action">
                                     
@@ -276,17 +276,17 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                                     $reply_com_axn_a_l_login_mu .= ' <span class="line requires-sign-in---line">%4$s</span>';                                                                      
                                     // Content 
                                     $reply_com_axn_a_l_reply = sprintf( $reply_com_axn_a_l_reply_mu,
-                                        esc_html__( 'Reply', $GLOBALS['apl_textdomain'] ),
-                                        esc_html__( 'to', $GLOBALS['apl_textdomain'] ),
-                                        esc_html__( 'Comment', $GLOBALS['apl_textdomain'] )
+                                        esc_html__( 'Reply', $GLOBALS['applicator_td'] ),
+                                        esc_html__( 'to', $GLOBALS['applicator_td'] ),
+                                        esc_html__( 'Comment', $GLOBALS['applicator_td'] )
                                     );
                                                                                                                                  
                                     // Content 
                                     $reply_com_axn_a_l_login = sprintf( $reply_com_axn_a_l_login_mu,
-                                        esc_html__( 'Reply', $GLOBALS['apl_textdomain'] ),
-                                        esc_html__( 'to', $GLOBALS['apl_textdomain'] ),
-                                        esc_html__( 'Comment', $GLOBALS['apl_textdomain'] ),
-                                        esc_html__( '(requires Sign In)', $GLOBALS['apl_textdomain'] )
+                                        esc_html__( 'Reply', $GLOBALS['applicator_td'] ),
+                                        esc_html__( 'to', $GLOBALS['applicator_td'] ),
+                                        esc_html__( 'Comment', $GLOBALS['applicator_td'] ),
+                                        esc_html__( '(requires Sign In)', $GLOBALS['applicator_td'] )
                                     );       
                                                                                                                                  
                                     $reply_com_axn_a_l_reply_text = sprintf( $reply_com_axn_a_l_mu,

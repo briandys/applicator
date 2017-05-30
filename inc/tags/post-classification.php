@@ -32,13 +32,13 @@ if ( ! function_exists( 'applicator_func_post_categories' ) ) {
                     'Category',
                     'post-category-label',
                     'post-cat-lbl',
-                    esc_html__( 'Categories', $GLOBALS['apl_textdomain'] ),
+                    esc_html__( 'Categories', $GLOBALS['applicator_td'] ),
                     'categories'
                 );
                 
                 // Display
                 printf( $GLOBALS['post_classification_mu'],
-                    esc_html__( 'Post Category Classification', $GLOBALS['apl_textdomain'] ),
+                    esc_html__( 'Post Category Classification', $GLOBALS['applicator_td'] ),
                     $categories_list,
                     'post-category-classification',
                     'post-cat-class',
@@ -64,12 +64,12 @@ if ( ! function_exists( 'applicator_func_post_tags' ) ) {
                     'Tag',
                     'post-tag-label',
                     'post-tag-lbl',
-                    esc_html__( 'Tags', $GLOBALS['apl_textdomain'] ),
+                    esc_html__( 'Tags', $GLOBALS['applicator_td'] ),
                     'tags'
                 );
                 
                 printf( $GLOBALS['post_classification_mu'],
-                    esc_html__( 'Post Tag Classification', $GLOBALS['apl_textdomain'] ),
+                    esc_html__( 'Post Tag Classification', $GLOBALS['applicator_td'] ),
                     $tags_list,
                     'post-tag-classification',
                     'post-tag-class',

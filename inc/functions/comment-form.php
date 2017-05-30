@@ -33,8 +33,8 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
         $fields['author'] = sprintf( $fields['author'],
             esc_attr( $commenter['comment_author'] ),
             $aria_req,
-            esc_html( 'Name', $GLOBALS['apl_textdomain'] ),
-            esc_attr( 'Name', $GLOBALS['apl_textdomain'] )
+            esc_html( 'Name', $GLOBALS['applicator_td'] ),
+            esc_attr( 'Name', $GLOBALS['applicator_td'] )
         );
         
         
@@ -63,8 +63,8 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
         $fields['email'] = sprintf( $fields['email'],
             esc_attr( $commenter['comment_author_email'] ),
             $aria_req,
-            esc_html( 'Email Address', $GLOBALS['apl_textdomain'] ),
-            esc_attr( 'Email Address', $GLOBALS['apl_textdomain'] )
+            esc_html( 'Email Address', $GLOBALS['applicator_td'] ),
+            esc_attr( 'Email Address', $GLOBALS['applicator_td'] )
         );
         
         
@@ -90,8 +90,8 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
 
         $fields['url'] = sprintf( $fields['url'],
             esc_attr( $commenter['comment_author_url'] ),
-            esc_html( 'Website URL', $GLOBALS['apl_textdomain'] ),
-            esc_attr( 'Website URL', $GLOBALS['apl_textdomain'] )
+            esc_html( 'Website URL', $GLOBALS['applicator_td'] ),
+            esc_attr( 'Website URL', $GLOBALS['applicator_td'] )
         );
         
         return $fields;

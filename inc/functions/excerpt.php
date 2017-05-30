@@ -30,20 +30,20 @@ if ( ! function_exists( 'applicator_func_show_more' ) ) {
         $show_more_axn = sprintf( $show_more_axn_mu,
             get_the_title( get_the_ID() ),
             'show-more-axn',
-            esc_html__( 'Show', $GLOBALS['apl_textdomain'] ),
-            esc_html__( 'More', $GLOBALS['apl_textdomain'] ),
-            esc_html__( 'of', $GLOBALS['apl_textdomain'] ),
+            esc_html__( 'Show', $GLOBALS['applicator_td'] ),
+            esc_html__( 'More', $GLOBALS['applicator_td'] ),
+            esc_html__( 'of', $GLOBALS['applicator_td'] ),
             esc_url( get_permalink( get_the_ID() ) ),
-            esc_attr__( 'Show More of', $GLOBALS['apl_textdomain'] )
+            esc_attr__( 'Show More of', $GLOBALS['applicator_td'] )
         );
         
         $show_more_label = sprintf( $show_more_label_mu,
             get_the_title( get_the_ID() ),
             'show-more-axn',
-            esc_html__( 'Show', $GLOBALS['apl_textdomain'] ),
-            esc_html__( 'More', $GLOBALS['apl_textdomain'] ),
-            esc_html__( 'of', $GLOBALS['apl_textdomain'] ),
-            esc_attr__( 'Show More of', $GLOBALS['apl_textdomain'] )
+            esc_html__( 'Show', $GLOBALS['applicator_td'] ),
+            esc_html__( 'More', $GLOBALS['applicator_td'] ),
+            esc_html__( 'of', $GLOBALS['applicator_td'] ),
+            esc_attr__( 'Show More of', $GLOBALS['applicator_td'] )
         );
         
         // Pattern after content.php
@@ -63,7 +63,7 @@ function applicator_func_the_excerpt( $excerpt ) {
     if ( is_home() || is_singular() || ( is_front_page() && ! is_page() ) ) {
         return $excerpt;
     } else {
-        return '<a href="' . esc_url( get_permalink( get_the_ID() ) ) . '" title="' . esc_attr__( 'Show More of', $GLOBALS['apl_textdomain'] ) . ' ' . get_the_title( get_the_ID() ) . '">' . $excerpt . '</a>';
+        return '<a href="' . esc_url( get_permalink( get_the_ID() ) ) . '" title="' . esc_attr__( 'Show More of', $GLOBALS['applicator_td'] ) . ' ' . get_the_title( get_the_ID() ) . '">' . $excerpt . '</a>';
     }
 }
 add_filter( 'get_the_excerpt', 'applicator_func_the_excerpt' );

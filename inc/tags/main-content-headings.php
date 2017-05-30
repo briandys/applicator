@@ -329,7 +329,7 @@ if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
 
         // Content
         $prop_content = sprintf( $prop_mu,
-            esc_html__( $label, $GLOBALS['apl_textdomain'] ),
+            esc_html__( $label, $GLOBALS['applicator_td'] ),
             sanitize_title( $label )
         );
 
@@ -345,9 +345,9 @@ if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
         $title = sprintf( $main_ct_h_l_mu,
             $val_content,
             sanitize_title( $prop ),
-            esc_attr__( $val, $GLOBALS['apl_textdomain'] ),
+            esc_attr__( $val, $GLOBALS['applicator_td'] ),
             $prop_content . $colon_sep,
-            esc_attr__( $prop, $GLOBALS['apl_textdomain'] )
+            esc_attr__( $prop, $GLOBALS['applicator_td'] )
         );
 
         // Display

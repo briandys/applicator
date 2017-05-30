@@ -42,17 +42,17 @@ function htmlok_cn( $args = array() ) {
     
     // Require Array
 	if ( empty( $args ) ) {
-		return esc_html_e( 'Please define default parameters in the form of an array.', $GLOBALS['apl_textdomain'] );
+		return esc_html_e( 'Please define default parameters in the form of an array.', $GLOBALS['applicator_td'] );
 	}
     
     // Require Name
 	if ( empty( $args['name'] ) ) {
-		return esc_html_e( 'Please define Name.', $GLOBALS['apl_textdomain'] );
+		return esc_html_e( 'Please define Name.', $GLOBALS['applicator_td'] );
 	}
     
     // Require Content
 	if ( empty( $args['content'] ) ) {
-		return esc_html_e( 'Please define Content.', $GLOBALS['apl_textdomain'] );
+		return esc_html_e( 'Please define Content.', $GLOBALS['applicator_td'] );
 	}
     
     $defaults = array(
@@ -134,213 +134,26 @@ function htmlok_cn( $args = array() ) {
     
 }
 
-// Component
-function htmlok_cp( $args = array() ) {
-    
-    // Require Array
-	if ( empty( $args ) ) {
-		return esc_html_e( 'Please define default parameters in the form of an array.', $GLOBALS['apl_textdomain'] );
-	}
-    
-    // Require Content
-	if ( empty( $args['content'] ) && empty( $args['cn_type'] ) ) {
-		return esc_html_e( 'Please define Content.', $GLOBALS['apl_textdomain'] );
-	}
-    
-    $defaults = array(
-        'type'          => 'c',
-        'elem'          => '', // nav
-        'cn_type'       => '',
-        'name'          => '',
-        'cp_css'        => '',
-        'css'           => '',
-        'attr'          => array(
-            'id'        => '',
-        ),
-        'content'       => '',
-        'hr_content'    => '',
-        'fr_content'    => '',
-        'version'       => '',
-        'echo'          => false,
-    );
-    
-    // Parse Arguments
-    $r = wp_parse_args( $args, $defaults );
-    
-    $r_version = $r['version'];
-    $r_echo = $r['echo'];
-    $r_type = $r['type'];
-    $r_elem = $r['elem'];
-    $r_cn_type = $r['cn_type'];
-        
-    $r_attr_id = $r['attr']['id'];
-    
-    $r_name = $r['name'];
-    $r_cp_css = $r['cp_css'];
-    $r_css = $r['css'];
-    $r_content = $r['content'];
-    $r_fr_content = $r['fr_content'];
-    
-    $type_module_term_variations = array( 'module', 'md', 'm', );
-    $type_component_term_variations = array( 'component', 'cp', 'c', );
-    $type_nav_term_variations = array( 'navigation', 'nav', 'n', );
-    
-    $cn_type_header_term_variations = array( 'header', 'hr', );
-    
-    // Initialize Variables
-    $name = '';
-    $css = '';
-    $cp_css = '';
-    $dynamic_css = '';
-    $cp_dynamic_css = '';
-    $cp_type_trailing_css = '';
-    
-    // Variables with Defaults
-    $tag = 'div';
-    $cp_type_css = 'cp';
-    
-    // Element: Nav
-    if ( in_array( $r_type, $type_nav_term_variations, true ) && 'nav' == $r_elem ) {
-        $tag = 'nav';
-    }
-    
-    $trimmed_name = preg_replace( '/\s\s+/', ' ', trim( $r_name ) );
-    $sanitized_name = sanitize_title( $trimmed_name );
-    
-    // Type: Component
-    if ( in_array( $r_type, $type_component_term_variations, true ) ) {
-        $name = $trimmed_name;
-        $cp_type_css = 'cp';
-        $cp_type_trailing_css = '';
-        $dynamic_css = ' ' . $sanitized_name;
-    
-    // Type: Nav
-    } elseif ( in_array( $r_type, $type_nav_term_variations, true ) ) {
-        $name = $trimmed_name . ' ' . 'Nav';
-        $cp_type_css = 'nav';
-        $cp_type_trailing_css = '-' . $cp_type_css;
-        $dynamic_css = $sanitized_name . $cp_type_trailing_css;
-        
-    // Type: Module
-    } elseif ( in_array( $r_type, $type_module_term_variations, true ) ) {
-        $name = $trimmed_name . ' ' . 'Module';
-        $cp_type_css = 'md';
-        $cp_type_trailing_css = '-' . $cp_type_css;
-        $dynamic_css = $sanitized_name . $cp_type_trailing_css;
-    }
-    
-    // Component-Level Dynamic CSS
-    $cp_dynamic_css = ' ' . $dynamic_css;
-    
-    // CSS
-    if ( ! empty( $r_css ) ) {
-        $css = ' ' . preg_replace( '/\s\s+/', ' ', trim( $r_css ) ) . $cp_type_trailing_css;
-    } else {
-        $css = ' ' . $dynamic_css;
-    }
-    
-    // Component-Level CSS
-    if ( ! empty( $r_cp_css ) ) {
-        $cp_css = ' ' . preg_replace( '/\s\s+/', ' ', trim( $r_cp_css ) );
-    }
-        
-        
-    
-    // id Attribute
-    if ( ! empty( $r_attr_id ) ) {
-        $attr_id = 'id="' . preg_replace('/\s\s+/', ' ', trim( $r_attr_id ) ) . '"';
-    } else {
-        $attr_id = '';
-    }
-    
-    // New Version
-    if ( '0.1' == $r_version ) {
-        
-        $output = '';
-    
-    // Original Version    
-    } else {
-        
-        $output = '';
-        
-        // Header Markup
-        $hr_mu = '';
-        $hr_mu .= '<div class="hr' . $css . '---hr">';
-            $hr_mu .= '<div class="hr_cr' . $css . '---hr_cr">';
-                $hr_mu .= '<div class="h' . $css . '---h"><span class="h_l' . $css . '---h_l">' . $name . '</span></div>';
-                $hr_mu .= $r['hr_content'];
-            $hr_mu .= '</div>';
-        $hr_mu .= '</div>';
-        
-        // Footer Markup
-        $fr_mu = '';
-        $fr_mu .= '<div class="fr ' . $css . '---fr">';
-            $fr_mu .= '<div class="fr_cr' . $css . '---fr_cr">';
-                $fr_mu .= $r['fr_content'];
-            $fr_mu .= '</div>';
-        $fr_mu .= '</div>';
-        
-        if ( ! in_array( $r_cn_type, $cn_type_header_term_variations, true ) ) {
-        
-            $output .= '<' . $tag . ' ' . $attr_id . 'class="' . $cp_type_css . $cp_css . $cp_dynamic_css . '" data-name="' . $name . '">';
-
-                $output .= '<div class="cr' . $css . '---cr">';
-
-                    // Header
-                    $output .= $hr_mu;
-
-                    // Content
-                    $output .= '<div class="ct' . $css . '---ct">';
-                        $output .= '<div class="ct_cr' . $css . '---ct_cr">';
-                            $output .= $r_content;
-                        $output .= '</div>';
-                    $output .= '</div>';
-
-                if ( ! empty( $r_fr_content ) ) {
-                    // Footer
-                    $output .= $fr_mu;
-                }
-
-                $output .= '</div>';
-
-            $output .= '</' . $tag . '><!-- ' . $name . ' -->';
-            
-        } elseif ( in_array( $r_cn_type, $cn_type_header_term_variations, true ) ) {
-            $output .= $hr_mu;
-        }
-    
-    }
-    
-    $html = apply_filters( 'htmlok_cp', $output, $args );
-    
-    if ( $r_echo ) {
-        echo $html;
-    } else {
-        return $html;
-    }
-    
-}
-
 
 function htmlok_obj( $args = array() ) {
     
     // Require Array
 	if ( empty( $args ) ) {
-		return esc_html_e( 'Please define default parameters in the form of an array.', $GLOBALS['apl_textdomain'] );
+		return esc_html_e( 'Please define default parameters in the form of an array.', $GLOBALS['applicator_td'] );
 	}
     
     // Require Element
 	if ( false === array_key_exists( 'elem', $args ) ) {
-		return esc_html_e( 'Please define Element.', $GLOBALS['apl_textdomain'] );
+		return esc_html_e( 'Please define Element.', $GLOBALS['applicator_td'] );
 	}
     
     // Require Content
 	if ( false === array_key_exists( 'content', $args ) ) {
-		return esc_html_e( 'Please define Content.', $GLOBALS['apl_textdomain'] );
+		return esc_html_e( 'Please define Content.', $GLOBALS['applicator_td'] );
 	}
     
     $defaults = array(
-        'elem'      => '', // generic | heading | time | anchor | wordpress | note | label | anchor_label | navi
+        'elem'      => '', // generic | heading | time | anchor | wordpress | note | label | anchor_label | navi | list
         'name'      => '',
         'layout'    => '', // block | inline
         'obj_css'   => '',
@@ -429,10 +242,12 @@ function htmlok_obj( $args = array() ) {
     $time_term_variations = array( 'time', 't', );
     $label_term_variations = array( 'label', 'l', );
     
+    $list_term_variations = array( 'list', 'li', );
+    
     $anchor_term_variations = array( 'anchor', 'a', );
     $navi_term_variations = array( 'nav_item', 'navi', );
     
-    $anchor_label_term_variations = array( 'anchor_label', 'al', );
+    $anchor_label_term_variations = array( 'anchor label', 'al', );
     
     $wordpress_term_variations = array( 'wordpress', 'wp', );
     $note_term_variations = array( 'note', 'n', );
@@ -502,7 +317,7 @@ function htmlok_obj( $args = array() ) {
     // title Attribute
     if ( ! empty( $r_attr_title ) ) {
         $trimmed_title_attr = preg_replace('/\s\s+/', ' ', trim( $r_attr_title ) );
-        $attr_title = 'title="' . esc_attr__( $trimmed_title_attr, $GLOBALS['apl_textdomain'] ) . '"';
+        $attr_title = 'title="' . esc_attr__( $trimmed_title_attr, $GLOBALS['applicator_td'] ) . '"';
     } else {
         $attr_title = '';
     }
@@ -550,6 +365,15 @@ function htmlok_obj( $args = array() ) {
         $name = preg_replace( '/\s\s+/', ' ', trim( $r_name ) ) . ' ' . 'Note';
         $dynamic_css = ' ' . sanitize_title( preg_replace( '/\s\s+/', ' ', trim( $r_name ) ) ) . '-note';
         $css = ' ' . preg_replace( '/\s\s+/', ' ', trim( $r_css ) ) . '-note';
+    }
+    
+    // Element: Note
+    if ( in_array( $r_elem, $list_term_variations, true ) ) {
+        $tag = 'li';
+        $obj_type_css = ' ' . 'item';
+        // $name = preg_replace( '/\s\s+/', ' ', trim( $r_name ) ) . ' ' . 'Note';
+        // $dynamic_css = ' ' . sanitize_title( preg_replace( '/\s\s+/', ' ', trim( $r_name ) ) ) . '-note';
+        // $css = ' ' . preg_replace( '/\s\s+/', ' ', trim( $r_css ) ) . '-note';
     }
     
     
@@ -683,6 +507,13 @@ function htmlok_obj( $args = array() ) {
             
         }
         
+        // List
+        if ( in_array( $r_elem, $list_term_variations, true ) ) {
+            
+            $output .= $r_content;
+            
+        }
+        
         if ( ! in_array( $r_elem, $anchor_label_term_variations, true ) ) {
             $output .= '</' . $tag . '><!-- ' . $name . ' -->';
         }
@@ -705,12 +536,12 @@ function htmlok_txt( $args = array() ) {
     
     // Require Array
 	if ( empty( $args ) ) {
-		return esc_html_e( 'Please define default parameters in the form of an array.', $GLOBALS['apl_textdomain'] );
+		return esc_html_e( 'Please define default parameters in the form of an array.', $GLOBALS['applicator_td'] );
 	}
     
     // Require Content
 	if ( false === array_key_exists( 'content', $args ) ) {
-		return esc_html_e( 'Please define Content.', $GLOBALS['apl_textdomain'] );
+		return esc_html_e( 'Please define Content.', $GLOBALS['applicator_td'] );
 	}
     
     // Defaults
@@ -787,10 +618,15 @@ function htmlok_txt( $args = array() ) {
                 if ( is_numeric( $txt ) ) {
                     
                     $num_txt_css = ' ' . 'num';
-                    $dynamic_txt_css = ' ' . 'n' . '-' . sanitize_title( $txt );
+                    $dynamic_txt_css = ' ' . 'n' . '-' . sanitize_title( $txt ) . '---txt';
                 
                 } else {
-                    $dynamic_txt_css = ' ' . sanitize_title( $txt );
+                    
+                    if ( '' == sanitize_title( $txt ) ) {
+                        $dynamic_txt_css = '';
+                    } else {
+                        $dynamic_txt_css = ' ' . sanitize_title( $txt ) . '---txt';
+                    }
                 }
                 
             }
@@ -805,13 +641,13 @@ function htmlok_txt( $args = array() ) {
                 $sep = preg_replace('/\s\s+/', ' ', $val['sep'] );
             }
             
+            // Text
             if ( empty( $val['line'] ) ) {
                 
-                $output .= $sep . '<span class="txt' . $num_txt_css . $css . $dynamic_txt_css . '---txt">' . $txt . '</span>';
-            }
+                $output .= $sep . '<span class="txt' . $num_txt_css . $css . $dynamic_txt_css . '">' . $txt . '</span>';
             
-            // Line
-            if ( ! empty( $val['line'] ) ) {
+            // Lines
+            } else {
                 
                 foreach ( (array) $val['line'] as $line_item ) {
                     
@@ -849,7 +685,7 @@ function htmlok_txt( $args = array() ) {
                             
                             // Escaping
                             if ( $line_txt_item_esc ) {
-                                $txt = esc_html__( $trimmed_txt, $GLOBALS['apl_textdomain'] );
+                                $txt = esc_html__( $trimmed_txt, $GLOBALS['applicator_td'] );
                             } else {
                                 $txt = $trimmed_txt;
                             }
@@ -880,7 +716,8 @@ function htmlok_txt( $args = array() ) {
                     
                     $output .= '</span>';
                 }
-            } // Line
+                
+            }
             
         }
     }

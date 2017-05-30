@@ -1,5 +1,8 @@
 <?php // Functions
 
+$applicator_htmlok_cp = get_parent_theme_file_path( '/inc/functions/applicator-htmlok-cp.php' );
+
+
 $globals = get_parent_theme_file_path( '/inc/globals.php' );
 if ( file_exists( $globals ) ) { require_once( $globals ); }
 
@@ -133,3 +136,7 @@ if ( file_exists( $snapons ) ) { require_once( $snapons ); }
 
 $apl_html_ok = get_parent_theme_file_path( '/inc/functions/applicator-html-ok.php' );
 if ( file_exists( $apl_html_ok ) ) { require_once( $apl_html_ok ); }
+
+
+// Applicator HTML_OK
+if ( file_exists( $applicator_htmlok_cp ) ) { require_once( $applicator_htmlok_cp ); }

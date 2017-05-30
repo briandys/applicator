@@ -27,7 +27,7 @@ if ( ! function_exists( 'applicator_func_main_header_aside' ) ) {
         
         if ( is_active_sidebar( 'main-header-aside' )  ) {
             printf( $GLOBALS['aside_cn_mu'],
-                esc_html__( 'Main Header Aside', $GLOBALS['apl_textdomain'] ),
+                esc_html__( 'Main Header Aside', $GLOBALS['applicator_td'] ),
                 'main-header-aside',
                 'main-hr-as',
                 $aside
@@ -49,7 +49,7 @@ if ( ! function_exists( 'applicator_func_main_content_header_aside' ) ) {
         
         if ( is_active_sidebar( 'main-content-header-aside' )  ) {
             printf( $GLOBALS['aside_cn_mu'],
-                esc_html__( 'Main Content Header Aside', $GLOBALS['apl_textdomain'] ),
+                esc_html__( 'Main Content Header Aside', $GLOBALS['applicator_td'] ),
                 'main-content-header-aside',
                 'main-ct-hr-as',
                 $aside
@@ -70,7 +70,7 @@ if ( ! function_exists( 'applicator_func_main_content_aside' ) ) {
         ob_end_clean();
         
         printf( $GLOBALS['aside_cn_mu'],
-            esc_html__( 'Main Content Aside', $GLOBALS['apl_textdomain'] ),
+            esc_html__( 'Main Content Aside', $GLOBALS['applicator_td'] ),
             'main-content-aside',
             'main-ct-as',
             $aside
@@ -91,7 +91,7 @@ if ( ! function_exists( 'applicator_func_main_footer_aside' ) ) {
         
         if ( is_active_sidebar( 'main-footer-aside' )  ) {
             $main_footer_aside = sprintf( $GLOBALS['aside_cn_mu'],
-                esc_html__( 'Main Footer Aside', $GLOBALS['apl_textdomain'] ),
+                esc_html__( 'Main Footer Aside', $GLOBALS['applicator_td'] ),
                 'main-footer-aside',
                 'main-fr-as',
                 $aside

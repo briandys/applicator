@@ -13,18 +13,18 @@ if ( ! function_exists('apl_entry_nav' ) ) {
         $adjacent_navi_mu = '<span class="a_l %4$s-navi---a_l" rel="%5$s" title="%1$s"><span class="prop adjacent-navi---prop"><span class="word %5$s---word">%2$s</span> <span class="word entry---word">%3$s</span></span><span class="sep colon-sep">:</span> <span class="val post-title---val">%6$s</span></span>';
         
         $next_entry_navi = sprintf( $adjacent_navi_mu,
-            esc_attr__( 'Next Entry', $GLOBALS['apl_textdomain'] ),
-            esc_html__( 'Next', $GLOBALS['apl_textdomain'] ),
-            esc_html__( 'Entry', $GLOBALS['apl_textdomain'] ),
+            esc_attr__( 'Next Entry', $GLOBALS['applicator_td'] ),
+            esc_html__( 'Next', $GLOBALS['applicator_td'] ),
+            esc_html__( 'Entry', $GLOBALS['applicator_td'] ),
             'next-entry',
             'next',
             '%title'
         );
         
         $prev_entry_navi = sprintf( $adjacent_navi_mu,
-            esc_attr__( 'Previous Entry', $GLOBALS['apl_textdomain'] ),
-            esc_html__( 'Previous', $GLOBALS['apl_textdomain'] ),
-            esc_html__( 'Entry', $GLOBALS['apl_textdomain'] ),
+            esc_attr__( 'Previous Entry', $GLOBALS['applicator_td'] ),
+            esc_html__( 'Previous', $GLOBALS['applicator_td'] ),
+            esc_html__( 'Entry', $GLOBALS['applicator_td'] ),
             'prev-entry',
             'prev',
             '%title'
@@ -32,9 +32,9 @@ if ( ! function_exists('apl_entry_nav' ) ) {
         
         if ( ! is_attachment() ) { ?>
 
-            <div class="nav entry-nav" role="navigation" aria-label="<?php esc_html_e( 'Entry Navigation', $GLOBALS['apl_textdomain'] ); ?>" data-name="Entry Navigation">
+            <div class="nav entry-nav" role="navigation" aria-label="<?php esc_html_e( 'Entry Navigation', $GLOBALS['applicator_td'] ); ?>" data-name="Entry Navigation">
                 <div class="cr entry-nav---cr">
-                    <div class="h entry-nav---h"><span class="h_l entry-nav---h_l"><?php esc_html_e( 'Entry Navigation', $GLOBALS['apl_textdomain'] ); ?></span></div>
+                    <div class="h entry-nav---h"><span class="h_l entry-nav---h_l"><?php esc_html_e( 'Entry Navigation', $GLOBALS['applicator_td'] ); ?></span></div>
                     <div class="ct entry-nav---ct">
                         <div class="ct_cr entry-nav---ct_cr">
                             <ul class="grp entry-nav--grp">

@@ -54,8 +54,8 @@
                 // Web Browser Upgrade - Object
                 // Text
                 $browser_upgrade_note_txt = sprintf( '<p>%1$s <a href="%3$s">%2$s</a></p>',
-                    esc_html__( 'You are using an outdated browser. Please upgrade your browser to improve your experience.', $GLOBALS['apl_textdomain'] ),
-                    esc_html__( 'Upgrade Browser', $GLOBALS['apl_textdomain'] ),
+                    esc_html__( 'You are using an outdated browser. Please upgrade your browser to improve your experience.', $GLOBALS['applicator_td'] ),
+                    esc_html__( 'Upgrade Browser', $GLOBALS['applicator_td'] ),
                     esc_url( 'http://browsehappy.com/' )
                 );
 

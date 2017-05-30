@@ -5,114 +5,95 @@ if ( ! function_exists( 'applicator_func_comments_nav' ) ) {
         
         if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) {
 
-            // Next Comments Nav Item Markup
-            $next_coms_navi_a_l_mu = '<span class="a_l next-coms-navi---a_l" title="%3$s"><span class="word next-coms-navi--next---word">%1$s</span> <span class="word next-coms-navi--comments---word">%2$s</span> %4$s</span>';
-
-            $next_coms_navi_a = sprintf( $next_coms_navi_a_l_mu,
-                esc_html__( 'Next', $GLOBALS['apl_textdomain'] ),
-                esc_html__( 'Comments', $GLOBALS['apl_textdomain'] ),
-                esc_attr__( 'Next Comments', $GLOBALS['apl_textdomain'] ),
-                applicator_func_get_svg( array( 'icon' => 'arrow-icon' ) )
-            );
-
-            // Previous Comments Nav Item Markup
-            $prev_coms_navi_a_l_mu = '<span class="a_l prev-coms-navi---a_l" title="%3$s"><span class="word prev-coms-navi--next---word">%1$s</span> <span class="word prev-coms-navi--comments---word">%2$s</span> %4$s</span>';
-
-            $prev_coms_navi_a = sprintf( $prev_coms_navi_a_l_mu,
-                esc_html__( 'Previous', $GLOBALS['apl_textdomain'] ),
-                esc_html__( 'Comments', $GLOBALS['apl_textdomain'] ),
-                esc_attr__( 'Previous Comments', $GLOBALS['apl_textdomain'] ),
-                applicator_func_get_svg( array( 'icon' => 'arrow-icon' ) )
-            ); ?>
-
-
-<?php
-            
+            // Text
             $next_comments_navi_txt = htmlok_txt( array(
                 'content'   => array(
                     array(
-                        'txt'   => esc_html__( 'Next Comments', $GLOBALS['apl_textdomain'] ),
+                        'txt'   => esc_html__( 'Next', $GLOBALS['applicator_td'] ),
                     ),
                     array(
-                        'txt'   => applicator_func_get_svg( array( 'icon' => 'arrow-icon' ) ),
-                        'esc'   => false,
+                        'sep'   => $GLOBALS['space_sep'],
+                        'txt'   => esc_html__( 'Comments', $GLOBALS['applicator_td'] ),
                     ),
                 ),
             ) );
             
+            // Text
             $previous_comments_navi_txt = htmlok_txt( array(
                 'content'   => array(
                     array(
-                        'txt'   => esc_html__( 'Previous Comments', $GLOBALS['apl_textdomain'] ),
+                        'txt'   => esc_html__( 'Previous', $GLOBALS['applicator_td'] ),
                     ),
                     array(
-                        'txt'   => applicator_func_get_svg( array( 'icon' => 'arrow-icon' ) ),
-                        'esc'   => false,
+                        'sep'   => $GLOBALS['space_sep'],
+                        'txt'   => esc_html__( 'Comments', $GLOBALS['applicator_td'] ),
                     ),
                 ),
             ) );
             
-            $next_comments_navi_obj = htmlok_obj( array(
+            // Element Label
+            $next_comments_navi_label = htmlok_obj( array(
                 'name'      => 'Next Comments',
-                'elem'      => 'al',
+                'elem'      => 'anchor label',
                 'content'   => $next_comments_navi_txt,
             ) );
             
-            $previous_comments_navi_obj = htmlok_obj( array(
+            // Element Label
+            $previous_comments_navi_label = htmlok_obj( array(
                 'name'      => 'Previous Comments',
-                'elem'      => 'al',
+                'elem'      => 'anchor label',
                 'content'   => $previous_comments_navi_txt,
             ) );
             
+            // Anchor Element (WPg)
             
             $next_comments_link = '';
+            $next_comments_navi_obj = '';
+            
             if ( get_next_comments_link() ) {
-                $next_comments_link = '<li class="item next-comments-navi">' . get_next_comments_link( $next_comments_navi_obj ) . '</li>';
+                
+                $next_comments_link = get_next_comments_link( $next_comments_navi_label );
+            
+                // Object
+                $next_comments_navi_obj = htmlok_obj( array(
+                    'name'      => 'Next Comments',
+                    'elem'      => 'list',
+                    'content'   => $next_comments_link,
+                ) );
             }
+            
+            // Anchor Element (WPg)
             
             $previous_comments_link = '';
+            $previous_comments_navi_obj = '';
+            
             if ( get_previous_comments_link() ) {
-                $previous_comments_link = '<li class="item previous-comments-navi">' . get_previous_comments_link( $previous_comments_navi_obj ) . '</li>';
+                
+                $previous_comments_link = get_previous_comments_link( $previous_comments_navi_label );
+            
+                // Object
+                $previous_comments_navi_obj = htmlok_obj( array(
+                    'name'      => 'Previous Comments',
+                    'elem'      => 'li',
+                    'content'   => $previous_comments_link,
+                ) );
             }
             
-            $comment_nav_content = '<ul class="grp comments-nav---grp">';
-            $comment_nav_content .= $next_comments_link . $previous_comments_link;
-            $comment_nav_content .= '</ul>';
+            // Comments Nav Group
+            $comments_nav_group = '';
+            $comments_nav_group .= '<ul class="grp comments-nav---grp">';
+            $comments_nav_group .= $next_comments_navi_obj . $previous_comments_navi_obj;
+            $comments_nav_group .= '</ul>';
             
-            $comment_nav = htmlok_cp( array(
+            // Comments Nav - Component
+            $comments_nav = htmlok_cp( array(
                 'name'      => 'Comments',
-                'type'      => 'n',
-                'content'   => $comment_nav_content,
+                'type'      => 'nav',
+                'content'   => $comments_nav_group,
             ) );
             
-            return $comment_nav;
-            
-?>
-
-
-            <div class="nav comments-nav" role="navigation" data-name="Comments Navigation">
-                <div class="cr comments-nav---cr">
-                    <div class="h comments-nav---h"><span class="h_l comments-nav---h_l"><?php esc_html_e( 'Comments Navigation', $GLOBALS['apl_textdomain'] ); ?></span></div>
-                    <div class="ct comments-nav---ct">
-                        <div class="ct_cr comments-nav---ct_cr">
-                            <ul class="grp comments-nav---grp">
-                            <?php if ( get_next_comments_link() ) { ?>
-                                <li class="item obj navi next-comments-navi" data-name="Next Comments Nav Item">
-                                    <?php next_comments_link( $next_coms_navi_a ); ?>
-                                </li>
-                            <?php }
-                            if ( get_previous_comments_link() ) { ?>
-                                <li class="item obj navi previous-comments-navi" data-name="Previous Comments Nav Item">
-                                    <?php previous_comments_link( $prev_coms_navi_a ); ?>
-                                </li>
-                            <?php } ?>
-                            </ul>
-                        </div>
-                    </div><!-- comments-nav---ct -->
-                </div>
-            </div><!-- comments-nav -->
-        
-        <?php }
+            return $comments_nav;
+        }
     
     }
 }

@@ -23,7 +23,7 @@ if ( ! function_exists( 'applicator_func_post_author' ) ) {
             $post_pub_lbl_NAME,
             'published-by-label-obj',
             'pub-lbl-obj',
-            esc_html__( 'Published by', $GLOBALS['apl_textdomain'] )
+            esc_html__( 'Published by', $GLOBALS['applicator_td'] )
         );
         
         
@@ -60,7 +60,7 @@ if ( ! function_exists( 'applicator_func_post_author' ) ) {
                 get_the_author_meta( 'ID' ),
                 $size = '48',
                 $default = '',
-                $alt = get_the_author_meta( 'display_name' ) . ' ' . esc_attr__( 'Avatar', $GLOBALS['apl_textdomain'] )
+                $alt = get_the_author_meta( 'display_name' ) . ' ' . esc_attr__( 'Avatar', $GLOBALS['applicator_td'] )
             ),
             get_the_author(),
             esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) )
@@ -87,7 +87,7 @@ if ( ! function_exists( 'applicator_func_post_author' ) ) {
             $post_author_NAME,
             'post-author',
             'post-author',
-            esc_html__( $post_author_NAME, $GLOBALS['apl_textdomain'] ),
+            esc_html__( $post_author_NAME, $GLOBALS['applicator_td'] ),
             $post_author_name,
             $post_author_avatar
         );
@@ -113,7 +113,7 @@ if ( ! function_exists( 'applicator_func_post_author' ) ) {
             $post_pub_author_NAME,
             'post-published-author',
             'post-pub-auth',
-            esc_html__( $post_pub_author_NAME, $GLOBALS['apl_textdomain'] ),
+            esc_html__( $post_pub_author_NAME, $GLOBALS['applicator_td'] ),
             $post_pub_lbl,
             $post_author
         );

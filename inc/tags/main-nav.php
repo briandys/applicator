@@ -1,5 +1,5 @@
 <?php // Register Main Navigation
-register_nav_menu( 'main-nav', __( 'Main Navigation', $GLOBALS['apl_textdomain'] ) );
+register_nav_menu( 'main-nav', __( 'Main Navigation', $GLOBALS['applicator_td'] ) );
 
 // Main Nav
 if ( ! function_exists( 'applicator_func_main_nav' ) ) {
@@ -19,7 +19,7 @@ if ( ! function_exists( 'applicator_func_main_nav' ) ) {
                 <div class="cr main-nav---cr">
                     <div class="hr main-nav---hr">
                         <div class="hr_cr main-nav---hr_cr">
-                            <h2 class="h main-nav---h"><span class="h_l main-nav---h_l"><?php esc_html_e( 'Main Navigation', $GLOBALS['apl_textdomain'] ); ?></span></h2>
+                            <h2 class="h main-nav---h"><span class="h_l main-nav---h_l"><?php esc_html_e( 'Main Navigation', $GLOBALS['applicator_td'] ); ?></span></h2>
                         </div>
                     </div>
                     <div class="ct main-nav---ct">

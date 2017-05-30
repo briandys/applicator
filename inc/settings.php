@@ -11,7 +11,7 @@ if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
 function applicator_func_setup() {
     
     // Make theme available for translation.
-	load_theme_textdomain( $GLOBALS['apl_textdomain'] );
+	load_theme_textdomain( $GLOBALS['applicator_td'] );
 	
     // Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );

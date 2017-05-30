@@ -18,7 +18,7 @@ if ( ! function_exists( 'applicator_func_breadcrumbs_nav' ) ) {
                 $crumbs_nav_end_mu .= '</div>';
                 
                 $crumbs_nav_start = printf( $crumbs_nav_start_mu,
-                    esc_attr__( 'Breadcrumbs Navigation', $GLOBALS['apl_textdomain'] ),
+                    esc_attr__( 'Breadcrumbs Navigation', $GLOBALS['applicator_td'] ),
                     'Breadcrumbs Navigation',
                     'crumbs-nav'
                 );
