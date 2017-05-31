@@ -67,37 +67,12 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             esc_attr( 'Email Address', $GLOBALS['applicator_td'] )
         );
         
-        /*
-        // Comment Author Website URL Creation
-        $fields['url'] = '<div class="cp fs-item comment-author-url-creation" data-name="Comment Author Website URL Creation">';
-            $fields['url'] .= '<div class="cr com-author-url-crt---cr">';
-                $fields['url'] .= '<div class="h com-author-url-crt---h"><span class="h_l com-author-url-crt---h_l">Comment Author Website URL Creation</span></div>';
-                $fields['url'] .= '<div class="ct com-author-url-crt---ct">';
-                    $fields['url'] .= '<div class="ct_cr com-author-url-crt---ct_cr">';
-
-                        $fields['url'] .= '<span class="obj com-author-url-creation-label---obj" data-name="Comment Author Website URL Creation Label">';
-                            $fields['url'] .= '<label class="label com-author-url-crt-lbl---label" for="com-author-url-crt-inp--input-text"><span class="label_l com-author-url-crt-lbl---label_l">%2$s</span></label>';
-                        $fields['url'] .= '</span>';
-
-                        $fields['url'] .= '<span class="obj com-author-url-creation-input---obj" data-name="Comment Author Website URL Creation Input">';
-                            $fields['url'] .= '<span class="ee--input-text com-author-url-crt-inp---ee--input-text"><input id="com-author-url-crt-inp--input-text" class="input-text com-author-url-crt-inp--input-text" type="url" placeholder="%3$s" name="url" value="%1$s" size="64"></span>';
-                        $fields['url'] .= '</span>';
-
-                    $fields['url'] .= '</div>';
-                $fields['url'] .= '</div>';
-            $fields['url'] .= '</div>';
-        $fields['url'] .= '</div>';
-
         
-        $fields['url'] = sprintf( $fields['url'],
-            esc_attr( $commenter['comment_author_url'] ),
-            esc_html( 'Website URL', $GLOBALS['applicator_td'] ),
-            esc_attr( 'Website URL', $GLOBALS['applicator_td'] )
-        );
-        */
+        //------------ URL
         
         // Variables
-        $comment_author_url_input_text_id_css = 'com-author-url-crt-input-text';
+        $form_element_input_text = 'input-text';
+        $comment_author_url_input_text_id_css = 'com-author-url-crt-' . $form_element_input_text;
         $comment_author_url_input_text_label = esc_attr__( 'Website URL', $GLOBALS['applicator_td'] );
         
         // Text
@@ -110,13 +85,13 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
         ) );
         
         // Markup
-        $comment_author_url_label_input_txt_mu = '<input id="%2$s" class="input-text %2$s" type="url" name="url" placeholder="%3$s" value="%1$s" size="64">';
+        $comment_author_url_label_input_txt_mu = '<input id="%2$s" class="' . $form_element_input_text . ' %2$s" type="url" name="url" placeholder="%3$s" value="%1$s" size="64">';
         
         // Form Element
         $comment_author_url_label_input_txt = sprintf( $comment_author_url_label_input_txt_mu,
             esc_attr( $commenter['comment_author_url'] ), // value
             $comment_author_url_input_text_id_css, // id
-            $comment_author_url_input_text_label
+            $comment_author_url_input_text_label // placeholder
         );
         
         // Label - Object
