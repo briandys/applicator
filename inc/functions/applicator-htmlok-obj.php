@@ -1,15 +1,4 @@
-<?php // Applicator HTML OK (Overkill)
-
-/*
-Applicator HTML OK utilizes a particular HTML markup structure that builds Elements needed in the Interface.
-
-CN: Constructor
-MCO: Module - Component - Object
-E: Element
-T: Text
-
-*/
-
+<?php // Applicator HTML_OK (Overkill) Object Structure
 /*
 References:
 https://developer.wordpress.org/reference/functions/wp_list_categories/
@@ -439,201 +428,236 @@ function htmlok_obj( $args = array() ) {
 }
 
 
-function htmlok_txt( $args = array() ) {
+function htmlok_obj_test( $args = array() ) {
+    
+    //------------ Requirements
     
     // Require Array
 	if ( empty( $args ) ) {
 		return esc_html_e( 'Please define default parameters in the form of an array.', $GLOBALS['applicator_td'] );
 	}
     
+    // Require Name
+	if ( empty( $args['name'] ) ) {
+		return esc_html_e( 'Please define Name.', $GLOBALS['applicator_td'] );
+	}
+    
     // Require Content
-	if ( false === array_key_exists( 'content', $args ) ) {
+	if ( empty( $args['content'] ) ) {
 		return esc_html_e( 'Please define Content.', $GLOBALS['applicator_td'] );
 	}
     
-    // Defaults
+    //------------ Defaults
+    
     $defaults = array(
-        'content'   => array(
-            array(
-                'txt'   => '',
-                'css'   => '',
-                'sep'   => '',
-                'line'      => array(
-                    array(
-                        array(
-                            'sep' => '',
-                            'txt' => '',
-                            'css' => '',
-                            'esc' => true,
-                        ),
-                    ),
-                ),
-            ),
+        'name'          => '',
+        'type'          => '', // Type: form label | form element
+        // 'elem'          => '', // Element: div | nav as <nav>
+        // 'sub_type'      => '', // Sub-Type: header | content | footer
+        // 'h_elem'        => '', // Heading Elem: h1 | h2 | h3 | h4 | h5 | h6
+        
+        'obj_css'        => '', // Component CSS: custom css at the root level
+        'css'           => '',
+        
+        'attr'          => array(
+            'id'        => '', // Component ID Attribute: id=""
+            'for'       => '', // For Attribute: for=""
         ),
-        'version'   => '',
-        'echo'      => false,
+        
+        'content'       => '', // Content
+        // 'hr_content'    => '', // Header Content
+        // 'fr_content'    => '', // Footer Content
+        
+        'version'       => '', // Version
+        'echo'          => false, // Echo
     );
     
     // Parse Arguments
     $r = wp_parse_args( $args, $defaults );
     
+    //------------ Initialize Variables
+    $r_name = '';
+    $r_type = '';
+    $r_obj_css = '';
+    $r_css = '';
+    $r_attr_id = '';
+    $r_attr_for = '';
+    $r_content = '';
+    $r_version = '';
+    $r_echo = '';
+    
+    $name = '';
+    $css = '';
+    $obj_css = '';
+    $dynamic_css = '';
+    $obj_dynamic_css = '';
+    $obj_type_trailing_css = '';
+    
+    //------------ Default Variable Assignments
+    $r_name = $r['name'];
+    $r_type = $r['type'];
+    
+    $r_obj_css = $r['obj_css'];
+    $r_css = $r['css'];
+    
+    if ( ! empty( $r['attr']['id'] ) ) {
+        $r_attr_id = $r['attr']['id'];
+    }
+    
+    if ( ! empty( $r['attr']['for'] ) ) {
+        $r_attr_for = $r['attr']['for'];
+    }
+    
     $r_content = $r['content'];
+    
     $r_version = $r['version'];
     $r_echo = $r['echo'];
     
-    // Unset Variables
-    $txt = '';
+    //------------ Output Variables
+    $name = '';
     $css = '';
-    $sep = '';
-    $num_txt_css = '';
-    $dynamic_txt_css = '';
+    $content = '';
+    $attr_id = '';
+    $attr_for = '';
+    $version = '';
+    $echo = '';
     
-    // New Version
-    if ( '0.1' == $r_version ) {
-        
-        $output = '';
+    $obj_tag = '';
+    $obj_type = '';
+    $obj_type_css = '';
+    $obj_css = '';
+    $obj_dynamic_css = '';
     
-    // Original Version
-    } else {
-        
-        $output = '';
-        
-        foreach ( (array) $r_content as $val ) {
-            
-            $txt = '';
-            $sep = '';
-            $css = '';
-            $num_txt_css = '';
-            $dynamic_txt_css = '';
-            
-            $val_txt = '';
-            $val_esc = '';
-            
-            if ( ! empty( $val['txt'] ) ) {
-                $val_txt = $val['txt'];
-            }
-            
-            if ( ! empty( $val['esc'] ) ) {
-                $val_esc = $val['esc'];
-            }
-            
-            // Text
-            if ( ! empty( $val_txt ) ) {
-                $trimmed_txt = preg_replace('/\s\s+/', ' ', trim( $val['txt'] ) );
-                $txt = $trimmed_txt;
-                
-                if ( is_numeric( $txt ) ) {
-                    
-                    $num_txt_css = ' ' . 'num';
-                    $dynamic_txt_css = ' ' . 'n' . '-' . sanitize_title( $txt ) . '---txt';
-                
-                } else {
-                    
-                    if ( '' == sanitize_title( $txt ) ) {
-                        $dynamic_txt_css = '';
-                    } else {
-                        $dynamic_txt_css = ' ' . sanitize_title( $txt ) . '---txt';
-                    }
-                }
-                
-            }
-            
-            // CSS
-            if ( ! empty( $val['css'] ) ) {
-                $css = ' ' . sanitize_title( preg_replace('/\s\s+/', ' ', trim( $val['css'] ) ) ) . '---txt';
-            }
-            
-            // Separator
-            if ( ! empty( $val['sep'] ) ) {
-                $sep = preg_replace('/\s\s+/', ' ', $val['sep'] );
-            }
-            
-            // Text
-            if ( empty( $val['line'] ) ) {
-                
-                $output .= $sep . '<span class="txt' . $num_txt_css . $css . $dynamic_txt_css . '">' . $txt . '</span>';
-            
-            // Lines
-            } else {
-                
-                foreach ( (array) $val['line'] as $line_item ) {
-                    
-                    $line_css = '';
-                    
-                    if ( ! empty( $line_item[0]['txt'] ) ) {
-                        $txt = preg_replace('/\s\s+/', ' ', trim( $line_item[0]['txt'] ) );
-                        $line_css = ' ' . sanitize_title( $txt );
-                    }
-                    
-                    $output .= '<span class="line' . $line_css . '---line">';
-                    
-                    foreach ( (array) $line_item as $line_txt_item ) {
-                        
-                        $sep = '';
-                        $txt = '';
-                        $css = '';
-                        $num_txt_css = '';
-                        $dynamic_txt_css = '';
-                        
-                        $line_txt_item_esc = '';
-                        
-                        if ( ! empty( $line_txt_item['esc'] ) ) {
-                            $line_txt_item_esc = $line_txt_item['esc'];
-                        }
-                        
-                        
-                        if ( ! empty( $line_txt_item['sep'] ) ) {
-                            $sep = preg_replace('/\s\s+/', ' ', $line_txt_item['sep'] );
-                        }
-                        
-                        // Text
-                        if ( ! empty( $line_txt_item['txt'] ) ) {
-                            $trimmed_txt = preg_replace('/\s\s+/', ' ', trim( $line_txt_item['txt'] ) );
-                            
-                            // Escaping
-                            if ( $line_txt_item_esc ) {
-                                $txt = esc_html__( $trimmed_txt, $GLOBALS['applicator_td'] );
-                            } else {
-                                $txt = $trimmed_txt;
-                            }
-                            
-
-                            if ( is_numeric( $txt ) ) {
-
-                                $num_txt_css = ' ' . 'num';
-                                $dynamic_txt_css = ' ' . 'n' . '-' . sanitize_title( $txt ) . '---txt';
-
-                            } else {
-                                
-                                if ( '' == sanitize_title( $txt ) ) {
-                                    $dynamic_txt_css = '';
-                                } else {
-                                    $dynamic_txt_css = ' ' . sanitize_title( $txt ) . '---txt';
-                                }
-                            }
-                        }
-                        
-                        if ( ! empty( $line_txt_item['css'] ) ) {
-                            $css = ' ' . preg_replace('/\s\s+/', ' ', trim( $line_txt_item['css'] ) ) . '---txt';
-                        }
-                    
-                        $output .= $sep . '<span class="txt' . $num_txt_css . $css . $dynamic_txt_css . '">' . $txt . '</span>';
-
-                    }
-                    
-                    $output .= '</span>';
-                }
-                
-            }
-            
-        }
+    $obj_type_trailing_css = '';
+    $dynamic_css = '';
+    $heading_tag = '';
+    $sanitized_name = '';
+    
+    //------------ Term Variations
+    $type_form_label_term_variations = array( 'form label', 'fl', );
+    $type_form_element_term_variations = array( 'form element', 'fe', );
+    
+    //------------ Regex Pattern and Replacement
+    $pat_space = '/\s\s+/';
+    $rep_space = ' ';
+    
+    //------------ Trimmed Array Settings
+    if ( ! empty( $r_name ) ) {
+        $name = preg_replace( $pat_space, $rep_space, trim( $r_name ) );
     }
     
-    $html = apply_filters( 'htmlok_txt', $output, $args );
+    if ( ! empty( $r_css ) ) {
+        $css = preg_replace( $pat_space, $rep_space, trim( $r_css ) );
+    }
     
-    if ( $r_echo ) {
+    if ( ! empty( $r_obj_css ) ) {
+        $obj_css = ' ' . preg_replace( $pat_space, $rep_space, trim( $r_obj_css ) );
+    }
+    
+    if ( ! empty( $r_content ) ) {
+        $content = preg_replace( $pat_space, $rep_space, trim( $r_content ) );
+    }
+    
+    if ( ! empty( $r_attr_id ) ) {
+        $attr_id = 'id="' . preg_replace( $pat_space, $rep_space, trim( $r_attr_id ) ) . '"';
+    }
+    
+    if ( ! empty( $r_attr_for ) ) {
+        $attr_for = 'for="' . preg_replace( $pat_space, $rep_space, trim( $r_attr_for ) ) . '"';
+    }
+    
+    if ( ! empty( $r_version ) ) {
+        $version = preg_replace( $pat_space, $rep_space, trim( $r_version ) );
+    }
+    
+    $echo = $r_echo;
+    
+    //------------ Variables with Default Values
+    $sanitized_name = sanitize_title( $name );
+    $dynamic_css = $sanitized_name;
+    
+    $obj_tag = 'div';
+    $heading_tag = 'div';
+    
+    
+    //------------ Empty Array Keys
+    
+    // CSS
+    if ( empty( $r_css ) ) {
+        $css = ' ' . $dynamic_css;
+    }
+    
+    
+    //------------ Types
+    
+    // Module
+    if ( in_array( $r_type, $type_form_label_term_variations, true ) ) {
+        $name = $name . ' ' . 'Form Label';
+        $obj_type = 'form-label-obj';
+        $obj_type_css = ' ' . $obj_type;
+        $obj_type_trailing_css = '-' . $obj_type;
+        $css = ' ' . $css . $obj_type_trailing_css;
+        $obj_dynamic_css = ' ' . $dynamic_css . $obj_type_trailing_css;
+    
+    // Nav
+    } elseif ( in_array( $r_type, $type_form_element_term_variations, true ) ) {
+        $name = $name . ' ' . 'Form Element';
+        $obj_type = 'obj';
+        $obj_type_css = ' ' . $obj_type;
+        $obj_type_trailing_css = '-' . $obj_type;
+        $css = ' ' . $css . $obj_type_trailing_css;
+        $obj_dynamic_css = ' ' . $dynamic_css . $obj_type_trailing_css;
+    }
+    
+    
+    //------------ New Version
+    if ( '0.1' == $version ) {
+        
+        // Initialize
+        $output = '';
+    
+    //------------ Original Version    
+    } else {
+        
+        // Initialize
+        $output = '';
+        
+        //------------ Default Output
+        $output .= '<' . $obj_tag . ' ' . $attr_id . 'class="obj' . $obj_dynamic_css . $obj_css . '"' . 'data-name="' . $name . ' Object">';
+        
+        // Form Label
+        if ( in_array( $r_type, $type_form_label_term_variations, true ) ) {
+            $output .= '<label class="label' . $css . '---label"' . $attr_for .'>';
+            $output .= '<span class="label_l' . $css . '---label_l">';
+            $output .= $content;
+            $output .= '</span>';
+            $output .= '</label>';
+        
+        // Form Element
+        } elseif ( in_array( $r_type, $type_form_element_term_variations, true ) ) {
+            $output .= '<span class="felem' . $css . '---felem">';
+            $output .= $content;
+            $output .= '</span>';
+        
+        // Generic
+        } else {
+            $output .= $content;
+        }
+        
+        if ( in_array( $r_type, $type_form_element_term_variations, true ) ) {
+            
+        }
+        
+        $output .= '</' . $obj_tag . '><!-- ' . $name . ' -->';
+    
+    }
+    
+    $html = apply_filters( 'htmlok_obj_test', $output, $args );
+    
+    if ( $echo ) {
         echo $html;
     } else {
         return $html;
     }
+    
 }

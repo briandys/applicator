@@ -67,7 +67,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             esc_attr( 'Email Address', $GLOBALS['applicator_td'] )
         );
         
-        
+        /*
         // Comment Author Website URL Creation
         $fields['url'] = '<div class="cp fs-item comment-author-url-creation" data-name="Comment Author Website URL Creation">';
             $fields['url'] .= '<div class="cr com-author-url-crt---cr">';
@@ -88,11 +88,63 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             $fields['url'] .= '</div>';
         $fields['url'] .= '</div>';
 
+        
         $fields['url'] = sprintf( $fields['url'],
             esc_attr( $commenter['comment_author_url'] ),
             esc_html( 'Website URL', $GLOBALS['applicator_td'] ),
             esc_attr( 'Website URL', $GLOBALS['applicator_td'] )
         );
+        */
+        
+        // Variables
+        $comment_author_url_input_text_id_css = 'com-author-url-crt-input-text';
+        $comment_author_url_input_text_label = esc_attr__( 'Website URL', $GLOBALS['applicator_td'] );
+        
+        // Text
+        $comment_author_url_label_txt = htmlok_txt( array(
+            'content'       => array(
+                array(
+                    'txt'   => $comment_author_url_input_text_label,
+                ),
+            ),
+        ) );
+        
+        // Markup
+        $comment_author_url_label_input_txt_mu = '<input id="%2$s" class="input-text %2$s" type="url" name="url" placeholder="%3$s" value="%1$s" size="64">';
+        
+        // Form Element
+        $comment_author_url_label_input_txt = sprintf( $comment_author_url_label_input_txt_mu,
+            esc_attr( $commenter['comment_author_url'] ), // value
+            $comment_author_url_input_text_id_css, // id
+            $comment_author_url_input_text_label
+        );
+        
+        // Label - Object
+        $comment_author_url_label_obj = htmlok_obj_test( array(
+            'name'      => 'Comment Author URL Creation',
+            'type'      => 'form label',
+            'css'       => 'com-author-url-crt',
+            'attr'      => array(
+                'for'   => $comment_author_url_input_text_id_css,
+            ),
+            'content'   => $comment_author_url_label_txt,
+        ) );
+        
+        // Input - Object
+        $comment_author_url_input_obj = htmlok_obj_test( array(
+            'name'      => 'Comment Author URL Creation Input Text',
+            'type'      => 'form element',
+            'css'       => $comment_author_url_input_text_id_css,
+            'content'   => $comment_author_url_label_input_txt,
+        ) );
+        
+        // Component
+        $fields['url'] = htmlok_cp( array(
+            'name'      => 'Comment Author URL Creation',
+            'type'      => 'fieldset item',
+            'css'       => 'com-author-url-crt',
+            'content'   => $comment_author_url_label_obj . $comment_author_url_input_obj,
+        ) );
         
         return $fields;
     

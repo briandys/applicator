@@ -38,7 +38,7 @@ if ( have_comments() ) {
 }
 
 // Constructor
-$comments_header_aside = htmlok_cn_test( array(
+$comments_header_aside = htmlok_cn( array(
     'name'      => 'Comments Header',
     'type'      => 'aside',
     'css'       => 'coms-hr',
@@ -135,6 +135,10 @@ $signed_in_acct = htmlok_cp( array(
     'content'   => $signed_in_as_label_obj . $signed_in_account_name_obj,
 ) );
 
+
+//------------ Comment Author > Comment Creation
+
+// Object
 $comment_author_comment_creation_input_label_obj = htmlok_obj( array(
     'name'      => 'Comment Author Comment Creation Input Label',
     'elem'      => 'l',
@@ -142,6 +146,7 @@ $comment_author_comment_creation_input_label_obj = htmlok_obj( array(
     'content'   => '<label class="label com-author-com-crt-lbl-obj---label" for="comment"><span class="label_l com-author-name-crt-lbl-obj---label_l">Commentx</span></label>',
 ) );
 
+// Object
 $comment_author_comment_creation_input_obj = htmlok_obj( array(
     'name'      => 'Comment Author Comment Creation Input',
     'elem'      => 'l',
@@ -149,11 +154,14 @@ $comment_author_comment_creation_input_obj = htmlok_obj( array(
     'content'   => '<textarea id="comment" class="textarea input-text com-author-com-crt-inp-obj--input-text" name="comment" placeholder="Commentx" title="Comment" maxlength="65525" required></textarea>',
 ) );
 
+// Component
 $comment_author_comment_creation = htmlok_cp( array(
     'name'      => 'Comment Author Comment Creation',
+    'cp_css'    => 'fs-item',
     'css'       => 'com-auth-com-crt',
     'content'   => $comment_author_comment_creation_input_label_obj . $comment_author_comment_creation_input_obj,
 ) );
+
 
 // cancel_reply_link - Text
 $cancel_reply_comment_action_txt = htmlok_txt( array(

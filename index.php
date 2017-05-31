@@ -94,8 +94,8 @@ if ( function_exists( 'get_header' ) ) {
             ?>
         </span></h2>
 
-        <?php // Main Content Header Aside
-        applicator_func_main_content_header_aside(); ?> 
+        <?php // Main Content Header Aside | inc > tags > aside.php
+        echo applicator_func_main_content_header_aside(); ?> 
         
     </div>
 </div><!-- Main Content Header -->

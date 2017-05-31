@@ -1,8 +1,6 @@
-<?php // Applicator HTML_OK (Overkill) Component Structure
+<?php // Applicator HTML_OK (Overkill) Constructor Structure
 
-// Component Structure
-
-function htmlok_cn_test( $args = array() ) {
+function htmlok_cn( $args = array() ) {
     
     //------------ Requirements
     
@@ -105,6 +103,7 @@ function htmlok_cn_test( $args = array() ) {
     $cn_type_css = '';
     $cn_css = '';
     $cn_dynamic_css = '';
+    $cn_dynamic_id = '';
     
     $cp_type_trailing_css = '';
     $cp_type_abbr_trailing_css = '';
@@ -133,6 +132,7 @@ function htmlok_cn_test( $args = array() ) {
     
     if ( ! empty( $r_cn_css ) ) {
         $cn_css = preg_replace( $pat_space, $rep_space, trim( $r_cn_css ) );
+        $cn_css = ' ' . $cn_css;
     }
     
     if ( in_array( $r_h_elem, $h_elem_term_variations, true ) ) {
@@ -169,13 +169,12 @@ function htmlok_cn_test( $args = array() ) {
     $heading_tag = 'div';
     $cn_type_css = 'cp';
     $css = ' ' . $css;
-    $cn_css = ' ' . $cn_css;
+    
     $cn_dynamic_css = ' ' . $dynamic_css;
+    $cn_dynamic_id = $dynamic_css;
     
     
-    //------------ Empty Array Keys
-    
-    // CSS
+    //------------ Empty CSS
     if ( empty( $r_css ) ) {
         $css = ' ' . $dynamic_css;
     }
@@ -192,6 +191,8 @@ function htmlok_cn_test( $args = array() ) {
         $cp_type_abbr_trailing_css = '-' . $cn_type_abbr_css;
         $css = $css . $cp_type_abbr_trailing_css;
         $cn_dynamic_css = $cn_dynamic_css . $cp_type_trailing_css;
+        $cn_dynamic_id = $cn_dynamic_id . $cp_type_trailing_css;
+        $attr_role = 'role="complementary"';
     }
     
     
@@ -206,6 +207,11 @@ function htmlok_cn_test( $args = array() ) {
         if ( in_array( $r_h_elem, $h_elem_term_variations, true ) ) {
             $heading_tag = $h_elem;
         }
+    }
+    
+    // Empty ID
+    if ( empty( $r_attr_id ) ) {
+        $attr_id = 'id="' . $cn_dynamic_id . '"';
     }
     
     

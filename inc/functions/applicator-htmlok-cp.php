@@ -25,7 +25,7 @@ function htmlok_cp( $args = array() ) {
     
     $defaults = array(
         'name'          => '',
-        'type'          => '', // Type: module | component | nav
+        'type'          => '', // Type: module | component | nav | fieldset item
         'elem'          => '', // Element: div | nav as <nav>
         'sub_type'      => '', // Sub-Type: header | content | footer
         'h_elem'        => '', // Heading Elem: h1 | h2 | h3 | h4 | h5 | h6
@@ -115,6 +115,7 @@ function htmlok_cp( $args = array() ) {
     $type_module_term_variations = array( 'module', 'md', 'm', );
     $type_component_term_variations = array( 'component', 'cp', 'c', );
     $type_nav_term_variations = array( 'navigation', 'nav', 'n', );
+    $type_fieldset_item_term_variations = array( 'fieldset item', 'fsi', );
     $h_elem_term_variations = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', );
     
     $sub_type_header_term_variations = array( 'header', 'hr', );
@@ -133,7 +134,7 @@ function htmlok_cp( $args = array() ) {
     }
     
     if ( ! empty( $r_cp_css ) ) {
-        $cp_css = preg_replace( $pat_space, $rep_space, trim( $r_cp_css ) );
+        $cp_css = ' ' . preg_replace( $pat_space, $rep_space, trim( $r_cp_css ) );
     }
     
     if ( in_array( $r_h_elem, $h_elem_term_variations, true ) ) {
@@ -169,9 +170,6 @@ function htmlok_cp( $args = array() ) {
     $cp_tag = 'div';
     $heading_tag = 'div';
     $cp_type_css = 'cp';
-    $css = ' ' . $css;
-    $cp_css = ' ' . $cp_css;
-    $cp_dynamic_css = ' ' . $dynamic_css;
     
     
     //------------ Empty Array Keys
@@ -189,17 +187,28 @@ function htmlok_cp( $args = array() ) {
         $name = $name . ' ' . 'Module';
         $cp_type_css = 'md';
         $cp_type_trailing_css = '-' . $cp_type_css;
-        $css = $css . $cp_type_trailing_css;
-        $cp_dynamic_css = $cp_dynamic_css . $cp_type_trailing_css;
+        $css = ' ' . $css . $cp_type_trailing_css;
+        $cp_dynamic_css = ' ' . $dynamic_css . $cp_type_trailing_css;
     
     // Nav
     } elseif ( in_array( $r_type, $type_nav_term_variations, true ) ) {
         $name = $name . ' ' . 'Nav';
         $cp_type_css = 'nav';
         $cp_type_trailing_css = '-' . $cp_type_css;
-        $css = $css . $cp_type_trailing_css;
-        $cp_dynamic_css = $cp_dynamic_css . $cp_type_trailing_css;
+        $css = ' ' . $css . $cp_type_trailing_css;
+        $cp_dynamic_css = ' ' . $dynamic_css . $cp_type_trailing_css;
         $attr_role = 'role="navigation"';
+    
+    // Fieldset Item
+    } elseif ( in_array( $r_type, $type_fieldset_item_term_variations, true ) ) {
+        $cp_type_trailing_css = '-' . $cp_type_css;
+        $css = ' ' . $css . $cp_type_trailing_css;
+        $cp_dynamic_css = ' ' . $dynamic_css . $cp_type_trailing_css . ' ' . 'fs-item';
+    
+    // Default
+    } else {
+        $css = ' ' . $css;
+        $cp_dynamic_css = ' ' . $dynamic_css;
     }
     
     

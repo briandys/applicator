@@ -41,12 +41,7 @@ if ( ! function_exists( 'applicator_func_web_product_copyright_obj' ) ) {
                         array(
                             array(
                                 'sep' => $GLOBALS['space_sep'],
-                                'txt' => 'Olrayt reserved.',
-                            ),
-                            array(
-                                'sep' => $GLOBALS['space_sep'],
-                                'txt' => '&trade;',
-                                'css' => 'trademark-symbol',
+                                'txt' => 'Olrayt Reserved &trade;',
                             ),
                         ),
                     ),

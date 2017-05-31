@@ -2,6 +2,14 @@
 
 $applicator_htmlok_cn = get_parent_theme_file_path( '/inc/functions/applicator-htmlok-cn.php' );
 $applicator_htmlok_cp = get_parent_theme_file_path( '/inc/functions/applicator-htmlok-cp.php' );
+$applicator_htmlok_obj = get_parent_theme_file_path( '/inc/functions/applicator-htmlok-obj.php' );
+$applicator_htmlok_txt = get_parent_theme_file_path( '/inc/functions/applicator-htmlok-txt.php' );
+
+// Applicator HTML_OK
+if ( file_exists( $applicator_htmlok_cn ) ) { require_once( $applicator_htmlok_cn ); }
+if ( file_exists( $applicator_htmlok_cp ) ) { require_once( $applicator_htmlok_cp ); }
+if ( file_exists( $applicator_htmlok_obj ) ) { require_once( $applicator_htmlok_obj ); }
+if ( file_exists( $applicator_htmlok_txt ) ) { require_once( $applicator_htmlok_txt ); }
 
 
 $globals = get_parent_theme_file_path( '/inc/globals.php' );
@@ -67,7 +75,7 @@ if ( file_exists( $main_content_headings ) ) { require_once( $main_content_headi
 
 
 // Comments
-$comments = get_parent_theme_file_path( '/inc/functions/comments.php' );
+$comments = get_parent_theme_file_path( '/inc/functions/get-comments.php' );
 if ( file_exists( $comments ) ) { require_once( $comments ); }
 
 
@@ -135,10 +143,4 @@ $snapons = get_parent_theme_file_path( '/snapons.php' );
 if ( file_exists( $snapons ) ) { require_once( $snapons ); }
 
 
-$apl_html_ok = get_parent_theme_file_path( '/inc/functions/applicator-html-ok.php' );
-if ( file_exists( $apl_html_ok ) ) { require_once( $apl_html_ok ); }
 
-
-// Applicator HTML_OK
-if ( file_exists( $applicator_htmlok_cn ) ) { require_once( $applicator_htmlok_cn ); }
-if ( file_exists( $applicator_htmlok_cp ) ) { require_once( $applicator_htmlok_cp ); }

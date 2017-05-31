@@ -71,7 +71,7 @@
 
                 // Web Product Start
                 // Constructor
-                $web_product_start = htmlok_cn_test( array(
+                $web_product_start = htmlok_cn( array(
                     'name'      => 'Web Product Start',
                     'css'       => 'wbp-start',
                     'content'   => $go_content_nav . $browser_upgrade_note_obj,
@@ -185,8 +185,8 @@
                             ) );
                         }
                         
-                        // Aside | inc > aside.php
-                        applicator_func_main_header_aside();
+                        // Aside | inc > tags > aside.php
+                        echo applicator_func_main_header_aside();
                         ?>
                     
                     </div>

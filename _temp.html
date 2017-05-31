@@ -1,26 +1,38 @@
-?>
+<form>
+    <div class="fieldsets cn">
+        <cr>
+            <fieldset class="cn">
+                <cr>
+                    <div class="hr">
+                        <hr_cr>
+                            <legend><span class="legend_l">Legend Label</span></legend>
+                        </hr_cr>
+                    </div>
+                    <ct>
+                        <ct_cr>
+                            <div class="fs-item cp">
+                                <cr>
+                                    <h></h>
+                                    <ct></ct>
+                                </cr>
+                            </div>
+                        </ct_cr>
+                    </ct>
+                </cr>
+            </fieldset>
+        </cr>
+    </div>
+    <div class="actions cp">
+        <cr>
+            <h></h>
+            <ct></ct>
+        </cr>
+    </div>
+</form>
+
+<span class="obj comment-author-url-creation-flabel-obj">
+<label class="flabel"><span class="flabel_l">Form Label</span></label>
+</span>
 
 
-            <div class="nav comments-nav" role="navigation" data-name="Comments Navigation">
-                <div class="cr comments-nav---cr">
-                    <div class="h comments-nav---h"><span class="h_l comments-nav---h_l"><?php esc_html_e( 'Comments Navigation', $GLOBALS['applicator_td'] ); ?></span></div>
-                    <div class="ct comments-nav---ct">
-                        <div class="ct_cr comments-nav---ct_cr">
-                            <ul class="grp comments-nav---grp">
-                            <?php if ( get_next_comments_link() ) { ?>
-                                <li class="item obj navi next-comments-navi" data-name="Next Comments Nav Item">
-                                    <?php next_comments_link( $next_coms_navi_a ); ?>
-                                </li>
-                            <?php }
-                            if ( get_previous_comments_link() ) { ?>
-                                <li class="item obj navi previous-comments-navi" data-name="Previous Comments Nav Item">
-                                    <?php previous_comments_link( $prev_coms_navi_a ); ?>
-                                </li>
-                            <?php } ?>
-                            </ul>
-                        </div>
-                    </div><!-- comments-nav---ct -->
-                </div>
-            </div><!-- comments-nav -->
-        
-        <?php 
+<input class="input-text" type="text">

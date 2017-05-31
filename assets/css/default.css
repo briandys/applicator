@@ -102,6 +102,13 @@ fr: footer
 }
 
 
+/*------------ Resets */
+figure
+{
+    margin: 0;
+}
+
+
 
 
 
@@ -138,7 +145,7 @@ img
 /* ------------------------- Image Captions */
 .wp-caption
 {
-    width: 100% !important;
+    width: auto !important;
     max-width: 100%;
 }
 
@@ -164,12 +171,6 @@ img
     fill: currentColor;
 }
 
-.post---ct figure
-{
-    /* Reset */
-    margin: 0;
-}
-
 .post---h
 {
     -ms-word-wrap: break-word;
@@ -186,6 +187,11 @@ img
     display: flex; /* Contains margins of nested elements to bleed out of the container. */
 }
 
+.main-content---cr
+{
+    flex-grow: 1;
+}
+
 
 
 
@@ -195,14 +201,20 @@ img
 @media only screen and (min-width: 35em)
 {
 
-    img.alignleft
+    .alignleft
     {
         float: left;
+        
+        margin-right: 1rem;
+        margin-bottom: 1rem;
     }
 
-    img.alignright
+    .alignright
     {
         float: right;
+        
+        margin-left: 1rem;
+        margin-bottom: 1rem;
     }
     
 }
