@@ -71,7 +71,7 @@
 
                 // Web Product Start
                 // Constructor
-                $web_product_start = htmlok_cn( array(
+                $web_product_start = htmlok_cn_test( array(
                     'name'      => 'Web Product Start',
                     'css'       => 'wbp-start',
                     'content'   => $go_content_nav . $browser_upgrade_note_obj,

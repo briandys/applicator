@@ -40,7 +40,7 @@ if ( ! function_exists( 'applicator_func_web_product_end_cn' ) ) {
 
         // Web Product End
         // Constructor
-        $web_product_end = htmlok_cn( array(
+        $web_product_end = htmlok_cn_test( array(
             'name'      => 'Web Product End',
             'css'       => 'wbp-end',
             'content'   => $go_start_nav,

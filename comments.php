@@ -37,12 +37,15 @@ if ( have_comments() ) {
 
 }
 
-$comments_header_aside = '<div class="aside comments-hr-aside" role="complementary" data-name="Comments Header Aside">';
-$comments_header_aside .= '<div class="cr coms-hr-as---cr">';
-$comments_header_aside .=  applicator_func_comments_actions_snippet_cp();
-$comments_header_aside .= '</div>';
-$comments_header_aside .= '</div><!-- Comments Header Aside -->';
+// Constructor
+$comments_header_aside = htmlok_cn_test( array(
+    'name'      => 'Comments Header',
+    'type'      => 'aside',
+    'css'       => 'coms-hr',
+    'content'   => applicator_func_comments_actions_snippet_cp(),
+) );
 
+// Component
 $comments = htmlok_cp( array(
     'name'          => 'Comments',
     'cp_css'        => 'comments-area',
@@ -55,7 +58,7 @@ $comments = htmlok_cp( array(
 ) );
 
 
-// inc > functions > comment-form.php
+//------------ inc > functions > comment-form.php
 
 // title_reply - Component Header
 $comment_creation_header = htmlok_cp( array(

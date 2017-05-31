@@ -38,103 +38,6 @@ https://codex.wordpress.org/Function_Reference/sanitize_title
  * @return string HTML markup.
  */
 
-function htmlok_cn( $args = array() ) {
-    
-    // Require Array
-	if ( empty( $args ) ) {
-		return esc_html_e( 'Please define default parameters in the form of an array.', $GLOBALS['applicator_td'] );
-	}
-    
-    // Require Name
-	if ( empty( $args['name'] ) ) {
-		return esc_html_e( 'Please define Name.', $GLOBALS['applicator_td'] );
-	}
-    
-    // Require Content
-	if ( empty( $args['content'] ) ) {
-		return esc_html_e( 'Please define Content.', $GLOBALS['applicator_td'] );
-	}
-    
-    $defaults = array(
-        'elem'      => '', // header | main | footer | aside
-        'name'      => '',
-        'cn_css'    => '',
-        'css'       => '',
-        'content'   => '',
-        'echo'      => false,
-    );
-    
-    $r = wp_parse_args( $args, $defaults );
-    
-    // Variables
-    $r_elem = $r['elem'];
-    $r_name = $r['name'];
-    $r_cn_css = $r['cn_css'];
-    $r_css = $r['css'];
-    $r_content = $r['content'];
-    $r_echo = $r['echo'];
-    
-    // Initialize Trimmed Keys
-    $trimmed_name = '';
-    $sanitized_name = '';
-    $trimmed_cn_css = '';
-    $trimmed_css = '';
-    $trimmed_content = '';
-    
-    // Initialize Keys
-    $name = '';
-    $dynamic_css = '';
-    $cn_css = '';
-    $css = '';
-    
-    // preg_replace
-    $pat_trim = '/\s\s+/';
-    $rep_trim = ' ';
-    
-    // Trimmed Keys
-    $trimmed_name = preg_replace( $pat_trim, $rep_trim, trim( $r_name ) );
-    $sanitized_name = sanitize_title( $trimmed_name );
-    $trimmed_cn_css = preg_replace( $pat_trim, $rep_trim, trim( $r_cn_css ) );
-    $trimmed_css = preg_replace( $pat_trim, $rep_trim, trim( $r_css ) );
-    $trimmed_content = preg_replace( $pat_trim, $rep_trim, trim( $r_content ) );
-    
-    // Keys
-    $name = $trimmed_name;
-    $dynamic_css = ' ' . $sanitized_name;
-    $cn_css = ' ' . $trimmed_cn_css;
-    $css = ' ' . $trimmed_css;
-    $content = $trimmed_content;
-    
-    if ( empty( $r_cn_css ) ) {
-        $cn_css = '';
-    }
-    
-    if ( empty( $r_css ) ) {
-        $css = $dynamic_css;
-    }
-    
-    // Output
-    $output = '';
-    
-    $output .= '<div id="" class="cn' . $dynamic_css . $cn_css . '" data-name="' . $name . '">';
-    $output .= '<div class="cr' . $css . '---cr">';
-    $output .= $content;
-    $output .= '</div>';
-    $output .= '</div><!-- ' . $name . ' -->';
-    
-    // Apply Filters
-    $html = apply_filters( 'htmlok_cn', $output, $args );
-    
-    // Echo or Return
-    if ( $r_echo ) {
-        echo $html;
-    } else {
-        return $html;
-    }
-    
-}
-
-
 function htmlok_obj( $args = array() ) {
     
     // Require Array
@@ -207,7 +110,11 @@ function htmlok_obj( $args = array() ) {
         $r_attr_htag = $r['attr']['htag'];
     }
     
-    $r_content = $r['content'];
+    if ( ! empty( $r['content'] ) ) {
+        $r_content = $r['content'];
+    }
+    
+    
     $r_ct_before = $r['ct_before'];
     $r_ct_after = $r['ct_after'];
     $r_version = $r['version'];
@@ -611,7 +518,7 @@ function htmlok_txt( $args = array() ) {
             }
             
             // Text
-            if ( ! empty( $val_txt ) || '0' === $val_txt ) {
+            if ( ! empty( $val_txt ) ) {
                 $trimmed_txt = preg_replace('/\s\s+/', ' ', trim( $val['txt'] ) );
                 $txt = $trimmed_txt;
                 
@@ -676,11 +583,11 @@ function htmlok_txt( $args = array() ) {
                         
                         
                         if ( ! empty( $line_txt_item['sep'] ) ) {
-                            $sep = preg_replace('/\s\s+/', ' ', trim( $line_txt_item['sep'] ) );
+                            $sep = preg_replace('/\s\s+/', ' ', $line_txt_item['sep'] );
                         }
                         
                         // Text
-                        if ( ! empty( $line_txt_item['txt'] ) || '0' === $line_txt_item['txt'] ) {
+                        if ( ! empty( $line_txt_item['txt'] ) ) {
                             $trimmed_txt = preg_replace('/\s\s+/', ' ', trim( $line_txt_item['txt'] ) );
                             
                             // Escaping

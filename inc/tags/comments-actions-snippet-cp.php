@@ -44,7 +44,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
         
         $comments_count_single_text = '1'; // 1
         $comments_count_multi_text = '%';
-        $comments_count_zero_text = '0';
+        $comments_count_zero_text = '&#48;';
         
         $comments_count_num_css = 'comments-count'; // 2
         
