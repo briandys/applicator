@@ -10,7 +10,7 @@
         <?php wp_head(); ?>
     </head>
     <body <?php body_class(); ?>>
-        
+                        
         <div id="page" class="cn wbp site" data-name="Web Product">
             <div class="cr wbp---cr">
                 
@@ -79,7 +79,7 @@
                 ) );
                 ?>
         
-                <header id="masthead" class="cn main-header site-header" data-name="Main Header" role="banner">
+                <header id="main-header" class="cn main-header site-header" data-name="Main Header" role="banner">
                     <div class="cr main-header---cr">
                         
                         <?php

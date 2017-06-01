@@ -1,11 +1,13 @@
 <?php // Functions
 
+$applicator_htmlok = get_parent_theme_file_path( '/inc/functions/applicator-htmlok.php' );
 $applicator_htmlok_cn = get_parent_theme_file_path( '/inc/functions/applicator-htmlok-cn.php' );
 $applicator_htmlok_cp = get_parent_theme_file_path( '/inc/functions/applicator-htmlok-cp.php' );
 $applicator_htmlok_obj = get_parent_theme_file_path( '/inc/functions/applicator-htmlok-obj.php' );
 $applicator_htmlok_txt = get_parent_theme_file_path( '/inc/functions/applicator-htmlok-txt.php' );
 
 // Applicator HTML_OK
+if ( file_exists( $applicator_htmlok ) ) { require_once( $applicator_htmlok ); }
 if ( file_exists( $applicator_htmlok_cn ) ) { require_once( $applicator_htmlok_cn ); }
 if ( file_exists( $applicator_htmlok_cp ) ) { require_once( $applicator_htmlok_cp ); }
 if ( file_exists( $applicator_htmlok_obj ) ) { require_once( $applicator_htmlok_obj ); }

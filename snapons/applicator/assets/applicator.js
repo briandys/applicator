@@ -100,7 +100,7 @@
             
             $goStartNavArrowIco = aplDataGoStartNav.goStartNavArrowIco,
             
-            $colophonHeight = $('#colophon').height(),
+            $colophonHeight = $('#main-footer').height(),
             bodyOffsetCriteriaHeight,
             bodyOffsetSliceHeight,
             bodyOffsetMostHeight;
@@ -340,7 +340,7 @@
 			return;
 		}
         
-        $( '#masthead' )
+        $( '#main-header' )
             .find( $( '.main-header---cr' ) )
                 .children( '.search-cp:first' )
                     .attr( 'id', mainSearchFuncCss );
@@ -864,7 +864,7 @@
         
         function pageHeightDetection() {
             var $page = $( '#page' ),
-                $colophon = $( '#colophon' ),
+                $colophon = $( '#main-footer' ),
                 $pageHeight = $page.height(),
                 $colophonHeight = $colophon.height(),
                 $windowHeight = window.innerHeight,

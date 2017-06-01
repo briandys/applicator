@@ -1,7 +1,7 @@
                     </div>
                 </section><!-- Main Content -->
 
-                <footer id="colophon" class="cn main-footer site-footer" data-name="Main Footer" role="contentinfo">
+                <footer id="main-footer" class="cn main-footer site-footer" data-name="Main Footer" role="contentinfo">
                     <div class="cr main-footer---cr">
                         
                         <?php
