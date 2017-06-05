@@ -54,6 +54,20 @@ function htmlok( $args = array() ) {
             'hlevel'    => '', // h1 | h2 | h3 | h4 | h5 | h6
             'linked'    => false,
         ),
+        'obj_content'   => array(
+            array(
+                'sep'   => '',
+                'txt'   => '',
+                'css'   => '',
+                'line'  => array(
+                    array(
+                        'sep' => '',
+                        'txt' => '',
+                        'css' => '',
+                    ),
+                ),
+            ),
+        ),
     );
     
     //------------ WordPress Parse Arguments
@@ -134,12 +148,15 @@ function htmlok( $args = array() ) {
     $structure_subtype_css = '';
     $r_structurex_attr_linked = '';
     $hlevel_tag = '';
+    $content = '';
+    $fr_content = '';
     
     $layout_tag = 'div';
     $root_tagx = $layout_tag;
     $branch_tag = $layout_tag;
     
     $structure_name = '';
+    $structure_css = '';
     $href_attr = '';
     $escaped_url = '';
     $href_attr = ' '.'href="#"';
@@ -196,10 +213,10 @@ function htmlok( $args = array() ) {
     // Structure Role
     if ( ! empty( $r['structurex']['attr']['role'] ) ) {
         $r_structurex_attr_role = preg_replace( $pat_space, $rep_space, trim( $r['structurex']['attr']['role'] ) );
-        $sanitized_role = sanitize_title( $r_structurex_attr_role );
+        $sanitized_structurex_attr_role = sanitize_title( $r_structurex_attr_role );
         
         // Default
-        $role_attrx = ' '.'role="'.$sanitized_role.'"';
+        $role_attrx = ' '.'role="'.$sanitized_structurex_attr_role.'"';
     }
     
     // Structure Subtype
@@ -353,6 +370,28 @@ function htmlok( $args = array() ) {
         }
     }
     
+    // Content
+    if ( ! empty( $r['content'] ) ) {
+        $r_content = $r['content'];
+        
+        if ( is_array( $r_content ) ) {
+            $content = $r_content;
+        } else {
+            $content = preg_replace( $pat_space, $rep_space, trim( $r_content ) );
+        }
+    }
+    
+    // Footer Content
+    if ( ! empty( $r['fr_content'] ) ) {
+        $r_fr_content = $r['fr_content'];
+        
+        if ( is_array( $r_fr_content ) ) {
+            $fr_content = $r_fr_content;
+        } else {
+            $fr_content = preg_replace( $pat_space, $rep_space, trim( $r_fr_content ) );
+        }
+    }
+    
     
     
     //------------------------------------------------
@@ -486,13 +525,6 @@ function htmlok( $args = array() ) {
         $root_css = '';
     }
     
-    if ( ! empty( $r['content'] ) ) {
-        $r_content = $r['content'];
-        $content = preg_replace( $pat_space, $rep_space, trim( $r_content ) );
-    } else {
-        $content = '';
-    }
-    
     $r_hr_structure = $r['hr_structure'];
     $hr_structure = preg_replace( $pat_space, $rep_space, trim( $r_hr_structure ) );
     
@@ -501,13 +533,6 @@ function htmlok( $args = array() ) {
         $hr_content = preg_replace( $pat_space, $rep_space, trim( $r_hr_content ) );
     } else {
         $hr_content = '';
-    }
-    
-    if ( ! empty( $r['fr_content'] ) ) {
-        $r_fr_content = $r['fr_content'];
-        $fr_content = preg_replace( $pat_space, $rep_space, trim( $r_fr_content ) );
-    } else {
-        $fr_content = '';
     }
     
     if ( ! empty( $r['version'] ) ) {
@@ -534,16 +559,23 @@ function htmlok( $args = array() ) {
     );
     
     $ct_mu = '';
-    $ct_mu .= sprintf( $cr_mu,
-        $content,
-        'ct'
-    );
+    
+    foreach ( ( array ) $content as $val ) {
+        $ct_mu .= sprintf( $cr_mu,
+            $val,
+            'ct'
+        );
+    }
     
     $fr_mu = '';
-    $fr_mu .= sprintf( $cr_mu,
-        $fr_content,
-        'fr'
-    );
+    foreach ( ( array ) $fr_content as $val ) {
+        $fr_mu .= sprintf( $cr_mu,
+            $val,
+            'fr'
+        );
+    }
+    
+    
     
     if ( in_array( $structure, $structure_constructor_term_variations, true ) ) {
         $structure_content = '';
@@ -593,7 +625,16 @@ function htmlok( $args = array() ) {
         if ( ! in_array( $r_structurex_type, $structurex_type_object_term_variations, true ) ) {
             
             $output .= '<'.$branch_tag.' class="cr'.$cssx.'---cr" '.$href_attr.'>';
-            $output .= $content;
+            
+            foreach ( ( array ) $content as $val ) {
+                $output .= $val;
+            }
+            
+            // Footer Content
+            foreach ( ( array ) $fr_content as $val ) {
+                $output .= $val;
+            }
+            
             $output .= '</'.$branch_tag.'>';
         
         } else {
@@ -614,7 +655,32 @@ function htmlok( $args = array() ) {
                 $output .= $a_mu;
             } else {
                 $output .= '<'.$label_tag.' class="'.$branch_css.'_l'.$cssx.'---'.$branch_css.'_l">';
-                $output .= $content;
+            
+                foreach ( ( array ) $r['obj_content'] as $val ) {
+                    
+                    $contentx_txt = '';
+                    $sanitized_contentx_txt = '';
+                    $contentx_css = ' ';
+
+                    // Text
+                    if ( ! empty( $val['txt'] ) ) {
+                        $r_contentx_txt = preg_replace( $pat_space, $rep_space, trim( $val['txt'] ) );
+                        $contentx_txt = $r_contentx_txt;
+                        $sanitized_contentx_txt = sanitize_title( $r_contentx_txt );
+                    }
+
+                    // CSS
+                    if ( ! empty( $val['css'] ) ) {
+                        $r_contentx_css = preg_replace( $pat_space, $rep_space, trim( $val['css'] ) );
+                        $contentx_css = $r_contentx_css;
+                    } else {
+                        
+                    }
+                    
+                    $output .= '<span class="txt'.$contentx_css.'">'.$contentx_txt.'</span>';
+
+                }
+                
                 $output .= '</'.$label_tag.'>';
             }
             

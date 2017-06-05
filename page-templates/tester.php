@@ -1,19 +1,94 @@
 <?php
 // Template Name: Tester
 
+?>
+
+<style>
+    
+    *
+    {
+        box-sizing: border-box;
+    }
+    
+    body
+    {
+        margin: 0;
+        font-family: sans-serif;
+    }
+
+    .cn
+    {
+        margin: .5rem;
+        padding: .5rem;
+        border: 2px solid red;
+    }
+    
+    .cn::before
+    {
+        content: attr( data-name );
+        display: inline-block;
+        margin-left: -.5rem;
+        margin-top: -.5rem;
+        padding: .25rem;
+        background-color: red;
+        color: white;
+    }
+    
+    .obj
+    {
+        display: inline-block;
+        margin: .5rem;
+        padding: .5rem;
+        border: 2px solid blue;
+        
+    }
+    
+</style>
+
+<?php
+
+$main_header_cn = htmlok( array(
+    'name'          => 'Main Header',
+    'structurex'    => array(
+        'type'      => 'constructor',
+        'elem'      => 'header',
+    ),
+    'role'          => 'banner',
+    'id'            => 'main-header',
+    'root_css'      => 'site-header',
+    'content'       => array(
+        'First Content',
+        'Second Content',
+    ),
+    'fr_content'    => array(
+        'First',
+        'Second',
+    ),
+    'echo'          => true,
+) );
+
+/*
 $generic_heading = htmlok( array(
     'namex'         => 'Text Content',
     'structurex'    => array(
         'type'      => 'object',
         'subtype'   => 'generic label',
     ),
-    'content'       => array(
+    'content'       => 'Text Hehe',
+    'version'       => '0.1',
+    'echo'          => true,
+    'obj_content'   => array(
         array(
-            'txt'   => 'Hello',
+            'sep'   => '',
+            'txt'   => 'Isa ito.',
+            'css'   => '',
+        ),
+        array(
+            'sep'   => '',
+            'txt'   => 'Pangalawa ito.',
+            'css'   => '',
         ),
     ),
-    'version'       => '0.1',
-    'echo'          => true
 ) );
 
 $generic_heading = htmlok( array(
@@ -22,7 +97,13 @@ $generic_heading = htmlok( array(
         'type'      => 'object',
         'subtype'   => 'heading',
     ),
-    'content'       => 'Hehe',
+    'obj_content'   => array(
+        array(
+            'sep'   => '',
+            'txt'   => 'Isa ito sa mga examples ko.',
+            'css'   => '',
+        ),
+    ),
     'version'       => '0.1',
 ) );
 
@@ -70,7 +151,11 @@ htmlok( array(
             'title' => 'AUTO',
         ),
     ),
-    'content'       => $super_content,
+    'content'       => array(
+        $generic_heading,
+        $post_title,
+        $google_url,
+    ),
     'version'       => '0.1',
     'echo'          => true,
 ) );
@@ -125,3 +210,5 @@ $main_header_cn = htmlok( array(
     'content'       => $web_product_main_info_cp,
     'echo'          => true,
 ) );
+
+*/
