@@ -47,23 +47,36 @@
 
 <?php
 
-$main_header_cn = htmlok( array(
-    'name'          => 'Main Header',
+// Web Product Main Info CP
+$main_product_main_info_cp = htmlok( array(
+    'namex'         => 'Web Product Main Info',
     'structurex'    => array(
-        'type'      => 'constructor',
-        'elem'      => 'header',
+        'type'      => 'component',
     ),
-    'role'          => 'banner',
-    'id'            => 'main-header',
+    'content'       => 'Web Product Main Info',
+    'version'       => '0.1',
+    'echo'          => true,
+) );
+
+// Main Header CN
+$main_header_cn = htmlok( array(
+    'namex'             => 'Main Header',
+    'structurex'        => array(
+        'type'          => 'constructor',
+        'elem'          => 'header',
+        'attr'          => array(
+            'role'      => 'banner',
+        ),
+    ),
+    'idx'           => 'main-header',
     'root_css'      => 'site-header',
     'content'       => array(
-        'First Content',
-        'Second Content',
+        'Web Product Main Info',
+        'Main Nav',
+        'Search',
+        'Aside',
     ),
-    'fr_content'    => array(
-        'First',
-        'Second',
-    ),
+    'version'       => '0.1',
     'echo'          => true,
 ) );
 
