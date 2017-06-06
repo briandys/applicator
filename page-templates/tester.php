@@ -47,13 +47,37 @@
 
 <?php
 
+// Web Product Main Name OBJ
+$web_product_main_name_obj = htmlok( array(
+    'namex'      => 'Web Product Main Name',
+    'structurex' => array(
+        'type'      => 'object',
+        'subtype'   => 'heading',
+        'elem'      => 'heading',
+        'attr'      => array(
+            'h_level'    => 'h1',
+            'href'       => 'index.html',
+        ),
+    ),
+    'css'           => 'wbp-main-name',
+    'content'       => 'hello',
+    'obj_content'   => 'Hello',
+    'version'       => '0.1',
+    'echo'          => true,
+) );
+
 // Web Product Main Info CP
 $main_product_main_info_cp = htmlok( array(
     'namex'         => 'Web Product Main Info',
     'structurex'    => array(
-        'type'      => 'component',
+        'type'          => 'component',
+        'hr_structure'  => true,
     ),
-    'content'       => 'Web Product Main Info',
+    'css'           => 'wbp-main-info',
+    'content'       => array(
+        'Main Name',
+        'Main Description',
+    ),
     'version'       => '0.1',
     'echo'          => true,
 ) );

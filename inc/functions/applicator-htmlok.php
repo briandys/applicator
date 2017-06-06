@@ -56,7 +56,7 @@ function htmlok( $args = array() ) {
             'title'     => '',
             'datetime'  => '',
             'href'      => '',
-            'hlevel'    => '', // h1 | h2 | h3 | h4 | h5 | h6
+            'h_level'    => '', // h1 | h2 | h3 | h4 | h5 | h6
             'linked'    => false,
         ),
         'obj_content'   => array(
@@ -156,10 +156,11 @@ function htmlok( $args = array() ) {
     $structure_type_css = '';
     $structure_subtype_css = '';
     $r_structurex_attr_linked = '';
-    $hlevel_tag = '';
+    $h_level_tag = '';
     $hr_content_val = '';
     $content_val = '';
     $fr_content_val = '';
+    $structurex_attr_linked = '';
     
     $layout_tag = 'div';
     $root_tagx = $layout_tag;
@@ -175,9 +176,9 @@ function htmlok( $args = array() ) {
     $structure_type = '';
     $structure_type_abbr = '';
     $branch_css = 'x';
-    $hlevel_tag = 'h2';
+    $h_level_tag = 'h2';
     
-    $label_tag = 'span';
+    $elem_label_tag = 'span';
     $h_elem_tag = 'div';
     $namex = '';
     $root_css = '';
@@ -239,8 +240,6 @@ function htmlok( $args = array() ) {
         foreach ( (array) $css as $val ) {
             $css_val .= preg_replace( $pat_space, $rep_space, trim( $val ) );
         }
-        
-        $cssx = ' '.$css_val;
     }
     
     
@@ -305,18 +304,19 @@ function htmlok( $args = array() ) {
                 $root_tagx = 'aside';
                 $role_attrx = ' '.'role="complementary"';
             }
-            
-            // Variable Definitions
-            if ( empty( $namex ) ) {
-                $namex = $structure_type;
-            }
         
             $structure_name = $namex.' '.$structure_type_abbr;
             $sanitized_structure_type = sanitize_title( $structure_type_abbr );
             
             $structure_type_css = $sanitized_structure_type;
             
-            $cssx = ' '.$sanitized_name.'-'.$structure_type_css;
+            $name_css = ' '.$sanitized_name;
+            
+            if ( ! empty( $css ) ) {
+                $cssx = ' '.$css_val.'-'.$structure_type_css;
+            } else {
+                $cssx = ' '.$sanitized_name.'-'.$structure_type_css;
+            }
         
         //------------ Component
         } elseif ( in_array( $r_structurex_type, $structurex_type_component_term_variations, true ) ) {
@@ -338,11 +338,6 @@ function htmlok( $args = array() ) {
                 $root_tagx = 'aside';
                 $role_attrx = ' '.'role="complementary"';
             }
-            
-            // Variable Definitions
-            if ( empty( $namex ) ) {
-                $namex = $structure_type;
-            }
         
             $structure_name = $namex.' '.$structure_type_abbr;
             $sanitized_structure_type = sanitize_title( $structure_type_abbr );
@@ -351,7 +346,9 @@ function htmlok( $args = array() ) {
             
             $name_css = ' '.$sanitized_name;
             
-            if ( empty( $css ) ) {
+            if ( ! empty( $css ) ) {
+                $cssx = ' '.$css_val.'-'.$structure_type_css;
+            } else {
                 $cssx = ' '.$sanitized_name.'-'.$structure_type_css;
             }
             
@@ -371,7 +368,7 @@ function htmlok( $args = array() ) {
                 
                 $root_tagx = $layout_tag;
                 $branch_tag = $layout_tag;
-                $label_tag = $layout_tag;
+                $elem_label_tag = $layout_tag;
             }
 
             // Href Attribute
@@ -392,7 +389,8 @@ function htmlok( $args = array() ) {
             
             // Linked Attribute
             if ( ! empty( $r['structurex']['attr']['linked'] ) ) {
-                $r_structurex_attr_linked = $r['structurex']['attr']['linked'];
+                $r_structurex_attr_linked = preg_replace( $pat_no_space, $rep_no_space, trim( $r['structurex']['attr']['linked'] ) );
+                $structurex_attr_linked = $r_structurex_attr_linked;
             }
             
             // Subtype: Generic Label
@@ -424,27 +422,22 @@ function htmlok( $args = array() ) {
             
             // Element: Heading Element
             } elseif ( in_array( $r_structurex_elem, $structurex_obj_elem_heading_term_variations, true ) ) {
-                $branch_tag = $hlevel_tag;
+                $branch_tag = $h_level_tag;
                 $branch_css = 'h';
 
                 // Heading Level Attribute
-                if ( ! empty( $r['structurex']['attr']['hlevel'] ) ) {
-                    $r_structurex_attr_hlevel = preg_replace( $pat_no_space, $rep_no_space, trim( $r['structurex']['attr']['hlevel'] ) );
-                    $sanitized_hlevel = sanitize_title( $r_structurex_attr_hlevel );
-                    $hlevel_tag = $sanitized_hlevel;
+                if ( ! empty( $r['structurex']['attr']['h_level'] ) ) {
+                    $r_structurex_attr_h_level = preg_replace( $pat_no_space, $rep_no_space, trim( $r['structurex']['attr']['h_level'] ) );
+                    $sanitized_h_level = sanitize_title( $r_structurex_attr_h_level );
+                    $h_level_tag = $sanitized_h_level;
 
-                    if ( in_array( $r_structurex_attr_hlevel, $heading_level_term_variations, true ) ) {
+                    if ( in_array( $r_structurex_attr_h_level, $heading_level_term_variations, true ) ) {
                         $layout_tag = 'div';
 
                         $root_tagx = $layout_tag;
-                        $branch_tag = $hlevel_tag;
+                        $branch_tag = $h_level_tag;
                     }
                 }
-            }
-            
-            // Variable Definitions
-            if ( empty( $namex ) ) {
-                $namex = $structure_type;
             }
         
             $structure_name = $namex.' '.$structure_subtype.' '.$structure_type_abbr;
@@ -454,7 +447,20 @@ function htmlok( $args = array() ) {
             $structure_type_css = $sanitized_structure_type;
             $structure_subtype_css = ' '.$sanitized_structure_subtype;
             
-            $cssx = ' '.$sanitized_name.'-'.$sanitized_structure_subtype.'-'.$sanitized_structure_type.$css_val;
+            $name_css = ' '.$sanitized_name;
+            
+            if ( ! empty( $css ) ) {
+                $cssx = ' '.$css_val.'-'.$structure_type_css;
+            } else {
+                $cssx = ' '.$sanitized_name.'-'.$structure_subtype_css.'-'.$structure_type_css;
+            }
+            
+            
+        }
+            
+        // Variable Definitions
+        if ( empty( $namex ) ) {
+            $namex = $structure_type;
         }
     }
     
@@ -472,20 +478,8 @@ function htmlok( $args = array() ) {
     }
     
     
-    // Container Markup Structure
-    $cr_mu    = '';
-    $cr_mu_start    = '';
-    $cr_mu_end      = '';
-    
-    $cr_mu_start   .= '<div class="%1$s'.$cssx.'---%1$s">';
-    $cr_mu_start   .= '<div class="%1$s_cr'.$cssx.'---%1$s_cr">';
-    
-    $cr_mu_end      = '</div>';
-    $cr_mu_end     .= '</div>';
-    
-    
     // Header
-    if ( ! empty( $r['hr_content'] ) ) {
+    if ( $r['hr_content'] ) {
         $r_hr_content = $r['hr_content'];
         $hr_content = $r_hr_content;
         
@@ -493,15 +487,6 @@ function htmlok( $args = array() ) {
         foreach ( ( array ) $hr_content as $val ) {
             $hr_content_val .= preg_replace( $pat_space, $rep_space, trim( $val ) );
         }
-        
-        // Markup
-        $hr_mu = '';
-        $hr_mu .= sprintf( $cr_mu_start,
-            'hr'
-        );
-        $hr_mu .= '<'.$h_elem_tag.' class="h'.$cssx.'---h"><span class="h_l'.$cssx.'---h_l">'.$name.'</span></'.$h_elem_tag.'>';
-        $hr_mu .= $hr_content_val;
-        $hr_mu .= $cr_mu_end;
     }
     
     // Content
@@ -513,14 +498,6 @@ function htmlok( $args = array() ) {
         foreach ( ( array ) $content as $val ) {
             $content_val .= preg_replace( $pat_space, $rep_space, trim( $val ) );
         }
-        
-        // Markup
-        $ct_mu = '';
-        $ct_mu .= sprintf( $cr_mu_start,
-            'ct'
-        );
-        $ct_mu .= $content_val;
-        $ct_mu .= $cr_mu_end;
     }
     
     // Footer Content
@@ -532,14 +509,6 @@ function htmlok( $args = array() ) {
         foreach ( ( array ) $fr_content as $val ) {
             $fr_content_val .= preg_replace( $pat_space, $rep_space, trim( $val ) );
         }
-        
-        // Markup
-        $fr_mu = '';
-        $fr_mu .= sprintf( $cr_mu_start,
-            'fr'
-        );
-        $fr_mu .= $fr_content_val;
-        $fr_mu .= $cr_mu_end;
     }
     
     //------------------------------------------------------------------------------------------------
@@ -705,6 +674,44 @@ function htmlok( $args = array() ) {
     }
     
     
+    // Container Markup Structure
+    $cr_mu    = '';
+    $cr_mu_start    = '';
+    $cr_mu_end      = '';
+    
+    $cr_mu_start   .= '<div class="%1$s'.$cssx.'---%1$s">';
+    $cr_mu_start   .= '<div class="%1$s_cr'.$cssx.'---%1$s_cr">';
+    
+    $cr_mu_end      = '</div>';
+    $cr_mu_end     .= '</div>';
+        
+    
+    // Header Markup
+    $hr_mu = '';
+    $hr_mu .= sprintf( $cr_mu_start,
+        'hr'
+    );
+    $hr_mu .= '<'.$h_elem_tag.' class="h'.$cssx.'---h"><span class="h_l'.$cssx.'---h_l">'.$namex.'</span></'.$h_elem_tag.'>';
+    $hr_mu .= $hr_content_val;
+    $hr_mu .= $cr_mu_end;
+
+    // Content Markup
+    $ct_mu = '';
+    $ct_mu .= sprintf( $cr_mu_start,
+        'ct'
+    );
+    $ct_mu .= $content_val;
+    $ct_mu .= $cr_mu_end;
+
+    // Footer Markup
+    $fr_mu = '';
+    $fr_mu .= sprintf( $cr_mu_start,
+        'fr'
+    );
+    $fr_mu .= $fr_content_val;
+    $fr_mu .= $cr_mu_end;
+    
+    
     //------------ New Version
     if ( '0.1' == $version ) {
         
@@ -744,7 +751,7 @@ function htmlok( $args = array() ) {
             $a_mu = '';
             $a_mu .= '<a class="a'.$cssx.'---a" '.$href_attr.$target_attr.'>';
             $a_mu .= '<span class="a_l'.$cssx.'---a_l">';
-            $a_mu .= $content;
+            $a_mu .= $content_val;
             $a_mu .= '</span>';
             $a_mu .= '</a>';
             
@@ -752,10 +759,10 @@ function htmlok( $args = array() ) {
                 $output .= '<'.$branch_tag.' class="'.$branch_css.$cssx.'---'.$branch_css.'">';
             }
             
-            if ( true == $r_structurex_attr_linked || in_array( $r_structurex_subtype, $structurex_subtype_link_term_variations, true ) ) {
+            if ( $structurex_attr_linked || in_array( $r_structurex_subtype, $structurex_subtype_link_term_variations, true ) ) {
                 $output .= $a_mu;
             } else {
-                $output .= '<'.$label_tag.' class="'.$branch_css.'_l'.$cssx.'---'.$branch_css.'_l">';
+                $output .= '<'.$elem_label_tag.' class="'.$branch_css.'_l'.$cssx.'---'.$branch_css.'_l">';
             
                 foreach ( ( array ) $r['obj_content'] as $val ) {
                     
@@ -782,7 +789,7 @@ function htmlok( $args = array() ) {
 
                 }
                 
-                $output .= '</'.$label_tag.'>';
+                $output .= '</'.$elem_label_tag.'>';
             }
             
             if ( !in_array( $r_structurex_subtype, $structurex_subtype_link_term_variations, true ) ) {
