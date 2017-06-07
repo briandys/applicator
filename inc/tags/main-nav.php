@@ -59,6 +59,21 @@ if ( ! function_exists( 'applicator_func_main_nav' ) ) {
             </nav><!-- Main Navigation -->
         
         <?php }
+        
+        $main_navigation_cp = htmlok( array(
+            'name'          => 'Main Navigation',
+            'structure'     => array(
+                'type'      => 'component',
+                'elem'      => 'nav',
+                'h_elem'    => 'h2',
+            ),
+            'css'           => 'main-nav',
+            'content'       => 'Main Nav!!!',
+        ) );
+        
+        return $main_navigation_cp;
+        
+        
     }
 }
 
