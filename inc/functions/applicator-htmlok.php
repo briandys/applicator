@@ -18,9 +18,10 @@ function htmlok( $args = array() ) {
     
     $defaults = array(
         'name'          => '', // Name: Used in data-name="" and generating the parent-level CSS class name
-        'root_css'    => '', // There's a generated parent css based on the 'name' and one can also add a custom
+        'root_css'      => '', // There's a generated parent css based on the 'name' and one can also add a custom
         'css'           => '', // This is a custom CSS that will apply to all structure elements
         'id'            => '', // Parent ID Attribute
+        'mod'           => '', // Modifications: Special adjustments based on WordPress Generated Content
         'content'       => '', // Content
         /*
         'content'       => array(
@@ -126,6 +127,8 @@ function htmlok( $args = array() ) {
     $structure_obj_elem_anchor_term_variations = array( 'Anchor', 'anchor', 'a', );
     $structure_obj_elem_heading_term_variations = array( 'Heading', 'heading', 'h', );
     
+    $mod_main_nav_term_variations = array( 'Main Navigation', 'main nav', );
+    
     $heading_level_term_variations = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', );
     
     
@@ -204,6 +207,8 @@ function htmlok( $args = array() ) {
     $txt_css = '';
     $obj_content_css = '';
     
+    $mod = '';
+    
     $version = '';
     $echo = '';
     
@@ -257,6 +262,12 @@ function htmlok( $args = array() ) {
         if ( 'AUTO' == $id ) {
             $id_attrx = ' '.'id="'.$sanitized_name.'"';
         }
+    }
+    
+    // Mod
+    if ( ! empty( $r['mod'] ) ) {
+        $r_mod = preg_replace( $pat_space, $rep_space, trim( $r['mod'] ) );
+        $mod = $r_mod;
     }
     
     // Structure Role
@@ -697,9 +708,12 @@ function htmlok( $args = array() ) {
     $cr_mu_end      = '';
     
     $cr_mu_start   .= '<div class="%1$s'.$cssx.'---%1$s">';
-    $cr_mu_start   .= '<div class="%1$s_cr'.$cssx.'---%1$s_cr">';
     
-    $cr_mu_end      = '</div>';
+    if ( ! in_array( $mod, $mod_main_nav_term_variations, true ) ) {
+        $cr_mu_start   .= '<div class="%1$s_cr'.$cssx.'---%1$s_cr">';
+        $cr_mu_end     .= '</div>';
+    }
+    
     $cr_mu_end     .= '</div>';
         
     
