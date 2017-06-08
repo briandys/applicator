@@ -127,7 +127,6 @@ if ( $description || is_customize_preview() ) {
         'name'      => 'Web Product Main Description',
         'structure' => array(
             'type'      => 'object',
-            'subtype'   => 'generic',
             'attr'      => array(
                 'linked'    => true,
                 'href'      => esc_url( home_url( '/' ) ),
@@ -155,6 +154,7 @@ if ( has_header_image() ) {
             'type'      => 'object',
             'subtype'   => 'wordpress generated content',
         ),
+        'css'           => 'wbp-main-media-banner',
         'obj_content'   => get_custom_header_markup(),
     ) );
 }
@@ -163,13 +163,13 @@ if ( has_header_image() ) {
 
 //------------------------ Web Product Main Info CP
 $main_product_main_info_cp = htmlok( array(
-    'name'         => 'Web Product Main Info',
-    'structure'    => array(
+    'name'              => 'Web Product Main Info',
+    'structure'         => array(
         'type'          => 'component',
         'hr_structure'  => true,
     ),
-    'css'           => 'wbp-main-info',
-    'content'       => array(
+    'css'               => 'wbp-main-info',
+    'content'           => array(
         $web_product_main_name_obj,
         $web_product_main_logo_obj,
         $web_product_main_desc_obj,

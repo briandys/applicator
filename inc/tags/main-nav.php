@@ -61,14 +61,13 @@ if ( ! function_exists( 'applicator_func_main_nav' ) ) {
         <?php }
         
         $main_navigation_cp = htmlok( array(
-            'name'          => 'Main Navigation',
-            'structure'     => array(
-                'type'      => 'component',
-                'elem'      => 'nav',
-                'h_elem'    => 'h2',
+            'name'              => 'Main Navigation',
+            'structure'         => array(
+                'type'          => 'component',
+                'elem'          => 'nav',
             ),
-            'css'           => 'main-nav',
-            'content'       => 'Main Nav!!!',
+            'css'               => 'main-nav',
+            'content'           => 'Main Nav!!!',
         ) );
         
         return $main_navigation_cp;
