@@ -361,12 +361,19 @@ function htmlok( $args = array() ) {
                 $h_elem_tag = 'h2';
             }
             
-            if ( in_array( $structure_elem, $structure_subtype_fs_item_term_variations, true ) ) {}
+            // Fieldset Item Subtyoe
+            if ( in_array( $structure_subtype, $structure_subtype_fs_item_term_variations, true ) ) {
+                $structure_subtype_name = 'Fieldset Item';
+                $structure_subtype_abbr = 'fs-item';
+            }
         
+            
             $structure_name = $name.' '.$structure_type_abbr;
             $sanitized_structure_type = substr( sanitize_title( $structure_type_abbr ), $substr_start, $substr_end );
+            $sanitized_structure_subtype = substr( sanitize_title( $structure_subtype_abbr ), $substr_start, $substr_end );
             
             $structure_type_css = ' '.$sanitized_structure_type;
+            $structure_subtype_css = ' '.$sanitized_structure_subtype;
             
             if ( ! empty( $css ) ) {
                 $cssx = ' '.$css_val;
@@ -772,7 +779,7 @@ function htmlok( $args = array() ) {
             $output .= '<'.$branch_tag.' class="cr'.$cssx.'---cr" '.$href_attr.'>';
             
             // Header Content
-            if ( $hr_structure || ! empty( $hr_content ) || ! empty( $r_structure_h_elem ) || in_array( $structure_elem, $structure_elem_nav_term_variations, true ) ) {
+            if ( $hr_structure || ! empty( $hr_content ) || ! empty( $r_structure_h_elem ) || in_array( $structure_elem, $structure_elem_nav_term_variations, true ) || in_array( $structure_subtype, $structure_subtype_fs_item_term_variations, true ) ) {
                 $output .= $hr_mu;
             }
             

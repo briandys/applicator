@@ -88,12 +88,12 @@ $search_term_creation_cp = htmlok( array(
     'name'              => $search_term_creation_name,
     'structure'         => array(
         'type'          => 'component',
+        'subtype'       => 'fieldset item',
     ),
     'content'           => array(
         $search_term_creation_label_obj,
         $search_term_creation_input_obj,
     ),
-    'echo'              => true,
 ) );
 
 $search_cp = htmlok( array(
@@ -101,6 +101,6 @@ $search_cp = htmlok( array(
     'structure'     => array(
         'type'      => 'component',
     ),
-    'content'       => 'Search Form',
+    'content'       => $search_term_creation_cp,
     'echo'          => true,
 ) );
