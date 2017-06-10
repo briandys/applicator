@@ -90,25 +90,9 @@ function htmlok( $args = array() ) {
     
     
     //------------ Term Variations
-    $structure_constructor_term_variations = array( 'Constructor', 'constructor', 'cn', );
-    $structure_module_term_variations = array( 'Module', 'module', 'md', );
-    $structure_component_term_variations = array( 'Component', 'component', 'cp', );
-    
-    $structure_nav_term_variations = array( 'Navigation', 'Nav', 'n', );
-    $structure_aside_term_variations = array( 'Aside', 'as', );
-    $structure_object_term_variations = array( 'Object', 'obj', );
-    
-    $elem_header_term_variations = array( 'header', 'hr', );
-    $elem_aside_term_variations = array( 'aside', 'as', );
-    
-    $obj_elem_anchor_term_variations = array( 'anchor', 'a', );
-    
-    $layout_block_term_variations = array( 'Block', 'block', 'b', );
-    $layout_inline_term_variations = array( 'Inline', 'inline', 'i', );
-    
-    $structure_type_constructor_term_variations = array( 'Constructor', 'constructor', 'cn', );
-    $structure_type_component_term_variations = array( 'Component', 'component', 'cp', );
-    $structure_type_object_term_variations = array( 'Object', 'object', 'obj', );
+    $structure_type_constructor_term_variations = array( 'constructor', 'cn', );
+    $structure_type_component_term_variations = array( 'component', 'cp', );
+    $structure_type_object_term_variations = array( 'object', 'obj', );
     
     $structure_layout_block_term_variations = array( 'Block', 'block', 'div', );
     $structure_layout_inline_term_variations = array( 'Inline', 'inline', 'span', );
@@ -208,6 +192,7 @@ function htmlok( $args = array() ) {
     $obj_content_css = '';
     
     $mod = '';
+    $root_tag_css = '';
     
     $version = '';
     $echo = '';
@@ -305,7 +290,7 @@ function htmlok( $args = array() ) {
     
     // Structure Type
     if ( ! empty( $r['structure']['type'] ) ) {
-        $r_structure_type = preg_replace( $pat_space, $rep_space, trim( $r['structure']['type'] ) );
+        $r_structure_type = strtolower( preg_replace( $pat_space, $rep_space, trim( $r['structure']['type'] ) ) );
         $structure_type = $r_structure_type;
         
         //------------------------ Constructor
@@ -331,13 +316,15 @@ function htmlok( $args = array() ) {
             $structure_name = $name.' '.$structure_type_abbr;
             $sanitized_structure_type = substr( sanitize_title( $structure_type_abbr ), $substr_start, $substr_end );
             
-            $structure_type_css = $sanitized_structure_type;
+            $structure_type_css = ' '.$sanitized_structure_type;
             
             if ( ! empty( $css ) ) {
                 $cssx = ' '.$css_val;
             } else {
                 $cssx = ' '.$sanitized_name;
             }
+            
+            $root_tag_css = $root_tagx;
         
         //------------------------ Component
         } elseif ( in_array( $structure_type, $structure_type_component_term_variations, true ) ) {
@@ -364,20 +351,20 @@ function htmlok( $args = array() ) {
                 $root_tagx = 'nav';
                 $role_attrx = ' '.'role="navigation"';
                 $h_elem_tag = 'h2';
-            } else {
-                
             }
         
             $structure_name = $name.' '.$structure_type_abbr;
             $sanitized_structure_type = substr( sanitize_title( $structure_type_abbr ), $substr_start, $substr_end );
             
-            $structure_type_css = $sanitized_structure_type;
+            $structure_type_css = ' '.$sanitized_structure_type;
             
             if ( ! empty( $css ) ) {
                 $cssx = ' '.$css_val;
             } else {
                 $cssx = ' '.$sanitized_name;
             }
+            
+            $root_tag_css = $root_tagx;
             
         //------------------------ Object
         } elseif ( in_array( $structure_type, $structure_type_object_term_variations, true ) ) {
@@ -499,11 +486,10 @@ function htmlok( $args = array() ) {
             $structure_subtype_css = ' '.$sanitized_structure_subtype;
             
             if ( ! empty( $css ) ) {
-                $cssx = ' '.$css_val.'-'.$structure_type_css;
+                $cssx = ' '.$css_val.'-'.$sanitized_structure_type;
             } else {
                 $cssx = ' '.$sanitized_name.'-'.$sanitized_structure_subtype.'-'.$sanitized_structure_type;
             }
-            
             
         }
             
@@ -708,12 +694,8 @@ function htmlok( $args = array() ) {
     $cr_mu_end      = '';
     
     $cr_mu_start   .= '<div class="%1$s'.$cssx.'---%1$s">';
-    
-    if ( ! in_array( $mod, $mod_main_nav_term_variations, true ) ) {
-        $cr_mu_start   .= '<div class="%1$s_cr'.$cssx.'---%1$s_cr">';
-        $cr_mu_end     .= '</div>';
-    }
-    
+    $cr_mu_start   .= '<div class="%1$s_cr'.$cssx.'---%1$s_cr">';
+    $cr_mu_end     .= '</div>';
     $cr_mu_end     .= '</div>';
         
     
@@ -755,7 +737,7 @@ function htmlok( $args = array() ) {
         // Initialize
         $output = '';
         
-        $output .= '<'.$root_tagx.$id_attrx.' class="'.$structure_type_css.$structure_subtype_css.$cssx.$root_css.'" '.$role_attrx.$title_attr.' data-name="'.$structure_name.'">';
+        $output .= '<'.$root_tagx.$id_attrx.' class="'.$root_tag_css.$structure_type_css.$structure_subtype_css.$cssx.$root_css.'" '.$role_attrx.$title_attr.' data-name="'.$structure_name.'">';
         
         
         //------------ Constructor, Module, Component Structure Types
