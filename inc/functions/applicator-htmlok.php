@@ -27,6 +27,10 @@ function htmlok( $args = array() ) {
         'content'       => array(
             'Content 1',
             'Content 2',
+            array(
+                'form label'    => '',
+                'form element'  => '',
+            ),
         ),
         */
         'hr_content'    => '', // Header Content
@@ -67,6 +71,7 @@ function htmlok( $args = array() ) {
                 'linked'    => false,
             ),
         ),
+        'mod'           => '', // Modification: Markup for special cases
         'version'       => '', // Version: to be able to supply new code in the same function
         'echo'          => false, // Echo: defaults to return
     );
@@ -107,11 +112,13 @@ function htmlok( $args = array() ) {
     $structure_subtype_heading_term_variations = array( 'Heading', 'heading', 'h', );
     $structure_subtype_wpg_term_variations = array( 'WordPress Generated Content', 'wordpress generated content', 'wpg', );
     
+    $structure_subtype_fs_item_term_variations = array( 'fieldset item', 'fs-item', );
+    
     $structure_obj_elem_generic_term_variations = array( 'Generic', 'generic', 'g', );
     $structure_obj_elem_anchor_term_variations = array( 'Anchor', 'anchor', 'a', );
     $structure_obj_elem_heading_term_variations = array( 'Heading', 'heading', 'h', );
     
-    $mod_main_nav_term_variations = array( 'Main Navigation', 'main nav', );
+    $mod_main_nav_term_variations = array( 'main navigation', 'main nav', );
     
     $heading_level_term_variations = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', );
     
@@ -251,7 +258,7 @@ function htmlok( $args = array() ) {
     
     // Mod
     if ( ! empty( $r['mod'] ) ) {
-        $r_mod = preg_replace( $pat_space, $rep_space, trim( $r['mod'] ) );
+        $r_mod = strtolower( preg_replace( $pat_space, $rep_space, trim( $r['mod'] ) ) );
         $mod = $r_mod;
     }
     
@@ -267,6 +274,7 @@ function htmlok( $args = array() ) {
     // Structure Subtype
     if ( ! empty( $r['structure']['subtype'] ) ) {
         $r_structure_subtype = preg_replace( $pat_space, $rep_space, trim( $r['structure']['subtype'] ) );
+        $structure_subtype = $r_structure_subtype;
     }
     
     
@@ -352,6 +360,8 @@ function htmlok( $args = array() ) {
                 $role_attrx = ' '.'role="navigation"';
                 $h_elem_tag = 'h2';
             }
+            
+            if ( in_array( $structure_elem, $structure_subtype_fs_item_term_variations, true ) ) {}
         
             $structure_name = $name.' '.$structure_type_abbr;
             $sanitized_structure_type = substr( sanitize_title( $structure_type_abbr ), $substr_start, $substr_end );
@@ -410,35 +420,35 @@ function htmlok( $args = array() ) {
             //------------------------ Object Subtypes
             
             // Subtype: Generic Label
-            if ( in_array( $r_structure_subtype, $structure_subtype_glabel_term_variations, true ) ) {
-                $structure_subtype = 'Generic Label';
+            if ( in_array( $structure_subtype, $structure_subtype_glabel_term_variations, true ) ) {
+                $structure_subtype_name = 'Generic Label';
                 $structure_subtype_abbr = 'glabel';
                 $branch_css = 'g';
             }
             
             // Subtype: Link
-            elseif ( in_array( $r_structure_subtype, $structure_subtype_link_term_variations, true ) ) {
-                $structure_subtype = 'Link';
+            elseif ( in_array( $structure_subtype, $structure_subtype_link_term_variations, true ) ) {
+                $structure_subtype_name = 'Link';
                 $structure_subtype_abbr = 'link';
             }
             
             // Subtype: Heading
-            elseif ( in_array( $r_structure_subtype, $structure_subtype_heading_term_variations, true ) ) {
-                $structure_subtype = 'Heading';
+            elseif ( in_array( $structure_subtype, $structure_subtype_heading_term_variations, true ) ) {
+                $structure_subtype_name = 'Heading';
                 $structure_subtype_abbr = 'heading';
                 $branch_css = 'h';
             }
             
             // Subtype: WordPress Generated Content
-            elseif ( in_array( $r_structure_subtype, $structure_subtype_wpg_term_variations, true ) ) {
-                $structure_subtype = 'WordPress Generated';
+            elseif ( in_array( $structure_subtype, $structure_subtype_wpg_term_variations, true ) ) {
+                $structure_subtype_name = 'WordPress Generated';
                 $structure_subtype_abbr = 'wpg';
                 $branch_css = 'wpg';
             }
             
             // Subtype: Generic Label
             else {
-                $structure_subtype = 'Generic';
+                $structure_subtype_name = 'Generic';
                 $branch_css = 'g';
             }
             
@@ -478,7 +488,7 @@ function htmlok( $args = array() ) {
             
             // End: Object Elements
         
-            $structure_name = $name.' '.$structure_subtype.' '.$structure_type_abbr;
+            $structure_name = $name.' '.$structure_subtype_name.' '.$structure_type_abbr;
             $sanitized_structure_type = substr( sanitize_title( $structure_type_abbr ), $substr_start, $substr_end );
             $sanitized_structure_subtype = substr( sanitize_title( $structure_subtype_abbr ), $substr_start, $substr_end );
             
@@ -531,7 +541,9 @@ function htmlok( $args = array() ) {
         
         $content_val = '';
         foreach ( ( array ) $content as $val ) {
+            
             $content_val .= preg_replace( $pat_space, $rep_space, trim( $val ) );
+        
         }
     }
     
@@ -692,12 +704,18 @@ function htmlok( $args = array() ) {
     $cr_mu    = '';
     $cr_mu_start    = '';
     $cr_mu_end      = '';
+    $main_nav_cr_start_mu      = '';
+    $main_nav_cr_end_mu      = '';
     
     $cr_mu_start   .= '<div class="%1$s'.$cssx.'---%1$s">';
     $cr_mu_start   .= '<div class="%1$s_cr'.$cssx.'---%1$s_cr">';
     $cr_mu_end     .= '</div>';
     $cr_mu_end     .= '</div>';
-        
+    
+    // For Main Nav Mod
+    $main_nav_cr_start_mu   .= '<div class="%1$s'.$cssx.'---%1$s">';
+    $main_nav_cr_end_mu     .= '</div>';
+    
     
     // Header Markup
     $hr_mu = '';
@@ -710,11 +728,19 @@ function htmlok( $args = array() ) {
 
     // Content Markup
     $ct_mu = '';
-    $ct_mu .= sprintf( $cr_mu_start,
-        'ct'
-    );
-    $ct_mu .= $content_val;
-    $ct_mu .= $cr_mu_end;
+    if ( ! in_array( $mod, $mod_main_nav_term_variations, true ) ) {
+        $ct_mu .= sprintf( $cr_mu_start,
+            'ct'
+        );
+        $ct_mu .= $content_val;
+        $ct_mu .= $cr_mu_end;
+    } else {
+        $ct_mu .= sprintf( $main_nav_cr_start_mu,
+            'ct'
+        );
+        $ct_mu .= $content_val;
+        $ct_mu .= $main_nav_cr_end_mu;
+    }
 
     // Footer Markup
     $fr_mu = '';

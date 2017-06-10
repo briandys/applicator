@@ -81,26 +81,26 @@ if ( ! function_exists( 'applicator_func_main_navx' ) ) {
     function applicator_func_main_navx() {
         
         // Variables
-        $main_nav_term = 'main-nav';
-        $main_nav_css = $main_nav_term;
-        $main_nav_frame_css = $main_nav_term.'-grp--frame';
+        $main_nav_text = 'main-nav';
+        $main_nav_css = $main_nav_text;
+        $main_nav_ct_cr_css = 'ct_cr main-nav---ct_cr';
         $main_nav_group_start_mu = '<ul class="grp '. $main_nav_css . '---grp' .'">';
         $main_nav_group_end_mu = '</ul>';
         $main_nav_a_l_start_mu = '<span class="a_l main-navi---a_l"><span class="txt navi---txt">';
         $main_nav_a_l_end_mu = '</span></span>';
         
         
-        if ( wp_nav_menu( array( 'theme_location' => $main_nav_term, 'echo' => false ) ) !== false) {
+        if ( wp_nav_menu( array( 'theme_location' => $main_nav_text, 'echo' => false ) ) !== false) {
         
             ob_start();
-            if ( ! has_nav_menu( $main_nav_term ) ) {
+            if ( ! has_nav_menu( $main_nav_text ) ) {
 
                 // Default Menu
                 // Nav Item <li class="page_item">
                 // Current Nav Item <li class="current_page_item">
                 // Sub Navigation <ul class="children">
                 wp_page_menu( array(
-                    'menu_class'        => $main_nav_frame_css, // <div> class
+                    'menu_class'        => $main_nav_ct_cr_css, // <div> class
                     'link_before'       => $main_nav_a_l_start_mu,
                     'link_after'        => $main_nav_a_l_end_mu,
                     'show_home'         => true,
@@ -115,9 +115,9 @@ if ( ! function_exists( 'applicator_func_main_navx' ) ) {
                 // Current Nav Item <li class="current-menu-item">
                 // Sub Navigation <ul class="sub-menu">
                 wp_nav_menu( array(
-                    'theme_location'    => $main_nav_term,
+                    'theme_location'    => $main_nav_text,
                     'container'         => 'div',
-                    'container_class'   => $main_nav_frame_css, // <div> class
+                    'container_class'   => $main_nav_ct_cr_css, // <div> class
                     'link_before'       => $main_nav_a_l_start_mu,
                     'link_after'        => $main_nav_a_l_end_mu,
                     'items_wrap'        => $main_nav_group_start_mu.'%3$s'.$main_nav_group_end_mu,
@@ -134,6 +134,7 @@ if ( ! function_exists( 'applicator_func_main_navx' ) ) {
                     'type'  => 'component',
                     'elem'  => 'nav',
                 ),
+                'mod'       => 'Main Navigation',
                 'id'        => 'main-nav',
                 'css'       => $main_nav_css,
                 'content'   => $main_nav,

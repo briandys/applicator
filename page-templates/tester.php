@@ -178,17 +178,17 @@ $main_product_main_info_cp = htmlok( array(
 
 //------------------------ Main Header CN
 $main_header_cn = htmlok( array(
-    'name'             => 'Main Header',
-    'structure'        => array(
+    'name'              => 'Main Header',
+    'structure'         => array(
         'type'          => 'constructor',
         'elem'          => 'header',
         'attr'          => array(
             'role'      => 'banner',
         ),
     ),
-    'id'           => 'main-header',
-    'root_css'      => 'site-header',
-    'content'       => array(
+    'id'                => 'main-header',
+    'root_css'          => 'site-header',
+    'content'           => array(
         $main_product_main_info_cp,
         applicator_func_main_navx(),
         applicator_hook_after_main_nav(),
@@ -196,5 +196,5 @@ $main_header_cn = htmlok( array(
         $web_product_main_media_banner_obj,
         applicator_func_main_header_aside(),
     ),
-    'echo'          => true,
+    'echo'              => true,
 ) );

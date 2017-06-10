@@ -61,3 +61,46 @@ $unique_id = esc_attr( uniqid( 'search-term-creation-input--' ) );
         </div><!-- ct -->
     </div>
 </div><!-- Search -->
+
+<?php
+
+// Variables
+$search_term_creation_name = 'Search Term Creation';
+
+$search_term_creation_label_obj = htmlok( array(
+    'name'          => $search_term_creation_name.' '.'Label',
+    'structure'     => array(
+        'type'      => 'object',
+        'subtype'   => 'form label',
+    ),
+    'obj_content'   => '<label>Hello</label>',
+) );
+$search_term_creation_input_obj = htmlok( array(
+    'name'          => $search_term_creation_name.' '.'Input',
+    'structure'     => array(
+        'type'      => 'object',
+        'subtype'   => 'form element',
+    ),
+    'obj_content'   => '<input>',
+) );
+
+$search_term_creation_cp = htmlok( array(
+    'name'              => $search_term_creation_name,
+    'structure'         => array(
+        'type'          => 'component',
+    ),
+    'content'           => array(
+        $search_term_creation_label_obj,
+        $search_term_creation_input_obj,
+    ),
+    'echo'              => true,
+) );
+
+$search_cp = htmlok( array(
+    'name'          => 'Search',
+    'structure'     => array(
+        'type'      => 'component',
+    ),
+    'content'       => 'Search Form',
+    'echo'          => true,
+) );
