@@ -19,11 +19,13 @@
     }
 
     .cn,
-    .cp
+    .cp,
+    .obj
     {
         margin: .5rem;
         padding: .5rem;
         border: 2px solid black;
+        border-radius: .25rem;
     }
     
     .cn
@@ -36,6 +38,11 @@
         border-color: green;
     }
     
+    .obj
+    {
+        border-color: blue;
+    }
+    
     .cn::before,
     .cp::before,
     .obj::before
@@ -45,6 +52,7 @@
         margin-left: -.5rem;
         margin-top: -.5rem;
         padding: .25rem;
+        width: calc( 100% + .5rem );
         background-color: black;
         color: white;
     }
@@ -67,9 +75,6 @@
     .obj
     {
         display: inline-block;
-        margin: .5rem;
-        padding: .5rem;
-        border: 2px solid blue;
         
     }
     
@@ -82,7 +87,6 @@ $web_product_main_name_obj = htmlok( array(
     'name'      => 'Web Product Main Name',
     'structure' => array(
         'type'      => 'object',
-        'subtype'   => 'heading',
         'elem'      => 'heading',
         'attr'      => array(
             'h_level'   => 'h1',

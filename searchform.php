@@ -66,22 +66,46 @@ $unique_id = esc_attr( uniqid( 'search-term-creation-input--' ) );
 
 // Variables
 $search_term_creation_name = 'Search Term Creation';
+$search_term_creation_css = 'search-term-crt';
 
 $search_term_creation_label_obj = htmlok( array(
-    'name'          => $search_term_creation_name.' '.'Label',
+    'name'          => $search_term_creation_name,
     'structure'     => array(
         'type'      => 'object',
         'subtype'   => 'form label',
+        'elem'      => 'label',
+        'attr'      => array(
+            'for'   => $unique_id,
+        ),
     ),
-    'obj_content'   => '<label>Hello</label>',
+    'css'           => $search_term_creation_css,
+    'obj_content'   => array(
+        array(
+            'txt'   => 'Search Term',
+        ),
+    ),
 ) );
+
 $search_term_creation_input_obj = htmlok( array(
-    'name'          => $search_term_creation_name.' '.'Input',
-    'structure'     => array(
-        'type'      => 'object',
-        'subtype'   => 'form element',
+    'name'                      => $search_term_creation_name,
+    'structure'                 => array(
+        'type'                  => 'object',
+        'subtype'               => 'form element',
     ),
-    'obj_content'   => '<input>',
+    'css'                       => 'search-term-crt',
+    'obj_content'               => array(
+        array(
+            'form_elem'         => 'input',
+            'id'                => $unique_id,
+            'css'               => $search_term_creation_css,
+            'attr'              => array(
+                'type'          => 'text',
+                'name'          => 's',
+                'placeholder'   => 'Enter Search Term',
+                'value'         => get_search_query(),
+            ),
+        ),
+    ),
 ) );
 
 $search_term_creation_cp = htmlok( array(
@@ -90,17 +114,31 @@ $search_term_creation_cp = htmlok( array(
         'type'          => 'component',
         'subtype'       => 'fieldset item',
     ),
+    'css'           => $search_term_creation_css,
     'content'           => array(
         $search_term_creation_label_obj,
         $search_term_creation_input_obj,
     ),
 ) );
 
+$search_term_creation_fieldsets_cn = htmlok( array(
+    'name'          => $search_term_creation_name,
+    'structure'     => array(
+        'type'      => 'constructor',
+        'subtype'   => 'fieldsets',
+    ),
+    'css'           => $search_term_creation_css,
+    'content'       => $search_term_creation_cp,
+) );
+
+$search_form_start_mu = '<form class="form search-form" action="'.esc_url( home_url( '/' ) ).'" method="get" role="search">';
+$search_form_end_mu = '</form>';
+
 $search_cp = htmlok( array(
     'name'          => 'Search',
     'structure'     => array(
         'type'      => 'component',
     ),
-    'content'       => $search_term_creation_cp,
+    'content'       => $search_form_start_mu. $search_term_creation_fieldsets_cn. $search_form_end_mu,
     'echo'          => true,
 ) );
