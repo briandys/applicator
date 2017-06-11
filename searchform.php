@@ -134,11 +134,23 @@ $search_term_creation_fieldsets_cn = htmlok( array(
 $search_form_start_mu = '<form class="form search-form" action="'.esc_url( home_url( '/' ) ).'" method="get" role="search">';
 $search_form_end_mu = '</form>';
 
+$search_form_cp = htmlok( array(
+    'name'          => 'Search',
+    'structure'     => array(
+        'type'      => 'component',
+        'elem'      => 'form',
+        'attr'      => array(
+            'role'  => 'search',
+        ),
+    ),
+    'content'       => $search_term_creation_fieldsets_cn,
+) );
+
 $search_cp = htmlok( array(
     'name'          => 'Search',
     'structure'     => array(
         'type'      => 'component',
     ),
-    'content'       => $search_form_start_mu. $search_term_creation_fieldsets_cn. $search_form_end_mu,
+    'content'       => $search_form_cp,
     'echo'          => true,
 ) );

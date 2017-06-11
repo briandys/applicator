@@ -110,12 +110,14 @@ function htmlok( $args = array() ) {
     
     // Component Element
     $structure_elem_nav_term_variations = array( 'Navigation', 'Nav', 'nav', 'n', );
+    $structure_elem_form_term_variations = array( 'Form', 'form', 'f', );
     
     // Constructor Subtypes
     $structure_subtype_fieldsets_term_variations = array( 'fieldsets', 'fsets', );
     
     // Component Subtypes
     $structure_subtype_fs_item_term_variations = array( 'fieldset item', 'fs-item', );
+    $structure_subtype_form_term_variations = array( 'Form', 'form', 'f', );
     
     // Object Subtypes
     $structure_subtype_glabel_term_variations = array( 'Generic Label', 'generic label', 'glabel', 'gl', );
@@ -222,6 +224,7 @@ function htmlok( $args = array() ) {
     
     $structure_subtype_name = '';
     $structure_subtype_postfix = '';
+    $structure_subtype_name_postfix = '';
     $name_css = '';
     
     
@@ -349,9 +352,10 @@ function htmlok( $args = array() ) {
                 $structure_subtype_css = ' '.substr( sanitize_title( $structure_subtype_abbr ), $substr_start, $substr_end );
                 
                 $structure_subtype_postfix = '-'.$structure_subtype_abbr;
+                $structure_subtype_name_postfix = ' '.$structure_subtype_name;
             }
         
-            $structure_name = $name.' '.$structure_subtype_name.' '.$structure_type_abbr;
+            $structure_name = $name.$structure_subtype_name_postfix.' '.$structure_type_abbr;
             $sanitized_structure_type = substr( sanitize_title( $structure_type_abbr ), $substr_start, $substr_end );
             $structure_type_css = $sanitized_structure_type;
             
@@ -392,6 +396,11 @@ function htmlok( $args = array() ) {
                 $h_elem_tag = 'h2';
             }
             
+            // Nav Element
+            elseif ( in_array( $structure_elem, $structure_elem_form_term_variations, true ) ) {
+                $root_tagx = 'form';
+            }
+            
             // Fieldset Item Subtype
             if ( in_array( $structure_subtype, $structure_subtype_fs_item_term_variations, true ) ) {
                 $structure_subtype_name = 'Fieldset Item';
@@ -400,10 +409,22 @@ function htmlok( $args = array() ) {
                 $structure_subtype_css = ' '.substr( sanitize_title( $structure_subtype_abbr ), $substr_start, $substr_end );
                 
                 $structure_subtype_postfix = '-'.$structure_subtype_abbr;
+                $structure_subtype_name_postfix = ' '.$structure_subtype_name;
+            }
+            
+            // Form Subtype
+            elseif ( in_array( $structure_subtype, $structure_subtype_form_term_variations, true ) ) {
+                $structure_subtype_name = 'Form';
+                $structure_subtype_abbr = 'form';
+                
+                $structure_subtype_css = ' '.substr( sanitize_title( $structure_subtype_abbr ), $substr_start, $substr_end );
+                
+                $structure_subtype_postfix = '-'.$structure_subtype_abbr;
+                $structure_subtype_name_postfix = ' '.$structure_subtype_name;
             }
         
             
-            $structure_name = $name.' '.$structure_subtype_name.' '.$structure_type_abbr;
+            $structure_name = $name.$structure_subtype_name_postfix.' '.$structure_type_abbr;
             $sanitized_structure_type = substr( sanitize_title( $structure_type_abbr ), $substr_start, $substr_end );
             $structure_type_css = $sanitized_structure_type;
             
