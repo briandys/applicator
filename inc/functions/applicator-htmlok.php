@@ -101,7 +101,7 @@ function htmlok( $args = array() ) {
     $structure_type_object_term_variations = array( 'object', 'obj', );
     
     $structure_layout_block_term_variations = array( 'Block', 'block', 'div', );
-    $structure_layout_inline_term_variations = array( 'Inline', 'inline', 'span', );
+    $layout_inline_terms = array( 'Inline', 'inline', 'span', );
     
     // Constructor Elements
     $structure_elem_header_term_variations = array( 'Header', 'header', 'hr', );
@@ -117,7 +117,7 @@ function htmlok( $args = array() ) {
     
     // Component Subtypes
     $structure_subtype_fs_item_term_variations = array( 'fieldset item', 'fs-item', );
-    $structure_subtype_form_term_variations = array( 'Form', 'form', 'f', );
+    $subtype_form_terms = array( 'Form', 'form', 'f', );
     
     // Object Subtypes
     $structure_subtype_glabel_term_variations = array( 'Generic Label', 'generic label', 'glabel', 'gl', );
@@ -156,7 +156,10 @@ function htmlok( $args = array() ) {
     $r_structure_elem = '';
     $r_structure_layout = '';
     $r_structure_attr_href = '';
+    
+    // X
     $r_structure_subtype = '';
+    
     $r_hr_structure = '';
     $hr_structure = '';
     $sanitized_name = '';
@@ -165,7 +168,7 @@ function htmlok( $args = array() ) {
     $structure_type_css = '';
     $structure_subtype_css = '';
     $structure_subtype_abbr = '';
-    $cssx = '';
+    $css = '';
     $id_attrx = '';
     $sanitized_id = '';
     $id = '';
@@ -186,7 +189,7 @@ function htmlok( $args = array() ) {
     $structure_elem = '';
     
     $layout_tag = 'div';
-    $root_tagx = $layout_tag;
+    $root_tag = $layout_tag;
     $branch_tag = $layout_tag;
     
     $structure_name = '';
@@ -226,6 +229,33 @@ function htmlok( $args = array() ) {
     $structure_subtype_postfix = '';
     $structure_subtype_name_postfix = '';
     $name_css = '';
+    
+    
+    // X
+    // Output
+    $o_root_cssx = '';
+    $o_structure_namex = '';
+    $o_heading_namex = '';
+    
+    // Root Element by default is div
+    // It can be changed depending on the Subtype of Element involved
+    // In Object, it can be div or span depending on the Layout
+    $o_root_elemx = 'div';
+    $layout_elemx = 'div';
+    $subtype_elemx = 'div';
+    
+    // X
+    // Processed
+    $p_subtype_namex = '';
+    $p_structure_name_abbrx = '';
+    $p_structure_cssx = '';
+    
+    // X
+    $p_root_elem_cssx = '';
+    
+    $structure_namex = '';
+    $structure_name_abbrx = '';
+    $p_structure_subtype_cssx = '';
     
     
     
@@ -294,10 +324,10 @@ function htmlok( $args = array() ) {
         $role_attrx = ' '.'role="'.$sanitized_structure_attr_role.'"';
     }
     
+    // X
     // Structure Subtype
     if ( ! empty( $r['structure']['subtype'] ) ) {
         $r_structure_subtype = preg_replace( $pat_space, $rep_space, trim( $r['structure']['subtype'] ) );
-        $structure_subtype = $r_structure_subtype;
     }
     
     
@@ -326,26 +356,33 @@ function htmlok( $args = array() ) {
         
         //------------------------ Constructor
         if ( in_array( $structure_type, $structure_type_constructor_term_variations, true ) ) {
+            
+            $structure_namex = 'Constructor';
+            $structure_name_abbrx = 'CN';
+            
+            
+            
             $structure_type_abbr = 'CN';
             
             // Header Element
             if ( in_array( $structure_elem, $structure_elem_header_term_variations, true ) ) {
-                $root_tagx = 'header';
+                $root_tag = 'header';
             }
             
             // Footer Element
             elseif ( in_array( $structure_elem, $structure_elem_footer_term_variations, true ) ) {
-                $root_tagx = 'footer';
+                $root_tag = 'footer';
             }
             
             // Aside Element
             elseif ( in_array( $structure_elem, $structure_elem_aside_term_variations, true ) ) {
-                $root_tagx = 'aside';
+                $root_tag = 'aside';
                 $role_attrx = ' '.'role="complementary"';
             }
             
             // Fieldsets Subtype
-            if ( in_array( $structure_subtype, $structure_subtype_fieldsets_term_variations, true ) ) {
+            if ( in_array( $r_structure_subtype, $structure_subtype_fieldsets_term_variations, true ) ) {
+                
                 $structure_subtype_name = 'Fieldsets';
                 $structure_subtype_abbr = 'fieldsets';
                 
@@ -360,49 +397,51 @@ function htmlok( $args = array() ) {
             $structure_type_css = $sanitized_structure_type;
             
             if ( ! empty( $r['css'] ) ) {
-                $cssx = ' '.$css_val.$structure_subtype_postfix;
+                $css = ' '.$css_val.$structure_subtype_postfix;
             } else {
-                $cssx = ' '.$sanitized_name.$structure_subtype_postfix;
+                $css = ' '.$sanitized_name.$structure_subtype_postfix;
             }
             
-            if ( 'div' !== $root_tagx ) {
-                $root_tag_css = $root_tagx.' ';
+            if ( 'div' !== $root_tag ) {
+                $root_tag_css = $root_tag.' ';
             }
+        }
+        
         
         //------------------------ Component
-        } elseif ( in_array( $structure_type, $structure_type_component_term_variations, true ) ) {
+        elseif ( in_array( $structure_type, $structure_type_component_term_variations, true ) ) {
+            
+            $structure_namex = 'Component';
+            $structure_name_abbrx = 'CP';
+            
+            
             $structure_type_abbr = 'CP';
             
             // Header Element
             if ( in_array( $structure_elem, $structure_elem_header_term_variations, true ) ) {
-                $root_tagx = 'header';
+                $root_tag = 'header';
             }
             
             // Footer Element
             elseif ( in_array( $structure_elem, $structure_elem_footer_term_variations, true ) ) {
-                $root_tagx = 'footer';
+                $root_tag = 'footer';
             }
             
             // Aside Element
             elseif ( in_array( $structure_elem, $structure_elem_aside_term_variations, true ) ) {
-                $root_tagx = 'aside';
+                $root_tag = 'aside';
                 $role_attrx = ' '.'role="complementary"';
             }
             
             // Nav Element
             elseif ( in_array( $structure_elem, $structure_elem_nav_term_variations, true ) ) {
-                $root_tagx = 'nav';
+                $root_tag = 'nav';
                 $role_attrx = ' '.'role="navigation"';
                 $h_elem_tag = 'h2';
             }
             
-            // Nav Element
-            elseif ( in_array( $structure_elem, $structure_elem_form_term_variations, true ) ) {
-                $root_tagx = 'form';
-            }
-            
             // Fieldset Item Subtype
-            if ( in_array( $structure_subtype, $structure_subtype_fs_item_term_variations, true ) ) {
+            if ( in_array( $r_structure_subtype, $structure_subtype_fs_item_term_variations, true ) ) {
                 $structure_subtype_name = 'Fieldset Item';
                 $structure_subtype_abbr = 'fs-item';
                 
@@ -412,15 +451,38 @@ function htmlok( $args = array() ) {
                 $structure_subtype_name_postfix = ' '.$structure_subtype_name;
             }
             
+            
+            // X
             // Form Subtype
-            elseif ( in_array( $structure_subtype, $structure_subtype_form_term_variations, true ) ) {
+            // Automatically makes the element <form>
+            elseif ( in_array( $r_structure_subtype, $subtype_form_terms, true ) ) {
                 $structure_subtype_name = 'Form';
+                
+                $root_tag = 'form';
+                
                 $structure_subtype_abbr = 'form';
+                
                 
                 $structure_subtype_css = ' '.substr( sanitize_title( $structure_subtype_abbr ), $substr_start, $substr_end );
                 
                 $structure_subtype_postfix = '-'.$structure_subtype_abbr;
                 $structure_subtype_name_postfix = ' '.$structure_subtype_name;
+                
+                
+                //------------------------ X
+                // Metadata
+                $subtype_namex = 'Form';
+                $subtype_name_abbrx = 'form';
+                $subtype_elemx = 'formx';
+                //------------------------ X
+                
+                //------------------------ X
+                // Processed
+                $p_root_elem_cssx = $subtype_elemx;
+                $p_structure_subtype_cssx = '';
+                $p_subtype_namex = ' '.$subtype_namex;
+                //------------------------ X
+                
             }
         
             
@@ -429,30 +491,44 @@ function htmlok( $args = array() ) {
             $structure_type_css = $sanitized_structure_type;
             
             if ( ! empty( $r['css'] ) ) {
-                $cssx = ' '.$css_val.$structure_subtype_postfix;
+                $css = ' '.$css_val.$structure_subtype_postfix;
             } else {
-                $cssx = ' '.$sanitized_name.$structure_subtype_postfix;
+                $css = ' '.$sanitized_name.$structure_subtype_postfix;
             }
             
-            if ( 'div' !== $root_tagx ) {
-                $root_tag_css = $root_tagx.' ';
+            if ( 'div' !== $root_tag ) {
+                $root_tag_css = $root_tag.' ';
             }
+            
+            
+            
+            // X
+            // /for Objects, root element is dependent on Layout
+            $o_root_elemx = $subtype_elemx;
         }
             
         //------------------------ Object
         elseif ( in_array( $structure_type, $structure_type_object_term_variations, true ) ) {
+            
+            $structure_namex = 'Object';
+            $structure_name_abbrx = 'OBJ';
+            
             $structure_type_abbr = 'OBJ';
             
             // Layout
             if ( ! empty( $r['structure']['layout'] ) ) {
                 $r_structure_layout = preg_replace( $pat_no_space, $rep_no_space, trim( $r['structure']['layout'] ) );
                 
+                // X
                 // Inline Layout
-                if ( in_array( $r_structure_layout, $structure_layout_inline_term_variations, true ) ) {
+                if ( in_array( $r_structure_layout, $layout_inline_terms, true ) ) {
                     $layout_tag = 'span';
+                    
+                    // X
+                    $layout_elemx = 'span';
                 }
                 
-                $root_tagx = $layout_tag;
+                $root_tag = $layout_tag;
                 $branch_tag = $layout_tag;
                 $elem_label_tag = $layout_tag;
             }
@@ -483,41 +559,41 @@ function htmlok( $args = array() ) {
             //------------------------ Object Subtypes
             
             // Subtype: Generic Label
-            if ( in_array( $structure_subtype, $structure_subtype_glabel_term_variations, true ) ) {
+            if ( in_array( $r_structure_subtype, $structure_subtype_glabel_term_variations, true ) ) {
                 $structure_subtype_name = 'Generic Label';
                 $structure_subtype_abbr = 'glabel';
                 $branch_css = 'g';
             }
             
             // Subtype: Link
-            elseif ( in_array( $structure_subtype, $structure_subtype_link_term_variations, true ) ) {
+            elseif ( in_array( $r_structure_subtype, $structure_subtype_link_term_variations, true ) ) {
                 $structure_subtype_name = 'Link';
                 $structure_subtype_abbr = 'link';
             }
             
             // Subtype: Heading
-            elseif ( in_array( $structure_subtype, $structure_subtype_heading_term_variations, true ) ) {
+            elseif ( in_array( $r_structure_subtype, $structure_subtype_heading_term_variations, true ) ) {
                 $structure_subtype_name = 'Heading';
                 $structure_subtype_abbr = 'heading';
                 $branch_css = 'h';
             }
             
             // Subtype: WordPress Generated Content
-            elseif ( in_array( $structure_subtype, $structure_subtype_wpg_term_variations, true ) ) {
+            elseif ( in_array( $r_structure_subtype, $structure_subtype_wpg_term_variations, true ) ) {
                 $structure_subtype_name = 'WordPress Generated';
                 $structure_subtype_abbr = 'wpg';
                 $branch_css = $structure_subtype_abbr;
             }
             
             // Subtype: Form Label
-            elseif ( in_array( $structure_subtype, $structure_subtype_flabel_term_variations, true ) ) {
+            elseif ( in_array( $r_structure_subtype, $structure_subtype_flabel_term_variations, true ) ) {
                 $structure_subtype_name = 'Label';
                 $structure_subtype_abbr = 'flabel';
                 $branch_css = $structure_subtype_abbr;
             }
             
             // Subtype: Form Element
-            elseif ( in_array( $structure_subtype, $structure_subtype_felem_term_variations, true ) ) {
+            elseif ( in_array( $r_structure_subtype, $structure_subtype_felem_term_variations, true ) ) {
                 $structure_subtype_name = 'Input';
                 $structure_subtype_abbr = 'felem';
             }
@@ -545,7 +621,7 @@ function htmlok( $args = array() ) {
                     if ( in_array( $r_structure_attr_h_level, $heading_level_term_variations, true ) ) {
                         $layout_tag = 'div';
 
-                        $root_tagx = $layout_tag;
+                        $root_tag = $layout_tag;
                         $branch_tag = $h_level_tag;
                     }
                 }
@@ -565,13 +641,21 @@ function htmlok( $args = array() ) {
             $structure_subtype_css = ' '.$sanitized_structure_subtype;
             
             if ( ! empty( $r['css'] ) ) {
-                $cssx = ' '.$css_val.'-'.$sanitized_structure_subtype.'-'.$sanitized_structure_type;
+                $css = ' '.$css_val.'-'.$sanitized_structure_subtype.'-'.$sanitized_structure_type;
                 $name_css = ' '.$sanitized_name.'-'.$sanitized_structure_subtype.'-'.$sanitized_structure_type;
             } else {
-                $cssx = ' '.$sanitized_name.'-'.$sanitized_structure_subtype.'-'.$sanitized_structure_type;
+                $css = ' '.$sanitized_name.'-'.$sanitized_structure_subtype.'-'.$sanitized_structure_type;
             }
             
             $root_tag_css = '';
+            
+            // X
+            // No need to display "div" or "span" in class name since in Object, layout is either div or span
+            $p_root_elem_cssx = '';
+            
+            // X
+            // /for Objects, root element is dependent on Layout
+            $o_root_elemx = $layout_elemx;
             
         }
             
@@ -581,7 +665,55 @@ function htmlok( $args = array() ) {
         }
         
         $heading_name = $name.' '.$structure_subtype_name;
+            
+        
+        // X
+        // Processed
+        // Structure is generic that's why it's here in the generics section
+        if ( 'div' !== $subtype_elemx ) {
+            $string_sepx = ' ';
+        }
+        else {
+            $string_sepx = '';
+        }
+        
+        $p_structure_cssx = $string_sepx. strtolower( $structure_name_abbrx );
+        
+        // X
+        // Processed
+        $p_structure_name_abbrx = ' '.$structure_name_abbrx;
+
+        // X
+        // Processed Name
+        $p_name = $r_name;
+        
+        // X
+        // Output
+        // This goes into class=""
+        // Structure Subtype is specific to subtypes
+        $o_root_cssx = $p_root_elem_cssx.$p_structure_cssx.$p_structure_subtype_cssx;
+        
+        // X
+        $o_structure_namex = $p_name.$p_subtype_namex.$p_structure_name_abbrx;
+        
+        $o_heading_namex = $p_name.$p_subtype_namex;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     // Structure Title
     if ( ! empty( $r['structure']['attr']['title'] ) ) {
@@ -870,29 +1002,29 @@ function htmlok( $args = array() ) {
     
     // Container Markup Structure
     $cr_mu    = '';
-    $cr_mu_start    = '';
-    $cr_mu_end      = '';
+    $cr_start_mu    = '';
+    $cr_end_mu      = '';
     $main_nav_cr_start_mu      = '';
     $main_nav_cr_end_mu      = '';
     
-    $cr_mu_start   .= '<div class="%1$s'.$cssx.'---%1$s">';
-    $cr_mu_start   .= '<div class="%1$s_cr'.$cssx.'---%1$s_cr">';
-    $cr_mu_end     .= '</div>';
-    $cr_mu_end     .= '</div>';
+    $cr_start_mu   .= '<div class="%1$s'.$css.'---%1$s">';
+    $cr_start_mu   .= '<div class="%1$s_cr'.$css.'---%1$s_cr">';
+    $cr_end_mu     .= '</div>';
+    $cr_end_mu     .= '</div>';
     
     // For Main Nav Mod
-    $main_nav_cr_start_mu   .= '<div class="%1$s'.$cssx.'---%1$s">';
+    $main_nav_cr_start_mu   .= '<div class="%1$s'.$css.'---%1$s">';
     $main_nav_cr_end_mu     .= '</div>';
     
     
     // Header Markup
     $hr_mu = '';
-    $hr_mu .= sprintf( $cr_mu_start,
+    $hr_mu .= sprintf( $cr_start_mu,
         'hr'
     );
-    $hr_mu .= '<'.$h_elem_tag.' class="h'.$cssx.'---h"><span class="h_l'.$cssx.'---h_l">'.$heading_name.'</span></'.$h_elem_tag.'>';
+    $hr_mu .= '<'.$h_elem_tag.' class="h'.$css.'---h"><span class="h_l'.$css.'---h_l">'.$o_heading_namex.' | '.$heading_name.'</span></'.$h_elem_tag.'>';
     $hr_mu .= $hr_content_val;
-    $hr_mu .= $cr_mu_end;
+    $hr_mu .= $cr_end_mu;
 
     // Content Markup
     if ( ( in_array( $structure_type, $structure_type_constructor_term_variations, true ) && ( ! in_array( $structure_elem, $structure_elem_aside_term_variations, true ) || ! in_array( $structure_elem, $structure_elem_nav_term_variations, true ) ) ) ) {
@@ -900,11 +1032,11 @@ function htmlok( $args = array() ) {
         $ct_mu .= $content_val;
     } else {
         $ct_mu = '';
-        $ct_mu .= sprintf( $cr_mu_start,
+        $ct_mu .= sprintf( $cr_start_mu,
             'ct'
         );
         $ct_mu .= $content_val;
-        $ct_mu .= $cr_mu_end;
+        $ct_mu .= $cr_end_mu;
     }
     
     if ( in_array( $mod, $mod_main_nav_term_variations, true ) ) {
@@ -918,11 +1050,11 @@ function htmlok( $args = array() ) {
 
     // Footer Markup
     $fr_mu = '';
-    $fr_mu .= sprintf( $cr_mu_start,
+    $fr_mu .= sprintf( $cr_start_mu,
         'fr'
     );
     $fr_mu .= $fr_content_val;
-    $fr_mu .= $cr_mu_end;
+    $fr_mu .= $cr_end_mu;
     
     
     //------------ New Version
@@ -937,16 +1069,18 @@ function htmlok( $args = array() ) {
         // Initialize
         $output = '';
         
-        $output .= '<'.$root_tagx.$id_attrx.' class="'.$root_tag_css.$structure_type_css.$structure_subtype_css.$name_css.$cssx.$root_css.'" '.$role_attrx.$title_attr.' data-name="'.$structure_name.'">';
+        $output .= '<'.$o_root_elemx.' class="'.$o_root_cssx.'" data-name="'.$o_structure_namex.'">';
+        
+        $output .= '<'.$root_tag.$id_attrx.' class="'.$root_tag_css.$structure_type_css.$structure_subtype_css.$name_css.$css.$root_css.'" '.$role_attrx.$title_attr.' data-name="'.$structure_name.'">';
         
         
         //------------ Constructor, Module, Component Structure Types
         if ( ! in_array( $structure_type, $structure_type_object_term_variations, true ) ) {
             
-            $output .= '<'.$branch_tag.' class="cr'.$cssx.'---cr" '.$href_attr.'>';
+            $output .= '<'.$branch_tag.' class="cr'.$css.'---cr" '.$href_attr.'>';
             
             // Header Content
-            if ( ! in_array( $structure_type, $structure_type_constructor_term_variations, true ) || $hr_structure || in_array( $structure_elem, $structure_elem_nav_term_variations, true ) || in_array( $structure_subtype, $structure_subtype_fs_item_term_variations, true ) ) {
+            if ( ! in_array( $structure_type, $structure_type_constructor_term_variations, true ) || $hr_structure || in_array( $structure_elem, $structure_elem_nav_term_variations, true ) || in_array( $r_structure_subtype, $structure_subtype_fs_item_term_variations, true ) ) {
                 $output .= $hr_mu;
             }
             
@@ -971,14 +1105,14 @@ function htmlok( $args = array() ) {
             
                 // Anchor Markup
                 $a_mu = '';
-                $a_mu .= '<a class="a'.$cssx.'---a" '.$href_attr.$target_attr.'>';
-                $a_mu .= '<span class="a_l'.$cssx.'---a_l">';
+                $a_mu .= '<a class="a'.$css.'---a" '.$href_attr.$target_attr.'>';
+                $a_mu .= '<span class="a_l'.$css.'---a_l">';
                 $a_mu .= $obj_content_val;
                 $a_mu .= '</span>';
                 $a_mu .= '</a>';
 
                 if ( ! in_array( $r_structure_subtype, $structure_subtype_link_term_variations, true ) ) {
-                    $output .= '<'.$branch_tag.' class="'.$branch_css.$cssx.'---'.$branch_css.'"'.$for_attr.'>';
+                    $output .= '<'.$branch_tag.' class="'.$branch_css.$css.'---'.$branch_css.'"'.$for_attr.'>';
                 }
 
                 if ( $structure_attr_linked || in_array( $r_structure_subtype, $structure_subtype_link_term_variations, true ) ) {
@@ -987,8 +1121,8 @@ function htmlok( $args = array() ) {
                 
                 else {
                     
-                    if ( ! in_array( $structure_subtype, $structure_subtype_felem_term_variations, true ) ) {
-                        $output .= '<'.$elem_label_tag.' class="'.$branch_css.'_l'.$cssx.'---'.$branch_css.'_l">';
+                    if ( ! in_array( $r_structure_subtype, $structure_subtype_felem_term_variations, true ) ) {
+                        $output .= '<'.$elem_label_tag.' class="'.$branch_css.'_l'.$css.'---'.$branch_css.'_l">';
                     }
 
                     // Text Content
@@ -1009,7 +1143,9 @@ function htmlok( $args = array() ) {
             }
         }
         
-        $output .= '</'.$root_tagx.'><!-- '.$structure_name.' -->';
+        $output .= '</'.$root_tag.'><!-- '.$structure_name.' -->';
+        
+        $output .= '</'.$o_root_elemx.'><!-- '.$o_structure_namex.' -->';
     
     }
     

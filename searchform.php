@@ -138,7 +138,7 @@ $search_form_cp = htmlok( array(
     'name'          => 'Search',
     'structure'     => array(
         'type'      => 'component',
-        'elem'      => 'form',
+        'subtype'   => 'form',
         'attr'      => array(
             'role'  => 'search',
         ),
