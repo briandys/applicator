@@ -114,7 +114,7 @@ $search_term_creation_cp = htmlok( array(
         'type'          => 'component',
         'subtype'       => 'fieldset item',
     ),
-    'css'           => $search_term_creation_css,
+    'css'               => $search_term_creation_css,
     'content'           => array(
         $search_term_creation_label_obj,
         $search_term_creation_input_obj,
@@ -124,15 +124,13 @@ $search_term_creation_cp = htmlok( array(
 $search_term_creation_fieldsets_cn = htmlok( array(
     'name'          => $search_term_creation_name,
     'structure'     => array(
-        'type'      => 'constructor',
+        'type'      => 'component',
         'subtype'   => 'fieldsets',
     ),
     'css'           => $search_term_creation_css,
     'content'       => $search_term_creation_cp,
 ) );
 
-$search_form_start_mu = '<form class="form search-form" action="'.esc_url( home_url( '/' ) ).'" method="get" role="search">';
-$search_form_end_mu = '</form>';
 
 $search_form_cp = htmlok( array(
     'name'          => 'Search',
@@ -140,10 +138,12 @@ $search_form_cp = htmlok( array(
         'type'      => 'component',
         'subtype'   => 'form',
         'attr'      => array(
-            'role'  => 'search',
+            'role'      => 'search',
+            'action'    => esc_url( home_url( '/' ) ),
+            'method'    => 'get',
         ),
     ),
-    'content'       => $search_term_creation_fieldsets_cn,
+    'content'       => $search_term_creation_cp,
 ) );
 
 $search_cp = htmlok( array(
@@ -154,3 +154,15 @@ $search_cp = htmlok( array(
     'content'       => $search_form_cp,
     'echo'          => true,
 ) );
+
+/*
+$nav_test = htmlok( array(
+    'name'          => 'Breadcrumbs',
+    'structure'     => array(
+        'type'      => 'component',
+        'subtype'   => 'navigation',
+    ),
+    'content'       => 'hehe',
+    'echo'          => true,
+) );
+*/
