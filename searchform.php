@@ -73,7 +73,7 @@ $search_term_creation_label_obj = htmlok( array(
     'structure'     => array(
         'type'      => 'object',
         'subtype'   => 'form label',
-        'elem'      => 'label',
+        'layout'    => 'inline',
         'attr'      => array(
             'for'   => $unique_id,
         ),
