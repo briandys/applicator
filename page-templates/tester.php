@@ -185,10 +185,7 @@ $main_header_cn = htmlok( array(
     'name'              => 'Main Header',
     'structure'         => array(
         'type'          => 'constructor',
-        'elem'          => 'header',
-        'attr'          => array(
-            'role'      => 'banner',
-        ),
+        'subtype'       => 'main header',
     ),
     'id'                => 'main-header',
     'root_css'          => 'site-header',
@@ -200,5 +197,68 @@ $main_header_cn = htmlok( array(
         $web_product_main_media_banner_obj,
         applicator_func_main_header_aside(),
     ),
+    'echo'              => true,
+) );
+
+$main_content_header_sub_heading_obj = htmlok( array(
+    'name'              => 'Main Header Sub-Heading',
+    'structure'         => array(
+        'type'          => 'object',
+        'subtype'       => 'wordpress generated content',
+        'layout'        => 'inline',
+    ),
+    'obj_content'       => array(
+        array(
+            'txt'       => 'Entries: Post',
+        ),
+    ),
+) );
+
+$main_content_header_meta_cp = htmlok( array(
+    'name'              => 'Main Header',
+    'structure'         => array(
+        'type'          => 'component',
+        'subtype'       => 'meta data',
+    ),
+    'content'           => $main_content_header_sub_heading_obj,
+) );
+
+$main_content_cn = htmlok( array(
+    'name'              => 'Main Content',
+    'structure'         => array(
+        'type'          => 'constructor',
+        'subtype'       => 'main content',
+    ),
+    'id'                => 'content',
+    'root_css'          => 'site-content',
+    'hr_content'        => $main_content_header_meta_cp,
+    'content'           => 'Super Main Content',
+    'echo'              => true,
+) );
+
+$main_footer_cn = htmlok( array(
+    'name'          => 'Main Footer',
+    'structure'     => array(
+        'type'      => 'constructor',
+        'subtype'   => 'main footer',
+    ),
+    'id'            => 'main-footer',
+    'root_css'      => 'site-footer',
+    'content'       => 'Footer Content',
+    'echo'          => true,
+) );
+
+$main_header_aside_cn = htmlok( array(
+    'name'              => 'Main Header',
+    'structure'         => array(
+        'type'          => 'constructor',
+        'subtype'       => 'Aside',
+        'elem'          => 'aside',
+        'hr_structure'  => true,
+        'h_elem'        => 'h2',
+    ),
+    'id'                => 'main-header-aside',
+    'css'               => 'main-hr',
+    'content'           => 'Aside',
     'echo'              => true,
 ) );

@@ -133,17 +133,19 @@ $search_term_creation_fieldsets_cn = htmlok( array(
 
 
 $search_form_cp = htmlok( array(
-    'name'          => 'Search',
-    'structure'     => array(
-        'type'      => 'component',
-        'subtype'   => 'form',
-        'attr'      => array(
-            'role'      => 'search',
-            'action'    => esc_url( home_url( '/' ) ),
-            'method'    => 'get',
+    'name'                  => 'Search',
+    'structure'             => array(
+        'type'              => 'component',
+        'subtype'           => 'form',
+        'attr'              => array(
+            'custom'        => array(
+                'role'      => 'search',
+                'method'    => 'get',
+                'action'    => esc_url( home_url( '/' ) ),
+            ),
         ),
     ),
-    'content'       => $search_term_creation_cp,
+    'content'               => $search_term_creation_cp,
 ) );
 
 $search_cp = htmlok( array(
@@ -154,15 +156,3 @@ $search_cp = htmlok( array(
     'content'       => $search_form_cp,
     'echo'          => true,
 ) );
-
-/*
-$nav_test = htmlok( array(
-    'name'          => 'Breadcrumbs',
-    'structure'     => array(
-        'type'      => 'component',
-        'subtype'   => 'navigation',
-    ),
-    'content'       => 'hehe',
-    'echo'          => true,
-) );
-*/
