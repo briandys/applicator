@@ -174,9 +174,11 @@ $main_product_main_info_cp = htmlok( array(
     ),
     'css'               => 'wbp-main-info',
     'content'           => array(
-        $web_product_main_name_obj,
-        $web_product_main_logo_obj,
-        $web_product_main_desc_obj,
+        'component'     => array(
+            $web_product_main_name_obj,
+            $web_product_main_logo_obj,
+            $web_product_main_desc_obj,
+        ),
     ),
 ) );
 
@@ -190,12 +192,14 @@ $main_header_cn = htmlok( array(
     'id'                => 'main-header',
     'root_css'          => 'site-header',
     'content'           => array(
-        $main_product_main_info_cp,
-        applicator_func_main_navx(),
-        applicator_hook_after_main_nav(),
-        get_search_form(),
-        $web_product_main_media_banner_obj,
-        applicator_func_main_header_aside(),
+        'constructor'   => array(
+            $main_product_main_info_cp,
+            applicator_func_main_navx(),
+            applicator_hook_after_main_nav(),
+            get_search_form(),
+            $web_product_main_media_banner_obj,
+            applicator_func_main_header_aside(),
+        ),
     ),
     'echo'              => true,
 ) );
@@ -220,7 +224,9 @@ $main_content_header_meta_cp = htmlok( array(
         'type'          => 'component',
         'subtype'       => 'meta data',
     ),
-    'content'           => $main_content_header_sub_heading_obj,
+    'content'           =>  array(
+        'component'     => $main_content_header_sub_heading_obj,
+    ),
 ) );
 
 $main_content_cn = htmlok( array(
@@ -232,7 +238,9 @@ $main_content_cn = htmlok( array(
     'id'                => 'content',
     'root_css'          => 'site-content',
     'hr_content'        => $main_content_header_meta_cp,
-    'content'           => 'Super Main Content',
+    'content'           =>  array(
+        'constructor'   => 'Super Main Content',
+    ),
     'echo'              => true,
 ) );
 
@@ -244,7 +252,9 @@ $main_footer_cn = htmlok( array(
     ),
     'id'            => 'main-footer',
     'root_css'      => 'site-footer',
-    'content'       => 'Footer Content',
+    'content'       => array(
+        'constructor'   => 'Footer Content',
+    ),
     'echo'          => true,
 ) );
 
@@ -259,6 +269,73 @@ $main_header_aside_cn = htmlok( array(
     ),
     'id'                => 'main-header-aside',
     'css'               => 'main-hr',
-    'content'           => 'Aside',
+    'content'           => array(
+        'constructor'   => 'Aside',
+    ),
+    'echo'              => true,
+) );
+
+$form_element_cp = htmlok( array(
+    'name'              => 'Form Element Test',
+    'structure'         => array(
+        'type'          => 'Component',
+        'subtype'       => 'Form Elements',
+    ),
+    'content'           => array(
+        'component'     => array(
+            'object'    => array(
+                'name'  => '',
+                'css'   => '',
+                'id'    => '',
+                'form_label'    => array(
+                    'txt'   => 'Shet',
+                ),
+                'form_input'    => array(
+                    'elem'      => '',
+                    'id'        => '',
+                    'title'     => '',
+                    'attr'      => array(
+                        'type'          => '',
+                        'placeholder'   => '',
+                        'value'         => '',
+                        'maxchar'       => '',
+                    ),
+                ),
+            ),
+        ),
+        
+        
+        
+        
+        
+        
+        
+        'form_label'    => array(
+            'name'      => 'Username Creation',
+            'label'     => array(
+                'txt'   => 'Yep she\'s gone',
+                'attr'  => array(
+                    'for'   => 'ID',
+                ),
+            ),
+            'id'        => 'Object ID',
+            'css'       => '',
+            'title'     => 'Day',
+        ),
+        'form_input'         => array(
+            'input'     => array(
+                'elem'  => 'input',
+                'attr'      => array(
+                    'type'          => 'text',
+                    'value'         => '',
+                    'placeholder'   => '',
+                ),
+            ),
+            'id'        => 'ID',
+            'css'       => '',
+            'title'     => 'Day',
+        ),
+    ),
+    'content'           => 'Content',
     'echo'              => true,
 ) );

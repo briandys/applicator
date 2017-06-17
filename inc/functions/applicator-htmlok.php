@@ -148,6 +148,7 @@ function htmlok( $args = array() ) {
     // Object Subtypes
     $subtype_form_label_terms = array( 'form label', 'flabel', 'fl', );
     $subtype_form_element_terms = array( 'form element', 'felem', 'fe', );
+    $subtype_form_elements_terms = array( 'form elements', 'felems', 'fes', );
     $subtype_heading_terms = array( 'heading', 'h', );
     $subtype_wpg_terms = array( 'wordpress generated content', 'wpg', 'wp', );
     
@@ -182,11 +183,12 @@ function htmlok( $args = array() ) {
     $obj_content_form_elem_input_term_variations = array( 'Input', 'input', 'i', );
     
     
-    
+    /*
     // Require Content
 	if ( empty( $args['content'] ) && ! in_array( $args['structure']['type'], $structure_type_object_term_variations, true ) ) {
         esc_html_e( 'Content is required.', $GLOBALS['applicator_td'] );
 	}
+    */
     
     
     
@@ -228,6 +230,8 @@ function htmlok( $args = array() ) {
     $obj_content_val = '';
     $structure_attr_linked = '';
     $structure_elem = '';
+    
+    $content_valx = '';
     
     $layout_tag = 'div';
     $root_tag = $layout_tag;
@@ -337,7 +341,11 @@ function htmlok( $args = array() ) {
     $obj_layout_elem = 'div';
     
     $o_obj_content = '';
-        
+    
+    $r_contentx_flabel_label_txt = '';
+    $contentx_flabel_label_txt_css = '';
+    
+    $content_component_object_flabel_txt_val = '';
         
     
     // Name
@@ -513,6 +521,19 @@ function htmlok( $args = array() ) {
                 $subtype_name = 'Form';
                 $subtype_name_abbr = 'form';
                 $subtype_elemx = 'form';
+                
+                $p_subtype_namex = ' '.$subtype_name;
+                $p_subtype_postfix_cssx = '-'.$subtype_name_abbr;
+                
+            }
+            
+            // Form Elements Subtype
+            elseif ( in_array( $r_subtype, $subtype_form_elements_terms, true ) ) {
+                
+                $subtype_name = 'Form Elements';
+                $subtype_name_abbr = 'felems';
+                
+                $obj_elem = 'label';
                 
                 $p_subtype_namex = ' '.$subtype_name;
                 $p_subtype_postfix_cssx = '-'.$subtype_name_abbr;
@@ -981,12 +1002,59 @@ function htmlok( $args = array() ) {
     }
     
     //------------------------ Content
-    if ( ! empty( $r['content'] ) ) {
-        $r_content = $r['content'];
+    if ( ! empty( $r['content']['constructor'] ) ) {
+        $r_content = $r['content']['constructor'];
         
         $content_val = '';
         foreach ( ( array ) $r_content as $val ) {
             $content_val .= preg_replace( $pat_space, $rep_space, trim( $val ) );
+        }
+    }
+    
+    //------------------------ Content
+    if ( ! empty( $r['content']['component'] ) ) {
+        $r_content = $r['content']['component'];
+        
+        $content_val = '';
+        foreach ( ( array ) $r_content as $val ) {
+            $content_val .= preg_replace( $pat_space, $rep_space, trim( $val ) );
+        }
+    }
+    
+    //------------------------ Form Element Content
+    if ( ! empty( $r['content']['component']['object'] ) ) {
+        $r_content_component_object = $r['content']['component']['object'];
+        
+        // Name
+        if ( ! empty( $r_content_component_object['name'] ) ) {
+            $r_content_component_object_name = $r_content_component_object['name'];
+        }
+
+        // CSS
+        if ( ! empty( $r_content_component_object['css'] ) ) {
+            $r_content_component_object_css = $r_content_component_object['css'];
+        }
+        
+        if ( ! empty( $r_content_component_object['form_label'] ) ) {
+            $r_content_component_object_flabel = $r_content_component_object['form_label'];
+            
+            // Text Content
+            if ( ! empty( $r_content_component_object_flabel['txt'] ) ) {
+                $r_content_component_object_flabel_txt = $r_content_component_object_flabel['txt'];
+                
+                $sanitized_content_component_object_flabel_txt = substr( sanitize_title( $r_content_component_object_flabel_txt ), $substr_start, $substr_end );
+
+                $content_component_object_flabel_txt = $r_content_component_object_flabel_txt;
+                $content_component_object_flabel_txt_auto_css = ' '.$sanitized_content_component_object_flabel_txt.'---txt';
+
+                // If Text Content is numeric
+                if ( is_numeric( $content_component_object_flabel_txt[0] ) ) {
+                    $content_component_object_flabel_txt_auto_css = ' '.'num'.' '.'n-'.$sanitized_content_component_object_flabel_txt.'---txt';
+                }
+
+                $content_val = '';
+                $content_val .= '<span class="txt'.$content_component_object_flabel_txt_auto_css.'">'.$content_component_object_flabel_txt.'</span>';
+            }
         }
     }
     
@@ -1216,46 +1284,65 @@ function htmlok( $args = array() ) {
     //------------------------ Container Structure Markup
     
     // Generic Container Structure Markup
-    $cr_start_mu = '';
-    $cr_start_mu .= '<div class="%1$s'.$o_branch_css.'---%1$s">';
-    $cr_start_mu .= '<div class="%1$s_cr'.$o_branch_css.'---%1$s_cr">';
+    $cr_smu = '';
+    $cr_smu .= '<div class="%1$s'.$o_branch_css.'---%1$s">';
+    $cr_smu .= '<div class="%1$s_cr'.$o_branch_css.'---%1$s_cr">';
     
-    $cr_end_mu = '';
-    $cr_end_mu .= '</div>';
-    $cr_end_mu .= '</div>';
+    $cr_emu = '';
+    $cr_emu .= '</div>';
+    $cr_emu .= '</div>';
     
     // Main Nav Mod
-    $main_nav_cr_start_mu = '';
-    $main_nav_cr_start_mu   .= '<div class="%1$s'.$o_branch_css.'---%1$s">';
+    $main_nav_cr_smu = '';
+    $main_nav_cr_smu   .= '<div class="%1$s'.$o_branch_css.'---%1$s">';
     
-    $main_nav_cr_end_mu = '';
-    $main_nav_cr_end_mu     .= '</div>';
+    $main_nav_cr_emu = '';
+    $main_nav_cr_emu     .= '</div>';
     
     // Form Subtype
-    $subtype_form_cr_start_mu = '';
-    $subtype_form_cr_start_mu .= '<div class="grp %1$s'.$o_branch_css.'-%1$s">';
-    $subtype_form_cr_start_mu .= '<div class="cr'.$o_branch_css.'-%1$s---cr">';
+    $subtype_form_cr_smu = '';
+    $subtype_form_cr_smu .= '<div class="grp %1$s'.$o_branch_css.'-%1$s">';
+    $subtype_form_cr_smu .= '<div class="cr'.$o_branch_css.'-%1$s---cr">';
     
-    $subtype_form_cr_end_mu = '';
-    $subtype_form_cr_end_mu .= '</div>';
-    $subtype_form_cr_end_mu .= '</div>';
+    $subtype_form_cr_emu = '';
+    $subtype_form_cr_emu .= '</div>';
+    $subtype_form_cr_emu .= '</div>';
     
     
     // Object Container Markup
-    $obj_cr_start_mu = '';
-    $obj_cr_start_mu .= '<'.$o_obj_elem.' class="'.$o_obj_elem.' '.$o_branch_css.'---'.$o_obj_elem.'" '.$o_obj_attr.'>';
-    $obj_cr_start_mu .= '<'.$o_obj_layout_elem.' class="'.$o_obj_elem.'_l'.' '.$o_branch_css.'---'.$o_obj_elem.'_l">';
+    $obj_cr_smu = '';
+    $obj_cr_smu .= '<'.$o_obj_elem.' class="'.$o_obj_elem.' '.$o_branch_css.'---'.$o_obj_elem.'" '.$o_obj_attr.'>';
+    $obj_cr_smu .= '<'.$o_obj_layout_elem.' class="'.$o_obj_elem.'_l'.' '.$o_branch_css.'---'.$o_obj_elem.'_l">';
     
-    $obj_cr_end_mu = '';
-    $obj_cr_end_mu .= '</'.$o_obj_layout_elem.'>';
-    $obj_cr_end_mu .= '</'.$o_obj_elem.'>';
+    $obj_cr_emu = '';
+    $obj_cr_emu .= '</'.$o_obj_layout_elem.'>';
+    $obj_cr_emu .= '</'.$o_obj_elem.'>';
     
     
-    $subtype_form_element_cr_start_mu = '';
-    $subtype_form_element_cr_start_mu .= '<div class="ee">';
+    $subtype_form_element_cr_smu = '';
+    $subtype_form_element_cr_smu .= '<div class="ee">';
     
-    $subtype_form_element_cr_end_mu = '';
-    $subtype_form_element_cr_end_mu .= '</div>';
+    $subtype_form_element_cr_emu = '';
+    $subtype_form_element_cr_emu .= '</div>';
+    
+    
+    
+    
+    
+    $subtype_form_elements_cr_smu = '';
+    $subtype_form_elements_cr_smu .= $cr_smu;
+    $subtype_form_elements_cr_smu .= '<div id="" class="obj flabel" title="" data-name="">';
+    $subtype_form_elements_cr_smu .= '<label class="label" for="" attr="">';
+    $subtype_form_elements_cr_smu .= '<div class="label_l">';
+    
+    $subtype_form_elements_cr_emu = '';
+    $subtype_form_elements_cr_emu .= '</div>';
+    $subtype_form_elements_cr_emu .= '</label>';
+    $subtype_form_elements_cr_emu .= '</div><!-- Object Name -->';
+   
+    $subtype_form_elements_cr_emu .= $cr_emu;
+    
+    
     
     
     
@@ -1265,12 +1352,12 @@ function htmlok( $args = array() ) {
     
     //------------------------ Header Markup
     $hr_mu = '';
-    $hr_mu .= sprintf( $cr_start_mu,
+    $hr_mu .= sprintf( $cr_smu,
         'hr'
     );
     $hr_mu .= '<'.$o_h_elem.' class="h'.$o_branch_css.'---h"><span class="h_l'.$o_branch_css.'---h_l">'.$o_heading_name.'</span></'.$o_h_elem.'>';
     $hr_mu .= $hr_content_val;
-    $hr_mu .= $cr_end_mu;
+    $hr_mu .= $cr_emu;
     
     //------------------------ Constructor, Object Content Markup
     if ( in_array( $r_structure, $structure_constructor_terms, true ) || in_array( $r_structure, $structure_object_terms, true ) ) {
@@ -1281,56 +1368,66 @@ function htmlok( $args = array() ) {
     //------------------------ Component Content Markup
     if ( in_array( $r_structure, $structure_component_terms, true ) || in_array( $r_subtype, $subtype_aside_terms, true ) ) {
         $ct_mu = '';
-        $ct_mu .= sprintf( $cr_start_mu,
+        $ct_mu .= sprintf( $cr_smu,
             'ct'
         );
-        $ct_mu .= $content_val;
-        $ct_mu .= $cr_end_mu;
+        $ct_mu .= $content_val. $content_valx;
+        $ct_mu .= $cr_emu;
     }
     
     //------------------------ Main Nav Mod Content Markup
     if ( in_array( $mod, $mod_main_nav_term_variations, true ) ) {
         $ct_mu = '';
-        $ct_mu .= sprintf( $main_nav_cr_start_mu,
+        $ct_mu .= sprintf( $main_nav_cr_smu,
             'ct'
         );
         $ct_mu .= $content_val;
-        $ct_mu .= $main_nav_cr_end_mu;
+        $ct_mu .= $main_nav_cr_emu;
     }
     
     //------------------------ Form Content Markup
     if ( in_array( $r_subtype, $subtype_form_terms, true ) ) {
         $ct_mu = '';
-        $ct_mu .= sprintf( $subtype_form_cr_start_mu,
+        $ct_mu .= sprintf( $subtype_form_cr_smu,
             'fieldsets'
         );
         $ct_mu .= $content_val;
-        $ct_mu .= $subtype_form_cr_end_mu;
+        $ct_mu .= $subtype_form_cr_emu;
+    }
+    
+    //------------------------ Form Elements Content Markup
+    if ( in_array( $r_subtype, $subtype_form_elements_terms, true ) ) {
+        $ct_mu = '';
+        $ct_mu .= sprintf( $subtype_form_elements_cr_smu,
+            'ct'
+        );
+        $ct_mu .= $content_val;
+        $ct_mu .= $subtype_form_elements_cr_emu;
     }
     
     //------------------------ Basic Object Content Markup
     if ( in_array( $r_structure, $structure_object_terms, true ) ) {
         $obj_ct_mu = '';
-        $obj_ct_mu .= $obj_cr_start_mu;
+        $obj_ct_mu .= $obj_cr_smu;
         $obj_ct_mu .= $obj_content_val;
-        $obj_ct_mu .= $obj_cr_end_mu;
+        $obj_ct_mu .= $obj_cr_emu;
     }
     
     //------------------------ Form Element
     if ( in_array( $r_subtype, $structure_subtype_felem_term_variations, true ) ) {
         $obj_ct_mu = '';
-        $obj_ct_mu .= $subtype_form_element_cr_start_mu;
+        $obj_ct_mu .= $subtype_form_element_cr_smu;
         $obj_ct_mu .= $obj_content_val;
-        $obj_ct_mu .= $subtype_form_element_cr_end_mu;
+        $obj_ct_mu .= $subtype_form_element_cr_emu;
     }
 
     //------------------------ Footer Markup
     $fr_mu = '';
-    $fr_mu .= sprintf( $cr_start_mu,
+    $fr_mu .= sprintf( $cr_smu,
         'fr'
     );
     $fr_mu .= $fr_content_val;
-    $fr_mu .= $cr_end_mu;
+    $fr_mu .= $cr_emu;
     
     
     
