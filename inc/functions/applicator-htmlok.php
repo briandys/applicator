@@ -683,7 +683,12 @@ function htmlok( $args = array() ) {
 
             }
             
-            // Generic Subtype
+            
+            
+            // Linked
+            if ( ! empty( $r['structure']['linked'] ) ) {
+                $r_linked = substr( strtolower( preg_replace( $pat_no_space, $rep_no_space, trim( $r['structure']['linked'] ) ) ), $substr_start, $substr_end );
+            }
 
             // Href Attribute
             if ( ! empty( $r['structure']['attr']['href'] ) ) {
@@ -698,12 +703,6 @@ function htmlok( $args = array() ) {
 
                 // Default
                 $target_attr = ' '.'target="'.$r_structure_attr_target.'"';
-            }
-            
-            // Linked
-            if ( ! empty( $r['structure']['linked'] ) ) {
-                $r_linked = preg_replace( $pat_no_space, $rep_no_space, trim( $r['structure']['linked'] ) );
-                $structure_attr_linked = $r_linked;
             }
             
             
@@ -1444,6 +1443,11 @@ function htmlok( $args = array() ) {
                 $obj_content_val .= $val;
             }
         }
+        
+        
+        
+        // Output
+        $o_content_val = $obj_content_val;
     }
     
     
@@ -1527,8 +1531,8 @@ function htmlok( $args = array() ) {
 
     // Object Container Markup
     $obj_cr_smu = '';
-    $obj_cr_smu .= '<'.$o_obj_elem.' class="'.$o_obj_elem.' '.$o_branch_css.'---'.$o_obj_elem.'" '.$o_obj_attr.'>';
-    $obj_cr_smu .= '<'.$obj_layout_elem.' class="'.$o_obj_elem.'_l'.' '.$o_branch_css.'---'.$o_obj_elem.'_l">';
+    $obj_cr_smu .= '<'.$o_obj_elem.' class="'.$obj_elem_css.' '.$o_branch_css.'---'.$obj_elem_css.'" '.$o_obj_attr.'>';
+    $obj_cr_smu .= '<'.$obj_layout_elem.' class="'.$obj_elem_css.'_l'.' '.$o_branch_css.'---'.$obj_elem_css.'_l">';
     
     $obj_cr_emu = '';
     $obj_cr_emu .= '</'.$obj_layout_elem.'>';
@@ -1661,13 +1665,13 @@ function htmlok( $args = array() ) {
     if ( in_array( $r_structure, $structure_object_terms, true ) ) {
         $obj_ct_mu = '';
         $obj_ct_mu .= $obj_cr_smu;
-        $obj_ct_mu .= $obj_content_val;
+        $obj_ct_mu .= $o_content_val;
         $obj_ct_mu .= $obj_cr_emu;
         
         // WordPress Generated Content
         if ( in_array( $r_subtype, $subtype_wpg_terms, true ) ) {
             $obj_ct_mu = '';
-            $obj_ct_mu .= $obj_content_val;
+            $obj_ct_mu .= $o_content_val;
         }
     }
 
