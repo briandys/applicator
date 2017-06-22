@@ -204,15 +204,11 @@ $main_header_cn = htmlok( array(
             $main_product_main_info_cp,
             applicator_func_main_navx(),
             applicator_hook_after_main_nav(),
-<<<<<<< HEAD
-<<<<<<< HEAD
+
             // get_search_form(),
-=======
-            get_search_form(),
->>>>>>> origin/master
-=======
-            get_search_form(),
->>>>>>> origin/master
+
+
+
             $web_product_main_media_banner_obj,
             applicator_func_main_header_aside(),
         ),
@@ -241,15 +237,11 @@ $main_content_header_meta_cp = htmlok( array(
         'subtype'       => 'meta data',
     ),
     'content'           =>  array(
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         'component'     => '$main_content_header_sub_heading_obj',
-=======
-        'component'     => $main_content_header_sub_heading_obj,
->>>>>>> origin/master
-=======
-        'component'     => $main_content_header_sub_heading_obj,
->>>>>>> origin/master
+
+
+
     ),
 ) );
 
@@ -296,142 +288,7 @@ $main_header_aside_cn = htmlok( array(
     'content'           => array(
         'constructor'   => 'Aside',
     ),
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-    'echo'              => true,
-) );
 
-$form_element_cp = htmlok( array(
-    'name'              => 'Form Element Test',
-    'structure'         => array(
-        'type'          => 'Component',
-        'subtype'       => 'Form Elements',
-    ),
-    'content'           => array(
-        'component'     => array(
-            'object'    => array(
-                'name'  => '',
-                'css'   => '',
-                'id'    => '',
-                'form_label'    => array(
-                    'txt'   => 'Shet',
-                ),
-                'form_input'    => array(
-                    'elem'      => '',
-                    'id'        => '',
-                    'title'     => '',
-                    'attr'      => array(
-                        'type'          => '',
-                        'placeholder'   => '',
-                        'value'         => '',
-                        'maxchar'       => '',
-                    ),
-                ),
-            ),
-        ),
-        
-        
-        
-        
-        
-        
-        
-        'form_label'    => array(
-            'name'      => 'Username Creation',
-            'label'     => array(
-                'txt'   => 'Yep she\'s gone',
-                'attr'  => array(
-                    'for'   => 'ID',
-                ),
-            ),
-            'id'        => 'Object ID',
-            'css'       => '',
-            'title'     => 'Day',
-        ),
-        'form_input'         => array(
-            'input'     => array(
-                'elem'  => 'input',
-                'attr'      => array(
-                    'type'          => 'text',
-                    'value'         => '',
-                    'placeholder'   => '',
-                ),
-            ),
-            'id'        => 'ID',
-            'css'       => '',
-            'title'     => 'Day',
-        ),
-    ),
-    'content'           => 'Content',
->>>>>>> origin/master
-    'echo'              => true,
-) );
-
-$form_element_cp = htmlok( array(
-    'name'              => 'Form Element Test',
-    'structure'         => array(
-        'type'          => 'Component',
-        'subtype'       => 'Form Elements',
-    ),
-    'content'           => array(
-        'component'     => array(
-            'object'    => array(
-                'name'  => '',
-                'css'   => '',
-                'id'    => '',
-                'form_label'    => array(
-                    'txt'   => 'Shet',
-                ),
-                'form_input'    => array(
-                    'elem'      => '',
-                    'id'        => '',
-                    'title'     => '',
-                    'attr'      => array(
-                        'type'          => '',
-                        'placeholder'   => '',
-                        'value'         => '',
-                        'maxchar'       => '',
-                    ),
-                ),
-            ),
-        ),
-        
-        
-        
-        
-        
-        
-        
-        'form_label'    => array(
-            'name'      => 'Username Creation',
-            'label'     => array(
-                'txt'   => 'Yep she\'s gone',
-                'attr'  => array(
-                    'for'   => 'ID',
-                ),
-            ),
-            'id'        => 'Object ID',
-            'css'       => '',
-            'title'     => 'Day',
-        ),
-        'form_input'         => array(
-            'input'     => array(
-                'elem'  => 'input',
-                'attr'      => array(
-                    'type'          => 'text',
-                    'value'         => '',
-                    'placeholder'   => '',
-                ),
-            ),
-            'id'        => 'ID',
-            'css'       => '',
-            'title'     => 'Day',
-        ),
-    ),
-    'content'           => 'Content',
->>>>>>> origin/master
     'echo'              => true,
 ) );
 

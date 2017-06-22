@@ -351,8 +351,7 @@ function htmlok( $args = array() ) {
     $contentx_flabel_label_txt_css = '';
     
     $content_component_object_flabel_txt_val = '';
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     
     $r_content_component_object = '';
     
@@ -366,10 +365,8 @@ function htmlok( $args = array() ) {
     $obj_elem_css = '';
     $obj_attr = '';
     $obj_label_elem_css = '';
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
+
+
         
     
     // Name
@@ -605,7 +602,7 @@ function htmlok( $args = array() ) {
             // Layout
             if ( ! empty( $r['structure']['layout'] ) ) {
                 $r_obj_layout = substr( strtolower( preg_replace( $pat_no_space, $rep_no_space, trim( $r['structure']['layout'] ) ) ), $substr_start, $substr_end );
-<<<<<<< HEAD
+
                 
                 if ( in_array( $r_obj_layout, $layout_inline_terms, true ) ) {
                     $layout_elemx = 'span';
@@ -613,21 +610,10 @@ function htmlok( $args = array() ) {
                 
                 $subtype_elemx = $layout_elemx;
                 $obj_elem = $layout_elemx;
-<<<<<<< HEAD
+
                 $obj_label_elem = $layout_elemx;
-=======
-                $obj_layout_elem = $layout_elemx;
->>>>>>> origin/master
-=======
-                
-                if ( in_array( $r_obj_layout, $layout_inline_terms, true ) ) {
-                    $layout_elemx = 'span';
-                }
-                
-                $subtype_elemx = $layout_elemx;
-                $obj_elem = $layout_elemx;
-                $obj_layout_elem = $layout_elemx;
->>>>>>> origin/master
+
+
             }
             
             
@@ -641,7 +627,7 @@ function htmlok( $args = array() ) {
                 
                 $p_subtype_namex = ' '.$subtype_name;
                 $p_subtype_postfix_cssx = '-'.$subtype_name_abbr;
-<<<<<<< HEAD
+
                 
             }
             
@@ -650,36 +636,14 @@ function htmlok( $args = array() ) {
                
                 $subtype_name = 'Heading';
                 $subtype_name_abbr = 'h';
-=======
-                
-            }
-            
-            // Heading Subtype
-            elseif ( in_array( $r_subtype, $subtype_heading_terms, true ) ) {
-               
-                $subtype_name = 'Heading';
-                $subtype_name_abbr = 'h';
+
                 
                 $p_subtype_namex = ' '.$subtype_name;
                 $p_subtype_postfix_cssx = '-'.$subtype_name_abbr;
                 
             }
             
-            // Form Label Subtype
-            elseif ( in_array( $r_subtype, $subtype_form_label_terms, true ) ) {
-                
-                $subtype_name = 'Form Label';
-                $subtype_name_abbr = 'flabel';
-                
-                $obj_elem = 'label';
->>>>>>> origin/master
-                
-                $p_subtype_namex = ' '.$subtype_name;
-                $p_subtype_postfix_cssx = '-'.$subtype_name_abbr;
-                
-            }
-            
-<<<<<<< HEAD
+
             // Form Label Subtype
             elseif ( in_array( $r_subtype, $subtype_form_label_terms, true ) ) {
                 
@@ -696,11 +660,7 @@ function htmlok( $args = array() ) {
             // Form Element Subtype
             elseif ( in_array( $r_subtype, $subtype_form_element_terms, true ) ) {
                 
-=======
-            // Form Element Subtype
-            elseif ( in_array( $r_subtype, $subtype_form_element_terms, true ) ) {
-                
->>>>>>> origin/master
+
                 $subtype_name = 'Form Element';
                 $subtype_name_abbr = 'felem';
                 
@@ -708,10 +668,7 @@ function htmlok( $args = array() ) {
                 
                 $p_subtype_namex = ' '.$subtype_name;
                 $p_subtype_postfix_cssx = '-'.$subtype_name_abbr;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> origin/master
+
                 
             }
             
@@ -723,9 +680,7 @@ function htmlok( $args = array() ) {
                 
                 $p_subtype_namex = ' '.$subtype_name;
                 $p_subtype_postfix_cssx = '-'.$subtype_name_abbr;
-=======
-                
->>>>>>> origin/master
+
             }
             
             // Generic Subtype
@@ -854,7 +809,7 @@ function htmlok( $args = array() ) {
     if ( ! empty( $r['structure']['elem'] ) ) {
         $r_elem = substr( strtolower( preg_replace( $pat_no_space, $rep_no_space, trim( $r['structure']['elem'] ) ) ), $substr_start, $substr_end );
         
-<<<<<<< HEAD
+
         if ( in_array( $r_structure, $structure_constructor_terms, true ) || in_array( $r_structure, $structure_component_terms, true ) ) {
             $subtype_elemx = $r_elem;
         }
@@ -871,14 +826,8 @@ function htmlok( $args = array() ) {
                 $obj_label_elem = $layout_elemx;
             }
         }
-=======
-        $subtype_elemx = $r_elem;
-        
-        $obj_elem = $r_elem;
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
+
+
     }
     
     
@@ -1055,8 +1004,7 @@ function htmlok( $args = array() ) {
     
     $p_obj_elem = $obj_elem;
     $p_obj_attr = $obj_attr;
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     $p_obj_label_elem = $obj_label_elem;
     
     // Object Element CSS
@@ -1088,20 +1036,8 @@ function htmlok( $args = array() ) {
     // Anchor Element
     $o_obj_a_elem_css = $p_branch_name_cssx;
     $o_obj_a_elem_attr = $p_obj_a_elem_attr;
-=======
-    $p_obj_layout_elem = $obj_layout_elem;
-    
-    $o_obj_elem = $p_obj_elem;
-    $o_obj_attr = $p_obj_attr;
-    $o_obj_layout_elem = $p_obj_layout_elem;
->>>>>>> origin/master
-=======
-    $p_obj_layout_elem = $obj_layout_elem;
-    
-    $o_obj_elem = $p_obj_elem;
-    $o_obj_attr = $p_obj_attr;
-    $o_obj_layout_elem = $p_obj_layout_elem;
->>>>>>> origin/master
+
+
     
     
     
@@ -1238,39 +1174,11 @@ function htmlok( $args = array() ) {
         }
     }
     
-<<<<<<< HEAD
+
     /*
     if ( ! empty( $r['content']['object'] ) ) {
         $r_obj_content = $r['content']['object'];
-=======
-    //------------------------ Content
-    if ( ! empty( $r['content']['constructor'] ) ) {
-        $r_content = $r['content']['constructor'];
-<<<<<<< HEAD
-=======
-        
-        $content_val = '';
-        foreach ( ( array ) $r_content as $val ) {
-            $content_val .= preg_replace( $pat_space, $rep_space, trim( $val ) );
-        }
-    }
-    
-    //------------------------ Content
-    if ( ! empty( $r['content']['component'] ) ) {
-        $r_content = $r['content']['component'];
->>>>>>> origin/master
-        
-        $content_val = '';
-        foreach ( ( array ) $r_content as $val ) {
-            $content_val .= preg_replace( $pat_space, $rep_space, trim( $val ) );
-        }
-    }
-    
-<<<<<<< HEAD
-    //------------------------ Content
-    if ( ! empty( $r['content']['component'] ) ) {
-        $r_content = $r['content']['component'];
->>>>>>> origin/master
+
         
         $obj_content_val = '';
         foreach ( ( array ) $r_obj_content as $val ) {
@@ -1280,8 +1188,7 @@ function htmlok( $args = array() ) {
     */
     
     
-=======
->>>>>>> origin/master
+
     //------------------------ Form Element Content
     if ( ! empty( $r['content']['component']['object'] ) ) {
         $r_content_component_object = $r['content']['component']['object'];
@@ -1549,12 +1456,12 @@ function htmlok( $args = array() ) {
     $cr_smu = '';
     $cr_smu .= '<div class="%1$s'.$o_branch_css.'---%1$s">';
     $cr_smu .= '<div class="%1$s_cr'.$o_branch_css.'---%1$s_cr">';
-<<<<<<< HEAD
+
     
     $cr_emu = '';
     $cr_emu .= '</div>';
     $cr_emu .= '</div>';
-<<<<<<< HEAD
+
     
     
     $subtype_form_element_cr_smu = '';
@@ -1564,24 +1471,8 @@ function htmlok( $args = array() ) {
     $subtype_form_element_cr_emu .= '</div>';
     
     
-=======
-=======
-    
-    $cr_emu = '';
-    $cr_emu .= '</div>';
-    $cr_emu .= '</div>';
->>>>>>> origin/master
-    
-    // Main Nav Mod
-    $main_nav_cr_smu = '';
-    $main_nav_cr_smu   .= '<div class="%1$s'.$o_branch_css.'---%1$s">';
-    
-    $main_nav_cr_emu = '';
-    $main_nav_cr_emu     .= '</div>';
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
+
+
     
     // Form Subtype
     $subtype_form_cr_smu = '';
@@ -1593,8 +1484,7 @@ function htmlok( $args = array() ) {
     $subtype_form_cr_emu .= '</div>';
     
     
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     // Main Nav Mod
     $main_nav_cr_smu = '';
     $main_nav_cr_smu   .= '<div class="%1$s'.$o_branch_css.'---%1$s">';
@@ -1633,16 +1523,15 @@ function htmlok( $args = array() ) {
     $obj_cr_emu .= '</'.$o_obj_elem.'>';
     
     
-=======
-=======
->>>>>>> origin/master
+
+
     // Object Container Markup
     $obj_cr_smu = '';
     $obj_cr_smu .= '<'.$o_obj_elem.' class="'.$o_obj_elem.' '.$o_branch_css.'---'.$o_obj_elem.'" '.$o_obj_attr.'>';
-    $obj_cr_smu .= '<'.$o_obj_layout_elem.' class="'.$o_obj_elem.'_l'.' '.$o_branch_css.'---'.$o_obj_elem.'_l">';
+    $obj_cr_smu .= '<'.$obj_layout_elem.' class="'.$o_obj_elem.'_l'.' '.$o_branch_css.'---'.$o_obj_elem.'_l">';
     
     $obj_cr_emu = '';
-    $obj_cr_emu .= '</'.$o_obj_layout_elem.'>';
+    $obj_cr_emu .= '</'.$obj_layout_elem.'>';
     $obj_cr_emu .= '</'.$o_obj_elem.'>';
     
     
@@ -1653,22 +1542,17 @@ function htmlok( $args = array() ) {
     $subtype_form_element_cr_emu .= '</div>';
     
     
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
+
+
     
     
     
     $subtype_form_elements_cr_smu = '';
     $subtype_form_elements_cr_smu .= $cr_smu;
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
+
+
     $subtype_form_elements_cr_smu .= '<div id="" class="obj flabel" title="" data-name="">';
     $subtype_form_elements_cr_smu .= '<label class="label" for="" attr="">';
     $subtype_form_elements_cr_smu .= '<div class="label_l">';
@@ -1694,7 +1578,7 @@ function htmlok( $args = array() ) {
         'hr'
     );
     $hr_mu .= '<'.$o_h_elem.' class="h'.$o_branch_css.'---h"><span class="h_l'.$o_branch_css.'---h_l">'.$o_heading_name.'</span></'.$o_h_elem.'>';
-<<<<<<< HEAD
+
     $hr_mu .= $o_hr_content_val;
     $hr_mu .= $cr_emu;
 
@@ -1707,13 +1591,8 @@ function htmlok( $args = array() ) {
     $fr_mu .= $o_fr_content_val;
     $fr_mu .= $cr_emu;
     
-=======
-    $hr_mu .= $hr_content_val;
-    $hr_mu .= $cr_emu;
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
+
+
     
     //------------------------ Constructor, Object Content Markup
     if ( in_array( $r_structure, $structure_constructor_terms, true ) ) {
@@ -1727,15 +1606,10 @@ function htmlok( $args = array() ) {
         $ct_mu .= sprintf( $cr_smu,
             'ct'
         );
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         $ct_mu .= $o_content_val;
-=======
-        $ct_mu .= $content_val. $content_valx;
->>>>>>> origin/master
-=======
-        $ct_mu .= $content_val. $content_valx;
->>>>>>> origin/master
+
+
         $ct_mu .= $cr_emu;
     }
     
@@ -1745,14 +1619,10 @@ function htmlok( $args = array() ) {
         $ct_mu .= sprintf( $main_nav_cr_smu,
             'ct'
         );
-<<<<<<< HEAD
+
         $ct_mu .= $o_content_val;
-=======
-        $ct_mu .= $content_val;
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
+
+
         $ct_mu .= $main_nav_cr_emu;
     }
     
@@ -1762,11 +1632,9 @@ function htmlok( $args = array() ) {
         $ct_mu .= sprintf( $subtype_form_cr_smu,
             'fieldsets'
         );
-<<<<<<< HEAD
+
         $ct_mu .= $o_content_val;
-=======
-        $ct_mu .= $content_val;
->>>>>>> origin/master
+
         $ct_mu .= $subtype_form_cr_emu;
     }
     
@@ -1776,7 +1644,7 @@ function htmlok( $args = array() ) {
         $ct_mu .= sprintf( $subtype_form_elements_cr_smu,
             'ct'
         );
-<<<<<<< HEAD
+
         $ct_mu .= $o_content_val;
         $ct_mu .= $subtype_form_elements_cr_emu;
     }
@@ -1802,51 +1670,8 @@ function htmlok( $args = array() ) {
             $obj_ct_mu .= $obj_content_val;
         }
     }
-=======
-        $ct_mu .= $content_val;
-<<<<<<< HEAD
-=======
-        $ct_mu .= $subtype_form_cr_emu;
-    }
-    
-    //------------------------ Form Elements Content Markup
-    if ( in_array( $r_subtype, $subtype_form_elements_terms, true ) ) {
-        $ct_mu = '';
-        $ct_mu .= sprintf( $subtype_form_elements_cr_smu,
-            'ct'
-        );
-        $ct_mu .= $content_val;
->>>>>>> origin/master
-        $ct_mu .= $subtype_form_elements_cr_emu;
-    }
-    
-    //------------------------ Basic Object Content Markup
-    if ( in_array( $r_structure, $structure_object_terms, true ) ) {
-        $obj_ct_mu = '';
-        $obj_ct_mu .= $obj_cr_smu;
-        $obj_ct_mu .= $obj_content_val;
-        $obj_ct_mu .= $obj_cr_emu;
-    }
-    
-    //------------------------ Form Element
-    if ( in_array( $r_subtype, $structure_subtype_felem_term_variations, true ) ) {
-        $obj_ct_mu = '';
-        $obj_ct_mu .= $subtype_form_element_cr_smu;
-        $obj_ct_mu .= $obj_content_val;
-        $obj_ct_mu .= $subtype_form_element_cr_emu;
-    }
 
-    //------------------------ Footer Markup
-    $fr_mu = '';
-    $fr_mu .= sprintf( $cr_smu,
-        'fr'
-    );
-    $fr_mu .= $fr_content_val;
-    $fr_mu .= $cr_emu;
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
+
     
     
     
@@ -1862,15 +1687,10 @@ function htmlok( $args = array() ) {
         $fr_mu = '';
     }
     
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     if ( ! empty( $r['obj_content'] ) || ! empty( $r['content']['object'] ) ) {
-=======
-    if ( ! empty( $r['obj_content'] ) ) {
->>>>>>> origin/master
-=======
-    if ( ! empty( $r['obj_content'] ) ) {
->>>>>>> origin/master
+
+
         $obj_ct_mu = $obj_ct_mu;
     } else {
         $obj_ct_mu = '';
@@ -1895,15 +1715,10 @@ function htmlok( $args = array() ) {
     }
     
     if ( in_array( $r_structure, $structure_object_terms, true ) ) {
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         $o_content = $obj_ct_mu;
-=======
-        $o_obj_content = $obj_ct_mu;
->>>>>>> origin/master
-=======
-        $o_obj_content = $obj_ct_mu;
->>>>>>> origin/master
+
+
     }
     
     
@@ -2023,16 +1838,11 @@ function htmlok( $args = array() ) {
             $output .= '</'.$o_obj_elem.'>';
             */
             
-<<<<<<< HEAD
-<<<<<<< HEAD
+
             // $output .= $o_obj_content;
             $output .= $o_content;
-=======
-            $output .= $o_obj_content;
->>>>>>> origin/master
-=======
-            $output .= $o_obj_content;
->>>>>>> origin/master
+
+
         }
         
         /*
