@@ -1,4 +1,4 @@
-<?php // Applicator HTML_OK (Overkill) Constructor-Component Structure
+<?php // Applicator HTML_OK (Overkill) Constructor-Component-Object Structure
 
 function htmlok( $args = array() ) {
     
@@ -87,11 +87,14 @@ function htmlok( $args = array() ) {
     // Convert multiple spaces to single space
     $pat_space = '/\s\s+/';
     $rep_space = ' ';
+    
+    // Remove all spaces; applicable to HTML elements
     $pat_no_space = '/\s+/';
     $rep_no_space = '';
     
     
     //------------ Substring Count
+    // Allow up to 64 characters only
     $substr_start = 0;
     $substr_end = 64;
     
@@ -101,7 +104,7 @@ function htmlok( $args = array() ) {
     $structure_component_terms = array( 'component', 'cp', );
     $structure_object_terms = array( 'object', 'obj', );
     
-    $structure_type_object_term_variations = array( 'object', 'obj', );
+    
     
     $layout_block_terms = array( 'block', 'div', 'b', 'd', );
     $layout_inline_terms = array( 'inline', 'span', 'i', 's', );
@@ -182,14 +185,6 @@ function htmlok( $args = array() ) {
     $heading_level_terms = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', );
     
     $obj_content_form_elem_input_term_variations = array( 'Input', 'input', 'i', );
-    
-    
-    /*
-    // Require Content
-	if ( empty( $args['content'] ) && ! in_array( $args['structure']['type'], $structure_type_object_term_variations, true ) ) {
-        esc_html_e( 'Content is required.', $GLOBALS['applicator_td'] );
-	}
-    */
     
     
     
@@ -1528,15 +1523,16 @@ function htmlok( $args = array() ) {
     
     
 
-
+    /*
     // Object Container Markup
     $obj_cr_smu = '';
-    $obj_cr_smu .= '<'.$o_obj_elem.' class="'.$obj_elem_css.' '.$o_branch_css.'---'.$obj_elem_css.'" '.$o_obj_attr.'>';
+    $obj_cr_smu .= '<'.$o_obj_elem.' class="'$o_obj_css.$obj_elem_css.' '.$o_branch_css.'---'.$obj_elem_css.'" '.$o_obj_attr.'>';
     $obj_cr_smu .= '<'.$obj_layout_elem.' class="'.$obj_elem_css.'_l'.' '.$o_branch_css.'---'.$obj_elem_css.'_l">';
     
     $obj_cr_emu = '';
     $obj_cr_emu .= '</'.$obj_layout_elem.'>';
     $obj_cr_emu .= '</'.$o_obj_elem.'>';
+    */
     
     
     $subtype_form_element_cr_smu = '';
@@ -1693,8 +1689,6 @@ function htmlok( $args = array() ) {
     
 
     if ( ! empty( $r['obj_content'] ) || ! empty( $r['content']['object'] ) ) {
-
-
         $obj_ct_mu = $obj_ct_mu;
     } else {
         $obj_ct_mu = '';
@@ -1719,10 +1713,7 @@ function htmlok( $args = array() ) {
     }
     
     if ( in_array( $r_structure, $structure_object_terms, true ) ) {
-
         $o_content = $obj_ct_mu;
-
-
     }
     
     
