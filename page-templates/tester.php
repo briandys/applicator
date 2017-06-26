@@ -87,17 +87,16 @@ $web_product_main_name_obj = htmlok( array(
     'name'      => 'Web Product Main Name',
     'structure' => array(
         'type'      => 'object',
-        'layout'    => 'inline',
+        'elem'      => 'h1',
         'linked'    => true,
         'attr'      => array(
-            'h_level'   => 'h1',
-            'title'     => get_bloginfo( 'name' ),
-        ),
-        'a_attr'    => array(
-            'href'      => 'index.html',
+            'a'     => array(
+                'href'  => esc_url( home_url( '/' ) ),
+            ),
         ),
     ),
     'css'           => 'wbp-main-name',
+    'title'         => get_bloginfo( 'name' ),
     'content'   => array(
         'object'    => array(
             array(
@@ -139,13 +138,35 @@ if ( $description || is_customize_preview() ) {
         'name'      => 'Web Product Main Description',
         'structure' => array(
             'type'      => 'object',
+            'linked'    => true,
             'attr'      => array(
-                'linked'    => true,
-                'href'      => esc_url( home_url( '/' ) ),
-                'title'     => $description,
+                'a'     => array(
+                    'href'      => esc_url( home_url( '/' ) ),
+                ),
             ),
         ),
         'css'           => 'wbp-main-desc',
+        'title'     => $description,
+        'content'   => array(
+            'object'    => array(
+                array(
+                    'txt'   => $description,
+                    'css'   => 'wbp-desc',
+                    'line'  => array(
+                        array(
+                            array(
+                                'txt'   => 'hello',
+                            ),
+                        ),
+                        array(
+                            array(
+                                'txt'   => 'world',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+        ),
         'obj_content'   => array(
             array(
                 'txt'   => $description,
