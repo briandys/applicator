@@ -137,7 +137,9 @@ if ( ! function_exists( 'applicator_func_main_navx' ) ) {
                 'mod'       => 'Main Navigation',
                 'id'        => 'main-nav',
                 'css'       => $main_nav_css,
-                'content'   => $main_nav,
+                'content'           => array(
+                    'component'     => $main_nav
+                ),
             ) );
 
             return $main_navigation_cp;

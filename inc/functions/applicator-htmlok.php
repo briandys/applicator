@@ -1268,8 +1268,6 @@ function htmlok( $args = array() ) {
             }
         }
         
-        
-        
         // Output
         $o_content_val = $obj_content_val;
     }
