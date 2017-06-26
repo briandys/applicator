@@ -105,39 +105,6 @@ function htmlok( $args = array() ) {
     $structure_object_terms = array( 'object', 'obj', );
     
     
-    
-    $layout_block_terms = array( 'block', 'div', 'b', 'd', );
-    $layout_inline_terms = array( 'inline', 'span', 'i', 's', );
-    
-    // Constructor Elements
-    $structure_elem_header_term_variations = array( 'Header', 'header', 'hr', );
-    $structure_elem_footer_term_variations = array( 'Footer', 'footer', 'fr', );
-    $structure_elem_aside_term_variations = array( 'Aside', 'aside', 'as', );
-    
-    
-    
-    
-    
-    // Component Element
-    $elem_nav_terms = array( 'Navigation', 'Nav', 'nav', 'n', );
-    $structure_elem_form_term_variations = array( 'Form', 'form', 'f', );
-    
-    // Constructor Subtypes
-    $subtype_fieldsets_terms = array( 'fieldsets', 'fsets', );
-    
-    
-    
-    
-    
-    
-    $subtype_form_terms = array( 'form', 'f', );
-    
-    $subtype_nav_terms = array( 'navigation', 'nav', 'n', );
-    
-    
-    
-    
-    
     // Constructor Subtypes
     $subtype_main_header_terms = array( 'main header', 'mh', );
     $subtype_main_content_terms = array( 'main content', 'mc', );
@@ -147,6 +114,8 @@ function htmlok( $args = array() ) {
     
     // Component Subtypes
     $subtype_fieldset_item_terms = array( 'fieldset item', 'fs-item', );
+    $subtype_form_terms = array( 'form', 'f', );
+    $subtype_nav_terms = array( 'navigation', 'nav', 'n', );
     
     
     // Object Subtypes
@@ -156,8 +125,8 @@ function htmlok( $args = array() ) {
     $subtype_heading_terms = array( 'heading', 'h', );
     $subtype_wpg_terms = array( 'wordpress generated content', 'wpg', 'wp', );
     
-    
-    
+    $layout_block_terms = array( 'block', 'div', 'b', 'd', );
+    $layout_inline_terms = array( 'inline', 'span', 'i', 's', );
     
     
     
@@ -492,7 +461,10 @@ function htmlok( $args = array() ) {
                 $subtype_name_abbr = 'main-footer';
                 
                 $subtype_elemx = 'footer';
+                $p_subtype_cssx = ' '.$subtype_name_abbr;
                 $p_role_attrx = ' '.'role="contentinfo"';
+
+                
                 
             }
             
@@ -502,6 +474,7 @@ function htmlok( $args = array() ) {
                 $subtype_name = 'Aside';
                 $subtype_name_abbr = 'aside';
                 
+                $p_subtype_cssx = ' '.$subtype_name_abbr;
                 $p_role_attrx = ' '.'role="complementary"';
                 
                 $p_subtype_namex = ' '.$subtype_name;
@@ -527,6 +500,7 @@ function htmlok( $args = array() ) {
                 $subtype_name_abbr = 'fs-item';
                 
                 $p_subtype_namex = ' '.$subtype_name;
+                $p_subtype_cssx = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_cssx = '-'.$subtype_name_abbr;
             
             }
@@ -539,6 +513,7 @@ function htmlok( $args = array() ) {
                 $subtype_elemx = 'form';
                 
                 $p_subtype_namex = ' '.$subtype_name;
+                $p_subtype_cssx = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_cssx = '-'.$subtype_name_abbr;
                 
             }
@@ -552,6 +527,7 @@ function htmlok( $args = array() ) {
                 $obj_elem = 'label';
                 
                 $p_subtype_namex = ' '.$subtype_name;
+                $p_subtype_cssx = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_cssx = '-'.$subtype_name_abbr;
                 
             }
@@ -571,6 +547,7 @@ function htmlok( $args = array() ) {
                 //------------------------ X
                 // Processed
                 $p_subtype_namex = ' '.$subtype_name;
+                $p_subtype_cssx = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_cssx = '-'.$subtype_name_abbr;
                 
                 if ( empty( $r['structure']['attr']['role'] ) ) {
@@ -621,6 +598,7 @@ function htmlok( $args = array() ) {
                 $subtype_name_abbr = 'wpg';
                 
                 $p_subtype_namex = ' '.$subtype_name;
+                $p_subtype_cssx = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_cssx = '-'.$subtype_name_abbr;
 
                 
@@ -634,6 +612,7 @@ function htmlok( $args = array() ) {
 
                 
                 $p_subtype_namex = ' '.$subtype_name;
+                $p_subtype_cssx = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_cssx = '-'.$subtype_name_abbr;
                 
             }
@@ -648,13 +627,13 @@ function htmlok( $args = array() ) {
                 $obj_elem = 'label';
                 
                 $p_subtype_namex = ' '.$subtype_name;
+                $p_subtype_cssx = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_cssx = '-'.$subtype_name_abbr;
                 
             }
             
             // Form Element Subtype
             elseif ( in_array( $r_subtype, $subtype_form_element_terms, true ) ) {
-                
 
                 $subtype_name = 'Form Element';
                 $subtype_name_abbr = 'felem';
@@ -662,8 +641,8 @@ function htmlok( $args = array() ) {
                 $obj_elem = 'input';
                 
                 $p_subtype_namex = ' '.$subtype_name;
+                $p_subtype_cssx = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_cssx = '-'.$subtype_name_abbr;
-
                 
             }
             
@@ -674,7 +653,6 @@ function htmlok( $args = array() ) {
                 $subtype_name_abbr = 'gen';
                 
                 $p_subtype_namex = ' '.$subtype_name;
-                $p_subtype_postfix_cssx = '-'.$subtype_name_abbr;
 
             }
             
@@ -683,6 +661,8 @@ function htmlok( $args = array() ) {
             // Linked
             if ( ! empty( $r['structure']['linked'] ) ) {
                 $r_linked = substr( strtolower( preg_replace( $pat_no_space, $rep_no_space, trim( $r['structure']['linked'] ) ) ), $substr_start, $substr_end );
+                
+                //$obj_elem_css = 'h';
             }
 
             // Href Attribute
@@ -922,9 +902,6 @@ function htmlok( $args = array() ) {
 
     // Structure CSS
     $p_structure_cssx = $string_sep. strtolower( $structure_name_abbrx );
-
-    // Subtype
-    $p_subtype_cssx = ' '.$subtype_name_abbr;
 
 
     // Name
@@ -1747,35 +1724,7 @@ function htmlok( $args = array() ) {
         if ( in_array( $r_structure, $structure_constructor_terms, true ) || in_array( $r_structure, $structure_component_terms, true ) ) {
             
             $output .= '<div class="cr'.$o_branch_css.'---cr">';
-            
-            /*
-            $output .= '<'.$branch_tag.' class="cr'.$css.'---cr" '.$href_attr.'>';
-            */
-            
-            /*
-            // Header Content
-            if ( ! in_array( $r_structure, $structure_constructor_terms, true ) || $r_hr_structure || in_array( $r_elem, $elem_nav_terms, true ) || in_array( $r_subtype, $subtype_fieldset_item_terms, true ) ) {
-                $output .= $hr_mu;
-            }
-            
-            // Main Content
-            if ( ! empty( $content ) ) {
-                $output .= $ct_mu;
-            }
-            
-            // Footer Content
-            if ( ! empty( $fr_content ) ) {
-                $output .= $fr_mu;
-            }
-            */
-            
-            // Content Output
             $output .= $o_content;
-            
-            /*
-            $output .= '</'.$branch_tag.'>';
-            */
-            
             $output .= '</div>';
             
         }

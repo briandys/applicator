@@ -87,7 +87,6 @@ $web_product_main_name_obj = htmlok( array(
     'name'      => 'Web Product Main Name',
     'structure' => array(
         'type'      => 'object',
-        'elem'      => 'h1',
         'layout'    => 'inline',
         'linked'    => true,
         'attr'      => array(
