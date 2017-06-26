@@ -325,8 +325,9 @@ function htmlok( $args = array() ) {
     
     
     
-    $obj_elem = '';
-    $obj_elem_css = '';
+    $obj_elem = 'div';
+    $obj_elem_css = 'g';
+    
     $obj_attr = '';
     $obj_label_elem_css = '';
 
@@ -661,8 +662,6 @@ function htmlok( $args = array() ) {
             // Linked
             if ( ! empty( $r['structure']['linked'] ) ) {
                 $r_linked = substr( strtolower( preg_replace( $pat_no_space, $rep_no_space, trim( $r['structure']['linked'] ) ) ), $substr_start, $substr_end );
-                
-                //$obj_elem_css = 'h';
             }
 
             // Href Attribute
