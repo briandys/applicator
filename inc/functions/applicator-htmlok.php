@@ -1083,18 +1083,19 @@ function htmlok( $args = array() ) {
             // Text Content
             if ( ! empty( $val['txt'] ) ) {
                 $r_content_obj_txt = preg_replace( $pat_space, $rep_space, trim( $val['txt'] ) );
+                
                 $clean_txt = substr( sanitize_title( $r_content_obj_txt ), $substr_start, $substr_end );
                 
                 $txt_auto_css = ' '.$clean_txt.'---txt';
                 
-                // Array Input: CSS
+                // CSS
                 if ( ! empty( $val['css'] ) ) {
                     $r_content_obj_css = preg_replace( $pat_space, $rep_space, trim( $val['css'] ) );
 
                     $txt_css = ' '.$r_content_obj_css.'---txt';
                 }
                 
-                // If Text Content is numeric
+                // Numeric Text
                 if ( is_numeric( $r_content_obj_txt[0] ) ) {
                     $txt_auto_css = ' '.'num'.' '.'n-'.$clean_txt.'---txt';
                 }
@@ -1104,71 +1105,71 @@ function htmlok( $args = array() ) {
                     $r_content_obj_sep = preg_replace( $pat_space, $rep_space, $val['sep'] );
                 }
                 
-                $obj_content_val .= $r_content_obj_sep.'<span class="txt'.$txt_css.$txt_auto_css.'">'.$r_content_obj_txt.'</span>';
+                // Value
+                $obj_content_val .= $r_content_obj_sep.'<span class="txt'.$txt_css. $txt_auto_css.'">'.$r_content_obj_txt.'</span>';
                 
                 if ( ! empty( $val['line'] ) ) {
                     
-                    $r_obj_content_line = $val['line'];
+                    $r_content_obj_line = $val['line'];
                     
-                    foreach ( (array) $r_obj_content_line as $line_val ) {
+                    foreach ( (array) $r_content_obj_line as $line_val ) {
                         
-                        $line_val_css = '';
-                        $line_val_auto_css = '';
+                        $line_css = '';
+                        $line_auto_css = '';
                         
                         if ( ! empty( $line_val[0]['txt'] ) ) {
-                            $r_line_val_txt = preg_replace( $pat_space, $rep_space, trim( $line_val[0]['txt'] ) );
-                            $clean_line_val_txt = substr( sanitize_title( $r_line_val_txt ), $substr_start, $substr_end );
+                            $r_line_txt = preg_replace( $pat_space, $rep_space, trim( $line_val[0]['txt'] ) );
                             
-                            $line_val_auto_css = ' ' . $clean_line_val_txt.'---line';
+                            $clean_line_txt = substr( sanitize_title( $r_line_txt ), $substr_start, $substr_end );
                             
-                            if ( is_numeric( $r_line_val_txt[0] ) ) {
-                                $line_val_auto_css = ' '.'n-'.$clean_line_val_txt.'---line';
+                            $line_auto_css = ' ' . $clean_line_txt.'---line';
+                            
+                            if ( is_numeric( $r_line_txt[0] ) ) {
+                                $line_auto_css = ' '.'n-'.$clean_line_txt.'---line';
                             }
                             
                             if ( ! empty( $line_val['css'] ) ) {
-                                $r_line_val_css = preg_replace( $pat_space, $rep_space, trim( $line_val['css'] ) );
-                                $line_val_css = ' '.$r_line_val_css;
+                                $r_line_css = preg_replace( $pat_space, $rep_space, trim( $line_val['css'] ) );
+                                
+                                $line_css = ' '.$r_line_css;
                             }
                         }
 
-                        $obj_content_val .= '<span class="line'.$line_val_css.$line_val_auto_css.'">';
+                        $obj_content_val .= '<span class="line'.$line_css. $line_auto_css.'">';
                         
                         foreach ( (array) $line_val as $line_txt_val ) {
                         
                             $txt = '';
                             $txt_auto_css = '';
                             $txt_css = '';
-                            $txt_sep = '';
+                            $r_obj_line_sep = '';
 
-                            // Array Input: Text Content
+                            // Text Content
                             if ( ! empty( $line_txt_val['txt'] ) ) {
-                                $r_content_obj_line_txt = preg_replace( $pat_space, $rep_space, trim( $line_txt_val['txt'] ) );
-                                $obj_content_line_txt = $r_content_obj_line_txt;
-                                $clean_line_txt = substr( sanitize_title( $obj_content_line_txt ), $substr_start, $substr_end );
+                                $r_obj_line_txt = preg_replace( $pat_space, $rep_space, trim( $line_txt_val['txt'] ) );
+                                
+                                $clean_line_txt = substr( sanitize_title( $r_obj_line_txt ), $substr_start, $substr_end );
 
-                                $txt = $obj_content_line_txt;
                                 $txt_auto_css = ' '.$clean_line_txt.'---txt';
 
-                                // If Text Content is numeric
-                                if ( is_numeric( $obj_content_line_txt[0] ) ) {
+                                // Numeric Text
+                                if ( is_numeric( $r_obj_line_txt[0] ) ) {
                                     $txt_auto_css = ' '.'num'.' '.'n-'.$clean_line_txt.'---txt';
                                 }
 
-                                // Array Input: CSS
+                                // CSS
                                 if ( ! empty( $line_txt_val['css'] ) ) {
-                                    $r_obj_content_line_css = preg_replace( $pat_space, $rep_space, trim( $line_txt_val['css'] ) );
-                                    $obj_content_line_css = $r_obj_content_line_css;
-                                    $txt_css = ' '.$obj_content_line_css;
+                                    $r_content_obj_line_css = preg_replace( $pat_space, $rep_space, trim( $line_txt_val['css'] ) );
+                                    
+                                    $txt_css = ' '.$r_content_obj_line_css;
                                 }
 
-                                // Array Input: Separator
+                                // Separator
                                 if ( ! empty( $line_txt_val['sep'] ) ) {
-                                    $r_obj_content_line_sep = preg_replace( $pat_space, $rep_space, $line_txt_val['sep'] );
-                                    $obj_content_line_sep = $r_obj_content_line_sep;
-                                    $txt_sep = $obj_content_line_sep;
+                                    $r_obj_line_sep = preg_replace( $pat_space, $rep_space, $line_txt_val['sep'] );
                                 }
 
-                                $obj_content_val .= $txt_sep.'<span class="txt'.$txt_auto_css.$txt_css.'">'.$txt.'</span>';
+                                $obj_content_val .= $r_obj_line_sep.'<span class="txt'.$txt_auto_css.$txt_css.'">'.$r_obj_line_txt.'</span>';
 
                             }
                             

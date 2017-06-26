@@ -154,13 +154,18 @@ if ( $description || is_customize_preview() ) {
                     'css'   => 'wbp-desc',
                     'line'  => array(
                         array(
+                            'css'   => 'property',
                             array(
                                 'txt'   => 'hello',
                             ),
                         ),
                         array(
+                            'css'   => 'value',
                             array(
                                 'txt'   => 'world',
+                            ),
+                            array(
+                                'txt'   => 'wide',
                             ),
                         ),
                     ),
