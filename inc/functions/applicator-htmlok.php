@@ -17,6 +17,10 @@ function htmlok( $args = array() ) {
     //------------ Defaults
     
     $defaults = array(
+        
+        
+        
+        /*
         'name'          => '', // Name: Used in data-name="" and generating the parent-level CSS class name
         'root_css'      => '', // There's a generated parent css based on the 'name' and one can also add a custom
         'css'           => '', // This is a custom CSS that will apply to all structure elements
@@ -33,6 +37,7 @@ function htmlok( $args = array() ) {
             ),
         ),
         */
+        /*
         'hr_content'    => '', // Header Content
         'fr_content'    => '', // Footer Content
         'obj_content'   => '',
@@ -56,6 +61,7 @@ function htmlok( $args = array() ) {
             ),
         ),
         */
+        /*
         'structure'    => array(
             'type'      => '', // Constructor[Web Product, Web Product Start, Main Header, Main Content, Main Footer, Web Product End, Aside] | Module | Component[Generic, Navigation, Actions, Controls] | Object[Information, Label, Note, Form Label, Navigation Item, Action Item, Control Item]
             'subtype'       => '', // For Objects with specific subtypes like Heading | Navigation Item | Action Item | Generic | Anchor
@@ -76,6 +82,7 @@ function htmlok( $args = array() ) {
         'mod'           => '', // Modification: Markup for special cases
         'version'       => '', // Version: to be able to supply new code in the same function
         'echo'          => false, // Echo: defaults to return
+        */
     );
     
     
@@ -325,6 +332,9 @@ function htmlok( $args = array() ) {
     $p_obj_a_elem_attr = '';
     
     $p_title_attr = '';
+    
+    
+    
 
 
         
@@ -403,6 +413,8 @@ function htmlok( $args = array() ) {
     if ( ! empty( $r['echo'] ) ) {
         $r_echo = preg_replace( $pat_space, $rep_space, trim( $r['echo'] ) );
     }
+    
+    
     
     // Structure
     if ( ! empty( $r['structure']['type'] ) ) {
@@ -919,7 +931,7 @@ function htmlok( $args = array() ) {
     //------------------------ CONTENT ------------------------
     
     //------------------------ Header Content
-    if ( $r['hr_content'] ) {
+    if ( ! empty( $r['hr_content'] ) ) {
         $r_hr_content = $r['hr_content'];
         
         $hr_content_val = '';
