@@ -133,8 +133,13 @@ if ( ! function_exists( 'applicator_func_main_navx' ) ) {
                 'structure' => array(
                     'type'  => 'component',
                     'elem'  => 'nav',
+                    'attr'  => array(
+                        'elem'    => array(
+                            'role'      => 'navigation',
+                            'aria-label'    => 'Main Navigation',
+                        ),
+                    ),
                 ),
-                'mod'       => 'Main Navigation',
                 'id'        => 'main-nav',
                 'css'       => $main_nav_css,
                 'content'           => array(

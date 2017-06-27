@@ -96,6 +96,7 @@ $web_product_main_name_obj = htmlok( array(
         ),
     ),
     'css'           => 'wbp-main-name',
+    'root_css'      => 'site-title',
     'title'         => get_bloginfo( 'name' ),
     'content'   => array(
         'object'    => array(
@@ -116,11 +117,9 @@ if ( has_custom_logo() ) {
         'structure' => array(
             'type'      => 'object',
             'subtype'   => 'wordpress generated content',
-            'attr'      => array(
-                'title'     => get_bloginfo( 'name' ),
-            ),
         ),
-        'css'           => 'wbp-main-logo',
+        'css'       => 'wbp-main-logo',
+        'title'     => get_bloginfo( 'name' ),
         'content'   => array(
             'object'    => array(
                 get_custom_logo(),
@@ -152,6 +151,7 @@ if ( $description || is_customize_preview() ) {
                 array(
                     'txt'   => $description,
                     'css'   => 'wbp-desc',
+                    /*
                     'line'  => array(
                         array(
                             'css'   => 'property',
@@ -169,13 +169,8 @@ if ( $description || is_customize_preview() ) {
                             ),
                         ),
                     ),
+                    */
                 ),
-            ),
-        ),
-        'obj_content'   => array(
-            array(
-                'txt'   => $description,
-                'css'   => 'wbp-desc',
             ),
         ),
     ) );
@@ -193,7 +188,9 @@ if ( has_header_image() ) {
             'subtype'   => 'wordpress generated content',
         ),
         'css'           => 'wbp-main-media-banner',
-        'obj_content'   => get_custom_header_markup(),
+        'content'       => array(
+            'object'        => get_custom_header_markup(),
+        ),
     ) );
 }
 
