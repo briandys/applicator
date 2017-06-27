@@ -535,13 +535,6 @@ function htmlok( $args = array() ) {
                 $p_subtype_namex = ' '.$subtype_name;
                 $p_subtype_cssx = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
-                
-            
-            
-            
-                
-                //------------------------ X
-                
             }
             
         }
