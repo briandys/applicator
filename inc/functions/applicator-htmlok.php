@@ -187,13 +187,14 @@ function htmlok( $args = array() ) {
     $structure_subtype_css = '';
     $r_linked = '';
     $h_level_tag = '';
+    
+    // Content
     $hr_content_val = '';
     $content_val = '';
     $fr_content_val = '';
-    $obj_content_val = '';
-    $structure_elem = '';
     
-    $content_valx = '';
+    
+    $structure_elem = '';
     
     $layout_tag = 'div';
     $root_tag = $layout_tag;
@@ -929,18 +930,16 @@ function htmlok( $args = array() ) {
     }
     
     //------------------------ Constructor Content
-    if ( in_array( $r_structure, $structure_constructor_terms, true ) ) {
-        if ( ! empty( $r['content']['constructor'] ) ) {
-            $r_content = $r['content']['constructor'];
+    if ( ! empty( $r['content']['constructor'] ) ) {
+        $r_content = $r['content']['constructor'];
 
-            $content_val = '';
-            foreach ( ( array ) $r_content as $val ) {
-                $content_val .= preg_replace( $pat_space, $rep_space, trim( $val ) );
-            }
-        
-            // Output
-            $o_content_val = $content_val;
+        $content_val = '';
+        foreach ( ( array ) $r_content as $val ) {
+            $content_val .= preg_replace( $pat_space, $rep_space, trim( $val ) );
         }
+
+        // Output
+        $o_content_val = $content_val;
     }
     
     //------------------------ Component Content
@@ -964,13 +963,13 @@ function htmlok( $args = array() ) {
     if ( ! empty( $r['content']['object'] ) ) {
         $r_obj_content = $r['content']['object'];
         
-        $obj_content_val = '';
+        $content_val = '';
         foreach ( ( array ) $r_obj_content as $val ) {
                 
             $txt_auto_css = '';
             $txt_css = '';
             $r_content_obj_sep = '';
-            $obj_content_val = '';
+            $content_val = '';
             
             // Text Content
             if ( ! empty( $val['txt'] ) ) {
@@ -1003,7 +1002,7 @@ function htmlok( $args = array() ) {
                 }
                 
                 // Value
-                $obj_content_val .= $r_content_obj_sep.'<span class="txt'.$txt_css. $txt_auto_css.'">'.$r_content_obj_txt.'</span>';
+                $content_val .= $r_content_obj_sep.'<span class="txt'.$txt_css. $txt_auto_css.'">'.$r_content_obj_txt.'</span>';
                 
             }
             
@@ -1040,7 +1039,7 @@ function htmlok( $args = array() ) {
                         }
                     }
 
-                    $obj_content_val .= '<span class="line'.$line_css. $line_auto_css.'">';
+                    $content_val .= '<span class="line'.$line_css. $line_auto_css.'">';
 
                     foreach ( (array) $line_val as $line_txt_val ) {
 
@@ -1079,8 +1078,8 @@ function htmlok( $args = array() ) {
                                 $r_obj_line_sep = preg_replace( $pat_space, $rep_space, $line_txt_val['sep'] );
                             }
                             
-                            $ax_smu = '';
-                            $ax_emu = '';
+                            $a_smu = '';
+                            $a_emu = '';
                             $p_line_txt_attr_a = '';
                 
                             // Linked
@@ -1108,20 +1107,20 @@ function htmlok( $args = array() ) {
                                         }
                                     }
                                     
-                                    $ax_smu = '';
-                                    $ax_smu .= '<a'.$p_line_txt_attr_a.'>';
-                                    $ax_emu = '';
-                                    $ax_emu .= '</a>';
+                                    $a_smu = '';
+                                    $a_smu .= '<a'.$p_line_txt_attr_a.'>';
+                                    $a_emu = '';
+                                    $a_emu .= '</a>';
                                 }
                             }
                             
-                            $obj_content_val .= $r_obj_line_sep.'<span class="txt'.$txt_auto_css.$txt_css.'">'.$ax_smu. $r_obj_line_txt. $ax_emu.'</span>';
+                            $content_val .= $r_obj_line_sep.'<span class="txt'.$txt_auto_css.$txt_css.'">'.$a_smu. $r_obj_line_txt. $a_emu.'</span>';
 
                         }
 
                     }
 
-                    $obj_content_val .= '</span>';
+                    $content_val .= '</span>';
                 }
             }
             
@@ -1211,7 +1210,7 @@ function htmlok( $args = array() ) {
         }
         
         // Output
-        $o_content_val = $obj_content_val;
+        $o_content_val = $content_val;
     }
     
     
@@ -1487,7 +1486,7 @@ function htmlok( $args = array() ) {
     if ( in_array( $r_subtype, $structure_subtype_felem_term_variations, true ) ) {
         $obj_ct_mu = '';
         $obj_ct_mu .= $subtype_form_element_cr_smu;
-        $obj_ct_mu .= $obj_content_val;
+        $obj_ct_mu .= $content_val;
         $obj_ct_mu .= $subtype_form_element_cr_emu;
     }
     
