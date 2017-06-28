@@ -151,25 +151,6 @@ if ( $description || is_customize_preview() ) {
                 array(
                     'txt'   => $description,
                     'css'   => 'wbp-desc',
-                    /*
-                    'line'  => array(
-                        array(
-                            'css'   => 'property',
-                            array(
-                                'txt'   => 'hello',
-                            ),
-                        ),
-                        array(
-                            'css'   => 'value',
-                            array(
-                                'txt'   => 'world',
-                            ),
-                            array(
-                                'txt'   => 'wide',
-                            ),
-                        ),
-                    ),
-                    */
                 ),
             ),
         ),
@@ -268,12 +249,70 @@ $main_content_cn = htmlok( array(
     'structure'         => array(
         'type'          => 'constructor',
         'subtype'       => 'main content',
+        'h_elem'        => 'h2',
     ),
     'id'                => 'content',
     'root_css'          => 'site-content',
     'hr_content'        => $main_content_header_meta_cp,
     'content'           =>  array(
         'constructor'   => 'Super Main Content',
+    ),
+) );
+
+$web_product_copyright_obj = htmlok( array(
+    'name'          => 'Web Product Copyright',
+    'structure'     => array(
+        'type'          => 'object',
+    ),
+    'css'           => 'wbp-copyright',
+    'root_css'      => 'site-info',
+    'content'       => array(
+        'object'        => array(
+            array(
+                'line'      => array(
+                    array(
+                        'css'   => 'copyright---line',
+                        array(
+                            'txt'       => get_bloginfo( 'name' ),
+                            'css'       => 'wbp-name---txt',
+                            'linked'    => true,
+                            'attr'      => array(
+                                'a'         => array(
+                                    'href'      => esc_url( home_url( '/' ) ),
+                                    'rel'       => 'home',
+                                    'title'     => get_bloginfo( 'name' ),
+                                ),
+                            ),
+                        ),
+                        array(
+                            'sep'       => $GLOBALS['space_sep'],
+                            'txt'       => '&copy;',
+                            'css'       => 'copyright-symbol---txt',
+                        ),
+                        array(
+                            'sep'       => $GLOBALS['space_sep'],
+                            'txt'       => '2017',
+                            'css'       => 'year---txt',
+                        ),
+                        array(
+                            'txt'       => '.',
+                            'css'       => 'delimiter---txt',
+                        ),
+                    ),
+                    array(
+                        'css'   => 'rights---line',
+                        array(
+                            'sep'       => $GLOBALS['space_sep'],
+                            'txt'       => 'All rights reserved.',
+                        ),
+                        array(
+                            'txt'       => '&trade;',
+                            'css'       => 'trademark-symbol---txt',
+                        ),
+                    ),
+                ),
+            ),
+        ),
     ),
 ) );
 
@@ -286,7 +325,7 @@ $main_footer_cn = htmlok( array(
     'id'            => 'main-footer',
     'root_css'      => 'site-footer',
     'content'       => array(
-        'constructor'   => 'Footer Content',
+        'constructor'   => $web_product_copyright_obj,
     ),
 ) );
 

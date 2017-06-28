@@ -138,7 +138,7 @@ function htmlok( $args = array() ) {
     
     
     // Heading Levels
-    $heading_level_terms = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', );
+    $heading_level_terms = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div', );
     
     
     
@@ -191,7 +191,6 @@ function htmlok( $args = array() ) {
     $content_val = '';
     $fr_content_val = '';
     $obj_content_val = '';
-    $structure_attr_linked = '';
     $structure_elem = '';
     
     $content_valx = '';
@@ -278,6 +277,7 @@ function htmlok( $args = array() ) {
     $p_root_elem_css = '';
     $role_attrx = '';
     $p_attr = '';
+    $p_custom_attr = '';
     
     $structure_namex = '';
     $structure_name_abbr = '';
@@ -333,7 +333,7 @@ function htmlok( $args = array() ) {
     
     $p_title_attr = '';
     
-    
+    $r_txt_linked = '';
     
 
 
@@ -345,7 +345,7 @@ function htmlok( $args = array() ) {
         $clean_name = substr( sanitize_title( $r_name ), $substr_start, $substr_end );
     }
     
-    // CSS or Custom CSS that will apply to all elements | If blank, use Sanitized Name
+    // CSS or Custom CSS that will apply to all elements | If blank, use Clean Name
     if ( ! empty( $r['css'] ) ) {
         $r_css = sanitize_title( preg_replace( $pat_space, $rep_space, trim( $r['css'] ) ) );
     }
@@ -433,7 +433,7 @@ function htmlok( $args = array() ) {
             if ( in_array( $r_subtype, $subtype_main_header_terms, true ) ) {
                 
                 $subtype_elem = 'header';
-                $p_role_attrx = ' '.'role="banner"';
+                $p_custom_attr = ' '.'role="banner"';
                 
             }
             
@@ -442,19 +442,14 @@ function htmlok( $args = array() ) {
                 
                 $subtype_elem = 'section';
                 $r_hr_structure = true;
-                $p_h_elem = 'h2';
                 
             }
             
             // Main Header Subtype
             elseif ( in_array( $r_subtype, $subtype_main_footer_terms, true ) ) {
                 
-                $subtype_name = 'Main Footer';
-                $subtype_name_abbr = 'main-footer';
-                
                 $subtype_elem = 'footer';
-                $p_subtype_cssx = ' '.$subtype_name_abbr;
-                $p_role_attrx = ' '.'role="contentinfo"';
+                $p_custom_attr = ' '.'role="contentinfo"';
                 
             }
             
@@ -465,7 +460,7 @@ function htmlok( $args = array() ) {
                 $subtype_name_abbr = 'aside';
                 
                 $p_subtype_cssx = ' '.$subtype_name_abbr;
-                $p_role_attrx = ' '.'role="complementary"';
+                $p_custom_attr = ' '.'role="complementary"';
                 
                 $p_subtype_namex = ' '.$subtype_name;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
@@ -483,8 +478,21 @@ function htmlok( $args = array() ) {
             
             //------------------------ Subtypes
             
+            // Navigation Subtype
+            if ( in_array( $r_subtype, $subtype_nav_terms, true ) ) {
+                
+                $subtype_name = 'Navigation';
+                $subtype_name_abbr = 'nav';
+                $subtype_elem = 'nav';
+                
+                $p_custom_attr = ' '.'role="navigation"';
+                $p_subtype_namex = ' '.$subtype_name;
+                $p_subtype_cssx = ' '.$subtype_name_abbr;
+                $p_subtype_postfix_css = '-'.$subtype_name_abbr;
+            }
+            
             // Fieldset Item Subtype
-            if ( in_array( $r_subtype, $subtype_fieldset_item_terms, true ) ) {
+            elseif ( in_array( $r_subtype, $subtype_fieldset_item_terms, true ) ) {
                 
                 $subtype_name = 'Fieldset Item';
                 $subtype_name_abbr = 'fs-item';
@@ -520,21 +528,6 @@ function htmlok( $args = array() ) {
                 $p_subtype_cssx = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
                 
-            }
-            
-            
-            // Navigation Subtype
-            elseif ( in_array( $r_subtype, $subtype_nav_terms, true ) ) {
-                
-                $subtype_name = 'Navigation';
-                $subtype_name_abbr = 'nav';
-                $subtype_elem = 'nav';
-                
-                $p_h_elem = 'h2';
-                
-                $p_subtype_namex = ' '.$subtype_name;
-                $p_subtype_cssx = ' '.$subtype_name_abbr;
-                $p_subtype_postfix_css = '-'.$subtype_name_abbr;
             }
             
         }
@@ -685,8 +678,6 @@ function htmlok( $args = array() ) {
                 $obj_label_elem = $layout_elemx;
             }
         }
-
-
     }
     
     
@@ -700,7 +691,8 @@ function htmlok( $args = array() ) {
     
     }
     
-    // X
+    
+    
     // Structure Role
     if ( ! empty( $r['structure']['attr']['role'] ) ) {
         $r_role_attr = esc_attr( substr( preg_replace( $pat_space, $rep_space, trim( $r['structure']['attr']['role'] ) ), $substr_start, $substr_end ) );
@@ -821,9 +813,9 @@ function htmlok( $args = array() ) {
 
     // Branch CSS
     if ( ! empty( $r['css'] ) ) {
-        $p_branch_name_cssx = ' '.$r_css. $p_subtype_postfix_css;
+        $p_branch_name_css = ' '.$r_css. $p_subtype_postfix_css;
     } else {
-        $p_branch_name_cssx = ' '.$clean_name. $p_subtype_postfix_css;
+        $p_branch_name_css = ' '.$clean_name. $p_subtype_postfix_css;
     }
 
 
@@ -844,9 +836,9 @@ function htmlok( $args = array() ) {
 
     $o_id_attr = $p_id_attr;
 
-    $o_attr = $p_attr;
+    $o_attr = $p_attr. $p_custom_attr;
 
-    $o_branch_css = $p_branch_name_cssx;
+    $o_branch_css = $p_branch_name_css;
     
     // Processed
     $p_root_elem = $subtype_elem;
@@ -889,7 +881,7 @@ function htmlok( $args = array() ) {
     $o_obj_label_elem_css = $p_obj_label_elem_css. $p_obj_label_elem_cssx;
     
     // Anchor Element
-    $o_obj_a_elem_css = $p_branch_name_cssx;
+    $o_obj_a_elem_css = $p_branch_name_css;
     $o_obj_a_elem_attr = $p_obj_a_elem_attr;
 
 
@@ -986,7 +978,12 @@ function htmlok( $args = array() ) {
                 
                 $clean_txt = substr( sanitize_title( $r_content_obj_txt ), $substr_start, $substr_end );
                 
-                $txt_auto_css = ' '.$clean_txt.'---txt';
+                // If characters can't be converted
+                if ( '' == $clean_txt ) {
+                    $txt_auto_css = '';
+                } else {
+                    $txt_auto_css = ' '.$clean_txt.'---txt';
+                }
                 
                 // CSS
                 if ( ! empty( $val['css'] ) ) {
@@ -1008,79 +1005,128 @@ function htmlok( $args = array() ) {
                 // Value
                 $obj_content_val .= $r_content_obj_sep.'<span class="txt'.$txt_css. $txt_auto_css.'">'.$r_content_obj_txt.'</span>';
                 
-                if ( ! empty( $val['line'] ) ) {
-                    
-                    $r_content_obj_line = $val['line'];
-                    
-                    foreach ( (array) $r_content_obj_line as $line_val ) {
-                        
-                        $line_css = '';
-                        $line_auto_css = '';
-                        
-                        if ( ! empty( $line_val[0]['txt'] ) ) {
-                            $r_line_txt = preg_replace( $pat_space, $rep_space, trim( $line_val[0]['txt'] ) );
-                            
-                            $clean_line_txt = substr( sanitize_title( $r_line_txt ), $substr_start, $substr_end );
-                            
+            }
+            
+            // Lines
+            if ( ! empty( $val['line'] ) ) {
+                $r_content_obj_line = $val['line'];
+
+                foreach ( (array) $r_content_obj_line as $line_val ) {
+
+                    $line_css = '';
+                    $line_auto_css = '';
+
+                    if ( ! empty( $line_val[0]['txt'] ) ) {
+                        $r_line_txt = preg_replace( $pat_space, $rep_space, trim( $line_val[0]['txt'] ) );
+
+                        $clean_line_txt = substr( sanitize_title( $r_line_txt ), $substr_start, $substr_end );
+                
+                        // If characters can't be converted
+                        if ( '' == $clean_line_txt ) {
+                            $line_auto_css = '';
+                        } else {
                             $line_auto_css = ' ' . $clean_line_txt.'---line';
-                            
-                            if ( is_numeric( $r_line_txt[0] ) ) {
-                                $line_auto_css = ' '.'n-'.$clean_line_txt.'---line';
-                            }
-                            
-                            if ( ! empty( $line_val['css'] ) ) {
-                                $r_line_css = preg_replace( $pat_space, $rep_space, trim( $line_val['css'] ) );
-                                
-                                $line_css = ' '.$r_line_css;
-                            }
-                        }
-
-                        $obj_content_val .= '<span class="line'.$line_css. $line_auto_css.'">';
-                        
-                        foreach ( (array) $line_val as $line_txt_val ) {
-                        
-                            $txt = '';
-                            $txt_auto_css = '';
-                            $txt_css = '';
-                            $r_obj_line_sep = '';
-
-                            // Text Content
-                            if ( ! empty( $line_txt_val['txt'] ) ) {
-                                $r_obj_line_txt = preg_replace( $pat_space, $rep_space, trim( $line_txt_val['txt'] ) );
-                                
-                                $clean_line_txt = substr( sanitize_title( $r_obj_line_txt ), $substr_start, $substr_end );
-
-                                $txt_auto_css = ' '.$clean_line_txt.'---txt';
-
-                                // Numeric Text
-                                if ( is_numeric( $r_obj_line_txt[0] ) ) {
-                                    $txt_auto_css = ' '.'num'.' '.'n-'.$clean_line_txt.'---txt';
-                                }
-
-                                // CSS
-                                if ( ! empty( $line_txt_val['css'] ) ) {
-                                    $r_content_obj_line_css = preg_replace( $pat_space, $rep_space, trim( $line_txt_val['css'] ) );
-                                    
-                                    $txt_css = ' '.$r_content_obj_line_css;
-                                }
-
-                                // Separator
-                                if ( ! empty( $line_txt_val['sep'] ) ) {
-                                    $r_obj_line_sep = preg_replace( $pat_space, $rep_space, $line_txt_val['sep'] );
-                                }
-
-                                $obj_content_val .= $r_obj_line_sep.'<span class="txt'.$txt_auto_css.$txt_css.'">'.$r_obj_line_txt.'</span>';
-
-                            }
-                            
                         }
                         
-                        $obj_content_val .= '</span>';
+
+                        if ( is_numeric( $r_line_txt[0] ) ) {
+                            $line_auto_css = ' '.'n-'.$clean_line_txt.'---line';
+                        }
+
+                        if ( ! empty( $line_val['css'] ) ) {
+                            $r_line_css = preg_replace( $pat_space, $rep_space, trim( $line_val['css'] ) );
+
+                            $line_css = ' '.$r_line_css;
+                        }
                     }
+
+                    $obj_content_val .= '<span class="line'.$line_css. $line_auto_css.'">';
+
+                    foreach ( (array) $line_val as $line_txt_val ) {
+
+                        $txt = '';
+                        $txt_auto_css = '';
+                        $txt_css = '';
+                        $r_obj_line_sep = '';
+
+                        // Text Content
+                        if ( ! empty( $line_txt_val['txt'] ) ) {
+                            $r_obj_line_txt = preg_replace( $pat_space, $rep_space, trim( $line_txt_val['txt'] ) );
+
+                            $clean_line_txt = substr( sanitize_title( $r_obj_line_txt ), $substr_start, $substr_end );
+                            
+                            // If characters can't be converted
+                            if ( '' == $clean_line_txt ) {
+                                $txt_auto_css = '';
+                            } else {
+                                $txt_auto_css = ' '.$clean_line_txt.'---txt';
+                            }
+
+                            // Numeric Text
+                            if ( is_numeric( $r_obj_line_txt[0] ) ) {
+                                $txt_auto_css = ' '.'num'.' '.'n-'.$clean_line_txt.'---txt';
+                            }
+
+                            // CSS
+                            if ( ! empty( $line_txt_val['css'] ) ) {
+                                $r_content_obj_line_css = preg_replace( $pat_space, $rep_space, trim( $line_txt_val['css'] ) );
+
+                                $txt_css = ' '.$r_content_obj_line_css;
+                            }
+
+                            // Separator
+                            if ( ! empty( $line_txt_val['sep'] ) ) {
+                                $r_obj_line_sep = preg_replace( $pat_space, $rep_space, $line_txt_val['sep'] );
+                            }
+                            
+                            $ax_smu = '';
+                            $ax_emu = '';
+                            $p_line_txt_attr_a = '';
+                
+                            // Linked
+                            if ( ! empty( $line_txt_val['linked'] ) ) {
+                                $r_txt_linked = substr( strtolower( preg_replace( $pat_no_space, $rep_no_space, trim( $line_txt_val['linked'] ) ) ), $substr_start, $substr_end );
+                                
+                                if ( $r_txt_linked ) {
+                                    
+                                    // Attributes of Anchor
+                                    if ( ! empty( $line_txt_val['attr']['a'] ) ) {
+                                        $r_line_txt_attr_a = $line_txt_val['attr']['a'];
+
+                                        $p_line_txt_attr_a = '';
+
+                                        foreach ( ( array ) $r_line_txt_attr_a as $key => $val ) {
+
+                                            $clean_key = '';
+                                            $clean_val = '';
+
+                                            $clean_key = substr( strtolower( preg_replace( $pat_no_space, $rep_no_space, trim( $key ) ) ), $substr_start, $substr_end );
+
+                                            $clean_val = preg_replace( $pat_space, $rep_space, trim( $val ) );
+
+                                            $p_line_txt_attr_a .= ' '.$clean_key.'="'.$clean_val.'"';
+                                        }
+                                    }
+                                    
+                                    $ax_smu = '';
+                                    $ax_smu .= '<a'.$p_line_txt_attr_a.'>';
+                                    $ax_emu = '';
+                                    $ax_emu .= '</a>';
+                                }
+                            }
+                            
+                            $obj_content_val .= $r_obj_line_sep.'<span class="txt'.$txt_auto_css.$txt_css.'">'.$ax_smu. $r_obj_line_txt. $ax_emu.'</span>';
+
+                        }
+
+                    }
+
+                    $obj_content_val .= '</span>';
                 }
             }
             
-            elseif ( ! empty( $val['form_elem'] ) ) {
+            /*
+            if ( ! empty( $val['form_elem'] ) ) {
                 $r_obj_content_felem = preg_replace( $pat_space, $rep_space, trim( $val['form_elem'] ) );
                 $obj_content_felem = $r_obj_content_felem;
                 
@@ -1161,11 +1207,7 @@ function htmlok( $args = array() ) {
                     $obj_content_val .= '<input'.$form_elem_id.' class="input'.$form_elem_css.'"'.$form_elem_name .$form_elem_placeholder .$form_elem_value .$form_elem_type .$form_elem_required.'>';
                 }
             }
-            
-            else {
-                $obj_content_val = '';
-                $obj_content_val .= $val;
-            }
+            */
         }
         
         // Output

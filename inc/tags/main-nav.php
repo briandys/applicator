@@ -129,21 +129,20 @@ if ( ! function_exists( 'applicator_func_main_navx' ) ) {
 
             // CP
             $main_navigation_cp = htmlok( array(
-                'name'      => 'Main Navigation',
+                'name'      => 'Main',
                 'structure' => array(
-                    'type'  => 'component',
-                    'elem'  => 'nav',
-                    'attr'  => array(
+                    'type'      => 'component',
+                    'subtype'   => 'navigation',
+                    'h_elem'    => 'h2',
+                    'attr'      => array(
                         'elem'    => array(
-                            'role'      => 'navigation',
                             'aria-label'    => 'Main Navigation',
                         ),
                     ),
                 ),
                 'id'        => 'main-nav',
-                'css'       => $main_nav_css,
-                'content'           => array(
-                    'component'     => $main_nav
+                'content'   => array(
+                'component'     => $main_nav
                 ),
             ) );
 
