@@ -201,7 +201,6 @@ function htmlok( $args = array() ) {
     $branch_tag = $layout_tag;
     
     $structure_name = '';
-    $heading_name = '';
     $structure_css = '';
     $href_attr = '';
     $for_attr = '';
@@ -258,8 +257,8 @@ function htmlok( $args = array() ) {
     // It can be changed depending on the Subtype of Element involved
     // In Object, it can be div or span depending on the Layout
     $p_root_elem = 'div';
-    $layout_elemx = 'div';
-    $obj_label_elem = $layout_elemx;
+    $layout_elem = 'div';
+    $obj_label_elem = $layout_elem;
     
     $subtype_name = '';
     
@@ -269,14 +268,11 @@ function htmlok( $args = array() ) {
     $p_structure_name_abbr = '';
     $p_structure_cssx = '';
     $p_id_attr = '';
-    $p_role_attrx = '';
     $p_method_attrx = '';
-    $p_action_attrx = '';
     $p_subtype_cssx = '';
     
     // X
     $p_root_elem_css = '';
-    $role_attrx = '';
     $p_attr = '';
     $p_custom_attr = '';
     
@@ -546,13 +542,13 @@ function htmlok( $args = array() ) {
 
                 
                 if ( in_array( $r_obj_layout, $layout_inline_terms, true ) ) {
-                    $layout_elemx = 'span';
+                    $layout_elem = 'span';
                 }
                 
-                $subtype_elem = $layout_elemx;
-                $obj_elem = $layout_elemx;
+                $subtype_elem = $layout_elem;
+                $obj_elem = $layout_elem;
 
-                $obj_label_elem = $layout_elemx;
+                $obj_label_elem = $layout_elem;
 
 
             }
@@ -672,11 +668,11 @@ function htmlok( $args = array() ) {
             
             if ( in_array( $r_elem, $heading_level_terms, true ) ) {
                 $obj_elem_css = 'h';
-                $layout_elemx = 'div';
+                $layout_elem = 'div';
                 
                 // Force block layout for heading element
-                $subtype_elem = $layout_elemx;
-                $obj_label_elem = $layout_elemx;
+                $subtype_elem = $layout_elem;
+                $obj_label_elem = $layout_elem;
             }
         }
     }
@@ -692,39 +688,6 @@ function htmlok( $args = array() ) {
     
     }
     
-    
-    
-    // Structure Role
-    if ( ! empty( $r['structure']['attr']['role'] ) ) {
-        $r_role_attr = esc_attr( substr( preg_replace( $pat_space, $rep_space, trim( $r['structure']['attr']['role'] ) ), $substr_start, $substr_end ) );
-        
-        // X
-        $role_attrx = 'role="'.$r_role_attr.'"';
-        $p_role_attrx = ' '.$role_attrx;
-        
-    }
-    
-    // X
-    // Action Attribute
-    if ( ! empty( $r['structure']['attr']['action'] ) ) {
-        $r_action_attr = esc_url( preg_replace( $pat_no_space, $rep_no_space, trim( $r['structure']['attr']['action'] ) ) );
-        
-        // X
-        $action_attrx = 'action="'.$r_action_attr.'"';
-        $p_action_attrx = ' '.$action_attrx;
-        
-    }
-    
-    // X
-    // Method Attribute
-    if ( ! empty( $r['structure']['attr']['method'] ) ) {
-        $r_method_attr = esc_attr( substr( sanitize_title( preg_replace( $pat_space, $rep_space, trim( $r['structure']['attr']['method'] ) ) ), $substr_start, $substr_end ) );
-        
-        // X
-        $method_attrx = 'method="'.$r_method_attr.'"';
-        $p_method_attrx = ' '.$method_attrx;
-        
-    }
     
     // Attributes of Element
     if ( ! empty( $r['structure']['attr']['elem'] ) ) {
@@ -763,25 +726,9 @@ function htmlok( $args = array() ) {
             $p_obj_a_elem_attr .= ' '.$clean_key.'="'.$clean_val.'"';
         }
     }
+
+
     
-    
-    
-    
-    // Variable Definitions
-    if ( empty( $r['name'] ) ) {
-        $r_name = $structure_type;
-    }
-
-    $heading_name = $r_name.' '.$structure_subtype_name;
-
-
-
-
-
-    // X - Generic Variables
-    // Processed
-
-    // Root Element
 
 
     // Root Element CSS
@@ -929,18 +876,19 @@ function htmlok( $args = array() ) {
         $o_fr_content_val = $fr_content_val;
     }
     
+   
     //------------------------ Constructor Content
-    if ( ! empty( $r['content']['constructor'] ) ) {
-        $r_content = $r['content']['constructor'];
+    if ( in_array( $r_structure, $structure_constructor_terms, true ) ) {
+        if ( ! empty( $r['content']['constructor'] ) ) {
+            $r_content = $r['content']['constructor'];
 
-        $content_val = '';
-        foreach ( ( array ) $r_content as $val ) {
-            $content_val .= preg_replace( $pat_space, $rep_space, trim( $val ) );
+            $content_val = '';
+            foreach ( ( array ) $r_content as $val ) {
+                $content_val .= preg_replace( $pat_space, $rep_space, trim( $val ) );
+            }
         }
-
-        // Output
-        $o_content_val = $content_val;
     }
+    
     
     //------------------------ Component Content
     if ( in_array( $r_structure, $structure_component_terms, true ) ) {
@@ -951,12 +899,8 @@ function htmlok( $args = array() ) {
             foreach ( ( array ) $r_content as $val ) {
                 $content_val .= preg_replace( $pat_space, $rep_space, trim( $val ) );
             }
-        
-            // Output
-            $o_content_val = $content_val;
         }
     }
-    
     
     
     //------------------------ Object Content
@@ -1208,10 +1152,10 @@ function htmlok( $args = array() ) {
             }
             */
         }
-        
-        // Output
-        $o_content_val = $content_val;
     }
+        
+    // Content Output
+    $o_content_val = $content_val;
     
     
     /*
