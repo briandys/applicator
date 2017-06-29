@@ -329,7 +329,110 @@ $main_footer_cn = htmlok( array(
     ),
 ) );
 
-$page = htmlok( array(
+//------------------------ Web Product Start
+
+$go_to_content_navi_obj = htmlok( array(
+    'name'      => 'Go to Content',
+    'structure' => array(
+        'type'      => 'object',
+        'subtype'   => 'navigation item',
+        'attr'      => array(
+            'a'         => array(
+                'href'      => esc_url( '#content' ),
+            ),
+        ),
+        'title'     => 'Go to Content',
+        'root_css'  => 'skip-link',
+    ),
+    'css'       => 'go-ct',
+    'content'   => array(
+        'object'        => array(
+            array(
+                'txt'       => esc_html__( 'Go to Content', $GLOBALS['applicator_td'] ),
+            ),
+        ),
+    ),
+) );
+
+$go_to_content_nav_cp = htmlok( array(
+    'name'      => 'Go to Content',
+    'structure' => array(
+        'type'      => 'component',
+        'subtype'   => 'navigation',
+    ),
+    'id'        => 'go-content-nav',
+    'css'       => 'go-ct',
+    'content'   => array(
+        'component'     => $go_to_content_navi_obj,
+    ),
+) );
+
+$web_product_start_cn = htmlok( array(
+    'name'      => 'Web Product Start',
+    'structure' => array(
+        'type'      => 'constructor',
+    ),
+    'id'        => 'web-product-start',
+    'css'       => 'wbp-start',
+    'content'   => array(
+        'constructor'       => $go_to_content_nav_cp,
+    ),
+) );
+
+
+//------------------------ Web Product End
+
+$go_to_start_navi_obj = htmlok( array(
+    'name'      => 'Go to Start',
+    'structure' => array(
+        'type'      => 'object',
+        'subtype'   => 'navigation item',
+        'attr'      => array(
+            'a'         => array(
+                'href'      => esc_url( '#' ),
+            ),
+        ),
+        'title'     => 'Go to Start',
+    ),
+    'css'       => 'go-start',
+    'content'   => array(
+        'object'        => array(
+            array(
+                'txt'       => 'Go to Start',
+            ),
+        ),
+    ),
+) );
+
+$go_to_start_nav_cp = htmlok( array(
+    'name'      => 'Go to Start',
+    'structure' => array(
+        'type'      => 'component',
+        'subtype'   => 'navigation',
+    ),
+    'id'        => 'go-start-nav',
+    'css'       => 'go-start',
+    'content'   => array(
+        'component'     => $go_to_start_navi_obj,
+    ),
+) );
+
+$web_product_end_cn = htmlok( array(
+    'name'      => 'Web Product End',
+    'structure' => array(
+        'type'      => 'constructor',
+    ),
+    'id'        => 'web-product-end',
+    'css'       => 'wbp-end',
+    'content'   => array(
+        'constructor'       => $go_to_start_nav_cp,
+    ),
+) );
+
+
+//------------------------ Web Product
+
+$web_product = htmlok( array(
     'name'      => 'Web Product',
     'structure' => array(
         'type'          => 'constructor',
@@ -339,9 +442,11 @@ $page = htmlok( array(
     'root_css'  => 'site',
     'content'   => array(
         'constructor'   => array(
+            $web_product_start_cn,
             $main_header_cn,
             $main_content_cn,
             $main_footer_cn,
+            $web_product_end_cn,
         ),
     ),
     'echo'      => true,

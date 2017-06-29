@@ -131,6 +131,7 @@ function htmlok( $args = array() ) {
     $subtype_form_elements_terms = array( 'form elements', 'felems', 'fes', );
     $subtype_heading_terms = array( 'heading', 'h', );
     $subtype_wpg_terms = array( 'wordpress generated content', 'wpg', 'wp', );
+    $subtype_navi_terms = array( 'navigation item', 'nav item', 'navi', );
     
     // Object Layout
     $layout_block_terms = array( 'block', 'div', 'b', 'd', );
@@ -164,7 +165,6 @@ function htmlok( $args = array() ) {
     $r_structure = '';
     $r_elem = '';
     $r_obj_layout = '';
-    $r_href = '';
     
     // X
     $r_subtype = '';
@@ -206,7 +206,6 @@ function htmlok( $args = array() ) {
     $for_attr = '';
     
     $href_attr = '';
-    $target_attr = '';
     
     $structure_type = '';
     $structure_type_abbr = '';
@@ -264,12 +263,12 @@ function htmlok( $args = array() ) {
     
     // X
     // Processed
-    $p_subtype_namex = '';
+    $p_subtype_name = '';
     $p_structure_name_abbr = '';
     $p_structure_cssx = '';
     $p_id_attr = '';
     $p_method_attrx = '';
-    $p_subtype_cssx = '';
+    $p_subtype_css = '';
     
     // X
     $p_root_elem_css = '';
@@ -331,6 +330,9 @@ function htmlok( $args = array() ) {
     $p_title_attr = '';
     
     $r_txt_linked = '';
+    $p_obj_elem_root_css_val = '';
+    $p_obj_a_id_attr = '';
+    $p_obj_elem_root_title = '';
     
 
 
@@ -417,7 +419,7 @@ function htmlok( $args = array() ) {
     if ( ! empty( $r['structure']['type'] ) ) {
         $r_structure = substr( strtolower( preg_replace( $pat_space, $rep_space, trim( $r['structure']['type'] ) ) ), $substr_start, $substr_end );
         
-        //------------------------ Constructor
+        //------------------------------------------------ Constructor Structure
         if ( in_array( $r_structure, $structure_constructor_terms, true ) ) {
             
             $structure_namex = 'Constructor';
@@ -456,17 +458,17 @@ function htmlok( $args = array() ) {
                 $subtype_name = 'Aside';
                 $subtype_name_abbr = 'aside';
                 
-                $p_subtype_cssx = ' '.$subtype_name_abbr;
+                $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_custom_attr = ' '.'role="complementary"';
                 
-                $p_subtype_namex = ' '.$subtype_name;
+                $p_subtype_name = ' '.$subtype_name;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
                 
             }
         }
         
         
-        //------------------------ Component
+        //------------------------------------------------ Component Structure
         elseif ( in_array( $r_structure, $structure_component_terms, true ) ) {
             
             $structure_namex = 'Component';
@@ -480,11 +482,10 @@ function htmlok( $args = array() ) {
                 
                 $subtype_name = 'Navigation';
                 $subtype_name_abbr = 'nav';
-                $subtype_elem = 'nav';
                 
                 $p_custom_attr = ' '.'role="navigation"';
-                $p_subtype_namex = ' '.$subtype_name;
-                $p_subtype_cssx = ' '.$subtype_name_abbr;
+                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
             }
             
@@ -494,8 +495,8 @@ function htmlok( $args = array() ) {
                 $subtype_name = 'Fieldset Item';
                 $subtype_name_abbr = 'fs-item';
                 
-                $p_subtype_namex = ' '.$subtype_name;
-                $p_subtype_cssx = ' '.$subtype_name_abbr;
+                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
             
             }
@@ -507,8 +508,8 @@ function htmlok( $args = array() ) {
                 $subtype_name_abbr = 'form';
                 $subtype_elem = 'form';
                 
-                $p_subtype_namex = ' '.$subtype_name;
-                $p_subtype_cssx = ' '.$subtype_name_abbr;
+                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
                 
             }
@@ -521,15 +522,15 @@ function htmlok( $args = array() ) {
                 
                 $obj_elem = 'label';
                 
-                $p_subtype_namex = ' '.$subtype_name;
-                $p_subtype_cssx = ' '.$subtype_name_abbr;
+                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
                 
             }
             
         }
             
-        //------------------------ Object
+        //------------------------------------------------ Object Structure
         elseif ( in_array( $r_structure, $structure_object_terms, true ) ) {
             
             $structure_namex = 'Object';
@@ -550,7 +551,40 @@ function htmlok( $args = array() ) {
 
                 $obj_label_elem = $layout_elem;
 
+            }
+            
+            
+            // Linked
+            if ( ! empty( $r['structure']['linked'] ) ) {
+                $r_linked = substr( strtolower( preg_replace( $pat_no_space, $rep_no_space, trim( $r['structure']['linked'] ) ) ), $substr_start, $substr_end );
+            }
+    
+            // Object ID Attribute
+            if ( ! empty( $r['structure']['id'] ) ) {
+                $r_obj_a_id = preg_replace( $pat_space, $rep_space, trim( $r['structure']['id'] ) );
+                $clean_obj_a_id = substr( sanitize_title( $r_obj_a_id ), $substr_start, $substr_end );
 
+                $p_obj_a_id_attr =  ' '.'id="'.$clean_obj_a_id.'"';
+            }
+            
+            
+            // Object Element CSS
+            if ( ! empty( $r['structure']['root_css'] ) ) {
+                $r_obj_elem_root_css = $r['structure']['root_css'];
+
+                $p_obj_elem_root_css_val = '';
+                foreach ( ( array ) $r_obj_elem_root_css as $val ) {
+                    $p_obj_elem_root_css_val .= ' '.preg_replace( $pat_space, $rep_space, trim( $val ) );
+                }
+            }
+    
+    
+            // Object Element Title Attribute
+            if ( ! empty( $r['structure']['title'] ) ) {
+                $r_obj_elem_root_title = preg_replace( $pat_space, $rep_space, trim( $r['structure']['title'] ) );
+
+                // Default
+                $p_obj_elem_root_title = ' '.'title="'.$r_obj_elem_root_title.'"';
             }
             
             
@@ -562,9 +596,8 @@ function htmlok( $args = array() ) {
                 $subtype_name = 'WordPress Generated Content';
                 $subtype_name_abbr = 'wpg';
                 
-                $p_subtype_namex = ' '.$subtype_name;
-                $p_subtype_cssx = ' '.$subtype_name_abbr;
-
+                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_css = ' '.$subtype_name_abbr;
                 
             }
             
@@ -573,10 +606,21 @@ function htmlok( $args = array() ) {
                
                 $subtype_name = 'Heading';
                 $subtype_name_abbr = 'h';
-
                 
-                $p_subtype_namex = ' '.$subtype_name;
-                $p_subtype_cssx = ' '.$subtype_name_abbr;
+                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_css = ' '.$subtype_name_abbr;
+                $p_subtype_postfix_css = '-'.$subtype_name_abbr;
+                
+            }
+            
+            // Heading Subtype
+            elseif ( in_array( $r_subtype, $subtype_navi_terms, true ) ) {
+               
+                $subtype_name = 'Navigation Item';
+                $subtype_name_abbr = 'navi';
+                
+                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
                 
             }
@@ -590,11 +634,12 @@ function htmlok( $args = array() ) {
                 
                 $obj_elem = 'label';
                 
-                $p_subtype_namex = ' '.$subtype_name;
-                $p_subtype_cssx = ' '.$subtype_name_abbr;
+                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
                 
             }
+            
             
             // Form Element Subtype
             elseif ( in_array( $r_subtype, $subtype_form_element_terms, true ) ) {
@@ -604,8 +649,8 @@ function htmlok( $args = array() ) {
                 
                 $obj_elem = 'input';
                 
-                $p_subtype_namex = ' '.$subtype_name;
-                $p_subtype_cssx = ' '.$subtype_name_abbr;
+                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
                 
             }
@@ -616,30 +661,8 @@ function htmlok( $args = array() ) {
                 $subtype_name = 'Generic';
                 $subtype_name_abbr = 'gen';
                 
-                $p_subtype_namex = ' '.$subtype_name;
+                $p_subtype_name = ' '.$subtype_name;
 
-            }
-            
-            
-            
-            // Linked
-            if ( ! empty( $r['structure']['linked'] ) ) {
-                $r_linked = substr( strtolower( preg_replace( $pat_no_space, $rep_no_space, trim( $r['structure']['linked'] ) ) ), $substr_start, $substr_end );
-            }
-
-            // Href Attribute
-            if ( ! empty( $r['structure']['attr']['href'] ) ) {
-                $r_href = esc_url( preg_replace( $pat_no_space, $rep_no_space, trim( $r['structure']['attr']['href'] ) ) );
-
-                $href_attr = ' '.'href="'.$r_href.'"';
-            }
-
-            // Target Attribute
-            if ( ! empty( $r['structure']['attr']['target'] ) ) {
-                $r_structure_attr_target = preg_replace( $pat_no_space, $rep_no_space, trim( $r['structure']['attr']['target'] ) );
-
-                // Default
-                $target_attr = ' '.'target="'.$r_structure_attr_target.'"';
             }
         }
     }
@@ -772,13 +795,13 @@ function htmlok( $args = array() ) {
 
     // All class names in root
     // class="nav cp main-nav custom-css-nav custom-root-css"
-    $o_cssx = $p_root_elem_css. $p_structure_cssx. $p_subtype_cssx. $p_name_cssx. $p_cssx. $p_root_css;
+    $o_cssx = $p_root_elem_css. $p_structure_cssx. $p_subtype_css. $p_name_cssx. $p_cssx. $p_root_css;
 
     // Displayed in data-name
-    $o_structure_namex = $p_name. $p_subtype_namex. $p_structure_name_abbr;
+    $o_structure_namex = $p_name. $p_subtype_name. $p_structure_name_abbr;
 
     // Displayed in headings
-    $o_heading_name = esc_html__( $p_name. $p_subtype_namex, $GLOBALS['applicator_td'] );
+    $o_heading_name = esc_html__( $p_name. $p_subtype_name, $GLOBALS['applicator_td'] );
 
     $o_h_elem = $p_h_elem;
 
@@ -831,6 +854,9 @@ function htmlok( $args = array() ) {
     // Anchor Element
     $o_obj_a_elem_css = $p_branch_name_css;
     $o_obj_a_elem_attr = $p_obj_a_elem_attr;
+    $o_obj_a_root_css = $p_obj_elem_root_css_val;
+    $o_obj_a_id_attr = $p_obj_a_id_attr;
+    $p_obj_elem_root_title = $p_obj_elem_root_title;
 
 
     
@@ -1242,30 +1268,18 @@ function htmlok( $args = array() ) {
     
     
     
-    //------------------------ Container Structure Markup
+    //------------------------ Markup Structure Templates
     
     
     // Generic Container Structure Markup
     $cr_smu = '';
     $cr_smu .= '<div class="%1$s'.$o_branch_css.'---%1$s">';
     $cr_smu .= '<div class="%1$s_cr'.$o_branch_css.'---%1$s_cr">';
-
     
     $cr_emu = '';
     $cr_emu .= '</div>';
     $cr_emu .= '</div>';
-
     
-    
-    $subtype_form_element_cr_smu = '';
-    $subtype_form_element_cr_smu .= '<div class="ee">';
-    
-    $subtype_form_element_cr_emu = '';
-    $subtype_form_element_cr_emu .= '</div>';
-    
-    
-
-
     
     // Form Subtype
     $subtype_form_cr_smu = '';
@@ -1289,7 +1303,7 @@ function htmlok( $args = array() ) {
     
     // Anchor Markup
     $a_smu = '';
-    $a_smu .= '<a class="a '.$o_obj_a_elem_css.'---a" '.$o_obj_a_elem_attr.'>';
+    $a_smu .= '<a'.$o_obj_a_id_attr.' class="a '.$o_obj_a_elem_css.'---a'.$o_obj_a_root_css.'" '.$o_obj_a_elem_attr. $p_obj_elem_root_title.'>';
     $a_smu .= '<span class="a_l '.$o_obj_a_elem_css.'---a_l">';
     
     $a_emu = '';
@@ -1446,29 +1460,39 @@ function htmlok( $args = array() ) {
             $obj_ct_mu = '';
             $obj_ct_mu .= $o_content_val;
         }
+        
+        // Navigation Item
+        elseif ( in_array( $r_subtype, $subtype_navi_terms, true ) ) {
+            $obj_ct_mu = '';
+            $obj_ct_mu .= $a_smu;
+            $obj_ct_mu .= $o_content_val;
+            $obj_ct_mu .= $a_emu;
+        }
     }
 
 
     
+    //------------------------ Variable Wiper
     
-    
+    // Constructor and Component
     if ( ! empty( $r['content']['constructor'] ) || ! empty( $r['content']['component'] ) ) {
         $ct_mu = $ct_mu;
     } else {
         $ct_mu = '';
     }
+
+    // Object
+    if ( ! empty( $r['content']['object'] ) ) {
+        $obj_ct_mu = $obj_ct_mu;
+    } else {
+        $obj_ct_mu = '';
+    }
     
+    // Footer Content
     if ( ! empty( $r['fr_content'] ) ) {
         $fr_mu = $fr_mu;
     } else {
         $fr_mu = '';
-    }
-    
-
-    if ( ! empty( $r['obj_content'] ) || ! empty( $r['content']['object'] ) ) {
-        $obj_ct_mu = $obj_ct_mu;
-    } else {
-        $obj_ct_mu = '';
     }
     
     
