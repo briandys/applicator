@@ -26,6 +26,13 @@
         padding: .5rem;
         border: 2px solid black;
         border-radius: .25rem;
+        background-color: white;
+    }
+    
+    .cp,
+    .obj
+    {
+        margin-left: -1rem;
     }
     
     .cn
@@ -286,16 +293,16 @@ $web_product_copyright_obj = htmlok( array(
                         ),
                         array(
                             'sep'       => $GLOBALS['space_sep'],
-                            'txt'       => '&copy;',
+                            'txt'       => esc_html__( '&copy;', $GLOBALS['applicator_td'] ),
                             'css'       => 'copyright-symbol---txt',
                         ),
                         array(
                             'sep'       => $GLOBALS['space_sep'],
-                            'txt'       => '2017',
+                            'txt'       => esc_html__( '2017', $GLOBALS['applicator_td'] ),
                             'css'       => 'year---txt',
                         ),
                         array(
-                            'txt'       => '.',
+                            'txt'       => esc_html__( '.', $GLOBALS['applicator_td'] ),
                             'css'       => 'delimiter---txt',
                         ),
                     ),
@@ -303,10 +310,10 @@ $web_product_copyright_obj = htmlok( array(
                         'css'   => 'rights---line',
                         array(
                             'sep'       => $GLOBALS['space_sep'],
-                            'txt'       => 'All rights reserved.',
+                            'txt'       => esc_html__( 'All rights reserved.', $GLOBALS['applicator_td'] ),
                         ),
                         array(
-                            'txt'       => '&trade;',
+                            'txt'       => esc_html__( '&trade;', $GLOBALS['applicator_td'] ),
                             'css'       => 'trademark-symbol---txt',
                         ),
                     ),
@@ -398,7 +405,7 @@ $go_to_start_navi_obj = htmlok( array(
     'content'   => array(
         'object'        => array(
             array(
-                'txt'       => 'Go to Start',
+                'txt'       => esc_html__( 'Go to Start', $GLOBALS['applicator_td'] ),
             ),
         ),
     ),
