@@ -128,9 +128,7 @@ if ( has_custom_logo() ) {
         'css'       => 'wbp-main-logo',
         'title'     => get_bloginfo( 'name' ),
         'content'   => array(
-            'object'    => array(
-                get_custom_logo(),
-            ),
+            'object'    => get_custom_logo(),
         ),
     ) );
 }

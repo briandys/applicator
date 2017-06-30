@@ -977,7 +977,7 @@ function htmlok( $args = array() ) {
             }
             
             // Lines
-            if ( ! empty( $val['line'] ) ) {
+            elseif ( ! empty( $val['line'] ) ) {
                 $r_content_obj_line = $val['line'];
 
                 foreach ( (array) $r_content_obj_line as $line_val ) {
@@ -1092,6 +1092,10 @@ function htmlok( $args = array() ) {
 
                     $content_val .= '</span>';
                 }
+            } else {
+                
+                $content_val .= $r_obj_content;
+                
             }
             
             /*
@@ -1268,7 +1272,7 @@ function htmlok( $args = array() ) {
     
     
     
-    //------------------------ Markup Structure Templates
+    //------------------------ Section: Markup Structure Templates
     
     
     // Generic Container Structure Markup
@@ -1290,7 +1294,6 @@ function htmlok( $args = array() ) {
     $subtype_form_cr_emu .= '</div>';
     $subtype_form_cr_emu .= '</div>';
     
-    
 
     // Main Nav Mod
     $main_nav_cr_smu = '';
@@ -1298,7 +1301,6 @@ function htmlok( $args = array() ) {
     
     $main_nav_cr_emu = '';
     $main_nav_cr_emu     .= '</div>';
-    
     
     
     // Anchor Markup
@@ -1330,6 +1332,7 @@ function htmlok( $args = array() ) {
     $obj_cr_emu .= '</'.$o_obj_elem.'>';
     
     
+    // Form Element
     $subtype_form_element_cr_smu = '';
     $subtype_form_element_cr_smu .= '<div class="ee">';
     
@@ -1337,13 +1340,9 @@ function htmlok( $args = array() ) {
     $subtype_form_element_cr_emu .= '</div>';
     
     
-    
+    // Form Elements
     $subtype_form_elements_cr_smu = '';
     $subtype_form_elements_cr_smu .= $cr_smu;
-
-    
-
-
     $subtype_form_elements_cr_smu .= '<div id="" class="obj flabel" title="" data-name="">';
     $subtype_form_elements_cr_smu .= '<label class="label" for="" attr="">';
     $subtype_form_elements_cr_smu .= '<div class="label_l">';
@@ -1352,16 +1351,10 @@ function htmlok( $args = array() ) {
     $subtype_form_elements_cr_emu .= '</div>';
     $subtype_form_elements_cr_emu .= '</label>';
     $subtype_form_elements_cr_emu .= '</div><!-- Object Name -->';
-   
     $subtype_form_elements_cr_emu .= $cr_emu;
     
     
-    
-    
-    
-    
-    
-    
+    //------------------------ Section: Markup Structure - Header, Content, Footer
     
     //------------------------ Header Markup
     $hr_mu = '';
