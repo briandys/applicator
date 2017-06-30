@@ -4,22 +4,29 @@
 if ( ! function_exists( 'applicator_func_main_header_aside' ) ) {
     function applicator_func_main_header_aside() {
         
-        if ( is_active_sidebar( 'main-header-aside' )  ) {
+        $main_header_aside_css = 'main-header-aside';
+        
+        if ( is_active_sidebar( $main_header_aside_css )  ) {
             
             ob_start();
-            dynamic_sidebar('main-header-aside');
+            dynamic_sidebar( $main_header_aside_css );
             $aside = ob_get_contents();
             ob_end_clean();
             
-            $main_header_aside = htmlok_cn( array(
+            $main_header_aside = htmlok( array(
                 'name'      => 'Main Header',
-                'type'      => 'aside',
-                'elem'      => 'aside',
-                'css'       => 'main-hr',
-                'attr'      => array(
-                    'id'    => '',
+                'structure' => array(
+                    'type'          => 'constructor',
+                    'subtype'       => 'aside',
+                    'elem'          => 'aside',
+                    'hr_structure'  => true,
+                    'h_elem'        => 'h2',
                 ),
-                'content'   => $aside,
+                'id'        => $main_header_aside_css,
+                'css'       => 'main-hr',
+                'content'   => array(
+                    'constructor'   => $aside,
+                ),
             ) );
             
             return $main_header_aside;

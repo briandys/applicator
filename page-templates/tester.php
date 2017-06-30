@@ -89,7 +89,7 @@
 
 <?php
 
-//------------------------ Web Product Main Name OBJ
+// Web Product Main Name OBJ
 $web_product_main_name_obj = htmlok( array(
     'name'      => 'Web Product Main Name',
     'structure' => array(
@@ -98,42 +98,42 @@ $web_product_main_name_obj = htmlok( array(
         'linked'    => true,
         'attr'      => array(
             'a'     => array(
-                'href'  => esc_url( home_url( '/' ) ),
+                'href'      => esc_url( home_url( '/' ) ),
             ),
         ),
     ),
     'css'           => 'wbp-main-name',
     'root_css'      => 'site-title',
     'title'         => get_bloginfo( 'name' ),
-    'content'   => array(
-        'object'    => array(
+    'content'       => array(
+        'object'        => array(
             array(
-                'txt'   => get_bloginfo( 'name' ),
-                'css'   => 'wbp-name',
+                'txt'           => get_bloginfo( 'name' ),
+                'css'           => 'wbp-name',
             ),
         ),
     ),
 ) );
 
-//------------------------ Web Product Main Logo OBJ | inc > settings.php | Customizer > Site Identity
+// Web Product Main Logo OBJ | inc > settings.php | Customizer > Site Identity
 $web_product_main_logo_obj = '';
 
 if ( has_custom_logo() ) {
     $web_product_main_logo_obj = htmlok( array(
         'name'      => 'Web Product Main Logo',
         'structure' => array(
-            'type'      => 'object',
-            'subtype'   => 'wordpress generated content',
+            'type'          => 'object',
+            'subtype'       => 'wordpress generated content',
         ),
         'css'       => 'wbp-main-logo',
         'title'     => get_bloginfo( 'name' ),
         'content'   => array(
-            'object'    => get_custom_logo(),
+            'object'        => get_custom_logo(),
         ),
     ) );
 }
 
-//------------------------ Web Product Main Description OBJ
+// Web Product Main Description OBJ
 $web_product_main_desc_obj = '';
 $description = get_bloginfo( 'description', 'display' );
 
@@ -149,7 +149,7 @@ if ( $description || is_customize_preview() ) {
                 ),
             ),
         ),
-        'css'           => 'wbp-main-desc',
+        'css'       => 'wbp-main-desc',
         'title'     => $description,
         'content'   => array(
             'object'    => array(
@@ -163,15 +163,15 @@ if ( $description || is_customize_preview() ) {
 }
 
 
-//------------------------ Web Product Main Media Banner OBJ | Custom Header | Customizer > Custom Header | inc > functions > custom-header.php
+// Web Product Main Media Banner OBJ | Custom Header | Customizer > Custom Header | inc > functions > custom-header.php
 $web_product_main_media_banner_obj = '';
 
 if ( has_header_image() ) {
     $web_product_main_media_banner_obj = htmlok( array(
         'name'          => 'Web Product Main Media Banner',
         'structure'     => array(
-            'type'      => 'object',
-            'subtype'   => 'wordpress generated content',
+            'type'          => 'object',
+            'subtype'       => 'wordpress generated content',
         ),
         'css'           => 'wbp-main-media-banner',
         'content'       => array(
@@ -220,6 +220,7 @@ $main_header_cn = htmlok( array(
     ),
 ) );
 
+/*
 $main_content_header_sub_heading_obj = htmlok( array(
     'name'              => 'Main Header Sub-Heading',
     'structure'         => array(
@@ -248,7 +249,9 @@ $main_content_header_meta_cp = htmlok( array(
 
     ),
 ) );
+*/
 
+/*
 $main_content_cn = htmlok( array(
     'name'              => 'Main Content',
     'structure'         => array(
@@ -263,6 +266,7 @@ $main_content_cn = htmlok( array(
         'constructor'   => 'Super Main Content',
     ),
 ) );
+*/
 
 $web_product_copyright_obj = htmlok( array(
     'name'          => 'Web Product Copyright',
