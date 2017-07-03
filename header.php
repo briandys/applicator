@@ -17,7 +17,7 @@
                 <?php
                 
                 //------------------------------------------------ Web Product Start
-                
+                /*
                 // Go to Content Navi
                 $go_to_content_navi_obj = htmlok( array(
                     'name'      => 'Go to Content',
@@ -100,12 +100,13 @@
                     'echo'      => true,
                 ) );
                 //------------------------------------------------ End: Web Product Start
+                */
                 
                 ?>
                 
                 <?php
                 
-                /*
+                
                 // Go to Content Nav - Nav
                 // Text
                 $go_content_nav_item_txt = htmlok_txt( array(
@@ -137,13 +138,13 @@
                     'cp_css'    => 'go-content-nav',
                     'css'       => 'go-ct',
                     'attr'      => array(
-                        'id'    => 'go-content-navx',
+                        'id'    => 'go-content-nav',
                     ),
                     'content'   => $go_content_nav_item_obj,
                 ) );
                 
 
-                /*
+                
                 // Web Browser Upgrade - Object
                 // Text
                 $browser_upgrade_note_txt = sprintf( '<p>%1$s <a href="%3$s">%2$s</a></p>',
@@ -170,7 +171,6 @@
                     'content'   => $go_content_nav,
                     'echo'      => true,
                 ) );
-                */
                 ?>
         
                 <header id="main-header" class="cn main-header site-header" data-name="Main Header" role="banner">
