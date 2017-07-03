@@ -132,6 +132,7 @@ function htmlok( $args = array() ) {
     $subtype_heading_terms = array( 'heading', 'h', );
     $subtype_wpg_terms = array( 'wordpress generated content', 'wpg', 'wp', );
     $subtype_navi_terms = array( 'navigation item', 'nav item', 'navi', );
+    $subtype_note_terms = array( 'note', );
     
     // Object Layout
     $layout_block_terms = array( 'block', 'div', 'b', 'd', );
@@ -333,6 +334,11 @@ function htmlok( $args = array() ) {
     $p_obj_elem_root_css_val = '';
     $p_obj_a_id_attr = '';
     $p_obj_elem_root_title = '';
+    
+    $txt_layout_elem = 'span';
+    
+    $o_content_before = '';
+    $o_content_after = '';
     
 
 
@@ -540,7 +546,6 @@ function htmlok( $args = array() ) {
             // Layout
             if ( ! empty( $r['structure']['layout'] ) ) {
                 $r_obj_layout = substr( strtolower( preg_replace( $pat_no_space, $rep_no_space, trim( $r['structure']['layout'] ) ) ), $substr_start, $substr_end );
-
                 
                 if ( in_array( $r_obj_layout, $layout_inline_terms, true ) ) {
                     $layout_elem = 'span';
@@ -550,6 +555,7 @@ function htmlok( $args = array() ) {
                 $obj_elem = $layout_elem;
 
                 $obj_label_elem = $layout_elem;
+                $txt_layout_elem = $layout_elem;
 
             }
             
@@ -622,6 +628,25 @@ function htmlok( $args = array() ) {
                 $p_subtype_name = ' '.$subtype_name;
                 $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
+                
+            }
+            
+            // Note Subtype
+            elseif ( in_array( $r_subtype, $subtype_note_terms, true ) ) {
+               
+                $subtype_name = 'Note';
+                $subtype_name_abbr = 'note';
+                
+                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_css = ' '.$subtype_name_abbr;
+                $p_subtype_postfix_css = '-'.$subtype_name_abbr;
+                
+                $layout_elem = 'div';
+                
+                $subtype_elem = $layout_elem;
+                $obj_elem = $layout_elem;
+                $obj_label_elem = $layout_elem;
+                $txt_layout_elem = $layout_elem;
                 
             }
             
@@ -820,6 +845,14 @@ function htmlok( $args = array() ) {
     $o_title_attr = $p_title_attr;
     
     
+    
+    
+    
+    
+    
+    
+    
+    
     $p_obj_elem = $obj_elem;
     $p_obj_attr = $obj_attr;
 
@@ -928,6 +961,16 @@ function htmlok( $args = array() ) {
         }
     }
     
+    if ( ! empty( $r['content']['before'] ) ) {
+        $r_content_before = preg_replace( $pat_space, $rep_space, trim( $r['content']['before'] ) );
+        $o_content_before = $r_content_before;
+    }
+    
+    if ( ! empty( $r['content']['after'] ) ) {
+        $r_content_after = preg_replace( $pat_space, $rep_space, trim( $r['content']['after'] ) );
+        $o_content_after = $r_content_after;
+    }
+    
     
     //------------------------ Object Content
     if ( ! empty( $r['content']['object'] ) ) {
@@ -972,7 +1015,7 @@ function htmlok( $args = array() ) {
                 }
                 
                 // Value
-                $content_val .= $r_content_obj_sep.'<span class="txt'.$txt_css. $txt_auto_css.'">'.$r_content_obj_txt.'</span>';
+                $content_val .= $r_content_obj_sep.'<'.$txt_layout_elem.' class="txt'.$txt_css. $txt_auto_css.'">'.$r_content_obj_txt.'</'.$txt_layout_elem.'>';
                 
             }
             
@@ -1009,7 +1052,7 @@ function htmlok( $args = array() ) {
                         }
                     }
 
-                    $content_val .= '<span class="line'.$line_css. $line_auto_css.'">';
+                    $content_val .= '<'.$txt_layout_elem.' class="line'.$line_css. $line_auto_css.'">';
 
                     foreach ( (array) $line_val as $line_txt_val ) {
 
@@ -1084,13 +1127,13 @@ function htmlok( $args = array() ) {
                                 }
                             }
                             
-                            $content_val .= $r_obj_line_sep.'<span class="txt'.$txt_auto_css.$txt_css.'">'.$a_smu. $r_obj_line_txt. $a_emu.'</span>';
+                            $content_val .= $r_obj_line_sep.'<'.$txt_layout_elem.' class="txt'.$txt_auto_css.$txt_css.'">'.$a_smu. $r_obj_line_txt. $a_emu.'</'.$txt_layout_elem.'>';
 
                         }
 
                     }
 
-                    $content_val .= '</span>';
+                    $content_val .= '</'.$txt_layout_elem.'>';
                 }
             } else {
                 
@@ -1530,6 +1573,8 @@ function htmlok( $args = array() ) {
         // Initialize
         $output = '';
         
+        $output .= $o_content_before;
+        
         $output .= '<'.$o_root_elem. $o_id_attr.' class="'.$o_cssx.'"'.$o_attr. $o_title_attr.' data-name="'.$o_structure_namex.'">';
         
         //------------------------ Constructor, Component Structure
@@ -1549,6 +1594,8 @@ function htmlok( $args = array() ) {
         }
         
         $output .= '</'.$o_root_elem.'><!-- '.$o_structure_namex.' -->';
+        
+        $output .= $o_content_after;
     
     }
     

@@ -453,7 +453,7 @@ $web_product = htmlok( array(
         'constructor'   => array(
             $web_product_start_cn,
             $main_header_cn,
-            $main_content_cn,
+            // $main_content_cn,
             $main_footer_cn,
             $web_product_end_cn,
         ),

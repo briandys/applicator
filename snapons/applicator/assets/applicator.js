@@ -238,11 +238,11 @@
                 'data-name': 'Main Menu Toggle'
             } ).append( mainMenuTogBtnMu );
             
-            $mainHrAsH = $cp.find( $( '.main-hr-as---h' ) );
+            $mainHrAsH = $cp.find( $( '.main-hr-aside---h' ) );
             $mainHrAsH.after( mainMenuTogObjMu );
         }() );
         
-        $mainHrAsCt = $cp.find( '.main-hr-as---ct' );
+        $mainHrAsCt = $cp.find( '.main-hr-aside---ct' );
         
         $mainMenuTog = $cp.find( '.main-menu-toggle' );
         $mainMenuTogBtn = $( '#main-menu-tog---b' );

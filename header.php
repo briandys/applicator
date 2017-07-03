@@ -15,6 +15,97 @@
             <div class="cr wbp---cr">
                 
                 <?php
+                
+                //------------------------------------------------ Web Product Start
+                
+                // Go to Content Navi
+                $go_to_content_navi_obj = htmlok( array(
+                    'name'      => 'Go to Content',
+                    'structure' => array(
+                        'type'      => 'object',
+                        'subtype'   => 'navigation item',
+                        'attr'      => array(
+                            'a'         => array(
+                                'href'      => esc_url( '#content' ),
+                            ),
+                        ),
+                        'id'        => 'go-ct-navi---a',
+                        'title'     => 'Go to Content',
+                        'root_css'  => 'skip-link',
+                    ),
+                    'css'       => 'go-ct',
+                    'content'   => array(
+                        'object'        => array(
+                            array(
+                                'txt'       => esc_html__( 'Go to Content', $GLOBALS['applicator_td'] ),
+                            ),
+                        ),
+                    ),
+                ) );
+                
+                // Go to Content Nav
+                $go_to_content_nav_cp = htmlok( array(
+                    'name'      => 'Go to Content',
+                    'structure' => array(
+                        'type'      => 'component',
+                        'subtype'   => 'navigation',
+                    ),
+                    'id'        => 'go-content-nav',
+                    'root_css'  => 'go-content-nav',
+                    'css'       => 'go-ct',
+                    'content'   => array(
+                        'component'     => $go_to_content_navi_obj,
+                    ),
+                ) );
+                
+                $browser_upgrade_note_txt = sprintf( '<p>%1$s <a href="%3$s">%2$s</a></p>',
+                    esc_html__( 'You are using an outdated browser. Please upgrade your browser to improve your experience.', $GLOBALS['applicator_td'] ),
+                    esc_html__( 'Upgrade Browser', $GLOBALS['applicator_td'] ),
+                    esc_url( 'http://browsehappy.com/' )
+                );
+                
+                // Browser Upgrade
+                $browser_upgrade_obj = htmlok( array(
+                    'name'      => 'Browser Upgrade',
+                    'structure' => array(
+                        'type'      => 'object',
+                        'subtype'   => 'note',
+                        'layout'    => 'inline',
+                    ),
+                    'content'       => array(
+                        'object'        => array(
+                            array(
+                                'txt'       => $browser_upgrade_note_txt,
+                            ),
+                        ),
+                        'before'    => '<!--[if lt IE 8]>',
+                        'after'    => '<![endif]-->',
+                    ),
+                ) );
+                
+                // Web Product Start
+                $web_product_start_cn = htmlok( array(
+                    'name'      => 'Web Product Start',
+                    'structure' => array(
+                        'type'      => 'constructor',
+                    ),
+                    'id'        => 'web-product-start',
+                    'css'       => 'wbp-start',
+                    'content'   => array(
+                        'constructor'       => array(
+                            $go_to_content_nav_cp,
+                            $browser_upgrade_obj,
+                        ),
+                    ),
+                    'echo'      => true,
+                ) );
+                //------------------------------------------------ End: Web Product Start
+                
+                ?>
+                
+                <?php
+                
+                /*
                 // Go to Content Nav - Nav
                 // Text
                 $go_content_nav_item_txt = htmlok_txt( array(
@@ -46,11 +137,13 @@
                     'cp_css'    => 'go-content-nav',
                     'css'       => 'go-ct',
                     'attr'      => array(
-                        'id'    => 'go-content-nav',
+                        'id'    => 'go-content-navx',
                     ),
                     'content'   => $go_content_nav_item_obj,
                 ) );
+                
 
+                /*
                 // Web Browser Upgrade - Object
                 // Text
                 $browser_upgrade_note_txt = sprintf( '<p>%1$s <a href="%3$s">%2$s</a></p>',
@@ -74,9 +167,10 @@
                 $web_product_start = htmlok_cn( array(
                     'name'      => 'Web Product Start',
                     'css'       => 'wbp-start',
-                    'content'   => $go_content_nav . $browser_upgrade_note_obj,
+                    'content'   => $go_content_nav,
                     'echo'      => true,
                 ) );
+                */
                 ?>
         
                 <header id="main-header" class="cn main-header site-header" data-name="Main Header" role="banner">
