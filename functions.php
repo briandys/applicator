@@ -110,12 +110,6 @@ if ( file_exists( $web_product_end_cn ) ) {
     require_once( $web_product_end_cn );
 }
 
-// Objects
-$web_product_copyright_obj = get_parent_theme_file_path( '/inc/tags/web-product-copyright-obj.php' );
-if ( file_exists( $web_product_copyright_obj ) ) {
-    require_once( $web_product_copyright_obj );
-}
-
 
 // Functions
 $html_body_class = get_parent_theme_file_path( '/inc/functions/html-body-class.php' );

@@ -178,7 +178,6 @@ function htmlok( $args = array() ) {
     $structure_subtype_css = '';
     $structure_subtype_abbr = '';
     $id_attr = '';
-    $clean_id = '';
     $r_id = '';
     $role_attr = '';
     $title_attr = '';
@@ -369,11 +368,10 @@ function htmlok( $args = array() ) {
     
     // ID Attribute
     if ( ! empty( $r['id'] ) ) {
-        $r_id = preg_replace( $pat_space, $rep_space, trim( $r['id'] ) );
-        $clean_id = substr( sanitize_title( $r_id ), $substr_start, $substr_end );
+        $r_id = substr( preg_replace( $pat_space, $rep_space, trim( $r['id'] ) ), $substr_start, $substr_end );
         
         // Default
-        $p_id_attr =  ' '.'id="'.$clean_id.'"';
+        $p_id_attr =  ' '.'id="'.$r_id.'"';
         
         // Auto
         if ( 'AUTO' == $r_id ) {
@@ -567,10 +565,9 @@ function htmlok( $args = array() ) {
     
             // Object ID Attribute
             if ( ! empty( $r['structure']['id'] ) ) {
-                $r_obj_a_id = preg_replace( $pat_space, $rep_space, trim( $r['structure']['id'] ) );
-                $clean_obj_a_id = substr( sanitize_title( $r_obj_a_id ), $substr_start, $substr_end );
+                $r_obj_a_id = substr( preg_replace( $pat_space, $rep_space, trim( $r['structure']['id'] ) ), $substr_start, $substr_end );
 
-                $p_obj_a_id_attr =  ' '.'id="'.$clean_obj_a_id.'"';
+                $p_obj_a_id_attr =  ' '.'id="'.$r_obj_a_id.'"';
             }
             
             

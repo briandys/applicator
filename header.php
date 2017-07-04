@@ -17,7 +17,7 @@
                 <?php
                 
                 //------------------------------------------------ Web Product Start
-                /*
+                
                 // Go to Content Navi
                 $go_to_content_navi_obj = htmlok( array(
                     'name'      => 'Go to Content',
@@ -58,13 +58,14 @@
                     ),
                 ) );
                 
+                // Browser Upgrade Note Text
                 $browser_upgrade_note_txt = sprintf( '<p>%1$s <a href="%3$s">%2$s</a></p>',
                     esc_html__( 'You are using an outdated browser. Please upgrade your browser to improve your experience.', $GLOBALS['applicator_td'] ),
                     esc_html__( 'Upgrade Browser', $GLOBALS['applicator_td'] ),
                     esc_url( 'http://browsehappy.com/' )
                 );
                 
-                // Browser Upgrade
+                // Browser Upgrade Note
                 $browser_upgrade_obj = htmlok( array(
                     'name'      => 'Browser Upgrade',
                     'structure' => array(
@@ -94,19 +95,20 @@
                     'content'   => array(
                         'constructor'       => array(
                             $go_to_content_nav_cp,
+                            //$go_content_nav,
                             $browser_upgrade_obj,
                         ),
                     ),
                     'echo'      => true,
                 ) );
+                
                 //------------------------------------------------ End: Web Product Start
-                */
                 
                 ?>
                 
                 <?php
                 
-                
+                /*
                 // Go to Content Nav - Nav
                 // Text
                 $go_content_nav_item_txt = htmlok_txt( array(
@@ -171,6 +173,8 @@
                     'content'   => $go_content_nav,
                     'echo'      => true,
                 ) );
+                */
+                
                 ?>
         
                 <header id="main-header" class="cn main-header site-header" data-name="Main Header" role="banner">

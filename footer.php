@@ -1,23 +1,144 @@
                     </div>
                 </section><!-- Main Content -->
 
-                <footer id="main-footer" class="cn main-footer site-footer" data-name="Main Footer" role="contentinfo">
-                    <div class="cr main-footer---cr">
-                        
-                        <?php
-                        // inc > tags > aside.php
-                        echo applicator_func_main_footer_aside();
-                        
-                        // inc > tags > web-product-copyright-obj.php
-                        echo applicator_func_web_product_copyright_obj();
-                        ?>
-                    
-                    </div>
-                </footer><!-- Main Footer -->
-
                 <?php
-                // template-parts > web-product-end-cn.php
-                echo applicator_func_web_product_end_cn();
+
+                //------------------------------------------------ Main Footer
+
+                // Web Product Copyright
+                $web_product_copyright_obj = htmlok( array(
+                    'name'      => 'Web Product Copyright',
+                    'structure' => array(
+                        'type'          => 'object',
+                    ),
+                    'css'       => 'wbp-copyright',
+                    'root_css'  => 'site-info',
+                    'content'   => array(
+                        'object'        => array(
+                            array(
+                                'line'      => array(
+                                    array(
+                                        'css'   => 'copyright---line',
+                                        array(
+                                            'txt'       => get_bloginfo( 'name' ),
+                                            'css'       => 'wbp-name---txt',
+                                            'linked'    => true,
+                                            'attr'      => array(
+                                                'a'         => array(
+                                                    'href'      => esc_url( home_url( '/' ) ),
+                                                    'rel'       => 'home',
+                                                    'title'     => get_bloginfo( 'name' ),
+                                                ),
+                                            ),
+                                        ),
+                                        array(
+                                            'sep'       => $GLOBALS['space_sep'],
+                                            'txt'       => esc_html__( '&copy;', $GLOBALS['applicator_td'] ),
+                                            'css'       => 'copyright-symbol---txt',
+                                        ),
+                                        array(
+                                            'sep'       => $GLOBALS['space_sep'],
+                                            'txt'       => esc_html__( '2017', $GLOBALS['applicator_td'] ),
+                                            'css'       => 'year---txt',
+                                        ),
+                                        array(
+                                            'txt'       => esc_html__( '.', $GLOBALS['applicator_td'] ),
+                                            'css'       => 'delimiter---txt',
+                                        ),
+                                    ),
+                                    array(
+                                        'css'   => 'reserved-rights---line',
+                                        array(
+                                            'sep'       => $GLOBALS['space_sep'],
+                                            'txt'       => esc_html__( 'All rights reserved.', $GLOBALS['applicator_td'] ),
+                                        ),
+                                        array(
+                                            'txt'       => esc_html__( '&trade;', $GLOBALS['applicator_td'] ),
+                                            'css'       => 'trademark-symbol---txt',
+                                        ),
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                ) );
+
+                $main_footer_cn = htmlok( array(
+                    'name'      => 'Main Footer',
+                    'structure' => array(
+                        'type'      => 'constructor',
+                        'subtype'   => 'main footer',
+                    ),
+                    'id'        => 'main-footer',
+                    'root_css'  => 'site-footer',
+                    'content'   => array(
+                        'constructor'   => array(
+                            applicator_func_main_footer_aside(),
+                            $web_product_copyright_obj,
+                        ),
+                    ),
+                    'echo'      => true,
+                ) );
+
+                //------------------------------------------------ End: Main Footer
+
+
+                //------------------------------------------------ Web Product End
+
+                // Go to Start Navi
+                $go_to_start_navi_obj = htmlok( array(
+                    'name'      => 'Go to Start',
+                    'structure' => array(
+                        'type'      => 'object',
+                        'subtype'   => 'navigation item',
+                        'attr'      => array(
+                            'a'         => array(
+                                'href'      => esc_url( '#start' ),
+                            ),
+                        ),
+                        'id'        => 'go-start-navi---a',
+                        'title'     => 'Go to Start',
+                    ),
+                    'css'       => 'go-start',
+                    'content'   => array(
+                        'object'        => array(
+                            array(
+                                'txt'       => esc_html__( 'Go to Start', $GLOBALS['applicator_td'] ),
+                            ),
+                        ),
+                    ),
+                ) );
+
+                // Go to Start Nav
+                $go_to_start_nav_cp = htmlok( array(
+                    'name'      => 'Go to Start',
+                    'structure' => array(
+                        'type'      => 'component',
+                        'subtype'   => 'navigation',
+                    ),
+                    'id'        => 'go-start-nav',
+                    'css'       => 'go-start',
+                    'content'   => array(
+                        'component'     => $go_to_start_navi_obj,
+                    ),
+                ) );
+
+                // Web Product End
+                $web_product_end_cn = htmlok( array(
+                    'name'      => 'Web Product End',
+                    'structure' => array(
+                        'type'      => 'constructor',
+                    ),
+                    'id'        => 'web-product-end',
+                    'css'       => 'wbp-end',
+                    'content'   => array(
+                        'constructor'       => $go_to_start_nav_cp,
+                    ),
+                    'echo'      => true,
+                ) );
+
+                //------------------------------------------------ End: Web Product End
+
                 ?>
             
             </div>
