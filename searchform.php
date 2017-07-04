@@ -68,12 +68,35 @@ $unique_id = esc_attr( uniqid( 'search-term-creation-input--' ) );
 
 
 $test_form_label_obj = htmlok( array(
-    'name'      => 'Test Search Form Elements',
+    'name'      => 'Test Search Form Label',
     'structure' => array(
         'type'      => 'object',
         'subtype'   => 'form label',
         'attr'      => array(
-            'for'       => 'ID',
+            'elem'      => array(
+                'for'       => 'ID',
+            ),
+        ),
+    ),
+    'content'       => array(
+        'object'     => array(
+            array(
+                'txt'   => 'Search Term',
+            ),
+        ),
+    ),
+) );
+
+$test_form_element_obj = htmlok( array(
+    'name'      => 'Test Search Form Element',
+    'structure' => array(
+        'type'      => 'object',
+        'subtype'   => 'form element',
+        'id'    => 'ID',
+        'attr'      => array(
+            'elem'      => array(
+                'for'       => 'ID',
+            ),
         ),
     ),
     'content'       => array(
@@ -92,7 +115,10 @@ $search_term_creation_cp = htmlok( array(
         'subtype'   => 'fieldset item',
     ),
     'content'   => array(
-        'component' => $test_form_label_obj,
+        'component' => array(
+            $test_form_label_obj,
+            $test_form_element_obj,
+        ),
     ),
 ) );
 
