@@ -59,16 +59,20 @@ function htmlok( $args = array() ) {
     
     
     // Object Subtypes
-    $subtype_form_label_terms = array( 'form label', 'flabel', 'fl', );
-    $subtype_form_elements_terms = array( 'form elements', 'felems', 'fes', );
-    
-    
-    $subtype_form_element_terms = array( 'form element', 'felem', 'fe', );
-    
     $subtype_heading_terms = array( 'heading', 'h', );
     $subtype_wpg_terms = array( 'wordpress generated content', 'wpg', 'wp', );
     $subtype_navi_terms = array( 'navigation item', 'nav item', 'navi', );
     $subtype_note_terms = array( 'note', );
+    $subtype_form_label_terms = array( 'form label', 'flabel', 'fl', );
+    $subtype_form_element_terms = array( 'form element', 'felem', 'fe', );
+    
+    
+    $subtype_form_elements_terms = array( 'form elements', 'felems', 'fes', );
+    
+    
+    
+    
+    
     
     // Object Layout
     $layout_block_terms = array( 'block', 'div', 'b', 'd', );
@@ -84,7 +88,7 @@ function htmlok( $args = array() ) {
     
     
     
-    $structure_subtype_felem_term_variations = array( 'Form Element', 'form element', 'felem', 'fe', );
+    
     
     $mod_main_nav_term_variations = array( 'main navigation', 'main nav', );
     
@@ -605,8 +609,6 @@ function htmlok( $args = array() ) {
 
                 $subtype_name = 'Form Element';
                 $subtype_name_abbr = 'felem';
-                
-                $obj_elem = 'input';
                 
                 $p_subtype_name = ' '.$subtype_name;
                 $p_subtype_css = ' '.$subtype_name_abbr;
@@ -1413,15 +1415,6 @@ function htmlok( $args = array() ) {
         $ct_mu .= $subtype_form_elements_cr_emu;
     }
     
-    /*
-    //------------------------ Form Element
-    if ( in_array( $r_subtype, $structure_subtype_felem_term_variations, true ) ) {
-        $obj_ct_mu = '';
-        $obj_ct_mu .= $subtype_form_element_cr_smu;
-        $obj_ct_mu .= $content_val;
-        $obj_ct_mu .= $subtype_form_element_cr_emu;
-    }
-    */
     
     //------------------------ Object Content Markup
     if ( in_array( $r_structure, $structure_object_terms, true ) ) {
@@ -1438,6 +1431,13 @@ function htmlok( $args = array() ) {
         
         // Navigation Item
         elseif ( in_array( $r_subtype, $subtype_navi_terms, true ) ) {
+            $obj_ct_mu = '';
+            $obj_ct_mu .= $a_smu;
+            $obj_ct_mu .= $o_content_val;
+            $obj_ct_mu .= $a_emu;
+        }
+        
+        elseif ( in_array( $r_subtype, $subtype_form_element_terms, true ) ) {
             $obj_ct_mu = '';
             $obj_ct_mu .= $a_smu;
             $obj_ct_mu .= $o_content_val;
