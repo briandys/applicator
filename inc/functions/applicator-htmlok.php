@@ -16,74 +16,7 @@ function htmlok( $args = array() ) {
     
     //------------ Defaults
     
-    $defaults = array(
-        
-        
-        
-        /*
-        'name'          => '', // Name: Used in data-name="" and generating the parent-level CSS class name
-        'root_css'      => '', // There's a generated parent css based on the 'name' and one can also add a custom
-        'css'           => '', // This is a custom CSS that will apply to all structure elements
-        'id'            => '', // Parent ID Attribute
-        'mod'           => '', // Modifications: Special adjustments based on WordPress Generated Content
-        'content'       => '', // Content
-        /*
-        'content'       => array(
-            'Content 1',
-            'Content 2',
-            array(
-                'form label'    => '',
-                'form element'  => '',
-            ),
-        ),
-        */
-        /*
-        'hr_content'    => '', // Header Content
-        'fr_content'    => '', // Footer Content
-        'obj_content'   => '',
-        /*
-        'obj_content'   => array(
-            array(
-                'txt'           => '',
-                'form_label'    => '',
-                'css'           => '',
-                'sep'           => '',
-                'line'          => array(
-                    array(
-                        array(
-                            'txt'   => '',
-                            'css'   => '',
-                            'sep'   => '',
-                        ),
-                        'css'   => '',
-                    ),
-                ),
-            ),
-        ),
-        */
-        /*
-        'structure'    => array(
-            'type'      => '', // Constructor[Web Product, Web Product Start, Main Header, Main Content, Main Footer, Web Product End, Aside] | Module | Component[Generic, Navigation, Actions, Controls] | Object[Information, Label, Note, Form Label, Navigation Item, Action Item, Control Item]
-            'subtype'       => '', // For Objects with specific subtypes like Heading | Navigation Item | Action Item | Generic | Anchor
-            'elem'          => '', //
-            'h_elem'        => '',
-            'layout'        => '', // For Objects
-            'hr_structure'  => false, //
-            'linked'        => false,
-            'attr'          => array(
-                'title'     => '',
-                'role'      => '', // Parent Role Attribute - required for main header, main content, main footer, <nav>, <aside>
-                'datetime'  => '',
-                'href'      => '',
-                'h_level'   => '', // h1 | h2 | h3 | h4 | h5 | h6
-                
-            ),
-        ),
-        'mod'           => '', // Modification: Markup for special cases
-        'version'       => '', // Version: to be able to supply new code in the same function
-        'echo'          => false, // Echo: defaults to return
-        */
-    );
+    $defaults = array();
     
     
     //------------ WordPress Parse Arguments
@@ -127,8 +60,11 @@ function htmlok( $args = array() ) {
     
     // Object Subtypes
     $subtype_form_label_terms = array( 'form label', 'flabel', 'fl', );
-    $subtype_form_element_terms = array( 'form element', 'felem', 'fe', );
     $subtype_form_elements_terms = array( 'form elements', 'felems', 'fes', );
+    
+    
+    $subtype_form_element_terms = array( 'form element', 'felem', 'fe', );
+    
     $subtype_heading_terms = array( 'heading', 'h', );
     $subtype_wpg_terms = array( 'wordpress generated content', 'wpg', 'wp', );
     $subtype_navi_terms = array( 'navigation item', 'nav item', 'navi', );
@@ -655,6 +591,7 @@ function htmlok( $args = array() ) {
                 $subtype_name_abbr = 'flabel';
                 
                 $obj_elem = 'label';
+                $obj_elem_css = $obj_elem;
                 
                 $p_subtype_name = ' '.$subtype_name;
                 $p_subtype_css = ' '.$subtype_name_abbr;
@@ -1132,10 +1069,10 @@ function htmlok( $args = array() ) {
 
                     $content_val .= '</'.$txt_layout_elem.'>';
                 }
-            } else {
-                
+            }
+            
+            else {
                 $content_val .= $r_obj_content;
-                
             }
             
             /*
@@ -1325,7 +1262,7 @@ function htmlok( $args = array() ) {
     $cr_emu .= '</div>';
     
     
-    // Form Subtype
+    // Form Structure Markup
     $subtype_form_cr_smu = '';
     $subtype_form_cr_smu .= '<div class="grp %1$s'.$o_branch_css.'-%1$s">';
     $subtype_form_cr_smu .= '<div class="cr'.$o_branch_css.'-%1$s---cr">';
@@ -1333,6 +1270,20 @@ function htmlok( $args = array() ) {
     $subtype_form_cr_emu = '';
     $subtype_form_cr_emu .= '</div>';
     $subtype_form_cr_emu .= '</div>';
+    
+    
+    // Form Elements Structure Markup
+    $subtype_form_elements_cr_smu = '';
+    $subtype_form_elements_cr_smu .= $cr_smu;
+    $subtype_form_elements_cr_smu .= '<div id="" class="obj flabel" title="" data-name="">';
+    $subtype_form_elements_cr_smu .= '<label class="label" for="" attr="">';
+    $subtype_form_elements_cr_smu .= '<div class="label_l">';
+    
+    $subtype_form_elements_cr_emu = '';
+    $subtype_form_elements_cr_emu .= '</div>';
+    $subtype_form_elements_cr_emu .= '</label>';
+    $subtype_form_elements_cr_emu .= '</div><!-- Object Name -->';
+    $subtype_form_elements_cr_emu .= $cr_emu;
     
 
     // Main Nav Mod
@@ -1380,18 +1331,7 @@ function htmlok( $args = array() ) {
     $subtype_form_element_cr_emu .= '</div>';
     
     
-    // Form Elements
-    $subtype_form_elements_cr_smu = '';
-    $subtype_form_elements_cr_smu .= $cr_smu;
-    $subtype_form_elements_cr_smu .= '<div id="" class="obj flabel" title="" data-name="">';
-    $subtype_form_elements_cr_smu .= '<label class="label" for="" attr="">';
-    $subtype_form_elements_cr_smu .= '<div class="label_l">';
     
-    $subtype_form_elements_cr_emu = '';
-    $subtype_form_elements_cr_emu .= '</div>';
-    $subtype_form_elements_cr_emu .= '</label>';
-    $subtype_form_elements_cr_emu .= '</div><!-- Object Name -->';
-    $subtype_form_elements_cr_emu .= $cr_emu;
     
     
     //------------------------ Section: Markup Structure - Header, Content, Footer
@@ -1473,6 +1413,7 @@ function htmlok( $args = array() ) {
         $ct_mu .= $subtype_form_elements_cr_emu;
     }
     
+    /*
     //------------------------ Form Element
     if ( in_array( $r_subtype, $structure_subtype_felem_term_variations, true ) ) {
         $obj_ct_mu = '';
@@ -1480,6 +1421,7 @@ function htmlok( $args = array() ) {
         $obj_ct_mu .= $content_val;
         $obj_ct_mu .= $subtype_form_element_cr_emu;
     }
+    */
     
     //------------------------ Object Content Markup
     if ( in_array( $r_structure, $structure_object_terms, true ) ) {

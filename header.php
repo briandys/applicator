@@ -11,7 +11,7 @@
     </head>
     <body <?php body_class(); ?>>
                         
-        <div id="page" class="cn wbp site" data-name="Web Product">
+        <div id="page" class="cn web-product wbp site" data-name="Web Product CN">
             <div class="cr wbp---cr">
                 
                 <?php
@@ -104,109 +104,6 @@
                 
                 //------------------------------------------------ End: Web Product Start
                 
-                ?>
-                
-                <?php
-                
-                /*
-                // Go to Content Nav - Nav
-                // Text
-                $go_content_nav_item_txt = htmlok_txt( array(
-                    'content'       => array(
-                        array(
-                            'txt'   => 'Go to Content',
-                        ),
-                    ),
-                ) );
-
-                // Object
-                $go_content_nav_item_obj = htmlok_obj( array(
-                    'elem'      => 'navi',
-                    'name'      => 'Go to Content',
-                    'css'       => 'go-ct',
-                    'elem_css'  => 'skip-link',
-                    'attr'      => array(
-                        'id'    => 'go-ct-navi---a',
-                        'href'  => '#content',
-                        'title' => 'Go to Content',
-                    ),
-                    'content'   => $go_content_nav_item_txt,
-                ) );
-
-                // Component
-                $go_content_nav = htmlok_cp( array(
-                    'type'      => 'nav',
-                    'name'      => 'Go to Content',
-                    'cp_css'    => 'go-content-nav',
-                    'css'       => 'go-ct',
-                    'attr'      => array(
-                        'id'    => 'go-content-nav',
-                    ),
-                    'content'   => $go_content_nav_item_obj,
-                ) );
-                
-
-                
-                // Web Browser Upgrade - Object
-                // Text
-                $browser_upgrade_note_txt = sprintf( '<p>%1$s <a href="%3$s">%2$s</a></p>',
-                    esc_html__( 'You are using an outdated browser. Please upgrade your browser to improve your experience.', $GLOBALS['applicator_td'] ),
-                    esc_html__( 'Upgrade Browser', $GLOBALS['applicator_td'] ),
-                    esc_url( 'http://browsehappy.com/' )
-                );
-
-                // Object
-                $browser_upgrade_note_obj = htmlok_obj( array(
-                    'elem'      => 'note',
-                    'name'      => 'Browser Upgrade',
-                    'css'       => 'browser-upgrade',
-                    'content'   => $browser_upgrade_note_txt,
-                    'ct_before' => '<!--[if lt IE 8]>',
-                    'ct_after' => '<![endif]-->',
-                ) );
-
-                // Web Product Start
-                // Constructor
-                $web_product_start = htmlok_cn( array(
-                    'name'      => 'Web Product Start',
-                    'css'       => 'wbp-start',
-                    'content'   => $go_content_nav,
-                    'echo'      => true,
-                ) );
-                */
-                
-                ?>
-        
-                <!--
-                <header id="main-header" class="cn main-header site-header" data-name="Main Header" role="banner">
-                    <div class="cr main-header---cr">
-
--->
-                        
-                        <?php
-                        
-                        /*
-                        
-                        // Main Navigation | inc > tags > main-navigation.php
-                        applicator_func_main_nav();
-
-                        // After Main Navigation Hook
-                        applicator_hook_after_main_nav();
-                        
-                        // Search | searchform.php
-                        get_search_form();
-                        
-                        
-                        
-                        // Aside | inc > tags > aside.php
-                        echo applicator_func_main_header_aside();
-                        */
-                        ?>
-                    <!--
-                    </div>
-                </header><!-- Main Header -->
-                
-                <?php
                 
                 //------------------------------------------------ Main Header
                 
@@ -322,6 +219,7 @@
                     ) );
                 }
                 
+                // Search
                 ob_start();
                 get_search_form();
                 $search_form = ob_get_contents();
@@ -340,7 +238,7 @@
                     'content'   => array(
                         'constructor'   => array(
                             $web_product_main_info_cp,
-                            applicator_func_main_navx(),
+                            applicator_func_main_nav(),
                             applicator_hook_after_main_nav(),
                             $search_form,
                             $web_product_main_media_banner_obj,

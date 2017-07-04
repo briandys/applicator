@@ -1,6 +1,98 @@
 <?php // Register Main Navigation
 register_nav_menu( 'main-nav', __( 'Main Navigation', $GLOBALS['applicator_td'] ) );
 
+
+// Main Nav
+if ( ! function_exists( 'applicator_func_main_nav' ) ) {
+    function applicator_func_main_nav() {
+        
+        // Variables
+        $main_nav_term = 'main-nav';
+        $main_nav_css = $main_nav_term;
+        $main_nav_ct_cr_css = 'ct_cr main-nav---ct_cr';
+        $main_nav_group_start_mu = '<ul class="grp '. $main_nav_css . '---grp' .'">';
+        $main_nav_group_end_mu = '</ul>';
+        $main_nav_a_l_start_mu = '<span class="a_l main-navi---a_l"><span class="txt navi---txt">';
+        $main_nav_a_l_end_mu = '</span></span>';
+        
+        
+        if ( wp_nav_menu( array( 'theme_location' => $main_nav_term, 'echo' => false ) ) !== false) {
+        
+            ob_start();
+            if ( ! has_nav_menu( $main_nav_term ) ) {
+
+                // Default Menu
+                // Nav Item <li class="page_item">
+                // Current Nav Item <li class="current_page_item">
+                // Sub Navigation <ul class="children">
+                wp_page_menu( array(
+                    'menu_class'        => $main_nav_ct_cr_css, // <div> class
+                    'link_before'       => $main_nav_a_l_start_mu,
+                    'link_after'        => $main_nav_a_l_end_mu,
+                    'show_home'         => true,
+                    'before'            => $main_nav_group_start_mu,
+                    'after'             => $main_nav_group_end_mu,
+                ) );
+
+            } else {
+
+                // Apperance > Menus (Custom Menu)
+                // Nav Item <li class="menu-item">
+                // Current Nav Item <li class="current-menu-item">
+                // Sub Navigation <ul class="sub-menu">
+                wp_nav_menu( array(
+                    'theme_location'    => $main_nav_term,
+                    'container'         => 'div',
+                    'container_class'   => $main_nav_ct_cr_css, // <div> class
+                    'link_before'       => $main_nav_a_l_start_mu,
+                    'link_after'        => $main_nav_a_l_end_mu,
+                    'items_wrap'        => $main_nav_group_start_mu.'%3$s'.$main_nav_group_end_mu,
+                ) );
+
+            }
+            $main_nav = ob_get_contents();
+            ob_end_clean();
+
+            // CP
+            $main_navigation_cp = htmlok( array(
+                'name'      => 'Main',
+                'structure' => array(
+                    'type'      => 'component',
+                    'subtype'   => 'navigation',
+                    'h_elem'    => 'h2',
+                    'attr'      => array(
+                        'elem'    => array(
+                            'aria-label'    => 'Main Navigation',
+                        ),
+                    ),
+                ),
+                'id'        => 'main-nav',
+                'content'   => array(
+                'component'     => $main_nav
+                ),
+            ) );
+
+            return $main_navigation_cp;
+            
+        }
+    }
+}
+
+
+if ( ! function_exists( 'applicator_func_nav_menu_link_atts' ) ) {
+    function applicator_func_nav_menu_link_atts( $atts, $item, $args, $depth ) {
+        
+        $new_atts = array( 'class' => 'main-navi---a' );
+        if ( isset( $atts['href'] ) ) {
+            $new_atts['href'] = $atts['href'];
+        }
+        return $new_atts;
+    
+    }
+    add_filter( 'nav_menu_link_attributes', 'applicator_func_nav_menu_link_atts', 10, 4 );
+}
+
+/*
 // Main Nav
 if ( ! function_exists( 'applicator_func_main_nav' ) ) {
     function applicator_func_main_nav() {
@@ -61,93 +153,4 @@ if ( ! function_exists( 'applicator_func_main_nav' ) ) {
         <?php }
     }
 }
-
-if ( ! function_exists( 'applicator_func_nav_menu_link_atts' ) ) {
-    function applicator_func_nav_menu_link_atts( $atts, $item, $args, $depth ) {
-        
-        $new_atts = array( 'class' => 'main-navi---a' );
-        if ( isset( $atts['href'] ) ) {
-            $new_atts['href'] = $atts['href'];
-        }
-        return $new_atts;
-    
-    }
-    add_filter( 'nav_menu_link_attributes', 'applicator_func_nav_menu_link_atts', 10, 4 );
-}
-
-
-// Main Nav
-if ( ! function_exists( 'applicator_func_main_navx' ) ) {
-    function applicator_func_main_navx() {
-        
-        // Variables
-        $main_nav_text = 'main-nav';
-        $main_nav_css = $main_nav_text;
-        $main_nav_ct_cr_css = 'ct_cr main-nav---ct_cr';
-        $main_nav_group_start_mu = '<ul class="grp '. $main_nav_css . '---grp' .'">';
-        $main_nav_group_end_mu = '</ul>';
-        $main_nav_a_l_start_mu = '<span class="a_l main-navi---a_l"><span class="txt navi---txt">';
-        $main_nav_a_l_end_mu = '</span></span>';
-        
-        
-        if ( wp_nav_menu( array( 'theme_location' => $main_nav_text, 'echo' => false ) ) !== false) {
-        
-            ob_start();
-            if ( ! has_nav_menu( $main_nav_text ) ) {
-
-                // Default Menu
-                // Nav Item <li class="page_item">
-                // Current Nav Item <li class="current_page_item">
-                // Sub Navigation <ul class="children">
-                wp_page_menu( array(
-                    'menu_class'        => $main_nav_ct_cr_css, // <div> class
-                    'link_before'       => $main_nav_a_l_start_mu,
-                    'link_after'        => $main_nav_a_l_end_mu,
-                    'show_home'         => true,
-                    'before'            => $main_nav_group_start_mu,
-                    'after'             => $main_nav_group_end_mu,
-                ) );
-
-            } else {
-
-                // Apperance > Menus (Custom Menu)
-                // Nav Item <li class="menu-item">
-                // Current Nav Item <li class="current-menu-item">
-                // Sub Navigation <ul class="sub-menu">
-                wp_nav_menu( array(
-                    'theme_location'    => $main_nav_text,
-                    'container'         => 'div',
-                    'container_class'   => $main_nav_ct_cr_css, // <div> class
-                    'link_before'       => $main_nav_a_l_start_mu,
-                    'link_after'        => $main_nav_a_l_end_mu,
-                    'items_wrap'        => $main_nav_group_start_mu.'%3$s'.$main_nav_group_end_mu,
-                ) );
-
-            }
-            $main_nav = ob_get_contents();
-            ob_end_clean();
-
-            // CP
-            $main_navigation_cp = htmlok( array(
-                'name'      => 'Main',
-                'structure' => array(
-                    'type'      => 'component',
-                    'subtype'   => 'navigation',
-                    'h_elem'    => 'h2',
-                    'attr'      => array(
-                        'elem'    => array(
-                            'aria-label'    => 'Main Navigation',
-                        ),
-                    ),
-                ),
-                'id'        => 'main-nav',
-                'content'   => array(
-                'component'     => $main_nav
-                ),
-            ) );
-
-            return $main_navigation_cp;
-            
-        }
-    }
-}
+*/
