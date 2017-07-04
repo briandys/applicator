@@ -89,6 +89,7 @@
 
 <?php
 
+/*
 // Web Product Main Name OBJ
 $web_product_main_name_obj = htmlok( array(
     'name'      => 'Web Product Main Name',
@@ -161,6 +162,7 @@ if ( $description || is_customize_preview() ) {
         ),
     ) );
 }
+*/
 
 
 // Web Product Main Media Banner OBJ | Custom Header | Customizer > Custom Header | inc > functions > custom-header.php
@@ -267,6 +269,8 @@ $main_content_cn = htmlok( array(
     ),
 ) );
 */
+
+/*
 
 $web_product_copyright_obj = htmlok( array(
     'name'          => 'Web Product Copyright',
@@ -437,6 +441,7 @@ $web_product_end_cn = htmlok( array(
         'constructor'       => $go_to_start_nav_cp,
     ),
 ) );
+*/
 
 
 //------------------------ Web Product
