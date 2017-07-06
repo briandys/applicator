@@ -65,6 +65,106 @@ $unique_id = esc_attr( uniqid( 'search-term-creation-input--' ) );
 
 <?php
 
+$form_test = htmlok( array(
+    'name'      => 'Profile',
+    'structure' => array(
+        'type'      => 'component',
+        'subtype'   => 'form',
+    ),
+    'content'   => array(
+        'compound'   => array(
+            array(
+                'name'      => 'Birthday',
+                array(
+                    array(
+                        'name'      => 'Day',
+                        'structure' => array(
+                            'type'      => 'input',
+                            'label'     => 'Day',
+                            'attr'      => array(
+                                'type'          => 'text',
+                                'value'         => '',
+                                'placeholder'   => '',
+                                'name'          => '',
+                            ),
+                            'id'        => 'ID',
+                            'css'       => '',
+                            'title'     => 'Title',
+                        ),
+                    ),
+                    array(
+                        'name'      => 'Month',
+                        'structure' => array(
+                            'type'      => 'input',
+                            'label'     => 'Month',
+                            'attr'      => array(
+                                'type'          => 'text',
+                                'value'         => '',
+                                'placeholder'   => '',
+                                'name'          => '',
+                            ),
+                            'id'        => 'ID',
+                            'css'       => '',
+                            'title'     => 'Title',
+                        ),
+                    ),
+                ),
+            ),
+            array(
+                'name'      => 'Gender',
+                array(
+                    array(
+                        'name'      => 'Male',
+                        'structure' => array(
+                            'type'      => 'radio',
+                            'label'     => 'Male',
+                            'attr'      => array(
+                                'value'         => '',
+                                'name'          => '',
+                                'group'         => '',
+                            ),
+                            'id'        => 'ID',
+                            'css'       => '',
+                            'title'     => 'Title',
+                        ),
+                    ),
+                    array(
+                        'name'      => 'Female',
+                        'structure' => array(
+                            'type'      => 'radio',
+                            'label'     => 'Female',
+                            'attr'      => array(
+                                'value'         => '',
+                                'name'          => '',
+                                'group'         => '',
+                            ),
+                            'id'        => 'ID',
+                            'css'       => '',
+                            'title'     => 'Title',
+                        ),
+                    ),
+                    array(
+                        'name'      => 'Other',
+                        'structure' => array(
+                            'type'      => 'radio',
+                            'label'     => 'Other',
+                            'attr'      => array(
+                                'value'         => '',
+                                'name'          => '',
+                                'group'         => '',
+                            ),
+                            'id'        => 'ID',
+                            'css'       => '',
+                            'title'     => 'Title',
+                        ),
+                    ),
+                ),
+            ),
+        ),
+    ),
+    'echo'      => true,
+) );
+
 
 
 $test_form_label_obj = htmlok( array(
@@ -127,6 +227,13 @@ $test_search_form_cp = htmlok( array(
     'structure' => array(
         'type'      => 'component',
         'subtype'   => 'form',
+        'attr'      => array(
+            'elem'      => array(
+                'role'      => 'search',
+                'method'    => 'get',
+                'action'    => esc_url( home_url( '/' ) ),
+            ),
+        ),
     ),
     'content'       => array(
         'component'     => $search_term_creation_cp,
