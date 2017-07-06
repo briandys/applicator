@@ -72,22 +72,22 @@ $form_test = htmlok( array(
         'subtype'   => 'form',
     ),
     'content'   => array(
-        'compound'   => array(
+        'compound'  => array(
             array(
                 'name'      => 'Birthday',
-                array(
+                'group'     => array(
                     array(
                         'name'      => 'Day',
                         'structure' => array(
-                            'type'      => 'input',
+                            'type'      => 'textbox',
                             'label'     => 'Day',
                             'attr'      => array(
-                                'type'          => 'text',
-                                'value'         => '',
-                                'placeholder'   => '',
+                                'type'          => 'email',
+                                'value'         => 'Email',
+                                'placeholder'   => 'Input your email',
                                 'name'          => '',
                             ),
-                            'id'        => 'ID',
+                            'id'        => 'day-tb',
                             'css'       => '',
                             'title'     => 'Title',
                         ),
@@ -95,7 +95,7 @@ $form_test = htmlok( array(
                     array(
                         'name'      => 'Month',
                         'structure' => array(
-                            'type'      => 'input',
+                            'type'      => 'textarea',
                             'label'     => 'Month',
                             'attr'      => array(
                                 'type'          => 'text',
@@ -108,54 +108,34 @@ $form_test = htmlok( array(
                             'title'     => 'Title',
                         ),
                     ),
+                    array(
+                        'name'      => 'Marital Status',
+                        'structure' => array(
+                            'type'      => 'checkbox',
+                            'label'     => 'Married?',
+                            'attr'      => array(
+                                'checked'       => '',
+                                'name'          => 'marital-status-checkbox',
+                            ),
+                            'id'        => 'marital-status-checkbox',
+                            'css'       => '',
+                            'title'     => 'Title',
+                        ),
+                    ),
                 ),
             ),
             array(
-                'name'      => 'Gender',
-                array(
+                'name'      => 'Search',
+                'group'     => array(
                     array(
-                        'name'      => 'Male',
+                        'name'      => 'Search Term Creation',
                         'structure' => array(
-                            'type'      => 'radio',
-                            'label'     => 'Male',
+                            'type'      => 'textbox',
+                            'label'     => 'Search',
                             'attr'      => array(
-                                'value'         => '',
-                                'name'          => '',
-                                'group'         => '',
+                                'placeholder'   => 'Enter search terms',
                             ),
-                            'id'        => 'ID',
-                            'css'       => '',
-                            'title'     => 'Title',
-                        ),
-                    ),
-                    array(
-                        'name'      => 'Female',
-                        'structure' => array(
-                            'type'      => 'radio',
-                            'label'     => 'Female',
-                            'attr'      => array(
-                                'value'         => '',
-                                'name'          => '',
-                                'group'         => '',
-                            ),
-                            'id'        => 'ID',
-                            'css'       => '',
-                            'title'     => 'Title',
-                        ),
-                    ),
-                    array(
-                        'name'      => 'Other',
-                        'structure' => array(
-                            'type'      => 'radio',
-                            'label'     => 'Other',
-                            'attr'      => array(
-                                'value'         => '',
-                                'name'          => '',
-                                'group'         => '',
-                            ),
-                            'id'        => 'ID',
-                            'css'       => '',
-                            'title'     => 'Title',
+                            'id'        => 'super-search',
                         ),
                     ),
                 ),

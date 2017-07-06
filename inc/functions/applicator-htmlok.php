@@ -57,6 +57,12 @@ function htmlok( $args = array() ) {
     $subtype_form_terms = array( 'form', 'f', );
     $subtype_nav_terms = array( 'navigation', 'nav', 'n', );
     
+    // Form Types
+    $form_textbox_terms = array( 'single line text', 'textbox', 'input text', 'tb', 'it', );
+    $form_textarea_terms = array( 'multi line text', 'textarea', 'ta', 't', );
+    $form_radio_terms = array( 'radio button', 'radio', 'rb', 'r', );
+    $form_checkbox_terms = array( 'checkbox', 'check', 'cb', 'c', );
+    
     
     // Object Subtypes
     $subtype_heading_terms = array( 'heading', 'h', );
@@ -897,15 +903,126 @@ function htmlok( $args = array() ) {
         }
     }
     
+    
+    //------------------------ Content Before
     if ( ! empty( $r['content']['before'] ) ) {
         $r_content_before = preg_replace( $pat_space, $rep_space, trim( $r['content']['before'] ) );
         $o_content_before = $r_content_before;
     }
     
+    
+    //------------------------ Content After
     if ( ! empty( $r['content']['after'] ) ) {
         $r_content_after = preg_replace( $pat_space, $rep_space, trim( $r['content']['after'] ) );
         $o_content_after = $r_content_after;
     }
+    
+    
+    // X
+    
+    $o_form_type = '';
+    
+    if ( ! empty( $r['content']['compound'] ) ) {
+        $r_content_compound = $r['content']['compound'];
+        
+        $content_val = '';
+        foreach ( ( array ) $r_content_compound as $val ) {
+            
+            if ( ! empty( $val['name'] ) ) {
+                $r_content_compound_name = $val['name'];
+            }
+            
+            $content_val .= '<fieldset>';
+            $content_val .= '<div class="cr">';
+            $content_val .= '<legend>'.$r_content_compound_name.'</legend>';
+            $content_val .= '<div class="ct">';
+            
+            if ( ! empty( $val['group'] ) ) {
+                $r_content_compound_group = $val['group'];
+                
+                foreach ( ( array ) $r_content_compound_group as $group_val ) {
+                    
+                    $hehe = count( $group_val );
+                    
+                    // Name
+                    if ( ! empty( $group_val['name'] ) ) {
+                        $r_content_compound_group_name = $group_val['name'];
+                    }
+                    
+                    // Attribute
+                    if ( ! empty( $group_val['structure']['attr'] ) ) {
+                        $r_content_compound_group_attr = $group_val['structure']['attr'];
+                        
+                        $p_content_compound_group_attr = '';
+                        foreach ( ( array ) $r_content_compound_group_attr as $key => $val ) {
+                            
+                            $clean_key = '';
+                            $clean_val = '';
+
+                            $clean_key = $key;
+
+                            $clean_val = $val;
+
+                            $p_content_compound_group_attr .= ' '.$clean_key.'="'.$clean_val.'"';
+                        }
+                    }
+                    
+                    // ID
+                    if ( ! empty( $group_val['structure']['id'] ) ) {
+                        $r_content_compound_group_id = $group_val['structure']['id'];
+                        
+                        $p_content_compound_group_id = ' '.'id="'.$r_content_compound_group_id.'"';
+                        $p_content_compound_group_label_for = $r_content_compound_group_id;
+                    }
+                    
+                    
+                    
+                    // Structure Type
+                    if ( ! empty( $group_val['structure']['type'] ) ) {
+                        $r_group_structure = $group_val['structure']['type'];
+                        
+                        // Form Structure Templates
+                    
+                        // Input
+                        $input_smu = '';
+                        $input_smu .= '<input'.$p_content_compound_group_id.' class="input"'.$p_content_compound_group_attr.'>';
+
+                        // Textarea
+                        $textarea_smu = '';
+                        $textarea_smu .= '<textarea'.$p_content_compound_group_id.' class="textarea"'.$p_content_compound_group_attr.'></textarea>';
+
+                        // Textarea
+                        $checkbox_smu = '';
+                        $checkbox_smu .= '<input'.$p_content_compound_group_id.' class="input-checkbox" type="checkbox"'.$p_content_compound_group_attr.'>';
+
+                        if ( in_array( $r_group_structure, $form_textbox_terms, true ) ) {
+                            $o_form_type = $input_smu;
+                        }
+
+                        elseif ( in_array( $r_group_structure, $form_textarea_terms, true ) ) {
+                            $o_form_type = $textarea_smu;
+                        }
+
+                        elseif ( in_array( $r_group_structure, $form_checkbox_terms, true ) ) {
+                            $o_form_type = $checkbox_smu;
+                        }
+                    }
+
+                    $content_val .= '<div class="fieldset-item">';
+                    $content_val .= '<label for="'.$p_content_compound_group_label_for.'"><span class="label_l">'.$r_content_compound_group_name. $hehe.'</span></label>';
+                    $content_val .= $o_form_type;
+                    $content_val .= '</div>';
+                }
+            }
+            
+            $content_val .= '</div>';
+            $content_val .= '</div>';
+            $content_val .= '</fieldset>';
+            
+        }
+    }
+    
+    // End: X
     
     
     //------------------------ Object Content
@@ -1450,7 +1567,7 @@ function htmlok( $args = array() ) {
     //------------------------ Variable Wiper
     
     // Constructor and Component
-    if ( ! empty( $r['content']['constructor'] ) || ! empty( $r['content']['component'] ) ) {
+    if ( ! empty( $r['content']['constructor'] ) || ! empty( $r['content']['component'] ) || ! empty( $r['content']['compound'] ) ) {
         $ct_mu = $ct_mu;
     } else {
         $ct_mu = '';
