@@ -1009,7 +1009,7 @@ function htmlok( $args = array() ) {
                     }
 
                     $content_val .= '<div class="fieldset-item">';
-                    $content_val .= '<label for="'.$p_content_compound_group_label_for.'"><span class="label_l">'.$r_content_compound_group_name. $hehe.'</span></label>';
+                    $content_val .= '<label for="'.$p_content_compound_group_label_for.'"><span class="label_l">'.$r_content_compound_group_name.'</span></label>';
                     $content_val .= $o_form_type;
                     $content_val .= '</div>';
                 }
