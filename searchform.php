@@ -66,13 +66,21 @@ $unique_id = esc_attr( uniqid( 'search-term-creation-input--' ) );
 <?php
 
 $form_test = htmlok( array(
-    'name'      => 'Profile',
+    'name'      => 'Search',
     'structure' => array(
         'type'      => 'component',
         'subtype'   => 'form',
+        'attr'      => array(
+            'elem'      => array(
+                'role'      => 'search',
+                'method'    => 'get',
+                'action'    => esc_url( home_url( '/' ) ),
+            ),
+        ),
     ),
     'content'   => array(
         'compound'  => array(
+            /*
             array(
                 'name'      => 'Birthday',
                 'group'     => array(
@@ -124,11 +132,13 @@ $form_test = htmlok( array(
                     ),
                 ),
             ),
+            */
             array(
-                'name'      => 'Search',
+                'name'      => 'Search Term Creation',
+                'css'       => 'hehe',
                 'group'     => array(
                     array(
-                        'name'      => 'Search Term Creation',
+                        'name'      => 'Hehe',
                         'structure' => array(
                             'type'      => 'textbox',
                             'label'     => 'Search',
@@ -142,7 +152,6 @@ $form_test = htmlok( array(
             ),
         ),
     ),
-    'echo'      => true,
 ) );
 
 
@@ -188,35 +197,13 @@ $test_form_element_obj = htmlok( array(
     ),
 ) );
 
-$search_term_creation_cp = htmlok( array(
-    'name'      => 'Search Term Creation',
-    'structure' => array(
-        'type'      => 'component',
-        'subtype'   => 'fieldset item',
-    ),
-    'content'   => array(
-        'component' => array(
-            $test_form_label_obj,
-            $test_form_element_obj,
-        ),
-    ),
-) );
-
 $test_search_form_cp = htmlok( array(
-    'name'      => 'Test Search',
+    'name'      => 'Search Component',
     'structure' => array(
         'type'      => 'component',
-        'subtype'   => 'form',
-        'attr'      => array(
-            'elem'      => array(
-                'role'      => 'search',
-                'method'    => 'get',
-                'action'    => esc_url( home_url( '/' ) ),
-            ),
-        ),
     ),
     'content'       => array(
-        'component'     => $search_term_creation_cp,
+        'component'     => $form_test,
     ),
     'echo'      => true,
 ) );
