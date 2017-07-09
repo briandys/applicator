@@ -80,9 +80,8 @@ $form_test = htmlok( array(
     ),
     'content'   => array(
         'compound'  => array(
-            /*
             array(
-                'name'      => 'Birthday',
+                'name'      => 'Birthday Creation',
                 'group'     => array(
                     array(
                         'name'      => 'Day',
@@ -90,16 +89,33 @@ $form_test = htmlok( array(
                             'type'      => 'textbox',
                             'label'     => 'Day',
                             'attr'      => array(
-                                'type'          => 'email',
-                                'value'         => 'Email',
-                                'placeholder'   => 'Input your email',
-                                'name'          => '',
+                                'type'          => 'textbox',
+                                'value'         => '',
+                                'placeholder'   => 'Input the day of your birth.',
+                                'name'          => 'day',
                             ),
                             'id'        => 'day-tb',
                             'css'       => '',
-                            'title'     => 'Title',
+                            'title'     => 'Day',
                         ),
                     ),
+                    array(
+                        'name'      => 'Month',
+                        'structure' => array(
+                            'type'      => 'textbox',
+                            'label'     => 'Month',
+                            'attr'      => array(
+                                'type'          => 'textbox',
+                                'value'         => '',
+                                'placeholder'   => 'Input the month of your birth.',
+                                'name'          => 'month',
+                            ),
+                            'id'        => 'month-tb',
+                            'css'       => '',
+                            'title'     => 'Month',
+                        ),
+                    ),
+                    /*
                     array(
                         'name'      => 'Month',
                         'structure' => array(
@@ -130,15 +146,14 @@ $form_test = htmlok( array(
                             'title'     => 'Title',
                         ),
                     ),
+                    */
                 ),
             ),
-            */
             array(
                 'name'      => 'Search Term Creation',
-                'css'       => 'hehe',
                 'group'     => array(
                     array(
-                        'name'      => 'Hehe',
+                        'name'      => 'Search',
                         'structure' => array(
                             'type'      => 'textbox',
                             'label'     => 'Search',
@@ -198,7 +213,7 @@ $test_form_element_obj = htmlok( array(
 ) );
 
 $test_search_form_cp = htmlok( array(
-    'name'      => 'Search Component',
+    'name'      => 'Search',
     'structure' => array(
         'type'      => 'component',
     ),
