@@ -1361,8 +1361,12 @@ $go-green: #12b32d;
     padding: .5rem 1rem;
 }
 
+/* X */
 .search-term-creation-label---obj,
-.search-term-creation-input---obj
+.search-term-creation-input---obj,
+
+.search-term-creation-flabel,
+.search-term-creation-felem
 {
     display: block;
 }

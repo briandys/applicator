@@ -946,6 +946,7 @@ function htmlok( $args = array() ) {
                 $p_content_compound_css = ' '.$clean_content_compund_name;
             }
             
+            // Fieldset Item
             $content_val .= '<div class="item fs-item cp'.$p_content_compound_css.'" data-name="'.$r_content_compound_name.' CP">';
             $content_val .= '<fieldset class="cr'.$p_content_compound_css.'---cr">';
             $content_val .= '<legend class="h'.$p_content_compound_css.'---h"><span class="h_l'.$p_content_compound_css.'---h_l">'.$r_content_compound_name.'</span></legend>';
@@ -999,6 +1000,15 @@ function htmlok( $args = array() ) {
                     }
                     
                     
+                    if ( 'single' == $group_count ) {
+                        $p_content_compound_felems_css = $p_content_compound_css;
+                        $p_content_compound_felems_name = $r_content_compound_name;
+                    } else {
+                        $p_content_compound_felems_css = $p_content_compound_css.'--'.$clean_content_compund_group_name;
+                        $p_content_compound_felems_name = $r_content_compound_name.' - '.$r_content_compound_group_name;
+                    }
+                    
+                    
                     
                     // Structure Type
                     if ( ! empty( $group_val['structure']['type'] ) ) {
@@ -1008,7 +1018,7 @@ function htmlok( $args = array() ) {
                     
                         // Input
                         $input_smu = '';
-                        $input_smu .= '<input'.$p_content_compound_group_id.' class="input"'.$p_content_compound_group_attr.'>';
+                        $input_smu .= '<input'.$p_content_compound_group_id.' class="input input-text'.$p_content_compound_felems_css.'---input-text"'.$p_content_compound_group_attr.'>';
 
                         // Textarea
                         $textarea_smu = '';
@@ -1031,16 +1041,8 @@ function htmlok( $args = array() ) {
                         }
                     }
                     
-                    
-                    if ( 'single' == $group_count ) {
-                        $p_content_compound_felems_css = $p_content_compound_css;
-                        $p_content_compound_felems_name = $r_content_compound_name;
-                    } else {
-                        $p_content_compound_felems_css = $p_content_compound_css.'--'.$clean_content_compund_group_name;
-                        $p_content_compound_felems_name = $r_content_compound_name.' - '.$r_content_compound_group_name;
-                    }
-                    
 
+                    // Form Elements
                     $content_val .= '<div class="cp felems'.$p_content_compound_felems_css.'-felems" data-name="'.$p_content_compound_felems_name.' CP">';
                     $content_val .= '<div class="cr'.$p_content_compound_felems_css.'-felems---cr">';
                     

@@ -1,5 +1,5 @@
 <?php
-$unique_id = esc_attr( uniqid( 'search-term-creation-input--' ) );
+$unique_id = esc_attr( uniqid( 'search-term-creation-input-text-' ) );
 ?>
 
 <div class="cp search-cp" data-name="Search">
@@ -81,6 +81,22 @@ $form_test = htmlok( array(
     'content'   => array(
         'compound'  => array(
             array(
+                'name'      => 'Search Term Creation',
+                'group'     => array(
+                    array(
+                        'name'      => 'Search',
+                        'structure' => array(
+                            'type'      => 'textbox',
+                            'label'     => 'Search',
+                            'attr'      => array(
+                                'placeholder'   => 'Enter search terms',
+                            ),
+                            'id'        => $unique_id,
+                        ),
+                    ),
+                ),
+            ),
+            array(
                 'name'      => 'Birthday Creation',
                 'group'     => array(
                     array(
@@ -149,22 +165,6 @@ $form_test = htmlok( array(
                     */
                 ),
             ),
-            array(
-                'name'      => 'Search Term Creation',
-                'group'     => array(
-                    array(
-                        'name'      => 'Search',
-                        'structure' => array(
-                            'type'      => 'textbox',
-                            'label'     => 'Search',
-                            'attr'      => array(
-                                'placeholder'   => 'Enter search terms',
-                            ),
-                            'id'        => 'super-search',
-                        ),
-                    ),
-                ),
-            ),
         ),
     ),
 ) );
@@ -216,7 +216,9 @@ $test_search_form_cp = htmlok( array(
     'name'      => 'Search',
     'structure' => array(
         'type'      => 'component',
+        'h_elem'    => 'h2',
     ),
+    'root_css'  => 'search-cp',
     'content'       => array(
         'component'     => $form_test,
     ),
