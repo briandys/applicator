@@ -964,7 +964,7 @@ function htmlok( $args = array() ) {
             
             
             // Output: Fieldset Item
-            $content_val .= '<div class="item fs-item cp'.$o_css.'" data-name="'.$o_name.' CP">';
+            $content_val .= '<div class="item fs-item cp'.$o_css.'" data-name="'.$o_name.' Fieldset Item CP">';
             $content_val .= '<fieldset class="cr'.$o_branch_css.'---cr">';
             $content_val .= '<legend class="h'.$o_branch_css.'---h"><span class="h_l'.$o_branch_css.'---h_l">'.$o_name.'</span></legend>';
             $content_val .= '<div class="ct'.$o_branch_css.'---ct">';
@@ -989,7 +989,7 @@ function htmlok( $args = array() ) {
                     // Initialize
                     $p_content_compound_group_name = '';
                     $p_group_name = '';
-                    $p_felems_name = '';
+                    $p_felems_obj_name = '';
                     $p_clean_content_compound_group_name = '';
                     $p_group_branch_name_css = '';
                     $p_content_compound_group_css = '';
@@ -1006,10 +1006,10 @@ function htmlok( $args = array() ) {
 
                         // Processed
                         $p_content_compound_group_name = $r_content_compound_group_name;
-                        $p_group_name = $p_name.' - '.$r_content_compound_group_name.' Form Elements';
-                        $p_felems_name = $p_name.' - '.$r_content_compound_group_name;
-                        $p_clean_content_compound_group_name = $p_clean_content_compound_name.'-'.$clean_content_compound_group_name.'-felems';
-                        $p_group_branch_name_css = $p_clean_content_compound_name.'-'.$p_clean_content_compound_group_name.'-felems';
+                        $p_group_name = $p_name.' - '.$r_content_compound_group_name;
+                        $p_felems_obj_name = $p_name.' - '.$r_content_compound_group_name;
+                        $p_clean_content_compound_group_name = $p_clean_content_compound_name.'-'.$clean_content_compound_group_name;
+                        $p_group_branch_name_css = $p_clean_content_compound_group_name;
                     }
                     
                     
@@ -1018,7 +1018,7 @@ function htmlok( $args = array() ) {
                         $r_content_compound_group_css = $group_val['css'];
 
                         // Processed
-                        $p_content_compound_group_css = $p_content_compound_css.'-'.$r_content_compound_group_css.'-felems';
+                        $p_content_compound_group_css = $p_content_compound_css.'-'.$r_content_compound_group_css;
                         $p_group_branch_css = $p_content_compound_group_css;
                     }
 
@@ -1065,6 +1065,19 @@ function htmlok( $args = array() ) {
                     }
                     
                     
+                    // Output Definitions
+                    $o_group_css = $p_clean_content_compound_group_name. $p_content_compound_group_css;
+                    $o_group_branch_css = $p_group_branch_css;
+                    $o_group_id = $p_content_compound_group_id;
+                    
+                    $o_group_name = $p_group_name;
+                    $o_felems_obj_name = $p_felems_obj_name;
+                    
+                    $o_content_compound_group_name = $p_content_compound_group_name;
+                    
+                    $o_group_label_for = $p_content_compound_group_label_for;
+                    
+                    
                     // Structure Type
                     if ( ! empty( $group_val['structure']['type'] ) ) {
                         $r_group_structure = $group_val['structure']['type'];
@@ -1073,15 +1086,15 @@ function htmlok( $args = array() ) {
                     
                         // Input
                         $input_smu = '';
-                        $input_smu .= '<input'.$p_content_compound_group_id.' class="input input-text'.$p_content_compound_felems_css.'---input-text"'.$p_content_compound_group_attr.'>';
+                        $input_smu .= '<input'.$o_group_id.' class="input input-text'.$p_content_compound_felems_css.'---input-text"'.$p_content_compound_group_attr.'>';
 
                         // Textarea
                         $textarea_smu = '';
-                        $textarea_smu .= '<textarea'.$p_content_compound_group_id.' class="textarea"'.$p_content_compound_group_attr.'></textarea>';
+                        $textarea_smu .= '<textarea'.$o_group_id.' class="textarea"'.$p_content_compound_group_attr.'></textarea>';
 
                         // Textarea
                         $checkbox_smu = '';
-                        $checkbox_smu .= '<input'.$p_content_compound_group_id.' class="input-checkbox" type="checkbox"'.$p_content_compound_group_attr.'>';
+                        $checkbox_smu .= '<input'.$o_group_id.' class="input-checkbox" type="checkbox"'.$p_content_compound_group_attr.'>';
 
                         if ( in_array( $r_group_structure, $form_textbox_terms, true ) ) {
                             $o_form_type = $input_smu;
@@ -1096,43 +1109,33 @@ function htmlok( $args = array() ) {
                         }
                     }
                     
-            
-                    // Output Definitions
-                    $o_group_css = $p_clean_content_compound_group_name. $p_content_compound_group_css;
-                    
-                    $o_group_branch_css = $p_group_branch_css;
-                    $o_group_name = $p_group_name;
-                    
-                    $o_felems_name = $p_felems_name;
-                    $o_content_compound_group_name = $p_content_compound_group_name;
-                    
 
                     // Form Elements
-                    $content_val .= '<div class="cp felems'.$o_group_css.'" data-name="'.$o_group_name.' CP">';
+                    $content_val .= '<div class="cp felems'.$o_group_css.'" data-name="'.$o_group_name.' Form Elements CP">';
                     $content_val .= '<div class="cr'.$o_group_branch_css.'---cr">';
                     
                     // Form Label
-                    $content_val .= '<div class="obj flabel'.$o_group_branch_css.'-flabel" data-name="'.$o_group_name.' Form Label OBJ">';
-                    $content_val .= '<label class="label'.$o_group_branch_css.'---label" for="'.$p_content_compound_group_label_for.'"><span class="label_l'.$o_group_branch_css.'---label_l">'.$o_content_compound_group_name.'</span></label>';
-                    $content_val .= '</div><!-- '.$o_felems_name.' Form Label OBJ -->';
+                    $content_val .= '<div class="obj flabel'.$o_group_branch_css.'-flabel" data-name="'.$o_felems_obj_name.' Form Label OBJ">';
+                    $content_val .= '<label class="label'.$o_group_branch_css.'-flabel---label" for="'.$o_group_label_for.'"><span class="label_l'.$o_group_branch_css.'-flabel---label_l">'.$o_content_compound_group_name.'</span></label>';
+                    $content_val .= '</div><!-- '.$o_group_name.' Form Label OBJ -->';
                     
                     // Form Element (Created Element)
-                    $content_val .= '<div class="obj felem'.$p_content_compound_felems_css.'-felem" data-name="'.$o_group_name.' Form Element OBJ">';
-                    $content_val .= '<div class="ce'.$p_content_compound_felems_css.'---ce">';
+                    $content_val .= '<div class="obj felem'.$o_group_branch_css.'-felem" data-name="'.$o_felems_obj_name.' Form Element OBJ">';
+                    $content_val .= '<div class="ce'.$o_group_branch_css.'-felem---ce">';
                     $content_val .= $o_form_type;
                     $content_val .= '</div>';
-                    $content_val .= '</div><!-- '.$o_group_name.' Form Element OBJ -->';
+                    $content_val .= '</div><!-- '.$o_felems_obj_name.' Form Element OBJ -->';
                     
                     
                     $content_val .= '</div>';
-                    $content_val .= '</div><!-- '.$o_group_name.' CP -->';
+                    $content_val .= '</div><!-- '.$o_group_name.' Form Elements CP -->';
                 }
             }
             
             $content_val .= '</div>';
             $content_val .= '</div>';
             $content_val .= '</fieldset>';
-            $content_val .= '</div><!-- '.$o_name.' CP -->';
+            $content_val .= '</div><!-- '.$o_name.' Fieldset Item CP -->';
             
         }
     }
