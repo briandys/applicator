@@ -2,7 +2,7 @@
 $unique_id = esc_attr( uniqid( 'search-term-creation-input-text-' ) );
 ?>
 
-<div class="cp search-cp" data-name="Search">
+<div class="cp search search-cp" data-name="Search">
     <div class="cr search---cr">
         <div class="hr search---hr">
             <div class="hr_cr search---hr_cr">
@@ -82,9 +82,11 @@ $form_test = htmlok( array(
         'compound'  => array(
             array(
                 'name'      => 'Search Term Creation',
+                'css'       => 'search-term-crt',
                 'group'     => array(
                     array(
                         'name'      => 'Search',
+                        //'css'       => 'hanap',
                         'structure' => array(
                             'type'      => 'textbox',
                             'label'     => 'Search',
@@ -96,6 +98,7 @@ $form_test = htmlok( array(
                     ),
                 ),
             ),
+            /*
             array(
                 'name'      => 'Birthday Creation',
                 'group'     => array(
@@ -131,40 +134,9 @@ $form_test = htmlok( array(
                             'title'     => 'Month',
                         ),
                     ),
-                    /*
-                    array(
-                        'name'      => 'Month',
-                        'structure' => array(
-                            'type'      => 'textarea',
-                            'label'     => 'Month',
-                            'attr'      => array(
-                                'type'          => 'text',
-                                'value'         => '',
-                                'placeholder'   => '',
-                                'name'          => '',
-                            ),
-                            'id'        => 'ID',
-                            'css'       => '',
-                            'title'     => 'Title',
-                        ),
-                    ),
-                    array(
-                        'name'      => 'Marital Status',
-                        'structure' => array(
-                            'type'      => 'checkbox',
-                            'label'     => 'Married?',
-                            'attr'      => array(
-                                'checked'       => '',
-                                'name'          => 'marital-status-checkbox',
-                            ),
-                            'id'        => 'marital-status-checkbox',
-                            'css'       => '',
-                            'title'     => 'Title',
-                        ),
-                    ),
-                    */
                 ),
             ),
+            */
         ),
     ),
 ) );

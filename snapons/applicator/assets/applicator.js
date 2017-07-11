@@ -342,7 +342,7 @@
         
         $( '#main-header' )
             .find( $( '.main-header---cr' ) )
-                .children( '.search-cp:first' )
+                .children( '.search.cp:first' )
                     .attr( 'id', mainSearchFuncCss );
     }() );
     

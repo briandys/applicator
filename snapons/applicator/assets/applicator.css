@@ -1325,6 +1325,9 @@ $go-green: #12b32d;
 .search-cp .input-text,
 .search-cp .b,
 
+.search.cp .input-text,
+.search.cp .b,
+
 .comment-form .input-text,
 .com-sub-axn---b
 {
@@ -1338,6 +1341,10 @@ $go-green: #12b32d;
 .search-cp .input-text,
 .search-cp .b,
 .search-cp .b_l,
+
+.search.cp .input-text,
+.search.cp .b,
+.search.cp .b_l,
 
 .comment-form .input-text,
 .com-sub-axn---b
@@ -1355,6 +1362,7 @@ $go-green: #12b32d;
 }
 
 .search-cp .b_l,
+.search.cp .b_l,
 
 .com-sub-axn---b
 {
@@ -1377,6 +1385,7 @@ $go-green: #12b32d;
 
 /* ------------------------- Search - Style > Decorations */
 .search-cp .input-text,
+.search.cp .input-text,
 
 .comment-form .input-text
 {
@@ -1387,6 +1396,7 @@ $go-green: #12b32d;
 }
 
 .search-cp .search-submit-axn---b_l,
+.search.cp .search-submit-axn---b_l,
 
 .com-sub-axn---b
 {
@@ -1394,7 +1404,8 @@ $go-green: #12b32d;
     color: white;
 }
 
-.search-cp .search-reset-axn---b_l
+.search-cp .search-reset-axn---b_l,
+.search.cp .search-reset-axn---b_l
 {
     border: 2px solid black;
     border-color: hsla(0, 0%, 0%, .25);
@@ -1406,18 +1417,23 @@ $go-green: #12b32d;
 .search-cp .input-text,
 .search-cp .b_l,
 
+.search.cp .input-text,
+.search.cp .b_l,
+
 .comment-form .input-text,
 .com-sub-axn---b
 {   
     border-radius: .125rem;
 }
 
-.main-header---cr > .search-cp
+.main-header---cr > .search-cp,
+.main-header---cr > .search.cp
 {
     background-color: white;
 }
 
-.apl--applicator--main-search .main-header---cr > .search-cp
+.apl--applicator--main-search .main-header---cr > .search-cp,
+.apl--applicator--main-search .main-header---cr > .search.cp
 {
     background-color: transparent;
 }
@@ -1429,7 +1445,8 @@ $go-green: #12b32d;
 
 /* ------------------------- Main Search - Functionality */
 
-.apl--applicator--main-search.dom--unready .main-header---cr > .search-cp
+.apl--applicator--main-search.dom--unready .main-header---cr > .search-cp,
+.apl--applicator--main-search.dom--unready .main-header---cr > .search.cp
 {
     display: none;
 }
