@@ -97,6 +97,7 @@
 .search-term-crt---h,
 .search-form-axns---h,
 .search-term-creation-label---obj,
+.search-term-creation-search-flabel,
 
 /* Main Search */
 .main-search-tog---b_l .show-hide---txt,
@@ -1373,8 +1374,8 @@ $go-green: #12b32d;
 .search-term-creation-label---obj,
 .search-term-creation-input---obj,
 
-.search-term-creation-flabel,
-.search-term-creation-felem
+.search-term-creation-search-flabel,
+.search-term-creation-search-felem
 {
     display: block;
 }

@@ -142,48 +142,6 @@ $form_test = htmlok( array(
 ) );
 
 
-
-$test_form_label_obj = htmlok( array(
-    'name'      => 'Test Search Form Label',
-    'structure' => array(
-        'type'      => 'object',
-        'subtype'   => 'form label',
-        'attr'      => array(
-            'elem'      => array(
-                'for'       => 'ID',
-            ),
-        ),
-    ),
-    'content'       => array(
-        'object'     => array(
-            array(
-                'txt'   => 'Search Term',
-            ),
-        ),
-    ),
-) );
-
-$test_form_element_obj = htmlok( array(
-    'name'      => 'Test Search Form Element',
-    'structure' => array(
-        'type'      => 'object',
-        'subtype'   => 'form element',
-        'id'    => 'ID',
-        'attr'      => array(
-            'elem'      => array(
-                'for'       => 'ID',
-            ),
-        ),
-    ),
-    'content'       => array(
-        'object'     => array(
-            array(
-                'txt'   => 'Search Term',
-            ),
-        ),
-    ),
-) );
-
 $test_search_form_cp = htmlok( array(
     'name'      => 'Search',
     'structure' => array(

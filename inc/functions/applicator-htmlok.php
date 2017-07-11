@@ -926,21 +926,22 @@ function htmlok( $args = array() ) {
         foreach ( ( array ) $r_content_compound as $val ) {
             
             // Initialize
-            $p_name = '';
+            $p_content_compound_name = '';
             $p_clean_content_compound_name = '';
-            $p_branch_name_css = '';
+            $p_content_compound_branch_name_css = '';
             $p_content_compound_css = '';
-            $p_branch_css = '';
-                
+            $p_content_compound_branch_css = '';
+            
+            // Name
             if ( ! empty( $val['name'] ) ) {
                 $r_content_compound_name = $val['name'];
                 
                 $clean_content_compound_name = sanitize_title( $r_content_compound_name );
                 
                 // Processed
-                $p_name = $r_content_compound_name;
+                $p_content_compound_name = $r_content_compound_name;
                 $p_clean_content_compound_name = ' '.$clean_content_compound_name;
-                $p_branch_name_css = $p_clean_content_compound_name;
+                $p_content_compound_branch_name_css = $p_clean_content_compound_name;
             }
                     
             // CSS
@@ -949,26 +950,26 @@ function htmlok( $args = array() ) {
                 
                 // Processed
                 $p_content_compound_css = ' '.$r_content_compound_css;
-                $p_branch_css = $p_content_compound_css;
+                $p_content_compound_branch_css = $p_content_compound_css;
             }
             
             else {
                 // Processed
-                $p_branch_css = $p_branch_name_css;
+                $p_content_compound_branch_css = $p_content_compound_branch_name_css;
             }
             
             // Definitions
-            $o_css = $p_clean_content_compound_name. $p_content_compound_css;
-            $o_branch_css = $p_branch_css;
-            $o_name = $p_name;
+            $o_content_compound_css = $p_clean_content_compound_name. $p_content_compound_css;
+            $o_content_compound_branch_css = $p_content_compound_branch_css;
+            $o_content_compound_name = $p_content_compound_name;
             
             
             // Output: Fieldset Item
-            $content_val .= '<div class="item fs-item cp'.$o_css.'" data-name="'.$o_name.' Fieldset Item CP">';
-            $content_val .= '<fieldset class="cr'.$o_branch_css.'---cr">';
-            $content_val .= '<legend class="h'.$o_branch_css.'---h"><span class="h_l'.$o_branch_css.'---h_l">'.$o_name.'</span></legend>';
-            $content_val .= '<div class="ct'.$o_branch_css.'---ct">';
-            $content_val .= '<div class="ct_cr'.$o_branch_css.'---ct_cr">';
+            $content_val .= '<div class="item fs-item cp'.$o_content_compound_css.'" data-name="'.$o_content_compound_name.' Fieldset Item CP">';
+            $content_val .= '<fieldset class="cr'.$o_content_compound_branch_css.'---cr">';
+            $content_val .= '<legend class="h'.$o_content_compound_branch_css.'---h"><span class="h_l'.$o_content_compound_branch_css.'---h_l">'.$o_content_compound_name.'</span></legend>';
+            $content_val .= '<div class="ct'.$o_content_compound_branch_css.'---ct">';
+            $content_val .= '<div class="ct_cr'.$o_content_compound_branch_css.'---ct_cr">';
             
             
             // Group / Form Elements
@@ -985,29 +986,34 @@ function htmlok( $args = array() ) {
                         $group_count = 'single';
                     }
                     
-                    
                     // Initialize
                     $p_content_compound_group_name = '';
-                    $p_group_name = '';
+                    $p_content_compound_complete_group_name = '';
                     $p_felems_obj_name = '';
                     $p_clean_content_compound_group_name = '';
                     $p_group_branch_name_css = '';
                     $p_content_compound_group_css = '';
-                    $p_group_branch_css = '';
+                    $p_content_compound_group_branch_css = '';
                     $p_content_compound_group_id = '';
                     $p_content_compound_group_label_for = '';
+                    $p_content_compound_layout_elem = '';
+                    $p_content_compound_group_name_txt = '';
+                    
+                    // Defaults
+                    $content_compound_layout_elem = 'div';
                     
                     
                     // Name
                     if ( ! empty( $group_val['name'] ) ) {
                         $r_content_compound_group_name = $group_val['name'];
-                        
                         $clean_content_compound_group_name = sanitize_title( $r_content_compound_group_name );
 
                         // Processed
                         $p_content_compound_group_name = $r_content_compound_group_name;
-                        $p_group_name = $p_name.' - '.$r_content_compound_group_name;
-                        $p_felems_obj_name = $p_name.' - '.$r_content_compound_group_name;
+                        
+                        $p_content_compound_complete_group_name = $p_content_compound_name.' - '.$r_content_compound_group_name;
+                        
+                        $p_felems_obj_name = $p_content_compound_name.' - '.$r_content_compound_group_name;
                         $p_clean_content_compound_group_name = $p_clean_content_compound_name.'-'.$clean_content_compound_group_name;
                         $p_group_branch_name_css = $p_clean_content_compound_group_name;
                     }
@@ -1019,12 +1025,12 @@ function htmlok( $args = array() ) {
 
                         // Processed
                         $p_content_compound_group_css = $p_content_compound_css.'-'.$r_content_compound_group_css;
-                        $p_group_branch_css = $p_content_compound_group_css;
+                        $p_content_compound_group_branch_css = $p_content_compound_group_css;
                     }
 
                     else {
                         // Processed
-                        $p_group_branch_css = $p_group_branch_name_css;
+                        $p_content_compound_group_branch_css = $p_group_branch_name_css;
                     }
                     
                     
@@ -1056,6 +1062,20 @@ function htmlok( $args = array() ) {
                     }
                     
                     
+                    // Layout
+                    if ( ! empty( $group_val['structure']['layout'] ) ) {
+                        $r_content_compound_group_layout = $group_val['structure']['layout'];
+                        
+                        if ( in_array( $r_content_compound_group_layout, $layout_inline_terms, true ) ) {
+                            $content_compound_layout_elem = 'span';
+                        }
+                    }
+                        
+                    // Processed
+                    $p_content_compound_layout_elem = $content_compound_layout_elem;
+                    $p_content_compound_group_name_txt = ' '.$clean_content_compound_group_name.'---txt';
+                    
+                    
                     if ( 'single' == $group_count ) {
                         $p_content_compound_felems_css = $p_content_compound_css;
                         $p_content_compound_felems_name = $r_content_compound_name;
@@ -1066,16 +1086,19 @@ function htmlok( $args = array() ) {
                     
                     
                     // Output Definitions
-                    $o_group_css = $p_clean_content_compound_group_name. $p_content_compound_group_css;
-                    $o_group_branch_css = $p_group_branch_css;
-                    $o_group_id = $p_content_compound_group_id;
+                    $o_content_compound_group_css = $p_clean_content_compound_group_name. $p_content_compound_group_css;
+                    $o_content_compound_group_branch_css = $p_content_compound_group_branch_css;
+                    $o_content_compound_group_id = $p_content_compound_group_id;
                     
-                    $o_group_name = $p_group_name;
+                    $o_content_compound_complete_group_name = $p_content_compound_complete_group_name;
                     $o_felems_obj_name = $p_felems_obj_name;
                     
                     $o_content_compound_group_name = $p_content_compound_group_name;
                     
                     $o_group_label_for = $p_content_compound_group_label_for;
+                    
+                    $o_content_compound_layout_elem = $p_content_compound_layout_elem;
+                    $o_content_compound_group_name_txt = $p_content_compound_group_name_txt;
                     
                     
                     // Structure Type
@@ -1086,15 +1109,15 @@ function htmlok( $args = array() ) {
                     
                         // Input
                         $input_smu = '';
-                        $input_smu .= '<input'.$o_group_id.' class="input input-text'.$p_content_compound_felems_css.'---input-text"'.$p_content_compound_group_attr.'>';
+                        $input_smu .= '<input'.$o_content_compound_group_id.' class="input input-text'.$p_content_compound_felems_css.'---input-text"'.$p_content_compound_group_attr.'>';
 
                         // Textarea
                         $textarea_smu = '';
-                        $textarea_smu .= '<textarea'.$o_group_id.' class="textarea"'.$p_content_compound_group_attr.'></textarea>';
+                        $textarea_smu .= '<textarea'.$o_content_compound_group_id.' class="textarea"'.$p_content_compound_group_attr.'></textarea>';
 
                         // Textarea
                         $checkbox_smu = '';
-                        $checkbox_smu .= '<input'.$o_group_id.' class="input-checkbox" type="checkbox"'.$p_content_compound_group_attr.'>';
+                        $checkbox_smu .= '<input'.$o_content_compound_group_id.' class="input-checkbox" type="checkbox"'.$p_content_compound_group_attr.'>';
 
                         if ( in_array( $r_group_structure, $form_textbox_terms, true ) ) {
                             $o_form_type = $input_smu;
@@ -1111,31 +1134,31 @@ function htmlok( $args = array() ) {
                     
 
                     // Form Elements
-                    $content_val .= '<div class="cp felems'.$o_group_css.'" data-name="'.$o_group_name.' Form Elements CP">';
-                    $content_val .= '<div class="cr'.$o_group_branch_css.'---cr">';
+                    $content_val .= '<div class="cp felems'.$o_content_compound_group_css.'" data-name="'.$o_content_compound_complete_group_name.' Form Elements CP">';
+                    $content_val .= '<div class="cr'.$o_content_compound_group_branch_css.'---cr">';
                     
                     // Form Label
-                    $content_val .= '<div class="obj flabel'.$o_group_branch_css.'-flabel" data-name="'.$o_felems_obj_name.' Form Label OBJ">';
-                    $content_val .= '<label class="label'.$o_group_branch_css.'-flabel---label" for="'.$o_group_label_for.'"><span class="label_l'.$o_group_branch_css.'-flabel---label_l">'.$o_content_compound_group_name.'</span></label>';
-                    $content_val .= '</div><!-- '.$o_group_name.' Form Label OBJ -->';
+                    $content_val .= '<'.$o_content_compound_layout_elem.' class="obj flabel'.$o_content_compound_group_branch_css.'-flabel" data-name="'.$o_felems_obj_name.' Form Label OBJ">';
+                    $content_val .= '<label class="label'.$o_content_compound_group_branch_css.'-flabel---label" for="'.$o_group_label_for.'"><span class="label_l'.$o_content_compound_group_branch_css.'-flabel---label_l"><span class="txt'.$o_content_compound_group_name_txt.'">'.$o_content_compound_group_name.'</span></span></label>';
+                    $content_val .= '</'.$o_content_compound_layout_elem.'><!-- '.$o_content_compound_complete_group_name.' Form Label OBJ -->';
                     
                     // Form Element (Created Element)
-                    $content_val .= '<div class="obj felem'.$o_group_branch_css.'-felem" data-name="'.$o_felems_obj_name.' Form Element OBJ">';
-                    $content_val .= '<div class="ce'.$o_group_branch_css.'-felem---ce">';
+                    $content_val .= '<'.$o_content_compound_layout_elem.' class="obj felem'.$o_content_compound_group_branch_css.'-felem" data-name="'.$o_felems_obj_name.' Form Element OBJ">';
+                    $content_val .= '<'.$o_content_compound_layout_elem.' class="ce'.$o_content_compound_group_branch_css.'-felem---ce">';
                     $content_val .= $o_form_type;
-                    $content_val .= '</div>';
-                    $content_val .= '</div><!-- '.$o_felems_obj_name.' Form Element OBJ -->';
+                    $content_val .= '</'.$o_content_compound_layout_elem.'>';
+                    $content_val .= '</'.$o_content_compound_layout_elem.'><!-- '.$o_felems_obj_name.' Form Element OBJ -->';
                     
                     
                     $content_val .= '</div>';
-                    $content_val .= '</div><!-- '.$o_group_name.' Form Elements CP -->';
+                    $content_val .= '</div><!-- '.$o_content_compound_complete_group_name.' Form Elements CP -->';
                 }
             }
             
             $content_val .= '</div>';
             $content_val .= '</div>';
             $content_val .= '</fieldset>';
-            $content_val .= '</div><!-- '.$o_name.' Fieldset Item CP -->';
+            $content_val .= '</div><!-- '.$o_content_compound_name.' Fieldset Item CP -->';
             
         }
     }
@@ -1639,6 +1662,7 @@ function htmlok( $args = array() ) {
         $ct_mu .= $subtype_form_cr_emu;
     }
     
+    /*
     //------------------------ Form Elements Content Markup
     if ( in_array( $r_subtype, $subtype_form_elements_terms, true ) ) {
         $ct_mu = '';
@@ -1649,6 +1673,7 @@ function htmlok( $args = array() ) {
         $ct_mu .= $o_content_val;
         $ct_mu .= $subtype_form_elements_cr_emu;
     }
+    */
     
     
     //------------------------ Object Content Markup
