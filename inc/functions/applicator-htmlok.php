@@ -57,6 +57,9 @@ function htmlok( $args = array() ) {
     $subtype_form_terms = array( 'form', 'f', );
     $subtype_nav_terms = array( 'navigation', 'nav', 'n', );
     
+    $structure_form_actions_submit = array( 'submit', 's', );
+    $structure_form_actions_reset = array( 'reset', 'r', );
+    
     // Form Types
     $form_textbox_terms = array( 'single line text', 'textbox', 'input text', 'tb', 'it', );
     $form_textarea_terms = array( 'multi line text', 'textarea', 'ta', 't', );
@@ -137,6 +140,7 @@ function htmlok( $args = array() ) {
     // Content
     $hr_content_val = '';
     $content_val = '';
+    $actions_content_val = '';
     $fr_content_val = '';
     
     
@@ -1173,6 +1177,39 @@ function htmlok( $args = array() ) {
                 }
             }
             
+            
+            // Group / Actions
+            if ( ! empty( $val['actions'] ) ) {
+                $r_content_compound_actions = $val['actions'];
+                
+                $actions_content_val = '';
+                foreach ( ( array ) $r_content_compound_actions as $actions_val ) {
+                    
+                    // Name
+                    if ( ! empty( $actions_val['name'] ) ) {
+                        $r_content_compound_actions_name = $actions_val['name'];
+                    }
+                    
+                    
+                    // Type
+                    if ( ! empty( $actions_val['structure']['type'] ) ) {
+                        $r_content_compound_actions_structure = $actions_val['structure']['type'];
+                        
+                        $button_submit_mu = '';
+                        $button_submit_mu .= '<button class="b"><span class="b_l"><span class="txt">Submit Label</span></span></button>';
+                        
+                        if ( in_array( $r_content_compound_actions_structure, $structure_form_actions_submit, true ) ) {
+                            $o_form_actions_type = $button_submit_mu;
+                        }
+                    }
+                    
+                    
+                    $actions_content_val .= 'tae';
+                    
+                }
+                
+            }
+            
             $content_val .= '</div>';
             $content_val .= '</div>';
             $content_val .= '</fieldset>';
@@ -1441,6 +1478,7 @@ function htmlok( $args = array() ) {
         
     // Content Output
     $o_content_val = $content_val;
+    $o_actions_content_val = 'tae ka';
     
     
     /*
@@ -1556,10 +1594,13 @@ function htmlok( $args = array() ) {
     $subtype_form_actions_cr_smu .= '<div class="hr'.$o_branch_css.'-%1$s---hr">';
     $subtype_form_actions_cr_smu .= '<div class="hr_cr'.$o_branch_css.'-%1$s---hr_cr">';
     $subtype_form_actions_cr_smu .= '<span class="h'.$o_branch_css.'-%1$s---h">Actions</span>';
+    $subtype_form_actions_cr_smu .= '</div>';
+    $subtype_form_actions_cr_smu .= '</div>';
     $subtype_form_actions_cr_smu .= '<div class="ct'.$o_branch_css.'-%1$s---ct">';
     $subtype_form_actions_cr_smu .= '<div class="ct_cr'.$o_branch_css.'-%1$s---ct_cr">';
     
     $subtype_form_actions_cr_emu = '';
+    $subtype_form_actions_cr_emu .= '</div>';
     $subtype_form_actions_cr_emu .= '</div>';
     $subtype_form_actions_cr_emu .= '</div>';
     $subtype_form_actions_cr_emu .= '</div>';
@@ -1694,7 +1735,7 @@ function htmlok( $args = array() ) {
         $ct_mu .= sprintf( $subtype_form_actions_cr_smu,
             'axns'
         );
-        $ct_mu .= $o_content_val;
+        $ct_mu .= $o_actions_content_val;
         $ct_mu .= $subtype_form_actions_cr_emu;
     }
     
