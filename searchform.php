@@ -99,46 +99,17 @@ $form_test = htmlok( array(
                         ),
                     ),
                 ),
-            ),
-            /*
-            array(
-                'name'      => 'Birthday Creation',
-                'group'     => array(
+                'actions'   => array(
                     array(
-                        'name'      => 'Day',
-                        'structure' => array(
-                            'type'      => 'textbox',
-                            'label'     => 'Day',
-                            'attr'      => array(
-                                'type'          => 'textbox',
-                                'value'         => '',
-                                'placeholder'   => 'Input the day of your birth.',
-                                'name'          => 'day',
-                            ),
-                            'id'        => 'day-tb',
-                            'css'       => '',
-                            'title'     => 'Day',
-                        ),
+                        'name'      => 'Send',
+                        'type'      => 'submit',
                     ),
                     array(
-                        'name'      => 'Month',
-                        'structure' => array(
-                            'type'      => 'textbox',
-                            'label'     => 'Month',
-                            'attr'      => array(
-                                'type'          => 'textbox',
-                                'value'         => '',
-                                'placeholder'   => 'Input the month of your birth.',
-                                'name'          => 'month',
-                            ),
-                            'id'        => 'month-tb',
-                            'css'       => '',
-                            'title'     => 'Month',
-                        ),
+                        'name'      => 'Clear',
+                        'type'      => 'reset',
                     ),
                 ),
             ),
-            */
         ),
     ),
 ) );
@@ -156,104 +127,3 @@ $test_search_form_cp = htmlok( array(
     ),
     'echo'      => true,
 ) );
-
-
-
-
-
-/*
-
-// Variables
-$search_term_creation_name = 'Search Term Creation';
-$search_term_creation_css = 'search-term-crt';
-
-$search_term_creation_label_obj = htmlok( array(
-    'name'          => $search_term_creation_name,
-    'structure'     => array(
-        'type'      => 'object',
-        'subtype'   => 'form label',
-        'layout'    => 'inline',
-        'attr'      => array(
-            'for'   => $unique_id,
-        ),
-    ),
-    'css'           => $search_term_creation_css,
-    'obj_content'   => array(
-        array(
-            'txt'   => 'Search Term',
-        ),
-    ),
-) );
-
-$search_term_creation_input_obj = htmlok( array(
-    'name'                      => $search_term_creation_name,
-    'structure'                 => array(
-        'type'                  => 'object',
-        'subtype'               => 'form element',
-    ),
-    'css'                       => 'search-term-crt',
-    'obj_content'               => array(
-        array(
-            'form_elem'         => 'input',
-            'id'                => $unique_id,
-            'css'               => $search_term_creation_css,
-            'attr'              => array(
-                'type'          => 'text',
-                'name'          => 's',
-                'placeholder'   => 'Enter Search Term',
-                'value'         => get_search_query(),
-            ),
-        ),
-    ),
-) );
-
-$search_term_creation_cp = htmlok( array(
-    'name'              => $search_term_creation_name,
-    'structure'         => array(
-        'type'          => 'component',
-        'subtype'       => 'fieldset item',
-    ),
-    'css'               => $search_term_creation_css,
-    'content'           => array(
-        $search_term_creation_label_obj,
-        $search_term_creation_input_obj,
-    ),
-) );
-
-$search_term_creation_fieldsets_cn = htmlok( array(
-    'name'          => $search_term_creation_name,
-    'structure'     => array(
-        'type'      => 'component',
-        'subtype'   => 'fieldsets',
-    ),
-    'css'           => $search_term_creation_css,
-    'content'       => $search_term_creation_cp,
-) );
-
-
-$search_form_cp = htmlok( array(
-    'name'                  => 'Search',
-    'structure'             => array(
-        'type'              => 'component',
-        'subtype'           => 'form',
-        'attr'              => array(
-            'custom'        => array(
-                'role'      => 'search',
-                'method'    => 'get',
-                'action'    => esc_url( home_url( '/' ) ),
-            ),
-        ),
-    ),
-    'content'               => $search_term_creation_cp,
-) );
-
-$search_cp = htmlok( array(
-    'name'          => 'Search',
-    'structure'     => array(
-        'type'      => 'component',
-    ),
-    'content'       => $search_form_cp,
-    'echo'          => true,
-) );
-
-*/

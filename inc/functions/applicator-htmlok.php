@@ -1541,13 +1541,22 @@ function htmlok( $args = array() ) {
     
     
     // Form Structure Markup
-    $subtype_form_cr_smu = '';
-    $subtype_form_cr_smu .= '<div class="grp %1$s'.$o_branch_css.'-%1$s">';
-    $subtype_form_cr_smu .= '<div class="cr'.$o_branch_css.'-%1$s---cr">';
+    $subtype_form_fieldsets_cr_smu = '';
+    $subtype_form_fieldsets_cr_smu .= '<div class="grp %1$s'.$o_branch_css.'-%1$s">';
+    $subtype_form_fieldsets_cr_smu .= '<div class="cr'.$o_branch_css.'-%1$s---cr">';
     
-    $subtype_form_cr_emu = '';
-    $subtype_form_cr_emu .= '</div>';
-    $subtype_form_cr_emu .= '</div>';
+    $subtype_form_fieldsets_cr_emu = '';
+    $subtype_form_fieldsets_cr_emu .= '</div>';
+    $subtype_form_fieldsets_cr_emu .= '</div>';
+    
+    // Form Actions Structure Markup
+    $subtype_form_actions_cr_smu = '';
+    $subtype_form_actions_cr_smu .= '<div class="%1$s'.$o_branch_css.'-%1$s">';
+    $subtype_form_actions_cr_smu .= '<div class="cr'.$o_branch_css.'-%1$s---cr">';
+    
+    $subtype_form_actions_cr_emu = '';
+    $subtype_form_actions_cr_emu .= '</div>';
+    $subtype_form_actions_cr_emu .= '</div>';
     
     
     // Form Elements Structure Markup
@@ -1671,13 +1680,15 @@ function htmlok( $args = array() ) {
     //------------------------ Form Content Markup
     if ( in_array( $r_subtype, $subtype_form_terms, true ) ) {
         $ct_mu = '';
-        $ct_mu .= sprintf( $subtype_form_cr_smu,
+        $ct_mu .= sprintf( $subtype_form_fieldsets_cr_smu,
             'fieldsets'
         );
-
         $ct_mu .= $o_content_val;
-
-        $ct_mu .= $subtype_form_cr_emu;
+        $ct_mu .= $subtype_form_fieldsets_cr_emu;
+        $ct_mu .= sprintf( $subtype_form_actions_cr_smu,
+            'anxs'
+        );
+        $ct_mu .= $subtype_form_actions_cr_emu;
     }
     
     /*

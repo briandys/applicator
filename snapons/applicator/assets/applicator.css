@@ -1521,7 +1521,8 @@ $go-green: #12b32d;
     padding-left: 3rem;
 }
 
-.main-search-func .search-term-crt-inp--input-text
+.main-search-func .search-term-crt-inp--input-text,
+.main-search-func .search-term-crt-search---input-text
 {
     padding-left: 1rem;
     padding-right: 6rem;
