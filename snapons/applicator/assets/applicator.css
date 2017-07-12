@@ -1510,7 +1510,8 @@ $go-green: #12b32d;
     width: auto;
 }
 
-.apl--applicator--main-menu.main-header-aside--enabled .main-search-func .search-term-crt-inp--input-text
+.apl--applicator--main-menu.main-header-aside--enabled .main-search-func .search-term-crt-inp--input-text,
+.apl--applicator--main-menu.main-header-aside--enabled .main-search-func .search-term-crt-search---input-text
 {
     padding-left: 0;
 }

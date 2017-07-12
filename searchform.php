@@ -2,6 +2,7 @@
 $unique_id = esc_attr( uniqid( 'search-term-creation-input-text-' ) );
 ?>
 
+
 <div class="cp search search-cp" data-name="Search">
     <div class="cr search---cr">
         <div class="hr search---hr">
@@ -63,6 +64,8 @@ $unique_id = esc_attr( uniqid( 'search-term-creation-input-text-' ) );
 </div><!-- Search -->
 
 
+
+
 <?php
 
 $form_test = htmlok( array(
@@ -86,14 +89,13 @@ $form_test = htmlok( array(
                 'group'     => array(
                     array(
                         'name'      => 'Search',
-                        //'css'       => 'hanap',
                         'structure' => array(
                             'type'      => 'textbox',
                             'label'     => 'Search',
                             'attr'      => array(
                                 'placeholder'   => 'Enter search terms',
                             ),
-                            'id'        => $unique_id,
+                            'id'        => esc_attr( uniqid( 'search-term-crt-search-text-input---input-text-' ) ),
                         ),
                     ),
                 ),
