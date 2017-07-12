@@ -1553,8 +1553,14 @@ function htmlok( $args = array() ) {
     $subtype_form_actions_cr_smu = '';
     $subtype_form_actions_cr_smu .= '<div class="%1$s'.$o_branch_css.'-%1$s">';
     $subtype_form_actions_cr_smu .= '<div class="cr'.$o_branch_css.'-%1$s---cr">';
+    $subtype_form_actions_cr_smu .= '<div class="hr'.$o_branch_css.'-%1$s---hr">';
+    $subtype_form_actions_cr_smu .= '<div class="hr_cr'.$o_branch_css.'-%1$s---hr_cr">';
+    $subtype_form_actions_cr_smu .= '<span class="h'.$o_branch_css.'-%1$s---h">Actions</span>';
+    $subtype_form_actions_cr_smu .= '<div class="ct'.$o_branch_css.'-%1$s---ct">';
+    $subtype_form_actions_cr_smu .= '<div class="ct_cr'.$o_branch_css.'-%1$s---ct_cr">';
     
     $subtype_form_actions_cr_emu = '';
+    $subtype_form_actions_cr_emu .= '</div>';
     $subtype_form_actions_cr_emu .= '</div>';
     $subtype_form_actions_cr_emu .= '</div>';
     
@@ -1686,8 +1692,9 @@ function htmlok( $args = array() ) {
         $ct_mu .= $o_content_val;
         $ct_mu .= $subtype_form_fieldsets_cr_emu;
         $ct_mu .= sprintf( $subtype_form_actions_cr_smu,
-            'anxs'
+            'axns'
         );
+        $ct_mu .= $o_content_val;
         $ct_mu .= $subtype_form_actions_cr_emu;
     }
     
