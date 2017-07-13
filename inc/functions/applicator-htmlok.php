@@ -977,31 +977,70 @@ function htmlok( $args = array() ) {
             $content_val .= '<div class="ct_cr'.$o_content_compound_branch_css.'---ct_cr">';
             
             
+            $actions_content_val = '';
+            
             // Group / Actions
             if ( ! empty( $val['actions'] ) ) {
                 $r_content_compound_actions = $val['actions'];
                 
                 foreach ( ( array ) $r_content_compound_actions as $actions_val ) {
                     
+                    $p_content_compound_actions_name = '';
+                    $p_form_button_type = '';
+                    $p_content_compound_actions_css = '';
+                    $p_content_compound_actions_branch_css = '';
+                    
                     // Name
                     if ( ! empty( $actions_val['name'] ) ) {
                         $r_content_compound_actions_name = $actions_val['name'];
+                        $clean_content_compound_actions_name = sanitize_title( $r_content_compound_actions_name );
+                        
+                        $p_content_compound_actions_name = $r_content_compound_actions_name;
+                        
+                        $p_clean_content_compound_actions_name = $p_content_compound_branch_css.'-'.$clean_content_compound_actions_name;
+                        
+                        $p_actions_branch_name_css = $p_clean_content_compound_actions_name;
+                    }
+                    
+                    // CSS
+                    if ( ! empty( $actions_val['css'] ) ) {
+                        $r_content_compound_actions_css = $actions_val['css'];
+
+                        // Processed
+                        $p_content_compound_actions_css = $p_content_compound_css.'-'.$r_content_compound_actions_css.'-'.$p_actions_branch_name_css;
+                        $p_content_compound_actions_branch_css = $p_content_compound_actions_css;
+                    }
+
+                    else {
+                        // Processed
+                        $p_content_compound_actions_branch_css = $p_actions_branch_name_css;
                     }
                     
                     // Structure Type
                     if ( ! empty( $actions_val['structure']['type'] ) ) {
                         $r_content_compound_actions_structure = $actions_val['structure']['type'];
                         
-                        // Button Markup
-                        $button_mu = '';
-                        $button_mu .= '<button type="submit">'.$r_content_compound_actions_name.'</button>';
-
                         if ( in_array( $r_content_compound_actions_structure, $structure_form_actions_submit, true ) ) {
-                            $o_form_button_type = $button_mu;
+                            $p_form_button_type = 'submit';
+                        }
+                        
+                        if ( in_array( $r_content_compound_actions_structure, $structure_form_actions_reset, true ) ) {
+                            $p_form_button_type = 'reset';
                         }
                     }
                     
-                    $actions_content_val .= $o_form_button_type;
+                    $o_form_button_type = $p_form_button_type;
+                    $o_content_compound_actions_name = $p_content_compound_actions_name;
+                    
+                    $o_content_compound_actions_branch_css = $p_content_compound_actions_branch_css;
+                    
+                    $actions_content_val .= '<div class="obj" data-name="'.$p_actions_branch_name_css.' OBJ">';
+                    $actions_content_val .= '<button class="b'.$o_content_compound_actions_branch_css.'---b" type="'.$o_form_button_type.'">';
+                    $actions_content_val .= '<span class="b_l'.$o_content_compound_actions_branch_css.'---b_l">';
+                    $actions_content_val .= $o_content_compound_actions_name;
+                    $actions_content_val .= '</span>';
+                    $actions_content_val .= '</button>';
+                    $actions_content_val .= '</div><!-- '.$p_actions_branch_name_css.' OBJ -->';
                     
                 }
                 
