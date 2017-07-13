@@ -101,9 +101,15 @@ $form_test = htmlok( array(
                 ),
                 'actions'   => array(
                     array(
-                        'name'      => 'Send',
+                        'name'  => 'Search',
                         'structure' => array(
                             'type'      => 'submit',
+                        ),
+                    ),
+                    array(
+                        'name'  => 'Clear',
+                        'structure' => array(
+                            'type'      => 'reset',
                         ),
                     ),
                 ),
