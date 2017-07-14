@@ -132,6 +132,7 @@ $test_search_form_cp = htmlok( array(
         'type'      => 'component',
         'h_elem'    => 'h2',
     ),
+    'root_css'      => 'search-cp',
     'content'       => array(
         'component'     => $form_test,
     ),
