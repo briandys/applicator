@@ -1068,7 +1068,7 @@ function htmlok( $args = array() ) {
                         $p_clean_form_actions_name = $clean_form_actions_name;
                         
                         // Name CSS
-                        $p_clean_form_actions_name_css = $clean_form_actions_name.'-axn';
+                        $p_clean_form_actions_name_css = ' '.$clean_form_actions_name.'-axn';
                         
                         // Complete Object Name
                         $p_form_actions_complete_name = $p_name.' '.$p_subtype_name.' '.$p_form_actions_name.' '.'Action';
@@ -1113,14 +1113,14 @@ function htmlok( $args = array() ) {
                         $p_form_actions_css = $r_form_actions_css;
                         
                         // Branch CSS
-                        $p_form_actions_branch_css = $o_branch_css.'-'.$p_form_actions_css.'-axn';
+                        $p_form_actions_branch_css = ' '.$o_branch_css.'-'.$p_form_actions_css.'-axn';
                     }
 
                     else {
                         // Processed
                         
                         // Branch CSS
-                        $p_form_actions_branch_css = $o_branch_css.'-'.$p_clean_form_actions_name_css;
+                        $p_form_actions_branch_css = ' '.$o_branch_css.'-'.$clean_form_actions_name.'-axn';
                     }
                     
                     
@@ -1130,7 +1130,7 @@ function htmlok( $args = array() ) {
                         // CSS
                         $r_form_actions_root_css = $actions_val['root_css'];
                         
-                        $p_form_actions_root_css = $r_form_actions_root_css;
+                        $p_form_actions_root_css = ' '.$r_form_actions_root_css;
                     }
                     
                     
@@ -1167,7 +1167,7 @@ function htmlok( $args = array() ) {
                     $o_form_actions_complete_name = $p_form_actions_complete_name;
                     
                     // CSS
-                    $o_form_actions_obj_css = 'axn'.' '.$p_clean_form_actions_name_css.' '.$p_form_actions_branch_css.' '.$p_form_actions_root_css;
+                    $o_form_actions_obj_css = 'axn'.' '.$p_clean_form_actions_name_css.$p_form_actions_branch_css.$p_form_actions_root_css;
                     $o_form_actions_branch_css = $p_form_actions_branch_css;
                     
                     // Structure

@@ -97,12 +97,14 @@
 .search-term-crt---h,
 .search-form-axns---h,
 .search-term-creation-label---obj,
-.search-term-creation-search-flabel,
+.search-term-crt-search-flabel,
 
 /* Main Search */
 .main-search-tog---b_l .show-hide---txt,
 .main-search-func .search-submit-axn---b_l .search---txt,
 .main-search-func .search-reset-axn---b_l .reset---txt,
+.main-search-func .search-form-search-axn .search---txt,
+.main-search-func .search-form-reset-axn .reset---txt,
 
 /* Web Product Info */
 .apl--main-search--active .web-product-main-name,
@@ -1374,8 +1376,8 @@ $go-green: #12b32d;
 .search-term-creation-label---obj,
 .search-term-creation-input---obj,
 
-.search-term-creation-search-flabel,
-.search-term-creation-search-felem
+.search-term-crt-search-flabel,
+.search-term-crt-search-text-input
 {
     display: block;
 }
@@ -1481,7 +1483,8 @@ $go-green: #12b32d;
     display: flex;
 }
 
-.main-search-func .search-submit-axn
+.main-search-func .search-submit-axn,
+.main-search-func .search-form-search-axn
 {
     order: 1;
 }
@@ -1528,7 +1531,8 @@ $go-green: #12b32d;
     padding-right: 6rem;
 }
 
-.main-search--active.main-search-input--empty .search-reset-axn
+.main-search--active.main-search-input--empty .search-reset-axn,
+.main-search--active.main-search-input--empty .search-form-reset-axn
 {
     display: none;
 }

@@ -416,7 +416,7 @@
             // Object
             mainSearchTogObjMu = $( '<div />', {
                 'class': 'obj toggle main-search-toggle',
-                'data-name': 'Main Search Toggle'
+                'data-name': 'Main Search Toggle OBJ'
             } ).append( mainSearchTogBtnMu );
             
         }() );
@@ -432,7 +432,7 @@
         $mainSearchTogBtnLTxt = $mainSearchTogBtn.find( $( '.show-hide---txt' ) );
         
         $mainSearchInput = $cp.find( '.search-term-crt-inp--input-text' );
-        $mainSearchResetBtn = $cp.find( '.search-reset-axn---b' );
+        $mainSearchResetBtn = $cp.find( '.search-form-reset-axn---b' );
         
         // Activate
         function mainSearchActivate() {
@@ -551,8 +551,8 @@
         
         // Add Icons to Buttons
         $mainSearchFormAxns = $cp.find( '.search-form-axns' );
-        $mainSearchBL = $mainSearchFormAxns.find( '.search-submit-axn---b_l' );
-        $mainSearchResetBL = $mainSearchFormAxns.find( '.search-reset-axn---b_l' );
+        $mainSearchBL = $mainSearchFormAxns.find( '.search-form-search-axn---b_l' );
+        $mainSearchResetBL = $mainSearchFormAxns.find( '.search-form-reset-axn---b_l' );
         $mainSearchBL.append( $mainSearchSearchIco );
         $mainSearchResetBL.append( $mainSearchDismissIco );
         
