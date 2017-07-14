@@ -104,7 +104,6 @@ $form_test = htmlok( array(
                         'name'  => 'Search',
                         'txt'   => array(
                             'Search',
-                            'Term',
                         ),
                         'structure' => array(
                             'type'      => 'submit',
@@ -112,6 +111,9 @@ $form_test = htmlok( array(
                     ),
                     array(
                         'name'  => 'Clear',
+                        'txt'   => array(
+                            'Reset',
+                        ),
                         'structure' => array(
                             'type'      => 'reset',
                         ),
