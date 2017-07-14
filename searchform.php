@@ -102,6 +102,10 @@ $form_test = htmlok( array(
                 'actions'   => array(
                     array(
                         'name'  => 'Search',
+                        'txt'   => array(
+                            'Search',
+                            'Term',
+                        ),
                         'structure' => array(
                             'type'      => 'submit',
                         ),

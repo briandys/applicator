@@ -107,6 +107,37 @@ function htmlok( $args = array() ) {
     
     
     
+    // Object Markup Structure
+    
+    // 1: Object Name
+    // 2: Object CSS (contains: Object Name CSS, Object Short CSS, Object Custom Root CSS)
+    // 3: Branch CSS
+    // 4: ID Attribute
+    // 5: Title Attribute
+    // 6: Misc Attribute
+    
+    // 7: Element Type
+    // 8: Element Type CSS
+    // 9: Element Attribute
+    
+    // 10: Text Content
+    // 11: Text Content CSS
+    
+    
+    // 7: Object Text Content CSS
+    $obj_mu = '';
+    $obj_mu .= '<div %4$s class="obj %2$s" %6$s %5$s data-name="%1$s OBJ">';
+    $obj_mu .= '<%7$s class="%8$s %3$s---%8$s" %9$s>';
+    $obj_mu .= '<span class="%8$s_l %3$s---%8$s_l">';
+    $obj_mu .= '<span class="txt %11$s---txt">';
+    $obj_mu .= '%10$s';
+    $obj_mu .= '</span>';
+    $obj_mu .= '</span>';
+    $obj_mu .= '</%7$s>';
+    $obj_mu .= '</div><!-- %1$s OBJ -->';
+    
+    
+    
     //------------ Initialized Variables
     $r_name = '';
     
@@ -985,62 +1016,174 @@ function htmlok( $args = array() ) {
                 
                 foreach ( ( array ) $r_content_compound_actions as $actions_val ) {
                     
-                    $p_content_compound_actions_name = '';
-                    $p_form_button_type = '';
-                    $p_content_compound_actions_css = '';
-                    $p_content_compound_actions_branch_css = '';
+                    
+                    // Initialize
                     
                     // Name
-                    if ( ! empty( $actions_val['name'] ) ) {
-                        $r_content_compound_actions_name = $actions_val['name'];
-                        $clean_content_compound_actions_name = sanitize_title( $r_content_compound_actions_name );
-                        
-                        $p_content_compound_actions_name = $r_content_compound_actions_name;
-                        
-                        $p_clean_content_compound_actions_name = $p_content_compound_branch_css.'-'.$clean_content_compound_actions_name;
-                        
-                        $p_actions_branch_name_css = $p_clean_content_compound_actions_name;
-                    }
+                    $p_form_actions_name = '';
+                    $p_clean_form_actions_name = '';
+                    $p_clean_form_actions_name_css = '';
+                    $p_form_actions_complete_name = '';
                     
                     // CSS
+                    $p_form_actions_css = '';
+                    $p_form_actions_branch_css = '';
+                    $p_form_actions_root_css = '';
+                    
+                    // Structure
+                    $p_form_actions_elem_structure = '';
+                    
+                    $c_form_actions_text = '';
+                    
+                    
+                    // Array Name
+                    if ( ! empty( $actions_val['name'] ) ) {
+                        
+                        // Name
+                        $r_form_actions_name = $actions_val['name'];
+                        
+                        // Name CSS
+                        $clean_form_actions_name = sanitize_title( $r_form_actions_name );
+                        
+                        
+                        // Processed
+                        
+                        // Name
+                        $p_form_actions_name = $r_form_actions_name;
+                        $p_clean_form_actions_name = $clean_form_actions_name;
+                        
+                        // Name CSS
+                        $p_clean_form_actions_name_css = $clean_form_actions_name.'-axn';
+                        
+                        // Complete Object Name
+                        $p_form_actions_complete_name = $p_name.' '.$p_subtype_name.' '.$p_form_actions_name.' '.'Action';
+                    }
+                    
+                    
+                    // Array Text
+                    if ( ! empty( $actions_val['txt'] ) ) {
+                        
+                        // Name
+                        $r_form_actions_text = $actions_val['txt'];
+                        
+                        
+                        
+                        foreach ( ( array ) $r_form_actions_text as $actions_text_val ) {
+                            
+                            $c_form_actions_text .= '<span class="txt">'.$actions_text_val.'</span>';
+                            
+                        }
+                    }
+                    
+                    
+                    // Array CSS
                     if ( ! empty( $actions_val['css'] ) ) {
-                        $r_content_compound_actions_css = $actions_val['css'];
+                        
+                        // CSS
+                        $r_form_actions_css = $actions_val['css'];
 
                         // Processed
-                        $p_content_compound_actions_css = $p_content_compound_css.'-'.$r_content_compound_actions_css.'-'.$p_actions_branch_name_css;
-                        $p_content_compound_actions_branch_css = $p_content_compound_actions_css;
+                        
+                        // CSS
+                        $p_form_actions_css = $r_form_actions_css;
+                        
+                        // Branch CSS
+                        $p_form_actions_branch_css = $o_branch_css.'-'.$p_form_actions_css.'-axn';
                     }
 
                     else {
                         // Processed
-                        $p_content_compound_actions_branch_css = $p_actions_branch_name_css;
+                        
+                        // Branch CSS
+                        $p_form_actions_branch_css = $o_branch_css.'-'.$p_clean_form_actions_name_css;
                     }
                     
-                    // Structure Type
+                    
+                    // Array Root CSS
+                    if ( ! empty( $actions_val['root_css'] ) ) {
+                        
+                        // CSS
+                        $r_form_actions_root_css = $actions_val['root_css'];
+                        
+                        $p_form_actions_root_css = $r_form_actions_root_css;
+                    }
+                    
+                    
+                    // Array Structure
                     if ( ! empty( $actions_val['structure']['type'] ) ) {
-                        $r_content_compound_actions_structure = $actions_val['structure']['type'];
                         
-                        if ( in_array( $r_content_compound_actions_structure, $structure_form_actions_submit, true ) ) {
-                            $p_form_button_type = 'submit';
+                        // Structure
+                        $r_form_actions_structure = $actions_val['structure']['type'];
+                        
+                        // Processed
+                        
+                        // Action Type: Submit
+                        if ( in_array( $r_form_actions_structure, $structure_form_actions_submit, true ) ) {
+                            $form_action_type = 'submit';
                         }
                         
-                        if ( in_array( $r_content_compound_actions_structure, $structure_form_actions_reset, true ) ) {
-                            $p_form_button_type = 'reset';
+                        // Action Type: Reset
+                        elseif ( in_array( $r_form_actions_structure, $structure_form_actions_reset, true ) ) {
+                            $form_action_type = 'reset';
                         }
+                        
+                        // Processed
+                        
+                        // Structure
+                        $p_form_actions_elem_structure = 'type="'.$form_action_type.'"';
                     }
                     
+                    
+                    // Output Definitions
+                    
+                    // Name
+                    $o_form_actions_obj_name = $p_form_actions_name;
+                    $o_clean_form_actions_obj_name = $p_clean_form_actions_name;
+                    $o_form_actions_complete_name = $p_form_actions_complete_name;
+                    
+                    // CSS
+                    $o_form_actions_obj_css = $p_clean_form_actions_name_css.' '.$p_form_actions_branch_css.' '.$p_form_actions_root_css;
+                    $o_form_actions_branch_css = $p_form_actions_branch_css;
+                    
+                    // Structure
+                    $o_form_actions_elem_structure = $p_form_actions_elem_structure;
+                    
+                    /*
                     $o_form_button_type = $p_form_button_type;
                     $o_content_compound_actions_name = $p_content_compound_actions_name;
                     
                     $o_content_compound_actions_branch_css = $p_content_compound_actions_branch_css;
+                    */
                     
-                    $actions_content_val .= '<div class="obj" data-name="'.$p_actions_branch_name_css.' OBJ">';
-                    $actions_content_val .= '<button class="b'.$o_content_compound_actions_branch_css.'---b" type="'.$o_form_button_type.'">';
-                    $actions_content_val .= '<span class="b_l'.$o_content_compound_actions_branch_css.'---b_l">';
-                    $actions_content_val .= $o_content_compound_actions_name;
-                    $actions_content_val .= '</span>';
-                    $actions_content_val .= '</button>';
-                    $actions_content_val .= '</div><!-- '.$p_actions_branch_name_css.' OBJ -->';
+                    // Object Markup Structure
+                    // 1: Object Name
+                    // 2: Object CSS (contains: Object Name CSS, Object Short CSS, Object Custom Root CSS)
+                    // 3: Branch CSS
+                    // 4: ID Attribute
+                    // 5: Title Attribute
+                    // 6: Misc Attribute
+
+                    // 7: Element Type
+                    // 8: Element Type CSS
+                    // 9: Element Attribute
+
+                    // 10: Text Content
+                    // 11: Text Content CSS
+                    
+                    
+                    $actions_content_val .= sprintf( $obj_mu,
+                        /* 1 */ $o_form_actions_complete_name,
+                        /* 2 */ $o_form_actions_obj_css,
+                        /* 3 */ $p_form_actions_branch_css,
+                        /* 4 */ '',
+                        /* 5 */ '',
+                        /* 6 */ '',
+                        /* 7 */ 'button',
+                        /* 8 */ 'b',
+                        /* 9 */ $o_form_actions_elem_structure,
+                        /* 10 */ $o_form_actions_obj_name. $c_form_actions_text,
+                        /* 11 */ $o_clean_form_actions_obj_name
+                    );
                     
                 }
                 
