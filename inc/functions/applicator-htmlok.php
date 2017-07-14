@@ -1804,7 +1804,7 @@ function htmlok( $args = array() ) {
     
     // Form Actions Structure Markup
     $subtype_form_actions_cr_smu = '';
-    $subtype_form_actions_cr_smu .= '<div class="%1$s'.$o_branch_css.'-%1$s">';
+    $subtype_form_actions_cr_smu .= '<div class="cp %1$s'.$o_branch_css.'-%1$s" data-name="'.$p_name. $p_subtype_name.' Actions CP">';
     $subtype_form_actions_cr_smu .= '<div class="cr'.$o_branch_css.'-%1$s---cr">';
     $subtype_form_actions_cr_smu .= '<div class="hr'.$o_branch_css.'-%1$s---hr">';
     $subtype_form_actions_cr_smu .= '<div class="hr_cr'.$o_branch_css.'-%1$s---hr_cr">';
@@ -1818,7 +1818,7 @@ function htmlok( $args = array() ) {
     $subtype_form_actions_cr_emu .= '</div>';
     $subtype_form_actions_cr_emu .= '</div>';
     $subtype_form_actions_cr_emu .= '</div>';
-    $subtype_form_actions_cr_emu .= '</div>';
+    $subtype_form_actions_cr_emu .= '</div><!-- '.$p_name. $p_subtype_name.' Actions CP -->';
     
     
     // Form Elements Structure Markup
