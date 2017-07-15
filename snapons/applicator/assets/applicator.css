@@ -1958,8 +1958,8 @@ $go-green: #12b32d;
     min-width: 100%;
 }
 
-.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children .children,
-.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children .sub-menu
+.easy-access-nav-func .page_item_has_children .children,
+.easy-access-nav-func .menu-item-has-children .sub-menu
 {
     
     transform: translate( -.5rem, -.5rem );
