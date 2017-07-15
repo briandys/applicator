@@ -6,13 +6,16 @@ if ( function_exists( 'get_header' ) ) {
 }
 ?>
 
-<div class="hr main-content---hr" data-name="Main Content Header">
-    <div class="hr_cr main-ct---hr_cr">
-        <h2 class="h main-ct---h"><span class="h_l main-ct---h_l">
+<div class="hr main-content---hr">
+    <div class="hr_cr main-content---hr_cr">
+        <h2 class="h main-content---h"><span class="h_l main-content---h_l">
+            
             <?php
             
             // Main Content Headings
             applicator_func_main_content_headings();
+            
+            
 
             // Search
             if ( is_search() ) {

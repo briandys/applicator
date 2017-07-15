@@ -3,6 +3,10 @@
 if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
     function applicator_func_main_content_headings() {
         
+        
+        
+        
+        
         $title = '';
         $label = '';
         $prop = '';
@@ -13,198 +17,186 @@ if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
         $entry_label = 'Entry';
         $entries_label = 'Entries';
         $posts_label = 'Posts';
+        
+        
+        $property_text = '';
+        $value_text = '';
+        $line_array = '';
+            
+            
                 
-        // Home
-        if ( is_home() ) {
-
-            $prop = $entries_label;
-            $label = $prop;
-            $val = $posts_label;
-            $colon_sep = $GLOBALS['colon_sep'];
-
-            // Markup
-            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
-
-            // Content
-            $val_content = sprintf( $val_mu,
-                $val,
-                sanitize_title( $val )
-            );
-        }
-                
-        // Front Page | Settings > Reading > Your Latest Post
+        
+             
+        
+        // Home (default)
+        // Settings > Reading > Your Latest Posts
         if ( is_front_page() && ! is_page() ) {
 
-            $prop = $entries_label;
-            $label = $prop;
-            $val = $posts_label;
-            $colon_sep = $GLOBALS['colon_sep'];
-
-            // Markup
-            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
-
-            // Content
-            $val_content = sprintf( $val_mu,
-                $val,
-                sanitize_title( $val )
-            );
-        } elseif ( is_front_page() && is_page() ) {
-
-            $prop = 'Home';
-            $label = $prop;
-            $val = 'Page';
-            $colon_sep = $GLOBALS['colon_sep'];
-
-            // Markup
-            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
-
-            // Content
-            $val_content = sprintf( $val_mu,
-                $val,
-                sanitize_title( $val )
+            $property_text = 'Front Page';
+            $value_text = 'Posts';
+            
+            $line_array = array(
+                'css'   => 'value---line',
+                array(
+                    'sep'       => $GLOBALS['space_sep'],
+                    'txt'       => $value_text,
+                ),
             );
         }
+        
+        // Settings > Reading > Posts Page
+        if ( is_home() ) {
+
+            $property_text = 'Home Entries';
+            $value_text = 'Posts';
+            
+            $line_array = array(
+                'css'   => 'value---line',
+                array(
+                    'sep'       => $GLOBALS['space_sep'],
+                    'txt'       => $value_text,
+                ),
+            );
+        }
+        
+        // Settings > Reading > Front Page
+        if ( is_front_page() && is_page() ) {
+
+            $property_text = 'Front Page';
+            $value_text = 'Page';
+            
+            $line_array = array(
+                'css'   => 'value---line',
+                array(
+                    'sep'       => $GLOBALS['space_sep'],
+                    'txt'       => $value_text,
+                ),
+            );
+        } 
                 
+        
         // Single
         if ( is_single() && ! is_attachment() ) {
 
-            $prop = $entry_label;
-            $label = $prop;
-            $val = 'Post';
-            $colon_sep = $GLOBALS['colon_sep'];
-
-            // Markup
-            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
-
-            // Content
-            $val_content = sprintf( $val_mu,
-                $val,
-                sanitize_title( $val )
+            $property_text = 'Entry';
+            $value_text = 'Post';
+            
+            $line_array = array(
+                'css'   => 'value---line',
+                array(
+                    'sep'       => $GLOBALS['space_sep'],
+                    'txt'       => $value_text,
+                ),
             );
-        } elseif ( is_attachment() ) {
+        }
+        
+        // Attachment
+        elseif ( is_attachment() ) {
 
-            $prop = $entry_label;
-            $label = $prop;
-            $val = 'Attachment';
-            $colon_sep = $GLOBALS['colon_sep'];
-
-            // Markup
-            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
-
-            // Content
-            $val_content = sprintf( $val_mu,
-                $val,
-                sanitize_title( $val )
+            $property_text = 'Entry';
+            $value_text = 'Attachment';
+            
+            $line_array = array(
+                'css'   => 'value---line',
+                array(
+                    'sep'       => $GLOBALS['space_sep'],
+                    'txt'       => $value_text,
+                ),
             );
         }
                 
         // Page
         if ( is_page() && ! is_front_page() ) {
 
-            $prop = $entry_label;
-            $label = $prop;
-            $val = 'Page';
-            $colon_sep = $GLOBALS['colon_sep'];
-
-            // Markup
-            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
-
-            // Content
-            $val_content = sprintf( $val_mu,
-                $val,
-                sanitize_title( $val )
+            $property_text = 'Entry';
+            $value_text = 'Page';
+            
+            $line_array = array(
+                'css'   => 'value---line',
+                array(
+                    'sep'       => $GLOBALS['space_sep'],
+                    'txt'       => $value_text,
+                ),
             );
         }
                 
         // Singular
         if ( is_singular() && ! is_single() && ! is_page() ) {
 
-            $prop = $entry_label;
-            $label = $prop;
-            $val = 'Singular';
-            $colon_sep = $GLOBALS['colon_sep'];
-
-            // Markup
-            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
-
-            // Content
-            $val_content = sprintf( $val_mu,
-                $val,
-                sanitize_title( $val )
+            $property_text = 'Entry';
+            $value_text = 'Other';
+            
+            $line_array = array(
+                'css'   => 'value---line',
+                array(
+                    'sep'       => $GLOBALS['space_sep'],
+                    'txt'       => $value_text,
+                ),
             );
         }
 
         // Archive
         if ( is_archive() && ( is_day() || is_month() || is_year() ) ) {
             
-            $val_txt_suffix = '---txt';
-            $val_d = get_the_date( 'j' );
-            $val_d_prefix = 'day';
-            $val_m = get_the_date( 'F' );
-            $val_m_prefix = 'month';
-            $val_y = get_the_date( 'Y' );
-            $val_y_prefix = 'year';
-            $colon_sep = $GLOBALS['colon_sep'];
+            $date_day = get_the_date( 'j' );
+            $date_month = get_the_date( 'F' );
+            $date_year = get_the_date( 'Y' );
 
             // Daily Archive
             if ( is_day() ) {
 
-                $prop = 'Daily Archive';
-                $label = $prop;
-                $val = get_the_date( 'j F Y' );
+                $archive_type = 'Daily';
 
-                // Markup
-                $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
-                $val_mu .= ' <span class="txt %4$s---txt">%3$s</span>';
-                $val_mu .= ' <span class="txt %6$s---txt">%5$s</span>';
-
-                // Content
-                $val_content = sprintf( $val_mu,
-                    $val_d,
-                    $val_d_prefix . $val_txt_suffix . ' ' . $val_d_prefix . '-' . sanitize_title( $val_d ),
-                    $val_m,
-                    $val_m_prefix . $val_txt_suffix . ' ' . sanitize_title( $val_m ),
-                    $val_y,
-                    $val_y_prefix . $val_txt_suffix . ' ' . $val_y_prefix . '-' . sanitize_title( $val_y )
+                $line_array = array(
+                    'css'   => 'value---line',
+                    array(
+                        'sep'       => $GLOBALS['space_sep'],
+                        'txt'       => $date_day,
+                    ),
+                    array(
+                        'sep'       => $GLOBALS['space_sep'],
+                        'txt'       => $date_month,
+                    ),
+                    array(
+                        'sep'       => $GLOBALS['space_sep'],
+                        'txt'       => $date_year,
+                    ),
                 );
             }
 
             // Monthly Archive
             if ( is_month() ) {
 
-                $prop = 'Monthly Archive';
-                $label = $prop;
-                $val = get_the_date( 'F Y' );
+                $archive_type = 'Monthly';
 
-                // Markup
-                $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
-                $val_mu .= ' <span class="txt %4$s---txt">%3$s</span>';
-
-                // Content
-                $val_content = sprintf( $val_mu,
-                    $val_m,
-                    $val_m_prefix . $val_txt_suffix . ' ' . sanitize_title( $val_m ),
-                    $val_y,
-                    $val_y_prefix . $val_txt_suffix . ' ' . $val_y_prefix . '-' . sanitize_title( $val_y )
+                $line_array = array(
+                    'css'   => 'value---line',
+                    array(
+                        'sep'       => $GLOBALS['space_sep'],
+                        'txt'       => $date_month,
+                    ),
+                    array(
+                        'sep'       => $GLOBALS['space_sep'],
+                        'txt'       => $date_year,
+                    ),
                 );
             }
 
             // Yearly Archive
             if ( is_year() ) {
 
-                $prop = 'Yearly Archive';
-                $label = $prop;
-                $val = get_the_date( 'Y' );
+                $archive_type = 'Yearly';
 
-                // Markup
-                $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
-
-                // Content
-                $val_content = sprintf( $val_mu,
-                    $val,
-                    $val_y_prefix . $val_txt_suffix . ' ' . $val_y_prefix . '-' . sanitize_title( $val )
+                $line_array = array(
+                    'css'   => 'value---line',
+                    array(
+                        'sep'       => $GLOBALS['space_sep'],
+                        'txt'       => $date_year,
+                    ),
                 );
             }
+            
+            $property_text = $archive_type.' '.'Archive';
         }
 
         // Author
@@ -352,6 +344,36 @@ if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
 
         // Display
         echo $title;
+        
+        
+        $main_content_heading_obj = htmlok( array(
+                'name'      => 'Main Content',
+                'structure' => array(
+                    'type'          => 'object',
+                    'subtype'       => 'heading',
+                    'elem'          => 'h2'
+                ),
+                'content'   => array(
+                    'object'        => array(
+                        array(
+                            'line'      => array(
+                                array(
+                                    'css'   => 'property---line',
+                                    array(
+                                        'txt'       => $property_text,
+                                    ),
+                                    array(
+                                        'txt'       => ':',
+                                        'css'       => 'colon---txt',
+                                    ),
+                                ),
+                                $line_array,
+                            ),
+                        ),
+                    ),
+                ),
+            'echo'  => true,
+        ) );
         
     }
 }

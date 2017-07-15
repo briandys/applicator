@@ -600,7 +600,7 @@ function htmlok( $args = array() ) {
             elseif ( in_array( $r_subtype, $subtype_heading_terms, true ) ) {
                
                 $subtype_name = 'Heading';
-                $subtype_name_abbr = 'h';
+                $subtype_name_abbr = 'heading';
                 
                 $p_subtype_name = ' '.$subtype_name;
                 $p_subtype_css = ' '.$subtype_name_abbr;
