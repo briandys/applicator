@@ -235,7 +235,7 @@
             // Object
             mainMenuTogObjMu = $( '<div />', {
                 'class': 'obj toggle main-menu-toggle',
-                'data-name': 'Main Menu Toggle'
+                'data-name': 'Main Menu Toggle OBJ'
             } ).append( mainMenuTogBtnMu );
             
             $mainHrAsH = $cp.find( $( '.main-hr-aside---h' ) );
@@ -431,7 +431,7 @@
         $mainSearchTogBtnL = $mainSearchTogBtn.find( $( '.main-search-tog---b_l' ) );
         $mainSearchTogBtnLTxt = $mainSearchTogBtn.find( $( '.show-hide---txt' ) );
         
-        $mainSearchInput = $cp.find( '.search-term-crt-inp--input-text' );
+        $mainSearchInput = $cp.find( '.search-term-crt-search---input-text' );
         $mainSearchResetBtn = $cp.find( '.search-form-reset-axn---b' );
         
         // Activate
@@ -638,7 +638,7 @@
             // Object
             subNavTogObjMu = $( '<div />', {
                 'class': 'obj toggle sub-nav-toggle',
-                'data-name': 'Sub-Nav Toggle'
+                'data-name': 'Sub-Nav Toggle OBJ'
             } ).append( subNavTogBtnMu );
             
             $cp

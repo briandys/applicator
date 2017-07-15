@@ -1496,7 +1496,7 @@ $go-green: #12b32d;
     width: auto;
 }
 
-.apl--applicator--main-menu.main-header-aside--enabled .main-search-func .search-term-crt-inp--input-text,
+.apl--applicator--main-menu.main-header-aside--enabled .main-search-func .search-term-crt-search---input-text,
 .apl--applicator--main-menu.main-header-aside--enabled .main-search-func .search-term-crt-search---input-text
 {
     padding-left: 0;
@@ -1507,7 +1507,7 @@ $go-green: #12b32d;
     padding-left: 3rem;
 }
 
-.main-search-func .search-term-crt-inp--input-text,
+.main-search-func .search-term-crt-search---input-text,
 .main-search-func .search-term-crt-search---input-text
 {
     padding-left: 1rem;
@@ -1551,25 +1551,25 @@ $go-green: #12b32d;
 }
 
 /* Placeholder Text */
-.main-search-func .search-term-crt-inp--input-text::-webkit-input-placeholder
+.main-search-func .search-term-crt-search---input-text::-webkit-input-placeholder
 {
     color: white;
     opacity: .5;
 }
 
-.main-search-func .search-term-crt-inp--input-text::-moz-placeholder
+.main-search-func .search-term-crt-search---input-text::-moz-placeholder
 {
     color: white;
     opacity: .5;
 }
 
-.main-search-func .search-term-crt-inp--input-text:-ms-input-placeholder
+.main-search-func .search-term-crt-search---input-text:-ms-input-placeholder
 {
     color: white;
     opacity: .5;
 }
 
-.apl--applicator--main-search .main-search-func .search-term-crt-inp--input-text:-moz-placeholder
+.apl--applicator--main-search .main-search-func .search-term-crt-search---input-text:-moz-placeholder
 {
     color: white;
     opacity: .5;
