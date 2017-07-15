@@ -1,223 +1,61 @@
-<?php
+<?php /*
+<div class="cp search search-cp" data-name="Search">
+    <div class="cr search---cr">
+        <div class="hr search---hr">
+            <div class="hr_cr search---hr_cr">
+                <h2 class="h search---h"><span class="h_l search---h_l"><?php esc_html_e( 'Search', $GLOBALS['applicator_td'] ); ?></span></h2>
+            </div>
+        </div>
+        <div class="ct search---ct">
+            <div class="ct_cr search---ct_cr">
+                <form class="form search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" role="search" data-name="Search Form">
+                    <div class="fieldsets search-form---fieldsets">
+                        <div class="fieldsets-cr search-form---fieldsets-cr">
 
-if ( ! empty( $r['content']['compound'] ) ) {
-        $r_content_compound = $r['content']['compound'];
-        
-        $content_val = '';
-        foreach ( ( array ) $r_content_compound as $val ) {
-            
-            // Initialize
-            $p_content_compound_name = '';
-            $p_clean_content_compound_name = '';
-            $p_content_compound_branch_name_css = '';
-            $p_content_compound_css = '';
-            $p_content_compound_branch_css = '';
-            
-            // Name
-            if ( ! empty( $val['name'] ) ) {
-                $r_content_compound_name = $val['name'];
-                
-                $clean_content_compound_name = sanitize_title( $r_content_compound_name );
-                
-                // Processed
-                $p_content_compound_name = $r_content_compound_name;
-                $p_clean_content_compound_name = ' '.$clean_content_compound_name;
-                $p_content_compound_branch_name_css = $p_clean_content_compound_name;
-            }
-                    
-            // CSS
-            if ( ! empty( $val['css'] ) ) {
-                $r_content_compound_css = $val['css'];
-                
-                // Processed
-                $p_content_compound_css = ' '.$r_content_compound_css;
-                $p_content_compound_branch_css = $p_content_compound_css;
-            }
-            
-            else {
-                // Processed
-                $p_content_compound_branch_css = $p_content_compound_branch_name_css;
-            }
-            
-            // Definitions
-            $o_content_compound_css = $p_clean_content_compound_name. $p_content_compound_css;
-            $o_content_compound_branch_css = $p_content_compound_branch_css;
-            $o_content_compound_name = $p_content_compound_name;
-            
-            
-            // Output: Fieldset Item
-            $content_val .= '<div class="item fs-item cp'.$o_content_compound_css.'" data-name="'.$o_content_compound_name.' Fieldset Item CP">';
-            $content_val .= '<fieldset class="cr'.$o_content_compound_branch_css.'---cr">';
-            $content_val .= '<legend class="h'.$o_content_compound_branch_css.'---h"><span class="h_l'.$o_content_compound_branch_css.'---h_l">'.$o_content_compound_name.'</span></legend>';
-            $content_val .= '<div class="ct'.$o_content_compound_branch_css.'---ct">';
-            $content_val .= '<div class="ct_cr'.$o_content_compound_branch_css.'---ct_cr">';
-            
-            
-            // Group / Form Elements
-            if ( ! empty( $val['group'] ) ) {
-                $r_content_compound_group = $val['group'];
-                
-                foreach ( ( array ) $r_content_compound_group as $group_val ) {
-                    
-                    // Group Count
-                    $group_count = '';
-                    if ( count( $r_content_compound_group ) > 1 ) {
-                        $group_count = 'multiple';
-                    } else {
-                        $group_count = 'single';
-                    }
-                    
-                    // Initialize
-                    $p_content_compound_group_name = '';
-                    $p_content_compound_complete_group_name = '';
-                    $p_felems_obj_name = '';
-                    $p_clean_content_compound_group_name = '';
-                    $p_group_branch_name_css = '';
-                    $p_content_compound_group_css = '';
-                    $p_content_compound_group_branch_css = '';
-                    $p_content_compound_group_id = '';
-                    $p_content_compound_group_label_for = '';
-                    
-                    
-                    // Name
-                    if ( ! empty( $group_val['name'] ) ) {
-                        $r_content_compound_group_name = $group_val['name'];
-                        $clean_content_compound_group_name = sanitize_title( $r_content_compound_group_name );
+                            <div class="cp fs-item search-term-creation" data-name="Search Term Creation">
+                                <div class="cr search-term-crt---cr">
+                                    <div class="hr search-term-crt---hr">
+                                        <div class="hr_cr search-term-crt---hr_cr">
+                                            <div class="h search-term-crt---h"><span class="h_l search-term-crt---h_l"><?php esc_html_e( 'Search Term Creation', $GLOBALS['applicator_td'] ); ?></span></div>
+                                        </div>
+                                    </div>
+                                    <div class="ct search-term-crt---ct">
+                                        <div class="ct_cr search-term-crt---ct_cr">
+                                            <span class="obj search-term-creation-label---obj" data-name="Search Term Creation Label">
+                                                <label class="label search-term-crt-lbl---label" for="<?php echo $unique_id; ?>"><span class="label_l search-term-crt-lbl---label_l"><span class="txt search-term---txt"><?php esc_html_e( 'Search Term', $GLOBALS['applicator_td'] ); ?></span></span></label>
+                                            </span>
+                                            <span class="obj search-term-creation-input---obj" data-name="Search Term Creation Input">
+                                                <span class="ee--input-text search-term-crt-inp---ee--input-text"><input id="<?php echo $unique_id; ?>" class="input-text search-term-crt-inp--input-text" name="s" type="text" placeholder="<?php esc_attr_e( 'Enter search term', $GLOBALS['applicator_td'] ); ?>" value="<?php echo get_search_query(); ?>" required></span>
+                                            </span>
+                                        </div>
+                                    </div><!-- ct -->
+                                </div>
+                            </div><!-- Search Term Creation -->
 
-                        // Processed
-                        $p_content_compound_group_name = $r_content_compound_group_name;
-                        
-                        $p_content_compound_complete_group_name = $p_content_compound_name.' - '.$r_content_compound_group_name;
-                        
-                        $p_felems_obj_name = $p_content_compound_name.' - '.$r_content_compound_group_name;
-                        $p_clean_content_compound_group_name = $p_clean_content_compound_name.'-'.$clean_content_compound_group_name;
-                        $p_group_branch_name_css = $p_clean_content_compound_group_name;
-                    }
-                    
-                    
-                    // CSS
-                    if ( ! empty( $group_val['css'] ) ) {
-                        $r_content_compound_group_css = $group_val['css'];
-
-                        // Processed
-                        $p_content_compound_group_css = $p_content_compound_css.'-'.$r_content_compound_group_css;
-                        $p_content_compound_group_branch_css = $p_content_compound_group_css;
-                    }
-
-                    else {
-                        // Processed
-                        $p_content_compound_group_branch_css = $p_group_branch_name_css;
-                    }
-                    
-                    
-                    // Attribute
-                    if ( ! empty( $group_val['structure']['attr'] ) ) {
-                        $r_content_compound_group_attr = $group_val['structure']['attr'];
-                        
-                        $p_content_compound_group_attr = '';
-                        foreach ( ( array ) $r_content_compound_group_attr as $key => $val ) {
-                            
-                            $clean_key = '';
-                            $clean_val = '';
-
-                            $clean_key = $key;
-                            $clean_val = $val;
-
-                            $p_content_compound_group_attr .= ' '.$clean_key.'="'.$clean_val.'"';
-                        }
-                    }
-                    
-                    
-                    // ID
-                    if ( ! empty( $group_val['structure']['id'] ) ) {
-                        $r_content_compound_group_id = $group_val['structure']['id'];
-                        
-                        // Processed
-                        $p_content_compound_group_id = ' '.'id="'.$r_content_compound_group_id.'"';
-                        $p_content_compound_group_label_for = $r_content_compound_group_id;
-                    }
-                    
-                    
-                    if ( 'single' == $group_count ) {
-                        $p_content_compound_felems_css = $p_content_compound_css;
-                        $p_content_compound_felems_name = $r_content_compound_name;
-                    } else {
-                        $p_content_compound_felems_css = $p_content_compound_css.'--'.$clean_content_compound_group_name;
-                        $p_content_compound_felems_name = $r_content_compound_name.' - '.$r_content_compound_group_name;
-                    }
-                    
-                    
-                    // Output Definitions
-                    $o_content_compound_group_css = $p_clean_content_compound_group_name. $p_content_compound_group_css;
-                    $o_content_compound_group_branch_css = $p_content_compound_group_branch_css;
-                    $o_content_compound_group_id = $p_content_compound_group_id;
-                    
-                    $o_content_compound_complete_group_name = $p_content_compound_complete_group_name;
-                    $o_felems_obj_name = $p_felems_obj_name;
-                    
-                    $o_content_compound_group_name = $p_content_compound_group_name;
-                    
-                    $o_group_label_for = $p_content_compound_group_label_for;
-                    
-                    
-                    // Structure Type
-                    if ( ! empty( $group_val['structure']['type'] ) ) {
-                        $r_group_structure = $group_val['structure']['type'];
-                        
-                        // Form Structure Templates
-                    
-                        // Input
-                        $input_smu = '';
-                        $input_smu .= '<input'.$o_content_compound_group_id.' class="input input-text'.$p_content_compound_felems_css.'---input-text"'.$p_content_compound_group_attr.'>';
-
-                        // Textarea
-                        $textarea_smu = '';
-                        $textarea_smu .= '<textarea'.$o_content_compound_group_id.' class="textarea"'.$p_content_compound_group_attr.'></textarea>';
-
-                        // Textarea
-                        $checkbox_smu = '';
-                        $checkbox_smu .= '<input'.$o_content_compound_group_id.' class="input-checkbox" type="checkbox"'.$p_content_compound_group_attr.'>';
-
-                        if ( in_array( $r_group_structure, $form_textbox_terms, true ) ) {
-                            $o_form_type = $input_smu;
-                        }
-
-                        elseif ( in_array( $r_group_structure, $form_textarea_terms, true ) ) {
-                            $o_form_type = $textarea_smu;
-                        }
-
-                        elseif ( in_array( $r_group_structure, $form_checkbox_terms, true ) ) {
-                            $o_form_type = $checkbox_smu;
-                        }
-                    }
-                    
-
-                    // Form Elements
-                    $content_val .= '<div class="cp felems'.$o_content_compound_group_css.'" data-name="'.$o_content_compound_complete_group_name.' Form Elements CP">';
-                    $content_val .= '<div class="cr'.$o_content_compound_group_branch_css.'---cr">';
-                    
-                    // Form Label
-                    $content_val .= '<div class="obj flabel'.$o_content_compound_group_branch_css.'-flabel" data-name="'.$o_felems_obj_name.' Form Label OBJ">';
-                    $content_val .= '<label class="label'.$o_content_compound_group_branch_css.'-flabel---label" for="'.$o_group_label_for.'"><span class="label_l'.$o_content_compound_group_branch_css.'-flabel---label_l">'.$o_content_compound_group_name.'</span></label>';
-                    $content_val .= '</div><!-- '.$o_content_compound_complete_group_name.' Form Label OBJ -->';
-                    
-                    // Form Element (Created Element)
-                    $content_val .= '<div class="obj felem'.$o_content_compound_group_branch_css.'-felem" data-name="'.$o_felems_obj_name.' Form Element OBJ">';
-                    $content_val .= '<div class="ce'.$o_content_compound_group_branch_css.'-felem---ce">';
-                    $content_val .= $o_form_type;
-                    $content_val .= '</div>';
-                    $content_val .= '</div><!-- '.$o_felems_obj_name.' Form Element OBJ -->';
-                    
-                    
-                    $content_val .= '</div>';
-                    $content_val .= '</div><!-- '.$o_content_compound_complete_group_name.' Form Elements CP -->';
-                }
-            }
-            
-            $content_val .= '</div>';
-            $content_val .= '</div>';
-            $content_val .= '</fieldset>';
-            $content_val .= '</div><!-- '.$o_content_compound_name.' Fieldset Item CP -->';
-            
-        }
-    }
+                        </div>
+                    </div><!-- Fieldsets -->
+                    <div class="axns search-form-axns" data-name="Search Form Actions">
+                        <div class="cr search-form-axns---cr">
+                            <div class="hr search-form-axns---hr">
+                                <div class="hr_cr search-form-axns---hr_cr">
+                                    <div class="h search-form-axns---h"><span class="h_l search-form-axns---h_l"><?php esc_html_e( 'Search Form Actions', $GLOBALS['applicator_td'] ); ?></span></div>
+                                </div>
+                            </div>
+                            <div class="ct search-form-axns---ct">
+                                <div class="ct_cr search-form-axns---ct_cr">
+                                    <div class="obj axn search-submit-axn" data-name="Search Submit Action">
+                                        <button class="b search-submit-axn---b" type="submit" title="<?php esc_attr_e( 'Submit Search Term', $GLOBALS['applicator_td'] ); ?>"><span class="b_l search-submit-axn---b_l"><span class="txt search---txt"><?php esc_html_e( 'Search', $GLOBALS['applicator_td'] ); ?></span></span></button>
+                                    </div><!-- Search Submit Action -->
+                                    <div class="obj axn search-reset-axn" data-name="Search Reset Action">
+                                        <button class="b search-reset-axn---b" type="reset" title="<?php esc_attr_e( 'Reset Search Term', $GLOBALS['applicator_td'] ); ?>"><span class="b_l search-reset-axn---b_l"><span class="txt reset---txt"><?php esc_html_e( 'Reset', $GLOBALS['applicator_td'] ); ?></span></span></button>
+                                    </div><!-- Search Reset Action -->
+                                </div>
+                            </div><!-- ct -->
+                        </div>
+                    </div><!-- Search Form Actions -->
+                </form><!-- Search Form -->
+            </div>
+        </div><!-- ct -->
+    </div>
+</div><!-- Search -->
+*/ ?>
