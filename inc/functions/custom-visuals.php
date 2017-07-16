@@ -17,7 +17,7 @@ if ( ! function_exists( 'applicator_func_custom_visuals_setup' ) ) {
             'default-image' => array(
                 'url'           => '%s/assets/img/default-media-banner-image.jpg',
                 'thumbnail_url' => '%s/assets/img/default-media-banner-image--tn.jpg',
-                'description'   => __( 'Default Media Banner', $GLOBALS['applicator_td'] ),
+                'description'   => __( 'Default Media Banner', 'applicator' ),
             ),
         ) );
         

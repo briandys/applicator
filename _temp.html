@@ -6,12 +6,12 @@ function htmlok( $args = array() ) {
     
     // Require Array
 	if ( empty( $args ) ) {
-		return esc_html_e( 'Please define default parameters in the form of an array.', $GLOBALS['applicator_td'] );
+		return esc_html_e( 'Please define default parameters in the form of an array.', 'applicator' );
 	}
     
     // Require Miscellaneous
 	if ( empty( $args['name'] ) || empty( $args['content'] ) ) {
-		return esc_html_e( 'These are required: Name, Content.', $GLOBALS['applicator_td'] );
+		return esc_html_e( 'These are required: Name, Content.', 'applicator' );
 	}
     
     //------------ Defaults

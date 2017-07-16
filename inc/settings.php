@@ -11,7 +11,7 @@ if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
 function applicator_func_setup() {
     
     // Make theme available for translation.
-	load_theme_textdomain( $GLOBALS['applicator_td'] );
+	load_theme_textdomain( 'applicator' );
 	
     // Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -120,15 +120,15 @@ function applicator_func_setup() {
 		// Create the custom image attachments used as post thumbnails for pages.
 		'attachments' => array(
 			'image-espresso' => array(
-				'post_title' => _x( 'Espresso', 'Theme starter content', 'twentyseventeen' ),
+				'post_title' => _x( 'Espresso', 'Theme starter content', 'applicator' ),
 				'file' => 'assets/images/espresso.jpg', // URL relative to the template directory.
 			),
 			'image-sandwich' => array(
-				'post_title' => _x( 'Sandwich', 'Theme starter content', 'twentyseventeen' ),
+				'post_title' => _x( 'Sandwich', 'Theme starter content', 'applicator' ),
 				'file' => 'assets/images/sandwich.jpg',
 			),
 			'image-coffee' => array(
-				'post_title' => _x( 'Coffee', 'Theme starter content', 'twentyseventeen' ),
+				'post_title' => _x( 'Coffee', 'Theme starter content', 'applicator' ),
 				'file' => 'assets/images/coffee.jpg',
 			),
 		),
@@ -152,7 +152,7 @@ function applicator_func_setup() {
 		'nav_menus' => array(
 			// Assign a menu to the "top" location.
 			'top' => array(
-				'name' => __( 'Top Menu', 'twentyseventeen' ),
+				'name' => __( 'Top Menu', 'applicator' ),
 				'items' => array(
 					'link_home', // Note that the core "home" page is actually a link in case a static front page is not used.
 					'page_about',
@@ -163,7 +163,7 @@ function applicator_func_setup() {
 
 			// Assign a menu to the "social" location.
 			'social' => array(
-				'name' => __( 'Social Links Menu', 'twentyseventeen' ),
+				'name' => __( 'Social Links Menu', 'applicator' ),
 				'items' => array(
 					'link_yelp',
 					'link_facebook',

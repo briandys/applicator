@@ -59,11 +59,11 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
         $comments_count_single_txt = htmlok_txt( array(
             'content' => array(
                 array(
-                    'txt' => esc_html__( $comments_count_single_text, $GLOBALS['applicator_td'] ),
+                    'txt' => $comments_count_single_text,
                     'css' => $comments_count_num_css,
                 ),
                 array(
-                    'txt' => esc_html__( $comment_singular_text, $GLOBALS['applicator_td'] ),
+                    'txt' => $comment_singular_text,
                     'sep' => $GLOBALS['space_sep'],
                 ),
             ),
@@ -73,11 +73,11 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
         $comments_count_multi_txt = htmlok_txt( array(
             'content' => array(
                 array(
-                    'txt' => esc_html__( $comments_count_multi_text, $GLOBALS['applicator_td'] ),
+                    'txt' => $comments_count_multi_text,
                     'css' => $comments_count_num_css,
                 ),
                 array(
-                    'txt' => esc_html__( $comment_plural_text, $GLOBALS['applicator_td'] ),
+                    'txt' => $comment_plural_text,
                     'sep' => $GLOBALS['space_sep'],
                 ),
             ),
@@ -87,11 +87,11 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
         $comments_count_zero_txt = htmlok_txt( array(
             'content' => array(
                 array(
-                    'txt' => esc_html__( $comments_count_zero_text, $GLOBALS['applicator_td'] ),
+                    'txt' => $comments_count_zero_text,
                     'css' => $comments_count_num_css,
                 ),
                 array(
-                    'txt' => esc_html__( $comment_singular_text, $GLOBALS['applicator_td'] ),
+                    'txt' => $comment_singular_text,
                     'sep' => $GLOBALS['space_sep'],
                 ),
             ),
@@ -182,10 +182,10 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
             $add_comment_axn_txt = htmlok_txt( array(
                 'content' => array(
                     array(
-                        'txt' => esc_html__( 'Add', $GLOBALS['applicator_td'] ),
+                        'txt' => esc_html__( 'Add', 'applicator' ),
                     ),
                     array(
-                        'txt' => esc_html__( 'Comment', $GLOBALS['applicator_td'] ),
+                        'txt' => esc_html__( 'Comment', 'applicator' ),
                         'sep' => $GLOBALS['space_sep'],
                     ),
                 ),
@@ -215,7 +215,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
                 $sign_in_required_label_obj_g_mu .= '</span>';
 
                 $sign_in_required_label_obj_g = sprintf( $sign_in_required_label_obj_g_mu,
-                    esc_html__( '(requires Sign In)', $GLOBALS['applicator_td'] ),
+                    esc_html__( '(requires Sign In)', 'applicator' ),
                     'req-sign-in-lbl-obj'
                 );
                 
@@ -231,7 +231,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
                 $sign_in_required_label_txt = htmlok_txt( array(
                     'content' => array(
                         array(
-                            'txt' => esc_html__( '(requires Sign In)', $GLOBALS['applicator_td'] ),
+                            'txt' => esc_html__( '(requires Sign In)', 'applicator' ),
                         ),
                     ),
                 ) );
@@ -260,7 +260,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
                 'elem'      => 'n',
                 'obj_css'   => 'note',
                 'css'       => 'commenting-disabled-note',
-                'content'   => '<p>' . esc_html__( 'Commenting is disabled.', $GLOBALS['applicator_td'] ) . '</p>',
+                'content'   => '<p>' . esc_html__( 'Commenting is disabled.', 'applicator' ) . '</p>',
             ) );
             
             $comment_creation_ability_content = $commenting_disabled_note_obj;

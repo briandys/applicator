@@ -18,19 +18,19 @@ $search_form_cp = htmlok( array(
     'content'   => array(
         'compound'  => array(
             array(
-                'name'      => esc_html__( 'Search Term Creation', $GLOBALS['applicator_td'] ),
+                'name'      => esc_html__( 'Search Term Creation', 'applicator' ),
                 'css'       => 'search-term-crt',
                 'group'     => array(
                     array(
                         'name'      => 'Search',
                         'structure' => array(
                             'type'      => 'textbox',
-                            'label'     => esc_html__( 'Search', $GLOBALS['applicator_td'] ),
+                            'label'     => esc_html__( 'Search', 'applicator' ),
                             'attr'      => array(
                                 'name'          => 's',
                                 'value'         => get_search_query(),
                                 'required'      => '',
-                                'placeholder'   => esc_html__( 'Enter search term', $GLOBALS['applicator_td'] ),
+                                'placeholder'   => esc_html__( 'Enter search term', 'applicator' ),
                             ),
                             'id'        => esc_attr( uniqid( 'search-term-crt-search-text-input---input-text-' ) ),
                         ),
@@ -40,7 +40,7 @@ $search_form_cp = htmlok( array(
                     array(
                         'name'  => 'Search',
                         'txt'   => array(
-                            esc_html__( 'Search', $GLOBALS['applicator_td'] ),
+                            esc_html__( 'Search', 'applicator' ),
                         ),
                         'structure' => array(
                             'type'      => 'submit',
@@ -49,7 +49,7 @@ $search_form_cp = htmlok( array(
                     array(
                         'name'  => 'Reset',
                         'txt'   => array(
-                            esc_html__( 'Reset', $GLOBALS['applicator_td'] ),
+                            esc_html__( 'Reset', 'applicator' ),
                         ),
                         'structure' => array(
                             'type'      => 'reset',

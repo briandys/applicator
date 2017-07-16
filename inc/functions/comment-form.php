@@ -33,8 +33,8 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
         $fields['author'] = sprintf( $fields['author'],
             esc_attr( $commenter['comment_author'] ),
             $aria_req,
-            esc_html( 'Name', $GLOBALS['applicator_td'] ),
-            esc_attr( 'Name', $GLOBALS['applicator_td'] )
+            esc_html( 'Name', 'applicator' ),
+            esc_attr( 'Name', 'applicator' )
         );
         
         
@@ -63,8 +63,8 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
         $fields['email'] = sprintf( $fields['email'],
             esc_attr( $commenter['comment_author_email'] ),
             $aria_req,
-            esc_html( 'Email Address', $GLOBALS['applicator_td'] ),
-            esc_attr( 'Email Address', $GLOBALS['applicator_td'] )
+            esc_html( 'Email Address', 'applicator' ),
+            esc_attr( 'Email Address', 'applicator' )
         );
         
         
@@ -73,7 +73,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
         // Variables
         $form_element_input_text = 'input-text';
         $comment_author_url_input_text_id_css = 'com-author-url-crt-' . $form_element_input_text;
-        $comment_author_url_input_text_label = esc_attr__( 'Website URL', $GLOBALS['applicator_td'] );
+        $comment_author_url_input_text_label = esc_attr__( 'Website URL', 'applicator' );
         
         // Text
         $comment_author_url_label_txt = htmlok_txt( array(

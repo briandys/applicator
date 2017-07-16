@@ -8,97 +8,94 @@ if ( function_exists( 'get_header' ) ) {
 
 <div class="hr main-content---hr">
     <div class="hr_cr main-content---hr_cr">
-        <h2 class="h main-content---h"><span class="h_l main-content---h_l">
-            
-            <?php
-            
-            // Main Content Headings
-            applicator_func_main_content_headings();
-            
-            
+        
+        <?php
 
-            // Search
-            if ( is_search() ) {
-                
-                $title = '';
+        // Main Content Headings
+        applicator_func_main_content_heading();
 
-                $entry_search = new WP_Query( array(
-                    's'         => $s,
-                    'showposts' => -1,
-                ) );
-                
-                $entry_search_count = $entry_search->post_count;
-                
-                $search_result_label = 'Search Result';
-                $search_results_label = 'Search Results';
-                
-                $prop = '';
-                if ( $entry_search_count == 0 ) {
-                    $prop = $search_result_label;
-                } elseif ( $entry_search_count == 1 ) {
-                    $prop = $search_result_label;
-                } else {
-                    $prop = $search_results_label;
-                }
-                
-                $label = $prop;
-                $label_for = 'for';
-                $val = get_search_query();
-                $entry_search_count_prefix = 'count';
-                $colon_sep = '';
 
-                // Markup
-                $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
+        // Search
+        if ( is_search() ) {
 
-                // Content
-                $val_content = sprintf( $val_mu,
-                    strip_tags( $val ),
-                    sanitize_title( $val )
-                );
+            $title = '';
 
-                // Markup
-                $prop_mu = '<span class="txt %2$s---txt">%1$s</span>';
-                $prop_mu .= ' <span class="txt %4$s---txt">%3$s</span>';
-                $prop_mu .= ' <span class="txt %6$s---txt">%5$s</span>';
+            $entry_search = new WP_Query( array(
+                's'         => $s,
+                'showposts' => -1,
+            ) );
 
-                // Content
-                $prop_content = sprintf( $prop_mu,
-                    $entry_search_count,
-                    $entry_search_count_prefix . '---txt' . $entry_search_count_prefix . '-' . sanitize_title( $entry_search_count ),
-                    esc_html__( $label, $GLOBALS['applicator_td'] ),
-                    sanitize_title( $label ),
-                    esc_html__( $label_for, $GLOBALS['applicator_td'] ),
-                    sanitize_title( $label_for )
-                );
+            $entry_search_count = $entry_search->post_count;
 
-                // Markup
-                $main_ct_h_l_mu = '<span class="prop %2$s---prop" title="%5$s">';
-                    $main_ct_h_l_mu .= '%4$s';
-                $main_ct_h_l_mu .= '</span>';
-                $main_ct_h_l_mu .= ' <span class="val %2$s---val" title="%3$s">';
-                    $main_ct_h_l_mu .= '%1$s';
-                $main_ct_h_l_mu .= '</span>';
+            $search_result_label = 'Search Result';
+            $search_results_label = 'Search Results';
 
-                // Content
-                $title = sprintf( $main_ct_h_l_mu,
-                    $val_content,
-                    sanitize_title( $prop ),
-                    esc_attr__( $val, $GLOBALS['applicator_td'] ),
-                    $prop_content . $colon_sep,
-                    esc_attr__( $prop, $GLOBALS['applicator_td'] )
-                );
-
-                // Display
-                echo $title;
-
-                wp_reset_postdata();
+            $prop = '';
+            if ( $entry_search_count == 0 ) {
+                $prop = $search_result_label;
+            } elseif ( $entry_search_count == 1 ) {
+                $prop = $search_result_label;
+            } else {
+                $prop = $search_results_label;
             }
-            
-            ?>
-        </span></h2>
 
-        <?php // Main Content Header Aside | inc > tags > aside.php
-        echo applicator_func_main_content_header_aside(); ?> 
+            $label = $prop;
+            $label_for = 'for';
+            $val = get_search_query();
+            $entry_search_count_prefix = 'count';
+            $colon_sep = '';
+
+            // Markup
+            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
+
+            // Content
+            $val_content = sprintf( $val_mu,
+                strip_tags( $val ),
+                sanitize_title( $val )
+            );
+
+            // Markup
+            $prop_mu = '<span class="txt %2$s---txt">%1$s</span>';
+            $prop_mu .= ' <span class="txt %4$s---txt">%3$s</span>';
+            $prop_mu .= ' <span class="txt %6$s---txt">%5$s</span>';
+
+            // Content
+            $prop_content = sprintf( $prop_mu,
+                $entry_search_count,
+                $entry_search_count_prefix . '---txt' . $entry_search_count_prefix . '-' . sanitize_title( $entry_search_count ),
+                $label,
+                sanitize_title( $label ),
+                $label_for,
+                sanitize_title( $label_for )
+            );
+
+            // Markup
+            $main_ct_h_l_mu = '<span class="prop %2$s---prop" title="%5$s">';
+                $main_ct_h_l_mu .= '%4$s';
+            $main_ct_h_l_mu .= '</span>';
+            $main_ct_h_l_mu .= ' <span class="val %2$s---val" title="%3$s">';
+                $main_ct_h_l_mu .= '%1$s';
+            $main_ct_h_l_mu .= '</span>';
+
+            // Content
+            $title = sprintf( $main_ct_h_l_mu,
+                $val_content,
+                sanitize_title( $prop ),
+                $val,
+                $prop_content . $colon_sep,
+                $prop
+            );
+
+            // Display
+            echo $title;
+
+            wp_reset_postdata();
+        }
+        
+        
+        // Main Content Header Aside | inc > tags > aside.php
+        echo applicator_func_main_content_header_aside();
+        ?> 
         
     </div>
 </div><!-- Main Content Header -->
@@ -113,7 +110,7 @@ if ( function_exists( 'get_header' ) ) {
                     <div class="cr entry-md---cr">
                         <div class="hr entry-md---hr">
                             <div class="hr_cr entry-md---hr_cr">
-                                <div class="h entry-md---h"><span class="h_l entry-md---h_l"><?php esc_html_e( 'Entry Module', $GLOBALS['applicator_td'] ); ?></span></div>
+                                <div class="h entry-md---h"><span class="h_l entry-md---h_l"><?php esc_html_e( 'Entry Module', 'applicator' ); ?></span></div>
                             </div>
                         </div>
                         <div class="ct entry-md---ct">
@@ -127,7 +124,7 @@ if ( function_exists( 'get_header' ) ) {
                             <div class="cr entry---cr">
                                 <div class="hr entry---hr">
                                     <div class="hr_cr entry---hr_cr">
-                                        <div class="h entry---h"><span class="h_l entry---h_l"><?php esc_html_e( 'Entry', $GLOBALS['applicator_td'] ); ?></span></div>
+                                        <div class="h entry---h"><span class="h_l entry---h_l"><?php esc_html_e( 'Entry', 'applicator' ); ?></span></div>
                                         <?php // inc > tags > entry-nav.php
                                         apl_entry_nav(); ?>
                                     </div>
@@ -164,7 +161,7 @@ if ( function_exists( 'get_header' ) ) {
                                     <div class="cr entries---cr">
                                         <div class="hr entries---hr">
                                             <div class="hr_cr entries---hr_cr">
-                                                <div class="h entries---h"><span class="h_l entries---h_l"><?php esc_html_e( 'Entries', $GLOBALS['applicator_td'] ); ?></span></div>
+                                                <div class="h entries---h"><span class="h_l entries---h_l"><?php esc_html_e( 'Entries', 'applicator' ); ?></span></div>
                                                 <?php // inc > template-parts > page-nav.php
                                                 applicator_func_page_nav(); ?>
                                             </div>

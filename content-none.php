@@ -16,7 +16,7 @@
                     'Post Title Object',
                     'post-title-obj',
                     'post-title-obj',
-                    esc_html__( 'Nothing Found', $GLOBALS['applicator_td'] )
+                    esc_html__( 'Nothing Found', 'applicator' )
                 );
                 
                 // Content
@@ -31,7 +31,7 @@
         </header>
         <div class="ct post---ct entry-content">
             <div class="ct_cr post---ct_cr">
-                <p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for.', $GLOBALS['applicator_td'] ); ?></p>
+                <p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for.', 'applicator' ); ?></p>
             </div>
         </div><!-- ct -->
     </div>

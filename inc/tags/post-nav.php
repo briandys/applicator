@@ -16,8 +16,8 @@ if ( ! function_exists('applicator_func_post_nav' ) ) {
         $GLOBALS['post_nav_end_mu'] .= '</div>';
         
         $GLOBALS['post_nav_start'] = sprintf( $GLOBALS['post_nav_start_mu'],
-            esc_attr__( 'Post Navigation', $GLOBALS['applicator_td'] ),
-            esc_html__( 'Post Navigation', $GLOBALS['applicator_td'] ),
+            esc_attr__( 'Post Navigation', 'applicator' ),
+            esc_html__( 'Post Navigation', 'applicator' ),
             'post-nav'
         );
         
@@ -27,7 +27,7 @@ if ( ! function_exists('applicator_func_post_nav' ) ) {
             
             $post_pagi_navi_a_l = sprintf( $post_pagi_navi_a_l_mu,
                 '%',
-                esc_html__( 'Page', $GLOBALS['applicator_td'] )
+                esc_html__( 'Page', 'applicator' )
             );
             
             wp_link_pages( array(
@@ -64,7 +64,7 @@ if ( ! function_exists('applicator_func_post_nav' ) ) {
                     'Posted In Label',
                     'posted-in-label',
                     'posted-in-lbl',
-                    esc_html__( 'Posted in', $GLOBALS['applicator_td'] )
+                    esc_html__( 'Posted in', 'applicator' )
                 );
 
                 // Content
@@ -77,7 +77,7 @@ if ( ! function_exists('applicator_func_post_nav' ) ) {
 
                 // Content
                 $parent_post = sprintf( $parent_post_mu,
-                    esc_html__( 'Parent Post', $GLOBALS['applicator_td'] ),
+                    esc_html__( 'Parent Post', 'applicator' ),
                     'parent-post',
                     'parent-post',
                     $posted_in_lbl,

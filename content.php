@@ -42,7 +42,7 @@
                     <div class="cr post-hr-as---cr">
                         <div class="hr post-hr-as---hr">
                             <div class="hr_cr post-hr-as---hr_cr">
-                                <div class="h post-hr-as---h"><span class="h_l post-hr-as---h_l"><?php esc_html_e( 'Post Header Aside', $GLOBALS['applicator_td'] ); ?></span></div>
+                                <div class="h post-hr-as---h"><span class="h_l post-hr-as---h_l"><?php esc_html_e( 'Post Header Aside', 'applicator' ); ?></span></div>
                             </div>
                         </div>
                         <div class="ct post-hr-as---ct">
@@ -51,7 +51,7 @@
                                     <div class="cr post-meta---cr">
                                         <div class="hr post-meta---hr">
                                             <div class="hr_cr post-meta---hr_cr">
-                                                <div class="h post-meta---h"><span class="h_l post-meta---h_l"><?php esc_html_e( 'Post Meta', $GLOBALS['applicator_td'] ); ?></span></div>
+                                                <div class="h post-meta---h"><span class="h_l post-meta---h_l"><?php esc_html_e( 'Post Meta', 'applicator' ); ?></span></div>
                                             </div>
                                         </div>
                                         <div class="ct post-meta---ct">
@@ -99,7 +99,7 @@
                         <div class="cr post-ex---cr">
                             <div class="hr post-ex---hr">
                                 <div class="hr_cr post-ex---hr_cr">
-                                    <div class="h post-ex---h"><span class="h_l post-ex---h_l"><?php esc_html_e( 'Post Excerpt', $GLOBALS['applicator_td'] ); ?></span></div>
+                                    <div class="h post-ex---h"><span class="h_l post-ex---h_l"><?php esc_html_e( 'Post Excerpt', 'applicator' ); ?></span></div>
                                 </div>
                             </div>
                             <div class="ct post-ex---ct">
@@ -116,7 +116,7 @@
                     <div class="cr post-ct---cr">
                         <div class="hr post-ct---hr">
                             <div class="hr_cr post-ct---hr_cr">
-                                <div class="h post-ct---h"><span class="h_l post-ct---h_l"><?php esc_html_e( 'Post Content', $GLOBALS['applicator_td'] ); ?></span></div>
+                                <div class="h post-ct---h"><span class="h_l post-ct---h_l"><?php esc_html_e( 'Post Content', 'applicator' ); ?></span></div>
                             </div>
                         </div>
                         <div class="ct post-ct---ct">
@@ -133,7 +133,7 @@
                         <div class="cr post-ex---cr">
                             <div class="hr post-ex---hr">
                                 <div class="hr_cr post-ex---hr_cr">
-                                    <div class="h post-ex---h"><span class="h_l post-ex---h_l"><?php esc_html_e( 'Post Excerpt', $GLOBALS['applicator_td'] ); ?></span></div>
+                                    <div class="h post-ex---h"><span class="h_l post-ex---h_l"><?php esc_html_e( 'Post Excerpt', 'applicator' ); ?></span></div>
                                 </div>
                             </div>
                             <div class="ct post-ex---ct">
@@ -189,7 +189,7 @@
                 
                 <div class="cp post-meta entry-meta" data-name="Post Meta">
                     <div class="cr post-meta---cr">
-                        <div class="h post-meta---h"><span class="h_l post-meta---h_l"><?php esc_html_e( 'Post Meta', $GLOBALS['applicator_td'] ); ?></span></div>
+                        <div class="h post-meta---h"><span class="h_l post-meta---h_l"><?php esc_html_e( 'Post Meta', 'applicator' ); ?></span></div>
                         <div class="ct post-meta---ct">
                             <div class="ct_cr post-meta---ct_cr">
                                 <?php // Tags

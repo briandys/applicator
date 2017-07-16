@@ -9,11 +9,11 @@ if ( ! function_exists( 'applicator_func_comments_nav' ) ) {
             $next_comments_navi_txt = htmlok_txt( array(
                 'content'   => array(
                     array(
-                        'txt'   => esc_html__( 'Next', $GLOBALS['applicator_td'] ),
+                        'txt'   => esc_html__( 'Next', 'applicator' ),
                     ),
                     array(
                         'sep'   => $GLOBALS['space_sep'],
-                        'txt'   => esc_html__( 'Comments', $GLOBALS['applicator_td'] ),
+                        'txt'   => esc_html__( 'Comments', 'applicator' ),
                     ),
                 ),
             ) );
@@ -22,11 +22,11 @@ if ( ! function_exists( 'applicator_func_comments_nav' ) ) {
             $previous_comments_navi_txt = htmlok_txt( array(
                 'content'   => array(
                     array(
-                        'txt'   => esc_html__( 'Previous', $GLOBALS['applicator_td'] ),
+                        'txt'   => esc_html__( 'Previous', 'applicator' ),
                     ),
                     array(
                         'sep'   => $GLOBALS['space_sep'],
-                        'txt'   => esc_html__( 'Comments', $GLOBALS['applicator_td'] ),
+                        'txt'   => esc_html__( 'Comments', 'applicator' ),
                     ),
                 ),
             ) );

@@ -6,12 +6,12 @@ function htmlok( $args = array() ) {
     
     // Require Array
 	if ( empty( $args ) ) {
-		esc_html_e( 'Please define default parameters in the form of an array.', $GLOBALS['applicator_td'] );
+		esc_html_e( 'Please define default parameters in the form of an array.', 'applicator' );
 	}
     
     // Require Name
 	if ( empty( $args['name'] ) ) {
-        esc_html_e( 'Name is required.', $GLOBALS['applicator_td'] );
+        esc_html_e( 'Name is required.', 'applicator' );
 	}
     
     //------------ Defaults
@@ -814,7 +814,7 @@ function htmlok( $args = array() ) {
     $o_structure_name = $p_name. $p_subtype_name. $p_structure_name_abbr;
 
     // Displayed in headings
-    $o_heading_name = esc_html__( $p_name. $p_subtype_name, $GLOBALS['applicator_td'] );
+    $o_heading_name = $p_name. $p_subtype_name;
 
     $o_h_elem = $p_h_elem;
 

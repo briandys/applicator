@@ -53,10 +53,10 @@ if ( ! function_exists( 'applicator_func_post_published_modified_cp' ) ) {
         $post_published_label_txt = htmlok_txt( array(
             'content' => array(
                 array(
-                    'txt' => esc_html__( 'Published', $GLOBALS['applicator_td'] ),
+                    'txt' => esc_html__( 'Published', 'applicator' ),
                 ),
                 array(
-                    'txt' => esc_html__( 'on', $GLOBALS['applicator_td'] ),
+                    'txt' => esc_html__( 'on', 'applicator' ),
                     'sep' => ' ',
                 ),
             ),
@@ -184,10 +184,10 @@ if ( ! function_exists( 'applicator_func_post_published_modified_cp' ) ) {
         $post_modified_label_txt = htmlok_txt( array(
             'content' => array(
                 array(
-                    'txt' => esc_html__( 'Modified', $GLOBALS['applicator_td'] ),
+                    'txt' => esc_html__( 'Modified', 'applicator' ),
                 ),
                 array(
-                    'txt' => esc_html__( 'on', $GLOBALS['applicator_td'] ),
+                    'txt' => esc_html__( 'on', 'applicator' ),
                     'sep' => ' ',
                 ),
             ),

@@ -33,16 +33,16 @@
                                         ),
                                         array(
                                             'sep'       => $GLOBALS['space_sep'],
-                                            'txt'       => esc_html__( '&copy;', $GLOBALS['applicator_td'] ),
+                                            'txt'       => esc_html__( '&copy;', 'applicator' ),
                                             'css'       => 'copyright-symbol---txt',
                                         ),
                                         array(
                                             'sep'       => $GLOBALS['space_sep'],
-                                            'txt'       => esc_html__( '2017', $GLOBALS['applicator_td'] ),
+                                            'txt'       => esc_html__( '2017', 'applicator' ),
                                             'css'       => 'year---txt',
                                         ),
                                         array(
-                                            'txt'       => esc_html__( '.', $GLOBALS['applicator_td'] ),
+                                            'txt'       => esc_html__( '.', 'applicator' ),
                                             'css'       => 'delimiter---txt',
                                         ),
                                     ),
@@ -50,10 +50,10 @@
                                         'css'   => 'reserved-rights---line',
                                         array(
                                             'sep'       => $GLOBALS['space_sep'],
-                                            'txt'       => esc_html__( 'All rights reserved.', $GLOBALS['applicator_td'] ),
+                                            'txt'       => esc_html__( 'All rights reserved.', 'applicator' ),
                                         ),
                                         array(
-                                            'txt'       => esc_html__( '&trade;', $GLOBALS['applicator_td'] ),
+                                            'txt'       => esc_html__( '&trade;', 'applicator' ),
                                             'css'       => 'trademark-symbol---txt',
                                         ),
                                     ),
@@ -103,7 +103,7 @@
                     'content'   => array(
                         'object'        => array(
                             array(
-                                'txt'       => esc_html__( 'Go to Start', $GLOBALS['applicator_td'] ),
+                                'txt'       => esc_html__( 'Go to Start', 'applicator' ),
                             ),
                         ),
                     ),

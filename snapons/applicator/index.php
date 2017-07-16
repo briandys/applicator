@@ -87,15 +87,15 @@ if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
         wp_localize_script( 'apl-snapons-applicator-script-global', 'aplDataGoStartNav', $applicator_l10n );
         
         // Main Menu
-        $applicator_l10n['mainMenuShowL'] = __( 'Show Menu', $GLOBALS['applicator_td'] );
-        $applicator_l10n['mainMenuHideL'] = __( 'Hide Menu', $GLOBALS['applicator_td'] );
+        $applicator_l10n['mainMenuShowL'] = __( 'Show Menu', 'applicator' );
+        $applicator_l10n['mainMenuHideL'] = __( 'Hide Menu', 'applicator' );
         $applicator_l10n['mainMenuShowIco'] = $burger_icon;
         $applicator_l10n['mainMenuHideIco'] = $dismiss_icon;
         wp_localize_script( 'apl-snapons-applicator-script-global', 'aplDataMainMenu', $applicator_l10n );
         
         // Main Search
-        $applicator_l10n['mainSearchShowL'] = __( 'Show Search', $GLOBALS['applicator_td'] );
-        $applicator_l10n['mainSearchHideL'] = __( 'Hide Search', $GLOBALS['applicator_td'] );
+        $applicator_l10n['mainSearchShowL'] = __( 'Show Search', 'applicator' );
+        $applicator_l10n['mainSearchHideL'] = __( 'Hide Search', 'applicator' );
         $applicator_l10n['mainSearchTogCtrlSearchIco'] = $search_icon;
         $applicator_l10n['mainSearchTogDismissIco'] = $dismiss_icon;
         $applicator_l10n['mainSearchSearchIco'] = $search_icon;
@@ -103,8 +103,8 @@ if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
         wp_localize_script( 'apl-snapons-applicator-script-global', 'aplDataArbitNav', $applicator_l10n );
         
         // Sub-Navigation
-        $applicator_l10n['subNavTogBtnShowL']    = __( 'Show Sub-Nav', $GLOBALS['applicator_td'] );
-		$applicator_l10n['subNavTogBtnHideL']    = __( 'Hide Sub-Nav', $GLOBALS['applicator_td'] );
+        $applicator_l10n['subNavTogBtnShowL']    = __( 'Show Sub-Nav', 'applicator' );
+		$applicator_l10n['subNavTogBtnHideL']    = __( 'Hide Sub-Nav', 'applicator' );
         $applicator_l10n['subNavTogBtnIco']      = $arrow_icon;
         wp_localize_script( 'apl-snapons-applicator-script-global', 'aplDataSubNav', $applicator_l10n );
     }

@@ -32,7 +32,7 @@ if ( have_comments() ) {
         'name' => 'Comments Empty Note',
         'elem' => 'n',
         'css' => 'com-empty-note',
-        'content' => '<p>' . esc_html__( 'There are no comments.', $GLOBALS['applicator_td'] ) . '</p>',
+        'content' => '<p>' . esc_html__( 'There are no comments.', 'applicator' ) . '</p>',
     ) );
 
 }
@@ -71,11 +71,11 @@ $comment_creation_header = htmlok_cp( array(
 $sign_in_required_note_txt = htmlok_txt( array(
     'content' => array(
         array(
-            'txt' => esc_html__( 'Sign In', $GLOBALS['applicator_td'] ),
+            'txt' => esc_html__( 'Sign In', 'applicator' ),
         ),
         array(
             'sep' => $GLOBALS['space_sep'],
-            'txt' => esc_html__( 'to comment.', $GLOBALS['applicator_td'] ),
+            'txt' => esc_html__( 'to comment.', 'applicator' ),
         ),
     ),
 ) );
@@ -93,7 +93,7 @@ $sign_in_req_note_obj = htmlok_obj( array(
 $signed_in_as_label_txt = htmlok_txt( array(
     'content' => array(
         array(
-            'txt'   => esc_html__( 'Signed in as', $GLOBALS['applicator_td'] ),
+            'txt'   => esc_html__( 'Signed in as', 'applicator' ),
         ),
     ),
 ) );
@@ -167,18 +167,18 @@ $comment_author_comment_creation = htmlok_cp( array(
 $cancel_reply_comment_action_txt = htmlok_txt( array(
     'content' => array(
         array(
-            'txt' => esc_html__( 'Cancel', $GLOBALS['applicator_td'] ),
+            'txt' => esc_html__( 'Cancel', 'applicator' ),
         ),
         array(
-            'txt' => esc_html__( 'Reply', $GLOBALS['applicator_td'] ),
+            'txt' => esc_html__( 'Reply', 'applicator' ),
             'sep' => $GLOBALS['space_sep'],
         ),
         array(
-            'txt' => esc_html__( 'to', $GLOBALS['applicator_td'] ),
+            'txt' => esc_html__( 'to', 'applicator' ),
             'sep' => $GLOBALS['space_sep'],
         ),
         array(
-            'txt' => esc_html__( 'Comment', $GLOBALS['applicator_td'] ),
+            'txt' => esc_html__( 'Comment', 'applicator' ),
             'sep' => $GLOBALS['space_sep'],
         ),
     ),
@@ -188,7 +188,7 @@ $cancel_reply_comment_action_txt = htmlok_txt( array(
 $comment_recipient_note_txt = htmlok_txt( array(
     'content' => array(
         array(
-            'txt' => esc_html__( 'Reply to', $GLOBALS['applicator_td'] ),
+            'txt' => esc_html__( 'Reply to', 'applicator' ),
         ),
         array(
             'txt' => '%s',
@@ -236,7 +236,7 @@ comment_form( array(
     // Submit Comment Action
     'id_submit'                 => 'com-sub-axn---b',
     'class_submit'              => 'b com-sub-axn---b',
-    'label_submit'              => esc_attr__( 'Submit', $GLOBALS['applicator_td'] ),
+    'label_submit'              => esc_attr__( 'Submit', 'applicator' ),
 
 
     // Reply

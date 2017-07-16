@@ -27,12 +27,12 @@ add_action( 'wp_footer', 'applicator_func_include_svg_icons', 9999 );
 function applicator_func_get_svg( $args = array() ) {
 	// Make sure $args are an array.
 	if ( empty( $args ) ) {
-		return __( 'Please define default parameters in the form of an array.', $GLOBALS['applicator_td'] );
+		return __( 'Please define default parameters in the form of an array.', 'applicator' );
 	}
 
 	// Define an icon.
 	if ( false === array_key_exists( 'icon', $args ) ) {
-		return __( 'Please define an SVG icon filename.', $GLOBALS['applicator_td'] );
+		return __( 'Please define an SVG icon filename.', 'applicator' );
 	}
 
 	// Set defaults.

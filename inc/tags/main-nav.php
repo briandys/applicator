@@ -1,5 +1,5 @@
 <?php // Register Main Navigation
-register_nav_menu( 'main-nav', __( 'Main Navigation', $GLOBALS['applicator_td'] ) );
+register_nav_menu( 'main-nav', __( 'Main Navigation', 'applicator' ) );
 
 
 // Main Nav

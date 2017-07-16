@@ -4,7 +4,7 @@ if ( ! function_exists( 'applicator_fonts_url' ) ) {
     function applicator_fonts_url() {
         
         $fonts_url = '';
-        $noto = _x( 'on', 'Noto Sans, Noto Serif font: on or off', $GLOBALS['applicator_td'] );
+        $noto = _x( 'on', 'Noto Sans, Noto Serif font: on or off', 'applicator' );
 
         if ( 'off' !== $noto ) {
             $font_families = array();

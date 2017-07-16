@@ -1,39 +1,20 @@
 <?php // Main Content Headings | index.php
 
-if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
-    function applicator_func_main_content_headings() {
+if ( ! function_exists( 'applicator_func_main_content_heading' ) ) {
+    function applicator_func_main_content_heading() {
         
-        
-        
-        
-        
-        $title = '';
-        $label = '';
-        $prop = '';
-        $val = '';
-        $val_content = '';
-        $colon_sep = '';
-        
-        $entry_label = 'Entry';
-        $entries_label = 'Entries';
-        $posts_label = 'Posts';
-        
-        
+        // Initialize
         $property_text = '';
         $value_text = '';
         $line_array = '';
-            
-            
-                
-        
              
         
         // Home (default)
         // Settings > Reading > Your Latest Posts
         if ( is_front_page() && ! is_page() ) {
 
-            $property_text = 'Front Page';
-            $value_text = 'Posts';
+            $property_text = 'Entries';
+            $value_text = esc_html__( 'Posts', 'applicator' );
             
             $line_array = array(
                 'css'   => 'value---line',
@@ -47,7 +28,7 @@ if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
         // Settings > Reading > Posts Page
         if ( is_home() ) {
 
-            $property_text = 'Home Entries';
+            $property_text = 'Entries';
             $value_text = 'Posts';
             
             $line_array = array(
@@ -201,83 +182,70 @@ if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
 
         // Author
         if ( is_author() && ! is_post_type_archive() ) {
-
-            $title = '';
-            $prop = 'Author';
-            $label = 'Entries Published by';
-
+            
+            $property_text = 'Entries Published by';
+            
             $author = get_queried_object();
             if ( $author ) {
-                $val = $author->display_name;
+                $value_text = $author->display_name;
             }
 
-            // Markup
-            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
-
-            // Content
-            $val_content = sprintf( $val_mu,
-                $val,
-                sanitize_title( $val )
+            $line_array = array(
+                'css'   => 'value---line',
+                array(
+                    'sep'       => $GLOBALS['space_sep'],
+                    'txt'       => $value_text,
+                ),
             );
         }
 
         // Category or Tag
         if ( is_category() || is_tag() ) {
             
-            $colon_sep = $GLOBALS['colon_sep'];
-
-            $prop = '';
             if ( is_category() ) {
-                $prop = 'Category';
+                $property_text = 'Category';
             }
-            if ( is_tag() ) {
-                $prop = 'Tag';
+            
+            elseif ( is_tag() ) {
+                $property_text = 'Tag';
             }
+            
+            $value_text = single_term_title( '', false );
 
-            $label = $prop;
-            $val = single_term_title( '', false );
-
-            // Markup
-            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
-
-            // Content
-            $val_content = sprintf( $val_mu,
-                $val,
-                sanitize_title( $val )
+            $line_array = array(
+                'css'   => 'value---line',
+                array(
+                    'sep'       => $GLOBALS['space_sep'],
+                    'txt'       => $value_text,
+                ),
             );
         }
 
         // Taxonomy
         if ( is_tax() ) {
             
-            $prop = 'Taxonomy';
-            $label = $prop;
-            $sep = ', ';
-            $colon_sep = $GLOBALS['colon_sep'];
-
+            $property_text = 'Taxonomy';
+            
             $term = get_queried_object();
             if ( $term ) {
-                $tax   = get_taxonomy( $term->taxonomy );
-                $val = single_term_title( $tax->labels->name . $sep, false );
+                $tax = get_taxonomy( $term->taxonomy );
+                $value_text = single_term_title( $tax->labels->name . ', ', false );
             }
 
-            // Markup
-            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
-
-            // Content
-            $val_content = sprintf( $val_mu,
-                $val,
-                sanitize_title( $val )
+            $line_array = array(
+                'css'   => 'value---line',
+                array(
+                    'sep'       => $GLOBALS['space_sep'],
+                    'txt'       => $value_text,
+                ),
             );
         }
 
         // Post Type Archive
         if ( is_post_type_archive() ) {
             
-            $prop = 'Post Type Archive';
-            $label = $prop;
-            $colon_sep = $GLOBALS['colon_sep'];
-
+            $property_text = esc_html__( 'Post Type Archive', 'applicator' );
+            
             $post_type = get_query_var( 'post_type' );
             if ( is_array( $post_type ) ) {
                 $post_type = reset( $post_type );
@@ -285,67 +253,36 @@ if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
 
             $post_type_object = get_post_type_object( $post_type );
             if ( ! $post_type_object->has_archive ) {
-                $val = post_type_archive_title( '', false );
+                $value_text = post_type_archive_title( '', false );
             }
 
-            // Markup
-            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
-
-            // Content
-            $val_content = sprintf( $val_mu,
-                $val,
-                sanitize_title( $val )
+            $line_array = array(
+                'css'   => 'value---line',
+                array(
+                    'sep'       => $GLOBALS['space_sep'],
+                    'txt'       => $value_text,
+                ),
             );
         }
 
         // Post Type Archive with has_archive should override terms.
         if ( is_post_type_archive() && $post_type_object->has_archive ) {
             
-            $prop = 'Post Type Archive';
-            $label = $prop;
-            $val = post_type_archive_title( '', false );
-            $colon_sep = $GLOBALS['colon_sep'];
+            $property_text = esc_html__( 'Post Type Archive', 'applicator' );
+            
+            $value_text = post_type_archive_title( '', false );
 
-            // Markup
-            $val_mu = '<span class="txt %2$s---txt">%1$s</span>';
-
-            // Content
-            $val_content = sprintf( $val_mu,
-                $val,
-                sanitize_title( $val )
+            $line_array = array(
+                'css'   => 'value---line',
+                array(
+                    'sep'       => $GLOBALS['space_sep'],
+                    'txt'       => $value_text,
+                ),
             );
         }
-
-        // Markup
-        $prop_mu = '<span class="txt %2$s---txt">%1$s</span>';
-
-        // Content
-        $prop_content = sprintf( $prop_mu,
-            esc_html__( $label, $GLOBALS['applicator_td'] ),
-            sanitize_title( $label )
-        );
-
-        // Markup
-        $main_ct_h_l_mu = '<span class="prop %2$s---prop" title="%5$s">';
-            $main_ct_h_l_mu .= '%4$s';
-        $main_ct_h_l_mu .= '</span>';
-        $main_ct_h_l_mu .= ' <span class="val %2$s---val" title="%3$s">';
-            $main_ct_h_l_mu .= '%1$s';
-        $main_ct_h_l_mu .= '</span>';
-
-        // Content
-        $title = sprintf( $main_ct_h_l_mu,
-            $val_content,
-            sanitize_title( $prop ),
-            esc_attr__( $val, $GLOBALS['applicator_td'] ),
-            $prop_content . $colon_sep,
-            esc_attr__( $prop, $GLOBALS['applicator_td'] )
-        );
-
-        // Display
-        echo $title;
         
         
+        // Main Content Heading
         $main_content_heading_obj = htmlok( array(
                 'name'      => 'Main Content',
                 'structure' => array(
@@ -361,10 +298,6 @@ if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
                                     'css'   => 'property---line',
                                     array(
                                         'txt'       => $property_text,
-                                    ),
-                                    array(
-                                        'txt'       => ':',
-                                        'css'       => 'colon---txt',
                                     ),
                                 ),
                                 $line_array,

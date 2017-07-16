@@ -41,7 +41,7 @@ if ( ! function_exists( 'applicator_func_page_nav' ) ) {
             'type'          => 'list',
             
             'before_page_number'  => sprintf( $page_num_navi_start_mu,
-                                       esc_html__( 'Page', $GLOBALS['applicator_td'] ),
+                                       esc_html__( 'Page', 'applicator' ),
                                        'page-pagi-navi'
                                        ),
             
@@ -50,17 +50,17 @@ if ( ! function_exists( 'applicator_func_page_nav' ) ) {
             'prev_next'     => true,
             
             'prev_text'     => sprintf( $adjacent_navi_mu,
-                                       esc_attr__( 'Previous Page', $GLOBALS['applicator_td'] ),
-                                       esc_html__( 'Previous', $GLOBALS['applicator_td'] ),
-                                       esc_html__( 'Page', $GLOBALS['applicator_td'] ),
+                                       esc_attr__( 'Previous Page', 'applicator' ),
+                                       esc_html__( 'Previous', 'applicator' ),
+                                       esc_html__( 'Page', 'applicator' ),
                                        'prev-page',
                                        'prev'
                                        ),
             
             'next_text'     => sprintf( $adjacent_navi_mu,
-                                       esc_attr__( 'Next Page', $GLOBALS['applicator_td'] ),
-                                       esc_html__( 'Next', $GLOBALS['applicator_td'] ),
-                                       esc_html__( 'Page', $GLOBALS['applicator_td'] ),
+                                       esc_attr__( 'Next Page', 'applicator' ),
+                                       esc_html__( 'Next', 'applicator' ),
+                                       esc_html__( 'Page', 'applicator' ),
                                        'next-page',
                                        'next'
                                        )
@@ -68,10 +68,10 @@ if ( ! function_exists( 'applicator_func_page_nav' ) ) {
 
         if ( $page_nav_grp ) { ?>
         
-        <div class="nav page-nav" role="navigation" aria-label="<?php esc_html_e( 'Page Navigation', $GLOBALS['applicator_td'] ); ?>" data-name="Page Navigation">
+        <div class="nav page-nav" role="navigation" aria-label="<?php esc_html_e( 'Page Navigation', 'applicator' ); ?>" data-name="Page Navigation">
             <div class="cr page-nav---cr">
                 <div class="h page-nav---h">
-                    <span class="h_l page-nav---h_l"><?php esc_html_e( 'Page Navigation', $GLOBALS['applicator_td'] ); ?></span>
+                    <span class="h_l page-nav---h_l"><?php esc_html_e( 'Page Navigation', 'applicator' ); ?></span>
                 </div>
                 <div class="ct page-nav---ct">
                     <div class="ct_cr page-nav---ct_cr">
