@@ -1,155 +1,189 @@
-<article <?php post_class( 'cp' ); ?> data-name="Post">
+<article <?php post_class( 'cp article' ); ?> data-name="Post CP">
     <div class="cr post---cr">
         <header class="hr post---hr entry-header">
             <div class="hr_cr post---hr_cr">
                 
                 <?php
                 
-                // Markup
-                $post_title_obj_start_mu = '<div class="obj %2$s" data-name="%1$s">';
-                    $post_title_obj_start_mu .= '<h1 class="h %3$s---h entry-title">';
-                        $post_title_obj_start_mu .= '<a class="a %3$s---a" href="%4$s" rel="bookmark" title="%5$s"><span class="a_l %3$s---a_l"><span class="txt post-title---txt">';
-                        $post_title_obj_end_mu = '</span></span></a>';
-                    $post_title_obj_end_mu .= '</h1>';
-                $post_title_obj_end_mu .= '</div>';
+                // E: Post Title
+                $post_title_obj = htmlok( array(
+                    'name'      => 'Post Title',
+                    'structure' => array(
+                        'type'      => 'object',
+                        'elem'      => 'h1',
+                        'linked'    => true,
+                        'attr'      => array(
+                            'a'         => array(
+                                'href'      => esc_url( get_permalink() ),
+                                'rel'       => 'bookmark',
+                                'title'     => get_the_title(),
+                            ),
+                        ),
+                    ),
+                    'content'   => array(
+                        'object'        => array(
+                            array(
+                                'txt'       => get_the_title(),
+                            ),
+                        ),
+                    ),
+                    'echo'      => true,
+                ) );
                 
-                // Content
-                $post_title_obj_start = sprintf( $post_title_obj_start_mu,
-                    'Post Title Object',
-                    'post-title-obj',
-                    'post-title-obj',
-                    esc_url( get_permalink() ),
-                    get_the_title()
-                );
-                
-                // Content
-                $post_title_obj_end = sprintf( $post_title_obj_end_mu );
-                
-                // Display
-                the_title( $post_title_obj_start, $post_title_obj_end );
                 
                 // After Post Heading Hook | inc > hooks.php
                 applicator_hook_after_post_heading();
                 
+                
                 // Entry Actions | inc > tags > entry-actions.php
                 applicator_func_post_admin_actions();
-
+                
+                
                 // Breadcrumbs Navigation | inc > tags > breadcumbs-nav.php
                 applicator_func_breadcrumbs_nav();
-                ?>
                 
-                <div class="cn aside post-header-aside" data-name="Post Header Aside">
-                    <div class="cr post-hr-as---cr">
-                        <div class="hr post-hr-as---hr">
-                            <div class="hr_cr post-hr-as---hr_cr">
-                                <div class="h post-hr-as---h"><span class="h_l post-hr-as---h_l"><?php esc_html_e( 'Post Header Aside', 'applicator' ); ?></span></div>
-                            </div>
-                        </div>
-                        <div class="ct post-hr-as---ct">
-                            <div class="ct_cr post-hr-as---ct_cr">
-                                <div class="cp post-meta entry-meta" data-name="Post Meta">
-                                    <div class="cr post-meta---cr">
-                                        <div class="hr post-meta---hr">
-                                            <div class="hr_cr post-meta---hr_cr">
-                                                <div class="h post-meta---h"><span class="h_l post-meta---h_l"><?php esc_html_e( 'Post Meta', 'applicator' ); ?></span></div>
-                                            </div>
-                                        </div>
-                                        <div class="ct post-meta---ct">
-                                            <div class="ct_cr post-meta---ct_cr">
-                                                <?php
-                                                // inc > tags > post-published-modified-cp.php
-                                                echo applicator_func_post_published_modified_cp();
-
-                                                // Author
-                                                applicator_func_post_author();
-
-                                                // Categories
-                                                applicator_func_post_categories();
-                                                ?>
-                                            </div>
-                                        </div><!-- ct -->
-                                    </div>
-                                </div><!-- Post Meta -->
-
-                                <?php
-                                // Post Banner Visual | inc > tags > post-banner-visual.php
-                                applicator_func_post_banner_visual();
-
-                                // inc > tags > comments-actions-snippet-cp.php
-                                echo applicator_func_comments_actions_snippet_cp();
-                                ?>
-                            </div>
-                        </div><!-- ct -->
-                    </div>
-                </div><!-- Post Header Aside -->
-
-                <?php // After Post Header Aside Hook
-                applicator_hook_after_post_header_aside(); ?>
+                
+                // OB: Post Author
+                ob_start();
+                applicator_func_post_author();
+                $post_author_ob_content = ob_get_contents();
+                ob_end_clean();
+                
+                
+                // OB: Post Categories
+                ob_start();
+                applicator_func_post_categories();
+                $post_categories_ob_content = ob_get_contents();
+                ob_end_clean();
+                
+                
+                // E: Post Meta
+                $post_meta = htmlok( array(
+                    'name'      => 'Post Meta',
+                    'structure' => array(
+                        'type'      => 'component'
+                    ),
+                    'content'   => array(
+                        'component'     => array(
+                            
+                            // inc > tags > post-published-modified-cp.php
+                            applicator_func_post_published_modified_cp(),
+                            
+                            // Author
+                            $post_author_ob_content,
+                            
+                            // Categories
+                            $post_categories_ob_content,
+                        ),
+                    ),
+                    'echo'      => true,
+                ) );
+                
+                
+                // OB: Post Banner Visual
+                ob_start();
+                applicator_func_post_banner_visual();
+                $post_banner_visual_ob_content = ob_get_contents();
+                ob_end_clean();
+                
+                
+                // E: Post Header Aside
+                $post_header_aside = htmlok( array(
+                    'name'      => 'Post Header',
+                    'structure' => array(
+                        'type'          => 'constructor',
+                        'subtype'       => 'aside',
+                        'hr_structure'  => true,
+                    ),
+                    'css'       => 'post-hr-as',
+                    'content'   => array(
+                        'constructor'   => array(
+                            
+                            // Post Meta
+                            $post_meta,
+                            
+                            // Post Banner Visual | inc > tags > post-banner-visual.php
+                            $post_banner_visual_ob_content,
+                            
+                            // inc > tags > comments-actions-snippet-cp.php
+                            applicator_func_comments_actions_snippet_cp(),
+                        ),
+                    ),
+                    'echo'      => true,
+                ) );
+                
+                
+                // After Post Header Aside Hook
+                applicator_hook_after_post_header_aside();
+                
+                ?>
 
             </div>
         </header>
         <div class="ct post---ct entry-content">
             <div class="ct_cr post---ct_cr">
                 
-                <?php if ( is_home() || is_singular() || ( is_front_page() && ! is_page() ) ) { ?>
+                <?php
                 
-                    <?php if ( has_excerpt() ) { ?>
+                // OB: Excerpt
+                ob_start();
+                the_excerpt();
+                $excerpt_ob_content = ob_get_contents();
+                ob_end_clean();
                 
-                    <div class="cp post-excerpt" data-name="Post Excerpt">
-                        <div class="cr post-ex---cr">
-                            <div class="hr post-ex---hr">
-                                <div class="hr_cr post-ex---hr_cr">
-                                    <div class="h post-ex---h"><span class="h_l post-ex---h_l"><?php esc_html_e( 'Post Excerpt', 'applicator' ); ?></span></div>
-                                </div>
-                            </div>
-                            <div class="ct post-ex---ct">
-                                <div class="ct_cr post-ex---ct_cr">
-                                    <?php the_excerpt(); ?>
-                                </div>
-                            </div><!-- ct -->
-                        </div>
-                    </div><!-- Post Excerpt -->
                 
-                    <?php } ?>
+                // R: Post Excerpt
+                $post_excerpt = htmlok( array(
+                    'name'      => 'Post Excerpt',
+                    'structure' => array(
+                        'type'      => 'component',
+                    ),
+                    'content'   => array(
+                        'component'     => $excerpt_ob_content,
+                    ),
+                ) );
+                
+                
+                // OB: Content
+                ob_start();
+                the_content();
+                $content_ob_content = ob_get_contents();
+                ob_end_clean();
+                
+                if ( is_home() || is_singular() || ( is_front_page() && ! is_page() ) ) {
                     
-                <div class="cp post-content" data-name="Post Content">
-                    <div class="cr post-ct---cr">
-                        <div class="hr post-ct---hr">
-                            <div class="hr_cr post-ct---hr_cr">
-                                <div class="h post-ct---h"><span class="h_l post-ct---h_l"><?php esc_html_e( 'Post Content', 'applicator' ); ?></span></div>
-                            </div>
-                        </div>
-                        <div class="ct post-ct---ct">
-                            <div class="ct_cr post-ct---ct_cr">
-                                <?php the_content(); ?>
-                            </div>
-                        </div><!-- ct -->
-                    </div>
-                </div><!-- Post Content -->
+                    if ( has_excerpt() ) {
+                        
+                        // E: Post Excerpt
+                        echo $post_excerpt;
+                    }
                     
-                <?php } else { ?>
+                    // E: Post Content
+                    $post_content = htmlok( array(
+                        'name'      => 'Post Content',
+                        'structure' => array(
+                            'type'      => 'component',
+                        ),
+                        'content'   => array(
+                            'component'     => $content_ob_content,
+                        ),
+                        'echo'      => true,
+                    ) );
+                }
                 
-                    <div class="cp post-excerpt" data-name="Post Excerpt">
-                        <div class="cr post-ex---cr">
-                            <div class="hr post-ex---hr">
-                                <div class="hr_cr post-ex---hr_cr">
-                                    <div class="h post-ex---h"><span class="h_l post-ex---h_l"><?php esc_html_e( 'Post Excerpt', 'applicator' ); ?></span></div>
-                                </div>
-                            </div>
-                            <div class="ct post-ex---ct">
-                                <div class="ct_cr post-ex---ct_cr">
-                                    <?php echo ( get_the_excerpt() ); ?>
-                                </div>
-                            </div><!-- ct -->
-                        </div>
-                    </div><!-- Post Excerpt -->
-                <?php }
+                else {
+                    
+                    // E: Post Excerpt
+                    echo $post_excerpt;
+                }
+                
                 
                 // Entry Page Navigation
                 // inc > tags > post-nav.php
                 applicator_func_post_nav();
                 
-                // sub-post
+                
+                // Sub-Post
                 if ( is_page_template( 'page-templates/sub-pages.php' ) ) {
                     $parent = $post->ID;
                     $args = array(
@@ -176,34 +210,55 @@
 
                     <?php }
                     wp_reset_postdata();
-                } ?>
+                }
+                ?>
 
             </div>
-        </div><!-- ct -->
+        </div>
 
-        <?php if ( 'post' === get_post_type() ) {
-            if ( get_the_tag_list('', '', '') ) { ?>
+        <?php
+        
+        if ( 'post' === get_post_type() ) {
+            
+            if ( get_the_tag_list('', '', '') ) {
+            ?>
 
-        <footer class="fr post---fr">
-            <div class="fr_cr post---fr_cr">
-                
-                <div class="cp post-meta entry-meta" data-name="Post Meta">
-                    <div class="cr post-meta---cr">
-                        <div class="h post-meta---h"><span class="h_l post-meta---h_l"><?php esc_html_e( 'Post Meta', 'applicator' ); ?></span></div>
-                        <div class="ct post-meta---ct">
-                            <div class="ct_cr post-meta---ct_cr">
-                                <?php // Tags
-                                applicator_func_post_tags(); ?>
-                            </div>
-                        </div><!-- ct -->
-                    </div>
-                </div><!-- Post Meta -->
+            <footer class="fr post---fr entry-footer">
+                <div class="fr_cr post---fr_cr">
 
-            </div>
-        </footer><!-- Post Footer -->
+                    <?php
 
-        <?php }
-        } ?>  
+                    // OB: Post Tags
+                    ob_start();
+                    applicator_func_post_tags();
+                    $post_tags_ob_content = ob_get_contents();
+                    ob_end_clean();
+
+                    
+                    // E: Post Meta
+                    $post_meta = htmlok( array(
+                        'name'      => 'Post Meta',
+                        'structure' => array(
+                            'type'      => 'component'
+                        ),
+                        'content'   => array(
+                            'component'     => array(
+
+                                // Tags
+                                $post_tags_ob_content,
+                            ),
+                        ),
+                        'echo'      => true,
+                    ) );
+                    ?>
+
+                </div>
+            </footer>
+
+        <?php
+            }
+        }
+        ?>  
 
     </div>
-</article><!-- Post -->
+</article><!-- Post CP -->

@@ -1,3 +1,100 @@
+
+                
+                    
+                <?php /*
+                <div class="cp post-excerpt" data-name="Post Excerpt">
+                        <div class="cr post-ex---cr">
+                            <div class="hr post-ex---hr">
+                                <div class="hr_cr post-ex---hr_cr">
+                                    <div class="h post-ex---h"><span class="h_l post-ex---h_l"><?php esc_html_e( 'Post Excerpt', 'applicator' ); ?></span></div>
+                                </div>
+                            </div>
+                            <div class="ct post-ex---ct">
+                                <div class="ct_cr post-ex---ct_cr">
+                                    <?php the_excerpt(); ?>
+                                </div>
+                            </div><!-- ct -->
+                        </div>
+                    </div><!-- Post Excerpt -->
+                    */ ?>
+                
+                    <?php } ?>
+                    
+                <?php /*
+                <div class="cp post-content" data-name="Post Content">
+                    <div class="cr post-ct---cr">
+                        <div class="hr post-ct---hr">
+                            <div class="hr_cr post-ct---hr_cr">
+                                <div class="h post-ct---h"><span class="h_l post-ct---h_l"><?php esc_html_e( 'Post Content', 'applicator' ); ?></span></div>
+                            </div>
+                        </div>
+                        <div class="ct post-ct---ct">
+                            <div class="ct_cr post-ct---ct_cr">
+                                <?php the_content(); ?>
+                            </div>
+                        </div><!-- ct -->
+                    </div>
+                </div><!-- Post Content -->
+                */ ?>
+                    
+                <?php } else { ?>
+                
+                    <div class="cp post-excerpt" data-name="Post Excerpt">
+                        <div class="cr post-ex---cr">
+                            <div class="hr post-ex---hr">
+                                <div class="hr_cr post-ex---hr_cr">
+                                    <div class="h post-ex---h"><span class="h_l post-ex---h_l"><?php esc_html_e( 'Post Excerpt', 'applicator' ); ?></span></div>
+                                </div>
+                            </div>
+                            <div class="ct post-ex---ct">
+                                <div class="ct_cr post-ex---ct_cr">
+                                    <?php echo ( get_the_excerpt() ); ?>
+                                </div>
+                            </div><!-- ct -->
+                        </div>
+                    </div><!-- Post Excerpt -->
+                <?php }
+                
+                // Entry Page Navigation
+                // inc > tags > post-nav.php
+                applicator_func_post_nav();
+                
+                // sub-post
+                if ( is_page_template( 'page-templates/sub-pages.php' ) ) {
+                    $parent = $post->ID;
+                    $args = array(
+                        'post_type'     => 'page',
+                        'post_status'   => 'publish',
+                        'post_parent'   => $parent,
+                        'order'         => 'ASC'
+                    );
+
+                    $the_query = new WP_Query( $args );
+
+                    if ( $the_query->have_posts() ) { ?>
+
+                        <div class="cp sub-post" data-name="Sub-Post">
+                            <div class="cr sub-post---cr">
+
+                        <?php while ( $the_query->have_posts() ) {
+                            $the_query->the_post();
+                            get_template_part( 'content', get_post_format() );
+                        } ?>
+
+                            </div>
+                        </div><!-- Sub-Post -->
+
+                    <?php }
+                    wp_reset_postdata();
+                } ?>
+
+
+
+
+
+
+
+
 <?php /*
 <div class="cp search search-cp" data-name="Search">
     <div class="cr search---cr">

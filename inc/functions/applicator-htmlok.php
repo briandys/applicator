@@ -528,7 +528,6 @@ function htmlok( $args = array() ) {
                 $subtype_name_abbr = 'article';
                 $subtype_elem = 'article';
                 
-                $p_subtype_name = ' '.$subtype_name;
                 $p_subtype_css = ' '.$subtype_name_abbr;
                 
             }
@@ -1824,13 +1823,8 @@ function htmlok( $args = array() ) {
         'hr'
     );
     
-    if ( in_array( $r_subtype, $subtype_article_terms, true ) ) {
+    if ( ! in_array( $r_subtype, $subtype_article_terms, true ) ) {
     
-        $hr_mu .= $o_heading_name;
-    }
-    
-    else {
-        
         $hr_mu .= '<'.$o_h_elem.' class="h'.$o_branch_css.'---h"><span class="h_l'.$o_branch_css.'---h_l">'.$o_heading_name.'</span></'.$o_h_elem.'>';
     }
 
