@@ -5,17 +5,6 @@
                 
                 <?php
                 
-                $post_cp = htmlok( array(
-                    'name'      => 'Post',
-                    'structure' => array(
-                        'type'      => 'component',
-                        'elem'      => 'article',
-                    ),
-                    'content'   => array(
-                        'component'     => 'The Article',
-                    ),
-                ) );
-                
                 // Markup
                 $post_title_obj_start_mu = '<div class="obj %2$s" data-name="%1$s">';
                     $post_title_obj_start_mu .= '<h1 class="h %3$s---h entry-title">';

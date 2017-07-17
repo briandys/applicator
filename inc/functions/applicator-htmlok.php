@@ -194,6 +194,8 @@ function htmlok( $args = array() ) {
     
     $o_obj_elem = '';
     
+    $p_name = '';
+    
     
     // X
     // Output
@@ -337,6 +339,8 @@ function htmlok( $args = array() ) {
     if ( ! empty( $r['name'] ) ) {
         $r_name = preg_replace( $pat_space, $rep_space, trim( $r['name'] ) );
         $clean_name = substr( sanitize_title( $r_name ), $substr_start, $substr_end );
+        
+        $p_name = $r_name;
     }
     
     // CSS or Custom CSS that will apply to all elements | If blank, use Clean Name
@@ -387,6 +391,14 @@ function htmlok( $args = array() ) {
     // Subtype
     if ( ! empty( $r['structure']['subtype'] ) ) {
         $r_subtype = substr( strtolower( preg_replace( $pat_space, $rep_space, trim( $r['structure']['subtype'] ) ) ), $substr_start, $substr_end );
+    }
+    
+    
+    // Heading Name
+    if ( ! empty( $r['structure']['h_name'] ) ) {
+        $r_h_name = substr( preg_replace( $pat_space, $rep_space, trim( $r['structure']['h_name'] ) ), $substr_start, $substr_end );
+        
+        $p_name = $r_h_name;
     }
     
     
@@ -604,7 +616,7 @@ function htmlok( $args = array() ) {
                 
             }
             
-            // Heading Subtype
+            // Navigation Subtype
             elseif ( in_array( $r_subtype, $subtype_navi_terms, true ) ) {
                
                 $subtype_name = 'Navigation Item';
@@ -776,9 +788,6 @@ function htmlok( $args = array() ) {
     // Structure CSS
     $p_structure_cssx = $string_sep. strtolower( $structure_name_abbr );
 
-
-    // Name
-    $p_name = $r_name;
 
     // Structure Name
     $p_structure_name_abbr = ' '.$structure_name_abbr;

@@ -206,7 +206,17 @@ else {
             
             // content-none.php
             else {
+                
+                // Content None Content
+                // Entries Content
+                ob_start();
+                
                 get_template_part( 'content', 'none' );
+                
+                $content_none_content = ob_get_contents();
+                ob_end_clean();
+                
+                $entry_entries_cp = $content_none_content;
             }
         }
         
