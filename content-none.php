@@ -31,7 +31,7 @@ $post_cp = htmlok( array(
     'name'      => 'Post',
     'structure' => array(
         'type'      => 'component',
-        'elem'      => 'article',
+        'subtype'   => 'article',
     ),
     'root_css'  => 'post--empty',
     'hr_content'    => array(

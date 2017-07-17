@@ -57,6 +57,7 @@ function htmlok( $args = array() ) {
     $subtype_form_terms = array( 'form', 'f', );
     $subtype_nav_terms = array( 'navigation', 'nav', 'n', );
     $subtype_module_terms = array( 'module', 'md', 'm', );
+    $subtype_article_terms = array( 'article', );
     
     $structure_form_actions_submit = array( 'submit', 's', );
     $structure_form_actions_reset = array( 'reset', 'r', );
@@ -517,6 +518,18 @@ function htmlok( $args = array() ) {
                 $p_subtype_name = ' '.$subtype_name;
                 $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
+                
+            }
+            
+            // Article Subtype
+            elseif ( in_array( $r_subtype, $subtype_article_terms, true ) ) {
+                
+                $subtype_name = 'Article';
+                $subtype_name_abbr = 'article';
+                $subtype_elem = 'article';
+                
+                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_css = ' '.$subtype_name_abbr;
                 
             }
             
@@ -1810,7 +1823,16 @@ function htmlok( $args = array() ) {
     $hr_mu .= sprintf( $cr_smu,
         'hr'
     );
-    $hr_mu .= '<'.$o_h_elem.' class="h'.$o_branch_css.'---h"><span class="h_l'.$o_branch_css.'---h_l">'.$o_heading_name.'</span></'.$o_h_elem.'>';
+    
+    if ( in_array( $r_subtype, $subtype_article_terms, true ) ) {
+    
+        $hr_mu .= $o_heading_name;
+    }
+    
+    else {
+        
+        $hr_mu .= '<'.$o_h_elem.' class="h'.$o_branch_css.'---h"><span class="h_l'.$o_branch_css.'---h_l">'.$o_heading_name.'</span></'.$o_h_elem.'>';
+    }
 
     $hr_mu .= $o_hr_content_val;
     $hr_mu .= $cr_emu;
