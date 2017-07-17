@@ -11,23 +11,23 @@ function get_comments_popup_link( $zero = false, $one = false, $more = false, $c
 
 	if ( false === $zero ) {
 		/* translators: %s: post title */
-		$zero = sprintf( __( 'No Comments<span class="screen-reader-text"> on %s</span>' ), $title );
+		$zero = sprintf( __( 'No Comments<span class="screen-reader-text"> on %s</span>', 'applicator' ), $title );
 	}
 
 	if ( false === $one ) {
 		/* translators: %s: post title */
-		$one = sprintf( __( '1 Comment<span class="screen-reader-text"> on %s</span>' ), $title );
+		$one = sprintf( __( '1 Comment<span class="screen-reader-text"> on %s</span>', 'applicator' ), $title );
 	}
 
 	if ( false === $more ) {
 		/* translators: 1: Number of comments 2: post title */
-		$more = _n( '%1$s Comment<span class="screen-reader-text"> on %2$s</span>', '%1$s Comments<span class="screen-reader-text"> on %2$s</span>', $number );
+		$more = _n( '%1$s Comment<span class="screen-reader-text"> on %2$s</span>', '%1$s Comments<span class="screen-reader-text"> on %2$s</span>', $number, 'applicator' );
 		$more = sprintf( $more, number_format_i18n( $number ), $title );
 	}
 
 	if ( false === $none ) {
 		/* translators: %s: post title */
-		$none = sprintf( __( 'Comments Off<span class="screen-reader-text"> on %s</span>' ), $title );
+		$none = sprintf( __( 'Comments Off<span class="screen-reader-text"> on %s</span>', 'applicator' ), $title );
 	}
  
     $str = '';
@@ -38,7 +38,7 @@ function get_comments_popup_link( $zero = false, $one = false, $more = false, $c
     }
  
     if ( post_password_required() ) {
-        $str = __('Enter your password to view comments.');
+        $str = __( 'Enter your password to view comments.', 'applicator' );
         return $str;
     }
     
@@ -65,7 +65,7 @@ function get_comments_popup_link( $zero = false, $one = false, $more = false, $c
  
     $str .= apply_filters( 'comments_popup_link_attributes', '' );
  
-    $str .= ' title="' . esc_attr( sprintf( __('Comment on %s'), $title ) ) . '">';
+    $str .= ' title="' . esc_attr( sprintf( __( 'Comment on %s', 'applicator' ), $title ) ) . '">';
     $str .= get_comments_number_str( $zero, $one, $more );
     $str .= '</a>';
      
@@ -80,11 +80,11 @@ function get_comments_number_str( $zero = false, $one = false, $more = false, $d
     $number = get_comments_number();
  
     if ( $number > 1 )
-        $output = str_replace('%', number_format_i18n($number), ( false === $more ) ? __('% Comments') : $more);
+        $output = str_replace('%', number_format_i18n($number), ( false === $more ) ? __( '% Comments', 'applicator' ) : $more);
     elseif ( $number == 0 )
-        $output = ( false === $zero ) ? __('No Comments') : $zero;
+        $output = ( false === $zero ) ? __( 'No Comments', 'applicator' ) : $zero;
     else // must be one
-        $output = ( false === $one ) ? __('1 Comment') : $one;
+        $output = ( false === $one ) ? __( '1 Comment', 'applicator' ) : $one;
  
     return apply_filters('comments_number', $output, $number);
 }

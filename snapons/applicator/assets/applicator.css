@@ -1314,11 +1314,10 @@ $go-green: #12b32d;
     padding-bottom: 32px;
 }
 
-.apl--go-content-nav--active #wpadminbar
+.apl--go-content-nav--active .wpadminbar
 {
     z-index: 0;
 }
-
 
 
 

@@ -4,6 +4,7 @@ if ( ! function_exists( 'applicator_func_default_classes' ) ) {
         
         <script type="text/javascript">
             
+            
             // JavaScript Debounce Function
             // https://davidwalsh.name/javascript-debounce-function
             function debounce(func, wait, immediate) {
@@ -21,6 +22,7 @@ if ( ! function_exists( 'applicator_func_default_classes' ) ) {
                 };
             };
             var applicatorDebounceTimeout = 250;
+            
             
             // Test if inline SVGs are supported
             // https://github.com/Modernizr/Modernizr/
@@ -114,7 +116,7 @@ if ( ! function_exists( 'applicator_func_enqueue_scripts' ) ) {
         wp_enqueue_script( 'apl-script-plugins', get_theme_file_uri( '/assets/js/plugins.js' ), array( 'jquery' ), '1.0', true );
         
         // Global
-        wp_enqueue_script( 'apl-script-global', get_theme_file_uri( '/assets/js/global.js' ), array( 'jquery', 'apl-script-plugins' ), '3.5', true );
+        wp_enqueue_script( 'apl-script-global', get_theme_file_uri( '/assets/js/global.js' ), array( 'jquery', 'apl-script-plugins' ), '3.7', true );
         
         // Comment Reply
         if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
