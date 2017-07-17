@@ -1316,7 +1316,7 @@ $go-green: #12b32d;
 
 .apl--go-content-nav--active .wpadminbar
 {
-    z-index: 0;
+    z-index: 0 !important;
 }
 
 

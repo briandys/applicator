@@ -50,7 +50,7 @@
                                         'css'   => 'reserved-rights---line',
                                         array(
                                             'sep'       => $GLOBALS['space_sep'],
-                                            'txt'       => esc_html__( 'All rights reserved.', 'applicator' ),
+                                            'txt'       => esc_html__( 'Olrayt reserved.', 'applicator' ),
                                         ),
                                         array(
                                             'txt'       => esc_html__( '&trade;', 'applicator' ),

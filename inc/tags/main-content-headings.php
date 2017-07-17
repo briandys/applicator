@@ -1,23 +1,24 @@
 <?php // Main Content Headings | index.php
 
-if ( ! function_exists( 'applicator_func_main_content_heading' ) ) {
-    function applicator_func_main_content_heading() {
+if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
+    function applicator_func_main_content_headings() {
         
         // Initialize
         $property_text = '';
         $value_text = '';
         $line_array = '';
+        $value_line_term = 'value---line';
              
         
         // Home (default)
         // Settings > Reading > Your Latest Posts
         if ( is_front_page() && ! is_page() ) {
 
-            $property_text = 'Entries';
+            $property_text = esc_html__( 'Entries', 'applicator' );
             $value_text = esc_html__( 'Posts', 'applicator' );
             
             $line_array = array(
-                'css'   => 'value---line',
+                'css'   => $value_line_term,
                 array(
                     'sep'       => $GLOBALS['space_sep'],
                     'txt'       => $value_text,
@@ -28,11 +29,11 @@ if ( ! function_exists( 'applicator_func_main_content_heading' ) ) {
         // Settings > Reading > Posts Page
         if ( is_home() ) {
 
-            $property_text = 'Entries';
-            $value_text = 'Posts';
+            $property_text = esc_html__( 'Entries', 'applicator' );
+            $value_text = esc_html__( 'Posts', 'applicator' );
             
             $line_array = array(
-                'css'   => 'value---line',
+                'css'   => $value_line_term,
                 array(
                     'sep'       => $GLOBALS['space_sep'],
                     'txt'       => $value_text,
@@ -43,11 +44,11 @@ if ( ! function_exists( 'applicator_func_main_content_heading' ) ) {
         // Settings > Reading > Front Page
         if ( is_front_page() && is_page() ) {
 
-            $property_text = 'Front Page';
-            $value_text = 'Page';
+            $property_text = esc_html__( 'Front Page', 'applicator' );
+            $value_text = esc_html__( 'Page', 'applicator' );
             
             $line_array = array(
-                'css'   => 'value---line',
+                'css'   => $value_line_term,
                 array(
                     'sep'       => $GLOBALS['space_sep'],
                     'txt'       => $value_text,
@@ -59,11 +60,11 @@ if ( ! function_exists( 'applicator_func_main_content_heading' ) ) {
         // Single
         if ( is_single() && ! is_attachment() ) {
 
-            $property_text = 'Entry';
-            $value_text = 'Post';
+            $property_text = esc_html__( 'Entry', 'applicator' );
+            $value_text = esc_html__( 'Post', 'applicator' );
             
             $line_array = array(
-                'css'   => 'value---line',
+                'css'   => $value_line_term,
                 array(
                     'sep'       => $GLOBALS['space_sep'],
                     'txt'       => $value_text,
@@ -74,11 +75,11 @@ if ( ! function_exists( 'applicator_func_main_content_heading' ) ) {
         // Attachment
         elseif ( is_attachment() ) {
 
-            $property_text = 'Entry';
-            $value_text = 'Attachment';
+            $property_text = esc_html__( 'Entry', 'applicator' );
+            $value_text = esc_html__( 'Attachment', 'applicator' );
             
             $line_array = array(
-                'css'   => 'value---line',
+                'css'   => $value_line_term,
                 array(
                     'sep'       => $GLOBALS['space_sep'],
                     'txt'       => $value_text,
@@ -89,11 +90,11 @@ if ( ! function_exists( 'applicator_func_main_content_heading' ) ) {
         // Page
         if ( is_page() && ! is_front_page() ) {
 
-            $property_text = 'Entry';
-            $value_text = 'Page';
+            $property_text = esc_html__( 'Entry', 'applicator' );
+            $value_text = esc_html__( 'Page', 'applicator' );
             
             $line_array = array(
-                'css'   => 'value---line',
+                'css'   => $value_line_term,
                 array(
                     'sep'       => $GLOBALS['space_sep'],
                     'txt'       => $value_text,
@@ -104,11 +105,11 @@ if ( ! function_exists( 'applicator_func_main_content_heading' ) ) {
         // Singular
         if ( is_singular() && ! is_single() && ! is_page() ) {
 
-            $property_text = 'Entry';
-            $value_text = 'Other';
+            $property_text = esc_html__( 'Entry', 'applicator' );
+            $value_text = esc_html__( 'Other', 'applicator' );
             
             $line_array = array(
-                'css'   => 'value---line',
+                'css'   => $value_line_term,
                 array(
                     'sep'       => $GLOBALS['space_sep'],
                     'txt'       => $value_text,
@@ -126,10 +127,10 @@ if ( ! function_exists( 'applicator_func_main_content_heading' ) ) {
             // Daily Archive
             if ( is_day() ) {
 
-                $archive_type = 'Daily';
+                $archive_type = esc_html__( 'Daily', 'applicator' );
 
                 $line_array = array(
-                    'css'   => 'value---line',
+                    'css'   => $value_line_term,
                     array(
                         'sep'       => $GLOBALS['space_sep'],
                         'txt'       => $date_day,
@@ -148,10 +149,10 @@ if ( ! function_exists( 'applicator_func_main_content_heading' ) ) {
             // Monthly Archive
             if ( is_month() ) {
 
-                $archive_type = 'Monthly';
+                $archive_type = esc_html__( 'Monthly', 'applicator' );
 
                 $line_array = array(
-                    'css'   => 'value---line',
+                    'css'   => $value_line_term,
                     array(
                         'sep'       => $GLOBALS['space_sep'],
                         'txt'       => $date_month,
@@ -166,10 +167,10 @@ if ( ! function_exists( 'applicator_func_main_content_heading' ) ) {
             // Yearly Archive
             if ( is_year() ) {
 
-                $archive_type = 'Yearly';
+                $archive_type = esc_html__( 'Yearly', 'applicator' );
 
                 $line_array = array(
-                    'css'   => 'value---line',
+                    'css'   => $value_line_term,
                     array(
                         'sep'       => $GLOBALS['space_sep'],
                         'txt'       => $date_year,
@@ -177,13 +178,13 @@ if ( ! function_exists( 'applicator_func_main_content_heading' ) ) {
                 );
             }
             
-            $property_text = $archive_type.' '.'Archive';
+            $property_text = $archive_type.' '.esc_html__( 'Archive', 'applicator' );
         }
 
         // Author
         if ( is_author() && ! is_post_type_archive() ) {
             
-            $property_text = 'Entries Published by';
+            $property_text = esc_html__( 'Entries Published by', 'applicator' );
             
             $author = get_queried_object();
             if ( $author ) {
@@ -191,7 +192,7 @@ if ( ! function_exists( 'applicator_func_main_content_heading' ) ) {
             }
 
             $line_array = array(
-                'css'   => 'value---line',
+                'css'   => $value_line_term,
                 array(
                     'sep'       => $GLOBALS['space_sep'],
                     'txt'       => $value_text,
@@ -203,17 +204,17 @@ if ( ! function_exists( 'applicator_func_main_content_heading' ) ) {
         if ( is_category() || is_tag() ) {
             
             if ( is_category() ) {
-                $property_text = 'Category';
+                $property_text = esc_html__( 'Category', 'applicator' );
             }
             
             elseif ( is_tag() ) {
-                $property_text = 'Tag';
+                $property_text = esc_html__( 'Tag', 'applicator' );
             }
             
             $value_text = single_term_title( '', false );
 
             $line_array = array(
-                'css'   => 'value---line',
+                'css'   => $value_line_term,
                 array(
                     'sep'       => $GLOBALS['space_sep'],
                     'txt'       => $value_text,
@@ -224,7 +225,7 @@ if ( ! function_exists( 'applicator_func_main_content_heading' ) ) {
         // Taxonomy
         if ( is_tax() ) {
             
-            $property_text = 'Taxonomy';
+            $property_text = esc_html__( 'Taxonomy', 'applicator' );
             
             $term = get_queried_object();
             if ( $term ) {
@@ -233,7 +234,7 @@ if ( ! function_exists( 'applicator_func_main_content_heading' ) ) {
             }
 
             $line_array = array(
-                'css'   => 'value---line',
+                'css'   => $value_line_term,
                 array(
                     'sep'       => $GLOBALS['space_sep'],
                     'txt'       => $value_text,
@@ -257,7 +258,7 @@ if ( ! function_exists( 'applicator_func_main_content_heading' ) ) {
             }
 
             $line_array = array(
-                'css'   => 'value---line',
+                'css'   => $value_line_term,
                 array(
                     'sep'       => $GLOBALS['space_sep'],
                     'txt'       => $value_text,
@@ -273,7 +274,7 @@ if ( ! function_exists( 'applicator_func_main_content_heading' ) ) {
             $value_text = post_type_archive_title( '', false );
 
             $line_array = array(
-                'css'   => 'value---line',
+                'css'   => $value_line_term,
                 array(
                     'sep'       => $GLOBALS['space_sep'],
                     'txt'       => $value_text,

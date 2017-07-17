@@ -56,6 +56,7 @@ function htmlok( $args = array() ) {
     $subtype_fieldset_item_terms = array( 'fieldset item', 'fs-item', );
     $subtype_form_terms = array( 'form', 'f', );
     $subtype_nav_terms = array( 'navigation', 'nav', 'n', );
+    $subtype_module_terms = array( 'module', 'md', 'm', );
     
     $structure_form_actions_submit = array( 'submit', 's', );
     $structure_form_actions_reset = array( 'reset', 'r', );
@@ -74,9 +75,6 @@ function htmlok( $args = array() ) {
     $subtype_note_terms = array( 'note', );
     $subtype_form_label_terms = array( 'form label', 'flabel', 'fl', );
     $subtype_form_element_terms = array( 'form element', 'felem', 'fe', );
-    
-    
-    $subtype_form_elements_terms = array( 'form elements', 'felems', 'fes', );
     
     
     
@@ -228,7 +226,7 @@ function htmlok( $args = array() ) {
     $p_attr = '';
     $p_custom_attr = '';
     
-    $structure_namex = '';
+    $structure_name = '';
     $structure_name_abbr = '';
     $p_subtype_postfix_css = '';
     
@@ -418,7 +416,7 @@ function htmlok( $args = array() ) {
         //------------------------------------------------ Constructor Structure
         if ( in_array( $r_structure, $structure_constructor_terms, true ) ) {
             
-            $structure_namex = 'Constructor';
+            $structure_name = 'Constructor';
             $structure_name_abbr = 'CN';
             
             
@@ -467,7 +465,7 @@ function htmlok( $args = array() ) {
         //------------------------------------------------ Component Structure
         elseif ( in_array( $r_structure, $structure_component_terms, true ) ) {
             
-            $structure_namex = 'Component';
+            $structure_name = 'Component';
             $structure_name_abbr = 'CP';
             
             
@@ -510,13 +508,11 @@ function htmlok( $args = array() ) {
                 
             }
             
-            // Form Elements Subtype
-            elseif ( in_array( $r_subtype, $subtype_form_elements_terms, true ) ) {
+            // Module Subtype
+            elseif ( in_array( $r_subtype, $subtype_module_terms, true ) ) {
                 
-                $subtype_name = 'Form Elements';
-                $subtype_name_abbr = 'felems';
-                
-                $obj_elem = 'label';
+                $subtype_name = 'Module';
+                $subtype_name_abbr = 'md';
                 
                 $p_subtype_name = ' '.$subtype_name;
                 $p_subtype_css = ' '.$subtype_name_abbr;
@@ -529,7 +525,7 @@ function htmlok( $args = array() ) {
         //------------------------------------------------ Object Structure
         elseif ( in_array( $r_structure, $structure_object_terms, true ) ) {
             
-            $structure_namex = 'Object';
+            $structure_name = 'Object';
             $structure_name_abbr = 'OBJ';
             
             
@@ -1601,10 +1597,6 @@ function htmlok( $args = array() ) {
                 }
             }
             
-            else {
-                $content_val .= $r_obj_content;
-            }
-            
             /*
             if ( ! empty( $val['form_elem'] ) ) {
                 $r_obj_content_felem = preg_replace( $pat_space, $rep_space, trim( $val['form_elem'] ) );
@@ -1689,93 +1681,12 @@ function htmlok( $args = array() ) {
             }
             */
         }
+        
     }
         
     // Content Output
     $o_content_val = $content_val;
     $o_actions_content_val = $actions_content_val;
-    
-    
-    /*
-    //------------------------ Form Elements Content
-    if ( ! empty( $r['content']['compound'] ) ) {
-        $r_content_compound_object = $r['content']['compound'];
-        
-        if ( in_array( $r_subtype, $subtype_form_elements_terms, true ) ) {
-        
-            // Name
-            if ( ! empty( $r_content_compound_object['name'] ) ) {
-                $r_content_compound_object_name = $r_content_compound_object['name'];
-            }
-
-            // CSS
-            if ( ! empty( $r_content_compound_object['css'] ) ) {
-                $r_content_compound_object_css = $r_content_compound_object['css'];
-            }
-
-            if ( ! empty( $r_content_compound_object['form_label'] ) ) {
-                $r_content_compound_object_form_label = $r_content_compound_object['form_label'];
-
-                // Text Content
-                if ( ! empty( $r_content_compound_object_form_label['txt'] ) ) {
-                    $r_content_compound_object_form_label_txt = $r_content_compound_object_form_label['txt'];
-
-                    $clean_content_compound_object_form_label_txt = substr( sanitize_title( $r_content_compound_object_form_label_txt ), $substr_start, $substr_end );
-
-                    $content_compound_object_form_label_txt = $r_content_compound_object_form_label_txt;
-                    $content_compound_object_form_label_txt_auto_css = ' '.$clean_content_compound_object_form_label_txt.'---txt';
-
-                    // If Text Content is numeric
-                    if ( is_numeric( $content_compound_object_form_label_txt[0] ) ) {
-                        $content_compound_object_form_label_txt_auto_css = ' '.'num'.' '.'n-'.$clean_content_compound_object_form_label_txt.'---txt';
-                    }
-
-                    $content_val = '';
-                    $content_val .= '<span class="txt'.$content_compound_object_form_label_txt_auto_css.'">'.$content_compound_object_form_label_txt.'</span>';
-                }
-            }
-        }
-    }
-    
-    
-
-    //------------------------ Form Element Content
-    if ( ! empty( $r['content']['component']['object'] ) ) {
-        $r_content_component_object = $r['content']['component']['object'];
-        
-        // Name
-        if ( ! empty( $r_content_component_object['name'] ) ) {
-            $r_content_component_object_name = $r_content_component_object['name'];
-        }
-
-        // CSS
-        if ( ! empty( $r_content_component_object['css'] ) ) {
-            $r_content_component_object_css = $r_content_component_object['css'];
-        }
-        
-        if ( ! empty( $r_content_component_object['form_label'] ) ) {
-            $r_content_component_object_flabel = $r_content_component_object['form_label'];
-            
-            // Text Content
-            if ( ! empty( $r_content_component_object_flabel['txt'] ) ) {
-                $r_content_component_object_flabel_txt = $r_content_component_object_flabel['txt'];
-                
-                $sanitized_content_component_object_flabel_txt = substr( sanitize_title( $r_content_component_object_flabel_txt ), $substr_start, $substr_end );
-
-                $content_component_object_flabel_txt = $r_content_component_object_flabel_txt;
-                $content_component_object_flabel_txt_auto_css = ' '.$sanitized_content_component_object_flabel_txt.'---txt';
-
-                // If Text Content is numeric
-                if ( is_numeric( $content_component_object_flabel_txt[0] ) ) {
-                    $content_component_object_flabel_txt_auto_css = ' '.'num'.' '.'n-'.$sanitized_content_component_object_flabel_txt.'---txt';
-                }
-
-                $content_val = '';
-                $content_val .= '<span class="txt'.$content_component_object_flabel_txt_auto_css.'">'.$content_component_object_flabel_txt.'</span>';
-            }
-        }
-    }
-    */
     
     
     
@@ -1955,19 +1866,6 @@ function htmlok( $args = array() ) {
         $ct_mu .= $o_actions_content_val;
         $ct_mu .= $subtype_form_actions_cr_emu;
     }
-    
-    /*
-    //------------------------ Form Elements Content Markup
-    if ( in_array( $r_subtype, $subtype_form_elements_terms, true ) ) {
-        $ct_mu = '';
-        $ct_mu .= sprintf( $subtype_form_elements_cr_smu,
-            'ct'
-        );
-
-        $ct_mu .= $o_content_val;
-        $ct_mu .= $subtype_form_elements_cr_emu;
-    }
-    */
     
     
     //------------------------ Object Content Markup
