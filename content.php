@@ -35,8 +35,8 @@
                 applicator_hook_after_post_heading();
                 
                 
-                // Entry Actions | inc > tags > entry-actions.php
-                applicator_func_post_admin_actions();
+                // Post Actions | inc > tags > post-actions.php
+                applicator_func_post_actions();
                 
                 
                 // Breadcrumbs Navigation | inc > tags > breadcumbs-nav.php

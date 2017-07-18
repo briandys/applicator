@@ -24,5 +24,5 @@ function applicator_hook_after_post_header_aside() {
 function x() {
     echo 'xx';
 }
-add_action( 'applicator_hook_after_main_nav', 'x');
+add_action( 'applicator_hook_after_post_heading', 'x');
 */

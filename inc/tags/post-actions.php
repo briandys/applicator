@@ -1,37 +1,52 @@
-<?php // Post Actions | content.php
+<?php // Edit Post Action | content.php
 
-if ( ! function_exists( 'applicator_func_post_admin_actions' ) ) {
-    function applicator_func_post_admin_actions() {
+if ( ! function_exists( 'applicator_func_post_actions' ) ) {
+    function applicator_func_post_actions() {
         
         if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) {
             
-            $edit_post_axn_a_l_mu = '<span class="a_l edit-post-axn---a_l" title="%5$s"><span class="word %2$s---word">%1$s</span> <span class="word %4$s---word">%3$s</span></span>';
-        
-            $edit_post_axn_a_l = sprintf( $edit_post_axn_a_l_mu,
-                esc_html__( 'Edit', 'applicator' ),
-                'edit',
-                get_the_title(),
-                'post-title',
-                esc_attr__( 'Edit', 'applicator' ) . ' ' . get_the_title()
-            ); ?>
+            // Markup Template
+            $edit_post_action_mu = '';
+            $edit_post_action_mu .= '<span class="a_l %5$s---a_l" title="%6$s">';
+            $edit_post_action_mu .= '<span class="txt %3$s---txt">%1$s</span>';
+            $edit_post_action_mu .= ' <span class="txt %4$s---txt">%2$s</span>';
+            $edit_post_action_mu .= '</span>';
             
-            <div class="axns post-admin-axns" data-name="Post Admin Actions">
-                <div class="cr post-admin-axns---cr">
-                    <div class="hr post-admin-axns---hr">
-                        <div class="hr_cr post-admin-axns---hr_cr">
-                            <div class="h post-admin-axns---h"><span class="h_l post-admin-axns---h_l"><?php esc_html_e( 'Post Admin Actions', 'applicator' ); ?></span></div>
-                        </div>
-                    </div>
-                    <div class="ct post-admin-axns---ct">
-                        <div class="ct_cr post-admin-axns---ct_cr">
-                            <span class="obj axn edit-post-axn" data-name="Edit Post Action">
-                                <?php echo edit_post_link( $edit_post_axn_a_l, '', '' ); ?>
-                            </span>
-                        </div>
-                    </div><!-- ct -->
-                </div>
-            </div><!-- Post Admin Actions -->
-        <?php }
-    
+            // Variables
+            $edit_term = 'Edit';
+            $post_title_term = get_the_title();
+            $edit_post_title_term = $edit_term.' '.$post_title_term;
+            
+            // R: Edit Post Action Content
+            $edit_post_action_content = sprintf( $edit_post_action_mu,
+                /* 1 */ $edit_term,
+                /* 2 */ $post_title_term,
+                /* 3 */ sanitize_title( $edit_term ),
+                /* 4 */ sanitize_title( $post_title_term ),
+                /* 5 */ 'edit-post-axn',
+                /* 6 */ $edit_post_title_term
+            );
+            
+            // OB: Edit Post Link
+            ob_start();
+            edit_post_link( $edit_post_action_content, '', '' );
+            $edit_post_link_ob_content = ob_get_contents();
+            ob_end_clean();
+            
+            // Edit Post Action
+            $edit_post_action_obj = htmlok( array(
+                'name'      => 'Edit Post Action',
+                'structure' => array(
+                    'type'      => 'object',
+                    'subtype'   => 'wordpress generated content',
+                ),
+                'root_css'  => 'axn',
+                'css'       => 'edit-post-axn',
+                'content'   => array(
+                    'object' => $edit_post_link_ob_content,
+                ),
+                'echo'      => true,
+            ) );
+        }
     }
 }
