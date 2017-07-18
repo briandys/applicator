@@ -71,6 +71,7 @@ function htmlok( $args = array() ) {
     
     // Object Subtypes
     $subtype_heading_terms = array( 'heading', 'h', );
+    $subtype_time_terms = array( 'time', );
     $subtype_wpg_terms = array( 'wordpress generated content', 'wpg', 'wp', );
     $subtype_navi_terms = array( 'navigation item', 'nav item', 'navi', );
     $subtype_note_terms = array( 'note', );
@@ -113,7 +114,8 @@ function htmlok( $args = array() ) {
     $p_custom_attr = '';
     $p_title_attr = '';
     $p_id_attr = '';
-    
+    $o_obj_attr = '';
+    $o_attr = '';
     
     // Defaults
     $p_h_elem = 'div';
@@ -476,6 +478,21 @@ function htmlok( $args = array() ) {
                 
             }
             
+            // Time Subtype
+            elseif ( in_array( $r_subtype, $subtype_time_terms, true ) ) {
+               
+                $subtype_name = 'Time';
+                $subtype_name_abbr = 'time';
+                
+                $obj_elem = 'time';
+                $obj_elem_css = $obj_elem;
+                
+                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_css = ' '.$subtype_name_abbr;
+                $p_subtype_postfix_css = '-'.$subtype_name_abbr;
+                
+            }
+            
             // Navigation Subtype
             elseif ( in_array( $r_subtype, $subtype_navi_terms, true ) ) {
                
@@ -673,7 +690,16 @@ function htmlok( $args = array() ) {
 
     $o_id_attr = $p_id_attr;
 
-    $o_attr = $p_attr. $p_custom_attr;
+    
+    // Attributes
+    if ( in_array( $r_structure, $structure_object_terms, true ) ) {
+        $o_obj_attr = $p_attr;
+    }
+    
+    else {
+        $o_attr = $p_attr. $p_custom_attr;
+    }
+    
 
     $o_branch_css = $p_branch_name_css;
     
@@ -711,7 +737,7 @@ function htmlok( $args = array() ) {
     
     // Output
     $o_obj_elem = $p_obj_elem;
-    $o_obj_attr = $p_attr;
+    
     $o_obj_label_elem = $p_obj_label_elem;
     
     $o_obj_elem_css = $p_obj_elem_css. $p_obj_elem_combo_css;

@@ -308,7 +308,150 @@ if ( ! function_exists( 'applicator_func_post_published_modified_cp' ) ) {
             'content'   => $post_published . $post_modified,
         ) );
         
-        return $post_published_modified;
+        //return $post_published_modified;
+        
+        
+        
+        // R: Post Published Label
+        $post_published_label_obj = htmlok( array(
+            'name'      => 'Post Published Label',
+            'structure' => array(
+                'type'      => 'object',
+            ),
+            'content'   => array(
+                'object' => array(
+                    array(
+                        'txt'   => 'Published on',
+                    ),
+                ),
+            ),
+        ) );
+        
+        
+        // R: Post Published Date Stamp
+        $post_published_date_stamp_obj = htmlok( array(
+            'name'      => 'Post Published Date Stamp',
+            'structure' => array(
+                'type'      => 'object',
+                'subtype'   => 'time',
+                'attr'      => array(
+                    'elem'      => array(
+                        'datetime'  => get_the_date( DATE_W3C ),
+                    ),
+                    'a'         => array(
+                        'href'      => esc_url( get_permalink() ),
+                    ),
+                ),
+                'linked'    => true,
+                'layout'    => 'inline',
+            ),
+            'title'     => get_the_date( 'j F Y'),
+            'content'   => array(
+                'object' => array(
+                    array(
+                        'txt' => get_the_date( 'j' ),
+                        'css' => 'day',
+                    ),
+                    array(
+                        'sep' => $GLOBALS['space_sep'],
+                        'txt' => get_the_date( 'M' ),
+                        'css' => 'month',
+                    ),
+                    array(
+                        'sep' => $GLOBALS['space_sep'],
+                        'txt' => get_the_date( 'Y' ),
+                        'css' => 'year',
+                    ),
+                ),
+            ),
+        ) );
+        
+        
+        // R: Post Published Time Stamp
+        $post_published_time_stamp_obj = htmlok( array(
+            'name'      => 'Post Published Time Stamp',
+            'structure' => array(
+                'type'      => 'object',
+                'subtype'   => 'time',
+                'attr'      => array(
+                    'elem'      => array(
+                        'datetime'  => get_the_date( DATE_W3C ),
+                    ),
+                    'a'         => array(
+                        'href'      => esc_url( get_permalink() ),
+                    ),
+                ),
+                'linked'    => true,
+                'layout'    => 'inline',
+            ),
+            'title'     => get_the_date( 'H:i:s'),
+            'content'   => array(
+                'object' => array(
+                    array(
+                        'txt' => get_the_date( 'H' ),
+                        'css' => 'hours',
+                    ),
+                    array(
+                        'sep' => $GLOBALS['colon_sep'],
+                        'txt' => get_the_date( 'i' ),
+                        'css' => 'minutes',
+                    ),
+                    array(
+                        'sep' => $GLOBALS['colon_sep'],
+                        'txt' => get_the_date( 's' ),
+                        'css' => 'seconds',
+                    ),
+                ),
+            ),
+        ) );
+        
+        
+        
+        $post_published_date_time_stamp_cp = htmlok( array(
+            'name'      => 'Post Published Date and Time Stamp',
+            'structure' => array(
+                'type'      => 'component',
+            ),
+            'content'   => array(
+                'component' => array(
+                    $post_published_date_stamp_obj,
+                    ' '.$post_published_time_stamp_obj,
+                ),
+            ),
+        ) );
+        
+        
+        $post_published_cp = htmlok( array(
+            'name'      => 'Post Published',
+            'structure' => array(
+                'type'      => 'component',
+            ),
+            'content'   => array(
+                'component' => array(
+                    $post_published_label_obj,
+                    $post_published_date_time_stamp_cp,
+                ),
+            ),
+        ) );
+        
+        
+        
+        
+        // R: Post Published, Modified
+        $post_published_modified_cp = htmlok( array(
+            'name'      => 'Post Published, Modified',
+            'structure' => array(
+                'type'      => 'component',
+            ),
+            'content'   => array(
+                'component' => array(
+                    $post_published_cp,
+                    $post_modified,
+                ),
+            ),
+        ) );
+        
+        return $post_published_modified_cp;
     
     }
 }
