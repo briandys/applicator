@@ -50,7 +50,7 @@ if ( ! function_exists( 'applicator_func_main_nav' ) ) {
                 ) );
 
             }
-            $main_nav = ob_get_contents();
+            $main_nav_ob_content = ob_get_contents();
             ob_end_clean();
 
             // Main Navigation
@@ -69,7 +69,7 @@ if ( ! function_exists( 'applicator_func_main_nav' ) ) {
                 ),
                 'id'        => 'main-nav',
                 'content'   => array(
-                'component'     => $main_nav
+                    'component' => $main_nav_ob_content,
                 ),
             ) );
 

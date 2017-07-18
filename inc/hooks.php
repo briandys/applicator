@@ -19,3 +19,10 @@ function applicator_hook_after_post_heading() {
 function applicator_hook_after_post_header_aside() {
     do_action( 'applicator_hook_after_post_header_aside' );
 }
+
+/*
+function x() {
+    echo 'xx';
+}
+add_action( 'applicator_hook_after_main_nav', 'x');
+*/

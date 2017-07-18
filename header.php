@@ -18,7 +18,7 @@
                 
                 //------------------------------------------------ Web Product Start
                 
-                // Go to Content Navi
+                // R: Go to Content Navi
                 $go_to_content_navi_obj = htmlok( array(
                     'name'      => 'Go to Content',
                     'structure' => array(
@@ -43,7 +43,7 @@
                     ),
                 ) );
                 
-                // Go to Content Nav
+                // R: Go to Content Nav
                 $go_to_content_nav_cp = htmlok( array(
                     'name'      => 'Go to Content',
                     'structure' => array(
@@ -58,14 +58,16 @@
                     ),
                 ) );
                 
-                // Browser Upgrade Note Text
+                
+                // R: Browser Upgrade Note Text
                 $browser_upgrade_note_txt = sprintf( '<p>%1$s <a href="%3$s">%2$s</a></p>',
                     esc_html__( 'You are using an outdated browser. Please upgrade your browser to improve your experience.', 'applicator' ),
                     esc_html__( 'Upgrade Browser', 'applicator' ),
                     esc_url( 'http://browsehappy.com/' )
                 );
                 
-                // Browser Upgrade Note
+                
+                // R: Browser Upgrade Note
                 $browser_upgrade_obj = htmlok( array(
                     'name'      => 'Browser Upgrade',
                     'structure' => array(
@@ -76,7 +78,7 @@
                     'content'       => array(
                         'object'        => array(
                             array(
-                                'txt'       => $browser_upgrade_note_txt,
+                                'txt'   => $browser_upgrade_note_txt,
                             ),
                         ),
                         'before'    => '<!--[if lt IE 8]>',
@@ -84,7 +86,8 @@
                     ),
                 ) );
                 
-                // Web Product Start
+                
+                // E: Web Product Start
                 $web_product_start_cn = htmlok( array(
                     'name'      => 'Web Product Start',
                     'structure' => array(
@@ -93,9 +96,8 @@
                     'id'        => 'web-product-start',
                     'css'       => 'wbp-start',
                     'content'   => array(
-                        'constructor'       => array(
+                        'constructor'   => array(
                             $go_to_content_nav_cp,
-                            //$go_content_nav,
                             $browser_upgrade_obj,
                         ),
                     ),
@@ -109,7 +111,8 @@
                 
                 //------------------------ Web Product Main Info
                         
-                // Web Product Main Name
+                
+                // R: Web Product Main Name
                 $web_product_main_name_obj = htmlok( array(
                     'name'      => 'Web Product Main Name',
                     'structure' => array(
@@ -135,7 +138,9 @@
                     ),
                 ) );
 
-                // Web Product Main Logo | inc > settings.php | Customizer > Site Identity
+                
+                // R: Web Product Main Logo
+                // inc > settings.php | Customizer > Site Identity
                 $web_product_main_logo_obj = '';
 
                 if ( has_custom_logo() ) {
@@ -153,7 +158,8 @@
                     ) );
                 }
 
-                // Web Product Main Description
+                
+                // R: Web Product Main Description
                 $web_product_main_description_obj = '';
                 $description = get_bloginfo( 'description', 'display' );
 
@@ -182,7 +188,8 @@
                     ) );
                 }
 
-                // Web Product Main Info
+                
+                // R: Web Product Main Info
                 $web_product_main_info_cp = htmlok( array(
                     'name'      => 'Web Product Main Info',
                     'structure' => array(
@@ -192,8 +199,14 @@
                     'css'       => 'wbp-main-info',
                     'content'   => array(
                         'component' => array(
+                            
+                            // Main Name
                             $web_product_main_name_obj,
+                            
+                            // Main Logo
                             $web_product_main_logo_obj,
+                            
+                            // Main Description
                             $web_product_main_description_obj,
                         ),
                     ),
@@ -202,7 +215,8 @@
                 //------------------------ End: Web Product Main Info
                 
                 
-                // Web Product Main Media Banner | Custom Header | Customizer > Custom Header | inc > functions > custom-header.php
+                // R: Web Product Main Media Banner
+                // Custom Header | Customizer > Custom Header | inc > functions > custom-header.php
                 $web_product_main_media_banner_obj = '';
 
                 if ( has_header_image() ) {
@@ -219,14 +233,22 @@
                     ) );
                 }
                 
-                // Search
+                
+                // OB: Hook After Main Nav
                 ob_start();
-                get_search_form();
-                $search_form = ob_get_contents();
+                applicator_hook_after_main_nav();
+                $hook_after_main_nav_ob_content = ob_get_contents();
                 ob_end_clean();
                 
                 
-                // Main Header
+                // OB: Search
+                ob_start();
+                get_search_form();
+                $search_ob_content = ob_get_contents();
+                ob_end_clean();
+                
+                
+                // E: Main Header
                 $main_header_cn = htmlok( array(
                     'name'      => 'Main Header',
                     'structure' => array(
@@ -237,11 +259,23 @@
                     'root_css'  => 'site-header',
                     'content'   => array(
                         'constructor'   => array(
+                            
+                            // Web Product Main Info
                             $web_product_main_info_cp,
+                            
+                            // Main Nav
                             applicator_func_main_nav(),
-                            applicator_hook_after_main_nav(),
-                            $search_form,
+                            
+                            // Hook After Main Nav
+                            $hook_after_main_nav_ob_content,
+                            
+                            // Search
+                            $search_ob_content,
+                            
+                            // Web Product Main Media Banner
                             $web_product_main_media_banner_obj,
+                            
+                            // Main Header Aside
                             applicator_func_main_header_aside(),
                         ),
                     ),

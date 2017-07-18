@@ -1433,24 +1433,12 @@ function htmlok( $args = array() ) {
                 }
             }
             
-            
-            
-            
-            
-            
-            
-            
             $content_val .= '</div>';
             $content_val .= '</div>';
             $content_val .= '</fieldset>';
             $content_val .= '</div><!-- '.$o_content_compound_name.' Fieldset Item CP -->';
-            
         }
     }
-    
-    
-    
-    // End: X
     
     
     //------------------------ Object Content
@@ -1463,7 +1451,6 @@ function htmlok( $args = array() ) {
             $txt_auto_css = '';
             $txt_css = '';
             $r_content_obj_sep = '';
-            $content_val = '';
             
             // Text Content
             if ( ! empty( $val['txt'] ) ) {
@@ -1618,89 +1605,9 @@ function htmlok( $args = array() ) {
                 }
             }
             
-            /*
-            if ( ! empty( $val['form_elem'] ) ) {
-                $r_obj_content_felem = preg_replace( $pat_space, $rep_space, trim( $val['form_elem'] ) );
-                $obj_content_felem = $r_obj_content_felem;
-                
-                if ( in_array( $obj_content_felem, $obj_content_form_elem_input_term_variations, true ) ) {
-                    
-                    $form_elem_id = '';
-                    $form_elem_css = '';
-                    $form_elem_name = '';
-                    $form_elem_placeholder = '';
-                    $form_elem_value = '';
-                    $form_elem_type = '';
-                    $form_elem_required = '';
-                    
-                    // Array Input: ID
-                    if ( ! empty( $val['id'] ) ) {
-                        $r_obj_content_id = preg_replace( $pat_space, $rep_space, trim( $val['id'] ) );
-                        $obj_content_id = $r_obj_content_id;
-                        $form_elem_id = ' '.'id="'.$obj_content_id.'"';
-                    }
-                    
-                    // Array Input: CSS
-                    if ( ! empty( $val['css'] ) ) {
-                        $r_content_obj_css = preg_replace( $pat_space, $rep_space, trim( $val['css'] ) );
-                        $r_content_obj_css = $r_content_obj_css;
-                    }
-                    
-                    // Name Attribute
-                    if ( ! empty( $val['attr']['name'] ) ) {
-                        $r_form_elem_attr_name = preg_replace( $pat_space, $rep_space, trim( $val['attr']['name'] ) );
-                        $form_elem_attr_name = $r_form_elem_attr_name;
-
-                        $form_elem_name = ' '.'name="'.$form_elem_attr_name.'"';
-                    }
-                    
-                    // Type Attribute
-                    if ( ! empty( $val['attr']['type'] ) ) {
-                        $r_form_elem_attr_type = preg_replace( $pat_space, $rep_space, trim( $val['attr']['type'] ) );
-                        $form_elem_attr_type = $r_form_elem_attr_type;
-                        
-                        $clean_form_elem_attr_type = sanitize_title( $form_elem_attr_type );
-
-                        $form_elem_type = ' '.'type="'.$clean_form_elem_attr_type.'"';
-                    }
-                    
-                    // Placeholder Attribute
-                    if ( ! empty( $val['attr']['placeholder'] ) ) {
-                        $r_form_elem_attr_placeholder = preg_replace( $pat_space, $rep_space, trim( $val['attr']['placeholder'] ) );
-                        $form_elem_attr_placeholder = $r_form_elem_attr_placeholder;
-
-                        $form_elem_placeholder = ' '.'placeholder="'.$form_elem_attr_placeholder.'"';
-                    }
-                    
-                    // Value Attribute
-                    if ( ! empty( $val['attr']['value'] ) ) {
-                        $r_form_elem_attr_value = preg_replace( $pat_space, $rep_space, trim( $val['attr']['value'] ) );
-                        $form_elem_attr_value = $r_form_elem_attr_value;
-
-                        $form_elem_value = ' '.'value="'.$form_elem_attr_value.'"';
-                    }
-                    
-                    // Required Attribute
-                    if ( ! empty( $val['attr']['required'] ) ) {
-                        $r_form_elem_attr_required = preg_replace( $pat_space, $rep_space, trim( $val['attr']['required'] ) );
-                        $form_elem_attr_required = $r_form_elem_attr_required;
-
-                        if ( $form_elem_attr_required ) {
-                            $form_elem_required = ' '.'required';
-                        }
-                    }
-                    
-                    if ( ! empty( $val['css'] ) ) {
-                        $form_elem_css = ' '.'input-'.$clean_form_elem_attr_type.' '.$r_content_obj_css.'---input-'.$clean_form_elem_attr_type;
-                    } else {
-                        $form_elem_css = ' '.'input-'.$clean_form_elem_attr_type.' '.$clean_name.'---input-'.$clean_form_elem_attr_type;
-                    }
-                    
-                    $obj_content_val = '';
-                    $obj_content_val .= '<input'.$form_elem_id.' class="input'.$form_elem_css.'"'.$form_elem_name .$form_elem_placeholder .$form_elem_value .$form_elem_type .$form_elem_required.'>';
-                }
+            else {
+                $content_val .= preg_replace( $pat_space, $rep_space, trim( $val ) );
             }
-            */
         }
         
     }
