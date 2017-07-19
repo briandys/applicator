@@ -68,8 +68,12 @@
 .post-mod---h,
 
 /* Published Post Author */
-.published-post-author---h,
+.pub-post-author---h,
 .post-author---h,
+
+/* Classifications */
+.post-categories---h,
+.categories---h,
 
 /* Comments Actions Snippet - Component */
 .coms-acts-snip---h,

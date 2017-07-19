@@ -75,7 +75,8 @@ function htmlok( $args = array() ) {
     $subtype_wpg_terms = array( 'wordpress generated content', 'wpg', 'wp', );
     $subtype_navi_terms = array( 'navigation item', 'nav item', 'navi', );
     $subtype_note_terms = array( 'note', );
-    $subtype_form_label_terms = array( 'form label', 'flabel', 'fl', );
+    $subtype_generic_label_terms = array( 'generic label', 'glabel', );
+    $subtype_form_label_terms = array( 'form label', 'flabel', );
     $subtype_form_element_terms = array( 'form element', 'felem', 'fe', );
     
     // Object Layout
@@ -525,6 +526,19 @@ function htmlok( $args = array() ) {
             }
             
 
+            // Generic Label Subtype
+            elseif ( in_array( $r_subtype, $subtype_generic_label_terms, true ) ) {
+                
+                $subtype_name = 'Generic Label';
+                $subtype_name_abbr = 'glabel';
+                
+                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_css = ' '.$subtype_name_abbr;
+                $p_subtype_postfix_css = '-'.$subtype_name_abbr;
+                
+            }
+            
+
             // Form Label Subtype
             elseif ( in_array( $r_subtype, $subtype_form_label_terms, true ) ) {
                 
@@ -731,7 +745,7 @@ function htmlok( $args = array() ) {
         $p_obj_label_elem_css = ' '.$p_clean_name. $p_subtype_postfix_css. $obj_elem_postfix_css.'_l';
     }
     $p_obj_elem_css = $obj_elem_css;
-    $p_obj_label_elem_css = $obj_elem_css.'_l';
+    $p_obj_generic_label_elem_css = $obj_elem_css.'_l';
     
     
     
@@ -741,7 +755,7 @@ function htmlok( $args = array() ) {
     $o_obj_label_elem = $p_obj_label_elem;
     
     $o_obj_elem_css = $p_obj_elem_css. $p_obj_elem_combo_css;
-    $o_obj_label_elem_css = $p_obj_label_elem_css. $p_obj_label_elem_css;
+    $o_obj_label_elem_css = $p_obj_generic_label_elem_css. $p_obj_label_elem_css;
     
     // Anchor Element
     $o_obj_a_elem_css = $p_branch_name_css;

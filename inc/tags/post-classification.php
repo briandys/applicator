@@ -27,6 +27,7 @@ if ( ! function_exists( 'applicator_func_post_categories' ) ) {
         if ( 'post' === get_post_type() ) {
             if ( $categories_list && applicator_func_categorized_blog() ) {
                 
+                /*
                 // Content
                 $post_cat_lbl = sprintf( $GLOBALS['post_classification_lbl_mu'],
                     'Category',
@@ -44,6 +45,53 @@ if ( ! function_exists( 'applicator_func_post_categories' ) ) {
                     'post-cat-class',
                     $post_cat_lbl
                 );
+                */
+                
+                
+                // R: Post Category Label
+                $post_categories_label_obj = htmlok( array(
+                    'name'      => 'Post Categories',
+                    'structure' => array(
+                        'type'      => 'object',
+                        'subtype'   => 'generic label',
+                    ),
+                    'content'   => array(
+                        'object' => array(
+                            array(
+                                'txt'   => 'Categories',
+                            ),
+                        ),
+                    ),
+                ) );
+                
+                
+                // R: Categories
+                $categories_cp = htmlok( array(
+                    'name'      => 'Categories',
+                    'structure' => array(
+                        'type'      => 'component',
+                    ),
+                    'content'   => array(
+                        'component' => $categories_list,
+                    ),
+                ) );
+                
+                
+                // R: Post Category
+                $post_categories_cp = htmlok( array(
+                    'name'      => 'Post Categories',
+                    'structure' => array(
+                        'type'      => 'component',
+                    ),
+                    'content'   => array(
+                        'component' => array(
+                            $post_categories_label_obj,
+                            $categories_cp,
+                        ),
+                    ),
+                ) );
+                
+                return $post_categories_cp;
             
             }
         }

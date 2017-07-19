@@ -41,11 +41,12 @@ if ( ! function_exists( 'applicator_func_post_published_modified_cp' ) ) {
         
         // R: Post Published Label
         $post_published_label_obj = htmlok( array(
-            'name'      => 'Post Published Label',
+            'name'      => 'Post Published',
             'structure' => array(
                 'type'      => 'object',
+                'subtype'   => 'generic label',
             ),
-            'css'       => 'post-pub-lbl',
+            'css'       => 'post-pub',
             'content'   => array(
                 'object' => array(
                     array(
@@ -177,11 +178,12 @@ if ( ! function_exists( 'applicator_func_post_published_modified_cp' ) ) {
         
         // R: Post Modified Label
         $post_modified_label_obj = htmlok( array(
-            'name'      => 'Post Modified Label',
+            'name'      => 'Post Modified',
             'structure' => array(
                 'type'      => 'object',
+                'subtype'   => 'generic label',
             ),
-            'css'       => 'post-mod-lbl',
+            'css'       => 'post-mod',
             'content'   => array(
                 'object' => array(
                     array(

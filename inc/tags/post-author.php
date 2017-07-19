@@ -17,11 +17,12 @@ if ( ! function_exists( 'applicator_func_post_author' ) ) {
         
         // R: Post Published Label
         $post_published_label_obj = htmlok( array(
-            'name'      => 'Post Published Label',
+            'name'      => 'Post Published',
             'structure' => array(
                 'type'      => 'object',
+                'subtype'   => 'generic label',
             ),
-            'css'       => 'post-pub-lbl',
+            'css'       => 'post-pub',
             'content'   => array(
                 'object' => array(
                     array(

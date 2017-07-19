@@ -43,20 +43,6 @@
                 applicator_func_breadcrumbs_nav();
                 
                 
-                // OB: Post Author
-                ob_start();
-                applicator_func_post_author();
-                $post_author_ob_content = ob_get_contents();
-                ob_end_clean();
-                
-                
-                // OB: Post Categories
-                ob_start();
-                applicator_func_post_categories();
-                $post_categories_ob_content = ob_get_contents();
-                ob_end_clean();
-                
-                
                 // E: Post Meta
                 $post_meta = htmlok( array(
                     'name'      => 'Post Meta',
@@ -66,25 +52,21 @@
                     'content'   => array(
                         'component'     => array(
                             
+                            // Date and Time Stamp
                             // inc > tags > post-published-modified-cp.php
                             applicator_func_post_published_modified_cp(),
                             
                             // Author
+                            // inc > tags > post-author.php
                             applicator_func_post_author(),
                             
                             // Categories
-                            $post_categories_ob_content,
+                            // inc > tags > post-classification.php
+                            applicator_func_post_categories(),
                         ),
                     ),
                     'echo'      => true,
                 ) );
-                
-                
-                // OB: Post Banner Visual
-                ob_start();
-                applicator_func_post_banner_visual();
-                $post_banner_visual_ob_content = ob_get_contents();
-                ob_end_clean();
                 
                 
                 // E: Post Header Aside
@@ -103,7 +85,7 @@
                             $post_meta,
                             
                             // Post Banner Visual | inc > tags > post-banner-visual.php
-                            $post_banner_visual_ob_content,
+                            applicator_func_post_banner_visual(),
                             
                             // inc > tags > comments-actions-snippet-cp.php
                             applicator_func_comments_actions_snippet_cp(),
