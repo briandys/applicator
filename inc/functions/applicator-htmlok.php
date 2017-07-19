@@ -504,6 +504,8 @@ function htmlok( $args = array() ) {
                 $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
                 
+                $subtype_elem = 'li';
+                
             }
             
             // Note Subtype

@@ -118,13 +118,11 @@ else {
             
             while ( have_posts() ) {
                 
-                // Entry Nav
+                // OB: Entry Nav
                 ob_start();
-                
                 // inc > tags > entry-nav.php
                 apl_entry_nav();
-                
-                $entry_nav_content = ob_get_contents();
+                $entry_nav_ob_content = ob_get_contents();
                 ob_end_clean();
                 
                 
@@ -148,11 +146,11 @@ else {
                     'structure' => array(
                         'type'      => 'component',
                     ),
-                    'hr_content'    => $entry_nav_content,
+                    'hr_content'    => $entry_nav_ob_content,
                     'content'   => array(
                         'component'     => $entry_content,
                     ),
-                    'fr_content'    => $entry_nav_content,
+                    'fr_content'    => $entry_nav_ob_content,
                 ) );
                 
             }
@@ -163,26 +161,22 @@ else {
             
             if ( have_posts() ) {
                 
-                // Page Nav
+                // OB: Page Nav
                 ob_start();
-                
                 // inc > template-parts > page-nav.php
                 applicator_func_page_nav();
-                
                 $page_nav_content = ob_get_contents();
                 ob_end_clean();
                 
                 
-                // Entries Content
+                // OB: Entries Content
                 ob_start();
-                
                 while ( have_posts() ) {
                     the_post();
 
                     // template-parts > post-content.php
                     applicator_func_post_content();
                 }
-                
                 $entries_content = ob_get_contents();
                 ob_end_clean();
 
@@ -207,12 +201,10 @@ else {
             // content-none.php
             else {
                 
-                // Content None Content
+                // OB: Content None Content
                 // Entries Content
                 ob_start();
-                
                 get_template_part( 'content', 'none' );
-                
                 $content_none_content = ob_get_contents();
                 ob_end_clean();
                 
