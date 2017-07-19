@@ -136,6 +136,7 @@ if ( ! function_exists( 'applicator_func_post_published_modified_cp' ) ) {
                         'css' => 'seconds',
                     ),
                 ),
+                'before'    => $GLOBALS['comma_sep'],
             ),
         ) );
         
@@ -271,6 +272,7 @@ if ( ! function_exists( 'applicator_func_post_published_modified_cp' ) ) {
                         'css' => 'seconds',
                     ),
                 ),
+                'before'    => $GLOBALS['comma_sep'],
             ),
         ) );
         

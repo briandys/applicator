@@ -70,7 +70,7 @@
                             applicator_func_post_published_modified_cp(),
                             
                             // Author
-                            $post_author_ob_content,
+                            applicator_func_post_author(),
                             
                             // Categories
                             $post_categories_ob_content,

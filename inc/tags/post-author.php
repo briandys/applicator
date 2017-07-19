@@ -1,122 +1,129 @@
 <?php // Post Author | content.php
+/*
+Structure:
+
+Published Post Author
+• Published Post Label
+• Post Author
+•• Author Name
+•• Author Avatar
+
+Output: Published by Author Name [Author Avatar]
+*/
 
 if ( ! function_exists( 'applicator_func_post_author' ) ) {
     function applicator_func_post_author() {
         
-        $post_author_avatar_default_pre_css = 'post-author-avatar-default';
+        
+        // R: Post Published Label
+        $post_published_label_obj = htmlok( array(
+            'name'      => 'Post Published Label',
+            'structure' => array(
+                'type'      => 'object',
+            ),
+            'css'       => 'post-pub-lbl',
+            'content'   => array(
+                'object' => array(
+                    array(
+                        'txt'   => 'Published by',
+                    ),
+                ),
+            ),
+        ) );
+        
+        
+        // R: Author Name
+        $author_name_obj = htmlok( array(
+            'name'      => 'Author Name',
+            'structure' => array(
+                'type'      => 'object',
+                'linked'    => true,
+                'attr'      => array(
+                    'a'         => array(
+                        'href'      => esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+                    ),
+                ),
+                'layout'    => 'inline',
+            ),
+            'title'     => get_the_author(),
+            'content'   => array(
+                'object' => array(
+                    array(
+                        'txt'   => get_the_author(),
+                    ),
+                ),
+            ),
+        ) );
+        
+        
+        // R: Author Avatar
+        $author_avatar_obj = htmlok( array(
+            'name'      => 'Author Avatar',
+            'structure' => array(
+                'type'      => 'object',
+                'subtype'   => 'wordpress generated object',
+                'linked'    => true,
+                'attr'      => array(
+                    'a'         => array(
+                        'href'      => esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+                    ),
+                ),
+                'layout'    => 'inline',
+            ),
+            'title'     => get_the_author(),
+            'content'   => array(
+                'object' => get_avatar(
+                    get_the_author_meta( 'ID' ),
+                    $size = '48',
+                    $default = '',
+                    $alt = get_the_author_meta( 'display_name' ) . ' ' . esc_attr__( 'Author Avatar', 'applicator' )
+                ),
+                'before'    => $GLOBALS['space_sep'],
+            ),
+        ) );
+        
+        
+        // R: Post Author
+        $post_author_cp = htmlok( array(
+            'name'      => 'Post Author',
+            'structure' => array(
+                'type'      => 'component',
+            ),
+            'content'   => array(
+                'component' => array(
+                    $author_name_obj,
+                    $author_avatar_obj,
+                ),
+            ),
+        ) );
+        
+        
+        // Conditionals: Blank or Custom Avatar
+        $author_avatar_prefix_css = 'author-avatar-default';
         
         if ( get_option( 'avatar_default' ) == 'blank' ) {
-            $post_author_avatar_default_css = $post_author_avatar_default_pre_css . '--blank';
+            $author_avatar_type_css = $author_avatar_prefix_css . '--blank';
         } else {
-            $post_author_avatar_default_css = $post_author_avatar_default_pre_css . '--custom';
+            $author_avatar_type_css = $author_avatar_prefix_css . '--custom';
         }
         
         
-        // Markup
-        $post_pub_lbl_mu = '<span class="obj %2$s" data-name="%1$s">';
-            $post_pub_lbl_mu .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l">%4$s</span></span>';
-        $post_pub_lbl_mu .= '</span>';
-        
-        // Content
-        $post_pub_lbl_NAME = 'Published By Label Object';
-        $post_pub_lbl = sprintf( $post_pub_lbl_mu,
-            $post_pub_lbl_NAME,
-            'published-by-label-obj',
-            'pub-lbl-obj',
-            esc_html__( 'Published by', 'applicator' )
-        );
-        
-        
-        // Markup
-        $post_author_name_mu = '<span class="obj %2$s" title="%4$s" data-name="%1$s">';
-            $post_author_name_mu .= '<span class="g %3$s---g"><a class="a %3$s---a" href="%6$s">';
-            $post_author_name_mu .= '<span class="a_l %3$s---a_l"><span class="word %4$s---word">%5$s</span></span></a></span>';
-        $post_author_name_mu .= '</span>';
-        
-        // Content
-        $post_author_name_NAME = 'Post Author Name Object';
-        $post_author_name = sprintf( $post_author_name_mu,
-            $post_author_name_NAME,
-            'post-author-name-obj',
-            'post-author-name-obj',
-            'author-name',
-            get_the_author(),
-            esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) )
-        );
-        
-        
-        // Markup
-        $post_author_avatar_mu = '<span class="obj %2$s" title="%5$s" data-name="%1$s">';
-            $post_author_avatar_mu .= '<a class="a %3$s---a" href="%6$s"><span class="a_l %3$s---a_l"><span class="ee--img %3$s---ee--img">%4$s</span></span></a>';
-        $post_author_avatar_mu .= '</span>';
-        
-        // Content
-        $post_author_avatar_NAME = 'Post Author Avatar Object';
-        $post_author_avatar = sprintf( $post_author_avatar_mu,
-            $post_author_avatar_NAME,
-            'post-author-avatar-obj',
-            'post-author-avatar-obj',
-            get_avatar(
-                get_the_author_meta( 'ID' ),
-                $size = '48',
-                $default = '',
-                $alt = get_the_author_meta( 'display_name' ) . ' ' . esc_attr__( 'Avatar', 'applicator' )
+        // R: Published Post Author
+        $published_post_author_cp = htmlok( array(
+            'name'      => 'Published Post Author',
+            'structure' => array(
+                'type'      => 'component',
             ),
-            get_the_author(),
-            esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) )
-        );
+            'root_css'  => $author_avatar_type_css,
+            'css'       => 'pub-post-author',
+            'content'   => array(
+                'component' => array(
+                    $post_published_label_obj,
+                    $post_author_cp,
+                ),
+            ),
+        ) );
         
-        
-        // Markup
-        $post_author_mu = '<div class="cp %2$s' . ' ' . $post_author_avatar_default_css . '" data-name="%1$s">';
-            $post_author_mu .= '<div class="cr %3$s---cr">';
-                $post_author_mu .= '<div class="hr %3$s---hr">';
-                    $post_author_mu .= '<div class="hr_cr %3$s---hr_cr">';
-                        $post_author_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h_l">%4$s</span></div>';
-                    $post_author_mu .= '</div>';
-                $post_author_mu .= '</div>';
-                $post_author_mu .= '<div class="ct %3$s---ct">';
-                        $post_author_mu .= '<div class="ct_cr %3$s---ct_cr">%5$s %6$s</div>';
-                $post_author_mu .= '</div><!-- ct -->';
-            $post_author_mu .= '</div>';
-        $post_author_mu .= '</div>';
-        
-        // Content
-        $post_author_NAME = 'Post Author';
-        $post_author = sprintf( $post_author_mu,
-            $post_author_NAME,
-            'post-author',
-            'post-author',
-            $post_author_NAME,
-            $post_author_name,
-            $post_author_avatar
-        );
-        
-        
-        // Markup
-        $post_pub_author_mu = '<div class="cp %2$s" data-name="%1$s">';
-            $post_pub_author_mu .= '<div class="cr %3$s---cr">';
-                $post_pub_author_mu .= '<div class="hr %3$s---hr">';
-                    $post_pub_author_mu .= '<div class="hr_cr %3$s---hr_cr">';
-                        $post_pub_author_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h_l">%4$s</span></div>';
-                    $post_pub_author_mu .= '</div>';
-                $post_pub_author_mu .= '</div>';
-                $post_pub_author_mu .= '<div class="ct %3$s---ct">';
-                        $post_pub_author_mu .= '<div class="ct_cr %3$s---ct_cr">%5$s %6$s</div>';
-                $post_pub_author_mu .= '</div><!-- ct -->';
-            $post_pub_author_mu .= '</div>';
-        $post_pub_author_mu .= '</div><!-- %1$s -->';
-        
-        // Display
-        $post_pub_author_NAME = 'Post Published Author';
-        printf( $post_pub_author_mu,
-            $post_pub_author_NAME,
-            'post-published-author',
-            'post-pub-auth',
-            $post_pub_author_NAME,
-            $post_pub_lbl,
-            $post_author
-        );
-        
+        return $published_post_author_cp;
     }
 }

@@ -67,6 +67,10 @@
 .post-mod-d-t-stamp---h,
 .post-mod---h,
 
+/* Published Post Author */
+.published-post-author---h,
+.post-author---h,
+
 /* Comments Actions Snippet - Component */
 .coms-acts-snip---h,
 .coms-population---h,
@@ -328,6 +332,13 @@
     overflow: hidden;
 }
 
+/* Author Avatar */
+
+.author-avatar-default--blank .author-avatar,
+.author-avatar-default--blank .post-author---ct_cr > .space---sep
+{
+    display: none;
+}
 
 
 
