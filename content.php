@@ -177,20 +177,31 @@
 
                     $the_query = new WP_Query( $args );
 
-                    if ( $the_query->have_posts() ) { ?>
-
-                        <div class="cp sub-post" data-name="Sub-Post">
-                            <div class="cr sub-post---cr">
-
-                        <?php while ( $the_query->have_posts() ) {
+                    if ( $the_query->have_posts() ) {
+                        
+                        
+                        // OB: Query Sub-Post Content
+                        ob_start();
+                        while ( $the_query->have_posts() ) {
                             $the_query->the_post();
                             get_template_part( 'content', get_post_format() );
-                        } ?>
-
-                            </div>
-                        </div><!-- Sub-Post -->
-
-                    <?php }
+                        }
+                        $query_sub_post_ob_content = ob_get_contents();
+                        ob_end_clean();
+                        
+                        
+                        // E: Sub-Post Content
+                        $sub_post_cp = htmlok( array(
+                            'name'      => 'Sub-Post Content',
+                            'structure' => array(
+                                'type'      => 'component',
+                            ),
+                            'content'   => array(
+                                'component' => $query_sub_post_ob_content,
+                            ),
+                            'echo'      => true,
+                        ) );
+                    }
                     wp_reset_postdata();
                 }
                 ?>

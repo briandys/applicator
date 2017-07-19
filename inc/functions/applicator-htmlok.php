@@ -1676,10 +1676,12 @@ function htmlok( $args = array() ) {
     }
     
     if ( in_array( $r_structure, $structure_component_terms, true ) ) {
+        
         $o_content = $hr_mu. $ct_mu. $fr_mu;
     }
     
     if ( in_array( $r_structure, $structure_object_terms, true ) ) {
+        
         $o_content = $obj_ct_mu;
     }
     
