@@ -24,12 +24,72 @@ if ( ! function_exists( 'applicator_func_page_nav' ) ) {
         $format  = $GLOBALS['wp_rewrite']->using_index_permalinks() && ! strpos( $pagenum_link, 'index.php' ) ? 'index.php/' : '';
         $format .= $GLOBALS['wp_rewrite']->using_permalinks() ? user_trailingslashit( 'page/%#%', 'paged' ) : '?paged=%#%';
         
-        $page_num_navi_start_mu = '<span class="a_l %2$s---a_l"><span class="word page---word">%1$s</span> <span class="num page-num---num">';
         
-        $page_num_navi_end_mu = '</span></span>';
+        // Terms Definitions
+        $page_term = esc_html__( 'Page', 'applicator' );
+        $next_term = esc_html__( 'Next', 'applicator' );
+        $previous_term = esc_html__( 'Previous', 'applicator' );
+        $page_navi_css = 'page-navi';
+        $adjacent_navi_css = 'adjacent-navi';
         
-        $adjacent_navi_mu = '<span class="a_l %4$s-navi---a_l" rel="%5$s" title="%1$s"><span class="word %5$s---word">%2$s</span> <span class="word page---word">%3$s</span></span>';
         
+        // MU: Page Number Navigation Item Start
+        $page_navi_smu = '';
+        $page_navi_smu .= '<span class="a_l %2$s---a_l">';
+            $page_navi_smu .= '<span class="txt %3$s---txt">';
+                $page_navi_smu .= '%1$s';
+            $page_navi_smu .= '</span>';
+            $page_navi_smu .= ' <span class="txt %4$s---txt">';
+        
+        
+        // MU: Page Number Navigation Item End
+        $page_navi_emu = '';
+            $page_navi_emu .= '</span>';
+        $page_navi_emu .= '</span>';
+        
+        
+        // Page Number Navigation Item Start Content
+        $page_navi_smu_content = sprintf( $page_navi_smu,
+            $page_term,
+            $page_navi_css,
+            sanitize_title( $page_term ),
+            'num page-number'
+        );
+        
+        
+        // Adjacent (Next / Previous) Navigation Item Start Content
+        $adjacent_navi_next_smu_content = sprintf( $page_navi_smu,
+            $next_term,
+            $adjacent_navi_css,
+            sanitize_title( $next_term ),
+            sanitize_title( $page_term )
+        );
+        
+        
+        // MU: Adjacent Navigation Item
+        $adjacent_navi_next_mu = '';
+        $adjacent_navi_next_mu .= $adjacent_navi_next_smu_content;
+        $adjacent_navi_next_mu .= $page_term;
+        $adjacent_navi_next_mu .= $page_navi_emu;
+        
+        
+        // Page Number Navigation Item Start Content
+        $adjacent_navi_previous_smu_content = sprintf( $page_navi_smu,
+            $previous_term,
+            $adjacent_navi_css,
+            sanitize_title( $previous_term ),
+            sanitize_title( $page_term )
+        );
+        
+        
+        // MU: Adjacent Navigation Item
+        $adjacent_navi_previous_mu = '';
+        $adjacent_navi_previous_mu .= $adjacent_navi_previous_smu_content;
+        $adjacent_navi_previous_mu .= $page_term;
+        $adjacent_navi_previous_mu .= $page_navi_emu;
+        
+        
+        // R: Page Navigation Group
         $page_nav_grp = paginate_links( array(
             'base'          => $pagenum_link,
             'format'        => $format,
@@ -39,48 +99,32 @@ if ( ! function_exists( 'applicator_func_page_nav' ) ) {
             'add_args'      => array_map( 'urlencode', $query_args ),
             
             'type'          => 'list',
-            
-            'before_page_number'  => sprintf( $page_num_navi_start_mu,
-                                       esc_html__( 'Page', 'applicator' ),
-                                       'page-pagi-navi'
-                                       ),
-            
-            'after_page_number'   => $page_num_navi_end_mu,
-            
             'prev_next'     => true,
             
-            'prev_text'     => sprintf( $adjacent_navi_mu,
-                                       esc_attr__( 'Previous Page', 'applicator' ),
-                                       esc_html__( 'Previous', 'applicator' ),
-                                       esc_html__( 'Page', 'applicator' ),
-                                       'prev-page',
-                                       'prev'
-                                       ),
+            'before_page_number'  => $page_navi_smu_content,
+            'after_page_number'   => $page_navi_emu,
             
-            'next_text'     => sprintf( $adjacent_navi_mu,
-                                       esc_attr__( 'Next Page', 'applicator' ),
-                                       esc_html__( 'Next', 'applicator' ),
-                                       esc_html__( 'Page', 'applicator' ),
-                                       'next-page',
-                                       'next'
-                                       )
+            'prev_text'     => $adjacent_navi_previous_mu,
+            'next_text'     => $adjacent_navi_next_mu,
         ) );
 
-        if ( $page_nav_grp ) { ?>
         
-        <div class="nav page-nav" role="navigation" aria-label="<?php esc_html_e( 'Page Navigation', 'applicator' ); ?>" data-name="Page Navigation">
-            <div class="cr page-nav---cr">
-                <div class="h page-nav---h">
-                    <span class="h_l page-nav---h_l"><?php esc_html_e( 'Page Navigation', 'applicator' ); ?></span>
-                </div>
-                <div class="ct page-nav---ct">
-                    <div class="ct_cr page-nav---ct_cr">
-                        <?php echo $page_nav_grp; ?>
-                    </div>
-                </div><!-- ct -->
-            </div>
-        </div><!-- Page Navigation -->
-        
-        <?php }
+        if ( $page_nav_grp ) {
+            
+            
+            // R: Page Navigation
+            $page_navigation_cp = htmlok( array(
+                'name'      => 'Page',
+                'structure' => array(
+                    'type'      => 'component',
+                    'subtype'   => 'navigation',
+                ),
+                'content'   => array(
+                    'component' => $page_nav_grp,
+                ),
+            ) );
+            
+            return $page_navigation_cp;
+        }
     }
 }

@@ -221,13 +221,6 @@
 
                     <?php
 
-                    // OB: Post Tags
-                    ob_start();
-                    applicator_func_post_tags();
-                    $post_tags_ob_content = ob_get_contents();
-                    ob_end_clean();
-
-                    
                     // E: Post Meta
                     $post_meta = htmlok( array(
                         'name'      => 'Post Meta',
@@ -238,7 +231,7 @@
                             'component'     => array(
 
                                 // Tags
-                                $post_tags_ob_content,
+                                applicator_func_post_tags(),
                             ),
                         ),
                         'echo'      => true,

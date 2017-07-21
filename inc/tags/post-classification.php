@@ -1,54 +1,17 @@
 <?php // Post Categories | content.php
 
-// Markup
-$GLOBALS['post_classification_mu'] = '<div class="cp %3$s">';
-    $GLOBALS['post_classification_mu'] .= '<div class="cr %4$s---cr">';
-        $GLOBALS['post_classification_mu'] .= '<div class="hr %4$s---hr">';
-            $GLOBALS['post_classification_mu'] .= '<div class="hr_cr %4$s---hr_cr">';
-                $GLOBALS['post_classification_mu'] .= '<div class="h %4$s---h"><span class="h-l %4$s---h_l">%1$s</span></div>';
-            $GLOBALS['post_classification_mu'] .= '</div>';
-        $GLOBALS['post_classification_mu'] .= '</div>';
-        $GLOBALS['post_classification_mu'] .= '<div class="ct %4$s---ct">';
-            $GLOBALS['post_classification_mu'] .= '<div class="ct_cr %4$s---ct_cr">%5$s %2$s</div>';
-        $GLOBALS['post_classification_mu'] .= '</div>';
-    $GLOBALS['post_classification_mu'] .= '</div>';
-$GLOBALS['post_classification_mu'] .= '</div><!-- %1$s -->';
-
-$GLOBALS['post_classification_lbl_mu'] = '<span class="obj %2$s" data-name="Post %1$s Label">';
-    $GLOBALS['post_classification_lbl_mu'] .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l"><span class="txt %5$s---txt">%4$s</span></span></span>';
-$GLOBALS['post_classification_lbl_mu'] .= '</span>';
-
 if ( ! function_exists( 'applicator_func_post_categories' ) ) {
     
     function applicator_func_post_categories() {        
         
-        $categories_list = get_the_category_list();
-        
         if ( 'post' === get_post_type() ) {
+            
+            $categories_list = get_the_category_list();
+            
             if ( $categories_list && applicator_func_categorized_blog() ) {
                 
-                /*
-                // Content
-                $post_cat_lbl = sprintf( $GLOBALS['post_classification_lbl_mu'],
-                    'Category',
-                    'post-category-label',
-                    'post-cat-lbl',
-                    esc_html__( 'Categories', 'applicator' ),
-                    'categories'
-                );
                 
-                // Display
-                printf( $GLOBALS['post_classification_mu'],
-                    esc_html__( 'Post Category Classification', 'applicator' ),
-                    $categories_list,
-                    'post-category-classification',
-                    'post-cat-class',
-                    $post_cat_lbl
-                );
-                */
-                
-                
-                // R: Post Category Label
+                // R: Post Categories Label
                 $post_categories_label_obj = htmlok( array(
                     'name'      => 'Post Categories',
                     'structure' => array(
@@ -103,26 +66,58 @@ if ( ! function_exists( 'applicator_func_post_tags' ) ) {
     
     function applicator_func_post_tags() {        
         
-        $tags_list = get_the_tag_list('<ul class="grp post-tag---grp"><li class="item obj post-tag">', '</li><li class="item obj post-tag">', '</li></ul>');
-        
         if ( 'post' === get_post_type() ) {
+            
+            $tags_list = get_the_tag_list('<ul class="grp post-tags---grp"><li class="item obj post-tag">', '</li><li class="item obj post-tag">', '</li></ul>');
+            
             if ( $tags_list ) {
                 
-                $post_tag_lbl = sprintf( $GLOBALS['post_classification_lbl_mu'],
-                    'Tag',
-                    'post-tag-label',
-                    'post-tag-lbl',
-                    esc_html__( 'Tags', 'applicator' ),
-                    'tags'
-                );
                 
-                printf( $GLOBALS['post_classification_mu'],
-                    esc_html__( 'Post Tag Classification', 'applicator' ),
-                    $tags_list,
-                    'post-tag-classification',
-                    'post-tag-class',
-                    $post_tag_lbl
-                );
+                
+                // R: Post Tags Label
+                $post_tags_label_obj = htmlok( array(
+                    'name'      => 'Post Tags',
+                    'structure' => array(
+                        'type'      => 'object',
+                        'subtype'   => 'generic label',
+                    ),
+                    'content'   => array(
+                        'object' => array(
+                            array(
+                                'txt'   => 'Tags',
+                            ),
+                        ),
+                    ),
+                ) );
+                
+                
+                // R: Tags
+                $tags_cp = htmlok( array(
+                    'name'      => 'Tags',
+                    'structure' => array(
+                        'type'      => 'component',
+                    ),
+                    'content'   => array(
+                        'component' => $tags_list,
+                    ),
+                ) );
+                
+                
+                // R: Post Tags
+                $post_tags_cp = htmlok( array(
+                    'name'      => 'Post Tags',
+                    'structure' => array(
+                        'type'      => 'component',
+                    ),
+                    'content'   => array(
+                        'component' => array(
+                            $post_tags_label_obj,
+                            $tags_cp,
+                        ),
+                    ),
+                ) );
+                
+                return $post_tags_cp;
             
             }
         }  

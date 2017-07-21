@@ -1,158 +1,52 @@
 
-                
-                    
-                <?php /*
-                <div class="cp post-excerpt" data-name="Post Excerpt">
-                        <div class="cr post-ex---cr">
-                            <div class="hr post-ex---hr">
-                                <div class="hr_cr post-ex---hr_cr">
-                                    <div class="h post-ex---h"><span class="h_l post-ex---h_l"><?php esc_html_e( 'Post Excerpt', 'applicator' ); ?></span></div>
-                                </div>
-                            </div>
-                            <div class="ct post-ex---ct">
-                                <div class="ct_cr post-ex---ct_cr">
-                                    <?php the_excerpt(); ?>
-                                </div>
-                            </div><!-- ct -->
+        
+        
+        
+        
+        
+        
+        $adjacent_navi_mu = '<span class="a_l %4$s-navi---a_l" rel="%5$s" title="%1$s"><span class="prop adjacent-navi---prop"><span class="word %5$s---word">%2$s</span> <span class="word entry---word">%3$s</span></span><span class="sep colon-sep">:</span> <span class="val post-title---val">%6$s</span></span>';
+        
+        $next_entry_navi = sprintf( $adjacent_navi_mu,
+            esc_attr__( 'Next Entry', 'applicator' ),
+            esc_html__( 'Next', 'applicator' ),
+            esc_html__( 'Entry', 'applicator' ),
+            'next-entry',
+            'next',
+            '%title'
+        );
+        
+        $prev_entry_navi = sprintf( $adjacent_navi_mu,
+            esc_attr__( 'Previous Entry', 'applicator' ),
+            esc_html__( 'Previous', 'applicator' ),
+            esc_html__( 'Entry', 'applicator' ),
+            'prev-entry',
+            'prev',
+            '%title'
+        );
+        
+        if ( ! is_attachment() ) { ?>
+
+            <div class="nav entry-nav" role="navigation" aria-label="<?php esc_html_e( 'Entry Navigation', 'applicator' ); ?>" data-name="Entry Navigation">
+                <div class="cr entry-nav---cr">
+                    <div class="h entry-nav---h"><span class="h_l entry-nav---h_l"><?php esc_html_e( 'Entry Navigation', 'applicator' ); ?></span></div>
+                    <div class="ct entry-nav---ct">
+                        <div class="ct_cr entry-nav---ct_cr">
+                            <ul class="grp entry-nav--grp">
+                                <?php if ( get_next_post_link() ) { ?>
+                                <li class="item obj navi next-entry-navi" data-name="Next Entry Nav Item">
+                                    <?php next_post_link( '%link', $next_entry_navi ); ?>
+                                </li>
+                                <?php }
+                                if ( get_previous_post_link() ) { ?>
+                                <li class="item obj navi prev-entry-navi" data-name="Previous Entry Nav Item">
+                                    <?php previous_post_link( '%link', $prev_entry_navi ); ?>
+                                </li>
+                                <?php } ?>
+                            </ul>
                         </div>
-                    </div><!-- Post Excerpt -->
-                    */ ?>
-                
-                    <?php } ?>
-                    
-                <?php /*
-                <div class="cp post-content" data-name="Post Content">
-                    <div class="cr post-ct---cr">
-                        <div class="hr post-ct---hr">
-                            <div class="hr_cr post-ct---hr_cr">
-                                <div class="h post-ct---h"><span class="h_l post-ct---h_l"><?php esc_html_e( 'Post Content', 'applicator' ); ?></span></div>
-                            </div>
-                        </div>
-                        <div class="ct post-ct---ct">
-                            <div class="ct_cr post-ct---ct_cr">
-                                <?php the_content(); ?>
-                            </div>
-                        </div><!-- ct -->
-                    </div>
-                </div><!-- Post Content -->
-                */ ?>
-                    
-                <?php } else { ?>
-                
-                    <div class="cp post-excerpt" data-name="Post Excerpt">
-                        <div class="cr post-ex---cr">
-                            <div class="hr post-ex---hr">
-                                <div class="hr_cr post-ex---hr_cr">
-                                    <div class="h post-ex---h"><span class="h_l post-ex---h_l"><?php esc_html_e( 'Post Excerpt', 'applicator' ); ?></span></div>
-                                </div>
-                            </div>
-                            <div class="ct post-ex---ct">
-                                <div class="ct_cr post-ex---ct_cr">
-                                    <?php echo ( get_the_excerpt() ); ?>
-                                </div>
-                            </div><!-- ct -->
-                        </div>
-                    </div><!-- Post Excerpt -->
-                <?php }
-                
-                // Entry Page Navigation
-                // inc > tags > post-nav.php
-                applicator_func_post_nav();
-                
-                // sub-post
-                if ( is_page_template( 'page-templates/sub-pages.php' ) ) {
-                    $parent = $post->ID;
-                    $args = array(
-                        'post_type'     => 'page',
-                        'post_status'   => 'publish',
-                        'post_parent'   => $parent,
-                        'order'         => 'ASC'
-                    );
-
-                    $the_query = new WP_Query( $args );
-
-                    if ( $the_query->have_posts() ) { ?>
-
-                        <div class="cp sub-post" data-name="Sub-Post">
-                            <div class="cr sub-post---cr">
-
-                        <?php while ( $the_query->have_posts() ) {
-                            $the_query->the_post();
-                            get_template_part( 'content', get_post_format() );
-                        } ?>
-
-                            </div>
-                        </div><!-- Sub-Post -->
-
-                    <?php }
-                    wp_reset_postdata();
-                } ?>
-
-
-
-
-
-
-
-
-<?php /*
-<div class="cp search search-cp" data-name="Search">
-    <div class="cr search---cr">
-        <div class="hr search---hr">
-            <div class="hr_cr search---hr_cr">
-                <h2 class="h search---h"><span class="h_l search---h_l"><?php esc_html_e( 'Search', 'applicator' ); ?></span></h2>
-            </div>
-        </div>
-        <div class="ct search---ct">
-            <div class="ct_cr search---ct_cr">
-                <form class="form search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" role="search" data-name="Search Form">
-                    <div class="fieldsets search-form---fieldsets">
-                        <div class="fieldsets-cr search-form---fieldsets-cr">
-
-                            <div class="cp fs-item search-term-creation" data-name="Search Term Creation">
-                                <div class="cr search-term-crt---cr">
-                                    <div class="hr search-term-crt---hr">
-                                        <div class="hr_cr search-term-crt---hr_cr">
-                                            <div class="h search-term-crt---h"><span class="h_l search-term-crt---h_l"><?php esc_html_e( 'Search Term Creation', 'applicator' ); ?></span></div>
-                                        </div>
-                                    </div>
-                                    <div class="ct search-term-crt---ct">
-                                        <div class="ct_cr search-term-crt---ct_cr">
-                                            <span class="obj search-term-creation-label---obj" data-name="Search Term Creation Label">
-                                                <label class="label search-term-crt-lbl---label" for="<?php echo $unique_id; ?>"><span class="label_l search-term-crt-lbl---label_l"><span class="txt search-term---txt"><?php esc_html_e( 'Search Term', 'applicator' ); ?></span></span></label>
-                                            </span>
-                                            <span class="obj search-term-creation-input---obj" data-name="Search Term Creation Input">
-                                                <span class="ee--input-text search-term-crt-inp---ee--input-text"><input id="<?php echo $unique_id; ?>" class="input-text search-term-crt-inp--input-text" name="s" type="text" placeholder="<?php esc_attr_e( 'Enter search term', 'applicator' ); ?>" value="<?php echo get_search_query(); ?>" required></span>
-                                            </span>
-                                        </div>
-                                    </div><!-- ct -->
-                                </div>
-                            </div><!-- Search Term Creation -->
-
-                        </div>
-                    </div><!-- Fieldsets -->
-                    <div class="axns search-form-axns" data-name="Search Form Actions">
-                        <div class="cr search-form-axns---cr">
-                            <div class="hr search-form-axns---hr">
-                                <div class="hr_cr search-form-axns---hr_cr">
-                                    <div class="h search-form-axns---h"><span class="h_l search-form-axns---h_l"><?php esc_html_e( 'Search Form Actions', 'applicator' ); ?></span></div>
-                                </div>
-                            </div>
-                            <div class="ct search-form-axns---ct">
-                                <div class="ct_cr search-form-axns---ct_cr">
-                                    <div class="obj axn search-submit-axn" data-name="Search Submit Action">
-                                        <button class="b search-submit-axn---b" type="submit" title="<?php esc_attr_e( 'Submit Search Term', 'applicator' ); ?>"><span class="b_l search-submit-axn---b_l"><span class="txt search---txt"><?php esc_html_e( 'Search', 'applicator' ); ?></span></span></button>
-                                    </div><!-- Search Submit Action -->
-                                    <div class="obj axn search-reset-axn" data-name="Search Reset Action">
-                                        <button class="b search-reset-axn---b" type="reset" title="<?php esc_attr_e( 'Reset Search Term', 'applicator' ); ?>"><span class="b_l search-reset-axn---b_l"><span class="txt reset---txt"><?php esc_html_e( 'Reset', 'applicator' ); ?></span></span></button>
-                                    </div><!-- Search Reset Action -->
-                                </div>
-                            </div><!-- ct -->
-                        </div>
-                    </div><!-- Search Form Actions -->
-                </form><!-- Search Form -->
-            </div>
-        </div><!-- ct -->
-    </div>
-</div><!-- Search -->
-*/ ?>
+                    </div><!-- ct -->
+                </div>
+            </div><!-- Entry Navigation -->
+        
+        <?php }

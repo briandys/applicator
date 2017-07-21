@@ -79,12 +79,6 @@
         background-color: blue;
     }
     
-    .obj
-    {
-        display: inline-block;
-        
-    }
-    
 </style>
 
 <?php

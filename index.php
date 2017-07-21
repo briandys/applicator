@@ -121,12 +121,12 @@ else {
                 // OB: Entry Nav
                 ob_start();
                 // inc > tags > entry-nav.php
-                apl_entry_nav();
+                applicator_func_entry_nav();
                 $entry_nav_ob_content = ob_get_contents();
                 ob_end_clean();
                 
                 
-                // Entry Content
+                // OB: Entry Content
                 ob_start();
                 
                 the_post();
@@ -146,28 +146,20 @@ else {
                     'structure' => array(
                         'type'      => 'component',
                     ),
-                    'hr_content'    => $entry_nav_ob_content,
+                    'hr_content'    => applicator_func_entry_nav(),
                     'content'   => array(
                         'component'     => $entry_content,
                     ),
-                    'fr_content'    => $entry_nav_ob_content,
+                    'fr_content'    => applicator_func_entry_nav(),
                 ) );
                 
             }
         }
         
-        // posts
+        // Entries
         else {
             
             if ( have_posts() ) {
-                
-                // OB: Page Nav
-                ob_start();
-                // inc > template-parts > page-nav.php
-                applicator_func_page_nav();
-                $page_nav_content = ob_get_contents();
-                ob_end_clean();
-                
                 
                 // OB: Entries Content
                 ob_start();
@@ -177,7 +169,7 @@ else {
                     // template-parts > post-content.php
                     applicator_func_post_content();
                 }
-                $entries_content = ob_get_contents();
+                $entries_ob_content = ob_get_contents();
                 ob_end_clean();
 
 
@@ -187,13 +179,13 @@ else {
                     'structure' => array(
                         'type'      => 'component',
                     ),
-                    'hr_content'    => $page_nav_content,
+                    'hr_content'    => applicator_func_page_nav(),
                     'content'   => array(
                         'component'     => array(
-                            $entries_content,
+                            $entries_ob_content,
                         ),
                     ),
-                    'fr_content'    => $page_nav_content,
+                    'fr_content'    => applicator_func_page_nav(),
                 ) );
                 
             }

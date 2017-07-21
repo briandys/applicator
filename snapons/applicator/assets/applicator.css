@@ -74,6 +74,8 @@
 /* Classifications */
 .post-categories---h,
 .categories---h,
+.post-tags---h,
+.tags---h,
 
 /* Comments Actions Snippet - Component */
 .coms-acts-snip---h,
@@ -92,6 +94,18 @@
 .main-hr-aside---h,
 .main-nav---h,
 .main-hr-aside---h,
+
+/* Page Nav */
+.page-nav---h,
+
+/* Entry Nav */
+.entry-nav---h,
+
+/* Breadcrumbs Nav */
+.breadcrumbs-nav---h,
+
+/* Post Nav */
+.post-nav---h,
 
 /*  Menu | Main Nav - Main Header Aside */
 .main-menu-ctrl---h,
