@@ -50,6 +50,7 @@ function htmlok( $args = array() ) {
     $subtype_main_content_terms = array( 'main content', 'mc', );
     $subtype_main_footer_terms = array( 'main footer', 'mf', );
     $subtype_aside_terms = array( 'aside', 'as', );
+    $subtype_header_terms = array( 'header', 'hr', );
     
     
     // Component Subtypes
@@ -1711,6 +1712,11 @@ function htmlok( $args = array() ) {
     if ( in_array( $r_structure, $structure_object_terms, true ) ) {
         
         $o_content = $obj_ct_mu;
+    }
+    
+    if ( in_array( $r_subtype, $subtype_header_terms, true ) ) {
+        
+        $o_content = $hr_mu;
     }
     
     

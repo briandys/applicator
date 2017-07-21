@@ -62,10 +62,91 @@ $comments = htmlok_cp( array(
 
 // title_reply - Component Header
 $comment_creation_header = htmlok_cp( array(
-    'name'      => 'Comment Creation',
+    'name'      => 'XXXComment Creation',
     'sub_type'  => 'hr',
     'css'       => 'com-crt-hr',
 ) );
+
+
+
+
+
+// Comment Creation Header
+$comment_creation_header_mu = '';
+$comment_creation_header_mu .= '<div class="hr %2$s---hr">';
+    $comment_creation_header_mu .= '<div class="hr_cr %2$s---hr_cr">';
+        $comment_creation_header_mu .= '<div class="h %2$s---h">';
+            $comment_creation_header_mu .= '<span class="h_l %2$s---h_l">';
+                $comment_creation_header_mu .= '%1$s';
+            $comment_creation_header_mu .= '</span>';
+        $comment_creation_header_mu .= '</div>';
+    $comment_creation_header_mu .= '</div>';
+$comment_creation_header_mu .= '</div>';
+
+$comment_creation_term = esc_html__( 'Comment Creation', 'applicator' );
+$comment_creation_term_css = sanitize_title( $comment_creation_term );
+
+
+$comment_creation_header = sprintf( $comment_creation_header_mu,
+    $comment_creation_term,
+    $comment_creation_term_css
+);
+
+
+// Signed In As
+$signed_in_as_term = esc_html__( 'Signed in as', 'applicator' );
+
+$signed_in_account_label_obj = htmlok( array(
+    'name'      => 'Signed In Account',
+    'structure' => array(
+        'type'      => 'object',
+        'subtype'   => 'generic label',
+        'layout'    => 'inline',
+    ),
+    'content'   => array(
+        'object'    => $signed_in_as_term,
+        'after'     => $GLOBALS['space_sep'],
+    ),
+) );
+
+$signed_in_account_name_obj = htmlok( array(
+    'name'      => 'Signed In Account Name',
+    'structure' => array(
+        'type'      => 'object',
+        'linked'    => true,
+        'attr'      => array(
+            'a'         => array(
+                'href'      => admin_url( 'profile.php' ),
+                'title'     => $signed_in_as_term.' '.$user_identity,
+            ),
+        ),
+        'layout'    => 'inline',
+    ),
+    'content'   => array(
+        'object' => $user_identity,
+    ),
+) );
+
+
+$signed_in_account_cp = htmlok( array(
+    'name'      => 'Signed In Account',
+    'structure' => array(
+        'type'      => 'component',
+    ),
+    'content'   => array(
+        'component' => array(
+            $signed_in_account_label_obj,
+            $signed_in_account_name_obj,
+        ),
+    ),
+) );
+
+
+
+
+
+
+
 
 // must_log_in - Text
 $sign_in_required_note_txt = htmlok_txt( array(
@@ -87,52 +168,6 @@ $sign_in_req_note_obj = htmlok_obj( array(
     'obj_css'   => 'note',
     'css'       => 'sign-in-req-note',
     'content'   => $sign_in_required_note_txt,
-) );
-
-// logged_in_as - Text
-$signed_in_as_label_txt = htmlok_txt( array(
-    'content' => array(
-        array(
-            'txt'   => esc_html__( 'Signed in as', 'applicator' ),
-        ),
-    ),
-) );
-
-// logged_in_as - Object
-$signed_in_as_label_obj = htmlok_obj( array(
-    'name'      => 'Signed In As Label',
-    'layout'    => 'i',
-    'elem'      => 'g',
-    'css'       => 'signed-in-as-lbl',
-    'content'   => $signed_in_as_label_txt,
-) );
-
-// logged_in_as - Text
-$signed_in_account_name_txt = htmlok_txt( array(
-    'content' => array(
-        array(
-            'txt'   => $user_identity,
-            'css'   => 'author-name',
-        ),
-    ),
-) );
-
-// logged_in_as - Object
-$signed_in_account_name_obj = htmlok_obj( array(
-    'name'      => 'Sign In Account Name',
-    'layout'    => 'i',
-    'elem'      => 'a',
-    'attr'      => array(
-        'href'  => admin_url( 'profile.php' ),
-    ),
-    'content'   => $signed_in_account_name_txt,
-) );
-
-// logged_in_as - Component
-$signed_in_acct = htmlok_cp( array(
-    'name'      => 'Signed In Account',
-    'css'       => 'signed-in-acct',
-    'content'   => $signed_in_as_label_obj . $signed_in_account_name_obj,
 ) );
 
 
@@ -211,7 +246,7 @@ $cancel_reply_comment_action_label_obj = htmlok_obj( array(
     'content' => $cancel_reply_comment_action_txt,
 ) );
 
-// Output Buffering for comment_form() because it only echoes
+// OB: Comment Form
 ob_start();
 comment_form( array(
 
@@ -221,14 +256,14 @@ comment_form( array(
     'title_reply_before'        => '',
     'title_reply_after'         => '',
 
-    // Heading
+    // Comment Creation Header
     'title_reply'               => $comment_creation_header,
+
+    // Signed in as "Account Name"
+    'logged_in_as'              => $signed_in_account_cp, 
 
     // Settings > Discussion
     'must_log_in'               => $sign_in_req_note_obj,
-
-    // Signed in as "Account Name"
-    'logged_in_as'              => $signed_in_acct, 
 
     // Textarea
     'comment_field'             => $comment_author_comment_creation,
@@ -254,13 +289,23 @@ comment_form( array(
     'comment_notes_after'       => '',
 
 ) );
-$comment_form = ob_get_contents();
+$comment_form_ob_content = ob_get_contents();
 ob_end_clean();
 
-$comment_md = htmlok_cp( array(
-    'name'      => 'Comment',
-    'type'      => 'module',
-    'content'   => $comments . $comment_form,
-) );
 
-echo $comment_md;
+
+// E: Entry Module
+$comment_module_cp = htmlok( array(
+    'name'      => 'Comment',
+    'structure' => array(
+        'type'      => 'component',
+        'subtype'   => 'module',
+    ),
+    'content'   => array(
+        'component'     => array(
+            $comments,
+            $comment_form_ob_content,
+        ),
+    ),
+    'echo'      => true,
+) );
