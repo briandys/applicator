@@ -78,7 +78,6 @@ function htmlok( $args = array() ) {
     $subtype_note_terms = array( 'note', );
     $subtype_generic_label_terms = array( 'generic label', 'glabel', );
     $subtype_form_label_terms = array( 'form label', 'flabel', );
-    $subtype_form_element_terms = array( 'form element', 'felem', 'fe', );
     
     // Object Layout
     $layout_block_terms = array( 'block', 'div', 'b', 'd', );
@@ -100,6 +99,7 @@ function htmlok( $args = array() ) {
     $r_echo = '';
     $r_txt_linked = '';
     $r_wpg = '';
+    $r_cn_structure = '';
     
     // Name
     $p_name = '';
@@ -266,6 +266,12 @@ function htmlok( $args = array() ) {
     // Header Structure (boolean)
     if ( ! empty( $r['structure']['hr_structure'] ) ) {
         $r_hr_structure = substr( strtolower( preg_replace( $pat_no_space, $rep_no_space, trim( $r['structure']['hr_structure'] ) ) ), $substr_start, $substr_end );
+    }
+    
+    
+    // Constructor Structure (boolean)
+    if ( ! empty( $r['structure']['cn_structure'] ) ) {
+        $r_cn_structure = substr( strtolower( preg_replace( $pat_no_space, $rep_no_space, trim( $r['structure']['cn_structure'] ) ) ), $substr_start, $substr_end );
     }
     
     
@@ -524,7 +530,7 @@ function htmlok( $args = array() ) {
                 $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
                 
-                $layout_elem = 'div';
+                //$layout_elem = 'div';
                 
                 $subtype_elem = $layout_elem;
                 $obj_elem = $layout_elem;
@@ -555,19 +561,6 @@ function htmlok( $args = array() ) {
                 
                 $obj_elem = 'label';
                 $obj_elem_css = $obj_elem;
-                
-                $p_subtype_name = ' '.$subtype_name;
-                $p_subtype_css = ' '.$subtype_name_abbr;
-                $p_subtype_postfix_css = '-'.$subtype_name_abbr;
-                
-            }
-            
-            
-            // Form Element Subtype
-            elseif ( in_array( $r_subtype, $subtype_form_element_terms, true ) ) {
-
-                $subtype_name = 'Form Element';
-                $subtype_name_abbr = 'felem';
                 
                 $p_subtype_name = ' '.$subtype_name;
                 $p_subtype_css = ' '.$subtype_name_abbr;
@@ -1600,15 +1593,20 @@ function htmlok( $args = array() ) {
     
     //------------------------ Component Content Markup
     if ( in_array( $r_structure, $structure_component_terms, true ) || in_array( $r_subtype, $subtype_aside_terms, true ) ) {
-        $ct_mu = '';
-        $ct_mu .= sprintf( $cr_smu,
-            'ct'
-        );
-
-        $ct_mu .= $o_content_val;
-
-
-        $ct_mu .= $cr_emu;
+        
+        if ( $r_cn_structure ) {
+            $ct_mu = '';
+            $ct_mu .= $o_content_val;
+        }
+        
+        else {
+            $ct_mu = '';
+            $ct_mu .= sprintf( $cr_smu,
+                'ct'
+            );
+            $ct_mu .= $o_content_val;
+            $ct_mu .= $cr_emu;
+        }
     }
     
     //------------------------ Form Content Markup
@@ -1656,13 +1654,6 @@ function htmlok( $args = array() ) {
                 $obj_ct_mu .= $a_emu;
             }
         }
-        
-        elseif ( in_array( $r_subtype, $subtype_form_element_terms, true ) ) {
-            $obj_ct_mu = '';
-            $obj_ct_mu .= $a_smu;
-            $obj_ct_mu .= $o_content_val;
-            $obj_ct_mu .= $a_emu;
-        }
     }
 
 
@@ -1705,6 +1696,11 @@ function htmlok( $args = array() ) {
     }
     
     if ( in_array( $r_structure, $structure_component_terms, true ) ) {
+        
+        if ( $r_cn_structure ) {
+            $hr_mu = '';
+            $fr_mu = '';
+        }
         
         $o_content = $hr_mu. $ct_mu. $fr_mu;
     }

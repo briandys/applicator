@@ -60,40 +60,28 @@ $comments = htmlok_cp( array(
 
 //------------ inc > functions > comment-form.php
 
-// title_reply - Component Header
-$comment_creation_header = htmlok_cp( array(
-    'name'      => 'XXXComment Creation',
-    'sub_type'  => 'hr',
-    'css'       => 'com-crt-hr',
-) );
-
-
-
-
-
-// Comment Creation Header
+// title_reply
 $comment_creation_header_mu = '';
-$comment_creation_header_mu .= '<div class="hr %2$s---hr">';
-    $comment_creation_header_mu .= '<div class="hr_cr %2$s---hr_cr">';
-        $comment_creation_header_mu .= '<div class="h %2$s---h">';
-            $comment_creation_header_mu .= '<span class="h_l %2$s---h_l">';
-                $comment_creation_header_mu .= '%1$s';
-            $comment_creation_header_mu .= '</span>';
-        $comment_creation_header_mu .= '</div>';
+
+$comment_creation_header_mu .= '<div class="obj %2$s---h" data-name="Comment Creation Heading OBJ">';
+    $comment_creation_header_mu .= '<div class="h %3$s---h">';
+        $comment_creation_header_mu .= '<span class="h_l %3$s---h_l">';
+            $comment_creation_header_mu .= '%1$s';
+        $comment_creation_header_mu .= '</span>';
     $comment_creation_header_mu .= '</div>';
-$comment_creation_header_mu .= '</div>';
+$comment_creation_header_mu .= '</div><!-- Comment Creation Heading OBJ -->';
 
 $comment_creation_term = esc_html__( 'Comment Creation', 'applicator' );
 $comment_creation_term_css = sanitize_title( $comment_creation_term );
 
-
 $comment_creation_header = sprintf( $comment_creation_header_mu,
     $comment_creation_term,
-    $comment_creation_term_css
+    $comment_creation_term_css,
+    'comment-crt'
 );
 
 
-// Signed In As
+// logged_in_as
 $signed_in_as_term = esc_html__( 'Signed in as', 'applicator' );
 
 $signed_in_account_label_obj = htmlok( array(
@@ -127,12 +115,12 @@ $signed_in_account_name_obj = htmlok( array(
     ),
 ) );
 
-
 $signed_in_account_cp = htmlok( array(
     'name'      => 'Signed In Account',
     'structure' => array(
         'type'      => 'component',
     ),
+    'css'       => 'signed-in-acct',
     'content'   => array(
         'component' => array(
             $signed_in_account_label_obj,
@@ -142,59 +130,99 @@ $signed_in_account_cp = htmlok( array(
 ) );
 
 
+// must_log_in
+$sign_in_req_note_content = '<p><a href="'.wp_login_url( get_permalink() ).'">'.esc_html__( 'Sign in', 'applicator' ).'</a> '.esc_html__( 'to comment.', 'applicator' ).'</p>';
 
-
-
-
-
-
-// must_log_in - Text
-$sign_in_required_note_txt = htmlok_txt( array(
-    'content' => array(
-        array(
-            'txt' => esc_html__( 'Sign In', 'applicator' ),
-        ),
-        array(
-            'sep' => $GLOBALS['space_sep'],
-            'txt' => esc_html__( 'to comment.', 'applicator' ),
+$sign_in_req_note_obj = htmlok( array(
+    'name'      => 'Sign In Required',
+    'structure' => array(
+        'type'      => 'object',
+        'subtype'   => 'note',
+    ),
+    'css'       => 'sign-in-req',
+    'content'   => array(
+        'object'    => array(
+            array(
+                'txt' => $sign_in_req_note_content,
+            ),
         ),
     ),
-) );
-
-// must_log_in - Object
-$sign_in_req_note_obj = htmlok_obj( array(
-    'name'      => 'Sign In Required Note',
-    'elem'      => 'n',
-    'obj_css'   => 'note',
-    'css'       => 'sign-in-req-note',
-    'content'   => $sign_in_required_note_txt,
 ) );
 
 
 //------------ Comment Author > Comment Creation
 
-// Object
-$comment_author_comment_creation_input_label_obj = htmlok_obj( array(
-    'name'      => 'Comment Author Comment Creation Input Label',
-    'elem'      => 'l',
-    'css'       => 'com-author-com-crt-input',
-    'content'   => '<label class="label com-author-com-crt-lbl-obj---label" for="comment"><span class="label_l com-author-name-crt-lbl-obj---label_l">Commentx</span></label>',
+// comment_field
+
+$commenter_comment_creation_term = 'Commenter Comment Creation';
+$commenter_comment_creation_short_css = 'commenter-com-crt';
+$commenter_comment_id_attr = 'comment';
+$commenter_comment_term = esc_html__( 'Comment', 'applicator' );
+
+$commenter_comment_creation_flabel_obj = htmlok( array(
+    'name'      => $commenter_comment_creation_term,
+    'structure' => array(
+        'type'      => 'object',
+        'subtype'   => 'form label',
+        'attr'      => array(
+            'elem'      => array(
+                'for'       => $commenter_comment_id_attr,
+            ),
+        ),
+    ),
+    'content'   => array(
+        'object'    => array(
+            array(
+                'txt'   => $commenter_comment_term,
+            ),
+        ),
+    ),
 ) );
 
-// Object
-$comment_author_comment_creation_input_obj = htmlok_obj( array(
-    'name'      => 'Comment Author Comment Creation Input',
-    'elem'      => 'l',
-    'css'       => 'com-author-com-crt-input',
-    'content'   => '<textarea id="comment" class="textarea input-text com-author-com-crt-inp-obj--input-text" name="comment" placeholder="Commentx" title="Comment" maxlength="65525" required></textarea>',
+/*
+1: Class
+2: ID
+3: Name
+4: Placeholder
+5: Title
+6: Required
+*/
+$commenter_comment_creation_text_input = '';
+$commenter_comment_creation_text_input .= '<textarea id="%2$s" class="textarea input-text %1$s" name="%3$s" placeholder="%4$s" title="%5$s" maxlength="65525"%6$s></textarea>';
+
+$commenter_comment_creation_text_input_content = sprintf( $commenter_comment_creation_text_input,
+    $commenter_comment_creation_short_css.'-input-text',
+    $commenter_comment_id_attr,
+    'comment',
+    $commenter_comment_term,
+    $commenter_comment_term,
+    ' '.'required'
+);
+
+$commenter_comment_creation_text_input_obj = htmlok( array(
+    'name'      => $commenter_comment_creation_term.' '.'Text Input',
+    'structure' => array(
+        'type'      => 'object',
+    ),
+    'content'   => array(
+        'object'    => $commenter_comment_creation_text_input_content,
+    ),
 ) );
 
-// Component
-$comment_author_comment_creation = htmlok_cp( array(
-    'name'      => 'Comment Author Comment Creation',
-    'cp_css'    => 'fs-item',
-    'css'       => 'com-auth-com-crt',
-    'content'   => $comment_author_comment_creation_input_label_obj . $comment_author_comment_creation_input_obj,
+$commenter_comment_creation_cp = htmlok( array(
+    'name'      => $commenter_comment_creation_term,
+    'structure' => array(
+        'type'          => 'component',
+        'cn_structure'  => true,
+    ),
+    'root_css'  => 'felems',
+    'css'       => $commenter_comment_creation_short_css,
+    'content'   => array(
+        'component' => array(
+            $commenter_comment_creation_flabel_obj,
+            $commenter_comment_creation_text_input_obj,
+        ),
+    ),
 ) );
 
 
@@ -266,7 +294,7 @@ comment_form( array(
     'must_log_in'               => $sign_in_req_note_obj,
 
     // Textarea
-    'comment_field'             => $comment_author_comment_creation,
+    'comment_field'             => $commenter_comment_creation_cp,
 
     // Submit Comment Action
     'id_submit'                 => 'com-sub-axn---b',

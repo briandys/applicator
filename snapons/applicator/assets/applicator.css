@@ -2023,7 +2023,14 @@ $go-green: #12b32d;
 
 
 
-.comment-md
+.comment-md,
+.comment-respond
 {
     border: 1px solid red;
+}
+
+.comment-respond
+{
+    margin: 1rem;
+    padding: 1rem;
 }
