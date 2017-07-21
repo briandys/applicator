@@ -37,6 +37,40 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             esc_attr( 'Name', 'applicator' )
         );
         
+        $commenter_name_creation_flabel_obj = htmlok( array(
+            'name'      => 'Commenter Name Creation',
+            'structure' => array(
+                'type'      => 'object',
+                'subtype'   => 'form label',
+                'attr'      => array(
+                    'elem'      => array(
+                        'for'       => 'ID',
+                    ),
+                ),
+            ),
+            'content'   => array(
+                'object'    => array(
+                    array(
+                        'txt'   => 'Name',
+                    ),
+                ),
+            ),
+        ) );
+        
+        $fields['author'] = htmlok( array(
+            'name'      => 'Commenter Name Creation',
+            'structure' => array(
+                'type'      => 'component',
+                'subtype'   => 'felem',
+            ),
+            'content'   => array(
+                'component' => array(
+                    $commenter_name_creation_flabel_obj,
+                    '<input>',
+                ),
+            ),
+        ) );
+        
         
         // Comment Author Email Creation
         $fields['email'] = '<div class="cp fs-item comment-author-email-creation" data-name="Comment Author Email Creation">';

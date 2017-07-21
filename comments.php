@@ -158,6 +158,8 @@ $commenter_comment_creation_term = 'Commenter Comment Creation';
 $commenter_comment_creation_short_css = 'commenter-com-crt';
 $commenter_comment_id_attr = 'comment';
 $commenter_comment_term = esc_html__( 'Comment', 'applicator' );
+$commenter_comment_submit_css = 'commenter-com-submit-axn---b';
+$commenter_comment_submit_term = esc_attr__( 'Submit', 'applicator' );
 
 $commenter_comment_creation_flabel_obj = htmlok( array(
     'name'      => $commenter_comment_creation_term,
@@ -187,10 +189,10 @@ $commenter_comment_creation_flabel_obj = htmlok( array(
 5: Title
 6: Required
 */
-$commenter_comment_creation_text_input = '';
-$commenter_comment_creation_text_input .= '<textarea id="%2$s" class="textarea input-text %1$s" name="%3$s" placeholder="%4$s" title="%5$s" maxlength="65525"%6$s></textarea>';
+$commenter_comment_creation_text_input_mu = '';
+$commenter_comment_creation_text_input_mu .= '<textarea id="%2$s" class="textarea input-text %1$s" name="%3$s" placeholder="%4$s" title="%5$s" maxlength="65525"%6$s></textarea>';
 
-$commenter_comment_creation_text_input_content = sprintf( $commenter_comment_creation_text_input,
+$commenter_comment_creation_text_input_content = sprintf( $commenter_comment_creation_text_input_mu,
     $commenter_comment_creation_short_css.'-input-text',
     $commenter_comment_id_attr,
     'comment',
@@ -226,26 +228,38 @@ $commenter_comment_creation_cp = htmlok( array(
 ) );
 
 
-// cancel_reply_link - Text
-$cancel_reply_comment_action_txt = htmlok_txt( array(
-    'content' => array(
-        array(
-            'txt' => esc_html__( 'Cancel', 'applicator' ),
-        ),
-        array(
-            'txt' => esc_html__( 'Reply', 'applicator' ),
-            'sep' => $GLOBALS['space_sep'],
-        ),
-        array(
-            'txt' => esc_html__( 'to', 'applicator' ),
-            'sep' => $GLOBALS['space_sep'],
-        ),
-        array(
-            'txt' => esc_html__( 'Comment', 'applicator' ),
-            'sep' => $GLOBALS['space_sep'],
-        ),
-    ),
-) );
+// cancel_reply_link
+
+$comment_reply_cancel_term = esc_html__( 'Cancel', 'applicator' );
+$comment_reply_reply_term = esc_html__( 'Reply', 'applicator' );
+$comment_reply_to_term = esc_html__( 'to', 'applicator' );
+$comment_reply_comment_term = esc_html__( 'Comment', 'applicator' );
+
+$comment_reply_cancel_action_mu = '';
+$comment_reply_cancel_action_mu .= '<span class="a_l %5$s">';
+    $comment_reply_cancel_action_mu .= '<span class="txt cancel---txt">';
+        $comment_reply_cancel_action_mu .= '%1$s';
+    $comment_reply_cancel_action_mu .= '</span>';
+    $comment_reply_cancel_action_mu .= ' <span class="txt reply---txt">';
+        $comment_reply_cancel_action_mu .= '%2$s';
+    $comment_reply_cancel_action_mu .= '</span>';
+    $comment_reply_cancel_action_mu .= ' <span class="txt to---txt">';
+        $comment_reply_cancel_action_mu .= '%3$s';
+    $comment_reply_cancel_action_mu .= '</span>';
+    $comment_reply_cancel_action_mu .= ' <span class="txt comment---txt">';
+        $comment_reply_cancel_action_mu .= '%4$s';
+    $comment_reply_cancel_action_mu .= '</span>';
+$comment_reply_cancel_action_mu .= '</span>';
+
+$comment_reply_cancel_action_content = sprintf( $comment_reply_cancel_action_mu,
+    $comment_reply_cancel_term,
+    $comment_reply_reply_term,
+    $comment_reply_to_term,
+    $comment_reply_comment_term,
+    'comment-reply-cancel-axn---a_l'
+);
+
+
 
 // title_reply_to - Text
 $comment_recipient_note_txt = htmlok_txt( array(
@@ -267,12 +281,6 @@ $comment_recipient_note_obj = htmlok_obj( array(
     'content'   => $comment_recipient_note_txt,
 ) );
 
-// cancel_reply_link - Object
-$cancel_reply_comment_action_label_obj = htmlok_obj( array(
-    'elem' => 'al',
-    'css' => 'cancel-reply-com-axn',
-    'content' => $cancel_reply_comment_action_txt,
-) );
 
 // OB: Comment Form
 ob_start();
@@ -297,9 +305,9 @@ comment_form( array(
     'comment_field'             => $commenter_comment_creation_cp,
 
     // Submit Comment Action
-    'id_submit'                 => 'com-sub-axn---b',
-    'class_submit'              => 'b com-sub-axn---b',
-    'label_submit'              => esc_attr__( 'Submit', 'applicator' ),
+    'id_submit'                 => $commenter_comment_submit_css,
+    'class_submit'              => 'b'.' '.$commenter_comment_submit_css,
+    'label_submit'              => $commenter_comment_submit_term,
 
 
     // Reply
@@ -310,7 +318,7 @@ comment_form( array(
     'cancel_reply_before'       => '',
     'cancel_reply_after'        => '',
 
-    'cancel_reply_link'         => $cancel_reply_comment_action_label_obj,
+    'cancel_reply_link'         => $comment_reply_cancel_action_content,
 
     // Notes
     'comment_notes_before'      => '',
@@ -319,7 +327,6 @@ comment_form( array(
 ) );
 $comment_form_ob_content = ob_get_contents();
 ob_end_clean();
-
 
 
 // E: Entry Module
