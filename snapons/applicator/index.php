@@ -60,7 +60,7 @@ if ( ! function_exists( 'apl_snapons_applicator_func_styles' ) ) {
         wp_enqueue_style( 'apl-style-fonts', applicator_fonts_url(), array(), null );
         add_editor_style( array( 'assets/css/editor-style.css', applicator_fonts_url() ) );
         
-        wp_enqueue_style( 'apl-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '24.9', 'all' );
+        wp_enqueue_style( 'apl-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '25.0', 'all' );
 
     }
     add_action( 'wp_enqueue_scripts', 'apl_snapons_applicator_func_styles', 0);
@@ -71,7 +71,7 @@ if ( ! function_exists( 'apl_snapons_applicator_func_styles' ) ) {
 if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
     function apl_snapons_applicator_scripts() {
         
-        wp_enqueue_script( 'apl-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/applicator.js' ), array( 'jquery' ), '22.6', true );
+        wp_enqueue_script( 'apl-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/applicator.js' ), array( 'jquery' ), '22.8', true );
         
         // EQCSS
         // wp_enqueue_script( 'apl-snapons-applicator-script-eqcss', get_theme_file_uri( '/snapons/applicator/assets/eqcss.min.js' ), array(), '1.0', true );
@@ -107,6 +107,10 @@ if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
 		$applicator_l10n['subNavTogBtnHideL']    = __( 'Hide Sub-Nav', 'applicator' );
         $applicator_l10n['subNavTogBtnIco']      = $arrow_icon;
         wp_localize_script( 'apl-snapons-applicator-script-global', 'aplDataSubNav', $applicator_l10n );
+        
+        // Sub-Navigation
+        $applicator_l10n['commentFormNote']    = __( 'Please fill out this field.', 'applicator' );
+        wp_localize_script( 'apl-snapons-applicator-script-global', 'aplDataCommentFormNote', $applicator_l10n );
     }
     add_action( 'wp_enqueue_scripts', 'apl_snapons_applicator_scripts' );
 }

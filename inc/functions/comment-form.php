@@ -23,24 +23,11 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
         $text_input_mu .= '<input id="%1$s" class="input-text %2$s" type="%3$s" name="%4$s" value="%5$s" size="%6$s" placeholder="%7$s" title="%8$s"%9$s>';
         $text_input_mu .= '</span>';
         
-        $optional_field_note_mu = '';
-        $optional_field_note_mu .= '<span class="line optional---line">';
-            $optional_field_note_mu .= '<span class="txt open-parenthesis---txt">';
-                $optional_field_note_mu .= '(';
-            $optional_field_note_mu .= '</span>';
-            $optional_field_note_mu .= '<span class="txt optional---txt">';
-                $optional_field_note_mu .= esc_html__( 'optional', 'applicator' );
-            $optional_field_note_mu .= '</span>';
-            $optional_field_note_mu .= '<span class="txt close-parenthesis---txt">';
-                $optional_field_note_mu .= '(';
-            $optional_field_note_mu .= '</span>';
-        $optional_field_note_mu .= '</span>';
         
-        
-        $optional_line_content = array(
+        $optional_line_array = array(
             'line'  => array(
                 array(
-                    'css'   => 'optional---line',
+                    'css'   => 'note---line',
                     array(
                         'sep'   => $GLOBALS['space_sep'],
                         'txt'   => '(',
@@ -56,6 +43,8 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
                 ),
             ),
         );
+        
+        $optional_line_content = ( $req ? '' : $optional_line_array );
         
         // Commenter Name
         $name_term = esc_attr( 'Name', 'applicator' );
@@ -77,8 +66,16 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             'content'   => array(
                 'object'    => array(
                     array(
-                        'txt'   => $name_term,
+                        'line'  => array(
+                            array(
+                                'css'   => 'flabel---line',
+                                array(
+                                    'txt'   => $name_term,
+                                ),
+                            ),
+                        ),
                     ),
+                    $optional_line_content,
                 ),
             ),
         ) );
@@ -145,11 +142,18 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             'content'   => array(
                 'object'    => array(
                     array(
-                        'txt'   => $email_term,
-                    ),
-                    array(
-                        'sep'   => $GLOBALS['space_sep'],
-                        'txt'   => $address_term,
+                        'line'  => array(
+                            array(
+                                'css'   => 'flabel---line',
+                                array(
+                                    'txt'   => $email_term,
+                                ),
+                                array(
+                                    'sep'   => $GLOBALS['space_sep'],
+                                    'txt'   => $address_term,
+                                ),
+                            ),
+                        ),
                     ),
                 ),
             ),
@@ -230,7 +234,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
                             ),
                         ),
                     ),
-                    $optional_line_content,
+                    $optional_line_array,
                 ),
             ),
         ) );

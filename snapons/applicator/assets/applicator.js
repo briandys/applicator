@@ -892,9 +892,36 @@
     
     } )();
     
+    $commentFormNote = aplDataCommentFormNote.commentFormNote;
     
     
-    
+    var forms = $( '#commentform' );
+    for ( var i = 0; i < forms.length; i++ ) {
+        forms[i].noValidate = true;
+
+        forms[i].addEventListener( 'submit', function( event ) {
+            //Prevent submission if checkValidity on the form returns false.
+            if ( ! event.target.checkValidity() ) {
+                event.preventDefault();
+                
+                $('#commentform :input:visible[required="required"]').each( function () {
+                  if ( ! this.validity.valid ) {
+                      
+                      prodd = $( '<span />', {
+                          'class': 'darn',
+                          'text': this.validationMessage
+                      } );
+                      
+                      $( this ).focus();
+                    $( this ).closest( '.obj' ).addClass( 'creation--invalid' ).append( prodd );
+                    //$( this ).val(''); // clear value so it shows error message on Placeholder.
+                    return false;
+                  }
+                } );
+                return;
+            }
+        }, false);
+    }
     
     /*
     var actions = {
