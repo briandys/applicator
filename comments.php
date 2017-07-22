@@ -63,7 +63,7 @@ $comments = htmlok_cp( array(
 // title_reply
 $comment_creation_header_mu = '';
 
-$comment_creation_header_mu .= '<div class="obj %2$s---h" data-name="Comment Creation Heading OBJ">';
+$comment_creation_header_mu .= '<div class="obj %2$s-heading" data-name="Comment Creation Heading OBJ">';
     $comment_creation_header_mu .= '<div class="h %3$s---h">';
         $comment_creation_header_mu .= '<span class="h_l %3$s---h_l">';
             $comment_creation_header_mu .= '%1$s';
@@ -77,7 +77,7 @@ $comment_creation_term_css = sanitize_title( $comment_creation_term );
 $comment_creation_header = sprintf( $comment_creation_header_mu,
     $comment_creation_term,
     $comment_creation_term_css,
-    'comment-crt'
+    'comment-crt-hd'
 );
 
 
@@ -190,7 +190,7 @@ $commenter_comment_creation_flabel_obj = htmlok( array(
 6: Required
 */
 $commenter_comment_creation_text_input_mu = '';
-$commenter_comment_creation_text_input_mu .= '<textarea id="%2$s" class="textarea input-text %1$s" name="%3$s" placeholder="%4$s" title="%5$s" maxlength="65525"%6$s></textarea>';
+$commenter_comment_creation_text_input_mu .= '<textarea id="%2$s" class="textarea input-text %1$s" name="%3$s" placeholder="%4$s" title="%5$s" maxlength="%7$s"%6$s></textarea>';
 
 $commenter_comment_creation_text_input_content = sprintf( $commenter_comment_creation_text_input_mu,
     $commenter_comment_creation_short_css.'-input-text',
@@ -198,7 +198,8 @@ $commenter_comment_creation_text_input_content = sprintf( $commenter_comment_cre
     'comment',
     $commenter_comment_term,
     $commenter_comment_term,
-    ' '.'required'
+    ' '.'required',
+    '65525'
 );
 
 $commenter_comment_creation_text_input_obj = htmlok( array(
@@ -206,6 +207,7 @@ $commenter_comment_creation_text_input_obj = htmlok( array(
     'structure' => array(
         'type'      => 'object',
     ),
+    'css'       => $commenter_comment_creation_short_css.'-text-input',
     'content'   => array(
         'object'    => $commenter_comment_creation_text_input_content,
     ),

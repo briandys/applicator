@@ -7,7 +7,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
         $req = get_option( 'require_name_email' );
         $aria_req = ( $req ? " required" : '' );    
         
-        
+        /*
         // Comment Author Name Creation
         $fields['author'] = '<div class="cp fs-item comment-author-name-creation" data-name="Comment Author Name Creation">';
             $fields['author'] .= '<div class="cr com-author-name-crt---cr">';
@@ -36,6 +36,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             esc_html( 'Name', 'applicator' ),
             esc_attr( 'Name', 'applicator' )
         );
+        */
         
         $commenter_name_creation_flabel_obj = htmlok( array(
             'name'      => 'Commenter Name Creation',
@@ -44,7 +45,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
                 'subtype'   => 'form label',
                 'attr'      => array(
                     'elem'      => array(
-                        'for'       => 'ID',
+                        'for'       => 'commenter-name-crt-input-text',
                     ),
                 ),
             ),
@@ -57,16 +58,56 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             ),
         ) );
         
+        /*
+        1: Class
+        2: ID
+        3: Type
+        4: Name
+        5: Value
+        6: Size
+        7: Placeholder
+        8: Title
+        9: Required
+        */
+        $text_input_mu = '';
+        $text_input_mu .= '<span class="ce ">';
+        $text_input_mu .= '<input id="%2$s" class="input-text %1$s" type="%3$s" name="%4$s" value="%5$s" size="%6$s" placeholder="%7$s" title="%8$s"%9$s>';
+        $text_input_mu .= '</span>';
+
+        $commenter_name_creation_text_input_content = sprintf( $text_input_mu,
+            'commenter-name-crt-input-text',
+            'commenter-name-crt-input-text',
+            'text',
+            'author',
+            esc_attr( $commenter['comment_author'] ),
+            '64',
+            esc_attr( 'Name', 'applicator' ),
+            esc_attr( 'Name', 'applicator' ),
+            ' '.$aria_req
+        );
+
+        $commenter_name_creation_text_input_obj = htmlok( array(
+            'name'      => 'Commenter Name Creation Text Input',
+            'structure' => array(
+                'type'      => 'object',
+            ),
+            'content'   => array(
+                'object'    => $commenter_name_creation_text_input_content,
+            ),
+        ) );
+        
         $fields['author'] = htmlok( array(
             'name'      => 'Commenter Name Creation',
             'structure' => array(
                 'type'      => 'component',
-                'subtype'   => 'felem',
+                'cn_structure'  => true,
             ),
+            'root_css'  => 'felems',
+            'css'       => 'commenter-name-crt',
             'content'   => array(
                 'component' => array(
                     $commenter_name_creation_flabel_obj,
-                    '<input>',
+                    $commenter_name_creation_text_input_obj,
                 ),
             ),
         ) );
