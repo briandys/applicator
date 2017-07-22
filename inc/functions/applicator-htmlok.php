@@ -100,6 +100,7 @@ function htmlok( $args = array() ) {
     $r_echo = '';
     $r_txt_linked = '';
     $r_wpg = '';
+    $r_ce = '';
     $r_cn_structure = '';
     
     // Name
@@ -253,6 +254,12 @@ function htmlok( $args = array() ) {
     // WordPress Generated Content (boolean)
     if ( ! empty( $r['structure']['wpg'] ) ) {
         $r_wpg = substr( strtolower( preg_replace( $pat_no_space, $rep_no_space, trim( $r['structure']['wpg'] ) ) ), $substr_start, $substr_end );
+    }
+    
+    
+    // Created Element (boolean)
+    if ( ! empty( $r['structure']['ce'] ) ) {
+        $r_ce = substr( strtolower( preg_replace( $pat_no_space, $rep_no_space, trim( $r['structure']['ce'] ) ) ), $substr_start, $substr_end );
     }
     
     
@@ -1648,20 +1655,21 @@ function htmlok( $args = array() ) {
         $obj_ct_mu .= $obj_cr_emu;
         
         // WordPress Generated Content
-        if ( in_array( $r_subtype, $subtype_wpg_terms, true ) ) {
+        if ( in_array( $r_subtype, $subtype_wpg_terms, true ) || $r_ce ) {
             $obj_ct_mu = '';
             $obj_ct_mu .= $o_content_val;
         }
         
         // Navigation Item
         elseif ( in_array( $r_subtype, $subtype_navi_terms, true ) ) {
-            $obj_ct_mu = '';
             
             if ( $r_wpg ) {
+                $obj_ct_mu = '';
                 $obj_ct_mu .= $o_content_val;
             }
             
             else {
+                $obj_ct_mu = '';
                 $obj_ct_mu .= $a_smu;
                 $obj_ct_mu .= $o_content_val;
                 $obj_ct_mu .= $a_emu;

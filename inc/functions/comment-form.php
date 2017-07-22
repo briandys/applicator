@@ -70,8 +70,8 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
         9: Required
         */
         $text_input_mu = '';
-        $text_input_mu .= '<span class="ce ">';
-        $text_input_mu .= '<input id="%2$s" class="input-text %1$s" type="%3$s" name="%4$s" value="%5$s" size="%6$s" placeholder="%7$s" title="%8$s"%9$s>';
+        $text_input_mu .= '<span class="ce %2$s---ce">';
+        $text_input_mu .= '<input id="%1$s" class="input-text %2$s" type="%3$s" name="%4$s" value="%5$s" size="%6$s" placeholder="%7$s" title="%8$s"%9$s>';
         $text_input_mu .= '</span>';
 
         $commenter_name_creation_text_input_content = sprintf( $text_input_mu,
@@ -90,6 +90,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             'name'      => 'Commenter Name Creation Text Input',
             'structure' => array(
                 'type'      => 'object',
+                'ce'        => true,
             ),
             'content'   => array(
                 'object'    => $commenter_name_creation_text_input_content,
