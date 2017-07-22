@@ -20,7 +20,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
         */
         $text_input_mu = '';
         $text_input_mu .= '<span class="ce %2$s---ce">';
-        $text_input_mu .= '<input id="%1$s" class="input-text %2$s" type="%3$s" name="%4$s" value="%5$s" size="%6$s" placeholder="%7$s" title="%8$s"%9$s>';
+        $text_input_mu .= '%10$s<input id="%1$s" class="input-text %2$s" type="%3$s" name="%4$s" value="%5$s" size="%6$s" placeholder="%7$s" title="%8$s"%9$s>';
         $text_input_mu .= '</span>';
         
         // Commenter Name
@@ -58,7 +58,8 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             '64',
             $name_term,
             $name_term,
-            $aria_req
+            $aria_req,
+            ( $req ? '' : '' )
         );
 
         $commenter_name_creation_text_input_obj = htmlok( array(
@@ -130,7 +131,8 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             '64',
             $email_address_term,
             $email_term,
-            $aria_req
+            $aria_req,
+            ( $req ? '' : '' )
         );
 
         $commenter_name_creation_text_input_obj = htmlok( array(
@@ -212,7 +214,8 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             '64',
             $website_url_term,
             $website_url_term,
-            $aria_req
+            '',
+            ''
         );
 
         $commenter_name_creation_text_input_obj = htmlok( array(

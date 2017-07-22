@@ -186,43 +186,85 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                                                             $com_pub_lbl,
                                                             $com_pub_date_time
                                                         );
+        
+        
+        
+        $comment_published_glabel_obj = htmlok( array(
+            'name'      => 'Published Comment',
+            'structure' => array(
+                'type'      => 'object',
+                'subtype'   => 'generic label',
+            ),
+            'content'   => array(
+                'object'    => esc_html__( 'Comment by', 'applicator' ),
+                'after'     => $GLOBALS['space_sep'],
+            ),
+        ) );
+        
+        ob_start();
+        get_comment_author_url();
+        $get_comment_author_url_ob_content = ob_get_contents();
+        ob_end_clean();
+        
+        $commenter_name_cp = htmlok( array(
+            'name'      => 'Commenter Name',
+            'structure' => array(
+                'type'      => 'object',
+                'linked'    => true,
+                'attr'      => array(
+                    'a'         => array(
+                        'href'      => 'temp',
+                    ),
+                ),
+                'layout'    => 'inline',
+            ),
+            'content'   => array(
+                'object' => get_comment_author(),
+            ),
+        ) );
+        
+        $commenter_avatar_cp = htmlok( array(
+            'name'      => 'Commenter Avatar',
+            'structure' => array(
+                'type'      => 'object',
+                'layout'    => 'inline',
+            ),
+            'content'   => array(
+                'object'    => get_avatar( $comment, $args['avatar_size'] ),
+                'before'    => $GLOBALS['space_sep'],
+            ),
+        ) );
+        
+        $commenter_cp = htmlok( array(
+            'name'      => 'Commenter',
+            'structure' => array(
+                'type'      => 'component',
+            ),
+            'content'   => array(
+                'component' => array(
+                    $commenter_name_cp,
+                    $commenter_avatar_cp,
+                ),
+            ),
+        ) );
+        
+        $published_comment_commenter_cp = htmlok( array(
+            'name'      => 'Published Comment Commenter',
+            'structure' => array(
+                'type'      => 'component',
+            ),
+            'content'   => array(
+                'component' => array(
+                    $comment_published_glabel_obj,
+                    $commenter_cp,
+                ),
+            ),
+            'echo'      => true,
+        ) );
+                                                        
                                                         ?>
 
-                                                        <div class="cp comment-published-author" data-name="Comment Published Author">
-                                                            <div class="cr com-pub-author---cr">
-                                                                <div class="h com-pub-author---h"><span class="h_l com-pub-author---h_l"><?php esc_html_e( 'Comment Published Author ', 'applicator' ); ?></span></div>
-                                                                <div class="ct com-pub-author---ct">
-                                                                    <div class="ct_cr com-pub-author---ct_cr">
-
-                                                                        <span class="obj comment-published-author-label-obj" data-name="Comment Published Author Label Object">
-                                                                            <span class="g com-pub-author-lbl-obj---g"><span class="g_l com-pub-author-lbl-obj---g_l"><?php esc_html_e( 'Commented by', 'applicator' ); ?></span></span>
-                                                                        </span><!-- Comment Published Author Label Object -->
-
-                                                                        <div class="cp comment-author" data-name="Comment Author">
-                                                                            <div class="cr com-author---cr">
-                                                                                <div class="h com-author---h"><span class="h_l com-author---h_l"><?php esc_html_e( 'Comment Author', 'applicator' ); ?></span></div>
-                                                                                <div class="ct com-author---ct">
-                                                                                    <div class="ct_cr com-author---ct_cr">
-                                                                                        <span class="obj comment-author-name-obj" title="" data-name="Comment Author Name Object">
-                                                                                            <span class="g com-author-name-obj---g"><span class="g_l com-author-name-obj---g_l">
-                                                                                                <a class="a com-author-name-obj---a" href="<?php echo get_comment_author_url(); ?>"><span class="a_l com-author-name-obj---a-l"><?php echo get_comment_author(); ?></span></a>
-                                                                                            </span></span>
-                                                                                        </span><!-- Comment Author Name Object -->
-                                                                                        <span class="obj comment-author-avatar-obj" title="" data-name="Comment Author Avatar Object">
-                                                                                            <a class="a com-author-avatar-obj---a" href="<?php echo get_comment_author_url(); ?>">
-                                                                                                <span class="a_l com-author-avatar-obj---a_l">
-                                                                                                    <span class="ee--img com-author-avatar-obj---ee--img"><?php echo get_avatar( $comment, $args['avatar_size'] ); ?></span>
-                                                                                                </span>
-                                                                                            </a>
-                                                                                        </span><!-- Comment Author Avatar Object -->
-                                                                                    </div>
-                                                                                </div><!-- ct -->
-                                                                            </div>
-                                                                        </div><!-- Comment Author -->
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div><!-- Comment Published Author -->
+                                                        
                                                     </div>
                                                 </div><!-- ct -->
                                             </div>

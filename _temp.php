@@ -1,6 +1,19 @@
 <?php
 
 
+<?php if ( get_comment_author_url( $comment->comment_ID ) ) echo esc_url( get_comment_author_url( $comment->comment_ID ) ); else echo '#' ?>
+
+$comment_reply_axn_obj = htmlok( array(
+    'name'      => 'Comment Reply',
+    'structure' => array(
+        'type'      => 'object',
+        'subtype'   => 'action',
+        'wpg'       => true,
+    ),
+    'content'   => array(
+        'object'    => 'Content',
+    ),
+) );
 
 $comment_reply_axn_a_l_mu = '';
 $comment_reply_axn_a_l_mu .= '<span class="a_l comment-reply-axn---a_l">%1$s</span>';
