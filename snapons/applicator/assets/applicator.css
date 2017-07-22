@@ -1357,7 +1357,7 @@ $go-green: #12b32d;
 .search-cp .b,
 
 .comment-form .input-text,
-.commenter-com-submit-axn---b
+.comment-form-submit-axn---b
 {
     /* Reset */
     margin: 0;
@@ -1371,7 +1371,7 @@ $go-green: #12b32d;
 .search-cp .b_l,
 
 .comment-form .input-text,
-.commenter-com-submit-axn---b
+.comment-form-submit-axn---b
 {
     box-sizing: border-box;
     
@@ -1387,7 +1387,7 @@ $go-green: #12b32d;
 
 .search-cp .b_l,
 
-.commenter-com-submit-axn---b
+.comment-form-submit-axn---b
 {
     padding: .5rem 1rem;
 }
@@ -1419,7 +1419,7 @@ $go-green: #12b32d;
 
 .search-cp .search-submit-axn---b_l,
 
-.commenter-com-submit-axn---b
+.comment-form-submit-axn---b
 {
     background-color: #00aaff;
     color: white;
@@ -1438,7 +1438,7 @@ $go-green: #12b32d;
 .search-cp .b_l,
 
 .comment-form .input-text,
-.commenter-com-submit-axn---b
+.comment-form-submit-axn---b
 {   
     border-radius: .125rem;
 }

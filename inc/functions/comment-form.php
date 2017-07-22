@@ -5,58 +5,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
         
         $commenter = wp_get_current_commenter();
         $req = get_option( 'require_name_email' );
-        $aria_req = ( $req ? " required" : '' );    
-        
-        /*
-        // Comment Author Name Creation
-        $fields['author'] = '<div class="cp fs-item comment-author-name-creation" data-name="Comment Author Name Creation">';
-            $fields['author'] .= '<div class="cr com-author-name-crt---cr">';
-                $fields['author'] .= '<div class="h com-author-name-crt---h"><span class="h_l com-author-name-crt---h_l">Comment Author Name Creation</span></div>';
-                $fields['author'] .= '<div class="ct com-author-name-crt---ct">';
-                    $fields['author'] .= '<div class="ct_cr com-author-name-crt---ct_cr">';
-
-                        $fields['author'] .= '<span class="obj com-author-name-creation-label---obj" data-name="Comment Author Name Creation Label">';
-                            $fields['author'] .= '<label class="label com-author-name-crt-lbl---label" for="com-author-name-crt-inp--input-text"><span class="label_l com-author-name-crt-lbl---label_l">%3$s</span></label>';
-                        $fields['author'] .= '</span>';
-
-                        $fields['author'] .= ( $req ? '' : '' );
-
-                        $fields['author'] .= '<span class="obj com-author-name-creation-input---obj" data-name="Comment Author Name Creation Input">';
-                            $fields['author'] .= '<span class="ee--input-text com-author-name-crt-inp---ee--input-text"><input id="com-author-name-crt-inp--input-text" class="input-text com-author-name-crt-inp--input-text" type="text" placeholder="%4$s" name="author" value="%1$s" size="64" %2$s></span>';
-                        $fields['author'] .= '</span>';
-
-                    $fields['author'] .= '</div>';
-                $fields['author'] .= '</div>';
-            $fields['author'] .= '</div>';
-        $fields['author'] .= '</div>';
-
-        $fields['author'] = sprintf( $fields['author'],
-            esc_attr( $commenter['comment_author'] ),
-            $aria_req,
-            esc_html( 'Name', 'applicator' ),
-            esc_attr( 'Name', 'applicator' )
-        );
-        */
-        
-        $commenter_name_creation_flabel_obj = htmlok( array(
-            'name'      => 'Commenter Name Creation',
-            'structure' => array(
-                'type'      => 'object',
-                'subtype'   => 'form label',
-                'attr'      => array(
-                    'elem'      => array(
-                        'for'       => 'commenter-name-crt-input-text',
-                    ),
-                ),
-            ),
-            'content'   => array(
-                'object'    => array(
-                    array(
-                        'txt'   => 'Name',
-                    ),
-                ),
-            ),
-        ) );
+        $aria_req = ( $req ? ' required' : '' ); 
         
         /*
         1: Class
@@ -73,21 +22,47 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
         $text_input_mu .= '<span class="ce %2$s---ce">';
         $text_input_mu .= '<input id="%1$s" class="input-text %2$s" type="%3$s" name="%4$s" value="%5$s" size="%6$s" placeholder="%7$s" title="%8$s"%9$s>';
         $text_input_mu .= '</span>';
+        
+        // Commenter Name
+        $name_term = esc_attr( 'Name', 'applicator' );
+        $commenter_name_creation_term = 'Commenter Name Creation';
+        $commenter_name_creation_css = 'commenter-name-crt';
+        $commenter_name_creation_input_text_css = $commenter_name_creation_css.'-input-text';
+        
+        $commenter_name_creation_flabel_obj = htmlok( array(
+            'name'      => $commenter_name_creation_term,
+            'structure' => array(
+                'type'      => 'object',
+                'subtype'   => 'form label',
+                'attr'      => array(
+                    'elem'      => array(
+                        'for'       => $commenter_name_creation_input_text_css,
+                    ),
+                ),
+            ),
+            'content'   => array(
+                'object'    => array(
+                    array(
+                        'txt'   => $name_term,
+                    ),
+                ),
+            ),
+        ) );
 
         $commenter_name_creation_text_input_content = sprintf( $text_input_mu,
-            'commenter-name-crt-input-text',
-            'commenter-name-crt-input-text',
+            $commenter_name_creation_input_text_css,
+            $commenter_name_creation_input_text_css,
             'text',
             'author',
             esc_attr( $commenter['comment_author'] ),
             '64',
-            esc_attr( 'Name', 'applicator' ),
-            esc_attr( 'Name', 'applicator' ),
-            ' '.$aria_req
+            $name_term,
+            $name_term,
+            $aria_req
         );
 
         $commenter_name_creation_text_input_obj = htmlok( array(
-            'name'      => 'Commenter Name Creation Text Input',
+            'name'      => $commenter_name_creation_term.' '.'Text Input',
             'structure' => array(
                 'type'      => 'object',
                 'ce'        => true,
@@ -98,13 +73,13 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
         ) );
         
         $fields['author'] = htmlok( array(
-            'name'      => 'Commenter Name Creation',
+            'name'      => $commenter_name_creation_term,
             'structure' => array(
                 'type'      => 'component',
                 'cn_structure'  => true,
             ),
             'root_css'  => 'felems',
-            'css'       => 'commenter-name-crt',
+            'css'       => $commenter_name_creation_css,
             'content'   => array(
                 'component' => array(
                     $commenter_name_creation_flabel_obj,
@@ -114,88 +89,159 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
         ) );
         
         
-        // Comment Author Email Creation
-        $fields['email'] = '<div class="cp fs-item comment-author-email-creation" data-name="Comment Author Email Creation">';
-            $fields['email'] .= '<div class="cr com-author-email-crt---cr">';
-                $fields['email'] .= '<div class="h com-author-email-crt---h"><span class="h_l com-author-email-crt---h_l">Comment Author Email Creation</span></div>';
-                $fields['email'] .= '<div class="ct com-author-email-crt---ct">';
-                    $fields['email'] .= '<div class="ct_cr com-author-email-crt---ct_cr">';
+        // Commenter Email
+        $email_term = esc_attr( 'Email', 'applicator' );
+        $address_term = esc_attr( 'Address', 'applicator' );
+        $email_address_term = esc_attr( 'Email Address', 'applicator' );
+        $commenter_email_creation_term = 'Commenter Email Creation';
+        $commenter_email_creation_css = 'commenter-email-crt';
+        $commenter_email_creation_input_text_css = $commenter_email_creation_css.'-input-text';
+        
+        $commenter_email_creation_flabel_obj = htmlok( array(
+            'name'      => $commenter_email_creation_term,
+            'structure' => array(
+                'type'      => 'object',
+                'subtype'   => 'form label',
+                'attr'      => array(
+                    'elem'      => array(
+                        'for'       => $commenter_email_creation_input_text_css,
+                    ),
+                ),
+            ),
+            'content'   => array(
+                'object'    => array(
+                    array(
+                        'txt'   => $email_term,
+                    ),
+                    array(
+                        'sep'   => $GLOBALS['space_sep'],
+                        'txt'   => $address_term,
+                    ),
+                ),
+            ),
+        ) );
 
-                        $fields['email'] .= '<span class="obj com-author-email-creation-label---obj" data-name="Comment Author Email Creation Label">';
-                            $fields['email'] .= '<label class="label com-author-email-crt-lbl---label" for="com-author-email-crt-inp--input-text"><span class="label_l com-author-email-crt-lbl---label_l">%3$s</span></label>';
-                        $fields['email'] .= '</span>';
-
-                        $fields['email'] .= ( $req ? '' : '' );
-
-                        $fields['email'] .= '<span class="obj com-author-email-creation-input---obj" data-name="Comment Author Email Creation Input">';
-                            $fields['email'] .= '<span class="ee--input-text com-author-email-crt-inp---ee--input-text"><input id="com-author-email-crt-inp--input-text" class="input-text com-author-email-crt-inp--input-text" type="email" placeholder="%4$s" name="email" value="%1$s" size="64" %2$s></span>';
-                        $fields['email'] .= '</span>';
-
-                    $fields['email'] .= '</div>';
-                $fields['email'] .= '</div>';
-            $fields['email'] .= '</div>';
-        $fields['email'] .= '</div>';
-
-        $fields['email'] = sprintf( $fields['email'],
+        $commenter_email_creation_text_input_content = sprintf( $text_input_mu,
+            $commenter_email_creation_input_text_css,
+            $commenter_email_creation_input_text_css,
+            'email',
+            'email',
             esc_attr( $commenter['comment_author_email'] ),
-            $aria_req,
-            esc_html( 'Email Address', 'applicator' ),
-            esc_attr( 'Email Address', 'applicator' )
+            '64',
+            $email_address_term,
+            $email_term,
+            $aria_req
         );
+
+        $commenter_name_creation_text_input_obj = htmlok( array(
+            'name'      => $commenter_email_creation_term.' '.'Text Input',
+            'structure' => array(
+                'type'      => 'object',
+                'ce'        => true,
+            ),
+            'content'   => array(
+                'object'    => $commenter_email_creation_text_input_content,
+            ),
+        ) );
         
-        
-        //------------ URL
-        
-        // Variables
-        $form_element_input_text = 'input-text';
-        $comment_author_url_input_text_id_css = 'com-author-url-crt-' . $form_element_input_text;
-        $comment_author_url_input_text_label = esc_attr__( 'Website URL', 'applicator' );
-        
-        // Text
-        $comment_author_url_label_txt = htmlok_txt( array(
-            'content'       => array(
-                array(
-                    'txt'   => $comment_author_url_input_text_label,
+        $fields['email'] = htmlok( array(
+            'name'      => $commenter_email_creation_term,
+            'structure' => array(
+                'type'      => 'component',
+                'cn_structure'  => true,
+            ),
+            'root_css'  => 'felems',
+            'css'       => $commenter_email_creation_css,
+            'content'   => array(
+                'component' => array(
+                    $commenter_email_creation_flabel_obj,
+                    $commenter_name_creation_text_input_obj,
                 ),
             ),
         ) );
         
-        // Markup
-        $comment_author_url_label_input_txt_mu = '<input id="%2$s" class="' . $form_element_input_text . ' %2$s" type="url" name="url" placeholder="%3$s" value="%1$s" size="64">';
         
-        // Form Element
-        $comment_author_url_label_input_txt = sprintf( $comment_author_url_label_input_txt_mu,
-            esc_attr( $commenter['comment_author_url'] ), // value
-            $comment_author_url_input_text_id_css, // id
-            $comment_author_url_input_text_label // placeholder
-        );
+        // Commenter URL
+        $website_term = esc_attr( 'Website', 'applicator' );
+        $url_term = esc_attr( 'URL', 'applicator' );
+        $website_url_term = esc_attr( 'Website URL', 'applicator' );
+        $commenter_url_creation_term = 'Commenter URL Creation';
+        $commenter_url_creation_css = 'commenter-url-crt';
+        $commenter_url_creation_input_text_css = $commenter_url_creation_css.'-input-text';
         
-        // Label - Object
-        $comment_author_url_label_obj = htmlok_obj_test( array(
-            'name'      => 'Comment Author URL Creation',
-            'type'      => 'form label',
-            'css'       => 'com-author-url-crt',
-            'attr'      => array(
-                'for'   => $comment_author_url_input_text_id_css,
+        $commenter_url_creation_flabel_obj = htmlok( array(
+            'name'      => $commenter_url_creation_term,
+            'structure' => array(
+                'type'      => 'object',
+                'subtype'   => 'form label',
+                'attr'      => array(
+                    'elem'      => array(
+                        'for'       => $commenter_url_creation_input_text_css,
+                    ),
+                ),
             ),
-            'content'   => $comment_author_url_label_txt,
+            'content'   => array(
+                'object'    => array(
+                    array(
+                        'txt'   => $website_term,
+                    ),
+                    array(
+                        'sep'   => $GLOBALS['space_sep'],
+                        'txt'   => $url_term,
+                    ),
+                    array(
+                        'sep'   => $GLOBALS['space_sep'],
+                        'txt'   => '(',
+                    ),
+                    array(
+                        'txt'   => esc_html__( 'optional', 'applicator' ),
+                    ),
+                    array(
+                        'txt'   => ')',
+                    ),
+                ),
+            ),
+        ) );
+
+        $commenter_url_creation_text_input_content = sprintf( $text_input_mu,
+            $commenter_url_creation_input_text_css,
+            $commenter_url_creation_input_text_css,
+            'url',
+            'url',
+            esc_attr( $commenter['comment_author_url'] ),
+            '64',
+            $website_url_term,
+            $website_url_term,
+            $aria_req
+        );
+
+        $commenter_name_creation_text_input_obj = htmlok( array(
+            'name'      => $commenter_url_creation_term.' '.'Text Input',
+            'structure' => array(
+                'type'      => 'object',
+                'ce'        => true,
+            ),
+            'content'   => array(
+                'object'    => $commenter_url_creation_text_input_content,
+            ),
         ) );
         
-        // Input - Object
-        $comment_author_url_input_obj = htmlok_obj_test( array(
-            'name'      => 'Comment Author URL Creation Input Text',
-            'type'      => 'form element',
-            'css'       => $comment_author_url_input_text_id_css,
-            'content'   => $comment_author_url_label_input_txt,
+        $fields['url'] = htmlok( array(
+            'name'      => $commenter_url_creation_term,
+            'structure' => array(
+                'type'      => 'component',
+                'cn_structure'  => true,
+            ),
+            'root_css'  => 'felems',
+            'css'       => $commenter_url_creation_css,
+            'content'   => array(
+                'component' => array(
+                    $commenter_url_creation_flabel_obj,
+                    $commenter_name_creation_text_input_obj,
+                ),
+            ),
         ) );
         
-        // Component
-        $fields['url'] = htmlok_cp( array(
-            'name'      => 'Comment Author URL Creation',
-            'type'      => 'fieldset item',
-            'css'       => 'com-author-url-crt',
-            'content'   => $comment_author_url_label_obj . $comment_author_url_input_obj,
-        ) );
         
         return $fields;
     

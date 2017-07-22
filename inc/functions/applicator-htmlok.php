@@ -78,7 +78,7 @@ function htmlok( $args = array() ) {
     $subtype_note_terms = array( 'note', );
     $subtype_generic_label_terms = array( 'generic label', 'glabel', );
     $subtype_form_label_terms = array( 'form label', 'flabel', );
-    $subtype_axn_terms = array( 'action item', 'axn', );
+    $subtype_axn_terms = array( 'action item', 'action', 'axn', );
     
     // Object Layout
     $layout_block_terms = array( 'block', 'div', 'b', 'd', );
@@ -1655,7 +1655,7 @@ function htmlok( $args = array() ) {
         $obj_ct_mu .= $obj_cr_emu;
         
         // WordPress Generated Content
-        if ( in_array( $r_subtype, $subtype_wpg_terms, true ) || $r_ce ) {
+        if ( in_array( $r_subtype, $subtype_wpg_terms, true ) || $r_ce || $r_wpg ) {
             $obj_ct_mu = '';
             $obj_ct_mu .= $o_content_val;
         }

@@ -14,7 +14,11 @@ if ( post_password_required() ) {
 }
         
 $comments_content = '';
+
+// With Comments
 if ( have_comments() ) {
+    
+    $comments_nav_content = applicator_func_comments_nav();
 
     $comments_content = '<ul class="grp comments---grp">';
     $comments_content .= wp_list_comments( array(
@@ -24,37 +28,57 @@ if ( have_comments() ) {
         'echo'          => false,
     ) );
     $comments_content .= '</ul>';
-    $comments_content .= applicator_func_comments_nav();
-
-} else {
-
-    $comments_content = htmlok_obj( array(
-        'name' => 'Comments Empty Note',
-        'elem' => 'n',
-        'css' => 'com-empty-note',
-        'content' => '<p>' . esc_html__( 'There are no comments.', 'applicator' ) . '</p>',
-    ) );
-
 }
 
-// Constructor
-$comments_header_aside = htmlok_cn( array(
-    'name'      => 'Comments Header',
-    'type'      => 'aside',
-    'css'       => 'coms-hr',
-    'content'   => applicator_func_comments_actions_snippet_cp(),
+// No Comments
+else {
+    
+    $comments_nav_content = '';
+    
+    $comments_empty_note_obj = htmlok( array(
+        'name'      => 'Comments Empty',
+        'structure' => array(
+            'type'      => 'object',
+            'subtype'   => 'note',
+        ),
+        'content'   => array(
+            'object'    => '<p>' . esc_html__( 'There are no comments.', 'applicator' ) . '</p>',
+        ),
+    ) );
+
+    $comments_content = $comments_empty_note_obj;
+}
+
+
+// R: Comments Header Asisde
+$comments_header_aside_cn = htmlok( array(
+    'name'          => 'Comments Header',
+    'structure'     => array(
+        'type'          => 'constructor',
+        'subtype'       => 'aside',
+    ),
+    'content'           => array(
+        'constructor'         => applicator_func_comments_actions_snippet_cp(),
+    ),
 ) );
 
-// Component
-$comments = htmlok_cp( array(
+
+// R: Comments
+$comments_cp = htmlok( array(
     'name'          => 'Comments',
-    'cp_css'        => 'comments-area',
-    'css'           => 'comments',
-    'hr_content'    => $comments_header_aside,
-    'attr'          => array(
-        'id'        => 'comments',
+    'structure'     => array(
+        'type'          => 'component',
     ),
-    'content'       => $comments_content,
+    'hr_content'    => array(
+        $comments_nav_content,
+        $comments_header_aside_cn,
+    ),
+    'id'            => 'comments',
+    'root_css'      => 'comments-area',
+    'content'           => array(
+        'component'         => $comments_content,
+    ),
+    'fr_content'    => $comments_nav_content,
 ) );
 
 
@@ -158,7 +182,7 @@ $commenter_comment_creation_term = 'Commenter Comment Creation';
 $commenter_comment_creation_short_css = 'commenter-com-crt';
 $commenter_comment_id_attr = 'comment';
 $commenter_comment_term = esc_html__( 'Comment', 'applicator' );
-$commenter_comment_submit_css = 'commenter-com-submit-axn---b';
+$commenter_comment_submit_css = 'comment-form-submit-axn---b';
 $commenter_comment_submit_term = esc_attr__( 'Submit', 'applicator' );
 
 $commenter_comment_creation_flabel_obj = htmlok( array(
@@ -343,7 +367,7 @@ $comment_module_cp = htmlok( array(
     ),
     'content'   => array(
         'component'     => array(
-            $comments,
+            $comments_cp,
             $comment_form_ob_content,
         ),
     ),
