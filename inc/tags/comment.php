@@ -27,44 +27,151 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                 
                 <div class="hr comment---hr">
                     <div class="hr_cr comment---hr_cr">
-                        <div class="obj comment-title-obj" data-name="Comment Title Object">
-                            <h2 class="h comment---h">
-                                <span class="h_l comment---h_l">
-                                    <a class="a comment---a" href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>">
-                                        <span class="a_l comment---a_l"><span class="word comment-title---word"><?php esc_html_e( 'Comment', 'applicator' ); ?> <?php comment_ID() ?></span></span>
-                                    </a>
-                                </span>
-                            </h2>
-                        </div><!-- Comment Title Object -->
                         
-                        <?php if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) { ?>
-                        <div class="axns comment-admin-axns" data-name="Comment Admin Actions">
-                            <div class="cr com-admin-axns---cr">
-                                <div class="h com-admin-axns---h"><span class="h_l com-admin-axns---h_l"><?php esc_html_e( 'Comment Admin Actions', 'applicator' ); ?></span></div>
-                                <div class="ct com-admin-axns---ct">
-                                    <div class="ct_cr com-admin-axns---ct_cr">
-                                        <span class="obj axn edit-comment-axn" data-name="Edit Comment Action">
-                                            <?php
-                                            // Markup
-                                            $edit_comment_axn_a_l_mu = '<span class="a_l edit-com-axn---a_l" title="%5$s"><span class="word %2$s---word">%1$s</span> <span class="word %4$s---word">%3$s</span></span>';
+                        <?php
+        
+                        // E: Comment Title
+                        $comment_title_obj = htmlok( array(
+                            'name'      => 'Comment Title',
+                            'structure' => array(
+                                'type'      => 'object',
+                                'elem'      => 'h2',
+                                'linked'    => true,
+                                'attr'      => array(
+                                    'a'         => array(
+                                        'href'      => get_comment_link( $comment->comment_ID ),
+                                        'rel'       => 'bookmark',
+                                        'title'     => esc_html__( 'Comment', 'applicator' ).' '.get_comment_ID(),
+                                    ),
+                                ),
+                            ),
+                            'content'   => array(
+                                'object'        => array(
+                                    array(
+                                        'txt'       => esc_html__( 'Comment', 'applicator' ).' '.get_comment_ID(),
+                                    ),
+                                ),
+                            ),
+                            'echo'      => true,
+                        ) );
+        
+                        // Comment Actions
+                        // tags > entry-actions.php
+                        applicator_func_comment_actions();
+        
+        
+                        // Commenter
+                        $comment_published_glabel_obj = htmlok( array(
+                            'name'      => 'Published Comment',
+                            'structure' => array(
+                                'type'      => 'object',
+                                'subtype'   => 'generic label',
+                            ),
+                            'content'   => array(
+                                'object'    => esc_html__( 'Comment by', 'applicator' ),
+                                'after'     => $GLOBALS['space_sep'],
+                            ),
+                        ) );
 
-                                            // Content
-                                            $edit_comment_axn_a_l = sprintf( $edit_comment_axn_a_l_mu,
-                                                esc_html__( 'Edit', 'applicator' ),
-                                                'edit',
-                                                esc_html__( 'Comment', 'applicator' ) . ' ' . $comment->comment_ID,
-                                                'comment-title',
-                                                esc_attr__( 'Edit Comment', 'applicator' )
-                                            );
+                        ob_start();
+                        get_comment_author_url();
+                        $get_comment_author_url_ob_content = ob_get_contents();
+                        ob_end_clean();
 
-                                            edit_comment_link( $edit_comment_axn_a_l, '', '' );                  
-                                            ?>
-                                        </span><!-- Edit Comment Action -->
-                                    </div>
-                                </div><!-- ct -->
-                            </div>
-                        </div><!-- Comment Admin Actions -->
-                        <?php } ?>
+                        $commenter_name_cp = htmlok( array(
+                            'name'      => 'Commenter Name',
+                            'structure' => array(
+                                'type'      => 'object',
+                                'linked'    => true,
+                                'attr'      => array(
+                                    'a'         => array(
+                                        'href'      => 'temp',
+                                    ),
+                                ),
+                                'layout'    => 'inline',
+                            ),
+                            'content'   => array(
+                                'object' => get_comment_author(),
+                            ),
+                        ) );
+
+                        $commenter_avatar_cp = htmlok( array(
+                            'name'      => 'Commenter Avatar',
+                            'structure' => array(
+                                'type'      => 'object',
+                                'layout'    => 'inline',
+                            ),
+                            'content'   => array(
+                                'object'    => get_avatar( $comment, $args['avatar_size'] ),
+                                'before'    => $GLOBALS['space_sep'],
+                            ),
+                        ) );
+
+                        $commenter_cp = htmlok( array(
+                            'name'      => 'Commenter',
+                            'structure' => array(
+                                'type'      => 'component',
+                            ),
+                            'content'   => array(
+                                'component' => array(
+                                    $commenter_name_cp,
+                                    $commenter_avatar_cp,
+                                ),
+                            ),
+                        ) );
+
+                        $published_comment_commenter_cp = htmlok( array(
+                            'name'      => 'Published Comment Commenter',
+                            'structure' => array(
+                                'type'      => 'component',
+                            ),
+                            'content'   => array(
+                                'component' => array(
+                                    $comment_published_glabel_obj,
+                                    $commenter_cp,
+                                ),
+                            ),
+                        ) );
+        
+                        // E: Post Meta
+                        $comment_meta = htmlok( array(
+                            'name'      => 'Comment Meta',
+                            'structure' => array(
+                                'type'      => 'component'
+                            ),
+                            'content'   => array(
+                                'component'     => array(
+
+                                    'Comment Date Time',
+
+                                    $published_comment_commenter_cp,
+                                ),
+                            ),
+                        ) );
+
+
+                        // E: Post Header Aside
+                        $comment_header_aside = htmlok( array(
+                            'name'      => 'Comment Header',
+                            'structure' => array(
+                                'type'          => 'constructor',
+                                'subtype'       => 'aside',
+                                'hr_structure'  => true,
+                            ),
+                            'css'       => 'comment-hr-as',
+                            'content'   => array(
+                                'constructor'   => array(
+
+                                    // Post Meta
+                                    $comment_meta,
+                                ),
+                            ),
+                            'echo'      => true,
+                        ) );
+
+                        ?>
+                        
+                        
                         
                         <div class="aside comment-header-aside" data-name="Comment Header Aside">
                             <div class="cr com-hr-as---cr">
@@ -189,78 +296,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         
         
         
-        $comment_published_glabel_obj = htmlok( array(
-            'name'      => 'Published Comment',
-            'structure' => array(
-                'type'      => 'object',
-                'subtype'   => 'generic label',
-            ),
-            'content'   => array(
-                'object'    => esc_html__( 'Comment by', 'applicator' ),
-                'after'     => $GLOBALS['space_sep'],
-            ),
-        ) );
         
-        ob_start();
-        get_comment_author_url();
-        $get_comment_author_url_ob_content = ob_get_contents();
-        ob_end_clean();
-        
-        $commenter_name_cp = htmlok( array(
-            'name'      => 'Commenter Name',
-            'structure' => array(
-                'type'      => 'object',
-                'linked'    => true,
-                'attr'      => array(
-                    'a'         => array(
-                        'href'      => 'temp',
-                    ),
-                ),
-                'layout'    => 'inline',
-            ),
-            'content'   => array(
-                'object' => get_comment_author(),
-            ),
-        ) );
-        
-        $commenter_avatar_cp = htmlok( array(
-            'name'      => 'Commenter Avatar',
-            'structure' => array(
-                'type'      => 'object',
-                'layout'    => 'inline',
-            ),
-            'content'   => array(
-                'object'    => get_avatar( $comment, $args['avatar_size'] ),
-                'before'    => $GLOBALS['space_sep'],
-            ),
-        ) );
-        
-        $commenter_cp = htmlok( array(
-            'name'      => 'Commenter',
-            'structure' => array(
-                'type'      => 'component',
-            ),
-            'content'   => array(
-                'component' => array(
-                    $commenter_name_cp,
-                    $commenter_avatar_cp,
-                ),
-            ),
-        ) );
-        
-        $published_comment_commenter_cp = htmlok( array(
-            'name'      => 'Published Comment Commenter',
-            'structure' => array(
-                'type'      => 'component',
-            ),
-            'content'   => array(
-                'component' => array(
-                    $comment_published_glabel_obj,
-                    $commenter_cp,
-                ),
-            ),
-            'echo'      => true,
-        ) );
                                                         
                                                         ?>
 

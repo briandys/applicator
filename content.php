@@ -35,7 +35,7 @@
                 applicator_hook_after_post_heading();
                 
                 
-                // Post Actions | inc > tags > post-actions.php
+                // Post Actions | inc > tags > entry-actions.php
                 applicator_func_post_actions();
                 
                 
@@ -54,7 +54,7 @@
                             
                             // Date and Time Stamp
                             // inc > tags > post-published-modified-cp.php
-                            applicator_func_post_published_modified_cp(),
+                            applicator_func_post_published_modified(),
                             
                             // Author
                             // inc > tags > post-author.php
@@ -65,7 +65,6 @@
                             applicator_func_post_categories(),
                         ),
                     ),
-                    'echo'      => true,
                 ) );
                 
                 

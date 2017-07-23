@@ -55,7 +55,7 @@ if ( file_exists( $aside ) ) { require_once( $aside ); }
 
 
 // Entry
-$post_actions = get_parent_theme_file_path( '/inc/tags/post-actions.php' );
+$post_actions = get_parent_theme_file_path( '/inc/tags/entry-actions.php' );
 if ( file_exists( $post_actions ) ) { require_once( $post_actions ); }
 
 $post_published_modified_cp = get_parent_theme_file_path( '/inc/tags/post-published-modified-cp.php' );
