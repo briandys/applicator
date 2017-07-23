@@ -165,11 +165,7 @@ $sign_in_req_note_obj = htmlok( array(
     ),
     'css'       => 'sign-in-req',
     'content'   => array(
-        'object'    => array(
-            array(
-                'txt' => $sign_in_req_note_content,
-            ),
-        ),
+        'object'    => $sign_in_req_note_content,
     ),
 ) );
 
@@ -214,9 +210,9 @@ $commenter_comment_creation_flabel_obj = htmlok( array(
 6: Required
 */
 $commenter_comment_creation_text_input_mu = '';
-$commenter_comment_creation_text_input_mu .= '<span class="ce %1$s---ce">';
+$commenter_comment_creation_text_input_mu .= '<div class="ce %1$s---ce">';
 $commenter_comment_creation_text_input_mu .= '<textarea id="%2$s" class="textarea input-text %1$s" name="%3$s" placeholder="%4$s" title="%5$s" maxlength="%7$s"%6$s></textarea>';
-$commenter_comment_creation_text_input_mu .= '</span>';
+$commenter_comment_creation_text_input_mu .= '</div>';
 
 $commenter_comment_creation_text_input_content = sprintf( $commenter_comment_creation_text_input_mu,
     $commenter_comment_creation_short_css.'-input-text',
