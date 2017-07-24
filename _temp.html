@@ -1,145 +1,136 @@
-
-
-
-<article <?php post_class( 'cp post--empty' ); ?> data-name="Post">
-    <div class="cr post---cr">
-        <header class="hr post---hr entry-header">
-            <div class="hr_cr post---hr_cr">
-                <?php
-                
-                // Markup
-                $post_title_obj_start_mu = '<div class="obj %2$s" data-name="%1$s">';
-                    $post_title_obj_start_mu .= '<h1 class="h %3$s---h entry-title"><span class="h_l %3$s---h_l">';
-                        $post_title_obj_start_mu .= '%4$s';
-                    $post_title_obj_end_mu = '</span></h1>';
-                $post_title_obj_end_mu .= '</div>';
-                
-                // Content
-                $post_title_obj_start = sprintf( $post_title_obj_start_mu,
-                    'Post Title Object',
-                    'post-title-obj',
-                    'post-title-obj',
-                    esc_html__( 'Nothing Found', 'applicator' )
-                );
-                
-                // Content
-                $post_title_obj_end = sprintf( $post_title_obj_end_mu );
-                
-                // Display
-                printf( $post_title_obj_start . $post_title_obj_end );
-                
-                 // Hook: After Entry Heading | inc > hooks.php
-                applicator_hook_after_post_heading(); ?>
-            </div>
-        </header>
-        <div class="ct post---ct entry-content">
-            <div class="ct_cr post---ct_cr">
-                <p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for.', 'applicator' ); ?></p>
-            </div>
-        </div><!-- ct -->
-    </div>
-</article><!-- Post -->
-
-
-
-<?php /*
-        <main id="main" class="cn pri-content site-main" role="main" data-name="Primary Content">
-            <div class="cr pri-content---cr">
-                
-                <div class="md entry-md" data-name="Entry Module">
-                    <div class="cr entry-md---cr">
-                        <div class="hr entry-md---hr">
-                            <div class="hr_cr entry-md---hr_cr">
-                                <div class="h entry-md---h"><span class="h_l entry-md---h_l"><?php esc_html_e( 'Entry Module', 'applicator' ); ?></span></div>
-                            </div>
-                        </div>
-                        <div class="ct entry-md---ct">
-                            <div class="ct_cr entry-md---ct_cr">
-                
-                <?php // single.php
-                if ( is_singular() ) {
-                    while ( have_posts() ) { ?>
-                        
-                        <div id="entry" class="cp entry" data-name="Entry">
-                            <div class="cr entry---cr">
-                                <div class="hr entry---hr">
-                                    <div class="hr_cr entry---hr_cr">
-                                        <div class="h entry---h"><span class="h_l entry---h_l"><?php esc_html_e( 'Entry', 'applicator' ); ?></span></div>
-                                        <?php // inc > tags > entry-nav.php
-                                        applicator_func_entry_nav(); ?>
-                                    </div>
-                                </div>
-                                <div class="ct entry---ct">
-                                    <div class="ct_cr entry---ct_cr">
-                                
-                                        <?php
-                                        the_post();
-
-                                        // template-parts > post-content.php
-                                        applicator_func_post_content();
-
-                                        // comments.php
-                                        comments_template();
-                                        ?>
+<div class="aside comment-header-aside" data-name="Comment Header Aside">
+                            <div class="cr com-hr-as---cr">
+                                <div class="h com-hr-as---h"><span class="h_l com-hr-as---h_l"><?php esc_html_e( 'Comment Header Aside', 'applicator' ); ?></span></div>
+                                <div class="ct com-hr-as---ct">
+                                    <div class="ct_cr com-hr-as---ct_cr">
                                         
-                                    </div>
-                                </div><!-- ct -->
-                                <div class="fr entry---fr">
-                                    <div class="fr_cr entry---fr_cr">
-                                        <?php // inc > tags > entry-nav.php
-                                        applicator_func_entry_nav(); ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- Entry -->
-                    
-                    <?php }
-                } else {
-                    if ( have_posts() ) { ?>
+                                        <div class="cp comment-meta" data-name="Comment Meta">
+                                            <div class="cr com-meta---cr">
+                                                <div class="h com-meta---h"><span class="h_l com-meta---h_l">Comment Meta</span></div>
+                                                <div class="ct com-meta---ct">
+                                                    <div class="ct_cr com-meta---ct_cr">
                                         
-                                <div class="cp entries" data-name="Entries">
-                                    <div class="cr entries---cr">
-                                        <div class="hr entries---hr">
-                                            <div class="hr_cr entries---hr_cr">
-                                                <div class="h entries---h"><span class="h_l entries---h_l"><?php esc_html_e( 'Entries', 'applicator' ); ?></span></div>
-                                                <?php // inc > template-parts > page-nav.php
-                                                applicator_func_page_nav(); ?>
-                                            </div>
-                                        </div>
-                                        <div class="ct entries---ct">
-                                            <div class="ct_cr entries---ct_cr">
-                
-                        <?php while ( have_posts() ) {
-                            the_post();
-                        
-                            // template-parts > post-content.php
-                            applicator_func_post_content();
-                        } ?>
+                                                        <?php // Comment Published Info
+                                                        $com_pub_mu = '<div class="%2$s" data-name="%1$s">';
+                                                            $com_pub_mu .= '<div class="cr %3$s---cr">';
+                                                                $com_pub_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h_l">%4$s</span></div>';
+                                                                $com_pub_mu .= '<div class="ct %3$s---ct">';
+                                                                    $com_pub_mu .= '<div class="ct_cr %3$s---ct_cr">';
+                                                                        $com_pub_mu .= '%5$s %6$s';
+                                                                    $com_pub_mu .= '</div>';
+                                                                $com_pub_mu .= '</div><!-- ct -->';
+                                                            $com_pub_mu .= '</div>';
+                                                        $com_pub_mu .= '</div><!-- %1$s -->';
 
-                                            </div>
-                                        </div><!-- ct -->
-                                        <div class="fr entries---fr">
-                                            <div class="fr_cr entries---fr_cr">
-                                                <?php // inc > template-parts > page-nav.php
-                                                applicator_func_page_nav(); ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- Entries -->
-                    
-                    <?php } else {
-                        get_template_part( 'content', 'none' );
-                    }
+                                                                $com_pub_lbl_mu = '<span class="%2$s" data-name="%1$s">';
+                                                                    $com_pub_lbl_mu .= '<span class="g %3$s---g"><span class="g_l %3$s---g_l"><span class="word %5$s---word">%4$s</span> <span class="word %7$s---word">%6$s</span></span></span>';
+                                                                $com_pub_lbl_mu .= '</span><!-- %1$s -->';
 
-                } ?>
-                                
-                        </div>
-                        </div><!-- ct -->
-                    </div>
-                </div><!-- Entry Module -->
-                
-            </div>
-        </main><!-- Primary Content -->
+                                                                $com_pub_date_time_mu = '<div class="%2$s" data-name="%1$s">';
+                                                                    $com_pub_date_time_mu .= '<div class="cr %3$s---cr">';
+                                                                        $com_pub_date_time_mu .= '<div class="h %3$s---h"><span class="h_l %3$s---h_l">%4$s</span></div>';
+                                                                        $com_pub_date_time_mu .= '<div class="ct %3$s---ct">';
+                                                                            $com_pub_date_time_mu .= '<div class="ct_cr %3$s---ct_cr">%5$s %6$s</div>';
+                                                                        $com_pub_date_time_mu .= '</div>';
+                                                                    $com_pub_date_time_mu .= '</div>';
+                                                                $com_pub_date_time_mu .= '</div><!-- %1$s -->';
+
+                                                                        $com_pub_date_mu = '<span class="%2$s" data-name="%1$s">';
+                                                                            $com_pub_date_mu .= '<time class="time %3$s---time" datetime="%11$s">';
+                                                                                $com_pub_date_mu .= '<span class="time_l %3$s---time_l">';
+                                                                                    $com_pub_date_mu .= '<a class="a %3$s---a" href="%10$s" title="%12$s"><span class="a_l %3$s---a_l"><span class="word %5$s---word">%4$s</span> <span class="word %7$s---word">%6$s</span> <span class="word %9$s---word">%8$s</span></span></a>';
+                                                                                $com_pub_date_mu .= '</span>';
+                                                                            $com_pub_date_mu .= '</time>';
+                                                                        $com_pub_date_mu .= '</span><!-- %1$s -->';
+
+                                                                        $com_pub_time_mu = '<span class="%2$s" data-name="%1$s">';
+                                                                            $com_pub_time_mu .= '<time class="time %3$s---time" datetime="%11$s">';
+                                                                                $com_pub_time_mu .= '<span class="time_l %3$s---time_l">';
+                                                                                    $com_pub_time_mu .= '<a class="a %3$s---a" href="%10$s" title="%12$s"><span class="a_l %3$s---a_l"><span class="word %5$s---word">%4$s</span><span class="sep colon---sep">:</span><span class="word %7$s---word">%6$s</span><span class="sep colon---sep">:</span><span class="word %9$s---word">%8$s</span></span></a>';
+                                                                                $com_pub_time_mu .= '</span>';
+                                                                            $com_pub_time_mu .= '</time>';
+                                                                        $com_pub_time_mu .= '</span><!-- %1$s -->';
+
+                                                        // Comment Published Label
+                                                        $com_pub_lbl_NAME = 'Comment Published Date and Time Stamp Label';
+                                                        $com_pub_lbl = sprintf( $com_pub_lbl_mu,
+                                                            $com_pub_lbl_NAME,
+                                                            'obj comment-published-timestamp-label',
+                                                            'com-pub-ts-lbl',
+                                                            esc_html__( 'Commented', 'applicator' ),
+                                                            'published',
+                                                            esc_html__( 'on', 'applicator' ),
+                                                            'on'
+                                                        );
+
+                                                        // Comment Published Date
+                                                        $com_pub_date_NAME = 'Comment Published Date Stamp';
+                                                        $com_pub_date = sprintf( $com_pub_date_mu,
+                                                            $com_pub_lbl_NAME,
+                                                            'obj comment-published-date-stamp',
+                                                            'com-pub-ds',
+                                                            get_comment_date( 'j' ), // Day (d)
+                                                            'day',
+                                                            get_comment_date( 'M' ), // Month (mmm)
+                                                            'month',
+                                                            get_comment_date( 'Y' ), // Year (yyyy)
+                                                            'year',
+                                                            htmlspecialchars( get_comment_link( $comment->comment_ID ) ),
+                                                            get_comment_date( DATE_W3C ),
+                                                            get_comment_date( 'j F Y')
+                                                        );
+
+                                                        // Comment Published Time
+                                                        $com_pub_time_NAME = 'Comment Published Time Stamp';
+                                                        $com_pub_time = sprintf( $com_pub_time_mu,
+                                                            $com_pub_time_NAME,
+                                                            'obj comment-published-time-stamp',
+                                                            'com-pub-ts',
+                                                            get_comment_time( 'H' ), // Day (d)
+                                                            'hours',
+                                                            get_comment_time( 'i' ), // Month (mmm)
+                                                            'minutes',
+                                                            get_comment_time( 's' ), // Year (yyyy)
+                                                            'seconds',
+                                                            esc_url( get_permalink() ),
+                                                            get_comment_time( DATE_W3C ),
+                                                            get_comment_time( 'H:i:s')
+                                                        );
+
+                                                        // Comment Published Date Time Component
+                                                        $com_pub_date_time_NAME = 'Comment Published Date and Time Stamp';
+                                                        $com_pub_date_time = sprintf( $com_pub_date_time_mu,
+                                                            $com_pub_date_time_NAME,
+                                                            'cp comment-published-date-time-stamp',
+                                                            'com-pub-dts',
+                                                            $com_pub_date_time_NAME,
+                                                            $com_pub_date,
+                                                            $com_pub_time
+                                                        );
+
+                                                        // Comment Published Info Component
+                                                        $com_pub_NAME = 'Comment Published Info';
+                                                        printf( $com_pub_mu,
+                                                            $com_pub_NAME,
+                                                            'cp comment-published-info',
+                                                            'com-pub-info',
+                                                            $com_pub_NAME,
+                                                            $com_pub_lbl,
+                                                            $com_pub_date_time
+                                                        );
         
-        <?php get_sidebar(); ?>
-        */ ?>
+        
+        
+        
+                                                        
+                                                        ?>
+
+                                                        
+                                                    </div>
+                                                </div><!-- ct -->
+                                            </div>
+                                        </div><!-- Comment Meta -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- Comment Header Aside -->
