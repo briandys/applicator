@@ -50,7 +50,11 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
             'content'   => array(
                 'object'        => array(
                     array(
-                        'txt'       => esc_html__( 'Comment', 'applicator' ).' '.get_comment_ID(),
+                        'txt'       => esc_html__( 'Comment', 'applicator' ),
+                    ),
+                    array(
+                        'sep'       => $GLOBALS['space_sep'],
+                        'txt'       => get_comment_ID(),
                     ),
                 ),
             ),
@@ -62,13 +66,12 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         applicator_func_comment_actions();
         
         
-        
-        
+        // Comment Published
         $comment_published_term = esc_html__( 'Comment Published', 'applicator' );
         $on_term = esc_html__( 'on', 'applicator' );
-        $comment_date = get_comment_date( 'j F Y');
-        $comment_time = get_comment_time( 'H:i:s');
-        $comment_published_title = $comment_published_term.' '.$on_term.' '.$comment_date.', '.$comment_time;
+        $comment_date_content = get_comment_date( 'j F Y');
+        $comment_time_content = get_comment_time( 'H:i:s');
+        $comment_published_on_content = $comment_published_term.' '.$on_term.' '.$comment_date_content.', '.$comment_time_content;
         
         
         // R: Comment Published Label
@@ -111,7 +114,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                 'layout'    => 'inline',
             ),
             'css'       => 'comment-pub-d-stamp',
-            'title'     => $comment_published_title,
+            'title'     => $comment_published_on_content,
             'content'   => array(
                 'object' => array(
                     array(
@@ -151,7 +154,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                 'layout'    => 'inline',
             ),
             'css'       => 'comment-pub-t-stamp',
-            'title'     => $comment_published_title,
+            'title'     => $comment_published_on_content,
             'content'   => array(
                 'object' => array(
                     array(
@@ -206,13 +209,21 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         ) );
         
         
+        // Commenter
+        $comment_by_term = esc_html__( 'Comment by', 'applicator' );
+        $comment_term = esc_html__( 'Comment', 'applicator' );
+        $by_term = esc_html__( 'by', 'applicator' );
+        $commenter_content = get_comment_author();
+        $commented_by_content = $comment_by_term.' '.$commenter_content;
         
+        // Conditionals: Blank or Custom Avatar
+        $commenter_avatar_prefix_css = 'commenter-avatar-default';
         
-        
-        
-        
-        
-
+        if ( get_option( 'avatar_default' ) == 'blank' ) {
+            $commenter_avatar_type_css = $commenter_avatar_prefix_css . '--blank';
+        } else {
+            $commenter_avatar_type_css = $commenter_avatar_prefix_css . '--custom';
+        }
 
         // Commenter
         $commenter_published_label_obj = htmlok( array(
@@ -222,7 +233,15 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                 'subtype'   => 'generic label',
             ),
             'content'   => array(
-                'object'    => esc_html__( 'Comment by', 'applicator' ),
+                'object'    => array(
+                    array(
+                        'txt'   => $comment_term,
+                    ),
+                    array(
+                        'sep'   => $GLOBALS['space_sep'],
+                        'txt'   => $by_term,
+                    ),
+                ),
                 'after'     => $GLOBALS['space_sep'],
             ),
         ) );
@@ -239,15 +258,6 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
             $commenter_url = get_comment_link( $comment->comment_ID );
         }
         
-        // Conditionals: Blank or Custom Avatar
-        $commenter_avatar_prefix_css = 'commenter-avatar-default';
-        
-        if ( get_option( 'avatar_default' ) == 'blank' ) {
-            $commenter_avatar_type_css = $commenter_avatar_prefix_css . '--blank';
-        } else {
-            $commenter_avatar_type_css = $commenter_avatar_prefix_css . '--custom';
-        }
-        
         // Commenter Name
         $commenter_name_cp = htmlok( array(
             'name'      => 'Commenter Name',
@@ -261,8 +271,9 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                 ),
                 'layout'    => 'inline',
             ),
+            'title'     => $commented_by_content,
             'content'   => array(
-                'object' => get_comment_author(),
+                'object' => $commenter_content,
             ),
         ) );
         
@@ -279,6 +290,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                 ),
                 'layout'    => 'inline',
             ),
+            'title'     => $commented_by_content,
             'content'   => array(
                 'object'    => get_avatar( $comment, $args['avatar_size'] ),
                 'before'    => $GLOBALS['space_sep'],

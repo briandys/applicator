@@ -15,6 +15,14 @@ if ( ! function_exists( 'applicator_func_post_author' ) ) {
     function applicator_func_post_author() {
         
         
+        // Variables Definitions
+        $published_by_term = esc_html__ ( 'Published by', 'applicator' );
+        $published_term = esc_html__ ( 'Published', 'applicator' );
+        $by_term = esc_html__ ( 'by', 'applicator' );
+        $author_content = get_the_author();
+        $published_by_author_content = $published_by_term. ' '. $author_content;
+        
+        
         // R: Post Published Label
         $post_published_label_obj = htmlok( array(
             'name'      => 'Post Published',
@@ -26,7 +34,11 @@ if ( ! function_exists( 'applicator_func_post_author' ) ) {
             'content'   => array(
                 'object' => array(
                     array(
-                        'txt'   => 'Published by',
+                        'txt'   => $published_term,
+                    ),
+                    array(
+                        'sep'   => $GLOBALS['space_sep'],
+                        'txt'   => $by_term,
                     ),
                 ),
             ),
@@ -46,11 +58,11 @@ if ( ! function_exists( 'applicator_func_post_author' ) ) {
                 ),
                 'layout'    => 'inline',
             ),
-            'title'     => get_the_author(),
+            'title'     => $published_by_author_content,
             'content'   => array(
                 'object' => array(
                     array(
-                        'txt'   => get_the_author(),
+                        'txt'   => $author_content,
                     ),
                 ),
             ),
@@ -71,7 +83,7 @@ if ( ! function_exists( 'applicator_func_post_author' ) ) {
                 ),
                 'layout'    => 'inline',
             ),
-            'title'     => get_the_author(),
+            'title'     => $published_by_author_content,
             'content'   => array(
                 'object' => get_avatar(
                     get_the_author_meta( 'ID' ),

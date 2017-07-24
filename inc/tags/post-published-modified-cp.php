@@ -39,6 +39,21 @@ if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
         
         //------------------------------------ Post Published
         
+        // Variables Definitions
+        $published_on_term = esc_html__ ( 'Published on', 'applicator' );
+        $published_term = esc_html__ ( 'Published', 'applicator' );
+        $on_term = esc_html__ ( 'on', 'applicator' );
+        $post_published_date_content = get_the_date( 'j F Y');
+        $post_published_time_content = get_the_date( 'H:i:s');
+        $published_on_date_time_content = $published_on_term.' '.$post_published_date_content.', '.$post_published_time_content;
+        
+        $modified_on_term = esc_html__ ( 'Modified on', 'applicator' );
+        $modified_term = esc_html__ ( 'Modified', 'applicator' );
+        $post_modified_date_content = get_the_modified_time( 'j F Y');
+        $post_modified_time_content = get_the_modified_time( 'H:i:s');
+        $modified_on_date_time_content = $modified_on_term.' '.$post_modified_date_content.', '.$post_modified_time_content;
+        
+        
         // R: Post Published Label
         $post_published_label_obj = htmlok( array(
             'name'      => 'Post Published',
@@ -50,11 +65,11 @@ if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
             'content'   => array(
                 'object' => array(
                     array(
-                        'txt'   => 'Published',
+                        'txt'   => $published_term,
                     ),
                     array(
                         'sep' => $GLOBALS['space_sep'],
-                        'txt'   => 'on',
+                        'txt'   => $on_term,
                     ),
                 ),
             ),
@@ -79,7 +94,7 @@ if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
                 'layout'    => 'inline',
             ),
             'css'       => 'post-pub-d-stamp',
-            'title'     => get_the_date( 'j F Y'),
+            'title'     => $published_on_date_time_content,
             'content'   => array(
                 'object' => array(
                     array(
@@ -119,7 +134,7 @@ if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
                 'layout'    => 'inline',
             ),
             'css'       => 'post-pub-t-stamp',
-            'title'     => get_the_date( 'H:i:s'),
+            'title'     => $published_on_date_time_content,
             'content'   => array(
                 'object' => array(
                     array(
@@ -187,11 +202,11 @@ if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
             'content'   => array(
                 'object' => array(
                     array(
-                        'txt'   => 'Modified',
+                        'txt'   => $modified_term,
                     ),
                     array(
                         'sep' => $GLOBALS['space_sep'],
-                        'txt'   => 'on',
+                        'txt'   => $on_term,
                     ),
                 ),
             ),
@@ -216,7 +231,7 @@ if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
                 'layout'    => 'inline',
             ),
             'css'       => 'post-mod-d-stamp',
-            'title'     => get_the_modified_time( 'j F Y'),
+            'title'     => $modified_on_date_time_content,
             'content'   => array(
                 'object' => array(
                     array(
@@ -256,7 +271,7 @@ if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
                 'layout'    => 'inline',
             ),
             'css'       => 'post-mod-t-stamp',
-            'title'     => get_the_modified_time( 'H:i:s'),
+            'title'     => $modified_on_date_time_content,
             'content'   => array(
                 'object' => array(
                     array(

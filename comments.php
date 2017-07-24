@@ -107,6 +107,8 @@ $comment_creation_header = sprintf( $comment_creation_header_mu,
 
 // logged_in_as
 $signed_in_as_term = esc_html__( 'Signed in as', 'applicator' );
+$signed_in_account_content = $user_identity;
+$signed_in_as_account_content = $signed_in_as_term. ' '. $signed_in_account_content;
 
 $signed_in_account_label_obj = htmlok( array(
     'name'      => 'Signed In Account',
@@ -129,13 +131,34 @@ $signed_in_account_name_obj = htmlok( array(
         'attr'      => array(
             'a'         => array(
                 'href'      => admin_url( 'profile.php' ),
-                'title'     => $signed_in_as_term.' '.$user_identity,
+                'title'     => $signed_in_as_account_content,
             ),
         ),
         'layout'    => 'inline',
     ),
     'content'   => array(
-        'object' => $user_identity,
+        'object' => $signed_in_account_content,
+    ),
+) );
+
+$account_log_out_axn_obj = htmlok( array(
+    'name'      => 'Account Log Out',
+    'structure' => array(
+        'type'      => 'object',
+        'subtype'   => 'action item',
+        'linked'    => true,
+        'attr'      => array(
+            'a'         => array(
+                'href'      => wp_logout_url( get_permalink() ),
+            ),
+        ),
+    ),
+    'content'   => array(
+        'object'    => array(
+            array(
+                'txt'   => esc_html__( 'Log Out', 'applicator' ),
+            ),
+        ),
     ),
 ) );
 
@@ -144,6 +167,7 @@ $signed_in_account_cp = htmlok( array(
     'structure' => array(
         'type'      => 'component',
     ),
+    'hr_content'=> $account_log_out_axn_obj,
     'css'       => 'signed-in-acct',
     'content'   => array(
         'component' => array(
