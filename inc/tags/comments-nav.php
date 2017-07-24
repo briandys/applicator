@@ -4,79 +4,82 @@ if ( ! function_exists( 'applicator_func_comments_nav' ) ) {
     function applicator_func_comments_nav() {
         
         if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) {
-
-            // Text
-            $next_comments_navi_txt = htmlok_txt( array(
-                'content'   => array(
-                    array(
-                        'txt'   => esc_html__( 'Next', 'applicator' ),
-                    ),
-                    array(
-                        'sep'   => $GLOBALS['space_sep'],
-                        'txt'   => esc_html__( 'Comments', 'applicator' ),
-                    ),
-                ),
-            ) );
             
-            // Text
-            $previous_comments_navi_txt = htmlok_txt( array(
-                'content'   => array(
-                    array(
-                        'txt'   => esc_html__( 'Previous', 'applicator' ),
-                    ),
-                    array(
-                        'sep'   => $GLOBALS['space_sep'],
-                        'txt'   => esc_html__( 'Comments', 'applicator' ),
-                    ),
-                ),
-            ) );
             
-            // Element Label
-            $next_comments_navi_label = htmlok_obj( array(
-                'name'      => 'Next Comments',
-                'elem'      => 'anchor label',
-                'content'   => $next_comments_navi_txt,
-            ) );
+            // Adjacent Comments Navigation Item Template Markup
+            $adjacent_comments_navi_mu = '';
+            $adjacent_comments_navi_mu .= '<span class="a_l %6$s---a_l" title="%3$s">';
+                $adjacent_comments_navi_mu .= '<span class="txt %4$s---txt">';
+                    $adjacent_comments_navi_mu .= '%1$s';
+                $adjacent_comments_navi_mu .= '</span>';
+                $adjacent_comments_navi_mu .= ' <span class="txt %5$s---txt">';
+                    $adjacent_comments_navi_mu .= '%2$s';
+                $adjacent_comments_navi_mu .= '</span>';
+            $adjacent_comments_navi_mu .= '</span>';
             
-            // Element Label
-            $previous_comments_navi_label = htmlok_obj( array(
-                'name'      => 'Previous Comments',
-                'elem'      => 'anchor label',
-                'content'   => $previous_comments_navi_txt,
-            ) );
             
-            // Anchor Element (WPg)
-            
+            // Next Comments Navigation Item
             $next_comments_link = '';
             $next_comments_navi_obj = '';
             
             if ( get_next_comments_link() ) {
                 
+                $next_comments_navi_label = sprintf( $adjacent_comments_navi_mu,
+                    esc_html__( 'Next', 'applicator' ),
+                    esc_html__( 'Comments', 'applicator' ),
+                    esc_html__( 'Next Comments', 'applicator' ),
+                    'next',
+                    'comments',
+                    'next-comments-navi'
+                );
+
                 $next_comments_link = get_next_comments_link( $next_comments_navi_label );
             
-                // Object
-                $next_comments_navi_obj = htmlok_obj( array(
+                $next_comments_navi_obj = htmlok( array(
                     'name'      => 'Next Comments',
-                    'elem'      => 'list',
-                    'content'   => $next_comments_link,
+                    'structure' => array(
+                        'type'      => 'object',
+                        'subtype'   => 'navigation item',
+                        'wpg'           => true,
+                        'root_obj_elem' => 'li',
+                    ),
+                    'content'   => array(
+                        'object'    => $next_comments_link,
+                    ),
                 ) );
             }
             
-            // Anchor Element (WPg)
             
+            // Previous Comments Navigation Item
             $previous_comments_link = '';
             $previous_comments_navi_obj = '';
             
             if ( get_previous_comments_link() ) {
                 
+                $previous_comments_navi_label = sprintf( $adjacent_comments_navi_mu,
+                    esc_html__( 'Previous', 'applicator' ),
+                    esc_html__( 'Comments', 'applicator' ),
+                    esc_html__( 'Previous Comments', 'applicator' ),
+                    'previous',
+                    'comments',
+                    'previous-comments-navi'
+                );
+                
                 $previous_comments_link = get_previous_comments_link( $previous_comments_navi_label );
             
-                // Object
-                $previous_comments_navi_obj = htmlok_obj( array(
+                $previous_comments_navi_obj = htmlok( array(
                     'name'      => 'Previous Comments',
-                    'elem'      => 'li',
-                    'content'   => $previous_comments_link,
+                    'structure' => array(
+                        'type'      => 'object',
+                        'subtype'   => 'navigation item',
+                        'wpg'           => true,
+                        'root_obj_elem' => 'li',
+                    ),
+                    'content'   => array(
+                        'object'    => $previous_comments_link,
+                    ),
                 ) );
+                
             }
             
             // Comments Nav Group
@@ -85,15 +88,20 @@ if ( ! function_exists( 'applicator_func_comments_nav' ) ) {
             $comments_nav_group .= $next_comments_navi_obj . $previous_comments_navi_obj;
             $comments_nav_group .= '</ul>';
             
-            // Comments Nav - Component
-            $comments_nav = htmlok_cp( array(
+            
+            // R: Comments Navigation
+            $comments_nav_cp = htmlok( array(
                 'name'      => 'Comments',
-                'type'      => 'nav',
-                'content'   => $comments_nav_group,
+                'structure' => array(
+                    'type'      => 'component',
+                    'subtype'   => 'navigation',
+                ),
+                'content'   => array(
+                    'component' => $comments_nav_group,
+                ),
             ) );
             
-            return $comments_nav;
+            return $comments_nav_cp;
         }
-    
     }
 }

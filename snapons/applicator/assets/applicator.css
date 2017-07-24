@@ -78,6 +78,7 @@
 .tags---h,
 
 /* Comments */
+.comment-md---h,
 .comment-hr-as-aside---h,
 .comment-meta---h,
 .comments-nav---h,
@@ -89,9 +90,9 @@
 .signed-in-acct---h,
 
 /* Comments Actions Snippet - Component */
-.coms-acts-snip---h,
-.coms-population---h,
-.com-crt-ability---h,
+.comments-axns-snip---h,
+.comments-population---h,
+.comment-crt-ability---h,
 
 /* Go to Content Nav */
 .go-ct-nav---h,
@@ -116,6 +117,7 @@
 .breadcrumbs-nav---h,
 
 /* Post Nav */
+.post-content---h,
 .post-nav---h,
 
 /*  Menu | Main Nav - Main Header Aside */
@@ -1783,6 +1785,7 @@ $go-green: #12b32d;
     padding-left: 1rem;
 }
 
+#comments:target,
 #comments *:target,
 #respond *:target
 {

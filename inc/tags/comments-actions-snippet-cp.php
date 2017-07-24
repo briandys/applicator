@@ -55,14 +55,13 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
         // Comments Count Template Markup
         $comments_count_mu = '';
         $comments_count_mu .= '<span class="a_l %5$s---a_l">';
-            $comments_count_mu .= '<span class="txt %3$s---txt">';
+            $comments_count_mu .= '<span class="txt num %3$s---txt">';
                 $comments_count_mu .= '%1$s';
-            $comments_count_mu .= '<span>';
-            $comments_count_mu .= $GLOBALS['space_sep'];
-            $comments_count_mu .= '<span class="txt %4$s---txt">';
+            $comments_count_mu .= '</span>';
+            $comments_count_mu .= ' <span class="txt %4$s---txt">';
                 $comments_count_mu .= '%2$s';
-            $comments_count_mu .= '<span>';
-        $comments_count_mu .= '<span>';
+            $comments_count_mu .= '</span>';
+        $comments_count_mu .= '</span>';
         
         
         // Comments Count Single Text
@@ -79,7 +78,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
             $comments_count_multi_text,
             $comment_plural_text,
             $comments_count_num_css,
-            sanitize_title( $comments_count_multi_text ),
+            sanitize_title( $comment_plural_text ),
             $comments_count_axn_css
         );
         
@@ -88,7 +87,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
             $comments_count_zero_text,
             $comment_singular_text,
             $comments_count_num_css,
-            sanitize_title( $comments_count_zero_text ),
+            sanitize_title( $comment_singular_text ),
             $comments_count_axn_css
         );
         
@@ -111,13 +110,15 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
                 $comments_count_multi_txt,
 
                 // Class Name for <a> (WP-Generated or WPG)
-                'a'. ' '. $comments_count_axn_css. '---a',
+                'a'.' '.$comments_count_axn_css.'---a',
 
                 // Comment Creation Disabled
                 ''
             ) );
             
             $wpg_setting = true;
+            
+            $a_attr_setting = '';
 
         // Comments Empty
         } else {
@@ -134,10 +135,14 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
             $comments_count_obj_a = $comments_count_zero_txt;
             
             $wpg_setting = false;
+            
+            $a_attr_setting = array(
+                'a' => array(
+                    'href'  => $comments_count_obj_a_link . '#comments',
+                ),
+            );
         
         }
-        
-        
         
         // R: Comments Count
         $comments_count_obj = htmlok( array(
@@ -147,13 +152,9 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
                 'subtype'   => 'action item',
                 'linked'    => true,
                 'wpg'       => $wpg_setting,
-                'attr'      => array(
-                    'a'         => array(
-                        'href'      => $comments_count_obj_a_link . '#comments',
-                    ),
-                ),
+                'attr'      => $a_attr_setting,
             ),
-            'css'       => 'add-com-axn',
+            'css'       => $comments_count_axn_css,
             'content'   => array(
                 'object'    => $comments_count_obj_a,
 
