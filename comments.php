@@ -105,6 +105,27 @@ $comment_creation_header = sprintf( $comment_creation_header_mu,
 );
 
 
+// Comment Creation Label
+$comment_creation_label_obj = htmlok( array(
+    'name'      => 'Comment Creation',
+    'structure' => array(
+        'type'      => 'object',
+        'subtype'   => 'generic label',
+    ),
+    'content'   => array(
+        'object'    => array(
+            array(
+                'txt'   => esc_html__( 'Compose', 'applicator' ),
+            ),
+            array(
+                'sep'   => $GLOBALS['space_sep'],
+                'txt'   => esc_html__( 'Comment', 'applicator' ),
+            ),
+        ),
+    ),
+) );
+
+
 // logged_in_as
 $signed_in_as_term = esc_html__( 'Signed in as', 'applicator' );
 $signed_in_account_content = $user_identity;
@@ -167,7 +188,6 @@ $signed_in_account_cp = htmlok( array(
     'structure' => array(
         'type'      => 'component',
     ),
-    'hr_content'=> $account_log_out_axn_obj,
     'css'       => 'signed-in-acct',
     'content'   => array(
         'component' => array(
@@ -175,6 +195,7 @@ $signed_in_account_cp = htmlok( array(
             $signed_in_account_name_obj,
         ),
     ),
+    'fr_content'=> $account_log_out_axn_obj,
 ) );
 
 
@@ -342,7 +363,7 @@ comment_form( array(
     'title_reply_after'         => '',
 
     // Comment Creation Header
-    'title_reply'               => $comment_creation_header,
+    'title_reply'               => $comment_creation_header. $comment_creation_label_obj,
 
     // Signed in as "Account Name"
     'logged_in_as'              => $signed_in_account_cp, 

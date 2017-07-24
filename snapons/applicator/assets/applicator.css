@@ -85,6 +85,8 @@
 .comment-pub---h,
 .published-comment-commenter---h,
 .commenter---h,
+.comment-crt-hd---h,
+.signed-in-acct---h,
 
 /* Comments Actions Snippet - Component */
 .coms-acts-snip---h,
@@ -1781,6 +1783,22 @@ $go-green: #12b32d;
     padding-left: 1rem;
 }
 
+#comments *:target
+{
+    animation: fade-highlight 2s ease;
+}
+
+@keyframes fade-highlight {
+    0%
+    {
+        background-color: hsla( 56, 100%, 50%, .125 );
+    }
+    100%
+    {
+        background-color: transparent;
+    }
+}
+
 
 
 
@@ -2031,10 +2049,7 @@ $go-green: #12b32d;
     width: 100%;
 }
 
-
-
-
-
+/*
 .comment-md,
 .comment-respond
 {
@@ -2046,3 +2061,4 @@ $go-green: #12b32d;
     margin: 1rem;
     padding: 1rem;
 }
+*/

@@ -913,25 +913,24 @@
                     event.preventDefault();
 
                     //$('#commentform :input:visible[required="required"]').each( function () {
-                    $('#commentform :input').each( function () {
+                    $('#commentform :input:visible').each( function () {
                         
-                        var _this = $( this ),
-                            $validityNote = $( '.validity-note' ),
-                            validityNoteTerm = 'validity-note',
-                            creationInvalidCSS = 'creation--invalid',
-                            creationValidCSS = 'creation--valid';
-                        
+                        var _this = $( this );
+
+                        _this.closest( '.cr' )
+                            .find( '.validity-note' ).remove();
+
                         if ( this.validity.valid ) {
-
+                            
                             _this.closest( '.cp' )
-                                .removeClass( creationInvalidCSS )
-                                .addClass( creationValidCSS );
-
-                            _this.closest( '.cr' )
-                                .find( $validityNote ).remove();
+                                .addClass( 'creation--valid' )
+                                .removeClass( 'creation--invalid' )
+                            
                         }
-
+                        
                         if ( ! this.validity.valid ) {
+
+                            var validityNoteTerm = 'validity-note';
 
                             validityNoteContainerGenericElementLabel = $( '<div />', {
                                 'class': 'g_l '+ validityNoteTerm +'---g_l',
@@ -954,7 +953,8 @@
                             _this.focus();
 
                             _this.closest( '.cp' )
-                                .addClass( creationInvalidCSS )
+                                .addClass( 'creation--invalid' )
+                                .removeClass( 'creation--valid' )
                                 .find( '.cr' )
                                 .append( validityNote );
 

@@ -1,4 +1,5 @@
-<?php // Comment Item | comments.php
+<?php // Comment Item
+// comments.php
 
 if ( ! function_exists( 'applicator_func_comment' ) ) {
     function applicator_func_comment( $comment, $args, $depth ) {
@@ -363,10 +364,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
             'echo'      => true,
         ) );
 
-        ?>
-                        
-                        
-                        
+        ?>           
                         
                     </div>
                 </div><!-- comment--hr -->
@@ -390,85 +388,88 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                 <div class="fr comment---fr">
                     <div class="fr_cr comment---fr_cr">
                         
-                        <?php
-                                                                                                                                 
-                        $comment_reply_axn_a_l_mu = '';
-                        $comment_reply_axn_a_l_mu .= '<span class="a_l comment-reply-axn---a_l">%1$s</span>';
+            <?php
+            
+            // Reply to Comment                                                                                                  
+            $comment_reply_axn_a_l_mu = '';
+            $comment_reply_axn_a_l_mu .= '<span class="a_l comment-reply-axn---a_l">%1$s</span>';
 
-                        $reply_to_comment_line_mu = '';
-                        $reply_to_comment_line_mu .= '<span class="line reply-to-comment---line">';
-                            $reply_to_comment_line_mu .= '<span class="txt reply---txt">';
-                                $reply_to_comment_line_mu .= esc_html__( 'Reply', 'applicator' );
-                            $reply_to_comment_line_mu .= '</span>';
-                            $reply_to_comment_line_mu .= ' <span class="txt to---txt">';
-                                $reply_to_comment_line_mu .= esc_html__( 'to', 'applicator' );
-                            $reply_to_comment_line_mu .= '</span>';
-                            $reply_to_comment_line_mu .= ' <span class="txt comment---txt">';
-                                $reply_to_comment_line_mu .= esc_html__( 'Comment', 'applicator' );
-                            $reply_to_comment_line_mu .= '</span>';
-                        $reply_to_comment_line_mu .= '</span>';
+            $reply_to_comment_line_mu = '';
+            $reply_to_comment_line_mu .= '<span class="line reply-to-comment---line">';
+                $reply_to_comment_line_mu .= '<span class="txt reply---txt">';
+                    $reply_to_comment_line_mu .= esc_html__( 'Reply', 'applicator' );
+                $reply_to_comment_line_mu .= '</span>';
+                $reply_to_comment_line_mu .= ' <span class="txt to---txt">';
+                    $reply_to_comment_line_mu .= esc_html__( 'to', 'applicator' );
+                $reply_to_comment_line_mu .= '</span>';
+                $reply_to_comment_line_mu .= ' <span class="txt comment---txt">';
+                    $reply_to_comment_line_mu .= esc_html__( 'Comment', 'applicator' );
+                $reply_to_comment_line_mu .= '</span>';
+            $reply_to_comment_line_mu .= '</span>';
 
-                        $sign_in_required_line_mu = '';
-                        $sign_in_required_line_mu .= '<span class="line sign-in-required---line">';
-                            $sign_in_required_line_mu .= '<span class="txt open-parenthesis---txt">';
-                                $sign_in_required_line_mu .= '(';
-                            $sign_in_required_line_mu .= '</span>';
-                            $sign_in_required_line_mu .= '<span class="txt requires---txt">';
-                                $sign_in_required_line_mu .= esc_html__( 'requires', 'applicator' );
-                            $sign_in_required_line_mu .= '</span>';
-                            $sign_in_required_line_mu .= ' <span class="txt sign---txt">';
-                                $sign_in_required_line_mu .= esc_html__( 'Sign', 'applicator' );
-                            $sign_in_required_line_mu .= '</span>';
-                            $sign_in_required_line_mu .= ' <span class="txt in---txt">';
-                                $sign_in_required_line_mu .= esc_html__( 'In', 'applicator' );
-                            $sign_in_required_line_mu .= '</span>';
-                            $sign_in_required_line_mu .= '<span class="txt close-parenthesis---txt">';
-                                $sign_in_required_line_mu .= ')';
-                            $sign_in_required_line_mu .= '</span>';
-                        $sign_in_required_line_mu .= '</span>';
+            $sign_in_required_line_mu = '';
+            $sign_in_required_line_mu .= '<span class="line sign-in-required---line">';
+                $sign_in_required_line_mu .= '<span class="txt open-parenthesis---txt">';
+                    $sign_in_required_line_mu .= '(';
+                $sign_in_required_line_mu .= '</span>';
+                $sign_in_required_line_mu .= '<span class="txt requires---txt">';
+                    $sign_in_required_line_mu .= esc_html__( 'requires', 'applicator' );
+                $sign_in_required_line_mu .= '</span>';
+                $sign_in_required_line_mu .= ' <span class="txt sign---txt">';
+                    $sign_in_required_line_mu .= esc_html__( 'Sign', 'applicator' );
+                $sign_in_required_line_mu .= '</span>';
+                $sign_in_required_line_mu .= ' <span class="txt in---txt">';
+                    $sign_in_required_line_mu .= esc_html__( 'In', 'applicator' );
+                $sign_in_required_line_mu .= '</span>';
+                $sign_in_required_line_mu .= '<span class="txt close-parenthesis---txt">';
+                    $sign_in_required_line_mu .= ')';
+                $sign_in_required_line_mu .= '</span>';
+            $sign_in_required_line_mu .= '</span>';
 
-                        $reply_text_content = sprintf( $comment_reply_axn_a_l_mu,
-                            $reply_to_comment_line_mu
-                        );
+            $reply_text_content = sprintf( $comment_reply_axn_a_l_mu,
+                $reply_to_comment_line_mu
+            );
 
-                        $login_text_content = sprintf( $comment_reply_axn_a_l_mu,
-                            $reply_to_comment_line_mu.' '.$sign_in_required_line_mu
-                        );
+            $login_text_content = sprintf( $comment_reply_axn_a_l_mu,
+                $reply_to_comment_line_mu.' '.$sign_in_required_line_mu
+            );
 
-                        ob_start();
-                        comment_reply_link( array_merge(
-                            $args,
-                            array(
-                                'add_below'     => $add_below,
-                                'depth'         => $depth,
-                                'max_depth'     => $args['max_depth'],
-                                'reply_text'    => $reply_text_content,
-                                'login_text'    => $login_text_content
-                            )
-                        ) );
-                        $comment_reply_axn_content = ob_get_contents();
-                        ob_end_clean();
+            ob_start();
+            comment_reply_link( array_merge(
+                $args,
+                array(
+                    'add_below'     => $add_below,
+                    'depth'         => $depth,
+                    'max_depth'     => $args['max_depth'],
+                    'reply_text'    => $reply_text_content,
+                    'login_text'    => $login_text_content
+                )
+            ) );
+            $comment_reply_axn_content = ob_get_contents();
+            ob_end_clean();
 
-                        $comment_reply_axn_obj = htmlok( array(
-                            'name'      => 'Comment Reply',
-                            'structure' => array(
-                                'type'      => 'object',
-                                'subtype'   => 'action item',
-                                'wpg'       => true,
-                            ),
-                            'content'   => array(
-                                'object'    => $comment_reply_axn_content,
-                            ),
-                            'echo'      => true,
-                        ) );
-                        ?>
+            $comment_reply_axn_obj = htmlok( array(
+                'name'      => 'Comment Reply',
+                'structure' => array(
+                    'type'      => 'object',
+                    'subtype'   => 'action item',
+                    'wpg'       => true,
+                ),
+                'content'   => array(
+                    'object'    => $comment_reply_axn_content,
+                ),
+                'echo'      => true,
+            ) );
+            ?>
                     
                     </div>
                 </div>
-                <?php }
-                    
-            if ( 'div' != $args['style'] ) { ?>
+        <?php
+        }
+        if ( 'div' != $args['style'] ) {
+        ?>
             </article>
-            <?php }
+        <?php
+        }
     }
 }
