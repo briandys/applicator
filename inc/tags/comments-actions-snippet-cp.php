@@ -201,11 +201,11 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
                 'structure' => array(
                     'type'      => 'object',
                     'subtype'   => 'action item',
-                    'layout'    => 'inline',
                     'linked'    => true,
                     'attr'      => array(
                         'a'         => array(
                             'href'      => $add_comment_axn_a_href,
+                            'title'     => esc_html__( 'Add Comment', 'applicator' ),
                         ),
                     ),
                 ),
@@ -221,7 +221,6 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
                         ),
                     ),
                     'before'    => $GLOBALS['space_sep'],
-
                 ),
             ) );
 

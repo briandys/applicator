@@ -1661,7 +1661,7 @@ function htmlok( $args = array() ) {
         }
         
         // Navigation Item
-        elseif ( in_array( $r_subtype, $subtype_navi_terms, true ) ) {
+        elseif ( in_array( $r_subtype, $subtype_navi_terms, true ) || in_array( $r_subtype, $subtype_axn_terms, true ) ) {
             
             if ( $r_wpg ) {
                 $obj_ct_mu = '';

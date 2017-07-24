@@ -2,61 +2,6 @@
 
 /* ------------------------- Visually Hidden */
 
-/*
-.entry-md---h,
-.entries---h,
-.entry---h,
-.page-nav---h,
-.entry-nav---h,
-.error404 .main-ct---h,
-.crumbs-nav---h,
-
-
-.post-admin-axns---h,
-.post-pub-auth---h,
-.post-author-name-obj---h,
-.post-meta---h,
-
-.post-pub-mod---h,
-._post-pub---h,
-.post-mod---h,
-.post-pub-dts---h,
-.post-mod-dts---h,
-
-.post-cat-class---h,
-.post-tag-class---h,
-.post-nav---h,
-.parent-post---h,
-.post-author---h,
-.post-pub-date-time---h,
-.post-ct---h,
-.post-ex---h,
-
-.coms-acts-snip---h,
-.comment-md---h,
-.comment---h,
-.com-axns---h,
-.com-admin-axns---h,
-.signed-in-wp-acct---h,
-.signed-in-acct-axns---h,
-.coms-cnt---h,
-.signed-in-acct---h,
-.com-pub-dts---h,
-.com-pub-info---h,
-.com-pub-author---h,
-.com-author---h,
-.com-meta---h,
-.com-hr-as---h,
-.comment-form .h,
-.com-crt---h,
-
-.coms-population---h,
-.com-crt-ability---h,
-
-.main-ct-hr-as---h,
-*/
-
-
 /* Heading */
 .wbp-main-info---h,
 
@@ -110,13 +55,17 @@
 /* Page Nav */
 .page-nav---h,
 
-/* Entry Nav */
+/* Entry */
+.entry---h,
+.entry-md---h,
 .entry-nav---h,
 
 /* Breadcrumbs Nav */
 .breadcrumbs-nav---h,
 
-/* Post Nav */
+/* Post */
+.post-hr-as-aside---h,
+.post-meta---h,
 .post-content---h,
 .post-nav---h,
 
