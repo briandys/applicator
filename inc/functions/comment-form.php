@@ -85,7 +85,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             $commenter_name_creation_input_text_css,
             'text',
             'author',
-            esc_attr( $commenter['comment_author'] ),
+            $commenter['comment_author'],
             '64',
             $name_term,
             $name_term,

@@ -3,6 +3,8 @@
 if ( ! function_exists( 'applicator_func_comment' ) ) {
     function applicator_func_comment( $comment, $args, $depth ) {
         
+        $commenter = wp_get_current_commenter();
+        
         if ( 'div' === $args['style'] ) {
             $tag       = 'div';
             $add_below = 'comment';
@@ -77,6 +79,12 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                         get_comment_author_url();
                         $get_comment_author_url_ob_content = ob_get_contents();
                         ob_end_clean();
+        
+                        if ( get_comment_author_url() ) {
+                            $commenter_url = get_comment_author_url();
+                        } else {
+                            $commenter_url = get_comment_link( $comment->comment_ID );
+                        }
 
                         $commenter_name_cp = htmlok( array(
                             'name'      => 'Commenter Name',
@@ -85,7 +93,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                                 'linked'    => true,
                                 'attr'      => array(
                                     'a'         => array(
-                                        'href'      => 'temp',
+                                        'href'      => $commenter_url,
                                     ),
                                 ),
                                 'layout'    => 'inline',

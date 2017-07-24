@@ -912,15 +912,26 @@
                 if ( ! event.target.checkValidity() ) {
                     event.preventDefault();
 
-                    $('#commentform :input:visible[required="required"]').each( function () {
+                    //$('#commentform :input:visible[required="required"]').each( function () {
+                    $('#commentform :input').each( function () {
                         
-                        var _this = $( this );
+                        var _this = $( this ),
+                            $validityNote = $( '.validity-note' ),
+                            validityNoteTerm = 'validity-note',
+                            creationInvalidCSS = 'creation--invalid',
+                            creationValidCSS = 'creation--valid';
+                        
+                        if ( this.validity.valid ) {
 
-                        _this.closest( '.cr' ).find( '.validity-note' ).remove();
+                            _this.closest( '.cp' )
+                                .removeClass( creationInvalidCSS )
+                                .addClass( creationValidCSS );
+
+                            _this.closest( '.cr' )
+                                .find( $validityNote ).remove();
+                        }
 
                         if ( ! this.validity.valid ) {
-
-                            var validityNoteTerm = 'validity-note';
 
                             validityNoteContainerGenericElementLabel = $( '<div />', {
                                 'class': 'g_l '+ validityNoteTerm +'---g_l',
@@ -940,14 +951,14 @@
                                 'data-name': 'Validity Note OBJ'
                             } ).append( validityNoteContainer );
 
-                        _this.focus();
+                            _this.focus();
 
-                        _this.closest( '.cp' )
-                            .addClass( 'creation--invalid' )
-                            .find( '.cr' )
-                            .append( validityNote );
+                            _this.closest( '.cp' )
+                                .addClass( creationInvalidCSS )
+                                .find( '.cr' )
+                                .append( validityNote );
 
-                        return false;
+                            return false;
                         }
                     } );
 

@@ -71,7 +71,7 @@ if ( ! function_exists( 'apl_snapons_applicator_func_styles' ) ) {
 if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
     function apl_snapons_applicator_scripts() {
         
-        wp_enqueue_script( 'apl-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/applicator.js' ), array( 'jquery' ), '23.4', true );
+        wp_enqueue_script( 'apl-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/applicator.js' ), array( 'jquery' ), '24.2', true );
         
         // EQCSS
         // wp_enqueue_script( 'apl-snapons-applicator-script-eqcss', get_theme_file_uri( '/snapons/applicator/assets/eqcss.min.js' ), array(), '1.0', true );
