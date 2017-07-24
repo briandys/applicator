@@ -163,7 +163,6 @@
                 // inc > tags > post-nav.php
                 applicator_func_post_nav();
                 
-                
                 // Sub-Post
                 if ( is_page_template( 'page-templates/sub-pages.php' ) ) {
                     $parent = $post->ID;

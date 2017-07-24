@@ -1,126 +1,92 @@
 <?php
 
 
-<?php if ( get_comment_author_url( $comment->comment_ID ) ) echo esc_url( get_comment_author_url( $comment->comment_ID ) ); else echo '#' ?>
+/**
+ * The formatted output of a list of pages.
+ *
+ * Displays page links for paginated posts (i.e. includes the "nextpage".
+ * Quicktag one or more times). This tag must be within The Loop.
+ *
+ * The defaults for overwriting are:
+ * 'next_or_number' - Default is 'number' (string). Indicates whether page
+ *      numbers should be used. Valid values are number and next.
+ * 'nextpagelink' - Default is 'Next Page' (string). Text for link to next page.
+ *      of the bookmark.
+ * 'previouspagelink' - Default is 'Previous Page' (string). Text for link to
+ *      previous page, if available.
+ * 'pagelink' - Default is '%' (String).Format string for page numbers. The % in
+ *      the parameter string will be replaced with the page number, so Page %
+ *      generates "Page 1", "Page 2", etc. Defaults to %, just the page number.
+ * 'before' - Default is '<p id="post-pagination"> Pages:' (string). The html 
+ *      or text to prepend to each bookmarks.
+ * 'after' - Default is '</p>' (string). The html or text to append to each
+ *      bookmarks.
+ * 'text_before' - Default is '' (string). The text to prepend to each Pages link
+ *      inside the <a> tag. Also prepended to the current item, which is not linked.
+ * 'text_after' - Default is '' (string). The text to append to each Pages link
+ *      inside the <a> tag. Also appended to the current item, which is not linked.
+ *
+ * @param string|array $args Optional. Overwrite the defaults.
+ * @return string Formatted output in HTML.
+ */
+function custom_wp_link_pages( $args = '' ) {
+	$defaults = array(
+		'before' => '<p id="post-pagination">' . __( 'Pages:' ), 
+		'after' => '</p>',
+		'text_before' => '',
+		'text_after' => '',
+		'next_or_number' => 'number', 
+		'nextpagelink' => __( 'Next page' ),
+		'previouspagelink' => __( 'Previous page' ),
+		'pagelink' => '%',
+		'echo' => 1
+	);
 
-$comment_reply_axn_obj = htmlok( array(
-    'name'      => 'Comment Reply',
-    'structure' => array(
-        'type'      => 'object',
-        'subtype'   => 'action',
-        'wpg'       => true,
-    ),
-    'content'   => array(
-        'object'    => 'Content',
-    ),
-) );
+	$r = wp_parse_args( $args, $defaults );
+	$r = apply_filters( 'wp_link_pages_args', $r );
+	extract( $r, EXTR_SKIP );
 
-$comment_reply_axn_a_l_mu = '';
-$comment_reply_axn_a_l_mu .= '<span class="a_l comment-reply-axn---a_l">%1$s</span>';
+	global $page, $numpages, $multipage, $more, $pagenow;
 
-$reply_to_comment_line_mu = '';
-$reply_to_comment_line_mu .= '<span class="line reply-to-comment---line">';
-    $reply_to_comment_line_mu .= '<span class="txt reply---txt">';
-        $reply_to_comment_line_mu .= esc_html__( 'Reply', 'applicator' );
-    $reply_to_comment_line_mu .= '</span>';
-    $reply_to_comment_line_mu .= ' <span class="txt to---txt">';
-        $reply_to_comment_line_mu .= esc_html__( 'to', 'applicator' );
-    $reply_to_comment_line_mu .= '</span>';
-    $reply_to_comment_line_mu .= ' <span class="txt comment---txt">';
-        $reply_to_comment_line_mu .= esc_html__( 'Comment', 'applicator' );
-    $reply_to_comment_line_mu .= '</span>';
-$reply_to_comment_line_mu .= '</span>';
+	$output = '';
+	if ( $multipage ) {
+		if ( 'number' == $next_or_number ) {
+			$output .= $before;
+			for ( $i = 1; $i < ( $numpages + 1 ); $i = $i + 1 ) {
+				$j = str_replace( '%', $i, $pagelink );
+				$output .= ' ';
+				if ( $i != $page || ( ( ! $more ) && ( $page == 1 ) ) )
+					$output .= _wp_link_page( $i );
+				else
+					$output .= '<span class="current-post-page">';
 
-$sign_in_required_line_mu = '';
-$sign_in_required_line_mu .= '<span class="line sign-in-required---line">';
-    $sign_in_required_line_mu .= '<span class="txt requires---txt">';
-        $sign_in_required_line_mu .= esc_html__( 'requires', 'applicator' );
-    $sign_in_required_line_mu .= '</span>';
-    $sign_in_required_line_mu .= ' <span class="txt sign---txt">';
-        $sign_in_required_line_mu .= esc_html__( 'Sign', 'applicator' );
-    $sign_in_required_line_mu .= '</span>';
-    $sign_in_required_line_mu .= ' <span class="txt in---txt">';
-        $sign_in_required_line_mu .= esc_html__( 'In', 'applicator' );
-    $sign_in_required_line_mu .= '</span>';
-$sign_in_required_line_mu .= '</span>';
+				$output .= $text_before . $j . $text_after;
+				if ( $i != $page || ( ( ! $more ) && ( $page == 1 ) ) )
+					$output .= '</a>';
+				else
+					$output .= '</span>';
+			}
+			$output .= $after;
+		} else {
+			if ( $more ) {
+				$output .= $before;
+				$i = $page - 1;
+				if ( $i && $more ) {
+					$output .= _wp_link_page( $i );
+					$output .= $text_before . $previouspagelink . $text_after . '</a>';
+				}
+				$i = $page + 1;
+				if ( $i <= $numpages && $more ) {
+					$output .= _wp_link_page( $i );
+					$output .= $text_before . $nextpagelink . $text_after . '</a>';
+				}
+				$output .= $after;
+			}
+		}
+	}
 
-$reply_text_content = sprintf( $comment_reply_axn_a_l_mu,
-    $reply_to_comment_line_mu
-);
+	if ( $echo )
+		echo $output;
 
-$login_text_content = sprintf( $comment_reply_axn_a_l_mu,
-    $reply_to_comment_line_mu.' '.$sign_in_required_line_mu
-);
-
-        
-        
-        // Commenter Email
-        $website_term = esc_attr( 'Website', 'applicator' );
-        $url_term = esc_attr( 'URL', 'applicator' );
-        $website_url_term = esc_attr( 'Website URL', 'applicator' );
-        $commenter_url_creation_term = 'Commenter URL Creation';
-        $commenter_url_creation_css = 'commenter-url-crt';
-        $commenter_url_creation_input_text_css = $commenter_url_creation_css.'-input-text';
-        
-        $commenter_url_creation_flabel_obj = htmlok( array(
-            'name'      => $commenter_url_creation_term,
-            'structure' => array(
-                'type'      => 'object',
-                'subtype'   => 'form label',
-                'attr'      => array(
-                    'elem'      => array(
-                        'for'       => $commenter_url_creation_input_text_css,
-                    ),
-                ),
-            ),
-            'content'   => array(
-                'object'    => array(
-                    array(
-                        'txt'   => $website_term,
-                    ),
-                    array(
-                        'sep'   => $GLOBALS['space_sep'],
-                        'txt'   => $url_term,
-                    ),
-                ),
-            ),
-        ) );
-
-        $commenter_url_creation_text_input_content = sprintf( $text_input_mu,
-            $commenter_url_creation_input_text_css,
-            $commenter_url_creation_input_text_css,
-            'url',
-            'url',
-            esc_attr( $commenter['comment_author_url'] ),
-            '64',
-            $website_url_term,
-            $website_url_term,
-            $aria_req
-        );
-
-        $commenter_name_creation_text_input_obj = htmlok( array(
-            'name'      => $commenter_url_creation_term.' '.'Text Input',
-            'structure' => array(
-                'type'      => 'object',
-                'ce'        => true,
-            ),
-            'content'   => array(
-                'object'    => $commenter_url_creation_text_input_content,
-            ),
-        ) );
-        
-        $fields['url'] = htmlok( array(
-            'name'      => $commenter_url_creation_term,
-            'structure' => array(
-                'type'      => 'component',
-                'cn_structure'  => true,
-            ),
-            'root_css'  => 'felems',
-            'css'       => $commenter_url_creation_css,
-            'content'   => array(
-                'component' => array(
-                    $commenter_url_creation_flabel_obj,
-                    $commenter_name_creation_text_input_obj,
-                ),
-            ),
-        ) );
+	return $output;
+}
