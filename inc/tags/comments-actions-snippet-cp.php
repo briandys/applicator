@@ -40,68 +40,65 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
         $comments_population_pri_css = 'comments-population';
         $comment_creation_ability_pri_css = 'comment-creation-ability';
         
-        $comments_count_sec_css = 'coms-cnt-obj'; // 5
+        $comments_count_axn_css = 'comments-count-axn';
         
-        $comments_count_single_text = '1'; // 1
+        $comments_count_single_text = '1';
         $comments_count_multi_text = '%';
         $comments_count_zero_text = '&#48;';
         
-        $comments_count_num_css = 'comments-count'; // 2
+        $comments_count_num_css = 'comments-count';
         
-        $comment_singular_text = 'Comment'; // 3
+        $comment_singular_text = 'Comment';
         $comment_plural_text = 'Comments';
         
-        $comment_singular_text_css = 'comment'; // 4
-        $comment_plural_text_css = 'comments';
+        
+        // Comments Count Template Markup
+        $comments_count_mu = '';
+        $comments_count_mu .= '<span class="a_l %5$s---a_l">';
+            $comments_count_mu .= '<span class="txt %3$s---txt">';
+                $comments_count_mu .= '%1$s';
+            $comments_count_mu .= '<span>';
+            $comments_count_mu .= $GLOBALS['space_sep'];
+            $comments_count_mu .= '<span class="txt %4$s---txt">';
+                $comments_count_mu .= '%2$s';
+            $comments_count_mu .= '<span>';
+        $comments_count_mu .= '<span>';
         
         
-        // Comments Count: Single - Text
-        $comments_count_single_txt = htmlok_txt( array(
-            'content' => array(
-                array(
-                    'txt' => $comments_count_single_text,
-                    'css' => $comments_count_num_css,
-                ),
-                array(
-                    'txt' => $comment_singular_text,
-                    'sep' => $GLOBALS['space_sep'],
-                ),
-            ),
-        ) );
+        // Comments Count Single Text
+        $comments_count_single_txt = sprintf( $comments_count_mu,
+            $comments_count_single_text,
+            $comment_singular_text,
+            $comments_count_num_css,
+            sanitize_title( $comment_singular_text ),
+            $comments_count_axn_css
+        );
         
-        // Comments Count: Multiple - Text
-        $comments_count_multi_txt = htmlok_txt( array(
-            'content' => array(
-                array(
-                    'txt' => $comments_count_multi_text,
-                    'css' => $comments_count_num_css,
-                ),
-                array(
-                    'txt' => $comment_plural_text,
-                    'sep' => $GLOBALS['space_sep'],
-                ),
-            ),
-        ) );
+        // Comments Count Multiple Text
+        $comments_count_multi_txt = sprintf( $comments_count_mu,
+            $comments_count_multi_text,
+            $comment_plural_text,
+            $comments_count_num_css,
+            sanitize_title( $comments_count_multi_text ),
+            $comments_count_axn_css
+        );
         
-        // Comments Count: Zero - Text
-        $comments_count_zero_txt = htmlok_txt( array(
-            'content' => array(
-                array(
-                    'txt' => $comments_count_zero_text,
-                    'css' => $comments_count_num_css,
-                ),
-                array(
-                    'txt' => $comment_singular_text,
-                    'sep' => $GLOBALS['space_sep'],
-                ),
-            ),
-        ) );
+        // Comments Count Zero Text
+        $comments_count_zero_txt = sprintf( $comments_count_mu,
+            $comments_count_zero_text,
+            $comment_singular_text,
+            $comments_count_num_css,
+            sanitize_title( $comments_count_zero_text ),
+            $comments_count_axn_css
+        );
         
         
         $comments_count_int = (int) get_comments_number( get_the_ID() );
         
         // Comments Populated
         if ( $comments_count_int >= 1 ) {
+            
+            $comments_count_obj_a_link = '';
 
             $comments_count_obj_a = sprintf( get_comments_popup_link(
                 // Comments Count: Zero
@@ -114,13 +111,13 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
                 $comments_count_multi_txt,
 
                 // Class Name for <a> (WP-Generated or WPG)
-                'a' . ' ' . $comments_count_sec_css . '---a',
+                'a'. ' '. $comments_count_axn_css. '---a',
 
                 // Comment Creation Disabled
                 ''
             ) );
             
-            $comments_count_obj_a_link = '';
+            $wpg_setting = true;
 
         // Comments Empty
         } else {
@@ -135,25 +132,44 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
             }
             
             $comments_count_obj_a = $comments_count_zero_txt;
+            
+            $wpg_setting = false;
         
         }
         
-        // Object
-        $comments_count_obj = htmlok_obj( array(
+        
+        
+        // R: Comments Count
+        $comments_count_obj = htmlok( array(
             'name'      => 'Comments Count',
-            'elem'      => 'a',
-            'css'       => $comments_count_sec_css,
-            'attr'      => array(
-                'href'      => $comments_count_obj_a_link . '#comments',
+            'structure' => array(
+                'type'      => 'object',
+                'subtype'   => 'action item',
+                'linked'    => true,
+                'wpg'       => $wpg_setting,
+                'attr'      => array(
+                    'a'         => array(
+                        'href'      => $comments_count_obj_a_link . '#comments',
+                    ),
+                ),
             ),
-            'content'   => $comments_count_obj_a,
+            'css'       => 'add-com-axn',
+            'content'   => array(
+                'object'    => $comments_count_obj_a,
+
+            ),
         ) );
         
-        // Component
-        $comments_population = htmlok_cp( array(
+        // R: Comments Population
+        $comments_population_cp = htmlok( array(
             'name'      => 'Comments Population',
-            'css'       => 'coms-population',
-            'content'   => $comments_count_obj
+            'structure' => array(
+                'type'      => 'component',
+            ),
+            'css'       => 'comments-population',
+            'content'   => array(
+                'component' => $comments_count_obj,
+            ),
         ) );
         
         
@@ -177,102 +193,93 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
                     $add_comment_axn_a_href = esc_url( get_permalink() ) . $comment_hash;
                 }
             }
-            
-            // Text
-            $add_comment_axn_txt = htmlok_txt( array(
-                'content' => array(
-                    array(
-                        'txt' => esc_html__( 'Add', 'applicator' ),
-                    ),
-                    array(
-                        'txt' => esc_html__( 'Comment', 'applicator' ),
-                        'sep' => $GLOBALS['space_sep'],
+                
+            // R: Add Comment
+            $add_comment_axn_obj = htmlok( array(
+                'name'      => 'Add Comment',
+                'structure' => array(
+                    'type'      => 'object',
+                    'subtype'   => 'action item',
+                    'layout'    => 'inline',
+                    'linked'    => true,
+                    'attr'      => array(
+                        'a'         => array(
+                            'href'      => $add_comment_axn_a_href,
+                        ),
                     ),
                 ),
-            ) );
-            
-            // Object
-            $add_comment_axn = htmlok_obj( array(
-                'name'      => 'Add Comment Action',
-                'layout'    => 'i',
-                'elem'      => 'a',
-                'obj_css'   => 'add-comment-axn',
                 'css'       => 'add-com-axn',
-                'attr'      => array(
-                    'href'      => $add_comment_axn_a_href,
+                'content'   => array(
+                    'object'    => array(
+                        array(
+                            'txt' => esc_html__( 'Add', 'applicator' ),
+                        ),
+                        array(
+                            'sep' => $GLOBALS['space_sep'],
+                            'txt' => esc_html__( 'Comment', 'applicator' ),
+                        ),
+                    ),
+                    'before'    => $GLOBALS['space_sep'],
+
                 ),
-                'content'   => $add_comment_axn_txt,
             ) );
 
             
             if ( ! is_user_logged_in() && get_option( 'comment_registration' ) ) {
-                /*
-                // Markup
-                $sign_in_required_label_obj_g_mu = '<span class="g %2$s---g">';
-                    $sign_in_required_label_obj_g_mu .= '<span class="g_l %2$s---g_l">';
-                        $sign_in_required_label_obj_g_mu .= '%1$s';
-                    $sign_in_required_label_obj_g_mu .= '</span>';
-                $sign_in_required_label_obj_g_mu .= '</span>';
-
-                $sign_in_required_label_obj_g = sprintf( $sign_in_required_label_obj_g_mu,
-                    esc_html__( '(requires Sign In)', 'applicator' ),
-                    'req-sign-in-lbl-obj'
-                );
                 
-                // Markup
-                $sign_in_required_label_obj = applicator_html_ok_mco( array(
-                    'type'      => 'o',
-                    'name'      => 'Sign In Required Label',
-                    'sec_css'   => 'sign-in-req-lbl'
-                ) );
-                */
-                
-                // Text
-                $sign_in_required_label_txt = htmlok_txt( array(
-                    'content' => array(
-                        array(
-                            'txt' => esc_html__( '(requires Sign In)', 'applicator' ),
-                        ),
+                // R: Sign In Required
+                $sign_in_required_label_obj = htmlok( array(
+                    'name'      => 'Sign In Required',
+                    'structure' => array(
+                        'type'      => 'object',
+                        'subtype'   => 'note',
+                        'layout'    => 'inline',
                     ),
-                ) );
-
-                // Object
-                $sign_in_required_label_obj = htmlok_obj( array(
-                    'name'      => 'Sign In Required Label',
-                    'layout'    => 'i',
-                    'elem'      => 'g',
-                    'css'       => 'sign-in-req-lbl',
-                    'content'   => $sign_in_required_label_txt,
+                    'content'   => array(
+                        'object'    => esc_html__( '(requires Sign In)', 'applicator' ),
+                        'before'    => $GLOBALS['space_sep'],
+                        
+                    ),
                 ) );
             
             } else {
                 $sign_in_required_label_obj = '';
             }
 
-            $comment_creation_ability_content = $add_comment_axn . $sign_in_required_label_obj;
+            $comment_creation_ability_content = $add_comment_axn_obj. $sign_in_required_label_obj;
 
         // Comment Creation Disabled
         } else {
-            
-            // Object
-            $commenting_disabled_note_obj = htmlok_obj( array(
-                'name'      => 'Commenting Disabled Note',
-                'elem'      => 'n',
-                'obj_css'   => 'note',
-                'css'       => 'commenting-disabled-note',
-                'content'   => '<p>' . esc_html__( 'Commenting is disabled.', 'applicator' ) . '</p>',
+        
+            // R: Commenting Disabled Note
+            $commenting_disabled_note_obj = htmlok( array(
+                'name'      => 'Commenting Disabled',
+                'structure' => array(
+                    'type'      => 'object',
+                    'subtype'   => 'note',
+                ),
+                'content'   => array(
+                    'object' => '<p>' . esc_html__( 'Commenting is disabled.', 'applicator' ) . '</p>',
+                ),
             ) );
             
             $comment_creation_ability_content = $commenting_disabled_note_obj;
             
         }
         
-        // Component
-        $comment_creation_ability = htmlok_cp( array (
+        
+        // R: Comment Creation Ability
+        $comment_creation_ability_cp = htmlok( array(
             'name'      => 'Comment Creation Ability',
-            'css'   => 'com-crt-ability',
-            'content'   => $comment_creation_ability_content
+            'structure' => array(
+                'type'      => 'component',
+            ),
+            'css'       => 'comment-crt-ability',
+            'content'   => array(
+                'component' => $comment_creation_ability_content,
+            ),
         ) );
+        
         
         /*
         We have two statuses of Comments Population: Populated and Empty.
@@ -291,7 +298,8 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
         $comment_creation_ability_enabled_css = 'enabled';
         $comment_creation_ability_disabled_css = 'disabled';
         
-        /* Conditionals for Comments Population Class Names */
+        
+        // Conditionals for Comments Population Class Names
         if ( $comments_count_int == 1 ) {
             
             $comments_population_status_css = $comments_population_pri_css . '--' . $comments_population_populated_css . ' ' . $comments_population_pri_css . '--' . $comments_population_populated_css . '--' . $comments_population_populated_single_css;
@@ -312,16 +320,24 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
             $comment_creation_ability_status_css = $comment_creation_ability_pri_css . '--' . $comment_creation_ability_disabled_css;
         }
         
-        // Component
-        $comments_actions_snippet = htmlok_cp( array(
+        
+        // R: Comments Actions Snippet
+        $comments_actions_snippet_cp = htmlok( array(
             'name'      => 'Comments Actions Snippet',
-            'cp_css'    => $comments_population_status_css . ' ' . $comment_creation_ability_status_css,
-            'css'       => 'coms-acts-snip',
-            'content'   => $comments_population . $comment_creation_ability,
-            //'echo'      => true,
+            'structure' => array(
+                'type'      => 'component',
+            ),
+            'root_css'  => $comments_population_status_css. ' '. $comment_creation_ability_status_css,
+            'css'       => 'comments-axns-snip',
+            'content'   => array(
+                'component' => array(
+                    $comments_population_cp,
+                    $comment_creation_ability_cp,
+                ),
+            ),
         ) );
         
-        return $comments_actions_snippet;
+        return $comments_actions_snippet_cp;
         
     }
 }

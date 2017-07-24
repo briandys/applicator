@@ -1783,7 +1783,8 @@ $go-green: #12b32d;
     padding-left: 1rem;
 }
 
-#comments *:target
+#comments *:target,
+#respond *:target
 {
     animation: fade-highlight 2s ease;
 }
