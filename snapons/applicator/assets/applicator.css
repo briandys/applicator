@@ -1110,6 +1110,11 @@ $go-green: #12b32d;
     background-color: white;
 }
 
+.no-svg .main-menu-tog---b
+{
+    background-image: url( ../../../assets/img/menu-icon--light.png );
+}
+
 
 
 
