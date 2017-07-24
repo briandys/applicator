@@ -78,7 +78,13 @@
 .tags---h,
 
 /* Comments */
+.comment-hr-as-aside---h,
+.comment-meta---h,
 .comments-nav---h,
+.comment-pub-d-t-stamp---h,
+.comment-pub---h,
+.published-comment-commenter---h,
+.commenter---h,
 
 /* Comments Actions Snippet - Component */
 .coms-acts-snip---h,
@@ -356,7 +362,10 @@
 /* Author Avatar */
 
 .author-avatar-default--blank .author-avatar,
-.author-avatar-default--blank .post-author---ct_cr > .space---sep
+.author-avatar-default--blank .post-author---ct_cr > .space---sep,
+
+.commenter-avatar-default--blank .commenter-avatar,
+.commenter-avatar-default--blank .commenter---ct_cr > .space---sep
 {
     display: none;
 }

@@ -504,8 +504,8 @@ function htmlok( $args = array() ) {
             // Time Subtype
             elseif ( in_array( $r_subtype, $subtype_time_terms, true ) ) {
                
-                $subtype_name = 'Time';
-                $subtype_name_abbr = 'time';
+                $subtype_name = 'Stamp';
+                $subtype_name_abbr = 'dtstamp';
                 
                 $obj_elem = 'time';
                 $obj_elem_css = $obj_elem;

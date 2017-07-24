@@ -64,7 +64,11 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         
         
         
-        
+        $comment_published_term = esc_html__( 'Comment Published', 'applicator' );
+        $on_term = esc_html__( 'on', 'applicator' );
+        $comment_date = get_comment_date( 'j F Y');
+        $comment_time = get_comment_time( 'H:i:s');
+        $comment_published_title = $comment_published_term.' '.$on_term.' '.$comment_date.', '.$comment_time;
         
         
         // R: Comment Published Label
@@ -78,11 +82,11 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
             'content'   => array(
                 'object' => array(
                     array(
-                        'txt'   => 'Comment Published',
+                        'txt'   => $comment_published_term,
                     ),
                     array(
                         'sep' => $GLOBALS['space_sep'],
-                        'txt'   => 'on',
+                        'txt'   => $on_term,
                     ),
                 ),
             ),
@@ -91,7 +95,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         
         // R: Comment Published Date Stamp
         $comment_published_date_stamp_obj = htmlok( array(
-            'name'      => 'Comment Published Date Stamp',
+            'name'      => 'Comment Published Date',
             'structure' => array(
                 'type'      => 'object',
                 'subtype'   => 'time',
@@ -107,7 +111,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                 'layout'    => 'inline',
             ),
             'css'       => 'comment-pub-d-stamp',
-            'title'     => get_comment_date( 'j F Y'),
+            'title'     => $comment_published_title,
             'content'   => array(
                 'object' => array(
                     array(
@@ -131,7 +135,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         
         // R: Comment Published Time Stamp
         $comment_published_time_stamp_obj = htmlok( array(
-            'name'      => 'Comment Published Time Stamp',
+            'name'      => 'Comment Published Time',
             'structure' => array(
                 'type'      => 'object',
                 'subtype'   => 'time',
@@ -147,7 +151,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                 'layout'    => 'inline',
             ),
             'css'       => 'comment-pub-t-stamp',
-            'title'     => get_comment_time( 'H:i:s'),
+            'title'     => $comment_published_title,
             'content'   => array(
                 'object' => array(
                     array(
@@ -172,7 +176,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         
         // R: Comment Published Date and Time Stamp
         $comment_published_date_time_stamp_cp = htmlok( array(
-            'name'      => 'Comment Published Date and Time Stamp',
+            'name'      => 'Comment Published Date and Time',
             'structure' => array(
                 'type'      => 'component',
             ),
@@ -235,6 +239,15 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
             $commenter_url = get_comment_link( $comment->comment_ID );
         }
         
+        // Conditionals: Blank or Custom Avatar
+        $commenter_avatar_prefix_css = 'commenter-avatar-default';
+        
+        if ( get_option( 'avatar_default' ) == 'blank' ) {
+            $commenter_avatar_type_css = $commenter_avatar_prefix_css . '--blank';
+        } else {
+            $commenter_avatar_type_css = $commenter_avatar_prefix_css . '--custom';
+        }
+        
         // Commenter Name
         $commenter_name_cp = htmlok( array(
             'name'      => 'Commenter Name',
@@ -258,6 +271,12 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
             'name'      => 'Commenter Avatar',
             'structure' => array(
                 'type'      => 'object',
+                'linked'    => true,
+                'attr'      => array(
+                    'a'         => array(
+                        'href'      => $commenter_url,
+                    ),
+                ),
                 'layout'    => 'inline',
             ),
             'content'   => array(
@@ -287,6 +306,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
             'structure' => array(
                 'type'      => 'component',
             ),
+            'root_css'  => $commenter_avatar_type_css,
             'content'   => array(
                 'component' => array(
                     $commenter_published_label_obj,
