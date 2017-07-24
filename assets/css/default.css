@@ -112,13 +112,30 @@ figure
 
 
 
-/* ------------------------- Responsive Image */
+/* ------------------------- Responsive Media */
+/* Images */
 img
 {
     max-width: 100%;
     height: auto;
 }
 
+/* Videos */
+iframe
+{
+    max-width: 100%;
+}
+
+/* Text */
+.post-content---ct_cr
+{
+    word-break: break-word;
+}
+
+table
+{
+    word-break: normal;
+}
 
 
 

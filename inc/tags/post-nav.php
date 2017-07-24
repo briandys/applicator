@@ -6,8 +6,14 @@ if ( ! function_exists('applicator_func_post_nav' ) ) {
     function applicator_func_post_nav( $args = '' ) {
         
         
+        ob_start();
+        wp_link_pages();
+        $wp_link_pages_content =  ob_get_contents();
+        ob_end_clean();
+        
+        
         // Pages
-        if ( ! is_singular( 'attachment' ) ) {
+        if ( ( $wp_link_pages_content ) && ( is_singular() && ! is_singular( 'attachment' ) ) ) {
             
             // Template Markup
             

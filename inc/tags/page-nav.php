@@ -95,7 +95,9 @@ if ( ! function_exists( 'applicator_func_page_nav' ) ) {
             'format'        => $format,
             'total'         => $GLOBALS['wp_query']->max_num_pages,
             'current'       => $paged,
-            'show_all'      => true,
+            'show_all'      => false,
+            'end_size'      => 4,
+            'mid_size'      => 2,
             'add_args'      => array_map( 'urlencode', $query_args ),
             
             'type'          => 'list',
