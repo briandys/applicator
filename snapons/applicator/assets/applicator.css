@@ -1110,9 +1110,45 @@ $go-green: #12b32d;
     background-color: white;
 }
 
-.no-svg .main-menu-tog---b
+
+/* ------------------------- Raster Icons */
+.no-svg .icon--raster
 {
-    background-image: url( ../../../assets/img/menu-icon--light.png );
+    background-image: url( ../../../assets/img/icons.png );
+    background-size: auto 32px;
+    background-repeat: no-repeat;
+}
+
+.no-svg .burger-icon
+{
+    background-position: -32px -16px;
+}
+
+.no-svg .search-icon
+{
+    background-position: -64px -16px;
+}
+
+.no-svg .arrow-icon
+{
+    background-size: auto 24px;
+    background-position: 0 0;
+}
+
+.no-svg .dismiss-icon
+{
+    background-size: auto 24px;
+    background-position: -36px 0;
+}
+
+.no-svg .main-search-func .dismiss-icon
+{
+    background-position: -36px -12px;
+}
+
+.no-svg .arrow-up-2-icon
+{
+    background-position: -16px 0;
 }
 
 
@@ -1838,7 +1874,7 @@ $go-green: #12b32d;
     left: 0;
 }
 
-.easy-access-nav-func .sub-nav-toggle:hover .icon
+.easy-access-nav-func .sub-nav-toggle:hover .icon--vector
 {
     width: calc( .75rem + .1rem );
     height: calc( .75rem + .1rem );

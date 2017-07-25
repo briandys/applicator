@@ -178,7 +178,8 @@ table
 
 
 /* ------------------------- Enhancements */
-.icon--vector
+.icon--vector,
+.icon--raster
 {
     display: inline-block;
     position: relative;
@@ -194,7 +195,8 @@ table
     word-wrap: break-word;
 }
 
-.svg-fallback
+.svg .icon--raster,
+.no-svg .icon--vector
 {
     display: none;
 }

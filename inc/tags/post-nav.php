@@ -30,8 +30,8 @@ if ( ! function_exists('applicator_func_post_nav' ) ) {
             'text_before' => '',
             'text_after' => '',
             'next_or_number' => 'number', 
-            'nextpagelink' => __( 'Next page' ),
-            'previouspagelink' => __( 'Previous page' ),
+            'nextpagelink' => __( 'Next Page', 'applicator' ),
+            'previouspagelink' => __( 'Previous Page', 'applicator' ),
             'pagelink' => $post_navi_a_l,
             'echo' => 1
         );

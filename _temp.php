@@ -31,7 +31,7 @@
  */
 function custom_wp_link_pages( $args = '' ) {
 	$defaults = array(
-		'before' => '<p id="post-pagination">' . __( 'Pages:' ), 
+		'before' => '<p id="post-pagination">' . __( 'Pages:', 'applicator' ), 
 		'after' => '</p>',
 		'text_before' => '',
 		'text_after' => '',

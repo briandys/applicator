@@ -76,11 +76,11 @@ if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
         // EQCSS
         // wp_enqueue_script( 'apl-snapons-applicator-script-eqcss', get_theme_file_uri( '/snapons/applicator/assets/eqcss.min.js' ), array(), '1.0', true );
         
-        $arrow_icon = applicator_func_get_svg( array( 'icon' => 'arrow-icon' ) );
-        $arrow_up_2_icon = applicator_func_get_svg( array( 'icon' => 'arrow-up-2-icon' ) );
-        $burger_icon = applicator_func_get_svg( array( 'icon' => 'burger-icon' ) );
-        $dismiss_icon = applicator_func_get_svg( array( 'icon' => 'dismiss-icon' ) );
-        $search_icon = applicator_func_get_svg( array( 'icon' => 'search-icon' ) );
+        $arrow_icon = applicator_func_get_svg( array( 'icon' => 'arrow-icon', 'fallback' => true, ) );
+        $arrow_up_2_icon = applicator_func_get_svg( array( 'icon' => 'arrow-up-2-icon', 'fallback' => true, ) );
+        $burger_icon = applicator_func_get_svg( array( 'icon' => 'burger-icon', 'fallback' => true, ) );
+        $dismiss_icon = applicator_func_get_svg( array( 'icon' => 'dismiss-icon', 'fallback' => true, ) );
+        $search_icon = applicator_func_get_svg( array( 'icon' => 'search-icon', 'fallback' => true, ) );
         
         // Go to Start Nav
         $applicator_l10n['goStartNavArrowIco'] = $arrow_up_2_icon;
@@ -107,10 +107,6 @@ if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
 		$applicator_l10n['subNavTogBtnHideL']    = __( 'Hide Sub-Nav', 'applicator' );
         $applicator_l10n['subNavTogBtnIco']      = $arrow_icon;
         wp_localize_script( 'apl-snapons-applicator-script-global', 'aplDataSubNav', $applicator_l10n );
-        
-        // Sub-Navigation
-        $applicator_l10n['commentFormNote']    = __( 'Please fill out this field.', 'applicator' );
-        wp_localize_script( 'apl-snapons-applicator-script-global', 'aplDataCommentFormNote', $applicator_l10n );
     }
     add_action( 'wp_enqueue_scripts', 'apl_snapons_applicator_scripts' );
 }
