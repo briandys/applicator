@@ -10,7 +10,7 @@ if ( ! function_exists( 'applicator_func_show_more' ) ) {
         // To do: DRY this markup
         
         $show_more_axn_mu = '<div class="obj axn %2$s" data-name="%8$s Action Item OBJ">';
-            $show_more_axn_mu .= '<a class="a %2$s---a more-link" href="%6$s" title="%7$s %1$s">';
+            $show_more_axn_mu .= '<a class="a %2$s---a more-link" href="%6$s#main" title="%7$s %1$s">';
                 $show_more_axn_mu .= '<span class="a_l %2$s---a_l">';
                     $show_more_axn_mu .= '<span class="line property---line"><span class="txt show---txt">%3$s</span> <span class="txt more---txt">%4$s</span> <span class="txt of---txt">%5$s</span></span>';
                     $show_more_axn_mu .= ' <span class="line value---line"><span class="txt post-title---txt">%1$s</span></span>';
@@ -80,7 +80,7 @@ function applicator_func_the_excerpt( $excerpt ) {
     } else {
         
         $excerpt_link_mu = '';
-        $excerpt_link_mu .= '<a class="a %2$s---a" href="%3$s" title="%4$s">';
+        $excerpt_link_mu .= '<a class="a %2$s---a" href="%3$s#main" title="%4$s">';
         $excerpt_link_mu .= '%1$s';
         $excerpt_link_mu .= '</a>';
         
@@ -91,16 +91,7 @@ function applicator_func_the_excerpt( $excerpt ) {
             esc_attr__( 'Show More of', 'applicator' ).' '.get_the_title( get_the_ID() )
         );
         
-        $excerpt_cp = htmlok( array(
-            'name'      => 'Excerpt',
-            'structure' => array(
-                'type'      => 'component',
-            ),
-            'content'   => array(
-                'component' => $excerpt_link_content,
-            ),
-            'echo'      => true,
-        ) );
+        echo $excerpt_link_content;
         
     }
 }

@@ -1,0 +1,106 @@
+/*------------------ Visually Hide ------------------*/
+.entry---hr .entry-nav,
+
+.post-pub-t-stamp-dtstamp,
+.post-mod-t-stamp-dtstamp,
+.post-pub-d-t-stamp---ct_cr .comma---sep,
+.post-mod-d-t-stamp---ct_cr .comma---sep,
+
+.published-post-author .published---txt,
+.published-post-author .space---sep,
+
+.blog .main-content-heading,
+.page .main-content-heading,
+
+.edit-post-axn .post-title---txt
+{position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;}
+
+
+/*------------------ Active Areas (AA) ------------------*/
+.edit-post-axn---a_l
+{
+    box-sizing: border-box;
+    
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    
+    padding-left: 1rem;
+    padding-right: 1rem;
+    
+    min-width: 3rem;
+    min-height: 3rem;
+}
+
+
+/*------------------ Post Meta ------------------*/
+.post-published-glabel .by---txt
+{
+    text-transform: capitalize;
+}
+
+.pub-post-author---ct_cr
+{
+    display: flex;
+    align-items: center;
+}
+
+.published-post-author .post-author
+{   
+    margin-left: .5rem;
+}
+
+.post-author---ct_cr
+{
+    display: flex;
+    align-items: center;
+}
+
+.post-author---ct_cr .author-name
+{
+    order: 1;
+    margin-left: .25rem;
+}
+
+.published-post-author .author-avatar---a_l
+{
+    display: block;
+    
+    /* Circular Avatar */
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.post-pub---ct_cr,
+.post-mod---ct_cr
+{
+    display: flex;
+}
+
+.post-published-date-and-time-stamp,
+.post-modified-date-and-time-stamp
+{
+    margin-left: .25rem;
+}
+
+
+/*------------------ Post Header ------------------*/
+.post---hr_cr
+{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.post-header-aside
+{
+    flex: 1 100%;
+}
+
+
+
+/*------------------ Comments ------------------*/
+.commenter-com-crt-input-text
+{
+    background-color: white;
+}
