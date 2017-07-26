@@ -1,6 +1,6 @@
 <article class="cp article post post--empty" data-name="Post CP">
     <div class="cr post---cr">
-        <header class="hr post---hr">
+        <header class="hr post---hr entry-header">
             <div class="hr_cr post---hr_cr">
                 
                 <?php
@@ -34,9 +34,7 @@
             <div class="ct_cr post---ct_cr">
                 
                 <?php
-                
-                    esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for.', 'applicator' );
-                
+                esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for.', 'applicator' );
                 ?>
                 
             </div>

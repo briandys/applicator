@@ -1540,10 +1540,10 @@ function htmlok( $args = array() ) {
     // Anchor Markup
     $a_smu = '';
     $a_smu .= '<a'.$o_obj_a_id_attr.' class="a '.$o_obj_a_elem_css.'---a'.$o_obj_a_root_css.'" '.$o_obj_a_elem_attr. $p_obj_elem_root_title.'>';
-    $a_smu .= '<span class="a_l '.$o_obj_a_elem_css.'---a_l">';
+    $a_smu .= '<'.$o_obj_label_elem.' class="a_l '.$o_obj_a_elem_css.'---a_l">';
     
     $a_emu = '';
-    $a_emu .= '</span>';
+    $a_emu .= '</'.$o_obj_label_elem.'>';
     $a_emu .= '</a>';
     
     
@@ -1556,7 +1556,9 @@ function htmlok( $args = array() ) {
         
         $obj_cr_emu = '';
         $obj_cr_emu = $a_emu;
-    } else {
+    }
+    
+    else {
         $obj_cr_smu .= '<'.$o_obj_label_elem.' class="'.$o_obj_label_elem_css.'">';
         
         $obj_cr_emu = '';
@@ -1564,14 +1566,6 @@ function htmlok( $args = array() ) {
     }
     
     $obj_cr_emu .= '</'.$o_obj_elem.'>';
-    
-    
-    // Form Element
-    $subtype_form_element_cr_smu = '';
-    $subtype_form_element_cr_smu .= '<div class="ee">';
-    
-    $subtype_form_element_cr_emu = '';
-    $subtype_form_element_cr_emu .= '</div>';
     
     
     
@@ -1660,7 +1654,7 @@ function htmlok( $args = array() ) {
             $obj_ct_mu .= $o_content_val;
         }
         
-        // Navigation Item
+        // Navigation Item or Action Item
         elseif ( in_array( $r_subtype, $subtype_navi_terms, true ) || in_array( $r_subtype, $subtype_axn_terms, true ) ) {
             
             if ( $r_wpg ) {

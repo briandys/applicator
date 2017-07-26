@@ -1,7 +1,6 @@
 <?php // Main Content Aside
 if ( is_active_sidebar( 'main-content-aside' )  ) {
     
-    
     // Secondary Content
     $secondary_content = htmlok( array(
         'name'      => 'Secondary Content',
@@ -14,5 +13,4 @@ if ( is_active_sidebar( 'main-content-aside' )  ) {
         ),
         'echo'      => true,
     ) );
-
 }

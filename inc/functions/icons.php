@@ -2,7 +2,7 @@
 
 function applicator_func_include_svg_icons() {
         
-    $svg_icons = get_parent_theme_file_path( '/assets/img/svg-icons.svg' );
+    $svg_icons = get_parent_theme_file_path( '/assets/img/vector-icons.svg' );
 
     if ( file_exists( $svg_icons ) ) {
         require_once( $svg_icons );

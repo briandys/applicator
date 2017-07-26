@@ -299,7 +299,6 @@ $commenter_comment_creation_cp = htmlok( array(
 
 
 // cancel_reply_link
-
 $comment_reply_cancel_term = esc_html__( 'Cancel', 'applicator' );
 $comment_reply_reply_term = esc_html__( 'Reply', 'applicator' );
 $comment_reply_to_term = esc_html__( 'to', 'applicator' );
@@ -330,25 +329,23 @@ $comment_reply_cancel_action_content = sprintf( $comment_reply_cancel_action_mu,
 );
 
 
-
-// title_reply_to - Text
-$comment_recipient_note_txt = htmlok_txt( array(
-    'content' => array(
-        array(
-            'txt' => esc_html__( 'Reply to', 'applicator' ),
-        ),
-        array(
-            'txt' => '%s',
+// title_reply_to
+$comment_recipient_note_obj = htmlok( array(
+    'name'      => 'Comment Recipient',
+    'structure' => array(
+        'type'      => 'object',
+        'subtype'   => 'note',
+    ),
+    'content'   => array(
+        'object'    => array(
+            array(
+                'txt' => esc_html__( 'Reply to', 'applicator' ),
+            ),
+            array(
+                'txt' => '%s',
+            ),
         ),
     ),
-) );
-
-// title_reply_to - Object
-$comment_recipient_note_obj = htmlok_obj( array(
-    'name'      => 'Comment Recipient Note',
-    'elem'      => 'n',
-    'css'       => 'com-recipient-note',
-    'content'   => $comment_recipient_note_txt,
 ) );
 
 

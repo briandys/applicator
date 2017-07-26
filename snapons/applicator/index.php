@@ -51,14 +51,15 @@ if ( ! function_exists( 'applicator_snapons_applicator_class' ) ) {
 
 
 // Custom Fonts
-require get_parent_theme_file_path( '/snapons/applicator/functions/custom-fonts.php' );
+// require get_parent_theme_file_path( '/snapons/applicator/functions/custom-fonts.php' );
 
 // Styles
 if ( ! function_exists( 'apl_snapons_applicator_func_styles' ) ) {
     function apl_snapons_applicator_func_styles() {
 
-        wp_enqueue_style( 'apl-style-fonts', applicator_fonts_url(), array(), null );
-        add_editor_style( array( 'assets/css/editor-style.css', applicator_fonts_url() ) );
+        // wp_enqueue_style( 'apl-style-fonts', applicator_fonts_url(), array(), null );
+        // add_editor_style( array( 'assets/css/editor-style.css', applicator_fonts_url() ) );
+        add_editor_style( array( 'assets/css/editor-style.css', ) );
         
         wp_enqueue_style( 'apl-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '25.4', 'all' );
 

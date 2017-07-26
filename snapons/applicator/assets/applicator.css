@@ -93,16 +93,17 @@
 .main-search-func .search-form-reset-axn .reset---txt,
 
 /* Web Product Info */
-.apl--main-search--active .web-product-main-name,
-.apl--main-search--active .wbp-main-name-obj,
+.apl--main-search--active .wbp-main-name,
 .apl--main-search--active .web-product-main-logo,
 .apl--main-search--active .wbp-main-logo-obj,
-.apl--main-search--active .web-product-main-description,
-.apl--main-search--active .wbp-main-desc-obj,
-.wbp-main-name-desc--disabled .web-product-main-name,
-.wbp-main-name-desc--disabled .wbp-main-name-obj,
-.wbp-main-name-desc--disabled .web-product-main-description,
-.wbp-main-name-desc--disabled .wbp-main-desc-obj
+.apl--main-search--active .wbp-main-desc,
+.wbp-main-name-desc--disabled .wbp-main-name,
+.wbp-main-name-desc--disabled .wbp-main-desc,
+
+/* Aside */
+.main-ct-hr-aside---h,
+.main-fr-aside---h,
+.main-ct-aside---h
 {position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;}
 
 
@@ -576,6 +577,15 @@ $go-green: #12b32d;
 
 
 
+/* ------------------------- Excerpt ------------------------- */
+.excerpt-link---a
+{
+    display: block;
+}
+
+
+
+
 /* ------------------------- HTML */
 .apl--go-content-nav--active,
 .apl--main-menu--active
@@ -669,10 +679,8 @@ $go-green: #12b32d;
     position: relative;
 }
 
-.wbp-main-name-desc--enabled.wbp-main-logo--enabled .web-product-main-name,
-.wbp-main-name-desc--enabled.wbp-main-logo--enabled .wbp-main-name-obj,
-.wbp-main-name-desc--enabled.wbp-main-logo--enabled .web-product-main-description,
-.wbp-main-name-desc--enabled.wbp-main-logo--enabled .wbp-main-desc-obj
+.wbp-main-name-desc--enabled.wbp-main-logo--enabled .wbp-main-name,
+.wbp-main-name-desc--enabled.wbp-main-logo--enabled .wbp-main-desc
 {
     box-sizing: border-box;
     
@@ -738,8 +746,7 @@ $go-green: #12b32d;
     font-size: 1.125rem;
 }
 
-.web-product-main-name,
-.wbp-main-name-obj
+.wbp-main-name
 {
     display: flex;
     
@@ -748,8 +755,7 @@ $go-green: #12b32d;
     transform: translateY( .25rem );
 }
 
-.wbp-main-desc--empty .web-product-main-name,
-.wbp-main-desc--empty .wbp-main-name-obj
+.wbp-main-desc--empty .wbp-main-name
 {
     align-items: center;
     height: 3rem;
@@ -796,8 +802,7 @@ $go-green: #12b32d;
 }
 */
 
-.web-product-main-description,
-.wbp-main-desc-obj
+.wbp-main-desc
 {
     display: flex;
     
@@ -1114,7 +1119,7 @@ $go-green: #12b32d;
 /* ------------------------- Raster Icons */
 .no-svg .icon--raster
 {
-    background-image: url( ../../../assets/img/icons.png );
+    background-image: url( ../../../assets/img/raster-icons.png );
     background-size: auto 32px;
     background-repeat: no-repeat;
 }

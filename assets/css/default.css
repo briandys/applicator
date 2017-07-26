@@ -127,14 +127,20 @@ iframe
 }
 
 /* Text */
-.post-content---ct_cr
+.post-content
 {
     word-break: break-word;
 }
 
-table
+.post-content table
 {
     word-break: normal;
+}
+
+.post-content pre
+{
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 
