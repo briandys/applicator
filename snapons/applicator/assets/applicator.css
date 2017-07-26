@@ -374,6 +374,15 @@ $go-green: #12b32d;
 
 
 
+/* ------------------------- Post ------------------------- */
+
+.entry a:hover
+{
+    text-decoration: none;
+}
+
+
+
 
 
 
@@ -591,30 +600,6 @@ $go-green: #12b32d;
 .apl--main-menu--active
 {
     overflow: hidden;
-}
-
-
-
-
-
-/* ------------------------- Text Spacing */
-.go-ct-navi---a_l > .word,
-.go-start-navi---a_l > .word
-{
-    margin-left: .15em;
-    margin-right: .15em;
-}
-
-.go-ct-navi---a_l > .word:first-child,
-.go-start-navi---a_l > .word:first-child
-{
-    margin-left: 0;
-}
-
-.go-ct-navi---a_l > .word:last-child,
-.go-start-navi---a_l > .word:last-child
-{
-    margin-right: 0;
 }
 
 

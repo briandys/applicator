@@ -54,14 +54,12 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
         
         // Comments Count Template Markup
         $comments_count_mu = '';
-        $comments_count_mu .= '<span class="a_l %5$s---a_l">';
             $comments_count_mu .= '<span class="txt num %3$s---txt">';
                 $comments_count_mu .= '%1$s';
             $comments_count_mu .= '</span>';
             $comments_count_mu .= ' <span class="txt %4$s---txt">';
                 $comments_count_mu .= '%2$s';
             $comments_count_mu .= '</span>';
-        $comments_count_mu .= '</span>';
         
         
         // Comments Count Single Text
@@ -202,6 +200,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
                     'type'      => 'object',
                     'subtype'   => 'action item',
                     'linked'    => true,
+                    'layout'    => 'inline',
                     'attr'      => array(
                         'a'         => array(
                             'href'      => $add_comment_axn_a_href,
