@@ -376,7 +376,7 @@ $go-green: #12b32d;
 
 /* ------------------------- Post ------------------------- */
 
-.entry a:hover
+.entry-md a:hover
 {
     text-decoration: none;
 }

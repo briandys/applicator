@@ -898,8 +898,6 @@
     
     // ------------------------- Form Validation
     ( function() {
-    
-    $commentFormNote = aplDataCommentFormNote.commentFormNote;
         
         var forms = $( '#commentform' );
         

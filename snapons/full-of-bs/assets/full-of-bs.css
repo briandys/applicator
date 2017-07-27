@@ -1,5 +1,6 @@
 /*------------------ Visually Hide ------------------*/
 .entry---hr .entry-nav,
+.entries---hr .page-nav,
 
 .post-pub-t-stamp-dtstamp,
 .post-mod-t-stamp-dtstamp,
@@ -12,6 +13,7 @@
 
 .blog .main-content-heading,
 .page .main-content-heading,
+.single .main-content-heading,
 
 .edit-post-axn .post-title---txt,
 
@@ -79,6 +81,12 @@
 }
 
 
+.post-title---h
+{
+    margin: 0;
+}
+
+
 
 
 
@@ -91,7 +99,6 @@
 .pub-post-author---ct_cr
 {
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
@@ -115,6 +122,9 @@
 {
     display: block;
     
+    width: 2rem;
+    height: 2rem;
+    
     border-radius: 50%;
     overflow: hidden;
 }
@@ -123,7 +133,6 @@
 .post-mod---ct_cr
 {
     display: flex;
-    justify-content: center;
 }
 
 .post-published-date-and-time-stamp
@@ -137,7 +146,6 @@
 {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
 }
 
@@ -194,6 +202,8 @@
 .entry-nav---grp .previous---txt,
 .entry-nav---grp .next---txt
 {
+    color: black;
+    
     font-size: .75rem;
     text-transform: uppercase;
 }
@@ -231,8 +241,6 @@
 .comment-creation-ability
 {
     flex: 1 100%;
-    
-    text-align: center;
 }
 
 
@@ -240,6 +248,26 @@
 
 
 
+
+
+
+
+.entry-md a
+{
+    color: #0073e6;
+    color: hsl( 210, 100%, 45% );
+    
+    text-decoration: none;
+}
+
+.entry-md a:hover
+{
+    color: #0066cd;
+    color: hsl( 210, 100%, 40% );
+}
+
+
+/*------------------ Timestamp ------------------*/
 .post-mod-d-stamp-dtstamp---a_l
 {
     line-height: 1;
@@ -267,4 +295,20 @@
 .post-modified-date-stamp-dtstamp .year---txt
 {
     font-size: .875rem;
+}
+
+.post-mod-d-stamp-dtstamp---a_l
+{
+    display: block;
+    padding: .25rem .75rem;
+    
+    border: 1px solid black;
+    border-radius: .125rem;
+    
+    transform: scale( .75 );
+}
+
+.post-modified-date-stamp-dtstamp a
+{
+    color: black;
 }
