@@ -7,6 +7,7 @@
 .post-mod-d-t-stamp---ct_cr .comma---sep,
 
 .published-post-author .published---txt,
+.published-post-author .by---txt,
 .published-post-author .space---sep,
 
 .blog .main-content-heading,
@@ -40,7 +41,8 @@
 .next-entry-navi---a_l,
 .previous-entry-navi---a_l,
 .add-com-axn-axn---a_l,
-.comments-count-axn-axn---a_l
+.comments-count-axn-axn---a_l,
+.comments-count-axn---a_l
 {
     box-sizing: border-box;
     
@@ -89,12 +91,8 @@
 .pub-post-author---ct_cr
 {
     display: flex;
+    justify-content: center;
     align-items: center;
-}
-
-.published-post-author .post-author
-{   
-    margin-left: .5rem;
 }
 
 .post-author---ct_cr,
@@ -125,10 +123,10 @@
 .post-mod---ct_cr
 {
     display: flex;
+    justify-content: center;
 }
 
-.post-published-date-and-time-stamp,
-.post-modified-date-and-time-stamp
+.post-published-date-and-time-stamp
 {
     margin-left: .25rem;
 }
@@ -139,6 +137,7 @@
 {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
 }
 
@@ -219,6 +218,21 @@
 {
     order: 1;
     margin-left: .3rem;
+}
+
+.comments-axns-snip---ct_cr
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.comments-population,
+.comment-creation-ability
+{
+    flex: 1 100%;
+    
+    text-align: center;
 }
 
 

@@ -528,7 +528,7 @@ function htmlok( $args = array() ) {
                 
             }
             
-            // Action Subtype
+            // Action Item Subtype
             elseif ( in_array( $r_subtype, $subtype_axn_terms, true ) ) {
                
                 $subtype_name = 'Action';
@@ -710,7 +710,7 @@ function htmlok( $args = array() ) {
     $p_structure_name_abbr = ' '.$structure_name_abbr;
 
     // Name CSS
-    $p_name_cssx = ' '.$p_clean_name. $p_subtype_postfix_css;
+    $p_name_css = ' '.$p_clean_name. $p_subtype_postfix_css;
 
     // Root CSS
     if ( ! empty( $r['css'] ) ) {
@@ -727,7 +727,7 @@ function htmlok( $args = array() ) {
 
     // All class names in root
     // class="nav cp main-nav custom-css-nav custom-root-css"
-    $o_css = $p_root_elem_css. $p_nature_css. $p_structure_css. $p_subtype_css. $p_name_cssx. $p_css. $p_root_css;
+    $o_css = $p_root_elem_css. $p_nature_css. $p_structure_css. $p_subtype_css. $p_name_css. $p_css. $p_root_css;
 
     // Displayed in data-name
     $o_structure_name = $p_name. $p_subtype_name. $p_structure_name_abbr;
