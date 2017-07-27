@@ -40,7 +40,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
         $comments_population_pri_css = 'comments-population';
         $comment_creation_ability_pri_css = 'comment-creation-ability';
         
-        $comments_count_axn_css = 'comments-count-axn';
+        $comments_count_axn_css = 'comments-count';
         
         $comments_count_single_text = '1';
         $comments_count_multi_text = '%';

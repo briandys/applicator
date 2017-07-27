@@ -30,8 +30,8 @@ if ( ! function_exists( 'apl_snapons_full_of_bs_func_styles' ) ) {
         
         $snapon_name = 'full-of-bs';
 
-        wp_enqueue_style( 'apl-style-fonts', applicator_fonts_url(), array(), null );
-        add_editor_style( array( 'assets/css/editor-style.css', applicator_fonts_url() ) );
+        // wp_enqueue_style( 'apl-style-fonts', applicator_fonts_url(), array(), null );
+        // add_editor_style( array( 'assets/css/editor-style.css', applicator_fonts_url() ) );
         
         wp_enqueue_style( 'apl-snapons-'.$snapon_name.'-style', get_theme_file_uri() . '/snapons/'.$snapon_name.'/assets/'.$snapon_name.'.css', array(), '1.0', 'all' );
 

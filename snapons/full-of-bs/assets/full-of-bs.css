@@ -18,7 +18,11 @@
 .entry-nav---grp .colon---sep,
 
 .published-comment-glabel,
-.published-commenter-glabel
+.published-commenter-glabel,
+
+.post-modified-glabel,
+
+.post-published
 {position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;}
 
 
@@ -211,8 +215,42 @@
     transform: translateX( -.75rem );
 }
 
-.comments-count-axn-axn---a_l .comments-count---txt
+.comments-count-axn---a_l .comments-count---txt
 {
     order: 1;
     margin-left: .3rem;
+}
+
+
+
+
+
+
+.post-mod-d-stamp-dtstamp---a_l
+{
+    line-height: 1;
+}
+
+.post-modified-date-stamp-dtstamp .day---txt,
+.post-modified-date-stamp-dtstamp .month---txt,
+.post-modified-date-stamp-dtstamp .year---txt
+{
+    display: block;
+    
+    text-align: center;
+}
+
+.post-modified-date-stamp-dtstamp .day---txt
+{
+    font-size: 2rem;
+}
+
+.post-modified-date-stamp-dtstamp .month---txt
+{
+    text-transform: uppercase;
+}
+
+.post-modified-date-stamp-dtstamp .year---txt
+{
+    font-size: .875rem;
 }
