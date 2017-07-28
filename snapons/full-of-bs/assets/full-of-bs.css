@@ -56,7 +56,12 @@
 
 .comments-population--empty .comments-empty-note,
 
-.post-header-aside .comment-creation-ability--disabled .comment-creation-ability
+.post-header-aside .comment-creation-ability--disabled .comment-creation-ability,
+
+.comment-reply-axn .to---txt,
+.comment-reply-axn .comment---txt,
+
+.comments---hr .comments-nav
 {position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;}
 
 
@@ -82,7 +87,8 @@
 .apl-categories ul,
 .apl-tags ul,
 .post-nav---grp,
-.page-nav ul
+.page-nav ul,
+.comments-nav---grp
 {
     list-style: none;
     margin: 0;
@@ -109,7 +115,9 @@
 .show-more-axn---a_l,
 .page-navi---a_l,
 .page-nav .adjacent-navi---a_l,
-.page-nav .dots
+.page-nav .dots,
+.next-comments-navi---a_l,
+.previous-comments-navi---a_l
 {
     box-sizing: border-box;
     
@@ -157,22 +165,46 @@
 
 /* ------------------------- Text Spacing */
 .add-com-axn-axn---a_l > .txt,
-.comment-creation-glabel---g_l > .txt
+.comment-creation-glabel---g_l > .txt,
+.comment-reply-axn---a_l .line,
+.comment-reply-axn---a_l .line > .txt,
+.next-comments-navi---a_l > .txt,
+.previous-comments-navi---a_l > .txt
 {
     margin-left: .15em;
     margin-right: .15em;
 }
 
 .add-com-axn-axn---a_l > .txt:first-child,
-.comment-creation-glabel---g_l > .txt:first-child
+.comment-creation-glabel---g_l > .txt:first-child,
+.comment-reply-axn---a_l .line:first-child,
+.comment-reply-axn---a_l .line > .txt:first-child,
+.next-comments-navi---a_l > .txt:first-child,
+.previous-comments-navi---a_l > .txt:first-child
 {
     margin-left: 0;
 }
 
 .add-com-axn-axn---a_l > .txt:last-child,
-.comment-creation-glabel---g_l > .txt:last-child
+.comment-creation-glabel---g_l > .txt:last-child,
+.comment-reply-axn---a_l .line:last-child,
+.comment-reply-axn---a_l .line > .txt:last-child,
+.next-comments-navi---a_l > .txt:last-child,
+.previous-comments-navi---a_l > .txt:last-child
 {
     margin-right: 0;
+}
+
+.comment-reply-axn---a_l .line .open-parenthesis---txt,
+.comment-reply-axn---a_l .line .txt:nth-last-child(2)
+{
+    margin-right: 0;
+}
+
+.comment-reply-axn---a_l .line .close-parenthesis---txt,
+.comment-reply-axn---a_l .line .txt:nth-child(2)
+{
+    margin-left: 0;
 }
 
 
@@ -278,6 +310,12 @@
 
 
 /*------------------ Comments ------------------*/
+.comment-respond
+{
+    padding: 1rem;
+    
+    background-color: white;
+}
 .comments---h
 {
     font-size: 1.5rem;
@@ -305,6 +343,11 @@
     flex-wrap: wrap;
 }
 
+.comment-respond .sign-in-required-note
+{
+    flex: 1 100%;
+}
+
 .comment-form
 {
     flex: 1 100%;
@@ -324,6 +367,18 @@
 {
     font-size: 1.125rem;
     font-weight: bold;
+}
+
+.comments-nav---grp
+{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.next-comments-navi
+{
+    order: 1;
 }
 
 
@@ -411,7 +466,12 @@
 .next-entry-navi a,
 .previous-entry-navi a,
 .post-navi a,
-.page-nav a
+.page-nav a,
+.comment-reply-axn a,
+.note a,
+.next-comments-navi a,
+.previous-comments-navi a,
+#cancel-comment-reply-link
 {
     text-decoration: none;
 }
@@ -428,7 +488,12 @@
 .previous-entry-navi a,
 .post-navi a,
 .page-nav a,
-.page-nav .current
+.page-nav .current,
+.comment-reply-axn .reply-to-comment---line,
+.note a,
+.next-comments-navi a,
+.previous-comments-navi a,
+#cancel-comment-reply-link
 {
     color: #005fe6;
     color: hsl( 215, 100%, 45% );
@@ -443,7 +508,12 @@
 .previous-entry-navi a:hover,
 .post-navi a:hover,
 .page-nav a:hover,
-.page-nav .current:hover
+.page-nav .current:hover,
+.comment-reply-axn .reply-to-comment---line:hover,
+.note a:hover,
+.next-comments-navi a:hover,
+.previous-comments-navi a:hover,
+#cancel-comment-reply-link:hover
 {
     color: #0044cc;
     color: hsl( 220, 100%, 40% );
@@ -482,6 +552,16 @@
 .page-nav .current .page-navi---a_l
 {
     border-width: 2px;
+}
+
+.comment-reply-axn .sign-in-required---line
+{
+    color: black;
+}
+
+.validity-note---g_l
+{
+    color: #f22424;
 }
 
 
@@ -553,6 +633,11 @@
 
 
 /*------------------ Content Spacing ------------------*/
+.post-content---ct
+{
+    font-size: 1.125rem;
+}
+
 .note p,
 .post-content---ct_cr > p,
 .post-content---ct_cr > h1,
@@ -588,12 +673,16 @@
 .comment-pub---cr,
 .excerpt-link,
 .comments---h_l,
-.comment---ct p,
+.comment---ct_cr > *:not(.note),
 .wp-caption-text,
 .comment-title---h,
 .signed-in-acct---ct_cr,
-.commenter-comment-creation-text-input,
+
 .comment-form .form-submit,
+.commenter-comment-creation-text-input,
+.commenter-name-creation-text-input,
+.commenter-email-creation-text-input,
+.commenter-url-creation-text-input,
 
 .post-content---ct_cr > p,
 .post-content---ct_cr > h1,
@@ -606,7 +695,9 @@
 
 .post-excerpt---ct_cr > p,
 
-.show-more-action
+.show-more-action,
+
+.validity-note
 {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -619,7 +710,11 @@
     padding-right: 1rem;
 }
 
-.post-edit-link
+.post-edit-link,
+.commenter-name-creation-flabel,
+.commenter-email-creation-flabel,
+.commenter-url-creation-flabel,
+.comment-respond
 {
     margin-left: 1rem;
     margin-right: 1rem;
@@ -629,16 +724,28 @@
 .post-meta---cr,
 .post-banner-visual,
 .comment-crt-hd---h,
-.comment-form .form-submit,
 .main-footer---cr,
+
 .commenter-com-crt---cr,
+.commenter-name-crt---cr,
+.commenter-email-crt---cr,
+.commenter-url-crt---cr,
+
 .comments-axns-snip---cr,
+
 .page-nav---cr,
 .post-content---ct_cr,
 .show-more-action,
-.post-nav---cr
+.post-nav---cr,
+.comment---ct_cr,
+.comment-respond
 {
     margin-top: 1rem;
+}
+
+.comment-form .form-submit
+{
+    margin-top: 2rem;
 }
 
 .post---cr,
@@ -646,6 +753,11 @@
 .entry---fr .entry-nav---cr
 {
     margin-top: 4rem;
+}
+
+.validity-note
+{
+    margin-top: .5rem;
 }
 
 
@@ -697,7 +809,9 @@
 
 
 /*------------------ Notes ------------------*/
-.comments-empty-note
+.comments-empty-note,
+.comment-respond .sign-in-required-note,
+.comment-unapproved-note
 {
     padding: 1rem;
     
@@ -714,6 +828,13 @@
 .post-banner-vis---g
 {
     background-image: initial !important;
+}
+
+.commenter-name-creation-text-input,
+.commenter-email-creation-text-input,
+.commenter-url-creation-text-input
+{
+    margin-top: .5rem;
 }
 
 

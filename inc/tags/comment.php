@@ -372,15 +372,27 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                 <div class="ct comment---ct">
                     <div class="ct_cr comment---ct_cr">
                         
-                        <?php if ( $comment->comment_approved == '0' ) { ?>
-                        <div class="obj note comment-unapproved-note---obj" data-name="Comment Unapproved Note Object">
-                            <div class="g comment-unapproved-note---g">
-                                <p><?php esc_html_e( 'Your comment is awaiting moderation.', 'applicator' ); ?></p>
-                            </div>
-                        </div><!-- Comment Unapproved Note Object -->
-                        <?php } ?>
-                        
-                        <?php comment_text(); ?>
+        <?php
+        
+        if ( $comment->comment_approved == '0' ) {
+            
+            $comment_unapproved_note_obj = htmlok( array(
+                'name'      => 'Comment Unapproved',
+                'structure' => array(
+                    'type'      => 'object',
+                    'subtype'   => 'note',
+                ),
+                'content'   => array(
+                    'object'    => '<p>'.esc_html__( 'Your comment is awaiting moderation.', 'applicator' ).'</p>',
+                ),
+                'echo'      => true,
+            ) );
+            
+        }
+        
+        comment_text();
+        
+        ?>
                     
                     </div>
                 </div><!-- ct -->
