@@ -34,6 +34,7 @@ if ( ! function_exists( 'applicator_func_post_categories' ) ) {
                     'structure' => array(
                         'type'      => 'component',
                     ),
+                    'root_css'  => 'apl-categories',
                     'content'   => array(
                         'component' => $categories_list,
                     ),
@@ -46,6 +47,7 @@ if ( ! function_exists( 'applicator_func_post_categories' ) ) {
                     'structure' => array(
                         'type'      => 'component',
                     ),
+                    'root_css'  => 'apl-post-categories',
                     'content'   => array(
                         'component' => array(
                             $post_categories_label_obj,
@@ -97,6 +99,7 @@ if ( ! function_exists( 'applicator_func_post_tags' ) ) {
                     'structure' => array(
                         'type'      => 'component',
                     ),
+                    'root_css'  => 'apl-tags',
                     'content'   => array(
                         'component' => $tags_list,
                     ),
@@ -109,6 +112,7 @@ if ( ! function_exists( 'applicator_func_post_tags' ) ) {
                     'structure' => array(
                         'type'      => 'component',
                     ),
+                    'root_css'  => 'apl-post-tags',
                     'content'   => array(
                         'component' => array(
                             $post_tags_label_obj,

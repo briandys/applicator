@@ -615,11 +615,6 @@ function htmlok( $args = array() ) {
             
             if ( in_array( $r_elem, $heading_level_terms, true ) ) {
                 $obj_elem_css = 'h';
-                $layout_elem = 'div';
-                
-                // Force block layout for heading element
-                $subtype_elem = $layout_elem;
-                $obj_label_elem = $layout_elem;
             }
         }
     }

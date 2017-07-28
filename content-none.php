@@ -5,13 +5,14 @@
                 
                 <?php
                 
-                // E: Post Title
+                // E: Main Post Title
                 $post_title_obj = htmlok( array(
-                    'name'      => 'Post Title',
+                    'name'      => 'Main Post Title',
                     'structure' => array(
                         'type'      => 'object',
                         'elem'      => 'h1',
                     ),
+                    'root_css'  => 'apl-main-post-title',
                     'content'   => array(
                         'object'        => array(
                             array(

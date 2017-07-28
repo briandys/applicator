@@ -25,12 +25,34 @@
 
 .post-modified-glabel,
 
-.post-published
+.post-published,
+
+.post-categories-glabel,
+.post-tags-glabel
 {position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;}
 
 
+
+
+
+/*------------------ Clearfix ------------------*/
+.clearfix:before,
+.clearfix:after
+{
+    content: " ";
+    display: table;
+}
+
+.clearfix:after
+{
+    clear: both;
+}
+
+
 /*------------------ Reset Lists ------------------*/
-.entry-nav---grp
+.entry-nav---grp,
+.apl-categories ul,
+.apl-tags ul
 {
     list-style: none;
     margin: 0;
@@ -44,7 +66,9 @@
 .previous-entry-navi---a_l,
 .add-com-axn-axn---a_l,
 .comments-count-axn-axn---a_l,
-.comments-count-axn---a_l
+.comments-count-axn---a_l,
+.apl-categories a,
+.apl-tags a
 {
     box-sizing: border-box;
     
@@ -52,11 +76,11 @@
     justify-content: center;
     align-items: center;
     
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1em;
+    padding-right: 1em;
     
-    min-width: 3rem;
-    min-height: 3rem;
+    min-width: 3em;
+    min-height: 3em;
 }
 
 
@@ -81,7 +105,7 @@
 }
 
 
-.post-title---h
+.main-post-title---h
 {
     margin: 0;
 }
@@ -248,26 +272,56 @@
 
 
 
-
-
-
-
-.entry-md a
+.post-content a,
+.post---hr a,
+.post-tag a
 {
-    color: #0073e6;
-    color: hsl( 210, 100%, 45% );
-    
     text-decoration: none;
 }
 
-.entry-md a:hover
+
+/*------------------ Colors ------------------*/
+.post-content a,
+.post---hr a,
+.post-tag a
 {
-    color: #0066cd;
-    color: hsl( 210, 100%, 40% );
+    color: hsl( 215, 100%, 45% );
+}
+
+.post-content a:hover,
+.post---hr a:hover,
+.post-tag a:hover
+{
+    color: hsl( 220, 100%, 40% );
+}
+
+.apl-categories a,
+.apl-tags a
+{
+    background-color: hsl( 215, 100%, 45% );
+    color: white;
+}
+
+.apl-categories a:hover,
+.apl-tags a:hover
+{
+    background-color: hsl( 220, 100%, 40% );
+    color: white;
 }
 
 
 /*------------------ Timestamp ------------------*/
+.post-mod-d-stamp-dtstamp---a_l
+{
+    display: block;
+    padding: .25em .75em;
+    
+    font-size: .75rem;
+    
+    border: 1px solid black;
+    border-radius: .125rem;
+}
+
 .post-mod-d-stamp-dtstamp---a_l
 {
     line-height: 1;
@@ -284,7 +338,7 @@
 
 .post-modified-date-stamp-dtstamp .day---txt
 {
-    font-size: 2rem;
+    font-size: 2em;
 }
 
 .post-modified-date-stamp-dtstamp .month---txt
@@ -294,21 +348,50 @@
 
 .post-modified-date-stamp-dtstamp .year---txt
 {
-    font-size: .875rem;
-}
-
-.post-mod-d-stamp-dtstamp---a_l
-{
-    display: block;
-    padding: .25rem .75rem;
-    
-    border: 1px solid black;
-    border-radius: .125rem;
-    
-    transform: scale( .75 );
+    font-size: .875em;
 }
 
 .post-modified-date-stamp-dtstamp a
 {
     color: black;
+}
+
+
+
+
+
+.main-post-title,
+.apl-post-categories
+{
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+
+/*------------------ Categories ------------------*/
+.apl-categories ul,
+.apl-tags ul
+{
+    display: flex;
+    flex-wrap: wrap;
+    
+    font-size: .875rem;
+}
+
+.apl-categories li,
+.apl-tags li
+{
+    margin: .125rem;
+}
+
+
+
+/*------------------ Medium AAs ------------------*/
+.edit-post-axn---a_l,
+.apl-categories a,
+.apl-tags a
+{
+    min-height: 2rem;
+    
+    border-radius: .125rem;
 }
