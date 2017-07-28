@@ -20,13 +20,8 @@
                             ),
                         ),
                     ),
-                    'root_css'  => 'apl-main-post-title',
                     'content'   => array(
-                        'object'        => array(
-                            array(
-                                'txt'       => get_the_title(),
-                            ),
-                        ),
+                        'object'        => get_the_title(),
                     ),
                     'echo'      => true,
                 ) );

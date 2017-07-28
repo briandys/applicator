@@ -80,7 +80,7 @@ function applicator_func_the_excerpt( $excerpt ) {
     } else {
         
         $excerpt_link_mu = '';
-        $excerpt_link_mu .= '<a class="a %2$s---a" href="%3$s#main" title="%4$s">';
+        $excerpt_link_mu .= '<a class="a %2$s" href="%3$s#main" title="%4$s">';
         $excerpt_link_mu .= '%1$s';
         $excerpt_link_mu .= '</a>';
         

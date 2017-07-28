@@ -99,7 +99,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         
         // R: Comment Published Date Stamp
         $comment_published_date_stamp_obj = htmlok( array(
-            'name'      => 'Comment Published Date',
+            'name'      => 'Comment Published Date Stamp',
             'structure' => array(
                 'type'      => 'object',
                 'subtype'   => 'time',
@@ -139,7 +139,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         
         // R: Comment Published Time Stamp
         $comment_published_time_stamp_obj = htmlok( array(
-            'name'      => 'Comment Published Time',
+            'name'      => 'Comment Published Time Stamp',
             'structure' => array(
                 'type'      => 'object',
                 'subtype'   => 'time',
@@ -180,7 +180,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         
         // R: Comment Published Date and Time Stamp
         $comment_published_date_time_stamp_cp = htmlok( array(
-            'name'      => 'Comment Published Date and Time',
+            'name'      => 'Comment Published Date and Time Stamp',
             'structure' => array(
                 'type'      => 'component',
             ),
@@ -320,6 +320,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                 'type'      => 'component',
             ),
             'root_css'  => $commenter_avatar_type_css,
+            'css'       => 'published-com-commenter',
             'content'   => array(
                 'component' => array(
                     $commenter_published_label_obj,

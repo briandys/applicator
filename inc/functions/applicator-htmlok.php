@@ -1324,6 +1324,7 @@ function htmlok( $args = array() ) {
         $r_obj_content = $r['content']['object'];
         
         $content_val = '';
+        
         foreach ( ( array ) $r_obj_content as $val ) {
                 
             $txt_auto_css = '';

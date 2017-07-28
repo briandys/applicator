@@ -128,7 +128,6 @@ if ( ! function_exists( 'applicator_func_post_author' ) ) {
                 'type'      => 'component',
             ),
             'root_css'  => $author_avatar_type_css,
-            'css'       => 'pub-post-author',
             'content'   => array(
                 'component' => array(
                     $post_published_label_obj,

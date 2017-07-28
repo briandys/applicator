@@ -7,6 +7,9 @@
 .post-pub-d-t-stamp---ct_cr .comma---sep,
 .post-mod-d-t-stamp---ct_cr .comma---sep,
 
+.comment-published-time-stamp-dtstamp,
+.comment-pub-d-t-stamp---ct_cr .comma---sep,
+
 .published-post-author .published---txt,
 .published-post-author .by---txt,
 .published-post-author .space---sep,
@@ -15,20 +18,39 @@
 .page .main-content-heading,
 .single .main-content-heading,
 
-.edit-post-axn .post-title---txt,
+.edit-post-action .post-title---txt,
+.edit-comment-action .comment-title---txt,
 
 .entry-nav---grp .entry---txt,
 .entry-nav---grp .colon---sep,
 
 .published-comment-glabel,
 .published-commenter-glabel,
+.published-com-commenter---h,
 
 .post-modified-glabel,
 
 .post-published,
 
 .post-categories-glabel,
-.post-tags-glabel
+.post-tags-glabel,
+
+.signed-in-acct---hr,
+
+.comment-reply-cancel-axn---a_l .reply---txt,
+.comment-reply-cancel-axn---a_l .to---txt,
+.comment-reply-cancel-axn---a_l .comment---txt,
+
+.comment-creation-heading,
+
+.commenter-comment-creation-flabel,
+
+.comment-reply-link .to---txt,
+.comment-reply-link .comment---txt,
+
+.show-more-axn .value---line,
+.show-more-axn .show---txt,
+.show-more-axn .of---txt
 {position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;}
 
 
@@ -52,7 +74,9 @@
 /*------------------ Reset Lists ------------------*/
 .entry-nav---grp,
 .apl-categories ul,
-.apl-tags ul
+.apl-tags ul,
+.post-nav---grp,
+.page-nav .page-numbers
 {
     list-style: none;
     margin: 0;
@@ -62,13 +86,21 @@
 
 /*------------------ Active Areas (AA) ------------------*/
 .edit-post-axn---a_l,
+.edit-com-axn---a_l,
 .next-entry-navi---a_l,
 .previous-entry-navi---a_l,
 .add-com-axn-axn---a_l,
 .comments-count-axn-axn---a_l,
 .comments-count-axn---a_l,
 .apl-categories a,
-.apl-tags a
+.apl-tags a,
+.comment-reply-axn---a_l,
+.account-log-out-axn---a_l,
+#cancel-comment-reply-link,
+.comment-creation-glabel---g_l,
+.post-navi a,
+.post-navi---g,
+.show-more-axn---a_l
 {
     box-sizing: border-box;
     
@@ -87,25 +119,43 @@
 
 
 
+/*------------------ Post Navigation ------------------*/
+.post-nav---grp,
+.page-nav ul.page-numbers
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+
+
 /* ------------------------- Text Spacing */
-.add-com-axn-axn---a_l > .txt
+.add-com-axn-axn---a_l > .txt,
+.comment-creation-glabel---g_l > .txt
 {
     margin-left: .15em;
     margin-right: .15em;
 }
 
-.add-com-axn-axn---a_l > .txt:first-child
+.add-com-axn-axn---a_l > .txt:first-child,
+.comment-creation-glabel---g_l > .txt:first-child
 {
     margin-left: 0;
 }
 
-.add-com-axn-axn---a_l > .txt:last-child
+.add-com-axn-axn---a_l > .txt:last-child,
+.comment-creation-glabel---g_l > .txt:last-child
 {
     margin-right: 0;
 }
 
 
-.main-post-title---h
+
+/*------------------ Reset Headings ------------------*/
+.main-post-title---h,
+.main-content-heading---h
 {
     margin: 0;
 }
@@ -113,14 +163,25 @@
 
 
 
+/*------------------ Entry Header ------------------*/
+.main-post-title---a_l
+{
+    display: inline;
+}
 
-/*------------------ Post Meta ------------------*/
+
+
+
+
+
+
+/*------------------ Post Author ------------------*/
 .post-published-glabel .by---txt
 {
     text-transform: capitalize;
 }
 
-.pub-post-author---ct_cr
+.published-post-author---ct_cr
 {
     display: flex;
     align-items: center;
@@ -166,7 +227,8 @@
 
 
 /*------------------ Post Header ------------------*/
-.post---hr_cr
+.post---hr_cr,
+.comment---hr_cr
 {
     display: flex;
     flex-wrap: wrap;
@@ -174,6 +236,7 @@
 }
 
 .post-header-aside,
+.comment-header-aside,
 .breadcrumbs-nav
 {
     flex: 1 100%;
@@ -182,10 +245,56 @@
 
 
 /*------------------ Comments ------------------*/
+.comments---h
+{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
 .commenter-com-crt-input-text
 {
     background-color: white;
 }
+
+.signed-in-acct---cr
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.comment-respond
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.comment-form
+{
+    flex: 1 100%;
+}
+
+.comment-form .form-submit
+{
+    margin: 0;
+}
+
+.comment-creation-ability--disabled .comment-creation-ability
+{
+    flex: 1 100%;
+}
+
+.comment-creation-glabel---g_l
+{
+    font-size: 1.125rem;
+    font-weight: bold;
+}
+
+
+
 
 
 /*------------------ Entry Nav ------------------*/
@@ -257,14 +366,8 @@
 .comments-axns-snip---ct_cr
 {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
-}
-
-.comments-population,
-.comment-creation-ability
-{
-    flex: 1 100%;
 }
 
 
@@ -274,7 +377,12 @@
 
 .post-content a,
 .post---hr a,
-.post-tag a
+.comments---hr a,
+.post-tag a,
+.comment---hr a,
+.next-entry-navi a,
+.previous-entry-navi a,
+.post-navi a
 {
     text-decoration: none;
 }
@@ -283,88 +391,260 @@
 /*------------------ Colors ------------------*/
 .post-content a,
 .post---hr a,
-.post-tag a
+.comments---hr a,
+.post-tag a,
+.excerpt-link,
+.comment---hr a,
+.next-entry-navi a,
+.previous-entry-navi a,
+.post-navi a
 {
+    color: #005fe6;
     color: hsl( 215, 100%, 45% );
 }
 
 .post-content a:hover,
 .post---hr a:hover,
-.post-tag a:hover
+.post-tag a:hover,
+.excerpt-link:hover,
+.comment---hr a:hover,
+.next-entry-navi a:hover,
+.previous-entry-navi a:hover,
+.post-navi a:hover
 {
+    color: #0044cc;
     color: hsl( 220, 100%, 40% );
 }
 
-.apl-categories a,
-.apl-tags a
+.apl-tags a,
+.edit-post-axn---a_l,
+.edit-com-axn---a_l,
+.comments-count---txt
 {
+    background-color: #005fe6;
     background-color: hsl( 215, 100%, 45% );
     color: white;
 }
 
-.apl-categories a:hover,
-.apl-tags a:hover
+.apl-tags a:hover,
+.edit-post-axn---a_l:hover,
+.comments-count---txt:hover
 {
+    background-color: #0044cc;
     background-color: hsl( 220, 100%, 40% );
     color: white;
 }
 
+.apl-categories a,
+.post-mod-d-stamp-dtstamp---a_l,
+.comment-pub-d-stamp-dtstamp---a_l
+{
+    border: 1px solid hsl( 215, 100%, 45% );
+}
+
+
+
+
 
 /*------------------ Timestamp ------------------*/
-.post-mod-d-stamp-dtstamp---a_l
+.post-mod-d-stamp-dtstamp---a_l,
+.comment-pub-d-stamp-dtstamp---a_l
 {
     display: block;
     padding: .25em .75em;
     
     font-size: .75rem;
     
-    border: 1px solid black;
     border-radius: .125rem;
 }
 
-.post-mod-d-stamp-dtstamp---a_l
+.post-mod-d-stamp-dtstamp---a_l,
+.comment-pub-d-stamp-dtstamp---a_l
 {
     line-height: 1;
 }
 
 .post-modified-date-stamp-dtstamp .day---txt,
 .post-modified-date-stamp-dtstamp .month---txt,
-.post-modified-date-stamp-dtstamp .year---txt
+.post-modified-date-stamp-dtstamp .year---txt,
+
+.comment-published-date-stamp-dtstamp .day---txt,
+.comment-published-date-stamp-dtstamp .month---txt,
+.comment-published-date-stamp-dtstamp .year---txt
 {
     display: block;
     
     text-align: center;
 }
 
-.post-modified-date-stamp-dtstamp .day---txt
+.post-modified-date-stamp-dtstamp .day---txt,
+.comment-published-date-stamp-dtstamp .day---txt
 {
     font-size: 2em;
 }
 
-.post-modified-date-stamp-dtstamp .month---txt
+.post-modified-date-stamp-dtstamp .month---txt,
+.comment-published-date-stamp-dtstamp .month---txt
 {
     text-transform: uppercase;
 }
 
-.post-modified-date-stamp-dtstamp .year---txt
+.post-modified-date-stamp-dtstamp .year---txt,
+.comment-published-date-stamp-dtstamp .year---txt
 {
     font-size: .875em;
 }
 
-.post-modified-date-stamp-dtstamp a
+.post-header-aside .post-meta---ct_cr,
+.comment-header-aside .comment-meta---ct_cr
 {
-    color: black;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.apl-post-categories
+{
+    flex: 1 100%;
+}
+
+
+
+
+/*------------------ Layout Spacing ------------------*/
+.main-post-title---h,
+.main-content-heading---h,
+.published-post-author---cr,
+.published-comment-commenter---cr,
+.post-pub-mod---cr,
+.comment-pub---cr,
+.excerpt-link,
+.comments---h_l,
+.comment---ct p,
+.wp-caption-text,
+.comment-title---h,
+.signed-in-acct---ct_cr,
+.commenter-comment-creation-text-input,
+.comment-form .form-submit,
+
+.post-content---ct_cr > p,
+.post-excerpt---ct_cr > p
+{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+
+.post-content---ct_cr > ul,
+.post-content---ct_cr > ol
+{
+    padding-right: 1rem;
+}
+
+.post-edit-link
+{
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.post:first-of-type .post---cr,
+.post-meta---cr,
+.post-banner-visual,
+.comment-crt-hd---h,
+.comment-form .form-submit,
+.main-footer---cr,
+.commenter-com-crt---cr,
+.comments-axns-snip---cr
+{
+    margin-top: 1rem;
+}
+
+.post---cr,
+.comment-md---cr,
+.entry---fr .entry-nav---cr
+{
+    margin-top: 2rem;
+}
+
+
+.wp-caption-text
+{
+    margin-top: .5rem;
+    
+    font-size: .875rem;
+}
+
+.apl-categories a,
+.apl-tags a
+{
+    margin: .125rem;
+}
+
+.apl-post-categories,
+.apl-post-tags
+{
+    margin-bottom: -.125rem;
+}
+
+.apl-post-categories .post-categories---cr,
+.apl-post-tags .post-tags---cr
+{
+    padding-top: calc( 1rem - .125rem );
+}
+
+.apl-post-categories .post-categories---cr,
+.apl-post-tags .post-tags---cr
+{
+    padding-left: calc( 1rem - .125rem );
+    padding-right: calc( 1rem - .125rem );
+}
+
+
+
+/*------------------ Notes ------------------*/
+.note
+{
+    padding: .25rem 1rem;
+    
+    background-color: hsla( 0, 0%, 50%, .0625 );
 }
 
 
 
 
 
-.main-post-title,
-.apl-post-categories
+/*------------------ Comments Count ------------------*/
+.comments-count---txt
 {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    padding: .0625rem .25rem;
+    
+    min-width: 1rem;
+    min-height: 1rem;
+    
+    font-size: .875rem;
+    font-weight: bold;
+    
+    border-radius: .125rem;
+}
+
+
+
+
+
+
+
+/*------------------ Excerpt ------------------*/
+.excerpt-link
+{
+    display: block;
+    
+    color: black;
+    
+    text-decoration: none;
 }
 
 
@@ -378,16 +658,11 @@
     font-size: .875rem;
 }
 
-.apl-categories li,
-.apl-tags li
-{
-    margin: .125rem;
-}
-
 
 
 /*------------------ Medium AAs ------------------*/
 .edit-post-axn---a_l,
+.edit-com-axn---a_l,
 .apl-categories a,
 .apl-tags a
 {
