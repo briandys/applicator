@@ -50,7 +50,11 @@
 
 .show-more-axn .value---line,
 .show-more-axn .show---txt,
-.show-more-axn .of---txt
+.show-more-axn .of---txt,
+
+.page-nav .page---txt,
+
+.comments-population--empty .comments-empty-note
 {position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;}
 
 
@@ -100,7 +104,10 @@
 .comment-creation-glabel---g_l,
 .post-navi a,
 .post-navi---g,
-.show-more-axn---a_l
+.show-more-axn---a_l,
+.page-navi---a_l,
+.page-nav .adjacent-navi---a_l,
+.page-nav .dots
 {
     box-sizing: border-box;
     
@@ -119,15 +126,18 @@
 
 
 
-/*------------------ Post Navigation ------------------*/
+/*------------------ Navigation ------------------*/
 .post-nav---grp,
-.page-nav ul.page-numbers
+.page-nav ul
 {
     display: flex;
     flex-wrap: wrap;
 }
 
-
+.page-nav .current .page-navi---a_l
+{
+    font-weight: bold;
+}
 
 
 
@@ -342,12 +352,7 @@
 }
 
 
-/*------------------ Notes ------------------*/
-.note .g_l,
-.sign-in-required---line
-{
-    font-size: .875rem;
-}
+
 
 
 /*------------------ Comments ------------------*/
@@ -382,7 +387,8 @@
 .comment---hr a,
 .next-entry-navi a,
 .previous-entry-navi a,
-.post-navi a
+.post-navi a,
+.page-nav a
 {
     text-decoration: none;
 }
@@ -397,7 +403,8 @@
 .comment---hr a,
 .next-entry-navi a,
 .previous-entry-navi a,
-.post-navi a
+.post-navi a,
+.page-nav a
 {
     color: #005fe6;
     color: hsl( 215, 100%, 45% );
@@ -410,7 +417,8 @@
 .comment---hr a:hover,
 .next-entry-navi a:hover,
 .previous-entry-navi a:hover,
-.post-navi a:hover
+.post-navi a:hover,
+.page-nav a:hover
 {
     color: #0044cc;
     color: hsl( 220, 100%, 40% );
@@ -554,7 +562,8 @@
 .comment-form .form-submit,
 .main-footer---cr,
 .commenter-com-crt---cr,
-.comments-axns-snip---cr
+.comments-axns-snip---cr,
+.page-nav---cr
 {
     margin-top: 1rem;
 }
@@ -604,13 +613,33 @@
 /*------------------ Notes ------------------*/
 .note
 {
-    padding: .25rem 1rem;
+    padding: 1rem 1rem;
     
     background-color: hsla( 0, 0%, 50%, .0625 );
 }
 
+.note p
+{
+    margin: 0;
+    margin-top: 1rem;
+}
+
+.note p:first-of-type
+{
+    margin-top: 0;
+}
+
+.note .g_l,
+.sign-in-required---line
+{
+    font-size: .875rem;
+}
 
 
+.post-banner-vis---g
+{
+    background-image: initial !important;
+}
 
 
 /*------------------ Comments Count ------------------*/

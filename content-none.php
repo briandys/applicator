@@ -33,11 +33,31 @@
         </header>
         <div class="ct post---ct entry-content">
             <div class="ct_cr post---ct_cr">
-                
                 <?php
-                esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for.', 'applicator' );
-                ?>
                 
+                // OB: Search
+                ob_start();
+                get_search_form();
+                $search_ob_content = ob_get_contents();
+                ob_end_clean();
+                    
+                // E: Post Content
+                $post_content = htmlok( array(
+                    'name'      => 'Post Content',
+                    'structure' => array(
+                        'type'      => 'component',
+                    ),
+                    'content'   => array(
+                        'component'     => array(
+                            '<p>'.esc_html__( 'It seems we can&rsquo;t find what you&rsquo;re looking for.', 'applicator' ).'</p>',
+                            '<p>'.esc_html__( 'Try our search feature.', 'applicator' ).'</p>',
+                            $search_ob_content,
+                        ),
+                    ),
+                    'echo'      => true,
+                ) );
+                
+                ?>
             </div>
         </div>
     </div>
