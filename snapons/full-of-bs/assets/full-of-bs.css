@@ -253,6 +253,11 @@
     margin-left: .25rem;
 }
 
+.show-more-axn---a_l
+{
+    border-radius: .125rem;
+}
+
 
 /*------------------ Post Header ------------------*/
 .post---hr_cr,
@@ -422,7 +427,8 @@
 .next-entry-navi a,
 .previous-entry-navi a,
 .post-navi a,
-.page-nav a
+.page-nav a,
+.page-nav .current
 {
     color: #005fe6;
     color: hsl( 215, 100%, 45% );
@@ -436,7 +442,8 @@
 .next-entry-navi a:hover,
 .previous-entry-navi a:hover,
 .post-navi a:hover,
-.page-nav a:hover
+.page-nav a:hover,
+.page-nav .current:hover
 {
     color: #0044cc;
     color: hsl( 220, 100%, 40% );
@@ -446,7 +453,7 @@
 .edit-post-axn---a_l,
 .edit-com-axn---a_l,
 .comments-count---txt,
-.page-nav .current .page-navi---a_l
+.show-more-axn---a_l
 {
     background-color: #005fe6;
     background-color: hsl( 215, 100%, 45% );
@@ -455,7 +462,8 @@
 
 .apl-tags a:hover,
 .edit-post-axn---a_l:hover,
-.comments-count---txt:hover
+.comments-count---txt:hover,
+.show-more-axn---a_l:hover
 {
     background-color: #0044cc;
     background-color: hsl( 220, 100%, 40% );
@@ -471,7 +479,10 @@
     border: 1px solid hsl( 215, 100%, 45% );
 }
 
-
+.page-nav .current .page-navi---a_l
+{
+    border-width: 2px;
+}
 
 
 
@@ -552,7 +563,8 @@
 .post-content---ct_cr > h6,
 .post-content---ct_cr > ul,
 .post-content---ct_cr > ol,
-.post-content---ct_cr > pre
+.post-content---ct_cr > pre,
+.post-content---ct_cr > figure
 {
     margin: 0;
     margin-top: 1em;
@@ -592,7 +604,9 @@
 .post-content---ct_cr > h6,
 .post-content---ct_cr > pre,
 
-.post-excerpt---ct_cr > p
+.post-excerpt---ct_cr > p,
+
+.show-more-action
 {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -620,7 +634,9 @@
 .commenter-com-crt---cr,
 .comments-axns-snip---cr,
 .page-nav---cr,
-.post-content---ct_cr
+.post-content---ct_cr,
+.show-more-action,
+.post-nav---cr
 {
     margin-top: 1rem;
 }
@@ -636,6 +652,8 @@
 .wp-caption-text
 {
     margin-top: .5rem;
+    
+    color: hsla( 0, 0%, 0%, .65 );
     
     font-size: .875rem;
 }
@@ -679,9 +697,9 @@
 
 
 /*------------------ Notes ------------------*/
-.note
+.comments-empty-note
 {
-    padding: 1rem 1rem;
+    padding: 1rem;
     
     background-color: hsla( 0, 0%, 50%, .0625 );
 }
