@@ -589,8 +589,7 @@
 
 .apl-tags a:hover,
 .edit-post-axn---a_l:hover,
-.comments-count---txt:hover,
-.search-results-count---txt:hover
+.comments-count---txt:hover
 {
     background-color: #0044cc;
     background-color: hsl(220, 100%, 40%);
@@ -613,7 +612,8 @@
     color: white;
 }
 
-.search-results-term---txt
+.search-results-term---txt,
+.archive .value---line
 {
     color: #12b32d;
 }

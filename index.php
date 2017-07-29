@@ -13,10 +13,6 @@ else {
         
         <?php
 
-        // Main Content Headings
-        applicator_func_main_content_headings();
-
-
         // Main Content Headings - Search
         if ( is_search() ) {
             
@@ -102,6 +98,11 @@ else {
             
 
             wp_reset_postdata();
+        }
+        
+        else {
+            // Main Content Headings
+            applicator_func_main_content_headings();
         }
         
         
