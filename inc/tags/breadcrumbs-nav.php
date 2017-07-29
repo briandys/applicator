@@ -12,7 +12,7 @@ if ( ! function_exists( 'applicator_func_breadcrumbs_nav' ) ) {
                 
                 
                 // Terms Variables
-                $breadcrumbs_term = 'Breadcrumbs';
+                $breadcrumbs_term = __( 'Breadcrumbs', 'applicator' );
                 $breadcrumbs_term_css = sanitize_title( $breadcrumbs_term );
                 $breadcrumbs_data_name_term = 'Navigation Item OBJ';
                 $breadcrumbs_navi_css = 'breadcrumbs-navi';

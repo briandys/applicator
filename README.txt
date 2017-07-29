@@ -42,7 +42,7 @@ Font Awesome icons, Copyright Dave Gandy
 License: SIL Open Font License, version 1.1.
 Source: http://fontawesome.io/
 
-Bundled image, Copyright Bogdan Dada
+Bundled image, Copyright Bogdan Dada on Unsplash
 License: CC0 1.0 Universal (CC0 1.0)
 Source: https://unsplash.com/@bogs?photo=vXpcpTl2Tt4
 

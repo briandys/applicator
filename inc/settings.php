@@ -31,7 +31,8 @@ function applicator_func_setup() {
     add_theme_support( 'post-thumbnails' );
     
     add_image_size( 'applicator-entry-banner-image-large', 1920, 1920, true );
-    add_image_size( 'applicator-entry-banner-image-thumbnail', 640, 640, true );
+    //add_image_size( 'applicator-entry-banner-image-thumbnail', 640, 640, true );
+    add_image_size( 'applicator-entry-banner-image-thumbnail', 1280 );
     
     add_image_size( 'applicator-image-thumbnail-hd', 640, 360, true );
     

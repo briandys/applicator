@@ -35,12 +35,12 @@ else {
 
             
             // Text Labels
-            $zero_search_result_term = esc_html__( '0', 'applicator' );
+            $no_search_result_term = esc_html__( 'No', 'applicator' );
             $search_result_term = esc_html__( 'Search Result', 'applicator' );
             $search_results_term = esc_html__( 'Search Results', 'applicator' );
             
             if ( $entry_search_count == 0 ) {
-                $property_text = $zero_search_result_term.' '.$search_result_term;
+                $property_text = $no_search_result_term.' '.$search_result_term;
             } elseif ( $entry_search_count == 1 ) {
                 $property_text = $search_result_term;
             } else {
@@ -54,10 +54,6 @@ else {
             $line_array = array(
                 array(
                     'css'   => 'property---line',
-                    array(
-                        'txt'       => $entry_search_count,
-                        'css'       => 'search-results-count---txt',
-                    ),
                     array(
                         'sep'       => $GLOBALS['space_sep'],
                         'txt'       => $property_text,
@@ -73,6 +69,14 @@ else {
                         'sep'       => $GLOBALS['space_sep'],
                         'txt'       => $value_text,
                         'css'       => 'search-results-term---txt',
+                    ),
+                ),
+                array(
+                    'css'   => 'count---line',
+                    array(
+                        'sep'       => $GLOBALS['space_sep'],
+                        'txt'       => $entry_search_count,
+                        'css'       => 'search-results-count---txt',
                     ),
                 ),
             );

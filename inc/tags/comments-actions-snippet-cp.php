@@ -110,7 +110,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
             
             $comments_count_obj_a_link = '';
 
-            $comments_count_obj_a = sprintf( get_comments_popup_link(
+            $comments_count_obj_a = sprintf( applicator_func_get_comments_popup_link(
                 // Comments Count: Zero
                 '',
 

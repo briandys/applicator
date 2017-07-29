@@ -50,7 +50,7 @@
                     'content'   => array(
                         'component'     => array(
                             '<p>'.esc_html__( 'It seems we can&rsquo;t find what you&rsquo;re looking for.', 'applicator' ).'</p>',
-                            '<p>'.esc_html__( 'Try our search feature.', 'applicator' ).'</p>',
+                            '<p>'.esc_html__( 'Please try another search term.', 'applicator' ).'</p>',
                             $search_ob_content,
                         ),
                     ),

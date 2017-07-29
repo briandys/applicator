@@ -103,7 +103,7 @@ if ( ! function_exists( 'applicator_func_enqueue_scripts' ) ) {
     function applicator_func_enqueue_scripts() {
         
         // Modernizr
-        // wp_enqueue_script( 'apl-script-modernizr', get_theme_file_uri() . '/assets/js/modernizr.js', array(), '1.1', true );
+        // wp_enqueue_script( 'apl-script-modernizr', get_theme_file_uri() . '/assets/js/modernizr.min.js', array(), '1.1', true );
         
         // HTML5 Shiv
         wp_enqueue_script( 'html5', get_theme_file_uri( '/assets/js/html5.js' ), array(), '3.7.3' );
