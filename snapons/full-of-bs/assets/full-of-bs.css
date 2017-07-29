@@ -61,7 +61,9 @@
 .comment-reply-axn .to---txt,
 .comment-reply-axn .comment---txt,
 
-.comments---hr .comments-nav
+.comments---hr .comments-nav,
+
+.comments---h
 {position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;}
 
 
@@ -285,8 +287,13 @@
     margin-left: .25rem;
 }
 
-.show-more-axn---a_l
+.show-more-axn
 {
+    font-size: 1rem;
+}
+
+.show-more-axn---a_l
+{   
     border-radius: .125rem;
 }
 
@@ -312,14 +319,19 @@
 /*------------------ Comments ------------------*/
 .comment-respond
 {
-    padding: 1rem;
+    padding: 1rem 1rem 2rem;
     
     background-color: white;
+    
+    border-radius: .125rem;
 }
-.comments---h
+
+.comments-header-aside .comments-count-axn .comment---txt
 {
     font-size: 1.5rem;
     font-weight: bold;
+    
+    color: black;
 }
 
 .commenter-com-crt-input-text
@@ -381,6 +393,40 @@
     order: 1;
 }
 
+.comment-form .commenter-com-crt-input-text
+{
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    
+    min-height: 5rem;
+}
+
+.comment-creation-ability .sign-in-required-note
+{
+    display: inline-block;
+    transform: translateX( -.75rem );
+}
+
+.comments-count-axn---a_l .comments-count---txt
+{
+    order: 1;
+    margin-left: .3rem;
+}
+
+.comments-axns-snip---ct_cr
+{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.commenter-url-creation-flabel .note---line
+{
+    font-size: .75rem;
+    
+    color: hsla( 0, 0%, 0%, .65 );
+}
+
 
 
 
@@ -432,26 +478,6 @@
 
 
 
-
-/*------------------ Comments ------------------*/
-.comment-creation-ability .sign-in-required-note
-{
-    display: inline-block;
-    transform: translateX( -.75rem );
-}
-
-.comments-count-axn---a_l .comments-count---txt
-{
-    order: 1;
-    margin-left: .3rem;
-}
-
-.comments-axns-snip---ct_cr
-{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
 
 
 
@@ -522,8 +548,7 @@
 .apl-tags a,
 .edit-post-axn---a_l,
 .edit-com-axn---a_l,
-.comments-count---txt,
-.show-more-axn---a_l
+.comments-count---txt
 {
     background-color: #005fe6;
     background-color: hsl( 215, 100%, 45% );
@@ -532,13 +557,19 @@
 
 .apl-tags a:hover,
 .edit-post-axn---a_l:hover,
-.comments-count---txt:hover,
-.show-more-axn---a_l:hover
+.comments-count---txt:hover
 {
     background-color: #0044cc;
     background-color: hsl( 220, 100%, 40% );
     color: white;
 }
+
+.show-more-axn---a_l
+{
+    background-color: #12b32d;
+    color: white;
+}
+    
 
 .apl-categories a,
 .post-mod-d-stamp-dtstamp---a_l,
@@ -559,9 +590,31 @@
     color: black;
 }
 
+.validity-note
+{
+    margin-top: .5rem;
+}
+
+.commenter-comment-creation .validity-note
+{
+    margin-top: .125rem;
+}
+
 .validity-note---g_l
 {
     color: #f22424;
+}
+
+.creation--invalid .input-text
+{
+    border-color: #f22424;
+    border-width: 2px;
+}
+
+.creation--valid .input-text
+{
+    border-color: #12b32d;
+    border-width: 2px;
 }
 
 
@@ -633,7 +686,8 @@
 
 
 /*------------------ Content Spacing ------------------*/
-.post-content---ct
+.post-content---ct,
+.comment---ct_cr > *:not(.note)
 {
     font-size: 1.125rem;
 }
@@ -695,7 +749,7 @@
 
 .post-excerpt---ct_cr > p,
 
-.show-more-action,
+.show-more-axn,
 
 .validity-note
 {
@@ -735,7 +789,7 @@
 
 .page-nav---cr,
 .post-content---ct_cr,
-.show-more-action,
+.show-more-axn,
 .post-nav---cr,
 .comment---ct_cr,
 .comment-respond
@@ -753,11 +807,6 @@
 .entry---fr .entry-nav---cr
 {
     margin-top: 4rem;
-}
-
-.validity-note
-{
-    margin-top: .5rem;
 }
 
 
@@ -811,11 +860,15 @@
 /*------------------ Notes ------------------*/
 .comments-empty-note,
 .comment-respond .sign-in-required-note,
-.comment-unapproved-note
+.comment-unapproved-note,
+.commenting-disabled-note
 {
+    margin: 0 1rem;
     padding: 1rem;
     
     background-color: hsla( 0, 0%, 50%, .0625 );
+    
+    border-radius: .125rem;
 }
 
 .note .g_l,
@@ -835,6 +888,11 @@
 .commenter-url-creation-text-input
 {
     margin-top: .5rem;
+}
+
+.comments-population--empty.comment-creation-ability--disabled .commenting-disabled-note
+{
+    margin-bottom: 1rem;
 }
 
 

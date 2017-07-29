@@ -139,7 +139,9 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
             /* If Comments Actions Snippet is in index, use permalink. */
             if ( ! is_singular() ) {
                 $comments_count_obj_a_link = esc_url( get_permalink() );
-            } else {
+            }
+            
+            else {
                 $comments_count_obj_a_link = '';
             }
             
