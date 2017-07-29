@@ -88,13 +88,14 @@
 }
 
 
-/*------------------ Reset Lists ------------------*/
+/*------------------ Unlist ------------------*/
 .entry-nav---grp,
 .apl-categories ul,
 .apl-tags ul,
 .post-nav---grp,
 .page-nav ul,
-.comments-nav---grp
+.comments-nav---grp,
+.breadcrumbs-nav---grp
 {
     list-style: none;
     margin: 0;
@@ -124,7 +125,9 @@
 .page-nav .adjacent-navi---a_l,
 .page-nav .dots,
 .next-comments-navi---a_l,
-.previous-comments-navi---a_l
+.previous-comments-navi---a_l,
+.breadcrumbs-navi---a_l,
+.breadcrumbs-navi---g_l
 {
     box-sizing: border-box;
     
@@ -166,6 +169,11 @@
 .page-nav .current .page-navi---a_l
 {
     font-weight: bold;
+}
+
+.breadcrumbs-navi
+{
+    display: flex;
 }
 
 
@@ -785,13 +793,17 @@
 .commenter-name-creation-flabel,
 .commenter-email-creation-flabel,
 .commenter-url-creation-flabel,
-.comment-respond
+.comment-respond,
+.show-more-axn
 {
     margin-left: 1rem;
     margin-right: 1rem;
 }
 
-.post:first-of-type .post---cr,
+
+.entries .article:first-of-type,
+.entry .article,
+
 .post-meta---cr,
 .post-banner-visual,
 .comment-crt-hd---h,
@@ -816,12 +828,14 @@
     margin-top: 1rem;
 }
 
+
 .comment-form .form-submit
 {
     margin-top: 2rem;
 }
 
-.post---cr,
+
+.entries .article,
 .comment-md---cr,
 .entry---fr .entry-nav---cr
 {
@@ -917,11 +931,16 @@
 
 
 
-
+.search-results .main-content-heading---h_l,
+.search-results .main-content-heading---h_l .line
+{
+    display: flex;
+}
 
 
 
 /*------------------ Comments Count ------------------*/
+.search-results-count---txt,
 .comments-count---txt
 {
     display: flex;

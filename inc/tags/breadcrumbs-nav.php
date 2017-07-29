@@ -49,8 +49,8 @@ if ( ! function_exists( 'applicator_func_breadcrumbs_nav' ) ) {
                 
                 // Navi <g>
                 $breadcrumbs_navi_g_mu = '';
-                $breadcrumbs_navi_g_mu .= '<span class="g %3$s---g" title="%4$s">';
-                    $breadcrumbs_navi_g_mu .= '<span class="g_l %3$s---g_l">';
+                $breadcrumbs_navi_g_mu .= '<span class="g %5$s---g %3$s---g" title="%4$s">';
+                    $breadcrumbs_navi_g_mu .= '<span class="g_l %5$s---g_l %3$s---g_l">';
                         $breadcrumbs_navi_g_mu .= '<span class="txt %2$s---txt">';
                             $breadcrumbs_navi_g_mu .= '%1$s';
                         $breadcrumbs_navi_g_mu .= '</span>';
@@ -107,7 +107,8 @@ if ( ! function_exists( 'applicator_func_breadcrumbs_nav' ) ) {
                         get_the_title(),
                         sanitize_title( get_the_title( $ancestor ) ),
                         $breadcrumbs_navi_css.'-'. $post->ID,
-                        get_the_title()
+                        get_the_title(),
+                        $breadcrumbs_navi_css
                     );
                     $breadcrumbs_navi_current .= sprintf( $breadcrumbs_navi_emu,
                         $breadcrumbs_term
