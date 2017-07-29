@@ -105,7 +105,8 @@
 .main-fr-aside---h,
 .main-ct-aside---h,
 
-.post-content .search-form-reset-axn
+.post-content .search-form-reset-axn,
+.aside .search-form-reset-axn
 {position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;}
 
 
@@ -1421,7 +1422,8 @@ $go-green: #12b32d;
 .search-cp .search-submit-axn---b_l,
 
 .comment-form-submit-axn---b,
-.post-content .search-cp .b
+.post-content .search-cp .b,
+.aside .search-cp .b
 {
     background-color: #00aaff;
     color: white;
@@ -1441,7 +1443,8 @@ $go-green: #12b32d;
 
 .comment-form .input-text,
 .comment-form-submit-axn---b,
-.post-content .search-cp .b
+.post-content .search-cp .b,
+.aside .search-cp .b
 {   
     border-radius: .125rem;
 }

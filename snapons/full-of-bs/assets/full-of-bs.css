@@ -754,6 +754,12 @@
 
 
 
+
+
+
+
+
+
 /*------------------ Content Spacing ------------------*/
 .post-content---ct,
 .comment---ct_cr > *:not(.note)
@@ -774,14 +780,18 @@
 .post-content---ct_cr > pre,
 .post-content---ct_cr > figure,
 .post-content---ct_cr > .cp,
-.post-content---ct_cr > div
+.post-content---ct_cr > div,
+
+.aside > .cr > .ct > .ct_cr
 {
     margin: 0;
     margin-top: 1em;
 }
 
 .note p:first-of-type,
-.post-content---ct_cr > *:first-child
+.post-content---ct_cr > *:first-child,
+
+.aside > .cr > .ct > .ct_cr:first-child
 {
     margin-top: 0;
 }
@@ -878,14 +888,18 @@
 .comment-respond,
 .main-content-heading,
 
-.post-content .search-form-axns
+.post-content .search-form-axns,
+.aside .search-form-axns,
+
+.main-content-header-aside
 {
     margin-top: 1rem;
 }
 
 
 .widget,
-.comment-form .form-submit
+.comment-form .form-submit,
+.main-footer-aside
 {
     margin-top: 2rem;
 }
@@ -900,7 +914,7 @@
 .comment-md---cr,
 .entry---fr .entry-nav---cr
 {
-    margin-top: 4rem;
+    padding-top: 4rem;
 }
 
 
