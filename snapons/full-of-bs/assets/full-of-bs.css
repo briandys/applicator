@@ -127,7 +127,8 @@
 .next-comments-navi---a_l,
 .previous-comments-navi---a_l,
 .breadcrumbs-navi---a_l,
-.breadcrumbs-navi---g_l
+.breadcrumbs-navi---g_l,
+.widget_calendar tfoot a
 {
     box-sizing: border-box;
     
@@ -357,7 +358,8 @@
     border-radius: .125rem;
 }
 
-.comments-header-aside .comments-count-axn .comment---txt
+.comments-header-aside .comments-count-axn .comment---txt,
+.comments-header-aside .comments-count-axn .comments---txt
 {
     font-size: 1.5rem;
     font-weight: bold;
@@ -528,7 +530,10 @@
 .note a,
 .next-comments-navi a,
 .previous-comments-navi a,
-#cancel-comment-reply-link
+#cancel-comment-reply-link,
+.widget a,
+.account-log-out-axn---a,
+.signed-in-account-name---a
 {
     text-decoration: none;
 }
@@ -550,7 +555,10 @@
 .note a,
 .next-comments-navi a,
 .previous-comments-navi a,
-#cancel-comment-reply-link
+#cancel-comment-reply-link,
+.account-log-out-axn---a,
+.signed-in-account-name---a,
+.widget a
 {
     color: #005fe6;
     color: hsl(215, 100%, 45%);
@@ -570,7 +578,10 @@
 .note a:hover,
 .next-comments-navi a:hover,
 .previous-comments-navi a:hover,
-#cancel-comment-reply-link:hover
+#cancel-comment-reply-link:hover,
+.account-log-out-axn---a:hover,
+.signed-in-account-name---a:hover,
+.widget a:hover
 {
     color: #0044cc;
     color: hsl(220, 100%, 40%);
@@ -762,7 +773,8 @@
 .post-content---ct_cr > ol,
 .post-content---ct_cr > pre,
 .post-content---ct_cr > figure,
-.post-content---ct_cr > .cp
+.post-content---ct_cr > .cp,
+.post-content---ct_cr > div
 {
     margin: 0;
     margin-top: 1em;
@@ -805,17 +817,18 @@
 .post-content---ct_cr > h5,
 .post-content---ct_cr > h6,
 .post-content---ct_cr > pre,
-
 .post-excerpt---ct_cr > p,
 
-.show-more-axn
+.show-more-axn,
 
 .validity-note,
 
 .post-content .search-term-crt-search .flabel,
 .post-content .search-term-crt-search .felem,
 
-.post-content .search-form-search-axn
+.post-content .search-form-search-axn,
+
+.widget:not(.widget_nav_menu) .widget---cr > *:not(ul):not(ol)
 {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -871,9 +884,15 @@
 }
 
 
+.widget,
 .comment-form .form-submit
 {
     margin-top: 2rem;
+}
+
+.widget:first-of-type
+{
+    margin-top: 0;
 }
 
 
@@ -1042,4 +1061,35 @@
     min-height: 2rem;
     
     border-radius: .125rem;
+}
+
+
+
+
+
+/*------------------ Calendar Widget ------------------*/
+.widget_calendar tbody td,
+.widget_calendar th
+{
+    padding: .5rem;
+}
+
+.widget_calendar caption
+{
+    padding: 1rem;
+}
+
+.widget_calendar #next
+{
+    text-align: right;
+}
+
+.widget_calendar #next a
+{
+    margin-right: -1rem;
+}
+
+.widget_calendar #prev a
+{
+    margin-left: -1rem;
 }

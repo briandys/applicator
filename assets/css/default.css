@@ -108,6 +108,16 @@ figure
     margin: 0;
 }
 
+abbr[title]
+{
+    text-decoration: none;
+}
+
+abbr[title]:hover
+{
+    border-bottom: 0;
+}
+
 
 
 
@@ -175,8 +185,12 @@ iframe
 .wp-caption img[class*="wp-image-"]
 {
     display: block;
+    
+    width: 100%;
+    /*
     margin-left: auto;
     margin-right: auto;
+    */
 }
 
 
