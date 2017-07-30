@@ -858,7 +858,7 @@
     
     
     
-    
+    /*
     // ------------------------- Page Height Detection
     ( function() {
         
@@ -891,6 +891,7 @@
         window.addEventListener( 'resize', pageHeightDetectionDebounce );
     
     } )();
+    */
     
     
     

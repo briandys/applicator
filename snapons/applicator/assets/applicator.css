@@ -1355,8 +1355,8 @@ $go-green: #12b32d;
 
 /* ------------------------- Search - Style > Nature */
 
-.search-cp .input-text,
-.search-cp .b,
+.apl-search .input-text,
+.apl-search .b,
 
 .comment-form .input-text,
 .comment-form-submit-axn---b
@@ -1368,9 +1368,9 @@ $go-green: #12b32d;
     background-color: transparent;
 }
 
-.search-cp .input-text,
-.search-cp .b,
-.search-cp .b_l,
+.apl-search .input-text,
+.apl-search .b,
+.apl-search .b_l,
 
 .comment-form .input-text,
 .comment-form-submit-axn---b
@@ -1387,7 +1387,7 @@ $go-green: #12b32d;
     width: 100%;
 }
 
-.search-cp .b_l,
+.apl-search .b_l,
 
 .comment-form-submit-axn---b
 {
@@ -1409,7 +1409,7 @@ $go-green: #12b32d;
 
 
 /* ------------------------- Search - Style > Decorations */
-.search-cp .input-text,
+.apl-search .input-text,
 
 .comment-form .input-text
 {
@@ -1419,17 +1419,17 @@ $go-green: #12b32d;
     border-color: hsla(0, 0%, 0%, .5);
 }
 
-.search-cp .search-submit-axn---b_l,
+.apl-search .search-submit-axn---b_l,
 
 .comment-form-submit-axn---b,
-.post-content .search-cp .b,
-.aside .search-cp .b
+.post-content .apl-search .b,
+.aside .apl-search .b
 {
     background-color: #00aaff;
     color: white;
 }
 
-.search-cp .search-reset-axn---b_l
+.apl-search .search-reset-axn---b_l
 {
     border: 2px solid black;
     border-color: hsla(0, 0%, 0%, .25);
@@ -1438,23 +1438,23 @@ $go-green: #12b32d;
     color: hsla(0, 0%, 0%, .5);
 }
 
-.search-cp .input-text,
-.search-cp .b_l,
+.apl-search .input-text,
+.apl-search .b_l,
 
 .comment-form .input-text,
 .comment-form-submit-axn---b,
-.post-content .search-cp .b,
-.aside .search-cp .b
+.post-content .apl-search .b,
+.aside .apl-search .b
 {   
     border-radius: .125rem;
 }
 
-.main-header---cr > .search-cp
+.main-header---cr > .apl-search
 {
     background-color: white;
 }
 
-.apl--applicator--main-search .main-header---cr > .search-cp
+.apl--applicator--main-search .main-header---cr > .apl-search
 {
     background-color: transparent;
 }
@@ -1466,7 +1466,7 @@ $go-green: #12b32d;
 
 /* ------------------------- Main Search - Functionality */
 
-.apl--applicator--main-search.dom--unready .main-header---cr > .search-cp
+.apl--applicator--main-search.dom--unready .main-header---cr > .apl-search
 {
     display: none;
 }
@@ -1801,6 +1801,13 @@ $go-green: #12b32d;
 .widget_calendar table
 {
     width: 100%;
+}
+
+.aside .widget_search,
+.aside .widget_calendar,
+.post-content .apl-search
+{
+    max-width: 30rem;
 }
 
 

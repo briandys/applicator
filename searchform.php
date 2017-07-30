@@ -68,7 +68,7 @@ $search_cp = htmlok( array(
         'type'      => 'component',
         'h_elem'    => 'h2',
     ),
-    'root_css'      => 'search-cp',
+    'root_css'      => 'apl-search',
     'content'       => array(
         'component'     => $search_form_cp,
     ),
