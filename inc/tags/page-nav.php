@@ -115,7 +115,7 @@ if ( ! function_exists( 'applicator_func_page_nav' ) ) {
             
             
             // R: Page Navigation
-            $page_navigation_cp = htmlok( array(
+            $page_navigation_cp = applicator_htmlok( array(
                 'name'      => 'Page',
                 'structure' => array(
                     'type'      => 'component',

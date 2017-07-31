@@ -1,6 +1,6 @@
 <?php // Applicator HTML_OK (Overkill) Constructor-Component-Object Structure
 
-function htmlok( $args = array() ) {
+function applicator_htmlok( $args = array() ) {
     
     //------------ Requirements
     

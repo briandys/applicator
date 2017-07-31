@@ -35,7 +35,7 @@ if ( ! function_exists( 'applicator_func_comments_nav' ) ) {
 
                 $next_comments_link = get_next_comments_link( $next_comments_navi_label );
             
-                $next_comments_navi_obj = htmlok( array(
+                $next_comments_navi_obj = applicator_htmlok( array(
                     'name'      => 'Next Comments',
                     'structure' => array(
                         'type'      => 'object',
@@ -67,7 +67,7 @@ if ( ! function_exists( 'applicator_func_comments_nav' ) ) {
                 
                 $previous_comments_link = get_previous_comments_link( $previous_comments_navi_label );
             
-                $previous_comments_navi_obj = htmlok( array(
+                $previous_comments_navi_obj = applicator_htmlok( array(
                     'name'      => 'Previous Comments',
                     'structure' => array(
                         'type'      => 'object',
@@ -90,7 +90,7 @@ if ( ! function_exists( 'applicator_func_comments_nav' ) ) {
             
             
             // R: Comments Navigation
-            $comments_nav_cp = htmlok( array(
+            $comments_nav_cp = applicator_htmlok( array(
                 'name'      => 'Comments',
                 'structure' => array(
                     'type'      => 'component',

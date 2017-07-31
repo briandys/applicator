@@ -67,6 +67,9 @@ if ( file_exists( $post_banner_visual ) ) { require_once( $post_banner_visual );
 $main_content_headings = get_parent_theme_file_path( '/inc/tags/main-content-headings.php' );
 if ( file_exists( $main_content_headings ) ) { require_once( $main_content_headings ); }
 
+$post_title = get_parent_theme_file_path( '/inc/functions/post-title.php' );
+if ( file_exists( $post_title ) ) { require_once( $post_title ); }
+
 
 // Comments
 $comments = get_parent_theme_file_path( '/inc/functions/get-comments.php' );

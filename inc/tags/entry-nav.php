@@ -88,7 +88,7 @@ if ( ! function_exists('applicator_func_entry_nav' ) ) {
             
             
             // R:
-            $next_entry_obj = htmlok( array(
+            $next_entry_obj = applicator_htmlok( array(
                 'name'      => $next_term.' '.$entry_term,
                 'structure' => array(
                     'type'          => 'object',
@@ -103,7 +103,7 @@ if ( ! function_exists('applicator_func_entry_nav' ) ) {
             
             
             // R:
-            $previous_entry_obj = htmlok( array(
+            $previous_entry_obj = applicator_htmlok( array(
                 'name'      => $previous_term.' '.$entry_term,
                 'structure' => array(
                     'type'          => 'object',
@@ -130,7 +130,7 @@ if ( ! function_exists('applicator_func_entry_nav' ) ) {
 
 
             // R: Entry Navigation
-            $entry_navigation_cp = htmlok( array(
+            $entry_navigation_cp = applicator_htmlok( array(
                 'name'      => 'Entry',
                 'structure' => array(
                     'type'      => 'component',

@@ -2,7 +2,7 @@
 if ( is_active_sidebar( 'main-content-aside' )  ) {
     
     // Secondary Content
-    $secondary_content = htmlok( array(
+    $secondary_content = applicator_htmlok( array(
         'name'      => 'Secondary Content',
         'structure' => array(
             'type'      => 'constructor',

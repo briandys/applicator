@@ -6,7 +6,7 @@
                 <?php
                 
                 // E: Main Post Title
-                $post_title_obj = htmlok( array(
+                $post_title_obj = applicator_htmlok( array(
                     'name'      => 'Main Post Title',
                     'structure' => array(
                         'type'      => 'object',
@@ -42,7 +42,7 @@
                 ob_end_clean();
                     
                 // E: Post Content
-                $post_content = htmlok( array(
+                $post_content = applicator_htmlok( array(
                     'name'      => 'Post Content',
                     'structure' => array(
                         'type'      => 'component',

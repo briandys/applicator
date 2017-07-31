@@ -52,7 +52,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
         $commenter_name_creation_css = 'commenter-name-crt';
         $commenter_name_creation_input_text_css = $commenter_name_creation_css.'-input-text';
         
-        $commenter_name_creation_flabel_obj = htmlok( array(
+        $commenter_name_creation_flabel_obj = applicator_htmlok( array(
             'name'      => $commenter_name_creation_term,
             'structure' => array(
                 'type'      => 'object',
@@ -92,7 +92,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             $aria_req
         );
 
-        $commenter_name_creation_text_input_obj = htmlok( array(
+        $commenter_name_creation_text_input_obj = applicator_htmlok( array(
             'name'      => $commenter_name_creation_term.' '.'Text Input',
             'structure' => array(
                 'type'      => 'object',
@@ -103,7 +103,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             ),
         ) );
         
-        $fields['author'] = htmlok( array(
+        $fields['author'] = applicator_htmlok( array(
             'name'      => $commenter_name_creation_term,
             'structure' => array(
                 'type'      => 'component',
@@ -128,7 +128,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
         $commenter_email_creation_css = 'commenter-email-crt';
         $commenter_email_creation_input_text_css = $commenter_email_creation_css.'-input-text';
         
-        $commenter_email_creation_flabel_obj = htmlok( array(
+        $commenter_email_creation_flabel_obj = applicator_htmlok( array(
             'name'      => $commenter_email_creation_term,
             'structure' => array(
                 'type'      => 'object',
@@ -171,7 +171,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             ' '.'required'
         );
 
-        $commenter_name_creation_text_input_obj = htmlok( array(
+        $commenter_name_creation_text_input_obj = applicator_htmlok( array(
             'name'      => $commenter_email_creation_term.' '.'Text Input',
             'structure' => array(
                 'type'      => 'object',
@@ -182,7 +182,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             ),
         ) );
         
-        $fields['email'] = htmlok( array(
+        $fields['email'] = applicator_htmlok( array(
             'name'      => $commenter_email_creation_term,
             'structure' => array(
                 'type'      => 'component',
@@ -207,7 +207,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
         $commenter_url_creation_css = 'commenter-url-crt';
         $commenter_url_creation_input_text_css = $commenter_url_creation_css.'-input-text';
         
-        $commenter_url_creation_flabel_obj = htmlok( array(
+        $commenter_url_creation_flabel_obj = applicator_htmlok( array(
             'name'      => $commenter_url_creation_term,
             'structure' => array(
                 'type'      => 'object',
@@ -252,7 +252,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             ''
         );
 
-        $commenter_name_creation_text_input_obj = htmlok( array(
+        $commenter_name_creation_text_input_obj = applicator_htmlok( array(
             'name'      => $commenter_url_creation_term.' '.'Text Input',
             'structure' => array(
                 'type'      => 'object',
@@ -263,7 +263,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             ),
         ) );
         
-        $fields['url'] = htmlok( array(
+        $fields['url'] = applicator_htmlok( array(
             'name'      => $commenter_url_creation_term,
             'structure' => array(
                 'type'      => 'component',

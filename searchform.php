@@ -2,7 +2,7 @@
 $unique_id = esc_attr( uniqid( 'search-term-creation-input-text-' ) );
 
 
-$search_form_cp = htmlok( array(
+$search_form_cp = applicator_htmlok( array(
     'name'      => 'Search',
     'structure' => array(
         'type'      => 'component',
@@ -62,7 +62,7 @@ $search_form_cp = htmlok( array(
 ) );
 
 
-$search_cp = htmlok( array(
+$search_cp = applicator_htmlok( array(
     'name'      => 'Search',
     'structure' => array(
         'type'      => 'component',

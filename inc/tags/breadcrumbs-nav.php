@@ -125,7 +125,7 @@ if ( ! function_exists( 'applicator_func_breadcrumbs_nav' ) ) {
                 
                 
                     // R: Breadcrumbs Navigation
-                    $breadcrumbs_navigation_cp = htmlok( array(
+                    $breadcrumbs_navigation_cp = applicator_htmlok( array(
                         'name'      => $breadcrumbs_term,
                         'structure' => array(
                             'type'      => 'component',

@@ -13,7 +13,7 @@ if ( ! function_exists( 'applicator_func_main_header_aside' ) ) {
             $aside = ob_get_contents();
             ob_end_clean();
             
-            $main_header_aside = htmlok( array(
+            $main_header_aside = applicator_htmlok( array(
                 'name'      => 'Main Header',
                 'structure' => array(
                     'type'          => 'constructor',
@@ -49,7 +49,7 @@ if ( ! function_exists( 'applicator_func_main_content_header_aside' ) ) {
             $aside = ob_get_contents();
             ob_end_clean();
             
-            $main_content_header_aside = htmlok( array(
+            $main_content_header_aside = applicator_htmlok( array(
                 'name'      => 'Main Content Header',
                 'structure' => array(
                     'type'          => 'constructor',
@@ -85,7 +85,7 @@ if ( ! function_exists( 'applicator_func_main_content_aside' ) ) {
             $aside = ob_get_contents();
             ob_end_clean();
             
-            $main_content_aside = htmlok( array(
+            $main_content_aside = applicator_htmlok( array(
                 'name'      => 'Main Content',
                 'structure' => array(
                     'type'          => 'constructor',
@@ -121,7 +121,7 @@ if ( ! function_exists( 'applicator_func_main_footer_aside' ) ) {
             $aside = ob_get_contents();
             ob_end_clean();
             
-            $main_footer_aside = htmlok( array(
+            $main_footer_aside = applicator_htmlok( array(
                 'name'      => 'Main Footer',
                 'structure' => array(
                     'type'          => 'constructor',

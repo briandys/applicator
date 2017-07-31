@@ -54,7 +54,7 @@ if ( ! function_exists( 'applicator_func_main_nav' ) ) {
             ob_end_clean();
 
             // Main Navigation
-            $main_navigation_cp = htmlok( array(
+            $main_navigation_cp = applicator_htmlok( array(
                 'name'      => 'Main',
                 'structure' => array(
                     'type'      => 'component',

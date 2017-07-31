@@ -186,6 +186,28 @@ if ( ! function_exists( 'applicator_func_html_class' ) ) {
         } else {
             echo ' ' . 'wp-admin-bar' . $off;
         }
+        
+        
+        // Comments
+        if ( is_singular() ) {
+            $comments_count_int = (int) get_comments_number( get_the_ID() );
+            if ( $comments_count_int == 1 ) {
+                echo ' '.'comments-population--populated--single';
+            }
+            elseif ( $comments_count_int > 1 ) {
+                echo ' '.'comments-population--populated--multiple';
+            }
+            elseif ( $comments_count_int == 0 ) {
+                echo ' '.'comments-population--populated--zero';
+            }
+            
+            if ( comments_open() ) {
+                echo ' '.'comment-creation-ability--enabled';
+            }
+            else {
+                echo ' '.'comment-creation-ability--disabled';
+            }
+        }
     
     }
     add_action( 'applicator_hook_html_class', 'applicator_func_html_class');

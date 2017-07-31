@@ -34,7 +34,7 @@ if ( ! function_exists( 'applicator_func_post_actions' ) ) {
             ob_end_clean();
             
             // Edit Post Action
-            $edit_post_action_obj = htmlok( array(
+            $edit_post_action_obj = applicator_htmlok( array(
                 'name'      => 'Edit Post Action',
                 'structure' => array(
                     'type'      => 'object',
@@ -88,7 +88,7 @@ if ( ! function_exists( 'applicator_func_comment_actions' ) ) {
             ob_end_clean();
             
             // Edit Post Action
-            $edit_comment_action_obj = htmlok( array(
+            $edit_comment_action_obj = applicator_htmlok( array(
                 'name'      => 'Edit Comment Action',
                 'structure' => array(
                     'type'      => 'object',

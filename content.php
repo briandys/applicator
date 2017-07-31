@@ -6,7 +6,7 @@
                 <?php
                 
                 // E: Main Post Title
-                $post_title_obj = htmlok( array(
+                $post_title_obj = applicator_htmlok( array(
                     'name'      => 'Main Post Title',
                     'structure' => array(
                         'type'      => 'object',
@@ -40,7 +40,7 @@
                 
                 
                 // E: Post Meta
-                $post_meta = htmlok( array(
+                $post_meta = applicator_htmlok( array(
                     'name'      => 'Post Meta',
                     'structure' => array(
                         'type'      => 'component'
@@ -65,7 +65,7 @@
                 
                 
                 // E: Post Header Aside
-                $post_header_aside = htmlok( array(
+                $post_header_aside = applicator_htmlok( array(
                     'name'      => 'Post Header',
                     'structure' => array(
                         'type'          => 'constructor',
@@ -110,7 +110,7 @@
                 
                 
                 // R: Post Excerpt
-                $post_excerpt = htmlok( array(
+                $post_excerpt = applicator_htmlok( array(
                     'name'      => 'Post Excerpt',
                     'structure' => array(
                         'type'      => 'component',
@@ -136,7 +136,7 @@
                     }
                     
                     // E: Post Content
-                    $post_content = htmlok( array(
+                    $post_content = applicator_htmlok( array(
                         'name'      => 'Post Content',
                         'structure' => array(
                             'type'      => 'component',
@@ -185,7 +185,7 @@
                         
                         
                         // E: Sub-Post Content
-                        $sub_post_cp = htmlok( array(
+                        $sub_post_cp = applicator_htmlok( array(
                             'name'      => 'Sub-Post Content',
                             'structure' => array(
                                 'type'      => 'component',
@@ -216,7 +216,7 @@
                     <?php
 
                     // E: Post Meta
-                    $post_meta = htmlok( array(
+                    $post_meta = applicator_htmlok( array(
                         'name'      => 'Post Meta',
                         'structure' => array(
                             'type'      => 'component'

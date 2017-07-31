@@ -35,7 +35,7 @@ else {
     
     $comments_nav_content = '';
     
-    $comments_empty_note_obj = htmlok( array(
+    $comments_empty_note_obj = applicator_htmlok( array(
         'name'      => 'Comments Empty',
         'structure' => array(
             'type'      => 'object',
@@ -51,7 +51,7 @@ else {
 
 
 // R: Comments Header Asisde
-$comments_header_aside_cn = htmlok( array(
+$comments_header_aside_cn = applicator_htmlok( array(
     'name'          => 'Comments Header',
     'structure'     => array(
         'type'          => 'constructor',
@@ -64,7 +64,7 @@ $comments_header_aside_cn = htmlok( array(
 
 
 // R: Comments
-$comments_cp = htmlok( array(
+$comments_cp = applicator_htmlok( array(
     'name'          => 'Comments',
     'structure'     => array(
         'type'          => 'component',
@@ -106,7 +106,7 @@ $comment_creation_header = sprintf( $comment_creation_header_mu,
 
 
 // Comment Creation Label
-$comment_creation_label_obj = htmlok( array(
+$comment_creation_label_obj = applicator_htmlok( array(
     'name'      => 'Comment Creation',
     'structure' => array(
         'type'      => 'object',
@@ -131,7 +131,7 @@ $signed_in_as_term = esc_html__( 'Signed in as', 'applicator' );
 $signed_in_account_content = $user_identity;
 $signed_in_as_account_content = $signed_in_as_term. ' '. $signed_in_account_content;
 
-$signed_in_account_label_obj = htmlok( array(
+$signed_in_account_label_obj = applicator_htmlok( array(
     'name'      => 'Signed In Account',
     'structure' => array(
         'type'      => 'object',
@@ -144,7 +144,7 @@ $signed_in_account_label_obj = htmlok( array(
     ),
 ) );
 
-$signed_in_account_name_obj = htmlok( array(
+$signed_in_account_name_obj = applicator_htmlok( array(
     'name'      => 'Signed In Account Name',
     'structure' => array(
         'type'      => 'object',
@@ -162,7 +162,7 @@ $signed_in_account_name_obj = htmlok( array(
     ),
 ) );
 
-$account_log_out_axn_obj = htmlok( array(
+$account_log_out_axn_obj = applicator_htmlok( array(
     'name'      => 'Account Log Out',
     'structure' => array(
         'type'      => 'object',
@@ -183,7 +183,7 @@ $account_log_out_axn_obj = htmlok( array(
     ),
 ) );
 
-$signed_in_account_cp = htmlok( array(
+$signed_in_account_cp = applicator_htmlok( array(
     'name'      => 'Signed In Account',
     'structure' => array(
         'type'      => 'component',
@@ -202,7 +202,7 @@ $signed_in_account_cp = htmlok( array(
 // must_log_in
 $sign_in_req_note_content = '<p><a href="'.wp_login_url( get_permalink() ).'">'.esc_html__( 'Sign in', 'applicator' ).'</a> '.esc_html__( 'to comment.', 'applicator' ).'</p>';
 
-$sign_in_req_note_obj = htmlok( array(
+$sign_in_req_note_obj = applicator_htmlok( array(
     'name'      => 'Sign In Required',
     'structure' => array(
         'type'      => 'object',
@@ -226,7 +226,7 @@ $commenter_comment_term = esc_html__( 'Comment', 'applicator' );
 $commenter_comment_submit_css = 'comment-form-submit-axn---b';
 $commenter_comment_submit_term = esc_attr__( 'Submit', 'applicator' );
 
-$commenter_comment_creation_flabel_obj = htmlok( array(
+$commenter_comment_creation_flabel_obj = applicator_htmlok( array(
     'name'      => $commenter_comment_creation_term,
     'structure' => array(
         'type'      => 'object',
@@ -269,7 +269,7 @@ $commenter_comment_creation_text_input_content = sprintf( $commenter_comment_cre
     '65525'
 );
 
-$commenter_comment_creation_text_input_obj = htmlok( array(
+$commenter_comment_creation_text_input_obj = applicator_htmlok( array(
     'name'      => $commenter_comment_creation_term.' '.'Text Input',
     'structure' => array(
         'type'      => 'object',
@@ -281,7 +281,7 @@ $commenter_comment_creation_text_input_obj = htmlok( array(
     ),
 ) );
 
-$commenter_comment_creation_cp = htmlok( array(
+$commenter_comment_creation_cp = applicator_htmlok( array(
     'name'      => $commenter_comment_creation_term,
     'structure' => array(
         'type'          => 'component',
@@ -330,7 +330,7 @@ $comment_reply_cancel_action_content = sprintf( $comment_reply_cancel_action_mu,
 
 
 // title_reply_to
-$comment_recipient_note_obj = htmlok( array(
+$comment_recipient_note_obj = applicator_htmlok( array(
     'name'      => 'Comment Recipient',
     'structure' => array(
         'type'      => 'object',
@@ -397,7 +397,7 @@ ob_end_clean();
 
 
 // E: Entry Module
-$comment_module_cp = htmlok( array(
+$comment_module_cp = applicator_htmlok( array(
     'name'      => 'Comment',
     'structure' => array(
         'type'      => 'component',

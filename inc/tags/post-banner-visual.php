@@ -19,7 +19,7 @@ if ( ! function_exists( 'applicator_func_post_banner_visual' ) ) {
             
             
             // R: Post Banner Visual
-            $post_banner_visual_obj = htmlok( array(
+            $post_banner_visual_obj = applicator_htmlok( array(
                 'name'      => 'Post Banner Visual',
                 'structure' => array(
                     'type'      => 'object',

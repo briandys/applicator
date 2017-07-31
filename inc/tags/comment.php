@@ -34,7 +34,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         <?php
 
         // E: Comment Title
-        $comment_title_obj = htmlok( array(
+        $comment_title_obj = applicator_htmlok( array(
             'name'      => 'Comment Title',
             'structure' => array(
                 'type'      => 'object',
@@ -76,7 +76,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         
         
         // R: Comment Published Label
-        $comment_published_label_obj = htmlok( array(
+        $comment_published_label_obj = applicator_htmlok( array(
             'name'      => 'Published Comment',
             'structure' => array(
                 'type'      => 'object',
@@ -98,7 +98,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         
         
         // R: Comment Published Date Stamp
-        $comment_published_date_stamp_obj = htmlok( array(
+        $comment_published_date_stamp_obj = applicator_htmlok( array(
             'name'      => 'Comment Published Date Stamp',
             'structure' => array(
                 'type'      => 'object',
@@ -138,7 +138,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         
         
         // R: Comment Published Time Stamp
-        $comment_published_time_stamp_obj = htmlok( array(
+        $comment_published_time_stamp_obj = applicator_htmlok( array(
             'name'      => 'Comment Published Time Stamp',
             'structure' => array(
                 'type'      => 'object',
@@ -179,7 +179,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         
         
         // R: Comment Published Date and Time Stamp
-        $comment_published_date_time_stamp_cp = htmlok( array(
+        $comment_published_date_time_stamp_cp = applicator_htmlok( array(
             'name'      => 'Comment Published Date and Time Stamp',
             'structure' => array(
                 'type'      => 'component',
@@ -195,7 +195,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         
         
         // R: Comment Published
-        $comment_published_cp = htmlok( array(
+        $comment_published_cp = applicator_htmlok( array(
             'name'      => 'Comment Published',
             'structure' => array(
                 'type'      => 'component',
@@ -227,7 +227,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         }
 
         // Commenter
-        $commenter_published_label_obj = htmlok( array(
+        $commenter_published_label_obj = applicator_htmlok( array(
             'name'      => 'Published Commenter',
             'structure' => array(
                 'type'      => 'object',
@@ -260,7 +260,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         }
         
         // Commenter Name
-        $commenter_name_cp = htmlok( array(
+        $commenter_name_cp = applicator_htmlok( array(
             'name'      => 'Commenter Name',
             'structure' => array(
                 'type'      => 'object',
@@ -279,7 +279,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         ) );
         
         // Commenter Avatar
-        $commenter_avatar_cp = htmlok( array(
+        $commenter_avatar_cp = applicator_htmlok( array(
             'name'      => 'Commenter Avatar',
             'structure' => array(
                 'type'      => 'object',
@@ -300,7 +300,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         
         
         // Commenter
-        $commenter_cp = htmlok( array(
+        $commenter_cp = applicator_htmlok( array(
             'name'      => 'Commenter',
             'structure' => array(
                 'type'      => 'component',
@@ -314,7 +314,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         ) );
 
         // R: Published Comment Commenter
-        $published_comment_commenter_cp = htmlok( array(
+        $published_comment_commenter_cp = applicator_htmlok( array(
             'name'      => 'Published Comment Commenter',
             'structure' => array(
                 'type'      => 'component',
@@ -330,7 +330,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         ) );
 
         // E: Post Meta
-        $comment_meta = htmlok( array(
+        $comment_meta = applicator_htmlok( array(
             'name'      => 'Comment Meta',
             'structure' => array(
                 'type'      => 'component'
@@ -347,7 +347,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
 
 
         // E: Post Header Aside
-        $comment_header_aside = htmlok( array(
+        $comment_header_aside = applicator_htmlok( array(
             'name'      => 'Comment Header',
             'structure' => array(
                 'type'          => 'constructor',
@@ -376,7 +376,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         
         if ( $comment->comment_approved == '0' ) {
             
-            $comment_unapproved_note_obj = htmlok( array(
+            $comment_unapproved_note_obj = applicator_htmlok( array(
                 'name'      => 'Comment Unapproved',
                 'structure' => array(
                     'type'      => 'object',
@@ -461,7 +461,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
             $comment_reply_axn_content = ob_get_contents();
             ob_end_clean();
 
-            $comment_reply_axn_obj = htmlok( array(
+            $comment_reply_axn_obj = applicator_htmlok( array(
                 'name'      => 'Comment Reply',
                 'structure' => array(
                     'type'      => 'object',

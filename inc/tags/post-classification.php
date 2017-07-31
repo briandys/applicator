@@ -12,7 +12,7 @@ if ( ! function_exists( 'applicator_func_post_categories' ) ) {
                 
                 
                 // R: Post Categories Label
-                $post_categories_label_obj = htmlok( array(
+                $post_categories_label_obj = applicator_htmlok( array(
                     'name'      => 'Post Categories',
                     'structure' => array(
                         'type'      => 'object',
@@ -29,7 +29,7 @@ if ( ! function_exists( 'applicator_func_post_categories' ) ) {
                 
                 
                 // R: Categories
-                $categories_cp = htmlok( array(
+                $categories_cp = applicator_htmlok( array(
                     'name'      => 'Categories',
                     'structure' => array(
                         'type'      => 'component',
@@ -42,7 +42,7 @@ if ( ! function_exists( 'applicator_func_post_categories' ) ) {
                 
                 
                 // R: Post Category
-                $post_categories_cp = htmlok( array(
+                $post_categories_cp = applicator_htmlok( array(
                     'name'      => 'Post Categories',
                     'structure' => array(
                         'type'      => 'component',
@@ -77,7 +77,7 @@ if ( ! function_exists( 'applicator_func_post_tags' ) ) {
                 
                 
                 // R: Post Tags Label
-                $post_tags_label_obj = htmlok( array(
+                $post_tags_label_obj = applicator_htmlok( array(
                     'name'      => 'Post Tags',
                     'structure' => array(
                         'type'      => 'object',
@@ -94,7 +94,7 @@ if ( ! function_exists( 'applicator_func_post_tags' ) ) {
                 
                 
                 // R: Tags
-                $tags_cp = htmlok( array(
+                $tags_cp = applicator_htmlok( array(
                     'name'      => 'Tags',
                     'structure' => array(
                         'type'      => 'component',
@@ -107,7 +107,7 @@ if ( ! function_exists( 'applicator_func_post_tags' ) ) {
                 
                 
                 // R: Post Tags
-                $post_tags_cp = htmlok( array(
+                $post_tags_cp = applicator_htmlok( array(
                     'name'      => 'Post Tags',
                     'structure' => array(
                         'type'      => 'component',

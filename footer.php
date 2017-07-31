@@ -6,7 +6,7 @@
                 //------------------------------------------------ Main Footer
 
                 // Web Product Copyright
-                $web_product_copyright_obj = htmlok( array(
+                $web_product_copyright_obj = applicator_htmlok( array(
                     'name'      => 'Web Product Copyright',
                     'structure' => array(
                         'type'          => 'object',
@@ -63,7 +63,7 @@
                     ),
                 ) );
 
-                $main_footer_cn = htmlok( array(
+                $main_footer_cn = applicator_htmlok( array(
                     'name'      => 'Main Footer',
                     'structure' => array(
                         'type'      => 'constructor',
@@ -86,7 +86,7 @@
                 //------------------------------------------------ Web Product End
 
                 // Go to Start Navi
-                $go_to_start_navi_obj = htmlok( array(
+                $go_to_start_navi_obj = applicator_htmlok( array(
                     'name'      => 'Go to Start',
                     'structure' => array(
                         'type'      => 'object',
@@ -110,7 +110,7 @@
                 ) );
 
                 // Go to Start Nav
-                $go_to_start_nav_cp = htmlok( array(
+                $go_to_start_nav_cp = applicator_htmlok( array(
                     'name'      => 'Go to Start',
                     'structure' => array(
                         'type'      => 'component',
@@ -124,7 +124,7 @@
                 ) );
 
                 // Web Product End
-                $web_product_end_cn = htmlok( array(
+                $web_product_end_cn = applicator_htmlok( array(
                     'name'      => 'Web Product End',
                     'structure' => array(
                         'type'      => 'constructor',

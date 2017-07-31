@@ -19,7 +19,7 @@
                 //------------------------------------------------ Web Product Start
                 
                 // R: Go to Content Navi
-                $go_to_content_navi_obj = htmlok( array(
+                $go_to_content_navi_obj = applicator_htmlok( array(
                     'name'      => 'Go to Content',
                     'structure' => array(
                         'type'      => 'object',
@@ -44,7 +44,7 @@
                 ) );
                 
                 // R: Go to Content Nav
-                $go_to_content_nav_cp = htmlok( array(
+                $go_to_content_nav_cp = applicator_htmlok( array(
                     'name'      => 'Go to Content',
                     'structure' => array(
                         'type'      => 'component',
@@ -68,7 +68,7 @@
                 
                 
                 // R: Browser Upgrade Note
-                $browser_upgrade_obj = htmlok( array(
+                $browser_upgrade_obj = applicator_htmlok( array(
                     'name'      => 'Browser Upgrade',
                     'structure' => array(
                         'type'      => 'object',
@@ -88,7 +88,7 @@
                 
                 
                 // E: Web Product Start
-                $web_product_start_cn = htmlok( array(
+                $web_product_start_cn = applicator_htmlok( array(
                     'name'      => 'Web Product Start',
                     'structure' => array(
                         'type'      => 'constructor',
@@ -113,7 +113,7 @@
                         
                 
                 // R: Web Product Main Name
-                $web_product_main_name_obj = htmlok( array(
+                $web_product_main_name_obj = applicator_htmlok( array(
                     'name'      => 'Web Product Main Name',
                     'structure' => array(
                         'type'      => 'object',
@@ -144,7 +144,7 @@
                 $web_product_main_logo_obj = '';
 
                 if ( has_custom_logo() ) {
-                    $web_product_main_logo_obj = htmlok( array(
+                    $web_product_main_logo_obj = applicator_htmlok( array(
                         'name'      => 'Web Product Main Logo',
                         'structure' => array(
                             'type'          => 'object',
@@ -164,7 +164,7 @@
                 $description = get_bloginfo( 'description', 'display' );
 
                 if ( $description || is_customize_preview() ) {
-                    $web_product_main_description_obj = htmlok( array(
+                    $web_product_main_description_obj = applicator_htmlok( array(
                         'name'      => 'Web Product Main Description',
                         'structure' => array(
                             'type'      => 'object',
@@ -190,7 +190,7 @@
 
                 
                 // R: Web Product Main Info
-                $web_product_main_info_cp = htmlok( array(
+                $web_product_main_info_cp = applicator_htmlok( array(
                     'name'      => 'Web Product Main Info',
                     'structure' => array(
                         'type'  => 'component',
@@ -220,7 +220,7 @@
                 $web_product_main_media_banner_obj = '';
 
                 if ( has_header_image() ) {
-                    $web_product_main_media_banner_obj = htmlok( array(
+                    $web_product_main_media_banner_obj = applicator_htmlok( array(
                         'name'      => 'Web Product Main Media Banner',
                         'structure' => array(
                             'type'      => 'object',
@@ -249,7 +249,7 @@
                 
                 
                 // E: Main Header
-                $main_header_cn = htmlok( array(
+                $main_header_cn = applicator_htmlok( array(
                     'name'      => 'Main Header',
                     'structure' => array(
                         'type'          => 'constructor',

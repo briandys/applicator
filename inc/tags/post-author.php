@@ -24,7 +24,7 @@ if ( ! function_exists( 'applicator_func_post_author' ) ) {
         
         
         // R: Post Published Label
-        $post_published_label_obj = htmlok( array(
+        $post_published_label_obj = applicator_htmlok( array(
             'name'      => 'Post Published',
             'structure' => array(
                 'type'      => 'object',
@@ -46,7 +46,7 @@ if ( ! function_exists( 'applicator_func_post_author' ) ) {
         
         
         // R: Author Name
-        $author_name_obj = htmlok( array(
+        $author_name_obj = applicator_htmlok( array(
             'name'      => 'Author Name',
             'structure' => array(
                 'type'      => 'object',
@@ -70,7 +70,7 @@ if ( ! function_exists( 'applicator_func_post_author' ) ) {
         
         
         // R: Author Avatar
-        $author_avatar_obj = htmlok( array(
+        $author_avatar_obj = applicator_htmlok( array(
             'name'      => 'Author Avatar',
             'structure' => array(
                 'type'      => 'object',
@@ -97,7 +97,7 @@ if ( ! function_exists( 'applicator_func_post_author' ) ) {
         
         
         // R: Post Author
-        $post_author_cp = htmlok( array(
+        $post_author_cp = applicator_htmlok( array(
             'name'      => 'Post Author',
             'structure' => array(
                 'type'      => 'component',
@@ -122,7 +122,7 @@ if ( ! function_exists( 'applicator_func_post_author' ) ) {
         
         
         // R: Published Post Author
-        $published_post_author_cp = htmlok( array(
+        $published_post_author_cp = applicator_htmlok( array(
             'name'      => 'Published Post Author',
             'structure' => array(
                 'type'      => 'component',

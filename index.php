@@ -79,7 +79,7 @@ else {
             
             
             // Main Content Heading
-            $main_content_heading_obj = htmlok( array(
+            $main_content_heading_obj = applicator_htmlok( array(
                     'name'      => 'Main Content',
                     'structure' => array(
                         'type'          => 'object',
@@ -146,7 +146,7 @@ else {
                 ob_end_clean();
                 
                 // Entry (for single.php)
-                $entry_entries_cp = htmlok( array(
+                $entry_entries_cp = applicator_htmlok( array(
                     'name'      => 'Entry',
                     'structure' => array(
                         'type'      => 'component',
@@ -179,7 +179,7 @@ else {
 
 
                 // Entries (for posts page)
-                $entry_entries_cp = htmlok( array(
+                $entry_entries_cp = applicator_htmlok( array(
                     'name'      => 'Entries',
                     'structure' => array(
                         'type'      => 'component',
@@ -211,7 +211,7 @@ else {
         
         
         // Entry Module
-        $entry_module_cp = htmlok( array(
+        $entry_module_cp = applicator_htmlok( array(
             'name'      => 'Entry',
             'structure' => array(
                 'type'      => 'component',
@@ -224,7 +224,7 @@ else {
         
         
         // Primary Content
-        $primary_content = htmlok( array(
+        $primary_content = applicator_htmlok( array(
             'name'      => 'Primary Content',
             'structure' => array(
                 'type'      => 'constructor',

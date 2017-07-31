@@ -55,7 +55,7 @@ if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
         
         
         // R: Post Published Label
-        $post_published_label_obj = htmlok( array(
+        $post_published_label_obj = applicator_htmlok( array(
             'name'      => 'Post Published',
             'structure' => array(
                 'type'      => 'object',
@@ -77,7 +77,7 @@ if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
         
         
         // R: Post Published Date Stamp
-        $post_published_date_stamp_obj = htmlok( array(
+        $post_published_date_stamp_obj = applicator_htmlok( array(
             'name'      => 'Post Published Date Stamp',
             'structure' => array(
                 'type'      => 'object',
@@ -117,7 +117,7 @@ if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
         
         
         // R: Post Published Time Stamp
-        $post_published_time_stamp_obj = htmlok( array(
+        $post_published_time_stamp_obj = applicator_htmlok( array(
             'name'      => 'Post Published Time Stamp',
             'structure' => array(
                 'type'      => 'object',
@@ -158,7 +158,7 @@ if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
         
         
         // R: Post Published Date and Time Stamp
-        $post_published_date_time_stamp_cp = htmlok( array(
+        $post_published_date_time_stamp_cp = applicator_htmlok( array(
             'name'      => 'Post Published Date and Time Stamp',
             'structure' => array(
                 'type'      => 'component',
@@ -174,7 +174,7 @@ if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
         
         
         // R: Post Published
-        $post_published_cp = htmlok( array(
+        $post_published_cp = applicator_htmlok( array(
             'name'      => 'Post Published',
             'structure' => array(
                 'type'      => 'component',
@@ -192,7 +192,7 @@ if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
         //------------------------------------ Post Modified
         
         // R: Post Modified Label
-        $post_modified_label_obj = htmlok( array(
+        $post_modified_label_obj = applicator_htmlok( array(
             'name'      => 'Post Modified',
             'structure' => array(
                 'type'      => 'object',
@@ -214,7 +214,7 @@ if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
         
         
         // R: Post Modified Date Stamp
-        $post_modified_date_stamp_obj = htmlok( array(
+        $post_modified_date_stamp_obj = applicator_htmlok( array(
             'name'      => 'Post Modified Date Stamp',
             'structure' => array(
                 'type'      => 'object',
@@ -254,7 +254,7 @@ if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
         
         
         // R: Post Modified Time Stamp
-        $post_modified_time_stamp_obj = htmlok( array(
+        $post_modified_time_stamp_obj = applicator_htmlok( array(
             'name'      => 'Post Modified Time Stamp',
             'structure' => array(
                 'type'      => 'object',
@@ -295,7 +295,7 @@ if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
         
         
         // R: Post Modified Date and Time Stamp
-        $post_modified_date_time_stamp_cp = htmlok( array(
+        $post_modified_date_time_stamp_cp = applicator_htmlok( array(
             'name'      => 'Post Modified Date and Time Stamp',
             'structure' => array(
                 'type'      => 'component',
@@ -311,7 +311,7 @@ if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
         
         
         // R: Post Modified
-        $post_modified_cp = htmlok( array(
+        $post_modified_cp = applicator_htmlok( array(
             'name'      => 'Post Modified',
             'structure' => array(
                 'type'      => 'component',
@@ -327,7 +327,7 @@ if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
         
         
         // R: Post Published, Modified
-        $post_published_modified_cp = htmlok( array(
+        $post_published_modified_cp = applicator_htmlok( array(
             'name'      => 'Post Published, Modified',
             'structure' => array(
                 'type'      => 'component',
