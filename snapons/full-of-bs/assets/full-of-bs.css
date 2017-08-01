@@ -469,13 +469,15 @@
 
 .commenter-comment-creation-text-input
 {
-    padding: 1em;
+    padding: .5em 1em;
+    padding-bottom: calc( .5em - .25em );
 }
 
 /* Form Actions (WPg) */
 .comment-form .form-submit
 {
     padding: 2em 1em;
+    margin-top: -1rem;
 }
 
 /* Form Elements */
@@ -504,12 +506,11 @@
     margin-bottom: -1em;
 }
 
-
-
+/* Validation */
 .comment-form .validity-note
 {
     padding: 1em;
-    margin-top: -2em;
+    margin-top: -1em;
 }
 
 .comment-form .validity-note---g_l
@@ -529,6 +530,26 @@
     border-width: 2px;
 }
 
+.signed-in-account-glabel,
+.signed-in-account-name,
+.account-log-out-axn
+{
+    display: inline-block;
+    padding: .5em 0;
+}
+
+.signed-in-account-glabel---g,
+.signed-in-account-name---g
+{
+    display: inline-block;
+    padding: 1em;
+}
+
+.signed-in-account-glabel---g
+{
+    margin-right: -2em;
+}
+
 
 
 
@@ -544,6 +565,17 @@
 {
     order: 1;
     margin-left: .3rem;
+}
+
+
+
+
+
+/*------------------ Comment List ------------------*/
+.comment---ct_cr > *:not(.note)
+{
+    margin: 0;
+    padding: 1em;
 }
 
 
@@ -815,6 +847,41 @@
 
 
 
+/*------------------ Post and Comment Content ------------------*/
+.post-content---ct,
+.post-excerpt---ct_cr > *,
+.comment---ct_cr > *:not(.note)
+{
+    font-size: 1.125rem;
+}
+
+.post-content---ct_cr > *
+{
+    margin: 0;
+    padding: .5em 1rem;
+}
+
+.post-content---ct_cr > ul,
+.post-content---ct_cr > ol
+{
+    padding-left: 2.5em;
+}
+
+.post-content---ct_cr li
+{
+    padding: .5em;
+    padding-right: 0;
+}
+
+.post-content---ct_cr li:first-child
+{
+    margin-top: -.5em;
+}
+
+
+
+
+
 
 
 
@@ -822,27 +889,9 @@
 
 
 /*------------------ Content Spacing ------------------*/
-.post-content---ct,
-.comment---ct_cr > *:not(.note)
-{
-    font-size: 1.125rem;
-}
+
 
 .note p,
-.post-content---ct_cr > p,
-.post-content---ct_cr > h1,
-.post-content---ct_cr > h2,
-.post-content---ct_cr > h3,
-.post-content---ct_cr > h4,
-.post-content---ct_cr > h5,
-.post-content---ct_cr > h6,
-.post-content---ct_cr > ul,
-.post-content---ct_cr > ol,
-.post-content---ct_cr > pre,
-.post-content---ct_cr > figure,
-.post-content---ct_cr > .cp,
-.post-content---ct_cr > div,
-
 .aside > .cr > .ct > .ct_cr
 {
     margin: 0;
@@ -850,21 +899,9 @@
 }
 
 .note p:first-of-type,
-.post-content---ct_cr > *:first-child,
-
 .aside > .cr > .ct > .ct_cr:first-child
 {
     margin-top: 0;
-}
-
-.post-content ul ul,
-.post-content ul ol,
-.post-content ol ol,
-.post-content ol ul,
-.post-content li
-{
-    padding-top: .25rem;
-    padding-bottom: .25rem;
 }
 
 
@@ -879,21 +916,9 @@
 .comment-pub---cr,
 .excerpt-link,
 .comments---h_l,
-.comment---ct_cr > *:not(.note),
+
 .wp-caption-text,
 .comment-title---h,
-.signed-in-acct---ct_cr,
-
-.post-content---ct_cr > p,
-.post-content---ct_cr > h1,
-.post-content---ct_cr > h2,
-.post-content---ct_cr > h3,
-.post-content---ct_cr > h4,
-.post-content---ct_cr > h5,
-.post-content---ct_cr > h6,
-.post-content---ct_cr > pre,
-.post-content---ct_cr > code,
-.post-excerpt---ct_cr > p,
 
 .show-more-axn,
 
@@ -938,7 +963,6 @@
 .show-more-axn,
 .show-more-glabel,
 .post-nav---cr,
-.comment---ct_cr,
 
 .main-content-heading,
 
@@ -1025,8 +1049,15 @@
 .comment-unapproved-note,
 .commenting-disabled-note
 {
-    margin: 0 1rem;
-    padding: 1rem;
+    padding: 1em;
+}
+
+.comments-empty-note---g,
+.comment-respond .sign-in-required-note---g,
+.comment-unapproved-note---g,
+.commenting-disabled-note---g
+{
+    padding: 1em;
     
     background-color: hsla( 0, 0%, 50%, .0625);
     
