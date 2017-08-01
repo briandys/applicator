@@ -1372,6 +1372,7 @@ $go-green: #12b32d;
 .apl-search .b,
 .apl-search .b_l,
 
+/* Comment Respond */
 .comment-form .input-text,
 .comment-form-submit-axn---b
 {
@@ -1408,7 +1409,7 @@ $go-green: #12b32d;
 
 
 
-/* ------------------------- Search - Style > Decorations */
+/* ------------------------- Form Elements - Style > Decorations */
 .apl-search .input-text,
 
 .comment-form .input-text
@@ -1438,16 +1439,7 @@ $go-green: #12b32d;
     color: hsla(0, 0%, 0%, .5);
 }
 
-.apl-search .input-text,
-.apl-search .b_l,
 
-.comment-form .input-text,
-.comment-form-submit-axn---b,
-.post-content .apl-search .b,
-.aside .apl-search .b
-{   
-    border-radius: .125rem;
-}
 
 .main-header---cr > .apl-search
 {
@@ -1457,6 +1449,19 @@ $go-green: #12b32d;
 .apl--applicator--main-search .main-header---cr > .apl-search
 {
     background-color: transparent;
+}
+
+/* Search */
+.apl-search .input-text,
+.apl-search .b_l,
+.post-content .apl-search .b,
+.aside .apl-search .b,
+
+/* Comment Respond */
+.comment-form .input-text,
+.comment-form-submit-axn---b
+{   
+    border-radius: .125rem;
 }
 
 
@@ -1754,13 +1759,17 @@ $go-green: #12b32d;
 
 
 
-/* ------------------------- Comments - Style */
+/*------------------ Comment Respond - Style ------------------*/
 .comment-form .input-text
 {
     box-sizing: border-box;
     width: 100%;
 }
 
+
+
+
+/* ------------------------- Comments - Style */
 .comments---grp,
 .comment .children
 {

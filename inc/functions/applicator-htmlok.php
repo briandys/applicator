@@ -78,6 +78,7 @@ function applicator_htmlok( $args = array() ) {
     $subtype_note_terms = array( 'note', );
     $subtype_generic_label_terms = array( 'generic label', 'glabel', );
     $subtype_form_label_terms = array( 'form label', 'flabel', );
+    $subtype_form_element_terms = array( 'form element', 'felem', );
     $subtype_axn_terms = array( 'action item', 'action', 'axn', );
     
     // Object Layout
@@ -585,6 +586,18 @@ function applicator_htmlok( $args = array() ) {
                 $p_subtype_name = ' '.$subtype_name;
                 $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
+                
+            }
+            
+
+            // Form Element Subtype
+            elseif ( in_array( $r_subtype, $subtype_form_element_terms, true ) ) {
+                
+                $subtype_name = 'Form Element';
+                $subtype_name_abbr = 'felem';
+                
+                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_css = ' '.$subtype_name_abbr;
                 
             }
             

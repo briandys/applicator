@@ -144,18 +144,20 @@ if ( ! function_exists('applicator_func_post_nav' ) ) {
             }
         }
 
-        // E: Post Navigation
-        $post_nav_cp = applicator_htmlok( array(
-            'name'      => 'Post',
-            'structure' => array(
-                'type'      => 'component',
-                'subtype'   => 'navigation',
-            ),
-            'content'   => array(
-                'component' => $output,
-            ),
-            'echo'      => true,
-        ) );
+        if ( $multipage || is_singular( 'attachment' ) ) {
+            // E: Post Navigation
+            $post_nav_cp = applicator_htmlok( array(
+                'name'      => 'Post',
+                'structure' => array(
+                    'type'      => 'component',
+                    'subtype'   => 'navigation',
+                ),
+                'content'   => array(
+                    'component' => $output,
+                ),
+                'echo'      => true,
+            ) );
+        }
         
     }
 }

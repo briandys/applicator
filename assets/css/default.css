@@ -122,6 +122,15 @@ abbr[title]:hover
 
 
 
+label[for]:hover
+{
+    cursor: pointer;
+}
+
+
+
+
+
 /* ------------------------- Responsive Media */
 /* Images */
 img

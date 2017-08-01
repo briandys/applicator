@@ -273,6 +273,7 @@ $commenter_comment_creation_text_input_obj = applicator_htmlok( array(
     'name'      => $commenter_comment_creation_term.' '.'Text Input',
     'structure' => array(
         'type'      => 'object',
+        'subtype'   => 'form element',
         'ce'        => true,
     ),
     'css'       => $commenter_comment_creation_short_css.'-text-input',
@@ -396,7 +397,7 @@ $comment_form_ob_content = ob_get_contents();
 ob_end_clean();
 
 
-// E: Entry Module
+// E: Comment
 $comment_module_cp = applicator_htmlok( array(
     'name'      => 'Comment',
     'structure' => array(

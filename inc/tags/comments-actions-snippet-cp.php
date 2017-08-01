@@ -167,7 +167,6 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
                 'wpg'       => $wpg_setting,
                 'attr'      => $a_attr_setting,
             ),
-            'css'       => $comments_count_css,
             'content'   => array(
                 'object'    => $comments_count_obj_a,
 
@@ -214,7 +213,6 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
                     'type'      => 'object',
                     'subtype'   => 'action item',
                     'linked'    => true,
-                    'layout'    => 'inline',
                     'attr'      => array(
                         'a'         => array(
                             'href'      => $add_comment_axn_a_href,
@@ -222,7 +220,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
                         ),
                     ),
                 ),
-                'css'       => 'add-com-axn',
+                'css'       => 'add-com',
                 'content'   => array(
                     'object'    => array(
                         array(

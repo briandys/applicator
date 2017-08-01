@@ -58,6 +58,7 @@
 
 .page-nav .page---txt,
 
+/* Comments */
 .comments-population--empty .comments-empty-note,
 
 .post-header-aside .comment-creation-ability--disabled .comment-creation-ability,
@@ -108,14 +109,17 @@
 .edit-com-axn---a_l,
 .next-entry-navi---a_l,
 .previous-entry-navi---a_l,
-.add-com-axn-axn---a_l,
+.add-com-axn---a_l,
 .comments-count-axn-axn---a_l,
 .comments-count-axn---a_l,
 .apl-categories a,
 .apl-tags a,
 .comment-reply-axn---a_l,
 .account-log-out-axn---a_l,
-#cancel-comment-reply-link,
+
+/* Comment Respond */
+.comment-reply-cancel-axn---a_l,
+
 .comment-creation-glabel---g_l,
 .post-navi a,
 .post-navi---g,
@@ -185,7 +189,7 @@
 
 
 /* ------------------------- Text Spacing */
-.add-com-axn-axn---a_l > .txt,
+.add-com-axn---a_l > .txt,
 .comment-creation-glabel---g_l > .txt,
 .comment-reply-axn---a_l .line,
 .comment-reply-axn---a_l .line > .txt,
@@ -197,7 +201,7 @@
     margin-right: .15em;
 }
 
-.add-com-axn-axn---a_l > .txt:first-child,
+.add-com-axn---a_l > .txt:first-child,
 .comment-creation-glabel---g_l > .txt:first-child,
 .comment-reply-axn---a_l .line:first-child,
 .comment-reply-axn---a_l .line > .txt:first-child,
@@ -208,7 +212,7 @@
     margin-left: 0;
 }
 
-.add-com-axn-axn---a_l > .txt:last-child,
+.add-com-axn---a_l > .txt:last-child,
 .comment-creation-glabel---g_l > .txt:last-child,
 .comment-reply-axn---a_l .line:last-child,
 .comment-reply-axn---a_l .line > .txt:last-child,
@@ -349,13 +353,10 @@
 
 
 /*------------------ Comments ------------------*/
-.comment-respond
+
+.comment-form .form-submit
 {
-    padding: 1rem 1rem 2rem;
-    
-    background-color: white;
-    
-    border-radius: .125rem;
+    padding-bottom: 1rem;
 }
 
 .comments-header-aside .comments-count-axn .comment---txt,
@@ -440,12 +441,6 @@
     transform: translateX( -.75rem);
 }
 
-.comments-count-axn---a_l .comments-count---txt
-{
-    order: 1;
-    margin-left: .3rem;
-}
-
 .comments-axns-snip---ct_cr
 {
     display: flex;
@@ -459,6 +454,99 @@
     
     color: hsla( 0, 0%, 0%, .65);
 }
+
+
+
+
+
+/*------------------ Comment Respond ------------------*/
+.comment-respond
+{   
+    background-color: white;
+    
+    border-radius: .125em;
+}
+
+.commenter-comment-creation-text-input
+{
+    padding: 1em;
+}
+
+/* Form Actions (WPg) */
+.comment-form .form-submit
+{
+    padding: 2em 1em;
+}
+
+/* Form Elements */
+.commenter-name-creation-text-input,
+.commenter-email-creation-text-input,
+.commenter-url-creation-text-input
+{
+    padding: .5em 1em;
+}
+
+/* Form Labels */
+.commenter-name-creation-flabel,
+.commenter-email-creation-flabel,
+.commenter-url-creation-flabel
+{
+    display: inline-block;
+    padding: .5em 1em;
+    
+    margin-bottom: -.5em;
+}
+
+.comment-creation-glabel,
+#cancel-comment-reply-link
+{
+    padding: 1em 0;
+    margin-bottom: -1em;
+}
+
+
+
+.comment-form .validity-note
+{
+    padding: 1em;
+    margin-top: -2em;
+}
+
+.comment-form .validity-note---g_l
+{
+    color: #f22424;
+}
+
+.comment-form .creation--invalid .input-text
+{
+    border-color: #f22424;
+    border-width: 2px;
+}
+
+.comment-form .creation--valid .input-text
+{
+    border-color: #12b32d;
+    border-width: 2px;
+}
+
+
+
+
+
+/*------------------ Comments Actions Snippet ------------------*/
+.comments-count-axn,
+.add-comment-axn
+{
+    padding: 1em 0;
+}
+
+.comments-count-axn---a_l .comments-count---txt
+{
+    order: 1;
+    margin-left: .3rem;
+}
+
+
 
 
 
@@ -654,33 +742,6 @@
     color: black;
 }
 
-.validity-note
-{
-    margin-top: .5rem;
-}
-
-.commenter-comment-creation .validity-note
-{
-    margin-top: .125rem;
-}
-
-.validity-note---g_l
-{
-    color: #f22424;
-}
-
-.creation--invalid .input-text
-{
-    border-color: #f22424;
-    border-width: 2px;
-}
-
-.creation--valid .input-text
-{
-    border-color: #12b32d;
-    border-width: 2px;
-}
-
 
 
 /*------------------ Timestamp ------------------*/
@@ -823,12 +884,6 @@
 .comment-title---h,
 .signed-in-acct---ct_cr,
 
-.comment-form .form-submit,
-.commenter-comment-creation-text-input,
-.commenter-name-creation-text-input,
-.commenter-email-creation-text-input,
-.commenter-url-creation-text-input,
-
 .post-content---ct_cr > p,
 .post-content---ct_cr > h1,
 .post-content---ct_cr > h2,
@@ -841,8 +896,6 @@
 .post-excerpt---ct_cr > p,
 
 .show-more-axn,
-
-.validity-note,
 
 .post-content .search-term-crt-search .flabel,
 .post-content .search-term-crt-search .felem,
@@ -863,9 +916,6 @@
 }
 
 .post-edit-link,
-.commenter-name-creation-flabel,
-.commenter-email-creation-flabel,
-.commenter-url-creation-flabel,
 .show-more-axn,
 .attachment .post-nav---ct_cr
 {
@@ -883,20 +933,13 @@
 .comment-crt-hd---h,
 .main-footer---cr,
 
-.commenter-com-crt---cr,
-.commenter-name-crt---cr,
-.commenter-email-crt---cr,
-.commenter-url-crt---cr,
-
-.comments-axns-snip---cr,
-
 .page-nav---cr,
 .post-content---ct_cr,
 .show-more-axn,
 .show-more-glabel,
 .post-nav---cr,
 .comment---ct_cr,
-.comment-respond,
+
 .main-content-heading,
 
 .post-content .search-form-axns,
@@ -909,7 +952,7 @@
 
 
 .widget,
-.comment-form .form-submit,
+
 .main-footer-aside
 {
     margin-top: 2rem;
@@ -1000,13 +1043,6 @@
 .post-banner-vis---g
 {
     background-image: initial !important;
-}
-
-.commenter-name-creation-text-input,
-.commenter-email-creation-text-input,
-.commenter-url-creation-text-input
-{
-    margin-top: .5rem;
 }
 
 .comments-population--empty.comment-creation-ability--disabled .commenting-disabled-note

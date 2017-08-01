@@ -96,6 +96,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             'name'      => $commenter_name_creation_term.' '.'Text Input',
             'structure' => array(
                 'type'      => 'object',
+                'subtype'   => 'form element',
                 'ce'        => true,
             ),
             'content'   => array(
@@ -175,6 +176,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             'name'      => $commenter_email_creation_term.' '.'Text Input',
             'structure' => array(
                 'type'      => 'object',
+                'subtype'   => 'form element',
                 'ce'        => true,
             ),
             'content'   => array(
@@ -256,6 +258,7 @@ if ( ! function_exists( 'applicator_func_comment_form' ) ) {
             'name'      => $commenter_url_creation_term.' '.'Text Input',
             'structure' => array(
                 'type'      => 'object',
+                'subtype'   => 'form element',
                 'ce'        => true,
             ),
             'content'   => array(

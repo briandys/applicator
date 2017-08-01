@@ -191,6 +191,8 @@ if ( ! function_exists( 'applicator_func_html_class' ) ) {
         // Comments
         if ( is_singular() ) {
             $comments_count_int = (int) get_comments_number( get_the_ID() );
+            
+            // Comments Population Count
             if ( $comments_count_int == 1 ) {
                 echo ' '.'comments-population--populated--single';
             }
@@ -201,11 +203,20 @@ if ( ! function_exists( 'applicator_func_html_class' ) ) {
                 echo ' '.'comments-population--populated--zero';
             }
             
+            // Comment Creation Ability
             if ( comments_open() ) {
                 echo ' '.'comment-creation-ability--enabled';
             }
             else {
                 echo ' '.'comment-creation-ability--disabled';
+            }
+            
+            // Comments Population Status
+            if ( $comments_count_int > 1 ) {
+                echo ' '.'comments-population--populated';
+            }
+            else {
+                echo ' '.'comments-population--empty';
             }
         }
     
