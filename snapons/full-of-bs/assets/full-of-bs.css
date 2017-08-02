@@ -92,8 +92,8 @@
 /*------------------ Unlist ------------------*/
 .entry-nav---grp,
 .apl-categories ul,
-.apl-tags ul,
-.post-nav---grp,
+
+.post-tags---grp,
 .page-nav ul,
 .comments-nav---grp,
 .breadcrumbs-nav---grp
@@ -707,7 +707,6 @@
     color: hsl(220, 100%, 40%);
 }
 
-.apl-tags a,
 .edit-post-axn---a_l,
 .edit-com-axn---a_l,
 .comments-count---txt,
@@ -718,7 +717,6 @@
     color: white;
 }
 
-.apl-tags a:hover,
 .edit-post-axn---a_l:hover,
 .comments-count---txt:hover
 {
@@ -772,6 +770,107 @@
 .comment-reply-axn .sign-in-required---line
 {
     color: black;
+}
+
+
+
+
+
+/*------------------ Categories ------------------*/
+.apl-categories ul
+{
+    display: flex;
+    flex-wrap: wrap;
+    
+    padding: .75em .75rem;
+    
+    font-size: .875rem;
+}
+
+.apl-categories li
+{
+    padding: .25em;
+}
+
+.apl-categories a
+{
+    position: relative;
+    
+    padding-left: 1.5em;
+    
+    min-height: 2rem;
+    
+    background-color: #005fe6;
+    background-color: hsl(215, 100%, 45%);
+    color: white;
+    
+    border-radius: .125rem;
+}
+
+.apl-categories a:hover
+{
+    background-color: #0044cc;
+    background-color: hsl(220, 100%, 40%);
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+/*------------------ Tags ------------------*/
+.post-tags---grp
+{
+    display: flex;
+    flex-wrap: wrap;
+    
+    padding: .75em .75rem;
+    
+    font-size: .875rem;
+}
+
+.apl-tags .post-tag
+{
+    padding: .25em;
+}
+
+.apl-tags a
+{
+    position: relative;
+    
+    padding-left: 1.5em;
+    
+    min-height: 2rem;
+    
+    background-color: #005fe6;
+    background-color: hsl(215, 100%, 45%);
+    color: white;
+    
+    border-radius: .125rem;
+}
+
+.apl-tags a:hover
+{
+    background-color: #0044cc;
+    background-color: hsl(220, 100%, 40%);
+    color: white;
+}
+
+.apl-tags a::before
+{
+    content: '#';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    margin-left: .75em;
+    
+    color: white;
 }
 
 
@@ -847,14 +946,15 @@
 
 
 
-/*------------------ Post and Comment Content ------------------*/
+/*------------------ Content ------------------*/
 .post-content---ct,
-.post-excerpt---ct_cr > *,
-.comment---ct_cr > *:not(.note)
+.post-excerpt---ct,
+.comment---ct
 {
     font-size: 1.125rem;
 }
 
+/* Select all elements */
 .post-content---ct_cr > *
 {
     margin: 0;
@@ -864,18 +964,38 @@
 .post-content---ct_cr > ul,
 .post-content---ct_cr > ol
 {
-    padding-left: 2.5em;
+    padding: 0;
+    padding-left: 2.25em;
 }
 
 .post-content---ct_cr li
 {
-    padding: .5em;
-    padding-right: 0;
+    padding: .25em 1rem;
+}
+
+.post-content---ct_cr li li
+{
+    margin-right: -1rem;
 }
 
 .post-content---ct_cr li:first-child
 {
-    margin-top: -.5em;
+    padding-top: .5em;
+}
+
+.post-content---ct_cr li li:first-child
+{
+    padding-top: .25em;
+}
+
+.post-content---ct_cr li:last-child
+{
+    padding-bottom: .5em;
+}
+
+.post-content---ct_cr li li:last-child
+{
+    padding-bottom: .25em;
 }
 
 
@@ -891,14 +1011,14 @@
 /*------------------ Content Spacing ------------------*/
 
 
-.note p,
+
 .aside > .cr > .ct > .ct_cr
 {
     margin: 0;
     margin-top: 1em;
 }
 
-.note p:first-of-type,
+
 .aside > .cr > .ct > .ct_cr:first-child
 {
     margin-top: 0;
@@ -934,11 +1054,7 @@
 }
 
 
-.post-content---ct_cr > ul,
-.post-content---ct_cr > ol
-{
-    padding-right: 1rem;
-}
+
 
 .post-edit-link,
 .show-more-axn,
@@ -952,23 +1068,16 @@
 .entries .article:first-of-type,
 .entry .article,
 .post--empty,
-
-.post-meta---cr,
 .post-banner-visual,
 .comment-crt-hd---h,
 .main-footer---cr,
-
 .page-nav---cr,
-.post-content---ct_cr,
 .show-more-axn,
 .show-more-glabel,
 .post-nav---cr,
-
 .main-content-heading,
-
 .post-content .search-form-axns,
 .aside .search-form-axns,
-
 .main-content-header-aside
 {
     margin-top: 1rem;
@@ -1003,31 +1112,6 @@
     color: hsla( 0, 0%, 0%, .65);
     
     font-size: .875rem;
-}
-
-.apl-categories a,
-.apl-tags a
-{
-    margin: .125rem;
-}
-
-.apl-post-categories,
-.apl-post-tags
-{
-    margin-bottom: -.125rem;
-}
-
-.apl-post-categories .post-categories---cr,
-.apl-post-tags .post-tags---cr
-{
-    padding-top: calc( 1rem - .125rem);
-}
-
-.apl-post-categories .post-categories---cr,
-.apl-post-tags .post-tags---cr
-{
-    padding-left: calc( 1rem - .125rem);
-    padding-right: calc( 1rem - .125rem);
 }
 
 .page-nav---cr
@@ -1132,23 +1216,10 @@
 }
 
 
-/*------------------ Categories ------------------*/
-.apl-categories ul,
-.apl-tags ul
-{
-    display: flex;
-    flex-wrap: wrap;
-    
-    font-size: .875rem;
-}
-
-
 
 /*------------------ Medium AAs ------------------*/
 .edit-post-axn---a_l,
-.edit-com-axn---a_l,
-.apl-categories a,
-.apl-tags a
+.edit-com-axn---a_l
 {
     min-height: 2rem;
     
