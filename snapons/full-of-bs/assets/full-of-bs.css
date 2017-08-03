@@ -558,7 +558,8 @@
 .comments-count-axn,
 .add-comment-axn
 {
-    padding: 1em 0;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 .comments-count-axn---a_l .comments-count---txt
@@ -753,7 +754,7 @@
 }
     
 
-.apl-categories a,
+
 .post-mod-d-stamp-dtstamp---a_l,
 .comment-pub-d-stamp-dtstamp---a_l,
 .page-navi---a_l,
@@ -796,24 +797,13 @@
 {
     position: relative;
     
-    padding-left: 1.5em;
-    
     min-height: 2rem;
     
-    background-color: #005fe6;
-    background-color: hsl(215, 100%, 45%);
-    color: white;
+    border: 1px solid hsl(215, 100%, 45%);
     
     border-radius: .125rem;
-}
 
-.apl-categories a:hover
-{
-    background-color: #0044cc;
-    background-color: hsl(220, 100%, 40%);
-    color: white;
 }
-
 
 
 
@@ -1068,7 +1058,6 @@
 .entries .article:first-of-type,
 .entry .article,
 .post--empty,
-.post-banner-visual,
 .comment-crt-hd---h,
 .main-footer---cr,
 .page-nav---cr,
@@ -1128,12 +1117,23 @@
 
 
 /*------------------ Notes ------------------*/
+.note .g_l,
+.sign-in-required---line
+{
+    font-size: .875rem;
+}
+
+.note .g_l > *
+{
+    margin: 0;
+}
+
 .comments-empty-note,
 .comment-respond .sign-in-required-note,
 .comment-unapproved-note,
 .commenting-disabled-note
 {
-    padding: 1em;
+    padding: 1em 1rem;
 }
 
 .comments-empty-note---g,
@@ -1148,21 +1148,22 @@
     border-radius: .125rem;
 }
 
-.note .g_l,
-.sign-in-required---line
-{
-    font-size: .875rem;
-}
 
+
+
+
+
+
+/*------------------ Post Banner Visual ------------------*/
+.post-banner-visual
+{
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
 
 .post-banner-vis---g
 {
     background-image: initial !important;
-}
-
-.comments-population--empty.comment-creation-ability--disabled .commenting-disabled-note
-{
-    margin-bottom: 1rem;
 }
 
 
