@@ -132,7 +132,11 @@
 .previous-comments-navi---a_l,
 .breadcrumbs-navi---a_l,
 .breadcrumbs-navi---g_l,
-.widget_calendar tfoot a
+.widget_calendar tfoot a,
+
+/* Author */
+.author-name---a_l,
+.author-avatar---a_l
 {
     box-sizing: border-box;
     
@@ -263,7 +267,7 @@
 
 
 
-/*------------------ Post Author ------------------*/
+/*------------------ Author, Commenter ------------------*/
 .post-published-glabel .by---txt
 {
     text-transform: capitalize;
@@ -286,14 +290,22 @@
 .commenter-name
 {
     order: 1;
-    margin-left: .25rem;
+}
+
+.author-avatar,
+.commenter-avatar
+{
+    margin-right: -1.5rem;
+    padding: 0 1rem;
 }
 
 /* Circular Avatar */
-.published-post-author .author-avatar---a_l,
+.author-avatar---a_l,
 .commenter-avatar---a_l
 {
     display: block;
+    
+    padding: 0;
     
     width: 2rem;
     height: 2rem;
@@ -755,7 +767,7 @@
     
 
 
-.post-mod-d-stamp-dtstamp---a_l,
+
 .comment-pub-d-stamp-dtstamp---a_l,
 .page-navi---a_l,
 .page-nav .adjacent-navi---a_l
@@ -872,24 +884,15 @@
     display: block;
     padding: .25em .75em;
     
-    font-size: .75rem;
-    
+    border: 1px solid hsl(215, 100%, 45%);
     border-radius: .125rem;
-}
-
-.post-mod-d-stamp-dtstamp---a_l,
-.comment-pub-d-stamp-dtstamp---a_l
-{
+    
+    font-size: .75rem;
     line-height: 1;
 }
 
-.post-modified-date-stamp-dtstamp .day---txt,
-.post-modified-date-stamp-dtstamp .month---txt,
-.post-modified-date-stamp-dtstamp .year---txt,
-
-.comment-published-date-stamp-dtstamp .day---txt,
-.comment-published-date-stamp-dtstamp .month---txt,
-.comment-published-date-stamp-dtstamp .year---txt
+.post-modified-date-stamp-dtstamp .txt,
+.comment-published-date-stamp-dtstamp .txt
 {
     display: block;
     
@@ -913,6 +916,18 @@
 {
     font-size: .875em;
 }
+
+.post-modified-date-stamp-dtstamp
+{
+    display: block;
+    
+    padding: .5em 1rem;
+}
+
+
+
+
+
 
 .post-header-aside .post-meta---ct_cr,
 .comment-header-aside .comment-meta---ct_cr
@@ -1020,9 +1035,9 @@
 /*------------------ Layout Spacing ------------------*/
 .main-post-title---h,
 .main-content-heading---h,
-.published-post-author---cr,
+
 .published-comment-commenter---cr,
-.post-pub-mod---cr,
+
 .comment-pub---cr,
 .excerpt-link,
 .comments---h_l,
