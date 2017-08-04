@@ -966,6 +966,13 @@
     padding: .5em 1rem;
 }
 
+/* Cancel Out */
+.post-content---ct_cr > figure
+{
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .post-content---ct_cr > ul,
 .post-content---ct_cr > ol
 {
