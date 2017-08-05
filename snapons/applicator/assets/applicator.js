@@ -990,7 +990,7 @@
     
     
     
-    // ------------------------- Format <pre>
+    // ------------------------- Format Content
     ( function() {
         
         var contentImageCss = 'content--image',
@@ -999,6 +999,8 @@
         
         $( '.post-content---ct_cr > *:has( pre )' ).addClass( 'content--pre' );
         $( '.post-content---ct_cr > pre' ).wrap( '<div class="content--pre"></div>' );
+        
+        $( '.post-content---ct_cr > table' ).wrap( '<div class="content--table"></div>' );
         
      } )();
 
