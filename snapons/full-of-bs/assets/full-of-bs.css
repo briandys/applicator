@@ -378,6 +378,11 @@
     display: block;
 }
 
+.show-more-glabel
+{
+    padding-top: 1rem;
+}
+
 
 
 
@@ -1240,26 +1245,7 @@ p + .content--image
     padding-right: 1rem;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 .entries .article,
-
-.entry---fr .entry-nav---cr
-{
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-}
-
 .entry .article,
 .comment .article,
 .aside .widget
