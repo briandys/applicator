@@ -115,6 +115,7 @@
 .previous-entry-navi .property---line,
 .previous-entry-navi .value---line,
 
+.parent-post-navigation-glabel---g_l,
 
 
 .page-navi---a_l,
@@ -190,7 +191,7 @@
 
 .page-nav li
 {
-    margin: .5rem;
+    padding: .5rem;
 }
 
 .page-nav .current .page-navi---a_l
@@ -211,6 +212,20 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
+
+.next-comments-navi,
+.previous-comments-navi
+{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.parent-post-navigation-glabel---g_l
+{
+    margin-right: -2rem;
+}
+
+
 
 
 
@@ -494,6 +509,21 @@
     color: hsla( 0, 0%, 0%, .65);
 }
 
+.comment---ct_cr > ul
+{
+    list-style: disc;
+}
+
+.comment---ct_cr a
+{
+    text-decoration: none;
+}
+
+.comment---ct_cr a:hover
+{
+    text-decoration: underline;
+}
+
 
 
 
@@ -508,8 +538,8 @@
 
 .commenter-comment-creation-text-input
 {
-    padding: .5em 1em;
-    padding-bottom: calc( .5em - .25em );
+    padding: 1rem;
+    padding-bottom: calc( 1rem - .25rem );
 }
 
 /* Form Actions (WPg) */
@@ -524,7 +554,7 @@
 .commenter-email-creation-text-input,
 .commenter-url-creation-text-input
 {
-    padding: .5em 1em;
+    padding: 1rem;
 }
 
 /* Form Labels */
@@ -533,16 +563,21 @@
 .commenter-url-creation-flabel
 {
     display: inline-block;
-    padding: .5em 1em;
+    padding: .5rem 1rem;
     
-    margin-bottom: -.5em;
+    margin-bottom: -1rem;
 }
 
 .comment-creation-glabel,
 #cancel-comment-reply-link
 {
     padding: 1em 0;
-    margin-bottom: -1em;
+}
+
+.logged-in .comment-creation-glabel,
+.logged-in #cancel-comment-reply-link
+{
+    margin-bottom: -2em;
 }
 
 /* Validation */
@@ -704,6 +739,7 @@
 
 /*------------------ Colors ------------------*/
 .post-content a,
+.comment---ct_cr a,
 .post---hr a,
 .comments---hr a,
 .post-tag a,
@@ -1017,38 +1053,46 @@
 
 /* Lists */
 .post-content---ct_cr > ul,
-.post-content---ct_cr > ol
+.post-content---ct_cr > ol,
+.comment---ct_cr > ul,
+.comment---ct_cr > ol
 {
     padding: 0;
     padding-left: 2.25em;
 }
 
-.post-content---ct_cr li
+.post-content---ct_cr li,
+.comment---ct_cr li
 {
     padding: .25em 1rem;
 }
 
-.post-content---ct_cr li li
+.post-content---ct_cr li li,
+..comment---ct_cr li li
 {
     margin-right: -1rem;
 }
 
-.post-content---ct_cr li:first-child
+.post-content---ct_cr li:first-child,
+.comment---ct_cr li:first-child
 {
     padding-top: .5em;
 }
 
-.post-content---ct_cr li li:first-child
+.post-content---ct_cr li li:first-child,
+.comment---ct_cr li li:first-child
 {
     padding-top: .25em;
 }
 
-.post-content---ct_cr li:last-child
+.post-content---ct_cr li:last-child,
+.comment---ct_cr li:last-child
 {
     padding-bottom: .5em;
 }
 
-.post-content---ct_cr li li:last-child
+.post-content---ct_cr li li:last-child,
+.comment---ct_cr li li:last-child
 {
     padding-bottom: .25em;
 }
@@ -1168,7 +1212,7 @@ p + .content--image
 
 
 .entries .article,
-.comment-md---cr,
+
 .entry---fr .entry-nav---cr
 {
     padding-top: 2rem;
@@ -1200,13 +1244,7 @@ p + .content--image
 
 .page-nav---cr
 {
-    margin: calc( 1rem - .5rem);
-}
-
-.entries---fr .page-nav---cr
-{
-    margin-top: calc( 4rem - .5rem);
-    margin-bottom: -.5rem;
+    padding: calc( 1rem - .5rem);
 }
 
 
