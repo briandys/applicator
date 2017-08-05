@@ -1207,7 +1207,7 @@ p + .content--image
 {
     border: 1px solid hsla( 0, 0%, 0%, .0625 );
     
-    border-left-color: hsla( 0, 0%, 0%, .03125 );
+    border-left-style: dotted;
     
     border-right: 0;
     border-bottom: 0;
