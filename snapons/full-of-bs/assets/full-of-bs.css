@@ -150,7 +150,11 @@
 .commenter-avatar---a_l,
 
 .main-post-title---a_l,
-.comment-title---a_l
+.comment-title---a_l,
+
+/* Signed In Account */
+.signed-in-account-name---a_l,
+.signed-in-account-glabel---g_l
 {
     box-sizing: border-box;
     
@@ -199,9 +203,13 @@
     display: flex;
 }
 
-.attachment .post-navi
+.parent-post-navigation-glabel,
+.post-navi
 {
-    margin-left: -1rem;
+    display: inline-block;
+    
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 
@@ -561,25 +569,24 @@
     border-width: 2px;
 }
 
+.signed-in-account-glabel---g_l
+{
+    margin-right: -2rem;
+}
+
 .signed-in-account-glabel,
 .signed-in-account-name,
 .account-log-out-axn
 {
-    display: inline-block;
-    padding: .5em 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
-.signed-in-account-glabel---g,
-.signed-in-account-name---g
-{
-    display: inline-block;
-    padding: 1em;
-}
 
-.signed-in-account-glabel---g
-{
-    margin-right: -2em;
-}
+
+
+
+
 
 
 
@@ -1001,7 +1008,8 @@
 }
 
 /* Cancel Out */
-.post-content---ct_cr > figure
+.post-content---ct_cr > figure,
+.post-content---ct_cr > .attachment
 {
     padding-left: 0;
     padding-right: 0;
@@ -1076,6 +1084,11 @@ p + .content--image
     padding-top: 1em;
 }
 
+.content--image img
+{
+    margin: 0;
+}
+
 /* Main Content Heading */
 .main-content-heading
 {
@@ -1105,47 +1118,31 @@ p + .content--image
     display: none;
 }
 
-
-
-
-
-
-
-
-
-
-/*------------------ Content Spacing ------------------*/
-
-
-
-.aside > .cr > .ct > .ct_cr
+.edit-post-axn
 {
-    margin: 0;
-    margin-top: 1em;
+    padding: 1rem;
 }
 
 
-.aside > .cr > .ct > .ct_cr:first-child
-{
-    margin-top: 0;
-}
+
+
+
+
+
+
+
+
+
 
 
 
 
 /*------------------ Layout Spacing ------------------*/
-
-
-
 .published-comment-commenter---cr,
 
 
 .excerpt-link,
 .comments---h_l,
-
-.wp-caption-text,
-
-
 
 .post-content .search-term-crt-search .flabel,
 .post-content .search-term-crt-search .felem,
@@ -1161,41 +1158,12 @@ p + .content--image
 
 
 
-.post-edit-link,
-
-.attachment .post-nav---ct_cr
-{
-    margin-left: 1rem;
-    margin-right: 1rem;
-}
 
 
 
-.comment-crt-hd---h,
-.main-footer---cr,
-.page-nav---cr,
-
-.show-more-glabel,
-.post-nav---cr,
-.post-content .search-form-axns,
-.aside .search-form-axns,
-.main-content-header-aside
-{
-    margin-top: 1rem;
-}
 
 
-.widget,
 
-.main-footer-aside
-{
-    margin-top: 2rem;
-}
-
-.widget:first-of-type
-{
-    margin-top: 0;
-}
 
 
 
@@ -1208,7 +1176,8 @@ p + .content--image
 }
 
 .entry .article,
-.comment .article
+.comment .article,
+.aside .widget
 {
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -1222,7 +1191,7 @@ p + .content--image
 
 .wp-caption-text
 {
-    margin-top: .5rem;
+    padding: .5rem 1rem;
     
     color: hsla( 0, 0%, 0%, .65);
     
