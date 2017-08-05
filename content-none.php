@@ -12,7 +12,6 @@
                         'type'      => 'object',
                         'elem'      => 'h1',
                     ),
-                    'root_css'  => 'apl-main-post-title',
                     'content'   => array(
                         'object'        => array(
                             array(

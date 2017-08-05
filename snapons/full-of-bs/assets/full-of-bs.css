@@ -17,6 +17,7 @@
 .blog .main-content-heading,
 .page .main-content-heading,
 .single .main-content-heading,
+.error404 .main-content-heading,
 
 .edit-post-action .post-title---txt,
 .edit-comment-action .comment-title---txt,
@@ -155,7 +156,9 @@
 
 /* Signed In Account */
 .signed-in-account-name---a_l,
-.signed-in-account-glabel---g_l
+.signed-in-account-glabel---g_l,
+
+.main-post-title---h_l
 {
     box-sizing: border-box;
     
@@ -422,11 +425,6 @@
     color: black;
 }
 
-.commenter-com-crt-input-text
-{
-    background-color: white;
-}
-
 .signed-in-acct---cr
 {
     display: flex;
@@ -536,14 +534,22 @@
     border-radius: .125em;
 }
 
-.commenter-comment-creation-text-input
+.commenter-comment-creation-text-input,
+.post-content .search-term-crt-search-text-input,
+.aside .search-term-crt-search-text-input
 {
     padding: 1rem;
+}
+
+.commenter-comment-creation-text-input
+{
     padding-bottom: calc( 1rem - .25rem );
 }
 
 /* Form Actions (WPg) */
-.comment-form .form-submit
+.comment-form .form-submit,
+.post-content .search-form-search-axn,
+.aside .search-form-search-axn
 {
     padding: 2em 1em;
     margin-top: -1rem;
@@ -1045,7 +1051,8 @@
 
 /* Cancel Out */
 .post-content---ct_cr > figure,
-.post-content---ct_cr > .attachment
+.post-content---ct_cr > .attachment,
+.post-content---ct_cr > .search
 {
     padding-left: 0;
     padding-right: 0;
@@ -1113,11 +1120,6 @@
     padding-top: 0;
 }
 
-.dom--unready .content--image
-{
-    display: none;
-}
-
 p + .content--image
 {
     padding-top: .5em;
@@ -1144,8 +1146,6 @@ p + .content--image
 {
     margin: 0;
     padding: 2rem 1rem;
-    
-    background-color: white;
 }
 
 .content--pre
@@ -1155,11 +1155,6 @@ p + .content--image
     padding-right: 0;
     
     max-width: 100vw;
-}
-
-.dom--unready .content--pre
-{
-    display: none;
 }
 
 .edit-post-axn
@@ -1239,11 +1234,6 @@ p + .content--image
 .excerpt-link,
 .comments---h_l,
 
-.post-content .search-term-crt-search .flabel,
-.post-content .search-term-crt-search .felem,
-
-.post-content .search-form-search-axn,
-
 .widget:not(.widget_nav_menu) .widget---cr > *:not(ul):not(ol)
 {
     padding-left: 1rem;
@@ -1276,11 +1266,6 @@ p + .content--image
 {
     padding-top: 1rem;
     padding-bottom: 1rem;
-}
-
-.entries .article:first-of-type
-{
-    margin-top: -1rem;
 }
 
 

@@ -1418,8 +1418,7 @@ $go-green: #12b32d;
 .search-term-creation-label---obj,
 .search-term-creation-input---obj,
 
-.search-term-crt-search-flabel,
-.search-term-crt-search-text-input
+.search-term-crt-search-flabel
 {
     display: block;
 }

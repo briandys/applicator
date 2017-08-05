@@ -219,6 +219,13 @@ if ( ! function_exists( 'applicator_func_html_class' ) ) {
                 echo ' '.'comments-population--empty';
             }
         }
+        
+        // Category
+        if ( is_singular() ) {
+            foreach ( ( get_the_category( $post->ID ) ) as $category ) {
+                echo ' '.'category--' . $category->category_nicename;
+            }
+        }
     
     }
     add_action( 'applicator_hook_html_class', 'applicator_func_html_class');
