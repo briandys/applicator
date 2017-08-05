@@ -1176,7 +1176,7 @@ $go-green: #12b32d;
     position: relative;
     
     margin-right: 3rem;
-    padding-bottom: 3rem;
+    padding-top: 3rem;
     
     width: auto;
     
@@ -1264,6 +1264,32 @@ $go-green: #12b32d;
     background: -webkit-linear-gradient(left, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to right, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+}
+
+.main-hr-aside---ct::before,
+.main-hr-aside---ct::after
+{
+    content: '';
+    position: absolute;
+    left: 0;
+    
+    width: 100%;
+    height: 1.5rem;
+    
+    background-color: red;
+    
+    
+}
+
+.main-hr-aside---ct::before
+{
+    top: 0;
+    transform: translateY( 3rem );
+}
+
+.main-hr-aside---ct::after
+{
+    bottom: 0;
 }
 
 .main-menu-tog---b

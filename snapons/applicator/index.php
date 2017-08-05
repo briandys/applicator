@@ -42,6 +42,7 @@ if ( ! function_exists( 'applicator_snapons_applicator_class' ) ) {
                 html.classList.add( '_applicator--article' );
                 
                 html.classList.remove( 'applicator-theme--default' );
+                
             } ) ( document.documentElement );
         </script>
     

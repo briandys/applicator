@@ -25,7 +25,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
         <<?php echo $tag ?> id="comment-<?php comment_ID() ?>" <?php comment_class( 'item cp comment' . ' ' . $comment_has_children_css ) ?> data-name="Comment">
             
         <?php if ( 'div' != $args['style'] ) { ?>
-            <article class="cr comment---cr">
+            <article class="article cr comment---cr">
         <?php } ?>
                 
                 <div class="hr comment---hr">
