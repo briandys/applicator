@@ -2077,16 +2077,50 @@ $go-green: #12b32d;
     width: 100%;
 }
 
-/*
-.comment-md,
-.comment-respond
+
+
+
+
+/*------------------ Applicator Table Theme - Stroked ------------------*/
+
+/* Reset */
+.apl--applicator--theme--table--stroked .post-content td,
+.apl--applicator--theme--table--stroked .post-content th
 {
-    border: 1px solid red;
+    border: 0;
 }
 
-.comment-respond
+.apl--applicator--theme--table--stroked .post-content tbody,
+.apl--applicator--theme--table--stroked .post-content tfoot
 {
-    margin: 1rem;
-    padding: 1rem;
+    border: 2px solid hsla( 0, 0%, 0%, .125 );
+    border-left: 0;
+    border-right: 0;
 }
-*/
+
+.apl--applicator--theme--table--stroked .post-content tfoot
+{
+    border-top: 0;
+    border-color: hsla( 0, 0%, 0%, .0625 );
+}
+
+.apl--applicator--theme--table--stroked .post-content th
+{
+    text-align: left;
+    vertical-align: bottom;
+}
+
+.apl--applicator--theme--table--stroked .post-content td
+{
+    border: 1px solid hsla( 0, 0%, 0%, .0625 );
+    
+    border-left-style: dotted;
+    
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.apl--applicator--theme--table--stroked .post-content td:first-child
+{
+    border-left: 0;
+}
