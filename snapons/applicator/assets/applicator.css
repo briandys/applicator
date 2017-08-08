@@ -119,6 +119,7 @@
     background-color: #f5f5f5;
     
     font-family: 'Noto Sans', sans-serif;
+    font-display: swap;
     text-rendering: geometricPrecision;
 }
 
