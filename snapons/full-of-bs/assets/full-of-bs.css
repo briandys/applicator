@@ -69,7 +69,10 @@
 
 .comments---hr .comments-nav,
 
-.comments---h
+.comments---h,
+
+.commenter-url-creation-flabel .open-parenthesis---txt,
+.commenter-url-creation-flabel .close-parenthesis---txt
 {position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;}
 
 
@@ -509,7 +512,7 @@
 {
     font-size: .75rem;
     
-    color: hsla( 0, 0%, 0%, .65);
+    color: hsla( 0, 0%, 0%, .5 );
 }
 
 .comment---ct_cr > ul
