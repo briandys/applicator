@@ -246,7 +246,8 @@
 .comment-reply-axn---a_l .line > .txt,
 .next-comments-navi---a_l > .txt,
 .previous-comments-navi---a_l > .txt,
-.search-results .main-content-heading---h_l .line
+.search-results .main-content-heading---h_l .line,
+.widget_meta a > *
 {
     margin-left: .15em;
     margin-right: .15em;
@@ -269,7 +270,8 @@
 .comment-reply-axn---a_l .line > .txt:last-child,
 .next-comments-navi---a_l > .txt:last-child,
 .previous-comments-navi---a_l > .txt:last-child,
-.search-results .main-content-heading---h_l .line:last-child
+.search-results .main-content-heading---h_l .line:last-child,
+.widget_meta a > *:last-child
 {
     margin-right: 0;
 }
@@ -691,7 +693,15 @@
 
 .next-entry-navi
 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     order: 1;
+}
+
+.previous-entry-navi
+{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .next-entry-navi---a_l,
@@ -1107,12 +1117,13 @@
 {
     padding: 0;
     padding-left: 2.25em;
+    padding-right: .5rem;
 }
 
 .post-content---ct_cr li,
 .comment---ct_cr li
 {
-    padding: .25em 1rem;
+    padding: .25em .5rem;
 }
 
 .post-content---ct_cr li li,
