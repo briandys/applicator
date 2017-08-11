@@ -30,7 +30,7 @@ $search_form_cp = applicator_htmlok( array(
                                 'name'          => 's',
                                 'value'         => get_search_query(),
                                 'required'      => '',
-                                'placeholder'   => esc_html__( 'Enter search term', 'applicator' ),
+                                'placeholder'   => esc_html__( 'Search', 'applicator' ),
                             ),
                             'id'        => esc_attr( uniqid( 'search-term-crt-search-text-input---input-text-' ) ),
                         ),
@@ -40,7 +40,7 @@ $search_form_cp = applicator_htmlok( array(
                     array(
                         'name'  => 'Search',
                         'txt'   => array(
-                            esc_html__( 'Search', 'applicator' ),
+                            esc_html__( 'Go', 'applicator' ),
                         ),
                         'structure' => array(
                             'type'      => 'submit',

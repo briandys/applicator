@@ -87,9 +87,9 @@
 
 /* Main Search */
 .main-search-tog---b_l .show-hide---txt,
-.main-search-func .search-submit-axn---b_l .search---txt,
+.main-search-func .search-submit-axn---b_l .go---txt,
 .main-search-func .search-reset-axn---b_l .reset---txt,
-.main-search-func .search-form-search-axn .search---txt,
+.main-search-func .search-form-search-axn .go---txt,
 .main-search-func .search-form-reset-axn .reset---txt,
 
 /* Web Product Info */
@@ -131,6 +131,7 @@
 .wbp,
 .wbp---cr
 {
+    
 }
 
 
@@ -1265,26 +1266,6 @@ $go-green: #12b32d;
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
 }
 
-/* Fading Gradient */
-.main-menu-func .main-hr-aside---ct_cr::after
-{
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    
-    width: 100%;
-    height: 1rem;
-    
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&1+0,0+100;White+to+Transparent */
-    background: -moz-linear-gradient(top, hsla(0,0%,100%,1) 0%, hsla(0,0%,100%,0) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,0) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, hsla(0,0%,100%,1) 0%,hsla(0,0%,100%,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
-    
-    transform: translateY( 3rem );
-}
-
 
 .main-menu-tog---b
 {
@@ -1379,22 +1360,29 @@ $go-green: #12b32d;
 .apl-search .b,
 
 .comment-form .input-text,
-.comment-form-submit-axn---b
+.comment-form-submit-axn---b,
+
+.post-password-form [type="password"],
+.post-password-form [type="submit"]
 {
     /* Reset */
     margin: 0;
     padding: 0;
     border: 0;
     background-color: transparent;
+    
+    /* Set */
+    width: 100%;
 }
 
 .apl-search .input-text,
-.apl-search .b,
 .apl-search .b_l,
 
-/* Comment Respond */
 .comment-form .input-text,
-.comment-form-submit-axn---b
+.comment-form-submit-axn---b,
+
+.post-password-form [type="password"],
+.post-password-form [type="submit"]
 {
     box-sizing: border-box;
     
@@ -1409,8 +1397,8 @@ $go-green: #12b32d;
 }
 
 .apl-search .b_l,
-
-.comment-form-submit-axn---b
+.comment-form-submit-axn---b,
+.post-password-form [type="submit"]
 {
     padding: .5rem 1rem;
 }
@@ -1430,23 +1418,30 @@ $go-green: #12b32d;
 
 /* ------------------------- Form Elements - Style > Decorations */
 .apl-search .input-text,
-
-.comment-form .input-text
+.comment-form .input-text,
+.post-password-form [type="password"]
 {
     padding: 0 .5rem;
     
     border: 1px solid black;
     border-color: hsla(0, 0%, 0%, .5);
+    border-radius: .125rem;
 }
 
-.apl-search .search-submit-axn---b_l,
 
+
+
+.apl-search .search-submit-axn---b_l,
+.apl-search .b_l,
 .comment-form-submit-axn---b,
 .post-content .apl-search .b,
-.aside .apl-search .b
+
+.post-password-form [type="submit"]
 {
     background-color: #00aaff;
     color: white;
+    
+    border-radius: .125rem;
 }
 
 .apl-search .search-reset-axn---b_l
@@ -1468,19 +1463,6 @@ $go-green: #12b32d;
 .apl--applicator--main-search .main-header---cr > .apl-search
 {
     background-color: transparent;
-}
-
-/* Search */
-.apl-search .input-text,
-.apl-search .b_l,
-.post-content .apl-search .b,
-.aside .apl-search .b,
-
-/* Comment Respond */
-.comment-form .input-text,
-.comment-form-submit-axn---b
-{   
-    border-radius: .125rem;
 }
 
 

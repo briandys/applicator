@@ -4,7 +4,7 @@
 if ( ! function_exists( 'applicator_func_the_title_trim' ) ) {
     function applicator_func_the_title_trim( $title ) {
 
-        $title = esc_attr__( $title );
+        $title = esc_attr( $title );
 
         $findthese = array(
             '#Protected:#',

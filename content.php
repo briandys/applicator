@@ -12,6 +12,7 @@
                         'type'      => 'object',
                         'elem'      => 'h1',
                         'linked'    => true,
+                        'layout'    => 'inline',
                         'attr'      => array(
                             'a'         => array(
                                 'href'      => esc_url( get_permalink() ),

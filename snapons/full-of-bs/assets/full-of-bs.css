@@ -72,7 +72,11 @@
 .comments---h,
 
 .commenter-url-creation-flabel .open-parenthesis---txt,
-.commenter-url-creation-flabel .close-parenthesis---txt
+.commenter-url-creation-flabel .close-parenthesis---txt,
+
+.post-header-aside .comment-creation-ability,
+
+.comments-population--empty--zero .comments-population
 {position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;}
 
 
@@ -154,14 +158,14 @@
 .commenter-name---a_l,
 .commenter-avatar---a_l,
 
-.main-post-title---a_l,
+.main-post-title---h,
 .comment-title---a_l,
 
 /* Signed In Account */
 .signed-in-account-name---a_l,
 .signed-in-account-glabel---g_l,
 
-.main-post-title---h_l
+.widget_meta a
 {
     box-sizing: border-box;
     
@@ -296,6 +300,22 @@
 
 
 
+/*------------------ Forms ------------------*/
+.post-content .search-form-search-axn,
+.aside .search-form-search-axn
+{
+    padding: .5rem 1rem;
+}
+
+.post-password-form [type="submit"]
+{
+    margin-top: 1rem;
+}
+
+
+
+
+
 
 
 
@@ -341,6 +361,9 @@
     display: block;
     
     padding: 0;
+    
+    width: 3rem;
+    height: 3rem;
     
     border-radius: 50%;
     overflow: hidden;
@@ -534,6 +557,8 @@
 
 
 
+
+
 /*------------------ Comment Respond ------------------*/
 .comment-respond
 {   
@@ -554,13 +579,9 @@
     padding-bottom: calc( 1rem - .25rem );
 }
 
-/* Form Actions (WPg) */
-.comment-form .form-submit,
-.post-content .search-form-search-axn,
-.aside .search-form-search-axn
+.comment-form .form-submit
 {
-    padding: 2em 1em;
-    margin-top: -1rem;
+    padding: .5em 1em;
 }
 
 /* Form Elements */
@@ -666,11 +687,6 @@
 {
     display: flex;
     justify-content: space-between;
-}
-
-.entry-nav---grp .navi
-{
-    flex: 1 50%;
 }
 
 .next-entry-navi
@@ -1041,6 +1057,17 @@
 
 
 /*------------------ Content ------------------*/
+.main-post-title
+{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.main-post-title---h
+{
+    display: inline-block;
+}
+
 .post-content---ct,
 .post-excerpt---ct,
 .comment---ct
@@ -1064,6 +1091,12 @@
 {
     padding-left: 0;
     padding-right: 0;
+}
+
+.post-content---ct_cr > .wp-caption
+{
+    padding-top: 0;
+    
 }
 
 /* Lists */
@@ -1138,7 +1171,7 @@ p + .content--image
     padding-top: 1em;
 }
 
-.content--image img
+.content--image img:not( .alignleft ):not( .aligncenter ):not( .alignright )
 {
     margin: 0;
 }
@@ -1206,7 +1239,7 @@ p + .content--image
 .excerpt-link,
 .comments---h_l,
 
-.widget:not(.widget_nav_menu) .widget---cr > *:not(ul):not(ol)
+.widget:not(.widget_nav_menu) .widget---cr > *:not(ul):not(ol):not(.apl-search)
 {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -1353,7 +1386,7 @@ p + .content--image
 
 
 
-/*------------------ Calendar Widget ------------------*/
+/*------------------ Widgets ------------------*/
 .widget_calendar tbody td,
 .widget_calendar th
 {
@@ -1378,4 +1411,25 @@ p + .content--image
 .widget_calendar #prev a
 {
     margin-left: -1rem;
+}
+
+.widget_meta a
+{
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+
+
+
+
+@media only screen and (min-width: 35em)
+{
+
+    .wp-caption.alignleft,
+    .wp-caption.alignright
+    {
+        margin-bottom: .5rem;
+    }
+    
 }

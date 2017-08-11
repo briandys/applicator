@@ -242,7 +242,7 @@ iframe
 @media only screen and (min-width: 35em)
 {
 
-    .alignleft
+    .post-content---ct_cr > .alignleft
     {
         float: left;
         
@@ -250,7 +250,7 @@ iframe
         margin-bottom: 1rem;
     }
 
-    .alignright
+    .post-content---ct_cr > .alignright
     {
         float: right;
         
