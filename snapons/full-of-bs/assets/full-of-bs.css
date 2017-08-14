@@ -165,7 +165,9 @@
 .signed-in-account-name---a_l,
 .signed-in-account-glabel---g_l,
 
-.widget_meta a
+.widget_meta a,
+
+.main-content-heading---h_l
 {
     box-sizing: border-box;
     
@@ -246,7 +248,7 @@
 .comment-reply-axn---a_l .line > .txt,
 .next-comments-navi---a_l > .txt,
 .previous-comments-navi---a_l > .txt,
-.search-results .main-content-heading---h_l .line,
+.main-content-heading---h_l .line,
 .widget_meta a > *
 {
     margin-left: .15em;
@@ -259,7 +261,7 @@
 .comment-reply-axn---a_l .line > .txt:first-child,
 .next-comments-navi---a_l > .txt:first-child,
 .previous-comments-navi---a_l > .txt:first-child,
-.search-results .main-content-heading---h_l .line:first-child
+.main-content-heading---h_l .line:first-child
 {
     margin-left: 0;
 }
@@ -270,7 +272,7 @@
 .comment-reply-axn---a_l .line > .txt:last-child,
 .next-comments-navi---a_l > .txt:last-child,
 .previous-comments-navi---a_l > .txt:last-child,
-.search-results .main-content-heading---h_l .line:last-child,
+.main-content-heading---h_l .line:last-child,
 .widget_meta a > *:last-child
 {
     margin-right: 0;
@@ -309,9 +311,23 @@
     padding: .5rem 1rem;
 }
 
+.post-password-form label
+{
+    font-size: 1rem;
+}
+
+.post-password-form [type="password"]
+{
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+
 .post-password-form [type="submit"]
 {
-    margin-top: 1rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    
+    font-size: 1rem;
 }
 
 
@@ -398,6 +414,7 @@
 .show-more-axn---a_l,
 .show-more-glabel---g_l
 {   
+    min-width: 10rem;
     border-radius: .125rem;
 }
 
@@ -408,7 +425,10 @@
 
 .show-more-glabel
 {
+    margin-top: .5rem;
+    
     padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 
@@ -416,6 +436,11 @@
 
 
 /*------------------ Post Header ------------------*/
+.single .main-post-title---a
+{
+    color: initial;
+}
+
 .post---hr_cr,
 .comment---hr_cr
 {
@@ -583,7 +608,7 @@
 
 .comment-form .form-submit
 {
-    padding: .5em 1em;
+    padding: 1em 1rem;
 }
 
 /* Form Elements */
@@ -693,15 +718,19 @@
 
 .next-entry-navi
 {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    flex: 1 50%;
     order: 1;
 }
 
 .previous-entry-navi
 {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    flex: 1 50%;
+}
+
+.next-entry-navi a:hover .a_l,
+.previous-entry-navi a:hover .a_l
+{
+    background-color: hsla( 0, 0%, 0%, .0325 );
 }
 
 .next-entry-navi---a_l,
@@ -734,16 +763,22 @@
 .next-entry-navi .line
 {
     justify-content: flex-end;
+    
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .previous-entry-navi .line
 {
     justify-content: flex-start;
+    
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .entry-nav---grp .property---line
 {
-    margin-bottom: -1rem;
+    margin-bottom: -1.5rem;
 }
 
 
@@ -856,7 +891,7 @@
 .show-more-glabel---g_l:hover
 {
     background-color: #12b32d;
-    background-color: hsl(130, 82%, 28%);
+    background-color: hsl(130, 82%, 33%);
     color: white;
 }
 
@@ -1190,7 +1225,8 @@ p + .content--image
 /* Main Content Heading */
 .main-content-heading
 {
-    padding: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 /* Pre */
@@ -1237,6 +1273,13 @@ p + .content--image
     border: 1px solid hsla( 0, 0%, 0%, .125 );
 }
 
+/* Overflowing Content */
+.dom--unready .post-content---ct_cr > table,
+.dom--unready .post-content---ct_cr > pre
+{
+    display: none;
+}
+
 
 
 
@@ -1245,11 +1288,7 @@ p + .content--image
 
 /*------------------ Layout Spacing ------------------*/
 .published-comment-commenter---cr,
-
-
-.excerpt-link,
 .comments---h_l,
-
 .widget:not(.widget_nav_menu) .widget---cr > *:not(ul):not(ol):not(.apl-search)
 {
     padding-left: 1rem;
@@ -1334,15 +1373,6 @@ p + .content--image
 
 
 
-
-.search-results .main-content-heading---h_l
-{
-    display: flex;
-    align-items: center;
-}
-
-
-
 /*------------------ Comments Count ------------------*/
 .search-results-count---txt,
 .comments-count---txt
@@ -1361,7 +1391,7 @@ p + .content--image
     border-radius: .125em;
 }
 
-.comments-count---txt
+.post-header-aside .comments-count---txt
 {
     font-size: .875rem;
 }

@@ -1187,6 +1187,12 @@ $go-green: #12b32d;
     cursor: initial;
 }
 
+.main-menu-func .main-hr-aside---ct,
+.main-menu--active .main-menu-toggle
+{
+    max-width: 30rem;
+}
+
 .main-menu-func .main-hr-aside---ct_cr
 {
     box-sizing: border-box;

@@ -1003,26 +1003,23 @@
         $( '.post-content---ct_cr > table' ).wrap( '<div class="content--table"></div>' );
         
      } )();
-
     
-    /*
-    var actions = {
-      edit:   function (event) { ... },
-      cancel: function (event) { ... },
-      save:   function (event) { ... }
-    };
-
-    $("a[data-action]").on("click", function (event) {
-      var link = $(this),
-          action = link.data("action");
-
-      event.preventDefault();
-
-      // If there's an action with the given name, call it
-      if( typeof actions[action] === "function" ) {
-        actions[action].call(this, event);
-      }
-    });
-    */
+    
+    
+    
+    
+    // ------------------------- DOM Ready
+    $( document ).ready( function() {
+		
+        
+        // Remove DOM Unready class
+        $html.addClass( 'dom--ready' ).removeClass( 'dom--unready' );
+        
+        
+        // Alias for WP Admin Bar
+        if ( $body.hasClass( 'admin-bar' ) ) {
+            $( '#wpadminbar' ).addClass( 'wpadminbar' );
+        }
+	});
 
 })( jQuery );

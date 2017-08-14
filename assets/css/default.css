@@ -212,7 +212,8 @@ iframe
     fill: currentColor;
 }
 
-.main-post-title---a_l
+.main-post-title---a_l,
+.post-title---txt
 {
     word-break: break-word;
 }
