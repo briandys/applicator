@@ -15,3 +15,19 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
 
 
 /* Put styles in assets > css > default.css */
+
+
+
+
+
+/* CSS Variables */
+:root {
+    /* Colors */
+    --superhero-blue--color: hsl(200, 100%, 50%) /* #00aaff */;
+    --chikka-orange--color: hsl(30, 100%, 50%) /* #ff7f00 */;
+    --record-red--color: hsl(0, 91%, 50%) /* #f20c0c */;
+    --go-green--color: hsl(120, 82%, 44%) /* #14cc14 */;
+    
+    --wbp-pri-color: var(--superhero-blue--color);
+    --highlight-pri-color: var(--go-green--color);
+}

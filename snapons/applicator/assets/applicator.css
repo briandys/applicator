@@ -116,22 +116,8 @@
 /* ------------------------- Root */
 .apl--applicator
 {
-    background-color: #f5f5f5;
-    
     font-family: 'Noto Sans', sans-serif;
-    font-display: swap;
     text-rendering: geometricPrecision;
-}
-
-
-
-
-
-/* ------------------------- Web Product */
-.wbp,
-.wbp---cr
-{
-    
 }
 
 
@@ -140,14 +126,18 @@
 
 /* ------------------------- Highlight */
 ::-moz-selection {
-    background: #12b32d;
+    background: #14cc14;
+    background: var(--highlight-pri-color);
     color: white;
+    
     text-shadow: none;
 }
 
 ::selection {
-    background: #12b32d;
+    background: #14cc14;
+    background: var(--highlight-pri-color);
     color: white;
+    
     text-shadow: none;
 }
  
@@ -340,27 +330,10 @@
 
 
 /* ------------------------- Color Scheme ------------------------- */
-/*
-$white: #fff;
-$black: #222;
-$gray: #808080;
-$superhero-blue: #00aaff;
-$chikka-orange: #ff7f00;
-$record-red: #f22424;
-$go-green: #12b32d;
-*/
-
-.widget_search .search-form-submit--a-l,
-.widget_search .search-form-submit--a-l,
-.widget_search .search-form-submit--a-l,
-.widget_search .search-form-reset--a-l,
-.comment-submit--a,
-
-
-
-.entry-title--a
+.comment-form-submit-axn---b
 {
-    color: #00aaff;
+    /* color: #00aaff; */
+    background-color: var( --primary-color );
 }
 
 .main-search-func .main-search-toggle--a,
@@ -623,6 +596,7 @@ $go-green: #12b32d;
     min-height: 3rem;
     
     background-color: #00aaff;
+    background-color: var(--wbp-pri-color);
 }
 
 
@@ -1458,7 +1432,6 @@ $go-green: #12b32d;
     color: black;
     color: hsla(0, 0%, 0%, .5);
 }
-
 
 
 .main-header---cr > .apl-search

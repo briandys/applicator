@@ -226,6 +226,10 @@ if ( ! function_exists( 'applicator_func_html_class' ) ) {
                 echo ' '.'category--' . $category->category_nicename;
             }
         }
+        
+        // Get the colorscheme or the default if there isn't one.
+        $colors = applicator_func_sanitize_colorscheme( get_theme_mod( 'colorscheme', 'light' ) );
+        echo ' '. 'wp-customizer-colors--' . $colors;
     
     }
     add_action( 'applicator_hook_html_class', 'applicator_func_html_class');
