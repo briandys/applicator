@@ -314,6 +314,8 @@
 
 .post-password-form label
 {
+    display: block;
+    
     font-size: 1rem;
 }
 
