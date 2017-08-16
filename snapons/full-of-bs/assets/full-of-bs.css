@@ -1292,7 +1292,7 @@ p + .content--image
 /*------------------ Layout Spacing ------------------*/
 .published-comment-commenter---cr,
 .comments---h_l,
-.widget:not(.widget_nav_menu) .widget---cr > *:not(ul):not(ol):not(.apl-search)
+.widget:not(.widget_nav_menu):not(.widget_media_image) .widget---cr > *:not(ul):not(ol):not(.apl-search):not(img)
 {
     padding-left: 1rem;
     padding-right: 1rem;
