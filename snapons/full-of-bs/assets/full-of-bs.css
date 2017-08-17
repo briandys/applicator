@@ -393,8 +393,7 @@
 .commenter-avatar---a_l
 {
     width: 2.25rem;
-    min-width: 2.25rem;
-    min-height: 2.25rem;
+    height: 2.25rem;
 }
 
 .post-pub---ct_cr,
@@ -434,12 +433,15 @@
     padding-bottom: 1rem;
 }
 
-.author-name---a
+.author-name---a,
+.commenter-name---a
 {
     color: var(--wbp-accent-pri-color);
+    text-decoration: none;
 }
 
-.author-name---a:hover
+.author-name---a:hover,
+.commenter-name---a:hover
 {
     color: var(--wbp-accent-pri-color--dark);
 }
@@ -464,9 +466,12 @@
 
 
 /*------------------ Post Header ------------------*/
-.main-post-title---a
+.main-post-title---a,
+.comment-title---a
 {
     color: var(--wbp-accent-pri-color);
+    
+    text-decoration: none;
 }
 
 .single .main-post-title---a,
@@ -737,6 +742,16 @@
     margin-left: .3rem;
 }
 
+.comments-count-axn---a
+{
+    color: var(--wbp-accent-pri-color);
+    text-decoration: none;
+}
+
+.comments-count-axn---a:hover
+{
+    color: var(--wbp-accent-pri-color--dark);
+}
 
 
 
@@ -827,7 +842,7 @@
 
 .comments---hr a,
 .post-tag a,
-.comment---hr a,
+
 .next-entry-navi a,
 .previous-entry-navi a,
 .post-navi a,
@@ -851,7 +866,7 @@
 .comments---hr a,
 .post-tag a,
 .excerpt-link,
-.comment---hr a,
+
 .next-entry-navi a,
 .previous-entry-navi a,
 .post-navi a,
@@ -987,6 +1002,7 @@
     border: 1px solid var(--wbp-accent-pri-color);
     
     border-radius: .125rem;
+    text-decoration: none;
 }
 
 .apl-categories a:hover
@@ -1061,6 +1077,7 @@
 .comment-pub-d-stamp-dtstamp---a
 {
     color: var(--wbp-accent-pri-color);
+    text-decoration: none;
 }
 
 .post-mod-d-stamp-dtstamp---a:hover,
@@ -1470,7 +1487,13 @@ p + .content--image
 
 
 
-/*------------------ Medium AAs ------------------*/
+/*------------------ Edit Action ------------------*/
+.post-edit-link,
+.comment-edit-link
+{
+    text-decoration: none;
+}
+
 .edit-post-axn---a_l,
 .edit-com-axn---a_l
 {
