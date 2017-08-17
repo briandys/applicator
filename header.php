@@ -180,12 +180,7 @@
                         'css'       => 'wbp-main-desc',
                         'title'     => $description,
                         'content'   => array(
-                            'object'    => array(
-                                array(
-                                    'txt'   => $description,
-                                    'css'   => 'wbp-desc',
-                                ),
-                            ),
+                            'object'    => $description,
                         ),
                     ) );
                 }

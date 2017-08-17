@@ -41,12 +41,12 @@
 	// Site title and description.
 	wp.customize( 'blogname', function( value ) {
 		value.bind( function( to ) {
-			$( '.site-title a' ).text( to );
+			$( '.wbp-main-name---a' ).text( to );
 		});
 	});
 	wp.customize( 'blogdescription', function( value ) {
 		value.bind( function( to ) {
-			$( '.site-description' ).text( to );
+			$( '.wbp-main-desc---a' ).text( to );
 		});
 	});
 
@@ -54,7 +54,7 @@
 	wp.customize( 'header_textcolor', function( value ) {
 		value.bind( function( to ) {
 			if ( 'blank' === to ) {
-				$( '.site-title, .site-description' ).css({
+				$( '.web-product-main-name, .web-product-main-description' ).css({
 					clip: 'rect(1px, 1px, 1px, 1px)',
 					position: 'absolute'
 				});
@@ -66,15 +66,15 @@
 				if ( ! to.length ) {
 					$( '#applicator-custom-header-styles' ).remove();
 				}
-				$( '.site-title, .site-description' ).css({
+				$( '.web-product-main-name, .web-product-main-description' ).css({
 					clip: 'auto',
 					position: 'relative'
 				});
-				$( '.site-branding, .site-branding a, .site-description, .site-description a' ).css({
+				$( '.wbp-main-name---a, .wbp-main-desc---a' ).css({
 					color: to
 				});
 				// Add class for different logo styles if title and description are visible.
-				$( 'body' ).removeClass( 'title-tagline-hidden' );
+				$( 'body' ).addClass( 'title-tagline-hidden' );
 			}
 		});
 	});

@@ -158,3 +158,12 @@ function applicator_func_colors_css_wrap() {
 	</style>
 <?php }
 add_action( 'wp_head', 'applicator_func_colors_css_wrap' );
+
+
+
+
+
+add_action( 'wp_enqueue_scripts', function () {
+    $js = 'wp.customize.selectiveRefresh.Partial.prototype.createEditShortcutForPlacement = function() {};';
+    wp_add_inline_script( 'customize-selective-refresh', $js );
+} );

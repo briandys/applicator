@@ -782,11 +782,12 @@
 .wbp-main-desc---a
 {
     text-decoration: none;
+    
+    color: hsla( 100, 100%, 100%, .75 );
 }
 
 .wbp-main-desc---a_l
 {
-    color: hsla( 100, 100%, 100%, .75 );
     font-size: .75rem;
 }
 
