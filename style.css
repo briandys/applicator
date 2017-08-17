@@ -28,6 +28,17 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
     --record-red--color: hsl(0, 91%, 50%) /* #f20c0c */;
     --go-green--color: hsl(120, 82%, 44%) /* #14cc14 */;
     
+    /* Pand Blue */
+    --panda-blue--color: hsl(215, 100%, 45%) /* #005fe6 */;
+    --panda-blue-dark--color: hsl(215, 100%, 40%) /* #0054cc */;
+    
     --wbp-pri-color: var(--superhero-blue--color);
+    
+    --wbp-accent-pri-color: var(--panda-blue--color);
+    --wbp-accent-pri-color--dark: var(--panda-blue-dark--color);
+    
     --highlight-pri-color: var(--go-green--color);
+    
+    --transition-duration: .125s;
+    --transition-easing: ease-in-out;
 }

@@ -434,12 +434,43 @@
     padding-bottom: 1rem;
 }
 
+.author-name---a
+{
+    color: var(--wbp-accent-pri-color);
+}
+
+.author-name---a:hover
+{
+    color: var(--wbp-accent-pri-color--dark);
+}
+
+
+
+
+
+/*------------------ Post ------------------*/
+.post-content---ct_cr a
+{
+    text-decoration: none;
+    color: var(--wbp-accent-pri-color);
+}
+
+.post-content---ct_cr a:hover
+{
+    color: var(--wbp-accent-pri-color--dark);
+}
 
 
 
 
 /*------------------ Post Header ------------------*/
-.single .main-post-title---a
+.main-post-title---a
+{
+    color: var(--wbp-accent-pri-color);
+}
+
+.single .main-post-title---a,
+.single .main-post-title---a:hover
 {
     color: initial;
 }
@@ -793,8 +824,7 @@
 
 
 
-.post-content a,
-.post---hr a,
+
 .comments---hr a,
 .post-tag a,
 .comment---hr a,
@@ -816,9 +846,8 @@
 
 
 /*------------------ Colors ------------------*/
-.post-content a,
+
 .comment---ct_cr a,
-.post---hr a,
 .comments---hr a,
 .post-tag a,
 .excerpt-link,
@@ -841,8 +870,8 @@
     color: hsl(215, 100%, 45%);
 }
 
-.post-content a:hover,
-.post---hr a:hover,
+
+
 .post-tag a:hover,
 .excerpt-link:hover,
 .comment---hr a:hover,
@@ -864,8 +893,7 @@
     color: hsl(220, 100%, 40%);
 }
 
-.edit-post-axn---a_l,
-.edit-com-axn---a_l,
+
 .comments-count---txt,
 .search-results-count---txt
 {
@@ -874,7 +902,6 @@
     color: white;
 }
 
-.edit-post-axn---a_l:hover,
 .comments-count---txt:hover
 {
     background-color: #0044cc;
@@ -955,10 +982,18 @@
     
     min-height: 2rem;
     
-    border: 1px solid hsl(215, 100%, 45%);
+    color: var(--wbp-accent-pri-color);
+    
+    border: 1px solid var(--wbp-accent-pri-color);
     
     border-radius: .125rem;
+}
 
+.apl-categories a:hover
+{
+    color: var(--wbp-accent-pri-color--dark);
+    
+    border-color:var(--wbp-accent-pri-color--dark);
 }
 
 
@@ -1022,17 +1057,35 @@
 
 
 /*------------------ Timestamp ------------------*/
+.post-mod-d-stamp-dtstamp---a,
+.comment-pub-d-stamp-dtstamp---a
+{
+    color: var(--wbp-accent-pri-color);
+}
+
+.post-mod-d-stamp-dtstamp---a:hover,
+.comment-pub-d-stamp-dtstamp---a:hover
+{
+    color: var(--wbp-accent-pri-color--dark);
+}
+
 .post-mod-d-stamp-dtstamp---a_l,
 .comment-pub-d-stamp-dtstamp---a_l
 {
     display: block;
     padding: .25em .75em;
     
-    border: 1px solid hsl(215, 100%, 45%);
+    border: 1px solid var(--wbp-accent-pri-color);
     border-radius: .125rem;
     
     font-size: .75rem;
     line-height: 1;
+}
+
+.post-mod-d-stamp-dtstamp---a:hover .a_l,
+.comment-pub-d-stamp-dtstamp---a:hover .a_l
+{
+    border-color: var(--wbp-accent-pri-color--dark);
 }
 
 .post-modified-date-stamp-dtstamp .txt,
@@ -1423,8 +1476,20 @@ p + .content--image
 {
     min-height: 2rem;
     
+    background-color: var(--wbp-accent-pri-color);
+    color: white;
+    
     border-radius: .125rem;
+    
+    transition: var(--transition-duration) background-color var(--transition-easing);
 }
+
+.edit-post-axn---a_l:hover,
+.edit-com-axn---a_l:hover
+{
+    background-color: var(--wbp-accent-pri-color--dark);
+}
+
 
 
 
