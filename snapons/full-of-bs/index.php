@@ -15,6 +15,8 @@ if ( ! function_exists( 'apl_full_of_bs_func_class' ) ) {
         $snapon_name = $applicator_name . '--' . 'full-of-bs';
         
         echo ' ' . $snapon_name;
+        
+        echo ' ' . $snapon_name . '--' . 'theme--content--boxed';
     
     }
     add_action( 'applicator_hook_html_class', 'apl_full_of_bs_func_class');

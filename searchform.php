@@ -66,7 +66,7 @@ $search_cp = applicator_htmlok( array(
     'name'      => 'Search',
     'structure' => array(
         'type'      => 'component',
-        'h_elem'    => 'h2',
+        'h_elem'    => 'h3',
     ),
     'root_css'      => 'apl-search',
     'content'       => array(

@@ -136,6 +136,8 @@ label[for]:hover
 img
 {
     box-sizing: border-box;
+    
+    width: 100%;
     max-width: 100%;
     height: auto;
 }
