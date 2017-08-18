@@ -25,20 +25,36 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
     /* Colors */
     --superhero-blue--color: hsl(200, 100%, 50%) /* #00aaff */;
     --chikka-orange--color: hsl(30, 100%, 50%) /* #ff7f00 */;
-    --record-red--color: hsl(0, 91%, 50%) /* #f20c0c */;
-    --go-green--color: hsl(120, 82%, 44%) /* #14cc14 */;
     
-    /* Pand Blue */
+    /* Record Red */
+    --record-red--color: hsl(0, 91%, 50%) /* #f20c0c */;
+    
+    /* Go Green Color */
+    --go-green--color: hsl(120, 82%, 44%) /* #14cc14 */;
+    --go-green-dark--color: hsl(120, 82%, 39%);
+    
+    /* Panda Blue */
     --panda-blue--color: hsl(215, 100%, 45%) /* #005fe6 */;
     --panda-blue-dark--color: hsl(215, 100%, 40%) /* #0054cc */;
+    
+    /* Uhog Green */
+    --uhog-green--color: hsl(120, 82%, 38%);
+    --uhog-green-dark--color: hsl(120, 82%, 33%);
     
     --wbp-pri-color: var(--superhero-blue--color);
     
     --wbp-accent-pri-color: var(--panda-blue--color);
     --wbp-accent-pri-color--dark: var(--panda-blue-dark--color);
     
+    --wbp-accent-sec-color: var(--uhog-green--color);
+    --wbp-accent-sec-color--dark: var(--uhog-green-dark--color);
+    
+    --wbp-negative-pri-color: var(--record-red--color);
+    
     --highlight-pri-color: var(--go-green--color);
     
     --transition-duration: .125s;
     --transition-easing: ease-in-out;
+    
+    --corner-radius--sm: .125em;
 }
