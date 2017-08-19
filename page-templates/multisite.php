@@ -43,9 +43,7 @@ else {
 
                 $blog_details = get_blog_details( $site_id );
 
-                echo 'Site ID/Name: ' . $site_id . ' / ' . $site_name . '\n';
-
-                echo $blog_details->path;
+                echo '<a href="'. esc_url( $blog_details->path ). '">'. $site_name. '</a>';
 
                 $args = array(
                     'post_type'     => 'post',
@@ -95,21 +93,44 @@ else {
                                         
                                     </div>
                                 </header>
+                                
+                                <?php
+                                if ( has_excerpt() ) {
+                                ?>
+                                
                                 <div class="ct post---ct entry-content">
                                     <div class="ct_cr post---ct_cr">
                                         
                                         <?php
-                                        
-                                        if ( has_excerpt() ) {
-                        
-                                            // E: Post Excerpt
-                                            echo $post_excerpt;
-                                        }
-                        
+                                        // OB: Excerpt
+                                        ob_start();
+                                        the_excerpt();
+                                        $excerpt_ob_content = ob_get_contents();
+                                        ob_end_clean();
+
+
+                                        // R: Post Excerpt
+                                        $post_excerpt = applicator_htmlok( array(
+                                            'name'      => 'Post Excerpt',
+                                            'structure' => array(
+                                                'type'      => 'component',
+                                            ),
+                                            'content'   => array(
+                                                'component'     => $excerpt_ob_content,
+                                            ),
+                                        ) );
+
+                                        // E: Post Excerpt
+                                        echo $post_excerpt;
                                         ?>
                                         
                                     </div>
                                 </div>
+                                
+                                <?php
+                                }
+                                ?>
+                            
                             </div>
                         </article><!-- Post CP -->
                         
@@ -122,6 +143,10 @@ else {
                 restore_current_blog();
             }
             return;
+        }
+        
+        else {
+            echo 'No Multisite';
         }
         
         ?>
