@@ -1,117 +1,132 @@
 <?php
 // Template Name: Multisite
 
-get_template_part( 'index' );
-
-if ( function_exists( 'get_sites' ) && class_exists( 'WP_Site_Query' ) ) {
-    $sites = get_sites();
-    foreach ( $sites as $site ) {
-        switch_to_blog( $site->blog_id );
-        
-        $subsite_id = get_object_vars($site)["blog_id"];
-        $subsite_name = get_blog_details($subsite_id)->blogname;
-        
-        $blog_details = get_blog_details( $subsite_id );
-        
-        echo 'Site ID/Name: ' . $subsite_id . ' / ' . $subsite_name . '\n';
-        
-        echo $blog_details->path;
-        
-        query_posts( 'showposts=5' );
-            if ( have_posts() ) {
-                while( have_posts() ) {
-                    the_post();
-                    ?>
-                    <div class="blog_post">
-                        <div class="post_title">
-                            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                        </div>
-                        <div class="post_excerpt">
-                            <?php the_excerpt(); ?>
-                        </div>
-                    </div>
-                <?php } ?>
-            <?php } 
-        
-        restore_current_blog();
-    }
-    return;
+if ( function_exists( 'get_header' ) ) {
+    get_header();
 }
 
-
-/*
+else {
+    die();
+}
 ?>
 
-<ul class='postlist no-mp'>
-
-<?php 
-    
-    $subsites = get_sites();
-foreach( $subsites as $subsite ) {
-  $subsite_id = get_object_vars($subsite)["blog_id"];
-  $subsite_name = get_blog_details($subsite_id)->blogname;
-  echo 'Site ID/Name: ' . $subsite_id . ' / ' . $subsite_name . '\n';
-}
-
-// get all blogs
-$blogs = get_sites();
-
-if ( 0 < count( $blogs ) ) {
-    foreach( $blogs as $blog ) {
+<div class="hr main-content---hr">
+    <div class="hr_cr main-content---hr_cr">
         
-        $subsite_id = get_object_vars($blog)["blog_id"];
-        $subsite_name = get_blog_details($subsite_id)->blogname;
-        
-    $blog_id = get_object_vars($blog)["blog_id"];
-    
-    switch_to_blog( $blog_id );
+        <?php
 
-        if ( get_theme_mod( 'show_in_home', 'on' ) !== 'on' ) {
-            continue;
+        // Main Content Headings
+        applicator_func_main_content_headings();
+        
+        // Main Content Header Aside | inc > tags > aside.php
+        echo applicator_func_main_content_header_aside();
+        ?> 
+        
+    </div>
+</div><!-- Main Content Header -->
+
+<div class="ct main-content---ct">
+    <div class="ct_cr main-content---ct_cr">
+        
+        <?php
+        
+        if ( function_exists( 'get_sites' ) && class_exists( 'WP_Site_Query' ) ) {
+            
+            $sites = get_sites();
+            
+            foreach ( $sites as $site ) {
+                
+                switch_to_blog( $site->blog_id );
+
+                $site_id = get_object_vars($site)['blog_id'];
+                $site_name = get_blog_details( $site_id )->blogname;
+
+                $blog_details = get_blog_details( $site_id );
+
+                echo 'Site ID/Name: ' . $site_id . ' / ' . $site_name . '\n';
+
+                echo $blog_details->path;
+
+                $args = array(
+                    'post_type'     => 'post',
+                    'post_status'   => 'publish',
+                    'order'         => 'ASC'
+                );
+
+                $the_query = new WP_Query( $args );
+
+                if ( $the_query->have_posts() ) {
+
+                    while ( $the_query->have_posts() ) {
+                        $the_query->the_post();
+                        
+                        ?>
+                        
+                        <article <?php post_class( 'cp article' ); ?> data-name="Post CP">
+                            <div class="cr post---cr">
+                                <header class="hr post---hr entry-header">
+                                    <div class="hr_cr post---hr_cr">
+        
+                                        <?php
+
+                                        // E: Main Post Title
+                                        $post_title_obj = applicator_htmlok( array(
+                                            'name'      => 'Main Post Title',
+                                            'structure' => array(
+                                                'type'      => 'object',
+                                                'elem'      => 'h1',
+                                                'linked'    => true,
+                                                'layout'    => 'inline',
+                                                'attr'      => array(
+                                                    'a'         => array(
+                                                        'href'      => esc_url( get_permalink() ),
+                                                        'rel'       => 'bookmark',
+                                                        'title'     => get_the_title(),
+                                                    ),
+                                                ),
+                                            ),
+                                            'content'   => array(
+                                                'object'        => get_the_title(),
+                                            ),
+                                            'echo'      => true,
+                                        ) );
+
+                                        ?>
+                                        
+                                    </div>
+                                </header>
+                                <div class="ct post---ct entry-content">
+                                    <div class="ct_cr post---ct_cr">
+                                        
+                                        <?php
+                                        
+                                        if ( has_excerpt() ) {
+                        
+                                            // E: Post Excerpt
+                                            echo $post_excerpt;
+                                        }
+                        
+                                        ?>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </article><!-- Post CP -->
+                        
+                    <?php
+                    }
+                    
+                }
+                wp_reset_postdata();
+
+                restore_current_blog();
+            }
+            return;
         }
         
-        $blog_id = get_object_vars($blog)["blog_id"];
-
-        $description  = get_bloginfo( 'description' );
-        $blog_details = get_blog_details( $blog_id );
         ?>
-        <li class="no-mp">
 
-            <h2 class="no-mp blog_title">
-                <a href="<?php echo $blog_details->path ?>">
-                    <?php echo  $subsite_name ?>
-                </a>
-            </h2>
+    </div>
+</div><!-- Main Content Content -->
 
-            <div class="blog_description">
-                <?php echo $description; ?>
-            </div>
-
-            <?php 
-            query_posts( 'showposts=5' );
-            if ( have_posts() ) {
-                while( have_posts() ) {
-                    the_post();
-                    ?>
-                    <div class="blog_post">
-                        <div class="post_title">
-                            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                        </div>
-                        <div class="post_excerpt">
-                            <?php the_excerpt(); ?>
-                        </div>
-                    </div>
-                <?php } ?>
-            <?php } 
-        
-        
-        
-        
-        
-            restore_current_blog();
-            ?>
-        </li>
-<?php }
-} ?>
-</ul>
-*/
+<?php get_footer();
