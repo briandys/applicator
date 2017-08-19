@@ -32,6 +32,8 @@ else {
         
         if ( function_exists( 'get_sites' ) && class_exists( 'WP_Site_Query' ) ) {
             
+            ob_start();
+            
             $sites = get_sites();
             
             foreach ( $sites as $site ) {
@@ -42,13 +44,15 @@ else {
                 $site_name = get_blog_details( $site_id )->blogname;
 
                 $blog_details = get_blog_details( $site_id );
+                
+                echo '<div class="site">';
 
                 echo '<a href="'. esc_url( $blog_details->path ). '">'. $site_name. '</a>';
 
                 $args = array(
                     'post_type'     => 'post',
                     'post_status'   => 'publish',
-                    'order'         => 'ASC'
+                    'order'         => 'DESC'
                 );
 
                 $the_query = new WP_Query( $args );
@@ -139,9 +143,29 @@ else {
                     
                 }
                 wp_reset_postdata();
+                
+                echo '</div>';
 
                 restore_current_blog();
             }
+            
+            $sites_content = ob_get_contents();
+            
+            ob_end_clean();
+            
+            // Multisite
+            $multisite_cp = applicator_htmlok( array(
+                'name'      => 'Multisite',
+                'structure' => array(
+                    'type'      => 'component',
+                ),
+                'content'   => array(
+                    'component'     => array(
+                        $sites_content,
+                    ),
+                ),
+                'echo'      => true,
+            ) );
             
         }
         
