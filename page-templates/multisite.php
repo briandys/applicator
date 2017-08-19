@@ -142,7 +142,7 @@ else {
 
                 restore_current_blog();
             }
-            return;
+            
         }
         
         else {
