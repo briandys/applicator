@@ -162,6 +162,7 @@
                 
                 // Sub-Post
                 if ( is_page_template( 'page-templates/sub-pages.php' ) ) {
+                    
                     $parent = $post->ID;
                     $args = array(
                         'post_type'     => 'page',
