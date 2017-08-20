@@ -58,7 +58,34 @@ else {
                 $the_query = new WP_Query( $args );
 
                 if ( $the_query->have_posts() ) {
+                    
+                    // OB: Entries Content
+                    ob_start();
+                    while ( $the_query->have_posts() ) {
+                        $the_query->the_post();
 
+                        get_template_part( 'content', 'site-preview' );
+                    }
+                    $entries_ob_content = ob_get_contents();
+                    ob_end_clean();
+                    
+                    // Entries (for posts page)
+                    $entry_entries_cp = applicator_htmlok( array(
+                        'name'      => 'Entries',
+                        'structure' => array(
+                            'type'      => 'component',
+                        ),
+                        'hr_content'    => applicator_func_page_nav(),
+                        'content'   => array(
+                            'component'     => array(
+                                $entries_ob_content,
+                            ),
+                        ),
+                        'fr_content'    => applicator_func_page_nav(),
+                    ) );
+
+                    
+                    /*
                     while ( $the_query->have_posts() ) {
                         $the_query->the_post();
                         
@@ -138,11 +165,47 @@ else {
                             </div>
                         </article><!-- Post CP -->
                         
+                        
+                        
                     <?php
                     }
+                    */
                     
                 }
                 wp_reset_postdata();
+                
+                // Entry Module
+                $entry_module_cp = applicator_htmlok( array(
+                    'name'      => 'Entry',
+                    'structure' => array(
+                        'type'      => 'component',
+                        'subtype'   => 'module',
+                    ),
+                    'content'   => array(
+                        'component'     => $entry_entries_cp,
+                    ),
+                ) );
+
+
+                // Primary Content
+                $primary_content = applicator_htmlok( array(
+                    'name'      => 'Primary Content',
+                    'structure' => array(
+                        'type'      => 'constructor',
+                        'elem'      => 'main',
+                    ),
+                    'id'        => 'main',
+                    'css'       => 'pri-content',
+                    'root_css'  => 'site-main',
+                    'content'   => array(
+                        'constructor'   => $entry_module_cp,
+                    ),
+                    'echo'      => true,
+                ) );
+
+
+                // Secondary Content
+                get_sidebar();
                 
                 echo '</div>';
 
