@@ -32,8 +32,6 @@ else {
         
         if ( function_exists( 'get_sites' ) && class_exists( 'WP_Site_Query' ) ) {
             
-            ob_start();
-            
             $sites = get_sites();
             
             foreach ( $sites as $site ) {
@@ -41,13 +39,16 @@ else {
                 switch_to_blog( $site->blog_id );
 
                 $site_id = get_object_vars($site)['blog_id'];
-                $site_name = get_blog_details( $site_id )->blogname;
+                $site_details = get_blog_details( $site_id );
+                
+                $site_name = $site_details->blogname;
+                $site_path = $site_details->path;
 
-                $blog_details = get_blog_details( $site_id );
+                
                 
                 echo '<div class="site">';
 
-                echo '<a href="'. esc_url( $blog_details->path ). '">'. $site_name. '</a>';
+                echo '<a href="'. esc_url( $site_path ). '">'. $site_name. '</a>';
 
                 $args = array(
                     'post_type'     => 'post',
@@ -84,6 +85,12 @@ else {
                     
                 }
                 wp_reset_postdata();
+
+
+                // Secondary Content
+                get_sidebar();
+                
+                echo '</div>';
                 
                 // Entry Module
                 $entry_module_cp = applicator_htmlok( array(
@@ -95,41 +102,48 @@ else {
                     'content'   => array(
                         'component'     => $entry_entries_cp,
                     ),
-                    'echo'      => true,
                 ) );
 
 
-                // Secondary Content
-                get_sidebar();
-                
-                echo '</div>';
+                // Primary Content
+                $primary_content = applicator_htmlok( array(
+                    'name'      => 'Primary Content',
+                    'structure' => array(
+                        'type'      => 'constructor',
+                        'elem'      => 'main',
+                    ),
+                    'id'        => 'main',
+                    'css'       => 'pri-content',
+                    'root_css'  => 'site-main',
+                    'content'   => array(
+                        'constructor'   => $entry_module_cp,
+                    ),
+                ) );
 
                 restore_current_blog();
             }
             
-            $sites_content = ob_get_contents();
-            
-            ob_end_clean();
-            
-            // Multisite
-            $multisite_cp = applicator_htmlok( array(
-                'name'      => 'Multisite',
-                'structure' => array(
-                    'type'      => 'component',
-                ),
-                'content'   => array(
-                    'component'     => array(
-                        $sites_content,
-                    ),
-                ),
-                'echo'      => true,
-            ) );
+            $sites_preview_content = 'With Multisite';
             
         }
         
         else {
-            echo 'No Multisite';
+            $sites_preview_content = 'No Multisite';
         }
+        
+        // Multisite
+        $multisite_cp = applicator_htmlok( array(
+            'name'      => 'Multisite',
+            'structure' => array(
+                'type'      => 'component',
+            ),
+            'content'   => array(
+                'component'     => array(
+                    $sites_preview_content,
+                ),
+            ),
+            'echo'      => true,
+        ) );
         
         ?>
 
