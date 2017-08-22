@@ -1,5 +1,5 @@
 
-/*------------------ Visually Hide ------------------*/
+/*------------------ Visually Hidden ------------------*/
 .entry---hr .entry-nav,
 .entries---hr .page-nav,
 
@@ -78,7 +78,9 @@
 .post-header-aside .comment-creation-ability,
 
 .comments-population--empty--zero .comments-population
-{position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;}
+{
+    position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
+}
 
 
 
@@ -1372,8 +1374,6 @@
     box-sizing: border-box;
     padding-left: 0;
     padding-right: 0;
-    
-    max-width: 100vw;
 }
 
 .edit-post-axn
@@ -1386,9 +1386,6 @@
 {
     padding-left: 0;
     padding-right: 0;
-    
-    max-width: 100vw;
-    overflow-x: auto;
 }
 
 .post-content table

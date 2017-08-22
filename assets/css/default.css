@@ -1,53 +1,43 @@
-/*
-• Legend
-cn: constructor
-cp: component
-hr: header
-cr: container
-ct: content
-fr: footer
-
-• Hide headings, labels 
-• Reset lists
-• Include Theme Check required styles
-• Image width limit
-*/
-
-
-
-
-/* ------------------------- Visually Hidden Headings ------------------------- */
-.applicator-theme--default .main-nav--h,
-.applicator-theme--default .search--h,
-.applicator-theme--default .nav--h,
-.applicator-theme--default .comments--h,
-
-.applicator-theme--default .axns--h,
-.applicator-theme--default .comment-respond--h,
-.applicator-theme--default .post-navigation h2.screen-reader-text
+/*------------------ Visually Hidden ------------------*/
+.go-ct-nav---h,
+.wbp-main-info---h,
+.search-term-crt---h,
+.search-term-crt-search-flabel,
+.search-form-axns---h,
+.main-hr-aside---h,
+.entry-md---h,
+.entries---h,
+.entry---h,
+.post-hr-as-aside---h,
+.post-meta---h,
+.post-pub-mod---h,
+.post-pub---h,
+.post-pub-d-t-stamp---h,
+.post-mod---h,
+.post-mod-d-t-stamp---h,
+.published-post-author---h,
+.post-author---h,
+.post-categories---h,
+.categories---h,
+.post-tags---h,
+.tags---h,
+.comments-axns-snip---h,
+.comments-population---h,
+.comment-crt-ability---h,
+.post-content---h,
+.go-start-nav---h,
+.comment-md---h,
+.comment-hr-as-aside---h,
+.comment-meta---h,
+.comment-pub---h,
+.comment-pub-d-t-stamp---h,
+.published-com-commenter---h,
+.commenter---h,
+.comment-crt-hd---h,
+.signed-in-acct---h,
+.post-excerpt---h
 {
-    
-    display: inline-block;
-    padding: .25rem .75rem;
-    vertical-align: middle;
-    
-    background-color: black;
-    color: white;
-    
-    text-transform: uppercase;
-    
-    letter-spacing: .125rem;
-    word-spacing: .25rem;
-    
-    font-weight: normal;
-    font-size: .75rem;
-}
-
-.applicator-theme--default .axns--h
-{
-    padding: .125rem .5rem;
-    background-color: red;
-    font-size: .5rem;
+    position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
 
 
@@ -65,7 +55,8 @@ fr: footer
 
 
 
-/* ------------------------- Clearfix */
+/*------------------ Clearfix ------------------*/
+/* Due to floating images */
 .clearfix:before,
 .clearfix:after,
 
@@ -85,29 +76,20 @@ fr: footer
 
 
 
-
-
-
-
-
-
-/* ------------------------- WordPress Required Selectors */
+/*------------------ WordPress Required Selectors ------------------*/
+/* To pass WP Theme Check */
 .wp-caption-text,
 .sticky,
 .screen-reader-text,
 .gallery-caption,
 .bypostauthor
-{
-
-}
+{}
 
 
-/*------------ Resets */
-figure
-{
-    margin: 0;
-}
 
+
+
+/*------------------ Resets ------------------*/
 abbr[title]
 {
     text-decoration: none;
@@ -118,10 +100,6 @@ abbr[title]:hover
     border-bottom: 0;
 }
 
-
-
-
-
 label[for]:hover
 {
     cursor: pointer;
@@ -131,25 +109,31 @@ label[for]:hover
 
 
 
-/* ------------------------- Responsive Media */
-/* Images */
-img
+/*------------------ Responsive Media ------------------*/
+.post-content img,
+.post-banner-visual img
 {
-    box-sizing: border-box;
-    
     width: 100%;
-    max-width: 100%;
+    max-width: 100vw;
     height: auto;
 }
 
-/* Videos */
-iframe
+.post-content figure
+{
+    margin: 0;
+}
+
+.post-content iframe
 {
     max-width: 100%;
 }
 
 /* Text */
-.post-content
+.post-content,
+.main-post-title---a_l,
+.author-name---a_l,
+.commenter-name---a_l,
+.post-title---txt
 {
     word-break: break-word;
 }
@@ -162,26 +146,8 @@ iframe
 
 
 
-/* ------------------------- WordPress Image Alignments */
-.alignleft,
-.alignright
-{
-    display: inline;
-}
 
-.aligncenter
-{
-    clear: both;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-
-
-
-/* ------------------------- Media Banner */
+/*------------------ Media Banner ------------------*/
 .web-product-main-media-banner
 {
     padding-bottom: calc( var( --aspect-ratio--16-9 ) );
@@ -218,7 +184,7 @@ iframe
 
 
 
-/* ------------------------- Enhancements */
+/*------------------ Others ------------------*/
 .icon--vector,
 .icon--raster
 {
@@ -230,12 +196,6 @@ iframe
     fill: currentColor;
 }
 
-.main-post-title---a_l,
-.post-title---txt
-{
-    word-break: break-word;
-}
-
 .svg .icon--raster,
 .no-svg .icon--vector
 {
@@ -244,7 +204,7 @@ iframe
 
 .main-content
 {
-    display: flex; /* Contains margins of nested elements to bleed out of the container. */
+    display: flex; /* Prevents margins of nested elements to bleed out of the container. */
 }
 
 .main-content---cr
@@ -256,9 +216,25 @@ iframe
 
 
 
-/* ------------------------- Viewport Width: 560 */
+/*------------------ Content Formatting ------------------*/
+.post-content---ct_cr > .content--pre
+{
+    max-width: 100vw;
+}
 
-@media only screen and (min-width: 35em)
+.post-content---ct_cr > .content--table
+{
+    max-width: 100vw;
+    overflow-x: auto;
+}
+
+
+
+
+
+/*------------------ Viewport Width: 560 ------------------*/
+
+@media only screen and ( min-width: 35em )
 {
 
     .post-content---ct_cr > .alignleft
@@ -282,3 +258,21 @@ iframe
         padding-bottom: calc( var( --aspect-ratio--16-9 ) / 3 );
 
     }
+
+}
+
+/*------------------ WordPress Image Alignments ------------------
+.alignleft,
+.alignright
+{
+    display: inline;
+}
+
+.aligncenter
+{
+    clear: both;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+*/

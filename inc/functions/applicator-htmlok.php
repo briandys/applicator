@@ -129,7 +129,7 @@ function applicator_htmlok( $args = array() ) {
     $obj_elem = 'div';
     $subtype_elem = 'div';
     $layout_elem = 'div';
-    $obj_label_elem = $layout_elem;
+    $obj_label_elem = 'span';
     $obj_elem_css = 'g';
     $txt_layout_elem = 'span';
     
@@ -439,7 +439,6 @@ function applicator_htmlok( $args = array() ) {
                 $subtype_elem = $layout_elem;
                 $obj_elem = $layout_elem;
 
-                $obj_label_elem = $layout_elem;
                 $txt_layout_elem = $layout_elem;
 
             }
@@ -551,11 +550,8 @@ function applicator_htmlok( $args = array() ) {
                 $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
                 
-                //$layout_elem = 'div';
-                
                 $subtype_elem = $layout_elem;
                 $obj_elem = $layout_elem;
-                $obj_label_elem = $layout_elem;
                 $txt_layout_elem = $layout_elem;
                 
             }

@@ -287,9 +287,9 @@ if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
         $main_content_heading_obj = applicator_htmlok( array(
                 'name'      => 'Main Content',
                 'structure' => array(
-                    'type'          => 'object',
-                    'subtype'       => 'heading',
-                    'elem'          => 'h2'
+                    'type'      => 'object',
+                    'subtype'   => 'heading',
+                    'elem'      => 'h2',
                 ),
                 'content'   => array(
                     'object'        => array(
