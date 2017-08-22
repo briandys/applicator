@@ -181,6 +181,21 @@ iframe
 
 
 
+/* ------------------------- Media Banner */
+.web-product-main-media-banner
+{
+    padding-bottom: calc( var( --aspect-ratio--16-9 ) );
+    
+    width: 100%;
+    height: 0;
+    
+    overflow: hidden;
+}
+
+
+
+
+
 /* ------------------------- Image Captions */
 .wp-caption
 {
@@ -262,4 +277,8 @@ iframe
         margin-bottom: 1rem;
     }
     
-}
+    .web-product-main-media-banner
+    {
+        padding-bottom: calc( var( --aspect-ratio--16-9 ) / 3 );
+
+    }

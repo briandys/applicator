@@ -62,4 +62,8 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
     --content-gutter--sm: 1rem;
     --content-gutter--md: 2rem;
     --content-gutter--lg: 4rem;
+    
+    /* Aspect Ratio */
+    --aspect-ratio--16-9: calc( ( ( 9 / 16 ) * 100% ) );
+    --aspect-ratio--4-3: calc( ( ( 3 / 4 ) * 100% ) );
 }
