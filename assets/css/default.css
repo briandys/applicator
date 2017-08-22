@@ -5,6 +5,9 @@
 .search-term-crt-search-flabel,
 .search-form-axns---h,
 .main-hr-aside---h,
+.main-ct-hr-aside---h,
+.main-ct-aside---h,
+.main-fr-aside---h,
 .entry-md---h,
 .entries---h,
 .entry---h,
@@ -35,7 +38,9 @@
 .commenter---h,
 .comment-crt-hd---h,
 .signed-in-acct---h,
-.post-excerpt---h
+.post-excerpt---h,
+.sub-post-content---h,
+.search---h
 {
     position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -116,6 +121,11 @@ label[for]:hover
     width: 100%;
     max-width: 100vw;
     height: auto;
+}
+
+.post-banner-vis---g
+{
+    background-image: none !important;
 }
 
 .post-content figure

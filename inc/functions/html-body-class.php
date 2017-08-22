@@ -10,10 +10,6 @@ if ( ! function_exists( 'applicator_func_html_class' ) ) {
         $is_ipad = preg_match('/ipad/i',$useragent);
         
         
-        // Default
-        echo ' ' . 'applicator-theme--default';
-
-        
         // View
         if ( is_front_page() ) {
         // if ( is_front_page() && ! is_home() )
@@ -168,15 +164,15 @@ if ( ! function_exists( 'applicator_func_html_class' ) ) {
         }
 
         if ( 'blank' === get_header_textcolor() ) {
-            echo ' ' . 'wbp-main-name-desc' . $off;
+            echo ' ' . 'wbp-main-name-description' . $off;
         } else {
-            echo ' ' . 'wbp-main-name-desc' . $on;
+            echo ' ' . 'wbp-main-name-description' . $on;
         }
         
         if ( get_bloginfo( 'description', 'display' ) ) {
-            echo ' ' . 'wbp-main-desc--populated';
+            echo ' ' . 'wbp-main-description--populated';
         } else {
-            echo ' ' . 'wbp-main-desc--empty';
+            echo ' ' . 'wbp-main-description--empty';
         }
         
         

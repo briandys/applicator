@@ -10,7 +10,7 @@
                     'name'      => 'Main Post Title',
                     'structure' => array(
                         'type'      => 'object',
-                        'elem'      => 'h1',
+                        'elem'      => 'h2',
                         'linked'    => true,
                         'attr'      => array(
                             'a'         => array(

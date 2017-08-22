@@ -41,6 +41,10 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
     --uhog-green--color: hsl(120, 82%, 38%);
     --uhog-green-dark--color: hsl(120, 82%, 33%);
     
+    /* Dash of Darkness */
+    --dash-of-darkness--color: hsla(0, 0%, 0%, .0325);
+    
+    
     --wbp-pri-color: var(--superhero-blue--color);
     
     --wbp-accent-pri-color: var(--panda-blue--color);

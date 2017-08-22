@@ -1,135 +1,63 @@
-/* Mobile First!!! */
+/*------------------ Visually Hidden ------------------*/
 
-/* ------------------------- Visually Hidden */
-
-/* Heading */
-.wbp-main-info---h,
-
-/* Post Published, Modified */
-.post-pub-mod---h,
-.post-pub---h,
-.post-pub-d-t-stamp---h,
-.post-mod-d-t-stamp---h,
-.post-mod---h,
-
-/* Published Post Author */
-.published-post-author---h,
-.post-author---h,
-
-/* Classifications */
-.post-categories---h,
-.categories---h,
-.post-tags---h,
-.tags---h,
-
-/* Comments */
-.comment-md---h,
-.comment-hr-as-aside---h,
-.comment-meta---h,
-.comments-nav---h,
-.comment-pub-d-t-stamp---h,
-.comment-pub---h,
-.published-comment-commenter---h,
-.commenter---h,
-.comment-crt-hd---h,
-.signed-in-acct---h,
-
-/* Comments Actions Snippet - Component */
-.comments-axns-snip---h,
-.comments-population---h,
-.comment-crt-ability---h,
-
-/* Go to Content Nav */
-.go-ct-nav---h,
-.go-content-nav--inactive,
-
-/* Go to Start Nav */
-.go-start-nav---h,
-.go-start-nav-func .go-to-start---txt,
-
-/* Main Nav - Main Header Aside */
-.main-hr-aside---h,
-.main-nav---h,
-.main-hr-aside---h,
-
-/* Page Nav */
-.page-nav---h,
-
-/* Entry */
-.entries---h,
-.entry---h,
-.entry-md---h,
-.entry-nav---h,
-
-/* Breadcrumbs Nav */
-.breadcrumbs-nav---h,
-
-/* Post */
-.post-hr-as-aside---h,
-.post-meta---h,
-.post-content---h,
-.post-nav---h,
-.post-excerpt---h,
-
-/*  Menu | Main Nav - Main Header Aside */
-.main-menu-ctrl---h,
+/* Main Menu */
 .main-menu-tog---b_l .show-hide---txt,
 
-/* Sub-Nav | Main Nav | Widget > Custom Menu */
-.sub-nav-func .sub-nav-toggle .show-hide---txt,
-
-/* Search */
-.search---h,
-.search-term-crt---h,
-.search-form-axns---h,
-.search-term-creation-label---obj,
-.search-term-crt-search-flabel,
+.sub-nav-tog---b_l .show-hide---txt,
+.main-nav---h,
 
 /* Main Search */
 .main-search-tog---b_l .show-hide---txt,
-.main-search-func .search-submit-axn---b_l .go---txt,
-.main-search-func .search-reset-axn---b_l .reset---txt,
 .main-search-func .search-form-search-axn .go---txt,
 .main-search-func .search-form-reset-axn .reset---txt,
-
-/* Web Product Info */
-.apl--main-search--active .wbp-main-name,
+.apl--main-search--active .web-product-main-name,
 .apl--main-search--active .web-product-main-logo,
-.apl--main-search--active .wbp-main-logo-obj,
-.apl--main-search--active .wbp-main-desc,
-.wbp-main-name-desc--disabled .wbp-main-name,
-.wbp-main-name-desc--disabled .wbp-main-desc,
+.apl--main-search--active .web-product-main-description,
 
-/* Aside */
-.main-ct-hr-aside---h,
-.main-fr-aside---h,
-.main-ct-aside---h,
-
+/* Search */
 .post-content .search-form-reset-axn,
-.aside .search-form-reset-axn
-{position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;}
+.aside .search-form-reset-axn,
 
+/* Go to Start Nav */
+.go-start-nav-func .go-to-start---txt,
 
+/* Go to Content Nav */
+.go-content-nav--inactive,
 
+/* Name and Logo */
+.wbp-main-name-description--disabled .web-product-main-name,
+.wbp-main-name-description--disabled .web-product-main-description,
 
+/* Main Content Heading */
+.blog .main-content-heading---h,
+.single-post .main-content-heading---h,
 
-/* ------------------------- Root */
-.apl--applicator
+/* Nav */
+.page-nav---h,
+.entry-nav---h
 {
-    font-family: 'Noto Sans', sans-serif;
-    text-rendering: geometricPrecision;
-    
-    background-color: #f2f2f2;;
-    background-color: hsla(0, 0%, 0%, .0325);
+    position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
 
 
 
 
 
-/* ------------------------- Highlight */
+/* ------------------------- Root ------------------*/
+.html
+{
+    font-family: sans-serif;
+    text-rendering: geometricPrecision;
+    
+    background-color: var( --dash-of-darkness--color );
+}
+
+
+
+
+
+/* ------------------------- Highlight ------------------*/
 ::-moz-selection {
-    background: #14cc14;
     background: var(--highlight-pri-color);
     color: white;
     
@@ -137,7 +65,6 @@
 }
 
 ::selection {
-    background: #14cc14;
     background: var(--highlight-pri-color);
     color: white;
     
@@ -147,7 +74,7 @@
 
 
 
-/* ------------------------- Forms, Active Objects */
+/* ------------------------- Forms, Active Objects ------------------*/
 .input--text,
 .input--text[type="search"],
 .form--a,
@@ -635,8 +562,8 @@
     position: relative;
 }
 
-.wbp-main-name-desc--enabled.wbp-main-logo--enabled .wbp-main-name,
-.wbp-main-name-desc--enabled.wbp-main-logo--enabled .wbp-main-desc
+.wbp-main-name-description--enabled.wbp-main-logo--enabled .wbp-main-name,
+.wbp-main-name-description--enabled.wbp-main-logo--enabled .wbp-main-desc
 {
     box-sizing: border-box;
     
@@ -711,7 +638,7 @@
     transform: translateY( .25rem );
 }
 
-.wbp-main-desc--empty .wbp-main-name
+.wbp-main-description--empty .wbp-main-name
 {
     align-items: center;
     height: 3rem;
@@ -726,7 +653,7 @@
 }
 
 /*
-.wbp-main-desc--empty .wbp-main-name---a_l
+.wbp-main-description--empty .wbp-main-name---a_l
 {
     display: inline-block;
     
@@ -738,7 +665,7 @@
     vertical-align: middle;
 }
 
-.apl--applicator--main-menu.wbp-main-desc--empty .wbp-main-name---a_l
+.apl--applicator--main-menu.wbp-main-description--empty .wbp-main-name---a_l
 {
     padding-left: 0;
     padding-right: 0;
