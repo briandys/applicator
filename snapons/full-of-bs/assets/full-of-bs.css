@@ -1633,7 +1633,6 @@
 .apl--full-of-bs--theme--content--boxed .comments-actions-snippet,
 .apl--full-of-bs--theme--content--boxed .comment-respond,
 .apl--full-of-bs--theme--content--boxed .main-content---hr,
-.apl--full-of-bs--theme--content--boxed .main-nav,
 .apl--full-of-bs--theme--content--boxed .post-tags
 {
     display: flex;
@@ -1647,7 +1646,6 @@
 .apl--full-of-bs--theme--content--boxed .comment-creation-glabel,
 .apl--full-of-bs--theme--content--boxed .comment-form,
 .apl--full-of-bs--theme--content--boxed .main-content---hr_cr,
-.apl--full-of-bs--theme--content--boxed .main-nav---cr,
 .apl--full-of-bs--theme--content--boxed .post-tags---cr
 {
     width: 100%;
@@ -1709,7 +1707,8 @@
         padding-right: var(--content-gutter--sm);
     }
     
-    .post-content---ct_cr
+    .post-content---ct_cr,
+    .post-excerpt---ct_cr
     {
         padding-top: var(--content-gutter--sm);
         padding-bottom: var(--content-gutter--sm);

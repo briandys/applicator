@@ -1,8 +1,3 @@
-<?php
-
-ob_start();
-?>
-
 <article <?php post_class( 'cp article post post-site-preview' ); ?> data-name="Post CP">
     <div class="cr post---cr">
         <header class="hr post---hr entry-header">
@@ -76,22 +71,3 @@ ob_start();
 
     </div>
 </article><!-- Post CP -->
-
-<?php
-$entry_content = ob_get_contents();
-ob_end_clean();
-
-
-
-
-// Entry
-$entry_entries_cp = applicator_htmlok( array(
-    'name'      => 'Entry',
-    'structure' => array(
-        'type'      => 'component',
-    ),
-    'content'   => array(
-        'component'     => $entry_content,
-    ),
-    'echo'      => true,
-) );
