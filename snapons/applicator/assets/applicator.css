@@ -46,7 +46,6 @@
 /* ------------------------- Root ------------------*/
 .html
 {
-    font-family: sans-serif;
     text-rendering: geometricPrecision;
     
     background-color: var( --dash-of-darkness--color );
@@ -75,8 +74,7 @@
 
 
 /* ------------------------- Forms, Active Objects ------------------*/
-.input--text,
-.input--text[type="search"],
+.input-text,
 .form--a,
 .sub-nav-toggle--a,
 .main-nav--header-aside--menu-toggle--a

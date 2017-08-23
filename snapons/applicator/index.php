@@ -52,7 +52,7 @@ function apl_snapons_applicator_custom_style() {
 <style id="apl-snapons-applicator-style-custom">
     .html
     {
-        font-family: 'Noto Sans';
+        font-family: 'Noto Sans', sans-serif;
     }
 </style>
 <?php }
