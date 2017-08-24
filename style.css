@@ -44,8 +44,9 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
     /* Dash of Darkness */
     --dash-of-darkness--color: hsla(0, 0%, 0%, .0325);
     
-    /* Transparent Gray */
-    --transparent-gray--color: hsla(0, 0%, 0%, .5);
+    /* Transparent Colors */
+    --transparent-black--color: hsla(0, 0%, 0%, .5);
+    --transparent-white--color: hsla(0, 100%, 100%, .5);
     
     
     /* Abstract */
@@ -69,6 +70,8 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
     --gray-max-color: gray;
     --dark-max-color: black;
     
+    --placeholder-reverse-color: var(--transparent-white--color);
+    
     --transition-duration: .125s;
     --transition-easing: ease-in-out;
     
@@ -77,7 +80,7 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
     --pri-fg-reverse-color: var(--light-max-color);
     
     /* Borders */
-    --pri-border-color: var(--transparent-gray--color);
+    --pri-border-color: var(--transparent-black--color);
     
     /* Spacing */
     --corner-radius--sm: .125em;
@@ -85,6 +88,8 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
     --content-gutter--sm: 1rem;
     --content-gutter--md: 2rem;
     --content-gutter--lg: 4rem;
+    
+    --spacing--toggle-allowance: 3rem;
     
     /* Overlays */
     --overlay--light: hsla(0, 100%, 100%, .75);

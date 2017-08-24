@@ -216,6 +216,146 @@
 
 
 
+/*------------------ Main Search - Function ------------------*/
+.main-search-func
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.apl--applicator--main-search.dom--unready .main-header---cr > .search
+{
+    display: none;
+}
+
+.main-search--active
+{
+    width: 100%;
+}
+
+.main-search-func .search---cr
+{
+    position: relative;
+    
+    height: 3rem;
+}
+
+.main-search--inactive .search---ct
+{
+    display: none;
+}
+
+.main-search-func .search-form-axns---ct_cr
+{
+    display: flex;
+}
+
+.main-search-func .search-form-search-axn
+{
+    order: 1;
+}
+
+.main-search-func .main-search-toggle
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.main-search-func .search-form-axns
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.main-search-func .input-text
+{
+    /* Reset */
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    
+    color: white;
+}
+
+.main-search-func .search-term-crt-search---input-text
+{
+    padding-right: calc( var(--spacing--toggle-allowance) * 2 );
+}
+
+.apl--applicator--main-search.apl--applicator--main-menu.main-header-aside--disabled .main-search-func .search-term-crt-search---input-text
+{
+    padding-left: 1rem;
+}
+
+.apl--applicator--main-search.apl--applicator--main-menu.main-header-aside--enabled .main-search--active .search---cr
+{
+    padding-left: var(--spacing--toggle-allowance);
+}
+
+.main-search--active .main-search-toggle
+{
+    padding-right: var(--spacing--toggle-allowance);
+}
+
+.main-search--active.main-search-input--empty .search-form-reset-axn
+{
+    display: none;
+}
+
+.main-search-func .icon
+{
+    pointer-events: none;
+}
+
+.main-search-func .dismiss-icon
+{
+    width: .75rem;
+    height: .75rem;
+}
+
+/* Placeholder Text */
+.main-search-func .search-term-crt-search---input-text::-webkit-input-placeholder
+{
+    color: var(--placeholder-reverse-color);
+}
+
+.main-search-func .search-term-crt-search---input-text::-moz-placeholder
+{
+    color: var(--placeholder-reverse-color);
+}
+
+.main-search-func .search-term-crt-search---input-text:-moz-placeholder
+{
+    color: var(--placeholder-reverse-color);
+}
+
+.main-search-func .search-term-crt-search---input-text:-ms-input-placeholder
+{
+    color: var(--placeholder-reverse-color);
+}
+
+.apl--applicator--main-search .main-header---cr > .apl-search
+{
+    background-color: transparent;
+}
+
+
+
+
+
+/*------------------ Main Search - Style ------------------*/
+.main-header---cr > .search
+{
+    background-color: white;
+}
+
+
+
+
+
 /*------------------ Main Menu - Function ------------------*/
 .apl--applicator--main-menu.dom--unready .main-header-aside
 {
@@ -369,138 +509,7 @@
 
 
 
-/*------------------ Main Search - Function ------------------*/
-.apl--applicator--main-search.dom--unready .main-header---cr > .search
-{
-    display: none;
-}
-
-.main-search-func
-{
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
-.main-search--active
-{
-    width: 100%;
-}
-
-.main-search-func .search---cr
-{
-    position: relative;
-    
-    height: 3rem;
-}
-
-.main-search--inactive .search---ct
-{
-    display: none;
-}
-
-.main-search-func .search-form-axns---ct_cr
-{
-    display: flex;
-}
-
-.main-search-func .search-form-search-axn
-{
-    order: 1;
-}
-
-.main-search-func .main-search-toggle,
-.main-search-func .search-form-axns
-{
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
-.main-search-func .input-text
-{
-    /* Reset */
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    
-    color: white;
-}
-
-.apl--applicator--main-menu.main-header-aside--enabled .main-search-func .search-term-crt-search---input-text,
-.apl--applicator--main-menu.main-header-aside--enabled .main-search-func .search-term-crt-search---input-text
-{
-    padding-left: 0;
-}
-
-.apl--applicator--main-menu.main-header-aside--enabled .main-search--active .search---cr
-{
-    padding-left: 3rem;
-}
-
-.main-search-func .search-term-crt-search---input-text,
-.main-search-func .search-term-crt-search---input-text
-{
-    padding-left: 1rem;
-    padding-right: 6rem;
-}
-
-.main-search--active.main-search-input--empty .search-reset-axn,
-.main-search--active.main-search-input--empty .search-form-reset-axn
-{
-    display: none;
-}
-
-.main-search--active .main-search-toggle
-{
-    padding-right: 3rem;
-}
-
-.main-search-func .dismiss-icon
-{
-    width: .75rem;
-    height: .75rem;
-}
-
-
-
-.main-search-func .icon
-{
-    pointer-events: none;
-}
-
-/* Placeholder Text */
-.main-search-func .search-term-crt-search---input-text::-webkit-input-placeholder
-{
-    color: white;
-    opacity: .5;
-}
-
-.main-search-func .search-term-crt-search---input-text::-moz-placeholder
-{
-    color: white;
-    opacity: .5;
-}
-
-.main-search-func .search-term-crt-search---input-text:-ms-input-placeholder
-{
-    color: white;
-    opacity: .5;
-}
-
-.apl--applicator--main-search .main-search-func .search-term-crt-search---input-text:-moz-placeholder
-{
-    color: white;
-    opacity: .5;
-}
-
-
-
-
-
-/* ------------------------- Sub-Navigation - Function */
-
-/* Initialize */
+/*------------------ Sub-Navigation - Function ------------------*/
 .apl--applicator--sub-nav.dom--unready .main-nav .children,
 .apl--applicator--sub-nav.dom--unready .main-nav .sub-menu,
 .apl--applicator--sub-nav.dom--unready .widget_nav_menu .sub-menu,
@@ -512,7 +521,7 @@
 .apl--applicator--sub-nav .page_item_has_children > a,
 .apl--applicator--sub-nav .menu-item-has-children > a
 {
-    padding-right: 3rem;
+    padding-right: var(--spacing--toggle-allowance);
 }
 
 .sub-nav-func .page_item_has_children,
@@ -558,8 +567,7 @@
     display: none;
 }
 
-/* ------------------------- Sub-Navigation - Style */
-
+/*------------------ Sub-Navigation - Style ------------------*/
 .main-nav ul,
 .widget_nav_menu ul,
 .widget_pages ul
@@ -611,31 +619,7 @@
 
 
 
-/* ------------------------- Widget Search ------------------------- */
-.widget_search .search-term--input--text,
-.commenter-comment--input--text
-{
-    border: 1px solid black;
-    border-color: hsla(0, 0%, 0%, .5);
-}
 
-
-.widget_search .search-form-submit--a-l,
-.widget_search .search-form-reset--a-l,
-.comment-submit--a
-{
-    color: white;
-}
-
-.widget_search .search-term--input--text,
-.widget_search .search-form-submit--a-l,
-.widget_search .search-form-reset--a-l,
-
-.commenter-comment--input--text,
-.comment-submit--a
-{
-    border-radius: .125rem;
-}
 
 /* ------------------------- Input Text Padding ------------------------- */
 .commenter-comment--input--text
@@ -1419,27 +1403,6 @@
 
 
 
-/* ------------------------- Search - Style > Nature */
-
-
-
-
-
-
-/* X */
-.search-term-creation-label---obj,
-.search-term-creation-input---obj,
-
-.search-term-crt-search-flabel
-{
-    display: block;
-}
-
-
-
-
-
-/* ------------------------- Form Elements - Style > Decorations */
 
 
 
@@ -1447,25 +1410,8 @@
 
 
 
-.apl-search .search-reset-axn---b_l
-{
-    border: 2px solid black;
-    border-color: hsla(0, 0%, 0%, .25);
-    
-    color: black;
-    color: hsla(0, 0%, 0%, .5);
-}
 
 
-.main-header---cr > .apl-search
-{
-    background-color: white;
-}
-
-.apl--applicator--main-search .main-header---cr > .apl-search
-{
-    background-color: transparent;
-}
 
 
 
