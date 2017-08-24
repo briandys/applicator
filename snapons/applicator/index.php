@@ -19,8 +19,8 @@ if ( ! function_exists( 'apl_applicator_func_class' ) ) {
         echo ' ' . $snapon_name . '--' . 'main-search';
         echo ' ' . $snapon_name . '--' . 'main-menu';
         
-        echo ' ' . $snapon_name . '--' . 'sub-nav';
         echo ' ' . $snapon_name . '--' . 'easy-access-nav';
+        echo ' ' . $snapon_name . '--' . 'sub-nav';
         
         echo ' ' . $snapon_name . '--' . 'go-start-nav';
         

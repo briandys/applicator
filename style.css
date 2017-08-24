@@ -82,6 +82,9 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
     /* Borders */
     --pri-border-color: var(--transparent-black--color);
     
+    /* Dimensions */
+    --elem-dimension--md: 3rem;
+    
     /* Spacing */
     --corner-radius--sm: .125em;
     
@@ -89,7 +92,13 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
     --content-gutter--md: 2rem;
     --content-gutter--lg: 4rem;
     
-    --spacing--toggle-allowance: 3rem;
+    --spacing--toggle-allowance: var(--elem-dimension--md);
+    
+    /* Main Nav */
+    --main-nav-bg-color: var(--light-max-color);
+    
+    /* Copyright */
+    --copyright-info-fg-color: var(--transparent-black--color);
     
     /* Overlays */
     --overlay--light: hsla(0, 100%, 100%, .75);
@@ -98,4 +107,8 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
     /* Aspect Ratio */
     --aspect-ratio--16-9: calc( ( ( 9 / 16 ) * 100% ) );
     --aspect-ratio--4-3: calc( ( ( 3 / 4 ) * 100% ) );
+    
+    /* Main Menu */
+    --main-menu-func--height: 100%;
+    --main-menu-func--max-width: 30rem;
 }
