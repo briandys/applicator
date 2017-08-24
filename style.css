@@ -86,6 +86,10 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
     --content-gutter--md: 2rem;
     --content-gutter--lg: 4rem;
     
+    /* Overlays */
+    --overlay--light: hsla(0, 100%, 100%, .75);
+    --overlay--dark: hsla(0, 0%, 0%, .75);
+    
     /* Aspect Ratio */
     --aspect-ratio--16-9: calc( ( ( 9 / 16 ) * 100% ) );
     --aspect-ratio--4-3: calc( ( ( 3 / 4 ) * 100% ) );

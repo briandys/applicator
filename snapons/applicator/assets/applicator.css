@@ -148,6 +148,468 @@
 
 
 
+/*------------------ Go to Content Nav - Function ------------------*/
+.apl--applicator--go-content-nav.dom--unready .go-content-nav
+{
+    display: none;
+}
+
+.go-content-nav-func
+{
+    position: fixed;
+    left: 0;
+    top: 0;
+    
+    width: 100%;
+    height: 100%;
+    
+    /* Overlay */
+    background-color: var(--overlay--light);
+}
+
+.go-content-nav-func .go-ct-nav---ct
+{
+    height: 100%;
+}
+
+.go-content-nav-func .go-to-content-navi
+{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    
+    transform: translate( -50%, -50%);
+}
+
+.go-content-nav--inactive
+{
+    background-color: transparent;
+    
+    opacity: 0;
+    z-index: -1;
+}
+
+.go-content-nav--active
+{
+    opacity: 1;
+    z-index: 99;
+}
+
+/*------------------ Go to Content Nav - Style ------------------*/
+.go-ct-navi---a
+{
+    color: var(--pri-fg-reverse-color);
+    
+    text-decoration: none;
+}
+
+.go-ct-navi---a_l
+{
+    padding: .5em 1em;
+    
+    min-width: 10rem;
+    
+    background-color: var(--pri-bg-reverse-color);
+}
+
+
+
+
+
+/*------------------ Main Menu - Function ------------------*/
+.apl--applicator--main-menu.dom--unready .main-header-aside
+{
+    display: none;
+}
+
+.main-menu-func
+{
+    /* Variables */
+    --main-menu-func--height: 100%;
+    --main-menu-func--max-width: 30rem;
+    
+    height: var(--main-menu-func--height);
+}
+
+.main-menu--active
+{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    
+    width: 100%;
+    
+    background-color: var(--overlay--dark);
+    
+    cursor: pointer;
+    
+    -webkit-tap-highlight-color: transparent;
+}
+
+.main-menu-func .main-hr-aside---cr
+{
+    height: var(--main-menu-func--height);
+}
+
+.main-menu-func .main-hr-aside---ct
+{
+    box-sizing: border-box;
+    
+    position: relative;
+    
+    margin-right: 3rem;
+    padding-top: 3rem;
+    
+    width: auto;
+    max-width: var(--main-menu-func--max-width);
+    height: var(--main-menu-func--height);
+    
+    background-color: white;
+    
+    cursor: initial;
+}
+
+.main-menu--inactive .main-hr-aside---ct
+{
+    display: none;
+}
+
+.main-menu-func .main-menu-toggle
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.main-menu--active .main-menu-toggle
+{
+    width: calc( 100% - 3rem );
+    max-width: var(--main-menu-func--max-width);
+}
+
+.main-menu--active .main-menu-toggle::before
+{
+    content: '';
+    position: absolute;
+    
+    left: 0;
+    top: 0;
+    
+    width: 100%;
+    height: 3rem;
+    
+    background-color: white;
+    
+    cursor: initial;
+}
+
+.main-menu-func .main-hr-aside---ct_cr
+{
+    box-sizing: border-box;
+    
+    height: var(--main-menu-func--height);
+    
+    overflow-y: auto;
+}
+
+.main-menu-func .main-hr-aside---ct_cr::before
+{
+    /* Shadow Gradient */
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 0;
+    
+    width: .5rem;
+    height: var(--main-menu-func--height);
+    
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.25+0,0+100 */
+    background: -moz-linear-gradient(left, hsla(0,0%,0%,0.25) 0%, hsla(0,0%,0%,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+}
+
+.main-menu-tog---b
+{
+    width: initial;
+}
+
+.main-menu--active .main-menu-tog---b
+{
+    position: relative;
+    z-index: 1;
+}
+
+.main-menu--active .main-menu-tog---b_l
+{
+    color: black;
+}
+
+.main-menu-toggle .icon
+{
+    pointer-events: none;
+}
+
+.main-menu-toggle .dismiss-icon
+{
+    width: .75rem;
+    height: .75rem;
+}
+
+/*------------------ Main Menu - Style ------------------*/
+.main-hr-aside---ct_cr
+{
+    background-color: white;
+}
+
+
+
+
+
+/*------------------ Main Search - Function ------------------*/
+.apl--applicator--main-search.dom--unready .main-header---cr > .search
+{
+    display: none;
+}
+
+.main-search-func
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.main-search--active
+{
+    width: 100%;
+}
+
+.main-search-func .search---cr
+{
+    position: relative;
+    
+    height: 3rem;
+}
+
+.main-search--inactive .search---ct
+{
+    display: none;
+}
+
+.main-search-func .search-form-axns---ct_cr
+{
+    display: flex;
+}
+
+.main-search-func .search-form-search-axn
+{
+    order: 1;
+}
+
+.main-search-func .main-search-toggle,
+.main-search-func .search-form-axns
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.main-search-func .input-text
+{
+    /* Reset */
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    
+    color: white;
+}
+
+.apl--applicator--main-menu.main-header-aside--enabled .main-search-func .search-term-crt-search---input-text,
+.apl--applicator--main-menu.main-header-aside--enabled .main-search-func .search-term-crt-search---input-text
+{
+    padding-left: 0;
+}
+
+.apl--applicator--main-menu.main-header-aside--enabled .main-search--active .search---cr
+{
+    padding-left: 3rem;
+}
+
+.main-search-func .search-term-crt-search---input-text,
+.main-search-func .search-term-crt-search---input-text
+{
+    padding-left: 1rem;
+    padding-right: 6rem;
+}
+
+.main-search--active.main-search-input--empty .search-reset-axn,
+.main-search--active.main-search-input--empty .search-form-reset-axn
+{
+    display: none;
+}
+
+.main-search--active .main-search-toggle
+{
+    padding-right: 3rem;
+}
+
+.main-search-func .dismiss-icon
+{
+    width: .75rem;
+    height: .75rem;
+}
+
+
+
+.main-search-func .icon
+{
+    pointer-events: none;
+}
+
+/* Placeholder Text */
+.main-search-func .search-term-crt-search---input-text::-webkit-input-placeholder
+{
+    color: white;
+    opacity: .5;
+}
+
+.main-search-func .search-term-crt-search---input-text::-moz-placeholder
+{
+    color: white;
+    opacity: .5;
+}
+
+.main-search-func .search-term-crt-search---input-text:-ms-input-placeholder
+{
+    color: white;
+    opacity: .5;
+}
+
+.apl--applicator--main-search .main-search-func .search-term-crt-search---input-text:-moz-placeholder
+{
+    color: white;
+    opacity: .5;
+}
+
+
+
+
+
+/* ------------------------- Sub-Navigation - Function */
+
+/* Initialize */
+.apl--applicator--sub-nav.dom--unready .main-nav .children,
+.apl--applicator--sub-nav.dom--unready .main-nav .sub-menu,
+.apl--applicator--sub-nav.dom--unready .widget_nav_menu .sub-menu,
+.apl--applicator--sub-nav.dom--unready .widget_pages .children
+{
+    display: none;
+}
+
+.apl--applicator--sub-nav .page_item_has_children > a,
+.apl--applicator--sub-nav .menu-item-has-children > a
+{
+    padding-right: 3rem;
+}
+
+.sub-nav-func .page_item_has_children,
+.sub-nav-func .menu-item-has-children
+{
+    position: relative;
+}
+
+.sub-nav-func .sub-nav-toggle
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.sub-nav-func a,
+.sub-nav-func .main-navi---a_l
+{
+    display: flex;
+}
+
+.sub-nav-toggle .icon
+{
+    pointer-events: none;
+}
+
+.sub-nav-func .sub-nav-toggle .arrow-icon
+{
+    width: .75rem;
+    height: .75rem;
+    
+    transition: transform 0.2s ease-in-out;
+}
+
+.sub-nav--active > .sub-nav-toggle .arrow-icon
+{
+    transform: rotate( 180deg );
+}
+
+.sub-nav--inactive > .children,
+.sub-nav--inactive > .sub-menu
+{
+    display: none;
+}
+
+/* ------------------------- Sub-Navigation - Style */
+
+.main-nav ul,
+.widget_nav_menu ul,
+.widget_pages ul
+{
+    /* Reset */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav a,
+.main-navi---a_l,
+.widget_nav_menu a,
+.widget_pages a
+{
+    box-sizing: border-box;
+    
+    display: inline-flex;
+    align-items: center;
+    
+    min-width: 3rem;
+    min-height: 3rem;
+}
+
+.main-nav a,
+.widget_nav_menu a,
+.widget_pages a
+{   
+    padding-left: 1rem;
+    padding-right: 1rem;
+    
+    text-decoration: none;
+}
+
+.page_item_has_children > .children > .page_item,
+.menu-item-has-children > .sub-menu > .menu-item
+{
+    padding-left: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 /* ------------------------- Widget Search ------------------------- */
 .widget_search .search-term--input--text,
@@ -249,7 +711,7 @@
 /* ------------------------- Color Scheme ------------------------- */
 
 
-.main-search-func .main-search-toggle--a,
+
 .main-search-func .search-form-submit--a,
 .main-search-func .search-form-reset--a,
 .main-search-func .search-term--input--text,
@@ -805,69 +1267,7 @@
 
 
 
-/* ------------------------- Go to Content Nav - Function */
-.dom--unready .go-content-nav
-{
-    display: none;
-}
 
-.go-content-nav-func
-{
-    position: fixed;
-    left: 0;
-    top: 0;
-    
-    width: 100%;
-    height: 100%;
-    
-    background-color: hsla(0, 100%, 100%, .75);
-}
-
-.go-content-nav-func .go-ct-nav---ct
-{
-    height: 100%;
-}
-
-.go-content-nav-func .go-to-content-navi
-{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate( -50%, -50%);
-}
-
-.go-content-nav--inactive
-{
-    background-color: transparent;
-    
-    opacity: 0;
-    z-index: -1;
-}
-
-.go-content-nav--active
-{
-    opacity: 1;
-    z-index: 99;
-}
-
-
-
-/* ------------------------- Go to Content Nav - Style */
-.go-ct-navi---a
-{
-    color: var(--pri-fg-reverse-color);
-    
-    text-decoration: none;
-}
-
-.go-ct-navi---a_l
-{
-    padding: .5em 1em;
-    
-    min-width: 10rem;
-    
-    background-color: var(--pri-bg-reverse-color);
-}
 
 
 
@@ -927,11 +1327,7 @@
 
 
 
-/* ------------------------- Main Menu - Style */
-.main-hr-aside---ct_cr
-{
-    background-color: white;
-}
+
 
 
 /* ------------------------- Raster Icons */
@@ -978,148 +1374,7 @@
 
 
 
-/* ------------------------- Main Menu - Function */
 
-.apl--applicator--main-menu.dom--unready .main-header-aside
-{
-    display: none;
-}
-
-.main-menu--active
-{
-    -webkit-tap-highlight-color: transparent;
-}
-
-.main-menu-func,
-.main-menu-func .main-hr-aside---cr,
-.main-menu-func .main-hr-aside---ct,
-.main-menu-func .main-hr-aside---ct_cr
-{
-    height: 100%;
-}
-
-.main-menu-func .main-hr-aside---ct
-{
-    box-sizing: border-box;
-    
-    position: relative;
-    
-    margin-right: 3rem;
-    padding-top: 3rem;
-    
-    width: auto;
-    
-    background-color: white;
-    
-    cursor: initial;
-}
-
-.main-menu-func .main-hr-aside---ct,
-.main-menu--active .main-menu-toggle
-{
-    max-width: 30rem;
-}
-
-.main-menu-func .main-hr-aside---ct_cr
-{
-    box-sizing: border-box;
-    
-    overflow-y: auto;
-}
-
-.main-menu-func .main-menu-toggle
-{
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 1;
-}
-
-.main-menu--inactive .main-hr-aside---ct
-{
-    display: none;
-}
-
-.main-menu--active
-{
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 99;
-    
-    width: 100%;
-    
-    background-color: black;
-    background-color: hsla(0, 0%, 0%, .75);
-    
-    cursor: pointer;
-}
-
-.main-menu--active .main-menu-toggle
-{
-    width: calc( 100% - 3rem );
-}
-
-.main-menu--active .main-menu-toggle::before
-{
-    content: '';
-    position: absolute;
-    
-    left: 0;
-    top: 0;
-    
-    width: 100%;
-    height: 3rem;
-    
-    background-color: white;
-    
-    cursor: initial;
-}
-
-.main-menu-tog---b
-{
-    width: initial;
-}
-
-.main-menu--active .main-menu-tog---b_l
-{
-    color: black;
-}
-
-/* Shadow Gradient */
-.main-menu-func .main-hr-aside---ct_cr::before
-{
-    content: '';
-    position: absolute;
-    left: 100%;
-    top: 0;
-    
-    width: .5rem;
-    height: 100%;
-    
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.25+0,0+100 */
-    background: -moz-linear-gradient(left, hsla(0,0%,0%,0.25) 0%, hsla(0,0%,0%,0) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
-}
-
-.main-menu-toggle .icon
-{
-    pointer-events: none;
-}
-
-.main-menu-toggle .dismiss-icon
-{
-    width: .75rem;
-    height: .75rem;
-}
-
-.main-menu--active .main-menu-tog---b
-{
-    position: relative;
-    z-index: 1;
-}
 
 
 
@@ -1217,255 +1472,13 @@
 
 
 
-/* ------------------------- Main Search - Functionality */
-
-.apl--applicator--main-search.dom--unready .main-header---cr > .apl-search
-{
-    display: none;
-}
-
-.main-search-func
-{
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
-.main-search--active
-{
-    width: 100%;
-}
-
-.main-search-func .search---cr
-{
-    position: relative;
-    
-    height: 3rem;
-}
-
-.main-search--inactive .search---ct
-{
-    display: none;
-}
-
-.main-search-func .search-form-axns---ct_cr
-{
-    display: flex;
-}
-
-.main-search-func .search-submit-axn,
-.main-search-func .search-form-search-axn
-{
-    order: 1;
-}
-
-.main-search-func .main-search-toggle,
-.main-search-func .search-form-axns
-{
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
-.main-search-func .input-text
-{
-    /* Reset */
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    
-    color: white;
-}
-
-.apl--applicator--main-menu.main-header-aside--enabled .main-search-func .search-term-crt-search---input-text,
-.apl--applicator--main-menu.main-header-aside--enabled .main-search-func .search-term-crt-search---input-text
-{
-    padding-left: 0;
-}
-
-.apl--applicator--main-menu.main-header-aside--enabled .main-search--active .search---cr
-{
-    padding-left: 3rem;
-}
-
-.main-search-func .search-term-crt-search---input-text,
-.main-search-func .search-term-crt-search---input-text
-{
-    padding-left: 1rem;
-    padding-right: 6rem;
-}
-
-.main-search--active.main-search-input--empty .search-reset-axn,
-.main-search--active.main-search-input--empty .search-form-reset-axn
-{
-    display: none;
-}
-
-.main-search--active .main-search-toggle
-{
-    padding-right: 3rem;
-}
-
-.main-search-func .dismiss-icon
-{
-    width: .75rem;
-    height: .75rem;
-}
-
-
-
-.main-search-func .icon
-{
-    pointer-events: none;
-}
-
-/* Placeholder Text */
-.main-search-func .search-term-crt-search---input-text::-webkit-input-placeholder
-{
-    color: white;
-    opacity: .5;
-}
-
-.main-search-func .search-term-crt-search---input-text::-moz-placeholder
-{
-    color: white;
-    opacity: .5;
-}
-
-.main-search-func .search-term-crt-search---input-text:-ms-input-placeholder
-{
-    color: white;
-    opacity: .5;
-}
-
-.apl--applicator--main-search .main-search-func .search-term-crt-search---input-text:-moz-placeholder
-{
-    color: white;
-    opacity: .5;
-}
 
 
 
 
 
-/* ------------------------- Sub-Navigation - Style */
-
-.main-nav ul,
-.widget_nav_menu ul,
-.widget_pages ul
-{
-    /* Reset */
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.main-nav a,
-.main-navi---a_l,
-.widget_nav_menu a,
-.widget_pages a
-{
-    box-sizing: border-box;
-    
-    display: inline-flex;
-    align-items: center;
-    
-    min-width: 3rem;
-    min-height: 3rem;
-}
-
-.main-nav a,
-.widget_nav_menu a,
-.widget_pages a
-{   
-    padding-left: 1rem;
-    padding-right: 1rem;
-    
-    text-decoration: none;
-}
-
-.page_item_has_children > .children > .page_item,
-.menu-item-has-children > .sub-menu > .menu-item
-{
-    padding-left: 1rem;
-}
 
 
-
-
-
-/* ------------------------- Sub-Navigation - Functionality */
-
-/* Initialize */
-.apl--applicator--sub-nav.dom--unready .main-nav .children,
-.apl--applicator--sub-nav.dom--unready .main-nav .sub-menu,
-.apl--applicator--sub-nav.dom--unready .widget_nav_menu .sub-menu,
-.apl--applicator--sub-nav.dom--unready .widget_pages .children
-{
-    display: none;
-}
-
-.apl--applicator--sub-nav .page_item_has_children > a,
-.apl--applicator--sub-nav .menu-item-has-children > a
-{
-    padding-right: 3rem;
-}
-
-.sub-nav-func .page_item_has_children,
-.sub-nav-func .menu-item-has-children
-{
-    position: relative;
-}
-
-.sub-nav-func .sub-nav-toggle
-{
-    position: absolute;
-    right: 0;
-    top: 0;
-    
-    /*
-    transform: translateY( -1.5rem );
-    */
-    /* Or to have an absolute number like 3rem which we can store in a variable. */
-    /* We use "time point five" instead of "divided by two" to be consistent with top: 50%. */
-    /*
-    transform: translateY( calc( -3rem * .5 ) );
-    */
-}
-
-
-
-.sub-nav-func a,
-.sub-nav-func .main-navi---a_l
-{
-    display: flex;
-}
-
-
-
-.sub-nav-toggle .icon
-{
-    pointer-events: none;
-}
-
-.sub-nav-func .sub-nav-toggle .arrow-icon
-{
-    width: .75rem;
-    height: .75rem;
-    
-    transition: transform 0.2s ease-in-out;
-}
-
-.sub-nav--active > .sub-nav-toggle .arrow-icon
-{
-    transform: rotate( 180deg );
-}
-
-.sub-nav--inactive > .children,
-.sub-nav--inactive > .sub-menu
-{
-    display: none;
-}
 
 
 
