@@ -29,34 +29,67 @@ if ( ! function_exists( 'apl_applicator_func_class' ) ) {
     add_action( 'applicator_hook_html_class', 'apl_applicator_func_class');
 }
 
-// Custom Fonts
-require get_parent_theme_file_path( '/snapons/applicator/functions/custom-fonts.php' );
+
+// Font URL
+if ( ! function_exists( 'apl_snapons_applicator_font_url' ) ) {
+    function apl_snapons_applicator_font_url() {
+        
+        $fonts_url = '';
+        $noto = _x( 'on', 'Noto Sans, Noto Serif font: on or off', 'applicator' );
+
+        if ( 'off' !== $noto ) {
+            $font_families = array();
+            $font_families[] = 'Noto Sans:400,700|Noto Serif:400,700';
+            $query_args = array(
+                'family' => urlencode( implode( '|', $font_families ) ),
+                'subset' => urlencode( 'latin,latin-ext' ),
+            );
+            $fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+        }
+        return esc_url_raw( $fonts_url );
+    }
+}
+
+// Font Style
+if ( ! function_exists( 'apl_snapons_applicator_font_style' ) ) {
+    function apl_snapons_applicator_font_style() {
+
+        wp_enqueue_style( 'apl-snapons-applicator-style-font', apl_snapons_applicator_font_url(), array(), null );
+
+    }
+    add_action( 'wp_enqueue_scripts', 'apl_snapons_applicator_font_style', 0);
+}
+
+// Font Settings
+if ( ! function_exists( 'apl_snapons_applicator_font_settings' ) ) {
+    function apl_snapons_applicator_font_settings() {
+    ?>
+    
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+
+    <style id="apl-snapons-applicator-style-font">
+        .html
+        {
+            font-family: 'Noto Sans', sans-serif;
+        }
+    </style>
+    
+    <?php }
+    add_action( 'wp_head', 'apl_snapons_applicator_font_settings' );
+}
+
 
 // Styles
-if ( ! function_exists( 'apl_snapons_applicator_func_styles' ) ) {
-    function apl_snapons_applicator_func_styles() {
+if ( ! function_exists( 'apl_snapons_applicator_styles' ) ) {
+    function apl_snapons_applicator_styles() {
 
-        wp_enqueue_style( 'apl-style-fonts', applicator_fonts_url(), array(), null );
-        add_editor_style( array( 'assets/css/editor-style.css', applicator_fonts_url() ) );
+        add_editor_style( array( 'assets/css/editor-style.css' ) );
         
         wp_enqueue_style( 'apl-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '25.5', 'all' );
 
     }
-    add_action( 'wp_enqueue_scripts', 'apl_snapons_applicator_func_styles', 0);
+    add_action( 'wp_enqueue_scripts', 'apl_snapons_applicator_styles', 0);
 }
-
-
-// Custom Styles
-function apl_snapons_applicator_custom_style() {
-?>
-<style id="apl-snapons-applicator-style-custom">
-    .html
-    {
-        font-family: 'Noto Sans', sans-serif;
-    }
-</style>
-<?php }
-add_action( 'wp_head', 'apl_snapons_applicator_custom_style' );
 
 
 // Scripts

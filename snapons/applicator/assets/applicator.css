@@ -43,19 +43,18 @@
 
 
 
-/* ------------------------- Root ------------------*/
 .html
 {
     text-rendering: geometricPrecision;
     
-    background-color: var( --dash-of-darkness--color );
+    background-color: var(--dash-of-darkness);
 }
 
 
 
 
 
-/* ------------------------- Highlight ------------------*/
+/*------------------ Highlight ------------------*/
 ::-moz-selection {
     background: var(--highlight-pri-color);
     color: white;
@@ -73,86 +72,76 @@
 
 
 
-/* ------------------------- Forms, Active Objects ------------------*/
+/*------------------ Forms, Active Objects ------------------*/
 .input-text,
-.form--a,
-.sub-nav-toggle--a,
-.main-nav--header-aside--menu-toggle--a
+.b
 {
-    box-sizing: border-box;
-    
+    /* Reset */
     padding: 0;
     margin: 0;
     border: 0;
-    
     background-color: transparent;
-}
-
-/* Full-width */
-.widget_search .search-term--input--text,
-.widget_search .search-form-submit--a,
-.widget_search .search-form-reset--a,
-.widget_search .search-form-submit--a-l,
-.widget_search .search-form-reset--a-l,
-
-.comment-submit--a,
-.commenter-comment--input--text
-{
+    
     width: 100%;
 }
 
-/* Minimum height of the active area */
-.applicator--sub-nav .sub-nav-toggle--a-l,
 
-.main-search-func .main-search-toggle--a-l,
-.main-search-func .search-form-submit--a-l,
-.main-search-func .search-form-reset--a-l,
-.main-search-func .search-term--input--text,
 
-.widget_search .search-term--input--text,
-.widget_search .search-form-submit--a-l,
-.widget_search .search-form-reset--a-l,
 
-.comment-submit--a,
 
-.main-nav--header-aside--menu-toggle--a-l
+/*------------------ Active Area (AA) ------------------*/
+.input-text,
+.b_l,
+.go-start-navi---a_l,
+.go-ct-navi---a_l
 {
+    box-sizing: border-box;
+    
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    
     min-width: 3rem;
     min-height: 3rem;
 }
 
 
-/* ------------------------- UI Template: Buttons ------------------------- */
-.applicator--sub-nav .sub-nav-toggle--a-l,
 
-.widget_search .search-form-submit--a-l,
-.widget_search .search-form-reset--a-l,
 
-.main-nav--header-aside--menu-toggle--a-l
+/*------------------ Forms ------------------*/
+
+/* Textboxes */
+.input-text,
+.post-password-form [type="password"]
 {
-    display: flex;
-    align-items: center;
+    padding: .5em;
+    width: 100%;
+    border: 1px solid var(--pri-border-color);
 }
 
-/* x Center */
-.applicator--sub-nav .sub-nav-toggle--a-l,
-
-.widget_search .search-form-submit--a-l,
-.widget_search .search-form-reset--a-l,
-
-.main-nav--header-aside--menu-toggle--a-l
+/* Buttons */
+.b_l,
+.comment-form-submit-axn---b,
+.post-password-form [type="submit"]
 {
-    justify-content: center;
+    padding: .5em 1em;
+    width: 100%;
+    background-color: var(--pri-bg-reverse-color);
+    color: var(--pri-fg-reverse-color);
 }
 
-
-
-
-
-/* ------------------------- Post */
-.post---ct a
+/* Negations */
+.main-menu-tog---b_l,
+.main-search-func .b_l,
+.sub-nav-tog---b_l
 {
-    
+    padding: 0;
+    background-color: transparent;
+}
+
+.sub-nav-tog---b_l
+{
+    color: black;
 }
 
 
@@ -258,11 +247,7 @@
 
 
 /* ------------------------- Color Scheme ------------------------- */
-.comment-form-submit-axn---b
-{
-    /* color: #00aaff; */
-    background-color: var( --primary-color );
-}
+
 
 .main-search-func .main-search-toggle--a,
 .main-search-func .search-form-submit--a,
@@ -814,36 +799,14 @@
 
 
 
-/* ------------------------- Go to Content Nav - Style */
-.go-ct-navi---a,
-.go-ct-navi---a_l
-{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    
-    min-width: 3rem;
-    min-height: 3rem;
-}
 
-.go-ct-navi---a
-{
-    text-decoration: none;
-}
-
-.go-ct-navi---a_l
-{
-    box-sizing: border-box;
-    
-    padding: .5rem .75rem;
-}
 
 
 
 
 
 /* ------------------------- Go to Content Nav - Function */
-.apl--applicator--go-content-nav.dom--unready .go-content-nav
+.dom--unready .go-content-nav
 {
     display: none;
 }
@@ -855,22 +818,17 @@
     top: 0;
     
     width: 100%;
+    height: 100%;
+    
+    background-color: hsla(0, 100%, 100%, .75);
 }
 
-.go-content-nav-func,
 .go-content-nav-func .go-ct-nav---ct
 {
     height: 100%;
 }
 
-.go-content-nav-func
-{
-    background-color: white;
-    background-color: hsla(0, 100%, 100%, .75);
-}
-
-.go-content-nav-func .go-to-content-navi,
-.go-content-nav-func .go-content-navi
+.go-content-nav-func .go-to-content-navi
 {
     position: absolute;
     left: 50%;
@@ -878,34 +836,12 @@
     transform: translate( -50%, -50%);
 }
 
-.go-content-nav-func .go-ct-navi---a
-{
-    box-sizing: border-box;
-    
-    padding: .25rem;
-    
-    text-decoration: none;
-    
-    color: white;
-}
-
-.go-content-nav-func .go-ct-navi---a_l
-{
-    min-height: 2.25rem;
-    
-    background-color: #00aaff;
-    border-radius: .25rem;
-}
-
-.go-content-nav--inactive
-{
-    opacity: 0;
-    z-index: -1;
-}
-
 .go-content-nav--inactive
 {
     background-color: transparent;
+    
+    opacity: 0;
+    z-index: -1;
 }
 
 .go-content-nav--active
@@ -916,38 +852,32 @@
 
 
 
-
-/* ------------------------- Go to Start Nav - Style */
-.apl--applicator--go-start-nav body
+/* ------------------------- Go to Content Nav - Style */
+.go-ct-navi---a
 {
-    height: auto;
-}
-
-.go-start-navi---a,
-.go-start-navi---a_l
-{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    
-    min-width: 3rem;
-    min-height: 3rem;
+    color: var(--pri-fg-reverse-color);
     
     text-decoration: none;
 }
 
-.go-start-navi---a_l
+.go-ct-navi---a_l
 {
-    box-sizing: border-box;
+    padding: .5em 1em;
     
-    padding: .5rem .75rem;
+    min-width: 10rem;
+    
+    background-color: var(--pri-bg-reverse-color);
 }
-
 
 
 
 
 /* ------------------------- Go to Start Nav - Function */
+.apl--applicator--go-start-nav body
+{
+    height: auto;
+}
+
 .apl--applicator--go-start-nav.dom--unready .go-start-nav
 {
     display: none;
@@ -985,6 +915,12 @@
 .go-start-nav--active
 {
     z-index: 99;
+}
+
+.go-start-navi---a
+{   
+    display: block;
+    text-decoration: none;
 }
 
 
@@ -1140,6 +1076,11 @@
     cursor: initial;
 }
 
+.main-menu-tog---b
+{
+    width: initial;
+}
+
 .main-menu--active .main-menu-tog---b_l
 {
     color: black;
@@ -1163,29 +1104,6 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
 }
 
-
-.main-menu-tog---b
-{
-    /* Reset */
-    padding: 0;
-    margin: 0;
-    background-color: transparent;
-    border: 0;
-}
-
-.main-menu-tog---b,
-.main-menu-tog---b_l
-{
-    box-sizing: border-box;
-    
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    
-    min-width: 3rem;
-    min-height: 3rem;
-}
-
 .main-menu-toggle .icon
 {
     pointer-events: none;
@@ -1195,11 +1113,6 @@
 {
     width: .75rem;
     height: .75rem;
-}
-
-.main-menu-tog---b_l
-{
-    color: white;
 }
 
 .main-menu--active .main-menu-tog---b
@@ -1253,52 +1166,10 @@
 
 /* ------------------------- Search - Style > Nature */
 
-.apl-search .input-text,
-.apl-search .b,
 
-.comment-form .input-text,
-.comment-form-submit-axn---b,
 
-.post-password-form [type="password"],
-.post-password-form [type="submit"]
-{
-    /* Reset */
-    margin: 0;
-    padding: 0;
-    border: 0;
-    background-color: transparent;
-    
-    /* Set */
-    width: 100%;
-}
 
-.apl-search .input-text,
-.apl-search .b_l,
 
-.comment-form .input-text,
-.comment-form-submit-axn---b,
-
-.post-password-form [type="password"],
-.post-password-form [type="submit"]
-{
-    box-sizing: border-box;
-    
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    
-    min-width: 3rem;
-    min-height: 3rem;
-    
-    width: 100%;
-}
-
-.apl-search .b_l,
-.comment-form-submit-axn---b,
-.post-password-form [type="submit"]
-{
-    padding: .5rem 1rem;
-}
 
 /* X */
 .search-term-creation-label---obj,
@@ -1314,32 +1185,12 @@
 
 
 /* ------------------------- Form Elements - Style > Decorations */
-.apl-search .input-text,
-.comment-form .input-text,
-.post-password-form [type="password"]
-{
-    padding: 0 .5rem;
-    
-    border: 1px solid black;
-    border-color: hsla(0, 0%, 0%, .5);
-    border-radius: .125rem;
-}
 
 
 
 
-.apl-search .search-submit-axn---b_l,
-.apl-search .b_l,
-.comment-form-submit-axn---b,
-.post-content .apl-search .b,
 
-.post-password-form [type="submit"]
-{
-    background-color: #00aaff;
-    color: white;
-    
-    border-radius: .125rem;
-}
+
 
 .apl-search .search-reset-axn---b_l
 {
@@ -1426,12 +1277,6 @@
     color: white;
 }
 
-.main-search-func .b
-{
-    /* Reset */
-    width: auto;
-}
-
 .apl--applicator--main-menu.main-header-aside--enabled .main-search-func .search-term-crt-search---input-text,
 .apl--applicator--main-menu.main-header-aside--enabled .main-search-func .search-term-crt-search---input-text
 {
@@ -1467,19 +1312,7 @@
     height: .75rem;
 }
 
-.main-search-func .b_l
-{
-    /* Reset */
-    width: auto;
-    background-color: transparent;
-    color: currentColor;
-    border: 0;
-    border-radius: 0;
-    
-    padding: 0;
-    
-    color: white;
-}
+
 
 .main-search-func .icon
 {
@@ -1600,14 +1433,7 @@
     */
 }
 
-.sub-nav-func .sub-nav-tog---b
-{
-    /* Reset */
-    padding: 0;
-    margin: 0;
-    background-color: transparent;
-    border: 0;
-}
+
 
 .sub-nav-func a,
 .sub-nav-func .main-navi---a_l
@@ -1615,18 +1441,7 @@
     display: flex;
 }
 
-.sub-nav-func .sub-nav-tog---b,
-.sub-nav-func .sub-nav-tog---b_l
-{
-    box-sizing: border-box;
-    
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    
-    min-width: 3rem;
-    min-height: 3rem;
-}
+
 
 .sub-nav-toggle .icon
 {

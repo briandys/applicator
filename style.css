@@ -44,7 +44,15 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
     /* Dash of Darkness */
     --dash-of-darkness--color: hsla(0, 0%, 0%, .0325);
     
+    /* Transparent Gray */
+    --transparent-gray--color: hsla(0, 0%, 0%, .5);
     
+    
+    /* Abstract */
+    --dash-of-darkness: var(--dash-of-darkness--color);
+    
+    
+    /* Framework */
     --wbp-pri-color: var(--superhero-blue--color);
     
     --wbp-accent-pri-color: var(--panda-blue--color);
@@ -57,8 +65,19 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
     
     --highlight-pri-color: var(--go-green--color);
     
+    --light-max-color: white;
+    --gray-max-color: gray;
+    --dark-max-color: black;
+    
     --transition-duration: .125s;
     --transition-easing: ease-in-out;
+    
+    /* Reverse Color Combo */
+    --pri-bg-reverse-color: var(--wbp-pri-color);
+    --pri-fg-reverse-color: var(--light-max-color);
+    
+    /* Borders */
+    --pri-border-color: var(--transparent-gray--color);
     
     /* Spacing */
     --corner-radius--sm: .125em;
