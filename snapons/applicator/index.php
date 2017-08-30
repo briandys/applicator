@@ -88,6 +88,7 @@ if ( ! function_exists( 'apl_snapons_applicator_styles' ) ) {
         add_editor_style( array( 'assets/css/editor-style.css' ) );
         
         wp_enqueue_style( 'apl-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '25.5', 'all' );
+        wp_enqueue_style( 'apl-snapons-applicator-style-theme', get_theme_file_uri() . '/snapons/applicator/assets/theme.css', array( 'apl-snapons-applicator-style' ), '1.0', 'all' );
 
     }
     add_action( 'wp_enqueue_scripts', 'apl_snapons_applicator_styles', 0);

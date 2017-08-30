@@ -1,0 +1,189 @@
+/*------------------ Visually Hidden ------------------*/
+.x
+{
+    position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
+}
+
+
+
+
+
+/*------------------ Widgets ------------------*/
+.aside .widget_search,
+.post-content .search
+{
+    max-width: 30rem;
+}
+
+.widget
+{
+    padding: var(--spacing--section-y-gutter) var(--spacing--x-gutter);
+}
+
+
+
+
+
+/*------------------ Post ------------------*/
+.post
+{
+    padding-top: var(--spacing--section-y-gutter);
+    padding-bottom: var(--spacing--section-y-gutter);
+}
+
+.post-content---ct_cr > *,
+.post-excerpt---ct_cr > *
+{
+    margin: 0;
+    padding: var(--spacing--content-y-gutter) var(--spacing--x-gutter);
+}
+
+/* Negations */
+.post-content---ct_cr > .content--table
+{
+    padding: 0;
+}
+
+.post-content---ct_cr > ul,
+.post-content---ct_cr > ol
+{
+    padding-left: 2.5em;
+}
+
+.post-content---ct_cr > * ul
+{
+    padding-left: 2em;
+}
+
+
+
+
+
+/*------------------ Links ------------------*/
+
+/* Content */
+.post a,
+.comment a,
+.widget a,
+
+/* Nav */
+.page-nav a,
+.entry-nav a,
+.post-nav a,
+.breadcrumbs-nav a,
+.comments-nav a
+{
+    color: var(--link-generic--color);
+    
+    text-decoration: none;
+}
+
+/* Content */
+.post a:hover,
+.comment a:hover,
+.widget a:hover,
+
+/* Nav */
+.page-nav a:hover,
+.entry-nav a:hover,
+.post-nav a:hover,
+.breadcrumbs-nav a:hover,
+.comments-nav a:hover
+{
+    color: var(--link-generic--color--hover);
+    
+    text-decoration: underline;
+}
+
+
+
+
+
+.post-pub---ct_cr,
+.post-mod---ct_cr,
+.published-post-author---ct_cr
+{
+    display: inline-flex;
+    flex-wrap: wrap;
+    
+    align-items: baseline;
+}
+
+.post-pub---ct_cr > *,
+.post-mod---ct_cr > *,
+.published-post-author---ct_cr > *
+{
+    margin-left: .15em;
+    margin-right: .15em;
+}
+
+.post-pub---ct_cr > *:first-child,
+.post-mod---ct_cr > *:first-child,
+.published-post-author---ct_cr > *:first-child
+{
+    margin-left: 0;
+}
+
+.post-pub---ct_cr > *:last-child,
+.post-mod---ct_cr > *:last-child,
+.published-post-author---ct_cr > *:last-child
+{
+    margin-right: 0;
+}
+
+
+
+
+
+/*------------------ Applicator Table Theme - Stroked ------------------*/
+.apl--applicator--theme--table--stroked
+{
+    --table-stroke--color--max: hsla( 0, 0%, 0%, .25 );
+    --table-stroke--color--med: hsla( 0, 0%, 0%, .125 );
+    --table-stroke--color--min: hsla( 0, 0%, 0%, .0625 );
+    --table-line--md: 2px solid var(--table-stroke--color--med);
+    --table-line--sm: 1px solid var(--table-stroke--color--min);
+}
+
+.apl--applicator--theme--table--stroked .post-content tbody
+{
+    border: var(--table-line--md);
+    border-left: 0;
+    border-right: 0;
+}
+
+.apl--applicator--theme--table--stroked .post-content tfoot
+{
+    border: var(--table-line--md);
+    border-left: 0;
+    border-right: 0;
+}
+
+/* Table Header */
+.apl--applicator--theme--table--stroked .post-content th
+{
+    border: 0;
+    
+    text-align: left;
+    vertical-align: bottom;
+}
+
+.apl--applicator--theme--table--stroked .post-content td
+{
+    border: var(--table-line--sm);
+    
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.apl--applicator--theme--table--stroked .post-content td:first-child
+{
+    border-left: 0;
+}
+
+/* Table Footer */
+.apl--applicator--theme--table--stroked .post-content tfoot
+{
+    border-top: 0;
+    border-color: var(--table-line--md);
+}

@@ -20,10 +20,14 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
 
 
 
-/* CSS Variables */
+/*------------------ CSS Variables ------------------*/
 :root {
     /* Colors */
+    
+    /* Superhero Blue */
     --superhero-blue--color: hsl(200, 100%, 50%) /* #00aaff */;
+    
+    /* Chikka Orange */
     --chikka-orange--color: hsl(30, 100%, 50%) /* #ff7f00 */;
     
     /* Record Red */
@@ -85,6 +89,12 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
     /* Dimensions */
     --elem-dimension--md: 3rem;
     
+    
+    --link-generic--color: var(--panda-blue--color);
+    --link-generic--color--hover: var(--panda-blue-dark--color);
+    
+    
+    
     /* Spacing */
     --corner-radius--sm: .125em;
     
@@ -93,6 +103,16 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
     --content-gutter--lg: 4rem;
     
     --spacing--toggle-allowance: var(--elem-dimension--md);
+    
+    --spacing--x-gutter: 1rem;
+    --spacing--section-y-gutter: 1rem;
+    --spacing--content-y-gutter: .5em;
+    
+    --spacing--heading-y-gutter: 1em;
+    
+    
+    
+    
     
     /* Main Nav */
     --main-nav-bg-color: var(--light-max-color);
