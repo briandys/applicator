@@ -858,44 +858,6 @@
     
     
     
-    /*
-    // ------------------------- Page Height Detection
-    ( function() {
-        
-        function pageHeightDetection() {
-            var $page = $( '#page' ),
-                $colophon = $( '#main-footer' ),
-                $pageHeight = $page.height(),
-                $colophonHeight = $colophon.height(),
-                $windowHeight = window.innerHeight,
-                pageShortCss = 'page--short',
-                pageLongCss = 'page--long';
-
-            if ( ( $pageHeight - $colophonHeight ) <= $windowHeight ) {
-                $html
-                    .addClass( pageShortCss )
-                    .removeClass( pageLongCss );
-            } else {
-                $html
-                    .addClass( pageLongCss )
-                    .removeClass( pageShortCss );
-            }
-        }
-        pageHeightDetection();
-        
-        // Debounce
-        var pageHeightDetectionDebounce = debounce( function () {
-            pageHeightDetection();
-        }, applicatorDebounceTimeout );
-
-        window.addEventListener( 'resize', pageHeightDetectionDebounce );
-    
-    } )();
-    */
-    
-    
-    
-    
     
     // ------------------------- Form Validation
     ( function() {

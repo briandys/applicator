@@ -34,7 +34,9 @@
 
 /* Nav */
 .page-nav---h,
-.entry-nav---h
+.entry-nav---h,
+
+/* Comments */
 {
     position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -92,6 +94,7 @@
 /*------------------ Active Area (AA) ------------------*/
 .input-text,
 .b_l,
+.comment-form-submit-axn---b,
 .go-start-navi---a_l,
 .go-ct-navi---a_l,
 .wbp-copyright---g_l
@@ -1154,7 +1157,9 @@
 
 /* WP Admin Bar - Narrow */
 .wp-admin-bar--enabled.vp--wp-admin-bar--narrow .wbp---cr,
-.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-menu--active
+.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-menu--active,
+.wp-admin-bar--enabled.vp--wp-admin-bar--narrow.apl--applicator--main-search .apl-search,
+.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-menu--inactive .main-menu-toggle
 {
     margin-top: var(--wp-admin-bar-allowance--narrow);
 }
@@ -1166,7 +1171,9 @@
 
 /* WP Admin Bar - Wide */
 .wp-admin-bar--enabled.vp--wp-admin-bar--wide .wbp---cr,
-.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-menu--active
+.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-menu--active,
+.wp-admin-bar--enabled.vp--wp-admin-bar--wide.apl--applicator--main-search .apl-search,
+.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-menu--inactive .main-menu-toggle
 {
     margin-top: var(--wp-admin-bar-allowance--wide);
 }
@@ -1181,53 +1188,27 @@
     z-index: 0 !important;
 }
 
-.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-menu--inactive .main-menu-toggle,
-.wp-admin-bar--enabled.vp--wp-admin-bar--narrow.apl--applicator--main-search .main-header---cr > .search
+.wpadminbar
 {
-    margin-top: var(--wp-admin-bar-allowance--narrow);
+    position: absolute !important;
 }
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*------------------ Comment Respond - Style ------------------*/
-.comment-form .input-text
+/*------------------ Comments ------------------*/
+.form-submit
 {
-    box-sizing: border-box;
-    width: 100%;
+    margin: 0;
 }
 
+.commenter-comment-creation-text-input
+{
+    /* Correction */
+    margin-bottom: -5px;
+}
 
-
-
-/* ------------------------- Comments - Style */
 .comments---grp,
 .comment .children
 {
@@ -1298,20 +1279,7 @@
 
 
 
-/* Main Footer */
-.dom--unready .main-footer
-{
-    display: none;
-}
 
-.page--short .main-footer
-{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    
-    width: 100%;
-}
 
 
 
