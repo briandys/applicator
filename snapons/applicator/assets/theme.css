@@ -25,6 +25,15 @@
 
 
 
+.space---sep
+{
+    margin: 0 !important;
+}
+
+
+
+
+
 /*------------------ Active Area (AA) ------------------*/
 .active-area,
 .page-navi---a_l,
@@ -33,7 +42,19 @@
 .post-navi---a_l,
 .breadcrumbs-navi---a_l,
 .breadcrumbs-navi---g,
-.comments-navi---a_l
+.comments-navi---a_l,
+.main-post-title---a_l,
+.author-name---a_l,
+.author-avatar---a_l,
+.post-pub-d-stamp-dtstamp---a_l,
+.post-mod-d-stamp-dtstamp---a_l,
+.post-pub-t-stamp-dtstamp---a_l,
+.post-mod-t-stamp-dtstamp---a_l,
+.comments-count-axn---a_l,
+.add-com-axn---a_l,
+.show-more-glabel---g_l,
+.edit-post-axn---a_l,
+.entry-navi---a_l
 {
     box-sizing: border-box;
     
@@ -46,19 +67,25 @@
     min-height: 3rem;
 }
 
+.post-pub---ct_cr,
+.post-mod---ct_cr,
+.published-post-author---ct_cr,
+.published-com-commenter---ct_cr,
+.post-author---ct_cr,
+.commenter---ct_cr
+{
+    display: inline-flex;
+    flex-wrap: wrap;
+    
+    align-items: baseline;
+}
 
 
 
 /*------------------ Widgets ------------------*/
-.aside .widget_search,
-.post-content .search
+.widget---h
 {
-    max-width: 30rem;
-}
-
-.widget
-{
-    padding: var(--spacing--section-y-gutter) var(--spacing--x-gutter);
+    padding: var(--spacing--content-y-gutter) var(--spacing--x-gutter);
 }
 
 /* Negations */
@@ -90,9 +117,10 @@
 
 
 
-/*------------------ Post ------------------*/
+/*------------------ Post, Comment, Widget Content ------------------*/
 .post,
-.comment
+.comment,
+.widget
 {
     padding-top: var(--spacing--section-y-gutter);
     padding-bottom: var(--spacing--section-y-gutter);
@@ -100,30 +128,122 @@
 
 .post-content---ct_cr > *,
 .post-excerpt---ct_cr > *,
-.comment---ct_cr > *
+.comment-content---ct_cr > *,
+.widget---cr > *
 {
     margin: 0;
     padding: var(--spacing--content-y-gutter) var(--spacing--x-gutter);
 }
 
 /* Negations */
-.post-content---ct_cr > .content--table
+.post-content---ct_cr > .content--table,
+.post-content---ct_cr > .content--embed,
+.post-excerpt---ct_cr > .excerpt-link,
+.widget---cr > img,
+.sub-nav-func .widget---cr > ul,
+.post-content---ct_cr > figure
 {
-    padding: 0;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .post-content---ct_cr > ul,
 .post-content---ct_cr > ol,
-.comment---ct_cr > ul,
-.comment---ct_cr > ol
+.comment-content---ct_cr > ul,
+.comment-content---ct_cr > ol,
+.widget---cr > ul,
+.widget---cr > ol
 {
     padding-left: 2.5em;
 }
 
 .post-content---ct_cr > * ul,
-.comment---ct_cr > * ul
+.comment-content---ct_cr > * ul
 {
     padding-left: 2em;
+}
+
+.post-content .wp-audio-shortcode
+{
+    box-sizing: border-box;
+    
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.post-content---ct_cr > .content--pre
+{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.content--pre pre
+{
+    padding: 2em var(--spacing--x-gutter);
+}
+
+.post-content---ct_cr > .content--image
+{
+    padding: 0;
+}
+
+.post-excerpt---ct_cr
+{
+    padding-left: var(--spacing--x-gutter);
+    padding-right: var(--spacing--x-gutter);
+}
+
+.show-more-glabel
+{
+    padding-top: var(--spacing--content-y-gutter);
+    padding-bottom: var(--spacing--content-y-gutter);
+}
+
+
+
+
+
+.main-content-heading,
+.main-post-title,
+.post-pub---cr,
+.post-mod---cr,
+.published-post-author---cr,
+.post-categories-glabel,
+.post-tags-glabel,
+.comments-count-axn,
+.add-comment-axn,
+.note,
+.edit-post-action,
+.post-content .wp-caption-text,
+.entry-navi
+{
+    padding: var(--spacing--content-y-gutter) var(--spacing--x-gutter);
+}
+
+
+
+
+
+/*------------------ Entry Nav ------------------*/
+.entry-nav---grp
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+
+
+/*------------------ Note ------------------*/
+.note p
+{
+    margin: 0;
+}
+
+.note .g_l
+{
+    display: block;
 }
 
 
@@ -170,25 +290,22 @@
 
 
 
-.post-pub---ct_cr,
-.post-mod---ct_cr,
-.published-post-author---ct_cr,
-.published-com-commenter---ct_cr,
-.post-author---ct_cr,
-.commenter---ct_cr
-{
-    display: inline-flex;
-    flex-wrap: wrap;
-    
-    align-items: baseline;
-}
-
+/*------------------ Text Spacing ------------------*/
 .post-pub---ct_cr > *,
 .post-mod---ct_cr > *,
 .published-post-author---ct_cr > *,
 .published-com-commenter---ct_cr > *,
 .post-author---ct_cr > *,
-.commenter---ct_cr > *
+.commenter---ct_cr > *,
+.navi .a_l > *,
+.page-nav .a_l > *,
+.post-pub-d-stamp-dtstamp---a_l > *,
+.post-mod-d-stamp-dtstamp---a_l > *,
+.comments-count-axn---a_l > *,
+.add-com-axn---a_l > *,
+.show-more-glabel---g_l > *,
+.edit-post-axn---a_l > *,
+.entry-navi---a_l > *
 {
     margin-left: .15em;
     margin-right: .15em;
@@ -199,7 +316,16 @@
 .published-post-author---ct_cr > *:first-child,
 .published-com-commenter---ct_cr > *:first-child,
 .post-author---ct_cr > *:first-child,
-.commenter---ct_cr > *:first-child
+.commenter---ct_cr > *:first-child,
+.navi .a_l > *:first-child,
+.page-nav .a_l > *:first-child,
+.post-pub-d-stamp-dtstamp---a_l > *:first-child,
+.post-mod-d-stamp-dtstamp---a_l > *:first-child,
+.comments-count-axn---a_l > *:first-child,
+.add-com-axn---a_l > *:first-child,
+.show-more-glabel---g_l > *:first-child,
+.edit-post-axn---a_l > *:first-child,
+.entry-navi---a_l > *:first-child
 {
     margin-left: 0;
 }
@@ -209,9 +335,54 @@
 .published-post-author---ct_cr > *:last-child,
 .published-com-commenter---ct_cr > *:last-child,
 .post-author---ct_cr > *:last-child,
-.commenter---ct_cr > *:last-child
+.commenter---ct_cr > *:last-child,
+.navi .a_l > *:last-child,
+.page-nav .a_l > *:first-child,
+.post-pub-d-stamp-dtstamp---a_l > *:last-child,
+.post-mod-d-stamp-dtstamp---a_l > *:last-child,
+.comments-count-axn---a_l > *:last-child,
+.add-com-axn---a_l > *:last-child,
+.show-more-glabel---g_l > *:last-child,
+.edit-post-axn---a_l > *:last-child,
+.entry-navi---a_l > *:last-child
 {
     margin-right: 0;
+}
+
+
+
+
+
+/*------------------ Page Nav ------------------*/
+.page-nav---cr
+{
+    padding-top: var(--spacing--section-y-gutter);
+    padding-bottom: var(--spacing--section-y-gutter);
+}
+
+.page-nav ul
+{
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.page-navi---a_l,
+.page-nav .adjacent-navi---a_l
+{
+    padding-left: var(--spacing--x-gutter);
+    padding-right: var(--spacing--x-gutter);
+}
+
+
+
+
+
+/*------------------ Table ------------------*/
+.post-content th,
+.post-content td
+{
+    padding: var(--spacing--content-y-gutter) var(--spacing--x-gutter);
 }
 
 

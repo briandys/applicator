@@ -26,6 +26,9 @@
         
         $( '.post-content---ct_cr > table' ).wrap( '<div class="content--table"></div>' );
         
+        $( '.post-content---ct_cr > *:has( embed )' ).addClass( 'content--embed' );
+        $( '.post-content---ct_cr > embed' ).wrap( '<div class="content--embed"></div>' );
+        
      } )();
 
 })( jQuery );

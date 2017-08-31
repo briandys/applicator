@@ -11,18 +11,12 @@ function applicator_func_custom_colors_css() {
     
     :root
     {
-        --wbp-pri-color: pink;
-    }
-    
-    .html
-    {
-        background-color: red;
-        background-color: var(--wbp-pri-color);
+        --wbp-pri-color: hsl( ' . $hue . ', ' . $saturation . ', 46% ); /* base: #767676; */;
     }
  
     .wp-customizer-colors--custom .post---hr a
     {
-        color: hsl( ' . $hue . ', ' . $saturation . ', 46% ); /* base: #767676; */
+        color: var(--wbp-pri-color);
     }
 
 }';

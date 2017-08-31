@@ -5,6 +5,17 @@ if ( ! function_exists( 'applicator_func_comments_nav' ) ) {
         
         if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) {
             
+            // Terms Definitions
+            $next_term = esc_html__( 'Next', 'applicator' );
+            $previous_term = esc_html__( 'Previous', 'applicator' );
+            $comments_term = esc_html__( 'Comments', 'applicator' );
+            $next_comments_term = esc_html__( 'Next Comments', 'applicator' );
+            $previous_comments_term = esc_html__( 'Previous Comments', 'applicator' );
+            $next_term_css = 'next';
+            $previous_term_css = 'previous';
+            $comments_term_css = 'comments';
+            $navi_term_css = 'navi';
+            $comments_navi_term_css = 'comments-navi';
             
             // Adjacent Comments Navigation Item Template Markup
             $adjacent_comments_navi_mu = '';
@@ -25,13 +36,13 @@ if ( ! function_exists( 'applicator_func_comments_nav' ) ) {
             if ( get_next_comments_link() ) {
                 
                 $next_comments_navi_label = sprintf( $adjacent_comments_navi_mu,
-                    esc_html__( 'Next', 'applicator' ),
-                    esc_html__( 'Comments', 'applicator' ),
-                    esc_html__( 'Next Comments', 'applicator' ),
-                    'next',
-                    'comments',
-                    'next-comments-navi',
-                    'comments-navi'
+                    $next_term,
+                    $comments_term,
+                    $next_comments_term,
+                    $next_term_css,
+                    $comments_term_css,
+                    $next_term_css. '-'. $comments_term_css. '-'. $navi_term_css,
+                    $comments_navi_term_css
                 );
 
                 $next_comments_link = get_next_comments_link( $next_comments_navi_label );
@@ -59,13 +70,13 @@ if ( ! function_exists( 'applicator_func_comments_nav' ) ) {
             if ( get_previous_comments_link() ) {
                 
                 $previous_comments_navi_label = sprintf( $adjacent_comments_navi_mu,
-                    esc_html__( 'Previous', 'applicator' ),
-                    esc_html__( 'Comments', 'applicator' ),
-                    esc_html__( 'Previous Comments', 'applicator' ),
-                    'previous',
-                    'comments',
-                    'previous-comments-navi',
-                    'comments-navi'
+                    $previous_term,
+                    $comments_term,
+                    $previous_comments_term,
+                    $previous_term_css,
+                    $comments_term_css,
+                    $previous_term_css. '-'. $comments_term_css. '-'. $navi_term_css,
+                    $comments_navi_term_css
                 );
                 
                 $previous_comments_link = get_previous_comments_link( $previous_comments_navi_label );

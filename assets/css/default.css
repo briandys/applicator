@@ -114,87 +114,7 @@ label[for]:hover
 
 
 
-/*------------------ Responsive Media ------------------*/
-.post-content img,
-.post-banner-visual img
-{
-    width: 100%;
-    max-width: 100vw;
-    height: auto;
-}
-
-.post-banner-vis---g
-{
-    background-image: none !important;
-}
-
-.post-content figure
-{
-    margin: 0;
-}
-
-.post-content iframe
-{
-    max-width: 100%;
-}
-
-/* Text */
-.post-content,
-.main-post-title---a_l,
-.author-name---a_l,
-.commenter-name---a_l,
-.post-title---txt
-{
-    word-break: break-word;
-}
-
-.post-content table
-{
-    word-break: normal;
-}
-
-
-
-
-
-/*------------------ Media Banner ------------------*/
-.web-product-main-media-banner
-{
-    padding-bottom: calc( var( --aspect-ratio--16-9 ) );
-    
-    width: 100%;
-    height: 0;
-    
-    overflow: hidden;
-}
-
-
-
-
-
-/* ------------------------- Image Captions */
-.wp-caption
-{
-    width: auto !important;
-    max-width: 100%;
-}
-
-.wp-caption img[class*="wp-image-"]
-{
-    display: block;
-    
-    width: 100%;
-    /*
-    margin-left: auto;
-    margin-right: auto;
-    */
-}
-
-
-
-
-
-/*------------------ Others ------------------*/
+/*------------------ Icons ------------------*/
 .icon--vector,
 .icon--raster
 {
@@ -212,32 +132,6 @@ label[for]:hover
     display: none;
 }
 
-.main-content
-{
-    display: flex; /* Prevents margins of nested elements to bleed out of the container. */
-}
-
-.main-content---cr
-{
-    flex-grow: 1;
-}
-
-
-
-
-
-/*------------------ Content Formatting ------------------*/
-.post-content---ct_cr > .content--pre
-{
-    max-width: 100vw;
-}
-
-.post-content---ct_cr > .content--table
-{
-    max-width: 100vw;
-    overflow-x: auto;
-}
-
 
 
 
@@ -250,39 +144,11 @@ label[for]:hover
     .post-content---ct_cr > .alignleft
     {
         float: left;
-        
-        margin-right: 1rem;
-        margin-bottom: 1rem;
     }
 
     .post-content---ct_cr > .alignright
     {
         float: right;
-        
-        margin-left: 1rem;
-        margin-bottom: 1rem;
-    }
-    
-    .web-product-main-media-banner
-    {
-        padding-bottom: calc( var( --aspect-ratio--16-9 ) / 3 );
-
     }
 
 }
-
-/*------------------ WordPress Image Alignments ------------------
-.alignleft,
-.alignright
-{
-    display: inline;
-}
-
-.aligncenter
-{
-    clear: both;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-*/

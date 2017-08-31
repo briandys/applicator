@@ -372,27 +372,43 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
                 <div class="ct comment---ct">
                     <div class="ct_cr comment---ct_cr">
                         
-        <?php
+                        <?php
+
+                        if ( $comment->comment_approved == '0' ) {
+
+                            $comment_unapproved_note_obj = applicator_htmlok( array(
+                                'name'      => 'Comment Unapproved',
+                                'structure' => array(
+                                    'type'      => 'object',
+                                    'subtype'   => 'note',
+                                ),
+                                'content'   => array(
+                                    'object'    => '<p>'.esc_html__( 'Your comment is awaiting moderation.', 'applicator' ).'</p>',
+                                ),
+                                'echo'      => true,
+                            ) );
+
+                        }
         
-        if ( $comment->comment_approved == '0' ) {
-            
-            $comment_unapproved_note_obj = applicator_htmlok( array(
-                'name'      => 'Comment Unapproved',
-                'structure' => array(
-                    'type'      => 'object',
-                    'subtype'   => 'note',
-                ),
-                'content'   => array(
-                    'object'    => '<p>'.esc_html__( 'Your comment is awaiting moderation.', 'applicator' ).'</p>',
-                ),
-                'echo'      => true,
-            ) );
-            
-        }
+                        // OB: Content
+                        ob_start();
+                        comment_text();
+                        $content_ob_content = ob_get_contents();
+                        ob_end_clean();
         
-        comment_text();
-        
-        ?>
+                        // E: Comment Content
+                        $comment_content = applicator_htmlok( array(
+                            'name'      => 'Comment Content',
+                            'structure' => array(
+                                'type'      => 'component',
+                            ),
+                            'content'   => array(
+                                'component'     => $content_ob_content,
+                            ),
+                            'echo'      => true,
+                        ) );
+
+                        ?>
                     
                     </div>
                 </div><!-- ct -->

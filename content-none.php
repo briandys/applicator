@@ -16,7 +16,6 @@ ob_start();
                     'structure' => array(
                         'type'      => 'object',
                         'elem'      => 'h1',
-                        'layout'    => 'inline',
                     ),
                     'content'   => array(
                         'object'        => array(
