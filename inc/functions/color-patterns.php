@@ -1,6 +1,9 @@
 <?php // Applicator Color Patterns
 // From Twenty Seventeen
 
+
+
+
 function applicator_func_custom_colors_css() {
 	$hue = absint( get_theme_mod( 'colorscheme_hue', 250 ) );
 
