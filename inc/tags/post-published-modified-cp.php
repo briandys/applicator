@@ -72,6 +72,7 @@ if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
                         'txt'   => $on_term,
                     ),
                 ),
+                'after'     => $GLOBALS['space_sep'],
             ),
         ) );
         
@@ -209,6 +210,7 @@ if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
                         'txt'   => $on_term,
                     ),
                 ),
+                'after'     => $GLOBALS['space_sep'],
             ),
         ) );
         

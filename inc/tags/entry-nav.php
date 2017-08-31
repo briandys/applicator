@@ -23,11 +23,12 @@ if ( ! function_exists('applicator_func_entry_nav' ) ) {
             $entry_term = esc_html__( 'Entry', 'applicator' );
             $post_title_term = esc_html__( 'Post Title', 'applicator' );
             $navi_term_css = 'navi';
+            $entry_navi_term_css = 'entry-navi';
             
             
             // MU: Entry Navigation Item Anchor Label Template Markup
             $entry_navi_a_l_mu = '';
-            $entry_navi_a_l_mu .= '<span class="a_l %5$s---a_l" title="%9$s">';
+            $entry_navi_a_l_mu .= '<span class="a_l %5$s---a_l %10$s---a_l" title="%9$s">';
                 $entry_navi_a_l_mu .= '<span class="line property---line">';
                     $entry_navi_a_l_mu .= '<span class="txt %6$s---txt">';
                         $entry_navi_a_l_mu .= '%1$s';
@@ -55,7 +56,8 @@ if ( ! function_exists('applicator_func_entry_nav' ) ) {
                 sanitize_title( $next_term ),
                 sanitize_title( $entry_term ),
                 sanitize_title( $post_title_term ),
-                $next_term.' '.$entry_term. ':'. ' '. '%title'
+                $next_term.' '.$entry_term. ':'. ' '. '%title',
+                $entry_navi_term_css
             );
             
             
@@ -69,7 +71,8 @@ if ( ! function_exists('applicator_func_entry_nav' ) ) {
                 sanitize_title( $previous_term ),
                 sanitize_title( $entry_term ),
                 sanitize_title( $post_title_term ),
-                $previous_term.' '.$entry_term. ':'. ' '. '%title'
+                $previous_term.' '.$entry_term. ':'. ' '. '%title',
+                $entry_navi_term_css
             );
             
             
@@ -96,6 +99,7 @@ if ( ! function_exists('applicator_func_entry_nav' ) ) {
                     'wpg'           => true,
                     'root_obj_elem' => 'li',
                 ),
+                'root_css'  => 'entry-navi',
                 'content'   => array(
                     'object'        => $next_entry_link_ob_content,
                 ),
@@ -111,6 +115,7 @@ if ( ! function_exists('applicator_func_entry_nav' ) ) {
                     'wpg'           => true,
                     'root_obj_elem' => 'li',
                 ),
+                'root_css'  => 'entry-navi',
                 'content'   => array(
                     'object'        => $previous_entry_link_ob_content,
                 ),

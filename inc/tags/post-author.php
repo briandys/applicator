@@ -41,6 +41,7 @@ if ( ! function_exists( 'applicator_func_post_author' ) ) {
                         'txt'   => $by_term,
                     ),
                 ),
+                'after'     => $GLOBALS['space_sep'],
             ),
         ) );
         

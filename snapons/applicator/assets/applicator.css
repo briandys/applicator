@@ -61,11 +61,14 @@ table
     width: 100%;
 }
 
+.content--pre
+{
+    box-sizing: border-box;
+}
+
 .content--pre pre
 {
     margin: 0;
-    padding-top: 1em;
-    padding-bottom: 1em;
 }
 
 h1, h2, h3, h4, h5, h6
@@ -131,6 +134,7 @@ input[type="submit"],
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     
     min-width: 3rem;
     min-height: 3rem;

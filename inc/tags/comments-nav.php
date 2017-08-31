@@ -8,7 +8,7 @@ if ( ! function_exists( 'applicator_func_comments_nav' ) ) {
             
             // Adjacent Comments Navigation Item Template Markup
             $adjacent_comments_navi_mu = '';
-            $adjacent_comments_navi_mu .= '<span class="a_l %6$s---a_l" title="%3$s">';
+            $adjacent_comments_navi_mu .= '<span class="a_l %6$s---a_l %7$s---a_l" title="%3$s">';
                 $adjacent_comments_navi_mu .= '<span class="txt %4$s---txt">';
                     $adjacent_comments_navi_mu .= '%1$s';
                 $adjacent_comments_navi_mu .= '</span>';
@@ -30,7 +30,8 @@ if ( ! function_exists( 'applicator_func_comments_nav' ) ) {
                     esc_html__( 'Next Comments', 'applicator' ),
                     'next',
                     'comments',
-                    'next-comments-navi'
+                    'next-comments-navi',
+                    'comments-navi'
                 );
 
                 $next_comments_link = get_next_comments_link( $next_comments_navi_label );
@@ -43,6 +44,7 @@ if ( ! function_exists( 'applicator_func_comments_nav' ) ) {
                         'wpg'           => true,
                         'root_obj_elem' => 'li',
                     ),
+                    'root_css'  => 'comments-navi',
                     'content'   => array(
                         'object'    => $next_comments_link,
                     ),
@@ -62,7 +64,8 @@ if ( ! function_exists( 'applicator_func_comments_nav' ) ) {
                     esc_html__( 'Previous Comments', 'applicator' ),
                     'previous',
                     'comments',
-                    'previous-comments-navi'
+                    'previous-comments-navi',
+                    'comments-navi'
                 );
                 
                 $previous_comments_link = get_previous_comments_link( $previous_comments_navi_label );
@@ -75,6 +78,7 @@ if ( ! function_exists( 'applicator_func_comments_nav' ) ) {
                         'wpg'           => true,
                         'root_obj_elem' => 'li',
                     ),
+                    'root_css'  => 'comments-navi',
                     'content'   => array(
                         'object'    => $previous_comments_link,
                     ),

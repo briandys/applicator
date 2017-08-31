@@ -1,9 +1,50 @@
 /*------------------ Visually Hidden ------------------*/
-.x
+.visually-hidden
 {
     position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
 
+
+
+
+
+/*------------------ Unlist ------------------*/
+.unlist,
+.page-nav ul,
+.entry-nav---grp,
+.post-nav---grp,
+.breadcrumbs-nav---grp,
+.comments-nav---grp
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
+/*------------------ Active Area (AA) ------------------*/
+.active-area,
+.page-navi---a_l,
+.adjacent-navi---a_l,
+.entry-navi---a_l,
+.post-navi---a_l,
+.breadcrumbs-navi---a_l,
+.breadcrumbs-navi---g,
+.comments-navi---a_l
+{
+    box-sizing: border-box;
+    
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    
+    min-width: 3rem;
+    min-height: 3rem;
+}
 
 
 
@@ -20,19 +61,46 @@
     padding: var(--spacing--section-y-gutter) var(--spacing--x-gutter);
 }
 
+/* Negations */
+.widget_media_image,
+.widget_pages.sub-nav-func 
+{
+    padding: 0;
+}
+
+
+
+
+
+/*------------------ Avatar ------------------*/
+.author-avatar---a_l,
+.commenter-avatar---a_l
+{
+    display: block;
+    
+    padding: 0;
+    
+    width: 3rem;
+    height: 3rem;
+    
+    border-radius: 50%;
+    overflow: hidden;
+}
 
 
 
 
 /*------------------ Post ------------------*/
-.post
+.post,
+.comment
 {
     padding-top: var(--spacing--section-y-gutter);
     padding-bottom: var(--spacing--section-y-gutter);
 }
 
 .post-content---ct_cr > *,
-.post-excerpt---ct_cr > *
+.post-excerpt---ct_cr > *,
+.comment---ct_cr > *
 {
     margin: 0;
     padding: var(--spacing--content-y-gutter) var(--spacing--x-gutter);
@@ -45,12 +113,15 @@
 }
 
 .post-content---ct_cr > ul,
-.post-content---ct_cr > ol
+.post-content---ct_cr > ol,
+.comment---ct_cr > ul,
+.comment---ct_cr > ol
 {
     padding-left: 2.5em;
 }
 
-.post-content---ct_cr > * ul
+.post-content---ct_cr > * ul,
+.comment---ct_cr > * ul
 {
     padding-left: 2em;
 }
@@ -101,7 +172,10 @@
 
 .post-pub---ct_cr,
 .post-mod---ct_cr,
-.published-post-author---ct_cr
+.published-post-author---ct_cr,
+.published-com-commenter---ct_cr,
+.post-author---ct_cr,
+.commenter---ct_cr
 {
     display: inline-flex;
     flex-wrap: wrap;
@@ -111,7 +185,10 @@
 
 .post-pub---ct_cr > *,
 .post-mod---ct_cr > *,
-.published-post-author---ct_cr > *
+.published-post-author---ct_cr > *,
+.published-com-commenter---ct_cr > *,
+.post-author---ct_cr > *,
+.commenter---ct_cr > *
 {
     margin-left: .15em;
     margin-right: .15em;
@@ -119,14 +196,20 @@
 
 .post-pub---ct_cr > *:first-child,
 .post-mod---ct_cr > *:first-child,
-.published-post-author---ct_cr > *:first-child
+.published-post-author---ct_cr > *:first-child,
+.published-com-commenter---ct_cr > *:first-child,
+.post-author---ct_cr > *:first-child,
+.commenter---ct_cr > *:first-child
 {
     margin-left: 0;
 }
 
 .post-pub---ct_cr > *:last-child,
 .post-mod---ct_cr > *:last-child,
-.published-post-author---ct_cr > *:last-child
+.published-post-author---ct_cr > *:last-child,
+.published-com-commenter---ct_cr > *:last-child,
+.post-author---ct_cr > *:last-child,
+.commenter---ct_cr > *:last-child
 {
     margin-right: 0;
 }
