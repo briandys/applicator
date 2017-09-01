@@ -1,3 +1,92 @@
+/*------------------ Variables ------------------*/
+.apl--applicator
+{
+    /* Level 1 - Absolutes - see style.css */
+    
+    
+    /*------------ Level 2 - Generics ------------*/
+    
+    /* Main Color */
+    --main-color--pri: var(--superhero-blue--color);
+    --main-color--sec: var(--go-green--color);
+    
+    /* Accent Color */
+    --accent-color--pri: var(--panda-blue--color);
+    --accent-color--sec: var(--chikka-orange--color);
+    
+    /* Foreground Color - Reverse (use with a dark background) */
+    --fg-color--reverse: var(--white--color);
+    
+    /* Faint Color */
+    --faint-color--pri: var(--transparent-black--color);
+    
+    /* Gutter */
+    --gutter-x--base: 1rem;
+    --gutter-x--sm--multiplier: .5;
+    --gutter-x--md--multiplier: 1;
+    --gutter-x--lg--multiplier: 1.5;
+    
+    --gutter-x--sm: calc( var(--gutter-x--base) * var(--gutter-x--sm--multiplier) );
+    --gutter-x--md: calc( var(--gutter-x--base) * var(--gutter-x--md--multiplier) );
+    --gutter-x--lg: calc( var(--gutter-x--base) * var(--gutter-x--lg--multiplier) );
+    
+    /* Spacing */
+    --spacing-y--base: 1rem;
+    --spacing-y--sm--multiplier: .5;
+    --spacing-y--md--multiplier: 1;
+    --spacing-y--lg--multiplier: 1.5;
+    
+    --spacing-y--sm: calc( var(--spacing-y--base) * var(--spacing-y--sm--multiplier) );
+    --spacing-y--md: calc( var(--spacing-y--base) * var(--spacing-y--md--multiplier) );
+    --spacing-y--lg: calc( var(--spacing-y--base) * var(--spacing-y--lg--multiplier) );
+    
+    --spacing-relative-y--base: 1em;
+    
+    --spacing-relative-y--sm: calc( var(--spacing-relative-y--base) * var(--spacing-y--sm--multiplier) );
+    --spacing-relative-y--md: calc( var(--spacing-relative-y--base) * var(--spacing-y--md--multiplier) );
+    --spacing-relative-y--lg: calc( var(--spacing-relative-y--base) * var(--spacing-y--lg--multiplier) );
+    
+    /* Font Size */
+    
+    --font-size--sm: .875em;
+    --font-size--md: 1.125em;
+    --font-size--lg: 1.5em;
+    
+    
+    /*------------ Level 3 - Specifics ------------*/
+    
+    /* Main Header */
+    --main-header--bg-color: var(--main-color--pri);
+    
+    /* Button */
+    --button--bg-color: var(--accent-color--pri);
+    --button--fg-color: var(--fg-color--reverse);
+    
+    /* Selection */
+    --selection--bg-color: var(--main-color--sec);
+    --selection--fg-color: var(--fg-color--reverse);
+    
+    /* Section Spacing */
+    --section--spacing: var(--spacing-y--md) var(--gutter-x--md);
+    --section--spacing-y: var(--spacing-y--md);
+    
+    /* Content Spacing */
+    --content-spacing: var(--spacing-relative-y--sm) var(--gutter-x--md);
+    --content-spacing-y: var(--spacing-relative-y--sm);
+    
+    /* Content Font Size */
+    --content--font-size: var(--font-size--md);
+    
+    /* Copyright Info */
+    --copyright-info--fg-color: var(--faint-color--pri);
+    
+    
+}
+
+
+
+
+
 /*------------------ Visually Hidden ------------------*/
 
 /* Main Menu */
@@ -13,10 +102,6 @@
 .apl--main-search--active .web-product-main-name,
 .apl--main-search--active .web-product-main-logo,
 .apl--main-search--active .web-product-main-description,
-
-/* Search */
-.post-content .search-form-reset-axn,
-.aside .search-form-reset-axn,
 
 /* Go to Start Nav */
 .go-start-nav-func .go-to-start---txt,
@@ -84,15 +169,15 @@ h1, h2, h3, h4, h5, h6,
 
 /*------------------ Highlight ------------------*/
 ::-moz-selection {
-    background: var(--highlight-pri-color);
-    color: white;
+    background: var(--selection--bg-color);
+    color: var(--selection--fg-color);
     
     text-shadow: none;
 }
 
 ::selection {
-    background: var(--highlight-pri-color);
-    color: white;
+    background: var(--selection--bg-color);
+    color: var(--selection--fg-color);
     
     text-shadow: none;
 }
@@ -211,6 +296,11 @@ h1, h2, h3, h4, h5, h6,
     word-break: break-word;
 }
 
+.main-content-heading
+{
+    padding: var(--section--spacing);
+}
+
 
 
 
@@ -221,6 +311,34 @@ h1, h2, h3, h4, h5, h6,
 {
     word-break: break-word;
 }
+
+.main-post-title
+{
+    padding: var(--section--spacing);
+}
+
+
+
+
+
+/*------------------ Post Content ------------------*/
+.post-content
+{
+    font-size: var(--content--font-size);
+}
+
+.post-content---ct_cr > *
+{
+    margin: 0;
+    padding: var(--content-spacing);
+}
+
+.post-content .search
+{
+    font-size: initial;
+}
+
+
 
 
 
@@ -254,7 +372,7 @@ input[type="submit"],
 .comment-form-submit-axn---b,
 .go-start-navi---a_l,
 .go-ct-navi---a_l,
-.wbp-copyright---g_l
+.main-post-title---h_l
 {
     box-sizing: border-box;
     
@@ -288,8 +406,8 @@ input[type="submit"]
 {
     padding: .5em 1em;
     width: 100%;
-    background-color: var(--pri-bg-reverse-color);
-    color: var(--pri-fg-reverse-color);
+    background-color: var(--button--bg-color);
+    color: var(--button--fg-color);
 }
 
 /* Negations */
@@ -521,6 +639,26 @@ input[type="submit"]
 .main-header---cr > .search
 {
     background-color: white;
+}
+
+
+
+
+
+/*------------------ Search ------------------*/
+.aside .search-form-reset-axn---b_l,
+.post-content .search-form-reset-axn---b_l
+{
+    background-color: var(--sec-axn-bg-color);
+    color: var(--sec-axn-fg-color);
+}
+
+.post-content .search-term-crt-search-text-input,
+.post-content .search-form-search-axn,
+.post-content .search-form-reset-axn
+{
+    padding-top: var(--content-spacing-y);
+    padding-bottom: var(--content-spacing-y);
 }
 
 
@@ -1034,11 +1172,11 @@ input[type="submit"]
 
 
 
-/*------------------ Masthead ------------------*/
+/*------------------ Main Header ------------------*/
 .main-header---cr
 {
     min-height: 3rem;
-    background-color: var(--wbp-pri-color);
+    background-color: var(--main-header--bg-color);
 }
 
 
@@ -1223,16 +1361,22 @@ input[type="submit"]
     text-align: center;
 }
 
-.wbp-copyright---g_l
+.web-product-copyright
 {   
-    padding: 1rem;
+    padding: var(--content-spacing);
     
     font-size: .75rem;
 }
 
+.apl--go-start-nav--active .web-product-copyright
+{
+    padding-left: var(--spacing--toggle-allowance);
+    padding-right: var(--spacing--toggle-allowance);
+}
+
 .wbp-copyright---g_l
 {
-    color: var(--copyright-info-fg-color);
+    color: var(--copyright-info--fg-color);
 }
 
 .web-product-copyright .wbp-name---txt
@@ -1242,15 +1386,9 @@ input[type="submit"]
 
 .web-product-copyright .wbp-name---txt a
 {
-    color: var(--copyright-info-fg-color);
+    color: var(--copyright-info--fg-color);
     
     text-decoration: none;
-}
-
-.apl--go-start-nav--active .wbp-copyright---g_l
-{
-    padding-left: var(--spacing--toggle-allowance);
-    padding-right: var(--spacing--toggle-allowance);
 }
 
 

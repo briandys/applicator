@@ -42,6 +42,7 @@ $search_form_cp = applicator_htmlok( array(
                         'txt'   => array(
                             esc_html__( 'Go', 'applicator' ),
                         ),
+                        'root_css'  => 'primary-axn',
                         'structure' => array(
                             'type'      => 'submit',
                         ),
@@ -51,6 +52,7 @@ $search_form_cp = applicator_htmlok( array(
                         'txt'   => array(
                             esc_html__( 'Reset', 'applicator' ),
                         ),
+                        'root_css'  => 'secondary-axn',
                         'structure' => array(
                             'type'      => 'reset',
                         ),

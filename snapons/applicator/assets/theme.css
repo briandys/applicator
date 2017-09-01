@@ -126,7 +126,7 @@
     padding-bottom: var(--spacing--section-y-gutter);
 }
 
-.post-content---ct_cr > *,
+
 .post-excerpt---ct_cr > *,
 .comment-content---ct_cr > *,
 .widget---cr > *
@@ -203,8 +203,8 @@
 
 
 
-.main-content-heading,
-.main-post-title,
+
+
 .post-pub---cr,
 .post-mod---cr,
 .published-post-author---cr,
