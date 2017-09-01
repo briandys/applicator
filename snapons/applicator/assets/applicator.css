@@ -8,7 +8,7 @@
     
     /* Main Color */
     --main-color--pri: var(--superhero-blue--color);
-    --main-color--sec: var(--go-green--color);
+    --main-color--sec: var(--uhog-green--color);
     
     /* Accent Color */
     --accent-color--pri: var(--panda-blue--color);
@@ -68,6 +68,7 @@
     
     /* Section Spacing */
     --section--spacing: var(--spacing-y--md) var(--gutter-x--md);
+    --section--spacing-x: var(--gutter-x--md);
     --section--spacing-y: var(--spacing-y--md);
     
     /* Content Spacing */
@@ -81,7 +82,7 @@
     --copyright-info--fg-color: var(--faint-color--pri);
     
     /* Generic Text - FG Color */
-    --generic-text--fg-color: var(--accent-color--pri);
+    --generic-text--fg-color: var(--main-color--sec);
     
     
 }
@@ -398,7 +399,8 @@ input[type="submit"],
 .comment-form-submit-axn---b,
 .go-start-navi---a_l,
 .go-ct-navi---a_l,
-.main-post-title---h_l
+.main-post-title---h_l,
+.wbp-copyright---g_l
 {
     box-sizing: border-box;
     
@@ -694,7 +696,7 @@ input[type="submit"]
 /*------------------ Search Results ------------------*/
 .search-results-term---txt
 {
-    color: var(--generic-text--fg-color);
+    
 }
 
 
@@ -1392,15 +1394,18 @@ input[type="submit"]
 
 
 /*------------------ Copyright Info ------------------*/
+.web-product-copyright
+{
+    padding-left: var(--section--spacing-x);
+    padding-right: var(--section--spacing-x);
+}
 .wbp-copyright---g
 {
     text-align: center;
 }
 
-.web-product-copyright
-{   
-    padding: var(--content-spacing);
-    
+.wbp-copyright---g_l
+{
     font-size: .75rem;
 }
 
@@ -1586,6 +1591,30 @@ input[type="submit"]
     {
         background-color: transparent;
     }
+}
+
+
+
+
+
+/*------------------ Text Spacing ------------------*/
+.text-spacing > *,
+.wbp-copyright---g_l > *
+{
+    margin-left: .15em;
+    margin-right: .15em;
+}
+
+.text-spacing > *:first-child,
+.wbp-copyright---g_l > *:first-child
+{
+    margin-left: 0;
+}
+
+.text-spacing > *:last-child,
+.wbp-copyright---g_l > *:last-child
+{
+    margin-right: 0;
 }
 
 
