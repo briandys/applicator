@@ -309,6 +309,9 @@
             } );
         }() );
         
+        // For Calendar links
+        // $mainMenuTogBtn.click();
+        
         // Deactivate upon interaction outside specified elements
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             if ( $cp.hasClass( mainMenuActCss ) && ( ! $( e.target ).closest( $mainMenuTog ).length ) && ( ! $( e.target ).closest( $mainHrAsCt ).length ) ) {

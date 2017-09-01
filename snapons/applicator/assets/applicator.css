@@ -74,11 +74,14 @@
     --content-spacing: var(--spacing-relative-y--sm) var(--gutter-x--md);
     --content-spacing-y: var(--spacing-relative-y--sm);
     
-    /* Content Font Size */
+    /* Content - Font Size */
     --content--font-size: var(--font-size--md);
     
     /* Copyright Info */
     --copyright-info--fg-color: var(--faint-color--pri);
+    
+    /* Generic Text - FG Color */
+    --generic-text--fg-color: var(--accent-color--pri);
     
     
 }
@@ -128,6 +131,8 @@
 .comment-content---h,
 
 /* Widgets */
+.widget---h,
+.widget-content---h,
 .widget .screen-reader-text
 {
     position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
@@ -315,6 +320,27 @@ h1, h2, h3, h4, h5, h6,
 .main-post-title
 {
     padding: var(--section--spacing);
+}
+
+
+
+
+
+/*------------------ General Content ------------------*/
+.widget-content---ct_cr > *
+{
+    margin: 0;
+    padding: var(--content-spacing);
+}
+
+.widget-content---ct_cr > select
+{
+    margin: var(--content-spacing);
+}
+
+.widget-content---ct_cr > img
+{
+    padding: 0;
 }
 
 
@@ -659,6 +685,16 @@ input[type="submit"]
 {
     padding-top: var(--content-spacing-y);
     padding-bottom: var(--content-spacing-y);
+}
+
+
+
+
+
+/*------------------ Search Results ------------------*/
+.search-results-term---txt
+{
+    color: var(--generic-text--fg-color);
 }
 
 
