@@ -93,6 +93,9 @@
     /* Generic Text - FG Color */
     --generic-text--fg-color: var(--main-color--sec);
     
+    /* Text Spacing Hack */
+    --hack--text-spacing--md: .15em;
+    
     
 }
 
@@ -138,6 +141,7 @@
 .comments-nav---h,
 
 /* Comments */
+.comments---h,
 .comment-content---h,
 
 /* Widgets */
@@ -217,7 +221,13 @@ input[type="submit"],
 .post-pub-d-stamp-dtstamp---a_l,
 .post-pub-t-stamp-dtstamp---a_l,
 .post-mod-d-stamp-dtstamp---a_l,
-.post-mod-t-stamp-dtstamp---a_l
+.post-mod-t-stamp-dtstamp---a_l,
+.author-name---a_l,
+.comments-count-axn---a_l,
+.add-com-axn---a_l,
+.comment-title---a_l,
+.comment-pub-d-stamp-dtstamp---a_l,
+.comment-pub-t-stamp-dtstamp---a_l
 {
     box-sizing: border-box;
     
@@ -241,10 +251,16 @@ input[type="submit"],
 .post-pub-d-stamp-dtstamp---a_l > *,
 .post-mod-d-stamp-dtstamp---a_l > *,
 .post-pub---ct_cr > *,
-.post-mod---ct_cr > *
+.post-mod---ct_cr > *,
+.published-post-author---ct_cr > *,
+.comments-count-axn---a_l > *,
+.add-com-axn---a_l > *,
+.comment-title---a_l > *,
+.comment-pub-d-stamp-dtstamp---a_l > *,
+.comment-pub---ct_cr > *
 {
-    margin-left: .15em;
-    margin-right: .15em;
+    margin-left: var(--hack--text-spacing--md);
+    margin-right: var(--hack--text-spacing--md);
 }
 
 .text-spacing > *:first-child,
@@ -253,7 +269,13 @@ input[type="submit"],
 .post-pub-d-stamp-dtstamp---a_l > *:first-child,
 .post-mod-d-stamp-dtstamp---a_l > *:first-child,
 .post-pub---ct_cr > *:first-child,
-.post-mod---ct_cr > *:first-child
+.post-mod---ct_cr > *:first-child,
+.published-post-author---ct_cr > *:first-child,
+.comments-count-axn---a_l > *:first-child,
+.add-com-axn---a_l > *:first-child,
+.comment-title---a_l > *:first-child,
+.comment-pub-d-stamp-dtstamp---a_l > *:first-child,
+.comment-pub---ct_cr > *:first-child
 {
     margin-left: 0;
 }
@@ -264,7 +286,13 @@ input[type="submit"],
 .post-pub-d-stamp-dtstamp---a_l > *:last-child,
 .post-mod-d-stamp-dtstamp---a_l > *:last-child,
 .post-pub---ct_cr > *:last-child,
-.post-mod---ct_cr > *:last-child
+.post-mod---ct_cr > *:last-child,
+.published-post-author---ct_cr > *:last-child,
+.comments-count-axn---a_l > *:last-child,
+.add-com-axn---a_l > *:last-child,
+.comment-title---a_l > *:last-child,
+.comment-pub-d-stamp-dtstamp---a_l > *:last-child,
+.comment-pub---ct_cr > *:last-child
 {
     margin-right: 0;
 }
@@ -285,6 +313,7 @@ input[type="submit"],
 {
     display: flex;
     align-items: baseline;
+    flex-wrap: wrap;
 }
 
 
@@ -299,6 +328,43 @@ input[type="submit"],
 {
     padding-top: var(--object--spacing-x);
     padding-bottom: var(--object--spacing-x);
+}
+
+
+
+
+
+/*------------------ Author ------------------*/
+.published-post-author---cr
+{
+    padding-left: var(--component--spacing-x);
+    padding-right: var(--component--spacing-x);
+}
+.published-post-author---ct_cr
+{
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.author-avatar---a_l
+{
+    display: inline-block;
+    
+    margin-left: .5rem;
+    margin-right: .5rem;
+}
+
+
+
+
+
+/*------------------ Comments Actions Snippet ------------------*/
+.comments-count-axn,
+.add-comment-axn
+{
+    padding-left: var(--object--spacing-x);
+    padding-right: var(--object--spacing-x);
 }
 
 
@@ -1657,6 +1723,29 @@ input[type="submit"]
 
 
 /*------------------ Comments ------------------*/
+.comment-pub---ct_cr
+{
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.comment-pub---cr
+{
+    padding-left: var(--component--spacing-x);
+    padding-right: var(--component--spacing-x);
+}
+
+.comments-heading
+{
+    padding: var(--object--spacing--md);
+}
+
+.comment-title
+{
+    padding: var(--object--spacing--md);
+}
+
 .commenter-comment-creation-text-input
 {
     /* Correction */

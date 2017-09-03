@@ -49,6 +49,22 @@ else {
     $comments_content = $comments_empty_note_obj;
 }
 
+// R: Comments Heading
+$comments_heading_obj = applicator_htmlok( array(
+    'name'      => 'Comments',
+    'structure' => array(
+        'type'      => 'object',
+        'subtype'   => 'heading',
+    ),
+    'content'   => array(
+        'object'        => array(
+            array(
+                'txt'           => esc_html__( 'Comments', 'applicator' ),
+            ),
+        ),
+    ),
+) );
+
 
 // R: Comments Header Asisde
 $comments_header_aside_cn = applicator_htmlok( array(
@@ -70,6 +86,7 @@ $comments_cp = applicator_htmlok( array(
         'type'          => 'component',
     ),
     'hr_content'    => array(
+        $comments_heading_obj,
         $comments_nav_content,
         $comments_header_aside_cn,
     ),
