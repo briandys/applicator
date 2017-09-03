@@ -1066,16 +1066,7 @@
     font-size: 1.125rem;
 }
 
-/* Select all elements */
-.post-content---ct_cr > *,
-.post-excerpt---ct_cr > *,
-.comment---ct_cr > *
-{
-    margin: 0;
-    padding: .5em var(--content-gutter--sm);
-    
-    line-height: 1.6;
-}
+
 
 /* Cancel Out */
 .post-content---ct_cr > figure,

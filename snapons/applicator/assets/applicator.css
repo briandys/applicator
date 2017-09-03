@@ -72,8 +72,12 @@
     --section--spacing-y: var(--spacing-y--md);
     
     /* Content Spacing */
-    --content-spacing: var(--spacing-relative-y--sm) var(--gutter-x--md);
-    --content-spacing-y: var(--spacing-relative-y--sm);
+    --content--spacing: var(--spacing-relative-y--sm) var(--gutter-x--md);
+    --content--spacing-x: var(--gutter-x--md);
+    --content--spacing-y: var(--spacing-relative-y--sm);
+    
+    /* Object Spacing */
+    --object--spacing--md: var(--spacing-y--md) var(--gutter-x--md);
     
     /* Content - Font Size */
     --content--font-size: var(--font-size--md);
@@ -192,6 +196,88 @@ h1, h2, h3, h4, h5, h6,
 
 
 
+/*------------------ Active Area (AA) ------------------*/
+.input-text,
+.b_l,
+input[type="text"],
+input[type="password"],
+input[type="submit"],
+.comment-form-submit-axn---b,
+.go-start-navi---a_l,
+.go-ct-navi---a_l,
+.main-post-title---h_l,
+.wbp-copyright---g_l,
+.entry-navi---a_l,
+.main-post-title---a_l,
+.post-pub-d-stamp-dtstamp---a_l
+{
+    box-sizing: border-box;
+    
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    
+    min-width: 3rem;
+    min-height: 3rem;
+}
+
+
+
+
+
+/*------------------ Text Spacing ------------------*/
+.text-spacing > *,
+.wbp-copyright---g_l > *,
+.entry-navi---a_l > *,
+.post-pub-d-stamp-dtstamp---a_l > *
+{
+    margin-left: .15em;
+    margin-right: .15em;
+}
+
+.text-spacing > *:first-child,
+.wbp-copyright---g_l > *:first-child,
+.entry-navi---a_l > *:first-child,
+.post-pub-d-stamp-dtstamp---a_l > *:first-child
+{
+    margin-left: 0;
+}
+
+.text-spacing > *:last-child,
+.wbp-copyright---g_l > *:last-child,
+.entry-navi---a_l > *:last-child,
+.post-pub-d-stamp-dtstamp---a_l > *:last-child
+{
+    margin-right: 0;
+}
+
+
+
+
+
+.post-published-date-stamp-dtstamp
+{
+    padding: var(--object--spacing--md);
+}
+
+
+
+
+
+/*------------------ Unlist ------------------*/
+.unlist,
+.entry-nav---grp
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
 /*------------------ Responsive Media ------------------*/
 .post-content img,
 .post-banner-visual img
@@ -304,7 +390,7 @@ h1, h2, h3, h4, h5, h6,
 
 .main-content-heading
 {
-    padding: var(--section--spacing);
+    padding: var(--object--spacing--md);
 }
 
 
@@ -320,7 +406,7 @@ h1, h2, h3, h4, h5, h6,
 
 .main-post-title
 {
-    padding: var(--section--spacing);
+    padding: var(--object--spacing--md);
 }
 
 
@@ -328,15 +414,18 @@ h1, h2, h3, h4, h5, h6,
 
 
 /*------------------ General Content ------------------*/
+.post-content---ct_cr > *,
 .widget-content---ct_cr > *
 {
     margin: 0;
-    padding: var(--content-spacing);
+    padding: var(--content--spacing);
+    
+    line-height: 1.6;
 }
 
 .widget-content---ct_cr > select
 {
-    margin: var(--content-spacing);
+    margin: var(--content--spacing);
 }
 
 .widget-content---ct_cr > img
@@ -352,17 +441,6 @@ h1, h2, h3, h4, h5, h6,
 .post-content
 {
     font-size: var(--content--font-size);
-}
-
-.post-content---ct_cr > *
-{
-    margin: 0;
-    padding: var(--content-spacing);
-}
-
-.post-content .search
-{
-    font-size: initial;
 }
 
 
@@ -384,33 +462,6 @@ input[type="submit"],
     background-color: transparent;
     
     width: 100%;
-}
-
-
-
-
-
-/*------------------ Active Area (AA) ------------------*/
-.input-text,
-.b_l,
-input[type="text"],
-input[type="password"],
-input[type="submit"],
-.comment-form-submit-axn---b,
-.go-start-navi---a_l,
-.go-ct-navi---a_l,
-.main-post-title---h_l,
-.wbp-copyright---g_l
-{
-    box-sizing: border-box;
-    
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    
-    min-width: 3rem;
-    min-height: 3rem;
 }
 
 
@@ -685,8 +736,13 @@ input[type="submit"]
 .post-content .search-form-search-axn,
 .post-content .search-form-reset-axn
 {
-    padding-top: var(--content-spacing-y);
-    padding-bottom: var(--content-spacing-y);
+    padding-top: var(--content--spacing-y);
+    padding-bottom: var(--content--spacing-y);
+}
+
+.post-content .search
+{
+    font-size: initial;
 }
 
 
@@ -1498,6 +1554,17 @@ input[type="submit"]
 
 
 
+/*------------------ Entry Nav ------------------*/
+.entry-navi
+{
+    padding-left: var(--content--spacing-x);
+    padding-right: var(--content--spacing-x);
+}
+
+
+
+
+
 /*------------------ WordPress Admin Bar ------------------*/
 .wp-admin-bar--enabled
 {
@@ -1550,11 +1617,6 @@ input[type="submit"]
 
 
 /*------------------ Comments ------------------*/
-.form-submit
-{
-    margin: 0;
-}
-
 .commenter-comment-creation-text-input
 {
     /* Correction */
@@ -1593,28 +1655,36 @@ input[type="submit"]
     }
 }
 
-
-
-
-
-/*------------------ Text Spacing ------------------*/
-.text-spacing > *,
-.wbp-copyright---g_l > *
+.commenter-com-crt---cr,
+.commenter-name-crt---cr,
+.commenter-email-crt---cr,
+.commenter-url-crt---cr
 {
-    margin-left: .15em;
-    margin-right: .15em;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }
 
-.text-spacing > *:first-child,
-.wbp-copyright---g_l > *:first-child
+.comment-form .flabel
 {
-    margin-left: 0;
+    padding-left: var(--content--spacing-x);
+    padding-right: var(--content--spacing-x);
 }
 
-.text-spacing > *:last-child,
-.wbp-copyright---g_l > *:last-child
+.comment-form .felem
 {
-    margin-right: 0;
+    padding: var(--content--spacing);
+}
+
+.comment-form .form-submit
+{
+    margin: 0;
+    padding: 1rem var(--content--spacing-x);
+}
+
+.validity-note---g_l
+{
+    padding-left: var(--content--spacing-x);
+    padding-right: var(--content--spacing-x);
 }
 
 
