@@ -77,7 +77,12 @@
     --content--spacing-y: var(--spacing-relative-y--sm);
     
     /* Object Spacing */
+    --object--spacing-x: var(--gutter-x--md);
     --object--spacing--md: var(--spacing-y--md) var(--gutter-x--md);
+    
+    /* Component Spacing */
+    --component--spacing-x: var(--gutter-x--md);
+    --component--spacing--md: var(--spacing-y--md) var(--gutter-x--md);
     
     /* Content - Font Size */
     --content--font-size: var(--font-size--md);
@@ -209,7 +214,10 @@ input[type="submit"],
 .wbp-copyright---g_l,
 .entry-navi---a_l,
 .main-post-title---a_l,
-.post-pub-d-stamp-dtstamp---a_l
+.post-pub-d-stamp-dtstamp---a_l,
+.post-pub-t-stamp-dtstamp---a_l,
+.post-mod-d-stamp-dtstamp---a_l,
+.post-mod-t-stamp-dtstamp---a_l
 {
     box-sizing: border-box;
     
@@ -230,7 +238,10 @@ input[type="submit"],
 .text-spacing > *,
 .wbp-copyright---g_l > *,
 .entry-navi---a_l > *,
-.post-pub-d-stamp-dtstamp---a_l > *
+.post-pub-d-stamp-dtstamp---a_l > *,
+.post-mod-d-stamp-dtstamp---a_l > *,
+.post-pub---ct_cr > *,
+.post-mod---ct_cr > *
 {
     margin-left: .15em;
     margin-right: .15em;
@@ -239,7 +250,10 @@ input[type="submit"],
 .text-spacing > *:first-child,
 .wbp-copyright---g_l > *:first-child,
 .entry-navi---a_l > *:first-child,
-.post-pub-d-stamp-dtstamp---a_l > *:first-child
+.post-pub-d-stamp-dtstamp---a_l > *:first-child,
+.post-mod-d-stamp-dtstamp---a_l > *:first-child,
+.post-pub---ct_cr > *:first-child,
+.post-mod---ct_cr > *:first-child
 {
     margin-left: 0;
 }
@@ -247,7 +261,10 @@ input[type="submit"],
 .text-spacing > *:last-child,
 .wbp-copyright---g_l > *:last-child,
 .entry-navi---a_l > *:last-child,
-.post-pub-d-stamp-dtstamp---a_l > *:last-child
+.post-pub-d-stamp-dtstamp---a_l > *:last-child,
+.post-mod-d-stamp-dtstamp---a_l > *:last-child,
+.post-pub---ct_cr > *:last-child,
+.post-mod---ct_cr > *:last-child
 {
     margin-right: 0;
 }
@@ -255,10 +272,33 @@ input[type="submit"],
 
 
 
-
-.post-published-date-stamp-dtstamp
+/*------------------ Post Published, Modified ------------------*/
+.post-pub---cr,
+.post-mod---cr
 {
-    padding: var(--object--spacing--md);
+    padding-left: var(--component--spacing-x);
+    padding-right: var(--component--spacing-x);
+}
+
+.post-pub---ct_cr,
+.post-mod---ct_cr
+{
+    display: flex;
+    align-items: baseline;
+}
+
+
+
+
+
+/*------------------ Date, Time Stamp ------------------*/
+.post-published-date-stamp-dtstamp,
+.post-published-time-stamp-dtstamp,
+.post-modified-date-stamp-dtstamp,
+.post-modified-time-stamp-dtstamp
+{
+    padding-top: var(--object--spacing-x);
+    padding-bottom: var(--object--spacing-x);
 }
 
 
@@ -1557,8 +1597,8 @@ input[type="submit"]
 /*------------------ Entry Nav ------------------*/
 .entry-navi
 {
-    padding-left: var(--content--spacing-x);
-    padding-right: var(--content--spacing-x);
+    padding-left: var(--object--spacing-x);
+    padding-right: var(--object--spacing-x);
 }
 
 
