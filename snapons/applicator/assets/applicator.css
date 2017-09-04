@@ -1396,7 +1396,7 @@ input[type="submit"]
 {   
     /* Specific width */
     max-width: 30rem;
-    min-width: 10rem;
+    min-width: 15rem;
 }
 
 .easy-access-nav-func .page_item_has_children .children,
