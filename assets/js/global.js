@@ -21,14 +21,85 @@
     // ------------------------- Format Content
     ( function() {
         
-        $( '.post-content---ct_cr > *:has( pre )' ).addClass( 'content--pre' );
-        $( '.post-content---ct_cr > pre' ).wrap( '<div class="content--pre"></div>' );
+        // Variables
+        var contentContainerCSS = '.content-container',
+            contentContainerPrefixCss = 'content-container--',
+            postContent = '.post-content---ct_cr > *',
+            commentContent = '.comment-content---ct_cr > *';
         
-        $( '.post-content---ct_cr > table' ).wrap( '<div class="content--table"></div>' );
+        // Container
+        contentContainerCrMu = $( '<div />', {
+            'class': 'cr content-container---cr',
+        } );
+
+        // Component
+        contentContainerCpMu = $( '<div />', {
+            'class': 'cp content-container',
+            'data-name': 'Content Container CP'
+        } ).append( contentContainerCrMu );
         
-        $( '.post-content---ct_cr > *:has( embed )' ).addClass( 'content--embed' );
-        $( '.post-content---ct_cr > embed' ).wrap( '<div class="content--embed"></div>' );
+        /* <pre>
+        $( '.post-content---ct_cr > pre,' + postContent + ':has( pre ), .comment-content---ct_cr > pre,' + commentContent + ':has( pre )' ).wrap( contentContainerCpMu ).closest( contentContainerCSS ).addClass( contentContainerPrefixCss + 'pre' );
+        
+        $( '.post-content---ct_cr > code, .post-content---ct_cr > p:has( code ), .comment-content---ct_cr > code, .comment-content---ct_cr > p:has( code )' ).wrap( contentContainerCpMu ).closest( contentContainerCSS ).addClass( contentContainerPrefixCss + 'code' );
+        
+        $( '.post-content---ct_cr > iframe, .post-content---ct_cr > p:has( iframe ), .comment-content---ct_cr > iframe, .comment-content---ct_cr > p:has( iframe )' ).wrap( contentContainerCpMu ).closest( contentContainerCSS ).addClass( contentContainerPrefixCss + 'iframe' );
+        
+        $( '.post-content---ct_cr > embed, .post-content---ct_cr > p:has( embed ), .comment-content---ct_cr > embed, .comment-content---ct_cr > p:has( embed )' ).wrap( contentContainerCpMu ).closest( contentContainerCSS ).addClass( contentContainerPrefixCss + 'embed' );
+        
+        $( '.post-content---ct_cr > table, .post-content---ct_cr > p:has( table ), .comment-content---ct_cr > table, .comment-content---ct_cr > p:has( table )' ).wrap( contentContainerCpMu ).closest( contentContainerCSS ).addClass( contentContainerPrefixCss + 'table' );
+        */
+        
+        $( '.post-content pre' ).each(function() {
+            var $this = $( this );
+            $this.wrap( contentContainerCpMu )
+                .closest( contentContainerCSS )
+                    .addClass( contentContainerPrefixCss + 'pre' );
+        });
+        
+        $( '.post-content code' ).each(function() {
+            var $this = $( this );
+            $this.wrap( contentContainerCpMu )
+                .closest( contentContainerCSS )
+                    .addClass( contentContainerPrefixCss + 'code' );
+        });
+        
+        $( '.post-content table' ).each(function() {
+            var $this = $( this );
+            $this.wrap( contentContainerCpMu )
+                .closest( contentContainerCSS )
+                    .addClass( contentContainerPrefixCss + 'table' );
+        });
+        
+        $( '.post-content iframe' ).each(function() {
+            var $this = $( this );
+            $this.wrap( contentContainerCpMu )
+                .closest( contentContainerCSS )
+                    .addClass( contentContainerPrefixCss + 'iframe' );
+        });
+        
+        $( '.post-content embed' ).each(function() {
+            var $this = $( this );
+            $this.wrap( contentContainerCpMu )
+                .closest( contentContainerCSS )
+                    .addClass( contentContainerPrefixCss + 'embed' );
+        });
         
      } )();
+    
+    
+    
+    
+    
+    
+    
+    // ------------------------- Remove empty tags
+    $( '.post-content---ct_cr > *' ).each(function() {
+        var $this = $( this );
+        
+        if ( $this.html().replace(/\s|&nbsp;/g, '' ).length == 0 ) {
+            $this.remove();
+        }
+    });
 
 })( jQuery );

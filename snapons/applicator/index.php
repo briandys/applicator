@@ -26,6 +26,7 @@ if ( ! function_exists( 'apl_applicator_func_class' ) ) {
         
         // Themes
         echo ' ' . $snapon_name . '--' . 'theme--table--stroked';
+        echo ' ' . $snapon_name . '--' . 'theme--avatar--circular';
     
     }
     add_action( 'applicator_hook_html_class', 'apl_applicator_func_class');
