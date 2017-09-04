@@ -230,7 +230,8 @@ input[type="submit"],
 .post-navi---g_l,
 .edit-com-axn---a_l,
 .signed-in-account-name---a_l,
-.account-log-out-axn---a_l
+.account-log-out-axn---a_l,
+.comments-navi---a_l
 {
     box-sizing: border-box;
     
@@ -271,7 +272,8 @@ input[type="submit"],
 .edit-com-axn---a_l > *,
 .signed-in-account-name---a_l > *,
 .signed-in-acct---ct_cr > *,
-.account-log-out-axn---a_l > *
+.account-log-out-axn---a_l > *,
+.comments-navi---a_l > *
 {
     margin-left: var(--hack--text-spacing--md);
     margin-right: var(--hack--text-spacing--md);
@@ -300,7 +302,8 @@ input[type="submit"],
 .edit-com-axn---a_l > *:first-child,
 .signed-in-account-name---a_l > *:first-child,
 .signed-in-acct---ct_cr > *:first-child,
-.account-log-out-axn---a_l > *:first-child
+.account-log-out-axn---a_l > *:first-child,
+.comments-navi---a_l > *:first-child
 {
     margin-left: 0;
 }
@@ -328,7 +331,8 @@ input[type="submit"],
 .edit-com-axn---a_l > *:last-child,
 .signed-in-account-name---a_l > *:last-child,
 .signed-in-acct---ct_cr > *:last-child,
-.account-log-out-axn---a_l > *:last-child
+.account-log-out-axn---a_l > *:last-child,
+.comments-navi---a_l > *:last-child
 {
     margin-right: 0;
 }
@@ -341,7 +345,8 @@ input[type="submit"],
 .unlist,
 .entry-nav---grp,
 .page-nav ul,
-.post-nav---grp
+.post-nav---grp,
+.comments-nav---grp
 {
     list-style: none;
     margin: 0;
@@ -453,6 +458,31 @@ input[type="submit"],
 .post-content button
 {
     font-size: initial;
+}
+
+.post-content .twitter-tweet
+{
+    box-sizing: border-box;
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+.post-content---ct_cr > .gallery
+{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.post-content---ct_cr .gallery-item
+{
+    padding-top: var(--content--spacing-y);
+    padding-bottom: var(--content--spacing-y);
+}
+
+.post-content---ct_cr .gallery-caption
+{
+    padding-left: var(--content--spacing-x);
+    padding-right: var(--content--spacing-x);
 }
 
 
@@ -1973,7 +2003,24 @@ input[type="submit"]
 
 
 
+/*------------------ Comments Nav ------------------*/
+.comments-navi
+{
+    padding-left: var(--object--spacing-x);
+    padding-right: var(--object--spacing-x);
+}
+
+
+
+
+
 /*------------------ Signed In Account ------------------*/
+.signed-in-acct---cr
+{
+    padding-left: var(--component--spacing-x);
+    padding-right: var(--component--spacing-x);
+}
+
 .signed-in-acct---ct_cr
 {
     display: flex;
