@@ -78,6 +78,8 @@
     
     /* Object Spacing */
     --object--spacing-x: var(--gutter-x--md);
+    --object--spacing-y: var(--spacing-y--md);
+    --object--spacing-y--sm: var(--spacing-y--sm);
     --object--spacing--md: var(--spacing-y--md) var(--gutter-x--md);
     
     /* Component Spacing */
@@ -227,7 +229,9 @@ input[type="submit"],
 .add-com-axn---a_l,
 .comment-title---a_l,
 .comment-pub-d-stamp-dtstamp---a_l,
-.comment-pub-t-stamp-dtstamp---a_l
+.comment-pub-t-stamp-dtstamp---a_l,
+.commenter-name---a_l,
+.comment-reply-axn---a_l
 {
     box-sizing: border-box;
     
@@ -257,7 +261,8 @@ input[type="submit"],
 .add-com-axn---a_l > *,
 .comment-title---a_l > *,
 .comment-pub-d-stamp-dtstamp---a_l > *,
-.comment-pub---ct_cr > *
+.comment-pub---ct_cr > *,
+.published-com-commenter---ct > *
 {
     margin-left: var(--hack--text-spacing--md);
     margin-right: var(--hack--text-spacing--md);
@@ -275,7 +280,8 @@ input[type="submit"],
 .add-com-axn---a_l > *:first-child,
 .comment-title---a_l > *:first-child,
 .comment-pub-d-stamp-dtstamp---a_l > *:first-child,
-.comment-pub---ct_cr > *:first-child
+.comment-pub---ct_cr > *:first-child,
+.published-com-commenter---ct > *:first-child
 {
     margin-left: 0;
 }
@@ -292,7 +298,8 @@ input[type="submit"],
 .add-com-axn---a_l > *:last-child,
 .comment-title---a_l > *:last-child,
 .comment-pub-d-stamp-dtstamp---a_l > *:last-child,
-.comment-pub---ct_cr > *:last-child
+.comment-pub---ct_cr > *:last-child,
+.published-com-commenter---ct > *:last-child
 {
     margin-right: 0;
 }
@@ -447,16 +454,6 @@ input[type="submit"],
 
 
 
-/*------------------ Commenter ------------------*/
-.commenter-name---a_l
-{
-    word-break: break-word;
-}
-
-
-
-
-
 /*------------------ Post ------------------*/
 .post-content
 {
@@ -521,7 +518,9 @@ input[type="submit"],
 
 /*------------------ General Content ------------------*/
 .post-content---ct_cr > *,
-.widget-content---ct_cr > *
+.widget-content---ct_cr > *,
+.comment-content---ct_cr > *,
+.note .g_l > *
 {
     margin: 0;
     padding: var(--content--spacing);
@@ -1169,6 +1168,7 @@ input[type="submit"]
 .easy-access-nav-func .sub-menu
 {   
     /* Specific width */
+    max-width: 30rem;
     min-width: 10rem;
 }
 
@@ -1801,19 +1801,75 @@ input[type="submit"]
 
 .comment-form .felem
 {
-    padding: var(--content--spacing);
+    padding-left: var(--object--spacing-x);
+    padding-right: var(--object--spacing-x);
+    padding-top: var(--object--spacing-y--sm);
+    padding-bottom: var(--object--spacing-y--sm);
 }
 
 .comment-form .form-submit
 {
     margin: 0;
-    padding: 1rem var(--content--spacing-x);
+    padding: var(--component--spacing--md);
 }
 
-.validity-note---g_l
+.published-com-commenter---ct_cr
 {
-    padding-left: var(--content--spacing-x);
-    padding-right: var(--content--spacing-x);
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.commenter-name---a_l
+{
+    margin-left: .5rem;
+    margin-right: .5rem;
+    word-break: break-word;
+}
+
+.published-com-commenter---cr
+{
+    padding-left: var(--component--spacing-x);
+    padding-right: var(--component--spacing-x);
+}
+
+.comment-reply-axn
+{
+    padding-left: var(--object--spacing-x);
+    padding-right: var(--object--spacing-x);
+}
+
+.comment-creation-glabel
+{
+    padding: var(--object--spacing--md);
+}
+
+.comment-form .validity-note
+{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+
+
+
+/*------------------ Note ------------------*/
+.note
+{
+    padding-top: var(--object--spacing-y);
+    padding-bottom: var(--object--spacing-y);
+}
+
+.note p
+{
+    margin: 0;
+}
+
+.note .g_l
+{
+    display: block;
+    
+    padding-left: 
 }
 
 
