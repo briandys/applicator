@@ -163,7 +163,11 @@
 /* Widgets */
 .widget---h,
 .widget-content---h,
-.widget .screen-reader-text
+.widget .screen-reader-text,
+
+/* Search */
+.post-content .search-form-reset-axn,
+.aside .search-form-reset-axn
 {
     position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -1071,10 +1075,13 @@ input[type="submit"]
 
 .post-content .search-term-crt-search-text-input,
 .post-content .search-form-search-axn,
-.post-content .search-form-reset-axn
+.post-content .search-form-reset-axn,
+.aside .search-term-crt-search-text-input,
+.aside .search-form-search-axn,
+.aside .search-form-reset-axn
 {
-    padding-top: var(--content--spacing-y);
-    padding-bottom: var(--content--spacing-y);
+    padding-top: var(--object--spacing-y--sm);
+    padding-bottom: var(--object--spacing-y--sm);
 }
 
 
