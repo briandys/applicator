@@ -22,20 +22,24 @@
     
     /* Gutter */
     --gutter-x--base: 1rem;
+    --gutter-x--xsm--multiplier: .25;
     --gutter-x--sm--multiplier: .5;
     --gutter-x--md--multiplier: 1;
     --gutter-x--lg--multiplier: 1.5;
     
+    --gutter-x--xsm: calc( var(--gutter-x--base) * var(--gutter-x--xsm--multiplier) );
     --gutter-x--sm: calc( var(--gutter-x--base) * var(--gutter-x--sm--multiplier) );
     --gutter-x--md: calc( var(--gutter-x--base) * var(--gutter-x--md--multiplier) );
     --gutter-x--lg: calc( var(--gutter-x--base) * var(--gutter-x--lg--multiplier) );
     
     /* Spacing */
     --spacing-y--base: 1rem;
+    --spacing-y--xsm--multiplier: .25;
     --spacing-y--sm--multiplier: .5;
     --spacing-y--md--multiplier: 1;
     --spacing-y--lg--multiplier: 1.5;
     
+    --spacing-y--xsm: calc( var(--spacing-y--base) * var(--spacing-y--xsm--multiplier) );
     --spacing-y--sm: calc( var(--spacing-y--base) * var(--spacing-y--sm--multiplier) );
     --spacing-y--md: calc( var(--spacing-y--base) * var(--spacing-y--md--multiplier) );
     --spacing-y--lg: calc( var(--spacing-y--base) * var(--spacing-y--lg--multiplier) );
@@ -98,6 +102,10 @@
     /* Text Spacing Hack */
     --hack--text-spacing--md: .15em;
     
+    /* List Spacing */
+    --list--spacing--xsm: var(--spacing-y--xsm) var(--gutter-x--xsm);
+    --list--spacing-y--xsm: var(--spacing-y--xsm);
+    
     
 }
 
@@ -158,30 +166,12 @@
 
 
 
+/*------------------ HTML ------------------*/
 .html
 {
     text-rendering: geometricPrecision;
     
     background-color: var(--dash-of-darkness);
-}
-
-table,
-embed
-{
-    width: 100%;
-}
-
-img,
-.content--pre
-{
-    box-sizing: border-box;
-}
-
-h1, h2, h3, h4, h5, h6,
-.content--pre pre
-{
-    /* Reset */
-    margin: 0;
 }
 
 
@@ -231,7 +221,16 @@ input[type="submit"],
 .comment-pub-d-stamp-dtstamp---a_l,
 .comment-pub-t-stamp-dtstamp---a_l,
 .commenter-name---a_l,
-.comment-reply-axn---a_l
+.comment-reply-axn---a_l,
+.adjacent-navi---a_l,
+.page-navi---a_l,
+.show-more-axn---a_l,
+.edit-post-axn---a_l,
+.post-navi---a_l,
+.post-navi---g_l,
+.edit-com-axn---a_l,
+.signed-in-account-name---a_l,
+.account-log-out-axn---a_l
 {
     box-sizing: border-box;
     
@@ -248,7 +247,7 @@ input[type="submit"],
 
 
 
-/*------------------ Text Spacing ------------------*/
+/*------------------ AA Hack: Text Spacing ------------------*/
 .text-spacing > *,
 .wbp-copyright---g_l > *,
 .entry-navi---a_l > *,
@@ -262,7 +261,17 @@ input[type="submit"],
 .comment-title---a_l > *,
 .comment-pub-d-stamp-dtstamp---a_l > *,
 .comment-pub---ct_cr > *,
-.published-com-commenter---ct > *
+.published-com-commenter---ct > *,
+.adjacent-navi---a_l > *,
+.page-navi---a_l > *,
+.show-more-axn---a_l > *,
+.edit-post-axn---a_l > *,
+.post-navi---a_l > *,
+.post-navi---g_l > *,
+.edit-com-axn---a_l > *,
+.signed-in-account-name---a_l > *,
+.signed-in-acct---ct_cr > *,
+.account-log-out-axn---a_l > *
 {
     margin-left: var(--hack--text-spacing--md);
     margin-right: var(--hack--text-spacing--md);
@@ -281,7 +290,17 @@ input[type="submit"],
 .comment-title---a_l > *:first-child,
 .comment-pub-d-stamp-dtstamp---a_l > *:first-child,
 .comment-pub---ct_cr > *:first-child,
-.published-com-commenter---ct > *:first-child
+.published-com-commenter---ct > *:first-child,
+.adjacent-navi---a_l > *:first-child,
+.page-navi---a_l > *:first-child,
+.show-more-axn---a_l > *:first-child,
+.edit-post-axn---a_l > *:first-child,
+.post-navi---a_l > *:first-child,
+.post-navi---g_l > *:first-child,
+.edit-com-axn---a_l > *:first-child,
+.signed-in-account-name---a_l > *:first-child,
+.signed-in-acct---ct_cr > *:first-child,
+.account-log-out-axn---a_l > *:first-child
 {
     margin-left: 0;
 }
@@ -299,79 +318,19 @@ input[type="submit"],
 .comment-title---a_l > *:last-child,
 .comment-pub-d-stamp-dtstamp---a_l > *:last-child,
 .comment-pub---ct_cr > *:last-child,
-.published-com-commenter---ct > *:last-child
+.published-com-commenter---ct > *:last-child,
+.adjacent-navi---a_l > *:last-child,
+.page-navi---a_l > *:last-child,
+.show-more-axn---a_l > *:last-child,
+.edit-post-axn---a_l > *:last-child,
+.post-navi---a_l > *:last-child,
+.post-navi---g_l > *:last-child,
+.edit-com-axn---a_l > *:last-child,
+.signed-in-account-name---a_l > *:last-child,
+.signed-in-acct---ct_cr > *:last-child,
+.account-log-out-axn---a_l > *:last-child
 {
     margin-right: 0;
-}
-
-
-
-
-/*------------------ Post Published, Modified ------------------*/
-.post-pub---cr,
-.post-mod---cr
-{
-    padding-left: var(--component--spacing-x);
-    padding-right: var(--component--spacing-x);
-}
-
-.post-pub---ct_cr,
-.post-mod---ct_cr
-{
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-}
-
-
-
-
-
-/*------------------ Date, Time Stamp ------------------*/
-.post-published-date-stamp-dtstamp,
-.post-published-time-stamp-dtstamp,
-.post-modified-date-stamp-dtstamp,
-.post-modified-time-stamp-dtstamp
-{
-    padding-top: var(--object--spacing-x);
-    padding-bottom: var(--object--spacing-x);
-}
-
-
-
-
-
-/*------------------ Author ------------------*/
-.published-post-author---cr
-{
-    padding-left: var(--component--spacing-x);
-    padding-right: var(--component--spacing-x);
-}
-.published-post-author---ct_cr
-{
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-}
-
-.author-avatar---a_l
-{
-    display: inline-block;
-    
-    margin-left: .5rem;
-    margin-right: .5rem;
-}
-
-
-
-
-
-/*------------------ Comments Actions Snippet ------------------*/
-.comments-count-axn,
-.add-comment-axn
-{
-    padding-left: var(--object--spacing-x);
-    padding-right: var(--object--spacing-x);
 }
 
 
@@ -380,7 +339,9 @@ input[type="submit"],
 
 /*------------------ Unlist ------------------*/
 .unlist,
-.entry-nav---grp
+.entry-nav---grp,
+.page-nav ul,
+.post-nav---grp
 {
     list-style: none;
     margin: 0;
@@ -391,29 +352,109 @@ input[type="submit"],
 
 
 
-/*------------------ Responsive Media ------------------*/
-.post-content img,
-.post-banner-visual img
+/*------------------ Main Content ------------------*/
+.main-content
 {
-    width: 100%;
-    max-width: 100vw;
-    height: auto;
+    display: flex; /* Prevents margins of nested elements to bleed out of the container. */
 }
 
-.post-banner-vis---g
+.main-content---cr
 {
-    background-image: none !important;
+    flex-grow: 1;
 }
 
-.post-content figure
+.main-content-heading
+{
+    padding: var(--object--spacing--md);
+}
+
+.main-content-heading---h_l
+{
+    word-break: break-word;
+}
+
+
+
+
+
+/*------------------ Main Post Title ------------------*/
+.main-post-title---h_l
+{
+    word-break: break-word;
+}
+
+.main-post-title---a_l
+{
+    display: inline;
+    
+    word-break: break-word;
+}
+
+.main-post-title
+{
+    padding: var(--object--spacing--md);
+}
+
+
+
+
+
+/*------------------ General Content ------------------*/
+.post-content
+{
+    font-size: var(--content--font-size);
+}
+
+.post-content,
+.post-excerpt,
+.comment-content,
+.widget-content
+{
+    word-break: break-word;
+}
+
+.post-content---ct_cr > *,
+.post-excerpt---ct_cr > *,
+.comment-content---ct_cr > *,
+.widget-content---ct_cr > *
 {
     margin: 0;
+    padding: var(--content--spacing);
+    
+    line-height: 1.6;
 }
 
-.post-content iframe
+.post-content---ct_cr > ul,
+.post-content---ct_cr > ol,
+.post-excerpt---ct_cr > ul,
+.post-excerpt---ct_cr > ol
 {
-    max-width: 100%;
+    padding-left: 2.25em;
 }
+
+.post-content---ct_cr li,
+.post-excerpt---ct_cr li
+{
+    padding-top: var(--list--spacing-y--xsm);
+    padding-bottom: var(--list--spacing-y--xsm);
+}
+
+.widget-content---ct_cr > select
+{
+    margin: var(--content--spacing);
+}
+
+.widget-content---ct_cr > img
+{
+    padding: 0;
+}
+
+.post-content input,
+.post-content button
+{
+    font-size: initial;
+}
+
 
 
 
@@ -434,9 +475,59 @@ input[type="submit"],
 
 
 
+/*------------------ Post Banner Visual ------------------*/
+.post-banner-vis---g
+{
+    background-image: none !important;
+}
+
+
+
+
+
+/*------------------ Edit Post ------------------*/
+.edit-post-action
+{
+    padding-left: var(--object--spacing-x);
+    padding-right: var(--object--spacing-x);
+}
+
+.edit-post-axn---a_l
+{
+    justify-content: flex-start;
+}
+
+
+
+
+
+/*------------------ Edit Comment ------------------*/
+.edit-comment-action
+{
+    padding-left: var(--object--spacing-x);
+    padding-right: var(--object--spacing-x);
+}
+
+.edit-com-axn---a_l
+{
+    justify-content: flex-start;
+}
+
+
+
+
+
 /*------------------ Table ------------------*/
+table
+{
+    width: 100%;
+}
+
 .post-content table
 {
+    max-width: 100vw;
+    overflow-x: auto;
+    
     word-break: normal;
 }
 
@@ -444,108 +535,95 @@ input[type="submit"],
 
 
 
-/*------------------ Author ------------------*/
-.author-name---a_l
+/*------------------ Pre ------------------*/
+.content--pre
 {
-    word-break: break-word;
-}
-
-
-
-
-
-/*------------------ Post ------------------*/
-.post-content
-{
-    word-break: break-word;
-}
-
-.post-content---ct_cr > .content--pre
-{
+    box-sizing: border-box;
+    
     max-width: 100vw;
 }
 
-.post-content---ct_cr > .content--table
-{
-    max-width: 100vw;
-    overflow-x: auto;
-}
-
-
-
-
-
-/*------------------ Main Content ------------------*/
-.main-content
-{
-    display: flex; /* Prevents margins of nested elements to bleed out of the container. */
-}
-
-.main-content---cr
-{
-    flex-grow: 1;
-}
-
-.main-content-heading---h_l
-{
-    word-break: break-word;
-}
-
-.main-content-heading
-{
-    padding: var(--object--spacing--md);
-}
-
-
-
-
-
-/*------------------ Main Post Title ------------------*/
-.main-post-title---h_l,
-.main-post-title---a_l
-{
-    word-break: break-word;
-}
-
-.main-post-title
-{
-    padding: var(--object--spacing--md);
-}
-
-
-
-
-
-/*------------------ General Content ------------------*/
-.post-content---ct_cr > *,
-.widget-content---ct_cr > *,
-.comment-content---ct_cr > *,
-.note .g_l > *
+.content--pre pre
 {
     margin: 0;
-    padding: var(--content--spacing);
-    
-    line-height: 1.6;
-}
-
-.widget-content---ct_cr > select
-{
-    margin: var(--content--spacing);
-}
-
-.widget-content---ct_cr > img
-{
-    padding: 0;
 }
 
 
 
 
 
-/*------------------ Post Content ------------------*/
-.post-content
+/*------------------ Iframe ------------------*/
+.post-content iframe
 {
-    font-size: var(--content--font-size);
+    max-width: 100%;
+}
+
+
+
+
+
+/*------------------ Embed ------------------*/
+.post-content embed
+{
+    width: 100%;
+}
+
+
+
+
+
+/*------------------ Figure ------------------*/
+.post-content figure
+{
+    margin: 0;
+}
+
+
+
+
+
+/*------------------ Images ------------------*/
+img
+{
+    box-sizing: border-box;
+}
+
+.post-content img,
+.post-banner-visual img
+{
+    width: 100%;
+    max-width: 100vw;
+    height: auto;
+}
+
+
+
+
+
+/*------------------ Headings ------------------*/
+h1, h2, h3, h4, h5, h6
+{
+    margin: 0;
+}
+
+
+
+
+
+/*------------------ Categories ------------------*/
+.post-categories-glabel
+{
+    padding: var(--object--spacing--md);
+}
+
+
+
+
+
+/*------------------ Tags ------------------*/
+.post-tags-glabel
+{
+    padding: var(--object--spacing--md);
 }
 
 
@@ -843,11 +921,6 @@ input[type="submit"]
 {
     padding-top: var(--content--spacing-y);
     padding-bottom: var(--content--spacing-y);
-}
-
-.post-content .search
-{
-    font-size: initial;
 }
 
 
@@ -1466,6 +1539,52 @@ input[type="submit"]
 
 
 
+/*------------------ Page Nav ------------------*/
+.page-nav ul
+{
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.page-nav li
+{
+    padding-left: var(--object--spacing-x);
+    padding-right: var(--object--spacing-x);
+}
+
+
+
+
+
+/*------------------ Post Nav ------------------*/
+.post-nav---grp
+{
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.post-navi
+{
+    padding-left: var(--object--spacing-x);
+    padding-right: var(--object--spacing-x);
+}
+
+
+
+
+
+/*------------------ Entry Nav ------------------*/
+.next-entry-navi---a_l,
+.previous-entry-navi---a_l
+{
+    justify-content: flex-start;
+}
+
+
+
+
 /*------------------ Web Product Main Name ------------------*/
 .web-product-main-name
 {
@@ -1853,6 +1972,35 @@ input[type="submit"]
 
 
 
+
+/*------------------ Signed In Account ------------------*/
+.signed-in-acct---ct_cr
+{
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+
+
+
+
+/*------------------ Post Password Form ------------------*/
+.post-password-form input[type="password"]
+{
+    margin-top: var(--object--spacing-y--sm);
+    margin-bottom: var(--object--spacing-y--sm);
+}
+
+.post-password-form input[type="submit"]
+{
+    margin-top: var(--object--spacing-y);
+    margin-bottom: var(--object--spacing-y);
+}
+
+
+
+
 /*------------------ Note ------------------*/
 .note
 {
@@ -1870,6 +2018,87 @@ input[type="submit"]
     display: block;
     
     padding-left: 
+}
+
+.note .g_l > *
+{
+    margin: 0;
+    padding: var(--content--spacing);
+}
+
+
+
+
+/*------------------ Post Published, Modified ------------------*/
+.post-pub---cr,
+.post-mod---cr
+{
+    padding-left: var(--component--spacing-x);
+    padding-right: var(--component--spacing-x);
+}
+
+.post-pub---ct_cr,
+.post-mod---ct_cr
+{
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+
+
+
+
+/*------------------ Date, Time Stamp ------------------*/
+.post-published-date-stamp-dtstamp,
+.post-published-time-stamp-dtstamp,
+.post-modified-date-stamp-dtstamp,
+.post-modified-time-stamp-dtstamp
+{
+    padding-top: var(--object--spacing-x);
+    padding-bottom: var(--object--spacing-x);
+}
+
+
+
+
+
+/*------------------ Author ------------------*/
+.published-post-author---cr
+{
+    padding-left: var(--component--spacing-x);
+    padding-right: var(--component--spacing-x);
+}
+.published-post-author---ct_cr
+{
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.author-name---a_l
+{
+    word-break: break-word;
+}
+
+.author-avatar---a_l
+{
+    display: inline-block;
+    
+    margin-left: .5rem;
+    margin-right: .5rem;
+}
+
+
+
+
+
+/*------------------ Comments Actions Snippet ------------------*/
+.comments-count-axn,
+.add-comment-axn
+{
+    padding-left: var(--object--spacing-x);
+    padding-right: var(--object--spacing-x);
 }
 
 
