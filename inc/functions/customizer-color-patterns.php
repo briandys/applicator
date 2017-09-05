@@ -1,9 +1,6 @@
 <?php // Applicator Color Patterns
 // From Twenty Seventeen
 
-
-
-
 function applicator_func_custom_colors_css() {
 	$hue = absint( get_theme_mod( 'colorscheme_hue', 250 ) );
 
@@ -14,15 +11,15 @@ function applicator_func_custom_colors_css() {
     
     :root
     {
-        --wbp-pri-color: hsl( ' . $hue . ', ' . $saturation . ', 46% ); /* base: #767676; */;
+        --main-header--bg-color: hsl( ' . $hue . ', ' . $saturation . ', 45% );
     }
- 
-    .wp-customizer-colors--custom .post---hr a
+    
+    .main-header---cr
     {
-        color: var(--wbp-pri-color);
+        background-color: hsl( ' . $hue . ', ' . $saturation . ', 45% );
     }
-
-}';
+    
+    ';
 
 	return apply_filters( 'applicator_func_custom_colors_css', $css, $hue, $saturation );
 }

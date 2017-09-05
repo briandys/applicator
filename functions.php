@@ -9,8 +9,6 @@ if ( file_exists( $applicator_htmlok ) ) { require_once( $applicator_htmlok ); }
 $globals = get_parent_theme_file_path( '/inc/globals.php' );
 if ( file_exists( $globals ) ) { require_once( $globals ); }
 
-$customizer = get_parent_theme_file_path( '/inc/customizer.php' );
-if ( file_exists( $customizer ) ) { require_once( $customizer ); }
 
 $settings = get_parent_theme_file_path( '/inc/settings.php' );
 if ( file_exists( $settings ) ) { require_once( $settings ); }
@@ -78,16 +76,10 @@ if ( file_exists( $post_title ) ) { require_once( $post_title ); }
 $comments = get_parent_theme_file_path( '/inc/functions/get-comments.php' );
 if ( file_exists( $comments ) ) { require_once( $comments ); }
 
-
-
-
 $comments_actions_snippet = get_parent_theme_file_path( '/inc/tags/comments-actions-snippet-cp.php' );
 if ( file_exists( $comments_actions_snippet ) ) {
     require_once( $comments_actions_snippet );
 }
-
-
-
 
 $comments_nav = get_parent_theme_file_path( '/inc/tags/comments-nav.php' );
 if ( file_exists( $comments_nav ) ) { require_once( $comments_nav ); }
@@ -97,6 +89,7 @@ if ( file_exists( $comment ) ) { require_once( $comment ); }
 
 $comment_form = get_parent_theme_file_path( '/inc/functions/comment-form.php' );
 if ( file_exists( $comment_form ) ) { require_once( $comment_form ); }
+
 
 // Template Parts
 $post_content = get_parent_theme_file_path( '/template-parts/post-content.php' );
@@ -131,27 +124,15 @@ if ( file_exists( $pingback_header ) ) { require_once( $pingback_header ); }
 $icons = get_parent_theme_file_path( '/inc/functions/icons.php' );
 if ( file_exists( $icons ) ) { require_once( $icons ); }
 
-$customizer_colors = get_parent_theme_file_path( '/inc/functions/customizer-colors.php' );
-if ( file_exists( $customizer_colors ) ) { require_once( $customizer_colors ); }
+
+// Customizer
+$customizer = get_parent_theme_file_path( '/inc/functions/customizer.php' );
+if ( file_exists( $customizer ) ) { require_once( $customizer ); }
+
+$customizer_custom_colors = get_parent_theme_file_path( '/inc/functions/customizer-custom-colors.php' );
+if ( file_exists( $customizer_custom_colors ) ) { require_once( $customizer_custom_colors ); }
 
 
 // Snap-ons
 $snapons = get_parent_theme_file_path( '/snapons.php' );
 if ( file_exists( $snapons ) ) { require_once( $snapons ); }
-
-
-
-
-
-
-
-
-
-
-
-
-
-add_action( 'wp_enqueue_scripts', function () {
-    $js = 'wp.customize.selectiveRefresh.Partial.prototype.createEditShortcutForPlacement = function() {};';
-    wp_add_inline_script( 'customize-selective-refresh', $js );
-} );

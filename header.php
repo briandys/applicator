@@ -176,6 +176,7 @@
                             ),
                         ),
                         'css'       => 'wbp-main-desc',
+                        'root_css'  => 'site-description',
                         'title'     => $description,
                         'content'   => array(
                             'object'    => $description,

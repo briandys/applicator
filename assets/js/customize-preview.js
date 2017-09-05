@@ -41,12 +41,12 @@
 	// Site title and description.
 	wp.customize( 'blogname', function( value ) {
 		value.bind( function( to ) {
-			$( '.wbp-main-name---a' ).text( to );
+			$( '.wbp-name---txt' ).text( to );
 		});
 	});
 	wp.customize( 'blogdescription', function( value ) {
 		value.bind( function( to ) {
-			$( '.wbp-main-desc---a' ).text( to );
+			$( '.wbp-main-desc---a_l' ).text( to );
 		});
 	});
 
