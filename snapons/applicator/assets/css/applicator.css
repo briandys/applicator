@@ -14,6 +14,12 @@
     --accent-color--pri: var(--panda-blue--color);
     --accent-color--sec: var(--chikka-orange--color);
     
+    /* Background Color */
+    --bg-color: var(--off-white--color);
+    
+    /* Foreground Color */
+    --fg-color: var(--off-black--color);
+    
     /* Foreground Color - Reverse (use with a dark background) */
     --fg-color--reverse: var(--white--color);
     
@@ -59,34 +65,34 @@
     
     /*------------ Level 3 - Specifics ------------*/
     
-    /* Main Header */
+    /* Main Header - Colors */
     --main-header--bg-color: var(--main-color--pri);
     
-    /* Button */
+    /* Button - Colors */
     --button--bg-color: var(--accent-color--pri);
     --button--fg-color: var(--fg-color--reverse);
     
-    /* Selection */
+    /* Selection - Colors */
     --selection--bg-color: var(--main-color--sec);
     --selection--fg-color: var(--fg-color--reverse);
     
-    /* Section Spacing */
+    /* Section - Spacing */
     --section--spacing: var(--spacing-y--md) var(--gutter-x--md);
     --section--spacing-x: var(--gutter-x--md);
     --section--spacing-y: var(--spacing-y--md);
     
-    /* Content Spacing */
+    /* Content - Spacing */
     --content--spacing: var(--spacing-relative-y--sm) var(--gutter-x--md);
     --content--spacing-x: var(--gutter-x--md);
     --content--spacing-y: var(--spacing-relative-y--sm);
     
-    /* Object Spacing */
+    /* Object - Spacing */
     --object--spacing-x: var(--gutter-x--md);
     --object--spacing-y: var(--spacing-y--md);
     --object--spacing-y--sm: var(--spacing-y--sm);
     --object--spacing--md: var(--spacing-y--md) var(--gutter-x--md);
     
-    /* Component Spacing */
+    /* Component - Spacing */
     --component--spacing-x: var(--gutter-x--md);
     --component--spacing-y: var(--spacing-y--md);
     --component--spacing--md: var(--spacing-y--md) var(--gutter-x--md);
@@ -94,31 +100,45 @@
     /* Content - Font Size */
     --content--font-size: var(--font-size--md);
     
+    /* Caption - Font Size */
     --caption--font-size: var(--font-size--sm);
     
-    /* Copyright Info */
+    /* Copyright Info - Colors */
     --copyright-info--fg-color: var(--faint-color--pri);
     
-    /* Generic Text - FG Color */
+    /* Generic Text - Colors */
     --generic-text--fg-color: var(--main-color--sec);
     
-    /* Text Spacing Hack */
+    /* Text Spacing Hack - Spacing */
     --hack--text-spacing--md: .15em;
     
-    /* List Spacing */
+    /* List - Spacing */
     --list--spacing--xsm: var(--spacing-y--xsm) var(--gutter-x--xsm);
     --list--spacing-y--xsm: var(--spacing-y--xsm);
     
-    /* Table Spacing */
+    /* Table - Spacing */
     --table--spacing: var(--spacing-y--md) var(--gutter-x--md);
     
-    /* Web Product BG Color */
-    --wbp--bg-color: var(--dash-of-darkness--color);
+    /* Web Product - Colors */
+    --wbp--bg-color: var(--bg-color);
+    --wbp--fg-color: var(--fg-color);
+    
+    /* Links - Colors */
+    --links--fg-color: var(--accent-color--pri);
 }
 
 .apl--applicator--theme--customizer-colors--dark
-{
-    --wbp--bg-color: red;
+{    
+    --bg-color--theme--dark: var(--off-black--color);
+    --fg-color--theme--dark: var(--off-white--color);
+    
+    --accent-color-pri--theme--dark: var(--main-color--pri);
+
+    --wbp--bg-color: var(--bg-color--theme--dark);
+    --wbp--fg-color: var(--fg-color--theme--dark);
+    
+    /* Links - Colors */
+    --links--fg-color: var(--off-white--color);
 }
 
 
@@ -187,8 +207,8 @@
 {
     text-rendering: geometricPrecision;
     
-    background-color: var(--dash-of-darkness);
     background-color: var(--wbp--bg-color);
+    color: var(--wbp--fg-color);
 }
 
 
@@ -389,6 +409,18 @@ input[type="submit"],
 .main-content
 {
     display: flex; /* Prevents margins of nested elements to bleed out of the container. */
+}
+
+.main-content a
+{
+    color: var(--links--fg-color);
+    
+    text-decoration: none;
+}
+
+.main-content a:hover
+{
+    text-decoration: underline;
 }
 
 .main-content---cr

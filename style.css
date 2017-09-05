@@ -55,6 +55,12 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
     /* White */
     --white--color: hsl(0, 0%, 98%);
     
+    /* Off White */
+    --off-white--color: hsla(0, 100%, 100%, .9);
+    
+    /* Off Black */
+    --off-black--color: hsla(0, 0%, 0%, .9);
+    
     /* Transparent Black */
     --transparent-black--color: hsla(0, 0%, 0%, .5);
     
