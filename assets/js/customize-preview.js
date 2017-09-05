@@ -95,7 +95,7 @@
 		value.bind( function( to ) {
 
 			// Update custom color CSS.
-			var style = $( '#custom-theme-colors' ),
+			var style = $( '#applicator-style-custom-theme-colors' ),
 				hue = style.data( 'hue' ),
 				css = style.html();
 

@@ -50,9 +50,7 @@ function applicator_func_customize_register( $wp_customize ) {
 }
 add_action( 'customize_register', 'applicator_func_customize_register' );
 
-/**
- * Sanitize the colorscheme.
- */
+// Sanitize the colorscheme.
 function applicator_func_sanitize_colorscheme( $input ) {
 	$valid = array( 'light', 'dark', 'custom' );
 
@@ -75,12 +73,12 @@ function applicator_func_customize_partial_blogdescription() {
 
 // Bind JS handlers to instantly live-preview changes.
 function applicator_func_customize_preview_js() {
-	wp_enqueue_script( 'apl-script-customize-preview', get_theme_file_uri( '/assets/js/customize-preview.js' ), array( 'customize-preview' ), '1.1', true );
+	wp_enqueue_script( 'apl-script-customize-preview', get_theme_file_uri( '/assets/js/customize-preview.js' ), array( 'customize-preview' ), '1.2', true );
 }
 add_action( 'customize_preview_init', 'applicator_func_customize_preview_js' );
 
 // Load dynamic logic for the customizer controls area.
 function applicator_func_panels_js() {
-	wp_enqueue_script( 'apl-script-customize-controls', get_theme_file_uri( '/assets/js/customize-controls.js' ), array(), '1.1', true );
+	wp_enqueue_script( 'apl-script-customize-controls', get_theme_file_uri( '/assets/js/customize-controls.js' ), array(), '1.2', true );
 }
 add_action( 'customize_controls_enqueue_scripts', 'applicator_func_panels_js' );
