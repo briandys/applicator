@@ -112,7 +112,13 @@
     /* Table Spacing */
     --table--spacing: var(--spacing-y--md) var(--gutter-x--md);
     
-    
+    /* Web Product BG Color */
+    --wbp--bg-color: var(--dash-of-darkness--color);
+}
+
+.apl--applicator--theme--customizer-colors--dark
+{
+    --wbp--bg-color: red;
 }
 
 
@@ -182,6 +188,7 @@
     text-rendering: geometricPrecision;
     
     background-color: var(--dash-of-darkness);
+    background-color: var(--wbp--bg-color);
 }
 
 
@@ -2321,6 +2328,15 @@ input[type="submit"]
 {
     border-radius: 50%;
     overflow: hidden;
+}
+
+
+
+
+
+.apl--applicator--theme--customizer-dark
+{
+    
 }
 
 

@@ -1,8 +1,9 @@
 <?php // Applicator: Customizer
-// From Twenty Seventeen Theme
+// From twentyseventeen
 
 function applicator_func_customize_register( $wp_customize ) {
-	$wp_customize->get_setting( 'blogname' )->transport          = 'postMessage';
+	
+    $wp_customize->get_setting( 'blogname' )->transport          = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport   = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport  = 'postMessage';
 
@@ -15,9 +16,7 @@ function applicator_func_customize_register( $wp_customize ) {
 		'render_callback' => 'applicator_func_customize_partial_blogdescription',
 	) );
 
-	/**
-	 * Custom colors.
-	 */
+	// Custom colors
 	$wp_customize->add_setting( 'colorscheme', array(
 		'default'           => 'light',
 		'transport'         => 'postMessage',
@@ -50,7 +49,8 @@ function applicator_func_customize_register( $wp_customize ) {
 }
 add_action( 'customize_register', 'applicator_func_customize_register' );
 
-// Sanitize the colorscheme.
+
+// Sanitize the colorscheme
 function applicator_func_sanitize_colorscheme( $input ) {
 	$valid = array( 'light', 'dark', 'custom' );
 
@@ -61,24 +61,36 @@ function applicator_func_sanitize_colorscheme( $input ) {
 	return 'light';
 }
 
+
 // Render the site title for the selective refresh partial.
 function applicator_func_customize_partial_blogname() {
 	bloginfo( 'name' );
 }
+
 
 // Render the site tagline for the selective refresh partial.
 function applicator_func_customize_partial_blogdescription() {
 	bloginfo( 'description' );
 }
 
+
 // Bind JS handlers to instantly live-preview changes.
 function applicator_func_customize_preview_js() {
-	wp_enqueue_script( 'apl-script-customize-preview', get_theme_file_uri( '/assets/js/customize-preview.js' ), array( 'customize-preview' ), '1.2', true );
+	wp_enqueue_script( 'apl-snapons-applicator-script-customizer-preview', get_theme_file_uri( '/snapons/applicator/assets/js/customizer-preview.js' ), array( 'customize-preview' ), '1.3', true );
 }
 add_action( 'customize_preview_init', 'applicator_func_customize_preview_js' );
 
+
 // Load dynamic logic for the customizer controls area.
 function applicator_func_panels_js() {
-	wp_enqueue_script( 'apl-script-customize-controls', get_theme_file_uri( '/assets/js/customize-controls.js' ), array(), '1.2', true );
+	wp_enqueue_script( 'apl-snapons-applicator-script-customizer-controls', get_theme_file_uri( '/snapons/applicator/assets/js/customizer-controls.js' ), array(), '1.3', true );
 }
 add_action( 'customize_controls_enqueue_scripts', 'applicator_func_panels_js' );
+
+
+// Remove the Edit Icon in Customizer Preview
+function applicator_customizer_remove_edit_icon() {
+    $js = 'wp.customize.selectiveRefresh.Partial.prototype.createEditShortcutForPlacement = function() {};';
+    wp_add_inline_script( 'customize-selective-refresh', $js );
+}
+add_action( 'wp_enqueue_scripts', 'applicator_customizer_remove_edit_icon' );

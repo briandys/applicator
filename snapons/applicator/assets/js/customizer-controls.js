@@ -1,9 +1,6 @@
-/**
- * Scripts within the customizer controls window.
- *
- * Contextually shows the color hue control and informs the preview
- * when users open or close the front page sections section.
- */
+// Scripts within the customizer controls window.
+// Contextually shows the color hue control and informs the preview when users open or close the front page sections section.
+// From twentyseventeen
 
 (function() {
 	wp.customize.bind( 'ready', function() {
@@ -24,7 +21,8 @@
 			});
 		});
 
-		// Detect when the front page sections section is expanded (or closed) so we can adjust the preview accordingly.
+		/*
+        // Detect when the front page sections section is expanded (or closed) so we can adjust the preview accordingly.
 		wp.customize.section( 'theme_options', function( section ) {
 			section.expanded.bind( function( isExpanding ) {
 
@@ -32,5 +30,6 @@
 				wp.customize.previewer.send( 'section-highlight', { expanded: isExpanding });
 			} );
 		} );
+        */
 	});
 })( jQuery );

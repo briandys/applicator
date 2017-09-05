@@ -3,9 +3,21 @@
 Snap-on Name: Applicator
 Description: Default Snap-on for Applicator WordPress Theme
 Author: Brian Dys Sahagun
-Version: 1.0
+Version: 1.1
 Author URI: http://applicator.dysinelab.com
 */
+
+
+// Functions
+$custom_fonts = get_parent_theme_file_path( '/snapons/applicator/inc/functions/custom-fonts.php' );
+if ( file_exists( $custom_fonts ) ) { require_once( $custom_fonts ); }
+
+$customizer = get_parent_theme_file_path( '/snapons/applicator/inc/functions/customizer.php' );
+if ( file_exists( $customizer ) ) { require_once( $customizer ); }
+
+$customizer_custom_colors = get_parent_theme_file_path( '/snapons/applicator/inc/functions/customizer-custom-colors.php' );
+if ( file_exists( $customizer_custom_colors ) ) { require_once( $customizer_custom_colors ); }
+
 
 // Functionalities
 if ( ! function_exists( 'apl_applicator_func_class' ) ) {
@@ -15,70 +27,28 @@ if ( ! function_exists( 'apl_applicator_func_class' ) ) {
         $snapon_name = $applicator_name . '--' . 'applicator';
         
         echo ' ' . $snapon_name;
-        echo ' ' . $snapon_name . '--' . 'go-content-nav';
-        echo ' ' . $snapon_name . '--' . 'main-search';
-        echo ' ' . $snapon_name . '--' . 'main-menu';
         
-        echo ' ' . $snapon_name . '--' . 'easy-access-nav';
-        echo ' ' . $snapon_name . '--' . 'sub-nav';
+        $r = array(
+            'go-content-nav',
+            'main-search',
+            'main-menu',
+            'easy-access-nav',
+            'sub-nav',
+            'go-start-nav',
+            'theme--table--stroked',
+            'theme--avatar--circular',
+        ); 
         
-        echo ' ' . $snapon_name . '--' . 'go-start-nav';
+        foreach ( ( array ) $r as $val ) {
+            echo ' '. $snapon_name. '--'. $val;
+        }
         
-        // Themes
-        echo ' ' . $snapon_name . '--' . 'theme--table--stroked';
-        echo ' ' . $snapon_name . '--' . 'theme--avatar--circular';
+        // Get the colorscheme or the default if there isn't one.
+        $colors = applicator_func_sanitize_colorscheme( get_theme_mod( 'colorscheme', 'light' ) );
+        echo ' '. $snapon_name. '--theme--customizer-colors--'. $colors;
     
     }
     add_action( 'applicator_hook_html_class', 'apl_applicator_func_class');
-}
-
-
-// Font URL
-if ( ! function_exists( 'apl_snapons_applicator_font_url' ) ) {
-    function apl_snapons_applicator_font_url() {
-        
-        $fonts_url = '';
-        $noto = _x( 'on', 'Noto Sans, Noto Serif font: on or off', 'applicator' );
-
-        if ( 'off' !== $noto ) {
-            $font_families = array();
-            $font_families[] = 'Noto Sans:400,700|Noto Serif:400,700';
-            $query_args = array(
-                'family' => urlencode( implode( '|', $font_families ) ),
-                'subset' => urlencode( 'latin,latin-ext' ),
-            );
-            $fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
-        }
-        return esc_url_raw( $fonts_url );
-    }
-}
-
-// Font Style
-if ( ! function_exists( 'apl_snapons_applicator_font_style' ) ) {
-    function apl_snapons_applicator_font_style() {
-
-        wp_enqueue_style( 'apl-snapons-applicator-style-font', apl_snapons_applicator_font_url(), array(), null );
-
-    }
-    add_action( 'wp_enqueue_scripts', 'apl_snapons_applicator_font_style', 0);
-}
-
-// Font Settings
-if ( ! function_exists( 'apl_snapons_applicator_font_settings' ) ) {
-    function apl_snapons_applicator_font_settings() {
-    ?>
-    
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-
-    <style id="apl-snapons-applicator-style-font">
-        .html
-        {
-            font-family: 'Noto Sans', sans-serif;
-        }
-    </style>
-    
-    <?php }
-    add_action( 'wp_head', 'apl_snapons_applicator_font_settings' );
 }
 
 
@@ -88,9 +58,7 @@ if ( ! function_exists( 'apl_snapons_applicator_styles' ) ) {
 
         add_editor_style( array( 'assets/css/editor-style.css' ) );
         
-        wp_enqueue_style( 'apl-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/applicator.css', array(), '25.5', 'all' );
-        
-        //wp_enqueue_style( 'apl-snapons-applicator-style-theme', get_theme_file_uri() . '/snapons/applicator/assets/theme.css', array( 'apl-snapons-applicator-style' ), '1.0', 'all' );
+        wp_enqueue_style( 'apl-snapons-applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/css/applicator.css', array(), '25.5', 'all' );
 
     }
     add_action( 'wp_enqueue_scripts', 'apl_snapons_applicator_styles', 0);
@@ -101,7 +69,7 @@ if ( ! function_exists( 'apl_snapons_applicator_styles' ) ) {
 if ( ! function_exists( 'apl_snapons_applicator_scripts' ) ) {
     function apl_snapons_applicator_scripts() {
         
-        wp_enqueue_script( 'apl-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/applicator.js' ), array( 'jquery' ), '25.3', true );
+        wp_enqueue_script( 'apl-snapons-applicator-script-global', get_theme_file_uri( '/snapons/applicator/assets/js/applicator.js' ), array( 'jquery' ), '25.3', true );
         
         $arrow_icon = applicator_func_get_svg( array( 'icon' => 'arrow-icon', 'fallback' => true, ) );
         $arrow_up_2_icon = applicator_func_get_svg( array( 'icon' => 'arrow-up-2-icon', 'fallback' => true, ) );

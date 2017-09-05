@@ -1,12 +1,10 @@
-/**
- * File customize-preview.js.
- *
- * Instantly live-update customizer settings in the preview for improved user experience.
- */
+// Instantly live-update customizer settings in the preview for improved user experience.
+// From twentyseventeen
 
 (function( $ ) {
 
-	// Collect information from customize-controls.js about which panels are opening.
+	/*
+    // Collect information from customize-controls.js about which panels are opening.
 	wp.customize.bind( 'preview-ready', function() {
 
 		// Initially hide the theme option placeholders on load
@@ -37,6 +35,7 @@
 			}
 		});
 	});
+    */
 
 	// Site title and description.
 	wp.customize( 'blogname', function( value ) {
@@ -105,10 +104,12 @@
 		});
 	});
 
-	// Whether a header image is available.
+	/*
+    // Whether a header image is available.
 	function hasHeaderImage() {
 		var image = wp.customize( 'header_image' )();
 		return '' !== image && 'remove-header' !== image;
 	}
+    */
 
 } )( jQuery );
