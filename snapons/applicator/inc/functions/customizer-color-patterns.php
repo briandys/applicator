@@ -2,7 +2,7 @@
 // From twentyseventeen
 
 function applicator_customizer_color_patterns() {
-	
+    
     $hue = absint( get_theme_mod( 'colorscheme_hue', 250 ) );
 
 	$saturation = absint( apply_filters( 'applicator_func_custom_colors_saturation', 50 ) );
@@ -18,7 +18,7 @@ function applicator_customizer_color_patterns() {
     
     .main-header---cr
     {
-        background-color: hsl( ' . $hue . ', ' . $saturation . ', 45% );
+        background-color: var(--main-header--bg-color);
     }
     
     ';

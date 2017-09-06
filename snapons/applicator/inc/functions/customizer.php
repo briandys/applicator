@@ -18,7 +18,7 @@ function applicator_func_customize_register( $wp_customize ) {
 
 	// Custom colors
 	$wp_customize->add_setting( 'colorscheme', array(
-		'default'           => 'light',
+		'default'           => 'default',
 		'transport'         => 'postMessage',
 		'sanitize_callback' => 'applicator_func_sanitize_colorscheme',
 	) );
@@ -33,8 +33,7 @@ function applicator_func_customize_register( $wp_customize ) {
 		'type'    => 'radio',
 		'label'    => __( 'Color Scheme', 'applicator' ),
 		'choices'  => array(
-			'light'  => __( 'Light', 'applicator' ),
-			'dark'   => __( 'Dark', 'applicator' ),
+			'default'  => __( 'Default', 'applicator' ),
 			'custom' => __( 'Custom', 'applicator' ),
 		),
 		'section'  => 'colors',
@@ -52,13 +51,13 @@ add_action( 'customize_register', 'applicator_func_customize_register' );
 
 // Sanitize the colorscheme
 function applicator_func_sanitize_colorscheme( $input ) {
-	$valid = array( 'light', 'dark', 'custom' );
+	$valid = array( 'default', 'custom' );
 
 	if ( in_array( $input, $valid ) ) {
 		return $input;
 	}
 
-	return 'light';
+	return 'default';
 }
 
 
@@ -76,14 +75,14 @@ function applicator_func_customize_partial_blogdescription() {
 
 // Bind JS handlers to instantly live-preview changes.
 function applicator_func_customize_preview_js() {
-	wp_enqueue_script( 'apl-snapons-applicator-script-customizer-preview', get_theme_file_uri( '/snapons/applicator/assets/js/customizer-preview.js' ), array( 'customize-preview' ), '1.3', true );
+	wp_enqueue_script( 'apl-snapons-applicator-script-customizer-preview', get_theme_file_uri( '/snapons/applicator/assets/js/customizer-preview.js' ), array( 'customize-preview' ), '1.4', true );
 }
 add_action( 'customize_preview_init', 'applicator_func_customize_preview_js' );
 
 
 // Load dynamic logic for the customizer controls area.
 function applicator_func_panels_js() {
-	wp_enqueue_script( 'apl-snapons-applicator-script-customizer-controls', get_theme_file_uri( '/snapons/applicator/assets/js/customizer-controls.js' ), array(), '1.3', true );
+	wp_enqueue_script( 'apl-snapons-applicator-script-customizer-controls', get_theme_file_uri( '/snapons/applicator/assets/js/customizer-controls.js' ), array(), '1.4', true );
 }
 add_action( 'customize_controls_enqueue_scripts', 'applicator_func_panels_js' );
 

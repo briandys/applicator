@@ -44,7 +44,7 @@ if ( ! function_exists( 'apl_applicator_func_class' ) ) {
         }
         
         // Get the colorscheme or the default if there isn't one.
-        $colors = applicator_func_sanitize_colorscheme( get_theme_mod( 'colorscheme', 'light' ) );
+        $colors = applicator_func_sanitize_colorscheme( get_theme_mod( 'colorscheme', 'default' ) );
         echo ' '. $snapon_name. '--theme--customizer-colors--'. $colors;
     
     }
