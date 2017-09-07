@@ -250,6 +250,12 @@
 
 
 /*------------------ Active Area (AA) ------------------*/
+.active-area,
+
+.comments-count-axn---a_l,
+.entry-navi---a_l,
+.main-post-title---a_l,
+
 .input-text,
 .b_l,
 input[type="text"],
@@ -260,14 +266,14 @@ input[type="submit"],
 .go-ct-navi---a_l,
 .main-post-title---h_l,
 .wbp-copyright---g_l,
-.entry-navi---a_l,
-.main-post-title---a_l,
+
+
 .post-pub-d-stamp-dtstamp---a_l,
 .post-pub-t-stamp-dtstamp---a_l,
 .post-mod-d-stamp-dtstamp---a_l,
 .post-mod-t-stamp-dtstamp---a_l,
 .author-name---a_l,
-.comments-count-axn---a,
+
 .add-com-axn---a_l,
 .comment-title---a_l,
 .comment-pub-d-stamp-dtstamp---a_l,
@@ -308,7 +314,6 @@ input[type="submit"],
 /*------------------ AA Hack: Text Spacing ------------------*/
 .text-spacing > *,
 .wbp-copyright---g_l > *,
-.entry-navi---a_l > *,
 .post-pub-d-stamp-dtstamp---a_l > *,
 .post-mod-d-stamp-dtstamp---a_l > *,
 .post-pub---ct_cr > *,
@@ -322,7 +327,7 @@ input[type="submit"],
 .adjacent-navi---a_l > *,
 .page-navi---a_l > *,
 .show-more-axn---a_l > *,
-.edit-post-axn---a_l > *,
+
 .post-navi---a_l > *,
 .post-navi---g_l > *,
 .edit-com-axn---a_l > *,
@@ -341,7 +346,6 @@ input[type="submit"],
 
 .text-spacing > *:first-child,
 .wbp-copyright---g_l > *:first-child,
-.entry-navi---a_l > *:first-child,
 .post-pub-d-stamp-dtstamp---a_l > *:first-child,
 .post-mod-d-stamp-dtstamp---a_l > *:first-child,
 .post-pub---ct_cr > *:first-child,
@@ -355,7 +359,7 @@ input[type="submit"],
 .adjacent-navi---a_l > *:first-child,
 .page-navi---a_l > *:first-child,
 .show-more-axn---a_l > *:first-child,
-.edit-post-axn---a_l > *:first-child,
+
 .post-navi---a_l > *:first-child,
 .post-navi---g_l > *:first-child,
 .edit-com-axn---a_l > *:first-child,
@@ -373,7 +377,6 @@ input[type="submit"],
 
 .text-spacing > *:last-child,
 .wbp-copyright---g_l > *:last-child,
-.entry-navi---a_l > *:last-child,
 .post-pub-d-stamp-dtstamp---a_l > *:last-child,
 .post-mod-d-stamp-dtstamp---a_l > *:last-child,
 .post-pub---ct_cr > *:last-child,
@@ -387,7 +390,7 @@ input[type="submit"],
 .adjacent-navi---a_l > *:last-child,
 .page-navi---a_l > *:last-child,
 .show-more-axn---a_l > *:last-child,
-.edit-post-axn---a_l > *:last-child,
+
 .post-navi---a_l > *:last-child,
 .post-navi---g_l > *:last-child,
 .edit-com-axn---a_l > *:last-child,
@@ -709,8 +712,7 @@ input[type="submit"],
 /*------------------ Edit Post ------------------*/
 .edit-post-action
 {
-    padding-left: var(--object--spacing-x);
-    padding-right: var(--object--spacing-x);
+    padding: var(--object--spacing--md);
 }
 
 .edit-post-axn---a_l
@@ -1798,10 +1800,10 @@ input[type="submit"]
 
 
 /*------------------ Entry Nav ------------------*/
-.next-entry-navi---a_l,
-.previous-entry-navi---a_l
+.entry-nav---cr
 {
-    justify-content: flex-start;
+    padding-top: var(--component--spacing-y);
+    padding-bottom: var(--component--spacing-y);
 }
 
 
@@ -2394,7 +2396,7 @@ input[type="submit"]
 
 
 /*------------------ Comments Actions Snippet ------------------*/
-.comments-count-axn---a,
+.comments-count-axn,
 .add-comment-axn
 {
     padding-left: var(--object--spacing-x);

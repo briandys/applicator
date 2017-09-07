@@ -8,8 +8,10 @@ if ( ! function_exists( 'applicator_func_post_actions' ) ) {
             // Markup Template
             $edit_post_action_mu = '';
             $edit_post_action_mu .= '<span class="a_l %5$s---a_l" title="%6$s">';
+            $edit_post_action_mu .= '<span class="l %5$s---l">';
             $edit_post_action_mu .= '<span class="txt %3$s---txt">%1$s</span>';
             $edit_post_action_mu .= ' <span class="txt post-title---txt %4$s---txt">%2$s</span>';
+            $edit_post_action_mu .= '</span>';
             $edit_post_action_mu .= '</span>';
             
             // Variables
