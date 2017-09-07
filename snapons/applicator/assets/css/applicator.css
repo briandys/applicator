@@ -314,11 +314,6 @@ input[type="submit"],
 /*------------------ AA Hack: Text Spacing ------------------*/
 .text-spacing > *,
 .wbp-copyright---g_l > *,
-.post-pub-d-stamp-dtstamp---a_l > *,
-.post-mod-d-stamp-dtstamp---a_l > *,
-.post-pub---ct_cr > *,
-.post-mod---ct_cr > *,
-.published-post-author---ct_cr > *,
 .add-com-axn---a_l > *,
 .comment-title---a_l > *,
 .comment-pub-d-stamp-dtstamp---a_l > *,
@@ -346,11 +341,6 @@ input[type="submit"],
 
 .text-spacing > *:first-child,
 .wbp-copyright---g_l > *:first-child,
-.post-pub-d-stamp-dtstamp---a_l > *:first-child,
-.post-mod-d-stamp-dtstamp---a_l > *:first-child,
-.post-pub---ct_cr > *:first-child,
-.post-mod---ct_cr > *:first-child,
-.published-post-author---ct_cr > *:first-child,
 .add-com-axn---a_l > *:first-child,
 .comment-title---a_l > *:first-child,
 .comment-pub-d-stamp-dtstamp---a_l > *:first-child,
@@ -377,11 +367,6 @@ input[type="submit"],
 
 .text-spacing > *:last-child,
 .wbp-copyright---g_l > *:last-child,
-.post-pub-d-stamp-dtstamp---a_l > *:last-child,
-.post-mod-d-stamp-dtstamp---a_l > *:last-child,
-.post-pub---ct_cr > *:last-child,
-.post-mod---ct_cr > *:last-child,
-.published-post-author---ct_cr > *:last-child,
 .add-com-axn---a_l > *:last-child,
 .comment-title---a_l > *:last-child,
 .comment-pub-d-stamp-dtstamp---a_l > *:last-child,
@@ -2329,26 +2314,19 @@ input[type="submit"]
     padding-right: var(--component--spacing-x);
 }
 
-.post-pub---ct_cr,
-.post-mod---ct_cr
+.post-published-date-and-time-stamp,
+.post-modified-date-and-time-stamp
 {
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
+    display: inline-block;
+    vertical-align: middle;
 }
 
-
-
-
-
-/*------------------ Date, Time Stamp ------------------*/
-.post-published-date-stamp-dtstamp,
-.post-published-time-stamp-dtstamp,
-.post-modified-date-stamp-dtstamp,
-.post-modified-time-stamp-dtstamp
+.post-published-glabel,
+.post-modified-glabel
 {
-    padding-top: var(--object--spacing-x);
-    padding-bottom: var(--object--spacing-x);
+    display: inline-block;
+    
+    margin-right: .3em;
 }
 
 
@@ -2356,23 +2334,40 @@ input[type="submit"]
 
 
 /*------------------ Author ------------------*/
+.post-published-by-glabel
+{
+    
+    display: inline-block;
+    vertical-align: middle;
+    
+    margin-right: .3em;
+}
+
+.post-author
+{
+    
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.author-name
+{
+    display: inline-block;
+    vertical-align: middle;
+    
+    margin-right: .3em;
+}
+
+.author-avatar
+{
+    display: inline-block;
+    vertical-align: middle;
+}
+
 .published-post-author---cr
 {
     padding-left: var(--component--spacing-x);
     padding-right: var(--component--spacing-x);
-}
-.published-post-author---ct_cr
-{
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-}
-
-.post-author---ct_cr
-{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
 }
 
 .author-name---a_l
@@ -2383,9 +2378,6 @@ input[type="submit"]
 .author-avatar---a_l
 {
     display: block;
-    
-    margin-left: .5rem;
-    margin-right: .5rem;
     
     width: 3rem;
     height: 3rem;

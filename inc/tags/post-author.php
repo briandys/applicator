@@ -23,9 +23,9 @@ if ( ! function_exists( 'applicator_func_post_author' ) ) {
         $published_by_author_content = $published_by_term. ' '. $author_content;
         
         
-        // R: Post Published Label
+        // R: Post Published by Label
         $post_published_label_obj = applicator_htmlok( array(
-            'name'      => 'Post Published',
+            'name'      => 'Post Published by',
             'structure' => array(
                 'type'      => 'object',
                 'subtype'   => 'generic label',
