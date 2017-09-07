@@ -697,7 +697,8 @@ input[type="submit"],
 /*------------------ Edit Post ------------------*/
 .edit-post-action
 {
-    padding: var(--object--spacing--md);
+    padding-left: var(--object--spacing-x);
+    padding-right: var(--object--spacing-x);
 }
 
 .edit-post-axn---a_l
