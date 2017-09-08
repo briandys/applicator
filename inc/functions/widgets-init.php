@@ -31,9 +31,9 @@ function applicator_func_aside_init() {
                                 $widget_start_mu .= '<div class="ct_cr widget-content---ct_cr">';
 
                                 $widget_end_mu = '</div>';
-                            $widget_end_mu = '</div>';
-                        $widget_end_mu = '</div>';
-                    $widget_end_mu = '</div><!-- Widget Content CP -->';
+                            $widget_end_mu .= '</div>';
+                        $widget_end_mu .= '</div>';
+                    $widget_end_mu .= '</div><!-- Widget Content CP -->';
                 $widget_end_mu .= '</div>';
             $widget_end_mu .= '</div>';
         $widget_end_mu .= '</div>';

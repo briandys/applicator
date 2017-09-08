@@ -38,17 +38,6 @@
             'data-name': 'Content Container CP'
         } ).append( contentContainerCrMu );
         
-        /* <pre>
-        $( '.post-content---ct_cr > pre,' + postContent + ':has( pre ), .comment-content---ct_cr > pre,' + commentContent + ':has( pre )' ).wrap( contentContainerCpMu ).closest( contentContainerCSS ).addClass( contentContainerPrefixCss + 'pre' );
-        
-        $( '.post-content---ct_cr > code, .post-content---ct_cr > p:has( code ), .comment-content---ct_cr > code, .comment-content---ct_cr > p:has( code )' ).wrap( contentContainerCpMu ).closest( contentContainerCSS ).addClass( contentContainerPrefixCss + 'code' );
-        
-        $( '.post-content---ct_cr > iframe, .post-content---ct_cr > p:has( iframe ), .comment-content---ct_cr > iframe, .comment-content---ct_cr > p:has( iframe )' ).wrap( contentContainerCpMu ).closest( contentContainerCSS ).addClass( contentContainerPrefixCss + 'iframe' );
-        
-        $( '.post-content---ct_cr > embed, .post-content---ct_cr > p:has( embed ), .comment-content---ct_cr > embed, .comment-content---ct_cr > p:has( embed )' ).wrap( contentContainerCpMu ).closest( contentContainerCSS ).addClass( contentContainerPrefixCss + 'embed' );
-        
-        $( '.post-content---ct_cr > table, .post-content---ct_cr > p:has( table ), .comment-content---ct_cr > table, .comment-content---ct_cr > p:has( table )' ).wrap( contentContainerCpMu ).closest( contentContainerCSS ).addClass( contentContainerPrefixCss + 'table' );
-        */
         
         $( '.post-content---ct_cr > *:has(img)' ).each(function() {
             var $this = $( this );

@@ -316,16 +316,9 @@ input[type="submit"],
 .wbp-copyright---g_l > *,
 .add-com-axn---a_l > *,
 .comment-title---a_l > *,
-.comment-pub-d-stamp-dtstamp---a_l > *,
-.comment-pub---ct_cr > *,
-.published-com-commenter---ct_cr > *,
 .show-more-axn---a_l > *,
 .post-navi---a_l > *,
 .post-navi---g_l > *,
-.edit-com-axn---a_l > *,
-.signed-in-account-name---a_l > *,
-.signed-in-acct---ct_cr > *,
-.account-log-out-axn---a_l > *,
 .comments-navi---a_l > *,
 .attachment .post-navi a > *,
 .type-attachment .post-nav---ct_cr > *,
@@ -340,16 +333,9 @@ input[type="submit"],
 .wbp-copyright---g_l > *:first-child,
 .add-com-axn---a_l > *:first-child,
 .comment-title---a_l > *:first-child,
-.comment-pub-d-stamp-dtstamp---a_l > *:first-child,
-.comment-pub---ct_cr > *:first-child,
-.published-com-commenter---ct_cr > *:first-child,
 .show-more-axn---a_l > *:first-child,
 .post-navi---a_l > *:first-child,
 .post-navi---g_l > *:first-child,
-.edit-com-axn---a_l > *:first-child,
-.signed-in-account-name---a_l > *:first-child,
-.signed-in-acct---ct_cr > *:first-child,
-.account-log-out-axn---a_l > *:first-child,
 .comments-navi---a_l > *:first-child,
 .attachment .post-navi a > *:first-child,
 .type-attachment .post-nav---ct_cr > *:first-child,
@@ -363,16 +349,9 @@ input[type="submit"],
 .wbp-copyright---g_l > *:last-child,
 .add-com-axn---a_l > *:last-child,
 .comment-title---a_l > *:last-child,
-.comment-pub-d-stamp-dtstamp---a_l > *:last-child,
-.comment-pub---ct_cr > *:last-child,
-.published-com-commenter---ct_cr > *:last-child,
 .show-more-axn---a_l > *:last-child,
 .post-navi---a_l > *:last-child,
 .post-navi---g_l > *:last-child,
-.edit-com-axn---a_l > *:last-child,
-.signed-in-account-name---a_l > *:last-child,
-.signed-in-acct---ct_cr > *:last-child,
-.account-log-out-axn---a_l > *:last-child,
 .comments-navi---a_l > *:last-child,
 .attachment .post-navi a > *:last-child,
 .type-attachment .post-nav---ct_cr > *:last-child,
@@ -409,7 +388,7 @@ input[type="submit"],
     display: flex; /* Prevents margins of nested elements to bleed out of the container. */
 }
 
-.main-content a
+.main-content a:link
 {
     color: var(--links--fg-color);
 }
@@ -492,13 +471,17 @@ input[type="submit"],
 .post-excerpt---ct_cr > ul,
 .post-excerpt---ct_cr > ol,
 .comment-content---ct_cr > ul,
-.comment-content---ct_cr > ol
+.comment-content---ct_cr > ol,
+.widget-content---ct_cr > ul,
+.widget-content---ct_cr > ol
 {
     padding-left: 2.25em;
 }
 
 .post-content---ct_cr li,
-.post-excerpt---ct_cr li
+.post-excerpt---ct_cr li,
+.comment-content---ct_cr li,
+.widget-excerpt---ct_cr li
 {
     padding-top: var(--list--spacing-y--xsm);
     padding-bottom: var(--list--spacing-y--xsm);
@@ -605,6 +588,16 @@ input[type="submit"],
 
 
 
+/*------------------ Post ------------------*/
+.post---cr
+{
+    padding-top: var(--component--spacing-y);
+    padding-bottom: var(--component--spacing-y);
+}
+
+
+
+
 /*------------------ Post Excerpt ------------------*/
 .post-excerpt---ct_cr
 {
@@ -659,6 +652,12 @@ input[type="submit"],
 .content-container---cr > *
 {
     margin: 0;
+    padding: var(--content--spacing);
+}
+
+.content-container---cr > *:only-child
+{
+    padding: 0;
 }
 
 
@@ -697,11 +696,6 @@ input[type="submit"],
     padding-right: var(--object--spacing-x);
 }
 
-.edit-post-axn---a_l
-{
-    justify-content: flex-start;
-}
-
 
 
 
@@ -711,11 +705,6 @@ input[type="submit"],
 {
     padding-left: var(--object--spacing-x);
     padding-right: var(--object--spacing-x);
-}
-
-.edit-com-axn---a_l
-{
-    justify-content: flex-start;
 }
 
 
@@ -2072,11 +2061,30 @@ input[type="submit"]
 
 
 /*------------------ Comments ------------------*/
-.comment-pub---ct_cr
+.published-comment-glabel
 {
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
+    display: inline-block;
+    vertical-align: middle;
+    
+    margin-right: .3em;
+}
+
+.comment-published-date-and-time-stamp
+{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.comment-published-date-stamp-dtstamp
+{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.comment-published-time-stamp-dtstamp
+{
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .comment-pub---cr
@@ -2162,13 +2170,6 @@ input[type="submit"]
     padding: var(--component--spacing--md);
 }
 
-.published-com-commenter---ct_cr
-{
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-}
-
 .comment-reply-cancel-axn---a_l
 {
     padding-left: var(--object--spacing-x);
@@ -2180,11 +2181,20 @@ input[type="submit"]
 
 
 /*------------------ Commenter ------------------*/
-.commenter---ct_cr
+.commenter-name,
+.published-commenter-glabel
 {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+    display: inline-block;
+    vertical-align: middle;
+    
+    margin-right: .3em;
+}
+
+.commenter-avatar,
+.commenter
+{
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .commenter-name---a_l
@@ -2195,9 +2205,6 @@ input[type="submit"]
 .commenter-avatar---a_l
 {
     display: block;
-    
-    margin-left: .5rem;
-    margin-right: .5rem;
     
     width: 3rem;
     height: 3rem;
@@ -2248,11 +2255,18 @@ input[type="submit"]
     padding-right: var(--component--spacing-x);
 }
 
-.signed-in-acct---ct_cr
+.signed-in-account-glabel
 {
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
+    display: inline-block;
+    vertical-align: middle;
+    
+    margin-right: .3em;
+}
+
+.signed-in-account-name
+{
+    display: inline-block;
+    vertical-align: middle;
 }
 
 
@@ -2396,9 +2410,34 @@ input[type="submit"]
 
 
 /*------------------ Widgets ------------------*/
+.widget---cr
+{
+    padding-top: var(--component--spacing-y);
+    padding-bottom: var(--component--spacing-y);
+}
+.widget a:link
+{
+    color: var(--links--fg-color);
+}
+
+.widget a:hover
+{
+    text-decoration: none;
+}
+
 .widget_calendar table
 {
     width: 100%;
+}
+
+.widget select
+{
+    width: calc( 100% - (var(--content--spacing-x) * 2) );
+}
+
+.widget_nav_menu .widget-content---ct_cr > *
+{
+    padding: 0;
 }
 
 

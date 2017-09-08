@@ -64,8 +64,10 @@ if ( ! function_exists( 'applicator_func_comment_actions' ) ) {
             // Markup Template
             $edit_comment_action_mu = '';
             $edit_comment_action_mu .= '<span class="a_l %5$s---a_l" title="%6$s">';
+            $edit_comment_action_mu .= '<span class="l %5$s---l">';
             $edit_comment_action_mu .= '<span class="txt %3$s---txt">%1$s</span>';
             $edit_comment_action_mu .= ' <span class="txt comment-title---txt %4$s---txt">%2$s</span>';
+            $edit_comment_action_mu .= '</span>';
             $edit_comment_action_mu .= '</span>';
             
             // Variables

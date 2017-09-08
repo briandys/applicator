@@ -896,10 +896,14 @@
 
                             var validityNoteTerm = 'validity-note';
 
-                            validityNoteContainerGenericElementLabel = $( '<div />', {
-                                'class': 'g_l '+ validityNoteTerm +'---g_l',
+                            validityNoteContainerGenericElementLabelL = $( '<div />', {
+                                'class': 'l '+ validityNoteTerm +'---l',
                                 'html': '<p>' + this.validationMessage + '</p>'
                             } );
+
+                            validityNoteContainerGenericElementLabel = $( '<div />', {
+                                'class': 'g_l '+ validityNoteTerm +'---g_l'
+                            } ).append( validityNoteContainerGenericElementLabelL );
 
                             validityNoteContainerGenericElement = $( '<div />', {
                                 'class': 'g '+ validityNoteTerm +'---g'
