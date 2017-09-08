@@ -50,6 +50,13 @@
         $( '.post-content---ct_cr > table, .post-content---ct_cr > p:has( table ), .comment-content---ct_cr > table, .comment-content---ct_cr > p:has( table )' ).wrap( contentContainerCpMu ).closest( contentContainerCSS ).addClass( contentContainerPrefixCss + 'table' );
         */
         
+        $( '.post-content---ct_cr > *:has(img)' ).each(function() {
+            var $this = $( this );
+            $this.wrap( contentContainerCpMu )
+                .closest( contentContainerCSS )
+                    .addClass( contentContainerPrefixCss + 'img' );
+        });
+        
         $( '.post-content pre' ).each(function() {
             var $this = $( this );
             $this.wrap( contentContainerCpMu )
