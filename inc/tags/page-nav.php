@@ -36,15 +36,17 @@ if ( ! function_exists( 'applicator_func_page_nav' ) ) {
         // MU: Page Number Navigation Item Start
         $page_navi_smu = '';
         $page_navi_smu .= '<span class="a_l %2$s---a_l">';
-            $page_navi_smu .= '<span class="txt %3$s---txt">';
-                $page_navi_smu .= '%1$s';
-            $page_navi_smu .= '</span>';
-            $page_navi_smu .= ' <span class="txt %4$s---txt">';
+        $page_navi_smu .= '<span class="l %2$s---l">';
+        $page_navi_smu .= '<span class="txt %3$s---txt">';
+        $page_navi_smu .= '%1$s';
+        $page_navi_smu .= '</span>';
+        $page_navi_smu .= ' <span class="txt %4$s---txt">';
         
         
         // MU: Page Number Navigation Item End
         $page_navi_emu = '';
-            $page_navi_emu .= '</span>';
+        $page_navi_emu .= '</span>';
+        $page_navi_emu .= '</span>';
         $page_navi_emu .= '</span>';
         
         

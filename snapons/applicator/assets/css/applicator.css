@@ -319,10 +319,7 @@ input[type="submit"],
 .comment-pub-d-stamp-dtstamp---a_l > *,
 .comment-pub---ct_cr > *,
 .published-com-commenter---ct_cr > *,
-.adjacent-navi---a_l > *,
-.page-navi---a_l > *,
 .show-more-axn---a_l > *,
-
 .post-navi---a_l > *,
 .post-navi---g_l > *,
 .edit-com-axn---a_l > *,
@@ -346,10 +343,7 @@ input[type="submit"],
 .comment-pub-d-stamp-dtstamp---a_l > *:first-child,
 .comment-pub---ct_cr > *:first-child,
 .published-com-commenter---ct_cr > *:first-child,
-.adjacent-navi---a_l > *:first-child,
-.page-navi---a_l > *:first-child,
 .show-more-axn---a_l > *:first-child,
-
 .post-navi---a_l > *:first-child,
 .post-navi---g_l > *:first-child,
 .edit-com-axn---a_l > *:first-child,
@@ -372,10 +366,7 @@ input[type="submit"],
 .comment-pub-d-stamp-dtstamp---a_l > *:last-child,
 .comment-pub---ct_cr > *:last-child,
 .published-com-commenter---ct_cr > *:last-child,
-.adjacent-navi---a_l > *:last-child,
-.page-navi---a_l > *:last-child,
 .show-more-axn---a_l > *:last-child,
-
 .post-navi---a_l > *:last-child,
 .post-navi---g_l > *:last-child,
 .edit-com-axn---a_l > *:last-child,
@@ -2291,14 +2282,13 @@ input[type="submit"]
     margin: 0;
 }
 
-.note .g_l
+.note .g_l,
+.note .l
 {
     display: block;
-    
-    padding-left: 
 }
 
-.note .g_l > *
+.note .l > *
 {
     margin: 0;
     padding: var(--content--spacing);
@@ -2394,6 +2384,16 @@ input[type="submit"]
 {
     padding-left: var(--object--spacing-x);
     padding-right: var(--object--spacing-x);
+}
+
+
+
+
+
+/*------------------ Widgets ------------------*/
+.widget_calendar table
+{
+    width: 100%;
 }
 
 

@@ -779,12 +779,15 @@ function applicator_htmlok( $args = array() ) {
     if ( ! empty( $r['css'] ) ) {
         $p_obj_elem_combo_css = ' '.$r_css. $p_subtype_postfix_css. $obj_elem_postfix_css;
         $p_obj_label_elem_css = ' '.$r_css. $p_subtype_postfix_css. $obj_elem_postfix_css.'_l';
+        $p_obj_label_l_elem_css = ' '.$r_css. $p_subtype_postfix_css. '---l';
     } else {
         $p_obj_elem_combo_css = ' '.$p_clean_name. $p_subtype_postfix_css. $obj_elem_postfix_css;
         $p_obj_label_elem_css = ' '.$p_clean_name. $p_subtype_postfix_css. $obj_elem_postfix_css.'_l';
+        $p_obj_label_l_elem_css = ' '.$p_clean_name. $p_subtype_postfix_css. '---l';
     }
     $p_obj_elem_css = $obj_elem_css;
     $p_obj_generic_label_elem_css = $obj_elem_css.'_l';
+    $p_obj_generic_label_l_elem_css = 'l';
     
     
     
@@ -795,6 +798,7 @@ function applicator_htmlok( $args = array() ) {
     
     $o_obj_elem_css = $p_obj_elem_css. $p_obj_elem_combo_css;
     $o_obj_label_elem_css = $p_obj_generic_label_elem_css. $p_obj_label_elem_css;
+    $o_obj_label_l_elem_css = $p_obj_generic_label_l_elem_css. $p_obj_label_l_elem_css;
     
     // Anchor Element
     $o_obj_a_elem_css = $p_branch_name_css;
@@ -1567,8 +1571,10 @@ function applicator_htmlok( $args = array() ) {
     
     else {
         $obj_cr_smu .= '<'.$o_obj_label_elem.' class="'.$o_obj_label_elem_css.'">';
+        $obj_cr_smu .= '<'.$o_obj_label_elem.' class="'.$o_obj_label_l_elem_css.'">';
         
         $obj_cr_emu = '';
+        $obj_cr_emu .= '</'.$o_obj_label_elem.'>';
         $obj_cr_emu .= '</'.$o_obj_label_elem.'>';
     }
     
