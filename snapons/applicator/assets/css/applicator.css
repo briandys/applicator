@@ -671,6 +671,12 @@ input[type="submit"],
     overflow: hidden;
 }
 
+.web-product-main-media-banner img
+{
+    width: 100%;
+    height: auto;
+}
+
 
 
 
