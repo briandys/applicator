@@ -251,11 +251,9 @@
 
 /*------------------ Active Area (AA) ------------------*/
 .active-area,
-
 .comments-count-axn---a_l,
 .entry-navi---a_l,
 .main-post-title---a_l,
-
 .input-text,
 .b_l,
 input[type="text"],
@@ -266,14 +264,11 @@ input[type="submit"],
 .go-ct-navi---a_l,
 .main-post-title---h_l,
 .wbp-copyright---g_l,
-
-
 .post-pub-d-stamp-dtstamp---a_l,
 .post-pub-t-stamp-dtstamp---a_l,
 .post-mod-d-stamp-dtstamp---a_l,
 .post-mod-t-stamp-dtstamp---a_l,
 .author-name---a_l,
-
 .add-com-axn---a_l,
 .comment-title---a_l,
 .comment-pub-d-stamp-dtstamp---a_l,
@@ -294,7 +289,8 @@ input[type="submit"],
 .show-more-glabel---g_l,
 .breadcrumbs-navi---a_l,
 .breadcrumbs-navi---g_l,
-.comment-reply-cancel-axn---a_l
+.comment-reply-cancel-axn---a_l,
+.comment-subscription-form .subscribe-label
 {
     box-sizing: border-box;
     
@@ -2176,6 +2172,31 @@ input[type="submit"]
     padding-right: var(--object--spacing-x);
 }
 
+.comment-subscription-form
+{
+    display: flex;
+    
+    margin: 0;
+    padding-left: var(--content--spacing-x);
+    padding-right: var(--content--spacing-x);
+}
+
+.comment-subscription-form input
+{
+    flex: 1 2rem;
+    
+    width: 3rem;
+    height: 3rem;
+}
+
+.comment-form .comment-subscription-form .subscribe-label
+{
+    flex: 1 100%;
+    display: inline-flex !important;
+    justify-content: normal;
+    align-items: center;
+}
+
 
 
 
@@ -2438,6 +2459,11 @@ input[type="submit"]
 .widget_nav_menu .widget-content---ct_cr > *
 {
     padding: 0;
+}
+
+#recentcomments:empty
+{
+    display: none;
 }
 
 
