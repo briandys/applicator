@@ -12,8 +12,10 @@ if ( ! function_exists( 'applicator_func_show_more' ) ) {
         $show_more_axn_mu = '<div class="obj axn %2$s" data-name="%8$s Action Item OBJ">';
             $show_more_axn_mu .= '<a class="a %2$s---a more-link" href="%6$s#main" title="%7$s %1$s">';
                 $show_more_axn_mu .= '<span class="a_l %2$s---a_l">';
-                    $show_more_axn_mu .= '<span class="line property---line"><span class="txt show---txt">%3$s</span> <span class="txt more---txt">%4$s</span> <span class="txt of---txt">%5$s</span></span>';
-                    $show_more_axn_mu .= ' <span class="line value---line"><span class="txt post-title---txt">%1$s</span></span>';
+                    $show_more_axn_mu .= '<span class="l %2$s---l">';
+                        $show_more_axn_mu .= '<span class="line property---line"><span class="txt show---txt">%3$s</span> <span class="txt more---txt">%4$s</span> <span class="txt of---txt">%5$s</span></span>';
+                        $show_more_axn_mu .= ' <span class="line value---line"><span class="txt post-title---txt">%1$s</span></span>';
+                    $show_more_axn_mu .= '</span>';
                 $show_more_axn_mu .= '</span>';
             $show_more_axn_mu .= '</a>';
         $show_more_axn_mu .= '</div>';
@@ -21,8 +23,10 @@ if ( ! function_exists( 'applicator_func_show_more' ) ) {
         $show_more_label_mu = '<div class="obj %2$s" data-name="%7$s Generic Label OBJ">';
             $show_more_label_mu .= '<span class="g %2$s---g" title="%6$s %1$s">';
                 $show_more_label_mu .= '<span class="g_l %2$s---g_l">';
-                    $show_more_label_mu .= '<span class="line property---line"><span class="txt show---txt">%3$s</span> <span class="txt more---txt">%4$s</span> <span class="txt of---txt">%5$s</span></span>';
-                    $show_more_label_mu .= ' <span class="line value---line"><span class="txt post-title---txt">%1$s</span></span>';
+                    $show_more_label_mu .= '<span class="l %2$s---l">';
+                        $show_more_label_mu .= '<span class="line property---line"><span class="txt show---txt">%3$s</span> <span class="txt more---txt">%4$s</span> <span class="txt of---txt">%5$s</span></span>';
+                        $show_more_label_mu .= ' <span class="line value---line"><span class="txt post-title---txt">%1$s</span></span>';
+                    $show_more_label_mu .= '</span>';
                 $show_more_label_mu .= '</span>';
             $show_more_label_mu .= '</span>';
         $show_more_label_mu .= '</div>';

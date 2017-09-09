@@ -19,9 +19,9 @@ $customizer_custom_colors = get_parent_theme_file_path( '/snapons/applicator/inc
 if ( file_exists( $customizer_custom_colors ) ) { require_once( $customizer_custom_colors ); }
 
 
-// Functionalities
-if ( ! function_exists( 'apl_applicator_func_class' ) ) {
-    function apl_applicator_func_class() {
+// HTML Classes
+if ( ! function_exists( 'apl_applicator_func_html_classes' ) ) {
+    function apl_applicator_func_html_classes() {
 		
         $applicator_name = 'apl';
         $snapon_name = $applicator_name . '--' . 'applicator';
@@ -48,7 +48,7 @@ if ( ! function_exists( 'apl_applicator_func_class' ) ) {
         echo ' '. $snapon_name. '--theme--customizer-colors--'. $colors;
     
     }
-    add_action( 'applicator_hook_html_class', 'apl_applicator_func_class');
+    add_action( 'applicator_hook_html_class', 'apl_applicator_func_html_classes');
 }
 
 

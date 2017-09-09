@@ -1,4 +1,27 @@
-<article <?php post_class( 'cp article' ); ?> data-name="Post CP">
+<?php
+
+// Post Thumbnail Class
+if ( '' !== get_the_post_thumbnail() ) {
+    $post_thumbnail_class = ' '. 'post-thumbnail--enabled';
+}
+
+else {
+    $post_thumbnail_class = ' '. 'post-thumbnail--disabled';
+}
+
+// Excerpt Class
+if ( has_excerpt() ) {
+    $excerpt_class = ' '. 'post-excerpt--enabled';
+}
+
+else {
+    $excerpt_class = ' '. 'post-excerpt--disabled';
+}
+
+$post_classes = $post_thumbnail_class. $excerpt_class;
+?>
+
+<article <?php post_class( 'cp article post'. $post_classes ); ?> data-name="Post CP">
     <div class="cr post---cr">
         <header class="hr post---hr entry-header">
             <div class="hr_cr post---hr_cr">
