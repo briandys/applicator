@@ -20,6 +20,10 @@
     /* Foreground Color */
     --fg-color: var(--off-black--color);
     
+    /* Image Placeholder Color */
+    --image-placeholder--bg-color: var(--off-black--color-a);
+    
+    
     /* Foreground Color - Reverse (use with a dark background) */
     --fg-color--reverse: var(--white--color);
     
@@ -153,6 +157,9 @@
     
     /* Input Text - Border Color */
     --input-text--border-color: var(--border-color);
+    
+    /* Image - Color */
+    --image--bg-color: var(--image-placeholder--bg-color);
     
 }
 
@@ -387,7 +394,7 @@ input[type="submit"],
     display: flex; /* Prevents margins of nested elements to bleed out of the container. */
 }
 
-.main-content a:link
+.main-content a
 {
     color: var(--links--fg-color);
 }
