@@ -1,9 +1,23 @@
 <?php
 
 ob_start();
+
+// Post Classes
+
+// Post Classes Array
+$post_classes = array(
+    'cp',
+    'article',
+    'post',
+    'post--empty',
+);
+
+// Array Implode
+$post_classes = implode( ' ', $post_classes );
+
 ?>
 
-<article class="cp article post post--empty" data-name="Post CP">
+<article class="<?php echo $post_classes ?>" data-name="Post CP">
     <div class="cr post---cr">
         <header class="hr post---hr entry-header">
             <div class="hr_cr post---hr_cr">
@@ -70,6 +84,7 @@ ob_start();
 <?php
 $entry_content = ob_get_contents();
 ob_end_clean();
+
 
 
 

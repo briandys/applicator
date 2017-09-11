@@ -167,7 +167,7 @@ $post_classes = implode( ' ', $post_classes );
                 $content_ob_content = ob_get_contents();
                 ob_end_clean();
                 
-                if ( ( is_home() || is_singular() || ( is_front_page() && ! is_page() ) ) && ! is_page_template( 'multisite-index.php' ) ) {
+                if ( is_home() || is_singular() || ( is_front_page() && ! is_page() ) ) {
                     
                     if ( has_excerpt() ) {
                         
