@@ -1,27 +1,44 @@
 <?php
 
+// Post Classes
+
+// Variables
+$on = '--enabled';
+$off = '--disabled';
+$post_thumbnail_term = 'post-thumbnail';
+$post_excerpt_term = 'post-excerpt';
+
 // Post Thumbnail Class
 if ( '' !== get_the_post_thumbnail() ) {
-    $post_thumbnail_class = ' '. 'post-thumbnail--enabled';
+    $post_thumbnail_class = ' '. $post_thumbnail_term. $on;
+}
+else {
+    $post_thumbnail_class = ' '. $post_thumbnail_term. $off;
 }
 
-else {
-    $post_thumbnail_class = ' '. 'post-thumbnail--disabled';
-}
 
 // Excerpt Class
 if ( has_excerpt() ) {
-    $excerpt_class = ' '. 'post-excerpt--enabled';
+    $excerpt_class = ' '. $post_excerpt_term. $on;
 }
-
 else {
-    $excerpt_class = ' '. 'post-excerpt--disabled';
+    $excerpt_class = ' '. $post_excerpt_term. $off;
 }
 
-$post_classes = $post_thumbnail_class. $excerpt_class;
+// Post Classes Array
+$post_classes = array(
+    'cp',
+    'article',
+    'post',
+    $post_thumbnail_class,
+    $excerpt_class,
+);
+
+// Array Implode
+$post_classes = implode( ' ', $post_classes );
 ?>
 
-<article <?php post_class( 'cp article post'. $post_classes ); ?> data-name="Post CP">
+<article <?php post_class( $post_classes ); ?> data-name="Post CP">
     <div class="cr post---cr">
         <header class="hr post---hr entry-header">
             <div class="hr_cr post---hr_cr">
@@ -150,7 +167,7 @@ $post_classes = $post_thumbnail_class. $excerpt_class;
                 $content_ob_content = ob_get_contents();
                 ob_end_clean();
                 
-                if ( is_home() || is_singular() || ( is_front_page() && ! is_page() ) ) {
+                if ( ( is_home() || is_singular() || ( is_front_page() && ! is_page() ) ) && ! is_page_template( 'multisite-index.php' ) ) {
                     
                     if ( has_excerpt() ) {
                         
@@ -173,8 +190,12 @@ $post_classes = $post_thumbnail_class. $excerpt_class;
                 
                 else {
                     
-                    // E: Post Excerpt
-                    echo $post_excerpt;
+                    if ( has_excerpt() ) {
+                        
+                        // E: Post Excerpt
+                        echo $post_excerpt;
+                    }
+                
                 }
                 
                 
@@ -183,7 +204,7 @@ $post_classes = $post_thumbnail_class. $excerpt_class;
                 applicator_func_post_nav();
                 
                 // Sub-Post
-                if ( is_page_template( 'page-templates/sub-pages.php' ) ) {
+                if ( is_page_template( 'sub-pages.php' ) ) {
                     
                     $parent = $post->ID;
                     $args = array(
