@@ -220,7 +220,11 @@
                         'name'      => 'Web Product Main Media Banner',
                         'structure' => array(
                             'type'      => 'object',
-                            'subtype'   => 'wordpress generated content',
+                            'attr'      => array(
+                                'elem'         => array(
+                                    'style'      => 'background-image: url('. esc_url( get_header_image() ). ')',
+                                ),
+                            ),
                         ),
                         'css'       => 'wbp-main-media-banner',
                         'content'   => array(
