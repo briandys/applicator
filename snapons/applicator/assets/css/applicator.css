@@ -69,6 +69,9 @@
     --font-size--md: 1.125em;
     --font-size--lg: 1.5em;
     
+    /* Element Dimensions */
+    --elem-dimension--md: var(--dimension--md);
+    
     
     /*------------ Level 3 - Specifics ------------*/
     
@@ -136,9 +139,16 @@
     /* Main Nav */
     --main-nav--bg-color: var(--white--color);
     
-    /* Easy Access Nav - Sub Nav - Colors */
+    /* Easy Access Nav - Main Nav - Colors */
+    --easy-access-nav-func--main-nav--fg-color: var(--black--color);
+    
+    /* Sub Nav - Colors */
     --easy-access-nav-func--sub-nav--bg-color: var(--white--color);
     --easy-access-nav-func--sub-nav--fg-color: var(--black--color);
+    
+    /* Sub Nav - Toggle Button - Colors */
+    --sub-nav-func-root--toggle-button--fg-color: var(--fg-color);
+    --sub-nav-func-branches--toggle-button--fg-color: var(--fg-color);
     
     /* Easy Access Nav - Sub Nav - Indicator - Colors */
     --easy-access-nav-func--sub-nav-indicator--bg-color: var(--black-eighth--color);
@@ -160,6 +170,10 @@
     
     /* Image - Color */
     --image--bg-color: var(--image-placeholder--bg-color);
+    
+    /* Element Dimensions */
+    --elem--width--md: var(--elem-dimension--md);
+    --elem--height--md: var(--elem-dimension--md);
     
 }
 
@@ -1312,11 +1326,24 @@ input[type="submit"]
     justify-content: center;
 }
 
-.apl--applicator--easy-access-nav .main-nav---ct_cr a
+.apl--applicator--easy-access-nav .main-nav a
 {
-    color: var(--easy-access-nav-func--sub-nav--fg-color);
+    color: var(--easy-access-nav-func--main-nav--fg-color);
     
     white-space: nowrap;
+}
+
+/* Sub Nav Toggle Button - Root */
+.main-nav---ct_cr > ul > li > .sub-nav-tog---b_l
+{
+    color: var(--sub-nav-func-root--toggle-button--fg-color);
+}
+
+/* Sub Nav Toggle Button - Branches */
+.children .sub-nav-tog---b_l,
+.sub-menu .sub-nav-tog---b_l
+{
+    color: var(--sub-nav-func-branches--toggle-button--fg-color);
 }
 
 .easy-access-nav-func .sub-nav--active
@@ -1412,11 +1439,6 @@ input[type="submit"]
 .easy-access-nav-func .menu-item-has-children > .sub-menu > .menu-item
 {
     background-color: var(--easy-access-nav-func--sub-nav--bg-color);
-}
-
-.sub-nav-tog---b_l
-{
-    color: var(--easy-access-nav-func--sub-nav--fg-color);
 }
 
 .easy-access-nav-func .page_item_has_children > .children > .page_item:first-child,
@@ -1661,13 +1683,13 @@ input[type="submit"]
 /* With Main Search */
 .apl--applicator--main-search .web-product-main-info
 {
-    margin-right: var(--elem-dimension--md);
+    padding-right: var(--elem-dimension--md);
 }
 
 /* With Main Menu */
 .apl--applicator--main-menu.main-header-aside--enabled .web-product-main-info
 {
-    margin-left: var(--elem-dimension--md);
+    padding-left: var(--elem-dimension--md);
 }
 
 /* With Main Logo */
