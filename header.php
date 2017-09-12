@@ -113,30 +113,29 @@
                         
                 
                 // R: Web Product Main Name
-                $web_product_main_name_obj = applicator_htmlok( array(
-                    'name'      => 'Web Product Main Name',
-                    'structure' => array(
-                        'type'      => 'object',
-                        'elem'      => 'h1',
-                        'linked'    => true,
-                        'attr'      => array(
-                            'a'     => array(
-                                'href'      => esc_url( home_url( '/' ) ),
+                $web_product_main_name_obj = '';
+                $web_product_main_name = get_bloginfo( 'name', 'display' );
+                if ( $web_product_main_name || is_customize_preview() ) {
+                    $web_product_main_name_obj = applicator_htmlok( array(
+                        'name'      => 'Web Product Main Name',
+                        'structure' => array(
+                            'type'      => 'object',
+                            'elem'      => 'h1',
+                            'linked'    => true,
+                            'attr'      => array(
+                                'a'     => array(
+                                    'href'      => esc_url( home_url( '/' ) ),
+                                ),
                             ),
                         ),
-                    ),
-                    'css'       => 'wbp-main-name',
-                    'root_css'  => 'site-title',
-                    'title'     => get_bloginfo( 'name' ),
-                    'content'   => array(
-                        'object'        => array(
-                            array(
-                                'txt'           => get_bloginfo( 'name' ),
-                                'css'           => 'wbp-name',
-                            ),
+                        'css'       => 'wbp-main-name',
+                        'root_css'  => 'site-title',
+                        'title'     => $web_product_main_name,
+                        'content'   => array(
+                            'object'        => $web_product_main_name,
                         ),
-                    ),
-                ) );
+                    ) );
+                }
 
                 
                 // R: Web Product Main Logo
@@ -161,9 +160,9 @@
                 
                 // R: Web Product Main Description
                 $web_product_main_description_obj = '';
-                $description = get_bloginfo( 'description', 'display' );
+                $web_product_main_description = get_bloginfo( 'description', 'display' );
 
-                if ( $description || is_customize_preview() ) {
+                if ( $web_product_main_description || is_customize_preview() ) {
                     $web_product_main_description_obj = applicator_htmlok( array(
                         'name'      => 'Web Product Main Description',
                         'structure' => array(
@@ -177,9 +176,9 @@
                         ),
                         'css'       => 'wbp-main-desc',
                         'root_css'  => 'site-description',
-                        'title'     => $description,
+                        'title'     => $web_product_main_description,
                         'content'   => array(
-                            'object'    => $description,
+                            'object'    => $web_product_main_description,
                         ),
                     ) );
                 }

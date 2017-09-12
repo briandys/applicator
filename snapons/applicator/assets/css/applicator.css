@@ -175,6 +175,9 @@
     --elem--width--md: var(--elem-dimension--md);
     --elem--height--md: var(--elem-dimension--md);
     
+    /* Main Logo - Dimensions */
+    --wbp-main-logo--height: 2.25rem;
+    
 }
 
 
@@ -888,15 +891,6 @@ input[type="submit"]
     color: var(--button--fg-color);
 }
 
-/* Negations */
-.main-menu-tog---b_l,
-.main-search-func .b_l,
-.sub-nav-tog---b_l
-{
-    padding: 0;
-    background-color: transparent;
-}
-
 
 
 
@@ -984,6 +978,12 @@ input[type="submit"]
     position: absolute;
     right: 0;
     top: 0;
+}
+
+.main-search-func .b_l
+{
+    padding: 0;
+    background-color: transparent;
 }
 
 .apl--applicator--main-search.dom--unready .main-header---cr > .search
@@ -1287,6 +1287,12 @@ input[type="submit"]
     z-index: 1;
 }
 
+.main-menu-tog---b_l
+{
+    padding: 0;
+    background-color: transparent;
+}
+
 .main-menu--active .main-menu-tog---b_l
 {
     color: var(--main-menu--fg-color);
@@ -1308,20 +1314,20 @@ input[type="submit"]
 
 
 /*------------------ Easy Access Nav - Function ------------------*/
-.apl--applicator--easy-access-nav .main-nav---ct_cr > ul
+.apl--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul
 {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
 }
 
-.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a
+.apl--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul > li > a
 {
     display: flex;
     justify-content: center;
 }
 
-.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-navi---a_l
+.apl--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul > li > a > .main-navi---a_l
 {
     justify-content: center;
 }
@@ -1334,7 +1340,7 @@ input[type="submit"]
 }
 
 /* Sub Nav Toggle Button - Root */
-.main-nav---ct_cr > ul > li > .sub-nav-tog---b_l
+.main-nav---ct_cr > .menu-container > ul > li > .sub-nav-tog---b_l
 {
     color: var(--sub-nav-func-root--toggle-button--fg-color);
 }
@@ -1368,27 +1374,27 @@ input[type="submit"]
 }
 
 /* Menu Indicator */
-.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > .page_item_has_children > a > .main-navi---a_l,
-.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > .menu-item-has-children > a > .main-navi---a_l
+.apl--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul > .page_item_has_children > a > .main-navi---a_l,
+.apl--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul > .menu-item-has-children > a > .main-navi---a_l
 {
     padding-left: .25rem;
     padding-right: .25rem;
 }
 
-.easy-access-nav-func .main-nav---ct_cr > ul > .current_page_ancestor > a > .main-navi---a_l,
-.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-navi---a_l:hover,
-.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children a:hover,
-.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu a:hover,
-.easy-access-nav-func .main-nav---ct_cr > ul > .current_page_item > a > .main-navi---a_l,
-.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children .current_page_item > a,
-.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu .current-menu-item > a
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .current_page_ancestor > a > .main-navi---a_l,
+.apl--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul > li > a > .main-navi---a_l:hover,
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .page_item_has_children > .children a:hover,
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .menu-item-has-children > .sub-menu a:hover,
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .current_page_item > a > .main-navi---a_l,
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .page_item_has_children > .children .current_page_item > a,
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .menu-item-has-children > .sub-menu .current-menu-item > a
 {
     position: relative;
 }
 
-.easy-access-nav-func .main-nav---ct_cr > ul > .current_page_ancestor > a > .main-navi---a_l::before,
-.apl--applicator--easy-access-nav .main-nav---ct_cr > ul > li > a > .main-navi---a_l:hover::before,
-.easy-access-nav-func .main-nav---ct_cr > ul > .current_page_item > a > .main-navi---a_l::before
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .current_page_ancestor > a > .main-navi---a_l::before,
+.apl--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul > li > a > .main-navi---a_l:hover::before,
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .current_page_item > a > .main-navi---a_l::before
 {
     content: '';
     position: absolute;
@@ -1401,10 +1407,10 @@ input[type="submit"]
     background-color: var(--easy-access-nav-func--sub-nav-indicator--bg-color);
 }
 
-.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children a:hover::before,
-.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu a:hover::before,
-.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children .current_page_item > a::before,
-.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu .current-menu-item > a::before
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .page_item_has_children > .children a:hover::before,
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .menu-item-has-children > .sub-menu a:hover::before,
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .page_item_has_children > .children .current_page_item > a::before,
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .menu-item-has-children > .sub-menu .current-menu-item > a::before
 {
     content: '';
     position: absolute;
@@ -1415,16 +1421,16 @@ input[type="submit"]
     height: 100%;
 }
 
-.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children a:hover::before,
-.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu a:hover::before
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .page_item_has_children > .children a:hover::before,
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .menu-item-has-children > .sub-menu a:hover::before
 {    
     background-color: hsla( 0, 0%, 0%, .125 );
 }
 
-.easy-access-nav-func .main-nav---ct_cr > ul > .page_item.current_page_item > a > .main-navi---a_l::before,
-.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item.current-menu-item > a > .main-navi---a_l::before,
-.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children .current_page_item > a::before,
-.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu .current-menu-item > a::before
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .page_item.current_page_item > a > .main-navi---a_l::before,
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .menu-item.current-menu-item > a > .main-navi---a_l::before,
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .page_item_has_children > .children .current_page_item > a::before,
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .menu-item-has-children > .sub-menu .current-menu-item > a::before
 {
     background-color: var(--wbp-pri-color);
 }
@@ -1474,8 +1480,8 @@ input[type="submit"]
     transform: translate( .5rem, -.5rem );
 }
 
-.easy-access-nav-func .main-nav---ct_cr > ul > .page_item_has_children > .children,
-.easy-access-nav-func .main-nav---ct_cr > ul > .menu-item-has-children > .sub-menu
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .page_item_has_children > .children,
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .menu-item-has-children > .sub-menu
 {
     transform: translate( 0, -.5rem );
 }
@@ -1597,6 +1603,13 @@ input[type="submit"]
 }
 
 
+.sub-nav-tog---b_l
+{
+    padding: 0;
+    background-color: transparent;
+}
+
+
 
 
 
@@ -1697,12 +1710,17 @@ input[type="submit"]
 {
     position: relative;
     
-    margin-left: 1rem;
+    margin-left: var(--component--spacing-x);
+}
+
+.wbp-main-info---ct_cr
+{
+    min-height: var(--elem-dimension--md);
 }
 
 /* With Main Logo and Main Name, Main Description */
-.wbp-main-name-description--enabled.wbp-main-logo--enabled .web-product-main-name,
-.wbp-main-name-description--enabled.wbp-main-logo--enabled .web-product-main-description
+.wbp-main-logo--enabled .web-product-main-name,
+.wbp-main-logo--enabled .web-product-main-description
 {
     box-sizing: border-box;
     
@@ -1906,17 +1924,23 @@ input[type="submit"]
 /*------------------ Web Product Main Logo  ------------------*/
 .web-product-main-logo
 {
-    --web-product-main-logo--height: 2.25rem;
-    
     position: absolute;
     left: 0;
     top: 50%;
     
-    margin-top: calc( ( var(--web-product-main-logo--height) / 2 ) * -1 );
+    margin-top: calc( ( var(--wbp-main-logo--height) / 2 ) * -1 );
     
-    height: var(--web-product-main-logo--height);
+    max-width: 100%;
+    height: var(--wbp-main-logo--height);
     
     z-index: 1;
+}
+
+.web-product-main-logo .custom-logo-link
+{
+    display: inline-block;
+    
+    height: 100%;
 }
 
 .web-product-main-logo .custom-logo
@@ -2477,7 +2501,7 @@ input[type="submit"]
     padding-top: var(--component--spacing-y);
     padding-bottom: var(--component--spacing-y);
 }
-.widget a:link
+.widget a
 {
     color: var(--links--fg-color);
 }
