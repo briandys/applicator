@@ -1340,7 +1340,7 @@ input[type="submit"]
 }
 
 /* Sub Nav Toggle Button - Root */
-.main-nav---ct_cr > .menu-container > ul > li > .sub-nav-tog---b_l
+.main-nav---ct_cr > .menu-container > ul > li > .sub-nav-toggle .sub-nav-tog---b_l
 {
     color: var(--sub-nav-func-root--toggle-button--fg-color);
 }
@@ -1348,6 +1348,11 @@ input[type="submit"]
 /* Sub Nav Toggle Button - Branches */
 .children .sub-nav-tog---b_l,
 .sub-menu .sub-nav-tog---b_l
+{
+    color: var(--sub-nav-func-branches--toggle-button--fg-color);
+}
+
+.widget-content---ct_cr > * > ul > li > .sub-nav-toggle .sub-nav-tog---b_l
 {
     color: var(--sub-nav-func-branches--toggle-button--fg-color);
 }
@@ -1619,6 +1624,12 @@ input[type="submit"]
     background-color: transparent;
 }
 
+.main-nav .children .sub-nav--previous--active,
+.main-nav .sub-menu .sub-nav--previous--active
+{
+    visibility: hidden;
+}
+
 
 
 
@@ -1716,15 +1727,15 @@ input[type="submit"]
 }
 
 /* With Main Logo */
-.wbp-main-logo--enabled .web-product-main-info
+.wbp-main-logo--enabled.main-header-aside--disabled .web-product-main-info
 {
-    position: relative;
-    
-    margin-left: var(--component--spacing-x);
+    padding-left: var(--component--spacing-x);
 }
 
 .wbp-main-info---ct_cr
 {
+    position: relative;
+    
     min-height: var(--elem-dimension--md);
 }
 
@@ -2028,7 +2039,7 @@ input[type="submit"]
 /*------------------ Raster Icons ------------------*/
 .icon--raster
 {
-    background-image: url( ../../../assets/img/raster-icons.png );
+    background-image: url( ../../../../assets/img/raster-icons.png );
     background-size: auto 32px;
     background-repeat: no-repeat;
 }
@@ -2516,6 +2527,11 @@ input[type="submit"]
     color: var(--links--fg-color);
 }
 
+.widget .widget-content---ct_cr > .widget-heading
+{
+    padding: var(--object--spacing--md);
+}
+
 .widget a:hover
 {
     text-decoration: none;
@@ -2540,7 +2556,6 @@ input[type="submit"]
 {
     display: none;
 }
-
 
 
 

@@ -102,8 +102,7 @@
             
             $colophonHeight = $('#main-footer').height(),
             bodyOffsetCriteriaHeight,
-            bodyOffsetSliceHeight,
-            bodyOffsetMostHeight;
+            bodyOffsetHeight;
         
         function goStartNavActivate() {
             $cp
@@ -129,18 +128,19 @@
         ( function() {
             
             bodyOffsetCriteriaHeight = document.body.offsetHeight / 2;
-            bodyOffsetSliceHeight = document.body.offsetHeight / 1.5;
-            bodyOffsetMostHeight = document.body.offsetHeight - bodyOffsetSliceHeight;
+            bodyOffsetHeight = document.body.offsetHeight;
             
             if ( ( window.innerHeight ) <= ( bodyOffsetCriteriaHeight ) ) {
 
                 // http://stackoverflow.com/a/40370876
                 $window.scroll( function( e ) {
-                    if ( ( ( window.innerHeight + window.pageYOffset ) >= ( bodyOffsetMostHeight ) ) && ( ! window.pageYOffset == 0 ) ) {
+                    
+                    if ( ( ( window.innerHeight + window.pageYOffset ) >= ( bodyOffsetHeight / 4 ) ) && ( ! window.pageYOffset == 0 ) ) {
                         goStartNavActivate();
-                    } else if ( ( ( window.innerHeight + window.pageYOffset ) < ( bodyOffsetMostHeight ) ) || ( window.pageYOffset == 0 ) ) {
+                    } else if ( ( ( window.innerHeight + window.pageYOffset ) < ( bodyOffsetHeight / 4 ) ) || ( window.pageYOffset == 0 ) ) {
                         goStartNavDeactivate();
                     }
+                    
                 } );
             }
         }() );
@@ -582,6 +582,9 @@
             subNavActCss = 'sub-nav--active',
             subNavInactCss = 'sub-nav--inactive',
             
+            subNavPrevActCss = 'sub-nav--previous--active',
+            subNavPrevInactCss = 'sub-nav--previous--inactive',
+            
             subNavIbCss = 'sub-nav--inbound',
             subNavObLeftCss = 'sub-nav--outbound-left',
             subNavObRightCss = 'sub-nav--outbound-right',
@@ -792,6 +795,15 @@
                 
                 _this.find( $subNavShowHideTxt ).text( $subNavTogBtnShowL );
             } );
+            
+            
+            
+            $cp.find( $navParentItems ).each( function() {
+                var _this = $( this );
+                _this
+                    .addClass( subNavPrevInactCss )
+                    .removeClass( subNavPrevActCss );
+            } );
         }
         
         // Initiate
@@ -805,6 +817,26 @@
                 .removeClass( subNavActCss );
         }
         
+        // Deactivate Sub Nav Siblings
+        function subNavsiblingsDeactivate() {
+            var _this = $( this );
+            $navParent = _this.closest( $navParentItems );
+            
+            _this.closest( $navParent ).nextAll()
+                .addClass( subNavPrevActCss )
+                .removeClass( subNavPrevInactCss );
+        }
+        
+        // Activate Sub Nav Siblings
+        function subNavsiblingsActivate() {
+            var _this = $( this );
+            $navParent = _this.closest( $navParentItems );
+            
+            _this.closest( $navParent ).nextAll()
+                .addClass( subNavPrevInactCss )
+                .removeClass( subNavPrevActCss );
+        }
+        
         // Click
         ( function() {
             $subNavTogBtn.on( 'click.applicator', function( e ) {
@@ -815,8 +847,10 @@
                 if ( $subNavParent.hasClass( subNavInactCss ) ) {
                     subNavActivate.apply( this );
                     subNavItemDetectBounds.apply( this );
+                    subNavsiblingsDeactivate.apply( this );
                 } else if ( $subNavParent.hasClass( subNavActCss ) ) {
                     subNavDeactivate.apply( this );
+                    subNavsiblingsActivate.apply( this );
                 }
                 
                 if ( $cp.hasClass( 'easy-access-nav-func' ) ) {
