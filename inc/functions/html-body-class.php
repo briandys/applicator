@@ -222,6 +222,11 @@ if ( ! function_exists( 'applicator_func_html_class' ) ) {
                 echo ' '.'category--' . $category->category_nicename;
             }
         }
+        
+        // Page Template
+        $template_file = get_post_meta( get_the_ID(), '_wp_page_template', TRUE );
+        
+        echo ' '. 'page-template'. ' '. 'page-template--'. sanitize_title( $template_file );
     
     }
     add_action( 'applicator_hook_html_class', 'applicator_func_html_class');

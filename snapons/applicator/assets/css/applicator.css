@@ -72,6 +72,9 @@
     /* Element Dimensions */
     --elem-dimension--md: var(--dimension--md);
     
+    /* Transition */
+    --transition--generic: all .125s ease-in-out;
+    
     
     /*------------ Level 3 - Specifics ------------*/
     

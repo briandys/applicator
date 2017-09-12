@@ -24,7 +24,7 @@ if ( ! function_exists( 'apl_snapons_applicator_font_url' ) ) {
 if ( ! function_exists( 'apl_snapons_applicator_font_style' ) ) {
     function apl_snapons_applicator_font_style() {
 
-        wp_enqueue_style( 'apl-snapons-applicator-style-font', apl_snapons_applicator_font_url(), array(), null );
+        wp_enqueue_style( 'applicator-snapons-applicator-custom-fonts-style', apl_snapons_applicator_font_url(), array(), null );
 
     }
     add_action( 'wp_enqueue_scripts', 'apl_snapons_applicator_font_style', 0);
@@ -37,7 +37,7 @@ if ( ! function_exists( 'apl_snapons_applicator_font_settings' ) ) {
     
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 
-    <style id="apl-snapons-applicator-style-font">
+    <style id="applicator-snapons--applicator--custom-fonts--style">
         .html
         {
             font-family: 'Noto Sans', sans-serif;
