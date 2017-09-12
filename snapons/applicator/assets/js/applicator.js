@@ -739,6 +739,15 @@
             }
         }
         
+        // Deactivate on HTML level
+        function htmlSubNavDeactivate() {
+            if ( ! $subNavParentItems.hasClass( subNavActCss ) ) {
+                $html
+                    .addClass( aplSubNavInactCss )
+                    .removeClass( aplSubNavActCss );
+            }
+        }
+        
         // Deactivate
         function subNavDeactivate() {
             var _this = $( this );
@@ -747,9 +756,8 @@
             $subNavParent
                 .addClass( subNavInactCss )
                 .removeClass( subNavActCss );
-            $html
-                .addClass( aplSubNavInactCss )
-                .removeClass( aplSubNavActCss );
+            
+            htmlSubNavDeactivate();
             
             _this.attr( {
                  'aria-expanded': 'false',
@@ -774,9 +782,8 @@
                 $subNavParentItems
                     .addClass( subNavInactCss )
                     .removeClass( subNavActCss );
-                $html
-                    .addClass( aplSubNavInactCss )
-                    .removeClass( aplSubNavActCss );
+                
+                htmlSubNavDeactivate();
                 
                 $subNavTogBtn.attr( {
                     'aria-expanded': 'false',
