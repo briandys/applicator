@@ -168,8 +168,3 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
     --main-menu-func--height: 100%;
     --main-menu-func--max-width: 30rem;
 }
-
-#main-header-aside
-{
-    display: none;
-}

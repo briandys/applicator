@@ -179,6 +179,7 @@
     --elem--height--md: var(--elem-dimension--md);
     
     /* Active Area Dimensions */
+    --active-area--dimension--md: var(--elem-dimension--md);
     --active-area--width--md: var(--elem-dimension--md);
     --active-area--height--md: var(--elem-dimension--md);
     
@@ -1208,8 +1209,7 @@ input[type="submit"]
     
     position: relative;
     
-    margin-right: 3rem;
-    padding-top: 3rem;
+    margin-right: var(--active-area--dimension--md);
     
     width: auto;
     max-width: var(--main-menu-func--max-width);
@@ -1231,6 +1231,12 @@ input[type="submit"]
     left: 0;
     top: 0;
     z-index: 1;
+}
+
+.main-menu--active .main-menu-toggle
+{
+    left: auto;
+    right: 0;
 }
 
 .main-menu--active .main-menu-toggle::before
@@ -1293,11 +1299,6 @@ input[type="submit"]
 {
     padding: 0;
     background-color: transparent;
-}
-
-.main-menu--active .main-menu-tog---b_l
-{
-    color: var(--main-menu--fg-color);
 }
 
 .main-menu-toggle .icon
