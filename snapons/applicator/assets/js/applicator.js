@@ -5,12 +5,12 @@
         $window = $( window ),
         $body = $( document.body ),
         
-        $aplApplicatorGoCtNav = $html.closest( '.apl--applicator--go-content-nav' ),
-        $aplApplicatorGoStartNav = $html.closest( '.apl--applicator--go-start-nav' ),
-        $aplApplicatorMainSearch = $html.closest( '.apl--applicator--main-search' ),
-        $aplApplicatorSubNav = $html.closest( '.apl--applicator--sub-nav' ),
-        $aplApplicatorMainMenu = $html.closest( '.apl--applicator--main-menu' ),
-        $aplApplicatorEasyAccessNav = $html.closest( '.apl--applicator--easy-access-nav' ),
+        $aplApplicatorGoCtNav = $html.closest( '.applicator-snapon--applicator--go-content-nav' ),
+        $aplApplicatorGoStartNav = $html.closest( '.applicator-snapon--applicator--go-start-nav' ),
+        $aplApplicatorMainSearch = $html.closest( '.applicator-snapon--applicator--main-search' ),
+        $aplApplicatorSubNav = $html.closest( '.applicator-snapon--applicator--sub-nav' ),
+        $aplApplicatorMainMenu = $html.closest( '.applicator-snapon--applicator--main-menu' ),
+        $aplApplicatorEasyAccessNav = $html.closest( '.applicator-snapon--applicator--easy-access-nav' ),
         
         $mainHrAsEnabled = $html.closest( '.main-header-aside--enabled' ),
         
@@ -874,6 +874,16 @@
             if ( $html.hasClass( aplSubNavActCss ) && ! $( e.target ).closest( $subNavParentItems ).length && ! $( e.target ).is( 'a' ).length ) {
                 subNavAllDeactivate();
             }
+        } );
+        
+        
+        // Deactivate upon presseing ESC Key
+        $window.load( function () {
+            $( document ).on( 'keyup.applicator', function ( e ) {
+                if ( $html.hasClass( aplSubNavActCss ) && e.keyCode == 27 ) {
+                    subNavAllDeactivate();
+                }
+            } );
         } );
         
     }

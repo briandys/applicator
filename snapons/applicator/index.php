@@ -3,9 +3,12 @@
 Snap-on Name: Applicator
 Description: Default Snap-on for Applicator WordPress Theme
 Author: Brian Dys Sahagun
-Version: 1.1
+Version: 1.2
 Author URI: http://applicator.dysinelab.com
 */
+
+
+
 
 
 // Functions
@@ -19,15 +22,23 @@ $customizer_custom_colors = get_parent_theme_file_path( '/snapons/applicator/inc
 if ( file_exists( $customizer_custom_colors ) ) { require_once( $customizer_custom_colors ); }
 
 
+
+
+
 // HTML Classes
-if ( ! function_exists( 'apl_applicator_func_html_classes' ) ) {
-    function apl_applicator_func_html_classes() {
-		
-        $applicator_name = 'apl';
-        $snapon_name = $applicator_name . '--' . 'applicator';
+if ( ! function_exists( 'applicator_snapon_applicator_html_classes' ) ) {
+    function applicator_snapon_applicator_html_classes() {// Terms
+        
+        // Terms
+        $parent_name_term = 'applicator-snapon';
+        $snapon_name_term = 'applicator';
+        
+        // Variables
+        $snapon_name = $parent_name_term. '--'. $snapon_name_term;
         
         echo ' ' . $snapon_name;
         
+        // Array of Class Name s
         $r = array(
             'go-content-nav',
             'main-search',
@@ -48,7 +59,7 @@ if ( ! function_exists( 'apl_applicator_func_html_classes' ) ) {
         echo ' '. $snapon_name. '--theme--customizer-colors--'. $colors;
     
     }
-    add_action( 'applicator_hook_html_class', 'apl_applicator_func_html_classes');
+    add_action( 'applicator_hook_html_class', 'applicator_snapon_applicator_html_classes');
 }
 
 

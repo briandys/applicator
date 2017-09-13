@@ -49,8 +49,8 @@
 		value.bind( function( to ) {
 
 			$( 'body' )
-				.removeClass( 'apl--applicator--theme--customizer-colors--default apl--applicator--theme--customizer-colors--custom' )
-				.addClass( 'apl--applicator--theme--customizer-colors--' + to );
+				.removeClass( 'applicator-snapon--applicator--theme--customizer-colors--default applicator-snapon--applicator--theme--customizer-colors--custom' )
+				.addClass( 'applicator-snapon--applicator--theme--customizer-colors--' + to );
 		});
 	});
 

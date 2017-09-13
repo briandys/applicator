@@ -1,5 +1,5 @@
 /*------------------ Variables ------------------*/
-.apl--applicator
+.applicator-snapon--applicator
 {
     /* Level 1 - Absolutes - see style.css */
     
@@ -907,7 +907,7 @@ input[type="submit"]
 
 
 /*------------------ Go to Content Nav - Function ------------------*/
-.apl--applicator--go-content-nav.dom--unready .go-content-nav
+.applicator-snapon--applicator--go-content-nav.dom--unready .go-content-nav
 {
     display: none;
 }
@@ -997,7 +997,7 @@ input[type="submit"]
     background-color: transparent;
 }
 
-.apl--applicator--main-search.dom--unready .main-header---cr > .search
+.applicator-snapon--applicator--main-search.dom--unready .main-header---cr > .search
 {
     display: none;
 }
@@ -1058,12 +1058,12 @@ input[type="submit"]
     padding-right: calc( var(--spacing--toggle-allowance) * 2 );
 }
 
-.apl--applicator--main-search.apl--applicator--main-menu.main-header-aside--disabled .main-search-func .search-term-crt-search---input-text
+.applicator-snapon--applicator--main-search.applicator-snapon--applicator--main-menu.main-header-aside--disabled .main-search-func .search-term-crt-search---input-text
 {
     padding-left: 1rem;
 }
 
-.apl--applicator--main-search.apl--applicator--main-menu.main-header-aside--enabled .main-search--active .search---cr
+.applicator-snapon--applicator--main-search.applicator-snapon--applicator--main-menu.main-header-aside--enabled .main-search--active .search---cr
 {
     padding-left: var(--spacing--toggle-allowance);
 }
@@ -1110,7 +1110,7 @@ input[type="submit"]
     color: var(--placeholder-reverse-color);
 }
 
-.apl--applicator--main-search .main-header---cr > .search
+.applicator-snapon--applicator--main-search .main-header---cr > .search
 {
     background-color: transparent;
 }
@@ -1163,7 +1163,7 @@ input[type="submit"]
 
 
 /*------------------ Main Menu - Function ------------------*/
-.apl--applicator--main-menu.dom--unready .main-header-aside
+.applicator-snapon--applicator--main-menu.dom--unready .main-header-aside
 {
     display: none;
 }
@@ -1317,25 +1317,25 @@ input[type="submit"]
 
 
 /*------------------ Easy Access Nav - Function ------------------*/
-.apl--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul
+.applicator-snapon--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul
 {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
 }
 
-.apl--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul > li > a
+.applicator-snapon--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul > li > a
 {
     display: flex;
     justify-content: center;
 }
 
-.apl--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul > li > a > .main-navi---a_l
+.applicator-snapon--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul > li > a > .main-navi---a_l
 {
     justify-content: center;
 }
 
-.apl--applicator--easy-access-nav .main-nav a
+.applicator-snapon--applicator--easy-access-nav .main-nav a
 {
     color: var(--easy-access-nav-func--main-nav--fg-color);
     
@@ -1380,7 +1380,7 @@ input[type="submit"]
 }
 
 .easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .current_page_ancestor > a > .main-navi---a_l,
-.apl--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul > li > a > .main-navi---a_l:hover,
+.applicator-snapon--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul > li > a > .main-navi---a_l:hover,
 .easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .page_item_has_children > .children a:hover,
 .easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .menu-item-has-children > .sub-menu a:hover,
 .easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .current_page_item > a > .main-navi---a_l,
@@ -1391,7 +1391,7 @@ input[type="submit"]
 }
 
 .easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .current_page_ancestor > a > .main-navi---a_l::before,
-.apl--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul > li > a > .main-navi---a_l:hover::before,
+.applicator-snapon--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul > li > a > .main-navi---a_l:hover::before,
 .easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .current_page_item > a > .main-navi---a_l::before
 {
     content: '';
@@ -1479,7 +1479,7 @@ input[type="submit"]
     border: 1px solid var(--easy-access-nav-func--sub-nav--border-color);
 }
 
-.apl--applicator--easy-access-nav .main-nav .sub-nav-toggle
+.applicator-snapon--applicator--easy-access-nav .main-nav .sub-nav-toggle
 {
     bottom: 0;
 }
@@ -1564,16 +1564,16 @@ input[type="submit"]
 
 
 /*------------------ Sub-Navigation - Function ------------------*/
-.apl--applicator--sub-nav.dom--unready .main-nav .children,
-.apl--applicator--sub-nav.dom--unready .main-nav .sub-menu,
-.apl--applicator--sub-nav.dom--unready .widget_nav_menu .sub-menu,
-.apl--applicator--sub-nav.dom--unready .widget_pages .children
+.applicator-snapon--applicator--sub-nav.dom--unready .main-nav .children,
+.applicator-snapon--applicator--sub-nav.dom--unready .main-nav .sub-menu,
+.applicator-snapon--applicator--sub-nav.dom--unready .widget_nav_menu .sub-menu,
+.applicator-snapon--applicator--sub-nav.dom--unready .widget_pages .children
 {
     display: none;
 }
 
-.apl--applicator--sub-nav .page_item_has_children > a,
-.apl--applicator--sub-nav .menu-item-has-children > a
+.applicator-snapon--applicator--sub-nav .page_item_has_children > a,
+.applicator-snapon--applicator--sub-nav .menu-item-has-children > a
 {
     padding-right: var(--spacing--toggle-allowance);
     width: 100%;
@@ -1638,7 +1638,7 @@ input[type="submit"]
 
 
 /*------------------ Go to Start Nav - Function ------------------*/
-.apl--applicator--go-start-nav.dom--unready .go-start-nav
+.applicator-snapon--applicator--go-start-nav.dom--unready .go-start-nav
 {
     display: none;
 }
@@ -1670,7 +1670,7 @@ input[type="submit"]
 }
 
 
-.apl--applicator--go-start-nav.dom--unready .go-to-start-navi,
+.applicator-snapon--applicator--go-start-nav.dom--unready .go-to-start-navi,
 .go-start-nav--inactive .go-to-start-navi
 {
     transform: translateY( 100% );
@@ -1718,20 +1718,20 @@ input[type="submit"]
 }
 
 /* With Main Search */
-.apl--applicator--main-search .web-product-main-info
+.applicator-snapon--applicator--main-search .web-product-main-info
 {
     padding-right: var(--elem-dimension--md);
 }
 
 /* With Main Search and No Main Menu and No Logo */
-.apl--applicator--main-search.apl--applicator--main-search.main-header-aside--disabled.wbp-main-logo--disabled .web-product-main-info
+.applicator-snapon--applicator--main-search.applicator-snapon--applicator--main-search.main-header-aside--disabled.wbp-main-logo--disabled .web-product-main-info
 {
     padding-left: var(--elem-dimension--md);
     padding-right: var(--elem-dimension--md);
 }
 
 /* With Main Menu */
-.apl--applicator--main-menu.main-header-aside--enabled .web-product-main-info
+.applicator-snapon--applicator--main-menu.main-header-aside--enabled .web-product-main-info
 {
     padding-left: var(--elem-dimension--md);
 }
@@ -1759,8 +1759,8 @@ input[type="submit"]
 }
 
 /* With Main Menu */
-.apl--applicator--main-menu.main-header-aside--enabled .wbp-main-name---a_l,
-.apl--applicator--main-menu.main-header-aside--enabled .wbp-main-desc---a_l
+.applicator-snapon--applicator--main-menu.main-header-aside--enabled .wbp-main-name---a_l,
+.applicator-snapon--applicator--main-menu.main-header-aside--enabled .wbp-main-desc---a_l
 {
     padding-left: 0;
 }
@@ -1773,15 +1773,15 @@ input[type="submit"]
 }
 
 /* With Main Search */
-.apl--applicator--main-search .wbp-main-name---a_l,
-.apl--applicator--main-search .wbp-main-desc---a_l
+.applicator-snapon--applicator--main-search .wbp-main-name---a_l,
+.applicator-snapon--applicator--main-search .wbp-main-desc---a_l
 {
     padding-right: 0;
 }
 
 /* With Main Search and No Logo and Main Menu */
-.apl--applicator--main-search.main-header-aside--disabled.wbp-main-logo--disabled .wbp-main-name---a_l,
-.apl--applicator--main-search.main-header-aside--disabled.wbp-main-logo--disabled .wbp-main-desc---a_l
+.applicator-snapon--applicator--main-search.main-header-aside--disabled.wbp-main-logo--disabled .wbp-main-name---a_l,
+.applicator-snapon--applicator--main-search.main-header-aside--disabled.wbp-main-logo--disabled .wbp-main-desc---a_l
 {
     padding-left: 0;
     padding-right: 0;
@@ -2121,7 +2121,7 @@ input[type="submit"]
 /* WP Admin Bar - Narrow */
 .wp-admin-bar--enabled.vp--wp-admin-bar--narrow .wbp---cr,
 .wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-menu--active,
-.wp-admin-bar--enabled.vp--wp-admin-bar--narrow.apl--applicator--main-search .main-header---cr > .search,
+.wp-admin-bar--enabled.vp--wp-admin-bar--narrow.applicator-snapon--applicator--main-search .main-header---cr > .search,
 .wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-menu--inactive .main-menu-toggle
 {
     margin-top: var(--wp-admin-bar-allowance--narrow);
@@ -2135,7 +2135,7 @@ input[type="submit"]
 /* WP Admin Bar - Wide */
 .wp-admin-bar--enabled.vp--wp-admin-bar--wide .wbp---cr,
 .wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-menu--active,
-.wp-admin-bar--enabled.vp--wp-admin-bar--wide.apl--applicator--main-search .main-header---cr > .search
+.wp-admin-bar--enabled.vp--wp-admin-bar--wide.applicator-snapon--applicator--main-search .main-header---cr > .search
 .wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-menu--inactive .main-menu-toggle
 {
     margin-top: var(--wp-admin-bar-allowance--wide);
@@ -2579,8 +2579,8 @@ input[type="submit"]
 
 
 /*------------------ Applicator Theme - Avatar - Circular ------------------*/
-.apl--applicator--theme--avatar--circular .author-avatar---a_l,
-.apl--applicator--theme--avatar--circular .commenter-avatar---a_l
+.applicator-snapon--applicator--theme--avatar--circular .author-avatar---a_l,
+.applicator-snapon--applicator--theme--avatar--circular .commenter-avatar---a_l
 {
     border-radius: 50%;
     overflow: hidden;
