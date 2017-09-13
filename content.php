@@ -190,11 +190,8 @@ $post_classes = implode( ' ', $post_classes );
                 
                 else {
                     
-                    if ( has_excerpt() ) {
-                        
-                        // E: Post Excerpt
-                        echo $post_excerpt;
-                    }
+                    // E: Post Excerpt
+                    echo $post_excerpt;
                 
                 }
                 
