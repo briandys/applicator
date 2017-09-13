@@ -178,6 +178,10 @@
     --elem--width--md: var(--elem-dimension--md);
     --elem--height--md: var(--elem-dimension--md);
     
+    /* Active Area Dimensions */
+    --active-area--width--md: var(--elem-dimension--md);
+    --active-area--height--md: var(--elem-dimension--md);
+    
     /* Main Logo - Dimensions */
     --wbp-main-logo--height: 2.25rem;
     
@@ -1228,14 +1232,6 @@ input[type="submit"]
     top: 0;
     z-index: 1;
 }
-
-/*
-.main-menu--active .main-menu-toggle
-{
-    width: calc( 100% - 3rem );
-    max-width: var(--main-menu-func--max-width);
-}
-*/
 
 .main-menu--active .main-menu-toggle::before
 {

@@ -1,0 +1,171 @@
+/* Snapon - Applicator - Magazine Header */
+/* .main-menu-func */
+
+
+
+
+
+/*------------------ Variables ------------------*/
+.view--front
+{
+    /* Sub Nav - Toggle Button - Colors */
+    --sub-nav-func-root--toggle-button--fg-color: var(--white--color);
+}
+
+
+
+
+
+/*------------------ Main Header ------------------*/
+.view--front .main-header---cr
+{
+    position: relative;
+}
+
+
+
+
+
+/*------------------ Web Product Main Info ------------------*/
+.view--front.wbp-main-logo--enabled .web-product-main-info
+{
+    position: absolute;
+}
+
+.view--front .web-product-main-info
+{
+    box-sizing: border-box;
+    
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    
+    width: 100%;
+}
+
+.view--front.wbp-main-logo--enabled .wbp-main-info---ct_cr
+{
+    position: relative;
+}
+
+.view--front.wbp-main-logo--enabled .web-product-main-info
+
+{
+    margin-left: 0;
+}
+
+
+
+
+
+/*------------------ Main Nav ------------------*/
+.view--front .main-nav
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    
+    margin-top: var(--elem--height--md);
+    
+    width: 100%;   
+}
+
+.view--front .main-nav---cr
+{
+    background-color: transparent;
+}
+
+.view--front.apl--applicator--easy-access-nav .main-nav a
+{
+    color: white;
+}
+
+.view--front .main-nav.sub-nav-func .children a,
+.view--front .main-nav.sub-nav-func .sub-menu a
+{
+    color: black;
+}
+
+.view--front .main-nav---ct_cr > .menu-container > ul > li > .sub-nav-toggle .sub-nav-tog---b_l
+{
+    color: var(--sub-nav-func-root--toggle-button--fg-color);
+}
+
+.view--front .widget-content---ct_cr > * > ul > li > .sub-nav-toggle .sub-nav-tog---b_l
+{
+    color: var(--sub-nav-func-branches--toggle-button--fg-color);
+}
+
+.view--front .children .sub-nav-tog---b_l,
+.view--front .sub-menu .sub-nav-tog---b_l
+{
+    color: var(--sub-nav-func-branches--toggle-button--fg-color);
+}
+
+.view--front.apl--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul
+{
+    justify-content: center;
+}
+
+
+
+
+
+/*------------------ Main Search ------------------*/
+.view--front .main-search-func
+{
+    z-index: 1;
+}
+
+
+
+
+
+/*------------------ Web Product Main Media Banner ------------------*/
+.view--front .wbp-main-media-banner---g
+{
+    position: relative;
+    
+    background-color: var(--image--bg-color);
+}
+
+.view--front .wbp-main-media-banner---g::before
+{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    
+    width: 100%;
+    height: 100%;
+    
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&1+0,0.5+100 */
+    background: -moz-linear-gradient(top, hsla(0,0%,0%,1) 0%, hsla(0,0%,0%,0.5) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, hsla(0,0%,0%,1) 0%,hsla(0,0%,0%,0.5) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, hsla(0,0%,0%,1) 0%,hsla(0,0%,0%,0.5) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#80000000',GradientType=0 ); /* IE6-9 */
+    
+    opacity: .5;
+    
+    transition: var(--transition--generic);
+    transition-property: opacity;
+}
+
+.view--front.apl--main-search--active.view--front .wbp-main-media-banner---g::before
+
+{
+    opacity: .75;
+}
+
+
+
+
+
+/*------------------ Web Product Main Name, Description ------------------*/
+.view--front.wbp-main-logo--disabled .web-product-main-name,
+.view--front.wbp-main-logo--disabled .web-product-main-description
+
+{
+    justify-content: center;
+}

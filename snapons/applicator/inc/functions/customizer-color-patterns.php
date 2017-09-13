@@ -13,7 +13,7 @@ function applicator_customizer_color_patterns() {
     
     :root
     {
-        --main-header--bg-color: hsl( ' . $hue . ', ' . $saturation . ', 50% );
+        --main-header--bg-color: hsl( '. $hue. ', '. $saturation. ', 50% );
     }
     
     .main-header---cr

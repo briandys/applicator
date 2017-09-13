@@ -1,14 +1,22 @@
-<?php // Enqueue Styles | content.php
+<?php // Styles
 
-if ( ! function_exists( 'applicator_func_styles' ) ) {
-    function applicator_func_styles() {
+if ( ! function_exists( 'applicator_styles' ) ) {
+    function applicator_styles() {
+        
+        // Terms
+        $parent_style_term = 'applicator-style';
 
-        wp_enqueue_style( 'applicator-style', get_stylesheet_uri() );
+        // Variables
+        $parent_style = $parent_style_term;
+        $parent_style_h5bp = $parent_style_term. '-h5bp';
+        $parent_style_default = $parent_style_term. '-default';
+
+        wp_enqueue_style( $parent_style_term, get_stylesheet_uri() );
         
-        wp_enqueue_style( 'applicator-style-h5bp', get_theme_file_uri() . '/assets/css/h5bp.css', array(), '1.0', 'all' );
+        wp_enqueue_style( $parent_style_h5bp, get_theme_file_uri() . '/assets/css/h5bp.css' );
         
-        wp_enqueue_style( 'applicator-style-default', get_theme_file_uri() . '/assets/css/default.css', array( 'applicator-style-h5bp' ), '5.9', 'all' );
+        wp_enqueue_style( $parent_style_default, get_theme_file_uri() . '/assets/css/default.css', array( $parent_style_h5bp ), '6.0' );
 
     }
-    add_action('wp_enqueue_scripts', 'applicator_func_styles', 0);
+    add_action('wp_enqueue_scripts', 'applicator_styles', 0);
 }

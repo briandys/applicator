@@ -93,6 +93,9 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
     --white-half--color: hsla( 0, 0%, 100%, .5 );
     --white-half--color-a: hsla( 0, 0%, 100%, .5 );
     
+    /* Dimensions */
+    --dimension--md: 3rem;
+    
     
     /* Framework */
     --wbp-pri-color: var(--superhero-blue--color);
@@ -122,9 +125,6 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
     
     --sec-axn-bg-color: hsla(0, 0%, 75%, .25);
     --sec-axn-fg-color: hsla(0, 0%, 0%, .75);
-    
-    /* Dimensions */
-    --dimension--md: 3rem;
     
     
     --link-generic--color: var(--panda-blue--color);
@@ -167,4 +167,9 @@ Tags: right-sidebar, accessibility-ready, custom-menu, footer-widgets, sticky-po
     /* Main Menu */
     --main-menu-func--height: 100%;
     --main-menu-func--max-width: 30rem;
+}
+
+#main-header-aside
+{
+    display: none;
 }
