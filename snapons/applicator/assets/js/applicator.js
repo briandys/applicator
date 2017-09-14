@@ -17,7 +17,10 @@
         showHideTxtCss = 'show-hide---txt',
         
         mainSearchFuncCss = 'main-search-func',
-        funcCss = 'func';
+        funcCss = 'func',
+        
+        tabKeyActCss = 'tab-key--active',
+        tabKeyInactCss = 'tab-key--inactive';
     
     
     
@@ -331,7 +334,7 @@
 
         // Deactivate upon presseing ESC Key
         $window.load( function () {
-            $( document ).on( 'keyup.applicator', function ( e ) {
+            $document.on( 'keyup.applicator', function ( e ) {
                 if ( $cp.hasClass( mainMenuActCss ) && e.keyCode == 27 ) {
                     mainMenuDeactivate();
                 }
@@ -555,7 +558,7 @@
 
         // Deactivate upon presseing ESC Key
         $window.load( function () {
-            $( document ).on( 'keyup.applicator', function ( e ) {
+            $document.on( 'keyup.applicator', function ( e ) {
                 if ( $cp.hasClass( mainSearchActCss ) && e.keyCode == 27 ) {
                     mainSearchDeactivate();
                 }
@@ -858,7 +861,9 @@
                     subNavActivate.apply( this );
                     subNavItemDetectBounds.apply( this );
                     subNavsiblingsDeactivate.apply( this );
-                } else if ( $subNavParent.hasClass( subNavActCss ) ) {
+                }
+                
+                else if ( $subNavParent.hasClass( subNavActCss ) ) {
                     subNavDeactivate.apply( this );
                     subNavsiblingsActivate.apply( this );
                 }
@@ -889,7 +894,7 @@
         
         // Deactivate upon presseing ESC Key
         $window.load( function () {
-            $( document ).on( 'keyup.applicator', function ( e ) {
+            $document.on( 'keyup.applicator', function ( e ) {
                 if ( $html.hasClass( aplSubNavActCss ) && e.keyCode == 27 ) {
                     subNavAllDeactivate();
                 }
@@ -1002,18 +1007,61 @@
     
     
     
+    // ------------------------- No Tab Key
+    ( function() {
+        
+        $window.load( function () {
+            
+            $document.on( 'keydown.applicator', function ( e ) {
+                var keyCode = e.keyCode || e.which; 
+                
+                if ( keyCode == 9 ) {
+                    
+                    if ( $html.hasClass( tabKeyInactCss ) ) {
+                        $html
+                            .addClass( tabKeyActCss )
+                            .removeClass( tabKeyInactCss );
+                    }
+                  }
+            } );
+            
+            // Deactivate upon any interaction
+            $document.on( 'touchmove.applicator click.applicator', function ( e ) {
+                
+                if ( $html.hasClass( tabKeyActCss ) ) {
+                    $html
+                        .addClass( tabKeyInactCss )
+                        .removeClass( tabKeyActCss );
+                }
+            } );
+            
+        } );
+        
+    } )();
+    
+    
+    
+    
+    
     // ------------------------- DOM Ready
-    $( document ).ready( function() {
+    $document.ready( function() {
 		
         
         // Remove DOM Unready class
-        $html.addClass( 'dom--ready' ).removeClass( 'dom--unready' );
+        $html
+            .addClass( 'dom--ready' )
+            .removeClass( 'dom--unready' );
+        
+        // Initialize Tab Key CSS
+        $html
+            .addClass( tabKeyInactCss )
+            .removeClass( tabKeyActCss );
         
         
         // Alias for WP Admin Bar
         if ( $body.hasClass( 'admin-bar' ) ) {
             $( '#wpadminbar' ).addClass( 'wpadminbar' );
         }
-	});
+    } );
 
 })( jQuery );
