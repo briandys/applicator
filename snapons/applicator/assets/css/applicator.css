@@ -1221,6 +1221,7 @@ input[type="submit"]
     
     transition: var(--transition--generic);
     transition-duration: .5s;
+    transition-property: transform;
 }
 
 /* Hide the Main Menu */
@@ -1231,7 +1232,7 @@ input[type="submit"]
 
 .main-menu--active
 {   
-    z-index: 99;
+    z-index: 100;
     
     /*
     cursor: pointer;
@@ -1369,6 +1370,7 @@ input[type="submit"]
     opacity: 0;
     
     transition: var(--transition--generic);
+    transition-duration: .5s;
     transition-property: opacity;
 }
 
