@@ -89,7 +89,7 @@ if ( ! function_exists( 'applicator_snapon_applicator_styles' ) ) {
 if ( ! function_exists( 'applicator_snapon_applicator_scripts' ) ) {
     function applicator_snapon_applicator_scripts() {
         
-        wp_enqueue_script( 'applicator-snapon--applicator-script', get_theme_file_uri( '/snapons/applicator/assets/js/applicator.js' ), array( 'jquery' ), '25.4', true );
+        wp_enqueue_script( 'applicator-snapon--applicator-script', get_theme_file_uri( '/snapons/applicator/assets/js/applicator.js' ), array( 'jquery' ), '25.5', true );
         
         // SVG Icons
         $arrow_icon = applicator_func_get_svg( array( 'icon' => 'arrow-icon', 'fallback' => true, ) );

@@ -1233,10 +1233,16 @@ input[type="submit"]
     z-index: 1;
 }
 
+.main-menu--active .main-hr-aside---hr
+{
+    position: relative;
+    width: 100%;
+    max-width: var(--main-menu-func--max-width);
+}
+
 .main-menu--active .main-menu-toggle
 {
-    left: auto;
-    right: 0;
+    left: 100%;
 }
 
 .main-menu--active .main-menu-toggle::before
@@ -1310,6 +1316,16 @@ input[type="submit"]
 {
     width: .75rem;
     height: .75rem;
+}
+
+.applicator-snapon--applicator--main-menu .widget:first-of-type .widget---cr
+{
+    margin-top: calc( var(--component--spacing-y) * -1 );
+}
+
+.applicator-snapon--applicator--main-menu .widget_media_image:first-of-type .widget---cr
+{
+    margin-top: 0;
 }
 
 
@@ -2573,6 +2589,11 @@ input[type="submit"]
 #recentcomments:empty
 {
     display: none;
+}
+
+.widget_media_image .widget---cr
+{
+    padding: 0;
 }
 
 

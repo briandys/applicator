@@ -173,7 +173,7 @@
     
     
     
-    // Main Menu | Main Nav - Main Header Aside
+    // Main Menu | Main Header Aside
     function initMainMenu( $cp ) {
         
         if ( ! $aplApplicatorMainMenu.length ) {
@@ -209,7 +209,9 @@
             
             $mainMenuTogBtn,
             $mainMenuTogBtnL,
-            $mainMenuTogBtnLTxt;
+            $mainMenuTogBtnLTxt,
+            
+            $mainHrAsCtCr;
         
         // Build Markup
         ( function() {
@@ -290,12 +292,20 @@
         // Initialize
         mainMenuDeactivate();
         
+        function mainMenuResetScroll() {
+            $mainHrAsCtCr = $cp.find( '.main-hr-aside---ct_cr' );
+            
+            $mainHrAsCtCr.scrollTop(0);
+        }
+        
         // Toggle
         function mainMenuToggle() {
-            if ( $cp.hasClass( mainMenuActCss ) ) {
-                mainMenuDeactivate();
-            } else if ( $cp.hasClass( mainMenuInactCss ) ) {
+            if ( $cp.hasClass( mainMenuInactCss ) ) {
                 mainMenuActivate();
+                mainMenuResetScroll();
+            }
+            else if ( $cp.hasClass( mainMenuActCss ) ) {
+                mainMenuDeactivate();
             }
         }
         
