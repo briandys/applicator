@@ -154,7 +154,10 @@
     --sub-nav-func-branches--toggle-button--fg-color: var(--fg-color);
     
     /* Easy Access Nav - Sub Nav - Indicator - Colors */
-    --easy-access-nav-func--sub-nav-indicator--bg-color: var(--black-eighth--color);
+    --easy-access-nav-func--navi--root--indicator: var(--black-eighth--color);
+    
+    --easy-access-nav-func--navi--current-ancestor--indicator: var(--black-fourth--color);
+    --easy-access-nav-func--navi--branch--indicator: var(--black-eighth--color);
     
     /* Easy Access Nav - Sub Nav - Border Color */
     --easy-access-nav-func--sub-nav--border-color: var(--black-eighth--color);
@@ -1199,10 +1202,10 @@ input[type="submit"]
 .main-menu-func
 {
     /* Variables */
-    --main-menu-func--height: 100%;
+    --main-menu-func--height: 100vh;
     --main-menu-func--max-width: 30rem;
     
-    position: fixed;
+    position: absolute;
     left: 0;
     top: 0;
     z-index: 1;
@@ -1443,19 +1446,33 @@ input[type="submit"]
     height: calc( .75rem + .1rem );
 }
 
-.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .current_page_ancestor > a > .main-navi---a_l,
-.applicator-snapon--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul > li > a > .main-navi---a_l:hover,
-.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .page_item_has_children > .children a:hover,
-.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .menu-item-has-children > .sub-menu a:hover,
-.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .current_page_item > a > .main-navi---a_l,
-.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .page_item_has_children > .children .current_page_item > a,
-.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .menu-item-has-children > .sub-menu .current-menu-item > a
+/* Root Nav Item Indicator */
+.applicator-snapon--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul > li > a > .main-navi---a_l:hover
 {
     position: relative;
 }
 
-.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .current_page_ancestor > a > .main-navi---a_l::before,
-.applicator-snapon--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul > li > a > .main-navi---a_l:hover::before,
+/* Root Nav Item Indicator */
+.applicator-snapon--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul > li > a > .main-navi---a_l:hover::before
+{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    
+    width: 100%;
+    height: var(--easy-access-nav-func--indicator--height);
+    
+    background-color: var(--easy-access-nav-func--navi--root--indicator);
+}
+
+/* Root Nav Item - Current Indicator */
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .current_page_item > a > .main-navi---a_l
+{
+    position: relative;
+}
+
+/* Root Nav Item -Current Indicator */
 .easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .current_page_item > a > .main-navi---a_l::before
 {
     content: '';
@@ -1466,11 +1483,37 @@ input[type="submit"]
     width: 100%;
     height: var(--easy-access-nav-func--indicator--height);
     
-    background-color: var(--easy-access-nav-func--sub-nav-indicator--bg-color);
+    background-color: var(--easy-access-nav-func--navi--current-ancestor--indicator);
 }
 
-.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .page_item_has_children > .children a:hover::before,
-.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .menu-item-has-children > .sub-menu a:hover::before,
+/* Root Nav Item - Current Ancestor Indicator */
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .current_page_ancestor > a > .main-navi---a_l
+{
+    position: relative;
+}
+
+/* Root Nav Item - Current Ancestor Indicator */
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .current_page_ancestor > a > .main-navi---a_l::before
+{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    
+    width: 100%;
+    height: var(--easy-access-nav-func--indicator--height);
+    
+    background-color: var(--easy-access-nav-func--navi--current-ancestor--indicator);
+}
+
+/* Branch Nav Item - Current Indicator */
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .page_item_has_children > .children .current_page_item > a,
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .menu-item-has-children > .sub-menu .current-menu-item > a
+{
+    position: relative;
+}
+
+/* Branch Nav Item - Current Indicator */
 .easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .page_item_has_children > .children .current_page_item > a::before,
 .easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .menu-item-has-children > .sub-menu .current-menu-item > a::before
 {
@@ -1479,70 +1522,51 @@ input[type="submit"]
     left: 0;
     top: 0;
     
-    width: var(--easy-access-nav-func--indicator--height);
+    width: var(--easy-access-nav-func--indicator--width);
     height: 100%;
+    
+    background-color: var(--accent-color--pri);
 }
 
+/* Branch Nav Item Indicator */
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .page_item_has_children > .children a:hover,
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .menu-item-has-children > .sub-menu a:hover
+{
+    position: relative;
+}
+
+/* Branch Nav Item Indicator */
 .easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .page_item_has_children > .children a:hover::before,
 .easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .menu-item-has-children > .sub-menu a:hover::before
-{    
-    background-color: hsla( 0, 0%, 0%, .125 );
-}
-
-.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .page_item.current_page_item > a > .main-navi---a_l::before,
-.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .menu-item.current-menu-item > a > .main-navi---a_l::before,
-.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .page_item_has_children > .children .current_page_item > a::before,
-.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .menu-item-has-children > .sub-menu .current-menu-item > a::before
 {
-    background-color: var(--wbp-pri-color);
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    
+    width: var(--easy-access-nav-func--indicator--width);
+    height: 100%;
+    
+    background-color: var(--easy-access-nav-func--navi--branch--indicator);
 }
 
+/* Branch Nav Item - Current Indicator */
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .page_item.current_page_item > a > .main-navi---a_l::before,
+.easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .menu-item.current-menu-item > a > .main-navi---a_l::before
+{
+    background-color: var(--accent-color--pri);
+}
+
+/* Branch Nav Item */
 .easy-access-nav-func .page_item_has_children > .children > .page_item,
 .easy-access-nav-func .menu-item-has-children > .sub-menu > .menu-item
 {
     padding-left: initial;
     
     background-color: var(--easy-access-nav-func--sub-nav--bg-color);
-    
-    border: 1px solid var(--easy-access-nav-func--sub-nav--border-color);
-    border-top: 0;
-    border-bottom: 0;
 }
 
-.easy-access-nav-func .page_item_has_children > .children > .page_item:first-child,
-.easy-access-nav-func .menu-item-has-children > .sub-menu > .menu-item:first-child
-{
-    /*
-    border-top-left-radius: .125rem;
-    border-top-right-radius: .125rem;
-    */
-    
-    border: 1px solid var(--easy-access-nav-func--sub-nav--border-color);
-    border-bottom: 0;
-}
-
-.easy-access-nav-func .page_item_has_children > .children > .page_item:last-child,
-.easy-access-nav-func .menu-item-has-children > .sub-menu > .menu-item:last-child
-{
-    /*
-    border-bottom-left-radius: .125rem;
-    border-bottom-right-radius: .125rem;
-    */
-    
-    border: 1px solid var(--easy-access-nav-func--sub-nav--border-color);
-    border-top: 0;
-}
-
-.easy-access-nav-func .page_item_has_children > .children > .page_item:only-child,
-.easy-access-nav-func .menu-item-has-children > .sub-menu > .menu-item:only-child
-{
-    /*
-    border-radius: .125rem;
-    */
-    
-    border: 1px solid var(--easy-access-nav-func--sub-nav--border-color);
-}
-
+/* Sub-Menu */
 .easy-access-nav-func .children,
 .easy-access-nav-func .sub-menu
 {   
@@ -1551,18 +1575,53 @@ input[type="submit"]
     min-width: 100%;
 }
 
+/* Sub-Menu of Nav Item */
 .easy-access-nav-func .page_item_has_children .children,
 .easy-access-nav-func .menu-item-has-children .sub-menu
 {
     transform: translate( .5rem, -.5rem );
 }
 
+/* Root Sub-Menu */
 .easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .page_item_has_children > .children,
 .easy-access-nav-func .main-nav---ct_cr > .menu-container > ul > .menu-item-has-children > .sub-menu
 {
     transform: translate( 0, -.5rem );
 }
 
+.easy-access-nav-func .page_item_has_children > .children > .page_item > a,
+.easy-access-nav-func .menu-item-has-children > .sub-menu > .menu-item > a
+{
+    border: 1px solid var(--easy-access-nav-func--sub-nav--border-color);
+    border-top: 0;
+    border-bottom: 0;
+}
+
+.easy-access-nav-func .page_item_has_children > .children > .page_item:first-child > a,
+.easy-access-nav-func .menu-item-has-children > .sub-menu > .menu-item:first-child > a
+{
+    border: 1px solid var(--easy-access-nav-func--sub-nav--border-color);
+    border-bottom: 0;
+}
+
+.easy-access-nav-func .page_item_has_children > .children > .page_item:last-child > a,
+.easy-access-nav-func .menu-item-has-children > .sub-menu > .menu-item:last-child > a
+{
+    border: 1px solid var(--easy-access-nav-func--sub-nav--border-color);
+    border-top: 0;
+}
+
+.easy-access-nav-func .page_item_has_children > .children > .page_item:only-child > a,
+.easy-access-nav-func .menu-item-has-children > .sub-menu > .menu-item:only-child > a
+{
+    border: 1px solid var(--easy-access-nav-func--sub-nav--border-color);
+}
+
+.easy-access-nav-func .page_item_has_children > .children > .page_item.current_page_item > a,
+.easy-access-nav-func .menu-item-has-children > .sub-menu > .menu-item.current-menu-item > a
+{
+    border-left-color: var(--accent-color--pri);
+}
 
 
 
