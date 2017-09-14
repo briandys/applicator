@@ -877,11 +877,14 @@
         }() );
         
         // Hover
-        $( $mainNavItem ).hover( function () {
-            navHoverActivate.apply( this );
-        }, function() {
-            navHoverDeactivate.apply( this );
-        } );
+        ( function() {
+            
+            $( $mainNavItem ).hover( function () {
+                navHoverActivate.apply( this );
+            }, function() {
+                navHoverDeactivate.apply( this );
+            } );
+        }() );
         
         
         // Deactivate upon interaction outside specified elements

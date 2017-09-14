@@ -169,3 +169,32 @@
 {
     justify-content: center;
 }
+
+
+
+
+
+/*------------------ Media Banner ------------------*/
+.wbp-main-media-banner---g
+{
+    padding-bottom: 0;
+    
+    height: 12rem;
+}
+
+
+
+
+
+/*------------------ Viewport Width: 768 ------------------*/
+
+@media only screen and ( min-width: 48em )
+{
+
+    .wbp-main-media-banner---g
+    {
+        height: 20rem;
+
+    }
+
+}
