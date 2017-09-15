@@ -523,7 +523,8 @@ input[type="submit"],
 .post-content---ct_cr > *,
 .post-excerpt---ct_cr > *,
 .comment-content---ct_cr > *,
-.widget-content---ct_cr > *
+.widget-content---ct_cr > *,
+.applicator-snapon--applicator--main-menu .textwidget > *
 {
     margin: 0;
     padding: var(--content--spacing);
@@ -538,7 +539,9 @@ input[type="submit"],
 .comment-content---ct_cr > ul,
 .comment-content---ct_cr > ol,
 .widget-content---ct_cr > ul,
-.widget-content---ct_cr > ol
+.widget-content---ct_cr > ol,
+.applicator-snapon--applicator--main-menu .textwidget > ul,
+.applicator-snapon--applicator--main-menu .textwidget > ol
 {
     padding-left: 2.25em;
 }
@@ -546,7 +549,8 @@ input[type="submit"],
 .post-content---ct_cr li,
 .post-excerpt---ct_cr li,
 .comment-content---ct_cr li,
-.widget-excerpt---ct_cr li
+.widget-content---ct_cr li,
+.applicator-snapon--applicator--main-menu .textwidget li
 {
     padding-top: var(--list--spacing-y--xsm);
     padding-bottom: var(--list--spacing-y--xsm);
@@ -2241,10 +2245,7 @@ input[type="submit"]
 }
 
 /* WP Admin Bar - Narrow */
-.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .wbp---cr,
-.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-menu--active,
-.wp-admin-bar--enabled.vp--wp-admin-bar--narrow.applicator-snapon--applicator--main-search .main-header---cr > .search,
-.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-menu--inactive .main-menu-toggle
+.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .wbp---cr
 {
     margin-top: var(--wp-admin-bar-allowance--narrow);
 }
@@ -2255,10 +2256,7 @@ input[type="submit"]
 }
 
 /* WP Admin Bar - Wide */
-.wp-admin-bar--enabled.vp--wp-admin-bar--wide .wbp---cr,
-.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-menu--active,
-.wp-admin-bar--enabled.vp--wp-admin-bar--wide.applicator-snapon--applicator--main-search .main-header---cr > .search
-.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-menu--inactive .main-menu-toggle
+.wp-admin-bar--enabled.vp--wp-admin-bar--wide .wbp---cr
 {
     margin-top: var(--wp-admin-bar-allowance--wide);
 }
@@ -2710,6 +2708,11 @@ input[type="submit"]
 .applicator-snapon--applicator--main-menu .widget_media_image:first-of-type .widget---cr
 {
     margin-top: 0;
+}
+
+.applicator-snapon--applicator--main-menu .textwidget
+{
+    padding: 0;
 }
 
 
