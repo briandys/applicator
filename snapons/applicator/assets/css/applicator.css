@@ -2244,6 +2244,16 @@ input[type="submit"]
     margin-top: auto !important;
 }
 
+.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-menu-func
+{
+    --main-menu-func--height: calc( 100vh - var(--wp-admin-bar-allowance--narrow) );
+}
+
+.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-menu-func
+{
+    --main-menu-func--height: calc( 100vh - var(--wp-admin-bar-allowance--wide) );
+}
+
 /* WP Admin Bar - Narrow */
 .wp-admin-bar--enabled.vp--wp-admin-bar--narrow .wbp---cr
 {
