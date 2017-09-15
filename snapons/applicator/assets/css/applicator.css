@@ -1212,10 +1212,7 @@ input[type="submit"]
     
     margin-right: var(--active-area--dimension--md);
     
-    /*
-    min-width: calc( 320px - 48px );
-    */
-    
+    width: calc( 100% - var(--active-area--dimension--md) );
     max-width: var(--main-menu-func--max-width);
     height: var(--main-menu-func--height);
     

@@ -152,7 +152,7 @@
     transition-property: opacity;
 }
 
-.view--front.apl--main-search--active.view--front .wbp-main-media-banner---g::before
+.view--front.apl--main-search--active .wbp-main-media-banner---g::before
 
 {
     opacity: .75;
