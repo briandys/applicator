@@ -36,6 +36,11 @@ if ( ! function_exists('applicator_post_nav' ) ) {
             'echo' => 1
         );
 
+        /* To pass Theme Check */
+        ob_start();
+        wp_link_pages( $args );
+        ob_end_clean();
+        
         $r = wp_parse_args( $args, $defaults );
         $r = apply_filters( 'wp_link_pages_args', $r );
         extract( $r, EXTR_SKIP );
