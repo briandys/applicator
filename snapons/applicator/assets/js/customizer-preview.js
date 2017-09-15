@@ -59,7 +59,7 @@
 		value.bind( function( to ) {
 
 			// Update custom color CSS.
-			var style = $( '#applicator-style-custom-theme-colors' ),
+			var style = $( '#applicator-snapon--applicator-style--custom-theme-colors' ),
 				hue = style.data( 'hue' ),
 				css = style.html();
 

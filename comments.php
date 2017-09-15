@@ -323,18 +323,20 @@ $comment_reply_to_term = esc_html__( 'to', 'applicator' );
 $comment_reply_comment_term = esc_html__( 'Comment', 'applicator' );
 
 $comment_reply_cancel_action_mu = '';
-$comment_reply_cancel_action_mu .= '<span class="a_l %5$s">';
-    $comment_reply_cancel_action_mu .= '<span class="txt cancel---txt">';
-        $comment_reply_cancel_action_mu .= '%1$s';
-    $comment_reply_cancel_action_mu .= '</span>';
-    $comment_reply_cancel_action_mu .= ' <span class="txt reply---txt">';
-        $comment_reply_cancel_action_mu .= '%2$s';
-    $comment_reply_cancel_action_mu .= '</span>';
-    $comment_reply_cancel_action_mu .= ' <span class="txt to---txt">';
-        $comment_reply_cancel_action_mu .= '%3$s';
-    $comment_reply_cancel_action_mu .= '</span>';
-    $comment_reply_cancel_action_mu .= ' <span class="txt comment---txt">';
-        $comment_reply_cancel_action_mu .= '%4$s';
+$comment_reply_cancel_action_mu .= '<span class="a_l %5$s---a_l">';
+    $comment_reply_cancel_action_mu .= '<span class="l %5$s---l">';
+        $comment_reply_cancel_action_mu .= '<span class="txt cancel---txt">';
+            $comment_reply_cancel_action_mu .= '%1$s';
+        $comment_reply_cancel_action_mu .= '</span>';
+        $comment_reply_cancel_action_mu .= ' <span class="txt reply---txt">';
+            $comment_reply_cancel_action_mu .= '%2$s';
+        $comment_reply_cancel_action_mu .= '</span>';
+        $comment_reply_cancel_action_mu .= ' <span class="txt to---txt">';
+            $comment_reply_cancel_action_mu .= '%3$s';
+        $comment_reply_cancel_action_mu .= '</span>';
+        $comment_reply_cancel_action_mu .= ' <span class="txt comment---txt">';
+            $comment_reply_cancel_action_mu .= '%4$s';
+        $comment_reply_cancel_action_mu .= '</span>';
     $comment_reply_cancel_action_mu .= '</span>';
 $comment_reply_cancel_action_mu .= '</span>';
 
@@ -343,7 +345,7 @@ $comment_reply_cancel_action_content = sprintf( $comment_reply_cancel_action_mu,
     $comment_reply_reply_term,
     $comment_reply_to_term,
     $comment_reply_comment_term,
-    'comment-reply-cancel-axn---a_l'
+    'comment-reply-cancel-axn'
 );
 
 

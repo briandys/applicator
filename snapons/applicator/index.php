@@ -58,7 +58,7 @@ if ( ! function_exists( 'applicator_snapon_applicator_html_classes' ) ) {
         
         
         // Customizer Colors
-        $colors = applicator_sanitize_colorscheme( get_theme_mod( 'colorscheme', 'default' ) );
+        $colors = applicator_snapon_applicator_sanitize_colorscheme( get_theme_mod( 'colorscheme', 'default' ) );
         echo ' '. $snapon_name. '--'. 'theme--customizer-colors--'. $colors;
     
     }
