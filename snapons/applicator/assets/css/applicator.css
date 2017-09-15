@@ -237,8 +237,8 @@
 .go-content-nav--inactive,
 
 /* Name and Logo */
-.wbp-main-name-description--disabled .web-product-main-name,
-.wbp-main-name-description--disabled .web-product-main-description,
+.web-product-main-name-description--disabled .web-product-main-name,
+.web-product-main-name-description--disabled .web-product-main-description,
 
 /* Main Content Heading */
 .blog .main-content-heading,
@@ -348,7 +348,7 @@ input[type="submit"],
 .breadcrumbs-navi---g_l,
 .comment-reply-cancel-axn---a_l,
 .comment-subscription-form .subscribe-label,
-.wbp-main-description--empty .wbp-main-name---a
+.web-product-main-description--empty .wbp-main-name---a
 {
     box-sizing: border-box;
     
@@ -1841,7 +1841,7 @@ input[type="submit"]
 }
 
 /* With Main Search and No Main Menu and No Logo */
-.applicator-snapon--applicator--main-search.applicator-snapon--applicator--main-search.main-header-aside--disabled.wbp-main-logo--disabled .web-product-main-info
+.applicator-snapon--applicator--main-search.applicator-snapon--applicator--main-search.main-header-aside--disabled.web-product-main-logo--disabled .web-product-main-info
 {
     padding-left: var(--elem-dimension--md);
     padding-right: var(--elem-dimension--md);
@@ -1854,7 +1854,7 @@ input[type="submit"]
 }
 
 /* With Main Logo */
-.wbp-main-logo--enabled.main-header-aside--disabled .web-product-main-info
+.web-product-main-logo--enabled.main-header-aside--disabled .web-product-main-info
 {
     padding-left: var(--component--spacing-x);
 }
@@ -1867,8 +1867,8 @@ input[type="submit"]
 }
 
 /* With Main Logo and Main Name, Main Description */
-.wbp-main-logo--enabled .web-product-main-name,
-.wbp-main-logo--enabled .web-product-main-description
+.web-product-main-logo--enabled .web-product-main-name,
+.web-product-main-logo--enabled .web-product-main-description
 {
     box-sizing: border-box;
     
@@ -1883,8 +1883,8 @@ input[type="submit"]
 }
 
 /* With Main Logo */
-.wbp-main-logo--enabled .wbp-main-name---a_l,
-.wbp-main-logo--enabled .wbp-main-desc---a_l
+.web-product-main-logo--enabled .wbp-main-name---a_l,
+.web-product-main-logo--enabled .wbp-main-desc---a_l
 {
     padding-left: 0;
 }
@@ -1897,8 +1897,8 @@ input[type="submit"]
 }
 
 /* With Main Search and No Logo and Main Menu */
-.applicator-snapon--applicator--main-search.main-header-aside--disabled.wbp-main-logo--disabled .wbp-main-name---a_l,
-.applicator-snapon--applicator--main-search.main-header-aside--disabled.wbp-main-logo--disabled .wbp-main-desc---a_l
+.applicator-snapon--applicator--main-search.main-header-aside--disabled.web-product-main-logo--disabled .wbp-main-name---a_l,
+.applicator-snapon--applicator--main-search.main-header-aside--disabled.web-product-main-logo--disabled .wbp-main-desc---a_l
 {
     padding-left: 0;
     padding-right: 0;
@@ -2033,7 +2033,7 @@ input[type="submit"]
     font-size: 1.125rem;
 }
 
-.wbp-main-description--empty .web-product-main-name
+.web-product-main-description--empty .web-product-main-name
 {
     align-items: center;
     height: var(--elem-dimension--md);
@@ -2047,7 +2047,7 @@ input[type="submit"]
     text-decoration: none;
 }
 
-.wbp-main-description--empty .wbp-main-name---a
+.web-product-main-description--empty .wbp-main-name---a
 {
     display: flex;
 }

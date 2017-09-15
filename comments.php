@@ -18,13 +18,13 @@ $comments_content = '';
 // With Comments
 if ( have_comments() ) {
     
-    $comments_nav_content = applicator_func_comments_nav();
+    $comments_nav_content = applicator_comments_nav();
 
     $comments_content = '<ul class="grp comments---grp">';
     $comments_content .= wp_list_comments( array(
         'style'         => 'ul',
         'avatar_size'   => 48,
-        'callback'      => 'applicator_func_comment',
+        'callback'      => 'applicator_comment',
         'echo'          => false,
     ) );
     $comments_content .= '</ul>';
@@ -74,7 +74,7 @@ $comments_header_aside_cn = applicator_htmlok( array(
         'subtype'       => 'aside',
     ),
     'content'           => array(
-        'constructor'         => applicator_func_comments_actions_snippet_cp(),
+        'constructor'         => applicator_comments_actions_snippet(),
     ),
 ) );
 

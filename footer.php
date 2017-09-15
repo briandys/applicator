@@ -73,7 +73,7 @@
                     'root_css'  => 'site-footer',
                     'content'   => array(
                         'constructor'   => array(
-                            applicator_func_main_footer_aside(),
+                            applicator_main_footer_aside(),
                             $web_product_copyright_obj,
                         ),
                     ),

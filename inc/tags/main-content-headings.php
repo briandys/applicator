@@ -1,7 +1,7 @@
 <?php // Main Content Headings | index.php
 
-if ( ! function_exists( 'applicator_func_main_content_headings' ) ) {
-    function applicator_func_main_content_headings() {
+if ( ! function_exists( 'applicator_main_content_headings' ) ) {
+    function applicator_main_content_headings() {
         
         // Initialize
         $property_text = '';

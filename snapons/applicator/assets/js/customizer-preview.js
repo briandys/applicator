@@ -29,7 +29,7 @@
 
 				// Check if the text color has been removed and use default colors in theme stylesheet.
 				if ( ! to.length ) {
-					$( '#applicator-custom-header-styles' ).remove();
+					$( '#applicator-style--custom-header-colors' ).remove();
 				}
 				$( '.web-product-main-name, .web-product-main-description' ).css({
 					clip: 'auto',

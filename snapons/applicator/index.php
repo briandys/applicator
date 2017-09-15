@@ -58,7 +58,7 @@ if ( ! function_exists( 'applicator_snapon_applicator_html_classes' ) ) {
         
         
         // Customizer Colors
-        $colors = applicator_func_sanitize_colorscheme( get_theme_mod( 'colorscheme', 'default' ) );
+        $colors = applicator_sanitize_colorscheme( get_theme_mod( 'colorscheme', 'default' ) );
         echo ' '. $snapon_name. '--'. 'theme--customizer-colors--'. $colors;
     
     }
@@ -92,11 +92,11 @@ if ( ! function_exists( 'applicator_snapon_applicator_scripts' ) ) {
         wp_enqueue_script( 'applicator-snapon--applicator-script', get_theme_file_uri( '/snapons/applicator/assets/js/applicator.js' ), array( 'jquery' ), '25.5', true );
         
         // SVG Icons
-        $arrow_icon = applicator_func_get_svg( array( 'icon' => 'arrow-icon', 'fallback' => true, ) );
-        $arrow_up_2_icon = applicator_func_get_svg( array( 'icon' => 'arrow-up-2-icon', 'fallback' => true, ) );
-        $burger_icon = applicator_func_get_svg( array( 'icon' => 'burger-icon', 'fallback' => true, ) );
-        $dismiss_icon = applicator_func_get_svg( array( 'icon' => 'dismiss-icon', 'fallback' => true, ) );
-        $search_icon = applicator_func_get_svg( array( 'icon' => 'search-icon', 'fallback' => true, ) );
+        $arrow_icon = applicator_get_svg( array( 'icon' => 'arrow-icon', 'fallback' => true, ) );
+        $arrow_up_2_icon = applicator_get_svg( array( 'icon' => 'arrow-up-2-icon', 'fallback' => true, ) );
+        $burger_icon = applicator_get_svg( array( 'icon' => 'burger-icon', 'fallback' => true, ) );
+        $dismiss_icon = applicator_get_svg( array( 'icon' => 'dismiss-icon', 'fallback' => true, ) );
+        $search_icon = applicator_get_svg( array( 'icon' => 'search-icon', 'fallback' => true, ) );
         
         // Go to Start Nav
         $applicator_l10n['goStartNavArrowIco'] = $arrow_up_2_icon;

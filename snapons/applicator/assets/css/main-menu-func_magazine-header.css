@@ -27,7 +27,7 @@
 
 
 /*------------------ Web Product Main Info ------------------*/
-.view--front.wbp-main-logo--enabled .web-product-main-info
+.view--front.web-product-main-logo--enabled .web-product-main-info
 {
     position: absolute;
 }
@@ -43,12 +43,12 @@
     width: 100%;
 }
 
-.view--front.wbp-main-logo--enabled .wbp-main-info---ct_cr
+.view--front.web-product-main-logo--enabled .wbp-main-info---ct_cr
 {
     position: relative;
 }
 
-.view--front.wbp-main-logo--enabled .web-product-main-info
+.view--front.web-product-main-logo--enabled .web-product-main-info
 
 {
     margin-left: 0;
@@ -163,8 +163,8 @@
 
 
 /*------------------ Web Product Main Name, Description ------------------*/
-.view--front.wbp-main-logo--disabled .web-product-main-name,
-.view--front.wbp-main-logo--disabled .web-product-main-description
+.view--front.web-product-main-logo--disabled .web-product-main-name,
+.view--front.web-product-main-logo--disabled .web-product-main-description
 
 {
     justify-content: center;

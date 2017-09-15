@@ -1,7 +1,8 @@
 <?php // Modifies WordPress's built-in comments_popup_link() function to return a string instead of echo comment results
 //http://www.thescubageek.com/code/wordpress-code/add-get_comments_popup_link-to-wordpress/
 
-function applicator_func_get_comments_popup_link( $zero = false, $one = false, $more = false, $css_class = '', $none = false ) {
+
+function applicator_get_comments_popup_link( $zero = false, $one = false, $more = false, $css_class = '', $none = false ) {
     
     global $wpcommentspopupfile, $wpcommentsjavascript;
  
@@ -66,14 +67,15 @@ function applicator_func_get_comments_popup_link( $zero = false, $one = false, $
     $str .= apply_filters( 'comments_popup_link_attributes', '' );
  
     $str .= ' title="' . esc_attr( sprintf( __( 'Comment on %s', 'applicator' ), $title ) ) . '">';
-    $str .= applicator_func_get_comments_number_str( $zero, $one, $more );
+    $str .= applicator_get_comments_number_str( $zero, $one, $more );
     $str .= '</a>';
      
     return $str;
 }
  
+
 // Modifies WordPress's built-in comments_number() function to return string instead of echo
-function applicator_func_get_comments_number_str( $zero = false, $one = false, $more = false, $deprecated = '' ) {
+function applicator_get_comments_number_str( $zero = false, $one = false, $more = false, $deprecated = '' ) {
     if ( !empty( $deprecated ) )
         _deprecated_argument( __FUNCTION__, '1.3' );
  

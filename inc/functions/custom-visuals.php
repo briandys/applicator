@@ -1,7 +1,7 @@
 <?php // Custom Visuals
 
-if ( ! function_exists( 'applicator_func_custom_visuals_setup' ) ) {
-    function applicator_func_custom_visuals_setup() {
+if ( ! function_exists( 'applicator_custom_visuals_setup' ) ) {
+    function applicator_custom_visuals_setup() {
         
         // Custom Header
         add_theme_support( 'custom-header', apply_filters( 'applicator_custom_header_args', array(
@@ -10,7 +10,7 @@ if ( ! function_exists( 'applicator_func_custom_visuals_setup' ) ) {
             'width'              => 1280,
             'height'             => 800,
             'flex-height'        => true,
-            'wp-head-callback'   => 'applicator_func_header_style',
+            'wp-head-callback'   => 'applicator_style_custom_header_colors',
         ) ) );
 
         register_default_headers( array(
@@ -31,12 +31,12 @@ if ( ! function_exists( 'applicator_func_custom_visuals_setup' ) ) {
         add_theme_support( 'custom-background' );
     
     }
-    add_action( 'after_setup_theme', 'applicator_func_custom_visuals_setup' );
+    add_action( 'after_setup_theme', 'applicator_custom_visuals_setup' );
 }
 
 // Custom Header Callback
-if ( ! function_exists( 'applicator_func_header_style' ) ) {
-    function applicator_func_header_style() {
+if ( ! function_exists( 'applicator_style_custom_header_colors' ) ) {
+    function applicator_style_custom_header_colors() {
 
         $header_text_color = get_header_textcolor();
 
@@ -44,16 +44,16 @@ if ( ! function_exists( 'applicator_func_header_style' ) ) {
             return;
         } ?>
 
-        <style id="applicator-custom-header-styles">
+        <style id="applicator-style--custom-header-colors">
 
         <?php // If the user has set a custom color for the text use that.
         if ( 'blank' !== $header_text_color ) { ?>
 
-            .wbp-main-name---a,
-            .wbp-main-desc---a
-            {
-                color: #<?php echo esc_attr( $header_text_color ); ?>;
-            }
+        .wbp-main-name---a,
+        .wbp-main-desc---a
+        {
+            color: #<?php echo esc_attr( $header_text_color ); ?>;
+        }
 
         <?php } ?>
 

@@ -1,14 +1,18 @@
-<?php // Show More
+<?php // Excerpt
 
-if ( ! function_exists( 'applicator_func_show_more' ) ) {
-    function applicator_func_show_more( $show_more_axn ) {
+
+
+
+
+// Show More
+if ( ! function_exists( 'applicator_show_more' ) ) {
+    function applicator_show_more( $show_more_axn ) {
         
         if ( is_admin() ) {
             return $show_more_axn;
         }
         
-        // To do: DRY this markup
-        
+        // Action Item Markup
         $show_more_axn_mu = '<div class="obj axn %2$s" data-name="%8$s Action Item OBJ">';
             $show_more_axn_mu .= '<a class="a %2$s---a more-link" href="%6$s#main" title="%7$s %1$s">';
                 $show_more_axn_mu .= '<span class="a_l %2$s---a_l">';
@@ -20,6 +24,7 @@ if ( ! function_exists( 'applicator_func_show_more' ) ) {
             $show_more_axn_mu .= '</a>';
         $show_more_axn_mu .= '</div>';
         
+        // Generic Label Markup
         $show_more_label_mu = '<div class="obj %2$s" data-name="%7$s Generic Label OBJ">';
             $show_more_label_mu .= '<span class="g %2$s---g" title="%6$s %1$s">';
                 $show_more_label_mu .= '<span class="g_l %2$s---g_l">';
@@ -31,6 +36,7 @@ if ( ! function_exists( 'applicator_func_show_more' ) ) {
             $show_more_label_mu .= '</span>';
         $show_more_label_mu .= '</div>';
         
+        // Variables
         $show_more_css = 'show-more';
         $show_term = esc_html__( 'Show', 'applicator' );
         $more_term =  esc_html__( 'More', 'applicator' );
@@ -38,6 +44,7 @@ if ( ! function_exists( 'applicator_func_show_more' ) ) {
         $show_more_of_term = esc_attr__( 'Show More of', 'applicator' );
         $show_more_term = 'Show More';
         
+        // R: Show More Action
         $show_more_axn = sprintf( $show_more_axn_mu,
             get_the_title( get_the_ID() ),
             $show_more_css.'-axn',
@@ -49,6 +56,7 @@ if ( ! function_exists( 'applicator_func_show_more' ) ) {
             $show_more_term
         );
         
+        // R: Show More Label
         $show_more_label = sprintf( $show_more_label_mu,
             get_the_title( get_the_ID() ),
             $show_more_css.'-glabel',
@@ -58,6 +66,7 @@ if ( ! function_exists( 'applicator_func_show_more' ) ) {
             $show_more_of_term,
             $show_more_term
         );
+        
         
         
         
@@ -72,12 +81,16 @@ if ( ! function_exists( 'applicator_func_show_more' ) ) {
         }
     
     }
-    add_filter( 'excerpt_more', 'applicator_func_show_more' );
-    add_filter( 'the_content_more_link', 'applicator_func_show_more' );
+    add_filter( 'excerpt_more', 'applicator_show_more' );
+    add_filter( 'the_content_more_link', 'applicator_show_more' );
 }
 
 
-function applicator_func_the_excerpt( $excerpt ) {
+
+
+
+// Excerpt
+function applicator_the_excerpt( $excerpt ) {
     
     if ( is_home() || is_singular() || ( is_front_page() && ! is_page() ) ) {
         return $excerpt;
@@ -96,7 +109,6 @@ function applicator_func_the_excerpt( $excerpt ) {
         );
         
         echo $excerpt_link_content;
-        
     }
 }
-add_filter( 'get_the_excerpt', 'applicator_func_the_excerpt' );
+add_filter( 'get_the_excerpt', 'applicator_the_excerpt' );

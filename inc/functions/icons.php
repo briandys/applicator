@@ -1,6 +1,7 @@
-<?php
+<?php // Icons
 
-function applicator_func_include_svg_icons() {
+
+function applicator_include_svg_icons() {
         
     $svg_icons = get_parent_theme_file_path( '/assets/img/vector-icons.svg' );
 
@@ -9,22 +10,12 @@ function applicator_func_include_svg_icons() {
     }
 
 }
-add_action( 'wp_footer', 'applicator_func_include_svg_icons', 9999 );
+add_action( 'wp_footer', 'applicator_include_svg_icons', 9999 );
 
 
-/**
- * Return SVG markup.
- *
- * @param array $args {
- *     Parameters needed to display an SVG.
- *
- *     @type string $icon  Required SVG icon filename.
- *     @type string $title Optional SVG title.
- *     @type string $desc  Optional SVG description.
- * }
- * @return string SVG markup.
- */
-function applicator_func_get_svg( $args = array() ) {
+// Return SVG markup
+// From twentyseventeen
+function applicator_get_svg( $args = array() ) {
 	// Make sure $args are an array.
 	if ( empty( $args ) ) {
 		return __( 'Please define default parameters in the form of an array.', 'applicator' );
@@ -52,17 +43,7 @@ function applicator_func_get_svg( $args = array() ) {
 	// Set ARIA.
 	$aria_labelledby = '';
 
-	/*
-	 * (Based on Twenty Seventeen) It doesn't use the SVG title or description attributes; non-decorative icons are described with .screen-reader-text.
-	 *
-	 * However, child themes can use the title and description to add information to non-decorative SVG icons to improve accessibility.
-	 *
-	 * Example 1 with title: <?php echo applicator_func_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'textdomain' ) ) ); ?>
-	 *
-	 * Example 2 with title and description: <?php echo applicator_func_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'textdomain' ), 'desc' => __( 'This is the description', 'textdomain' ) ) ); ?>
-	 *
-	 * See https://www.paciellogroup.com/blog/2013/12/using-aria-enhance-svg-accessibility/.
-	 */
+	// (Based on twentyseventeen) It doesn't use the SVG title or description attributes; non-decorative icons are described with .screen-reader-text.
 	if ( $args['title'] ) {
 		$aria_hidden     = '';
 		$unique_id       = uniqid();
@@ -86,13 +67,8 @@ function applicator_func_get_svg( $args = array() ) {
 		}
 	}
 
-	/*
-	 * Display the icon.
-	 *
-	 * The whitespace around `<use>` is intentional - it is a work around to a keyboard navigation bug in Safari 10.
-	 *
-	 * See https://core.trac.wordpress.org/ticket/38387.
-	 */
+	// Display the icon
+    // From twentyseventeen
 	$svg .= '<use href="#' . esc_html( $args['icon'] ) . '" xlink:href="' . esc_html( $args['icon'] ) . '"></use> ';
 
 	// Add some markup to use as a fallback for browsers that do not support SVGs.

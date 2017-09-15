@@ -1,7 +1,7 @@
 <?php // Comments Navigation | comments.php
 
-if ( ! function_exists( 'applicator_func_comments_nav' ) ) {
-    function applicator_func_comments_nav() {
+if ( ! function_exists( 'applicator_comments_nav' ) ) {
+    function applicator_comments_nav() {
         
         if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) {
             
@@ -20,11 +20,13 @@ if ( ! function_exists( 'applicator_func_comments_nav' ) ) {
             // Adjacent Comments Navigation Item Template Markup
             $adjacent_comments_navi_mu = '';
             $adjacent_comments_navi_mu .= '<span class="a_l %6$s---a_l %7$s---a_l" title="%3$s">';
-                $adjacent_comments_navi_mu .= '<span class="txt %4$s---txt">';
-                    $adjacent_comments_navi_mu .= '%1$s';
-                $adjacent_comments_navi_mu .= '</span>';
-                $adjacent_comments_navi_mu .= ' <span class="txt %5$s---txt">';
-                    $adjacent_comments_navi_mu .= '%2$s';
+                $adjacent_comments_navi_mu .= '<span class="l %6$s---l %7$s---l">';
+                    $adjacent_comments_navi_mu .= '<span class="txt %4$s---txt">';
+                        $adjacent_comments_navi_mu .= '%1$s';
+                    $adjacent_comments_navi_mu .= '</span>';
+                    $adjacent_comments_navi_mu .= ' <span class="txt %5$s---txt">';
+                        $adjacent_comments_navi_mu .= '%2$s';
+                    $adjacent_comments_navi_mu .= '</span>';
                 $adjacent_comments_navi_mu .= '</span>';
             $adjacent_comments_navi_mu .= '</span>';
             

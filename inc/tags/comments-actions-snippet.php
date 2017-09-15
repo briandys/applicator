@@ -34,8 +34,8 @@ Structure
                 • Commenting is disabled.
 */
 
-if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
-    function applicator_func_comments_actions_snippet_cp() {
+if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
+    function applicator_comments_actions_snippet() {
         
         $comments_population_pri_css = 'comments-population';
         $comment_creation_ability_pri_css = 'comment-creation-ability';
@@ -112,7 +112,7 @@ if ( ! function_exists( 'applicator_func_comments_actions_snippet_cp' ) ) {
             
             $comments_count_obj_a_link = '';
 
-            $comments_count_obj_a = sprintf( applicator_func_get_comments_popup_link(
+            $comments_count_obj_a = sprintf( applicator_get_comments_popup_link(
                 // Comments Count: Zero
                 '',
 

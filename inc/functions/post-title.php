@@ -1,8 +1,10 @@
-<?php // Remove "Private" and "Protected" from Post Titles
-// https://css-tricks.com/snippets/wordpress/remove-privateprotected-from-post-titles/
+<?php // Post Titles
 
-if ( ! function_exists( 'applicator_func_the_title_trim' ) ) {
-    function applicator_func_the_title_trim( $title ) {
+
+// Remove "Private" and "Protected" from Post Titles
+// https://css-tricks.com/snippets/wordpress/remove-privateprotected-from-post-titles/
+if ( ! function_exists( 'applicator_the_title_trim' ) ) {
+    function applicator_the_title_trim( $title ) {
 
         $title = esc_attr( $title );
 
@@ -19,5 +21,5 @@ if ( ! function_exists( 'applicator_func_the_title_trim' ) ) {
         $title = preg_replace($findthese, $replacewith, $title);
         return $title;
     }
-    add_filter('the_title', 'applicator_func_the_title_trim');
+    add_filter( 'the_title', 'applicator_the_title_trim' );
 }

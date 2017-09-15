@@ -11,8 +11,8 @@ Published Post Author
 Output: Published by Author Name [Author Avatar]
 */
 
-if ( ! function_exists( 'applicator_func_post_author' ) ) {
-    function applicator_func_post_author() {
+if ( ! function_exists( 'applicator_post_author' ) ) {
+    function applicator_post_author() {
         
         
         // Variables Definitions

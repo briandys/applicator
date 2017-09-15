@@ -33,8 +33,8 @@ Structure
 
 */
 
-if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
-    function applicator_func_post_published_modified() {
+if ( ! function_exists( 'applicator_post_published_modified' ) ) {
+    function applicator_post_published_modified() {
         
         
         //------------------------------------ Post Published
@@ -344,6 +344,5 @@ if ( ! function_exists( 'applicator_func_post_published_modified' ) ) {
         ) );
         
         return $post_published_modified_cp;
-    
     }
 }

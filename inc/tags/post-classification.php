@@ -1,14 +1,14 @@
 <?php // Post Categories | content.php
 
-if ( ! function_exists( 'applicator_func_post_categories' ) ) {
+if ( ! function_exists( 'applicator_post_categories' ) ) {
     
-    function applicator_func_post_categories() {        
+    function applicator_post_categories() {        
         
         if ( 'post' === get_post_type() ) {
             
             $categories_list = get_the_category_list();
             
-            if ( $categories_list && applicator_func_categorized_blog() ) {
+            if ( $categories_list && applicator_categorized_blog() ) {
                 
                 
                 // R: Post Categories Label
@@ -64,9 +64,9 @@ if ( ! function_exists( 'applicator_func_post_categories' ) ) {
 }
 
 // Post Tags | content.php
-if ( ! function_exists( 'applicator_func_post_tags' ) ) {
+if ( ! function_exists( 'applicator_post_tags' ) ) {
     
-    function applicator_func_post_tags() {        
+    function applicator_post_tags() {        
         
         if ( 'post' === get_post_type() ) {
             
@@ -129,7 +129,7 @@ if ( ! function_exists( 'applicator_func_post_tags' ) ) {
 }
 
 // Determine whether site has more than one category.
-function applicator_func_categorized_blog() {
+function applicator_categorized_blog() {
 	
     $category_count = get_transient( 'applicator_categories' );
     
@@ -152,11 +152,11 @@ function applicator_func_categorized_blog() {
 }
 
 
-function applicator_func_category_transient_flusher() {
+function applicator_category_transient_flusher() {
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return;
 	}
 	delete_transient( 'applicator_categories' );
 }
-add_action( 'edit_category', 'applicator_func_category_transient_flusher' );
-add_action( 'save_post',     'applicator_func_category_transient_flusher' );
+add_action( 'edit_category', 'applicator_category_transient_flusher' );
+add_action( 'save_post',     'applicator_category_transient_flusher' );

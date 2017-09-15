@@ -1,8 +1,8 @@
 <?php // Comment Item
 // comments.php
 
-if ( ! function_exists( 'applicator_func_comment' ) ) {
-    function applicator_func_comment( $comment, $args, $depth ) {
+if ( ! function_exists( 'applicator_comment' ) ) {
+    function applicator_comment( $comment, $args, $depth ) {
         
         $commenter = wp_get_current_commenter();
         
@@ -64,7 +64,7 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
 
         // Comment Actions
         // tags > entry-actions.php
-        applicator_func_comment_actions();
+        applicator_comment_actions();
         
         
         // Comment Published
@@ -421,7 +421,11 @@ if ( ! function_exists( 'applicator_func_comment' ) ) {
             
             // Reply to Comment                                                                                                  
             $comment_reply_axn_a_l_mu = '';
-            $comment_reply_axn_a_l_mu .= '<span class="a_l comment-reply-axn---a_l">%1$s</span>';
+            $comment_reply_axn_a_l_mu .= '<span class="a_l comment-reply-axn---a_l">';
+                $comment_reply_axn_a_l_mu .= '<span class="l comment-reply-axn---l">';
+                    $comment_reply_axn_a_l_mu .= '%1$s';
+                $comment_reply_axn_a_l_mu .= '</span>';
+            $comment_reply_axn_a_l_mu .= '</span>';
 
             $reply_to_comment_line_mu = '';
             $reply_to_comment_line_mu .= '<span class="line reply-to-comment---line">';

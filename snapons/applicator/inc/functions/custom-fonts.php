@@ -1,8 +1,29 @@
-<?php
+<?php // Custom Fonts
+
+
+
+
+
+// Preconnect for Google Fonts
+function applicator_snapon_applicator_google_fonts_preconnect( $urls, $relation_type ) {
+	if ( wp_style_is( 'applicator-snapons--applicator-style--custom-fonts', 'queue' ) && 'preconnect' === $relation_type ) {
+		$urls[] = array(
+			'href' => 'https://fonts.gstatic.com',
+			'crossorigin',
+		);
+	}
+
+	return $urls;
+}
+add_filter( 'wp_resource_hints', 'applicator_snapon_applicator_google_fonts_preconnect', 10, 2 );
+
+
+
+
 
 // Font URL
-if ( ! function_exists( 'apl_snapons_applicator_font_url' ) ) {
-    function apl_snapons_applicator_font_url() {
+if ( ! function_exists( 'applicator_snapons_applicator_custom_fonts_url' ) ) {
+    function applicator_snapons_applicator_custom_fonts_url() {
         
         $fonts_url = '';
         $noto = _x( 'on', 'Noto Sans, Noto Serif font: on or off', 'applicator' );
@@ -20,24 +41,30 @@ if ( ! function_exists( 'apl_snapons_applicator_font_url' ) ) {
     }
 }
 
-// Font Style
-if ( ! function_exists( 'apl_snapons_applicator_font_style' ) ) {
-    function apl_snapons_applicator_font_style() {
 
-        wp_enqueue_style( 'applicator-snapons-applicator-custom-fonts-style', apl_snapons_applicator_font_url(), array(), null );
+
+
+
+// Font Style
+if ( ! function_exists( 'applicator_snapons_applicator_style_custom_fonts_url' ) ) {
+    function applicator_snapons_applicator_style_custom_fonts_url() {
+
+        wp_enqueue_style( 'applicator-snapons--applicator-style--custom-fonts-url', applicator_snapons_applicator_custom_fonts_url(), array(), null );
 
     }
-    add_action( 'wp_enqueue_scripts', 'apl_snapons_applicator_font_style', 0);
+    add_action( 'wp_enqueue_scripts', 'applicator_snapons_applicator_style_custom_fonts_url', 0);
 }
 
-// Font Settings
-if ( ! function_exists( 'apl_snapons_applicator_font_settings' ) ) {
-    function apl_snapons_applicator_font_settings() {
-    ?>
-    
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 
-    <style id="applicator-snapons--applicator--custom-fonts--style">
+
+
+
+// Font Settings
+if ( ! function_exists( 'applicator_snapons_applicator_font_settings' ) ) {
+    function applicator_snapons_applicator_font_settings() {
+    ?>
+
+    <style id="applicator-snapons--applicator-style--custom-fonts">
         .html
         {
             font-family: 'Noto Sans', sans-serif;
@@ -45,5 +72,5 @@ if ( ! function_exists( 'apl_snapons_applicator_font_settings' ) ) {
     </style>
     
     <?php }
-    add_action( 'wp_head', 'apl_snapons_applicator_font_settings' );
+    add_action( 'wp_head', 'applicator_snapons_applicator_font_settings' );
 }

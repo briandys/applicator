@@ -1,8 +1,8 @@
 <?php // Breadcrumbs Navigation | content.php
 // https://www.thewebtaylor.com/articles/wordpress-creating-breadcrumbs-without-a-plugin
 
-if ( ! function_exists( 'applicator_func_breadcrumbs_nav' ) ) {
-    function applicator_func_breadcrumbs_nav() {    
+if ( ! function_exists( 'applicator_breadcrumbs_nav' ) ) {
+    function applicator_breadcrumbs_nav() {    
         
         global $post;
 
@@ -40,8 +40,10 @@ if ( ! function_exists( 'applicator_func_breadcrumbs_nav' ) ) {
                 $breadcrumbs_navi_a_mu = '';
                 $breadcrumbs_navi_a_mu .= '<a class="a %3$s---a" href="%4$s" title="%5$s">';
                     $breadcrumbs_navi_a_mu .= '<span class="a_l %3$s---a_l">';
-                        $breadcrumbs_navi_a_mu .= '<span class="txt %2$s---txt">';
-                            $breadcrumbs_navi_a_mu .= '%1$s';
+                        $breadcrumbs_navi_a_mu .= '<span class="l %3$s---l">';
+                            $breadcrumbs_navi_a_mu .= '<span class="txt %2$s---txt">';
+                                $breadcrumbs_navi_a_mu .= '%1$s';
+                            $breadcrumbs_navi_a_mu .= '</span>';
                         $breadcrumbs_navi_a_mu .= '</span>';
                     $breadcrumbs_navi_a_mu .= '</span>';
                 $breadcrumbs_navi_a_mu .= '</a>';
@@ -51,8 +53,10 @@ if ( ! function_exists( 'applicator_func_breadcrumbs_nav' ) ) {
                 $breadcrumbs_navi_g_mu = '';
                 $breadcrumbs_navi_g_mu .= '<span class="g %5$s---g %3$s---g" title="%4$s">';
                     $breadcrumbs_navi_g_mu .= '<span class="g_l %5$s---g_l %3$s---g_l">';
-                        $breadcrumbs_navi_g_mu .= '<span class="txt %2$s---txt">';
-                            $breadcrumbs_navi_g_mu .= '%1$s';
+                        $breadcrumbs_navi_g_mu .= '<span class="l %5$s---l %3$s---l">';
+                            $breadcrumbs_navi_g_mu .= '<span class="txt %2$s---txt">';
+                                $breadcrumbs_navi_g_mu .= '%1$s';
+                            $breadcrumbs_navi_g_mu .= '</span>';
                         $breadcrumbs_navi_g_mu .= '</span>';
                     $breadcrumbs_navi_g_mu .= '</span>';
                 $breadcrumbs_navi_g_mu .= '</span>';
@@ -137,7 +141,6 @@ if ( ! function_exists( 'applicator_func_breadcrumbs_nav' ) ) {
                         'echo'      => true,
                     ) );
                 }
-                
             }
         }
     }

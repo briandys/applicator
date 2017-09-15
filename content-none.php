@@ -43,7 +43,7 @@ $post_classes = implode( ' ', $post_classes );
                 
                 
                 // Hook After Post Heading
-                applicator_hook_after_post_heading();
+                applicator_hook_after_main_post_title();
                 
                 ?>
                 

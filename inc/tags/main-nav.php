@@ -3,8 +3,8 @@ register_nav_menu( 'main-nav', __( 'Main Navigation', 'applicator' ) );
 
 
 // Main Nav
-if ( ! function_exists( 'applicator_func_main_nav' ) ) {
-    function applicator_func_main_nav() {
+if ( ! function_exists( 'applicator_main_nav' ) ) {
+    function applicator_main_nav() {
         
         // Variables
         $main_nav_term = 'main-nav';
@@ -12,8 +12,16 @@ if ( ! function_exists( 'applicator_func_main_nav' ) ) {
         $main_nav_ct_cr_css = 'menu-container';
         $main_nav_group_start_mu = '<ul class="grp '. $main_nav_css . '---grp' .'">';
         $main_nav_group_end_mu = '</ul>';
-        $main_nav_a_l_start_mu = '<span class="a_l main-navi---a_l"><span class="txt navi---txt">';
-        $main_nav_a_l_end_mu = '</span></span>';
+        
+        $main_nav_a_l_start_mu = '';
+        $main_nav_a_l_start_mu .= '<span class="a_l main-navi---a_l">';
+        $main_nav_a_l_start_mu .= '<span class="l main-navi---l">';
+        $main_nav_a_l_start_mu .= '<span class="txt navi---txt">';
+        
+        $main_nav_a_l_end_mu = '';
+        $main_nav_a_l_end_mu .= '</span>';
+        $main_nav_a_l_end_mu .= '</span>';
+        $main_nav_a_l_end_mu .= '</span>';
         
         
         if ( wp_nav_menu( array( 'theme_location' => $main_nav_term, 'echo' => false ) ) !== false) {
@@ -81,8 +89,8 @@ if ( ! function_exists( 'applicator_func_main_nav' ) ) {
 
 
 // Add class to <a>
-if ( ! function_exists( 'applicator_func_nav_menu_link_atts' ) ) {
-    function applicator_func_nav_menu_link_atts( $atts, $item, $args, $depth ) {
+if ( ! function_exists( 'applicator_nav_menu_link_atts' ) ) {
+    function applicator_nav_menu_link_atts( $atts, $item, $args, $depth ) {
         
         $new_atts = array( 'class' => 'main-navi---a' );
         if ( isset( $atts['href'] ) ) {
@@ -91,5 +99,5 @@ if ( ! function_exists( 'applicator_func_nav_menu_link_atts' ) ) {
         return $new_atts;
     
     }
-    add_filter( 'nav_menu_link_attributes', 'applicator_func_nav_menu_link_atts', 10, 4 );
+    add_filter( 'nav_menu_link_attributes', 'applicator_nav_menu_link_atts', 10, 4 );
 }

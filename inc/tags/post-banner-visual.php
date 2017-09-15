@@ -1,15 +1,15 @@
 <?php // Entry Banner Image
 
-if ( ! function_exists( 'applicator_func_post_banner_visual' ) ) {
-    function applicator_func_post_banner_visual() {
+if ( ! function_exists( 'applicator_post_banner_visual' ) ) {
+    function applicator_post_banner_visual() {
         
         if ( '' !== get_the_post_thumbnail() ) {
-            $post_banner_image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'applicator-entry-banner-image-large' );
+            $post_banner_image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'applicator-image-size--post-banner-visual--large' );
             
             
             // OB: Post Thumbnail
             ob_start();
-            the_post_thumbnail( 'applicator-entry-banner-image-thumbnail', array( 'class' => 'img post-banner-vis---img' ) );
+            the_post_thumbnail( 'applicator-image-size--post-banner-visual--thumbnail', array( 'class' => 'img post-banner-vis---img' ) );
             $post_thumbnail_ob_content = ob_get_contents();
             ob_end_clean();
             

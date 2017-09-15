@@ -1,7 +1,7 @@
 <?php // Applicator Color Patterns
 // From twentyseventeen
 
-function applicator_func_colors_css_wrap() {
+function applicator_colors_css_wrap() {
 	
     if ( 'custom' !== get_theme_mod( 'colorscheme' ) && ! is_customize_preview() ) {
 		return;
@@ -17,4 +17,4 @@ function applicator_func_colors_css_wrap() {
 	</style>
 
 <?php }
-add_action( 'wp_head', 'applicator_func_colors_css_wrap' );
+add_action( 'wp_head', 'applicator_colors_css_wrap' );

@@ -263,7 +263,7 @@
                             $web_product_main_info_cp,
                             
                             // Main Nav
-                            applicator_func_main_nav(),
+                            applicator_main_nav(),
                             
                             // Hook After Main Nav
                             $hook_after_main_nav_ob_content,
@@ -275,7 +275,7 @@
                             $web_product_main_media_banner_obj,
                             
                             // Main Header Aside
-                            applicator_func_main_header_aside(),
+                            applicator_main_header_aside(),
                         ),
                     ),
                     'echo'      => true,

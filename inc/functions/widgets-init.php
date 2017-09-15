@@ -1,6 +1,6 @@
 <?php // Aside Registrations
 
-function applicator_func_aside_init() {
+function applicator_aside_init() {
     
     // Widget HTML Markup
     $widget_start_mu = '<div id="%1$s" class="cp widget %2$s" data-name="Widget">';
@@ -9,7 +9,9 @@ function applicator_func_aside_init() {
                 $widget_start_mu .= '<div class="hr_cr widget---hr_cr">';
                     $widget_start_mu .= '<div class="h widget---h">';
                         $widget_start_mu .= '<span class="h_l widget---h_l">';
-                            $widget_start_mu .= esc_html__( 'Widget', 'applicator' );
+                            $widget_start_mu .= '<span class="l widget---l">';
+                                $widget_start_mu .= esc_html__( 'Widget', 'applicator' );
+                            $widget_start_mu .= '</span>';
                         $widget_start_mu .= '</span>';
                     $widget_start_mu .= '</div>';
                 $widget_start_mu .= '</div>';
@@ -22,7 +24,9 @@ function applicator_func_aside_init() {
                                 $widget_start_mu .= '<div class="hr_cr widget-content---hr_cr">';
                                     $widget_start_mu .= '<div class="h widget-content---h">';
                                         $widget_start_mu .= '<span class="h_l widget-content---h_l">';
-                                            $widget_start_mu .= esc_html__( 'Widget Content', 'applicator' );
+                                            $widget_start_mu .= '<span class="l widget-content---l">';
+                                                $widget_start_mu .= esc_html__( 'Widget Content', 'applicator' );
+                                            $widget_start_mu .= '</span>';
                                         $widget_start_mu .= '</span>';
                                     $widget_start_mu .= '</div>';
                                 $widget_start_mu .= '</div>';
@@ -42,7 +46,9 @@ function applicator_func_aside_init() {
     $widget_h_start_mu = '<div class="obj widget-heading" data-name="Widget Heading OBJ">';
         $widget_h_start_mu .= '<h4 class="h widget-heading---h">';
             $widget_h_start_mu .= '<span class="h_l widget-heading---h_l">';
-            
+                $widget_h_start_mu .= '<span class="l widget-heading---l">';
+
+                $widget_h_end_mu = '</span>';
             $widget_h_end_mu = '</span>';
         $widget_h_end_mu .= '</h4>';
     $widget_h_end_mu .= '</div><!-- Widget Heading OBJ -->';
@@ -87,4 +93,4 @@ function applicator_func_aside_init() {
 		'after_title'   => $widget_h_end_mu,
 	) );
 }
-add_action( 'widgets_init', 'applicator_func_aside_init' );
+add_action( 'widgets_init', 'applicator_aside_init' );

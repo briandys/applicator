@@ -1,4 +1,5 @@
-<?php // Applicator HTML_OK (Overkill) Constructor-Component-Object Structure
+<?php // Applicator HTML_OK (Overkill)
+// Constructor-Component-Object-Text HTML Structure
 
 function applicator_htmlok( $args = array() ) {
     
@@ -1794,5 +1795,4 @@ function applicator_htmlok( $args = array() ) {
     else {
         return $html;
     }
-    
 }

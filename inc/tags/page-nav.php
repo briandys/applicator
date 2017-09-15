@@ -1,7 +1,7 @@
 <?php // Page Navigation | index.php
 
-if ( ! function_exists( 'applicator_func_page_nav' ) ) {
-    function applicator_func_page_nav() {
+if ( ! function_exists( 'applicator_page_nav' ) ) {
+    function applicator_page_nav() {
         
         global $wp_query, $wp_rewrite;
 

@@ -9,7 +9,7 @@ if ( is_active_sidebar( 'main-content-aside' )  ) {
         ),
         'css'       => 'sec-content',
         'content'   => array(
-            'constructor'   => applicator_func_main_content_aside(),
+            'constructor'   => applicator_main_content_aside(),
         ),
         'echo'      => true,
     ) );

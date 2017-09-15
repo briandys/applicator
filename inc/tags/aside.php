@@ -1,8 +1,9 @@
-<?php
+<?php // Asides
+
 
 // Main Header Aside
-if ( ! function_exists( 'applicator_func_main_header_aside' ) ) {
-    function applicator_func_main_header_aside() {
+if ( ! function_exists( 'applicator_main_header_aside' ) ) {
+    function applicator_main_header_aside() {
         
         $main_header_aside_term = 'main-header-aside';
         
@@ -31,14 +32,13 @@ if ( ! function_exists( 'applicator_func_main_header_aside' ) ) {
             
             return $main_header_aside;
         }
-    
     }
 }
 
 
 // Main Content Header Aside
-if ( ! function_exists( 'applicator_func_main_content_header_aside' ) ) {
-    function applicator_func_main_content_header_aside() {
+if ( ! function_exists( 'applicator_main_content_header_aside' ) ) {
+    function applicator_main_content_header_aside() {
         
         $main_content_header_aside_term = 'main-content-header-aside';
         
@@ -67,14 +67,13 @@ if ( ! function_exists( 'applicator_func_main_content_header_aside' ) ) {
             
             return $main_content_header_aside;
         }
-    
     }
 }
 
 
 // Main Content Aside
-if ( ! function_exists( 'applicator_func_main_content_aside' ) ) {
-    function applicator_func_main_content_aside() {
+if ( ! function_exists( 'applicator_main_content_aside' ) ) {
+    function applicator_main_content_aside() {
         
         $main_content_aside_term = 'main-content-aside';
         
@@ -103,14 +102,13 @@ if ( ! function_exists( 'applicator_func_main_content_aside' ) ) {
             
             return $main_content_aside;
         }
-    
     }
 }
 
 
 // Main Footer Aside
-if ( ! function_exists( 'applicator_func_main_footer_aside' ) ) {
-    function applicator_func_main_footer_aside() {
+if ( ! function_exists( 'applicator_main_footer_aside' ) ) {
+    function applicator_main_footer_aside() {
         
         $main_footer_aside_term = 'main-footer-aside';
         
@@ -139,6 +137,5 @@ if ( ! function_exists( 'applicator_func_main_footer_aside' ) ) {
             
             return $main_footer_aside;
         }
-    
     }
 }

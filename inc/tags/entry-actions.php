@@ -1,7 +1,7 @@
 <?php // Edit Post Action | content.php
 
-if ( ! function_exists( 'applicator_func_post_actions' ) ) {
-    function applicator_func_post_actions() {
+if ( ! function_exists( 'applicator_post_actions' ) ) {
+    function applicator_post_actions() {
         
         if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) {
             
@@ -56,8 +56,8 @@ if ( ! function_exists( 'applicator_func_post_actions' ) ) {
 
 // Edit Comment Action | comment.php
 
-if ( ! function_exists( 'applicator_func_comment_actions' ) ) {
-    function applicator_func_comment_actions() {
+if ( ! function_exists( 'applicator_comment_actions' ) ) {
+    function applicator_comment_actions() {
         
         if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) {
             

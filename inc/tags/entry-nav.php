@@ -1,8 +1,8 @@
 <?php // Entries Navigation
 // index.php
 
-if ( ! function_exists('applicator_func_entry_nav' ) ) {
-    function applicator_func_entry_nav() {
+if ( ! function_exists('applicator_entry_nav' ) ) {
+    function applicator_entry_nav() {
         
         
         if ( ! is_attachment() ) {

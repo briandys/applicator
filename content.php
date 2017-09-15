@@ -67,16 +67,16 @@ $post_classes = implode( ' ', $post_classes );
                 ) );
                 
                 
-                // After Post Heading Hook | inc > hooks.php
-                applicator_hook_after_post_heading();
+                // After Main Post Title Hook | inc > hooks.php
+                applicator_hook_after_main_post_title();
                 
                 
                 // Post Actions | inc > tags > entry-actions.php
-                applicator_func_post_actions();
+                applicator_post_actions();
                 
                 
                 // Breadcrumbs Navigation | inc > tags > breadcumbs-nav.php
-                applicator_func_breadcrumbs_nav();
+                applicator_breadcrumbs_nav();
                 
                 
                 // E: Post Meta
@@ -90,15 +90,15 @@ $post_classes = implode( ' ', $post_classes );
                             
                             // Date and Time Stamp
                             // inc > tags > post-published-modified-cp.php
-                            applicator_func_post_published_modified(),
+                            applicator_post_published_modified(),
                             
                             // Author
                             // inc > tags > post-author.php
-                            applicator_func_post_author(),
+                            applicator_post_author(),
                             
                             // Categories
                             // inc > tags > post-classification.php
-                            applicator_func_post_categories(),
+                            applicator_post_categories(),
                         ),
                     ),
                 ) );
@@ -120,10 +120,10 @@ $post_classes = implode( ' ', $post_classes );
                             $post_meta,
                             
                             // Post Banner Visual | inc > tags > post-banner-visual.php
-                            applicator_func_post_banner_visual(),
+                            applicator_post_banner_visual(),
                             
                             // inc > tags > comments-actions-snippet-cp.php
-                            applicator_func_comments_actions_snippet_cp(),
+                            applicator_comments_actions_snippet(),
                         ),
                     ),
                     'echo'      => true,
@@ -198,7 +198,7 @@ $post_classes = implode( ' ', $post_classes );
                 
                 // Entry Page Navigation
                 // inc > tags > post-nav.php
-                applicator_func_post_nav();
+                applicator_post_nav();
                 
                 // Sub-Post
                 if ( is_page_template( 'sub-pages.php' ) ) {
@@ -267,7 +267,7 @@ $post_classes = implode( ' ', $post_classes );
                             'component'     => array(
 
                                 // Tags
-                                applicator_func_post_tags(),
+                                applicator_post_tags(),
                             ),
                         ),
                         'echo'      => true,
