@@ -24,7 +24,58 @@
         
         $page = $( '#page' ),
         $webProductContainer = $page.find( '.wbp---cr' ),
-        $webProductCopyright = $( '#web-product-copyright' );
+        $webProductCopyright = $( '#web-product-copyright' ),
+        pageShortCss = 'page--short',
+        pageLongCss = 'page--long',
+        
+        $goContentNav = $( '#go-content-nav' );
+    
+    
+    
+    
+    
+    // ------------------------- Page Height
+    ( function() {
+        
+        if ( $webProductCopyright.css( 'display' ) == 'none' ) {
+			return;
+		}
+
+        var copyrightHeight,
+            pageHeight;
+
+        function pageHeightCSS() {
+            
+            copyrightHeight = $webProductCopyright.height();
+            pageHeight = $( '#page' ).height();
+            
+            if ( ( pageHeight ) <= ( window.innerHeight ) ) {
+
+                $html
+                    .addClass( pageShortCss )
+                    .removeClass( pageLongCss );
+                
+                $webProductContainer.css( 'padding-bottom', copyrightHeight + 'px' );
+            }
+            else {
+
+                $html
+                    .addClass( pageLongCss )
+                    .removeClass( pageShortCss );
+                
+                $webProductContainer.css( 'padding-bottom', '' ).removeAttr( 'style' );
+            }
+        }
+        pageHeightCSS();
+        
+        
+        // Debounce
+        var pageHeightDebounce = debounce( function () {
+            pageHeightCSS();
+        }, applicatorDebounceTimeout );
+
+        window.addEventListener( 'resize', pageHeightDebounce );
+    }() );
     
     
     
@@ -1002,56 +1053,6 @@
             }, false);
         }
     } )();
-    
-    
-    
-    
-    
-    // ------------------------- Page Height
-    ( function() {
-        
-        if ( $webProductCopyright.css( 'display' ) == 'none' ) {
-			return;
-		}
-
-        var copyrightHeight,
-            pageHeight,
-            
-            pageShortCss = 'page--short',
-            pageLongCss = 'page--long'
-
-        function pageHeightCSS() {
-            
-            copyrightHeight = $webProductCopyright.height();
-            pageHeight = $( '#page' ).height();
-            
-            if ( ( pageHeight ) <= ( window.innerHeight ) ) {
-
-                $html
-                    .addClass( pageShortCss )
-                    .removeClass( pageLongCss );
-                
-                $webProductContainer.css( 'padding-bottom', copyrightHeight + 'px' );
-            }
-            else {
-
-                $html
-                    .addClass( pageLongCss )
-                    .removeClass( pageShortCss );
-                
-                $webProductContainer.css( 'padding-bottom', '' ).removeAttr( 'style' );
-            }
-        }
-        pageHeightCSS();
-        
-        
-        // Debounce
-        var pageHeightDebounce = debounce( function () {
-            pageHeightCSS();
-        }, applicatorDebounceTimeout );
-
-        window.addEventListener( 'resize', pageHeightDebounce );
-    }() );
     
     
     

@@ -284,6 +284,25 @@
     color: var(--wbp--fg-color);
 }
 
+/* Overlay */
+.html::before
+{
+    content: '';
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    
+    width: 100%;
+    height: 100%;
+    
+    opacity: 0;
+    
+    transition: var(--transition--generic);
+    transition-duration: .0625s;
+    transition-property: opacity;
+}
+
 
 
 
@@ -890,50 +909,49 @@ input[type="submit"]
     display: none;
 }
 
-.go-content-nav-func
+.page--short .go-content-nav
 {
-    position: fixed;
-    left: 0;
-    top: 0;
-    
-    width: 100%;
-    height: 100%;
-    
-    /* Overlay */
-    background-color: var(--overlay--light);
-}
-
-.go-content-nav-func .go-ct-nav---ct
-{
-    height: 100%;
+    display: none;
 }
 
 .go-content-nav-func .go-to-content-navi
 {
-    position: absolute;
+    position: fixed;
     left: 50%;
     top: 50%;
     
     transform: translate( -50%, -50%);
+    
+    transition: var(--transition--generic);
+    transition-property: opacity;
 }
 
-.go-content-nav--inactive
+.go-content-nav--inactive .go-to-content-navi
 {
-    background-color: transparent;
-    
     opacity: 0;
     z-index: -1;
 }
 
+.go-content-nav--active .go-to-content-navi
+{
+    opacity: 1;
+    z-index: 100;
+}
+
+/* Prevent Scroll on Root */
 .apl--go-content-nav--active
 {
     overflow: hidden;
 }
 
-.go-content-nav--active
+/* Show Overlay */
+.apl--go-content-nav--active.html::before
 {
-    opacity: 1;
     z-index: 99;
+    
+    background-color: var(--overlay--light);
+    
+    opacity: 1;
 }
 
 
@@ -1297,31 +1315,13 @@ input[type="submit"]
     overflow: hidden;
 }
 
-/* Overlay */
-.applicator-snapon--applicator--main-menu::before
+/* Show Overlay */
+.apl--main-menu--active.html::before
 {
-    content: '';
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: -1;
-    
-    width: 100%;
-    height: 100%;
+    z-index: 99;
     
     background-color: var(--overlay--dark);
     
-    opacity: 0;
-    
-    transition: var(--transition--generic);
-    transition-duration: .5s;
-    transition-property: opacity;
-}
-
-/* Show Overlay */
-.apl--main-menu--active::before
-{
-    z-index: 99;
     opacity: 1;
 }
 
