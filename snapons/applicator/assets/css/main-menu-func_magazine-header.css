@@ -6,7 +6,7 @@
 
 
 /*------------------ Variables ------------------*/
-.view--front
+.html
 {
     /* Sub Nav - Toggle Button - Colors */
     --sub-nav-func-root--toggle-button--fg-color: var(--white--color);
@@ -17,7 +17,7 @@
 
 
 /*------------------ Main Header ------------------*/
-.view--front .main-header---cr
+.main-header---cr
 {
     position: relative;
 }
@@ -27,12 +27,12 @@
 
 
 /*------------------ Web Product Main Info ------------------*/
-.view--front.web-product-main-logo--enabled .web-product-main-info
+.web-product-main-logo--enabled .web-product-main-info
 {
     position: absolute;
 }
 
-.view--front .web-product-main-info
+.web-product-main-info
 {
     box-sizing: border-box;
     
@@ -43,12 +43,12 @@
     width: 100%;
 }
 
-.view--front.web-product-main-logo--enabled .wbp-main-info---ct_cr
+.web-product-main-logo--enabled .wbp-main-info---ct_cr
 {
     position: relative;
 }
 
-.view--front.web-product-main-logo--enabled .web-product-main-info
+.web-product-main-logo--enabled .web-product-main-info
 
 {
     margin-left: 0;
@@ -59,7 +59,7 @@
 
 
 /*------------------ Main Nav ------------------*/
-.view--front .main-nav
+.main-nav
 {
     position: absolute;
     left: 0;
@@ -71,39 +71,39 @@
     width: 100%;   
 }
 
-.view--front .main-nav---cr
+.main-nav---cr
 {
     background-color: transparent;
 }
 
-.view--front.applicator-snapon--applicator--easy-access-nav .main-nav a
+.applicator-snapon--applicator--easy-access-nav .main-nav a
 {
     color: white;
 }
 
-.view--front .main-nav.sub-nav-func .children a,
-.view--front .main-nav.sub-nav-func .sub-menu a
+.main-nav.sub-nav-func .children a,
+.main-nav.sub-nav-func .sub-menu a
 {
     color: black;
 }
 
-.view--front .main-nav---ct_cr > .menu-container > ul > li > .sub-nav-toggle .sub-nav-tog---b_l
+.main-nav---ct_cr > .menu-container > ul > li > .sub-nav-toggle .sub-nav-tog---b_l
 {
     color: var(--sub-nav-func-root--toggle-button--fg-color);
 }
 
-.view--front .widget-content---ct_cr > * > ul > li > .sub-nav-toggle .sub-nav-tog---b_l
+.widget-content---ct_cr > * > ul > li > .sub-nav-toggle .sub-nav-tog---b_l
 {
     color: var(--sub-nav-func-branches--toggle-button--fg-color);
 }
 
-.view--front .children .sub-nav-tog---b_l,
-.view--front .sub-menu .sub-nav-tog---b_l
+.children .sub-nav-tog---b_l,
+.sub-menu .sub-nav-tog---b_l
 {
     color: var(--sub-nav-func-branches--toggle-button--fg-color);
 }
 
-.view--front.applicator-snapon--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul
+.applicator-snapon--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul
 {
     justify-content: center;
 }
@@ -113,7 +113,7 @@
 
 
 /*------------------ Main Search ------------------*/
-.view--front .main-search-func
+.main-search-func
 {
     z-index: 1;
 }
@@ -123,14 +123,14 @@
 
 
 /*------------------ Web Product Main Media Banner ------------------*/
-.view--front .wbp-main-media-banner---g
+.wbp-main-media-banner---g
 {
     position: relative;
     
     background-color: var(--image--bg-color);
 }
 
-.view--front .wbp-main-media-banner---g::before
+.wbp-main-media-banner---g::before
 {
     content: '';
     position: absolute;
@@ -152,8 +152,7 @@
     transition-property: opacity;
 }
 
-.view--front.apl--main-search--active .wbp-main-media-banner---g::before
-
+.apl--main-search--active .wbp-main-media-banner---g::before
 {
     opacity: .75;
 }
@@ -163,8 +162,8 @@
 
 
 /*------------------ Web Product Main Name, Description ------------------*/
-.view--front.web-product-main-logo--disabled .web-product-main-name,
-.view--front.web-product-main-logo--disabled .web-product-main-description
+.web-product-main-logo--disabled .web-product-main-name,
+.web-product-main-logo--disabled .web-product-main-description
 
 {
     justify-content: center;

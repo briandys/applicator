@@ -130,6 +130,14 @@
             goCtNavDeactivate();
         } );
         
+
+        // Deactivate upon presseing ESC Key
+        $document.on( 'keyup.applicator', function ( e ) {
+            if ( $cp.hasClass( goCtNavActCss ) && e.keyCode == 27 ) {
+                goCtNavDeactivate();
+            }
+        } );
+        
     } // Go to Content Nav
     initGoContentNav( $( '#go-content-nav' ) );
     

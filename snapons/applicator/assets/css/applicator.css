@@ -300,7 +300,6 @@
     opacity: 0;
     
     transition: var(--transition--generic);
-    transition-duration: .0625s;
     transition-property: opacity;
 }
 
@@ -697,11 +696,6 @@ input[type="submit"],
 
 
 /*------------------ Media Banner ------------------*/
-.view--inner .web-product-main-media-banner
-{
-    display: none;
-}
-
 .wbp-main-media-banner---g
 {
     padding-bottom: calc( var( --aspect-ratio--16-9 ) );
@@ -979,6 +973,63 @@ input[type="submit"]
     min-width: 10rem;
     
     background-color: var(--pri-bg-reverse-color);
+}
+
+
+
+
+
+/*------------------ Go to Start Nav - Function ------------------*/
+.applicator-snapon--applicator--go-start-nav.dom--unready .go-start-nav
+{
+    display: none;
+}
+
+.go-start-nav-func .go-to-start-navi
+{   
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    
+    transition: var(--transition--generic);
+    transition-property: opacity transform;
+}
+
+.go-start-nav--inactive .go-to-start-navi
+{
+    transform: translateY( 100% );
+    
+    opacity: 0;
+    z-index: -1;
+}
+
+.go-start-nav--active .go-to-start-navi
+{
+    transform: translateY( 0 );
+    
+    opacity: 1;
+    z-index: 100;
+}
+
+.go-start-nav-func .go-start-navi---a
+{   
+    display: block;
+    
+    color: var(--go-start-nav-func--fg-color);
+    
+    text-decoration: none;
+}
+
+.go-start-nav--active .go-to-start-navi
+{
+    
+}
+
+
+.applicator-snapon--applicator--go-start-nav.dom--unready .go-to-start-navi,
+.go-start-nav--inactive .go-to-start-navi
+{
+    
 }
 
 
@@ -1708,54 +1759,6 @@ input[type="submit"]
 .main-nav .sub-menu .sub-nav--previous--active
 {
     visibility: hidden;
-}
-
-
-
-
-
-/*------------------ Go to Start Nav - Function ------------------*/
-.applicator-snapon--applicator--go-start-nav.dom--unready .go-start-nav
-{
-    display: none;
-}
-
-.go-start-nav-func
-{
-    position: fixed;
-    right: 0;
-    bottom: 0;
-}
-
-.go-start-nav-func .go-to-start-navi
-{   
-    transition: transform .2s ease-in-out;
-}
-
-.go-start-nav-func .go-start-navi---a
-{   
-    display: block;
-    
-    color: var(--go-start-nav-func--fg-color);
-    
-    text-decoration: none;
-}
-
-.go-start-nav--active .go-to-start-navi
-{
-    transform: translateY( 0 );
-}
-
-
-.applicator-snapon--applicator--go-start-nav.dom--unready .go-to-start-navi,
-.go-start-nav--inactive .go-to-start-navi
-{
-    transform: translateY( 100% );
-}
-
-.go-start-nav--active
-{
-    z-index: 99;
 }
 
 
@@ -2698,6 +2701,16 @@ input[type="submit"]
 .applicator-snapon--applicator--main-menu .textwidget
 {
     padding: 0;
+}
+
+.widget_tag_cloud a
+{
+    text-decoration: none;
+}
+
+.widget_tag_cloud a:hover
+{
+    text-decoration: underline;
 }
 
 
