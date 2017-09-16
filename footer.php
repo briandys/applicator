@@ -11,6 +11,7 @@
                     'structure' => array(
                         'type'          => 'object',
                     ),
+                    'id'        => 'web-product-copyright',
                     'css'       => 'wbp-copyright',
                     'root_css'  => 'site-info',
                     'content'   => array(

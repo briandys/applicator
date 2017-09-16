@@ -333,12 +333,10 @@
         } );
 
         // Deactivate upon presseing ESC Key
-        $window.load( function () {
-            $document.on( 'keyup.applicator', function ( e ) {
-                if ( $cp.hasClass( mainMenuActCss ) && e.keyCode == 27 ) {
-                    mainMenuDeactivate();
-                }
-            } );
+        $document.on( 'keyup.applicator', function ( e ) {
+            if ( $cp.hasClass( mainMenuActCss ) && e.keyCode == 27 ) {
+                mainMenuDeactivate();
+            }
         } );
         
     } // Main Menu | Main Nav - Main Header Aside
@@ -557,12 +555,10 @@
         } );
 
         // Deactivate upon presseing ESC Key
-        $window.load( function () {
-            $document.on( 'keyup.applicator', function ( e ) {
-                if ( $cp.hasClass( mainSearchActCss ) && e.keyCode == 27 ) {
-                    mainSearchDeactivate();
-                }
-            } );
+        $document.on( 'keyup.applicator', function ( e ) {
+            if ( $cp.hasClass( mainSearchActCss ) && e.keyCode == 27 ) {
+                mainSearchDeactivate();
+            }
         } );
         
         // Add Icons to Buttons
@@ -896,12 +892,10 @@
         
         
         // Deactivate upon presseing ESC Key
-        $window.load( function () {
-            $document.on( 'keyup.applicator', function ( e ) {
-                if ( $html.hasClass( aplSubNavActCss ) && e.keyCode == 27 ) {
-                    subNavAllDeactivate();
-                }
-            } );
+        $document.on( 'keyup.applicator', function ( e ) {
+            if ( $html.hasClass( aplSubNavActCss ) && e.keyCode == 27 ) {
+                subNavAllDeactivate();
+            }
         } );
         
     }
@@ -1003,44 +997,44 @@
                 }
             }, false);
         }
-    
     } )();
     
     
     
     
     
-    // ------------------------- No Tab Key
+    // ------------------------- Page Height
     ( function() {
+
+        var copyrightHeight = $( '#web-product-copyright' ).height(),
+            pageHeight = $( '#page' ).height() + copyrightHeight,
+            pageShortCss = 'page--short',
+            pageLongCss = 'page--long'
+
+        function pageHeightCSS() {
+            if ( ( pageHeight ) < ( window.innerHeight ) ) {
+
+                $html
+                    .addClass( pageShortCss )
+                    .removeClass( pageLongCss );
+            }
+            else {
+
+                $html
+                    .addClass( pageLongCss )
+                    .removeClass( pageShortCss );
+            }
+        }
+        pageHeightCSS();
         
-        $window.load( function () {
-            
-            $document.on( 'keydown.applicator', function ( e ) {
-                var keyCode = e.keyCode || e.which; 
-                
-                if ( keyCode == 9 ) {
-                    
-                    if ( $html.hasClass( tabKeyInactCss ) ) {
-                        $html
-                            .addClass( tabKeyActCss )
-                            .removeClass( tabKeyInactCss );
-                    }
-                  }
-            } );
-            
-            // Deactivate upon any interaction
-            $document.on( 'touchmove.applicator click.applicator', function ( e ) {
-                
-                if ( $html.hasClass( tabKeyActCss ) ) {
-                    $html
-                        .addClass( tabKeyInactCss )
-                        .removeClass( tabKeyActCss );
-                }
-            } );
-            
-        } );
         
-    } )();
+        // Debounce
+        var pageHeightDebounce = debounce( function () {
+            pageHeightCSS();
+        }, applicatorDebounceTimeout );
+
+        window.addEventListener( 'resize', pageHeightDebounce );
+    }() );
     
     
     
@@ -1055,16 +1049,39 @@
             .addClass( 'dom--ready' )
             .removeClass( 'dom--unready' );
         
-        // Initialize Tab Key CSS
-        $html
-            .addClass( tabKeyInactCss )
-            .removeClass( tabKeyActCss );
-        
         
         // Alias for WP Admin Bar
         if ( $body.hasClass( 'admin-bar' ) ) {
             $( '#wpadminbar' ).addClass( 'wpadminbar' );
         }
+        
+        
+        // Initialize Tab Key CSS
+        $html
+            .addClass( tabKeyInactCss )
+            .removeClass( tabKeyActCss );
+        
+        // No Tab Key
+        $document.on( 'keydown.applicator', function ( e ) {
+            var keyCode = e.keyCode || e.which; 
+
+            if ( $html.hasClass( tabKeyInactCss ) && keyCode == 9 ) {
+
+                $html
+                    .addClass( tabKeyActCss )
+                    .removeClass( tabKeyInactCss );
+              }
+        } );
+
+        // Tab Key - Deactivate upon any interaction
+        $document.on( 'touchmove.applicator click.applicator', function ( e ) {
+
+            if ( $html.hasClass( tabKeyActCss ) ) {
+                $html
+                    .addClass( tabKeyInactCss )
+                    .removeClass( tabKeyActCss );
+            }
+        } );
     } );
 
 })( jQuery );

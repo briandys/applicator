@@ -34,6 +34,13 @@ if ( ! function_exists( 'applicator_scripts_inline' ) ) {
                 div.innerHTML = '<svg/>';
                 return 'http://www.w3.org/2000/svg' === ( 'undefined' !== typeof SVGRect && div.firstChild && div.firstChild.namespaceURI );
             }
+            
+            
+            // CSS Variables Feature Detection
+            // https://stackoverflow.com/a/26633844
+            function supportCssVariables() {
+              return window.CSS && window.CSS.supports && window.CSS.supports('--var', 0);
+            }
 
 
             ( function( html ) {
@@ -41,12 +48,20 @@ if ( ! function_exists( 'applicator_scripts_inline' ) ) {
                 // Replace no-js with js if JavaScript is supported
                 html.className = html.className.replace( /\bno-js\b/,'js' );
 
-                // DOM Unready class name inserted via JS
+                // DOM Unready CSS inserted via JS
                 html.classList.add( 'dom--unready' );
                 
                 // Replace no-svg with svg if supported
                 if ( true === supportsInlineSVG() ) {
                     html.className = html.className.replace( /(\s*)no-svg(\s*)/, '$1svg$2' );
+                }
+
+                // CSS Variables CSS inserted via JS
+                if ( supportCssVariables() ) {
+                    html.classList.add( 'css-variables--supported' );
+                }
+                else {
+                    html.classList.add( 'css-variables--unsupported' );
                 }
 
                 // Detect Viewport Width

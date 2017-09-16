@@ -402,6 +402,7 @@ input[type="submit"],
 
 .main-content a
 {
+    color: hsl(215, 100%, 45%);
     color: var(--links--fg-color);
 }
 
@@ -2112,6 +2113,17 @@ input[type="submit"]
     color: var(--copyright-info--fg-color);
     
     text-decoration: none;
+}
+
+.page--short .web-product-copyright
+{
+    box-sizing: border-box;
+    
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    
+    width: 100%;
 }
 
 
