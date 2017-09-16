@@ -244,6 +244,7 @@
 .blog .main-content-heading,
 .single-post .main-content-heading,
 .attachment .main-content-heading,
+.page .main-content-heading,
 
 /* Nav */
 .page-nav---h,
@@ -696,6 +697,11 @@ input[type="submit"],
 
 
 /*------------------ Media Banner ------------------*/
+.view--inner .web-product-main-media-banner
+{
+    display: none;
+}
+
 .wbp-main-media-banner---g
 {
     padding-bottom: calc( var( --aspect-ratio--16-9 ) );
