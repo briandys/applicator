@@ -20,7 +20,11 @@
         funcCss = 'func',
         
         tabKeyActCss = 'tab-key--active',
-        tabKeyInactCss = 'tab-key--inactive';
+        tabKeyInactCss = 'tab-key--inactive',
+        
+        $page = $( '#page' ),
+        $webProductContainer = $page.find( '.wbp---cr' ),
+        $webProductCopyright = $( '#web-product-copyright' );
     
     
     
@@ -1005,24 +1009,37 @@
     
     // ------------------------- Page Height
     ( function() {
+        
+        if ( $webProductCopyright.css( 'display' ) == 'none' ) {
+			return;
+		}
 
-        var copyrightHeight = $( '#web-product-copyright' ).height(),
-            pageHeight = $( '#page' ).height() + copyrightHeight,
+        var copyrightHeight,
+            pageHeight,
+            
             pageShortCss = 'page--short',
             pageLongCss = 'page--long'
 
         function pageHeightCSS() {
-            if ( ( pageHeight ) < ( window.innerHeight ) ) {
+            
+            copyrightHeight = $webProductCopyright.height();
+            pageHeight = $( '#page' ).height();
+            
+            if ( ( pageHeight ) <= ( window.innerHeight ) ) {
 
                 $html
                     .addClass( pageShortCss )
                     .removeClass( pageLongCss );
+                
+                $webProductContainer.css( 'padding-bottom', copyrightHeight + 'px' );
             }
             else {
 
                 $html
                     .addClass( pageLongCss )
                     .removeClass( pageShortCss );
+                
+                $webProductContainer.css( 'padding-bottom', '' ).removeAttr( 'style' );
             }
         }
         pageHeightCSS();
