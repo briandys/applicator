@@ -50,6 +50,13 @@
 
 
 
+*,
+:after,
+:before
+{
+    box-sizing: border-box;
+}
+
 .html
 {
     height: 100%;
@@ -60,6 +67,12 @@
     min-height: 100%;
 }
 
+pre
+{
+    word-wrap: normal;
+    word-break: normal;
+    white-space: pre;
+}
 
 
 

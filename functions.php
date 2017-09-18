@@ -21,6 +21,11 @@ $hooks = get_parent_theme_file_path( '/inc/hooks.php' );
 if ( file_exists( $hooks ) ) { require_once( $hooks ); }
 
 
+// Starter Content
+$starter_content = get_parent_theme_file_path( '/inc/functions/starter-content.php' );
+if ( file_exists( $starter_content ) ) { require_once( $starter_content ); }
+
+
 // Styles
 $styles = get_parent_theme_file_path( '/inc/styles.php' );
 if ( file_exists( $styles ) ) { require_once( $styles ); }

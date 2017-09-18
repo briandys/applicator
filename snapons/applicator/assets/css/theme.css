@@ -56,8 +56,6 @@
 .edit-post-axn---a_l,
 .entry-navi---a_l
 {
-    box-sizing: border-box;
-    
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -165,8 +163,6 @@
 
 .post-content .wp-audio-shortcode
 {
-    box-sizing: border-box;
-    
     padding-left: 0;
     padding-right: 0;
 }

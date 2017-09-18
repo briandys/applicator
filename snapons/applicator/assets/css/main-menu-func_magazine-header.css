@@ -34,8 +34,6 @@
 
 .web-product-main-info
 {
-    box-sizing: border-box;
-    
     position: absolute;
     left: 0;
     z-index: 1;

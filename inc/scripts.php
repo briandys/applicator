@@ -139,7 +139,7 @@ if ( ! function_exists( 'applicator_scripts_enqueue' ) ) {
         
         
         // Global
-        wp_enqueue_script( 'applicator-script--global', get_theme_file_uri( '/assets/js/global.js' ), array( 'jquery', 'applicator-script--plugins' ), '3.8.0', true );
+        wp_enqueue_script( 'applicator-script--global', get_theme_file_uri( '/assets/js/global.js' ), array( 'jquery', 'applicator-script--plugins' ), '3.8.2', true );
         
         
         // Comment Reply
