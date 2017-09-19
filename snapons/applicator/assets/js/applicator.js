@@ -29,11 +29,7 @@
         pageShortCss = 'page--short',
         pageLongCss = 'page--long',
         
-        $goContentNav = $( '#go-content-nav' ),
-        
-        // Animation
-        animEntranceTerm = 'animate-n',
-        animExitTerm = 'animate-x';
+        $goContentNav = $( '#go-content-nav' );
     
     
     
@@ -81,30 +77,6 @@
 
         window.addEventListener( 'resize', pageHeightDebounce );
     }() );
-    
-    
-    
-    
-    
-    
-        
-    /*------------------------- Animate CSS -------------------------*/
-    function animateN() {
-        $html
-            .addClass( animEntranceTerm )
-            .removeClass( animExitTerm );
-    }
-
-    function animateX() {
-        $html
-            .addClass( animExitTerm )
-            .removeClass( animEntranceTerm );
-    }
-
-    function disAnimate() {
-        $html
-            .removeClass( animEntranceTerm + ' ' + animExitTerm );
-    }
     
     
     
@@ -399,15 +371,9 @@
             if ( $cp.hasClass( mainMenuInactCss ) ) {
                 mainMenuActivate();
                 mainMenuResetScroll();
-            
-                animateN();
-                console.log( 'Main Menu N' );
             }
             else if ( $cp.hasClass( mainMenuActCss ) ) {
                 mainMenuDeactivate();
-            
-                animateX();
-                console.log( 'Main Menu X' );
             }
         }
         
@@ -428,9 +394,6 @@
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             if ( $cp.hasClass( mainMenuActCss ) && ( ! $( e.target ).closest( $mainMenuTog ).length ) && ( ! $( e.target ).closest( $mainHrAsCt ).length ) ) {
                 mainMenuDeactivate();
-            
-                animateX();
-                console.log( 'Main Menu X' );
             }
         } );
 
@@ -438,9 +401,6 @@
         $document.on( 'keyup.applicator', function ( e ) {
             if ( $cp.hasClass( mainMenuActCss ) && e.keyCode == 27 ) {
                 mainMenuDeactivate();
-            
-                animateX();
-                console.log( 'Main Menu X' );
             }
         } );
         
@@ -474,6 +434,8 @@
         $cp
             .addClass( mainSearchFuncCss )
             .addClass( funcCss );
+        
+        funcName = 'main-search-func';
         
         var mainSearchTogObjMu,
             mainSearchTogBtnMu,
@@ -601,15 +563,9 @@
         function mainSearchToggle() {
             if ( $cp.hasClass( mainSearchInactCss ) ) {
                 mainSearchActivate();
-            
-                animateN();
-                console.log( 'Main Search N' );
             }
             else if ( $cp.hasClass( mainSearchActCss ) ) {
                 mainSearchDeactivate();
-            
-                animateX();
-                console.log( 'Main Search X' );
             }
         }
         
@@ -663,9 +619,6 @@
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             if ( $cp.hasClass( mainSearchActCss ) && ( ! $( e.target ).closest( $mainSearchTog ).length && ! $( e.target ).closest( $mainSearchCt ).length ) ) {
                 mainSearchDeactivate();
-            
-                animateX();
-                console.log( 'Main Search X' );
             }
         } );
 
@@ -673,9 +626,6 @@
         $document.on( 'keyup.applicator', function ( e ) {
             if ( $cp.hasClass( mainSearchActCss ) && e.keyCode == 27 ) {
                 mainSearchDeactivate();
-            
-                animateX();
-                console.log( 'Main Search X' );
             }
         } );
         
@@ -686,8 +636,7 @@
         $mainSearchBL.append( $mainSearchSearchIco );
         $mainSearchResetBL.append( $mainSearchDismissIco );
         
-    } // Main Search | Search
-
+    }
     initMainSearch( $( '#main-search-func' ) );
     
     
@@ -1129,9 +1078,6 @@
         $html
             .addClass( 'dom--ready' )
             .removeClass( 'dom--unready' );
-        
-        // Remove Animation Entrance and Exit CSS
-        disAnimate();
         
         
         // Alias for WP Admin Bar
