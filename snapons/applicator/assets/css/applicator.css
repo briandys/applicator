@@ -293,7 +293,7 @@
 }
 
 /* Overlay Inactive */
-.applicator-snapon--applicator--main-menu .applicator-wildcard::before
+.html .applicator-wildcard::before
 {
     content: '';
     position: fixed;
@@ -1146,24 +1146,6 @@ input[type="submit"]
 .applicator-snapon--applicator--main-search .main-header---cr > .search
 {
     background-color: transparent;
-}
-
-.main-search-func .search-term-crt-search-text-input
-{
-    transform: translateX( 100% );
-    
-    transition: var(--transition--generic);
-    transition-property: transform;
-    transition-duration: .5s;
-}
-
-.apl--main-search--active .main-search-func .search-term-crt-search-text-input
-{
-    transform: translateX( 0% );
-    
-    transition: var(--transition--generic);
-    transition-property: transform;
-    transition-duration: .5s;
 }
 
 

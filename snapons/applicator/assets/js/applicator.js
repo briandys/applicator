@@ -39,25 +39,6 @@
     
     
     
-    /*------------------------- Wildcard -------------------------*/
-    ( function() {
-        
-        aplWildcardMu = $( '<div />', {
-            'id' : aplWildcardTerm,
-            'class': aplWildcardTerm
-        } );
-        
-        $
-        
-        $aplWildcard = $( '#applicator-wildcard' );
-        
-        
-    }() );
-    
-    
-    
-    
-    
     /*------------------------- Page Height -------------------------*/
     ( function() {
         
@@ -343,6 +324,7 @@
         
         // Activate
         function mainMenuActivate() {
+            
             $cp
                 .addClass( mainMenuActCss )
                 .removeClass( mainMenuInactCss );
