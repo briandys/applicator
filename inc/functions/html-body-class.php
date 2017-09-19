@@ -264,8 +264,13 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         
         // Page Template
         $template_file = get_post_meta( get_the_ID(), '_wp_page_template', TRUE );
-        echo ' '. 'page-template'. ' '. 'page-template--'. sanitize_title( $template_file );
-    
+        $page_template_term = 'page-template';
+        if ( $template_file ) {
+            echo ' '. $page_template_term. ' '. $page_template_term. '--'. sanitize_title( $template_file );
+        }
+        else {
+            echo ' '. $page_template_term. '--none';
+        }
     }
     add_action( 'applicator_hook_html_class', 'applicator_html_class');
 }

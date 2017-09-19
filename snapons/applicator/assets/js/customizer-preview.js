@@ -1,7 +1,7 @@
 // Instantly live-update customizer settings in the preview for improved user experience.
 // From twentyseventeen
 
-(function( $ ) {
+( function( $ ) {
 
 	// Site title and description.
 	wp.customize( 'blogname', function( value ) {

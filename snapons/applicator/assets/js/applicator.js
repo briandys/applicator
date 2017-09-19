@@ -5,6 +5,7 @@
         $window = $( window ),
         $body = $( document.body ),
         
+        // Functionalities
         $aplApplicatorGoCtNav = $html.closest( '.applicator-snapon--applicator--go-content-nav' ),
         $aplApplicatorGoStartNav = $html.closest( '.applicator-snapon--applicator--go-start-nav' ),
         $aplApplicatorMainSearch = $html.closest( '.applicator-snapon--applicator--main-search' ),
@@ -28,13 +29,17 @@
         pageShortCss = 'page--short',
         pageLongCss = 'page--long',
         
-        $goContentNav = $( '#go-content-nav' );
+        $goContentNav = $( '#go-content-nav' ),
+        
+        // Animation
+        animEntranceTerm = 'animate-n',
+        animExitTerm = 'animate-x';
     
     
     
     
     
-    // ------------------------- Page Height
+    //------------------------- Page Height
     ( function() {
         
         if ( $webProductCopyright.css( 'display' ) == 'none' ) {
@@ -76,6 +81,30 @@
 
         window.addEventListener( 'resize', pageHeightDebounce );
     }() );
+    
+    
+    
+    
+    
+    
+        
+    /*------------------------- Animate CSS -------------------------*/
+    function animateN() {
+        $html
+            .addClass( animEntranceTerm )
+            .removeClass( animExitTerm );
+    }
+
+    function animateX() {
+        $html
+            .addClass( animExitTerm )
+            .removeClass( animEntranceTerm );
+    }
+
+    function disAnimate() {
+        $html
+            .removeClass( animEntranceTerm + ' ' + animExitTerm );
+    }
     
     
     
@@ -239,7 +268,7 @@
     
     
     
-    // Main Menu | Main Header Aside
+    /*------------------------ Main Menu ------------------------*/
     function initMainMenu( $cp ) {
         
         if ( ! $aplApplicatorMainMenu.length ) {
@@ -279,7 +308,7 @@
             
             $mainHrAsCtCr;
         
-        // Build Markup
+        // Markup
         ( function() {
             
             mainMenuTogBtnLTxtMu = $( '<span />', {
@@ -329,6 +358,7 @@
             $mainMenuTogBtn.attr( {
                  'aria-expanded': 'true',
                  'title': $mainMenuHideL
+                
             } );
             
             $mainMenuTogBtnLTxt.text( $mainMenuHideL );
@@ -369,9 +399,15 @@
             if ( $cp.hasClass( mainMenuInactCss ) ) {
                 mainMenuActivate();
                 mainMenuResetScroll();
+            
+                animateN();
+                console.log( 'Main Menu N' );
             }
             else if ( $cp.hasClass( mainMenuActCss ) ) {
                 mainMenuDeactivate();
+            
+                animateX();
+                console.log( 'Main Menu X' );
             }
         }
         
@@ -392,6 +428,9 @@
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             if ( $cp.hasClass( mainMenuActCss ) && ( ! $( e.target ).closest( $mainMenuTog ).length ) && ( ! $( e.target ).closest( $mainHrAsCt ).length ) ) {
                 mainMenuDeactivate();
+            
+                animateX();
+                console.log( 'Main Menu X' );
             }
         } );
 
@@ -399,10 +438,13 @@
         $document.on( 'keyup.applicator', function ( e ) {
             if ( $cp.hasClass( mainMenuActCss ) && e.keyCode == 27 ) {
                 mainMenuDeactivate();
+            
+                animateX();
+                console.log( 'Main Menu X' );
             }
         } );
         
-    } // Main Menu | Main Nav - Main Header Aside
+    } // Main Menu
 
     initMainMenu( $( '#main-header-aside' ) );
     
@@ -410,7 +452,7 @@
     
     
     
-    // Main Search
+    /*------------------------ Main Search ------------------------*/
     ( function() {
         
         if ( ! $aplApplicatorMainSearch.length ) {
@@ -557,10 +599,17 @@
         
         // Toggle
         function mainSearchToggle() {
-            if ( $cp.hasClass( mainSearchActCss ) ) {
-                mainSearchDeactivate();
-            } else if ( $cp.hasClass( mainSearchInactCss ) ) {
+            if ( $cp.hasClass( mainSearchInactCss ) ) {
                 mainSearchActivate();
+            
+                animateN();
+                console.log( 'Main Search N' );
+            }
+            else if ( $cp.hasClass( mainSearchActCss ) ) {
+                mainSearchDeactivate();
+            
+                animateX();
+                console.log( 'Main Search X' );
             }
         }
         
@@ -614,6 +663,9 @@
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             if ( $cp.hasClass( mainSearchActCss ) && ( ! $( e.target ).closest( $mainSearchTog ).length && ! $( e.target ).closest( $mainSearchCt ).length ) ) {
                 mainSearchDeactivate();
+            
+                animateX();
+                console.log( 'Main Search X' );
             }
         } );
 
@@ -621,6 +673,9 @@
         $document.on( 'keyup.applicator', function ( e ) {
             if ( $cp.hasClass( mainSearchActCss ) && e.keyCode == 27 ) {
                 mainSearchDeactivate();
+            
+                animateX();
+                console.log( 'Main Search X' );
             }
         } );
         
@@ -1070,10 +1125,13 @@
     $document.ready( function() {
 		
         
-        // Remove DOM Unready class
+        // Remove DOM Unready CSS
         $html
             .addClass( 'dom--ready' )
             .removeClass( 'dom--unready' );
+        
+        // Remove Animation Entrance and Exit CSS
+        disAnimate();
         
         
         // Alias for WP Admin Bar
