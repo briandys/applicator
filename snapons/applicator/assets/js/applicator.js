@@ -29,13 +29,36 @@
         pageShortCss = 'page--short',
         pageLongCss = 'page--long',
         
-        $goContentNav = $( '#go-content-nav' );
+        $goContentNav = $( '#go-content-nav' ),
+        
+        $aplWildcard,
+        aplWildcardMu,
+        aplWildcardTerm = 'applicator-wildcard';
     
     
     
     
     
-    //------------------------- Page Height
+    /*------------------------- Wildcard -------------------------*/
+    ( function() {
+        
+        aplWildcardMu = $( '<div />', {
+            'id' : aplWildcardTerm,
+            'class': aplWildcardTerm
+        } );
+        
+        $
+        
+        $aplWildcard = $( '#applicator-wildcard' );
+        
+        
+    }() );
+    
+    
+    
+    
+    
+    /*------------------------- Page Height -------------------------*/
     ( function() {
         
         if ( $webProductCopyright.css( 'display' ) == 'none' ) {
@@ -323,6 +346,7 @@
             $cp
                 .addClass( mainMenuActCss )
                 .removeClass( mainMenuInactCss );
+            
             $html
                 .addClass( aplMainMenuActCss )
                 .removeClass( aplMainMenuInactCss );

@@ -211,6 +211,10 @@
     /* Text Spacing */
     --glabel--between--spacing: .3em;
     
+    /* Overlays */
+    --overlay--light: var(--white--color);
+    --overlay--dark: var(--black--color);
+    
 }
 
 
@@ -288,23 +292,30 @@
     color: var(--wbp--fg-color);
 }
 
-/* Overlay */
-.html::before
+/* Overlay Inactive */
+.applicator-snapon--applicator--main-menu .applicator-wildcard::before
 {
     content: '';
     position: fixed;
     left: 0;
+    right: 0;
     top: 0;
-    z-index: -1;
+    bottom: 100%;
     
-    width: 100%;
-    height: 100%;
+    background-color: black;
+    background-color: var(--overlay--dark);
     
     opacity: 0;
     
-    transition: var(--transition--generic);
-    transition-property: opacity;
-    transition-duration: .5s;
+    transition: opacity .5s, bottom 0s .5s;
+}
+
+/* Overlay Active */
+.apl--main-menu--active .applicator-wildcard::before
+{
+    bottom: 0%;
+    opacity: .75;
+    transition: opacity .5s;
 }
 
 
@@ -923,16 +934,6 @@ input[type="submit"]
     overflow: hidden;
 }
 
-/* Show Overlay */
-.apl--go-content-nav--active.html::before
-{
-    z-index: 99;
-    
-    background-color: var(--overlay--light);
-    
-    opacity: 1;
-}
-
 
 
 
@@ -1363,17 +1364,6 @@ input[type="submit"]
 {
     /* Prevent Scroll on Root */
     overflow: hidden;
-}
-
-.applicator-snapon--applicator--main-menu::before
-{
-    background-color: var(--overlay--dark);
-}
-
-.apl--main-menu--active::before
-{
-    opacity: 1;
-    z-index: 99;
 }
 
 

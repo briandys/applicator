@@ -144,6 +144,8 @@
             
             </div>
         </div><!-- Web Product -->
+        
+        <div id="applicator-wildcard" class="applicator-wildcard"></div>
 
         <?php wp_footer(); ?>
     
