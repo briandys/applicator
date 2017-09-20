@@ -1016,65 +1016,39 @@ input[type="submit"]
 
 
 /*------------------ Main Search - Function ------------------*/
+
+/* Do not show if DOM is unready */
+.applicator-snapon--applicator--main-search.dom--unready .main-header---cr > .search
+{
+    display: none;
+}
+
+/* Main Search Positioning */
 .main-search-func
 {
     position: absolute;
     right: 0;
     top: 0;
+    
+    width: 100%;
+    min-height: var(--elem--height--md);
 }
 
+/* Button Reset */
 .main-search-func .b_l
 {
     padding: 0;
     background-color: transparent;
 }
 
-.applicator-snapon--applicator--main-search.dom--unready .main-header---cr > .search
-{
-    display: none;
-}
-
-.main-search--active
-{
-    width: 100%;
-}
-
-.main-search-func .search---cr
-{
-    position: relative;
-    
-    height: var(--elem--height--md);
-}
-
+/*
 .main-search--inactive .search---ct
 {
     display: none;
 }
+*/
 
-.main-search-func .search-form-axns---ct_cr
-{
-    display: flex;
-}
-
-.main-search-func .search-form-search-axn
-{
-    order: 1;
-}
-
-.main-search-func .main-search-toggle
-{
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
-.main-search-func .search-form-axns
-{
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
+/* Main Search - Input Text */
 .main-search-func .input-text
 {
     /* Reset */
@@ -1085,36 +1059,75 @@ input[type="submit"]
     color: white;
 }
 
+/* Main Search - Input Text - Allowance for the actions */
 .main-search-func .search-term-crt-search---input-text
 {
     padding-right: calc( var(--spacing--toggle-allowance) * 2 );
 }
 
-.applicator-snapon--applicator--main-search.applicator-snapon--applicator--main-menu.main-header-aside--disabled .main-search-func .search-term-crt-search---input-text
+/* Main Search Form Actions */
+.main-search-func .search-form-axns
 {
-    padding-left: 1rem;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
-.applicator-snapon--applicator--main-search.applicator-snapon--applicator--main-menu.main-header-aside--enabled .main-search--active .search---cr
+/* Main Search Action Items */
+.main-search-func .search-form-axns---ct_cr
 {
-    padding-left: var(--spacing--toggle-allowance);
+    display: flex;
 }
 
+/* Main Search Action Items - Swap Positions of Search and Reset buttons */
+.main-search-func .search-form-search-axn
+{
+    order: 1;
+}
+
+/* Main Search Toggle */
+.main-search-func .main-search-toggle
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+/* Hide Main Search Toggle - Right Spacing */
 .main-search--active .main-search-toggle
 {
     padding-right: var(--spacing--toggle-allowance);
 }
 
+/* Reset Action - Hiden when input is empty */
 .main-search--active.main-search-input--empty .search-form-reset-axn
 {
     display: none;
 }
 
+/* Main Search Toggle z-index */
+.main-search--inactive .main-search-toggle
+{
+    z-index: 1;
+}
+
+.applicator-snapon--applicator--main-search.applicator-snapon--applicator--main-menu.main-header-aside--disabled .main-search-func .search-term-crt-search---input-text
+{
+    padding-left: var(--content--spacing-x);
+}
+
+.applicator-snapon--applicator--main-search.applicator-snapon--applicator--main-menu.main-header-aside--enabled .main-search-func .search---cr
+{
+    padding-left: var(--spacing--toggle-allowance);
+}
+
+/* Icons */
 .main-search-func .icon
 {
     pointer-events: none;
 }
 
+/* Dismiss icons */
 .main-search-func .dismiss-icon
 {
     width: var(--dismiss-icon--width);
@@ -1142,27 +1155,52 @@ input[type="submit"]
     color: var(--placeholder-reverse-color);
 }
 
+/* Background color reset */
 .applicator-snapon--applicator--main-search .main-header---cr > .search
 {
     background-color: transparent;
 }
 
+
+
+
+
+
 .applicator-snapon--applicator--main-search .main-search-func .search-term-crt-search-text-input
 {
     opacity: 0;
-    
     transition: var(--transition--generic);
     transition-property: opacity;
-    transition-duration: 1s;
+    transition-duration: .3s;
 }
 
 .apl--main-search--active .main-search-func .search-term-crt-search-text-input
 {
     opacity: 1;
+}
+
+
+
+/* Overlay Inactive */
+.main-search--inactive .search---ct
+{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 100%;
     
-    transition: var(--transition--generic);
-    transition-property: opacity;
-    transition-duration: 1s;
+    opacity: 0;
+    
+    transition: opacity .3s;
+}
+
+/* Overlay Active */
+.main-search--active .search---ct
+{
+    bottom: 0%;
+    opacity: .75;
+    transition: opacity .3s;
 }
 
 
@@ -1787,7 +1825,7 @@ input[type="submit"]
 /* With Main Search and No Main Menu and No Logo */
 .applicator-snapon--applicator--main-search.applicator-snapon--applicator--main-search.main-header-aside--disabled.web-product-main-logo--disabled .web-product-main-info
 {
-    padding-left: var(--elem-dimension--md);
+    padding-left: 1rem;
     padding-right: var(--elem-dimension--md);
 }
 
