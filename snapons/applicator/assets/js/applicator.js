@@ -39,6 +39,21 @@
     
     
     
+    /*------------------------- Wildcard -------------------------*/
+    function wildcardActivate( funcName ) {
+        
+        aplWildcardMu = $( '<div />', {
+            'class': aplWildcardTerm + ' ' + aplWildcardTerm + '--' + funcName
+        } );
+        
+        $page.after( aplWildcardMu );
+        
+    };
+    
+    
+    
+    
+    
     /*------------------------- Page Height -------------------------*/
     ( function() {
         
@@ -259,6 +274,10 @@
             .addClass( 'main-menu-func' )
             .addClass( funcCss );
         
+        funcName = 'main-search-func';
+            
+        wildcardActivate( funcName );
+        
         var mainMenuTogObjMu,
             mainMenuTogBtnMu,
             mainMenuTogBtnLmu,
@@ -324,7 +343,6 @@
         
         // Activate
         function mainMenuActivate() {
-            
             $cp
                 .addClass( mainMenuActCss )
                 .removeClass( mainMenuInactCss );

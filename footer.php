@@ -144,8 +144,23 @@
             
             </div>
         </div><!-- Web Product -->
-        
-        <div class="applicator-wildcard"></div>
+
+        <?php
+
+        // Wildcard
+        $wildcard_cn = applicator_htmlok( array(
+            'name'      => 'Applicator Wildcard',
+            'structure' => array(
+                'type'      => 'constructor',
+            ),
+            'id'        => 'applicator-wildcard',
+            'content'   => array(
+                'constructor'       => '',
+            ),
+            'echo'      => true,
+        ) );
+
+        ?>
 
         <?php wp_footer(); ?>
     
