@@ -1029,7 +1029,10 @@ input[type="submit"]
     position: absolute;
     right: 0;
     top: 0;
-    
+}
+
+.main-search--active
+{   
     width: 100%;
     min-height: var(--elem--height--md);
 }
@@ -1066,6 +1069,11 @@ input[type="submit"]
 }
 
 /* Main Search Form Actions */
+.main-search--inactive .search-form-axns
+{
+    z-index: 0;
+}
+
 .main-search-func .search-form-axns
 {
     position: absolute;
@@ -1086,6 +1094,12 @@ input[type="submit"]
 }
 
 /* Main Search Toggle */
+.main-search--active.main-search-input--empty .search---hr
+{
+    position: relative;
+    z-index: 1;
+}
+
 .main-search-func .main-search-toggle
 {
     position: absolute;
@@ -1096,7 +1110,7 @@ input[type="submit"]
 /* Hide Main Search Toggle - Right Spacing */
 .main-search--active .main-search-toggle
 {
-    padding-right: var(--spacing--toggle-allowance);
+    margin-right: var(--spacing--toggle-allowance);
 }
 
 /* Reset Action - Hiden when input is empty */
@@ -1105,11 +1119,7 @@ input[type="submit"]
     display: none;
 }
 
-/* Main Search Toggle z-index */
-.main-search--inactive .main-search-toggle
-{
-    z-index: 1;
-}
+
 
 .applicator-snapon--applicator--main-search.applicator-snapon--applicator--main-menu.main-header-aside--disabled .main-search-func .search-term-crt-search---input-text
 {
@@ -1182,27 +1192,29 @@ input[type="submit"]
 
 
 /* Overlay Inactive */
-.main-search--inactive .search---ct
+.main-search-func .search---ct
 {
-    position: fixed;
+    position: absolute;
     left: 0;
     right: 0;
-    top: 0;
     bottom: 100%;
-    
     opacity: 0;
     
-    transition: opacity .3s;
+    transition: opacity .3s, bottom 0s .3s;
 }
 
 /* Overlay Active */
 .main-search--active .search---ct
 {
     bottom: 0%;
-    opacity: .75;
+    opacity: 1;
     transition: opacity .3s;
 }
 
+.main-search-func .search---ct_cr
+{
+    padding-left: var(--spacing--toggle-allowance);
+}
 
 
 
@@ -2226,6 +2238,8 @@ input[type="submit"]
 
 
 /*------------------ WordPress Admin Bar ------------------*/
+
+/* Variables */
 .wp-admin-bar--enabled
 {
     --wp-admin-bar-allowance--narrow: 46px;
@@ -2244,36 +2258,56 @@ input[type="submit"]
     --main-menu-func--height: calc( 100vh - var(--wp-admin-bar-allowance--wide) );
 }
 
-/* WP Admin Bar - Narrow */
-.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .wbp---cr
+/* WP Admin Bar */
+.wpadminbar
 {
-    margin-top: var(--wp-admin-bar-allowance--narrow);
+    position: absolute !important;
 }
 
-.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-menu-func .main-hr-aside---ct
-{
-    padding-bottom: var(--wp-admin-bar-allowance--narrow);
-}
-
-/* WP Admin Bar - Wide */
-.wp-admin-bar--enabled.vp--wp-admin-bar--wide .wbp---cr
-{
-    margin-top: var(--wp-admin-bar-allowance--wide);
-}
-
-.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-menu-func .main-hr-aside---ct
-{
-    padding-bottom: var(--wp-admin-bar-allowance--wide);
-}
-
+/* Go to Content Nav */
 .apl--go-content-nav--active .wpadminbar
 {
     z-index: 0 !important;
 }
 
-.wpadminbar
+/*------------ WP Admin Bar - Narrow ------------*/
+
+/* Web Product */
+.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .web-product
 {
-    position: absolute !important;
+    margin-top: var(--wp-admin-bar-allowance--narrow);
+}
+
+/* Main Menu */
+.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-menu-func
+{
+    margin-top: var(--wp-admin-bar-allowance--narrow);
+}
+
+/* Main Search */
+.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-search-func
+{
+    margin-top: var(--wp-admin-bar-allowance--narrow);
+}
+
+/*------------ WP Admin Bar - Wide ------------*/
+
+/* Web Product */
+.wp-admin-bar--enabled.vp--wp-admin-bar--wide .web-product
+{
+    margin-top: var(--wp-admin-bar-allowance--wide);
+}
+
+/* Main Menu */
+.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-menu-func
+{
+    margin-top: var(--wp-admin-bar-allowance--wide);
+}
+
+/* Main Search */
+.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-search-func
+{
+    margin-top: var(--wp-admin-bar-allowance--wide);
 }
 
 
