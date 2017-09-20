@@ -17,8 +17,7 @@
         
         showHideTxtCss = 'show-hide---txt',
         
-        mainSearchFuncCss = 'main-search-func',
-        funcCss = 'func',
+        funcTerm = 'func',
         
         tabKeyActCss = 'tab-key--active',
         tabKeyInactCss = 'tab-key--inactive',
@@ -31,22 +30,25 @@
         
         $goContentNav = $( '#go-content-nav' ),
         
-        $aplWildcard,
-        aplWildcardMu,
-        aplWildcardTerm = 'applicator-wildcard';
-    
-    
-    
-    
-    
-    /*------------------------- Wildcard -------------------------*/
-    function wildcardActivate( funcName ) {
+        $aplWildcard = $( '#applicator-wildcard' ),
+        $aplWildcardCr = $aplWildcard.find( '.applicator-wildcard---cr' ),
+        overlayTerm = 'overlay',
+        overlayMu;
         
-        aplWildcardMu = $( '<div />', {
-            'class': aplWildcardTerm + ' ' + aplWildcardTerm + '--' + funcName
+    
+    
+    
+    
+    
+    /*------------------------- Overlay -------------------------*/
+    function overlayActivate( funcName ) {
+        
+        overlayMu = $( '<div />', {
+            'class': overlayTerm + ' ' + overlayTerm + '--' + funcName,
+            'role' : 'presentation'
         } );
         
-        $page.after( aplWildcardMu );
+        $aplWildcardCr.append( overlayMu );
         
     };
     
@@ -110,7 +112,7 @@
         
         $cp
             .addClass( 'go-content-nav-func' )
-            .addClass( funcCss );
+            .addClass( funcTerm );
         
         var $goCtNaviA = $( '#go-ct-navi---a' ),
             
@@ -174,7 +176,7 @@
         
         $cp
             .addClass( 'go-start-nav-func' )
-            .addClass( funcCss );
+            .addClass( funcTerm );
         
         var $goStartNaviA = $( '#go-start-navi---a' ),
             
@@ -270,13 +272,15 @@
 			return;
 		}
         
-        $cp
-            .addClass( 'main-menu-func' )
-            .addClass( funcCss );
+        funcName = 'main-menu-func';
         
-        funcName = 'main-search-func';
+        $cp
+            .addClass( funcName )
+            .addClass( funcTerm );
+        
+        
             
-        wildcardActivate( funcName );
+        overlayActivate( funcName );
         
         var mainMenuTogObjMu,
             mainMenuTogBtnMu,
@@ -443,10 +447,12 @@
 			return;
 		}
         
+        funcName = 'main-search-func',
+        
         $( '#main-header' )
             .find( $( '.main-header---cr' ) )
                 .children( '.search:first' )
-                    .attr( 'id', mainSearchFuncCss );
+                    .attr( 'id', funcName );
     }() );
     
     function initMainSearch( $cp ) {
@@ -456,8 +462,8 @@
 		}
         
         $cp
-            .addClass( mainSearchFuncCss )
-            .addClass( funcCss );
+            .addClass( funcName )
+            .addClass( funcTerm );
         
         funcName = 'main-search-func';
         
@@ -718,7 +724,7 @@
         if ( $cp.has( $subNavParentItems ) ) {
             $cp
                 .addClass( 'sub-nav-func' )
-                .addClass( funcCss );
+                .addClass( funcTerm );
         }
         
         // Build Markup
@@ -1008,7 +1014,7 @@
         
         $cp
             .addClass( 'easy-access-nav-func' )
-            .addClass( funcCss );
+            .addClass( funcTerm );
     }
     initEasyAccessNav( $( '#main-nav' ) );
     

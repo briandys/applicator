@@ -293,9 +293,8 @@
 }
 
 /* Overlay Inactive */
-.applicator-snapon--applicator--main-menu .applicator-wildcard::before
+.applicator-snapon--applicator--main-menu .overlay--main-menu-func
 {
-    content: '';
     position: fixed;
     left: 0;
     right: 0;
@@ -307,15 +306,15 @@
     
     opacity: 0;
     
-    transition: opacity .5s, bottom 0s .5s;
+    transition: opacity .3s, bottom 0s .3s;
 }
 
 /* Overlay Active */
-.apl--main-menu--active .applicator-wildcard::before
+.apl--main-menu--active .overlay--main-menu-func
 {
     bottom: 0%;
     opacity: .75;
-    transition: opacity .5s;
+    transition: opacity .3s;
 }
 
 
@@ -1148,22 +1147,22 @@ input[type="submit"]
     background-color: transparent;
 }
 
-.main-search-func .search-term-crt-search-text-input
+.applicator-snapon--applicator--main-search .main-search-func .search-term-crt-search-text-input
 {
-    transform: translateX( 100% );
+    opacity: 0;
     
     transition: var(--transition--generic);
-    transition-property: transform;
-    transition-duration: .5s;
+    transition-property: opacity;
+    transition-duration: 1s;
 }
 
 .apl--main-search--active .main-search-func .search-term-crt-search-text-input
 {
-    transform: translateX( 0% );
+    opacity: 1;
     
     transition: var(--transition--generic);
-    transition-property: transform;
-    transition-duration: .5s;
+    transition-property: opacity;
+    transition-duration: 1s;
 }
 
 
@@ -1237,7 +1236,7 @@ input[type="submit"]
     height: var(--main-menu-func--height);
     
     transition: var(--transition--generic);
-    transition-duration: .5s;
+    transition-duration: .3s;
     transition-property: transform;
 }
 
