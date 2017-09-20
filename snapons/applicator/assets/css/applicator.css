@@ -180,6 +180,7 @@
     /* Element Dimensions */
     --elem--width--md: var(--elem-dimension--md);
     --elem--height--md: var(--elem-dimension--md);
+    --elem--dimension: var(--elem-dimension--md);
     
     /* Active Area Dimensions */
     --active-area--dimension--md: var(--elem-dimension--md);
@@ -1037,19 +1038,18 @@ input[type="submit"]
     min-height: var(--elem--height--md);
 }
 
-/* Button Reset */
+/* Buttons */
 .main-search-func .b_l
 {
     padding: 0;
     background-color: transparent;
 }
 
-/*
-.main-search--inactive .search---ct
+/* Hide Main Search Toggle - Right Spacing */
+.main-search--active .main-search-toggle
 {
-    display: none;
+    margin-right: var(--elem--dimension);
 }
-*/
 
 /* Main Search - Input Text */
 .main-search-func .input-text
@@ -1063,9 +1063,40 @@ input[type="submit"]
 }
 
 /* Main Search - Input Text - Allowance for the actions */
-.main-search-func .search-term-crt-search---input-text
+.applicator-snapon--applicator--main-search.applicator-snapon--applicator--main-menu.main-header-aside--enabled .main-search-func .search-term-crt-search-text-input
 {
-    padding-right: calc( var(--spacing--toggle-allowance) * 2 );
+    padding-left: var(--elem--dimension);
+}
+
+.applicator-snapon--applicator--main-search.applicator-snapon--applicator--main-menu.main-header-aside--disabled .main-search-func .search-term-crt-search-text-input
+{
+    padding-left: var(--content--spacing-x);
+}
+
+.main-search-func .search-term-crt-search-text-input
+{
+    padding-right: calc( var(--elem--dimension) * 2 );
+}
+
+/* Input Text - Hidden */
+.main-search-func .search-term-crt-search-text-input
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    
+    width: 100%;
+    
+    opacity: 0;
+    
+    transition: var(--transition--generic);
+    transition-property: opacity;
+}
+
+/* Input Text - Visible */
+.main-search--active .search-term-crt-search-text-input
+{
+    opacity: 1;
 }
 
 /* Main Search Form Actions */
@@ -1081,6 +1112,11 @@ input[type="submit"]
     top: 0;
 }
 
+.main-search--inactive .search-form-axns
+{
+    display: none;
+}
+
 /* Main Search Action Items */
 .main-search-func .search-form-axns---ct_cr
 {
@@ -1093,42 +1129,19 @@ input[type="submit"]
     order: 1;
 }
 
-/* Main Search Toggle */
+/* Main Search Toggle - Put Toggle on top if input is empty */
 .main-search--active.main-search-input--empty .search---hr
 {
     position: relative;
     z-index: 1;
 }
 
+/* Main Search Toggle */
 .main-search-func .main-search-toggle
 {
     position: absolute;
     right: 0;
     top: 0;
-}
-
-/* Hide Main Search Toggle - Right Spacing */
-.main-search--active .main-search-toggle
-{
-    margin-right: var(--spacing--toggle-allowance);
-}
-
-/* Reset Action - Hiden when input is empty */
-.main-search--active.main-search-input--empty .search-form-reset-axn
-{
-    display: none;
-}
-
-
-
-.applicator-snapon--applicator--main-search.applicator-snapon--applicator--main-menu.main-header-aside--disabled .main-search-func .search-term-crt-search---input-text
-{
-    padding-left: var(--content--spacing-x);
-}
-
-.applicator-snapon--applicator--main-search.applicator-snapon--applicator--main-menu.main-header-aside--enabled .main-search-func .search---cr
-{
-    padding-left: var(--spacing--toggle-allowance);
 }
 
 /* Icons */
@@ -1171,50 +1184,6 @@ input[type="submit"]
     background-color: transparent;
 }
 
-
-
-
-
-
-.applicator-snapon--applicator--main-search .main-search-func .search-term-crt-search-text-input
-{
-    opacity: 0;
-    transition: var(--transition--generic);
-    transition-property: opacity;
-    transition-duration: .3s;
-}
-
-.apl--main-search--active .main-search-func .search-term-crt-search-text-input
-{
-    opacity: 1;
-}
-
-
-
-/* Overlay Inactive */
-.main-search-func .search---ct
-{
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 100%;
-    opacity: 0;
-    
-    transition: opacity .3s, bottom 0s .3s;
-}
-
-/* Overlay Active */
-.main-search--active .search---ct
-{
-    bottom: 0%;
-    opacity: 1;
-    transition: opacity .3s;
-}
-
-.main-search-func .search---ct_cr
-{
-    padding-left: var(--spacing--toggle-allowance);
-}
 
 
 
