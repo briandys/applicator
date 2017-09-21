@@ -20,7 +20,7 @@ if ( ! function_exists( 'applicator_starter_content' ) ) {
                 // Add pages to primary navigation menu
                 'nav_menus' => [
                     'primary_navigation' => [
-                        'name' => __('Primary Navigation', 'id'),
+                        'name' => __( 'Primary Navigation', 'applicator' ),
                         'items' => [
                             'home_link',
                             'page_about',
