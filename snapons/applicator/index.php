@@ -76,6 +76,8 @@ if ( ! function_exists( 'applicator_snapon_applicator_styles' ) ) {
         add_editor_style( array( 'assets/css/editor-style.css' ) );
         
         wp_enqueue_style( 'applicator-snapon--applicator-style', get_theme_file_uri() . '/snapons/applicator/assets/css/applicator.css', array( 'applicator-style--default' ) );
+        
+        wp_enqueue_style( 'applicator-snapon--applicator-style--magazine-header', get_theme_file_uri() . '/snapons/applicator/assets/css/main-menu-func_magazine-header.css', array( 'applicator-snapon--applicator-style' ) );
 
     }
     add_action( 'wp_enqueue_scripts', 'applicator_snapon_applicator_styles', 0);

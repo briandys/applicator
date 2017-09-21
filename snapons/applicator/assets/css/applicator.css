@@ -294,7 +294,8 @@
 }
 
 /* Overlay Inactive */
-.applicator-snapon--applicator--main-menu .overlay--main-menu-func
+.applicator-snapon--applicator--main-menu .overlay--main-menu-func,
+.applicator-snapon--applicator--main-menu .overlay--go-content-nav-func
 {
     position: fixed;
     left: 0;
@@ -311,13 +312,21 @@
 }
 
 /* Overlay Active */
-.apl--main-menu--active .overlay--main-menu-func
+.apl--main-menu--active .overlay--main-menu-func,
+.apl--go-content-nav--active .overlay--go-content-nav-func
 {
     bottom: 0%;
     opacity: .75;
     transition: opacity .3s;
     
     z-index: 99;
+}
+
+.applicator-snapon--applicator--main-menu .overlay--go-content-nav-func
+{
+    
+    background-color: white;
+    background-color: var(--overlay--light);
 }
 
 
@@ -400,11 +409,17 @@ input[type="submit"],
 
 
 
-/*------------------ Tab Key Focusing ------------------*/
+/*------------------ Focusing, Tap Highlight ------------------*/
 .tab-key--inactive .input-text:focus,
 .tab-key--inactive .b:focus
 {
     outline: none;
+}
+
+.input-text,
+.b
+{
+    -webkit-tap-highlight-color: transparent;
 }
 
 
@@ -1380,7 +1395,6 @@ input[type="submit"]
     height: var(--dismiss-icon--height);
 }
 
-/* Overlay */
 .apl--main-menu--active
 {
     /* Prevent Scroll on Root */

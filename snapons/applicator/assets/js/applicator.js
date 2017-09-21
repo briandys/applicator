@@ -23,6 +23,8 @@
         tabKeyInactCss = 'tab-key--inactive',
         
         $page = $( '#page' ),
+        pageHeight = $page.height(),
+        
         $webProductContainer = $page.find( '.wbp---cr' ),
         $webProductCopyright = $( '#web-product-copyright' ),
         pageShortCss = 'page--short',
@@ -56,7 +58,7 @@
     
     
     
-    /*------------------------- Page Height -------------------------*/
+    /*------------------------- Page Length -------------------------*/
     ( function() {
         
         if ( $webProductCopyright.css( 'display' ) == 'none' ) {
@@ -69,7 +71,6 @@
         function pageHeightCSS() {
             
             copyrightHeight = $webProductCopyright.height();
-            pageHeight = $( '#page' ).height();
             
             if ( ( pageHeight ) <= ( window.innerHeight ) ) {
 
@@ -110,9 +111,13 @@
 			return;
 		}
         
+        funcName = 'go-content-nav-func';
+        
         $cp
-            .addClass( 'go-content-nav-func' )
+            .addClass( funcName )
             .addClass( funcTerm );
+        
+        overlayActivate( funcName );
         
         var $goCtNaviA = $( '#go-ct-navi---a' ),
             
@@ -174,9 +179,15 @@
 			return;
 		}
         
+        funcName = 'go-start-nav-func';
+        
         $cp
-            .addClass( 'go-start-nav-func' )
+            .addClass( funcName )
             .addClass( funcTerm );
+            
+        if ( ( pageHeight ) >= ( window.innerHeight * 2 ) ) {
+            overlayActivate( funcName );
+        }
         
         var $goStartNaviA = $( '#go-start-navi---a' ),
             
@@ -253,7 +264,7 @@
         // Add Icon to Button
         $goStartNaviAL = $goStartNaviA.find( '.go-start-navi---a_l' );
         $goStartNaviAL.append( $goStartNavArrowIco );
-    } // Go to Start Nav
+    }
     
     initGoStartNav( $( '#go-start-nav' ) );
     
@@ -277,8 +288,6 @@
         $cp
             .addClass( funcName )
             .addClass( funcTerm );
-        
-        
             
         overlayActivate( funcName );
         
@@ -447,12 +456,10 @@
 			return;
 		}
         
-        funcName = 'main-search-func',
-        
         $( '#main-header' )
             .find( $( '.main-header---cr' ) )
                 .children( '.search:first' )
-                    .attr( 'id', funcName );
+                    .attr( 'id', 'main-search-func' );
     }() );
     
     function initMainSearch( $cp ) {
@@ -461,11 +468,11 @@
 			return;
 		}
         
+        funcName = 'main-search-func';
+        
         $cp
             .addClass( funcName )
             .addClass( funcTerm );
-        
-        funcName = 'main-search-func';
         
         var mainSearchTogObjMu,
             mainSearchTogBtnMu,
