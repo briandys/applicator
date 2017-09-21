@@ -184,10 +184,6 @@
         $cp
             .addClass( funcName )
             .addClass( funcTerm );
-            
-        if ( ( pageHeight ) >= ( window.innerHeight * 2 ) ) {
-            overlayActivate( funcName );
-        }
         
         var $goStartNaviA = $( '#go-start-navi---a' ),
             
