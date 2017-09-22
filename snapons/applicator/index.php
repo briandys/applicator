@@ -12,8 +12,10 @@ Author URI: http://applicator.dysinelab.com
 
 
 // Functions
+/*
 $custom_fonts = get_parent_theme_file_path( '/snapons/applicator/inc/functions/custom-fonts.php' );
 if ( file_exists( $custom_fonts ) ) { require_once( $custom_fonts ); }
+*/
 
 $customizer = get_parent_theme_file_path( '/snapons/applicator/inc/functions/customizer.php' );
 if ( file_exists( $customizer ) ) { require_once( $customizer ); }

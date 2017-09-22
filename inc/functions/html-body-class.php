@@ -271,6 +271,12 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         else {
             echo ' '. $page_template_term. '--none';
         }
+        
+        
+        // Multisite
+        if ( is_multisite() && is_page_template( 'page-templates/multisite-directory.php' ) ) {
+            echo ' ' . 'view--multisite-directory';
+        }
     }
     add_action( 'applicator_hook_html_class', 'applicator_html_class');
 }

@@ -212,7 +212,7 @@ if ( is_multisite() ) {
                     while ( $the_query->have_posts() ) {
                         $the_query->the_post();
 
-                        get_template_part( 'content', 'multisite' );
+                        get_template_part( 'template-parts/content', 'multisite' );
                     }
                     $site_entries_ob_content = ob_get_contents();
                     ob_end_clean();

@@ -201,7 +201,7 @@ else {
                 // OB: Content None Content
                 // Entries Content
                 ob_start();
-                get_template_part( 'content', 'none' );
+                get_template_part( 'template-parts/content', 'none' );
                 $content_none_content = ob_get_contents();
                 ob_end_clean();
                 

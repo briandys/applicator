@@ -164,3 +164,8 @@ if ( file_exists( $icons ) ) { require_once( $icons ); }
 // Snap-ons
 $snapons = get_parent_theme_file_path( '/snapons.php' );
 if ( file_exists( $snapons ) ) { require_once( $snapons ); }
+
+
+// Custom Fonts
+$custom_fonts = get_parent_theme_file_path( '/inc/functions/custom-fonts.php' );
+if ( file_exists( $custom_fonts ) ) { require_once( $custom_fonts ); }
