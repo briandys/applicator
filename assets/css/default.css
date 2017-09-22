@@ -1,3 +1,156 @@
+/*------------------ CSS Variables ------------------*/
+:root
+{
+    /* Level 1 - Absolutes */
+    
+    /* Superhero Blue */
+    --superhero-blue--color: hsl(200, 100%, 50%) /* #00aaff */;
+    
+    /* Go Green Color */
+    --go-green--color: hsl(120, 82%, 44%) /* #14cc14 */;
+    --go-green-dark--color: hsl(120, 82%, 39%);
+    
+    /* Panda Blue */
+    --panda-blue--color: hsl(215, 100%, 45%) /* #005fe6 */;
+    --panda-blue-dark--color: hsl(215, 100%, 40%) /* #0054cc */;
+    
+    /* Chikka Orange */
+    --chikka-orange--color: hsl(30, 100%, 50%) /* #ff7f00 */;
+    
+    /* Record Red */
+    --record-red--color: hsl(0, 91%, 50%) /* #f20c0c */;
+    
+    /* Uhog Green */
+    --uhog-green--color: hsl(120, 82%, 38%);
+    --uhog-green-dark--color: hsl(120, 82%, 33%);
+    
+    /* Black */
+    --black--color: hsl(0, 0%, 0%);
+    
+    /* Gray */
+    --gray--color: hsl(0, 0%, 50%);
+    
+    /* White */
+    --white--color: hsl(0, 100%, 100%);
+    
+    /* Off White */
+    --off-white--color: hsla(0, 100%, 100%, .9);
+    
+    /* Off Black */
+    --off-black--color: hsl(0, 0%, 15%);
+    --off-black--color-a: hsla(0, 0%, 0%, .85);
+    
+    /* Transparent Black */
+    --transparent-black--color: hsla(0, 0%, 0%, .5);
+    
+    /* Transparent White */
+    --transparent-white--color: hsla(0, 100%, 100%, .5);
+    
+    /* Dash of Darkness */
+    --dash-of-darkness--color: hsl(0, 0%, 98%);
+    --dash-of-darkness--color-a: hsla(0, 0%, 0%, .0325);
+    
+    /* Black Eighth */
+    --black-eighth--color: hsla( 0, 0%, 0%, .125 );
+    
+    /* Black Fourth */
+    --black-fourth--color: hsla( 0, 0%, 0%, .25 );
+    
+    /* Black Half */
+    --black-half--color: hsla( 0, 0%, 0%, .5 );
+    --black-half--color-a: hsla( 0, 0%, 0%, .5 );
+    
+    /* White Eighth */
+    --white-eighth--color: hsla( 0, 0%, 98%);
+    --white-eighth--color: hsla( 0, 0%, 100%, .125 );
+    
+    /* White Fourth */
+    --white-fourth--color: hsla( 0, 0%, 100%, .25 );
+    
+    /* White Half */
+    --white-half--color: hsla( 0, 0%, 100%, .5 );
+    --white-half--color-a: hsla( 0, 0%, 100%, .5 );
+    
+    /* Dimensions */
+    --dimension--md: 3rem;
+    
+    
+    /* Framework */
+    --wbp-pri-color: var(--superhero-blue--color);
+    
+    --wbp-accent-pri-color: var(--panda-blue--color);
+    --wbp-accent-pri-color--dark: var(--panda-blue-dark--color);
+    
+    --wbp-accent-sec-color: var(--uhog-green--color);
+    --wbp-accent-sec-color--dark: var(--uhog-green-dark--color);
+    
+    --wbp-negative-pri-color: var(--record-red--color);
+    
+    --highlight-pri-color: var(--go-green--color);
+    
+    --light-max-color: white;
+    --gray-max-color: gray;
+    --dark-max-color: black;
+    
+    --placeholder-reverse-color: var(--transparent-white--color);
+    
+    --transition-duration: .125s;
+    --transition-easing: ease-in-out;
+    
+    /* Reverse Color Combo */
+    --pri-bg-reverse-color: var(--wbp-pri-color);
+    --pri-fg-reverse-color: var(--light-max-color);
+    
+    --sec-axn-bg-color: hsla(0, 0%, 75%, .25);
+    --sec-axn-fg-color: hsla(0, 0%, 0%, .75);
+    
+    
+    --link-generic--color: var(--panda-blue--color);
+    --link-generic--color--hover: var(--panda-blue-dark--color);
+    
+    
+    
+    /* Spacing */
+    --corner-radius--sm: .125em;
+    
+    --content-gutter--sm: 1rem;
+    --content-gutter--md: 2rem;
+    --content-gutter--lg: 4rem;
+    
+    --spacing--toggle-allowance: var(--elem-dimension--md);
+    
+    --spacing--x-gutter: 1rem;
+    --spacing--section-y-gutter: 1rem;
+    --spacing--content-y-gutter: .5em;
+    
+    --spacing--heading-y-gutter: 1em;
+    
+    
+    
+    
+    
+    
+    
+    /* Copyright */
+    --copyright-info-fg-color: var(--transparent-black--color);
+    
+    
+    
+    /* Aspect Ratio */
+    --aspect-ratio--16-9: calc( ( ( 9 / 16 ) * 100% ) );
+    --aspect-ratio--4-3: calc( ( ( 3 / 4 ) * 100% ) );
+    
+    --ratio--16-9: calc( (9/16) * 100 );
+    
+    /* Main Menu */
+    --main-menu-func--height: 100%;
+    --main-menu-func--max-width: 30rem;
+}
+
+
+
+
+
 /*------------------ Visually Hidden ------------------*/
 .visually-hidden,
 .go-ct-nav---h,

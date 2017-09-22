@@ -14,8 +14,6 @@ if ( ! function_exists( 'applicator_styles' ) ) {
         
         wp_enqueue_style( 'applicator-style--applicator', trailingslashit( get_theme_file_uri() ). 'assets/css/applicator.css', array( 'applicator-style--default' ) );
         
-        wp_enqueue_style( 'applicator-style--main-header--magazine', trailingslashit( get_theme_file_uri() ). 'assets/css/main-header--magazine.css', array( 'applicator-style--applicator' ) );
-        
         if ( is_multisite() && is_page_template( 'page-templates/multisite-directory.php' ) ) {
             wp_enqueue_style( 'applicator-style--multisite-directory', trailingslashit( get_theme_file_uri() ). 'assets/css/multisite-directory.css', array( 'applicator-style--applicator' ) );
         }

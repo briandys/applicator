@@ -176,22 +176,5 @@
 {
     padding-bottom: 0;
     
-    height: 12rem;
-}
-
-
-
-
-
-/*------------------ Viewport Width: 768 ------------------*/
-
-@media only screen and ( min-width: 48em )
-{
-
-    .wbp-main-media-banner---g
-    {
-        height: 20rem;
-
-    }
-
+    height: 75vh;
 }

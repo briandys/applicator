@@ -2171,7 +2171,7 @@ input[type="submit"]
 /*------------------ Raster Icons ------------------*/
 .icon--raster
 {
-    background-image: url( ../../../../assets/img/raster-icons.png );
+    background-image: url( ../img/raster-icons.png );
     background-size: auto 32px;
     background-repeat: no-repeat;
 }
