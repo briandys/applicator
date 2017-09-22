@@ -119,10 +119,10 @@ $post_classes = implode( ' ', $post_classes );
                             // Post Meta
                             $post_meta,
                             
-                            // Post Banner Visual | inc > tags > post-banner-visual.php
+                            // Post Banner Visual | inc/tags/post-banner-visual.php
                             applicator_post_banner_visual(),
                             
-                            // inc > tags > comments-actions-snippet-cp.php
+                            // inc/tags/comments-actions-snippet-cp.php
                             applicator_comments_actions_snippet(),
                         ),
                     ),
@@ -201,7 +201,7 @@ $post_classes = implode( ' ', $post_classes );
                 applicator_post_nav();
                 
                 // Sub-Post
-                if ( is_page_template( 'sub-pages.php' ) ) {
+                if ( is_page_template( 'page-templates/sub-pages.php' ) ) {
                     
                     $parent = $post->ID;
                     $args = array(

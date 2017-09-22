@@ -127,7 +127,7 @@ if ( file_exists( $comment_form ) ) { require_once( $comment_form ); }
 
 
 // Post Content
-$post_content = get_parent_theme_file_path( '/template-parts/post-content.php' );
+$post_content = get_parent_theme_file_path( '/inc/functions/post-content.php' );
 if ( file_exists( $post_content ) ) { require_once( $post_content ); }
 
 

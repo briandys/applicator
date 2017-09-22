@@ -20,7 +20,7 @@ if ( ! function_exists( 'applicator_snapon_multisite_directory_html_classes' ) )
         
         echo ' ' . $snapon_name;
         
-        if ( is_multisite() && is_page_template( 'multisite-directory.php' ) ) {
+        if ( is_multisite() && is_page_template( 'page-templates/multisite-directory.php' ) ) {
             echo ' ' . 'view--multisite-directory';
         }
     }
