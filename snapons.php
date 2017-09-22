@@ -1,4 +1,4 @@
 <?php
 
 // Applicator
-require_once get_template_directory() . '/snapons/applicator/index.php';
+// require_once get_template_directory() . '/snapons/applicator/index.php';

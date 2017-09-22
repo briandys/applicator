@@ -273,12 +273,52 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         }
         
         
+        // Customizer Colors
+        $colors = applicator_sanitize_colorscheme( get_theme_mod( 'colorscheme', 'default' ) );
+        echo ' '. 'applicator--theme--customizer-colors--'. $colors;
+        
+        
         // Multisite
         if ( is_multisite() && is_page_template( 'page-templates/multisite-directory.php' ) ) {
             echo ' ' . 'view--multisite-directory';
         }
     }
     add_action( 'applicator_hook_html_class', 'applicator_html_class');
+}
+
+
+// HTML Classes
+if ( ! function_exists( 'applicator_functionalities_html_classes' ) ) {
+    function applicator_functionalities_html_classes() {
+        
+        // Variables
+        $snapon_name = 'applicator-snapon--applicator';
+        
+        echo ' ' . $snapon_name;
+        
+        // Array of Class Names
+        $r = array(
+            
+            // Functionalities
+            'go-content-nav',
+            'main-search',
+            'main-menu',
+            'easy-access-nav',
+            'sub-nav',
+            'go-start-nav',
+            
+            // Themes
+            'theme--table--stroked',
+            'theme--avatar--circular',
+        ); 
+        
+        
+        // Functionalities, Themes
+        foreach ( ( array ) $r as $class_name ) {
+            echo ' '. $snapon_name. '--'. $class_name;
+        }
+    }
+    add_action( 'applicator_hook_html_class', 'applicator_functionalities_html_classes');
 }
 
 

@@ -15,14 +15,14 @@ Author URI: http://applicator.dysinelab.com
 /*
 $custom_fonts = get_parent_theme_file_path( '/snapons/applicator/inc/functions/custom-fonts.php' );
 if ( file_exists( $custom_fonts ) ) { require_once( $custom_fonts ); }
-*/
+
 
 $customizer = get_parent_theme_file_path( '/snapons/applicator/inc/functions/customizer.php' );
 if ( file_exists( $customizer ) ) { require_once( $customizer ); }
 
 $customizer_custom_colors = get_parent_theme_file_path( '/snapons/applicator/inc/functions/customizer-custom-colors.php' );
 if ( file_exists( $customizer_custom_colors ) ) { require_once( $customizer_custom_colors ); }
-
+*/
 
 
 
@@ -31,6 +31,7 @@ if ( file_exists( $customizer_custom_colors ) ) { require_once( $customizer_cust
 if ( ! function_exists( 'applicator_snapon_applicator_html_classes' ) ) {
     function applicator_snapon_applicator_html_classes() {// Terms
         
+        /*
         // Variables
         $snapon_name = 'applicator-snapon--applicator';
         
@@ -57,11 +58,13 @@ if ( ! function_exists( 'applicator_snapon_applicator_html_classes' ) ) {
         foreach ( ( array ) $r as $class_name ) {
             echo ' '. $snapon_name. '--'. $class_name;
         }
+        */
         
-        
+        /*
         // Customizer Colors
         $colors = applicator_snapon_applicator_sanitize_colorscheme( get_theme_mod( 'colorscheme', 'default' ) );
         echo ' '. $snapon_name. '--'. 'theme--customizer-colors--'. $colors;
+        */
     
     }
     add_action( 'applicator_hook_html_class', 'applicator_snapon_applicator_html_classes');
@@ -70,7 +73,7 @@ if ( ! function_exists( 'applicator_snapon_applicator_html_classes' ) ) {
 
 
 
-
+/*
 // Styles
 if ( ! function_exists( 'applicator_snapon_applicator_styles' ) ) {
     function applicator_snapon_applicator_styles() {
@@ -84,11 +87,12 @@ if ( ! function_exists( 'applicator_snapon_applicator_styles' ) ) {
     }
     add_action( 'wp_enqueue_scripts', 'applicator_snapon_applicator_styles', 0);
 }
+*/
 
 
 
 
-
+/*
 // Scripts
 if ( ! function_exists( 'applicator_snapon_applicator_scripts' ) ) {
     function applicator_snapon_applicator_scripts() {
@@ -130,3 +134,4 @@ if ( ! function_exists( 'applicator_snapon_applicator_scripts' ) ) {
     }
     add_action( 'wp_enqueue_scripts', 'applicator_snapon_applicator_scripts' );
 }
+*/

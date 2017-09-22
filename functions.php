@@ -169,3 +169,13 @@ if ( file_exists( $snapons ) ) { require_once( $snapons ); }
 // Custom Fonts
 $custom_fonts = get_parent_theme_file_path( '/inc/functions/custom-fonts.php' );
 if ( file_exists( $custom_fonts ) ) { require_once( $custom_fonts ); }
+
+
+// Customizer
+$customizer = get_parent_theme_file_path( '/inc/functions/customizer.php' );
+if ( file_exists( $customizer ) ) { require_once( $customizer ); }
+
+
+// Customizer Custom Colors
+$customizer_custom_colors = get_parent_theme_file_path( '/inc/functions/customizer-custom-colors.php' );
+if ( file_exists( $customizer_custom_colors ) ) { require_once( $customizer_custom_colors ); }
