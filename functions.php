@@ -26,14 +26,14 @@ $starter_content = get_parent_theme_file_path( '/inc/functions/starter-content.p
 if ( file_exists( $starter_content ) ) { require_once( $starter_content ); }
 
 
-// Styles
-$styles = get_parent_theme_file_path( '/inc/styles.php' );
-if ( file_exists( $styles ) ) { require_once( $styles ); }
+// Default Styles and Scripts
+$default_styles_scripts = get_parent_theme_file_path( '/inc/styles-scripts--default.php' );
+if ( file_exists( $default_styles_scripts ) ) { require_once( $default_styles_scripts ); }
 
 
-// Scripts
-$scripts = get_parent_theme_file_path( '/inc/scripts.php' );
-if ( file_exists( $scripts ) ) { require_once( $scripts ); }
+// Enhancements Styles and Scripts
+$enhancements_styles_scripts = get_parent_theme_file_path( '/inc/styles-scripts--enhancements.php' );
+if ( file_exists( $enhancements_styles_scripts ) ) { require_once( $enhancements_styles_scripts ); }
 
 
 // Main Nav

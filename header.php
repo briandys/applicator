@@ -235,8 +235,8 @@
                 
                 // OB: Hook After Main Nav
                 ob_start();
-                applicator_hook_after_main_nav();
-                $hook_after_main_nav_ob_content = ob_get_contents();
+                applicator_hook_after_main_search();
+                $hook_after_main_search_ob_content = ob_get_contents();
                 ob_end_clean();
                 
                 
@@ -265,11 +265,11 @@
                             // Main Nav
                             applicator_main_nav(),
                             
-                            // Hook After Main Nav
-                            $hook_after_main_nav_ob_content,
-                            
                             // Search
                             $search_ob_content,
+                            
+                            // Hook After Main Search
+                            $hook_after_main_search_ob_content,
                             
                             // Web Product Main Media Banner
                             $web_product_main_media_banner_obj,

@@ -1,16 +1,40 @@
-<?php // Scripts
+<?php // Default Styles and Scripts
 
 
-// Default Classes
-if ( ! function_exists( 'applicator_scripts_inline' ) ) {
-    function applicator_scripts_inline() { ?>
+
+
+
+/*------------------------ Default Applicator Styles ------------------------*/
+if ( ! function_exists( 'applicator_default_styles' ) ) {
+    
+    function applicator_default_styles() {
+        
+        add_editor_style( array( 'assets/css/editor-style.css' ) );
+        
+        wp_enqueue_style( 'applicator-style', get_stylesheet_uri() );
+        
+        wp_enqueue_style( 'applicator-style--h5bp', get_theme_file_uri( '/assets/css/h5bp.css' )  );
+        
+        wp_enqueue_style( 'applicator-style--default', get_theme_file_uri( '/assets/css/default.css' ) );
+    }
+    add_action('wp_enqueue_scripts', 'applicator_default_styles', 0);
+}
+
+
+
+
+
+/*------------------------ Default Applicator Inline Scripts ------------------------*/
+if ( ! function_exists( 'applicator_inline_scripts' ) ) {
+    
+    function applicator_inline_scripts() { ?>
         
         <script type="text/javascript">
             
             
-            // JavaScript Debounce Function
+            /*------------------------ Debounce ------------------------*/
             // https://davidwalsh.name/javascript-debounce-function
-            function debounce(func, wait, immediate) {
+            function debounce( func, wait, immediate ) {
                 var timeout;
                 return function () {
                     var context = this, args = arguments;
@@ -27,7 +51,7 @@ if ( ! function_exists( 'applicator_scripts_inline' ) ) {
             var applicatorDebounceTimeout = 250;
             
             
-            // Test if inline SVGs are supported
+            /*------------------------ SVG Feature Detection ------------------------*/
             // https://github.com/Modernizr/Modernizr/
             function supportsInlineSVG() {
                 var div = document.createElement( 'div' );
@@ -36,19 +60,20 @@ if ( ! function_exists( 'applicator_scripts_inline' ) ) {
             }
             
             
-            // CSS Variables Feature Detection
+            /*------------------------ CSS Variables Feature Detection ------------------------*/
             // https://stackoverflow.com/a/26633844
             function supportCssVariables() {
               return window.CSS && window.CSS.supports && window.CSS.supports('--var', 0);
             }
 
 
+            /*------------------------ HTMl CSS Classes ------------------------*/
             ( function( html ) {
                 
                 // Replace no-js with js if JavaScript is supported
                 html.className = html.className.replace( /\bno-js\b/,'js' );
 
-                // DOM Unready CSS inserted via JS
+                // DOM Unready (will be removed on DOM ready)
                 html.classList.add( 'dom--unready' );
                 
                 // Replace no-svg with svg if supported
@@ -112,13 +137,16 @@ if ( ! function_exists( 'applicator_scripts_inline' ) ) {
         </script>
     
     <?php }
-    add_action( 'wp_head', 'applicator_scripts_inline', 0 );
+    add_action( 'wp_head', 'applicator_inline_scripts', 0 );
 }
 
 
-// Enqueue Scripts
-if ( ! function_exists( 'applicator_scripts' ) ) {
-    function applicator_scripts() {
+
+
+
+/*------------------------ Default Applicator Scripts ------------------------*/
+if ( ! function_exists( 'applicator_default_scripts' ) ) {
+    function applicator_default_scripts() {
         
         
         // Modernizr
@@ -138,10 +166,6 @@ if ( ! function_exists( 'applicator_scripts' ) ) {
         wp_enqueue_script( 'applicator-script--plugins', get_theme_file_uri( '/assets/js/plugins.js' ), array( 'jquery' ), '1.0.0', true );
         
         
-        // Easing
-        wp_enqueue_script( 'applicator-script--easing', get_theme_file_uri( '/assets/js/jquery.easing.1.3.min.js' ), array( 'jquery' ), '0.0.1', true );
-        
-        
         // Global
         wp_enqueue_script( 'applicator-script--global', get_theme_file_uri( '/assets/js/global.js' ), array( 'jquery', 'applicator-script--plugins' ), '3.8.2', true );
         
@@ -152,48 +176,5 @@ if ( ! function_exists( 'applicator_scripts' ) ) {
         }
             
     }
-    add_action( 'wp_enqueue_scripts', 'applicator_scripts' );
-}
-
-
-// Scripts
-if ( ! function_exists( 'applicator_scripts_functionalities' ) ) {
-    function applicator_scripts_functionalities() {
-        
-        wp_enqueue_script( 'applicator-script--functionalities', get_theme_file_uri( '/assets/js/applicator.js' ), array( 'jquery', 'applicator-script--global' ), '25.6.0', true );
-        
-        // SVG Icons
-        $arrow_icon = applicator_get_svg( array( 'icon' => 'arrow-icon', 'fallback' => true, ) );
-        $arrow_up_2_icon = applicator_get_svg( array( 'icon' => 'arrow-up-2-icon', 'fallback' => true, ) );
-        $burger_icon = applicator_get_svg( array( 'icon' => 'burger-icon', 'fallback' => true, ) );
-        $dismiss_icon = applicator_get_svg( array( 'icon' => 'dismiss-icon', 'fallback' => true, ) );
-        $search_icon = applicator_get_svg( array( 'icon' => 'search-icon', 'fallback' => true, ) );
-        
-        // Go to Start Nav
-        $applicator_l10n['goStartNavArrowIco'] = $arrow_up_2_icon;
-        wp_localize_script( 'applicator-script--functionalities', 'aplDataGoStartNav', $applicator_l10n );
-        
-        // Main Menu
-        $applicator_l10n['mainMenuShowL'] = __( 'Show Menu', 'applicator' );
-        $applicator_l10n['mainMenuHideL'] = __( 'Hide Menu', 'applicator' );
-        $applicator_l10n['mainMenuShowIco'] = $burger_icon;
-        $applicator_l10n['mainMenuHideIco'] = $dismiss_icon;
-        wp_localize_script( 'applicator-script--functionalities', 'aplDataMainMenu', $applicator_l10n );
-        
-        // Main Search
-        $applicator_l10n['mainSearchShowL'] = __( 'Show Search', 'applicator' );
-        $applicator_l10n['mainSearchHideL'] = __( 'Hide Search', 'applicator' );
-        $applicator_l10n['mainSearchTogCtrlSearchIco'] = $search_icon;
-        $applicator_l10n['mainSearchTogDismissIco'] = $dismiss_icon;
-        $applicator_l10n['mainSearchSearchIco'] = $search_icon;
-        $applicator_l10n['mainSearchDismissIco'] = $dismiss_icon;
-        wp_localize_script( 'applicator-script--functionalities', 'aplDataArbitNav', $applicator_l10n );
-        
-        // Sub-Navigation
-        $applicator_l10n['subNavTogBtnShowL']    = __( 'Show Sub-Nav', 'applicator' );
-		$applicator_l10n['subNavTogBtnHideL']    = __( 'Hide Sub-Nav', 'applicator' );
-        $applicator_l10n['subNavTogBtnIco']      = $arrow_icon;
-        wp_localize_script( 'applicator-script--functionalities', 'aplDataSubNav', $applicator_l10n );
-    }
-    add_action( 'wp_enqueue_scripts', 'applicator_scripts_functionalities' );
+    add_action( 'wp_enqueue_scripts', 'applicator_default_scripts' );
 }
