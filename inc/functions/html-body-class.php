@@ -287,41 +287,6 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
 }
 
 
-// HTML Classes
-if ( ! function_exists( 'applicator_functionalities_html_classes' ) ) {
-    function applicator_functionalities_html_classes() {
-        
-        // Variables
-        $snapon_name = 'applicator-snapon--applicator';
-        
-        echo ' ' . $snapon_name;
-        
-        // Array of Class Names
-        $r = array(
-            
-            // Functionalities
-            'go-content-nav',
-            'main-search',
-            'main-menu',
-            'easy-access-nav',
-            'sub-nav',
-            'go-start-nav',
-            
-            // Themes
-            'theme--table--stroked',
-            'theme--avatar--circular',
-        ); 
-        
-        
-        // Functionalities, Themes
-        foreach ( ( array ) $r as $class_name ) {
-            echo ' '. $snapon_name. '--'. $class_name;
-        }
-    }
-    add_action( 'applicator_hook_html_class', 'applicator_functionalities_html_classes');
-}
-
-
 // Body Class
 if ( ! function_exists( 'applicator_body_class' ) ) {
     function applicator_body_class( $classes ) {

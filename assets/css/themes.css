@@ -1,0 +1,63 @@
+/*------------------ Applicator Table Theme - Stroked ------------------*/
+.applicator--theme--table--stroked
+{
+    --table-stroke--color--max: hsla( 0, 0%, 0%, .25 );
+    --table-stroke--color--med: hsla( 0, 0%, 0%, .125 );
+    --table-stroke--color--min: hsla( 0, 0%, 0%, .0625 );
+    --table-line--md: 2px solid var(--table-stroke--color--med);
+    --table-line--sm: 1px solid var(--table-stroke--color--min);
+}
+
+.applicator--theme--table--stroked .post-content tbody
+{
+    border: var(--table-line--md);
+    border-left: 0;
+    border-right: 0;
+}
+
+.applicator--theme--table--stroked .post-content tfoot
+{
+    border: var(--table-line--md);
+    border-left: 0;
+    border-right: 0;
+}
+
+/* Table Header */
+.applicator--theme--table--stroked .post-content th
+{
+    border: 0;
+    
+    text-align: left;
+    vertical-align: bottom;
+}
+
+.applicator--theme--table--stroked .post-content td
+{
+    border: var(--table-line--sm);
+    
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.applicator--theme--table--stroked .post-content td:first-child
+{
+    border-left: 0;
+}
+
+/* Table Footer */
+.applicator--theme--table--stroked .post-content tfoot
+{
+    border-top: 0;
+    border-color: var(--table-line--md);
+}
+
+
+
+
+/*------------------ Applicator Theme - Avatar - Circular ------------------*/
+.applicator--theme--avatar--circular .author-avatar---a_l,
+.applicator--theme--avatar--circular .commenter-avatar---a_l
+{
+    border-radius: 50%;
+    overflow: hidden;
+}

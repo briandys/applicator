@@ -74,7 +74,7 @@
     background-color: transparent;
 }
 
-.applicator-snapon--applicator--easy-access-nav .main-nav a
+.applicator--easy-access-nav .main-nav a
 {
     color: white;
 }
@@ -101,7 +101,7 @@
     color: var(--sub-nav-func-branches--toggle-button--fg-color);
 }
 
-.applicator-snapon--applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul
+.applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul
 {
     justify-content: center;
 }
