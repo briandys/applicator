@@ -22,11 +22,11 @@ if ( ! function_exists( 'applicator_snapon_styles_scripts' ) ) {
         /*
         // Themes
         wp_enqueue_style( 'applicator-snapon--style--themes', get_theme_file_uri( '/snap-on/assets/css/themes.css' ), array( 'applicator-snapon--style' ) );
-*/
+
         
         // Main Header
         wp_enqueue_style( 'applicator-snapon--style--main-header', get_theme_file_uri( '/snap-on/assets/css/main-header.css' ), array( 'applicator-snapon--style' ) );
-        
+        */
     }
     add_action( 'wp_enqueue_scripts', 'applicator_snapon_styles_scripts', 0);
 

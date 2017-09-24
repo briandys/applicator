@@ -8,8 +8,8 @@ function applicator_hook_html_class() {
 
 
 //  header.php
-function applicator_hook_after_main_search() {
-    do_action( 'applicator_hook_after_main_search' );
+function applicator_hook_after_main_nav() {
+    do_action( 'applicator_hook_after_main_nav' );
 }
 
 

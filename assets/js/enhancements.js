@@ -407,8 +407,8 @@
 			return;
 		}
         
-        $( '#main-header' )
-            .find( $( '.main-header---cr' ) )
+        $( '#main-actions' )
+            .find( $( '.main-actions---ct_cr' ) )
                 .children( '.search:first' )
                     .attr( 'id', 'main-search-func' );
     }() );
