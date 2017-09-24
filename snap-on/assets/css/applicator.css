@@ -1,10 +1,15 @@
 /*------------------ Visually Hidden ------------------*/
 .visually-hidden,
+
+/* Page */
 .page .entry-nav,
 .page .post-published-modified,
 .page .published-post-author,
 .page .comments-actions-snippet,
-.page .comment-md
+.page .comment-md,
+
+/* Page Nav */
+.entries---hr .page-nav
 {
     position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }

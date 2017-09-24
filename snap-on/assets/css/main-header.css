@@ -26,11 +26,6 @@
 
 
 /*------------------ Web Product Main Info ------------------*/
-.web-product-main-logo--enabled .web-product-main-info
-{
-    position: absolute;
-}
-
 .web-product-main-info
 {
     position: absolute;
@@ -43,12 +38,6 @@
 .web-product-main-logo--enabled .wbp-main-info---ct_cr
 {
     position: relative;
-}
-
-.web-product-main-logo--enabled .web-product-main-info
-
-{
-    margin-left: 0;
 }
 
 

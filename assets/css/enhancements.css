@@ -735,16 +735,6 @@ input[type="submit"],
 
 
 
-/*------------------ Post Banner Visual ------------------*/
-.theme--parent .post-banner-vis---g
-{
-    background-image: none !important;
-}
-
-
-
-
-
 /*------------------ Edit Post ------------------*/
 .edit-post-action
 {
@@ -1829,9 +1819,9 @@ input[type="submit"]
 }
 
 /* With Main Search and No Main Menu and No Logo */
-.applicator--main-search.applicator--main-search.main-header-aside--disabled.web-product-main-logo--disabled .web-product-main-info
+.applicator--main-search.main-header-aside--disabled.web-product-main-logo--disabled .web-product-main-info
 {
-    padding-left: 1rem;
+    padding-left: var(--elem-dimension--md);
     padding-right: var(--elem-dimension--md);
 }
 
@@ -1842,7 +1832,7 @@ input[type="submit"]
 }
 
 /* With Main Logo */
-.web-product-main-logo--enabled.main-header-aside--disabled .web-product-main-info
+.web-product-main-logo--enabled .web-product-main-info
 {
     padding-left: var(--component--spacing-x);
 }
