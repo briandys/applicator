@@ -15,16 +15,6 @@ if ( ! function_exists( 'applicator_enhancements_styles_scripts' ) ) {
         wp_enqueue_style( 'applicator-style--enhancements', get_theme_file_uri( '/assets/css/enhancements.css' ), array( 'applicator-style--default' ) );
         
         
-        // Themes
-        wp_enqueue_style( 'applicator-style--themes', get_theme_file_uri( '/assets/css/themes.css' ), array( 'applicator-style--enhancements' ) );
-        
-        
-        // Multisite Directory
-        if ( is_multisite() && is_page_template( 'page-templates/multisite-directory.php' ) ) {
-            wp_enqueue_style( 'applicator-style--multisite-directory', get_theme_file_uri( '/assets/css/multisite-directory.css' ), array( 'applicator-style--enhancements' ) );
-        }
-        
-        
         /*------------ Scripts ------------*/
         
         

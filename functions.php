@@ -182,5 +182,5 @@ if ( file_exists( $customizer_custom_colors ) ) { require_once( $customizer_cust
 
 
 // Snap-on
-$snapon = get_parent_theme_file_path( '/snap-ons/applicator/index.php' );
+$snapon = get_parent_theme_file_path( '/snap-on/index.php' );
 if ( file_exists( $snapon ) ) { require_once( $snapon ); }
