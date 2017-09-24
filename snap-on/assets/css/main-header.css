@@ -198,10 +198,6 @@
     .wbp-main-media-banner---g
     {
         min-height: 10rem;
-    
-        filter: blur( 4px );
-
-        transform: scale( 1.05 );
 
     }
 
