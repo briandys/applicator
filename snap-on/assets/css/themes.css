@@ -1,3 +1,23 @@
+/*------------------ Variables ------------------*/
+.applicator--themes
+{
+    /*------------ Level 3 - Specifics ------------*/
+    
+    --category--border: 1px solid var(--accent-color--pri);
+    --category-item--spacing: calc( var(--content--spacing) / 2 );
+    --category-item--spacing-x: calc( var(--content--spacing-x) / 2 );
+    
+    --post-published-date-and-time-stamp--border: 1px solid var(--color--transparent-black);
+    --post-published-date-and-time-stamp--fg-color: var(--color--transparent-black);
+    
+    --note--fg-color: var(--color--transparent-black);
+    --note-font-size: .875rem;
+}
+
+
+
+
+
 /*------------------ Visually Hidden ------------------*/
 .visually-hidden,
 
@@ -32,7 +52,8 @@
 
 /*------------------ Active Area (AA) ------------------*/
 .active-area,
-.applicator--theme--categories .post-categories a
+.applicator--theme--categories .post-categories a,
+.applicator--theme--comments-count-action .comments-count---txt
 {
     display: inline-flex;
     justify-content: center;
@@ -115,11 +136,11 @@
 
 
 
-/*------------------ Applicator Theme - Note - Subtle ------------------*/
-.applicator--theme--note--subtle .note
+/*------------------ Applicator Theme - Note ------------------*/
+.applicator--theme--note .note
 {
     color: var(--note--fg-color);
-    font-size: var(--note--);
+    font-size: var(--note--font-size);
 }
 
 
@@ -127,21 +148,36 @@
 
 
 /*------------------ Applicator Theme - Categories ------------------*/
-.applicator--theme--categories .post-categories li
+.applicator--theme--categories .apl-categories .post-categories
+{
+    padding-left: var(--category-item--spacing-x);
+    padding-right: var(--category-item--spacing-x);
+}
+
+.applicator--theme--categories .apl-categories .post-categories li
 {
     display: inline-block;
     vertical-align: middle;
     
-    padding-left: var(--object--spacing-x);
-    padding-right: var(--object--spacing-x);
+    padding-left: calc( var(--content--spacing-x) / 2 );
+    padding-right: calc( var(--content--spacing-x) / 2 );
+    padding-top: var(--content--spacing-y);
+    padding-bottom: var(--content--spacing-y);
 }
 
-.applicator--theme--categories .post-categories a
+.applicator--theme--categories .apl-categories a
 {    
     padding-left: var(--content--spacing-x);
     padding-right: var(--content--spacing-x);
     
-    border: 1px solid black;
+    border: var(--category--border);
+}
+
+.applicator--theme--categories .post-categories
+{
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 
@@ -154,6 +190,11 @@
     display: block;
     
     text-align: center;
+}
+
+.applicator--theme--post-published-date-and-time-stamp .post-published-date-stamp-dtstamp .day---txt
+{
+    font-weight: bold;
 }
 
 .applicator--theme--post-published-date-and-time-stamp .post-published-date-stamp-dtstamp .month---txt
@@ -169,7 +210,12 @@
 
 .applicator--theme--post-published-date-and-time-stamp .post-pub-d-stamp-dtstamp---a
 {
-    color: gray;
+    color: var(--post-published-date-and-time-stamp--fg-color);
+}
+
+.applicator--theme--post-published-date-and-time-stamp .post-pub-d-stamp-dtstamp---a:hover
+{
+    text-decoration: none;
 }
 
 .applicator--theme--post-published-date-and-time-stamp .post-pub-d-stamp-dtstamp---a_l
@@ -180,7 +226,7 @@
     
     line-height: 1;
     
-    border: 1px solid gray;
+    border: var(--post-published-date-and-time-stamp--border);
 }
 
 
@@ -188,10 +234,9 @@
 
 
 /*------------------ Entry Nav ------------------*/
-.applicator--theme--entry-nav .entry-nav---grp
+.applicator--theme--entry-nav .entry-navi
 {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
 }
 
@@ -224,4 +269,33 @@
     
     background-color: var(--edit-post-action--bg-color);
     color: var(--edit-post-action--fg-color);    
+}
+
+
+
+
+
+/*------------------ Comments Count Action ------------------*/
+.applicator--theme--comments-count-action .comments-count-axn---l
+{
+    display: inline-flex;
+    align-items: center;
+}
+
+.applicator--theme--comments-count-action .comments-count---txt
+{
+    order: 1;
+    
+    padding: calc( var(--content--spacing-y) / 3 ) calc( var(--content--spacing-x) / 1.5 );
+    
+    min-width: calc( var(--active-area--width--md) / 2 );
+    min-height: calc( var(--active-area--width--md) / 2 );
+    
+    background-color: var(--accent-color--pri);
+    color: var(--color--white);
+}
+
+.applicator--theme--comments-count-action .comment---txt
+{
+    margin-right: var(--glabel--between--spacing);;
 }

@@ -53,10 +53,16 @@
     
     
     /* Transparent Black */
-    --transparent-black--color: hsla(0, 0%, 0%, .5);
+    --color--transparent-black: hsla(0, 0%, 0%, .5);
+    
     
     /* Transparent White */
-    --transparent-white--color: hsla(0, 100%, 100%, .5);
+    --color--transparent-white: hsla(0, 100%, 100%, .5);
+    
+    
+    
+    
+    
     
     /* Dash of Darkness */
     --dash-of-darkness--color: hsl(0, 0%, 98%);
@@ -104,7 +110,7 @@
     --gray-max-color: gray;
     --dark-max-color: black;
     
-    --placeholder-reverse-color: var(--transparent-white--color);
+    --placeholder-reverse-color: var(--color--transparent-white);
     
     --transition-duration: .125s;
     --transition-easing: ease-in-out;
@@ -144,7 +150,7 @@
     
     
     /* Copyright */
-    --copyright-info-fg-color: var(--transparent-black--color);
+    --copyright-info-fg-color: var(--color--transparent-black);
     
     
     

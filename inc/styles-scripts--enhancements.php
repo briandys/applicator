@@ -90,13 +90,16 @@ if ( ! function_exists( 'applicator_functionalities_html_classes' ) ) {
             'go-start-nav',
             
             // Themes
+            'themes',
             'theme--table--stroked',
             'theme--avatar--circular',
-            'theme--note--subtle',
+            
+            'theme--note',
             'theme--categories',
             'theme--post-published-date-and-time-stamp',
             'theme--entry-nav',
             'theme--edit-action',
+            'theme--comments-count-action',
         ); 
         
         

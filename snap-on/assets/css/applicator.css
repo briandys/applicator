@@ -12,7 +12,10 @@
 .entries---hr .page-nav,
 .entry---hr .entry-nav,
 
-.edit-post-action .post-title---txt
+.edit-post-action .post-title---txt,
+
+.post-header-aside .comment-creation-ability,
+.comments-population--empty .post-header-aside .comments-population
 {
     position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -90,7 +93,8 @@
 
 /*------------ Juxtapose Post Published and Modified and Post Author ------------*/
 .post-published-modified,
-.published-post-author
+.published-post-author,
+.apl-post-categories
 {
     display: inline-block;
     vertical-align: middle;

@@ -28,7 +28,7 @@
     --fg-color--reverse: var(--color--white);
     
     /* Faint Color */
-    --faint-color--pri: var(--transparent-black--color);
+    --faint-color--pri: var(--color--transparent-black);
     
     /* Border Color */
     --border-color: var(--black-half--color-a);
