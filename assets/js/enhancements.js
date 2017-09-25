@@ -114,10 +114,12 @@
         
 
         // Deactivate upon presseing ESC Key
-        $document.on( 'keyup.applicator', function ( e ) {
-            if ( $cp.hasClass( goCtNavActCss ) && e.keyCode == 27 ) {
-                goCtNavDeactivate();
-            }
+        $window.load( function() {
+            $document.on( 'keyup.applicator', function ( e ) {
+                if ( $cp.hasClass( goCtNavActCss ) && e.keyCode == 27 ) {
+                    goCtNavDeactivate();
+                }
+            } );
         } );
         
     } // Go to Content Nav
@@ -386,10 +388,12 @@
         } );
 
         // Deactivate upon presseing ESC Key
-        $document.on( 'keyup.applicator', function ( e ) {
-            if ( $cp.hasClass( mainMenuActCss ) && e.keyCode == 27 ) {
-                mainMenuDeactivate();
-            }
+        $window.load( function() {
+            $document.on( 'keyup.applicator', function ( e ) {
+                if ( $cp.hasClass( mainMenuActCss ) && e.keyCode == 27 ) {
+                    mainMenuDeactivate();
+                }
+            } );
         } );
         
     } // Main Menu
@@ -611,10 +615,12 @@
         } );
 
         // Deactivate upon presseing ESC Key
-        $document.on( 'keyup.applicator', function ( e ) {
-            if ( $cp.hasClass( mainSearchActCss ) && e.keyCode == 27 ) {
-                mainSearchDeactivate();
-            }
+        $window.load( function() {
+            $document.on( 'keyup.applicator', function ( e ) {
+                if ( $cp.hasClass( mainSearchActCss ) && e.keyCode == 27 ) {
+                    mainSearchDeactivate();
+                }
+            } );
         } );
         
         // Add Icons to Buttons
@@ -947,10 +953,12 @@
         
         
         // Deactivate upon presseing ESC Key
-        $document.on( 'keyup.applicator', function ( e ) {
-            if ( $html.hasClass( aplSubNavActCss ) && e.keyCode == 27 ) {
-                subNavAllDeactivate();
-            }
+        $window.load( function() {
+            $document.on( 'keyup.applicator', function ( e ) {
+                if ( $html.hasClass( aplSubNavActCss ) && e.keyCode == 27 ) {
+                    subNavAllDeactivate();
+                }
+            } );
         } );
         
     }
@@ -1058,7 +1066,7 @@
     
     
     
-    // ------------------------- DOM Ready
+    /*------------------------ DOM Ready ------------------------*/
     $document.ready( function() {
 		
         
@@ -1232,7 +1240,7 @@
 
             // ------------ Wrap text nodes in <span>
             // https://stackoverflow.com/a/18727318
-            $( '.post-content---ct_cr, .data-format' )
+            $( '.data-format' )
             .contents()
             .filter( function() {
 
@@ -1259,7 +1267,14 @@
             */
 
          } )();
+    } );
+    
+    
+    
         
+    
+    /*------------------------ DOM Ready and Images Loaded ------------------------*/
+    $window.load( function() {
         
         // Page Length
         ( function() {
@@ -1297,7 +1312,6 @@
 
             window.addEventListener( 'resize', pageHeightDebounce );
         }() );
-        
     } );
 
 })( jQuery );

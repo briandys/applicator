@@ -11,7 +11,8 @@
 				var visibility = function() {
 					if ( 'custom' === setting.get() ) {
 						control.container.slideDown( 180 );
-					} else {
+					}
+                    else {
 						control.container.slideUp( 180 );
 					}
 				};
@@ -21,4 +22,5 @@
 			});
 		});
 	});
+
 } )( jQuery );

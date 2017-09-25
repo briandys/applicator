@@ -2,6 +2,7 @@
 // From twentyseventeen
 
 if ( ! function_exists( 'applicator_customizer_color_patterns' ) ) {
+    
     function applicator_customizer_color_patterns() {
 
         $hue = absint( get_theme_mod( 'colorscheme_hue', 250 ) );
@@ -12,7 +13,9 @@ if ( ! function_exists( 'applicator_customizer_color_patterns' ) ) {
 
         $css = '
 
-        :root
+        
+
+        .applicator--theme--customizer-colors--custom
         {
             --main-header--bg-color: hsl( '. $hue. ', '. $saturation. ', 50% );
         }
@@ -26,4 +29,5 @@ if ( ! function_exists( 'applicator_customizer_color_patterns' ) ) {
 
         return apply_filters( 'applicator_customizer_color_patterns', $css, $hue, $saturation );
     }
+
 }
