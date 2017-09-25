@@ -15,7 +15,9 @@
 .edit-post-action .post-title---txt,
 
 .post-header-aside .comment-creation-ability,
-.comments-population--empty .post-header-aside .comments-population
+.comments-population--empty .post-header-aside .comments-population,
+.comment-creation-ability--disabled.comments-population--empty .comment-md,
+.comments-population--empty .comments-empty-note
 {
     position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -59,6 +61,21 @@
 }
 
 .post a:hover
+{
+    text-decoration: underline;
+}
+
+
+
+
+
+/*------------------ Comments ------------------*/
+.comments a
+{
+    text-decoration: none;
+}
+
+.comments a:hover
 {
     text-decoration: underline;
 }

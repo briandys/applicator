@@ -234,15 +234,22 @@
 
 
 /*------------------ Entry Nav ------------------*/
-.applicator--theme--entry-nav .entry-navi
+.applicator--theme--entry-nav .entry-nav---grp
 {
     display: flex;
     justify-content: space-between;
 }
 
+.applicator--theme--entry-nav .entry-navi
+{
+    flex: 1 50%;
+}
+
 .applicator--theme--entry-nav .next-entry-navi
 {
     order: 1;
+    
+    text-align: right;
 }
 
 .applicator--theme--entry-nav .entry-nav .line
