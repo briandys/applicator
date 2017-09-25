@@ -44,3 +44,54 @@
     min-width: var(--active-area--width--md);
     min-height: var(--active-area--width--md);
 }
+
+
+
+
+
+/*------------------ Post ------------------*/
+.post a
+{
+    text-decoration: none;
+}
+
+.post a:hover
+{
+    text-decoration: underline;
+}
+
+
+/*------------ Juxtapose Post Title and Edit Action ------------*/
+.main-post-title,
+.edit-post-action
+{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+/*------------ Swap Author Name and Avatar ------------*/
+.post-author---ct_cr
+{
+    display: inline-flex;
+}
+
+.author-name
+{
+    order: 1;
+    margin-right: auto;
+}
+
+.author-avatar
+{
+    margin-right: var(--glabel--between--spacing);
+}
+
+
+/*------------ Juxtapose Post Published and Modified and Post Author ------------*/
+.post-published-modified,
+.published-post-author
+{
+    display: inline-block;
+    vertical-align: middle;
+}

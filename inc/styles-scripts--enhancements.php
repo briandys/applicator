@@ -93,7 +93,8 @@ if ( ! function_exists( 'applicator_functionalities_html_classes' ) ) {
             'theme--table--stroked',
             'theme--avatar--circular',
             'theme--note--subtle',
-            'theme--post',
+            'theme--categories',
+            'theme--post-published-date-and-time-stamp',
             'theme--entry-nav',
             'theme--edit-action',
         ); 
