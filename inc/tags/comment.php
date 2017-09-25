@@ -2,6 +2,7 @@
 // comments.php
 
 if ( ! function_exists( 'applicator_comment' ) ) {
+    
     function applicator_comment( $comment, $args, $depth ) {
         
         $commenter = wp_get_current_commenter();
@@ -214,8 +215,8 @@ if ( ! function_exists( 'applicator_comment' ) ) {
         $comment_by_term = esc_html__( 'Comment by', 'applicator' );
         $comment_term = esc_html__( 'Comment', 'applicator' );
         $by_term = esc_html__( 'by', 'applicator' );
-        $commenter_content = get_comment_author();
-        $commented_by_content = $comment_by_term.' '.$commenter_content;
+        $comment_author = get_comment_author();
+        $commented_by_content = $comment_by_term.' '.$comment_author;
         
         // Conditionals: Blank or Custom Avatar
         $commenter_avatar_prefix_css = 'commenter-avatar-default';
@@ -274,7 +275,7 @@ if ( ! function_exists( 'applicator_comment' ) ) {
             ),
             'title'     => $commented_by_content,
             'content'   => array(
-                'object' => $commenter_content,
+                'object' => $comment_author,
             ),
         ) );
         
@@ -293,7 +294,7 @@ if ( ! function_exists( 'applicator_comment' ) ) {
             ),
             'title'     => $commented_by_content,
             'content'   => array(
-                'object'    => get_avatar( $comment, $args['avatar_size'] ),
+                'object'    => get_avatar( $comment, $args['avatar_size'], '', $comment_author ),
                 'before'    => $GLOBALS['space_sep'],
             ),
         ) );

@@ -94,6 +94,8 @@ if ( ! function_exists( 'applicator_functionalities_html_classes' ) ) {
             'theme--avatar--circular',
             'theme--note--subtle',
             'theme--post',
+            'theme--entry-nav',
+            'theme--edit-action',
         ); 
         
         

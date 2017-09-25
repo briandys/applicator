@@ -83,10 +83,7 @@
     --button--pri--fg-color: var(--fg-color--reverse);
     
     --button--padding: .5em 1em;
-    --button--min-width: 10rem;
-    
-    --button--padding: .5em 1em;
-    --button--min-width--sm: calc( var(--button--min-width) / 2 );
+    --button--min-width: 10em;
     
     
     /*------------ Level 3 - Specifics ------------*/
@@ -238,6 +235,8 @@
     /* Edit Post Action */
     --edit-post-action--bg-color: var(--button--pri--bg-color);
     --edit-post-action--fg-color: var(--button--pri--fg-color);
+    
+    --edit-post-action--min-width: calc( var(--button--min-width ) /2 );
     
 }
 
@@ -2494,6 +2493,8 @@ input[type="submit"]
 
 .commenter-avatar .avatar
 {
+    display: block;
+    
     width: 100%;
     height: auto;
 }
@@ -2671,6 +2672,8 @@ input[type="submit"]
 
 .author-avatar .avatar
 {
+    display: block;
+    
     width: 100%;
     height: auto;
 }
