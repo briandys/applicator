@@ -1,3 +1,52 @@
+/*------------------ Visually Hidden ------------------*/
+.visually-hidden,
+
+/* Post */
+.applicator--theme--post .post-published-glabel,
+.applicator--theme--post .post-published-time-stamp-dtstamp,
+.applicator--theme--post .post-published-date-and-time-stamp .comma---sep,
+.applicator--theme--post .post-modified,
+.applicator--theme--post .post-published-by-glabel,
+
+.applicator--theme--post .post-categories-glabel
+{
+    position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
+}
+
+
+
+
+
+/*------------------ Unlist ------------------*/
+.unlist,
+.applicator--theme--post .post-categories
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
+/*------------------ Active Area (AA) ------------------*/
+.active-area,
+.applicator--theme--post .post-categories a
+{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    
+    min-width: var(--active-area--width--md);
+    min-height: var(--active-area--width--md);
+}
+
+
+
+
+
 /*------------------ Applicator Table Theme - Stroked ------------------*/
 .applicator--theme--table--stroked
 {
@@ -60,4 +109,113 @@
 {
     border-radius: 50%;
     overflow: hidden;
+}
+
+
+
+
+
+/*------------------ Applicator Theme - Note - Subtle ------------------*/
+.applicator--theme--note--subtle .note
+{
+    color: var(--note--fg-color);
+    font-size: var(--note--);
+}
+
+
+.edit-post-axn---a_l
+{
+    padding: var(--button--padding);
+    min-width: var(--button--min-width--sm);
+    
+    background-color: var(--edit-post-action--bg-color);
+    color: var(--edit-post-action--fg-color);
+}
+
+
+
+
+
+/*------------------ Applicator Theme - Post ------------------*/
+.applicator--theme--post .post a
+{
+    text-decoration: none;
+}
+
+.applicator--theme--post .post a:hover
+{
+    text-decoration: underline;
+}
+
+.applicator--theme--post .main-post-title,
+.applicator--theme--post .edit-post-action
+{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.applicator--theme--post .post-author---ct_cr
+{
+    display: inline-flex;
+}
+
+.applicator--theme--post .author-name
+{
+    order: 1;
+    margin-right: auto;
+}
+
+.applicator--theme--post .author-avatar
+{
+    margin-right: var(--glabel--between--spacing);
+}
+
+.applicator--theme--post .post-published-modified,
+.applicator--theme--post .published-post-author
+{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.applicator--theme--post .post-categories li
+{
+    display: inline-block;
+    vertical-align: middle;
+    
+    padding-left: var(--object--spacing-x);
+    padding-right: var(--object--spacing-x);
+}
+
+.applicator--theme--post .post-published-date-stamp-dtstamp .txt
+{
+    display: block;
+    
+    text-align: center;
+}
+
+.applicator--theme--post .post-published-date-stamp-dtstamp .month---txt
+{
+    text-transform: uppercase;
+    font-size: .875rem;
+}
+
+.applicator--theme--post .post-published-date-stamp-dtstamp .year---txt
+{
+    font-size: .875rem;
+}
+
+.applicator--theme--post .post-pub-d-stamp-dtstamp---a
+{
+    color: gray;
+}
+
+.applicator--theme--post .post-pub-d-stamp-dtstamp---a_l
+{
+    display: block;
+    
+    padding: .25em;
+    
+    line-height: 1;
+    
+    border: 1px solid gray;
 }

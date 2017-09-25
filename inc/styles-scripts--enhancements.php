@@ -92,6 +92,8 @@ if ( ! function_exists( 'applicator_functionalities_html_classes' ) ) {
             // Themes
             'theme--table--stroked',
             'theme--avatar--circular',
+            'theme--note--subtle',
+            'theme--post',
         ); 
         
         

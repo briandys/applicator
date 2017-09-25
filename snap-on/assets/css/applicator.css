@@ -8,10 +8,25 @@
 .page .comments-actions-snippet,
 .page .comment-md,
 
-/* Page Nav */
-.entries---hr .page-nav
+/* Nav */
+.entries---hr .page-nav,
+.entry---hr .entry-nav,
+
+.edit-post-action .post-title---txt
 {
     position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
+}
+
+
+
+
+
+/*------------------ Unlist ------------------*/
+.unlist
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -28,13 +43,4 @@
     
     min-width: var(--active-area--width--md);
     min-height: var(--active-area--width--md);
-}
-
-
-
-
-
-.page .main-post-title---a
-{
-    text-decoration: none;
 }

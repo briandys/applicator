@@ -7,25 +7,25 @@
     /*------------ Level 2 - Generics ------------*/
     
     /* Main Color */
-    --main-color--pri: var(--superhero-blue--color);
-    --main-color--sec: var(--uhog-green--color);
+    --main-color--pri: var(--color--superhero-blue);
+    --main-color--sec: var(--color--uhog-green);
     
     /* Accent Color */
-    --accent-color--pri: var(--panda-blue--color);
-    --accent-color--sec: var(--chikka-orange--color);
+    --accent-color--pri: var(--color--panda-blue);
+    --accent-color--sec: var(--color--chikka-orange);
     
     /* Background Color */
     --bg-color: var(--dash-of-darkness--color);
     
     /* Foreground Color */
-    --fg-color: var(--off-black--color);
+    --fg-color: var(--color--off-black);
     
     /* Image Placeholder Color */
-    --image-placeholder--bg-color: var(--off-black--color-a);
+    --image-placeholder--bg-color: var(--color--off-black-a);
     
     
     /* Foreground Color - Reverse (use with a dark background) */
-    --fg-color--reverse: var(--white--color);
+    --fg-color--reverse: var(--color--white);
     
     /* Faint Color */
     --faint-color--pri: var(--transparent-black--color);
@@ -77,6 +77,16 @@
     
     /* Aspect Ratio */
     --aspect-ratio--hd: var(--ratio--16-9);
+    
+    /* Buttons */
+    --button--pri--bg-color: var(--accent-color--pri);
+    --button--pri--fg-color: var(--fg-color--reverse);
+    
+    --button--padding: .5em 1em;
+    --button--min-width: 10rem;
+    
+    --button--padding: .5em 1em;
+    --button--min-width--sm: calc( var(--button--min-width) / 2 );
     
     
     /*------------ Level 3 - Specifics ------------*/
@@ -140,14 +150,14 @@
     --links--fg-color: var(--accent-color--pri);
     
     /* Main Nav */
-    --main-nav--bg-color: var(--white--color);
+    --main-nav--bg-color: var(--color--white);
     
     /* Easy Access Nav - Main Nav - Colors */
-    --easy-access-nav-func--main-nav--fg-color: var(--black--color);
+    --easy-access-nav-func--main-nav--fg-color: var(--color--black);
     
     /* Sub Nav - Colors */
-    --easy-access-nav-func--sub-nav--bg-color: var(--white--color);
-    --easy-access-nav-func--sub-nav--fg-color: var(--black--color);
+    --easy-access-nav-func--sub-nav--bg-color: var(--color--white);
+    --easy-access-nav-func--sub-nav--fg-color: var(--color--black);
     
     /* Sub Nav - Toggle Button - Colors */
     --sub-nav-func-root--toggle-button--fg-color: var(--fg-color);
@@ -213,8 +223,21 @@
     --glabel--between--spacing: .3em;
     
     /* Overlays */
-    --overlay--light: var(--white--color);
-    --overlay--dark: var(--black--color);
+    --overlay--light: var(--color--white);
+    --overlay--dark: var(--color--black);
+    
+    /* Note */
+    --note--font-size: var(--font-size--sm);
+    --note--fg-color: var(--font-size--sm);
+    
+    /* Go to Content Nav */
+    --go-content-nav--bg-color: var(--button--pri--bg-color);
+    --go-content-nav--fg-color: var(--button--pri--fg-color);
+    
+    
+    /* Edit Post Action */
+    --edit-post-action--bg-color: var(--button--pri--bg-color);
+    --edit-post-action--fg-color: var(--button--pri--fg-color);
     
 }
 
@@ -900,8 +923,8 @@ input[type="submit"]
 {
     padding: .5em 1em;
     width: 100%;
-    background-color: var(--button--bg-color);
-    color: var(--button--fg-color);
+    background-color: var(--button--pri--bg-color);
+    color: var(--button--pri--fg-color);
 }
 
 
@@ -956,7 +979,7 @@ input[type="submit"]
 /*------------------ Go to Content Nav - Style ------------------*/
 .go-ct-navi---a
 {
-    color: var(--pri-fg-reverse-color);
+    color: var(--go-content-nav--fg-color);
     
     text-decoration: none;
 }
@@ -967,7 +990,7 @@ input[type="submit"]
     
     min-width: 10rem;
     
-    background-color: var(--pri-bg-reverse-color);
+    background-color: var(--go-content-nav--bg-color);
 }
 
 
