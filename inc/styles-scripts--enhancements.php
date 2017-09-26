@@ -69,16 +69,12 @@ if ( ! function_exists( 'applicator_enhancements_styles_scripts' ) ) {
 
 
 
-// HTML Classes
-if ( ! function_exists( 'applicator_functionalities_html_classes' ) ) {
-    function applicator_functionalities_html_classes() {
+// Functionalities CSS Class Names
+if ( ! function_exists( 'applicator_functionalities_css_class_names' ) ) {
+    function applicator_functionalities_css_class_names() {
         
-        // Variables
-        $theme_name = 'applicator';
+        $applicator_term = 'applicator';
         
-        echo ' ' . $theme_name;
-        
-        // Array of CSS Class Names
         $r = array(
             
             // Functionalities
@@ -88,25 +84,13 @@ if ( ! function_exists( 'applicator_functionalities_html_classes' ) ) {
             'easy-access-nav',
             'sub-nav',
             'go-start-nav',
-            
-            // Themes
-            'themes',
-            'theme--table--stroked',
-            'theme--avatar--circular',
-            
-            'theme--note',
-            'theme--categories',
-            'theme--post-published-date-and-time-stamp',
-            'theme--entry-nav',
-            'theme--edit-action',
-            'theme--comments-count-action',
         ); 
         
+        echo ' ' . $applicator_term;
         
-        // Functionalities, Themes
-        foreach ( ( array ) $r as $class_name ) {
-            echo ' '. $theme_name. '--'. $class_name;
+        foreach ( ( array ) $r as $css_class_name ) {
+            echo ' '. $applicator_term. '--'. $css_class_name;
         }
     }
-    add_action( 'applicator_hook_html_class', 'applicator_functionalities_html_classes');
+    add_action( 'applicator_hook_html_class', 'applicator_functionalities_css_class_names');
 }

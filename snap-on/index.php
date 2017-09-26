@@ -4,7 +4,7 @@
 
 
 
-/*------------ Styles ------------*/
+/*------------------------ Styles and Scripts ------------------------*/
 if ( ! function_exists( 'applicator_snapon_styles_scripts' ) ) {
     
     function applicator_snapon_styles_scripts() {
@@ -22,12 +22,39 @@ if ( ! function_exists( 'applicator_snapon_styles_scripts' ) ) {
         
         // Themes
         wp_enqueue_style( 'applicator-snapon--style--themes', get_theme_file_uri( '/snap-on/assets/css/themes.css' ), array( 'applicator-snapon--style' ) );
-
-        
-        // Main Header
-        wp_enqueue_style( 'applicator-snapon--style--main-header', get_theme_file_uri( '/snap-on/assets/css/main-header.css' ), array( 'applicator-snapon--style' ) );
         
     }
     add_action( 'wp_enqueue_scripts', 'applicator_snapon_styles_scripts', 0);
 
+}
+
+
+
+
+
+/*------------------------ Themes CSS Class Names ------------------------*/
+if ( ! function_exists( 'applicator_themes_css_class_names' ) ) {
+    function applicator_themes_css_class_names() {
+        
+        $applicator_theme_term = 'applicator--theme';
+        
+        $r = array(
+            
+            // Themes
+            'table',
+            'avatar',
+            'note',
+            'categories',
+            'post-published-date-and-time-stamp',
+            'entry-nav',
+            'edit-action',
+            'comments-count-action',
+            'main-header',
+        ); 
+        
+        foreach ( ( array ) $r as $css_class_name ) {
+            echo ' '. $applicator_theme_term. '--'. $css_class_name;
+        }
+    }
+    add_action( 'applicator_hook_html_class', 'applicator_themes_css_class_names');
 }

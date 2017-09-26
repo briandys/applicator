@@ -1,7 +1,7 @@
-/*------------------ Variables ------------------*/
-.applicator--themes
+/* ------------------ Variables ------------------ */
+.html
 {
-    /*------------ Level 3 - Specifics ------------*/
+    /* ------------ Level 3 - Specifics ------------ */
     
     --category--border: 1px solid var(--accent-color--pri);
     --category-item--spacing: calc( var(--content--spacing) / 2 );
@@ -18,7 +18,7 @@
 
 
 
-/*------------------ Visually Hidden ------------------*/
+/* ------------------ Visually Hidden ------------------ */
 .visually-hidden,
 
 /* Post */
@@ -37,7 +37,7 @@
 
 
 
-/*------------------ Unlist ------------------*/
+/* ------------------ Unlist ------------------ */
 .unlist,
 .applicator--theme--categories .post-categories
 {
@@ -50,7 +50,7 @@
 
 
 
-/*------------------ Active Area (AA) ------------------*/
+/* ------------------ Active Area (AA) ------------------ */
 .active-area,
 .applicator--theme--categories .post-categories a,
 .applicator--theme--comments-count-action .comments-count---txt
@@ -68,8 +68,166 @@
 
 
 
-/*------------------ Applicator Table Theme - Stroked ------------------*/
-.applicator--theme--table--stroked
+/* ------------------ Applicator Theme - Main Header ------------------ */
+.applicator--theme--main-header .main-header---cr
+{
+    position: relative;
+}
+
+.applicator--theme--main-header.view--front .main-header---cr
+{
+    min-height: 10rem;
+}
+
+.applicator--theme--main-header.view--inner .main-nav---cr
+{
+    padding-bottom: var(--component--spacing-y);
+}
+
+/* ------------ Web Product Main Info ------------ */
+.applicator--theme--main-header .web-product-main-info
+{
+    position: relative;
+    z-index: 1;
+}
+
+.applicator--theme--main-header.web-product-main-logo--enabled .wbp-main-info---ct_cr
+{
+    position: relative;
+}
+
+
+/* ------------ Main Nav ------------ */
+.applicator--theme--main-header .main-nav
+{
+    position: relative;
+    z-index: 1;
+}
+
+.applicator--theme--main-header .main-nav---cr
+{
+    background-color: transparent;
+}
+
+.applicator--theme--main-header.applicator--easy-access-nav .main-nav a
+{
+    color: white;
+}
+
+.applicator--theme--main-header .main-nav.sub-nav-func .children a,
+.applicator--theme--main-header .main-nav.sub-nav-func .sub-menu a
+{
+    color: black;
+}
+
+.applicator--theme--main-header .main-nav---ct_cr > .menu-container > ul > li > .sub-nav-toggle .sub-nav-tog---b_l
+{
+    color: var(--sub-nav-func-root--toggle-button--fg-color);
+}
+
+.applicator--theme--main-header .widget-content---ct_cr > * > ul > li > .sub-nav-toggle .sub-nav-tog---b_l
+{
+    color: var(--sub-nav-func-branches--toggle-button--fg-color);
+}
+
+.applicator--theme--main-header .children .sub-nav-tog---b_l,
+.applicator--theme--main-header .sub-menu .sub-nav-tog---b_l
+{
+    color: var(--sub-nav-func-branches--toggle-button--fg-color);
+}
+
+.applicator--theme--main-header.applicator--easy-access-nav .main-nav---ct_cr > .menu-container > ul
+{
+    justify-content: center;
+}
+
+
+/* ------------ Main Search ------------ */
+.applicator--theme--main-header .main-search-func
+{
+    z-index: 1;
+}
+
+
+/* ------------ Web Product Main Media Banner ------------ */
+.applicator--theme--main-header .wbp-main-media-banner---g
+{
+    position: relative;
+    
+    background-color: var(--image--bg-color);
+    
+    transform: scale( 1.1 );
+}
+
+.applicator--theme--main-header.view--inner .wbp-main-media-banner---g
+{
+    filter: blur( 2px );
+}
+
+.applicator--theme--main-header .wbp-main-media-banner---g::before
+{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    
+    width: 100%;
+    height: 100%;
+    
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&1+0,0.5+100 */
+    background: -moz-linear-gradient(top, hsla(0,0%,0%,1) 0%, hsla(0,0%,0%,0.5) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, hsla(0,0%,0%,1) 0%,hsla(0,0%,0%,0.5) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, hsla(0,0%,0%,1) 0%,hsla(0,0%,0%,0.5) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#80000000',GradientType=0 ); /* IE6-9 */
+    
+    opacity: .5;
+    
+    transition: var(--transition--generic);
+    transition-property: opacity;
+}
+
+.applicator--theme--main-header.apl--main-search--active .wbp-main-media-banner---g::before
+{
+    opacity: .75;
+}
+
+
+/* ------------ Web Product Main Name, Description ------------ */
+.applicator--theme--main-header.web-product-main-logo--disabled .web-product-main-name,
+.applicator--theme--main-header.web-product-main-logo--disabled .web-product-main-description
+{
+    justify-content: center;
+}
+
+
+/* ------------ Media Banner ------------ */
+.applicator--theme--main-header .web-product-main-media-banner
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    
+    width: 100%;
+    height: 100%;
+    
+    overflow: hidden;
+}
+
+.applicator--theme--main-header .wbp-main-media-banner---g
+{
+    padding-bottom: 0;
+    
+    height: 100%;
+    
+    background-position: top;
+}
+
+
+
+
+
+/* ------------------ Applicator Table Theme - Stroked ------------------ */
+.applicator--theme--table
 {
     --table-stroke--color--max: hsla( 0, 0%, 0%, .25 );
     --table-stroke--color--med: hsla( 0, 0%, 0%, .125 );
@@ -78,14 +236,14 @@
     --table-line--sm: 1px solid var(--table-stroke--color--min);
 }
 
-.applicator--theme--table--stroked .post-content tbody
+.applicator--theme--table .post-content tbody
 {
     border: var(--table-line--md);
     border-left: 0;
     border-right: 0;
 }
 
-.applicator--theme--table--stroked .post-content tfoot
+.applicator--theme--table .post-content tfoot
 {
     border: var(--table-line--md);
     border-left: 0;
@@ -93,7 +251,7 @@
 }
 
 /* Table Header */
-.applicator--theme--table--stroked .post-content th
+.applicator--theme--table .post-content th
 {
     border: 0;
     
@@ -101,7 +259,7 @@
     vertical-align: bottom;
 }
 
-.applicator--theme--table--stroked .post-content td
+.applicator--theme--table .post-content td
 {
     border: var(--table-line--sm);
     
@@ -109,13 +267,13 @@
     border-bottom: 0;
 }
 
-.applicator--theme--table--stroked .post-content td:first-child
+.applicator--theme--table .post-content td:first-child
 {
     border-left: 0;
 }
 
 /* Table Footer */
-.applicator--theme--table--stroked .post-content tfoot
+.applicator--theme--table .post-content tfoot
 {
     border-top: 0;
     border-color: var(--table-line--md);
@@ -124,9 +282,9 @@
 
 
 
-/*------------------ Applicator Theme - Avatar - Circular ------------------*/
-.applicator--theme--avatar--circular .author-avatar---a_l,
-.applicator--theme--avatar--circular .commenter-avatar---a_l
+/* ------------------ Applicator Theme - Avatar ------------------ */
+.applicator--theme--avatar .author-avatar---a_l,
+.applicator--theme--avatar .commenter-avatar---a_l
 {
     border-radius: 50%;
     overflow: hidden;
@@ -136,7 +294,7 @@
 
 
 
-/*------------------ Applicator Theme - Note ------------------*/
+/* ------------------ Applicator Theme - Note ------------------ */
 .applicator--theme--note .note
 {
     color: var(--note--fg-color);
@@ -147,7 +305,7 @@
 
 
 
-/*------------------ Applicator Theme - Categories ------------------*/
+/* ------------------ Applicator Theme - Categories ------------------ */
 .applicator--theme--categories .apl-categories .post-categories
 {
     padding-left: var(--category-item--spacing-x);
@@ -173,7 +331,7 @@
     border: var(--category--border);
 }
 
-.applicator--theme--categories .post-categories
+.applicator--theme--categories .apl-categories .post-categories
 {
     display: inline-flex;
     align-items: center;
@@ -184,7 +342,7 @@
 
 
 
-/*------------------ Post Published Date and Time Stamp ------------------*/
+/* ------------------ Post Published Date and Time Stamp ------------------ */
 .applicator--theme--post-published-date-and-time-stamp .post-published-date-stamp-dtstamp .txt
 {
     display: block;
@@ -233,7 +391,7 @@
 
 
 
-/*------------------ Entry Nav ------------------*/
+/* ------------------ Entry Nav ------------------ */
 .applicator--theme--entry-nav .entry-nav---grp
 {
     display: flex;
@@ -266,7 +424,7 @@
 
 
 
-/*------------------ Edit Action ------------------*/
+/* ------------------ Edit Action ------------------ */
 .applicator--theme--edit-action .edit-post-axn---a_l
 {
     padding: var(--button--padding);
@@ -282,7 +440,7 @@
 
 
 
-/*------------------ Comments Count Action ------------------*/
+/* ------------------ Comments Count Action ------------------ */
 .applicator--theme--comments-count-action .comments-count-axn---l
 {
     display: inline-flex;

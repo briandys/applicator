@@ -115,8 +115,11 @@ if ( ! function_exists( 'applicator_inline_scripts' ) ) {
                 // Replace no-js with js if JavaScript is supported
                 html.className = html.className.replace( /\bno-js\b/,'js' );
 
-                // DOM Unready (will be removed on DOM ready)
+                // DOM Unready (will be removed on document.ready)
                 html.classList.add( 'dom--unready' );
+
+                // Window Unloaded (will be removed on window.load)
+                html.classList.add( 'window--unloaded' );
                 
                 // Replace no-svg with svg if supported
                 if ( true === supportsInlineSVG() ) {

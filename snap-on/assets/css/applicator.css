@@ -1,3 +1,13 @@
+/*------------------ Variables ------------------*/
+.view--multisite-directory
+{
+    --post-banner-vis--height: 10rem;
+}
+
+
+
+
+
 /*------------------ Visually Hidden ------------------*/
 .visually-hidden,
 
@@ -12,10 +22,12 @@
 .entries---hr .page-nav,
 .entry---hr .entry-nav,
 
+/* Edit Action */
 .edit-post-action .post-title---txt,
 
+/* Comments */
 .post-header-aside .comment-creation-ability,
-.comments-population--empty .post-header-aside .comments-population,
+.post-header-aside .comments-population--empty .comments-population,
 .comment-creation-ability--disabled.comments-population--empty .comment-md,
 .comments-population--empty .comments-empty-note
 {
@@ -65,6 +77,11 @@
     text-decoration: underline;
 }
 
+.view--inner .main-post-title---a
+{
+    color: black;
+}
+
 
 
 
@@ -81,6 +98,9 @@
 }
 
 
+
+
+
 /*------------ Juxtapose Post Title and Edit Action ------------*/
 .main-post-title,
 .edit-post-action
@@ -88,6 +108,9 @@
     display: inline-block;
     vertical-align: middle;
 }
+
+
+
 
 
 /*------------ Swap Author Name and Avatar ------------*/
@@ -108,6 +131,9 @@
 }
 
 
+
+
+
 /*------------ Juxtapose Post Published and Modified and Post Author ------------*/
 .post-published-modified,
 .published-post-author,
@@ -115,4 +141,15 @@
 {
     display: inline-block;
     vertical-align: middle;
+}
+
+
+
+
+
+/*------------ Post Header Aside ------------*/
+.post-hr-aside---cr
+{
+    padding-top: var(--component--spacing-y);
+    padding-bottom: var(--component--spacing-y);
 }

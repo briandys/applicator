@@ -1259,16 +1259,6 @@ input[type="submit"]
 
 
 
-/*------------------ Search Results ------------------*/
-.search-results-term---txt
-{
-    
-}
-
-
-
-
-
 /*------------------ Main Menu - Function ------------------*/
 .applicator--main-menu.dom--unready .main-header-aside
 {
@@ -1304,7 +1294,7 @@ input[type="submit"]
 }
 
 .main-menu--active
-{   
+{
     z-index: 100;
 }
 
@@ -2115,6 +2105,11 @@ input[type="submit"]
 
 
 /*------------------ Copyright Info ------------------*/
+.window--unloaded .web-product-copyright
+{
+    display: none;
+}
+
 .web-product-copyright
 {
     padding-left: var(--section--spacing-x);

@@ -78,7 +78,7 @@
 
 
 /*------------------ Main Post Title ------------------*/
-.view--multisite-directory .main-post-title
+.view--multisite-directory .post---hr_cr
 {
     text-align: center;
 }
@@ -124,6 +124,11 @@
 .view--multisite-directory .post---cr
 {
     padding: 0;
+}
+
+.view--multisite-directory .main-post-title---a
+{
+    color: var(--links--fg-color);
 }
 
 

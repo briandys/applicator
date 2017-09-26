@@ -112,7 +112,7 @@ $post_classes = implode( ' ', $post_classes );
                         'subtype'       => 'aside',
                         'hr_structure'  => true,
                     ),
-                    'css'       => 'post-hr-as',
+                    'css'       => 'post-hr',
                     'content'   => array(
                         'constructor'   => array(
                             

@@ -355,7 +355,7 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                 'subtype'       => 'aside',
                 'hr_structure'  => true,
             ),
-            'css'       => 'comment-hr-as',
+            'css'       => 'comment-hr',
             'content'   => array(
                 'constructor'   => array(
 

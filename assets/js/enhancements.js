@@ -1276,6 +1276,11 @@
     /*------------------------ DOM Ready and Images Loaded ------------------------*/
     $window.load( function() {
         
+        // Remove Window Unloaded
+        $html
+            .addClass( 'window--loaded' )
+            .removeClass( 'window--unloaded' );
+        
         // Page Length
         ( function() {
 
