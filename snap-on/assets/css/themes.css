@@ -37,7 +37,9 @@
 .applicator--theme--post-published-date-and-time-stamp .post-modified,
 .applicator--theme--post-published-date-and-time-stamp .post-published-by-glabel,
 
-.applicator--theme--post-published-date-and-time-stamp .post-categories-glabel
+.applicator--theme--post-published-date-and-time-stamp .post-categories-glabel,
+
+.applicator--theme--entry-nav .colon---sep
 {
     position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -83,7 +85,8 @@
     position: relative;
 }
 
-.applicator--theme--main-header.view--front .main-header---cr
+.applicator--theme--main-header.view--front .main-header---cr,
+.applicator--theme--main-header.view--multisite-directory .main-header---cr
 {
     min-height: 10rem;
 }
@@ -430,6 +433,21 @@
     text-align: right;
 }
 
+.applicator--theme--entry-nav a
+{
+    text-decoration: none;
+}
+
+.applicator--theme--entry-nav a:hover .value---line
+{
+    text-decoration: underline;
+}
+
+.applicator--theme--entry-nav .property---line
+{
+    color: gray;
+    font-size: .875rem;
+}
 
 
 
