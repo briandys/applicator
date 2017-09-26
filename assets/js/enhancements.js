@@ -12,10 +12,12 @@
         $aplApplicatorSubNav = $html.closest( '.applicator--sub-nav' ),
         $aplApplicatorMainMenu = $html.closest( '.applicator--main-menu' ),
         $aplApplicatorEasyAccessNav = $html.closest( '.applicator--easy-access-nav' ),
+        $applicatorComments = $html.closest( '.applicator--comments' ),
         
         $mainHrAsEnabled = $html.closest( '.main-header-aside--enabled' ),
         
         showHideTxtCss = 'show-hide---txt',
+        showHideTxtLabelCss = 'show-hide---l',
         
         funcTerm = 'func',
         
@@ -23,7 +25,8 @@
         tabKeyInactCss = 'tab-key--inactive',
         
         $page = $( '#page' ),
-        pageHeight = $page.height(),
+        
+        pageHeight,
         
         $webProductContainer = $page.find( '.wbp---cr' ),
         $webProductCopyright = $( '#web-product-copyright' ),
@@ -113,7 +116,7 @@
         } );
         
 
-        // Deactivate upon presseing ESC Key
+        // Deactivate via keyboard ESC key
         $window.load( function() {
             $document.on( 'keyup.applicator', function ( e ) {
                 if ( $cp.hasClass( goCtNavActCss ) && e.keyCode == 27 ) {
@@ -380,14 +383,14 @@
         // For Calendar links
         // $mainMenuTogBtn.click();
         
-        // Deactivate upon interaction outside specified elements
+        // Deactivate via external click
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             if ( $cp.hasClass( mainMenuActCss ) && ( ! $( e.target ).closest( $mainMenuTog ).length ) && ( ! $( e.target ).closest( $mainHrAsCt ).length ) ) {
                 mainMenuDeactivate();
             }
         } );
 
-        // Deactivate upon presseing ESC Key
+        // Deactivate via keyboard ESC key
         $window.load( function() {
             $document.on( 'keyup.applicator', function ( e ) {
                 if ( $cp.hasClass( mainMenuActCss ) && e.keyCode == 27 ) {
@@ -396,15 +399,225 @@
             } );
         } );
         
-    } // Main Menu
-
+    }
     initMainMenu( $( '#main-header-aside' ) );
     
     
     
     
     
-    /*------------------------ Main Search ------------------------*/
+    /*------------------------ Comments ------------------------*/
+    function initComments( $cp ) {
+        
+        
+        // Don't proceed if Applicator Comments CSS Class name isn't found
+        if ( ! $applicatorComments.length ) {
+            return;
+        }
+
+        
+        // Functionality Name
+        funcName = 'comments-func';
+
+        
+        // Variables
+        var commentsToggleObjectMU,
+            commentsToggleButtonMU,
+            commentsToggleButtonLabelMU,
+            commentsToggleButtonTextLabelMU,
+            
+            $comments = $( '#comments' ),
+            
+            $commentModuleH,
+            $commentModuleCT,
+            $commentsCountAction,
+            $commentsToggleButton,
+            $commentsToggleButtonTextLabel,
+            
+            $commentsShowL = aplDataComments.commentsShowL,
+            $commentsHideL = aplDataComments.commentsHideL,
+            
+            aplCommentsOnCSS = 'apl--comments--active',
+            aplCommentsOffCSS = 'apl--comments--inactive',
+            
+            commentsOnCSS = 'comments--active',
+            commentsOffCSS = 'comments--inactive'
+        ;
+
+        
+        // Add CSS Class names to Component
+        $cp.addClass( funcTerm + ' ' + funcName );
+
+        
+        // Build Markup
+        ( function() {
+            
+            var commentsToggleTerm = 'comments-toggle';
+
+            // Text Label
+            commentsToggleButtonTextLabelMU = $( '<span />', {
+                'class': 'l' + ' ' + showHideTxtLabelCss,
+                'text': $commentsHideL
+            } );
+
+            // Button Label
+            commentsToggleButtonLabelMU = $( '<span />', {
+                'class': 'b_l' + ' ' + commentsToggleTerm + '---b_l'
+            } )
+                .append( commentsToggleButtonTextLabelMU );
+
+            // Button
+            commentsToggleButtonMU = $( '<button />', {
+                'id' : commentsToggleTerm + '---b',
+                'class': 'b' + ' ' + commentsToggleTerm + '---b',
+                'title': $commentsHideL
+            } ).append( commentsToggleButtonLabelMU );
+
+            // Object
+            commentsToggleObjectMU = $( '<div />', {
+                'class': 'obj toggle' + ' ' + commentsToggleTerm,
+                'data-name': 'Comments Toggle OBJ'
+            } ).append( commentsToggleButtonMU );
+
+        }() );
+        
+        
+        // Define existing elements
+        $commentModuleH = $cp.find( '.comment-md---h' );
+        $commentModuleCT = $cp.find( '.comment-md---ct' );
+        $commentsCountAction = $( '.comments-actions-snippet' ).find( '.comments-count-axn---a' );
+
+        
+        // Insert Markup
+        $commentModuleH.after( commentsToggleObjectMU );
+        
+        
+        // Define elements after inserting the markup
+        $commentsToggleButton = $( '#comments-toggle---b' );
+        $commentsToggleButtonTextLabel = $commentsToggleButton.find( '.show-hide---l' );
+        
+        
+        // Activate Comments
+        function commentsActivate() {
+            
+            $cp
+                .addClass( commentsOnCSS )
+                .removeClass( commentsOffCSS );
+            
+            $html
+                .addClass( aplCommentsOnCSS )
+                .removeClass( aplCommentsOffCSS );
+            
+            $commentsToggleButton.attr( {
+                 'aria-expanded': 'true',
+                 'title': $commentsHideL
+                
+            } );
+            
+            // Swap text label and icon
+            $commentsToggleButtonTextLabel.text( $commentsHideL );
+            
+            // Mimic Target
+            $window.scrollTop( $comments.position().top );
+            location.hash = '#comments';
+        }
+        
+        
+        // Deactivate Comments
+        function commentsDeactivate() {
+            
+            $cp
+                .addClass( commentsOffCSS )
+                .removeClass( commentsOnCSS );
+            
+            $html
+                .addClass( aplCommentsOffCSS )
+                .removeClass( aplCommentsOnCSS );
+            
+            $commentsToggleButton.attr( {
+                 'aria-expanded': 'false',
+                 'title': $commentsShowL
+                
+            } );
+            
+            // Swap text label and icon
+            $commentsToggleButtonTextLabel.text( $commentsShowL );
+        }
+        
+        // Initialize Deactivate
+        commentsDeactivate();
+        
+        
+        // Toggle
+        function commentsToggle() {
+            
+            if ( $cp.hasClass( commentsOffCSS ) ) {
+                commentsActivate();
+            }
+            else if ( $cp.hasClass( commentsOnCSS ) ) {
+                commentsDeactivate();
+            }
+        }
+        
+        
+        // Button Clicks
+        ( function() {
+            
+            $commentsToggleButton.on( 'click.applicator', function( e ) {
+                var _this = $( this );
+                e.preventDefault();
+                
+                commentsToggle();
+            } );
+        
+        }() );
+        
+        
+        // Link Clicks
+        ( function() {
+            
+            $commentsCountAction.on( 'click.applicator', function() {
+                var _this = $( this );
+                
+                commentsActivate();
+            } );
+        
+        }() );
+        
+        
+        /*
+        // Deactivate via external click
+        $document.on( 'touchmove.applicator click.applicator', function ( e ) {
+            
+            if ( $cp.hasClass( commentsOnCSS ) && ( ! $( e.target ).closest( $commentsToggleButton ).length && ! $( e.target ).closest( $commentModuleCT ).length && ! $( e.target ).closest( $commentsCountAction ).length ) ) {
+                commentsDeactivate();
+            }
+        
+        } );
+
+        
+        // Deactivate via keyboard ESC key
+        $window.load( function() {
+            
+            $document.on( 'keyup.applicator', function ( e ) {
+                
+                if ( $cp.hasClass( commentsOnCSS ) && e.keyCode == 27 ) {
+                    commentsDeactivate();
+                }
+                
+            } );
+        
+        } );
+        */
+
+    }
+    initComments( $( '#comment-md' ) );
+    
+    
+    
+    
+    
+        /*------------------------ Main Search ------------------------*/
     ( function() {
         
         if ( ! $aplApplicatorMainSearch.length ) {
@@ -414,7 +627,7 @@
         $( '#main-actions' )
             .find( $( '.main-actions---ct_cr' ) )
                 .children( '.search:first' )
-                    .attr( 'id', 'main-search-func' );
+                    .attr( 'id', 'main-search' );
     }() );
     
     function initMainSearch( $cp ) {
@@ -425,9 +638,7 @@
         
         funcName = 'main-search-func';
         
-        $cp
-            .addClass( funcName )
-            .addClass( funcTerm );
+        $cp.addClass( funcTerm + ' ' + funcName );
         
         var mainSearchTogObjMu,
             mainSearchTogBtnMu,
@@ -442,14 +653,14 @@
             mainSearchInputEmpCss = 'main-search-input--empty',
             mainSearchInputPopCss = 'main-search-input--populated',
             
-            $mainSearchTogSearchIco = $( aplDataArbitNav.mainSearchTogCtrlSearchIco ),
-            $mainSearchTogDismissIco = $( aplDataArbitNav.mainSearchTogDismissIco ),
+            $mainSearchTogSearchIco = $( aplDataMainSearch.mainSearchTogCtrlSearchIco ),
+            $mainSearchTogDismissIco = $( aplDataMainSearch.mainSearchTogDismissIco ),
             
-            $mainSearchSearchIco = $( aplDataArbitNav.mainSearchSearchIco ),
-            $mainSearchDismissIco = $( aplDataArbitNav.mainSearchDismissIco ),
+            $mainSearchSearchIco = $( aplDataMainSearch.mainSearchSearchIco ),
+            $mainSearchDismissIco = $( aplDataMainSearch.mainSearchDismissIco ),
             
-            $mainSearchShowL = aplDataArbitNav.mainSearchShowL,
-            $mainSearchHideL = aplDataArbitNav.mainSearchHideL,
+            $mainSearchShowL = aplDataMainSearch.mainSearchShowL,
+            $mainSearchHideL = aplDataMainSearch.mainSearchHideL,
             
             $mainSearchH,
             $mainSearchCt,
@@ -458,9 +669,6 @@
             $mainSearchTogBtn,
             $mainSearchTogBtnL,
             $mainSearchTogBtnLTxt,
-            
-            $arbitNavSubmitAxnBl,
-            $arbitNavResetAxnBl,
             
             $mainSearchInput,
             $mainSearchResetBtn;
@@ -607,14 +815,14 @@
             mainSearchInputStatus();
         } );
         
-        // Deactivate upon interaction outside specified elements
+        // Deactivate via external click
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             if ( $cp.hasClass( mainSearchActCss ) && ( ! $( e.target ).closest( $mainSearchTog ).length && ! $( e.target ).closest( $mainSearchCt ).length ) ) {
                 mainSearchDeactivate();
             }
         } );
 
-        // Deactivate upon presseing ESC Key
+        // Deactivate via keyboard ESC key
         $window.load( function() {
             $document.on( 'keyup.applicator', function ( e ) {
                 if ( $cp.hasClass( mainSearchActCss ) && e.keyCode == 27 ) {
@@ -631,7 +839,7 @@
         $mainSearchResetBL.append( $mainSearchDismissIco );
         
     }
-    initMainSearch( $( '#main-search-func' ) );
+    initMainSearch( $( '#main-search' ) );
     
     
     
@@ -944,7 +1152,7 @@
         }() );
         
         
-        // Deactivate upon interaction outside specified elements
+        // Deactivate via external click
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             if ( $html.hasClass( aplSubNavActCss ) && ! $( e.target ).closest( $subNavParentItems ).length && ! $( e.target ).is( 'a' ).length ) {
                 subNavAllDeactivate();
@@ -952,7 +1160,7 @@
         } );
         
         
-        // Deactivate upon presseing ESC Key
+        // Deactivate via keyboard ESC key
         $window.load( function() {
             $document.on( 'keyup.applicator', function ( e ) {
                 if ( $html.hasClass( aplSubNavActCss ) && e.keyCode == 27 ) {
@@ -1276,10 +1484,12 @@
     /*------------------------ DOM Ready and Images Loaded ------------------------*/
     $window.load( function() {
         
+        
         // Remove Window Unloaded
         $html
             .addClass( 'window--loaded' )
             .removeClass( 'window--unloaded' );
+        
         
         // Page Length
         ( function() {
@@ -1287,8 +1497,10 @@
             if ( $webProductCopyright.css( 'display' ) == 'none' ) {
                 return;
             }
-
+            
             function pageHeightCSS() {
+                
+                pageHeight = $page.height();
 
                 if ( ( pageHeight ) <= ( window.innerHeight ) ) {
 
@@ -1308,14 +1520,13 @@
                 }
             }
             pageHeightCSS();
-
-
-            // Debounce
-            var pageHeightDebounce = debounce( function () {
+            
+            
+            new ResizeSensor( $page, function() {
+                console.log('pageHeightCSS()');
                 pageHeightCSS();
-            }, applicatorDebounceTimeout );
-
-            window.addEventListener( 'resize', pageHeightDebounce );
+            });
+        
         }() );
     } );
 

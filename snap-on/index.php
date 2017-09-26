@@ -50,6 +50,9 @@ if ( ! function_exists( 'applicator_themes_css_class_names' ) ) {
             'edit-action',
             'comments-count-action',
             'main-header',
+            
+            // Functionalities with Themes
+            'comments',
         ); 
         
         foreach ( ( array ) $r as $css_class_name ) {

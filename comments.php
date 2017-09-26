@@ -423,6 +423,7 @@ $comment_module_cp = applicator_htmlok( array(
         'type'      => 'component',
         'subtype'   => 'module',
     ),
+    'id'        => 'comment-md',
     'content'   => array(
         'component'     => array(
             $comments_cp,

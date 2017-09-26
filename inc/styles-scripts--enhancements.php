@@ -43,14 +43,23 @@ if ( ! function_exists( 'applicator_enhancements_styles_scripts' ) ) {
         wp_localize_script( 'applicator-script--functionalities', 'aplDataMainMenu', $applicator_l10n );
         
         
-        // Main Search Icons Icons
+        // Main Search Icons
         $applicator_l10n['mainSearchShowL'] = __( 'Show Search', 'applicator' );
         $applicator_l10n['mainSearchHideL'] = __( 'Hide Search', 'applicator' );
         $applicator_l10n['mainSearchTogCtrlSearchIco'] = $search_icon;
         $applicator_l10n['mainSearchTogDismissIco'] = $dismiss_icon;
         $applicator_l10n['mainSearchSearchIco'] = $search_icon;
         $applicator_l10n['mainSearchDismissIco'] = $dismiss_icon;
-        wp_localize_script( 'applicator-script--functionalities', 'aplDataArbitNav', $applicator_l10n );
+        wp_localize_script( 'applicator-script--functionalities', 'aplDataMainSearch', $applicator_l10n );
+        
+        
+        // Comments Icons
+        $applicator_l10n['commentsShowL'] = __( 'Show Comments', 'applicator' );
+        $applicator_l10n['commentsHideL'] = __( 'Hide Comments', 'applicator' );
+        
+        $applicator_l10n['commentsToggleIco'] = $search_icon;
+        $applicator_l10n['commentsDismissIco'] = $dismiss_icon;
+        wp_localize_script( 'applicator-script--functionalities', 'aplDataComments', $applicator_l10n );
         
         
         // Sub-Nav Icons
@@ -84,6 +93,7 @@ if ( ! function_exists( 'applicator_functionalities_css_class_names' ) ) {
             'easy-access-nav',
             'sub-nav',
             'go-start-nav',
+            'comments',
         ); 
         
         echo ' ' . $applicator_term;

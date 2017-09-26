@@ -3,6 +3,8 @@
 {
     /* ------------ Level 3 - Specifics ------------ */
     
+    --category--padding: .5em 1em;
+    --category--min-height: 2.25rem;
     --category--border: 1px solid var(--accent-color--pri);
     --category-item--spacing: calc( var(--content--spacing) / 2 );
     --category-item--spacing-x: calc( var(--content--spacing-x) / 2 );
@@ -12,6 +14,13 @@
     
     --note--fg-color: var(--color--transparent-black);
     --note-font-size: .875rem;
+    
+    /* Edit Post Action */
+    --edit-post-action--bg-color: var(--button--pri--bg-color);
+    --edit-post-action--fg-color: var(--button--pri--fg-color);
+    --edit-post-action--min-width: calc( var(--button--min-width) /2 );
+    --edit-post-action--min-height: 2.25rem;
+    --edit-post-action--padding: .5em 1em;
 }
 
 
@@ -325,8 +334,9 @@
 
 .applicator--theme--categories .apl-categories a
 {    
-    padding-left: var(--content--spacing-x);
-    padding-right: var(--content--spacing-x);
+    padding: var(--category--padding);
+    
+    min-height: var(--category--min-height);
     
     border: var(--category--border);
 }
@@ -427,8 +437,10 @@
 /* ------------------ Edit Action ------------------ */
 .applicator--theme--edit-action .edit-post-axn---a_l
 {
-    padding: var(--button--padding);
+    padding: var(--edit-post-action--padding);
+    
     min-width: var(--edit-post-action--min-width);
+    min-height: var(--edit-post-action--min-height);
     
     font-size: .875rem;
     
@@ -460,7 +472,42 @@
     color: var(--color--white);
 }
 
-.applicator--theme--comments-count-action .comment---txt
+.applicator--theme--comments-count-action .comment---txt,
+.applicator--theme--comments-count-action .comments---txt
 {
     margin-right: var(--glabel--between--spacing);;
+}
+
+
+
+
+
+
+
+/* ------------------ Comments ------------------ */
+.applicator--theme--comments .comments-toggle
+{
+    padding-left: var(--object--spacing-x);
+    padding-right: var(--object--spacing-x);
+    
+    text-align: center;
+}
+
+.applicator--theme--comments .comments-toggle---b_l
+{
+    background-color: var(--button--pri--bg-color);
+    color: white;
+}
+
+.applicator--theme--comments .show-hide---l
+{
+    text-decoration: none;
+}
+
+.applicator--theme--comments .comments--active .comments-toggle---b_l
+{
+    background-color: transparent;
+    color: var(--links--fg-color);
+    
+    border: 1px solid var(--color--panda-blue);
 }

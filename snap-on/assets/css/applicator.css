@@ -1,5 +1,5 @@
 /*------------------ Variables ------------------*/
-.view--multisite-directory
+.html
 {
     --post-banner-vis--height: 10rem;
 }
@@ -77,7 +77,7 @@
     text-decoration: underline;
 }
 
-.view--inner .main-post-title---a
+.view--detail .main-post-title---a
 {
     color: black;
 }
@@ -147,8 +147,25 @@
 
 
 
-/*------------ Post Header Aside ------------*/
-.post-hr-aside---cr
+/*------------ Post Published Date and Time Stamp ------------*/
+.post-published-date-and-time-stamp
+{
+    padding-top: var(--component--spacing-y);
+    padding-bottom: var(--component--spacing-y);
+}
+
+.author-name,
+.author-avatar
+{
+    padding-top: var(--component--spacing-y);
+    padding-bottom: var(--component--spacing-y);
+}
+
+
+
+
+
+.comment-md---cr
 {
     padding-top: var(--component--spacing-y);
     padding-bottom: var(--component--spacing-y);

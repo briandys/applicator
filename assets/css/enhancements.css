@@ -231,13 +231,6 @@
     --go-content-nav--bg-color: var(--button--pri--bg-color);
     --go-content-nav--fg-color: var(--button--pri--fg-color);
     
-    
-    /* Edit Post Action */
-    --edit-post-action--bg-color: var(--button--pri--bg-color);
-    --edit-post-action--fg-color: var(--button--pri--fg-color);
-    
-    --edit-post-action--min-width: calc( var(--button--min-width ) /2 );
-    
 }
 
 
@@ -852,10 +845,10 @@ h1, h2, h3, h4, h5, h6
 
 
 /*------------------ Categories ------------------*/
-.post-categories---cr
+.apl-categories .categories---cr
 {
-    padding-top: var(--component--spacing-y);
-    padding-bottom: var(--component--spacing-y);
+    padding-top: calc( var(--component--spacing-y) / 2 );
+    padding-bottom: calc( var(--component--spacing-y) / 2 );
 }
 
 .post-categories-glabel
@@ -1037,18 +1030,41 @@ input[type="submit"]
     text-decoration: none;
 }
 
-.go-start-nav--active .go-to-start-navi
+
+
+
+
+/*------------------ Comments - Function ------------------*/
+.applicator--comments.dom--unready .comment-md---ct
 {
-    
+    display: none;
 }
 
-
-.applicator--go-start-nav.dom--unready .go-to-start-navi,
-.go-start-nav--inactive .go-to-start-navi
+.apl--comments--inactive .comment-md---ct
 {
-    
+    display: none;
 }
 
+.applicator--comments .comments-toggle---b
+{
+    width: auto;
+}
+
+.applicator--comments .comments-toggle---b_l
+{
+    background-color: transparent;
+    color: var(--links--fg-color);
+}
+
+.applicator--comments .show-hide---l
+{
+    text-decoration: underline;
+}
+
+.applicator--comments .comments-toggle---b:hover .show-hide---l
+{
+    text-decoration: none;
+}
 
 
 

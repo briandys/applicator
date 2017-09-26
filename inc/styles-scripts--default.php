@@ -31,7 +31,6 @@ if ( ! function_exists( 'applicator_default_styles_scripts' ) ) {
         
         /*------------ Scripts ------------*/
         
-        
         // Modernizr
         wp_enqueue_script( 'applicator-script--modernizr', get_theme_file_uri( '/assets/js/modernizr.min.js' ), array(), '1.0.0', true );
         
