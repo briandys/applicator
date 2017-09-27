@@ -24,6 +24,7 @@
 
 /* Edit Action */
 .edit-post-action .post-title---txt,
+.edit-comment-action .comment-title---txt,
 
 /* Comments */
 .post-header-aside .comment-creation-ability,
@@ -32,7 +33,13 @@
 .comments-population--empty .comments-empty-note,
 .comment-creation-glabel,
 .comment-form .open-parenthesis---txt,
-.comment-form .close-parenthesis---txt
+.comment-form .close-parenthesis---txt,
+.comments-heading,
+.comment-title,
+.comment-reply-axn .to---txt,
+.comment-reply-axn .comment---txt,
+#cancel-comment-reply-link .to---txt,
+#cancel-comment-reply-link .comment---txt
 {
     position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -100,16 +107,28 @@
     text-decoration: underline;
 }
 
-.comments-heading---g
+.comments-header-aside .comments-actions-snippet .comments-count-axn---a
 {
+    color: black;
+}
+
+.comments-header-aside .comments-actions-snippet .comments-count-axn---a:hover{
+    text-decoration: none;
+}
+
+.comments-header-aside .comments-actions-snippet .comments-count-axn---a .comments-label---txt
+{
+    margin-right: var(--glabel--between--spacing);
+    
     font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .optional---txt
 {
     color: gray;
     font-size: .75rem;
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 
 .commenter-url-creation-flabel---l
@@ -130,6 +149,13 @@
     border-color: var(--color--go-green);
 }
 
+.comment-title,
+.edit-comment-action
+{
+    display: inline-block;
+    vertical-align: middle;
+}
+
 
 
 
@@ -146,31 +172,17 @@
 
 
 
-/*------------ Swap Author Name and Avatar ------------*/
-.post-author---ct_cr
-{
-    display: inline-flex;
-}
-
-.author-name
-{
-    order: 1;
-    margin-right: auto;
-}
-
-.author-avatar
-{
-    margin-right: var(--glabel--between--spacing);
-}
-
-
-
-
-
 /*------------ Juxtapose Post Published and Modified and Post Author ------------*/
 .post-published-modified,
 .published-post-author,
 .apl-post-categories
+{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.comment-published,
+.published-comment-commenter
 {
     display: inline-block;
     vertical-align: middle;

@@ -49,6 +49,8 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
         
         $comments_count_num_css = 'comments-count';
         
+        $comments_label_text = 'comments-label';
+        
         $comment_singular_text = 'Comment';
         $comment_plural_text = 'Comments';
         
@@ -60,7 +62,7 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
                 $comments_count_mu .= '<span class="txt num %3$s---txt">';
                     $comments_count_mu .= '%1$s';
                 $comments_count_mu .= '</span>';
-                $comments_count_mu .= ' <span class="txt %4$s---txt">';
+                $comments_count_mu .= ' <span class="txt %6$s---txt %4$s---txt">';
                     $comments_count_mu .= '%2$s';
                 $comments_count_mu .= '</span>';
             $comments_count_mu .= '</span>';
@@ -72,7 +74,7 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
         $comments_count_zero_mu .= '<span class="txt num %3$s---txt">';
             $comments_count_zero_mu .= '%1$s';
         $comments_count_zero_mu .= '</span>';
-        $comments_count_zero_mu .= ' <span class="txt %4$s---txt">';
+        $comments_count_zero_mu .= ' <span class="txt %5$s---txt %4$s---txt">';
             $comments_count_zero_mu .= '%2$s';
         $comments_count_zero_mu .= '</span>';
         
@@ -83,7 +85,8 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
             $comment_singular_text,
             $comments_count_num_css,
             sanitize_title( $comment_singular_text ),
-            $comments_count_axn_css
+            $comments_count_axn_css,
+            $comments_label_text
         );
         
         // Comments Count Multiple Text
@@ -92,7 +95,8 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
             $comment_plural_text,
             $comments_count_num_css,
             sanitize_title( $comment_plural_text ),
-            $comments_count_axn_css
+            $comments_count_axn_css,
+            $comments_label_text
         );
         
         // Comments Count Zero Text
@@ -101,7 +105,7 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
             $comment_singular_text,
             $comments_count_num_css,
             sanitize_title( $comment_singular_text ),
-            $comments_count_axn_css
+            $comments_label_text
         );
         
         

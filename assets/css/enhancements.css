@@ -105,7 +105,7 @@
     --section--spacing-y: var(--spacing-y--md);
     
     /* Content - Spacing */
-    --content--spacing: var(--spacing-relative-y--sm) var(--gutter-x--md);
+    --content--spacing: .75em var(--gutter-x--md);
     --content--spacing-x: var(--gutter-x--md);
     --content--spacing-y: var(--spacing-relative-y--sm);
     
@@ -274,7 +274,7 @@
 .web-product-main-media-banner img,
 
 /* Comments */
-.applicator--comments .comments-actions-snippet .comments-population,
+.applicator--comments .post-header-aside .comments-actions-snippet .comments-population,
 .applicator--comments .comments-actions-snippet.comments-population--empty .add-comment-axn,
 .apl--comments--active .comments-toggle .comments-count---txt
 {
@@ -642,8 +642,14 @@ input[type="submit"],
 
 
 
-/*------------------ Post ------------------*/
+/*------------------ Post and Comment ------------------*/
 .post---cr
+{
+    padding-top: var(--component--spacing-y);
+    padding-bottom: var(--component--spacing-y);
+}
+
+.comment---cr
 {
     padding-top: var(--component--spacing-y);
     padding-bottom: var(--component--spacing-y);
@@ -680,6 +686,16 @@ input[type="submit"],
     padding-right: 0;
     
     overflow-x: auto;
+}
+
+
+
+
+
+/*------------------ Content Container - <img> ------------------*/
+.data-format img
+{
+    width: 100%;
 }
 
 
@@ -1537,6 +1553,18 @@ input[type="submit"]
     display: none;
 }
 
+
+/* Sub Nav Toggle Button - Branches */
+.children .sub-nav-tog---b_l,
+.sub-menu .sub-nav-tog---b_l
+{
+    color: var(--sub-nav-func-branches--toggle-button--fg-color);
+}
+
+.widget-content---ct_cr > * > ul > li > .sub-nav-toggle .sub-nav-tog---b_l
+{
+    color: var(--sub-nav-func-branches--toggle-button--fg-color);
+}
 
 .sub-nav-tog---b_l
 {

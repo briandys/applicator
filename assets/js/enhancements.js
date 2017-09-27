@@ -180,7 +180,7 @@
         // Initiate
         goStartNavDeactivate();
         
-        ( function() {
+        function goStartNav() {
             
             bodyOffsetCriteriaHeight = document.body.offsetHeight / 2;
             bodyOffsetHeight = document.body.offsetHeight;
@@ -191,14 +191,24 @@
                 $window.scroll( function( e ) {
                     
                     if ( ( ( window.innerHeight + window.pageYOffset ) >= ( bodyOffsetHeight / 4 ) ) && ( ! window.pageYOffset == 0 ) ) {
+                        
                         goStartNavActivate();
-                    } else if ( ( ( window.innerHeight + window.pageYOffset ) < ( bodyOffsetHeight / 4 ) ) || ( window.pageYOffset == 0 ) ) {
+                    
+                    }
+                    else if ( ( ( window.innerHeight + window.pageYOffset ) < ( bodyOffsetHeight / 4 ) ) || ( window.pageYOffset == 0 ) ) {
+                        
                         goStartNavDeactivate();
+                    
                     }
                     
                 } );
             }
-        }() );
+        }
+        goStartNav();
+        
+        new ResizeSensor( $page, function() {
+            goStartNav();
+        } );
         
     
         // Smooth Scroll to #start
@@ -525,7 +535,6 @@
             
             // Mimic Target
             $window.scrollTop( $comments.position().top );
-            location.hash = '#comments';
         }
         
         
@@ -558,10 +567,15 @@
         function commentsToggle() {
             
             if ( $cp.hasClass( commentsOffCSS ) ) {
+                
                 commentsActivate();
+                location.hash = '#comments';
+            
             }
             else if ( $cp.hasClass( commentsOnCSS ) ) {
+                
                 commentsDeactivate();
+            
             }
         }
         
@@ -589,6 +603,15 @@
             } );
         
         }() );
+        
+        
+        $document.ready( function () {
+            
+            if ( window.location.hash.indexOf( '#comment' ) !== -1 ) {
+                commentsActivate();
+            }
+        
+        } );
         
         
         /*
