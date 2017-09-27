@@ -54,7 +54,8 @@
 .applicator--theme--post-meta .post-meta .comma---sep,
 .applicator--theme--post-meta .post-modified,
 .applicator--theme--post-meta .post-published-by-glabel,
-.applicator--theme--post-meta .post-categories-glabel,
+.applicator--theme--categories .post-categories-glabel,
+.applicator--theme--tags .post-tags-glabel,
 .applicator--theme--entry-nav .entry-navi .colon---sep,
 .applicator--theme--entry-nav .entry-navi .entry---txt,
 .applicator--theme--comment-meta .published-comment-glabel,
@@ -71,7 +72,8 @@
 
 /* ------------------ Unlist ------------------ */
 .unlist,
-.applicator--theme--categories .post-categories
+.applicator--theme--categories .post-categories,
+.applicator--theme--tags .post-tags---grp
 {
     list-style: none;
     margin: 0;
@@ -84,7 +86,8 @@
 
 /* ------------------ Active Area (AA) ------------------ */
 .active-area,
-.applicator--theme--categories .post-categories a,
+.applicator--theme--categories .apl-categories a,
+.applicator--theme--tags .apl-tags a,
 .applicator--theme--comments-count-action .comments-count---txt
 {
     display: inline-flex;
@@ -100,7 +103,7 @@
 
 
 
-/* ------------------ Applicator Theme - Main Header ------------------ */
+/* ------------------ Main Header ------------------ */
 .applicator--theme--main-header .main-header---cr
 {
     position: relative;
@@ -317,7 +320,7 @@
 
 
 
-/* ------------------ Applicator Theme - Avatar ------------------ */
+/* ------------------ Avatar ------------------ */
 .applicator--theme--avatar .author-avatar---a_l,
 .applicator--theme--avatar .commenter-avatar---a_l
 {
@@ -329,7 +332,7 @@
 
 
 
-/* ------------------ Applicator Theme - Note ------------------ */
+/* ------------------ Note ------------------ */
 .applicator--theme--note .note
 {
     color: var(--note--fg-color);
@@ -340,7 +343,7 @@
 
 
 
-/* ------------------ Applicator Theme - Categories ------------------ */
+/* ------------------ Categories ------------------ */
 .applicator--theme--categories .apl-categories .post-categories
 {
     padding-left: var(--category-item--spacing-x);
@@ -373,6 +376,67 @@
 }
 
 .applicator--theme--categories .apl-categories .post-categories
+{
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+
+
+
+/* ------------------ Tags ------------------ */
+.applicator--theme--tags .apl-tags .post-tags---grp
+{
+    padding-left: var(--category-item--spacing-x);
+    padding-right: var(--category-item--spacing-x);
+}
+
+.applicator--theme--tags .apl-tags .post-tag
+{
+    position: relative;
+    
+    display: inline-block;
+    vertical-align: middle;
+    
+    padding-left: calc( var(--content--spacing-x) / 2 );
+    padding-right: calc( var(--content--spacing-x) / 2 );
+    padding-top: var(--content--spacing-y);
+    padding-bottom: var(--content--spacing-y);
+    
+    font-size: .875rem;
+}
+
+.applicator--theme--tags .apl-tags .post-tag::before
+{
+    content: '#';
+    position: absolute;
+    z-index: -1;
+    
+    margin-left: .75em;
+    
+    color: var(--links--fg-color);
+    
+    transform: translateY(50%);
+}
+
+.applicator--theme--tags .apl-tags a
+{    
+    padding: var(--category--padding);
+    padding-left: 1.5em;
+    
+    min-height: var(--category--min-height);
+    
+    border: var(--category--border);
+}
+
+.applicator--theme--tags .apl-tags a:hover
+{
+    text-decoration: none;
+}
+
+.applicator--theme--tags .apl-tags .post-tags---grp
 {
     display: inline-flex;
     align-items: center;
@@ -458,7 +522,7 @@
     text-align: right;
 }
 
-.applicator--theme--entry-nav .entry-nav .line
+.applicator--theme--entry-nav .entry-navi .line
 {
     display: block;
 }
@@ -468,17 +532,17 @@
     text-align: right;
 }
 
-.applicator--theme--entry-nav a
+.applicator--theme--entry-nav .entry-navi a
 {
     text-decoration: none;
 }
 
-.applicator--theme--entry-nav a:hover .value---line
+.applicator--theme--entry-nav .entry-navi a:hover .value---line
 {
     text-decoration: underline;
 }
 
-.applicator--theme--entry-nav .property---line
+.applicator--theme--entry-nav .entry-navi .property---line
 {
     margin-bottom: .5rem;
     
@@ -554,12 +618,6 @@
     color: var(--color--white);
 }
 
-.apl--comments--inactive.applicator--theme--comments-count-action .comments-count---txt
-{
-    background-color: white;
-    color: var(--links--fg-color);
-}
-
 .applicator--theme--comments-count-action .comments-count-axn .txt .comments-label---txt
 {
     margin-right: var(--glabel--between--spacing);
@@ -582,21 +640,15 @@
 
 .applicator--theme--comments.applicator--comments .comments-toggle---b_l
 {
-    background-color: var(--button--pri--bg-color);
-    color: white;
+    background-color: transparent;
+    color: var(--links--fg-color);
+    
+    border: 1px solid var(--color--panda-blue);
 }
 
 .applicator--theme--comments.applicator--comments .show-hide---l
 {
     text-decoration: none;
-}
-
-.applicator--theme--comments.applicator--comments .comments--active .comments-toggle---b_l
-{
-    background-color: transparent;
-    color: var(--links--fg-color);
-    
-    border: 1px solid var(--color--panda-blue);
 }
 
 

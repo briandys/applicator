@@ -39,7 +39,8 @@
 .comment-reply-axn .to---txt,
 .comment-reply-axn .comment---txt,
 #cancel-comment-reply-link .to---txt,
-#cancel-comment-reply-link .comment---txt
+#cancel-comment-reply-link .comment---txt,
+.logged-in .commenter-comment-creation-flabel
 {
     position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -154,6 +155,24 @@
 {
     display: inline-block;
     vertical-align: middle;
+}
+
+.comments-header-aside---cr
+{
+    padding-top: var(--component--spacing-y);
+    padding-bottom: var(--component--spacing-y);
+}
+
+.signed-in-acct---cr
+{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.signed-in-acct---hr
+{
+    flex: 1 100%;
 }
 
 

@@ -45,6 +45,7 @@ if ( ! function_exists( 'applicator_themes_css_class_names' ) ) {
             'avatar',
             'note',
             'categories',
+            'tags',
             'post-meta',
             'comment-meta',
             'name-avatar',

@@ -94,6 +94,7 @@ if ( ! function_exists( 'applicator_functionalities_css_class_names' ) ) {
             'sub-nav',
             'go-start-nav',
             'comments',
+            'page-nav',
         ); 
         
         echo ' ' . $applicator_term;

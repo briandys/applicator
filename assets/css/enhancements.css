@@ -276,7 +276,10 @@
 /* Comments */
 .applicator--comments .post-header-aside .comments-actions-snippet .comments-population,
 .applicator--comments .comments-actions-snippet.comments-population--empty .add-comment-axn,
-.apl--comments--active .comments-toggle .comments-count---txt
+.apl--comments--active .comments-toggle .comments-count---txt,
+
+/* Page Nav */
+.applicator--page-nav .ellipsis--sep
 {
     position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -693,6 +696,11 @@ input[type="submit"],
 
 
 /*------------------ Content Container - <img> ------------------*/
+.window--unloaded .data-format--img
+{
+    display: none;
+}
+
 .data-format img
 {
     width: 100%;
@@ -1713,7 +1721,8 @@ input[type="submit"]
 .page-nav ul
 {
     display: flex;
-    align-items: baseline;
+    justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
 }
 

@@ -184,6 +184,7 @@ else {
                     'structure' => array(
                         'type'      => 'component',
                     ),
+                    'id'        => 'entries',
                     'hr_content'    => applicator_page_nav(),
                     'content'   => array(
                         'component'     => array(

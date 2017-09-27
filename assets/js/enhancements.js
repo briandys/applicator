@@ -11,8 +11,8 @@
         $aplApplicatorMainSearch = $html.closest( '.applicator--main-search' ),
         $aplApplicatorSubNav = $html.closest( '.applicator--sub-nav' ),
         $aplApplicatorMainMenu = $html.closest( '.applicator--main-menu' ),
-        $aplApplicatorEasyAccessNav = $html.closest( '.applicator--easy-access-nav' ),
         $applicatorComments = $html.closest( '.applicator--comments' ),
+        $applicatorPageNav = $html.closest( '.applicator--page-nav' ),
         
         $mainHrAsEnabled = $html.closest( '.main-header-aside--enabled' ),
         
@@ -1181,23 +1181,6 @@
     
     
     
-    // ------------------------- Easy Access Nav | Main Menu
-    function initEasyAccessNav( $cp ) {
-        
-        if ( ! $aplApplicatorEasyAccessNav.length ) {
-			return;
-		}
-        
-        $cp
-            .addClass( 'easy-access-nav-func' )
-            .addClass( funcTerm );
-    }
-    initEasyAccessNav( $( '#main-nav' ) );
-    
-    
-    
-    
-    
     // ------------------------- Form Validation
     ( function() {
         
@@ -1270,6 +1253,87 @@
                 }
             }, false);
         }
+    } )();
+    
+    
+    
+    
+    
+    // ------------------------- Page Nav
+    ( function() {
+        
+        
+        if ( ! $applicatorPageNav.length ) {
+			return;
+		}
+        
+        
+        // Variables
+        var $entries = $( '#entries' ),
+            $pageNav = $entries.find( '.page-nav' ),
+            $pageNavGroup = $pageNav.find( 'ul' ),
+            
+            $pageNavItem = $pageNav.find( 'li' ),
+            $pageNavItemChild = $pageNav.find( 'li > *' ),
+            $adjacentNavi = $pageNav.find( 'li:has( .adjacent-navi---a_l )' ),
+            $pageNavi = $pageNav.find( 'li:has( .page-navi---a_l )' );
+        
+        funcName = 'page-nav-func';
+            
+        $pageNav.addClass( funcTerm + ' ' + funcName );
+        $pageNavGroup.addClass( 'grp page-nav---grp' );
+        
+        // Generic Page Nav Item
+        $pageNavItem.each( function() {
+            
+            var $this = $( this );
+            
+            $this.addClass( 'li item obj' );
+        
+        } );
+        
+        // Adjacent Nav Item
+        $adjacentNavi.each( function() {
+            
+            var $this = $( this );
+            
+            $this
+                .addClass( 'adjacent-navi' )
+                .find( 'a' ).addClass( 'adjacent-nav---a' );
+            
+        } );
+        
+        // Page Nav Item
+        $pageNavi.each( function() {
+            
+            var $this = $( this );
+            
+            $this.closest( 'li' ).addClass( 'page-navi' );
+            $this.closest( 'a' ).addClass( 'page-navi---a' );
+            
+        } );
+        
+        $pageNavItemChild.each( function() {
+            
+            var $this = $( this );
+
+            if ( $this.hasClass( 'prev' ) ) {
+                $this.closest( $pageNavItem ).addClass( 'prev-page-navi' );
+            }
+
+            if ( $this.hasClass( 'next' ) ) {
+                $this.closest( $pageNavItem ).addClass( 'next-page-navi' );
+            }
+
+            if ( $this.hasClass( 'dots' ) ) {
+                $this.closest( $pageNavItem ).addClass( 'ellipsis--sep' );
+            }
+
+            if ( $this.hasClass( 'current' ) ) {
+                $this.closest( $pageNavItem ).addClass( 'page-navi--current' );
+            }
+        } );
+        
     } )();
     
     
