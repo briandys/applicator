@@ -1912,7 +1912,8 @@ input[type="submit"]
 /*------------------ Copyright Info ------------------*/
 .window--unloaded .web-product-copyright
 {
-    display: none;
+    visibility: hidden;
+    min-height: 3rem;
 }
 
 .web-product-copyright
