@@ -36,6 +36,11 @@ $enhancements_styles_scripts = get_parent_theme_file_path( '/inc/styles-scripts-
 if ( file_exists( $enhancements_styles_scripts ) ) { require_once( $enhancements_styles_scripts ); }
 
 
+// Snap-on
+$snapon = get_parent_theme_file_path( '/snap-on/index.php' );
+if ( file_exists( $snapon ) ) { require_once( $snapon ); }
+
+
 // Main Nav
 $main_nav = get_parent_theme_file_path( '/inc/tags/main-nav.php' );
 if ( file_exists( $main_nav ) ) { require_once( $main_nav ); }
@@ -184,8 +189,3 @@ if ( file_exists( $customizer ) ) { require_once( $customizer ); }
 // Customizer Custom Colors
 $customizer_custom_colors = get_parent_theme_file_path( '/inc/functions/customizer-custom-colors.php' );
 if ( file_exists( $customizer_custom_colors ) ) { require_once( $customizer_custom_colors ); }
-
-
-// Snap-on
-$snapon = get_parent_theme_file_path( '/snap-on/index.php' );
-if ( file_exists( $snapon ) ) { require_once( $snapon ); }

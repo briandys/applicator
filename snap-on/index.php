@@ -53,6 +53,7 @@ if ( ! function_exists( 'applicator_themes_css_class_names' ) ) {
             
             // Functionalities with Themes
             'comments',
+            'main-nav',
         ); 
         
         foreach ( ( array ) $r as $css_class_name ) {

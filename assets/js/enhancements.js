@@ -373,10 +373,10 @@
         // Click
         ( function() {
             $mainMenuTogBtn.on( 'click.applicator', function( e ) {
-                var _this = $( this );
+                var $this = $( this );
                 e.preventDefault();
                 mainMenuToggle();
-                $window.scrollTop( _this.position().top );
+                $window.scrollTop( $this.position().top );
             } );
         }() );
         
@@ -570,7 +570,7 @@
         ( function() {
             
             $commentsToggleButton.on( 'click.applicator', function( e ) {
-                var _this = $( this );
+                var $this = $( this );
                 e.preventDefault();
                 
                 commentsToggle();
@@ -583,7 +583,7 @@
         ( function() {
             
             $commentsCountAction.on( 'click.applicator', function() {
-                var _this = $( this );
+                var $this = $( this );
                 
                 commentsActivate();
             } );
@@ -798,18 +798,18 @@
         ( function() {
             
             $mainSearchTogBtn.on( 'click.applicator', function( e ) {
-                var _this = $( this );
+                var $this = $( this );
                 e.preventDefault();
                 
-                $window.scrollTop( _this.position().top );
+                $window.scrollTop( $this.position().top );
                 mainSearchToggle();
             } );
             
             $mainSearchResetBtn.on( 'click.applicator', function( e ) {
-                var _this = $( this );
+                var $this = $( this );
                 e.preventDefault();
                 
-                $window.scrollTop( _this.position().top );
+                $window.scrollTop( $this.position().top );
                 $mainSearchInput.val( '' ).focus();
                 mainSearchInputStatus();
             } );
@@ -851,29 +851,26 @@
     
     
     
-    // Sub-Nav | Main Menu, Widget Menu
+    // Sub-Nav for Main Menu, Widget Menu, Widget Pages
     function initSubNav( $cp ) {
         
         if ( ! $aplApplicatorSubNav.length ) {
 			return;
 		}
         
+        
         var subNavTogObjMu,
             subNavTogBtnMu,
             subNavTogBtnLmu,
             subNavTogBtnLTxtMu,
             
+            mainNavCSS = 'main-nav',
+            
             subNavActCss = 'sub-nav--active',
             subNavInactCss = 'sub-nav--inactive',
             
-            subNavPrevActCss = 'sub-nav--previous--active',
-            subNavPrevInactCss = 'sub-nav--previous--inactive',
-            
-            subNavIbCss = 'sub-nav--inbound',
-            subNavObLeftCss = 'sub-nav--outbound-left',
-            subNavObRightCss = 'sub-nav--outbound-right',
-            subNavObTopCss = 'sub-nav--outbound-top',
-            subNavObBottomCss = 'sub-nav--outbound-bottom',
+            subNavOthersActiveCSS = 'sub-nav--others--active',
+            subNavOthersInactiveCSS = 'sub-nav--others--inactive',
             
             navHoverActiveCss = 'nav-hover--active',
             navHoverInactiveCss = 'nav-hover--inactive',
@@ -899,11 +896,15 @@
             $subNavTogBtnShowL = aplDataSubNav.subNavTogBtnShowL,
             $subNavTogBtnHideL = aplDataSubNav.subNavTogBtnHideL;
         
+        
         if ( $cp.has( $subNavParentItems ) ) {
-            $cp
-                .addClass( 'sub-nav-func' )
-                .addClass( funcTerm );
+            
+            funcName = 'sub-nav-func';
+            
+            $cp.addClass( funcTerm + ' ' + funcName );
+        
         }
+        
         
         // Build Markup
         ( function() {
@@ -937,14 +938,16 @@
             
         }() );
         
+        
         $subNavTogBtn = $cp.find( '.sub-nav-tog---b' );
         $subNavShowHideTxt = '.show-hide---txt';
         
+        
         // Activate
         function subNavActivate() {
-            var _this = $( this );
+            var $this = $( this );
             
-            $subNavParent = _this.closest( $subNavParentItems );
+            $subNavParent = $this.closest( $subNavParentItems );
             
             $subNavParent
                 .addClass( subNavActCss )
@@ -953,78 +956,32 @@
                 .addClass( aplSubNavActCss )
                 .removeClass( aplSubNavInactCss );
             
-            _this.attr( {
+            $this.attr( {
                  'aria-expanded': 'true',
                  'title': $subNavTogBtnHideL
             } );
             
-            _this.find( $subNavShowHideTxt ).text( $subNavTogBtnHideL );
+            $this.find( $subNavShowHideTxt ).text( $subNavTogBtnHideL );
         }
         
-        // Activate
+        
+        // Hover Activate
         function navHoverActivate() {
-            var _this = $( this );
-            _this.closest( $navParentItems )
+            var $this = $( this );
+            $this.closest( $navParentItems )
                 .addClass( navHoverActiveCss )
                 .removeClass( navHoverInactiveCss );
         }
         
-        // Deactivate
+        
+        // Hover Deactivate
         function navHoverDeactivate() {
-            var _this = $( this );
-            _this.closest( $navParentItems )
+            var $this = $( this );
+            $this.closest( $navParentItems )
                 .addClass( navHoverInactiveCss )
                 .removeClass( navHoverActiveCss );
         }
         
-        $cp.find( $subNavParentItems ).each( function() {
-            $subNavParentItems.addClass( subNavIbCss );
-        } );
-        
-        // Detect Element Bounds
-        function subNavItemDetectBounds() {
-            var _this = $( this ),
-                subNavOffset,
-                subNavLeftOffset,
-                subNavTopOffset,
-                containerWidth,
-                elemWidth;
-            
-            $subNavParent = _this.closest( $subNavParentItems );
-            
-            $elem = $subNavParent.find( $subNavGrp );
-            subNavOffset = $elem.offset();
-            subNavLeftOffset = subNavOffset.left;
-            subNavTopOffset = subNavOffset.top;
-            containerWidth = $body.width();
-            containerHeight = $window.height();
-            elemWidth = $elem.width();
-            elemHeight = $elem.height();
-            
-            // If outbound left
-            if ( subNavLeftOffset < 0 ) {
-                $subNavParent.addClass( subNavObLeftCss );
-                $subNavParent.removeClass( subNavIbCss );
-            }
-            
-            // If oubound right
-            if ( ( elemWidth > containerWidth ) || ( parseInt( elemWidth, 10 ) + parseInt( subNavLeftOffset, 10 ) ) > containerWidth ) {
-                $subNavParent.addClass( subNavObRightCss );
-                $subNavParent.removeClass( subNavIbCss );
-            }
-            
-            // If outbound top
-            if ( subNavTopOffset < 0 ) {
-                $subNavParent.addClass( subNavObTopCss );
-                $subNavParent.removeClass( subNavIbCss );
-            }
-            
-            // If outbound bottom
-            if ( ( elemHeight > containerHeight ) || ( parseInt( elemHeight, 10 ) + parseInt( subNavTopOffset, 10 ) ) > containerHeight ) {
-                $subNavParent.addClass( subNavObBottomCss );
-                $subNavParent.removeClass( subNavIbCss );
-            }
-        }
         
         // Deactivate on HTML level
         function htmlSubNavDeactivate() {
@@ -1035,10 +992,11 @@
             }
         }
         
+        
         // Deactivate
         function subNavDeactivate() {
-            var _this = $( this );
-            $subNavParent = _this.closest( $subNavParentItems );
+            var $this = $( this );
+            $subNavParent = $this.closest( $subNavParentItems );
             
             $subNavParent
                 .addClass( subNavInactCss )
@@ -1046,26 +1004,20 @@
             
             htmlSubNavDeactivate();
             
-            _this.attr( {
+            $this.attr( {
                  'aria-expanded': 'false',
                  'title': $subNavTogBtnShowL
             } );
             
-            _this.find( $subNavShowHideTxt ).text( $subNavTogBtnShowL );
-            
-            $subNavParent
-                .addClass( subNavIbCss )
-                .removeClass( subNavObLeftCss )
-                .removeClass( subNavObRightCss )
-                .removeClass( subNavObTopCss )
-                .removeClass( subNavObBottomCss );
+            $this.find( $subNavShowHideTxt ).text( $subNavTogBtnShowL );
         }
+        
         
         // Deactivate all Sub-Nav
         function subNavAllDeactivate() {
             
             $cp.find( $subNavParentItems ).each( function() {
-                var _this = $( this );
+                var $this = $( this );
                 $subNavParentItems
                     .addClass( subNavInactCss )
                     .removeClass( subNavActCss );
@@ -1077,74 +1029,95 @@
                     'title': $subNavTogBtnShowL
                 } );
                 
-                _this.find( $subNavShowHideTxt ).text( $subNavTogBtnShowL );
+                $this.find( $subNavShowHideTxt ).text( $subNavTogBtnShowL );
             } );
             
             
             
             $cp.find( $navParentItems ).each( function() {
-                var _this = $( this );
-                _this
-                    .addClass( subNavPrevInactCss )
-                    .removeClass( subNavPrevActCss );
+                var $this = $( this );
+                $this
+                    .addClass( subNavOthersInactiveCSS )
+                    .removeClass( subNavOthersActiveCSS );
             } );
         }
         
         // Initiate
         subNavAllDeactivate();
         
+        
         // Deactivate Siblings
         function siblingsDeactivate() {
-            var _this = $( this );
-            _this.closest( $subNavParentItems ).siblings()
+            
+            var $this = $( this );
+            
+            $this.closest( $subNavParentItems ).siblings()
                 .addClass( subNavInactCss )
                 .removeClass( subNavActCss );
         }
         
-        // Deactivate Sub Nav Siblings
-        function subNavsiblingsDeactivate() {
-            var _this = $( this );
-            $navParent = _this.closest( $navParentItems );
+        
+        // Activate Sub-Nav Siblings
+        function subNavSiblingsActivate() {
             
-            _this.closest( $navParent ).nextAll()
-                .addClass( subNavPrevActCss )
-                .removeClass( subNavPrevInactCss );
+            var $this = $( this );
+            
+            $navParent = $this.closest( $navParentItems );
+            
+            $this.closest( $navParent ).nextAll()
+                .addClass( subNavOthersInactiveCSS )
+                .removeClass( subNavOthersActiveCSS );
         }
         
-        // Activate Sub Nav Siblings
-        function subNavsiblingsActivate() {
-            var _this = $( this );
-            $navParent = _this.closest( $navParentItems );
+        
+        // Deactivate Sub-Nav Siblings
+        function subNavSiblingsDeactivate() {
             
-            _this.closest( $navParent ).nextAll()
-                .addClass( subNavPrevInactCss )
-                .removeClass( subNavPrevActCss );
+            var $this = $( this );
+            
+            $navParent = $this.closest( $navParentItems );
+            
+            $this.closest( $navParent ).nextAll()
+                .addClass( subNavOthersActiveCSS )
+                .removeClass( subNavOthersInactiveCSS );
         }
+        
         
         // Click
         ( function() {
+            
             $subNavTogBtn.on( 'click.applicator', function( e ) {
-                var _this = $( this );
+                
+                var $this = $( this );
+                
                 e.preventDefault();
-                $subNavParent = _this.closest( $subNavParentItems );
+                
+                $subNavParent = $this.closest( $subNavParentItems );
                 
                 if ( $subNavParent.hasClass( subNavInactCss ) ) {
+                    
                     subNavActivate.apply( this );
-                    subNavItemDetectBounds.apply( this );
-                    subNavsiblingsDeactivate.apply( this );
+                    
+                    if ( $cp.hasClass( mainNavCSS ) ) {
+                        subNavSiblingsDeactivate.apply( this );
+                    }
+                    
                 }
                 
                 else if ( $subNavParent.hasClass( subNavActCss ) ) {
+                    
                     subNavDeactivate.apply( this );
-                    subNavsiblingsActivate.apply( this );
+                    
+                    if ( $cp.hasClass( mainNavCSS ) ) {
+                        subNavSiblingsActivate.apply( this );
+                    }
                 }
                 
-                if ( $cp.hasClass( 'easy-access-nav-func' ) ) {
+                if ( $cp.hasClass( mainNavCSS ) ) {
                     siblingsDeactivate.apply( this );
                 }
-                
-                siblingsDeactivate.apply( this );
             } );
+            
         }() );
         
         // Hover
@@ -1219,14 +1192,14 @@
                     //$('#commentform :input:visible[required="required"]').each( function () {
                     $('#commentform :input:visible').each( function () {
                         
-                        var _this = $( this );
+                        var $this = $( this );
 
-                        _this.closest( '.cr' )
+                        $this.closest( '.cr' )
                             .find( '.validity-note' ).remove();
 
                         if ( this.validity.valid ) {
                             
-                            _this.closest( '.cp' )
+                            $this.closest( '.cp' )
                                 .addClass( 'creation--valid' )
                                 .removeClass( 'creation--invalid' )
                             
@@ -1258,9 +1231,9 @@
                                 'data-name': 'Validity Note OBJ'
                             } ).append( validityNoteContainer );
 
-                            _this.focus();
+                            $this.focus();
 
-                            _this.closest( '.cp' )
+                            $this.closest( '.cp' )
                                 .addClass( 'creation--invalid' )
                                 .removeClass( 'creation--valid' )
                                 .find( '.cr' )
@@ -1461,7 +1434,7 @@
                 // Get only the text nodes
                 return this.nodeType === 3;
             } )
-            .wrap( '<span class="span"></span>' );
+            .wrap( '<span class="span text-node"></span>' );
 
             /*
 

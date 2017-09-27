@@ -213,7 +213,14 @@
 .signed-in-acct---h,
 .post-excerpt---h,
 .sub-post-content---h,
-.search---h
+.search---h,
+.widget---h,
+.widget-content---h,
+.multisite---h,
+.site-preview---h,
+.site-main-info---h,
+.comment-content---h,
+.comments---h
 {
     position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -299,6 +306,17 @@ abbr[title]:hover
 label[for]:hover
 {
     cursor: pointer;
+}
+
+
+
+
+
+/*------------------ Image ------------------*/
+img
+{
+    max-width: 100%;
+    height: auto;
 }
 
 

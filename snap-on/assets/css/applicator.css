@@ -29,7 +29,10 @@
 .post-header-aside .comment-creation-ability,
 .post-header-aside .comments-population--empty .comments-population,
 .comment-creation-ability--disabled.comments-population--empty .comment-md,
-.comments-population--empty .comments-empty-note
+.comments-population--empty .comments-empty-note,
+.comment-creation-glabel,
+.comment-form .open-parenthesis---txt,
+.comment-form .close-parenthesis---txt
 {
     position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -100,6 +103,31 @@
 .comments-heading---g
 {
     font-size: 1.5rem;
+}
+
+.optional---txt
+{
+    color: gray;
+    font-size: .75rem;
+    text-transform: uppercase;
+}
+
+.commenter-url-creation-flabel---l
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.creation--invalid .input-text
+{
+    border-color: var(--color--record-red);
+}
+
+.creation--valid .input-text
+{
+    border-color: var(--color--go-green);
 }
 
 
