@@ -434,6 +434,8 @@
             $commentsToggleButton,
             $commentsToggleButtonTextLabel,
             
+            $commentsCount,
+            
             $commentsShowL = aplDataComments.commentsShowL,
             $commentsHideL = aplDataComments.commentsHideL,
             
@@ -495,6 +497,10 @@
         // Define elements after inserting the markup
         $commentsToggleButton = $( '#comments-toggle---b' );
         $commentsToggleButtonTextLabel = $commentsToggleButton.find( '.show-hide---l' );
+        
+        // To insert beside the button label
+        $commentsCount = $( '#comments-header-aside' ).find( '.comments-count---txt' );
+        $commentsCount.clone().insertAfter( $commentsToggleButtonTextLabel );
         
         
         // Activate Comments
@@ -1523,9 +1529,8 @@
             
             
             new ResizeSensor( $page, function() {
-                console.log('pageHeightCSS()');
                 pageHeightCSS();
-            });
+            } );
         
         }() );
     } );

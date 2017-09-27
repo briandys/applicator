@@ -66,13 +66,14 @@ $comments_heading_obj = applicator_htmlok( array(
 ) );
 
 
-// R: Comments Header Asisde
+// R: Comments Header Aside
 $comments_header_aside_cn = applicator_htmlok( array(
     'name'          => 'Comments Header',
     'structure'     => array(
         'type'          => 'constructor',
         'subtype'       => 'aside',
     ),
+    'id'            => 'comments-header-aside',
     'content'           => array(
         'constructor'         => applicator_comments_actions_snippet(),
     ),

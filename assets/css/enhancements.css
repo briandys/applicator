@@ -296,7 +296,10 @@
 /* Multisite Directory */
 .multisite---h,
 .site-preview---h,
-.site-main-info---h
+.site-main-info---h,
+
+.applicator--comments .comments-actions-snippet .comments-population,
+.applicator--comments .comments-actions-snippet.comments-population--empty .add-comment-axn
 {
     position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -1040,9 +1043,40 @@ input[type="submit"]
     display: none;
 }
 
+
+
+
+
+
+/* Overlay Inactive */
+.applicator--comments .comment-md---ct
+{
+    position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
+    opacity: 0;
+    transition: var(--transition--generic);
+    transition-property: opacity;
+}
+
+/* Overlay Active */
+.apl--comments--active .comment-md---ct
+{
+    position: static;
+    margin: auto;
+    padding: 0;
+    width: auto;
+    height: auto;
+    overflow: auto;
+    clip: auto;
+    opacity: 1;
+}
+
 .apl--comments--inactive .comment-md---ct
 {
-    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 100%;
 }
 
 .applicator--comments .comments-toggle---b
@@ -1058,6 +1092,8 @@ input[type="submit"]
 
 .applicator--comments .show-hide---l
 {
+    margin-right: var(--glabel--between--spacing);
+    
     text-decoration: underline;
 }
 

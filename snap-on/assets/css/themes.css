@@ -490,6 +490,12 @@
     color: var(--color--white);
 }
 
+.apl--comments--inactive.applicator--theme--comments-count-action .comments-count---txt
+{
+    background-color: white;
+    color: var(--links--fg-color);
+}
+
 .applicator--theme--comments-count-action .comment---txt,
 .applicator--theme--comments-count-action .comments---txt
 {
