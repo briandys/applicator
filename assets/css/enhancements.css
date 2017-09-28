@@ -279,9 +279,11 @@
 .apl--comments--active .comments-toggle .comments-count---txt,
 
 /* Page Nav */
-.applicator--page-nav .ellipsis--sep
+.applicator--page-nav .page-nav .ellipsis--sep,
+.applicator--page-nav .page-navi:not( .adjacent-navi ),
+.applicator--page-nav .adjacent-navi---l
 {
-    position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
+    position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
 
 
@@ -696,7 +698,7 @@ input[type="submit"],
 
 
 /*------------------ Content Container - <img> ------------------*/
-.window--unloaded .data-format--img
+.window--unloaded .post-content img
 {
     display: none;
 }
@@ -1718,6 +1720,11 @@ input[type="submit"]
 
 
 /*------------------ Page Nav ------------------*/
+.dom--unready .page-nav
+{
+    display: none;
+}
+
 .page-nav ul
 {
     display: flex;
@@ -1726,10 +1733,19 @@ input[type="submit"]
     flex-wrap: wrap;
 }
 
-.page-nav li
+.adjacent-navi a
 {
-    padding-left: var(--object--spacing-x);
-    padding-right: var(--object--spacing-x);
+    color: black;
+}
+
+.next-page-navi .icon--vector
+{
+    transform: rotate( -90deg );
+}
+
+.prev-page-navi .icon--vector
+{
+    transform: rotate( 90deg );
 }
 
 

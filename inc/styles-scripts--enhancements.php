@@ -67,6 +67,11 @@ if ( ! function_exists( 'applicator_enhancements_styles_scripts' ) ) {
 		$applicator_l10n['subNavTogBtnHideL']    = __( 'Hide Sub-Nav', 'applicator' );
         $applicator_l10n['subNavTogBtnIco']      = $arrow_icon;
         wp_localize_script( 'applicator-script--functionalities', 'aplDataSubNav', $applicator_l10n );
+        
+        
+        // Page-Nav
+        $applicator_l10n['pageNavArrowIco']      = $arrow_icon;
+        wp_localize_script( 'applicator-script--functionalities', 'aplDataPageNav', $applicator_l10n );
     }
     add_action( 'wp_enqueue_scripts', 'applicator_enhancements_styles_scripts' );
 }

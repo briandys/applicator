@@ -1276,7 +1276,11 @@
             $pageNavItem = $pageNav.find( 'li' ),
             $pageNavItemChild = $pageNav.find( 'li > *' ),
             $adjacentNavi = $pageNav.find( 'li:has( .adjacent-navi---a_l )' ),
-            $pageNavi = $pageNav.find( 'li:has( .page-navi---a_l )' );
+            $pageNavi = $pageNav.find( 'li:has( a )' ),
+            
+            $prevPageNavi,
+            $nextPageNavi,
+            $pageNavArrowIco = aplDataPageNav.pageNavArrowIco;
         
         funcName = 'page-nav-func';
             
@@ -1309,7 +1313,6 @@
             var $this = $( this );
             
             $this.closest( 'li' ).addClass( 'page-navi' );
-            $this.closest( 'a' ).addClass( 'page-navi---a' );
             
         } );
         
@@ -1333,6 +1336,17 @@
                 $this.closest( $pageNavItem ).addClass( 'page-navi--current' );
             }
         } );
+        
+        // Define created elements
+        $prevPageNavi = $pageNav.find( '.prev-page-navi' );
+        $prevPageNaviLabel = $prevPageNavi.find( '.adjacent-navi---a_l' );
+        $nextPageNavi = $pageNav.find( '.next-page-navi' );
+        $nextPageNaviLabel = $nextPageNavi.find( '.adjacent-navi---a_l' );
+        
+        
+        // Add Icons
+        $prevPageNaviLabel.append( $pageNavArrowIco );
+        $nextPageNaviLabel.append( $pageNavArrowIco );
         
     } )();
     
