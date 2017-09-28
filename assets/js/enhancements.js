@@ -1307,15 +1307,6 @@
             
         } );
         
-        // Page Nav Item
-        $pageNavi.each( function() {
-            
-            var $this = $( this );
-            
-            $this.closest( 'li' ).addClass( 'page-navi' );
-            
-        } );
-        
         $pageNavItemChild.each( function() {
             
             var $this = $( this );
@@ -1336,6 +1327,18 @@
                 $this.closest( $pageNavItem ).addClass( 'page-navi--current' );
             }
         } );
+        
+        // Page Nav Item
+        $pageNavi.each( function() {
+            
+            var $this = $( this );
+            
+            $this.closest( 'li' ).addClass( 'page-navi' );
+            
+        } );
+        
+        $pageNavGroup.not( ':has( .next-page-navi )' ).addClass( 'page-nav--no-next' );
+        $pageNavGroup.not( ':has( .prev-page-navi )' ).addClass( 'page-nav--no-prev' );
         
         // Define created elements
         $prevPageNavi = $pageNav.find( '.prev-page-navi' );

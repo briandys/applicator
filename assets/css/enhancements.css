@@ -1725,27 +1725,37 @@ input[type="submit"]
     display: none;
 }
 
-.page-nav ul
+.applicator--page-nav .page-nav ul
 {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 }
 
-.adjacent-navi a
+.applicator--page-nav .page-nav .adjacent-navi a
 {
     color: black;
 }
 
-.next-page-navi .icon--vector
+.applicator--page-nav .page-nav .next-page-navi .icon--vector
 {
     transform: rotate( -90deg );
 }
 
-.prev-page-navi .icon--vector
+.applicator--page-nav .page-nav .prev-page-navi .icon--vector
 {
     transform: rotate( 90deg );
+}
+
+.applicator--page-nav .page-nav--no-prev .page-navi--current
+{
+    margin-left: 3rem;
+}
+
+.applicator--page-nav .page-nav--no-next .page-navi--current
+{
+    margin-right: 3rem;
 }
 
 
