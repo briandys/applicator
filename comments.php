@@ -274,7 +274,7 @@ $commenter_comment_creation_flabel_obj = applicator_htmlok( array(
 */
 $commenter_comment_creation_text_input_mu = '';
 $commenter_comment_creation_text_input_mu .= '<div class="ce %1$s---ce">';
-$commenter_comment_creation_text_input_mu .= '<textarea id="%2$s" class="textarea input-text %1$s" name="%3$s" placeholder="%4$s" title="%5$s" maxlength="%7$s"%6$s></textarea>';
+$commenter_comment_creation_text_input_mu .= '<textarea id="%2$s" class="textarea input-text input-text--textarea %1$s" name="%3$s" placeholder="%4$s" title="%5$s" maxlength="%7$s"%6$s></textarea>';
 $commenter_comment_creation_text_input_mu .= '</div>';
 
 $commenter_comment_creation_text_input_content = sprintf( $commenter_comment_creation_text_input_mu,

@@ -40,9 +40,10 @@
 .comment-reply-axn .comment---txt,
 #cancel-comment-reply-link .to---txt,
 #cancel-comment-reply-link .comment---txt,
-.logged-in .commenter-comment-creation-flabel
+.logged-in .commenter-comment-creation-flabel,
+.comments---hr .comments-nav
 {
-    position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
+    position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
 
 
@@ -140,12 +141,12 @@
     flex-wrap: wrap;
 }
 
-.creation--invalid .input-text
+.comment-form .creation--invalid .input-text
 {
     border-color: var(--color--record-red);
 }
 
-.creation--valid .input-text
+.comment-form .creation--valid .input-text
 {
     border-color: var(--color--go-green);
 }
@@ -173,6 +174,16 @@
 .signed-in-acct---hr
 {
     flex: 1 100%;
+}
+
+.signed-in-account a
+{
+    text-decoration: none;
+}
+
+.signed-in-account a:hover
+{
+    text-decoration: underline;
 }
 
 
@@ -233,4 +244,19 @@
 {
     padding-top: var(--component--spacing-y);
     padding-bottom: var(--component--spacing-y);
+}
+
+
+
+
+
+/*------------ Widget ------------*/
+.widget a
+{
+    text-decoration: none;
+}
+
+.widget a:hover
+{
+    text-decoration: underline;
 }

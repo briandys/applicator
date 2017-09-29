@@ -30,11 +30,9 @@ if ( file_exists( $starter_content ) ) { require_once( $starter_content ); }
 $default_styles_scripts = get_parent_theme_file_path( '/inc/styles-scripts--default.php' );
 if ( file_exists( $default_styles_scripts ) ) { require_once( $default_styles_scripts ); }
 
-
 // Enhancements Styles and Scripts
 $enhancements_styles_scripts = get_parent_theme_file_path( '/inc/styles-scripts--enhancements.php' );
 if ( file_exists( $enhancements_styles_scripts ) ) { require_once( $enhancements_styles_scripts ); }
-
 
 // Snap-on
 $snapon = get_parent_theme_file_path( '/snap-on/index.php' );
@@ -104,11 +102,6 @@ if ( file_exists( $post_banner_visual ) ) { require_once( $post_banner_visual );
 // Main Content Headings
 $main_content_headings = get_parent_theme_file_path( '/inc/tags/main-content-headings.php' );
 if ( file_exists( $main_content_headings ) ) { require_once( $main_content_headings ); }
-
-
-// Post Title
-$post_title = get_parent_theme_file_path( '/inc/functions/post-title.php' );
-if ( file_exists( $post_title ) ) { require_once( $post_title ); }
 
 
 // Comments

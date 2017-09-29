@@ -53,6 +53,7 @@ if ( ! function_exists( 'applicator_themes_css_class_names' ) ) {
             'edit-action',
             'comments-count-action',
             'main-header',
+            'private-post-title',
             
             // Functionalities with Themes
             'comments',

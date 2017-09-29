@@ -32,6 +32,27 @@
     
     
     
+    // Private and Protected Post Titles
+    ( function() {
+        
+        var $main = $( '#main' ),
+            $privatePostTitle = $main.find( $( '.main-post-title---l:contains("Private:")' ) ),
+            $protectedPostTitle = $main.find( $( '.main-post-title---l:contains("Protected:")' ) );
+        
+        $privatePostTitle.html(function(_, html) {
+           return html.split("Private:").join("<span class='txt private-post-title---txt private---txt'>Private</span><span class='sep colon---sep'>:</span>");
+        });
+        
+        $protectedPostTitle.html(function(_, html) {
+           return html.split("Protected:").join("<span class='txt private-post-title---txt private---txt'>Protected</span><span class='sep colon---sep'>:</span>");
+        });
+        
+    } )();
+    
+    
+    
+    
+    
     
     /*
     // ------------------------- Remove empty tags

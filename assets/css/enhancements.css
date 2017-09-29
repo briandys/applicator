@@ -894,9 +894,15 @@ input[type="submit"],
 input[type="text"],
 input[type="password"]
 {
-    padding: .5em;
+    padding: .5em 1rem;
     width: 100%;
     border: 1px solid var(--input-text--border-color);
+}
+
+.input-text--textarea
+{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 /* Buttons */
@@ -1030,31 +1036,14 @@ input[type="submit"]
     display: none;
 }
 
-
-
-
-
-
-/* Overlay Inactive */
 .applicator--comments .comment-md---ct
 {
-    position:absolute;margin:-1px;padding:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
-    opacity: 0;
-    transition: var(--transition--generic);
-    transition-property: opacity;
+    display: none;
 }
 
-/* Overlay Active */
 .apl--comments--active .comment-md---ct
 {
-    position: static;
-    margin: auto;
-    padding: 0;
-    width: auto;
-    height: auto;
-    overflow: auto;
-    clip: auto;
-    opacity: 1;
+    display: block;
 }
 
 .apl--comments--inactive .comment-md---ct
@@ -1555,6 +1544,11 @@ input[type="submit"]
 .sub-nav--active > .sub-nav-toggle .arrow-icon
 {
     transform: rotate( 180deg );
+}
+
+.sub-nav-func .sub-nav-toggle .icon--raster.arrow-icon
+{
+    background-position: 0 -12px;
 }
 
 .sub-nav--inactive > .children,
