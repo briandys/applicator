@@ -44,6 +44,7 @@ if ( ! function_exists( 'applicator_themes_css_class_names' ) ) {
             'table',
             'avatar',
             'note',
+            'quote',
             'categories',
             'tags',
             'post-meta',
@@ -54,10 +55,16 @@ if ( ! function_exists( 'applicator_themes_css_class_names' ) ) {
             'comments-count-action',
             'main-header',
             'private-post-title',
+            'search-result',
+            'excerpt',
+            'caption',
             
             // Functionalities with Themes
             'comments',
             'main-nav',
+            
+            // Layout
+            'container-width',
         ); 
         
         foreach ( ( array ) $r as $css_class_name ) {

@@ -62,7 +62,9 @@
 .applicator--theme--comment-meta .comment-published-time-stamp-dtstamp,
 .applicator--theme--comment-meta .published-commenter-glabel,
 .applicator--theme--comment-meta .comment-meta .comma---sep,
-.applicator--theme--private-post-title .main-post-title---l .colon---sep
+.applicator--theme--private-post-title .main-post-title---l .colon---sep,
+.applicator--theme--excerpt .show-more-action .property---line .of---txt,
+.applicator--theme--excerpt .show-more-action .value---line
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -116,7 +118,7 @@
     align-content: space-between;
     flex-wrap: wrap;
     
-    min-height: 10rem;
+    min-height: 7rem;
     
     padding-bottom: var(--component--spacing-y);
 }
@@ -630,14 +632,6 @@
 
 
 /* ------------------ Comments ------------------ */
-.applicator--theme--comments.applicator--comments .comments-toggle
-{
-    padding-left: var(--object--spacing-x);
-    padding-right: var(--object--spacing-x);
-    
-    text-align: center;
-}
-
 .applicator--theme--comments.applicator--comments .comments-toggle---b_l
 {
     background-color: transparent;
@@ -904,7 +898,7 @@
 
 
 
-/* ------------------ Private Post Title ------------------ */
+/* ------------------ Private and Protected Post Title ------------------ */
 .applicator--theme--private-post-title .main-post-title---a_l
 {
     position: relative;
@@ -913,6 +907,7 @@
 .applicator--theme--private-post-title .private-post-title---txt
 {
     position: absolute;
+    left: 0;
     bottom: 100%;
     
     color: gray;
@@ -923,5 +918,171 @@
     text-transform: uppercase;
     letter-spacing: .125em;
     
-    transform: translateY( .75em );
+    transform: translateY( .5em );
+}
+
+
+
+
+
+/* ------------------ Quote ------------------ */
+.applicator--theme--quote blockquote
+{
+    position: relative;
+    
+    padding: 0 3rem;
+    
+    font-size: 1.5rem;
+    font-family: monospace;
+}
+
+.applicator--theme--quote blockquote::before
+{
+    content: '“';
+    
+    position: absolute;
+    left: 0;
+    top: 0;
+    
+    color: hsla(0, 0%, 0%, .125);
+    
+    font-size: 6rem;
+    font-family: serif;
+    line-height: 1;
+    
+    transform: translateY( -.125em );
+}
+
+.applicator--theme--quote blockquote cite
+{
+    display: block;
+    margin-top: 1rem;
+}
+
+
+
+
+
+/* ------------------ Search Result ------------------ */
+.applicator--theme--search-result .search-results .main-content-heading .line
+{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.applicator--theme--search-result .search-results .main-content-heading .count---line
+{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    
+    padding: calc( .5em / 3 ) calc( .5em / 1.5 );
+    
+    min-width: 2rem;
+    min-height: 2rem;
+    
+    background-color: var(--accent-color--pri);
+    color: var(--color--white);
+    
+    font-size: 1rem;
+}
+
+.applicator--theme--search-result .search-results .main-content-heading .property---line
+{
+    margin-right: var(--glabel--between--spacing);
+}
+
+.applicator--theme--search-result .search-results .main-content-heading .value---line
+{
+    margin-right: var(--glabel--between--spacing);
+}
+
+.applicator--theme--search-result .search-results .search-results-term---txt
+{
+    font-weight: normal;
+}
+
+
+
+
+
+/* ------------------ Show More Action ------------------ */
+.applicator--theme--excerpt .show-more-action
+{
+    display: inline-block;
+    
+    margin-top: var(--object--spacing-y);
+    margin-bottom: var(--object--spacing-y);
+    
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.applicator--theme--excerpt .show-more-glabel---g_l,
+.applicator--theme--excerpt .show-more-axn---a_l
+{
+    padding-left: var(--content--spacing-x);
+    padding-right: var(--content--spacing-x);
+    
+    background-color: var(--accent-color--pri);
+    color: white;
+}
+
+.applicator--theme--excerpt .excerpt-link .ellipsis---sep::after
+{
+    content: '';
+    display: block;
+}
+
+.applicator--theme--excerpt .excerpt-link
+{
+    color: black;
+    text-decoration: none;
+}
+
+.applicator--theme--excerpt .excerpt-link:hover
+{
+    text-decoration: none;
+}
+
+.applicator--theme--excerpt .excerpt-link .text-node:hover
+{
+    text-decoration: underline;
+}
+
+
+
+
+
+/* ------------------ Container Width ------------------ */
+.applicator--theme--container-width .comment-respond
+{
+    max-width: 48rem;
+    margin: auto;
+}
+
+
+
+
+
+/* ------------------ Caption ------------------ */
+.applicator--theme--caption .wp-caption-text
+{
+    color: gray;
+}
+
+
+
+
+
+/* ------------------ Layout ------------------ */
+.applicator--theme--layout.main-content-aside--enabled .primary-content 
+{
+    flex: 1 100%;
+}
+
+.applicator--theme--layout.main-content-aside--enabled .secondary-content 
+{
+    flex: 1 320px;
+    min-width: 320px;
 }

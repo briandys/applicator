@@ -186,6 +186,12 @@
     text-decoration: underline;
 }
 
+.comment-md---cr
+{
+    padding-top: var(--component--spacing-y);
+    padding-bottom: var(--component--spacing-y);
+}
+
 
 
 
@@ -222,7 +228,7 @@
 
 
 
-/*------------ Post Published Date and Time Stamp ------------*/
+/*------------ Post Meta ------------*/
 .post-published-date-and-time-stamp
 {
     padding-top: var(--component--spacing-y);
@@ -240,7 +246,15 @@
 
 
 
-.comment-md---cr
+/*------------ Comment Meta ------------*/
+.comment-published-date-and-time-stamp
+{
+    padding-top: var(--component--spacing-y);
+    padding-bottom: var(--component--spacing-y);
+}
+
+.commenter-name,
+.commenter-avatar
 {
     padding-top: var(--component--spacing-y);
     padding-bottom: var(--component--spacing-y);

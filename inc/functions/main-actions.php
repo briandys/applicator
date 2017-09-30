@@ -22,6 +22,7 @@ if ( ! function_exists( 'applicator_main_actions' ) ) {
 
                     // Main Search
                     $search_ob_content,
+                    applicator_page_nav(),
                 ),
             ),
             'echo'      => true,

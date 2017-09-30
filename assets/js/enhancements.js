@@ -575,7 +575,7 @@
             else if ( $cp.hasClass( commentsOnCSS ) ) {
                 
                 commentsDeactivate();
-            
+                location.hash = '';
             }
         }
         
@@ -1531,7 +1531,7 @@
 
             // ------------ Wrap text nodes in <span>
             // https://stackoverflow.com/a/18727318
-            $( '.data-format' )
+            $( '.data-format, .excerpt-link' )
             .contents()
             .filter( function() {
 
@@ -1539,23 +1539,6 @@
                 return this.nodeType === 3;
             } )
             .wrap( '<span class="span text-node"></span>' );
-
-            /*
-
-            $( '.post-content iframe' ).each(function() {
-                var $this = $( this );
-                $this.wrap( dataFormatBlockCpMu )
-                    .closest( dataFormatCss )
-                        .addClass( dataFormatPrefixCss + 'iframe' );
-            });
-
-            $( '.post-content embed' ).each(function() {
-                var $this = $( this );
-                $this.wrap( dataFormatBlockCpMu )
-                    .closest( dataFormatCss )
-                        .addClass( dataFormatPrefixCss + 'embed' );
-            });
-            */
 
          } )();
     } );

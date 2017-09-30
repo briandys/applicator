@@ -1630,6 +1630,7 @@ input[type="submit"]
 /* With Main Search */
 .applicator--main-search .wbp-main-info---cr
 {
+    padding-left: var(--elem-dimension--md);
     padding-right: var(--elem-dimension--md);
 }
 
