@@ -105,6 +105,8 @@ else {
             applicator_main_content_headings();
         }
         
+        echo applicator_page_nav();
+        
         
         // Main Content Header Aside | inc > tags > aside.php
         echo applicator_main_content_header_aside();
@@ -185,13 +187,11 @@ else {
                         'type'      => 'component',
                     ),
                     'id'        => 'entries',
-                    'hr_content'    => applicator_page_nav(),
                     'content'   => array(
                         'component'     => array(
                             $entries_ob_content,
                         ),
                     ),
-                    'fr_content'    => applicator_page_nav(),
                 ) );
                 
             }
@@ -248,5 +248,15 @@ else {
 
     </div>
 </div><!-- Main Content Content -->
+
+<div class="fr main-content---fr">
+    <div class="fr_cr main-content---fr_cr">
+        
+        <?php
+        echo applicator_page_nav();
+        ?>
+    
+    </div>
+</div><!-- Main Content Footer -->
 
 <?php get_footer();

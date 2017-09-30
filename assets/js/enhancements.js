@@ -1259,7 +1259,7 @@
     
     
     
-    // ------------------------- Page Nav
+    /* ------------------------- Page Nav ------------------------- */
     ( function() {
         
         
@@ -1269,8 +1269,8 @@
         
         
         // Variables
-        var $entries = $( '#entries' ),
-            $pageNav = $entries.find( '.page-nav' ),
+        var $content = $( '#content' ),
+            $pageNav = $content.find( '.page-nav' ),
             $pageNavGroup = $pageNav.find( 'ul' ),
             
             $pageNavItem = $pageNav.find( 'li' ),

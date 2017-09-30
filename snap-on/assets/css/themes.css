@@ -918,6 +918,8 @@
     text-transform: uppercase;
     letter-spacing: .125em;
     
+    white-space: nowrap;
+    
     transform: translateY( .5em );
 }
 
@@ -930,10 +932,34 @@
 {
     position: relative;
     
-    padding: 0 3rem;
+    padding-left: 3em;
     
     font-size: 1.5rem;
     font-family: monospace;
+}
+
+.applicator--theme--quote blockquote > *
+{
+    margin-top: var(--content--spacing-y);
+    margin-bottom: var(--content--spacing-y);
+    
+    padding: 0;
+}
+
+.applicator--theme--quote blockquote > *:first-child
+{
+    margin-top: 0;
+}
+
+.applicator--theme--quote blockquote > *:last-child
+{
+    margin-bottom: 0;
+}
+
+.applicator--theme--quote blockquote > *:only-child
+{
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .applicator--theme--quote blockquote::before
@@ -1076,13 +1102,31 @@
 
 
 /* ------------------ Layout ------------------ */
-.applicator--theme--layout.main-content-aside--enabled .primary-content 
-{
-    flex: 1 100%;
-}
 
-.applicator--theme--layout.main-content-aside--enabled .secondary-content 
+
+
+
+
+
+/*------------------ Viewport Width: 1024 ------------------*/
+
+@media only screen and ( min-width: 64em )
 {
-    flex: 1 320px;
-    min-width: 320px;
+
+    /* ------------ Layout ------------ */
+    .applicator--theme--layout.main-content-aside--enabled .main-content---ct_cr
+    {
+        display: flex;
+    }
+
+    .applicator--theme--layout.main-content-aside--enabled .primary-content 
+    {
+        flex: 1 70%;
+    }
+
+    .applicator--theme--layout.main-content-aside--enabled .secondary-content 
+    {
+        flex: 1 30%;
+    }
+
 }
