@@ -29,7 +29,7 @@
         pageHeight,
         
         $webProductContainer = $page.find( '.wbp---cr' ),
-        $webProductCopyright = $( '#web-product-copyright' ),
+        $webProductCopyright = $( '#copyright' ),
         copyrightHeight = $webProductCopyright.height(),
         pageShortCss = 'page--short',
         pageLongCss = 'page--long',
@@ -1320,7 +1320,7 @@
             }
 
             if ( $this.hasClass( 'dots' ) ) {
-                $this.closest( $pageNavItem ).addClass( 'ellipsis--sep' );
+                $this.closest( $pageNavItem ).addClass( 'ellipsis--delimiter' );
             }
 
             if ( $this.hasClass( 'current' ) ) {

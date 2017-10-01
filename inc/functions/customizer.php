@@ -8,11 +8,11 @@ function applicator_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'header_textcolor' )->transport  = 'postMessage';
 
 	$wp_customize->selective_refresh->add_partial( 'blogname', array(
-		'selector' => '.wbp-main-name---l',
+		'selector' => '.main-name---l',
 		'render_callback' => 'applicator_customize_partial_blogname',
 	) );
 	$wp_customize->selective_refresh->add_partial( 'blogdescription', array(
-		'selector' => '.wbp-main-desc---l',
+		'selector' => '.main-desc---l',
 		'render_callback' => 'applicator_customize_partial_blogdescription',
 	) );
 

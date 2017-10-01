@@ -5,14 +5,13 @@
 
                 //------------------------------------------------ Main Footer
 
-                // Web Product Copyright
-                $web_product_copyright_obj = applicator_htmlok( array(
-                    'name'      => 'Web Product Copyright',
+                // Copyright
+                $copyright_obj = applicator_htmlok( array(
+                    'name'      => 'Copyright',
                     'structure' => array(
                         'type'          => 'object',
                     ),
-                    'id'        => 'web-product-copyright',
-                    'css'       => 'wbp-copyright',
+                    'id'        => 'copyright',
                     'root_css'  => 'site-info',
                     'content'   => array(
                         'object'        => array(
@@ -52,6 +51,14 @@
                                         array(
                                             'sep'       => $GLOBALS['space_sep'],
                                             'txt'       => esc_html__( 'Olrayt reserved.', 'applicator' ),
+                                            'linked'    => true,
+                                            'attr'      => array(
+                                                'a'         => array(
+                                                    'href'      => esc_url( '//applicator.dysinelab.com/' ),
+                                                    'target'    => '_blank',
+                                                    'title'     => esc_attr( 'Applicator on DysineLab' ),
+                                                ),
+                                            ),
                                         ),
                                         array(
                                             'txt'       => esc_html__( '&trade;', 'applicator' ),
@@ -75,7 +82,7 @@
                     'content'   => array(
                         'constructor'   => array(
                             applicator_main_footer_aside(),
-                            $web_product_copyright_obj,
+                            $copyright_obj,
                         ),
                     ),
                     'echo'      => true,

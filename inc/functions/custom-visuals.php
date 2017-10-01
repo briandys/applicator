@@ -49,8 +49,8 @@ if ( ! function_exists( 'applicator_style_custom_header_colors' ) ) {
         <?php // If the user has set a custom color for the text use that.
         if ( 'blank' !== $header_text_color ) { ?>
 
-        .wbp-main-name---a,
-        .wbp-main-desc---a
+        .main-name---a,
+        .main-desc---a
         {
             color: #<?php echo esc_attr( $header_text_color ); ?>;
         }

@@ -61,11 +61,11 @@ Initial release
 
     ** main-header (cn)
 
-        *** wbp-main-info (cp)
+        *** main-info (cp)
 
             **** wbp-main-name-obj (obj)
-            **** wbp-main-logo-obj (obj)
-            **** wbp-main-desc-obj (obj)
+            **** main-logo-obj (obj)
+            **** main-desc-obj (obj)
 
         *** main-nav (nav)
 

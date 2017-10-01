@@ -181,9 +181,9 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         
         // Customizer: Custom Logo
         if ( has_custom_logo() ) {
-            echo ' '. 'web-product-main-logo'. $on;
+            echo ' '. 'main-logo'. $on;
         } else {
-            echo ' '. 'web-product-main-logo'. $off;
+            echo ' '. 'main-logo'. $off;
         }
         
         
@@ -197,7 +197,7 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         }
 
         
-        // Web Product Main Name, Description
+        // Main Name, Description
         if ( 'blank' === get_header_textcolor() ) {
             echo ' '. 'web-product-main-name-description'. $off;
         } else {
@@ -207,9 +207,9 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         
         // Web Product Description
         if ( get_bloginfo( 'description', 'display' ) ) {
-            echo ' '. 'web-product-main-description--populated';
+            echo ' '. 'main-description--populated';
         } else {
-            echo ' '. 'web-product-main-description--empty';
+            echo ' '. 'main-description--empty';
         }
         
         

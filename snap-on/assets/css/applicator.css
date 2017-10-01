@@ -20,7 +20,7 @@
 
 /* Nav */
 .main-content---hr_cr .page-nav,
-.entry---hr .entry-nav,
+.main-content---hr .entry-nav,
 
 /* Edit Action */
 .edit-post-action .post-title---txt,
@@ -72,6 +72,16 @@
     
     min-width: var(--active-area--width--md);
     min-height: var(--active-area--width--md);
+}
+
+
+
+
+
+/*------------------ Main Heading ------------------*/
+.main-content-heading .value---line
+{
+    font-weight: normal;
 }
 
 
@@ -271,6 +281,57 @@
 }
 
 .widget a:hover
+{
+    text-decoration: underline;
+}
+
+
+
+
+
+/*------------------ Multisite Directory ------------------*/
+.site-preview---cr
+{
+    padding-top: var(--component--spacing-y);
+    padding-bottom: var(--component--spacing-y);
+}
+
+.site-main-name
+{
+    padding: var(--object--spacing--md);
+}
+
+.site-main-description
+{
+    padding-left: var(--object--spacing-x);
+    padding-right: var(--object--spacing-x);
+}
+
+
+
+
+
+
+
+/*------------------ Copyright ------------------*/
+.copyright
+{
+    color: var(--copyright-info--fg-color);
+}
+
+.copyright .wbp-name---txt
+{
+    font-weight: bold;
+}
+
+.copyright a
+{
+    color: inherit;
+    
+    text-decoration: none;
+}
+
+.copyright a:hover
 {
     text-decoration: underline;
 }

@@ -9,7 +9,7 @@
     // Main Name
 	wp.customize( 'blogname', function( value ) {
 		value.bind( function( to ) {
-			$( '.wbp-main-name---l' ).text( to );
+			$( '.main-name---l' ).text( to );
 		} );
 	} );
 	
@@ -17,7 +17,7 @@
     // Main Description
     wp.customize( 'blogdescription', function( value ) {
 		value.bind( function( to ) {
-			$( '.wbp-main-desc---l' ).text( to );
+			$( '.main-desc---l' ).text( to );
 		} );
 	} );
 
@@ -39,7 +39,7 @@
 					$( '#applicator-style--custom-header-colors' ).remove();
 				}
 				
-                $( '.wbp-main-name---a, .wbp-main-desc---a' ).css( {
+                $( '.main-name---a, .main-desc---a' ).css( {
 					color: to
 				} );
 				
