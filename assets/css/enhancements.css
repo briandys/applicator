@@ -271,7 +271,7 @@
 .aside .search-form-reset-axn,
 
 /* Main Media Banner */
-.web-product-main-media-banner img,
+.main-media-banner img,
 
 /* Comments */
 .applicator--comments .post-header-aside .comments-actions-snippet .comments-population,
@@ -729,7 +729,7 @@ input[type="submit"],
 
 
 /*------------------ Media Banner ------------------*/
-.wbp-main-media-banner---g
+.main-media-banner---g
 {
     padding-bottom: calc( var( --aspect-ratio--16-9 ) );
     
@@ -742,7 +742,7 @@ input[type="submit"],
     overflow: hidden;
 }
 
-.web-product-main-media-banner img
+.main-media-banner img
 {
     width: 100%;
     height: auto;
@@ -1871,7 +1871,7 @@ input[type="submit"]
 
 
 
-/*------------------ Web Product Main Description ------------------*/
+/*------------------ Main Description ------------------*/
 .main-description
 {
     display: flex;
@@ -2612,7 +2612,7 @@ input[type="submit"]
 @media only screen and ( min-width: 48em )
 {
 
-    .wbp-main-media-banner---g
+    .main-media-banner---g
     {
         padding-bottom: calc( var( --aspect-ratio--16-9 ) / 3 );
 

@@ -172,10 +172,10 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         
         // Customizer: Custom Header
         if ( has_header_image() ) {
-            echo ' '. 'web-product-main-media-banner'. $on;
+            echo ' '. 'main-media-banner'. $on;
         }
         else {
-            echo ' '. 'web-product-main-media-banner'. $off;
+            echo ' '. 'main-media-banner'. $off;
         }
         
         
@@ -205,7 +205,7 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         }
         
         
-        // Web Product Description
+        // Main Description
         if ( get_bloginfo( 'description', 'display' ) ) {
             echo ' '. 'main-description--populated';
         } else {

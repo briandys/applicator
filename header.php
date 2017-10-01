@@ -104,8 +104,6 @@
                     'echo'      => true,
                 ) );
                 
-                //------------------------------------------------ End: Web Product Start
-                
                 
                 //------------------------------------------------ Main Header
                 
@@ -156,7 +154,7 @@
                 }
 
                 
-                // R: Web Product Main Description
+                // R: Main Description
                 $main_description_obj = '';
                 $main_description = get_bloginfo( 'description', 'display' );
 
@@ -189,7 +187,6 @@
                         'type'  => 'component',
                         'hr_structure'  => true,
                     ),
-                    'css'       => 'main-info',
                     'content'   => array(
                         'component' => array(
                             
@@ -204,17 +201,18 @@
                         ),
                     ),
                 ) );
-
-                //------------------------ End: Main Info
                 
                 
-                // R: Web Product Main Media Banner
+                
                 // Custom Header | Customizer > Custom Header | inc > functions > custom-header.php
-                $web_product_main_media_banner_obj = '';
+                $main_media_banner_obj = '';
+                $main_banner_cp = '';
 
                 if ( has_header_image() ) {
-                    $web_product_main_media_banner_obj = applicator_htmlok( array(
-                        'name'      => 'Web Product Main Media Banner',
+                    
+                    // R: Main Media Banner
+                    $main_media_banner_obj = applicator_htmlok( array(
+                        'name'      => 'Main Media Banner',
                         'structure' => array(
                             'type'      => 'object',
                             'attr'      => array(
@@ -223,9 +221,23 @@
                                 ),
                             ),
                         ),
-                        'css'       => 'wbp-main-media-banner',
                         'content'   => array(
                             'object'    => get_custom_header_markup(),
+                        ),
+                    ) );
+                
+                    
+                    // R: Main Banner
+                    $main_banner_cp = applicator_htmlok( array(
+                        'name'      => 'Main Banner',
+                        'structure' => array(
+                            'type'  => 'component',
+                        ),
+                        'content'   => array(
+                            'component' => array(
+
+                                $main_media_banner_obj,
+                            ),
                         ),
                     ) );
                 }
@@ -259,8 +271,8 @@
                             // Hook After Main Nav
                             $hook_after_main_nav_ob_content,
                             
-                            // Web Product Main Media Banner
-                            $web_product_main_media_banner_obj,
+                            // Main Banner
+                            $main_banner_cp,
                             
                             // Main Header Aside
                             applicator_main_header_aside(),
@@ -268,8 +280,6 @@
                     ),
                     'echo'      => true,
                 ) );
-                
-                //------------------------------------------------ End: Main Header
                 
                 ?>
                 

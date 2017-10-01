@@ -187,8 +187,8 @@
 }
 
 
-/* ------------ Web Product Main Media Banner ------------ */
-.applicator--theme--main-header .wbp-main-media-banner---g
+/* ------------ Main Media Banner ------------ */
+.applicator--theme--main-header .main-media-banner---g
 {
     position: relative;
     
@@ -197,7 +197,7 @@
     transform: scale( 1.1 );
 }
 
-.applicator--theme--main-header .wbp-main-media-banner---g::before
+.applicator--theme--main-header .main-media-banner---g::before
 {
     content: '';
     position: absolute;
@@ -219,7 +219,7 @@
     transition-property: opacity;
 }
 
-.applicator--theme--main-header.apl--main-search--active .wbp-main-media-banner---g::before
+.applicator--theme--main-header.apl--main-search--active .main-media-banner---g::before
 {
     opacity: .75;
 }
@@ -234,7 +234,7 @@
 
 
 /* ------------ Media Banner ------------ */
-.applicator--theme--main-header .web-product-main-media-banner
+.applicator--theme--main-header .main-media-banner
 {
     position: absolute;
     left: 0;
@@ -246,7 +246,7 @@
     overflow: hidden;
 }
 
-.applicator--theme--main-header .wbp-main-media-banner---g
+.applicator--theme--main-header .main-media-banner---g
 {
     padding-bottom: 0;
     

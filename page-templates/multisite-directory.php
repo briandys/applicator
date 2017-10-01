@@ -155,19 +155,40 @@ if ( is_multisite() ) {
                     ) );
                 }
 
-                // R: Web Product Main Media Banner
-                $web_product_main_media_banner_obj = '';
+                // Custom Header | Customizer > Custom Header | inc > functions > custom-header.php
+                $main_media_banner_obj = '';
+                $main_banner_cp = '';
 
                 if ( has_header_image() ) {
-                    $web_product_main_media_banner_obj = applicator_htmlok( array(
-                        'name'      => 'Web Product Main Media Banner',
+                    
+                    // R: Main Media Banner
+                    $main_media_banner_obj = applicator_htmlok( array(
+                        'name'      => 'Main Media Banner',
                         'structure' => array(
                             'type'      => 'object',
-                            'subtype'   => 'wordpress generated content',
+                            'attr'      => array(
+                                'elem'         => array(
+                                    'style'      => 'background-image: url('. esc_url( get_header_image() ). ')',
+                                ),
+                            ),
                         ),
-                        'css'       => 'wbp-main-media-banner',
                         'content'   => array(
                             'object'    => get_custom_header_markup(),
+                        ),
+                    ) );
+                
+                    
+                    // R: Main Banner
+                    $main_banner_cp = applicator_htmlok( array(
+                        'name'      => 'Main Banner',
+                        'structure' => array(
+                            'type'  => 'component',
+                        ),
+                        'content'   => array(
+                            'component' => array(
+
+                                $main_media_banner_obj,
+                            ),
                         ),
                     ) );
                 }
@@ -188,8 +209,8 @@ if ( is_multisite() ) {
                             // Main Description
                             $site_main_description_obj,
 
-                            // Media Banner
-                            $web_product_main_media_banner_obj,
+                            // Main Banner
+                            $main_banner_cp,
                         ),
                     ),
                 ) );

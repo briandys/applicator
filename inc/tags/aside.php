@@ -91,7 +91,7 @@ if ( ! function_exists( 'applicator_main_content_aside' ) ) {
                     'subtype'       => 'aside',
                     'elem'          => 'aside',
                     'hr_structure'  => true,
-                    'h_elem'        => 'h3',
+                    'h_elem'        => 'h2',
                 ),
                 'id'        => $main_content_aside_term,
                 'css'       => 'main-ct',
