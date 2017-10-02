@@ -91,26 +91,56 @@ if ( ! function_exists( 'applicator_page_nav' ) ) {
         $adjacent_navi_previous_mu .= $page_navi_emu;
         
         
-        // R: Page Navigation Group
-        $page_nav_grp = paginate_links( array(
-            'base'          => $pagenum_link,
-            'format'        => $format,
-            'total'         => $GLOBALS['wp_query']->max_num_pages,
-            'current'       => $paged,
-            'show_all'      => false,
-            'end_size'      => 1,
-            'mid_size'      => 0,
-            'add_args'      => array_map( 'urlencode', $query_args ),
+        if ( ! is_search() ) {
             
-            'type'          => 'list',
-            'prev_next'     => true,
+            // R: Page Navigation Group
+            $page_nav_grp = paginate_links( array(
+                'base'          => $pagenum_link,
+                'format'        => $format,
+                'total'         => $GLOBALS['wp_query']->max_num_pages,
+                'current'       => $paged,
+                'show_all'      => false,
+                'end_size'      => 1,
+                'mid_size'      => 0,
+                'add_args'      => array_map( 'urlencode', $query_args ),
+
+                'type'          => 'list',
+                'prev_next'     => true,
+
+                'before_page_number'  => $page_navi_smu_content,
+                'after_page_number'   => $page_navi_emu,
+
+                'prev_text'     => $adjacent_navi_previous_mu,
+                'next_text'     => $adjacent_navi_next_mu,
+            ) );
             
-            'before_page_number'  => $page_navi_smu_content,
-            'after_page_number'   => $page_navi_emu,
+        }
+        
+        // If in Search Results
+        else {
+        
+            // R: Page Navigation Group
+            $page_nav_grp = paginate_links( array(
+                'base'          => $pagenum_link,
+                'format'        => $format,
+                'total'         => $GLOBALS['wp_query']->max_num_pages,
+                'current'       => $paged,
+                'show_all'      => true,
+                'end_size'      => 1,
+                'mid_size'      => 0,
+                'add_args'      => array_map( 'urlencode', $query_args ),
+
+                'type'          => 'list',
+                'prev_next'     => true,
+
+                'before_page_number'  => $page_navi_smu_content,
+                'after_page_number'   => $page_navi_emu,
+
+                'prev_text'     => $adjacent_navi_previous_mu,
+                'next_text'     => $adjacent_navi_next_mu,
+            ) );
             
-            'prev_text'     => $adjacent_navi_previous_mu,
-            'next_text'     => $adjacent_navi_next_mu,
-        ) );
+        }
 
         
         if ( $page_nav_grp ) {

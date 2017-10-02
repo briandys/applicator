@@ -4,20 +4,13 @@
 
 
 
-/*------------------------ Styles and Scripts ------------------------*/
+/* ------------------------ Styles and Scripts ------------------------ */
 if ( ! function_exists( 'applicator_snapon_styles_scripts' ) ) {
     
     function applicator_snapon_styles_scripts() {
-
         
         // Applicator
         wp_enqueue_style( 'applicator-snapon--style', get_theme_file_uri( '/snap-on/assets/css/applicator.css' ), array( 'applicator-style--enhancements' ) );
-
-        
-        // Multisite Directory
-        if ( is_multisite() && is_page_template( 'page-templates/multisite-directory.php' ) ) {
-            wp_enqueue_style( 'applicator-snapon--style--multisite-directory', get_theme_file_uri( '/snap-on/assets/css/multisite-directory.css' ), array( 'applicator-snapon--style' ) );
-        }
 
         
         // Themes
@@ -32,8 +25,9 @@ if ( ! function_exists( 'applicator_snapon_styles_scripts' ) ) {
 
 
 
-/*------------------------ Themes CSS Class Names ------------------------*/
+/* ------------------------ Themes CSS Class Names ------------------------ */
 if ( ! function_exists( 'applicator_themes_css_class_names' ) ) {
+    
     function applicator_themes_css_class_names() {
         
         $applicator_theme_term = 'applicator--theme';
@@ -41,23 +35,23 @@ if ( ! function_exists( 'applicator_themes_css_class_names' ) ) {
         $r = array(
             
             // Themes
-            'table',
             'avatar',
-            'note',
-            'quote',
-            'categories',
-            'tags',
-            'post-meta',
-            'comment-meta',
-            'name-avatar',
-            'entry-nav',
-            'edit-action',
-            'comments-count-action',
-            'main-header',
-            'private-post-title',
-            'search-result',
-            'excerpt',
             'caption',
+            'categories',
+            'comment-meta',
+            'comments-count-action',
+            'edit-action',
+            'entry-nav',
+            'excerpt',
+            'main-header',
+            'name-avatar',
+            'note',
+            'post-meta',
+            'private-post-title',
+            'quote',
+            'search-result',
+            'table',
+            'tags',
             
             // Functionalities with Themes
             'comments',
@@ -74,4 +68,5 @@ if ( ! function_exists( 'applicator_themes_css_class_names' ) ) {
         }
     }
     add_action( 'applicator_hook_html_class', 'applicator_themes_css_class_names');
+
 }

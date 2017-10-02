@@ -30,14 +30,16 @@ if ( file_exists( $starter_content ) ) { require_once( $starter_content ); }
 $default_styles_scripts = get_parent_theme_file_path( '/inc/styles-scripts--default.php' );
 if ( file_exists( $default_styles_scripts ) ) { require_once( $default_styles_scripts ); }
 
+
 // Enhancements Styles and Scripts
 $enhancements_styles_scripts = get_parent_theme_file_path( '/inc/styles-scripts--enhancements.php' );
 if ( file_exists( $enhancements_styles_scripts ) ) { require_once( $enhancements_styles_scripts ); }
-/*
+
+
 // Snap-on
 $snapon = get_parent_theme_file_path( '/snap-on/index.php' );
 if ( file_exists( $snapon ) ) { require_once( $snapon ); }
-*/
+
 
 // Main Nav
 $main_nav = get_parent_theme_file_path( '/inc/tags/main-nav.php' );

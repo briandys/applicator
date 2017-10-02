@@ -46,9 +46,29 @@
 .applicator--theme--excerpt .show-more-action .property---line .of---txt,
 .applicator--theme--excerpt .show-more-action .value---line,
 .applicator--theme--page-nav .page-nav .ellipsis--delimiter,
-.applicator--theme--page-nav .page-navi:not( .adjacent-navi )
+.applicator--theme--page-nav .blog .page-navi:not( .adjacent-navi )
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
+}
+
+
+
+
+
+/*------------------ Clearfix ------------------*/
+.clearfix:before,
+.clearfix:after,
+
+.page-nav---grp:before,
+.page-nav---grp:after
+{
+    content: " ";
+    display: table;
+}
+
+.page-nav---grp:after
+{
+    clear: both;
 }
 
 
@@ -831,12 +851,34 @@
 
 
 /* ------------------ Page Nav ------------------ */
-.applicator--them--page-nav .page-nav ul
+.applicator--theme--page-nav .page-nav---ct_cr
 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    text-align: center;
+}
+
+.applicator--theme--page-nav .page-nav ul
+{
+    display: inline-block;
+}
+
+.applicator--theme--page-nav .page-nav--no-prev .page-navi--current
+{
+    margin-left: 3rem;
+}
+
+.applicator--theme--page-nav .page-nav--no-next .page-navi--current
+{
+    margin-right: 3rem;
+}
+
+.applicator--theme--page-nav .next-page-navi
+{
+    float: right;
+}
+
+.applicator--theme--page-nav .prev-page-navi
+{
+    float: left;
 }
 
 

@@ -41,7 +41,13 @@
 #cancel-comment-reply-link .to---txt,
 #cancel-comment-reply-link .comment---txt,
 .logged-in .commenter-comment-creation-flabel,
-.comments---hr .comments-nav
+.comments---hr .comments-nav,
+
+/* Multisite Directory */
+.site-preview .main-media-banner,
+.site--root .site-main-info,
+.view--multisite-directory .post-banner-visual img,
+.view--multisite-directory .entry-content
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -289,28 +295,6 @@
 
 
 
-/*------------------ Multisite Directory ------------------*/
-.site-preview---cr
-{
-    padding-top: var(--component--spacing-y);
-    padding-bottom: var(--component--spacing-y);
-}
-
-.site-main-name
-{
-    padding: var(--object--spacing--md);
-}
-
-.site-main-description
-{
-    padding-left: var(--object--spacing-x);
-    padding-right: var(--object--spacing-x);
-}
-
-
-
-
-
 
 
 /*------------------ Copyright ------------------*/
@@ -334,4 +318,163 @@
 .copyright a:hover
 {
     text-decoration: underline;
+}
+
+
+
+
+
+/*------------------ Multisite Directory - Site ------------------*/
+.site-preview---cr
+{
+    padding-top: var(--component--spacing-y);
+    padding-bottom: var(--component--spacing-y);
+}
+
+.site--root .site-preview---cr
+{
+    padding: 0;
+}
+
+.site-preview a
+{
+    color: var(--links--fg-color);
+}
+
+.site-preview .site-main-name---a
+{
+    color: var(--faint-color--pri);
+    
+    text-decoration: none;
+}
+
+.site-main-name
+{
+    padding: var(--object--spacing--md);
+    
+    text-align: center;
+}
+
+.site-main-description
+{
+    margin-top: calc( (var(--object--spacing-y) * 2) * -1 ) ;
+    padding-left: var(--object--spacing-x);
+    padding-right: var(--object--spacing-x);
+    
+    font-size: var(--font-size--sm);
+    
+    text-align: center;
+}
+
+
+
+
+
+/*------------------ Multisite Directory - Post Banner Visual ------------------*/
+.view--multisite-directory .post-banner-visual
+{
+    position: relative;
+    z-index: -1;
+}
+
+.view--multisite-directory .post-banner-visual--enabled .post---hr_cr
+{
+    position: relative;
+    
+    height: var(--post-banner-vis--height);
+    overflow: hidden;
+}
+
+.view--multisite-directory .post-banner-vis---g
+{
+    background-size: cover;
+    background-position: center;
+    
+    background-color: var(--image--bg-color);
+}
+
+.view--multisite-directory .post-banner-vis---a
+{
+    position: relative;
+    
+    display: block;
+    width: 100%;
+    height: var(--post-banner-vis--height);
+}
+
+.view--multisite-directory .post-banner-vis---a::before
+{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    
+    width: 100%;
+    height: 100%;
+    
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+50,000000+100&0.5+0,1+50,0.5+100 */
+    background: -moz-linear-gradient(top, hsla(0,0%,0%,0.5) 0%, hsla(0,0%,0%,1) 50%, hsla(0,0%,0%,0.5) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, hsla(0,0%,0%,0.5) 0%,hsla(0,0%,0%,1) 50%,hsla(0,0%,0%,0.5) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, hsla(0,0%,0%,0.5) 0%,hsla(0,0%,0%,1) 50%,hsla(0,0%,0%,0.5) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80000000', endColorstr='#80000000',GradientType=0 ); /* IE6-9 */
+    
+    opacity: .5;
+}
+
+
+
+
+
+/*------------------ Multisite Directory - Main Post Title ------------------*/
+.view--multisite-directory .post---hr_cr
+{
+    text-align: center;
+}
+
+.view--multisite-directory .post-banner-visual--enabled .main-post-title
+{
+    padding: 0;
+}
+
+.view--multisite-directory .post-banner-visual--enabled .main-post-title---a
+{
+    box-sizing: border-box;
+    
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate( -50%, -50% );
+    z-index: 0;
+    
+    padding: var(--content--spacing);
+    
+    width: 100%;
+    max-height: 100%;
+    
+    color: white;
+}
+
+.view--multisite-directory .main-post-title---a
+{
+    text-decoration: none;
+}
+
+.view--multisite-directory .post-banner-visual--enabled .main-post-title---a_l
+{
+    display: flex;
+}
+
+
+
+
+
+/*------------------ Multisite Directory - Post ------------------*/
+.view--multisite-directory .post---cr
+{
+    padding: 0;
+}
+
+.view--multisite-directory .main-post-title---a
+{
+    color: var(--links--fg-color);
 }

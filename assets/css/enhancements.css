@@ -14,12 +14,12 @@ Enhancements Style
 
 
 /* ------------------ Variables ------------------ */
-.applicator
+.html
 {
-    /* Level 1 - Absolutes - see default.css */
+    /* Level 1: Absolutes - see default.css */
     
     
-    /* ------------ Level 2 - Generics ------------ */
+    /* ------------ Level 2: Generics ------------ */
     
     /* Main Color */
     --main-color--pri: var(--color--superhero-blue);
@@ -1074,6 +1074,21 @@ h1, h2, h3, h4, h5, h6
 }
 
 .main-post-title
+{
+    padding: var(--object--spacing--md);
+}
+
+
+
+
+
+/* ------------------ Multisite Directory ------------------ */
+.site-main-name
+{
+    padding: var(--object--spacing--md);
+}
+
+.site-main-description
 {
     padding: var(--object--spacing--md);
 }
@@ -2756,7 +2771,7 @@ h1, h2, h3, h4, h5, h6
 /* ------------------ Page Nav - Function ------------------ */
 .dom--unready .page-nav
 {
-    display: none;
+    visibility: hidden;
 }
 
 .applicator--page-nav .page-nav .adjacent-navi a
@@ -2774,21 +2789,11 @@ h1, h2, h3, h4, h5, h6
     transform: rotate( 90deg );
 }
 
-.applicator--page-nav .page-nav--no-prev .page-navi--current
-{
-    margin-left: 3rem;
-}
-
-.applicator--page-nav .page-nav--no-next .page-navi--current
-{
-    margin-right: 3rem;
-}
 
 
 
 
-
-/* ------------------ WordPress Admin Bar - Functionality ------------------ */
+/* ------------------ WordPress Admin Bar - Function ------------------ */
 
 /* Variables */
 .wp-admin-bar--enabled
@@ -2859,6 +2864,30 @@ h1, h2, h3, h4, h5, h6
 .wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-search-func
 {
     margin-top: var(--wp-admin-bar-allowance--wide);
+}
+
+
+
+
+
+
+/* ------------------ Page Nav ------------------ */
+.page-nav li
+{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.page-navi--current
+{
+    padding-left: var(--object--spacing-x);
+    padding-right: var(--object--spacing-x);
+}
+
+.page-navi:not( .adjacent-navi )
+{
+    padding-left: var(--object--spacing-x);
+    padding-right: var(--object--spacing-x);
 }
 
 
