@@ -9,7 +9,7 @@ if ( ! function_exists( 'applicator_main_nav' ) ) {
         // Variables
         $main_nav_term = 'main-nav';
         $main_nav_css = $main_nav_term;
-        $main_nav_ct_cr_css = 'menu-container';
+        $main_nav_ct_cr_css = 'menu';
         $main_nav_group_start_mu = '<ul class="grp '. $main_nav_css . '---grp' .'">';
         $main_nav_group_end_mu = '</ul>';
         

@@ -176,7 +176,7 @@
     color: var(--sub-nav-func-branches--toggle-button--fg-color);
 }
 
-.applicator--theme--main-header .main-nav---ct_cr > .menu-container > ul
+.applicator--theme--main-header .main-nav---ct_cr > .menu > ul
 {
     justify-content: center;
 }
@@ -259,7 +259,7 @@
 
 
 /* ------------ Sub-Nav ------------ */
-.applicator--theme--main-header .main-nav---ct_cr > .menu-container > ul > li > .sub-nav-toggle .sub-nav-tog---b_l
+.applicator--theme--main-header .main-nav---ct_cr > .menu > ul > li > .sub-nav-toggle .sub-nav-tog---b_l
 {
     color: white;
 }
