@@ -16,7 +16,7 @@
                 
                 <?php
                 
-                //------------------------------------------------ Web Product Start
+                /* ------------------------ Web Product Start ------------------------ */
                 
                 // R: Go to Content Navi
                 $go_to_content_navi_obj = applicator_htmlok( array(
@@ -105,10 +105,10 @@
                 ) );
                 
                 
-                //------------------------------------------------ Main Header
+                /* ------------------------ Main Header ------------------------ */
                 
-                //------------------------ Main Info
-                        
+                
+                /* ------------------------ Main Info ------------------------ */
                 
                 // R: Main Name
                 $main_name_obj = '';
@@ -235,8 +235,9 @@
                         ),
                         'content'   => array(
                             'component' => array(
-
+                                
                                 $main_media_banner_obj,
+                            
                             ),
                         ),
                     ) );

@@ -212,7 +212,7 @@
 
 
 
-/* ------------ Widget ------------ */
+/* ------------ Widgets ------------ */
 .widget a
 {
     text-decoration: none;
@@ -275,6 +275,13 @@
 
 .site-preview .site-main-name---a
 {
+    color: black;
+    
+    text-decoration: none;
+}
+
+.site-preview .site-main-desc---a
+{
     color: var(--faint-color--pri);
     
     text-decoration: none;
@@ -289,13 +296,18 @@
 
 .site-main-description
 {
-    margin-top: calc( (var(--object--spacing-y) * 2) * -1 ) ;
+    margin-top: calc( (var(--object--spacing-y) * 3) * -1 ) ;
     padding-left: var(--object--spacing-x);
     padding-right: var(--object--spacing-x);
     
     font-size: var(--font-size--sm);
     
     text-align: center;
+}
+
+.site-preview .main-post-title---h
+{
+    font-size: 1.5rem;
 }
 
 

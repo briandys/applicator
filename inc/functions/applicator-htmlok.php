@@ -302,7 +302,7 @@ function applicator_htmlok( $args = array() ) {
         $r_structure = substr( strtolower( preg_replace( $pat_space, $rep_space, trim( $r['structure']['type'] ) ) ), $substr_start, $substr_end );
         
         
-        //------------------------------------------------ Constructor Structure
+        // ------------------------ Constructor Structure
         if ( in_array( $r_structure, $structure_constructor_terms, true ) ) {
             
             $structure_name = 'Constructor';
@@ -351,7 +351,7 @@ function applicator_htmlok( $args = array() ) {
         }
         
         
-        //------------------------------------------------ Component Structure
+        // ------------------------ Component Structure
         elseif ( in_array( $r_structure, $structure_component_terms, true ) ) {
             
             $structure_name = 'Component';
@@ -422,7 +422,7 @@ function applicator_htmlok( $args = array() ) {
             
         }
             
-        //------------------------------------------------ Object Structure
+        // ------------------------ Object Structure
         elseif ( in_array( $r_structure, $structure_object_terms, true ) ) {
             
             $structure_name = 'Object';

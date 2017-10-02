@@ -264,9 +264,9 @@ Enhancements Style
 .main-search-tog---b_l .show-hide---txt,
 .main-search-func .search-form-search-axn .go---txt,
 .main-search-func .search-form-reset-axn .reset---txt,
-.apl--main-search--active .main-name,
-.apl--main-search--active .main-logo,
-.apl--main-search--active .main-description,
+.applicator--main-search--active .main-name,
+.applicator--main-search--active .main-logo,
+.applicator--main-search--active .main-description,
 
 /* Go to Start Nav */
 .go-start-nav-func .go-to-start---txt,
@@ -311,7 +311,7 @@ Enhancements Style
 /* Comments */
 .applicator--comments .post-header-aside .comments-actions-snippet .comments-population,
 .applicator--comments .comments-actions-snippet.comments-population--empty .add-comment-axn,
-.apl--comments--active .comments-toggle .comments-count---txt,
+.applicator--comments--active .comments-toggle .comments-count---txt,
 
 /* Page Nav */
 .applicator--page-nav .adjacent-navi---l
@@ -377,8 +377,8 @@ Enhancements Style
 }
 
 /* Overlay Active */
-.apl--main-menu--active .overlay--main-menu-func,
-.apl--go-content-nav--active .overlay--go-content-nav-func
+.applicator--main-menu--active .overlay--main-menu-func,
+.applicator--go-content-nav--active .overlay--go-content-nav-func
 {
     bottom: 0%;
     opacity: .75;
@@ -482,6 +482,7 @@ input[type="submit"],
 .input-text,
 input[type="password"],
 input[type="submit"],
+select,
 .b
 {
     /* Reset */
@@ -501,7 +502,8 @@ input[type="submit"],
 /* Textboxes */
 .input-text,
 input[type="text"],
-input[type="password"]
+input[type="password"],
+select
 {
     padding: .5em;
     width: 100%;
@@ -522,6 +524,11 @@ input[type="submit"]
     width: 100%;
     background-color: var(--button--pri--bg-color);
     color: var(--button--pri--fg-color);
+}
+
+select
+{
+    height: 3rem;
 }
 
 
@@ -1314,7 +1321,7 @@ h1, h2, h3, h4, h5, h6
 /* With Main Search */
 .applicator--main-search .main-info---cr
 {
-    padding-left: var(--elem-dimension--md);
+    padding-left: var(--component--spacing-x);
     padding-right: var(--elem-dimension--md);
 }
 
@@ -1593,7 +1600,7 @@ h1, h2, h3, h4, h5, h6
     font-size: .75rem;
 }
 
-.apl--go-start-nav--active .copyright
+.applicator--go-start-nav--active .copyright
 {
     padding-left: var(--spacing--toggle-allowance);
     padding-right: var(--spacing--toggle-allowance);
@@ -2132,17 +2139,6 @@ h1, h2, h3, h4, h5, h6
     padding: 0;
 }
 
-/* Widgets and Main Menu */
-.applicator--main-menu .widget:first-of-type .widget---cr
-{
-    margin-top: calc( var(--component--spacing-y) * -1 );
-}
-
-.applicator--main-menu .widget_media_image:first-of-type .widget---cr
-{
-    margin-top: 0;
-}
-
 .widget_tag_cloud a
 {
     text-decoration: none;
@@ -2164,6 +2160,17 @@ h1, h2, h3, h4, h5, h6
 .widget_recent_comments.widget--zero-length
 {
     display: none;
+}
+
+.widget_pages ul
+{
+    padding-left: 0;
+}
+
+.widget_pages li
+{
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 
@@ -2206,7 +2213,7 @@ h1, h2, h3, h4, h5, h6
 }
 
 /* Prevent Scroll on Root */
-.apl--go-content-nav--active
+.applicator--go-content-nav--active
 {
     overflow: hidden;
 }
@@ -2287,12 +2294,12 @@ h1, h2, h3, h4, h5, h6
     display: none;
 }
 
-.apl--comments--active .comment-md---ct
+.applicator--comments--active .comment-md---ct
 {
     display: block;
 }
 
-.apl--comments--inactive .comment-md---ct
+.applicator--comments--inactive .comment-md---ct
 {
     position: fixed;
     top: 0;
@@ -2505,7 +2512,7 @@ h1, h2, h3, h4, h5, h6
     transition-property: opacity;
 }
 
-.apl--main-menu--active .main-search-toggle .search-icon
+.applicator--main-menu--active .main-search-toggle .search-icon
 {
     opacity: 0;
 }
@@ -2660,10 +2667,21 @@ h1, h2, h3, h4, h5, h6
     height: var(--dismiss-icon--height);
 }
 
-.apl--main-menu--active
+.applicator--main-menu--active
 {
     /* Prevent Scroll on Root */
     overflow: hidden;
+}
+
+/* Widgets and Main Menu */
+.applicator--main-menu .widget:first-of-type .widget---cr
+{
+    margin-top: calc( var(--component--spacing-y) * -1 );
+}
+
+.applicator--main-menu .widget_media_image:first-of-type .widget---cr
+{
+    margin-top: 0;
 }
 
 
@@ -2821,7 +2839,7 @@ h1, h2, h3, h4, h5, h6
 }
 
 /* Go to Content Nav */
-.apl--go-content-nav--active .wpadminbar
+.applicator--go-content-nav--active .wpadminbar
 {
     z-index: 0 !important;
 }

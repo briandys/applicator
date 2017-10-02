@@ -81,8 +81,8 @@
             
             goCtNavActCss = 'go-content-nav--active',
             goCtNavInactCss = 'go-content-nav--inactive',
-            aplGoCtNavActCss = 'apl--go-content-nav--active',
-            aplGoCtNavInactCss = 'apl--go-content-nav--inactive';
+            aplGoCtNavActCss = 'applicator--go-content-nav--active',
+            aplGoCtNavInactCss = 'applicator--go-content-nav--inactive';
         
         function goCtNavActivate() {
             $cp
@@ -150,8 +150,8 @@
             goStartNavActCss = 'go-start-nav--active',
             goStartNavInactCss = 'go-start-nav--inactive',
             
-            aplgoStartNavActCss = 'apl--go-start-nav--active',
-            aplgoStartNavInactCss = 'apl--go-start-nav--inactive',
+            aplgoStartNavActCss = 'applicator--go-start-nav--active',
+            aplgoStartNavInactCss = 'applicator--go-start-nav--inactive',
             
             $goStartNavArrowIco = aplDataGoStartNav.goStartNavArrowIco,
             
@@ -264,8 +264,8 @@
             
             mainMenuActCss = 'main-menu--active',
             mainMenuInactCss = 'main-menu--inactive',
-            aplMainMenuActCss = 'apl--main-menu--active',
-            aplMainMenuInactCss = 'apl--main-menu--inactive',
+            aplMainMenuActCss = 'applicator--main-menu--active',
+            aplMainMenuInactCss = 'applicator--main-menu--inactive',
             
             $mainMenuTogBtnHideIco = $( aplDataMainMenu.mainMenuHideIco ),
             $mainMenuTogBtnShowIco = $( aplDataMainMenu.mainMenuShowIco ),
@@ -449,8 +449,8 @@
             $commentsShowL = aplDataComments.commentsShowL,
             $commentsHideL = aplDataComments.commentsHideL,
             
-            aplCommentsOnCSS = 'apl--comments--active',
-            aplCommentsOffCSS = 'apl--comments--inactive',
+            aplCommentsOnCSS = 'applicator--comments--active',
+            aplCommentsOffCSS = 'applicator--comments--inactive',
             
             commentsOnCSS = 'comments--active',
             commentsOffCSS = 'comments--inactive'
@@ -676,8 +676,8 @@
             
             mainSearchActCss = 'main-search--active',
             mainSearchInactCss = 'main-search--inactive',
-            aplmainSearchActCss = 'apl--main-search--active',
-            aplmainSearchInactCss = 'apl--main-search--inactive',
+            aplmainSearchActCss = 'applicator--main-search--active',
+            aplmainSearchInactCss = 'applicator--main-search--inactive',
             
             mainSearchInputEmpCss = 'main-search-input--empty',
             mainSearchInputPopCss = 'main-search-input--populated',
@@ -897,8 +897,8 @@
             
             navHoverActiveCss = 'nav-hover--active',
             navHoverInactiveCss = 'nav-hover--inactive',
-            aplSubNavActCss = 'apl--sub-nav--active',
-            aplSubNavInactCss = 'apl--sub-nav--inactive',
+            aplSubNavActCss = 'applicator--sub-nav--active',
+            aplSubNavInactCss = 'applicator--sub-nav--inactive',
             
             $navParentItems = $( '.page_item, .menu-item' ),
             

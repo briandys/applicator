@@ -3,7 +3,7 @@
 
                 <?php
 
-                //------------------------------------------------ Main Footer
+                // ------------------------ Main Footer
 
                 // Copyright
                 $copyright_obj = applicator_htmlok( array(
@@ -88,10 +88,10 @@
                     'echo'      => true,
                 ) );
 
-                //------------------------------------------------ End: Main Footer
+                // ------------------------ End: Main Footer
 
 
-                //------------------------------------------------ Web Product End
+                // ------------------------ Web Product End
 
                 // Go to Start Navi
                 $go_to_start_navi_obj = applicator_htmlok( array(
@@ -145,7 +145,7 @@
                     'echo'      => true,
                 ) );
 
-                //------------------------------------------------ End: Web Product End
+                // ------------------------ End: Web Product End
 
                 ?>
             
