@@ -25,7 +25,7 @@ $post_classes = implode( ' ', $post_classes );
                 <?php
                 
                 // E: Main Post Title
-                $post_title_obj = applicator_htmlok( array(
+                $main_post_title_obj = applicator_htmlok( array(
                     'name'      => 'Main Post Title',
                     'structure' => array(
                         'type'      => 'object',

@@ -1531,14 +1531,14 @@
 
             // ------------ Wrap text nodes in <span>
             // https://stackoverflow.com/a/18727318
-            $( '.data-format, .excerpt-link' )
-            .contents()
-            .filter( function() {
+            $( '.data-format, .excerpt-link, .post-password-form label' )
+                .contents()
+                .filter( function() {
 
-                // Get only the text nodes
-                return this.nodeType === 3;
-            } )
-            .wrap( '<span class="span text-node"></span>' );
+                    // Get only the text nodes
+                    return this.nodeType === 3;
+                } )
+                .wrap( '<span class="span text-node"></span>' );
 
          } )();
     } );

@@ -69,12 +69,14 @@ function applicator_settings() {
     // Enable support for Post Formats.
 	add_theme_support( 'post-formats', array(
 		'aside',
-		'image',
-		'video',
-		'quote',
-		'link',
 		'gallery',
+		'link',
+		'image',
+		'quote',
+		'status',
+		'video',
 		'audio',
+		'chat',
 	) );
 
 	

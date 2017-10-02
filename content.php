@@ -46,25 +46,30 @@ $post_classes = implode( ' ', $post_classes );
                 <?php
                 
                 // E: Main Post Title
-                $post_title_obj = applicator_htmlok( array(
-                    'name'      => 'Main Post Title',
-                    'structure' => array(
-                        'type'      => 'object',
-                        'elem'      => 'h1',
-                        'linked'    => true,
-                        'attr'      => array(
-                            'a'         => array(
-                                'href'      => esc_url( get_permalink() ),
-                                'rel'       => 'bookmark',
-                                'title'     => get_the_title(),
+                $main_post_title_obj = '';
+                $main_post_title = get_the_title();
+                
+                if ( $main_post_title ) {
+                    $main_post_title_obj = applicator_htmlok( array(
+                        'name'      => 'Main Post Title',
+                        'structure' => array(
+                            'type'      => 'object',
+                            'elem'      => 'h1',
+                            'linked'    => true,
+                            'attr'      => array(
+                                'a'         => array(
+                                    'href'      => esc_url( get_permalink() ),
+                                    'rel'       => 'bookmark',
+                                    'title'     => get_the_title(),
+                                ),
                             ),
                         ),
-                    ),
-                    'content'   => array(
-                        'object'        => get_the_title(),
-                    ),
-                    'echo'      => true,
-                ) );
+                        'content'   => array(
+                            'object'        => get_the_title(),
+                        ),
+                        'echo'      => true,
+                    ) );
+                }
                 
                 
                 // After Main Post Title Hook | inc > hooks.php
