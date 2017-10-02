@@ -1,4 +1,4 @@
-/*------------------ Variables ------------------*/
+/* ------------------ Variables ------------------ */
 .html
 {
     --post-banner-vis--height: 10rem;
@@ -8,7 +8,7 @@
 
 
 
-/*------------------ Visually Hidden ------------------*/
+/* ------------------ Visually Hidden ------------------ */
 .visually-hidden,
 
 /* Page */
@@ -56,7 +56,7 @@
 
 
 
-/*------------------ Unlist ------------------*/
+/* ------------------ Unlist ------------------ */
 .unlist
 {
     list-style: none;
@@ -68,7 +68,7 @@
 
 
 
-/*------------------ Active Area (AA) ------------------*/
+/* ------------------ Active Area (AA) ------------------ */
 .active-area
 {
     display: inline-flex;
@@ -84,7 +84,7 @@
 
 
 
-/*------------------ Main Heading ------------------*/
+/* ------------------ Main Heading ------------------ */
 .main-content-heading .value---line
 {
     font-weight: normal;
@@ -94,7 +94,7 @@
 
 
 
-/*------------------ Post ------------------*/
+/* ------------------ Post ------------------ */
 .post a
 {
     text-decoration: none;
@@ -114,7 +114,7 @@
 
 
 
-/*------------------ Comments ------------------*/
+/* ------------------ Comments ------------------ */
 .comments a
 {
     text-decoration: none;
@@ -212,7 +212,7 @@
 
 
 
-/*------------ Juxtapose Post Title and Edit Action ------------*/
+/* ------------ Juxtapose Post Title and Edit Action ------------ */
 .main-post-title,
 .edit-post-action
 {
@@ -224,7 +224,7 @@
 
 
 
-/*------------ Juxtapose Post Published and Modified and Post Author ------------*/
+/* ------------ Juxtapose Post Published and Modified and Post Author ------------ */
 .post-published-modified,
 .published-post-author,
 .apl-post-categories
@@ -244,7 +244,7 @@
 
 
 
-/*------------ Post Meta ------------*/
+/* ------------ Post Meta ------------ */
 .post-published-date-and-time-stamp
 {
     padding-top: var(--component--spacing-y);
@@ -262,7 +262,7 @@
 
 
 
-/*------------ Comment Meta ------------*/
+/* ------------ Comment Meta ------------ */
 .comment-published-date-and-time-stamp
 {
     padding-top: var(--component--spacing-y);
@@ -280,7 +280,7 @@
 
 
 
-/*------------ Widget ------------*/
+/* ------------ Widget ------------ */
 .widget a
 {
     text-decoration: none;
@@ -297,7 +297,7 @@
 
 
 
-/*------------------ Copyright ------------------*/
+/* ------------------ Copyright ------------------ */
 .copyright
 {
     color: var(--copyright-info--fg-color);
@@ -324,7 +324,7 @@
 
 
 
-/*------------------ Multisite Directory - Site ------------------*/
+/* ------------------ Multisite Directory - Site ------------------ */
 .site-preview---cr
 {
     padding-top: var(--component--spacing-y);
@@ -370,7 +370,7 @@
 
 
 
-/*------------------ Multisite Directory - Post Banner Visual ------------------*/
+/* ------------------ Multisite Directory - Post Banner Visual ------------------ */
 .view--multisite-directory .post-banner-visual
 {
     position: relative;
@@ -425,7 +425,7 @@
 
 
 
-/*------------------ Multisite Directory - Main Post Title ------------------*/
+/* ------------------ Multisite Directory - Main Post Title ------------------ */
 .view--multisite-directory .post---hr_cr
 {
     text-align: center;
@@ -468,7 +468,7 @@
 
 
 
-/*------------------ Multisite Directory - Post ------------------*/
+/* ------------------ Multisite Directory - Post ------------------ */
 .view--multisite-directory .post---cr
 {
     padding: 0;

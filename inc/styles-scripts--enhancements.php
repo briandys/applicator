@@ -9,13 +9,13 @@ if ( ! function_exists( 'applicator_enhancements_styles_scripts' ) ) {
     function applicator_enhancements_styles_scripts() {
         
         
-        /*------------ Styles ------------*/
+        /* ------------ Styles ------------ */
         
         // Enhancements
         wp_enqueue_style( 'applicator-style--enhancements', get_theme_file_uri( '/assets/css/enhancements.css' ), array( 'applicator-style--default' ) );
         
         
-        /*------------ Scripts ------------*/
+        /* ------------ Scripts ------------ */
         
         
         // Enhancements

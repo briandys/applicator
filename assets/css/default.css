@@ -12,10 +12,10 @@ Default Style
 
 
 
-/*------------------ CSS Variables ------------------*/
+/* ------------------ CSS Variables ------------------ */
 :root
 {
-    /*------------ Level 1 - Absolutes ------------*/
+    /* ------------ Level 1 - Absolutes ------------ */
     
     
     /* Superhero Blue */
@@ -183,7 +183,7 @@ Default Style
 
 
 
-/*------------------ Visually Hidden ------------------*/
+/* ------------------ Visually Hidden ------------------ */
 .visually-hidden,
 .go-ct-nav---h,
 .main-info---h,
@@ -272,7 +272,7 @@ pre
 
 
 
-/*------------------ Clearfix ------------------*/
+/* ------------------ Clearfix ------------------ */
 /* Due to floating images */
 .clearfix:before,
 .clearfix:after,
@@ -293,7 +293,7 @@ pre
 
 
 
-/*------------------ WordPress Required Selectors ------------------*/
+/* ------------------ WordPress Required Selectors ------------------ */
 /* To pass WP Theme Check */
 .wp-caption-text,
 .sticky,
@@ -307,7 +307,7 @@ pre
 
 
 
-/*------------------ Resets ------------------*/
+/* ------------------ Resets ------------------ */
 abbr[title]
 {
     text-decoration: none;
@@ -327,7 +327,7 @@ label[for]:hover
 
 
 
-/*------------------ Image ------------------*/
+/* ------------------ Image ------------------ */
 img
 {
     max-width: 100%;
@@ -338,7 +338,7 @@ img
 
 
 
-/*------------------ Icons ------------------*/
+/* ------------------ Icons ------------------ */
 .icon--vector,
 .icon--raster
 {
@@ -360,7 +360,7 @@ img
 
 
 
-/*------------------ Viewport Width: 560 ------------------*/
+/* ------------------ Viewport Width: 560 ------------------ */
 
 @media only screen and ( min-width: 35em )
 {

@@ -55,7 +55,7 @@
 
 
 
-/*------------------ Clearfix ------------------*/
+/* ------------------ Clearfix ------------------ */
 .clearfix:before,
 .clearfix:after,
 
@@ -559,7 +559,7 @@
 
 
 
-/*------------ Name and Avatar ------------*/
+/* ------------ Name and Avatar ------------ */
 .applicator--theme--name-avatar .post-author---ct_cr,
 .applicator--theme--name-avatar .commenter---ct_cr
 {
@@ -885,7 +885,7 @@
 
 
 
-/*------------------ Viewport Width: 1024 ------------------*/
+/* ------------------ Viewport Width: 1024 ------------------ */
 
 @media only screen and ( min-width: 64em )
 {

@@ -4,13 +4,13 @@
 
 
 
-/*------------------------ Default Applicator Styles ------------------------*/
+/* ------------------------ Default Applicator Styles ------------------------ */
 if ( ! function_exists( 'applicator_default_styles_scripts' ) ) {
     
     function applicator_default_styles_scripts() {
         
         
-        /*------------ Styles ------------*/
+        /* ------------ Styles ------------ */
         
         
         // Editor Style
@@ -29,7 +29,7 @@ if ( ! function_exists( 'applicator_default_styles_scripts' ) ) {
         wp_enqueue_style( 'applicator-style--default', get_theme_file_uri( '/assets/css/default.css' ) );
         
         
-        /*------------ Scripts ------------*/
+        /* ------------ Scripts ------------ */
         
         // Modernizr
         wp_enqueue_script( 'applicator-script--modernizr', get_theme_file_uri( '/assets/js/modernizr.min.js' ), array(), '1.0.0', true );
@@ -65,7 +65,7 @@ if ( ! function_exists( 'applicator_default_styles_scripts' ) ) {
 
 
 
-/*------------------------ Default Applicator Inline Scripts ------------------------*/
+/* ------------------------ Default Applicator Inline Scripts ------------------------ */
 if ( ! function_exists( 'applicator_inline_scripts' ) ) {
     
     function applicator_inline_scripts() { ?>
@@ -73,7 +73,7 @@ if ( ! function_exists( 'applicator_inline_scripts' ) ) {
         <script type="text/javascript">
             
             
-            /*------------------------ Debounce ------------------------*/
+            /* ------------------------ Debounce ------------------------ */
             // https://davidwalsh.name/javascript-debounce-function
             function debounce( func, wait, immediate ) {
                 var timeout;
@@ -92,7 +92,7 @@ if ( ! function_exists( 'applicator_inline_scripts' ) ) {
             var applicatorDebounceTimeout = 250;
             
             
-            /*------------------------ SVG Feature Detection ------------------------*/
+            /* ------------------------ SVG Feature Detection ------------------------ */
             // https://github.com/Modernizr/Modernizr/
             function supportsInlineSVG() {
                 var div = document.createElement( 'div' );
@@ -101,14 +101,14 @@ if ( ! function_exists( 'applicator_inline_scripts' ) ) {
             }
             
             
-            /*------------------------ CSS Variables Feature Detection ------------------------*/
+            /* ------------------------ CSS Variables Feature Detection ------------------------ */
             // https://stackoverflow.com/a/26633844
             function supportCssVariables() {
               return window.CSS && window.CSS.supports && window.CSS.supports('--var', 0);
             }
 
 
-            /*------------------------ HTMl CSS Classes ------------------------*/
+            /* ------------------------ HTMl CSS Classes ------------------------ */
             ( function( html ) {
                 
                 // Replace no-js with js if JavaScript is supported
