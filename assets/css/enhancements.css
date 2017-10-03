@@ -275,8 +275,8 @@ Enhancements Style
 .go-content-nav--inactive,
 
 /* Name and Logo */
-.web-product-main-name-description--disabled .main-name,
-.web-product-main-name-description--disabled .main-description,
+.main-name-description--disabled .main-name,
+.main-name-description--disabled .main-description,
 
 /* Main Content Heading */
 .blog .main-content-heading,
@@ -314,7 +314,9 @@ Enhancements Style
 .applicator--comments--active .comments-toggle .comments-count---txt,
 
 /* Page Nav */
-.applicator--page-nav .adjacent-navi---l
+.applicator--page-nav .adjacent-navi---l,
+
+.main-description
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }

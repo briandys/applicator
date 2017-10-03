@@ -16,3 +16,57 @@ if ( ! function_exists( 'applicator_snapon_styles_scripts' ) ) {
     add_action( 'wp_enqueue_scripts', 'applicator_snapon_styles_scripts', 0);
 
 }
+
+
+
+
+
+/* ------------------------ CSS Class Names ------------------------ */
+if ( ! function_exists( 'applicator_css_class_names' ) ) {
+    
+    function applicator_css_class_names() {
+
+
+        // Variables
+        $applicator_theme_term = 'applicator--theme';
+
+
+        // Array
+        $r = array(
+
+            // Themes
+            'avatar',
+            'caption',
+            'categories',
+            'comment-meta',
+            'comments-count-action',
+            'edit-action',
+            'entry-nav',
+            'excerpt',
+            'name-avatar',
+            'note',
+            'post',
+            'post-meta',
+            'private-post-title',
+            'quote',
+            'search-result',
+            'table',
+            'tags',
+
+            // Functionalities with Themes
+            'comments',
+            'main-nav',
+            'page-nav',
+
+            // Layout
+            'container-width',
+            'layout',
+        );
+
+        foreach ( ( array ) $r as $css_class_name ) {
+            echo ' '. $applicator_theme_term. '--'. $css_class_name;
+        }
+    }
+    add_action( 'applicator_hook_html_class', 'applicator_css_class_names');
+    
+}

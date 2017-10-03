@@ -1557,6 +1557,19 @@
             .removeClass( 'window--unloaded' );
         
         
+        // If Main Description if visually-hidden
+        if ( $( '.main-description' ).css( 'width' ) == '1px' ) {
+            $html
+                .addClass( 'main-description--empty' )
+                .removeClass( 'main-description--populated' );
+        }
+        else {
+            $html
+                .addClass( 'main-description--populated' )
+                .removeClass( 'main-description--empty' );
+        }
+        
+        
         // Page Length
         ( function() {
 

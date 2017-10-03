@@ -28,8 +28,8 @@
 			
             if ( 'blank' === to ) {
 				$html
-                    .addClass( 'web-product-main-name-description--disabled' )
-                    .removeClass( 'web-product-main-name-description--enabled' );
+                    .addClass( 'main-name-description--disabled' )
+                    .removeClass( 'main-name-description--enabled' );
 			}
             
             else {
@@ -44,8 +44,8 @@
 				} );
 				
                 $html
-                    .addClass( 'web-product-main-name-description--enabled' )
-                    .removeClass( 'web-product-main-name-description--disabled' );
+                    .addClass( 'main-name-description--enabled' )
+                    .removeClass( 'main-name-description--disabled' );
 			}
 		} );
 	} );
