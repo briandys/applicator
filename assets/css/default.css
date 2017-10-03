@@ -350,8 +350,8 @@ img
     fill: currentColor;
 }
 
-.svg .icon--raster,
-.no-svg .icon--vector
+.modernizr--inlinesvg .icon--raster,
+.modernizr--no-inlinesvg .icon--vector
 {
     display: none;
 }

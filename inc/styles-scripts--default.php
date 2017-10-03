@@ -35,11 +35,6 @@ if ( ! function_exists( 'applicator_default_styles_scripts' ) ) {
         wp_enqueue_script( 'applicator-script--modernizr', get_theme_file_uri( '/assets/js/modernizr.min.js' ), array(), '1.0.0', true );
         
         
-        // HTML5 Shiv
-        wp_enqueue_script( 'applicator-script--html5', get_theme_file_uri( '/assets/js/html5.js' ), array(), '3.7.3' );
-        wp_script_add_data( 'applicator-script--html5', 'conditional', 'lt IE 9' );
-        
-        
         // Skip Link Focus Fix
         wp_enqueue_script( 'applicator-script--skip-link-focus-fix', get_theme_file_uri( '/assets/js/skip-link-focus-fix.js' ), array(), '1.0.1', true );
         
@@ -92,15 +87,6 @@ if ( ! function_exists( 'applicator_inline_scripts' ) ) {
             var applicatorDebounceTimeout = 250;
             
             
-            /* ------------------------ SVG Feature Detection ------------------------ */
-            // https://github.com/Modernizr/Modernizr/
-            function supportsInlineSVG() {
-                var div = document.createElement( 'div' );
-                div.innerHTML = '<svg/>';
-                return 'http://www.w3.org/2000/svg' === ( 'undefined' !== typeof SVGRect && div.firstChild && div.firstChild.namespaceURI );
-            }
-            
-            
             /* ------------------------ CSS Variables Feature Detection ------------------------ */
             // https://stackoverflow.com/a/26633844
             function supportCssVariables() {
@@ -119,11 +105,6 @@ if ( ! function_exists( 'applicator_inline_scripts' ) ) {
 
                 // Window Unloaded (will be removed on window.load)
                 html.classList.add( 'window--unloaded' );
-                
-                // Replace no-svg with svg if supported
-                if ( true === supportsInlineSVG() ) {
-                    html.className = html.className.replace( /(\s*)no-svg(\s*)/, '$1svg$2' );
-                }
 
                 // CSS Variables CSS inserted via JS
                 if ( supportCssVariables() ) {

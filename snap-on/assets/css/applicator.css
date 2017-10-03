@@ -1,6 +1,27 @@
 /* ------------------ Variables ------------------ */
 .html
 {
+    /* ------------ Level 3 - Specifics ------------ */
+    
+    --category--padding: .5em 1em;
+    --category--min-height: 2.25rem;
+    --category--border: 1px solid var(--accent-color--pri);
+    --category-item--spacing: calc( var(--content--spacing) / 2 );
+    --category-item--spacing-x: calc( var(--content--spacing-x) / 2 );
+    
+    --post-meta--border: 1px solid lightgray;
+    --post-meta--fg-color: var(--color--transparent-black);
+    
+    --note--fg-color: var(--color--transparent-black);
+    --note-font-size: .875rem;
+    
+    /* Edit Post Action */
+    --edit-post-action--bg-color: var(--button--pri--bg-color);
+    --edit-post-action--fg-color: var(--button--pri--fg-color);
+    --edit-post-action--min-width: calc( var(--button--min-width) /2 );
+    --edit-post-action--min-height: 2.25rem;
+    --edit-post-action--padding: .5em 1em;
+    
     --post-banner-vis--height: 10rem;
 }
 
@@ -47,7 +68,27 @@
 .site-preview .main-media-banner,
 .site--root .site-main-info,
 .view--multisite-directory .post-banner-visual img,
-.view--multisite-directory .entry-content
+.view--multisite-directory .entry-content,
+
+/* Themes */
+.applicator--theme--post-meta .post-published-glabel,
+.applicator--theme--post-meta .post-published-time-stamp-dtstamp,
+.applicator--theme--post-meta .post-meta .comma---sep,
+.applicator--theme--post-meta .post-modified,
+.applicator--theme--post-meta .post-published-by-glabel,
+.applicator--theme--categories .post-categories-glabel,
+.applicator--theme--tags .post-tags-glabel,
+.applicator--theme--entry-nav .entry-navi .colon---sep,
+.applicator--theme--entry-nav .entry-navi .entry---txt,
+.applicator--theme--comment-meta .published-comment-glabel,
+.applicator--theme--comment-meta .comment-published-time-stamp-dtstamp,
+.applicator--theme--comment-meta .published-commenter-glabel,
+.applicator--theme--comment-meta .comment-meta .comma---sep,
+.applicator--theme--private-post-title .main-post-title---l .colon---sep,
+.applicator--theme--excerpt .show-more-action .property---line .of---txt,
+.applicator--theme--excerpt .show-more-action .value---line,
+.applicator--theme--page-nav .page-nav .ellipsis--delimiter,
+.applicator--theme--page-nav .blog .page-navi:not( .adjacent-navi )
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -56,8 +97,30 @@
 
 
 
+/* ------------------ Clearfix ------------------ */
+.clearfix:before,
+.clearfix:after,
+
+.page-nav---grp:before,
+.page-nav---grp:after
+{
+    content: " ";
+    display: table;
+}
+
+.page-nav---grp:after
+{
+    clear: both;
+}
+
+
+
+
+
 /* ------------------ Unlist ------------------ */
-.unlist
+.unlist,
+.applicator--theme--categories .post-categories,
+.applicator--theme--tags .post-tags---grp
 {
     list-style: none;
     margin: 0;
@@ -69,7 +132,10 @@
 
 
 /* ------------------ Active Area (AA) ------------------ */
-.active-area
+.active-area,
+.applicator--theme--categories .apl-categories a,
+.applicator--theme--tags .apl-tags a,
+.applicator--theme--comments-count-action .comments-count---txt
 {
     display: inline-flex;
     justify-content: center;
@@ -421,117 +487,6 @@
 .view--multisite-directory .main-post-title---a
 {
     color: var(--links--fg-color);
-}
-
-
-
-
-
-
-/* ------------------ Variables ------------------ */
-.html
-{
-    /* ------------ Level 3 - Specifics ------------ */
-    
-    --category--padding: .5em 1em;
-    --category--min-height: 2.25rem;
-    --category--border: 1px solid var(--accent-color--pri);
-    --category-item--spacing: calc( var(--content--spacing) / 2 );
-    --category-item--spacing-x: calc( var(--content--spacing-x) / 2 );
-    
-    --post-meta--border: 1px solid lightgray;
-    --post-meta--fg-color: var(--color--transparent-black);
-    
-    --note--fg-color: var(--color--transparent-black);
-    --note-font-size: .875rem;
-    
-    /* Edit Post Action */
-    --edit-post-action--bg-color: var(--button--pri--bg-color);
-    --edit-post-action--fg-color: var(--button--pri--fg-color);
-    --edit-post-action--min-width: calc( var(--button--min-width) /2 );
-    --edit-post-action--min-height: 2.25rem;
-    --edit-post-action--padding: .5em 1em;
-}
-
-
-
-
-
-/* ------------------ Visually Hidden ------------------ */
-.visually-hidden,
-.applicator--theme--post-meta .post-published-glabel,
-.applicator--theme--post-meta .post-published-time-stamp-dtstamp,
-.applicator--theme--post-meta .post-meta .comma---sep,
-.applicator--theme--post-meta .post-modified,
-.applicator--theme--post-meta .post-published-by-glabel,
-.applicator--theme--categories .post-categories-glabel,
-.applicator--theme--tags .post-tags-glabel,
-.applicator--theme--entry-nav .entry-navi .colon---sep,
-.applicator--theme--entry-nav .entry-navi .entry---txt,
-.applicator--theme--comment-meta .published-comment-glabel,
-.applicator--theme--comment-meta .comment-published-time-stamp-dtstamp,
-.applicator--theme--comment-meta .published-commenter-glabel,
-.applicator--theme--comment-meta .comment-meta .comma---sep,
-.applicator--theme--private-post-title .main-post-title---l .colon---sep,
-.applicator--theme--excerpt .show-more-action .property---line .of---txt,
-.applicator--theme--excerpt .show-more-action .value---line,
-.applicator--theme--page-nav .page-nav .ellipsis--delimiter,
-.applicator--theme--page-nav .blog .page-navi:not( .adjacent-navi )
-{
-    position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
-}
-
-
-
-
-
-/* ------------------ Clearfix ------------------ */
-.clearfix:before,
-.clearfix:after,
-
-.page-nav---grp:before,
-.page-nav---grp:after
-{
-    content: " ";
-    display: table;
-}
-
-.page-nav---grp:after
-{
-    clear: both;
-}
-
-
-
-
-
-/* ------------------ Unlist ------------------ */
-.unlist,
-.applicator--theme--categories .post-categories,
-.applicator--theme--tags .post-tags---grp
-{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-
-
-
-
-/* ------------------ Active Area (AA) ------------------ */
-.active-area,
-.applicator--theme--categories .apl-categories a,
-.applicator--theme--tags .apl-tags a,
-.applicator--theme--comments-count-action .comments-count---txt
-{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    
-    min-width: var(--active-area--width--md);
-    min-height: var(--active-area--width--md);
 }
 
 
@@ -1100,9 +1055,13 @@
 
 
 /* ------------------ Container Width ------------------ */
-.applicator--theme--container-width .comment-md---ct_cr > .comment-respond
+.applicator--theme--container-width .comment-respond
 {
     max-width: 48rem;
+}
+
+.applicator--theme--container-width .comment-md---ct_cr > .comment-respond
+{   
     margin: auto;
 }
 

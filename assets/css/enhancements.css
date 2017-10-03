@@ -314,9 +314,7 @@ Enhancements Style
 .applicator--comments--active .comments-toggle .comments-count---txt,
 
 /* Page Nav */
-.applicator--page-nav .adjacent-navi---l,
-
-.main-description
+.applicator--page-nav .adjacent-navi---l
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -1758,7 +1756,8 @@ h1, h2, h3, h4, h5, h6
     padding: 0;
 }
 
-.comment .comment
+.comment .comment,
+.comments---grp > .comment-respond
 {
     margin-left: 1rem;
 }
