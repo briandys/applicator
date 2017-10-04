@@ -553,7 +553,7 @@ select
 
 
 /* ------------------ Data Format ------------------ */
-.data-format
+.post-content---ct_cr > .data-format
 {
     padding-left: 0;
     padding-right: 0;
@@ -571,11 +571,23 @@ select
     visibility: hidden;
 }
 
-.data-format img
+.data-format--img .text-node
 {
-    width: 100%;
+    display: block;
+    
+    padding: var(--content--spacing);
 }
 
+.data-format--img .text-node:only-child,
+.data-format--img .text-node:last-child
+{
+    margin-bottom: calc( var(--content--spacing-y) * -1 );
+}
+
+.data-format--img br
+{
+    display: none;
+}
 
 
 
@@ -1210,15 +1222,10 @@ h1, h2, h3, h4, h5, h6
     padding: .5rem 1rem;
 }
 
-/* Content Image */
-.content--image
-{
-    padding-left: 0;
-    padding-right: 0;
-}
-
 .post-content---ct_cr > figure
 {
+    max-width: 100%;
+    
     padding-left: 0;
     padding-right: 0;
 }
@@ -1611,24 +1618,6 @@ h1, h2, h3, h4, h5, h6
     position: fixed;
     left: 0;
     bottom: 0;
-    
-    width: 100%;
-}
-
-
-
-
-
-/* ------------------ Image Captions ------------------ */
-.wp-caption
-{
-    width: auto !important;
-    max-width: 100%;
-}
-
-.wp-caption img[class*="wp-image-"]
-{
-    display: block;
     
     width: 100%;
 }
@@ -2913,30 +2902,6 @@ h1, h2, h3, h4, h5, h6
 
 
 
-
-/* ------------------ Viewport Width: 560 ------------------ */
-
-@media only screen and ( min-width: 35em )
-{
-
-    .post-content---ct_cr > .alignleft
-    {   
-        margin-right: 1rem;
-        margin-bottom: 1rem;
-    }
-
-    .post-content---ct_cr > .alignright
-    {   
-        margin-left: 1rem;
-        margin-bottom: 1rem;
-    }
-
-}
-
-
-
-
-
 /* ------------------ Viewport Width: 768 ------------------ */
 
 @media only screen and ( min-width: 48em )
@@ -2946,6 +2911,38 @@ h1, h2, h3, h4, h5, h6
     {
         padding-bottom: var(--aspect-ratio--16-9);
 
+    }
+    
+    .post-content---ct_cr > .data-format--img--left-aligned
+    {
+        float: left;
+        
+        margin-right: 1rem;
+    }
+
+    .post-content---ct_cr > .data-format--img--right-aligned
+    {
+        float: right;
+        
+        margin-left: 1rem;
+    }
+
+    .post-content---ct_cr > .data-format--img--center-aligned
+    {
+        clear: both;
+    }
+
+    .post-content---ct_cr > .data-format--img--center-aligned img
+    {
+        display: block;
+        
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .post-content---ct_cr .wp-caption.alignleft
+    {
+        margin-right: 1rem;
     }
 
 }

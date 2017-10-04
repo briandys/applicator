@@ -40,6 +40,21 @@
         $aplWildcardCr = $aplWildcard.find( '.applicator-wildcard---cr' ),
         overlayTerm = 'overlay',
         overlayMu;
+    
+    
+    
+    
+    
+    // Remove Empty Containers
+    function initRemoveEmpty( $elem ) {
+        $( $elem ).each( function() {
+            var $this = $( this );
+
+            if ( $this.html().replace(/\s|&nbsp;/g, '' ).length == 0 ) {
+                $this.remove();
+            }
+        } );
+    }
         
     
     
@@ -1454,6 +1469,7 @@
             });
 
 
+            
             // ------------ <img>
             $( postContent + ':has( img )' )
                 .addClass( dataFormatTerm + ' ' + dataFormatImage );
@@ -1470,7 +1486,8 @@
             $( postContent + ':has( img.aligncenter )' )
                 .addClass( dataFormatTerm + ' ' + dataFormatImage + ' ' + dataFormatImage + '--center-' + alignedTerm );
 
-            $( postContentCtCrCss + ' ' + '> img' ).each(function() {
+            
+            $( '.post-content---ct_cr > img' ).each(function() {
                 var $this = $( this );
                 $this.wrap( dataFormatInlineCpMu )
                     .closest( dataFormatCss )
@@ -1531,7 +1548,7 @@
 
             // ------------ Wrap text nodes in <span>
             // https://stackoverflow.com/a/18727318
-            $( '.data-format, .excerpt-link, .post-password-form label' )
+            $( '.data-format--img, .excerpt-link, .post-password-form label' )
                 .contents()
                 .filter( function() {
 
@@ -1539,9 +1556,26 @@
                     return this.nodeType === 3;
                 } )
                 .wrap( '<span class="span text-node"></span>' );
+            
+            // ------------ Wrap text nodes in <p>
+            $( '.post-content---ct_cr' )
+                .contents()
+                .filter( function() {
+
+                    // Get only the text nodes
+                    return this.nodeType === 3;
+                } )
+                .wrap( '<p class="p text-node"></p>' );
+            
+            
+            initRemoveEmpty( $( '.text-node' ) );
 
          } )();
     } );
+    
+    initRemoveEmpty( $( '.post-content---ct_cr > *' ) );
+    initRemoveEmpty( $( '.main-navi---a' ) );
+    initRemoveEmpty( $( '.menu-item' ) );
     
     
     

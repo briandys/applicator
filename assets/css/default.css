@@ -244,6 +244,7 @@ Default Style
 
 
 
+/* ------------------ Stuff ------------------ */
 *,
 :after,
 :before
@@ -360,9 +361,9 @@ img
 
 
 
-/* ------------------ Viewport Width: 560 ------------------ */
+/* ------------------ Viewport Width: 768 ------------------ */
 
-@media only screen and ( min-width: 35em )
+@media only screen and ( min-width: 48em )
 {
 
     .post-content---ct_cr > .alignleft
@@ -373,6 +374,13 @@ img
     .post-content---ct_cr > .alignright
     {
         float: right;
+    }
+
+    .post-content---ct_cr > .aligncenter
+    {
+        clear: both;
+        margin-left: auto;
+        margin-right: auto;
     }
 
 }
