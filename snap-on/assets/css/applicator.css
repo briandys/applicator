@@ -31,23 +31,15 @@
 
 /* ------------------ Visually Hidden ------------------ */
 .visually-hidden,
-
-/* Page */
 .page .entry-nav,
 .page .post-published-modified,
 .page .published-post-author,
 .page .comments-actions-snippet,
 .page .comment-md,
-
-/* Nav */
 .main-content---hr_cr .page-nav,
 .main-content---hr .entry-nav,
-
-/* Edit Action */
 .edit-post-action .post-title---txt,
 .edit-comment-action .comment-title---txt,
-
-/* Comments */
 .post-header-aside .comment-creation-ability,
 .post-header-aside .comments-population--empty .comments-population,
 .comment-creation-ability--disabled.comments-population--empty .comment-md,
@@ -63,14 +55,10 @@
 #cancel-comment-reply-link .comment---txt,
 .logged-in .commenter-comment-creation-flabel,
 .comments---hr .comments-nav,
-
-/* Multisite Directory */
 .site-preview .main-media-banner,
 .site--root .site-main-info,
 .view--multisite-directory .post-banner-visual img,
 .view--multisite-directory .entry-content,
-
-/* Themes */
 .applicator--theme--post-meta .post-published-glabel,
 .applicator--theme--post-meta .post-published-time-stamp-dtstamp,
 .applicator--theme--post-meta .post-meta .comma---sep,
@@ -100,7 +88,6 @@
 /* ------------------ Clearfix ------------------ */
 .clearfix:before,
 .clearfix:after,
-
 .page-nav---grp:before,
 .page-nav---grp:after
 {
@@ -108,6 +95,7 @@
     display: table;
 }
 
+.clearfix:after,
 .page-nav---grp:after
 {
     clear: both;
@@ -142,7 +130,10 @@
     align-items: center;
     flex-wrap: wrap;
     
+    min-width: 3rem;
     min-width: var(--active-area--width--md);
+    
+    min-height: 3rem;
     min-height: var(--active-area--width--md);
 }
 
@@ -202,6 +193,7 @@
 
 .comments-header-aside .comments-actions-snippet .comments-count-axn---a .comments-label---txt
 {
+    margin-right: .3em;
     margin-right: var(--glabel--between--spacing);
     
     font-size: 1.5rem;
@@ -225,11 +217,13 @@
 
 .comment-form .creation--invalid .input-text
 {
+    border-color: #f20c0c;
     border-color: var(--color--record-red);
 }
 
 .comment-form .creation--valid .input-text
 {
+    border-color: #14cc14;
     border-color: var(--color--go-green);
 }
 
@@ -242,7 +236,10 @@
 
 .comments-header-aside---cr
 {
+    padding-top: 1em;
     padding-top: var(--component--spacing-y);
+    
+    padding-bottom: 1em;
     padding-bottom: var(--component--spacing-y);
 }
 
@@ -270,7 +267,10 @@
 
 .comment-md---cr
 {
+    padding-top: 1em;
     padding-top: var(--component--spacing-y);
+    
+    padding-bottom: 1em;
     padding-bottom: var(--component--spacing-y);
 }
 
@@ -298,6 +298,7 @@
 /* ------------------ Copyright ------------------ */
 .copyright
 {
+    color: hsla(0, 0%, 0%, .5);
     color: var(--copyright-info--fg-color);
 }
 
@@ -325,7 +326,10 @@
 /* ------------------ Multisite Directory - Site ------------------ */
 .site-preview---cr
 {
+    padding-top: 1em;
     padding-top: var(--component--spacing-y);
+    
+    padding-bottom: 1em;
     padding-bottom: var(--component--spacing-y);
 }
 
@@ -840,7 +844,10 @@
     
     padding: calc( var(--content--spacing-y) / 3 ) calc( var(--content--spacing-x) / 1.5 );
     
+    min-width: 1.5rem;
     min-width: calc( var(--active-area--width--md) / 2 );
+    
+    min-height: 1.5rem;
     min-height: calc( var(--active-area--width--md) / 2 );
     
     background-color: var(--accent-color--pri);
@@ -1145,14 +1152,20 @@
 /* ------------ Post Meta ------------ */
 .applicator--theme--post .post-published-date-and-time-stamp
 {
+    padding-top: 1em;
     padding-top: var(--component--spacing-y);
+    
+    padding-bottom: 1em;
     padding-bottom: var(--component--spacing-y);
 }
 
 .applicator--theme--post .author-name,
 .applicator--theme--post .author-avatar
 {
+    padding-top: 1em;
     padding-top: var(--component--spacing-y);
+    
+    padding-bottom: 1em;
     padding-bottom: var(--component--spacing-y);
 }
 
@@ -1163,14 +1176,20 @@
 /* ------------ Comment Meta ------------ */
 .comment-published-date-and-time-stamp
 {
+    padding-top: 1em;
     padding-top: var(--component--spacing-y);
+    
+    padding-bottom: 1em;
     padding-bottom: var(--component--spacing-y);
 }
 
 .commenter-name,
 .commenter-avatar
 {
+    padding-top: 1em;
     padding-top: var(--component--spacing-y);
+    
+    padding-bottom: 1em;
     padding-bottom: var(--component--spacing-y);
 }
 

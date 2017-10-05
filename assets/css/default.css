@@ -13,7 +13,7 @@ Default Style
 
 
 /* ------------------ CSS Variables ------------------ */
-:root
+.html
 {
     /* ------------ Level 1 - Absolutes ------------ */
     
@@ -177,6 +177,237 @@ Default Style
     /* Main Menu */
     --main-menu-func--height: 100%;
     --main-menu-func--max-width: 30rem;
+    
+    
+    
+    
+    
+    /* ------------ Level 2: Generics ------------ */
+    
+    /* Main Color */
+    --main-color--pri: var(--color--superhero-blue);
+    --main-color--sec: var(--color--uhog-green);
+    
+    /* Accent Color */
+    --accent-color--pri: var(--color--panda-blue);
+    --accent-color--sec: var(--color--chikka-orange);
+    
+    /* Background Color */
+    --bg-color: var(--dash-of-darkness--color);
+    
+    /* Foreground Color */
+    --fg-color: var(--color--off-black);
+    
+    /* Image Placeholder Color */
+    --image-placeholder--bg-color: var(--color--off-black-a);
+    
+    
+    /* Foreground Color - Reverse (use with a dark background) */
+    --fg-color--reverse: var(--color--white);
+    
+    /* Faint Color */
+    --faint-color--pri: var(--color--transparent-black);
+    
+    /* Border Color */
+    --border-color: var(--black-half--color-a);
+    
+    /* Gutter */
+    --gutter-x--base: 1rem;
+    --gutter-x--xsm--multiplier: .25;
+    --gutter-x--sm--multiplier: .5;
+    --gutter-x--md--multiplier: 1;
+    --gutter-x--lg--multiplier: 1.5;
+    
+    --gutter-x--xsm: calc( var(--gutter-x--base) * var(--gutter-x--xsm--multiplier) );
+    --gutter-x--sm: calc( var(--gutter-x--base) * var(--gutter-x--sm--multiplier) );
+    --gutter-x--md: calc( var(--gutter-x--base) * var(--gutter-x--md--multiplier) );
+    --gutter-x--lg: calc( var(--gutter-x--base) * var(--gutter-x--lg--multiplier) );
+    
+    /* Spacing */
+    --spacing-y--base: 1rem;
+    --spacing-y--xsm--multiplier: .25;
+    --spacing-y--sm--multiplier: .5;
+    --spacing-y--md--multiplier: 1;
+    --spacing-y--lg--multiplier: 1.5;
+    
+    --spacing-y--xsm: calc( var(--spacing-y--base) * var(--spacing-y--xsm--multiplier) );
+    --spacing-y--sm: calc( var(--spacing-y--base) * var(--spacing-y--sm--multiplier) );
+    --spacing-y--md: calc( var(--spacing-y--base) * var(--spacing-y--md--multiplier) );
+    --spacing-y--lg: calc( var(--spacing-y--base) * var(--spacing-y--lg--multiplier) );
+    
+    --spacing-relative-y--base: 1em;
+    
+    --spacing-relative-y--sm: calc( var(--spacing-relative-y--base) * var(--spacing-y--sm--multiplier) );
+    --spacing-relative-y--md: calc( var(--spacing-relative-y--base) * var(--spacing-y--md--multiplier) );
+    --spacing-relative-y--lg: calc( var(--spacing-relative-y--base) * var(--spacing-y--lg--multiplier) );
+    
+    /* Font Size */
+    
+    --font-size--sm: .875em;
+    --font-size--md: 1.125em;
+    --font-size--lg: 1.5em;
+    
+    /* Element Dimensions */
+    --elem-dimension--md: var(--dimension--md);
+    
+    /* Transition */
+    --transition--generic: all .125s ease-in-out;
+    
+    /* Aspect Ratio */
+    --aspect-ratio--hd: var(--ratio--16-9);
+    
+    /* Buttons */
+    --button--pri--bg-color: var(--accent-color--pri);
+    --button--pri--fg-color: var(--fg-color--reverse);
+    
+    --button--padding: .5em 1em;
+    --button--min-width: 10em;
+    
+    
+    /* ------------ Level 3 - Specifics ------------ */
+    
+    /* Main Header - Colors */
+    --main-header--bg-color: var(--main-color--pri);
+    
+    /* Button - Colors */
+    --button--bg-color: var(--accent-color--pri);
+    --button--fg-color: var(--fg-color--reverse);
+    
+    /* Selection - Colors */
+    --selection--bg-color: var(--main-color--sec);
+    --selection--fg-color: var(--fg-color--reverse);
+    
+    /* Section - Spacing */
+    --section--spacing: var(--spacing-y--md) var(--gutter-x--md);
+    --section--spacing-x: var(--gutter-x--md);
+    --section--spacing-y: var(--spacing-y--md);
+    
+    /* Content - Spacing */
+    --content--spacing: .75em var(--gutter-x--md);
+    --content--spacing-x: var(--gutter-x--md);
+    --content--spacing-y: var(--spacing-relative-y--sm);
+    
+    /* Object - Spacing */
+    --object--spacing-x: var(--gutter-x--md);
+    --object--spacing-y: var(--spacing-y--md);
+    --object--spacing-y--sm: var(--spacing-y--sm);
+    --object--spacing--md: var(--spacing-y--md) var(--gutter-x--md);
+    
+    /* Component - Spacing */
+    --component--spacing-x: var(--gutter-x--md);
+    --component--spacing-y: var(--spacing-y--md);
+    --component--spacing--md: var(--spacing-y--md) var(--gutter-x--md);
+    
+    /* Content - Font Size */
+    --content--font-size: var(--font-size--md);
+    
+    /* Caption - Font Size */
+    --caption--font-size: var(--font-size--sm);
+    
+    /* Copyright Info - Colors */
+    --copyright-info--fg-color: var(--faint-color--pri);
+    
+    /* Generic Text - Colors */
+    --generic-text--fg-color: var(--main-color--sec);
+    
+    /* List - Spacing */
+    --list--spacing--xsm: var(--spacing-y--xsm) var(--gutter-x--xsm);
+    --list--spacing-y--xsm: var(--spacing-y--xsm);
+    
+    /* Table - Spacing */
+    --table--spacing: var(--spacing-y--md) var(--gutter-x--md);
+    
+    /* Web Product - Colors */
+    --wbp--bg-color: var(--bg-color);
+    --wbp--fg-color: var(--fg-color);
+    
+    /* Links - Colors */
+    --links--fg-color: var(--accent-color--pri);
+    
+    /* Main Nav */
+    --main-nav--bg-color: var(--color--white);
+    
+    /* Sub Nav - Toggle Button - Colors */
+    --sub-nav-func-root--toggle-button--fg-color: var(--fg-color);
+    --sub-nav-func-branches--toggle-button--fg-color: var(--fg-color);
+    
+    /* Main Header Aside - Colors */
+    --main-header-aside--bg-color: var(--wbp--bg-color);
+    
+    /* Main Menu - Colors */
+    --main-menu-func--fg-color: var(--wbp--fg-color);
+    
+    /* Go to Start Nav - Colors */
+    --go-start-nav-func--fg-color: var(--wbp--fg-color);
+    
+    /* Input Text - Border Color */
+    --input-text--border-color: var(--border-color);
+    
+    /* Image - Color */
+    --image--bg-color: var(--image-placeholder--bg-color);
+    
+    /* Element Dimensions */
+    --elem--width--md: var(--elem-dimension--md);
+    --elem--height--md: var(--elem-dimension--md);
+    --elem--dimension: var(--elem-dimension--md);
+    
+    /* Active Area Dimensions */
+    --active-area--dimension--md: var(--elem-dimension--md);
+    --active-area--width--md: var(--elem-dimension--md);
+    --active-area--height--md: var(--elem-dimension--md);
+    
+    /* Main Logo - Dimensions */
+    --main-logo--height: 2.25rem;
+    
+    /* Label - Spacing */
+    --glabel--spacing: var(--gutter-x--md);
+    
+    /* Author Avatar - Dimensions */
+    --author-avatar--width: var(--elem-dimension--md);
+    --author-avatar--height: var(--elem-dimension--md);
+    
+    /* Commenter Avatar - Dimensions */
+    --commenter-avatar--width: calc( var(--elem-dimension--md) - 1rem );
+    --commenter-avatar--height: calc( var(--elem-dimension--md) - 1rem );
+    
+    /* Dismiss Icon - Dimensions */
+    --dismiss-icon--width: .75rem;
+    --dismiss-icon--height: .75rem;
+    
+    /* Text Spacing */
+    --glabel--between--spacing: .3em;
+    
+    /* Overlays */
+    --overlay--light: var(--color--white);
+    --overlay--dark: var(--color--black);
+    
+    /* Note */
+    --note--font-size: var(--font-size--sm);
+    --note--fg-color: var(--font-size--sm);
+    
+    /* Go to Content Nav */
+    --go-content-nav--bg-color: var(--button--pri--bg-color);
+    --go-content-nav--fg-color: var(--button--pri--fg-color);
+    
+    /* Easy Access Nav - Main Nav - Colors */
+    --easy-access-nav-func--main-nav--fg-color: var(--color--black);
+    
+    /* Sub Nav - Colors */
+    --easy-access-nav-func--sub-nav--bg-color: var(--color--white);
+    --easy-access-nav-func--sub-nav--fg-color: var(--color--black);
+    
+    /* Easy Access Nav - Sub Nav - Indicator - Colors */
+    --easy-access-nav-func--navi--root--indicator: var(--black-eighth--color);
+    
+    --easy-access-nav-func--navi--current-ancestor--indicator: var(--black-fourth--color);
+    --easy-access-nav-func--navi--branch--indicator: var(--black-eighth--color);
+    
+    /* Easy Access Nav - Sub Nav - Border Color */
+    --easy-access-nav-func--sub-nav--border-color: var(--black-eighth--color);
+    
+    /* Easy Access Nav - Indicator - Dimensions */
+    --easy-access-nav-func--indicator--height: .125rem;
+    --easy-access-nav-func--indicator--width: .125rem;
 }
 
 
@@ -262,22 +493,13 @@ Default Style
     min-height: 100%;
 }
 
-pre
-{
-    word-wrap: normal;
-    word-break: normal;
-    white-space: pre;
-}
-
 
 
 
 
 /* ------------------ Clearfix ------------------ */
-/* Due to floating images */
 .clearfix:before,
 .clearfix:after,
-
 .post---ct_cr:before,
 .post---ct_cr:after
 {
@@ -285,24 +507,11 @@ pre
     display: table;
 }
 
+.clearfix:after,
 .post---ct_cr:after
 {
     clear: both;
 }
-
-
-
-
-
-/* ------------------ WordPress Required Selectors ------------------ */
-/* To pass WP Theme Check */
-.wp-caption-text,
-.sticky,
-.screen-reader-text,
-.gallery-caption,
-.bypostauthor,
-.aligncenter
-{}
 
 
 
@@ -328,6 +537,19 @@ label[for]:hover
 
 
 
+/* ------------------ WordPress Required CSS Selectors ------------------ */
+.wp-caption-text,
+.sticky,
+.screen-reader-text,
+.gallery-caption,
+.bypostauthor,
+.aligncenter
+{}
+
+
+
+
+
 /* ------------------ Image ------------------ */
 img
 {
@@ -339,15 +561,31 @@ img
 
 
 
+/* ------------------ Preformatted Text ------------------ */
+pre
+{
+    word-wrap: normal;
+    word-break: normal;
+    white-space: pre;
+}
+
+
+
+
+
 /* ------------------ Icons ------------------ */
 .icon--vector,
 .icon--raster
 {
     display: inline-block;
+    
     position: relative;
+    
     width: 1rem;
     height: 1rem;
+    
     vertical-align: middle;
+    
     fill: currentColor;
 }
 
@@ -362,10 +600,10 @@ img
 
 
 /* ------------------ Viewport Width: 768 ------------------ */
-
 @media only screen and ( min-width: 48em )
 {
 
+    /* ------------------ Alignments ------------------ */
     .post-content---ct_cr > .alignleft
     {
         float: left;
