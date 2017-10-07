@@ -76,7 +76,8 @@
 .applicator--theme--excerpt .show-more-action .property---line .of---txt,
 .applicator--theme--excerpt .show-more-action .value---line,
 .applicator--theme--page-nav .page-nav .ellipsis--delimiter,
-.applicator--theme--page-nav .blog .page-navi:not( .adjacent-navi )
+.applicator--theme--page-nav .blog .page-navi:not( .adjacent-navi ),
+.applicator--theme--post-format--status .format-status .published-post-author
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -1178,6 +1179,24 @@
     
     padding-bottom: 1em;
     padding-bottom: var(--component--spacing-y);
+}
+
+
+
+
+
+/* ------------------ Post Format - Status ------------------ */
+.applicator--theme--post-format--status .format-status .post-content---ct_cr > *
+{
+    font-size: 2em;
+}
+
+.applicator--theme--post-format--status .format-status .post---hr,
+.applicator--theme--post-format--status .format-status .post---ct,
+.applicator--theme--post-format--status .format-status .post-header-aside
+{
+    display: inline-block;
+    vertical-align: middle;
 }
 
 

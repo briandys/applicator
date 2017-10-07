@@ -46,6 +46,7 @@ if ( ! function_exists( 'applicator_css_class_names' ) ) {
             'name-avatar',
             'note',
             'post',
+            'post-format--status',
             'post-meta',
             'private-post-title',
             'quote',
