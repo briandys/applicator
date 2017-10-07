@@ -1186,7 +1186,8 @@
 
 
 /* ------------------ Post Format - Status ------------------ */
-.applicator--theme--post-format--status .format-status .post-content---ct_cr > *
+.applicator--theme--post-format--status .format-status .post-content---ct_cr > *,
+.applicator--theme--post-format--status .format-status .post-excerpt---ct_cr > *
 {
     font-size: 2em;
 }
