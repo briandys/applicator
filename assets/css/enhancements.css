@@ -2828,7 +2828,24 @@ select
 /* Go to Content Nav */
 .applicator--go-content-nav--active .wpadminbar
 {
-    z-index: 0 !important;
+    z-index: -1 !important;
+}
+
+.wp-admin-bar--enabled.vp--wp-admin-bar--wide .wpadminbar
+{
+    z-index: -1 !important;
+}
+
+.wp-admin-bar--enabled.vp--wp-admin-bar--wide .wpadminbar:hover
+{
+    z-index: 99 !important;
+}
+
+.wpadminbar .screen-reader-shortcut:focus
+{
+    top: 0 !important;
+    left: 0 !important;
+    padding: 0 !important;
 }
 
 /* ------------ WP Admin Bar - Narrow ------------ */
@@ -2840,38 +2857,10 @@ select
     margin-top: var(--wp-admin-bar-allowance--narrow);
 }
 
-/* Main Menu */
-.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-menu-func
-{
-    margin-top: 46px;
-    margin-top: var(--wp-admin-bar-allowance--narrow);
-}
-
-/* Main Search */
-.wp-admin-bar--enabled.vp--wp-admin-bar--narrow .main-search-func
-{
-    margin-top: 46px;
-    margin-top: var(--wp-admin-bar-allowance--narrow);
-}
-
 /* ------------ WP Admin Bar - Wide ------------ */
 
 /* Web Product */
 .wp-admin-bar--enabled.vp--wp-admin-bar--wide .web-product
-{
-    margin-top: 32px;
-    margin-top: var(--wp-admin-bar-allowance--wide);
-}
-
-/* Main Menu */
-.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-menu-func
-{
-    margin-top: 32px;
-    margin-top: var(--wp-admin-bar-allowance--wide);
-}
-
-/* Main Search */
-.wp-admin-bar--enabled.vp--wp-admin-bar--wide .main-search-func
 {
     margin-top: 32px;
     margin-top: var(--wp-admin-bar-allowance--wide);
