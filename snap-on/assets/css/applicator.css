@@ -77,7 +77,8 @@
 .applicator--theme--excerpt .show-more-action .value---line,
 .applicator--theme--page-nav .page-nav .ellipsis--delimiter,
 .applicator--theme--page-nav .blog .page-navi:not( .adjacent-navi ),
-.applicator--theme--post-format--status .format-status .published-post-author
+.applicator--theme--post-format--status .format-status .published-post-author,
+.view--inner .main-banner
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -1224,6 +1225,25 @@
     
     padding-bottom: 1em;
     padding-bottom: var(--component--spacing-y);
+}
+
+
+
+
+
+/* ------------------ Layout ------------------ */
+.applicator--theme--layout .post---cr,
+.applicator--theme--layout .comment-md---cr
+{
+    margin-left: auto;
+    margin-right: auto;
+    
+    max-width: 768px;
+}
+
+.applicator--theme--layout .post-banner-vis---g
+{
+    background-image: none !important;
 }
 
 
