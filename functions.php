@@ -76,8 +76,8 @@ $aside = get_parent_theme_file_path( '/inc/tags/aside.php' );
 if ( file_exists( $aside ) ) { require_once( $aside ); }
 
 
-// Entry Actions
-$post_actions = get_parent_theme_file_path( '/inc/tags/entry-actions.php' );
+// Post Actions
+$post_actions = get_parent_theme_file_path( '/inc/tags/post-actions.php' );
 if ( file_exists( $post_actions ) ) { require_once( $post_actions ); }
 
 

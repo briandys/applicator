@@ -45,13 +45,13 @@ $post_classes = implode( ' ', $post_classes );
                 
                 <?php
                 
-                // E: Main Post Title
-                $main_post_title_obj = '';
-                $main_post_title = get_the_title();
+                // E: Post Title
+                $post_title_obj = '';
+                $post_title = get_the_title();
                 
-                if ( $main_post_title ) {
-                    $main_post_title_obj = applicator_htmlok( array(
-                        'name'      => 'Main Post Title',
+                if ( $post_title ) {
+                    $post_title_obj = applicator_htmlok( array(
+                        'name'      => 'Post Title',
                         'structure' => array(
                             'type'      => 'object',
                             'elem'      => 'h1',
@@ -67,17 +67,33 @@ $post_classes = implode( ' ', $post_classes );
                         'content'   => array(
                             'object'        => get_the_title(),
                         ),
-                        'echo'      => true,
                     ) );
                 }
                 
                 
+                // Post Actions | inc > tags > post-actions.php
+                applicator_post_actions();
+                
+                
+                // E: Main Post Title
+                $main_post_title = applicator_htmlok( array(
+                    'name'      => 'Main Post Title',
+                    'structure' => array(
+                        'type'      => 'component'
+                    ),
+                    'content'   => array(
+                        'component'     => array(
+                            
+                            $post_title_obj,
+                            applicator_post_actions(),
+                        ),
+                    ),
+                    'echo'      => true,
+                ) );
+                
+                
                 // After Main Post Title Hook | inc > hooks.php
                 applicator_hook_after_main_post_title();
-                
-                
-                // Post Actions | inc > tags > entry-actions.php
-                applicator_post_actions();
                 
                 
                 // Breadcrumbs Navigation | inc > tags > breadcumbs-nav.php

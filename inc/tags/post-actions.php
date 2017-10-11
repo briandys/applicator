@@ -47,8 +47,9 @@ if ( ! function_exists( 'applicator_post_actions' ) ) {
                 'content'   => array(
                     'object' => $edit_post_link_ob_content,
                 ),
-                'echo'      => true,
             ) );
+            
+            return $edit_post_action_obj;
         }
     }
 }

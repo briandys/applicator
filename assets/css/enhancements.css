@@ -167,7 +167,7 @@ Enhancements Style
 .active-area,
 .comments-count-axn---a_l,
 .entry-navi---a_l,
-.main-post-title---a_l,
+.post-title---a_l,
 .input-text,
 .b_l,
 input[type="text"],
@@ -176,7 +176,7 @@ input[type="submit"],
 .comment-form-submit-axn---b,
 .go-start-navi---a_l,
 .go-ct-navi---a_l,
-.main-post-title---h_l,
+.post-title---h_l,
 .copyright---g_l,
 .post-pub-d-stamp-dtstamp---a_l,
 .post-pub-t-stamp-dtstamp---a_l,
@@ -878,19 +878,19 @@ select
 
 
 /* ------------------ Main Post Title ------------------ */
-.main-post-title---h_l
+.post-title---h_l
 {
     word-break: break-word;
 }
 
-.main-post-title---a_l
+.post-title---a_l
 {
     display: inline;
     
     word-break: break-word;
 }
 
-.main-post-title
+.post-title
 {
     padding: 1em 1rem;
     padding: var(--object--spacing--md);

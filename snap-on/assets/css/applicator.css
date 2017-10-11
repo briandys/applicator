@@ -72,7 +72,7 @@
 .applicator--theme--comment-meta .comment-published-time-stamp-dtstamp,
 .applicator--theme--comment-meta .published-commenter-glabel,
 .applicator--theme--comment-meta .comment-meta .comma---sep,
-.applicator--theme--private-post-title .main-post-title---l .colon---sep,
+.applicator--theme--private-post-title .post-title---l .colon---sep,
 .applicator--theme--excerpt .show-more-action .property---line .of---txt,
 .applicator--theme--excerpt .show-more-action .value---line,
 .applicator--theme--page-nav .page-nav .ellipsis--delimiter,
@@ -164,7 +164,7 @@
     text-decoration: underline;
 }
 
-.view--detail .main-post-title---a
+.view--detail .post-title---a
 {
     color: black;
 }
@@ -377,7 +377,7 @@
     text-align: center;
 }
 
-.site-preview .main-post-title---h
+.site-preview .post-title---h
 {
     font-size: 1.5rem;
 }
@@ -447,12 +447,12 @@
     text-align: center;
 }
 
-.view--multisite-directory .post-banner-visual--enabled .main-post-title
+.view--multisite-directory .post-banner-visual--enabled .post-title
 {
     padding: 0;
 }
 
-.view--multisite-directory .post-banner-visual--enabled .main-post-title---a
+.view--multisite-directory .post-banner-visual--enabled .post-title---a
 {
     box-sizing: border-box;
     
@@ -470,12 +470,12 @@
     color: white;
 }
 
-.view--multisite-directory .main-post-title---a
+.view--multisite-directory .post-title---a
 {
     text-decoration: none;
 }
 
-.view--multisite-directory .post-banner-visual--enabled .main-post-title---a_l
+.view--multisite-directory .post-banner-visual--enabled .post-title---a_l
 {
     display: flex;
 }
@@ -490,7 +490,7 @@
     padding: 0;
 }
 
-.view--multisite-directory .main-post-title---a
+.view--multisite-directory .post-title---a
 {
     color: var(--links--fg-color);
 }
@@ -901,7 +901,7 @@
 
 
 /* ------------------ Private and Protected Post Title ------------------ */
-.applicator--theme--private-post-title .main-post-title---a_l
+.applicator--theme--private-post-title .post-title---a_l
 {
     position: relative;
 }
@@ -1139,7 +1139,7 @@
 /* ------------------ Post ------------------ */
 
 /* ------------ Juxtapose Post Title and Edit Action ------------ */
-.applicator--theme--post .main-post-title,
+.applicator--theme--post .post-title,
 .applicator--theme--post .edit-post-action
 {
     display: inline-block;
@@ -1232,8 +1232,11 @@
 
 
 /* ------------------ Layout ------------------ */
-.applicator--theme--layout .post---cr,
-.applicator--theme--layout .comment-md---cr
+.applicator--theme--layout .main-post-title---cr,
+.applicator--theme--layout .post-meta---cr,
+.applicator--theme--layout .post-content---ct_cr > *,
+.applicator--theme--layout .comment-md---cr,
+.applicator--theme--layout .breadcrumbs-nav---cr
 {
     margin-left: auto;
     margin-right: auto;
@@ -1241,9 +1244,22 @@
     max-width: 768px;
 }
 
+.applicator--theme--layout .post-banner-visual img
+{
+    display: none;
+}
+
+.applicator--theme--layout .post-banner-vis---a
+{
+    display: block;
+    
+    width: 100%;
+    height: 320px;
+}
+
 .applicator--theme--layout .post-banner-vis---g
 {
-    background-image: none !important;
+    background-position: center;
 }
 
 
