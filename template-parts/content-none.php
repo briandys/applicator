@@ -24,25 +24,49 @@ $post_classes = implode( ' ', $post_classes );
                 
                 <?php
                 
+                // E: Post Title
+                $post_title_obj = '';
+                $post_title = get_the_title();
+                
+                if ( $post_title ) {
+                    $post_title_obj = applicator_htmlok( array(
+                        'name'      => 'Post Title',
+                        'structure' => array(
+                            'type'      => 'object',
+                            'elem'      => 'h1',
+                            'linked'    => true,
+                            'attr'      => array(
+                                'a'         => array(
+                                    'href'      => esc_url( get_permalink() ),
+                                    'rel'       => 'bookmark',
+                                    'title'     => get_the_title(),
+                                ),
+                            ),
+                        ),
+                        'content'   => array(
+                            'object'        => get_the_title(),
+                        ),
+                    ) );
+                }
+                
+                
                 // E: Main Post Title
-                $main_post_title_obj = applicator_htmlok( array(
+                $main_post_title = applicator_htmlok( array(
                     'name'      => 'Main Post Title',
                     'structure' => array(
-                        'type'      => 'object',
-                        'elem'      => 'h1',
+                        'type'      => 'component'
                     ),
                     'content'   => array(
-                        'object'        => array(
-                            array(
-                                'txt'       => esc_html__( 'Nothing Found', 'applicator' ),
-                            ),
+                        'component'     => array(
+                            
+                            $post_title_obj,
                         ),
                     ),
                     'echo'      => true,
                 ) );
                 
                 
-                // Hook After Post Heading
+                // After Main Post Title Hook | inc > hooks.php
                 applicator_hook_after_main_post_title();
                 
                 ?>

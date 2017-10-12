@@ -45,14 +45,14 @@ $post_classes = implode( ' ', $post_classes );
             <div class="hr_cr post---hr_cr">
 
                 <?php
-
-                // E: Main Post Title
-                $main_post_title_obj = '';
-                $main_post_title = get_the_title();
                 
-                if ( $main_post_title ) {
-                    $main_post_title_obj = applicator_htmlok( array(
-                        'name'      => 'Main Post Title',
+                // E: Post Title
+                $post_title_obj = '';
+                $post_title = get_the_title();
+                
+                if ( $post_title ) {
+                    $post_title_obj = applicator_htmlok( array(
+                        'name'      => 'Post Title',
                         'structure' => array(
                             'type'      => 'object',
                             'elem'      => 'h1',
@@ -68,9 +68,24 @@ $post_classes = implode( ' ', $post_classes );
                         'content'   => array(
                             'object'        => get_the_title(),
                         ),
-                        'echo'      => true,
                     ) );
                 }
+                
+                
+                // E: Main Post Title
+                $main_post_title = applicator_htmlok( array(
+                    'name'      => 'Main Post Title',
+                    'structure' => array(
+                        'type'      => 'component'
+                    ),
+                    'content'   => array(
+                        'component'     => array(
+                            
+                            $post_title_obj,
+                        ),
+                    ),
+                    'echo'      => true,
+                ) );
                 
                 
                 echo applicator_post_banner_visual();
