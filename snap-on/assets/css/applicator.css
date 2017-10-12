@@ -1238,7 +1238,8 @@
 .applicator--theme--layout .comment-md---cr,
 .applicator--theme--layout .breadcrumbs-nav---cr,
 .applicator--theme--layout .post-excerpt---cr,
-.applicator--theme--layout .show-more-action
+.applicator--theme--layout .show-more-action,
+.applicator--theme--layout .main-content-heading
 {
     margin-left: auto;
     margin-right: auto;
@@ -1267,6 +1268,23 @@
 .applicator--theme--layout .post-banner-vis---g
 {
     background-position: center;
+}
+
+
+
+
+
+/* ------------------ Viewport Width: 768 ------------------ */
+
+@media only screen and ( min-width: 48em )
+{
+    
+    /* ------------ Layout ------------ */
+    .applicator--theme--layout .post-content---ct_cr > .data-format--img--right-aligned
+    {
+        margin-left: 1rem;
+    }
+    
 }
 
 
