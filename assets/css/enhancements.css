@@ -404,6 +404,7 @@ select
 .main-navi---a_l
 {
     justify-content: unset;
+    min-width: 2rem;
 }
 
 .main-nav---ct_cr > .menu > ul > li > a
