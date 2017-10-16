@@ -251,6 +251,9 @@
                 ob_end_clean();
                 
                 
+                
+                
+                
                 // E: Main Header
                 $main_header_cn = applicator_htmlok( array(
                     'name'      => 'Main Header',
@@ -270,7 +273,9 @@
                             applicator_main_nav(),
                             
                             // Hook After Main Nav
-                            $hook_after_main_nav_ob_content,
+                            // $hook_after_main_nav_ob_content,
+                            
+                            applicator_main_actions(),
                             
                             // Main Banner
                             $main_banner_cp,

@@ -414,6 +414,13 @@
                 mainMenuDeactivate();
             }
         } );
+        
+        /*
+        if ( $( '#main-header-aside' ) ) {
+            
+        }
+        */
+          
 
         // Deactivate via keyboard ESC key
         $window.load( function() {
@@ -670,7 +677,7 @@
         
         $( '#main-actions' )
             .find( $( '.main-actions---ct_cr' ) )
-                .children( '.search:first' )
+                .children( '.search:first, .widget_search:first' )
                     .attr( 'id', 'main-search' );
     }() );
     
@@ -1166,6 +1173,16 @@
             }, function() {
                 navHoverDeactivate.apply( this );
             } );
+            
+            /*
+            $( "#content" ).delegate( "*", "focus blur", function() {
+              var elem = $( this );
+              setTimeout(function() {
+                elem.toggleClass( "focused", elem.is( ":focus" ) );
+              }, 0 );
+            });
+            */
+        
         }() );
         
         

@@ -92,5 +92,15 @@ function applicator_aside_init() {
 		'before_title'  => $widget_h_start_mu,
 		'after_title'   => $widget_h_end_mu,
 	) );
+    
+    register_sidebar( array(
+		'name'          => __( 'Main Actions', 'applicator' ),
+		'id'            => 'main-actions',
+		'description'   => __( 'Located after Main Nav', 'applicator' ),
+		'before_widget' => $widget_start_mu,
+		'after_widget'  => $widget_end_mu,
+		'before_title'  => $widget_h_start_mu,
+		'after_title'   => $widget_h_end_mu,
+	) );
 }
 add_action( 'widgets_init', 'applicator_aside_init' );

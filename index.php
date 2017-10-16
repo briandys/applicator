@@ -251,7 +251,7 @@ else {
     <div class="fr_cr main-content---fr_cr">
         
         <?php
-        echo applicator_page_nav(). applicator_entry_nav();
+        echo applicator_entry_nav(). applicator_page_nav();
         ?>
     
     </div>

@@ -2102,6 +2102,11 @@ select
     padding-bottom: 0;
 }
 
+.main-actions .main-search-func .widget-content---ct_cr > *
+{
+    padding: 0;
+}
+
 
 
 
@@ -2269,7 +2274,8 @@ select
 
 
 /* ------------------ Main Search - Function ------------------ */
-.applicator--main-search.dom--unready .main-actions---ct_cr > .search
+.applicator--main-search.dom--unready .main-actions---ct_cr > .search,
+.applicator--main-search.dom--unready .main-actions---ct_cr > .widget_search
 {
     display: none;
 }
@@ -2315,6 +2321,11 @@ select
     color: white;
 }
 
+.main-search--inactive .input-text
+{
+    display: none;
+}
+
 /* Main Search - Input Text - Allowance for the actions */
 .applicator--main-search.applicator--main-menu.main-header-aside--enabled .main-search-func .search-term-crt-search-text-input
 {
@@ -2337,7 +2348,7 @@ select
 /* Input Text - Hidden */
 .main-search-func .search-term-crt-search-text-input
 {
-    position: fixed;
+    position: absolute;
     left: 100%;
     right: 0;
     
@@ -2445,12 +2456,14 @@ select
 }
 
 /* Background color reset */
-.applicator--main-search .main-actions---ct_cr > .search
+.applicator--main-search .main-actions---ct_cr > .search,
+.applicator--main-search .main-actions---ct_cr > .widget_search
 {
     background-color: transparent;
 }
 
-.main-actions---ct_cr > .search
+.main-actions---ct_cr > .search,
+.main-actions---ct_cr > .widget_search
 {
     background-color: white;
 }
@@ -2656,6 +2669,11 @@ select
 .applicator--main-menu .widget_media_image:first-of-type .widget---cr
 {
     margin-top: 0;
+}
+
+.main-menu--inactive .main-hr-aside---ct_cr > *
+{
+    display: none;
 }
 
 

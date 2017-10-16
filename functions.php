@@ -46,11 +46,6 @@ $main_nav = get_parent_theme_file_path( '/inc/tags/main-nav.php' );
 if ( file_exists( $main_nav ) ) { require_once( $main_nav ); }
 
 
-// Main Actions
-$main_actions = get_parent_theme_file_path( '/inc/functions/main-actions.php' );
-if ( file_exists( $main_actions ) ) { require_once( $main_actions ); }
-
-
 // Page Nav
 $page_nav = get_parent_theme_file_path( '/inc/tags/page-nav.php' );
 if ( file_exists( $page_nav ) ) { require_once( $page_nav ); }

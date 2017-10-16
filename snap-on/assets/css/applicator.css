@@ -31,13 +31,10 @@
 
 /* ------------------ Visually Hidden ------------------ */
 .visually-hidden,
-.page .entry-nav,
 .page .post-published-modified,
 .page .published-post-author,
 .page .comments-actions-snippet,
 .page .comment-md,
-.main-content---hr_cr .page-nav,
-.main-content---hr .entry-nav,
 .edit-post-action .post-title---txt,
 .edit-comment-action .comment-title---txt,
 .post-header-aside .comment-creation-ability,
@@ -746,6 +743,12 @@
 
 
 /* ------------------ Entry Nav ------------------ */
+.page .entry-nav,
+.main-content---hr .entry-nav
+{
+    display: none;
+}
+
 .applicator--theme--entry-nav .entry-nav---grp
 {
     display: flex;
@@ -1108,6 +1111,11 @@
 
 
 /* ------------------ Page Nav ------------------ */
+.main-content---hr_cr .page-nav
+{
+    display: none;
+}
+
 .applicator--theme--page-nav .page-nav---ct_cr
 {
     text-align: center;
