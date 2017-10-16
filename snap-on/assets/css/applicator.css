@@ -1201,14 +1201,6 @@
     font-size: 2em;
 }
 
-.applicator--theme--post-format--status .format-status .post---hr,
-.applicator--theme--post-format--status .format-status .post---ct,
-.applicator--theme--post-format--status .format-status .post-header-aside
-{
-    display: inline-block;
-    vertical-align: middle;
-}
-
 
 
 
@@ -1266,6 +1258,7 @@
 .applicator--theme--layout .post-banner-vis---g
 {
     background-size: cover;
+    background-position: center;
 }
 
 .applicator--theme--layout .post-banner-vis---a

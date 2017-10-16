@@ -2112,11 +2112,6 @@ select
     display: none;
 }
 
-.page--short .go-content-nav
-{
-    display: none;
-}
-
 .go-content-nav-func .go-to-content-navi
 {
     position: fixed;
@@ -2888,13 +2883,24 @@ select
     padding-right: var(--object--spacing-x);
 }
 
-.page-navi:not( .adjacent-navi )
+.page-navi
 {
     padding-left: 1rem;
     padding-left: var(--object--spacing-x);
     
     padding-right: 1rem;
     padding-right: var(--object--spacing-x);
+}
+
+.page-nav .adjacent-navi
+{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.page-nav .adjacent-nav---a
+{
+    display: inline-block;
 }
 
 
