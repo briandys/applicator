@@ -20,6 +20,7 @@
         showHideTxtLabelCss = 'show-hide---l',
         
         funcTerm = 'func',
+        funcName,
         
         tabKeyActCss = 'tab-key--active',
         tabKeyInactCss = 'tab-key--inactive',
@@ -33,8 +34,6 @@
         copyrightHeight = $webProductCopyright.height(),
         pageShortCss = 'page--short',
         pageLongCss = 'page--long',
-        
-        $goContentNav = $( '#go-content-nav' ),
         
         $aplWildcard = $( '#applicator-wildcard' ),
         $aplWildcardCr = $aplWildcard.find( '.applicator-wildcard---cr' ),
@@ -71,7 +70,7 @@
         
         $aplWildcardCr.append( overlayMu );
         
-    };
+    }
     
     
     
@@ -170,7 +169,8 @@
             
             $goStartNavArrowIco = aplDataGoStartNav.goStartNavArrowIco,
             
-            $colophonHeight = $('#main-footer').height(),
+            $goStartNaviAL,
+            
             bodyOffsetCriteriaHeight,
             bodyOffsetHeight;
         
@@ -203,7 +203,7 @@
             if ( ( window.innerHeight ) <= ( bodyOffsetCriteriaHeight ) ) {
 
                 // http://stackoverflow.com/a/40370876
-                $window.scroll( function( e ) {
+                $window.scroll( function() {
                     
                     if ( ( ( window.innerHeight + window.pageYOffset ) >= ( bodyOffsetHeight / 4 ) ) && ( ! window.pageYOffset == 0 ) ) {
                         
@@ -291,6 +291,8 @@
             $mainHrAsH,
             $mainHrAsCt,
             
+            $mainMenuTog,
+            
             $mainMenuTogBtn,
             $mainMenuTogBtnL,
             $mainMenuTogBtnLTxt,
@@ -354,6 +356,7 @@
             $mainMenuTogBtnLTxt.text( $mainMenuHideL );
             $mainMenuTogBtnL.append( $mainMenuTogBtnHideIco );
             $mainMenuTogBtnShowIco.remove();
+            
         }
         
         // Deactivate
@@ -404,9 +407,21 @@
                 $window.scrollTop( $this.position().top );
             } );
         }() );
+            
         
-        // For Calendar links
-        // $mainMenuTogBtn.click();
+        
+        // Find if a Child Element Has Focus
+        // http://ub4.underblob.com/find-if-a-child-element-has-focus/
+        $cp.on( 'focusout.applicator', function() {
+            var $this = $( this );
+            setTimeout( function() {
+                var hasFocus = !! ( $this.find( ':focus' ).length > 0 );
+                if ( ! hasFocus ) {
+                    mainMenuDeactivate();
+                }
+            }, 10 );
+        } );
+        
         
         // Deactivate via external click
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
@@ -600,7 +615,6 @@
         ( function() {
             
             $commentsToggleButton.on( 'click.applicator', function( e ) {
-                var $this = $( this );
                 e.preventDefault();
                 
                 commentsToggle();
@@ -613,8 +627,6 @@
         ( function() {
             
             $commentsCountAction.on( 'click.applicator', function() {
-                var $this = $( this );
-                
                 commentsActivate();
             } );
         
@@ -662,7 +674,7 @@
     
     
     
-        /* ------------------------ Main Search ------------------------ */
+    /* ------------------------ Main Search ------------------------ */
     ( function() {
         
         if ( ! $aplApplicatorMainSearch.length ) {
@@ -714,6 +726,10 @@
             $mainSearchTogBtn,
             $mainSearchTogBtnL,
             $mainSearchTogBtnLTxt,
+            
+            $mainSearchFormAxns,
+            $mainSearchBL,
+            $mainSearchResetBL,
             
             $mainSearchInput,
             $mainSearchResetBtn;
@@ -855,6 +871,16 @@
             
         }() );
         
+        $cp.on( 'focusout.applicator', function() {
+            var $this = $( this );
+            setTimeout( function() {
+                var hasFocus = !! ( $this.find( ':focus' ).length > 0 );
+                if ( ! hasFocus ) {
+                    mainSearchDeactivate();
+                }
+            }, 10 );
+        } );
+        
         // Upon entering content in input
         $mainSearchInput.on( 'keypress.applicator input.applicator', function() {
             mainSearchInputStatus();
@@ -925,10 +951,11 @@
             
             $subNavParent,
             
-            $subNavTog,
             $subNavTogBtn,
-            $subNavTogBtnL,
-            $subNavTogBtnLTxt,
+            
+            $subNavShowHideTxt,
+            
+            $navParent,
             
             $subNavTogBtnIco = $( aplDataSubNav.subNavTogBtnIco ),
             
@@ -1205,7 +1232,12 @@
     // ------------------------- Form Validation
     ( function() {
         
-        var forms = $( '#commentform' );
+        var forms = $( '#commentform' ),
+            validityNoteContainerGenericElementLabelL,
+            validityNoteContainerGenericElementLabel,
+            validityNoteContainerGenericElement,
+            validityNoteContainer,
+            validityNote;
         
         for ( var i = 0; i < forms.length; i++ ) {
             forms[i].noValidate = true;
@@ -1298,6 +1330,9 @@
             $pageNavItemChild = $pageNav.find( 'li > *' ),
             $adjacentNavi = $pageNav.find( 'li:has( .adjacent-navi---a_l )' ),
             $pageNavi = $pageNav.find( 'li:has( a )' ),
+            
+            $prevPageNaviLabel,
+            $nextPageNaviLabel,
             
             $prevPageNavi,
             $nextPageNavi,
@@ -1414,7 +1449,7 @@
 
         
         // Tab Key - Deactivate upon any interaction
-        $document.on( 'touchmove.applicator click.applicator', function ( e ) {
+        $document.on( 'touchmove.applicator click.applicator', function () {
 
             if ( $html.hasClass( tabKeyActCss ) ) {
                 $html
@@ -1433,15 +1468,11 @@
                 dataFormatPrefixCss = 'data-format--',
 
                 dataFormatImage = dataFormatPrefixCss + 'img',
-                dataFormatIframe = dataFormatPrefixCss + 'iframe',
 
                 postContent = '.post-content---ct_cr > *',
                 postContentCtCrCss = '.post-content---ct_cr',
 
-                postContentP = '.post-content---ct_cr > p',
                 alignedTerm = 'aligned',
-
-                commentContent = '.comment-content---ct_cr > *',
 
                 dataFormatBlockCpMu,
                 dataFormatInlineCpMu;
