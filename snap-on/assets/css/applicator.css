@@ -941,7 +941,7 @@
 
 
 /* ------------------ Quote ------------------ */
-.applicator--theme--quote blockquote
+.applicator--theme--quote .post-content---ct_cr > blockquote
 {
     position: relative;
     

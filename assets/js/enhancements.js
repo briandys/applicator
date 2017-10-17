@@ -256,11 +256,11 @@
     /* ------------------------ Main Menu ------------------------ */
     function initMainMenu( $cp ) {
         
-        if ( ! $aplApplicatorMainMenu.length ) {
+        if ( ! $mainHrAsEnabled.length ) {
 			return;
 		}
         
-        if ( ! $mainHrAsEnabled.length ) {
+        if ( ! $aplApplicatorMainMenu.length ) {
 			return;
 		}
         
@@ -414,12 +414,6 @@
                 mainMenuDeactivate();
             }
         } );
-        
-        /*
-        if ( $( '#main-header-aside' ) ) {
-            
-        }
-        */
           
 
         // Deactivate via keyboard ESC key

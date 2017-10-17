@@ -49,7 +49,9 @@ Enhancements Style
 .applicator--comments .post-header-aside .comments-actions-snippet .comments-population,
 .applicator--comments .comments-actions-snippet.comments-population--empty .add-comment-axn,
 .applicator--comments--active .comments-toggle .comments-count---txt,
-.applicator--page-nav .adjacent-navi---l
+.applicator--page-nav .adjacent-navi---l,
+.main-actions .widget-heading,
+.applicator--main-search--active .main-actions---ct_cr > *:not( .main-search-func )
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -938,7 +940,7 @@ select
 .post-content---ct_cr > *,
 .post-excerpt---ct_cr > *,
 .comment-content---ct_cr > *,
-.widget-content---ct_cr > *
+.aside .widget-content---ct_cr > *
 {
     margin: 0;
     
@@ -954,8 +956,8 @@ select
 .post-excerpt---ct_cr > ol,
 .comment-content---ct_cr > ul,
 .comment-content---ct_cr > ol,
-.widget-content---ct_cr > ul,
-.widget-content---ct_cr > ol
+.aside .widget-content---ct_cr > ul,
+.aside .widget-content---ct_cr > ol
 {
     padding-left: 2.25em;
 }
@@ -963,7 +965,7 @@ select
 .post-content---ct_cr li,
 .post-excerpt---ct_cr li,
 .comment-content---ct_cr li,
-.widget-content---ct_cr li
+.aside .widget-content---ct_cr li
 {
     padding-top: .25em;
     padding-top: var(--list--spacing-y--xsm);
@@ -972,13 +974,13 @@ select
     padding-bottom: var(--list--spacing-y--xsm);
 }
 
-.widget-content---ct_cr > select
+.aside .widget-content---ct_cr > select
 {
     margin: .75em 1rem;
     margin: var(--content--spacing);
 }
 
-.widget-content---ct_cr > img
+.aside .widget-content---ct_cr > img
 {
     padding: 0;
 }
@@ -1152,7 +1154,7 @@ select
 }
 
 /* With Main Menu */
-.applicator--main-menu.main-header-aside--enabled .main-info---cr
+.applicator--main-menu .main-info---cr
 {
     padding-left: 3rem;
     padding-left: var(--elem-dimension--md);
@@ -1180,8 +1182,8 @@ select
 }
 
 /* With Main Menu */
-.applicator--main-menu.main-header-aside--enabled .main-name---a_l,
-.applicator--main-menu.main-header-aside--enabled .main-desc---a_l
+.applicator--main-menu .main-name---a_l,
+.applicator--main-menu .main-desc---a_l
 {
     padding-left: 0;
 }
@@ -2003,7 +2005,7 @@ select
 
 
 /* ------------------ Widgets ------------------ */
-.widget---cr
+.aside .widget---cr
 {
     padding-top: 1em;
     padding-top: var(--component--spacing-y);
@@ -2011,14 +2013,14 @@ select
     padding-bottom: 1em;
     padding-bottom: var(--component--spacing-y);
 }
-.widget a
+.aside .widget a
 {
     color: #005fe6;
     color: var(--links--fg-color);
 }
 
-.widget_nav_menu a,
-.widget_pages a
+.aside .widget_nav_menu a,
+.aside .widget_pages a
 {
     justify-content: unset;
     
@@ -2031,29 +2033,31 @@ select
     text-decoration: none;
 }
 
-.widget .widget-content---ct_cr > .widget-heading
+.aside .widget-content---ct_cr > .widget-heading
 {
+    margin-bottom: -1em;
+    
     padding: 1em 1rem;
     padding: var(--object--spacing--md);
 }
 
-.widget a:hover
+.aside .widget a:hover
 {
     text-decoration: none;
 }
 
-.widget_calendar table
+.aside .widget_calendar table
 {
     width: 100%;
 }
 
-.widget select
+.aside .widget select
 {
     width: calc( 100% - ( 1rem * 2 ) );
     width: calc( 100% - (var(--content--spacing-x) * 2));
 }
 
-.widget_nav_menu .widget-content---ct_cr > *
+.aside .widget_nav_menu .widget-content---ct_cr > *
 {
     padding: 0;
 }
@@ -2063,22 +2067,22 @@ select
     display: none;
 }
 
-.widget_media_image .widget---cr
+.aside .widget_media_image .widget---cr
 {
     padding: 0;
 }
 
-.widget_tag_cloud a
+.aside .widget_tag_cloud a
 {
     text-decoration: none;
 }
 
-.widget_tag_cloud a:hover
+.aside .widget_tag_cloud a:hover
 {
     text-decoration: underline;
 }
 
-.widget_media_image img
+.aside .widget_media_image img
 {
     width: 100%;
     height: auto;
@@ -2091,20 +2095,15 @@ select
     display: none;
 }
 
-.widget_pages ul
+.aside .widget_pages ul
 {
     padding-left: 0;
 }
 
-.widget_pages li
+.aside .widget_pages li
 {
     padding-top: 0;
     padding-bottom: 0;
-}
-
-.main-actions .main-search-func .widget-content---ct_cr > *
-{
-    padding: 0;
 }
 
 
@@ -2273,6 +2272,55 @@ select
 
 
 
+
+
+/* ------------------ Main Actions ------------------ */
+.main-actions
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.main-actions a
+{
+    color: white;
+}
+
+.applicator--main-search--active .main-actions
+{
+    width: 100%;
+}
+
+.main-actions .main-search-func .widget-content---ct_cr > *
+{
+    padding: 0;
+}
+
+.applicator--main-search.applicator--main-menu .main-actions
+{
+    padding-left: 3rem;
+    padding-left: var(--elem--dimension);
+}
+
+.applicator--main-search.applicator--main-menu .main-actions---cr
+{
+    position: relative;
+}
+
+.main-actions .widget_nav_menu .menu
+{
+    display: flex;
+}
+
+.applicator--main-search .main-actions .widget_nav_menu
+{
+    padding-right: 3rem;
+}
+
+
+
+
 /* ------------------ Main Search - Function ------------------ */
 .applicator--main-search.dom--unready .main-actions---ct_cr > .search,
 .applicator--main-search.dom--unready .main-actions---ct_cr > .widget_search
@@ -2280,16 +2328,12 @@ select
     display: none;
 }
 
-/* Main Search Positioning */
-.main-search-func
-{
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
 .main-search--active
 {   
+    position: absolute;
+    left: 0;
+    top: 0;
+    
     width: 100%;
     
     min-height: 3rem;
@@ -2324,13 +2368,6 @@ select
 .main-search--inactive .input-text
 {
     display: none;
-}
-
-/* Main Search - Input Text - Allowance for the actions */
-.applicator--main-search.applicator--main-menu.main-header-aside--enabled .main-search-func .search-term-crt-search-text-input
-{
-    padding-left: 3rem;
-    padding-left: var(--elem--dimension);
 }
 
 .applicator--main-search.applicator--main-menu.main-header-aside--disabled .main-search-func .search-term-crt-search-text-input
@@ -2383,6 +2420,11 @@ select
 }
 
 .main-search--inactive .search-form-axns
+{
+    display: none;
+}
+
+.main-search--active.main-search-input--empty .search-form-reset-axn
 {
     display: none;
 }
@@ -2660,13 +2702,13 @@ select
 }
 
 /* Widgets and Main Menu */
-.applicator--main-menu .widget:first-of-type .widget---cr
+.applicator--main-menu .main-header-aside .widget:first-of-type .widget---cr
 {
     margin-top: -1em;
     margin-top: calc( var(--component--spacing-y) * -1);
 }
 
-.applicator--main-menu .widget_media_image:first-of-type .widget---cr
+.applicator--main-menu .main-header-aside .widget_media_image:first-of-type .widget---cr
 {
     margin-top: 0;
 }
