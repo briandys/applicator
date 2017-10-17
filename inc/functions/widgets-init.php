@@ -54,7 +54,7 @@ function applicator_aside_init() {
     $widget_h_end_mu .= '</div><!-- Widget Heading OBJ -->';
     
     register_sidebar( array(
-		'name'          => __( 'Main Header', 'applicator' ),
+		'name'          => __( '1. Main Header Aside', 'applicator' ),
 		'id'            => 'main-header-aside',
 		'description'   => __( 'Located at the Main Header', 'applicator' ),
 		'before_widget' => $widget_start_mu,
@@ -64,7 +64,17 @@ function applicator_aside_init() {
 	) );
     
     register_sidebar( array(
-		'name'          => __( 'Main Content Header', 'applicator' ),
+		'name'          => __( '2. Main Actions', 'applicator' ),
+		'id'            => 'main-actions',
+		'description'   => __( 'Located after Main Nav', 'applicator' ),
+		'before_widget' => $widget_start_mu,
+		'after_widget'  => $widget_end_mu,
+		'before_title'  => $widget_h_start_mu,
+		'after_title'   => $widget_h_end_mu,
+	) );
+    
+    register_sidebar( array(
+		'name'          => __( '3. Main Content Header Aside', 'applicator' ),
 		'id'            => 'main-content-header-aside',
 		'description'   => __( 'Located at the Main Content Header', 'applicator' ),
 		'before_widget' => $widget_start_mu,
@@ -74,7 +84,7 @@ function applicator_aside_init() {
 	) );
     
     register_sidebar( array(
-		'name'          => __( 'Secondary Content', 'applicator' ),
+		'name'          => __( '4. Secondary Content Aside', 'applicator' ),
 		'id'            => 'main-content-aside',
 		'description'   => __( 'Located after Primary Content', 'applicator' ),
 		'before_widget' => $widget_start_mu,
@@ -84,19 +94,9 @@ function applicator_aside_init() {
 	) );
     
     register_sidebar( array(
-		'name'          => __( 'Main Footer', 'applicator' ),
+		'name'          => __( '5. Main Footer Aside', 'applicator' ),
 		'id'            => 'main-footer-aside',
 		'description'   => __( 'Located at the Main Footer', 'applicator' ),
-		'before_widget' => $widget_start_mu,
-		'after_widget'  => $widget_end_mu,
-		'before_title'  => $widget_h_start_mu,
-		'after_title'   => $widget_h_end_mu,
-	) );
-    
-    register_sidebar( array(
-		'name'          => __( 'Main Actions', 'applicator' ),
-		'id'            => 'main-actions',
-		'description'   => __( 'Located after Main Nav', 'applicator' ),
 		'before_widget' => $widget_start_mu,
 		'after_widget'  => $widget_end_mu,
 		'before_title'  => $widget_h_start_mu,

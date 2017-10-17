@@ -1154,7 +1154,7 @@ select
 }
 
 /* With Main Menu */
-.applicator--main-menu .main-info---cr
+.applicator--main-menu.main-header-aside--enabled .main-info---cr
 {
     padding-left: 3rem;
     padding-left: var(--elem-dimension--md);
@@ -1182,8 +1182,8 @@ select
 }
 
 /* With Main Menu */
-.applicator--main-menu .main-name---a_l,
-.applicator--main-menu .main-desc---a_l
+.applicator--main-menu.main-header-aside--enabled .main-name---a_l,
+.applicator--main-menu.main-header-aside--enabled .main-desc---a_l
 {
     padding-left: 0;
 }
@@ -2297,13 +2297,13 @@ select
     padding: 0;
 }
 
-.applicator--main-search.applicator--main-menu .main-actions
+.applicator--main-search.applicator--main-menu.main-header-aside--enabled .main-actions
 {
     padding-left: 3rem;
     padding-left: var(--elem--dimension);
 }
 
-.applicator--main-search.applicator--main-menu .main-actions---cr
+.applicator--main-search.applicator--main-menu.main-header-aside--enabled .main-actions---cr
 {
     position: relative;
 }

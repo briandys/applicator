@@ -256,11 +256,11 @@
     /* ------------------------ Main Menu ------------------------ */
     function initMainMenu( $cp ) {
         
-        if ( ! $mainHrAsEnabled.length ) {
+        if ( ! $aplApplicatorMainMenu.length ) {
 			return;
 		}
         
-        if ( ! $aplApplicatorMainMenu.length ) {
+        if ( ! $mainHrAsEnabled.length ) {
 			return;
 		}
         
@@ -1163,19 +1163,14 @@
         ( function() {
             
             $( $mainNavItem ).hover( function () {
+                
                 navHoverActivate.apply( this );
-            }, function() {
-                navHoverDeactivate.apply( this );
-            } );
             
-            /*
-            $( "#content" ).delegate( "*", "focus blur", function() {
-              var elem = $( this );
-              setTimeout(function() {
-                elem.toggleClass( "focused", elem.is( ":focus" ) );
-              }, 0 );
-            });
-            */
+            }, function() {
+            
+                navHoverDeactivate.apply( this );
+            
+            } );
         
         }() );
         
