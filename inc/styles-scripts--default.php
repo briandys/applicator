@@ -35,10 +35,6 @@ if ( ! function_exists( 'applicator_default_styles_scripts' ) ) {
         wp_enqueue_script( 'applicator-script--modernizr', get_theme_file_uri( '/assets/js/modernizr.min.js' ), array(), '1.0.0', true );
         
         
-        // Skip Link Focus Fix
-        wp_enqueue_script( 'applicator-script--skip-link-focus-fix', get_theme_file_uri( '/assets/js/skip-link-focus-fix.js' ), array(), '1.0.1', true );
-        
-        
         // Plugins
         wp_enqueue_script( 'applicator-script--plugins', get_theme_file_uri( '/assets/js/plugins.js' ), array( 'jquery' ), '1.0.0', true );
         

@@ -389,7 +389,7 @@ select
 
 
 /* ------------------ Main Nav ------------------ */
-.main-nav---cr
+.main-nav
 {
     background-color: white;
     background-color: var(--main-nav--bg-color);
@@ -1118,13 +1118,16 @@ select
 
 
 /* ------------------ Main Header ------------------ */
+.main-header
+{
+    background-color: hsl(200, 100%, 50%);
+    background-color: var(--main-header--bg-color);
+}
+
 .main-header---cr
 {
     min-height: 3rem;
     min-height: var(--elem--height--md);
-    
-    background-color: hsl(200, 100%, 50%);
-    background-color: var(--main-header--bg-color);
 }
 
 
@@ -2098,6 +2101,7 @@ select
 .aside .widget_pages ul
 {
     padding-left: 0;
+    padding-right: 0;
 }
 
 .aside .widget_pages li
@@ -2278,8 +2282,15 @@ select
 .main-actions
 {
     position: absolute;
-    right: 0;
+    left: 0;
     top: 0;
+    
+    width: 100%;
+}
+
+.main-actions---cr
+{
+    position: relative;
 }
 
 .main-actions a
@@ -2292,22 +2303,7 @@ select
     width: 100%;
 }
 
-.main-actions .main-search-func .widget-content---ct_cr > *
-{
-    padding: 0;
-}
-
-.applicator--main-search.applicator--main-menu.main-header-aside--enabled .main-actions
-{
-    padding-left: 3rem;
-    padding-left: var(--elem--dimension);
-}
-
-.applicator--main-search.applicator--main-menu.main-header-aside--enabled .main-actions---cr
-{
-    position: relative;
-}
-
+/* Setup for Widget > Menu */
 .main-actions .widget_nav_menu .menu
 {
     display: flex;
@@ -2378,6 +2374,7 @@ select
 
 .main-search-func .search-term-crt-search-text-input
 {
+    padding-left: 3rem;
     padding-right: calc( 3rem * 2);
     padding-right: calc( var(--elem--dimension) * 2);
 }
@@ -2528,84 +2525,62 @@ select
 
 
 /* ------------------ Main Menu - Function ------------------ */
+
+/* Hide while DOM Unready */
 .applicator--main-menu.dom--unready .main-header-aside
 {
     display: none;
 }
 
+/* Variables */
 .main-menu-func
 {
-    /* Variables */
     --main-menu-func--height: 100vh;
-    --main-menu-func--max-width: 30rem;
+}
+
+/* This will shoulder the position when active */
+.main-menu--active
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+
+/* This will enable the hamburger menu to be positioned with max-width, centered layout */
+.main-menu--inactive .main-hr-aside---hr
+{
+    position: absolute;
+    left: 0;
+    top: 0;
     
+    width: 100%;
+}
+
+/* In order to transition during inactive and active */
+.main-menu-func .main-hr-aside---ct
+{
+    transition: transform .3s ease-in-out;
+}
+
+/* To hide the menu, taking away the positioning from .main-menu--active */
+.main-menu--inactive .main-hr-aside---ct
+{
     position: absolute;
     left: 0;
     top: 0;
     z-index: 1;
     
-    margin-right: 3rem;
-    margin-right: var(--active-area--dimension--md);
-    
-    width: calc( 100% - 3rem );
-    width: calc( 100% - var(--active-area--dimension--md));
-    
-    max-width: 30rem;
-    max-width: var(--main-menu-func--max-width);
-    
-    height: 100vh;
-    height: var(--main-menu-func--height);
-    
-    transition: all .125s ease-in-out;
-    transition: var(--transition--generic);
-    
-    transition-duration: .3s;
-    transition-property: transform;
-}
-
-/* Hide the Main Menu */
-.main-menu--inactive
-{
     transform: translateX(-100%);
 }
 
-.main-menu--active
+.main-menu--active .main-hr-aside---ct
 {
-    z-index: 100;
+    position: relative;
 }
 
-.main-menu-func .main-hr-aside---cr
-{
-    height: 100vh;
-    height: var(--main-menu-func--height);
-}
-
-.main-menu-func .main-hr-aside---ct
-{   
-    height: 100vh;
-    height: var(--main-menu-func--height);
-}
-
-/* Scroll Area */
-.main-menu-func .main-hr-aside---ct_cr
-{   
-    width: 100%;
-    
-    height: 100vh;
-    height: var(--main-menu-func--height);
-    
-    background-color: hsl(0, 0%, 98%);
-    background-color: var(--main-header-aside--bg-color);
-    
-    overflow-y: auto;
-    
-    /*
-    cursor: initial;
-    */
-}
-
-/* Side Shadow */
-.main-menu-func .main-hr-aside---ct_cr::before
+/* Side shadow */
+.main-menu-func .main-hr-aside---ct::before
 {
     /* Shadow Gradient */
     content: '';
@@ -2624,44 +2599,50 @@ select
     background: linear-gradient(to right, hsla(0,0%,0%,0.25) 0%,hsla(0,0%,0%,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40000000', endColorstr='#00000000',GradientType=1); /* IE6-9 */
     
-    transition: all .125s ease-in-out;
-    transition: var(--transition--generic);
-    
-    transition-property: opacity;
+    transition: opacity .3s ease-in-out;
 }
 
 /* Hide Side Shadow */
-.main-menu--inactive .main-hr-aside---ct_cr::before
+.main-menu--inactive .main-hr-aside---ct::before
 {
     opacity: 0;
 }
 
 /* Show Side Shadow */
-.main-menu--active .main-hr-aside---ct_cr::before
+.main-menu--active .main-hr-aside---ct::before
 {
     opacity: 1;
 }
 
-/* Toggle Button */
-.main-menu-func .main-hr-aside---hr
+/* To position the activate toggle action */
+.main-menu-func .main-menu-toggle
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* To position the deactivate toggle action */
+.main-menu--active .main-menu-toggle
+{
+    left: 100%;
+    
+    transition: left .3s ease-in-out;
+}
+
+/* The physical menu */
+.main-menu-func .main-hr-aside---ct_cr
 {
     position: relative;
     
-    margin-right: 3rem;
-    margin-right: var(--active-area--dimension--md);
+    width: 30rem;
+    max-width: calc( 100vw - 3rem );
     
-    width: 100%;
+    height: 100vh;
     
-    max-width: 30rem;
-    max-width: var(--main-menu-func--max-width);
-}
-
-.main-menu-toggle
-{
-    position: absolute;
-    left: 100%;
-    top: 0;
-    z-index: 1;
+    background-color: hsl(0, 0%, 98%);
+    
+    overflow-y: auto;
 }
 
 .main-menu-tog---b

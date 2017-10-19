@@ -199,9 +199,9 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         
         // Main Name, Description
         if ( 'blank' === get_header_textcolor() ) {
-            echo ' '. 'web-product-main-name-description'. $off;
+            echo ' '. 'main-name-description'. $off;
         } else {
-            echo ' '. 'web-product-main-name-description'. $on;
+            echo ' '. 'main-name-description'. $on;
         }
         
         
