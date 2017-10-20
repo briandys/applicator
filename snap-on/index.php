@@ -50,6 +50,7 @@ if ( ! function_exists( 'applicator_css_class_names' ) ) {
             'post-meta',
             'private-post-title',
             'quote',
+            'rounded-rectangles',
             'search-result',
             'table',
             'tags',

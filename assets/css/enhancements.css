@@ -51,7 +51,8 @@ Enhancements Style
 .applicator--comments--active .comments-toggle .comments-count---txt,
 .applicator--page-nav .adjacent-navi---l,
 .main-actions .widget-heading,
-.applicator--main-search--active .main-actions---ct_cr > *:not( .main-search-func )
+.applicator--main-search--active .main-actions---ct_cr > *:not( .main-search-func ),
+.applicator--comments--active .comments-toggle .show-hide---txt
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -85,8 +86,7 @@ Enhancements Style
 {
     text-rendering: geometricPrecision;
     
-    background-color: hsl(0, 0%, 98%);
-    background-color: var(--wbp--bg-color);
+    background-color: white;
     
     color: hsl(0, 0%, 15%);
     color: var(--wbp--fg-color);
@@ -856,6 +856,11 @@ select
 
 
 /* ------------------ Main Content ------------------ */
+.main-content
+{
+    background-color: hsl(0, 0%, 98%);
+}
+
 .main-content a
 {
     color: #005fe6;
@@ -1291,6 +1296,11 @@ select
 
 
 /* ------------------ Entry Nav ------------------ */
+.entry-nav
+{
+    background-color: white;
+}
+
 .entry-nav---cr
 {
     padding-top: 1em;
@@ -1543,6 +1553,11 @@ select
 
 
 /* ------------------ Comments ------------------ */
+.comment-md
+{
+    background-color: white;
+}
+
 .comment---cr
 {
     padding-top: 1em;
@@ -2270,7 +2285,7 @@ select
     color: var(--links--fg-color);
 }
 
-.applicator--comments .show-hide---l
+.applicator--comments .show-hide---txt
 {
     margin-right: .3em;
     margin-right: var(--glabel--between--spacing);
@@ -2278,9 +2293,34 @@ select
     text-decoration: underline;
 }
 
-.applicator--comments .comments-toggle---b:hover .show-hide---l
+.applicator--comments .comments-toggle---b:hover .show-hide---txt
 {
     text-decoration: none;
+}
+
+.applicator--comments .comments-toggle .icon
+{
+    color: hsla(0, 0%, 0%, .25);
+}
+
+.applicator--comments--active .comment-md---cr
+{
+    position: relative;
+}
+
+.applicator--comments--active .comments-toggle
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+    
+    margin-top: 1rem;
+}
+
+.applicator--comments--inactive .comment-md---hr_cr
+{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 
@@ -2927,6 +2967,11 @@ select
 
 
 /* ------------------ Page Nav ------------------ */
+.page-nav
+{
+    background-color: white;
+}
+
 .page-nav li
 {
     display: inline-block;

@@ -479,6 +479,7 @@
             
             $commentsShowL = aplDataComments.commentsShowL,
             $commentsHideL = aplDataComments.commentsHideL,
+            $commentsDismissIco = $( aplDataComments.commentsDismissIco ),
             
             aplCommentsOnCSS = 'applicator--comments--active',
             aplCommentsOffCSS = 'applicator--comments--inactive',
@@ -496,12 +497,17 @@
         ( function() {
             
             var commentsToggleTerm = 'comments-toggle';
+            
+            commentsToggleButtonTextLabelTxtMU = $( '<span />', {
+                'class': 'txt ' + showHideTxtCss,
+                'text': $commentsHideL
+            } );
 
             // Text Label
             commentsToggleButtonTextLabelMU = $( '<span />', {
-                'class': 'l' + ' ' + showHideTxtLabelCss,
-                'text': $commentsHideL
-            } );
+                'class': 'l' + ' ' + showHideTxtLabelCss
+            } )
+                .append( commentsToggleButtonTextLabelTxtMU );
 
             // Button Label
             commentsToggleButtonLabelMU = $( '<span />', {
@@ -538,10 +544,11 @@
         // Define elements after inserting the markup
         $commentsToggleButton = $( '#comments-toggle---b' );
         $commentsToggleButtonTextLabel = $commentsToggleButton.find( '.show-hide---l' );
+        $commentsToggleButtonTextLabelTxt = $commentsToggleButton.find( '.show-hide---txt' );
         
         // To insert beside the button label
         $commentsCount = $( '#comments-header-aside' ).find( '.comments-count---txt' );
-        $commentsCount.clone().insertAfter( $commentsToggleButtonTextLabel );
+        $commentsCount.clone().insertAfter( $commentsToggleButtonTextLabelTxt );
         
         
         // Activate Comments
@@ -562,7 +569,8 @@
             } );
             
             // Swap text label and icon
-            $commentsToggleButtonTextLabel.text( $commentsHideL );
+            $commentsToggleButtonTextLabelTxt.text( $commentsHideL );
+            $commentsToggleButtonTextLabel.append( $commentsDismissIco );
             
             // Mimic Target
             $window.scrollTop( $comments.position().top );
@@ -587,7 +595,8 @@
             } );
             
             // Swap text label and icon
-            $commentsToggleButtonTextLabel.text( $commentsShowL );
+            $commentsToggleButtonTextLabelTxt.text( $commentsShowL );
+            $commentsDismissIco.remove();
         }
         
         // Initialize Deactivate
