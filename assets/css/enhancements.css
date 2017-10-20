@@ -86,7 +86,7 @@ Enhancements Style
 {
     text-rendering: geometricPrecision;
     
-    background-color: white;
+    background-color: hsl(0, 0%, 98%);
     
     color: hsl(0, 0%, 15%);
     color: var(--wbp--fg-color);
@@ -866,11 +866,6 @@ select
 
 
 /* ------------------ Main Content ------------------ */
-.main-content
-{
-    background-color: hsl(0, 0%, 98%);
-}
-
 .main-content a
 {
     color: #005fe6;
@@ -1325,15 +1320,35 @@ select
 
 
 /* ------------------ Breadcrumbs Nav ------------------ */
-.breadcrumbs-navi--ancestor > *
+.applicator--breadcrumbs.modernizr--inlinesvg .breadcrumbs-navi--ancestor .icon--raster,
+.applicator--breadcrumbs.modernizr--no-inlinesvg .breadcrumbs-navi--ancestor .icon--vector
 {
-    display: inline-block;
-    vertical-align: middle;
+    display: none;
 }
 
-.breadcrumbs-navi--ancestor .arrow-icon
+.applicator--breadcrumbs .breadcrumbs-navi--ancestor
 {
-    transform: rotate(-90deg) scale(.75);
+    display: inline-flex;
+    align-items: center;
+}
+
+.applicator--breadcrumbs .breadcrumbs-nav---ct_cr > .breadcrumbs-nav---grp,
+.applicator--breadcrumbs .breadcrumbs-navi---a,
+.applicator--breadcrumbs .breadcrumbs-navi---g
+{   
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+.applicator--breadcrumbs .breadcrumbs-navi---a,
+.applicator--breadcrumbs .breadcrumbs-navi---g
+{
+    white-space: nowrap;
+}
+
+.applicator--breadcrumbs .breadcrumbs-navi--ancestor .arrow-icon
+{
+    transform: rotate(-90deg) scale(.5);
 }
 
 
@@ -1551,6 +1566,9 @@ select
 /* ------------------ Comments ------------------ */
 .comment-md
 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    
     background-color: white;
 }
 
@@ -2307,7 +2325,7 @@ select
     opacity: .5;
 }
 
-.applicator--comments--active .comment-md---cr
+.applicator--comments .comment-md---cr
 {
     position: relative;
 }
@@ -2736,6 +2754,15 @@ select
     
     height: .75rem;
     height: var(--dismiss-icon--height);
+    
+    opacity: .75;
+    
+    transition: opacity .125s ease-in-out;
+}
+
+.main-menu--active .main-menu-tog---b:hover .icon
+{
+    opacity: 1;
 }
 
 .applicator--main-menu--active

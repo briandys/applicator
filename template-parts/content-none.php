@@ -25,29 +25,20 @@ $post_classes = implode( ' ', $post_classes );
                 <?php
                 
                 // E: Post Title
-                $post_title_obj = '';
-                $post_title = get_the_title();
+                $post_title = __( 'Content Not Found', 'applicator' );
                 
-                if ( $post_title ) {
-                    $post_title_obj = applicator_htmlok( array(
-                        'name'      => 'Post Title',
-                        'structure' => array(
-                            'type'      => 'object',
-                            'elem'      => 'h1',
-                            'linked'    => true,
-                            'attr'      => array(
-                                'a'         => array(
-                                    'href'      => esc_url( get_permalink() ),
-                                    'rel'       => 'bookmark',
-                                    'title'     => get_the_title(),
-                                ),
-                            ),
-                        ),
-                        'content'   => array(
-                            'object'        => get_the_title(),
-                        ),
-                    ) );
-                }
+                
+                // R: Post Title Object
+                $post_title_obj = applicator_htmlok( array(
+                    'name'      => 'Post Title',
+                    'structure' => array(
+                        'type'      => 'object',
+                        'elem'      => 'h1',
+                    ),
+                    'content'   => array(
+                        'object'        => esc_html ( $post_title ),
+                    ),
+                ) );
                 
                 
                 // E: Main Post Title

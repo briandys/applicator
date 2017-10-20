@@ -1,5 +1,5 @@
 <!doctype html>
-<html id="start" class="html<?php applicator_hook_html_class(); ?> view no-js" <?php language_attributes(); ?>>
+<html id="start" class="html view no-js<?php applicator_hook_html_class(); ?>" <?php language_attributes(); ?>>
     <head>
         <meta charset="<?php bloginfo( 'charset' ); ?>">
         <meta http-equiv="x-ua-compatible" content="ie=edge">

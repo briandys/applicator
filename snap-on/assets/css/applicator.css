@@ -75,7 +75,9 @@
 .applicator--theme--page-nav .page-nav .ellipsis--delimiter,
 .applicator--theme--page-nav .blog .page-navi:not( .adjacent-navi ),
 .applicator--theme--post-format--status .format-status .published-post-author,
-.view--inner .main-banner
+.view--inner .main-banner,
+.applicator--theme--post-format--status .format-status .post-title,
+.applicator--theme--post-format--status .format-status .apl-post-categories
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -288,6 +290,8 @@
 /* ------------------ Copyright ------------------ */
 .copyright
 {
+    background-color: white;
+    
     color: hsla(0, 0%, 0%, .5);
     color: var(--copyright-info--fg-color);
 }

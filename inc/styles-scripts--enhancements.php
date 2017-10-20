@@ -97,14 +97,15 @@ if ( ! function_exists( 'applicator_functionalities_css_class_names' ) ) {
         $r = array(
             
             // Functionalities
-            'go-content-nav',
-            'main-search',
-            'main-menu',
-            'easy-access-nav',
-            'sub-nav',
-            'go-start-nav',
+            'breadcrumbs',
             'comments',
+            'easy-access-nav',
+            'go-content-nav',
+            'go-start-nav',
+            'main-menu',
+            'main-search',
             'page-nav',
+            'sub-nav',
         ); 
         
         echo ' ' . $applicator_term;

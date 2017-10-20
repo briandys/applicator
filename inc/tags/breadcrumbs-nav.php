@@ -22,18 +22,18 @@ if ( ! function_exists( 'applicator_breadcrumbs_nav' ) ) {
                 
                 // Group <ul>
                 $breadcrumbs_nav_grp_smu = '';
-                $breadcrumbs_nav_grp_smu .= '<ul class="grp breadcrumbs-nav---grp">';
+                $breadcrumbs_nav_grp_smu .= '<div class="grp breadcrumbs-nav---grp">';
                 
                 $breadcrumbs_nav_grp_emu = '';
-                $breadcrumbs_nav_grp_emu .= '</ul>';
+                $breadcrumbs_nav_grp_emu .= '</div>';
                 
                 
                 // Navi <li>
                 $breadcrumbs_navi_smu = '';
-                $breadcrumbs_navi_smu .= '<li class="item obj navi %2$s-navi%3$s" data-name="%1$s '.$breadcrumbs_data_name_term.'">';
+                $breadcrumbs_navi_smu .= '<div class="item obj navi %2$s-navi%3$s" data-name="%1$s '.$breadcrumbs_data_name_term.'">';
                 
                 $breadcrumbs_navi_emu = '';
-                $breadcrumbs_navi_emu .= '</li><!-- %1$s '.$breadcrumbs_data_name_term.' -->';
+                $breadcrumbs_navi_emu .= '</div><!-- %1$s '.$breadcrumbs_data_name_term.' -->';
                 
                 
                 // Navi <a>

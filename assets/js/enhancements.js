@@ -226,7 +226,7 @@
         } );
         
     
-        // Smooth Scroll to #start
+        // Smooth Scroll to root
         $goStartNaviA.bind( 'click.applicator', function( e ) {
 
             e.preventDefault();
@@ -411,12 +411,13 @@
         
         
         // Find if a Child Element Has Focus
+        // Deactivate if no focus is present and if user is Tab key is active
         // http://ub4.underblob.com/find-if-a-child-element-has-focus/
         $cp.on( 'focusout.applicator', function() {
             var $this = $( this );
             setTimeout( function() {
                 var hasFocus = !! ( $this.find( ':focus' ).length > 0 );
-                if ( ! hasFocus ) {
+                if ( $html.hasClass( tabKeyActCss ) && ! hasFocus ) {
                     mainMenuDeactivate();
                 }
             }, 10 );

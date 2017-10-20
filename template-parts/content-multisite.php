@@ -54,7 +54,7 @@ $post_classes = implode( ' ', $post_classes );
                     $post_title = get_the_title();
                 }
                 else {
-                    $post_title = esc_html__( 'Post No.', 'applicator' ). ' '. get_the_ID();
+                    $post_title = __( 'Post No.', 'applicator' ). ' '. get_the_ID();
                 }
                 
                 
@@ -69,12 +69,12 @@ $post_classes = implode( ' ', $post_classes );
                             'a'         => array(
                                 'href'      => esc_url( get_permalink() ),
                                 'rel'       => 'bookmark',
-                                'title'     => get_the_title(),
+                                'title'     => esc_attr( $post_title ),
                             ),
                         ),
                     ),
                     'content'   => array(
-                        'object'        => $post_title,
+                        'object'        => esc_html( $post_title ),
                     ),
                 ) );
                 
