@@ -1326,15 +1326,16 @@ select
     display: none;
 }
 
-.applicator--breadcrumbs .breadcrumbs-navi--ancestor
+.applicator--breadcrumbs .breadcrumbs-nav---grp
 {
     display: inline-flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
-.applicator--breadcrumbs .breadcrumbs-nav---ct_cr > .breadcrumbs-nav---grp,
-.applicator--breadcrumbs .breadcrumbs-navi---a,
-.applicator--breadcrumbs .breadcrumbs-navi---g
+.applicator--breadcrumbs .breadcrumbs-nav---grp,
+.applicator--breadcrumbs .breadcrumbs-navi--ancestor,
+.applicator--breadcrumbs .breadcrumbs-navi--current
 {   
     padding-left: .5rem;
     padding-right: .5rem;
@@ -1346,8 +1347,9 @@ select
     white-space: nowrap;
 }
 
-.applicator--breadcrumbs .breadcrumbs-navi--ancestor .arrow-icon
+.applicator--breadcrumbs .breadcrumbs-nav---grp .arrow-icon
 {
+    margin-left: 1rem;
     transform: rotate(-90deg) scale(.5);
 }
 

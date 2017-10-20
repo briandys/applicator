@@ -28,38 +28,34 @@ if ( ! function_exists( 'applicator_breadcrumbs_nav' ) ) {
                 $breadcrumbs_nav_grp_emu .= '</div>';
                 
                 
-                // Navi <li>
-                $breadcrumbs_navi_smu = '';
-                $breadcrumbs_navi_smu .= '<div class="item obj navi %2$s-navi%3$s" data-name="%1$s '.$breadcrumbs_data_name_term.'">';
-                
-                $breadcrumbs_navi_emu = '';
-                $breadcrumbs_navi_emu .= '</div><!-- %1$s '.$breadcrumbs_data_name_term.' -->';
-                
-                
                 // Navi <a>
                 $breadcrumbs_navi_a_mu = '';
-                $breadcrumbs_navi_a_mu .= '<a class="a %3$s---a" href="%4$s" title="%5$s">';
-                    $breadcrumbs_navi_a_mu .= '<span class="a_l %3$s---a_l">';
-                        $breadcrumbs_navi_a_mu .= '<span class="l %3$s---l">';
-                            $breadcrumbs_navi_a_mu .= '<span class="txt %2$s---txt">';
-                                $breadcrumbs_navi_a_mu .= '%1$s';
+                $breadcrumbs_navi_a_mu .= '<div class="item obj navi %6$s-navi %7$s" data-name="%8$s '.$breadcrumbs_data_name_term.'">';
+                    $breadcrumbs_navi_a_mu .= '<a class="a %3$s---a" href="%4$s" title="%5$s">';
+                        $breadcrumbs_navi_a_mu .= '<span class="a_l %3$s---a_l">';
+                            $breadcrumbs_navi_a_mu .= '<span class="l %3$s---l">';
+                                $breadcrumbs_navi_a_mu .= '<span class="txt %2$s---txt">';
+                                    $breadcrumbs_navi_a_mu .= '%1$s';
+                                $breadcrumbs_navi_a_mu .= '</span>';
                             $breadcrumbs_navi_a_mu .= '</span>';
                         $breadcrumbs_navi_a_mu .= '</span>';
-                    $breadcrumbs_navi_a_mu .= '</span>';
-                $breadcrumbs_navi_a_mu .= '</a>';
+                    $breadcrumbs_navi_a_mu .= '</a>';
+                $breadcrumbs_navi_a_mu .= '</div><!-- %8$s '.$breadcrumbs_data_name_term.' -->';
                 
                 
                 // Navi <g>
                 $breadcrumbs_navi_g_mu = '';
-                $breadcrumbs_navi_g_mu .= '<span class="g %5$s---g %3$s---g" title="%4$s">';
-                    $breadcrumbs_navi_g_mu .= '<span class="g_l %5$s---g_l %3$s---g_l">';
-                        $breadcrumbs_navi_g_mu .= '<span class="l %5$s---l %3$s---l">';
-                            $breadcrumbs_navi_g_mu .= '<span class="txt %2$s---txt">';
-                                $breadcrumbs_navi_g_mu .= '%1$s';
+                $breadcrumbs_navi_g_mu .= '<div class="item obj navi %6$s-navi %7$s" data-name="%8$s '.$breadcrumbs_data_name_term.'">';
+                    $breadcrumbs_navi_g_mu .= '<span class="g %5$s---g %3$s---g" title="%4$s">';
+                        $breadcrumbs_navi_g_mu .= '<span class="g_l %5$s---g_l %3$s---g_l">';
+                            $breadcrumbs_navi_g_mu .= '<span class="l %5$s---l %3$s---l">';
+                                $breadcrumbs_navi_g_mu .= '<span class="txt %2$s---txt">';
+                                    $breadcrumbs_navi_g_mu .= '%1$s';
+                                $breadcrumbs_navi_g_mu .= '</span>';
                             $breadcrumbs_navi_g_mu .= '</span>';
                         $breadcrumbs_navi_g_mu .= '</span>';
                     $breadcrumbs_navi_g_mu .= '</span>';
-                $breadcrumbs_navi_g_mu .= '</span>';
+                $breadcrumbs_navi_g_mu .= '</div><!-- %8$s '.$breadcrumbs_data_name_term.' -->';
                 
                 
                 // Page must have a parent
@@ -80,19 +76,17 @@ if ( ! function_exists( 'applicator_breadcrumbs_nav' ) ) {
                         
                         // R: Breadcrumbs Navigation Item Ancestors
                         $breadcrumbs_navi_ancestors = '';
-                        $breadcrumbs_navi_ancestors .= sprintf( $breadcrumbs_navi_smu,
-                            $breadcrumbs_term,
-                            $breadcrumbs_term_css,
-                            ' '.$breadcrumbs_navi_css.'--ancestor'
-                        );
                         $breadcrumbs_navi_ancestors .= sprintf( $breadcrumbs_navi_a_mu,
                             get_the_title( $ancestor ),
                             sanitize_title( get_the_title( $ancestor ) ),
                             $breadcrumbs_navi_css,
                             get_permalink( $ancestor ),
-                            get_the_title( $ancestor )
+                            get_the_title( $ancestor ),
+                            $breadcrumbs_term_css,
+                            $breadcrumbs_navi_css. '--'. 'ancestor',
+                            $breadcrumbs_term
+                                                               
                         );
-                        $breadcrumbs_navi_ancestors .= $breadcrumbs_nav_grp_smu;
                         
                         
                         // R: Breadcrumbs Ancestors
@@ -102,22 +96,16 @@ if ( ! function_exists( 'applicator_breadcrumbs_nav' ) ) {
                     
                     // R: Breadcrumbs Navigation Item Current
                     $breadcrumbs_navi_current = '';
-                    $breadcrumbs_navi_current .= sprintf( $breadcrumbs_navi_smu,
-                        $breadcrumbs_term,
-                        $breadcrumbs_term_css,
-                        ' '.$breadcrumbs_navi_css.'--current'
-                    );
                     $breadcrumbs_navi_current .= sprintf( $breadcrumbs_navi_g_mu,
                         get_the_title(),
                         sanitize_title( get_the_title( $ancestor ) ),
                         $breadcrumbs_navi_css.'-'. $post->ID,
                         get_the_title(),
-                        $breadcrumbs_navi_css
-                    );
-                    $breadcrumbs_navi_current .= sprintf( $breadcrumbs_navi_emu,
+                        $breadcrumbs_navi_css,
+                        $breadcrumbs_term_css,
+                        $breadcrumbs_navi_css. '--'. 'current',
                         $breadcrumbs_term
                     );
-                    $breadcrumbs_navi_current .= $breadcrumbs_nav_grp_emu;
                     
                     
                     // R: Breadcrumbs Navigation Content

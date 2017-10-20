@@ -1417,10 +1417,10 @@
     
     /* ------------------------ Breadcrumbs ------------------------ */
     var $breadcrumbsNaviAncestor = $( '.breadcrumbs-navi--ancestor' ),
-        $breadcrumbsDescendant = $breadcrumbsNaviAncestor.find( '.breadcrumbs-nav---grp' ),
+        $breadcrumbsLink = $breadcrumbsNaviAncestor.find( '.breadcrumbs-navi---a' ),
         $breadcrumbsIco = $( aplDataBreadcrumbs.breadcrumbsIco );
     
-    $breadcrumbsDescendant.before( $breadcrumbsIco );
+    $breadcrumbsLink.after( $breadcrumbsIco );
     
     
     
