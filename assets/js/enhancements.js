@@ -577,6 +577,12 @@
         }
         
         
+        // https://stackoverflow.com/a/5298684
+        function removeHash() { 
+            window.history.pushState( "", document.title, window.location.pathname );
+        }
+        
+        
         // Deactivate Comments
         function commentsDeactivate() {
             
@@ -615,7 +621,8 @@
             else if ( $cp.hasClass( commentsOnCSS ) ) {
                 
                 commentsDeactivate();
-                location.hash = '';
+                
+                removeHash();
             }
         }
         
@@ -642,39 +649,24 @@
         }() );
         
         
+        // Hash
         $document.ready( function () {
             
-            if ( window.location.hash.indexOf( '#comment' ) !== -1 ) {
-                commentsActivate();
-            }
-        
-        } );
-        
-        
-        /*
-        // Deactivate via external click
-        $document.on( 'touchmove.applicator click.applicator', function ( e ) {
-            
-            if ( $cp.hasClass( commentsOnCSS ) && ( ! $( e.target ).closest( $commentsToggleButton ).length && ! $( e.target ).closest( $commentModuleCT ).length && ! $( e.target ).closest( $commentsCountAction ).length ) ) {
-                commentsDeactivate();
-            }
-        
-        } );
-
-        
-        // Deactivate via keyboard ESC key
-        $window.load( function() {
-            
-            $document.on( 'keyup.applicator', function ( e ) {
-                
-                if ( $cp.hasClass( commentsOnCSS ) && e.keyCode == 27 ) {
-                    commentsDeactivate();
+            // https://stackoverflow.com/a/19889034
+            if ( window.location.hash ) {
+                if ( window.location.hash.indexOf( 'comment' ) == 1 || window.location.hash.indexOf( 'comment' ) != -1 ) {
+                    commentsActivate();
                 }
-                
+            }
+            
+            // https://stackoverflow.com/a/14970748
+            $window.on( 'hashchange', function() {
+                if ( window.location.hash.indexOf( 'comment' ) == 1 || window.location.hash.indexOf( 'comment' ) != -1 ) {
+                    commentsActivate();
+                }
             } );
         
         } );
-        */
 
     }
     initComments( $( '#comment-md' ) );
@@ -1417,6 +1409,17 @@
         $nextPageNaviLabel.append( $pageNavArrowIco );
         
     } )();
+    
+    
+    
+    
+    
+    /* ------------------------ Breadcrumbs ------------------------ */
+    var $breadcrumbsNaviAncestor = $( '.breadcrumbs-navi--ancestor' ),
+        $breadcrumbsDescendant = $breadcrumbsNaviAncestor.find( '.breadcrumbs-nav---grp' ),
+        $breadcrumbsIco = $( aplDataBreadcrumbs.breadcrumbsIco );
+    
+    $breadcrumbsDescendant.before( $breadcrumbsIco );
     
     
     

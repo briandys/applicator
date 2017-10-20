@@ -687,6 +687,16 @@ select
 
 
 
+/* ------------------ Main Banner ------------------ */
+.main-banner
+{
+    flex: 1 100%;
+}
+
+
+
+
+
 /* ------------------ Media Banner ------------------ */
 .main-media-banner---g
 {
@@ -1315,29 +1325,15 @@ select
 
 
 /* ------------------ Breadcrumbs Nav ------------------ */
-.breadcrumbs-navi--ancestor
+.breadcrumbs-navi--ancestor > *
 {
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
+    display: inline-block;
+    vertical-align: middle;
 }
 
-.breadcrumbs-navi---a
+.breadcrumbs-navi--ancestor .arrow-icon
 {
-    padding-left: 1rem;
-    padding-left: var(--object--spacing-x);
-    
-    padding-right: 1rem;
-    padding-right: var(--object--spacing-x);
-}
-
-.breadcrumbs-navi--current
-{
-    padding-left: 1rem;
-    padding-left: var(--object--spacing-x);
-    
-    padding-right: 1rem;
-    padding-right: var(--object--spacing-x);
+    transform: rotate(-90deg) scale(.75);
 }
 
 
@@ -2300,7 +2296,15 @@ select
 
 .applicator--comments .comments-toggle .icon
 {
-    color: hsla(0, 0%, 0%, .25);
+    color: black;
+    opacity: .25;
+    
+    transition: opacity .125s ease-in-out;
+}
+
+.applicator--comments .comments-toggle---b:hover .icon
+{
+    opacity: .5;
 }
 
 .applicator--comments--active .comment-md---cr

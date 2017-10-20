@@ -866,25 +866,23 @@
 
 
 
+/* ------------------ Rounded Rectangles ------------------ */
 .applicator--theme--rounded-rectangles.applicator--theme--comments-count-action .comments-count---txt,
 .applicator--theme--rounded-rectangles.applicator--theme--edit-action .edit-post-axn---a_l,
 .applicator--theme--rounded-rectangles.applicator--theme--edit-action .edit-com-axn---a_l,
 .applicator--theme--rounded-rectangles .main-nav .page_item_has_children > .children > .page_item > a,
 .applicator--theme--rounded-rectangles .main-nav .menu-item-has-children > .sub-menu > .menu-item > a,
-
 .applicator--theme--rounded-rectangles .input-text,
 .applicator--theme--rounded-rectangles input[type="text"],
 .applicator--theme--rounded-rectangles input[type="password"],
 .applicator--theme--rounded-rectangles select,
 .applicator--theme--rounded-rectangles .b_l,
 .applicator--theme--rounded-rectangles input[type="submit"],
-
 .applicator--theme--rounded-rectangles.applicator--theme--post-meta .post-pub-d-stamp-dtstamp---a_l,
 .applicator--theme--rounded-rectangles.applicator--theme--comment-meta .comment-pub-d-stamp-dtstamp---a_l,
-
 .applicator--theme--rounded-rectangles.applicator--theme--search-result .search-results .main-content-heading .count---line
 {
-    border-radius: 2px;
+    border-radius: .125em;
 }
 
 
@@ -960,6 +958,7 @@
 .applicator--theme--quote .post-content---ct_cr > blockquote
 {
     position: relative;
+    z-index: 1;
     
     padding-left: 2em;
     
