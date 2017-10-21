@@ -2274,23 +2274,9 @@ select
     display: none;
 }
 
-.applicator--comments .comment-md---ct
+.comments--inactive .comment-md---ct
 {
     display: none;
-}
-
-.applicator--comments--active .comment-md---ct
-{
-    display: block;
-}
-
-.applicator--comments--inactive .comment-md---ct
-{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 100%;
 }
 
 .applicator--comments .comments-toggle---b

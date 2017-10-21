@@ -573,6 +573,8 @@
             $commentsToggleButtonTextLabelTxt.text( $commentsHideL );
             $commentsToggleButtonTextLabel.append( $commentsDismissIco );
             
+            location.hash = '#comments';
+            
             $comments = $( '#comments' );
             
             // Mimic Target
@@ -619,9 +621,8 @@
                 
                 commentsActivate();
             
-                location.hash = '#comments';
-            
             }
+            
             else if ( $cp.hasClass( commentsOnCSS ) ) {
                 
                 commentsDeactivate();
@@ -655,13 +656,6 @@
         
         // Hash
         $document.ready( function () {
-            
-            // https://stackoverflow.com/a/14970748
-            $window.on( 'hashchange', function() {
-                if ( ( window.location.hash.indexOf( 'comment' ) == 1 || window.location.hash.indexOf( 'comment' ) != -1 ) && $cp.hasClass( commentsOffCSS ) ) {
-                    commentsActivate();
-                }
-            } );
             
             // https://stackoverflow.com/a/19889034
             if ( window.location.hash ) {
