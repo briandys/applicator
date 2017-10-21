@@ -468,7 +468,7 @@
             commentsToggleButtonLabelMU,
             commentsToggleButtonTextLabelMU,
             
-            $comments = $( '#comments' ),
+            $comments,
             
             $commentModuleH,
             $commentModuleCT,
@@ -573,6 +573,8 @@
             $commentsToggleButtonTextLabelTxt.text( $commentsHideL );
             $commentsToggleButtonTextLabel.append( $commentsDismissIco );
             
+            $comments = $( '#comments' );
+            
             // Mimic Target
             $window.scrollTop( $comments.position().top );
         }
@@ -616,6 +618,7 @@
             if ( $cp.hasClass( commentsOffCSS ) ) {
                 
                 commentsActivate();
+            
                 location.hash = '#comments';
             
             }
@@ -653,19 +656,19 @@
         // Hash
         $document.ready( function () {
             
+            // https://stackoverflow.com/a/14970748
+            $window.on( 'hashchange', function() {
+                if ( ( window.location.hash.indexOf( 'comment' ) == 1 || window.location.hash.indexOf( 'comment' ) != -1 ) && $cp.hasClass( commentsOffCSS ) ) {
+                    commentsActivate();
+                }
+            } );
+            
             // https://stackoverflow.com/a/19889034
             if ( window.location.hash ) {
                 if ( window.location.hash.indexOf( 'comment' ) == 1 || window.location.hash.indexOf( 'comment' ) != -1 ) {
                     commentsActivate();
                 }
             }
-            
-            // https://stackoverflow.com/a/14970748
-            $window.on( 'hashchange', function() {
-                if ( window.location.hash.indexOf( 'comment' ) == 1 || window.location.hash.indexOf( 'comment' ) != -1 ) {
-                    commentsActivate();
-                }
-            } );
         
         } );
 

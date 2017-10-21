@@ -86,7 +86,7 @@ Enhancements Style
 {
     text-rendering: geometricPrecision;
     
-    background-color: hsl(0, 0%, 98%);
+    background-color: white;
     
     color: hsl(0, 0%, 15%);
     color: var(--wbp--fg-color);
@@ -866,6 +866,11 @@ select
 
 
 /* ------------------ Main Content ------------------ */
+.main-content
+{
+    background-color: hsl(0, 0%, 98%);
+}
+
 .main-content a
 {
     color: #005fe6;
