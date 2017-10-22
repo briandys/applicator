@@ -1,10 +1,5 @@
-/**
- * File skip-link-focus-fix.js.
- *
- * Helps with accessibility for keyboard only users.
- *
- * Learn more: https://git.io/vWdr2
- */
+// Helps with accessibility for keyboard only users.
+// https://git.io/vWdr2
 (function() {
 	var isIe = /(trident|msie)/i.test( navigator.userAgent );
 

@@ -46,7 +46,7 @@ Enhancements Style
 .post-content .search-form-reset-axn,
 .aside .search-form-reset-axn,
 .main-media-banner img,
-.applicator--comments .post-header-aside .comments-actions-snippet .comments-population,
+/*.applicator--comments .post-header-aside .comments-actions-snippet .comments-population,*/
 .applicator--comments .comments-actions-snippet.comments-population--empty .add-comment-axn,
 .applicator--comments--active .comments-toggle .comments-count---txt,
 .applicator--page-nav .adjacent-navi---l,
@@ -450,13 +450,13 @@ select
 }
 
 /* Root Nav Item Indicator */
-.main-nav---ct_cr > .menu > ul > li > a > .main-navi---a_l:hover
+.main-nav---ct_cr > .menu > ul > li > a:hover > .main-navi---a_l
 {
     position: relative;
 }
 
 /* Root Nav Item Indicator */
-.main-nav---ct_cr > .menu > ul > li > a > .main-navi---a_l:hover::before
+.main-nav---ct_cr > .menu > ul > li > a:hover > .main-navi---a_l::before
 {
     content: '';
     position: absolute;

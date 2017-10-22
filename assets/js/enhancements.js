@@ -5,6 +5,8 @@
         $window = $( window ),
         $body = $( document.body ),
         
+        $htmlBody = $( 'html, body' ),
+        
         // Functionalities
         $aplApplicatorGoCtNav = $html.closest( '.applicator--go-content-nav' ),
         $aplApplicatorGoStartNav = $html.closest( '.applicator--go-start-nav' ),
@@ -54,6 +56,27 @@
             }
         } );
     }
+    
+    
+    
+    
+    
+    /* ------------------------ Smooth Scrolling ------------------------ */
+    // https://stackoverflow.com/a/7717572
+    
+    ( function() {
+        $( 'a[href^="#"]' ).bind( 'click.applicator', function() {
+            var href = $.attr( this, 'href' );
+
+            $htmlBody.stop().animate( {
+                scrollTop: $( href ).offset().top
+            }, 1000, 'easeInOutCirc', function() {
+                window.location.hash = href;
+            } );
+
+            return false;
+        } );
+    }() );
         
     
     
@@ -221,33 +244,19 @@
         }
         goStartNav();
         
-        new ResizeSensor( $page, function() {
-            goStartNav();
-        } );
-        
-    
-        // Smooth Scroll to root
-        $goStartNaviA.bind( 'click.applicator', function( e ) {
-
-            e.preventDefault();
-            
-            var target = $( this ).attr( "href" );
-
-            $( 'html, body' ).stop().animate( {
-                scrollTop: $( target ).offset().top
-            }, 1000, 'easeInOutCirc', function() {
-                location.hash = target;
-            } );
-            
-            return false;
-        } );
         
         // Add Icon to Button
         $goStartNaviAL = $goStartNaviA.find( '.go-start-navi---a_l' );
         $goStartNaviAL.append( $goStartNavArrowIco );
+        
+        
+        new ResizeSensor( $page, function() {
+            goStartNav();
+        } );
     }
     
     initGoStartNav( $( '#go-start-nav' ) );
+
     
     
     
@@ -467,14 +476,15 @@
             commentsToggleButtonMU,
             commentsToggleButtonLabelMU,
             commentsToggleButtonTextLabelMU,
+            commentsToggleButtonTextLabelTxtMU,
             
             $comments,
             
             $commentModuleH,
-            $commentModuleCT,
             $commentsCountAction,
             $commentsToggleButton,
             $commentsToggleButtonTextLabel,
+            $commentsToggleButtonTextLabelTxt,
             
             $commentsCount,
             
@@ -534,7 +544,6 @@
         
         // Define existing elements
         $commentModuleH = $cp.find( '.comment-md---h' );
-        $commentModuleCT = $cp.find( '.comment-md---ct' );
         $commentsCountAction = $( '.comments-actions-snippet' ).find( '.comments-count-axn---a' );
 
         
@@ -550,6 +559,12 @@
         // To insert beside the button label
         $commentsCount = $( '#comments-header-aside' ).find( '.comments-count---txt' );
         $commentsCount.clone().insertAfter( $commentsToggleButtonTextLabelTxt );
+        
+        // Remove Hash
+        // https://stackoverflow.com/a/5298684
+        function removeHash() { 
+            window.history.pushState( "", document.title, window.location.pathname );
+        }
         
         
         // Activate Comments
@@ -572,19 +587,6 @@
             // Swap text label and icon
             $commentsToggleButtonTextLabelTxt.text( $commentsHideL );
             $commentsToggleButtonTextLabel.append( $commentsDismissIco );
-            
-            location.hash = '#comments';
-            
-            $comments = $( '#comments' );
-            
-            // Mimic Target
-            $window.scrollTop( $comments.position().top );
-        }
-        
-        
-        // https://stackoverflow.com/a/5298684
-        function removeHash() { 
-            window.history.pushState( "", document.title, window.location.pathname );
         }
         
         
@@ -608,25 +610,21 @@
             // Swap text label and icon
             $commentsToggleButtonTextLabelTxt.text( $commentsShowL );
             $commentsDismissIco.remove();
-        }
-        
+        }        
         // Initialize Deactivate
         commentsDeactivate();
         
         
-        // Toggle
+        // Toggle from clicks
         function commentsToggle() {
             
             if ( $cp.hasClass( commentsOffCSS ) ) {
-                
                 commentsActivate();
-            
+                window.location.hash = '#comments';
             }
             
             else if ( $cp.hasClass( commentsOnCSS ) ) {
-                
                 commentsDeactivate();
-                
                 removeHash();
             }
         }
@@ -657,12 +655,26 @@
         // Hash
         $document.ready( function () {
             
+            // Activate Comments if URL activated has #comment
             // https://stackoverflow.com/a/19889034
             if ( window.location.hash ) {
-                if ( window.location.hash.indexOf( 'comment' ) == 1 || window.location.hash.indexOf( 'comment' ) != -1 ) {
+                if ( window.location.hash.indexOf( 'comment' ) != -1 && $cp.hasClass( commentsOffCSS ) ) {
                     commentsActivate();
                 }
             }
+            
+            // https://stackoverflow.com/a/14970748
+            $window.on( 'hashchange', function() {
+                if ( window.location.hash.indexOf( 'comment' ) !== -1 && $cp.hasClass( commentsOffCSS ) ) {
+                    commentsActivate();
+            
+                    $comments = $( '#comments' );
+                    
+                    $htmlBody.stop().animate( {
+                        scrollTop: $comments.offset().top
+                    }, 1000, 'easeInOutCirc' );
+                }
+            } );
         
         } );
 
