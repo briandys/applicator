@@ -61,11 +61,23 @@
     
     
     
+    
+        
+    // Remove Hash
+    // https://stackoverflow.com/a/5298684
+    function removeHash() { 
+        window.history.pushState( "", document.title, window.location.pathname );
+    }
+    
+    
+    
+    
+    
     /* ------------------------ Smooth Scrolling ------------------------ */
     // https://stackoverflow.com/a/7717572
     
     ( function() {
-        $( 'a[href^="#"]' ).bind( 'click.applicator', function() {
+        $( 'a[href^="#"]' ).on( 'click.applicator', function() {
             var href = $.attr( this, 'href' );
 
             $htmlBody.stop().animate( {
@@ -560,12 +572,6 @@
         $commentsCount = $( '#comments-header-aside' ).find( '.comments-count---txt' );
         $commentsCount.clone().insertAfter( $commentsToggleButtonTextLabelTxt );
         
-        // Remove Hash
-        // https://stackoverflow.com/a/5298684
-        function removeHash() { 
-            window.history.pushState( "", document.title, window.location.pathname );
-        }
-        
         
         // Activate Comments
         function commentsActivate() {
@@ -587,6 +593,18 @@
             // Swap text label and icon
             $commentsToggleButtonTextLabelTxt.text( $commentsHideL );
             $commentsToggleButtonTextLabel.append( $commentsDismissIco );
+        }
+        
+        
+        function commentsScrollTop() {
+            
+            $comments = $( '#comments' );
+
+            $('html,body').stop().animate( {
+                scrollTop: $comments.offset().top
+            }, 1000, 'easeInOutCirc', function() {
+                window.location.hash = '#comments';
+            } );
         }
         
         
@@ -615,12 +633,13 @@
         commentsDeactivate();
         
         
-        // Toggle from clicks
+        // Toggle from generated button clicks
         function commentsToggle() {
             
             if ( $cp.hasClass( commentsOffCSS ) ) {
                 commentsActivate();
-                window.location.hash = '#comments';
+            
+                commentsScrollTop();
             }
             
             else if ( $cp.hasClass( commentsOnCSS ) ) {
@@ -645,10 +664,23 @@
         // Link Clicks
         ( function() {
             
-            $commentsCountAction.on( 'click.applicator', function() {
-                commentsActivate();
+            $( 'a[href*="#comment"]' ).on( 'click.applicator', function() {
+                
+                if ( $cp.hasClass( commentsOffCSS ) ) {
+                    commentsActivate();
+                    
+                    var href = $.attr( this, 'href' );
+
+                    $htmlBody.stop().animate( {
+                        scrollTop: $( href ).offset().top
+                    }, 1000, 'easeInOutCirc', function() {
+                        window.location.hash = href;
+                    } );
+
+                    return false;
+                    
+                }
             } );
-        
         }() );
         
         
@@ -662,19 +694,6 @@
                     commentsActivate();
                 }
             }
-            
-            // https://stackoverflow.com/a/14970748
-            $window.on( 'hashchange', function() {
-                if ( window.location.hash.indexOf( 'comment' ) !== -1 && $cp.hasClass( commentsOffCSS ) ) {
-                    commentsActivate();
-            
-                    $comments = $( '#comments' );
-                    
-                    $htmlBody.stop().animate( {
-                        scrollTop: $comments.offset().top
-                    }, 1000, 'easeInOutCirc' );
-                }
-            } );
         
         } );
 
