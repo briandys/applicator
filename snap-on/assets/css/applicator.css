@@ -37,7 +37,7 @@
 .page .comment-md,
 .edit-post-action .post-title---txt,
 .edit-comment-action .comment-title---txt,
-/*.post-header-aside .comment-creation-ability,*/
+.post-header-aside .comment-creation-ability,
 .post-header-aside .comments-population--empty .comments-population,
 .comment-creation-ability--disabled.comments-population--empty .comment-md,
 .comments-population--empty .comments-empty-note,
@@ -645,11 +645,12 @@
 {
     content: '#';
     position: absolute;
-    z-index: -1;
     
     margin-left: .75em;
     
-    color: var(--links--fg-color);
+    color: var(--links--fg-color););
+    
+    line-height: 1;
     
     transform: translateY(50%);
 }
@@ -660,6 +661,8 @@
     padding-left: 1.5em;
     
     min-height: var(--category--min-height);
+    
+    line-height: 1;
     
     border: var(--category--border);
 }
@@ -871,22 +874,66 @@
 
 
 /* ------------------ Rounded Rectangles ------------------ */
-.applicator--theme--rounded-rectangles.applicator--theme--comments-count-action .comments-count---txt,
+
+/* Edit Actions */
 .applicator--theme--rounded-rectangles.applicator--theme--edit-action .edit-post-axn---a_l,
 .applicator--theme--rounded-rectangles.applicator--theme--edit-action .edit-com-axn---a_l,
-.applicator--theme--rounded-rectangles .main-nav .page_item_has_children > .children > .page_item > a,
-.applicator--theme--rounded-rectangles .main-nav .menu-item-has-children > .sub-menu > .menu-item > a,
+
+/* Sub-Nav */
+.applicator--theme--rounded-rectangles .main-nav .page_item_has_children > ul > li:first-child > a,
+.applicator--theme--rounded-rectangles .main-nav .menu-item-has-children > ul > li:first-child > a,
+.applicator--theme--rounded-rectangles .main-nav .page_item_has_children > ul > li:last-child > a,
+.applicator--theme--rounded-rectangles .main-nav .menu-item-has-children > ul > li:last-child > a,
+.applicator--theme--rounded-rectangles .main-nav .page_item_has_children > ul > .sub-nav--active > a,
+.applicator--theme--rounded-rectangles .main-nav .menu-item-has-children > ul > .sub-nav--active > a,
+
+/* Form Elements */
 .applicator--theme--rounded-rectangles .input-text,
 .applicator--theme--rounded-rectangles input[type="text"],
 .applicator--theme--rounded-rectangles input[type="password"],
 .applicator--theme--rounded-rectangles select,
 .applicator--theme--rounded-rectangles .b_l,
 .applicator--theme--rounded-rectangles input[type="submit"],
+
+/* Date Time Stamp */
 .applicator--theme--rounded-rectangles.applicator--theme--post-meta .post-pub-d-stamp-dtstamp---a_l,
 .applicator--theme--rounded-rectangles.applicator--theme--comment-meta .comment-pub-d-stamp-dtstamp---a_l,
+
+/* Count */
+.applicator--theme--rounded-rectangles.applicator--theme--comments-count-action .comments-count---txt,
 .applicator--theme--rounded-rectangles.applicator--theme--search-result .search-results .main-content-heading .count---line
 {
     border-radius: .125em;
+}
+
+/* Sub-Nav Negations */
+.applicator--theme--rounded-rectangles .main-nav .page_item_has_children > ul > li:first-child > a,
+.applicator--theme--rounded-rectangles .main-nav .menu-item-has-children > ul > li:first-child > a,
+.applicator--theme--rounded-rectangles .main-nav .page_item_has_children > ul > .sub-nav--inactive:first-child > a,
+.applicator--theme--rounded-rectangles .main-nav .menu-item-has-children > ul > .sub-nav--inactive:first-child > a
+{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.applicator--theme--rounded-rectangles .main-nav .page_item_has_children > ul > li:last-child > a,
+.applicator--theme--rounded-rectangles .main-nav .menu-item-has-children > ul > li:last-child > a
+{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.applicator--theme--rounded-rectangles .main-nav .page_item_has_children > ul > li:only-child > a,
+.applicator--theme--rounded-rectangles .main-nav .menu-item-has-children > ul > li:only-child > a
+{
+    border-radius: .125em;
+}
+
+.applicator--theme--rounded-rectangles .main-nav .page_item_has_children > ul > .sub-nav--active > a,
+.applicator--theme--rounded-rectangles .main-nav .menu-item-has-children > ul > .sub-nav--active > a
+{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 

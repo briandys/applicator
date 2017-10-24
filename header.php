@@ -233,6 +233,7 @@
                         'structure' => array(
                             'type'  => 'component',
                         ),
+                        'id'        => 'main-banner',
                         'content'   => array(
                             'component' => array(
                                 

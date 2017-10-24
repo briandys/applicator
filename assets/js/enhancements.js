@@ -8,15 +8,13 @@
         $htmlBody = $( 'html, body' ),
         
         // Functionalities
+        $applicatorComments = $html.closest( '.applicator--comments' ),
         $aplApplicatorGoCtNav = $html.closest( '.applicator--go-content-nav' ),
         $aplApplicatorGoStartNav = $html.closest( '.applicator--go-start-nav' ),
-        $aplApplicatorMainSearch = $html.closest( '.applicator--main-search' ),
-        $aplApplicatorSubNav = $html.closest( '.applicator--sub-nav' ),
         $aplApplicatorMainMenu = $html.closest( '.applicator--main-menu' ),
-        $applicatorComments = $html.closest( '.applicator--comments' ),
+        $aplApplicatorMainSearch = $html.closest( '.applicator--main-search' ),
         $applicatorPageNav = $html.closest( '.applicator--page-nav' ),
-        
-        $mainHrAsEnabled = $html.closest( '.main-header-aside--enabled' ),
+        $aplApplicatorSubNav = $html.closest( '.applicator--sub-nav' ),
         
         showHideTxtCss = 'show-hide---txt',
         showHideTxtLabelCss = 'show-hide---l',
@@ -66,7 +64,7 @@
     // Remove Hash
     // https://stackoverflow.com/a/5298684
     function removeHash() { 
-        window.history.pushState( "", document.title, window.location.pathname );
+        window.history.pushState( '', document.title, window.location.pathname );
     }
     
     
@@ -82,7 +80,7 @@
 
             $htmlBody.stop().animate( {
                 scrollTop: $( href ).offset().top
-            }, 1000, 'easeInOutCirc', function() {
+            }, 300, 'easeInOutCirc', function() {
                 window.location.hash = href;
             } );
 
@@ -105,6 +103,48 @@
         
         $aplWildcardCr.append( overlayMu );
         
+    }
+    
+    
+    
+    
+    
+    /* ------------------------- Cycle Tabbing ------------------------- */
+    // https://stackoverflow.com/a/21811463
+    
+    function cycleTabbing( $cp ) {
+
+        var inputs = $cp.find( 'a, button, input, object, select, textarea' ).filter( ':visible' ),
+            firstInput = inputs.first(),
+            lastInput = inputs.last();
+
+        // Set focus on first input
+        firstInput.focus();
+
+        // Redirect last tabbing to first input
+        lastInput.on( 'keydown.applicator', function( e ) {
+            if ( e.which === 9 && !e.shiftKey ) {
+                e.preventDefault();
+                firstInput.focus();
+            }
+        } );
+
+        // Redirect first shift tabbing to last input
+        firstInput.on( 'keydown.applicator', function( e ) {
+            if ( e.which === 9 && e.shiftKey ) {
+                e.preventDefault();
+                lastInput.focus();
+            }
+        } );
+    }
+    
+    function cycleTabbingOff( $cp ) {
+        var inputs = $cp.find( 'a, button, input, object, select, textarea' ).filter( ':visible' ),
+            firstInput = inputs.first(),
+            lastInput = inputs.last();
+        
+        lastInput.off( 'keydown.applicator' );
+        firstInput.off( 'keydown.applicator' );
     }
     
     
@@ -238,8 +278,7 @@
             if ( ( window.innerHeight ) <= ( bodyOffsetCriteriaHeight ) ) {
 
                 // http://stackoverflow.com/a/40370876
-                $window.scroll( function() {
-                    
+                $window.on( 'scroll.applicator', function() {
                     if ( ( ( window.innerHeight + window.pageYOffset ) >= ( bodyOffsetHeight / 4 ) ) && ( ! window.pageYOffset == 0 ) ) {
                         
                         goStartNavActivate();
@@ -250,7 +289,6 @@
                         goStartNavDeactivate();
                     
                     }
-                    
                 } );
             }
         }
@@ -281,7 +319,7 @@
 			return;
 		}
         
-        if ( ! $mainHrAsEnabled.length ) {
+        if ( ! $html.closest( '.main-header-aside--enabled' ).length ) {
 			return;
 		}
         
@@ -358,6 +396,7 @@
         $mainMenuTogBtnL = $mainMenuTogBtn.find( $( '.main-menu-tog---b_l' ) );
         $mainMenuTogBtnLTxt = $mainMenuTogBtn.find( $( '.show-hide---txt' ) );
         
+        
         // Activate
         function mainMenuActivate() {
             $cp
@@ -378,6 +417,8 @@
             $mainMenuTogBtnL.append( $mainMenuTogBtnHideIco );
             $mainMenuTogBtnShowIco.remove();
             
+            cycleTabbing( $cp );
+            
         }
         
         // Deactivate
@@ -397,6 +438,8 @@
             $mainMenuTogBtnLTxt.text( $mainMenuShowL );
             $mainMenuTogBtnL.append( $mainMenuTogBtnShowIco );
             $mainMenuTogBtnHideIco.remove();
+            
+            cycleTabbingOff( $cp );
         }
         
         // Initialize
@@ -430,7 +473,7 @@
         }() );
             
         
-        
+        /*
         // Find if a Child Element Has Focus
         // Deactivate if no focus is present and if user is Tab key is active
         // http://ub4.underblob.com/find-if-a-child-element-has-focus/
@@ -443,6 +486,9 @@
                 }
             }, 10 );
         } );
+        */
+        
+        
         
         
         // Deactivate via external click
@@ -602,7 +648,7 @@
 
             $('html,body').stop().animate( {
                 scrollTop: $comments.offset().top
-            }, 1000, 'easeInOutCirc', function() {
+            }, 300, 'easeInOutCirc', function() {
                 window.location.hash = '#comments';
             } );
         }
@@ -638,13 +684,14 @@
             
             if ( $cp.hasClass( commentsOffCSS ) ) {
                 commentsActivate();
-            
                 commentsScrollTop();
+                cycleTabbing( $cp ); 
             }
             
             else if ( $cp.hasClass( commentsOnCSS ) ) {
                 commentsDeactivate();
                 removeHash();
+                cycleTabbingOff( $cp );
             }
         }
         
@@ -673,7 +720,7 @@
 
                     $htmlBody.stop().animate( {
                         scrollTop: $( href ).offset().top
-                    }, 1000, 'easeInOutCirc', function() {
+                    }, 300, 'easeInOutCirc', function() {
                         window.location.hash = href;
                     } );
 
@@ -824,6 +871,8 @@
             $mainSearchTogBtnL.append( $mainSearchTogDismissIco );
             $mainSearchTogSearchIco.remove();
             
+            cycleTabbing( $cp );
+            
             // Focus on input and select content if any
             $mainSearchInput.focus().select();
         }
@@ -845,6 +894,8 @@
             $mainSearchTogBtnLTxt.text( $mainSearchShowL );
             $mainSearchTogBtnL.append( $mainSearchTogSearchIco );
             $mainSearchTogDismissIco.remove();
+            
+            cycleTabbingOff( $cp );
         }
         
         // Initialize
@@ -901,17 +952,8 @@
             
         }() );
         
-        $cp.on( 'focusout.applicator', function() {
-            var $this = $( this );
-            setTimeout( function() {
-                var hasFocus = !! ( $this.find( ':focus' ).length > 0 );
-                if ( ! hasFocus ) {
-                    mainSearchDeactivate();
-                }
-            }, 10 );
-        } );
         
-        // Upon entering content in input
+                // Upon entering content in input
         $mainSearchInput.on( 'keypress.applicator input.applicator', function() {
             mainSearchInputStatus();
         } );
@@ -1456,7 +1498,7 @@
     
     /* ------------------------ DOM Ready ------------------------ */
     $document.ready( function() {
-		
+        
         
         // Remove DOM Unready CSS
         $html
@@ -1676,7 +1718,7 @@
                 return;
             }
             
-            if ( $( '.main-description' ).css( 'width' ) == '1px' ) {
+            if ( $( '.main-description' ).css( 'margin' ) == '-1px' ) {
                 $html
                     .addClass( 'main-description--empty' )
                     .removeClass( 'main-description--populated' );
@@ -1725,6 +1767,71 @@
             } );
         
         }() );
+        
+        
+        /* ------------------------ Main Banner Illusion ------------------------ */
+        function mainBannerIllusion() {
+            
+            var $mainBanner = $( '#main-banner' );
+            
+            if ( ! $mainBanner.length || $mainBanner.css( 'margin' ) == '-1px' ) {
+                return;
+            }
+            
+            var scrollPosition,
+                mainBannerScale,
+                mainBannerBlur,
+                mainBannerTranslateY,
+                
+                $mainMediaBanner = $mainBanner.find( '.main-media-banner' ),
+                
+                mainBannerOffset = $mainBanner.offset().top,
+                mainBannerHeight = $mainBanner.height(),
+                mainBannerHeightHalf = mainBannerHeight / 2,
+                mainBannerOffsetHeight = mainBannerOffset + mainBannerHeight,
+                mainBannerOffsetHeightHalf = mainBannerOffset + ( mainBannerHeight / 2 );
+            
+            $window.on( 'scroll.applicator', function() {
+
+                scrollPosition = $( this ).scrollTop();
+                mainBannerScale = ( scrollPosition / ( mainBannerOffsetHeight / .3 ) ) + 1;
+                mainBannerBlur = ( mainBannerOffsetHeight ) * scrollPosition;
+                mainBannerTranslateY = ( 10 / mainBannerOffsetHeight ) * scrollPosition;
+                mainBannerOpacity = 1 - ( ( scrollPosition - mainBannerOffsetHeightHalf ) / mainBannerHeightHalf );
+                
+                /* Transform magic */
+                if ( scrollPosition <= mainBannerOffsetHeight ) {
+                    $mainMediaBanner.css( {
+                        transform: "translateY(" + mainBannerTranslateY + "px) scale(" + mainBannerScale + ", " + mainBannerScale + ")"
+                    } );
+                }
+                
+                /* Opacity magic */
+                if ( scrollPosition >= mainBannerOffsetHeightHalf ) {
+                    $mainMediaBanner.css( {
+                        opacity: mainBannerOpacity
+                    } );
+                }
+                
+                else {
+                    $mainMediaBanner.css( {
+                        opacity: 1
+                    } );
+                }
+                
+                if ( scrollPosition >= mainBannerOffsetHeight ) {
+                    
+                    $mainMediaBanner.css( {
+                        opacity: 0
+                    } );
+                }
+            } );
+
+            
+        }
+        mainBannerIllusion();
+    
+    
     } );
 
 })( jQuery );
