@@ -1276,6 +1276,11 @@
     font-size: 2em;
 }
 
+.applicator--theme--post-format--status .format-status .post---cr
+{
+    display: flex;
+}
+
 
 
 
@@ -1315,7 +1320,8 @@
 .applicator--theme--layout .post-excerpt---cr,
 .applicator--theme--layout .show-more-action,
 .applicator--theme--layout .main-content-heading,
-.applicator--theme--layout .entry-nav---cr
+.applicator--theme--layout .entry-nav---cr,
+.applicator--theme--layout.applicator--theme--post-format--status .format-status .post---cr
 {
     margin-left: auto;
     margin-right: auto;

@@ -1679,7 +1679,7 @@ select
 @keyframes fade-highlight {
     0%
     {
-        background-color: hsla( 56, 100%, 50%, .125);
+        background-color: ghostwhite;
     }
     100%
     {
