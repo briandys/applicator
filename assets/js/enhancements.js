@@ -83,12 +83,10 @@
             }, 300, 'easeInOutCirc', function() {
                 window.location.hash = href;
                 
-                if ( window.location.hash ) {
-                    if ( window.location.hash.indexOf( 'start' ) ) {
-                        if ( window.pageYOffset == 0 ) {
-                            removeHash();
-                        } 
-                    }
+               if ( window.pageYOffset == 0 && window.location.hash ) {
+                    if ( window.location.hash.indexOf( 'start' ) != -1 ) {
+                        removeHash();
+                    } 
                 }
                 
             } );
