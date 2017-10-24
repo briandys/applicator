@@ -692,14 +692,13 @@ select
 {
     flex: 1 100%;
     
+    height: 56.25%;
+    
     background-color: black;
+    
+    overflow: hidden;
 }
 
-
-
-
-
-/* ------------------ Media Banner ------------------ */
 .main-media-banner---g
 {
     padding-bottom: 56.25%;
@@ -3047,19 +3046,6 @@ select
 @media only screen and ( min-width: 48em )
 {
     
-    .main-banner
-    {
-        height: 56.25%;
-        overflow: hidden;
-    }
-
-    .main-media-banner---g
-    {
-        padding-bottom: 56.25%;
-        padding-bottom: var(--aspect-ratio--16-9);
-
-    }
-    
     .post-content---ct_cr > .data-format--img--left-aligned
     {
         float: left;
@@ -3102,6 +3088,11 @@ select
 
 @media only screen and ( min-width: 64em )
 {
+    
+    .main-banner
+    {
+        height: 15.82%;
+    }
 
     .main-media-banner---g
     {
