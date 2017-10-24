@@ -82,6 +82,15 @@
                 scrollTop: $( href ).offset().top
             }, 300, 'easeInOutCirc', function() {
                 window.location.hash = href;
+                
+                if ( window.location.hash ) {
+                    if ( window.location.hash.indexOf( 'start' ) ) {
+                        if ( window.pageYOffset == 0 ) {
+                            removeHash();
+                        } 
+                    }
+                }
+                
             } );
 
             return false;
@@ -280,19 +289,22 @@
                 // http://stackoverflow.com/a/40370876
                 $window.on( 'scroll.applicator', function() {
                     if ( ( ( window.innerHeight + window.pageYOffset ) >= ( bodyOffsetHeight / 4 ) ) && ( ! window.pageYOffset == 0 ) ) {
-                        
                         goStartNavActivate();
-                    
                     }
-                    else if ( ( ( window.innerHeight + window.pageYOffset ) < ( bodyOffsetHeight / 4 ) ) || ( window.pageYOffset == 0 ) ) {
-                        
-                        goStartNavDeactivate();
                     
+                    else if ( ( ( window.innerHeight + window.pageYOffset ) < ( bodyOffsetHeight / 4 ) ) || ( window.pageYOffset == 0 ) ) {
+                        goStartNavDeactivate();
                     }
                 } );
             }
         }
         goStartNav();
+        
+        $goStartNaviA.on( 'click.applicator', function() {
+            
+        } );
+        
+        
         
         
         // Add Icon to Button
@@ -519,8 +531,8 @@
     function initComments( $cp ) {
         
         
-        // Don't proceed if Applicator Comments CSS Class name isn't found
-        if ( ! $applicatorComments.length ) {
+        // Proceed only in Detail View and the Applicator CSS class name is present
+        if ( ! $html.closest( '.view--detail' ) && ! $applicatorComments.length ) {
             return;
         }
 
@@ -1774,7 +1786,7 @@
             
             var $mainBanner = $( '#main-banner' );
             
-            if ( ! $mainBanner.length || $mainBanner.css( 'margin' ) == '-1px' ) {
+            if ( ! $mainBanner.length || $mainBanner.css( 'margin' ) == '-1px'  ) {
                 return;
             }
             

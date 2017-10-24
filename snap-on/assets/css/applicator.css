@@ -1279,6 +1279,7 @@
 .applicator--theme--post-format--status .format-status .post---cr
 {
     display: flex;
+    align-items: center;
 }
 
 
