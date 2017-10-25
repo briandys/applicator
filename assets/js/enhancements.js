@@ -81,14 +81,7 @@
             $htmlBody.stop().animate( {
                 scrollTop: $( href ).offset().top
             }, 300, 'easeInOutCirc', function() {
-                window.location.hash = href;
-                
-               if ( window.pageYOffset == 0 && window.location.hash ) {
-                    if ( window.location.hash.indexOf( 'start' ) != -1 ) {
-                        removeHash();
-                    } 
-                }
-                
+                window.location.hash = href;                
             } );
 
             return false;

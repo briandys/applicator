@@ -2546,6 +2546,15 @@ select
     
     height: .75rem;
     height: var(--dismiss-icon--height);
+    
+    opacity: .75;
+    transition: opacity .125s ease-in-out;
+}
+
+.main-search-func .main-search-tog---b:hover .dismiss-icon,
+.main-search-func .search-form-reset-axn---b:hover .dismiss-icon
+{
+    opacity: 1;
 }
 
 /* Placeholder Text */
