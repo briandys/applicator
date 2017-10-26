@@ -35,10 +35,52 @@
         pageShortCss = 'page--short',
         pageLongCss = 'page--long',
         
+        applicatorMainSearchTerm = 'applicator--main-search',
+        
         $aplWildcard = $( '#applicator-wildcard' ),
         $aplWildcardCr = $aplWildcard.find( '.applicator-wildcard---cr' ),
         overlayTerm = 'overlay',
-        overlayMu;
+        overlayMu,
+        
+        $mainActions = $( '#main-actions' ),
+        $mainSearch;
+    
+    
+    
+    
+    
+    // HTML_OK
+    function htmlok( $cp, $name ) {
+                
+        var cpMU,
+            crMU,
+            hrMU,
+            ctMU;
+
+        ctMU = $( '<div />', {
+            'class': 'ct ' + $cp + '---ct'
+        } );
+
+        hrMU = $( '<div />', {
+            'class': 'hr ' + $cp + '---hr'
+        } );
+
+        crMU = $( '<div />', {
+            'class': 'cr ' + $cp + '---cr'
+        } )
+            .append( hrMU)
+            .append( ctMU);
+
+
+        cpMU = $( '<div />', {
+            'id': $cp,
+            'class': 'cp ' + $cp,
+            'data-name': $name + ' ' + 'CP'
+        } )
+            .append( crMU );
+
+        return cpMU;
+    }
     
     
     
@@ -761,13 +803,20 @@
 			return;
 		}
         
-        $( '#main-actions' )
+        $mainActions
             .find( $( '.main-actions---ct_cr' ) )
                 .children( '.search:first, .widget_search:first' )
                     .attr( 'id', 'main-search' );
     }() );
     
     function initMainSearch( $cp ) {
+        
+        $mainSearch = $( '#main-search' );
+        
+        if ( ! $mainSearch.length ) {
+            $html.removeClass( applicatorMainSearchTerm );
+			return;
+		}
         
         if ( ! $aplApplicatorMainSearch.length ) {
 			return;
@@ -991,7 +1040,29 @@
     
     
     
-    // Sub-Nav for Main Menu, Widget Menu, Widget Pages
+    /* ------------------------ Main Actions ------------------------ */
+    function initMainActions( $cp ) {
+        
+        var $mainActionsWidgets = $mainActions.find( '.main-actions---ct_cr > .widget:not( .widget_search ):not( .widget_nav_menu )' );
+        
+        if ( ! $mainActionsWidgets.length ) {
+			return;
+		}
+        
+        ( function() {
+            
+            $mainActionsWidgets.wrapAll( htmlok( 'main-action-widgets', 'Main Actions Widgets' ) );
+        
+        }() );
+        
+    }
+    
+    initMainActions( $( '#main-actions' ) );
+    
+    
+    
+    
+    /* ------------------------ Sub-Nav ------------------------ */
     function initSubNav( $cp ) {
         
         if ( ! $aplApplicatorSubNav.length ) {

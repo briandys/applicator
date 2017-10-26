@@ -21,8 +21,6 @@ Enhancements Style
 .main-search-tog---b_l .show-hide---txt,
 .main-search-func .search-form-search-axn .go---txt,
 .main-search-func .search-form-reset-axn .reset---txt,
-.applicator--main-search--active .main-name,
-.applicator--main-search--active .main-logo,
 .applicator--main-search--active .main-description,
 .go-start-nav-func .go-to-start---txt,
 .go-content-nav--inactive,
@@ -872,6 +870,11 @@ select
     background-color: hsl(0, 0%, 98%);
 }
 
+.custom-background .main-content
+{
+    background-color: transparent;
+}
+
 .main-content a
 {
     color: #005fe6;
@@ -1443,14 +1446,10 @@ select
     top: 50%;
     
     margin-top: -1.125rem;
-    margin-top: calc( ( var(--main-logo--height) / 2 ) * -1);
     
     max-width: 100%;
     
     height: 2.25rem;
-    height: var(--main-logo--height);
-    
-    z-index: 1;
 }
 
 .main-logo .custom-logo-link
@@ -2389,7 +2388,10 @@ select
 {
     display: flex;
     justify-content: flex-end;
-    
+}
+
+.applicator--main-search--inactive .main-actions .main-actions---ct_cr
+{
     padding-right: 3rem;
 }
 
@@ -2437,6 +2439,9 @@ select
     border: 0;
     border-radius: 0;
     
+    padding-left: 1rem;
+    
+    background-color: hsl(200, 100%, 50%);
     color: white;
 }
 
@@ -2453,9 +2458,7 @@ select
 
 .main-search-func .search-term-crt-search-text-input
 {
-    padding-left: 3rem;
     padding-right: calc( 3rem * 2);
-    padding-right: calc( var(--elem--dimension) * 2);
 }
 
 /* Input Text - Hidden */
@@ -2480,6 +2483,8 @@ select
 {
     left: auto;
     opacity: 1;
+    
+    padding-left: 2rem;
 }
 
 /* Main Search Form Actions */
@@ -2501,6 +2506,11 @@ select
 }
 
 .main-search--active.main-search-input--empty .search-form-reset-axn
+{
+    display: none;
+}
+
+.main-search--active.main-search-input--populated .main-search-toggle
 {
     display: none;
 }
@@ -2607,7 +2617,6 @@ select
 {
     opacity: 0;
 }
-
 
 
 
@@ -3050,6 +3059,22 @@ select
 
 
 
+/* ------------------ Viewport Width: 560 ------------------ */
+
+@media only screen and ( min-width: 35em )
+{
+    
+    .applicator--main-menu--active .main-search-toggle .search-icon
+    {
+        opacity: 1;
+    }
+    
+}
+
+
+
+
+
 /* ------------------ Viewport Width: 768 ------------------ */
 
 @media only screen and ( min-width: 48em )
@@ -3085,6 +3110,11 @@ select
     .post-content---ct_cr .wp-caption.alignleft
     {
         margin-right: 1rem;
+    }
+    
+    .main-search-func .search-term-crt-search-text-input
+    {
+        max-width: 30rem;
     }
 
 }
