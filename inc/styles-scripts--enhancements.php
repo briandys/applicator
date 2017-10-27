@@ -28,6 +28,7 @@ if ( ! function_exists( 'applicator_enhancements_styles_scripts' ) ) {
         $burger_icon = applicator_get_svg( array( 'icon' => 'burger-icon', 'fallback' => true, ) );
         $dismiss_icon = applicator_get_svg( array( 'icon' => 'dismiss-icon', 'fallback' => true, ) );
         $search_icon = applicator_get_svg( array( 'icon' => 'search-icon', 'fallback' => true, ) );
+        $more_icon = applicator_get_svg( array( 'icon' => 'more-icon', 'fallback' => true, ) );
         
         
         // Go to Start Nav Icons
@@ -46,7 +47,8 @@ if ( ! function_exists( 'applicator_enhancements_styles_scripts' ) ) {
         // Main Actions Widgets Icons
         $applicator_l10n['mainActionsWidgetsShowLabel'] = __( 'Show Menu', 'applicator' );
         $applicator_l10n['mainActionsWidgetsHideLabel'] = __( 'Hide Menu', 'applicator' );
-        $applicator_l10n['mainActionsWidgetsShowIcon'] = $burger_icon;
+        $applicator_l10n['mainActionsWidgetsToggleLabel'] = __( 'Toggle Menu', 'applicator' );
+        $applicator_l10n['mainActionsWidgetsToggleIcon'] = $more_icon;
         $applicator_l10n['mainActionsWidgetsHideIcon'] = $dismiss_icon;
         wp_localize_script( 'applicator-script--functionalities', 'aplDataMainActionsWidgets', $applicator_l10n );
         

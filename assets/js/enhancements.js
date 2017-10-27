@@ -113,7 +113,7 @@
     }
     
     
-    function htmlokToggleOBJ( $obj, $name, $label, $icon ) {
+    function htmlokButtonOBJ( $obj, $name, $label, $icon, $css ) {
         
         var toggleObjMU,
             toggleButtonObjMU,
@@ -147,8 +147,8 @@
 
         // Object
         toggleObjMU = $( '<div />', {
-            'class': 'obj toggle ' + $obj,
-            'data-name': $name + ' Toggle OBJ'
+            'class': 'obj ' + $css + ' ' + $obj,
+            'data-name': $name + ' OBJ'
         } )
             .append( toggleButtonObjMU );
         
@@ -1135,12 +1135,13 @@
                 $mainActionsWidgetsCtCr,
                 $mainActionsWidgetsH,
                 
-                $mainActionsWidgetsToggleShowLabel = aplDataMainActionsWidgets.mainActionsWidgetsShowLabel,
                 $mainActionsWidgetsToggleHideLabel = aplDataMainActionsWidgets.mainActionsWidgetsHideLabel,
-                $mainActionsWidgetsToggleShowIcon = $( aplDataMainActionsWidgets.mainActionsWidgetsShowIcon ),
+                $mainActionsWidgetsToggleLabel = aplDataMainActionsWidgets.mainActionsWidgetsToggleLabel,
+                $mainActionsWidgetsToggleIcon = $( aplDataMainActionsWidgets.mainActionsWidgetsToggleIcon ),
                 $mainActionsWidgetsToggleHideIcon = $( aplDataMainActionsWidgets.mainActionsWidgetsHideIcon ),
                 
                 $mainActionsWidgetsToggleButton,
+                $mainActionsWidgetsDismissButton,
                 $mainActionsWidgetsToggleButtonLabel,
                 $mainActionsWidgetsToggleButtonLabelText,
                 
@@ -1167,16 +1168,29 @@
             
             // Create Toggle Button
             $mainActionsWidgetsH.after(
-                htmlokToggleOBJ(
+                htmlokButtonOBJ(
                     'main-actions-widgets-toggle',
-                    'Main Actions Widgets',
-                    $mainActionsWidgetsToggleShowLabel,
-                    $mainActionsWidgetsToggleShowIcon
+                    'Main Actions Widgets Toggle',
+                    $mainActionsWidgetsToggleLabel,
+                    $mainActionsWidgetsToggleIcon,
+                    'toggle'
+                )
+            );
+            
+            // Create Dismiss Button
+            $mainActionsWidgetsCtCr.append(
+                htmlokButtonOBJ(
+                    'main-actions-widgets-dismiss',
+                    'Main Actions Widgets Dismiss',
+                    $mainActionsWidgetsToggleHideLabel,
+                    $mainActionsWidgetsToggleHideIcon,
+                    'dismiss'
                 )
             );
             
             // Define toggle elements
             $mainActionsWidgetsToggleButton = $( '#main-actions-widgets-toggle---b' );
+            $mainActionsWidgetsDismissButton = $( '#main-actions-widgets-dismiss---b' );
             $mainActionsWidgetsToggleButtonLabel = $mainActionsWidgetsToggleButton.find( '.b_l' );
             $mainActionsWidgetsToggleButtonLabelText = $mainActionsWidgetsToggleButton.find( '.l' );
             
@@ -1200,12 +1214,8 @@
 
                 $mainActionsWidgetsToggleButton.attr( {
                      'aria-expanded': 'true',
-                     'title': $mainActionsWidgetsToggleHideLabel
+                     'title': $mainActionsWidgetsToggleLabel
                 } );
-
-                $mainActionsWidgetsToggleButtonLabelText.text( $mainActionsWidgetsToggleHideLabel );
-                $mainActionsWidgetsToggleButtonLabel.append( $mainActionsWidgetsToggleHideIcon );
-                $mainActionsWidgetsToggleShowIcon.remove();
 
                 cycleTabbing( $mainActionsWidgets );
             }
@@ -1223,12 +1233,8 @@
 
                 $mainActionsWidgetsToggleButton.attr( {
                      'aria-expanded': 'false',
-                     'title': $mainActionsWidgetsToggleShowLabel
+                     'title': $mainActionsWidgetsToggleLabel
                 } );
-
-                $mainActionsWidgetsToggleButtonLabelText.text( $mainActionsWidgetsToggleShowLabel );
-                $mainActionsWidgetsToggleButtonLabel.append( $mainActionsWidgetsToggleShowIcon );
-                $mainActionsWidgetsToggleHideIcon.remove();
 
                 cycleTabbingOff( $mainActionsWidgets );
             }
@@ -1251,6 +1257,15 @@
             // Click
             ( function() {
                 $mainActionsWidgetsToggleButton.on( 'click.applicator', function( e ) {
+                    var $this = $( this );
+                    e.preventDefault();
+                    mainActionsWidgetsToggle();
+                } );
+            }() );
+
+            // Click
+            ( function() {
+                $mainActionsWidgetsDismissButton.on( 'click.applicator', function( e ) {
                     var $this = $( this );
                     e.preventDefault();
                     mainActionsWidgetsToggle();

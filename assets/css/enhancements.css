@@ -51,7 +51,8 @@ Enhancements Style
 .applicator--main-search--active .main-actions---ct_cr > *:not( .main-search-func ),
 .applicator--comments--active .comments-toggle .show-hide---txt,
 .main-actions-widgets---h,
-.main-actions-widgets-toggle---l
+.main-actions-widgets-toggle---l,
+.main-actions-widgets-dismiss---l
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -277,6 +278,12 @@ select
 }
 
 /* Buttons */
+.b,
+input[type="submit"]
+{
+    color: white;
+}
+
 .b_l,
 input[type="submit"]
 {
@@ -285,9 +292,6 @@ input[type="submit"]
     
     background-color: hsl(215, 100%, 45%);
     background-color: var(--button--pri--bg-color);
-    
-    color: white;
-    color: var(--button--pri--fg-color);
 }
 
 select
@@ -2391,12 +2395,13 @@ select
     justify-content: flex-end;
 }
 
-.applicator--main-search .main-actions .main-actions---ct_cr
+.applicator--main-search .main-actions---ct_cr,
+.applicator--main-actions-widgets .main-actions---ct_cr
 {
     padding-right: 3rem;
 }
 
-.applicator--main-search.applicator--main-actions-widgets .main-actions .main-actions---ct_cr
+.applicator--main-search.applicator--main-actions-widgets .main-actions---ct_cr
 {
     padding-right: 6rem;
 }
@@ -2416,7 +2421,10 @@ select
     position: absolute;
     right: 0;
     top: 0;
-    
+}
+
+.applicator--main-search .main-actions-widgets
+{
     margin-right: 3rem;
 }
 
@@ -2426,9 +2434,16 @@ select
     right: 0;
     top: 100%;
     
+    transform: translate(0, -.5rem);
+}
+
+.main-actions-widgets---ct_cr
+{   
     width: 20rem;
     
     background-color: white;
+ 
+    border: 1px solid hsla( 0, 0%, 0%, .125 );
 }
 
 .main-actions-widgets---ct a
@@ -2451,6 +2466,39 @@ select
 .main-actions-widgets-toggle---b_l
 {
     background-color: transparent;
+}
+
+.main-actions-widgets-dismiss---b_l
+{
+    background-color: transparent;
+}
+
+.main-actions-widgets-dismiss
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.main-actions-widgets-dismiss---b
+{
+    color: black;
+}
+
+.main-actions-widgets-dismiss---b .icon
+{
+    width: .75rem;
+    height: .75rem;
+    
+    opacity: 25;
+}
+
+.main-actions-widgets-dismiss---b:hover .icon
+{
+    width: .85rem;
+    height: .85rem;
+    
+    opacity: .75;
 }
 
 
