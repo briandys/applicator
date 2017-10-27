@@ -50,7 +50,9 @@ Enhancements Style
 .applicator--page-nav .adjacent-navi---l,
 .main-actions .widget-heading,
 .applicator--main-search--active .main-actions---ct_cr > *:not( .main-search-func ),
-.applicator--comments--active .comments-toggle .show-hide---txt
+.applicator--comments--active .comments-toggle .show-hide---txt,
+.main-actions-widgets---h,
+.main-actions-widgets-toggle---l
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -2390,9 +2392,66 @@ select
     justify-content: flex-end;
 }
 
-.applicator--main-search--inactive .main-actions .main-actions---ct_cr
+.applicator--main-search .main-actions .main-actions---ct_cr
 {
     padding-right: 3rem;
+}
+
+.applicator--main-search.applicator--main-actions-widgets .main-actions .main-actions---ct_cr
+{
+    padding-right: 6rem;
+}
+
+
+
+
+
+/* ------------------ Main Actions Widgets ------------------ */
+.dom--unready .main-actions
+{
+    display: none;
+}
+
+.main-actions-widgets
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+    
+    margin-right: 3rem;
+}
+
+.main-actions-widgets---ct
+{
+    position: absolute;
+    right: 0;
+    top: 100%;
+    
+    width: 20rem;
+    
+    background-color: white;
+}
+
+.main-actions-widgets---ct a
+{
+    color: #005fe6;
+    
+    text-decoration: none;
+}
+
+.main-actions-widgets--inactive .main-actions-widgets---ct
+{
+    display: none;
+}
+
+.main-actions-widgets--active .main-actions-widgets---ct
+{
+    z-index: 100;
+}
+
+.main-actions-widgets-toggle---b_l
+{
+    background-color: transparent;
 }
 
 

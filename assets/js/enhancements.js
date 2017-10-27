@@ -11,6 +11,7 @@
         $applicatorComments = $html.closest( '.applicator--comments' ),
         $aplApplicatorGoCtNav = $html.closest( '.applicator--go-content-nav' ),
         $aplApplicatorGoStartNav = $html.closest( '.applicator--go-start-nav' ),
+        $aplApplicatorMainActionsWidgets = $html.closest( '.applicator--main-actions-widgets' ),
         $aplApplicatorMainMenu = $html.closest( '.applicator--main-menu' ),
         $aplApplicatorMainSearch = $html.closest( '.applicator--main-search' ),
         $applicatorPageNav = $html.closest( '.applicator--page-nav' ),
@@ -36,6 +37,7 @@
         pageLongCss = 'page--long',
         
         applicatorMainSearchTerm = 'applicator--main-search',
+        aplApplicatorMainActionsWidgetsTerm = 'applicator--main-actions-widgets',
         
         $aplWildcard = $( '#applicator-wildcard' ),
         $aplWildcardCr = $aplWildcard.find( '.applicator-wildcard---cr' ),
@@ -49,29 +51,57 @@
     
     
     
-    // HTML_OK
-    function htmlok( $cp, $name ) {
+    // HTML_OK Component Markup
+    function htmlokCP( $cp, $name ) {
                 
         var cpMU,
             crMU,
             hrMU,
-            ctMU;
+            hrCrMU,
+            hMU,
+            hLMU,
+            ctMU,
+            ctCrMU;
+
+        // Content Markup
+        ctCrMU = $( '<div />', {
+            'class': 'ct_cr ' + $cp + '---ct_cr'
+        } );
 
         ctMU = $( '<div />', {
             'class': 'ct ' + $cp + '---ct'
-        } );
+        } )
+            .append( ctCrMU);
+        
+        // Header Markup
+        hLMU = $( '<span />', {
+            'class': 'h_l ' + $cp + '---h_l'
+        } )
+        .text( $name );
+        
+        hMU = $( '<div />', {
+            'class': 'h ' + $cp + '---h'
+        } )
+            .append( hLMU);
+        
+        hrCrMU = $( '<div />', {
+            'class': 'hr_cr ' + $cp + '---hr_cr'
+        } )
+            .append( hMU);
 
         hrMU = $( '<div />', {
             'class': 'hr ' + $cp + '---hr'
-        } );
+        } )
+            .append( hrCrMU);
 
+        // Container Markup
         crMU = $( '<div />', {
             'class': 'cr ' + $cp + '---cr'
         } )
             .append( hrMU)
             .append( ctMU);
-
-
+        
+        // Component Markup
         cpMU = $( '<div />', {
             'id': $cp,
             'class': 'cp ' + $cp,
@@ -80,6 +110,50 @@
             .append( crMU );
 
         return cpMU;
+    }
+    
+    
+    function htmlokToggleOBJ( $obj, $name, $label, $icon ) {
+        
+        var toggleObjMU,
+            toggleButtonObjMU,
+            toggleButtonLabelObjMU,
+            toggleButtonTextLabelObjMU,
+            toggleButtonLabelTextObjMU;
+        
+        toggleButtonLabelTextObjMU = $( '<span />', {
+            'class': 'txt ' + showHideTxtCss,
+            'text': $label
+        } );
+
+        toggleButtonTextLabelObjMU = $( '<span />', {
+            'class': 'l ' + $obj + '---l'
+        } )
+            .append( toggleButtonLabelTextObjMU );
+
+        toggleButtonLabelObjMU = $( '<span />', {
+            'class': 'b_l ' + $obj + '---b_l'
+        } )
+            .append( toggleButtonTextLabelObjMU )
+            .append( $icon );
+
+        // Button
+        toggleButtonObjMU = $( '<button />', {
+            'id' : $obj + '---b',
+            'class': 'b ' + $obj + '---b',
+            'title': $label
+        } )
+            .append( toggleButtonLabelObjMU );
+
+        // Object
+        toggleObjMU = $( '<div />', {
+            'class': 'obj toggle ' + $obj,
+            'data-name': $name + ' Toggle OBJ'
+        } )
+            .append( toggleButtonObjMU );
+        
+        return toggleObjMU;
+        
     }
     
     
@@ -493,7 +567,7 @@
         function mainMenuResetScroll() {
             $mainHrAsCtCr = $cp.find( '.main-hr-aside---ct_cr' );
             
-            $mainHrAsCtCr.scrollTop(0);
+            $mainHrAsCtCr.scrollTop( 0 );
         }
         
         // Toggle
@@ -1043,15 +1117,145 @@
     /* ------------------------ Main Actions ------------------------ */
     function initMainActions( $cp ) {
         
-        var $mainActionsWidgets = $mainActions.find( '.main-actions---ct_cr > .widget:not( .widget_search ):not( .widget_nav_menu )' );
+        var $mainActionsWidgetItems = $mainActions.find( '.main-actions---ct_cr > .widget:not( .widget_search ):not( .widget_nav_menu )' );
         
-        if ( ! $mainActionsWidgets.length ) {
+        if ( ! $mainActionsWidgetItems.length ) {
+            $html.removeClass( aplApplicatorMainActionsWidgetsTerm );
+			return;
+		}
+        
+        if ( ! $aplApplicatorMainActionsWidgets.length ) {
 			return;
 		}
         
         ( function() {
             
-            $mainActionsWidgets.wrapAll( htmlok( 'main-action-widgets', 'Main Actions Widgets' ) );
+            var $mainActionsWidgetsMU = htmlokCP( 'main-actions-widgets', 'Main Actions Widgets' ),
+                $mainActionsWidgets,
+                $mainActionsWidgetsCtCr,
+                $mainActionsWidgetsH,
+                
+                $mainActionsWidgetsToggleShowLabel = aplDataMainActionsWidgets.mainActionsWidgetsShowLabel,
+                $mainActionsWidgetsToggleHideLabel = aplDataMainActionsWidgets.mainActionsWidgetsHideLabel,
+                $mainActionsWidgetsToggleShowIcon = $( aplDataMainActionsWidgets.mainActionsWidgetsShowIcon ),
+                $mainActionsWidgetsToggleHideIcon = $( aplDataMainActionsWidgets.mainActionsWidgetsHideIcon ),
+                
+                $mainActionsWidgetsToggleButton,
+                $mainActionsWidgetsToggleButtonLabel,
+                $mainActionsWidgetsToggleButtonLabelText,
+                
+                mainActionsWidgetsOnCSS = 'main-actions-widgets--active',
+                mainActionsWidgetsOffCSS = 'main-actions-widgets--inactive',
+                aplMainActionsWidgetsOnCSS = 'applicator--main-actions-widgets--active',
+                aplMainActionsWidgetsOffCSS = 'applicator--main-actions-widgets--inactive';
+            
+            // Wrap in markup
+            $mainActionsWidgetItems
+                .wrapAll( $mainActionsWidgetsMU );
+            
+            // Define initial elements
+            funcName = 'main-actions-widgets-func';
+            $mainSearch = $( '#main-search' );
+            $mainActionsWidgets = $( '#main-actions-widgets' );
+            $mainActionsWidgetsCtCr = $mainActionsWidgets.find( '.main-actions-widgets---ct_cr' );
+            $mainActionsWidgetsH = $mainActionsWidgets.find( '.main-actions-widgets---h' );
+        
+            // Add CSS class names
+            $mainActionsWidgets
+                .addClass( funcTerm )
+                .addClass( funcName );
+            
+            // Create Toggle Button
+            $mainActionsWidgetsH.after(
+                htmlokToggleOBJ(
+                    'main-actions-widgets-toggle',
+                    'Main Actions Widgets',
+                    $mainActionsWidgetsToggleShowLabel,
+                    $mainActionsWidgetsToggleShowIcon
+                )
+            );
+            
+            // Define toggle elements
+            $mainActionsWidgetsToggleButton = $( '#main-actions-widgets-toggle---b' );
+            $mainActionsWidgetsToggleButtonLabel = $mainActionsWidgetsToggleButton.find( '.b_l' );
+            $mainActionsWidgetsToggleButtonLabelText = $mainActionsWidgetsToggleButton.find( '.l' );
+            
+            // Move to content markup
+            $mainActionsWidgetItems
+                .appendTo( $mainActionsWidgetsCtCr );
+            
+            // Move after Main Search
+            $mainActionsWidgets.insertAfter( $mainSearch );
+            
+            
+            // Activate
+            function mainActionsWidgetsActivate() {
+                $mainActionsWidgets
+                    .addClass( mainActionsWidgetsOnCSS )
+                    .removeClass( mainActionsWidgetsOffCSS );
+
+                $html
+                    .addClass( aplMainActionsWidgetsOnCSS )
+                    .removeClass( aplMainActionsWidgetsOffCSS );
+
+                $mainActionsWidgetsToggleButton.attr( {
+                     'aria-expanded': 'true',
+                     'title': $mainActionsWidgetsToggleHideLabel
+                } );
+
+                $mainActionsWidgetsToggleButtonLabelText.text( $mainActionsWidgetsToggleHideLabel );
+                $mainActionsWidgetsToggleButtonLabel.append( $mainActionsWidgetsToggleHideIcon );
+                $mainActionsWidgetsToggleShowIcon.remove();
+
+                cycleTabbing( $mainActionsWidgets );
+            }
+            
+            
+            // Deactivate
+            function mainActionsWidgetsDeactivate() {
+                $mainActionsWidgets
+                    .addClass( mainActionsWidgetsOffCSS )
+                    .removeClass( mainActionsWidgetsOnCSS );
+
+                $html
+                    .addClass( aplMainActionsWidgetsOffCSS )
+                    .removeClass( aplMainActionsWidgetsOnCSS );
+
+                $mainActionsWidgetsToggleButton.attr( {
+                     'aria-expanded': 'false',
+                     'title': $mainActionsWidgetsToggleShowLabel
+                } );
+
+                $mainActionsWidgetsToggleButtonLabelText.text( $mainActionsWidgetsToggleShowLabel );
+                $mainActionsWidgetsToggleButtonLabel.append( $mainActionsWidgetsToggleShowIcon );
+                $mainActionsWidgetsToggleHideIcon.remove();
+
+                cycleTabbingOff( $mainActionsWidgets );
+            }
+
+            // Initialize
+            mainActionsWidgetsDeactivate();
+            
+            
+        
+            // Toggle
+            function mainActionsWidgetsToggle() {
+                if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOffCSS ) ) {
+                    mainActionsWidgetsActivate();
+                }
+                else if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOnCSS ) ) {
+                    mainActionsWidgetsDeactivate();
+                }
+            }
+
+            // Click
+            ( function() {
+                $mainActionsWidgetsToggleButton.on( 'click.applicator', function( e ) {
+                    var $this = $( this );
+                    e.preventDefault();
+                    mainActionsWidgetsToggle();
+                } );
+            }() );
         
         }() );
         

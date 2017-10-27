@@ -43,6 +43,14 @@ if ( ! function_exists( 'applicator_enhancements_styles_scripts' ) ) {
         wp_localize_script( 'applicator-script--functionalities', 'aplDataMainMenu', $applicator_l10n );
         
         
+        // Main Actions Widgets Icons
+        $applicator_l10n['mainActionsWidgetsShowLabel'] = __( 'Show Menu', 'applicator' );
+        $applicator_l10n['mainActionsWidgetsHideLabel'] = __( 'Hide Menu', 'applicator' );
+        $applicator_l10n['mainActionsWidgetsShowIcon'] = $burger_icon;
+        $applicator_l10n['mainActionsWidgetsHideIcon'] = $dismiss_icon;
+        wp_localize_script( 'applicator-script--functionalities', 'aplDataMainActionsWidgets', $applicator_l10n );
+        
+        
         // Main Search Icons
         $applicator_l10n['mainSearchShowL'] = __( 'Show Search', 'applicator' );
         $applicator_l10n['mainSearchHideL'] = __( 'Hide Search', 'applicator' );
@@ -102,6 +110,7 @@ if ( ! function_exists( 'applicator_functionalities_css_class_names' ) ) {
             'easy-access-nav',
             'go-content-nav',
             'go-start-nav',
+            'main-actions-widgets',
             'main-menu',
             'main-search',
             'page-nav',
