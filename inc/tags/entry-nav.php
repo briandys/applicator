@@ -5,7 +5,7 @@ if ( ! function_exists('applicator_entry_nav' ) ) {
     function applicator_entry_nav() {
         
         
-        if ( ! is_attachment() ) {
+        if ( ! is_attachment() && is_singular() ) {
         
         
             // Variables

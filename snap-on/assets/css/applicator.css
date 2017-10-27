@@ -1322,7 +1322,8 @@
 .applicator--theme--layout .show-more-action,
 .applicator--theme--layout .main-content-heading,
 .applicator--theme--layout .entry-nav---cr,
-.applicator--theme--layout.applicator--theme--post-format--status .format-status .post---cr
+.applicator--theme--layout.applicator--theme--post-format--status .format-status .post---cr,
+.type-attachment .post-nav---cr
 {
     margin-left: auto;
     margin-right: auto;
