@@ -76,7 +76,8 @@
 .applicator--theme--page-nav .blog .page-navi:not( .adjacent-navi ),
 .applicator--theme--post-format--status .format-status .published-post-author,
 .view--inner .main-banner,
-.applicator--theme--post-format--status .format-status .post-title,
+.applicator--theme--post-format--status .blog .format-status .post-title,
+.applicator--theme--post-format--status .single .format-status .post-title,
 .applicator--theme--post-format--status .format-status .apl-post-categories
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
@@ -1328,7 +1329,8 @@
 .applicator--theme--layout .show-more-action,
 .applicator--theme--layout .main-content-heading,
 .applicator--theme--layout .entry-nav---cr,
-.applicator--theme--layout.applicator--theme--post-format--status .format-status .post---cr,
+.applicator--theme--layout.applicator--theme--post-format--status .blog .format-status .post---cr,
+.applicator--theme--layout.applicator--theme--post-format--status .single .format-status .post---cr
 .type-attachment .post-nav---cr
 {
     margin-left: auto;
