@@ -1132,6 +1132,7 @@
             
             var $mainActionsWidgetsMU = htmlokCP( 'main-actions-widgets', 'Main Actions Widgets' ),
                 $mainActionsWidgets,
+                $mainActionsWidgetsCt,
                 $mainActionsWidgetsCtCr,
                 $mainActionsWidgetsH,
                 
@@ -1140,6 +1141,7 @@
                 $mainActionsWidgetsToggleIcon = $( aplDataMainActionsWidgets.mainActionsWidgetsToggleIcon ),
                 $mainActionsWidgetsToggleHideIcon = $( aplDataMainActionsWidgets.mainActionsWidgetsHideIcon ),
                 
+                $mainActionsWidgetsToggle,
                 $mainActionsWidgetsToggleButton,
                 $mainActionsWidgetsDismissButton,
                 $mainActionsWidgetsToggleButtonLabel,
@@ -1158,6 +1160,7 @@
             funcName = 'main-actions-widgets-func';
             $mainSearch = $( '#main-search' );
             $mainActionsWidgets = $( '#main-actions-widgets' );
+            $mainActionsWidgetsCt = $mainActionsWidgets.find( '.main-actions-widgets---ct' );
             $mainActionsWidgetsCtCr = $mainActionsWidgets.find( '.main-actions-widgets---ct_cr' );
             $mainActionsWidgetsH = $mainActionsWidgets.find( '.main-actions-widgets---h' );
         
@@ -1189,6 +1192,7 @@
             );
             
             // Define toggle elements
+            $mainActionsWidgetsToggle = $mainActionsWidgets.find( '.main-actions-widgets-toggle' );
             $mainActionsWidgetsToggleButton = $( '#main-actions-widgets-toggle---b' );
             $mainActionsWidgetsDismissButton = $( '#main-actions-widgets-dismiss---b' );
             $mainActionsWidgetsToggleButtonLabel = $mainActionsWidgetsToggleButton.find( '.b_l' );
@@ -1272,11 +1276,29 @@
                 } );
             }() );
         
+        
+            // Deactivate via external click
+            $document.on( 'touchmove.applicator click.applicator', function ( e ) {
+                if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOnCSS ) && ( ! $( e.target ).closest( $mainActionsWidgetsToggle ).length ) && ( ! $( e.target ).closest( $mainActionsWidgetsCt ).length ) ) {
+                    mainActionsWidgetsDeactivate();
+                }
+            } );
+
+
+            // Deactivate via keyboard ESC key
+            $window.load( function() {
+                $document.on( 'keyup.applicator', function ( e ) {
+                    if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOnCSS ) && e.keyCode == 27 ) {
+                        mainActionsWidgetsDeactivate();
+                    }
+                } );
+            } );
+        
         }() );
         
     }
     
-    initMainActions( $( '#main-actions' ) );
+    initMainActions();
     
     
     

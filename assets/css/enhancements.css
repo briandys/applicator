@@ -2719,11 +2719,6 @@ select
     transition-property: opacity;
 }
 
-.applicator--main-menu--active .main-search-toggle .search-icon
-{
-    opacity: 0;
-}
-
 
 
 
