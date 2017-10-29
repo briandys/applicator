@@ -109,29 +109,37 @@ Enhancements Style
     bottom: 100%;
     
     background-color: black;
-    background-color: var(--overlay--dark);
     
     opacity: 0;
     
-    transition: opacity .3s, bottom 0s .3s;
+    transition: opacity .2s ease-in-out, bottom 0s .2s ease-in-out;
 }
 
 /* Overlay Active */
 .applicator--main-menu--active .overlay--main-menu-func,
-.applicator--go-content-nav--active .overlay--go-content-nav-func
+.applicator--main-menu .n.overlay--main-menu-func,
+
+.applicator--go-content-nav--active .overlay--go-content-nav-func,
+.applicator--go-content-nav .n.overlay--go-content-nav-func
 {
     bottom: 0%;
     z-index: 99;
     
     opacity: .75;
     
-    transition: opacity .3s;
+    transition: opacity .2s ease-in-out;
 }
 
-.applicator--main-menu .overlay--go-content-nav-func
+/* Exit Transition */
+.applicator--main-menu--inactive .x.overlay--main-menu-func,
+.applicator--go-content-nav--inactive .x.overlay--go-content-nav-func
+{
+    opacity: 0;
+}
+
+.applicator--go-content-nav .overlay--go-content-nav-func
 {   
     background-color: white;
-    background-color: var(--overlay--light);
 }
 
 
@@ -2450,14 +2458,14 @@ select
     right: 0;
     top: 100%;
     
+    margin-bottom: 1rem;
+    
     transform: translate(0, -.5rem);
 }
 
 .main-actions-widgets---ct_cr
 {   
     position: relative;
-    
-    margin-bottom: 1rem;
     
     width: 30rem;
     max-width: 100vw;
@@ -2747,7 +2755,8 @@ select
 }
 
 /* This will shoulder the position when active */
-.main-menu--active
+.main-menu--active,
+.n.main-menu-func
 {
     position: absolute;
     left: 0;
@@ -2830,6 +2839,11 @@ select
     top: 0;
 }
 
+.n.main-menu--inactive .main-menu-toggle
+{
+    opacity: .25;
+}
+
 /* To position the deactivate toggle action */
 .main-menu--active .main-menu-toggle
 {
@@ -2888,7 +2902,7 @@ select
     margin-top: 0;
 }
 
-.main-menu--inactive .main-hr-aside---ct_cr > *
+.x.main-menu--inactive .main-hr-aside---ct_cr > *
 {
     display: none;
 }
@@ -2942,7 +2956,7 @@ select
     opacity: .5;
     
     transition: all .3s ease-in-out;
-    transition-property: width, height, opacity;
+    transition-property: width, height, opacity, transform;
 }
 
 .sub-nav-func .sub-nav-tog---b:hover .arrow-icon,

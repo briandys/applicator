@@ -917,8 +917,8 @@
 
 /* Sub-Nav Negations */
 
-.applicator--theme--rounded-rectangles .main-nav .page_item_has_children > ul > .sub-nav--inactive:first-child > a,
-.applicator--theme--rounded-rectangles .main-nav .menu-item-has-children > ul > .sub-nav--inactive:first-child > a
+.applicator--theme--rounded-rectangles .main-nav .page_item_has_children > ul > li:first-child > a,
+.applicator--theme--rounded-rectangles .main-nav .menu-item-has-children > ul > li:first-child > a
 {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -932,7 +932,11 @@
 }
 
 .applicator--theme--rounded-rectangles .main-nav .page_item_has_children > ul > li:only-child > a,
-.applicator--theme--rounded-rectangles .main-nav .menu-item-has-children > ul > li:only-child > a
+.applicator--theme--rounded-rectangles .main-nav .menu-item-has-children > ul > li:only-child > a,
+.applicator--theme--rounded-rectangles .main-nav .page_item_has_children > ul > .sub-nav--inactive:only-child > a,
+.applicator--theme--rounded-rectangles .main-nav .menu-item-has-children > ul > .sub-nav--inactive:only-child > a,
+.applicator--theme--rounded-rectangles .main-nav .page_item_has_children > ul > .sub-nav--active:first-child > a,
+.applicator--theme--rounded-rectangles .main-nav .menu-item-has-children > ul > .sub-nav--active:first-child > a
 {
     border-radius: .125em;
 }
@@ -1294,6 +1298,11 @@
     display: flex;
 }
 
+.applicator--theme--post-format--status.view--multisite-directory .format-status .post---cr
+{
+    justify-content: center;
+}
+
 
 
 
@@ -1334,9 +1343,8 @@
 .applicator--theme--layout .show-more-action,
 .applicator--theme--layout .main-content-heading,
 .applicator--theme--layout .entry-nav---cr,
-.applicator--theme--layout.applicator--theme--post-format--status .blog .format-status .post---cr,
-.applicator--theme--layout.applicator--theme--post-format--status .single .format-status .post---cr
-.type-attachment .post-nav---cr
+.applicator--theme--layout .type-attachment .post-nav---cr,
+.applicator--theme--layout.applicator--theme--post-format--status .format-status .post---cr
 {
     margin-left: auto;
     margin-right: auto;
@@ -1353,7 +1361,7 @@
     margin-left: auto;
     margin-right: auto;
     
-    max-width: 64rem;
+    max-width: 100%;
 }
 
 .applicator--theme--layout .main-menu--inactive .main-hr-aside---hr_cr

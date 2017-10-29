@@ -160,6 +160,25 @@
     
     
     
+    // Transition Entrance
+    function transN( $elem ) {
+        $elem
+            .addClass( 'n' )
+            .removeClass( 'x' );
+    }
+    
+    // Transition Exit
+    function transX( $elem ) {
+        $elem
+            .addClass( 'x' )
+            .removeClass( 'n' );
+    }
+    
+    
+    
+    
+    
+    
     // Remove Empty Containers
     function initRemoveEmpty( $elem ) {
         $( $elem ).each( function() {
@@ -475,7 +494,8 @@
             $mainMenuTogBtnL,
             $mainMenuTogBtnLTxt,
             
-            $mainHrAsCtCr;
+            $mainHrAsCtCr,
+            $mainMenuOverlay;
         
         // Markup
         ( function() {
@@ -515,6 +535,8 @@
         $mainMenuTogBtnL = $mainMenuTogBtn.find( $( '.main-menu-tog---b_l' ) );
         $mainMenuTogBtnLTxt = $mainMenuTogBtn.find( $( '.show-hide---txt' ) );
         
+        $mainMenuOverlay = $aplWildcard.find( '.overlay--' + funcName );
+        
         
         // Activate
         function mainMenuActivate() {
@@ -536,12 +558,16 @@
             $mainMenuTogBtnL.append( $mainMenuTogBtnHideIco );
             $mainMenuTogBtnShowIco.remove();
             
+            transN( $cp );
+            transN( $mainMenuOverlay );
+            
             cycleTabbing( $cp );
             
         }
         
         // Deactivate
         function mainMenuDeactivate() {
+            
             $cp
                 .addClass( mainMenuInactCss )
                 .removeClass( mainMenuActCss );
@@ -564,6 +590,19 @@
         // Initialize
         mainMenuDeactivate();
         
+        function mainMenuOffTransX() {
+            
+            mainMenuDeactivate();
+            
+            $cp.on( 'transitionend webkitTransitionEnd oTransitionEnd', function( e ) {
+                if ( event.propertyName == 'transform' ) {
+                    transX( $cp );
+                    transX( $mainMenuOverlay );
+                }
+                $( this ).off( e );
+            } );
+        }
+        
         function mainMenuResetScroll() {
             $mainHrAsCtCr = $cp.find( '.main-hr-aside---ct_cr' );
             
@@ -572,12 +611,14 @@
         
         // Toggle
         function mainMenuToggle() {
+            
             if ( $cp.hasClass( mainMenuInactCss ) ) {
                 mainMenuActivate();
                 mainMenuResetScroll();
             }
+            
             else if ( $cp.hasClass( mainMenuActCss ) ) {
-                mainMenuDeactivate();
+                mainMenuOffTransX();
             }
         }
         
@@ -613,7 +654,7 @@
         // Deactivate via external click
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             if ( $cp.hasClass( mainMenuActCss ) && ( ! $( e.target ).closest( $mainMenuTog ).length ) && ( ! $( e.target ).closest( $mainHrAsCt ).length ) ) {
-                mainMenuDeactivate();
+                mainMenuOffTransX();
             }
         } );
           
@@ -622,16 +663,10 @@
         $window.load( function() {
             $document.on( 'keyup.applicator', function ( e ) {
                 if ( $cp.hasClass( mainMenuActCss ) && e.keyCode == 27 ) {
-                    mainMenuDeactivate();
+                    mainMenuOffTransX();
                 }
             } );
         } );
-        
-        $('.main-menu-func .main-hr-aside---ct').on("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd",
-         function(e){
-            console.log('end');
-            $(this).off(e);
-         });
         
     }
     initMainMenu( $( '#main-header-aside' ) );
