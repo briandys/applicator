@@ -908,14 +908,15 @@
 .applicator--theme--rounded-rectangles.applicator--theme--comments-count-action .comments-count---txt,
 .applicator--theme--rounded-rectangles.applicator--theme--search-result .search-results .main-content-heading .count---line,
 
-.applicator--theme--rounded-rectangles .main-actions-widgets---ct_cr
+.applicator--theme--rounded-rectangles .main-actions-widgets---ct_cr,
+
+.sub-nav--active > ul
 {
     border-radius: .125em;
 }
 
 /* Sub-Nav Negations */
-.applicator--theme--rounded-rectangles .main-nav .page_item_has_children > ul > li:first-child > a,
-.applicator--theme--rounded-rectangles .main-nav .menu-item-has-children > ul > li:first-child > a,
+
 .applicator--theme--rounded-rectangles .main-nav .page_item_has_children > ul > .sub-nav--inactive:first-child > a,
 .applicator--theme--rounded-rectangles .main-nav .menu-item-has-children > ul > .sub-nav--inactive:first-child > a
 {
