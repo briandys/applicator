@@ -627,6 +627,12 @@
             } );
         } );
         
+        $('.main-menu-func .main-hr-aside---ct').on("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd",
+         function(e){
+            console.log('end');
+            $(this).off(e);
+         });
+        
     }
     initMainMenu( $( '#main-header-aside' ) );
     
