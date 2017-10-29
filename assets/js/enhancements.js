@@ -52,7 +52,7 @@
     
     
     // HTML_OK Component Markup
-    function htmlokCP( $cp, $name ) {
+    function htmlokCP( $cp, $name, $css ) {
                 
         var cpMU,
             crMU,
@@ -104,7 +104,7 @@
         // Component Markup
         cpMU = $( '<div />', {
             'id': $cp,
-            'class': 'cp ' + $cp,
+            'class': 'cp ' + $css + ' ' + $cp,
             'data-name': $name + ' ' + 'CP'
         } )
             .append( crMU );
@@ -1130,7 +1130,7 @@
         
         ( function() {
             
-            var $mainActionsWidgetsMU = htmlokCP( 'main-actions-widgets', 'Main Actions Widgets' ),
+            var $mainActionsWidgetsMU = htmlokCP( 'main-actions-widgets', 'Main Actions Widgets', 'aside' ),
                 $mainActionsWidgets,
                 $mainActionsWidgetsCt,
                 $mainActionsWidgetsCtCr,
@@ -1201,9 +1201,6 @@
             // Move to content markup
             $mainActionsWidgetItems
                 .appendTo( $mainActionsWidgetsCtCr );
-            
-            // Move after Main Search
-            $mainActionsWidgets.insertAfter( $mainSearch );
             
             
             // Activate

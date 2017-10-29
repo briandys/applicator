@@ -1522,6 +1522,16 @@ select
 
 
 
+/* ------------------ Icons ------------------ */
+.icon
+{
+    pointer-events: none;
+}
+
+
+
+
+
 /* ------------------ Raster Icons ------------------ */
 .icon--raster
 {
@@ -1560,6 +1570,30 @@ select
 .icon--raster.arrow-up-2-icon
 {
     background-position: -16px 0;
+}
+
+
+
+
+
+/* ------------------ Dismiss Icon ------------------ */
+.dismiss-icon
+{
+    width: .75rem;
+    height: .75rem;
+    
+    opacity: .5;
+    
+    transition: all .3s ease-in-out;
+    transition-property: width, height, opacity;
+}
+
+.b:hover .dismiss-icon
+{
+    width: .85rem;
+    height: .85rem;
+    
+    opacity: .75;
 }
 
 
@@ -2446,6 +2480,11 @@ select
     border: 1px solid hsla( 0, 0%, 0%, .125 );
 }
 
+.applicator--main-search .main-actions-widgets---ct_cr
+{
+    width: calc( 20rem - 6rem );
+}
+
 .main-actions-widgets---ct a
 {
     color: #005fe6;
@@ -2483,22 +2522,6 @@ select
 .main-actions-widgets-dismiss---b
 {
     color: black;
-}
-
-.main-actions-widgets-dismiss---b .icon
-{
-    width: .75rem;
-    height: .75rem;
-    
-    opacity: 25;
-}
-
-.main-actions-widgets-dismiss---b:hover .icon
-{
-    width: .85rem;
-    height: .85rem;
-    
-    opacity: .75;
 }
 
 
@@ -2646,31 +2669,6 @@ select
     position: absolute;
     right: 0;
     top: 0;
-}
-
-/* Icons */
-.main-search-func .icon
-{
-    pointer-events: none;
-}
-
-/* Dismiss icons */
-.main-search-func .dismiss-icon
-{
-    width: .75rem;
-    width: var(--dismiss-icon--width);
-    
-    height: .75rem;
-    height: var(--dismiss-icon--height);
-    
-    opacity: .75;
-    transition: opacity .125s ease-in-out;
-}
-
-.main-search-func .main-search-tog---b:hover .dismiss-icon,
-.main-search-func .search-form-reset-axn---b:hover .dismiss-icon
-{
-    opacity: 1;
 }
 
 /* Placeholder Text */
@@ -2860,29 +2858,6 @@ select
     background-color: transparent;
 }
 
-.main-menu-toggle .icon
-{
-    pointer-events: none;
-}
-
-.main-menu-toggle .dismiss-icon
-{
-    width: .75rem;
-    width: var(--dismiss-icon--width);
-    
-    height: .75rem;
-    height: var(--dismiss-icon--height);
-    
-    opacity: .75;
-    
-    transition: opacity .125s ease-in-out;
-}
-
-.main-menu--active .main-menu-tog---b:hover .icon
-{
-    opacity: 1;
-}
-
 .applicator--main-menu--active
 {
     /* Prevent Scroll on Root */
@@ -2947,18 +2922,10 @@ select
     display: flex;
 }
 
-.sub-nav-toggle .icon
-{
-    pointer-events: none;
-}
-
 .sub-nav-func .sub-nav-toggle .arrow-icon
 {
     width: .75rem;
-    width: var(--dismiss-icon--width);
-    
     height: .75rem;
-    height: var(--dismiss-icon--height);
 }
 
 .sub-nav--active > .sub-nav-toggle .arrow-icon
