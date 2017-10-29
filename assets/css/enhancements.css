@@ -444,24 +444,6 @@ select
     z-index: 99;
 }
 
-/* Toggle icon */
-.main-nav .sub-nav-toggle .icon--vector
-{
-    opacity: .5;
-    
-    transition: all .3s ease-in-out;
-    transition-property: width height opacity;
-}
-
-.main-nav .sub-nav-toggle:hover .icon,
-.main-nav .sub-nav--active > .sub-nav-toggle .icon
-{
-    width: .85rem;
-    height: .85rem;
-    
-    opacity: 1;
-}
-
 /* Root Nav Item Indicator */
 .main-nav---ct_cr > .menu > ul > li > a:hover > .main-navi---a_l
 {
@@ -2477,7 +2459,9 @@ select
     
     background-color: white;
  
-    border: 1px solid hsla( 0, 0%, 0%, .125 );
+    border: 1px solid hsla(0, 0%, 0%, .125);
+    
+    box-shadow: 0 2px 4px hsla(0, 0%, 0%, .05);
 }
 
 .applicator--main-search .main-actions-widgets---ct_cr
@@ -2926,6 +2910,20 @@ select
 {
     width: .75rem;
     height: .75rem;
+    
+    opacity: .5;
+    
+    transition: all .3s ease-in-out;
+    transition-property: width, height, opacity;
+}
+
+.sub-nav-func .sub-nav-tog---b:hover .arrow-icon,
+.sub-nav-func .sub-nav--active > .sub-nav-toggle .arrow-icon
+{
+    width: .85rem;
+    height: .85rem;
+    
+    opacity: .75;
 }
 
 .sub-nav--active > .sub-nav-toggle .arrow-icon

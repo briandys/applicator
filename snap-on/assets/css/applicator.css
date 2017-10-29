@@ -634,8 +634,8 @@
     display: inline-block;
     vertical-align: middle;
     
-    padding-left: calc( var(--content--spacing-x) / 2 );
-    padding-right: calc( var(--content--spacing-x) / 2 );
+    padding-left: .5rem;
+    padding-right: .5rem;
     padding-top: var(--content--spacing-y);
     padding-bottom: var(--content--spacing-y);
     
@@ -646,14 +646,18 @@
 {
     content: '#';
     position: absolute;
+    left: 0;
+    top: 50%;
     
-    margin-left: .75em;
+    margin-left: 1rem;
     
     color: var(--links--fg-color););
     
     line-height: 1;
     
-    transform: translateY(50%);
+    transform: translateY(-50%);
+    
+    pointer-events: none;
 }
 
 .applicator--theme--tags .apl-tags a
