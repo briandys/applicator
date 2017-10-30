@@ -13,14 +13,20 @@ if ( ! function_exists( 'applicator_customizer_color_patterns' ) ) {
 
         $css = '
 
-        
-
+        /* Variable */
         .applicator--theme--customizer-colors--custom
         {
             --main-header--bg-color: hsl( '. $hue. ', '. $saturation. ', 50% );
         }
-
+        
+        /* Main Header */
         .main-header---cr
+        {
+            background-color: var(--main-header--bg-color);
+        }
+        
+        /* Search */
+        .main-search-func .input-text
         {
             background-color: var(--main-header--bg-color);
         }

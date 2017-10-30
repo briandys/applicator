@@ -3174,9 +3174,15 @@ select
         margin-right: 1rem;
     }
     
+    /* Search */
     .main-search-func .search-term-crt-search-text-input
     {
         max-width: 30rem;
+    }
+    
+    .main-search-func .input-text
+    {
+        background-color: transparent;
     }
 
 }
