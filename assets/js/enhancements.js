@@ -203,7 +203,7 @@
     // https://stackoverflow.com/q/2239567
     ( function() {
         
-        $( 'a' ).each( function() {
+        $( 'a, button' ).each( function() {
             var $this = $( this );
             
             if ( $this.parents().filter( function() { return $( this ).css( 'margin' ) == '-1px'; } ).eq( 0 ).css( 'margin' ) ) {
