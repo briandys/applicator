@@ -10,99 +10,103 @@
         <?php wp_head(); ?>
     </head>
     <body <?php body_class(); ?>>
+        
+        <?php
+                
+        /* ------------------------ Web Product Start ------------------------ */
+
+        // R: Go to Content Navi
+        $go_to_content_navi_obj = applicator_htmlok( array(
+            'name'      => 'Go to Content',
+            'structure' => array(
+                'type'      => 'object',
+                'subtype'   => 'navigation item',
+                'attr'      => array(
+                    'a'         => array(
+                        'href'      => esc_url( '#content' ),
+                    ),
+                ),
+                'id'        => 'go-ct-navi---a',
+                'title'     => 'Go to Content',
+                'root_css'  => 'skip-link',
+            ),
+            'css'       => 'go-ct',
+            'content'   => array(
+                'object'        => array(
+                    array(
+                        'txt'       => esc_html__( 'Go to Content', 'applicator' ),
+                    ),
+                ),
+            ),
+        ) );
+
+        // R: Go to Content Nav
+        $go_to_content_nav_cp = applicator_htmlok( array(
+            'name'      => 'Go to Content',
+            'structure' => array(
+                'type'      => 'component',
+                'subtype'   => 'navigation',
+            ),
+            'id'        => 'go-content-nav',
+            'root_css'  => 'go-content-nav',
+            'css'       => 'go-ct',
+            'content'   => array(
+                'component'     => $go_to_content_navi_obj,
+            ),
+        ) );
+
+
+        // R: Browser Upgrade Note Text
+        $browser_upgrade_note_txt = sprintf( '<p>%1$s <a href="%3$s">%2$s</a></p>',
+            esc_html__( 'You are using an outdated browser. Please upgrade your browser to improve your experience.', 'applicator' ),
+            esc_html__( 'Upgrade Browser', 'applicator' ),
+            esc_url( 'http://browsehappy.com/' )
+        );
+
+
+        // R: Browser Upgrade Note
+        $browser_upgrade_obj = applicator_htmlok( array(
+            'name'      => 'Browser Upgrade',
+            'structure' => array(
+                'type'      => 'object',
+                'subtype'   => 'note',
+                'layout'    => 'inline',
+            ),
+            'content'       => array(
+                'object'        => array(
+                    array(
+                        'txt'   => $browser_upgrade_note_txt,
+                    ),
+                ),
+                'before'    => '<!--[if lt IE 8]>',
+                'after'    => '<![endif]-->',
+            ),
+        ) );
+
+
+        // E: Web Product Start
+        $web_product_start_cn = applicator_htmlok( array(
+            'name'      => 'Web Product Start',
+            'structure' => array(
+                'type'      => 'constructor',
+            ),
+            'id'        => 'web-product-start',
+            'css'       => 'wbp-start',
+            'content'   => array(
+                'constructor'   => array(
+                    $go_to_content_nav_cp,
+                    $browser_upgrade_obj,
+                ),
+            ),
+            'echo'      => true,
+        ) );
+        
+        ?>
                         
-        <div id="page" class="cn web-product wbp site" data-name="Web Product CN">
+        <div id="web-product" class="cn web-product wbp site" data-name="Web Product CN">
             <div class="cr wbp---cr">
                 
                 <?php
-                
-                /* ------------------------ Web Product Start ------------------------ */
-                
-                // R: Go to Content Navi
-                $go_to_content_navi_obj = applicator_htmlok( array(
-                    'name'      => 'Go to Content',
-                    'structure' => array(
-                        'type'      => 'object',
-                        'subtype'   => 'navigation item',
-                        'attr'      => array(
-                            'a'         => array(
-                                'href'      => esc_url( '#content' ),
-                            ),
-                        ),
-                        'id'        => 'go-ct-navi---a',
-                        'title'     => 'Go to Content',
-                        'root_css'  => 'skip-link',
-                    ),
-                    'css'       => 'go-ct',
-                    'content'   => array(
-                        'object'        => array(
-                            array(
-                                'txt'       => esc_html__( 'Go to Content', 'applicator' ),
-                            ),
-                        ),
-                    ),
-                ) );
-                
-                // R: Go to Content Nav
-                $go_to_content_nav_cp = applicator_htmlok( array(
-                    'name'      => 'Go to Content',
-                    'structure' => array(
-                        'type'      => 'component',
-                        'subtype'   => 'navigation',
-                    ),
-                    'id'        => 'go-content-nav',
-                    'root_css'  => 'go-content-nav',
-                    'css'       => 'go-ct',
-                    'content'   => array(
-                        'component'     => $go_to_content_navi_obj,
-                    ),
-                ) );
-                
-                
-                // R: Browser Upgrade Note Text
-                $browser_upgrade_note_txt = sprintf( '<p>%1$s <a href="%3$s">%2$s</a></p>',
-                    esc_html__( 'You are using an outdated browser. Please upgrade your browser to improve your experience.', 'applicator' ),
-                    esc_html__( 'Upgrade Browser', 'applicator' ),
-                    esc_url( 'http://browsehappy.com/' )
-                );
-                
-                
-                // R: Browser Upgrade Note
-                $browser_upgrade_obj = applicator_htmlok( array(
-                    'name'      => 'Browser Upgrade',
-                    'structure' => array(
-                        'type'      => 'object',
-                        'subtype'   => 'note',
-                        'layout'    => 'inline',
-                    ),
-                    'content'       => array(
-                        'object'        => array(
-                            array(
-                                'txt'   => $browser_upgrade_note_txt,
-                            ),
-                        ),
-                        'before'    => '<!--[if lt IE 8]>',
-                        'after'    => '<![endif]-->',
-                    ),
-                ) );
-                
-                
-                // E: Web Product Start
-                $web_product_start_cn = applicator_htmlok( array(
-                    'name'      => 'Web Product Start',
-                    'structure' => array(
-                        'type'      => 'constructor',
-                    ),
-                    'id'        => 'web-product-start',
-                    'css'       => 'wbp-start',
-                    'content'   => array(
-                        'constructor'   => array(
-                            $go_to_content_nav_cp,
-                            $browser_upgrade_obj,
-                        ),
-                    ),
-                    'echo'      => true,
-                ) );
                 
                 
                 /* ------------------------ Main Header ------------------------ */
@@ -290,5 +294,5 @@
                 
                 ?>
                 
-                <section id="content" class="cn main-content site-content" data-name="Main Content">
+                <section id="content" class="cn main-content site-content" data-name="Main Content CN">
                     <div class="cr main-content---cr">

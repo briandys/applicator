@@ -56,11 +56,16 @@
 .site--root .site-main-info,
 .view--multisite-directory .post-banner-visual img,
 .view--multisite-directory .entry-content,
+
 .applicator--theme--post-meta .post-published-glabel,
+.applicator--theme--post-meta .post-modified-glabel,
 .applicator--theme--post-meta .post-published-time-stamp-dtstamp,
+.applicator--theme--post-meta .post-modified-time-stamp-dtstamp,
 .applicator--theme--post-meta .post-meta .comma---sep,
 .applicator--theme--post-meta .post-modified,
 .applicator--theme--post-meta .post-published-by-glabel,
+.applicator--theme--post-meta .post-modified-by-glabel,
+
 .applicator--theme--categories .post-categories-glabel,
 .applicator--theme--tags .post-tags-glabel,
 .applicator--theme--entry-nav .entry-navi .colon---sep,
@@ -690,6 +695,7 @@
 
 /* ------------------ Post Meta ------------------ */
 .applicator--theme--post-meta .post-published-date-stamp-dtstamp .txt,
+.applicator--theme--post-meta .post-modified-date-stamp-dtstamp .txt,
 .applicator--theme--comment-meta .comment-published-date-stamp-dtstamp .txt
 {
     display: block;
@@ -698,12 +704,14 @@
 }
 
 .applicator--theme--post-meta .post-published-date-stamp-dtstamp .day---txt,
+.applicator--theme--post-meta .post-modified-date-stamp-dtstamp .day---txt,
 .applicator--theme--comment-meta .comment-published-date-stamp-dtstamp .day---txt
 {
     font-weight: bold;
 }
 
 .applicator--theme--post-meta .post-published-date-stamp-dtstamp .month---txt,
+.applicator--theme--post-meta .post-modified-date-stamp-dtstamp .month---txt,
 .applicator--theme--comment-meta .comment-published-date-stamp-dtstamp .month---txt
 {
     text-transform: uppercase;
@@ -711,24 +719,28 @@
 }
 
 .applicator--theme--post-meta .post-published-date-stamp-dtstamp .year---txt,
+.applicator--theme--post-meta .post-modified-date-stamp-dtstamp .year---txt,
 .applicator--theme--comment-meta .comment-published-date-stamp-dtstamp .year---txt
 {
     font-size: .875rem;
 }
 
 .applicator--theme--post-meta .post-pub-d-stamp-dtstamp---a,
+.applicator--theme--post-meta .post-mod-d-stamp-dtstamp---a,
 .applicator--theme--comment-meta .comment-pub-d-stamp-dtstamp---a
 {
     color: var(--post-meta--fg-color);
 }
 
 .applicator--theme--post-meta .post-pub-d-stamp-dtstamp---a:hover,
+.applicator--theme--post-meta .post-mod-d-stamp-dtstamp---a:hover,
 .applicator--theme--comment-meta .comment-pub-d-stamp-dtstamp---a:hover
 {
     text-decoration: none;
 }
 
 .applicator--theme--post-meta .post-pub-d-stamp-dtstamp---a_l,
+.applicator--theme--post-meta .post-mod-d-stamp-dtstamp---a_l,
 .applicator--theme--comment-meta .comment-pub-d-stamp-dtstamp---a_l
 {
     display: block;
@@ -739,6 +751,13 @@
     
     border: 1px solid lightgray;
     border: var(--post-meta--border);
+}
+
+.applicator--theme--post-meta .post-published,
+.applicator--theme--post-meta .post-modified
+{
+    display: inline-block;
+    vertical-align: middle;
 }
 
 
@@ -1350,6 +1369,7 @@
     margin-right: auto;
     
     max-width: 48rem;
+    max-width: 100%;
 }
 
 /* Main Header */

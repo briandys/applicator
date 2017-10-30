@@ -1,5 +1,5 @@
                     </div>
-                </section><!-- Main Content -->
+                </section><!-- Main Content CN -->
 
                 <?php
 

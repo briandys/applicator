@@ -26,11 +26,11 @@
         tabKeyActCss = 'tab-key--active',
         tabKeyInactCss = 'tab-key--inactive',
         
-        $page = $( '#page' ),
+        $webProduct = $( '#web-product' ),
+        $webProductContainer = $webProduct.find( '.wbp---cr' ),
         
         pageHeight,
         
-        $webProductContainer = $page.find( '.wbp---cr' ),
         $webProductCopyright = $( '#copyright' ),
         copyrightHeight = $webProductCopyright.height(),
         pageShortCss = 'page--short',
@@ -51,7 +51,7 @@
     
     
     
-    // HTML_OK Component Markup
+    /* ------------------------ HTML_OK Component Markup ------------------------ */
     function htmlokCP( $cp, $name, $css ) {
                 
         var cpMU,
@@ -113,6 +113,10 @@
     }
     
     
+    
+    
+    
+    /* ------------------------ HTML_OK Button Object Markup ------------------------ */
     function htmlokButtonOBJ( $obj, $name, $label, $icon, $css ) {
         
         var toggleObjMU,
@@ -160,6 +164,8 @@
     
     
     
+    /* ------------------------ Transition Entrance and Exit ------------------------ */
+    
     // Transition Entrance
     function transN( $elem ) {
         $elem
@@ -178,8 +184,7 @@
     
     
     
-    
-    // Remove Empty Containers
+    /* ------------------------ Remove Empty Containers ------------------------ */
     function initRemoveEmpty( $elem ) {
         $( $elem ).each( function() {
             var $this = $( this );
@@ -194,9 +199,25 @@
     
     
     
-    
+    /* ------------------------ Avoid tabbing on Visually Hidden elements ------------------------ */
+    // https://stackoverflow.com/q/2239567
+    ( function() {
         
-    // Remove Hash
+        $( 'a' ).each( function() {
+            var $this = $( this );
+            
+            if ( $this.parents().filter( function() { return $( this ).css( 'margin' ) == '-1px'; } ).eq( 0 ).css( 'margin' ) ) {
+                $this.attr( 'tabindex', -1 );
+            }
+        } );
+        
+    }() );
+    
+    
+    
+    
+    
+    /* ------------------------ Remove Hash ------------------------ */
     // https://stackoverflow.com/a/5298684
     function removeHash() { 
         window.history.pushState( '', document.title, window.location.pathname );
@@ -349,7 +370,7 @@
             } );
         } );
         
-    } // Go to Content Nav
+    }
     initGoContentNav( $( '#go-content-nav' ) );
     
     
@@ -401,8 +422,6 @@
                 .addClass( aplgoStartNavInactCss )
                 .removeClass( aplgoStartNavActCss );
         }
-        
-        // Initiate
         goStartNavDeactivate();
         
         function goStartNav() {
@@ -426,11 +445,17 @@
         }
         goStartNav();
         
-        $goStartNaviA.on( 'click.applicator', function() {
-            
+        
+        // Focus In > Activate
+        $goStartNaviA.on( 'focusin.applicator', function() {
+            goStartNavActivate();
         } );
+
         
-        
+        // Focus Out > Deactivate
+        $goStartNaviA.on( 'focusout.applicator', function() {
+            goStartNavDeactivate();
+        } );
         
         
         // Add Icon to Button
@@ -438,7 +463,8 @@
         $goStartNaviAL.append( $goStartNavArrowIco );
         
         
-        new ResizeSensor( $page, function() {
+        // Resize Sensor
+        new ResizeSensor( $webProduct, function() {
             goStartNav();
         } );
     }
@@ -2093,7 +2119,7 @@
             
             function pageHeightCSS() {
                 
-                pageHeight = $page.height();
+                pageHeight = $webProduct.height();
 
                 if ( ( pageHeight ) <= ( window.innerHeight ) ) {
 
@@ -2115,7 +2141,7 @@
             pageHeightCSS();
             
             
-            new ResizeSensor( $page, function() {
+            new ResizeSensor( $webProduct, function() {
                 pageHeightCSS();
             } );
         
