@@ -1115,6 +1115,11 @@ select
     padding-bottom: 1em;
 }
 
+.search-results .excerpt-link
+{
+    display: block;
+}
+
 
 
 
