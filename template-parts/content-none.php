@@ -73,6 +73,14 @@ $post_classes = implode( ' ', $post_classes );
                 get_search_form();
                 $search_ob_content = ob_get_contents();
                 ob_end_clean();
+                
+                $search_spiel = '';
+                if ( is_404() ) {
+                    $search_spiel = esc_html__( 'Please try searching.', 'applicator' );
+                }
+                else {
+                    $search_spiel = esc_html__( 'Please try another search term.', 'applicator' );
+                }
                     
                 // E: Post Content
                 $post_content = applicator_htmlok( array(
@@ -83,7 +91,7 @@ $post_classes = implode( ' ', $post_classes );
                     'content'   => array(
                         'component'     => array(
                             '<p>'.esc_html__( 'It seems we can&rsquo;t find what you&rsquo;re looking for.', 'applicator' ).'</p>',
-                            '<p>'.esc_html__( 'Please try another search term.', 'applicator' ).'</p>',
+                            '<p>'. $search_spiel. '</p>',
                             $search_ob_content,
                         ),
                     ),

@@ -15,18 +15,18 @@ if ( ! function_exists( 'applicator_post_actions' ) ) {
             $edit_post_action_mu .= '</span>';
             
             // Variables
-            $edit_term = 'Edit';
+            $edit_term = __( 'Edit', 'applicator' );
             $post_title_term = get_the_title();
             $edit_post_title_term = $edit_term.' '.$post_title_term;
             
             // R: Edit Post Action Content
             $edit_post_action_content = sprintf( $edit_post_action_mu,
                 /* 1 */ $edit_term,
-                /* 2 */ $post_title_term,
+                /* 2 */ esc_html__( $post_title_term, 'applicator' ),
                 /* 3 */ sanitize_title( $edit_term ),
                 /* 4 */ sanitize_title( $post_title_term ),
                 /* 5 */ 'edit-post-axn',
-                /* 6 */ $edit_post_title_term
+                /* 6 */ esc_attr__( $edit_post_title_term, 'applicator' )
             );
             
             // OB: Edit Post Link
@@ -72,18 +72,18 @@ if ( ! function_exists( 'applicator_comment_actions' ) ) {
             $edit_comment_action_mu .= '</span>';
             
             // Variables
-            $comment_term = esc_html__( 'Edit', 'applicator' );
-            $comment_title_term = esc_html__( 'Comment', 'applicator' ).' '.get_comment_ID();
+            $comment_term = __( 'Edit', 'applicator' );
+            $comment_title_term = __( 'Comment', 'applicator' ).' '.get_comment_ID();
             $edit_comment_title_term = $comment_term.' '.$comment_title_term;
             
             // R: Edit Post Action Content
             $edit_comment_action_content = sprintf( $edit_comment_action_mu,
                 /* 1 */ $comment_term,
-                /* 2 */ $comment_title_term,
+                /* 2 */ esc_html__( $comment_title_term, 'applicator' ),
                 /* 3 */ sanitize_title( $comment_term ),
                 /* 4 */ sanitize_title( $comment_title_term ),
                 /* 5 */ 'edit-com-axn',
-                /* 6 */ $edit_comment_title_term
+                /* 6 */ esc_attr__( $edit_comment_title_term, 'applicator' )
             );
             
             // OB: Edit Comment Link

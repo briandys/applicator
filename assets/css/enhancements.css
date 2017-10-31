@@ -15,10 +15,10 @@ Enhancements Style
 
 /* ------------------ Visually Hidden ------------------ */
 .visually-hidden,
-.main-menu-tog---b_l .show-hide---txt,
+.main-menu-toggle---b_l .show-hide---txt,
 .sub-nav-tog---b_l .show-hide---txt,
 .main-nav---h,
-.main-search-tog---b_l .show-hide---txt,
+.main-search-toggle---b_l .show-hide---txt,
 .main-search-func .search-form-search-axn .go---txt,
 .main-search-func .search-form-reset-axn .reset---txt,
 .go-start-nav-func .go-to-start---txt,
@@ -1138,6 +1138,16 @@ select
     
     min-height: 3rem;
     min-height: var(--elem--height--md);
+}
+
+/* Match the outline color of active elements with the background color */
+.main-name---a,
+.main-desc---a,
+.main-search-func .input-text,
+.main-search-func .b,
+.main-menu--inactive .main-menu-toggle---b
+{
+    outline-color: white;
 }
 
 
@@ -2814,6 +2824,7 @@ select
     top: 0;
 }
 
+/* Illusion to make the toggle look like below the overlay */
 .n.main-menu--inactive .main-menu-toggle
 {
     opacity: .25;
@@ -2842,18 +2853,18 @@ select
     overflow-y: auto;
 }
 
-.main-menu-tog---b
+.main-menu-toggle---b
 {
     width: initial;
 }
 
-.main-menu--active .main-menu-tog---b
+.main-menu--active .main-menu-toggle---b
 {
     position: relative;
     z-index: 1;
 }
 
-.main-menu-tog---b_l
+.main-menu-toggle---b_l
 {
     padding: 0;
     background-color: transparent;
@@ -3043,19 +3054,15 @@ select
 }
 
 /* Go to Content Nav */
-.applicator--go-content-nav--active .wpadminbar
+.applicator--go-content-nav--active .wpadminbar,
+.wp-admin-bar--enabled .wpadminbar
 {
     z-index: -1 !important;
 }
 
-.wp-admin-bar--enabled.vp--wp-admin-bar--wide .wpadminbar
+.wp-admin-bar--enabled .wpadminbar:hover
 {
-    z-index: -1 !important;
-}
-
-.wp-admin-bar--enabled.vp--wp-admin-bar--wide .wpadminbar:hover
-{
-    z-index: 99 !important;
+    z-index: 100 !important;
 }
 
 .wpadminbar .screen-reader-shortcut:focus

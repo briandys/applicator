@@ -81,7 +81,9 @@
 .view--inner .main-banner,
 .applicator--theme--post-format--status .blog .format-status .post-title,
 .applicator--theme--post-format--status .single .format-status .post-title,
-.applicator--theme--post-format--status .format-status .apl-post-categories
+.applicator--theme--post-format--status .format-status .apl-post-categories,
+.page .comment-md,
+.comment-creation-ability--disabled.comments-population--empty .comment-md
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -268,12 +270,6 @@
 .signed-in-account a:hover
 {
     text-decoration: underline;
-}
-
-.page .comment-md,
-.comment-creation-ability--disabled.comments-population--empty .comment-md
-{
-    display: none;
 }
 
 
@@ -933,7 +929,9 @@
 
 .applicator--theme--rounded-rectangles .main-actions-widgets---ct_cr,
 
-.sub-nav--active > ul
+.sub-nav--active > ul,
+
+.applicator--theme--rounded-rectangles .go-ct-navi---a_l
 {
     border-radius: .125em;
 }
