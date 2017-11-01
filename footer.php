@@ -56,6 +56,7 @@
                                                 'a'         => array(
                                                     'href'      => esc_url( '//applicator.dysinelab.com/' ),
                                                     'target'    => '_blank',
+                                                    'rel'       => 'noopener',
                                                     'title'     => esc_attr( 'Applicator on DysineLab' ),
                                                 ),
                                             ),

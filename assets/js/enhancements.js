@@ -164,20 +164,20 @@
     
     
     
-    /* ------------------------ Transition Entrance and Exit ------------------------ */
+    /* ------------------------ Transition Here and There ------------------------ */
     
     // Transition Entrance
-    function transN( $elem ) {
+    function transHere( $elem ) {
         $elem
-            .addClass( 'n' )
-            .removeClass( 'x' );
+            .addClass( 'here' )
+            .removeClass( 'there' );
     }
     
     // Transition Exit
-    function transX( $elem ) {
+    function transThere( $elem ) {
         $elem
-            .addClass( 'x' )
-            .removeClass( 'n' );
+            .addClass( 'there' )
+            .removeClass( 'here' );
     }
     
     
@@ -456,10 +456,7 @@
         
         
         // Variables
-        var mainMenuTogObjMu,
-            mainMenuTogBtnMu,
-            mainMenuTogBtnLmu,
-            mainMenuTogBtnLTxtMu,
+        var $mainMenuWidgetItems,
             
             mainMenuActCss = 'main-menu--active',
             mainMenuInactCss = 'main-menu--inactive',
@@ -474,15 +471,19 @@
             
             $mainHrAsH,
             $mainHrAsCt,
+            $mainHeaderAsideCtCr,
             
             $mainMenuTog,
             
             $mainMenuTogBtn,
-            $mainMenuTogBtnL,
-            $mainMenuTogBtnLTxt,
+            $mainMenuToggleLabelText,
             
-            $mainHrAsCtCr,
-            $mainMenuOverlay;
+            $mainMenuDismissButton,
+            
+            $mainMenuOverlay,
+            
+            $mainHeaderAsideWidgetGroupMU,
+            $mainHeaderAsideWidgetGroup;
         
         
         // Initializing
@@ -497,18 +498,49 @@
         }() );
         
         
-        // Create the toggle button
+        // Create Widget Items Container
+        ( function() {
+            
+            $mainMenuWidgetItems = $cp.find( '.widget' );
+            
+            $mainHeaderAsideWidgetGroupMU = $( '<div />', {
+                'class': 'grp widget-grp main-header-aside---widget-grp'
+            } );
+            
+            // Wrap in markup
+            $mainMenuWidgetItems
+                .wrapAll( $mainHeaderAsideWidgetGroupMU );
+            
+            $mainHeaderAsideWidgetGroup = $cp.find( '.main-header-aside---widget-grp' );
+            
+        }() );
+        
+        
+        // Create the Control Buttons
         ( function() {
             
             $mainHrAsH = $cp.find( $( '.main-hr-aside---h' ) );
+            $mainHeaderAsideCtCr = $cp.find( $( '.main-hr-aside---ct_cr' ) );
             
+            // Toggle
             $mainHrAsH.after(
                 htmlokButtonOBJ(
                     'main-menu-toggle',
                     'Main Menu Toggle',
+                    $mainMenuShowL,
+                    $mainMenuTogBtnShowIco,
+                    'toggle'
+                )
+            );
+            
+            // Dismiss
+            $mainHeaderAsideCtCr.prepend(
+                htmlokButtonOBJ(
+                    'main-menu-dismiss',
+                    'Main Menu Dismiss',
                     $mainMenuHideL,
                     $mainMenuTogBtnHideIco,
-                    'toggle'
+                    'dismiss'
                 )
             );
         }() );
@@ -522,8 +554,9 @@
 
             $mainMenuTog = $cp.find( '.main-menu-toggle' );
             $mainMenuTogBtn = $( '#main-menu-toggle---b' );
-            $mainMenuTogBtnL = $mainMenuTogBtn.find( $( '.main-menu-toggle---b_l' ) );
-            $mainMenuTogBtnLTxt = $mainMenuTogBtn.find( $( '.show-hide---txt' ) );
+            $mainMenuToggleLabelText = $mainMenuTogBtn.find( '.show-hide---txt' );
+
+            $mainMenuDismissButton = $( '#main-menu-dismiss---b' );
             
         }() );
         
@@ -543,14 +576,30 @@
                  'title': $mainMenuHideL
             } );
             
-            $mainMenuTogBtnLTxt.text( $mainMenuHideL );
-            $mainMenuTogBtnL.append( $mainMenuTogBtnHideIco );
-            $mainMenuTogBtnShowIco.remove();
+            $mainMenuToggleLabelText.text( $mainMenuHideL );
             
-            transN( $cp );
-            transN( $mainMenuOverlay );
+            transHere( $cp );
+            transHere( $mainMenuOverlay );
             
-            cycleTabbingOn( $cp );
+            cycleTabbingOn( $mainHeaderAsideCtCr );
+        }
+        
+        
+        // Activate and TransN
+        function mainMenuOnTransHere() {
+            
+            mainMenuActivate();
+            
+            $cp.on( 'transitionend webkitTransitionEnd oTransitionEnd', function( e ) {
+                var $this = $( this );
+                
+                if ( event.propertyName == 'transform' ) {
+                    transHere( $this );
+                    transHere( $mainMenuOverlay );
+                    console.log( 'transN' );
+                }
+                $( this ).off( e );
+            } );
         }
         
         
@@ -568,24 +617,23 @@
                  'title': $mainMenuShowL
             } );
             
-            $mainMenuTogBtnLTxt.text( $mainMenuShowL );
-            $mainMenuTogBtnL.append( $mainMenuTogBtnShowIco );
-            $mainMenuTogBtnHideIco.remove();
+            $mainMenuToggleLabelText.text( $mainMenuShowL );
             
-            cycleTabbingOff( $cp );
+            cycleTabbingOff( $mainHeaderAsideCtCr );
         }
         mainMenuDeactivate();
         
         
         // Deactivate and TransX
-        function mainMenuOffTransX() {
+        function mainMenuOffTransThere() {
             
             mainMenuDeactivate();
             
             $cp.on( 'transitionend webkitTransitionEnd oTransitionEnd', function( e ) {
                 if ( event.propertyName == 'transform' ) {
-                    transX( $cp );
-                    transX( $mainMenuOverlay );
+                    transThere( $cp );
+                    transThere( $mainMenuOverlay );
+                    console.log( 'transX' );
                 }
                 $( this ).off( e );
             } );
@@ -596,18 +644,30 @@
         function mainMenuToggle() {
             
             if ( $cp.hasClass( mainMenuInactCss ) ) {
-                mainMenuActivate();
+                mainMenuOnTransHere();
+                $mainHeaderAsideWidgetGroup.scrollTop(0);
             }
             
             else if ( $cp.hasClass( mainMenuActCss ) ) {
-                mainMenuOffTransX();
+                mainMenuOffTransThere();
             }
         }
         
         
-        // Click
+        // Click Toggle Button
         ( function() {
             $mainMenuTogBtn.on( 'click.applicator', function( e ) {
+                var $this = $( this );
+                e.preventDefault();
+                
+                mainMenuToggle();
+            } );
+        }() );
+        
+        
+        // Click Dismiss Button
+        ( function() {
+            $mainMenuDismissButton.on( 'click.applicator', function( e ) {
                 var $this = $( this );
                 e.preventDefault();
                 
@@ -635,7 +695,7 @@
         // Deactivate via external click
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             if ( $cp.hasClass( mainMenuActCss ) && ( ! $( e.target ).closest( $mainMenuTog ).length ) && ( ! $( e.target ).closest( $mainHrAsCt ).length ) ) {
-                mainMenuOffTransX();
+                mainMenuOffTransThere();
             }
         } );
           
@@ -644,7 +704,7 @@
         $window.load( function() {
             $document.on( 'keyup.applicator', function ( e ) {
                 if ( $cp.hasClass( mainMenuActCss ) && e.keyCode == 27 ) {
-                    mainMenuOffTransX();
+                    mainMenuOffTransThere();
                 }
             } );
         } );
@@ -1116,7 +1176,7 @@
     /* ------------------------ Main Actions ------------------------ */
     function initMainActions() {
         
-        var $mainActionsWidgetItems = $mainActions.find( '.main-actions---ct_cr > .widget:not( .widget_search ):not( .widget_nav_menu )' );
+        var $mainActionsWidgetItems = $mainActions.find( '.main-actions---ct_cr > .widget:not( .widget_search )' );
         
         if ( ! $mainActionsWidgetItems.length ) {
             $html.removeClass( aplApplicatorMainActionsWidgetsTerm );
@@ -1135,6 +1195,7 @@
                 $mainActionsWidgetsCtCr,
                 $mainActionsWidgetsH,
                 
+                $mainActionsWidgetsToggleShowLabel = aplDataMainActionsWidgets.mainActionsWidgetsShowLabel,
                 $mainActionsWidgetsToggleHideLabel = aplDataMainActionsWidgets.mainActionsWidgetsHideLabel,
                 $mainActionsWidgetsToggleLabel = aplDataMainActionsWidgets.mainActionsWidgetsToggleLabel,
                 $mainActionsWidgetsToggleIcon = $( aplDataMainActionsWidgets.mainActionsWidgetsToggleIcon ),
@@ -1143,13 +1204,15 @@
                 $mainActionsWidgetsToggle,
                 $mainActionsWidgetsToggleButton,
                 $mainActionsWidgetsDismissButton,
-                $mainActionsWidgetsToggleButtonLabel,
                 $mainActionsWidgetsToggleButtonLabelText,
                 
                 mainActionsWidgetsOnCSS = 'main-actions-widgets--active',
                 mainActionsWidgetsOffCSS = 'main-actions-widgets--inactive',
                 aplMainActionsWidgetsOnCSS = 'applicator--main-actions-widgets--active',
-                aplMainActionsWidgetsOffCSS = 'applicator--main-actions-widgets--inactive';
+                aplMainActionsWidgetsOffCSS = 'applicator--main-actions-widgets--inactive',
+                
+                $mainActionsWidgetsWidgetGroupMU,
+                $mainActionsWidgetsWidgetGroup;
             
             // Wrap in markup
             $mainActionsWidgetItems
@@ -1180,7 +1243,7 @@
             );
             
             // Create Dismiss Button
-            $mainActionsWidgetsCtCr.append(
+            $mainActionsWidgetsCtCr.prepend(
                 htmlokButtonOBJ(
                     'main-actions-widgets-dismiss',
                     'Main Actions Widgets Dismiss',
@@ -1194,11 +1257,25 @@
             $mainActionsWidgetsToggle = $mainActionsWidgets.find( '.main-actions-widgets-toggle' );
             $mainActionsWidgetsToggleButton = $( '#main-actions-widgets-toggle---b' );
             $mainActionsWidgetsDismissButton = $( '#main-actions-widgets-dismiss---b' );
-            $mainActionsWidgetsToggleButtonLabel = $mainActionsWidgetsToggleButton.find( '.b_l' );
-            $mainActionsWidgetsToggleButtonLabelText = $mainActionsWidgetsToggleButton.find( '.l' );
+            $mainActionsWidgetsToggleButtonLabelText = $mainActionsWidgetsToggleButton.find( '.show-hide---txt' );
+            
+            // Create Widget Items Container
+            ( function() {
+
+                $mainActionsWidgetsWidgetGroupMU = $( '<div />', {
+                    'class': 'grp widget-grp main-actions-widgets---widget-grp'
+                } );
+
+                // Wrap in markup
+                $mainActionsWidgetItems
+                    .wrapAll( $mainActionsWidgetsWidgetGroupMU );
+
+                $mainActionsWidgetsWidgetGroup = $mainActionsWidgets.find( '.main-actions-widgets---widget-grp' );
+
+            }() );
             
             // Move to content markup
-            $mainActionsWidgetItems
+            $mainActionsWidgetsWidgetGroup
                 .appendTo( $mainActionsWidgetsCtCr );
             
             
@@ -1214,8 +1291,10 @@
 
                 $mainActionsWidgetsToggleButton.attr( {
                      'aria-expanded': 'true',
-                     'title': $mainActionsWidgetsToggleLabel
+                     'title': $mainActionsWidgetsToggleHideLabel
                 } );
+            
+                $mainActionsWidgetsToggleButtonLabelText.text( $mainActionsWidgetsToggleHideLabel );
 
                 cycleTabbingOn( $mainActionsWidgets );
             }
@@ -1233,8 +1312,10 @@
 
                 $mainActionsWidgetsToggleButton.attr( {
                      'aria-expanded': 'false',
-                     'title': $mainActionsWidgetsToggleLabel
+                     'title': $mainActionsWidgetsToggleShowLabel
                 } );
+            
+                $mainActionsWidgetsToggleButtonLabelText.text( $mainActionsWidgetsToggleShowLabel );
 
                 cycleTabbingOff( $mainActionsWidgets );
             }
@@ -2169,8 +2250,8 @@
 
         var scrollPosition,
             mainBannerScale,
-            mainBannerBlur,
             mainBannerTranslateY,
+            mainBannerOpacity,
 
             $mainMediaBanner = $mainBanner.find( '.main-media-banner' ),
 
@@ -2184,7 +2265,6 @@
 
             scrollPosition = $( this ).scrollTop();
             mainBannerScale = ( scrollPosition / ( mainBannerOffsetHeight / .3 ) ) + 1;
-            mainBannerBlur = ( mainBannerOffsetHeight ) * scrollPosition;
             mainBannerTranslateY = ( 10 / mainBannerOffsetHeight ) * scrollPosition;
             mainBannerOpacity = 1 - ( ( scrollPosition - mainBannerOffsetHeightHalf ) / mainBannerHeightHalf );
 

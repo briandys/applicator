@@ -52,8 +52,7 @@ Enhancements Style
 .applicator--comments--active .comments-toggle .show-hide---txt,
 .main-actions-widgets---h,
 .main-actions-widgets-toggle---l,
-.main-actions-widgets-dismiss---l,
-.main-menu-dismiss---l
+.main-actions-widgets-dismiss---l
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -118,10 +117,10 @@ Enhancements Style
 
 /* Overlay Active */
 .applicator--main-menu--active .overlay--main-menu-func,
-.applicator--main-menu .here.overlay--main-menu-func,
+.applicator--main-menu .n.overlay--main-menu-func,
 
 .applicator--go-content-nav--active .overlay--go-content-nav-func,
-.applicator--go-content-nav .here.overlay--go-content-nav-func
+.applicator--go-content-nav .n.overlay--go-content-nav-func
 {
     bottom: 0%;
     z-index: 99;
@@ -132,8 +131,8 @@ Enhancements Style
 }
 
 /* Exit Transition */
-.applicator--main-menu--inactive .there.overlay--main-menu-func,
-.applicator--go-content-nav--inactive .there.overlay--go-content-nav-func
+.applicator--main-menu--inactive .x.overlay--main-menu-func,
+.applicator--go-content-nav--inactive .x.overlay--go-content-nav-func
 {
     opacity: 0;
 }
@@ -1146,8 +1145,7 @@ select
 .main-desc---a,
 .main-search-func .input-text,
 .main-search-func .b,
-.main-menu--inactive .main-menu-toggle---b,
-.main-actions-widgets-toggle---b
+.main-menu--inactive .main-menu-toggle---b
 {
     outline-color: white;
 }
@@ -2405,8 +2403,7 @@ select
     width: 100%;
 }
 
-
-/* Setup for Widget > Menu 
+/* Setup for Widget > Menu */
 .main-actions .widget_nav_menu .menu
 {
     display: flex;
@@ -2433,7 +2430,6 @@ select
 {
     padding-right: 6rem;
 }
-*/
 
 
 
@@ -2463,6 +2459,10 @@ select
     position: absolute;
     right: 0;
     top: 100%;
+    
+    margin-bottom: 1rem;
+    
+    transform: translate(0, -.5rem);
 }
 
 /* Physical */
@@ -2472,8 +2472,12 @@ select
     
     width: 30rem;
     max-width: 100vw;
+    min-width: 20rem;
     
-    transform: translateY(-.5rem);
+    background-color: white;
+    
+    /* Border and Shadow combo */
+    box-shadow: 0 0 0 1px hsla(0, 0%, 0%, .1), 0 .5rem 1rem hsla(0, 0%, 0%, .05);
 }
 
 /* Triangle */
@@ -2497,7 +2501,7 @@ select
     
     transform-origin: 0 0;
     transform: rotate(135deg) scale(.75);
-    box-shadow: -2px 2px 1px -1px hsla(0, 0%, 25%, .25);
+    box-shadow: -2px 2px 2px 0px hsla(0, 0%, 25%, .05)
 }
 
 .applicator--main-search .main-actions-widgets---ct_cr
@@ -2513,19 +2517,6 @@ select
 .main-actions-widgets--active .main-actions-widgets---ct
 {
     z-index: 100;
-}
-
-.main-actions-widgets---widget-grp
-{
-    width: 100%;
-    max-height: 20rem;
-    
-    background-color: white;
-    
-    /* Border and Shadow combo */
-    box-shadow: 0 0 0 1px hsla(0, 0%, 0%, .1), 0 .5rem 1rem hsla(0, 0%, 0%, .05);
-    
-    overflow-y: auto;
 }
 
 .main-actions-widgets .b_l
@@ -2602,7 +2593,8 @@ select
 
 .applicator--main-search.applicator--main-menu.main-header-aside--disabled .main-search-func .search-term-crt-search-text-input
 {
-    padding-left: 0;
+    padding-left: 1rem;
+    padding-left: var(--content--spacing-x);
 }
 
 .main-search-func .search-term-crt-search-text-input
@@ -2740,7 +2732,7 @@ select
 
 
 
-/* ------------------ Main Menu ------------------ */
+/* ------------------ Main Menu - Function ------------------ */
 
 /* Hide while DOM Unready */
 .applicator--main-menu.dom--unready .main-header-aside
@@ -2748,8 +2740,18 @@ select
     display: none;
 }
 
+/* This will shoulder the position when active */
+.main-menu--active,
+.n.main-menu-func
+{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+
 /* This will enable the hamburger menu to be positioned with max-width, centered layout */
-.main-menu-func
+.main-menu--inactive .main-hr-aside---hr
 {
     position: absolute;
     left: 0;
@@ -2764,7 +2766,7 @@ select
     transition: transform .3s ease-in-out;
 }
 
-/* To hide the menu */
+/* To hide the menu, taking away the positioning from .main-menu--active */
 .main-menu--inactive .main-hr-aside---ct
 {
     position: absolute;
@@ -2775,34 +2777,13 @@ select
     transform: translateX(-100%);
 }
 
-.main-menu--active .main-hr-aside---ct,
-.here.main-menu--inactive .main-hr-aside---ct
-{
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 100;
-}
-
-/* To position the activate toggle action */
-.main-menu-func .main-menu-toggle
-{
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-/* The menu container */
-.main-menu-func .main-hr-aside---ct_cr
+.main-menu--active .main-hr-aside---ct
 {
     position: relative;
-    
-    width: 30rem;
-    max-width: calc( 100vw - 3rem );
 }
 
 /* Side shadow */
-.main-menu-func .main-hr-aside---ct_cr:before
+.main-menu-func .main-hr-aside---ct::before
 {
     /* Shadow Gradient */
     content: '';
@@ -2824,21 +2805,47 @@ select
 }
 
 /* Hide Side Shadow */
-.main-menu--inactive .main-hr-aside---ct_cr:before
+.main-menu--inactive .main-hr-aside---ct::before
 {
     opacity: 0;
 }
 
 /* Show Side Shadow */
-.main-menu--active .main-hr-aside---ct_cr:before
+.main-menu--active .main-hr-aside---ct::before
 {
     opacity: 1;
 }
 
-/* The physical menu */
-.main-header-aside---widget-grp
+/* To position the activate toggle action */
+.main-menu-func .main-menu-toggle
 {
-    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Illusion to make the toggle look like below the overlay */
+.n.main-menu--inactive .main-menu-toggle
+{
+    opacity: .25;
+}
+
+/* To position the deactivate toggle action */
+.main-menu--active .main-menu-toggle
+{
+    left: 100%;
+    
+    transition: left .3s ease-in-out;
+}
+
+/* The physical menu */
+.main-menu-func .main-hr-aside---ct_cr
+{
+    position: relative;
+    
+    width: 30rem;
+    max-width: calc( 100vw - 3rem );
+    
     height: 100vh;
     
     background-color: hsl(0, 0%, 98%);
@@ -2846,18 +2853,21 @@ select
     overflow-y: auto;
 }
 
-.main-menu-toggle---b_l,
-.main-menu-dismiss---b_l
+.main-menu-toggle---b
+{
+    width: initial;
+}
+
+.main-menu--active .main-menu-toggle---b
+{
+    position: relative;
+    z-index: 1;
+}
+
+.main-menu-toggle---b_l
 {
     padding: 0;
     background-color: transparent;
-}
-
-.main-menu-dismiss
-{
-    position: absolute;
-    left: 100%;
-    top: 0;
 }
 
 .applicator--main-menu--active
@@ -2878,20 +2888,7 @@ select
     margin-top: 0;
 }
 
-/* Hidden initially - important so that focusable elements are hidden */
-.main-menu--inactive .main-hr-aside---ct_cr
-{
-    display: none;
-}
-
-/* Lock in block upon start of transition exit (deactivating while in n) */
-.here.main-menu--inactive .main-hr-aside---ct_cr
-{
-    display: block;
-}
-
-/* Maintain block until transition exit (deactivated while in x) */
-.there.main-menu--inactive .main-hr-aside---ct_cr
+.x.main-menu--inactive .main-hr-aside---ct_cr > *
 {
     display: none;
 }

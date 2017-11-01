@@ -36,7 +36,7 @@
     
     
         // Widget Content
-    $( '.widget-content---ct_cr > *' ).each( function() {
+    $( '.widget-content---ct_cr > *:not( img )' ).each( function() {
         var $this = $( this );
         
         if ( $this.html().replace(/\s|&nbsp;/g, '' ).length == 0 ) {

@@ -927,7 +927,7 @@
 .applicator--theme--rounded-rectangles.applicator--theme--comments-count-action .comments-count---txt,
 .applicator--theme--rounded-rectangles.applicator--theme--search-result .search-results .main-content-heading .count---line,
 
-.applicator--theme--rounded-rectangles .main-actions-widgets---ct_cr,
+.applicator--theme--rounded-rectangles .main-actions-widgets---widget-grp,
 
 .sub-nav--active > ul,
 
@@ -1378,7 +1378,7 @@
 .applicator--theme--layout .main-info---cr,
 .applicator--theme--layout .main-nav---cr,
 .applicator--theme--layout .main-actions---cr,
-.applicator--theme--layout .main-menu--inactive .main-hr-aside---hr_cr
+.applicator--theme--layout .main-menu-func .main-hr-aside---cr
 {
     margin-left: auto;
     margin-right: auto;
@@ -1386,7 +1386,7 @@
     max-width: 100%;
 }
 
-.applicator--theme--layout .main-menu--inactive .main-hr-aside---hr_cr
+.applicator--theme--layout .main-menu-func .main-hr-aside---cr
 {
     position: relative;
 }
