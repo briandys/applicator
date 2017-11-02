@@ -1504,15 +1504,6 @@ select
     font-size: .75rem;
 }
 
-.applicator--go-start-nav--active .copyright
-{
-    padding-left: 3rem;
-    padding-left: var(--spacing--toggle-allowance);
-    
-    padding-right: 3rem;
-    padding-right: var(--spacing--toggle-allowance);
-}
-
 .page--short .copyright
 {
     position: fixed;
@@ -2417,36 +2408,6 @@ select
 }
 
 
-/* Setup for Widget > Menu 
-.main-actions .widget_nav_menu .menu
-{
-    display: flex;
-}
-
-.applicator--main-search .main-actions .widget_nav_menu
-{
-    position: absolute;
-}
-
-.main-actions .main-actions---ct_cr
-{
-    display: flex;
-    justify-content: flex-end;
-}
-
-.applicator--main-search .main-actions---ct_cr,
-.applicator--main-actions-widgets .main-actions---ct_cr
-{
-    padding-right: 3rem;
-}
-
-.applicator--main-search.applicator--main-actions-widgets .main-actions---ct_cr
-{
-    padding-right: 6rem;
-}
-*/
-
-
 
 
 
@@ -2516,18 +2477,6 @@ select
     max-width: calc( 100vw - 6rem );
 }
 
-/*
-.main-actions-widgets--active .main-actions-widgets---ct
-{
-    z-index: 100;
-}
-
-.main-actions-widgets--inactive .main-actions-widgets---ct
-{
-    display: none;
-}
-*/
-
 .main-actions-widgets .main-actions-widgets---ct
 {
     position: absolute;
@@ -2548,10 +2497,14 @@ select
     display: none;
 }
 
+.here.main-actions-widgets--inactive .main-actions-widgets---ct
+{
+    z-index: 100;
+}
+
 .here.main-actions-widgets--inactive .main-actions-widgets---ct_cr
 {
     display: block;
-    z-index: 100;
 }
 
 .there.main-actions-widgets--inactive .main-actions-widgets---ct_cr
@@ -2789,10 +2742,6 @@ select
     top: 0;
     
     width: 100%;
-    
-    /* GPU Hack */
-    transform: translateZ(0);
-    z-index: 100;
 }
 
 .there.main-menu--inactive
