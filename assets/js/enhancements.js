@@ -1316,6 +1316,24 @@
             }
             
             
+            // Activate and TransHere
+            function mainActionsWidgetsOnTransHere() {
+
+                if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOffCSS ) ) {
+
+                    mainActionsWidgetsActivate();
+
+                }
+
+                $mainActionsWidgetsCt.on( 'transitionend webkitTransitionEnd oTransitionEnd otransitionend', function() {
+                    console.log( event.propertyName );
+                    if ( event.propertyName == 'opacity' ) {
+                        transHere( $mainActionsWidgets );
+                    }
+                } );
+            }
+            
+            
             // Deactivate
             function mainActionsWidgetsDeactivate() {
                 $mainActionsWidgets
@@ -1335,20 +1353,35 @@
 
                 cycleTabbingOff( $mainActionsWidgetsCtCr );
             }
-
-            // Initialize
             mainActionsWidgetsDeactivate();
+            
+            
+            // Deactivate and TransThere
+            function mainActionsWidgetsOffTransThere() {
+
+                if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOnCSS + ' ' + 'here' ) ) {
+
+                    mainActionsWidgetsDeactivate();
+
+                    $mainActionsWidgetsCt.on( 'transitionend webkitTransitionEnd oTransitionEnd otransitionend', function() {
+                        if ( event.propertyName == 'opacity' ) {
+                            transThere( $mainActionsWidgets );
+                        }
+                    } );
+
+                }
+            }
             
             
         
             // Toggle
             function mainActionsWidgetsToggle() {
                 if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOffCSS ) ) {
-                    mainActionsWidgetsActivate();
+                    mainActionsWidgetsOnTransHere();
                     $mainActionsWidgetsWidgetGroup.scrollTop(0);
                 }
                 else if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOnCSS ) ) {
-                    mainActionsWidgetsDeactivate();
+                    mainActionsWidgetsOffTransThere();
                 }
             }
 
@@ -1364,7 +1397,7 @@
             ( function() {
                 $mainActionsWidgetsDismissButton.on( 'click.applicator', function( e ) {
                     e.preventDefault();
-                    mainActionsWidgetsToggle();
+                    mainActionsWidgetsOffTransThere();
                 } );
             }() );
         
@@ -1372,7 +1405,7 @@
             // Deactivate via external click
             $document.on( 'touchmove.applicator click.applicator', function ( e ) {
                 if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOnCSS ) && ( ! $( e.target ).closest( $mainActionsWidgetsToggle ).length ) && ( ! $( e.target ).closest( $mainActionsWidgetsCt ).length ) ) {
-                    mainActionsWidgetsDeactivate();
+                    mainActionsWidgetsOffTransThere();
                 }
             } );
 
@@ -1381,7 +1414,7 @@
             $window.load( function() {
                 $document.on( 'keyup.applicator', function ( e ) {
                     if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOnCSS ) && e.keyCode == 27 ) {
-                        mainActionsWidgetsDeactivate();
+                        mainActionsWidgetsOffTransThere();
                     }
                 } );
             } );

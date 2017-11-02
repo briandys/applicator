@@ -19,16 +19,10 @@ if ( ! function_exists( 'applicator_customizer_color_patterns' ) ) {
             --main-header--bg-color: hsl( '. $hue. ', '. $saturation. ', 50% );
         }
         
-        /* Main Header */
-        .main-header---cr
+        .main-header---cr,
+        .main-search--active .search-term-crt-search-text-input
         {
-            background-color: var(--main-header--bg-color);
-        }
-        
-        /* Search */
-        .main-search-func .input-text
-        {
-            background-color: var(--main-header--bg-color);
+            background-color: hsl( '. $hue. ', '. $saturation. ', 50% );
         }
 
         ';

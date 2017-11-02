@@ -22,11 +22,11 @@ if ( ! function_exists( 'applicator_post_actions' ) ) {
             // R: Edit Post Action Content
             $edit_post_action_content = sprintf( $edit_post_action_mu,
                 /* 1 */ $edit_term,
-                /* 2 */ esc_html_( $post_title_term ),
+                /* 2 */ esc_html( $post_title_term ),
                 /* 3 */ sanitize_title( $edit_term ),
                 /* 4 */ sanitize_title( $post_title_term ),
                 /* 5 */ 'edit-post-axn',
-                /* 6 */ esc_attr_( $edit_post_title_term )
+                /* 6 */ esc_attr( $edit_post_title_term )
             );
             
             // OB: Edit Post Link
@@ -79,11 +79,11 @@ if ( ! function_exists( 'applicator_comment_actions' ) ) {
             // R: Edit Post Action Content
             $edit_comment_action_content = sprintf( $edit_comment_action_mu,
                 /* 1 */ $comment_term,
-                /* 2 */ esc_html_( $comment_title_term ),
+                /* 2 */ esc_html( $comment_title_term ),
                 /* 3 */ sanitize_title( $comment_term ),
                 /* 4 */ sanitize_title( $comment_title_term ),
                 /* 5 */ 'edit-com-axn',
-                /* 6 */ esc_attr_( $edit_comment_title_term )
+                /* 6 */ esc_attr( $edit_comment_title_term )
             );
             
             // OB: Edit Comment Link

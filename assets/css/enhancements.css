@@ -1209,7 +1209,7 @@ select
 .main-logo--enabled .main-name,
 .main-logo--enabled .main-description
 {
-    padding-left: calc( var(--main-logo--height) + .5rem);
+    margin-left: calc( var(--main-logo--height) + .5rem);
 }
 
 /* With Main Menu */
@@ -2515,12 +2515,40 @@ select
     max-width: calc( 100vw - 6rem );
 }
 
+/*
 .main-actions-widgets--active .main-actions-widgets---ct
 {
     z-index: 100;
 }
 
 .main-actions-widgets--inactive .main-actions-widgets---ct
+{
+    display: none;
+}
+*/
+
+.main-actions-widgets .main-actions-widgets---ct
+{
+    position: absolute;
+    bottom: 100%;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+}
+
+.main-actions-widgets--active .main-actions-widgets---ct
+{
+    bottom: 0%;
+    opacity: 1;
+    z-index: 100;
+    transition: opacity .3s ease-in-out;
+}
+
+.main-actions-widgets--inactive .main-actions-widgets---ct_cr
+{
+    display: none;
+}
+
+.there.main-actions-widgets--inactive .main-actions-widgets---ct_cr
 {
     display: none;
 }
@@ -2868,15 +2896,25 @@ select
     top: 0;
 }
 
-/* Illusion to make the toggle look like below the overlay */
-.here.main-menu--inactive .main-menu-toggle .icon
+.main-menu-func .main-menu-dismiss
 {
-    opacity: .25;
+    transition: opacity .3s ease-in-out;
 }
 
 .main-menu--inactive .main-menu-dismiss
 {
     opacity: 0;
+}
+
+.here.main-menu--active .main-menu-dismiss
+{
+    opacity: 1;
+}
+
+/* Illusion to make the toggle look like below the overlay */
+.here.main-menu--inactive .main-menu-toggle .icon
+{
+    opacity: .25;
 }
 
 .applicator--main-menu--active
