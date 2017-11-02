@@ -274,10 +274,18 @@
     // ------------------------- Go to Content Nav
     function initGoContentNav( $cp ) {
         
-        if ( ! $aplApplicatorGoCtNav.length ) {
-			return;
-		}
         
+        // Gatekeeper
+        ( function() {
+            
+            if ( ! $aplApplicatorGoCtNav.length ) {
+                return;
+            }
+            
+        }() );
+        
+        
+        // Variables
         var $goCtNaviA = $( '#go-ct-navi---a' ),
             
             goCtNavActCss = 'go-content-nav--active',
@@ -286,17 +294,30 @@
             aplGoCtNavInactCss = 'applicator--go-content-nav--inactive',
             $goContentNavOverlay;
         
-        funcName = 'go-content-nav-func';
         
-        $cp
-            .addClass( funcName )
-            .addClass( funcTerm );
+        // Initializing
+        ( function() {
+            
+            funcName = 'go-content-nav-func';
         
-        overlayActivate( funcName );
+            $cp
+                .addClass( funcName )
+                .addClass( funcTerm );
+
+            overlayActivate( funcName );
+            
+        }() );
         
         
-        $goContentNavOverlay = $( '#overlay--' + funcName );
+        // Defining elements
+        ( function() {
+            
+            $goContentNavOverlay = $( '#overlay--' + funcName );
+            
+        }() );
         
+        
+        // On
         function goCtNavActivate() {
             $cp
                 .addClass( goCtNavActCss )
@@ -306,6 +327,8 @@
                 .removeClass( aplGoCtNavInactCss );
         }
         
+        
+        // Off
         function goCtNavDeactivate() {
             $cp
                 .addClass( goCtNavInactCss )
@@ -314,29 +337,40 @@
                 .addClass( aplGoCtNavInactCss )
                 .removeClass( aplGoCtNavActCss );
         }
-        
-        // Initiate
         goCtNavDeactivate();
         
-        // Focus In > Activate
-        $goCtNaviA.on( 'focusin.applicator', function() {
-            goCtNavActivate();
-        } );
-
-        // Focus Out > Deactivate
-        $goCtNaviA.on( 'focusout.applicator', function() {
-            goCtNavDeactivate();
-        } );
         
-
-        // Deactivate via keyboard ESC key
-        $window.load( function() {
-            $document.on( 'keyup.applicator', function ( e ) {
-                if ( $cp.hasClass( goCtNavActCss ) && e.keyCode == 27 ) {
-                    goCtNavDeactivate();
-                }
+        // Focus In > Activate
+        ( function() {
+            
+            $goCtNaviA.on( 'focusin.applicator', function() {
+                goCtNavActivate();
             } );
-        } );
+            
+        }() );
+        
+        
+        // // Focus Out > Deactivate
+        ( function() {
+            
+            $goCtNaviA.on( 'focusout.applicator', function() {
+                goCtNavDeactivate();
+            } );
+            
+        }() );
+        
+        
+        // Deactivate via keyboard ESC key
+        ( function() {
+            $window.load( function() {
+                $document.on( 'keyup.applicator', function ( e ) {
+                    if ( $cp.hasClass( goCtNavActCss ) && e.keyCode == 27 ) {
+                        goCtNavDeactivate();
+                    }
+                } );
+            } );
+            
+        }() );
         
         
         // Click Overlay
@@ -346,7 +380,6 @@
                 goCtNavDeactivate();
             } );
         }() );
-        
     }
     initGoContentNav( $( '#go-content-nav' ) );
     
@@ -605,7 +638,7 @@
                 
             }
 
-            $mainHrAsCt.on( 'transitionend webkitTransitionEnd oTransitionEnd otransitionend', function() {
+            $mainHrAsCt.on( 'transitionend.applicator webkitTransitionEnd.applicator oTransitionEnd.applicator otransitionend.applicator', function() {
                 if ( event.propertyName == 'transform' ) {
                     transHere( $cp );
                     transHere( $mainMenuOverlay );
@@ -642,7 +675,7 @@
             
                 mainMenuDeactivate();
 
-                $mainHrAsCt.on( 'transitionend webkitTransitionEnd oTransitionEnd otransitionend', function() {
+                $mainHrAsCt.on( 'transitionend.applicator webkitTransitionEnd.applicator oTransitionEnd.applicator otransitionend.applicator', function() {
                     if ( event.propertyName == 'transform' ) {
                         transThere( $cp );
                         transThere( $mainMenuOverlay );
@@ -1192,60 +1225,111 @@
     /* ------------------------ Main Actions ------------------------ */
     function initMainActions() {
         
+        
         var $mainActionsWidgetItems = $mainActions.find( '.main-actions---ct_cr > .widget:not( .widget_search )' );
         
-        if ( ! $mainActionsWidgetItems.length ) {
-            $html.removeClass( aplApplicatorMainActionsWidgetsTerm );
-			return;
-		}
+        // Gatekeeper
+        ( function() {
+            if ( ! $mainActionsWidgetItems.length ) {
+                $html.removeClass( aplApplicatorMainActionsWidgetsTerm );
+                return;
+            }
+
+            if ( ! $aplApplicatorMainActionsWidgets.length ) {
+                return;
+            }
+        }() );
         
-        if ( ! $aplApplicatorMainActionsWidgets.length ) {
-			return;
-		}
         
+        // Variables
+        var $mainActionsWidgetsMU,
+            $mainActionsWidgets,
+            $mainActionsWidgetsCt,
+            $mainActionsWidgetsCtCr,
+            $mainActionsWidgetsH,
+
+            $mainActionsWidgetsToggleShowLabel = aplDataMainActionsWidgets.mainActionsWidgetsShowLabel,
+            $mainActionsWidgetsToggleHideLabel = aplDataMainActionsWidgets.mainActionsWidgetsHideLabel,
+            $mainActionsWidgetsToggleLabel = aplDataMainActionsWidgets.mainActionsWidgetsToggleLabel,
+            $mainActionsWidgetsToggleIcon = $( aplDataMainActionsWidgets.mainActionsWidgetsToggleIcon ),
+            $mainActionsWidgetsToggleHideIcon = $( aplDataMainActionsWidgets.mainActionsWidgetsHideIcon ),
+
+            $mainActionsWidgetsToggle,
+            $mainActionsWidgetsToggleButton,
+            $mainActionsWidgetsDismissButton,
+            $mainActionsWidgetsToggleButtonLabelText,
+
+            mainActionsWidgetsOnCSS = 'main-actions-widgets--active',
+            mainActionsWidgetsOffCSS = 'main-actions-widgets--inactive',
+            aplMainActionsWidgetsOnCSS = 'applicator--main-actions-widgets--active',
+            aplMainActionsWidgetsOffCSS = 'applicator--main-actions-widgets--inactive',
+
+            $mainActionsWidgetsWidgetGroupMU,
+            $mainActionsWidgetsWidgetGroup;
+        
+        
+        // Initializing
         ( function() {
             
-            var $mainActionsWidgetsMU = htmlokCP( 'main-actions-widgets', 'Main Actions Widgets', 'aside' ),
-                $mainActionsWidgets,
-                $mainActionsWidgetsCt,
-                $mainActionsWidgetsCtCr,
-                $mainActionsWidgetsH,
-                
-                $mainActionsWidgetsToggleShowLabel = aplDataMainActionsWidgets.mainActionsWidgetsShowLabel,
-                $mainActionsWidgetsToggleHideLabel = aplDataMainActionsWidgets.mainActionsWidgetsHideLabel,
-                $mainActionsWidgetsToggleLabel = aplDataMainActionsWidgets.mainActionsWidgetsToggleLabel,
-                $mainActionsWidgetsToggleIcon = $( aplDataMainActionsWidgets.mainActionsWidgetsToggleIcon ),
-                $mainActionsWidgetsToggleHideIcon = $( aplDataMainActionsWidgets.mainActionsWidgetsHideIcon ),
-                
-                $mainActionsWidgetsToggle,
-                $mainActionsWidgetsToggleButton,
-                $mainActionsWidgetsDismissButton,
-                $mainActionsWidgetsToggleButtonLabelText,
-                
-                mainActionsWidgetsOnCSS = 'main-actions-widgets--active',
-                mainActionsWidgetsOffCSS = 'main-actions-widgets--inactive',
-                aplMainActionsWidgetsOnCSS = 'applicator--main-actions-widgets--active',
-                aplMainActionsWidgetsOffCSS = 'applicator--main-actions-widgets--inactive',
-                
-                $mainActionsWidgetsWidgetGroupMU,
-                $mainActionsWidgetsWidgetGroup;
+            funcName = 'main-actions-widgets-func';
             
+            $mainActionsWidgets
+                .addClass( funcTerm )
+                .addClass( funcName );
+        } );
+        
+        
+        // Create Main Actions Widgets
+        ( function() {
+
+            $mainActionsWidgetsMU = htmlokCP(
+                'main-actions-widgets',
+                'Main Actions Widgets',
+                'aside'
+            );
+
             // Wrap in markup
             $mainActionsWidgetItems
                 .wrapAll( $mainActionsWidgetsMU );
             
-            // Define initial elements
-            funcName = 'main-actions-widgets-func';
+            
+            $mainActionsWidgetsWidgetGroupMU = $( '<div />', {
+                'class': 'grp widget-grp main-actions-widgets---widget-grp'
+            } );
+
+            // Wrap in markup
+            $mainActionsWidgetItems
+                .wrapAll( $mainActionsWidgetsWidgetGroupMU );
+
+            
+        
+        }() );
+        
+        
+        // Define initial elements
+        ( function() {
+            
             $mainSearch = $( '#main-search' );
             $mainActionsWidgets = $( '#main-actions-widgets' );
             $mainActionsWidgetsCt = $mainActionsWidgets.find( '.main-actions-widgets---ct' );
             $mainActionsWidgetsCtCr = $mainActionsWidgets.find( '.main-actions-widgets---ct_cr' );
             $mainActionsWidgetsH = $mainActionsWidgets.find( '.main-actions-widgets---h' );
+            $mainActionsWidgetsWidgetGroup = $mainActionsWidgets.find( '.main-actions-widgets---widget-grp' );
+            
+        }() );
         
-            // Add CSS class names
-            $mainActionsWidgets
-                .addClass( funcTerm )
-                .addClass( funcName );
+        
+        // // Move to content markup
+        ( function() {
+            
+            $mainActionsWidgetsWidgetGroup
+                .appendTo( $mainActionsWidgetsCtCr );
+            
+        }() );
+        
+        
+        // Create the Control Buttons
+        ( function() {
             
             // Create Toggle Button
             $mainActionsWidgetsH.after(
@@ -1257,7 +1341,7 @@
                     'toggle'
                 )
             );
-            
+
             // Create Dismiss Button
             $mainActionsWidgetsCtCr.prepend(
                 htmlokButtonOBJ(
@@ -1268,161 +1352,141 @@
                     'dismiss'
                 )
             );
-            
+
             // Define toggle elements
             $mainActionsWidgetsToggle = $mainActionsWidgets.find( '.main-actions-widgets-toggle' );
             $mainActionsWidgetsToggleButton = $( '#main-actions-widgets-toggle---b' );
             $mainActionsWidgetsDismissButton = $( '#main-actions-widgets-dismiss---b' );
             $mainActionsWidgetsToggleButtonLabelText = $mainActionsWidgetsToggleButton.find( '.show-hide---txt' );
             
-            // Create Widget Items Container
-            ( function() {
-
-                $mainActionsWidgetsWidgetGroupMU = $( '<div />', {
-                    'class': 'grp widget-grp main-actions-widgets---widget-grp'
-                } );
-
-                // Wrap in markup
-                $mainActionsWidgetItems
-                    .wrapAll( $mainActionsWidgetsWidgetGroupMU );
-
-                $mainActionsWidgetsWidgetGroup = $mainActionsWidgets.find( '.main-actions-widgets---widget-grp' );
-
-            }() );
-            
-            // Move to content markup
-            $mainActionsWidgetsWidgetGroup
-                .appendTo( $mainActionsWidgetsCtCr );
-            
-            
-            // Activate
-            function mainActionsWidgetsActivate() {
-                $mainActionsWidgets
-                    .addClass( mainActionsWidgetsOnCSS )
-                    .removeClass( mainActionsWidgetsOffCSS );
-
-                $html
-                    .addClass( aplMainActionsWidgetsOnCSS )
-                    .removeClass( aplMainActionsWidgetsOffCSS );
-
-                $mainActionsWidgetsToggleButton.attr( {
-                     'aria-expanded': 'true',
-                     'title': $mainActionsWidgetsToggleHideLabel
-                } );
-            
-                $mainActionsWidgetsToggleButtonLabelText.text( $mainActionsWidgetsToggleHideLabel );
-
-                cycleTabbingOn( $mainActionsWidgetsCtCr );
-            }
-            
-            
-            // Activate and TransHere
-            function mainActionsWidgetsOnTransHere() {
-
-                if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOffCSS ) ) {
-
-                    mainActionsWidgetsActivate();
-
-                }
-
-                $mainActionsWidgetsCt.on( 'transitionend webkitTransitionEnd oTransitionEnd otransitionend', function() {
-                    console.log( event.propertyName );
-                    if ( event.propertyName == 'opacity' ) {
-                        transHere( $mainActionsWidgets );
-                    }
-                } );
-            }
-            
-            
-            // Deactivate
-            function mainActionsWidgetsDeactivate() {
-                $mainActionsWidgets
-                    .addClass( mainActionsWidgetsOffCSS )
-                    .removeClass( mainActionsWidgetsOnCSS );
-
-                $html
-                    .addClass( aplMainActionsWidgetsOffCSS )
-                    .removeClass( aplMainActionsWidgetsOnCSS );
-
-                $mainActionsWidgetsToggleButton.attr( {
-                     'aria-expanded': 'false',
-                     'title': $mainActionsWidgetsToggleShowLabel
-                } );
-            
-                $mainActionsWidgetsToggleButtonLabelText.text( $mainActionsWidgetsToggleShowLabel );
-
-                cycleTabbingOff( $mainActionsWidgetsCtCr );
-            }
-            mainActionsWidgetsDeactivate();
-            
-            
-            // Deactivate and TransThere
-            function mainActionsWidgetsOffTransThere() {
-
-                if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOnCSS + ' ' + 'here' ) ) {
-
-                    mainActionsWidgetsDeactivate();
-
-                    $mainActionsWidgetsCt.on( 'transitionend webkitTransitionEnd oTransitionEnd otransitionend', function() {
-                        if ( event.propertyName == 'opacity' ) {
-                            transThere( $mainActionsWidgets );
-                        }
-                    } );
-
-                }
-            }
-            
-            
-        
-            // Toggle
-            function mainActionsWidgetsToggle() {
-                if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOffCSS ) ) {
-                    mainActionsWidgetsOnTransHere();
-                    $mainActionsWidgetsWidgetGroup.scrollTop(0);
-                }
-                else if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOnCSS ) ) {
-                    mainActionsWidgetsOffTransThere();
-                }
-            }
-
-            // Click
-            ( function() {
-                $mainActionsWidgetsToggleButton.on( 'click.applicator', function( e ) {
-                    e.preventDefault();
-                    mainActionsWidgetsToggle();
-                } );
-            }() );
-
-            // Click
-            ( function() {
-                $mainActionsWidgetsDismissButton.on( 'click.applicator', function( e ) {
-                    e.preventDefault();
-                    mainActionsWidgetsOffTransThere();
-                } );
-            }() );
-        
-        
-            // Deactivate via external click
-            $document.on( 'touchmove.applicator click.applicator', function ( e ) {
-                if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOnCSS ) && ( ! $( e.target ).closest( $mainActionsWidgetsToggle ).length ) && ( ! $( e.target ).closest( $mainActionsWidgetsCt ).length ) ) {
-                    mainActionsWidgetsOffTransThere();
-                }
-            } );
-
-
-            // Deactivate via keyboard ESC key
-            $window.load( function() {
-                $document.on( 'keyup.applicator', function ( e ) {
-                    if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOnCSS ) && e.keyCode == 27 ) {
-                        mainActionsWidgetsOffTransThere();
-                    }
-                } );
-            } );
-        
         }() );
+
+
+        // Activate
+        function mainActionsWidgetsActivate() {
+            $mainActionsWidgets
+                .addClass( mainActionsWidgetsOnCSS )
+                .removeClass( mainActionsWidgetsOffCSS );
+
+            $html
+                .addClass( aplMainActionsWidgetsOnCSS )
+                .removeClass( aplMainActionsWidgetsOffCSS );
+
+            $mainActionsWidgetsToggleButton.attr( {
+                 'aria-expanded': 'true',
+                 'title': $mainActionsWidgetsToggleHideLabel
+            } );
+
+            $mainActionsWidgetsToggleButtonLabelText.text( $mainActionsWidgetsToggleHideLabel );
+
+            cycleTabbingOn( $mainActionsWidgetsCtCr );
+        }
+
+
+        // TransHere
+        function mainActionsWidgetsTransHere() {
+
+            $mainActionsWidgetsCt.on( 'transitionend.applicator webkitTransitionEnd.applicator oTransitionEnd.applicator otransitionend.applicator', function() {
+                if ( event.propertyName == 'opacity' ) {
+                    transHere( $mainActionsWidgets );
+                }
+            } );
+
+        }
+
+
+        // Deactivate
+        function mainActionsWidgetsDeactivate() {
+            $mainActionsWidgets
+                .addClass( mainActionsWidgetsOffCSS )
+                .removeClass( mainActionsWidgetsOnCSS );
+
+            $html
+                .addClass( aplMainActionsWidgetsOffCSS )
+                .removeClass( aplMainActionsWidgetsOnCSS );
+
+            $mainActionsWidgetsToggleButton.attr( {
+                 'aria-expanded': 'false',
+                 'title': $mainActionsWidgetsToggleShowLabel
+            } );
+
+            $mainActionsWidgetsToggleButtonLabelText.text( $mainActionsWidgetsToggleShowLabel );
+
+            cycleTabbingOff( $mainActionsWidgetsCtCr );
+        }
+        mainActionsWidgetsDeactivate();
+
+
+        // TransThere
+        function mainActionsWidgetsTransThere() {
+
+            if ( $mainActionsWidgets.hasClass( 'here' ) ) {
+
+                $mainActionsWidgetsCt.on( 'transitionend.applicator webkitTransitionEnd.applicator oTransitionEnd.applicator otransitionend.applicator', function() {
+                    if ( event.propertyName == 'opacity' ) {
+                        transThere( $mainActionsWidgets );
+                    }
+                } );
+
+            }
+        }
+
+
+        // Toggle
+        function mainActionsWidgetsToggle() {
+
+            if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOffCSS ) ) {
+                mainActionsWidgetsActivate();
+                mainActionsWidgetsTransHere();
+                $mainActionsWidgetsWidgetGroup.scrollTop( 0 );
+            }
+
+            else if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOnCSS ) ) {
+                mainActionsWidgetsDeactivate();
+                mainActionsWidgetsTransThere();
+            }
+        }
+
+
+        // Toggle Click
+        ( function() {
+            $mainActionsWidgetsToggleButton.on( 'click.applicator', function( e ) {
+                e.preventDefault();
+                mainActionsWidgetsToggle();
+            } );
+        }() );
+
+
+        // Dismiss Click
+        ( function() {
+            $mainActionsWidgetsDismissButton.on( 'click.applicator', function( e ) {
+                e.preventDefault();
+                mainActionsWidgetsDeactivate();
+                mainActionsWidgetsTransThere();
+            } );
+        }() );
+
+
+        // Deactivate via external click
+        $document.on( 'touchmove.applicator click.applicator', function ( e ) {
+            if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOnCSS ) && ( ! $( e.target ).closest( $mainActionsWidgetsToggle ).length ) && ( ! $( e.target ).closest( $mainActionsWidgetsCt ).length ) ) {
+                mainActionsWidgetsDeactivate();
+                mainActionsWidgetsTransThere();
+            }
+        } );
+
+
+        // Deactivate via keyboard ESC key
+        $window.load( function() {
+            $document.on( 'keyup.applicator', function ( e ) {
+                if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOnCSS ) && e.keyCode == 27 ) {
+                    mainActionsWidgetsDeactivate();
+                    mainActionsWidgetsTransThere();
+                }
+            } );
+        } );
         
     }
-    
     initMainActions();
     
     

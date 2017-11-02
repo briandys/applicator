@@ -1108,7 +1108,8 @@ select
     padding-bottom: 1em;
 }
 
-.search-results .excerpt-link
+.search-results .excerpt-link,
+.archive .excerpt-link
 {
     display: block;
 }
@@ -2532,7 +2533,7 @@ select
     position: absolute;
     bottom: 100%;
     opacity: 0;
-    transition: opacity .3s ease-in-out;
+    transition: opacity .05s ease-in-out;
 }
 
 .main-actions-widgets--active .main-actions-widgets---ct
@@ -2540,12 +2541,17 @@ select
     bottom: 0%;
     opacity: 1;
     z-index: 100;
-    transition: opacity .3s ease-in-out;
 }
 
 .main-actions-widgets--inactive .main-actions-widgets---ct_cr
 {
     display: none;
+}
+
+.here.main-actions-widgets--inactive .main-actions-widgets---ct_cr
+{
+    display: block;
+    z-index: 100;
 }
 
 .there.main-actions-widgets--inactive .main-actions-widgets---ct_cr
