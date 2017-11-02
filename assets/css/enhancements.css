@@ -348,14 +348,6 @@ select
     visibility: hidden;
 }
 
-.data-format--img .text-node
-{
-    display: block;
-    
-    padding: .75em 1rem;
-    padding: var(--content--spacing);
-}
-
 .data-format--img .text-node:only-child,
 .data-format--img .text-node:last-child
 {
@@ -1144,6 +1136,7 @@ select
 /* Match the outline color of active elements with the background color */
 .main-name---a,
 .main-desc---a,
+.main-logo a,
 .main-search-func .input-text,
 .main-search-func .b,
 .main-menu--inactive .main-menu-toggle---b,
@@ -1177,24 +1170,32 @@ select
 .applicator--main-search .main-info---cr
 {
     padding-left: 1rem;
-    padding-left: var(--component--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--elem-dimension--md);
 }
 
 /* With Main Menu */
 .applicator--main-menu.main-header-aside--enabled .main-info---cr
 {
     padding-left: 3rem;
-    padding-left: var(--elem-dimension--md);
+}
+
+/* With Main Search */
+.applicator--main-search .main-info---cr,
+.applicator--main-actions-widgets .main-info---cr
+{
+    padding-right: 3rem;
+}
+
+/* With Main Search and Main Actions */
+.applicator--main-search.applicator--main-actions-widgets .main-info---cr
+{
+    padding-right: 6rem;
 }
 
 /* With Main Logo */
 .main-logo--enabled .main-info---cr
 {
     padding-left: 1rem;
-    padding-left: var(--component--spacing-x);
 }
 
 .main-info---ct_cr
@@ -1255,6 +1256,114 @@ select
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+
+
+
+/* ------------------ Main Name ------------------ */
+.main-name
+{
+    display: flex;
+    align-items: center;
+    
+    max-width: 100%;
+    height: 3rem;
+}
+
+.main-name---h
+{
+    font-weight: normal;
+    
+    font-size: 1.125rem;
+}
+
+.main-description--populated .main-name
+{
+    /* Reset */
+    align-items: normal;
+    height: auto;
+    
+    transform: translateY( .25rem);
+}
+
+.main-name---a
+{
+    color: white;
+    
+    text-decoration: none;
+}
+
+.main-description--empty .main-name---a
+{
+    display: flex;
+}
+
+
+
+
+
+/* ------------------ Main Description ------------------ */
+.main-description
+{
+    display: flex;
+    align-items: center;
+    
+    max-width: 100%;
+    height: 3rem;
+}
+
+.main-name--populated .main-description
+{
+    /* Reset */
+    align-items: normal;
+    height: auto;
+    
+    transform: translateY( .125rem);
+}
+
+.main-desc---a
+{
+    text-decoration: none;
+    
+    color: hsla( 100, 100%, 100%, .75);
+}
+
+.main-desc---a_l
+{
+    font-size: .75rem;
+}
+
+
+
+
+
+/* ------------------ Main Logo  ------------------ */
+.main-logo
+{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    
+    margin-top: -1.125rem;
+    
+    max-width: 100%;
+    
+    height: 2.25rem;
+}
+
+.main-logo .custom-logo-link
+{
+    display: inline-block;
+    
+    height: 100%;
+}
+
+.main-logo .custom-logo
+{
+    width: auto;
+    max-width: none;
+    height: 100%;
 }
 
 
@@ -1327,8 +1436,8 @@ select
 
 
 /* ------------------ Breadcrumbs Nav ------------------ */
-.applicator--breadcrumbs.modernizr--inlinesvg .breadcrumbs-navi--ancestor .icon--raster,
-.applicator--breadcrumbs.modernizr--no-inlinesvg .breadcrumbs-navi--ancestor .icon--vector
+.applicator--breadcrumbs.support--inlinesvg .breadcrumbs-navi--ancestor .icon--raster,
+.applicator--breadcrumbs.support--no-inlinesvg .breadcrumbs-navi--ancestor .icon--vector
 {
     display: none;
 }
@@ -1363,105 +1472,6 @@ select
 {
     margin-left: .5rem;
     transform: rotate(-90deg) scale(.5);
-}
-
-
-
-
-/* ------------------ Main Name ------------------ */
-.main-name
-{
-    display: flex;
-    
-    max-width: 100%;
-    
-    transform: translateY( .25rem);
-}
-
-.main-name---h
-{
-    /* Reset */
-    font-weight: normal;
-    
-    font-size: 1.125rem;
-}
-
-.main-description--empty .main-name
-{
-    align-items: center;
-    height: var(--elem-dimension--md);
-    transform: translateY( 0);
-}
-
-.main-name---a
-{
-    color: white;
-    color: var(--pri-fg-reverse-color);
-    
-    text-decoration: none;
-}
-
-.main-description--empty .main-name---a
-{
-    display: flex;
-}
-
-
-
-
-
-/* ------------------ Main Description ------------------ */
-.main-description
-{
-    display: flex;
-    
-    max-width: 100%;
-    
-    transform: translateY( .125rem);
-}
-
-.main-desc---a
-{
-    text-decoration: none;
-    
-    color: hsla( 100, 100%, 100%, .75);
-}
-
-.main-desc---a_l
-{
-    font-size: .75rem;
-}
-
-
-
-
-
-/* ------------------ Main Logo  ------------------ */
-.main-logo
-{
-    position: absolute;
-    left: 0;
-    top: 50%;
-    
-    margin-top: -1.125rem;
-    
-    max-width: 100%;
-    
-    height: 2.25rem;
-}
-
-.main-logo .custom-logo-link
-{
-    display: inline-block;
-    
-    height: 100%;
-}
-
-.main-logo .custom-logo
-{
-    width: auto;
-    max-width: none;
-    height: 100%;
 }
 
 
@@ -2505,20 +2515,21 @@ select
     max-width: calc( 100vw - 6rem );
 }
 
-.main-actions-widgets--inactive .main-actions-widgets---ct
-{
-    display: none;
-}
-
 .main-actions-widgets--active .main-actions-widgets---ct
 {
     z-index: 100;
 }
 
+.main-actions-widgets--inactive .main-actions-widgets---ct
+{
+    display: none;
+}
+
 .main-actions-widgets---widget-grp
 {
     width: 100%;
-    max-height: 20rem;
+    height: 20rem;
+    max-height: calc( 100vh - ( ( 3rem - .5rem ) * 2 ) );
     
     background-color: white;
     
@@ -2548,7 +2559,7 @@ select
 
 
 
-/* ------------------ Main Search - Function ------------------ */
+/* ------------------ Main Search ------------------ */
 .applicator--main-search.dom--unready .main-actions---ct_cr > .search,
 .applicator--main-search.dom--unready .main-actions---ct_cr > .widget_search
 {
@@ -2591,7 +2602,6 @@ select
     
     padding-left: 1rem;
     
-    background-color: hsl(200, 100%, 50%);
     color: white;
 }
 
@@ -2634,6 +2644,8 @@ select
     opacity: 1;
     
     padding-left: 2rem;
+    
+    background-color: hsl(200, 100%, 50%);
 }
 
 /* Main Search Form Actions */
@@ -2716,19 +2728,6 @@ select
     color: var(--placeholder-reverse-color);
 }
 
-/* Background color reset */
-.applicator--main-search .main-actions---ct_cr > .search,
-.applicator--main-search .main-actions---ct_cr > .widget_search
-{
-    background-color: transparent;
-}
-
-.main-actions---ct_cr > .search,
-.main-actions---ct_cr > .widget_search
-{
-    background-color: white;
-}
-
 .main-search-toggle .search-icon
 {
     transition: all .125s ease-in-out;
@@ -2756,6 +2755,15 @@ select
     top: 0;
     
     width: 100%;
+    
+    /* GPU Hack */
+    transform: translateZ(0);
+    z-index: 100;
+}
+
+.there.main-menu--inactive
+{
+    z-index: auto;
 }
 
 /* In order to transition during inactive and active */
@@ -2858,6 +2866,13 @@ select
     position: absolute;
     left: 100%;
     top: 0;
+    
+    
+}
+
+.main-menu--inactive .main-menu-dismiss
+{
+    opacity: 0;
 }
 
 .applicator--main-menu--active
@@ -3184,6 +3199,12 @@ select
         margin-right: auto;
     }
     
+    .post-content---ct_cr > p.data-format--img
+    {
+        float: none;
+        margin: 0;
+    }
+    
     .post-content---ct_cr .wp-caption.alignleft
     {
         margin-right: 1rem;
@@ -3195,9 +3216,9 @@ select
         max-width: 30rem;
     }
     
-    .main-search-func .input-text
+    .main-search--active .search-term-crt-search-text-input
     {
-        background-color: transparent;
+        padding-left: 0;
     }
 
 }

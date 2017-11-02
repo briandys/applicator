@@ -199,6 +199,7 @@
     function overlayActivate( funcName ) {
         
         overlayMu = $( '<div />', {
+            'id'   : overlayTerm + '--' + funcName,
             'class': overlayTerm + ' ' + overlayTerm + '--' + funcName,
             'role' : 'presentation'
         } );
@@ -277,6 +278,14 @@
 			return;
 		}
         
+        var $goCtNaviA = $( '#go-ct-navi---a' ),
+            
+            goCtNavActCss = 'go-content-nav--active',
+            goCtNavInactCss = 'go-content-nav--inactive',
+            aplGoCtNavActCss = 'applicator--go-content-nav--active',
+            aplGoCtNavInactCss = 'applicator--go-content-nav--inactive',
+            $goContentNavOverlay;
+        
         funcName = 'go-content-nav-func';
         
         $cp
@@ -285,12 +294,8 @@
         
         overlayActivate( funcName );
         
-        var $goCtNaviA = $( '#go-ct-navi---a' ),
-            
-            goCtNavActCss = 'go-content-nav--active',
-            goCtNavInactCss = 'go-content-nav--inactive',
-            aplGoCtNavActCss = 'applicator--go-content-nav--active',
-            aplGoCtNavInactCss = 'applicator--go-content-nav--inactive';
+        
+        $goContentNavOverlay = $( '#overlay--' + funcName );
         
         function goCtNavActivate() {
             $cp
@@ -332,6 +337,15 @@
                 }
             } );
         } );
+        
+        
+        // Click Overlay
+        ( function() {
+            $goContentNavOverlay.on( 'click.applicator', function( e ) {
+                e.preventDefault();
+                goCtNavDeactivate();
+            } );
+        }() );
         
     }
     initGoContentNav( $( '#go-content-nav' ) );
@@ -550,7 +564,7 @@
         ( function() {
         
             $mainHrAsCt = $cp.find( '.main-hr-aside---ct' );
-            $mainMenuOverlay = $aplWildcard.find( '.overlay--' + funcName );
+            $mainMenuOverlay = $( '#overlay--' + funcName );
 
             $mainMenuTog = $cp.find( '.main-menu-toggle' );
             $mainMenuTogBtn = $( '#main-menu-toggle---b' );
@@ -578,27 +592,24 @@
             
             $mainMenuToggleLabelText.text( $mainMenuHideL );
             
-            transHere( $cp );
-            transHere( $mainMenuOverlay );
-            
             cycleTabbingOn( $mainHeaderAsideCtCr );
         }
         
         
-        // Activate and TransN
+        // Activate and TransHere
         function mainMenuOnTransHere() {
             
-            mainMenuActivate();
+            if ( $cp.hasClass( mainMenuInactCss ) ) {
             
-            $cp.on( 'transitionend webkitTransitionEnd oTransitionEnd', function( e ) {
-                var $this = $( this );
+                mainMenuActivate();
                 
+            }
+
+            $mainHrAsCt.on( 'transitionend webkitTransitionEnd oTransitionEnd otransitionend', function() {
                 if ( event.propertyName == 'transform' ) {
-                    transHere( $this );
+                    transHere( $cp );
                     transHere( $mainMenuOverlay );
-                    console.log( 'transN' );
                 }
-                $( this ).off( e );
             } );
         }
         
@@ -624,19 +635,21 @@
         mainMenuDeactivate();
         
         
-        // Deactivate and TransX
+        // Deactivate and TransThere
         function mainMenuOffTransThere() {
             
-            mainMenuDeactivate();
+            if ( $cp.hasClass( mainMenuActCss + ' ' + 'here' ) ) {
             
-            $cp.on( 'transitionend webkitTransitionEnd oTransitionEnd', function( e ) {
-                if ( event.propertyName == 'transform' ) {
-                    transThere( $cp );
-                    transThere( $mainMenuOverlay );
-                    console.log( 'transX' );
-                }
-                $( this ).off( e );
-            } );
+                mainMenuDeactivate();
+
+                $mainHrAsCt.on( 'transitionend webkitTransitionEnd oTransitionEnd otransitionend', function() {
+                    if ( event.propertyName == 'transform' ) {
+                        transThere( $cp );
+                        transThere( $mainMenuOverlay );
+                    }
+                } );
+            
+            }
         }
         
         
@@ -645,7 +658,7 @@
             
             if ( $cp.hasClass( mainMenuInactCss ) ) {
                 mainMenuOnTransHere();
-                $mainHeaderAsideWidgetGroup.scrollTop(0);
+                $mainHeaderAsideWidgetGroup.scrollTop( 0 );
             }
             
             else if ( $cp.hasClass( mainMenuActCss ) ) {
@@ -657,9 +670,7 @@
         // Click Toggle Button
         ( function() {
             $mainMenuTogBtn.on( 'click.applicator', function( e ) {
-                var $this = $( this );
                 e.preventDefault();
-                
                 mainMenuToggle();
             } );
         }() );
@@ -668,33 +679,15 @@
         // Click Dismiss Button
         ( function() {
             $mainMenuDismissButton.on( 'click.applicator', function( e ) {
-                var $this = $( this );
                 e.preventDefault();
-                
-                mainMenuToggle();
+                mainMenuOffTransThere();
             } );
         }() );
-            
-        
-        /*
-        // Find if a Child Element Has Focus
-        // Deactivate if no focus is present and if user is Tab key is active
-        // http://ub4.underblob.com/find-if-a-child-element-has-focus/
-        $cp.on( 'focusout.applicator', function() {
-            var $this = $( this );
-            setTimeout( function() {
-                var hasFocus = !! ( $this.find( ':focus' ).length > 0 );
-                if ( $html.hasClass( tabKeyActCss ) && ! hasFocus ) {
-                    mainMenuDeactivate();
-                }
-            }, 10 );
-        } );
-        */
         
         
         // Deactivate via external click
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
-            if ( $cp.hasClass( mainMenuActCss ) && ( ! $( e.target ).closest( $mainMenuTog ).length ) && ( ! $( e.target ).closest( $mainHrAsCt ).length ) ) {
+            if ( ! $( e.target ).closest( $mainMenuTog ).length && ! $( e.target ).closest( $mainHrAsCt ).length ) {
                 mainMenuOffTransThere();
             }
         } );
@@ -703,11 +696,20 @@
         // Deactivate via keyboard ESC key
         $window.load( function() {
             $document.on( 'keyup.applicator', function ( e ) {
-                if ( $cp.hasClass( mainMenuActCss ) && e.keyCode == 27 ) {
+                if ( e.keyCode == 27 ) {
                     mainMenuOffTransThere();
                 }
             } );
         } );
+        
+        
+        // Click Overlay
+        ( function() {
+            $mainMenuOverlay.on( 'click.applicator', function( e ) {
+                e.preventDefault();
+                mainMenuOffTransThere();
+            } );
+        }() );
         
     }
     initMainMenu( $( '#main-header-aside' ) );
@@ -1041,6 +1043,13 @@
         $mainSearchInput = $cp.find( '.search-term-crt-search---input-text' );
         $mainSearchResetBtn = $cp.find( '.search-form-reset-axn---b' );
         
+        // Add Icons to Buttons
+        $mainSearchFormAxns = $cp.find( '.search-form-axns' );
+        $mainSearchBL = $mainSearchFormAxns.find( '.search-form-search-axn---b_l' );
+        $mainSearchResetBL = $mainSearchFormAxns.find( '.search-form-reset-axn---b_l' );
+        $mainSearchBL.append( $mainSearchSearchIco );
+        $mainSearchResetBL.append( $mainSearchDismissIco );
+        
         // Activate
         function mainSearchActivate() {
             $cp
@@ -1158,13 +1167,20 @@
                 }
             } );
         } );
+            
         
-        // Add Icons to Buttons
-        $mainSearchFormAxns = $cp.find( '.search-form-axns' );
-        $mainSearchBL = $mainSearchFormAxns.find( '.search-form-search-axn---b_l' );
-        $mainSearchResetBL = $mainSearchFormAxns.find( '.search-form-reset-axn---b_l' );
-        $mainSearchBL.append( $mainSearchSearchIco );
-        $mainSearchResetBL.append( $mainSearchDismissIco );
+        // Find if a Child Element Has Focus
+        // Deactivate if no focus is present and if user is Tab key is active
+        // http://ub4.underblob.com/find-if-a-child-element-has-focus/
+        $cp.on( 'focusout.applicator', function() {
+            var $this = $( this );
+            setTimeout( function() {
+                var hasFocus = !! ( $this.find( ':focus' ).length > 0 );
+                if ( $html.hasClass( tabKeyActCss ) && ! hasFocus ) {
+                    mainSearchDeactivate();
+                }
+            }, 10 );
+        } );
         
     }
     initMainSearch( $( '#main-search' ) );
@@ -1296,7 +1312,7 @@
             
                 $mainActionsWidgetsToggleButtonLabelText.text( $mainActionsWidgetsToggleHideLabel );
 
-                cycleTabbingOn( $mainActionsWidgets );
+                cycleTabbingOn( $mainActionsWidgetsCtCr );
             }
             
             
@@ -1317,7 +1333,7 @@
             
                 $mainActionsWidgetsToggleButtonLabelText.text( $mainActionsWidgetsToggleShowLabel );
 
-                cycleTabbingOff( $mainActionsWidgets );
+                cycleTabbingOff( $mainActionsWidgetsCtCr );
             }
 
             // Initialize
@@ -1329,6 +1345,7 @@
             function mainActionsWidgetsToggle() {
                 if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOffCSS ) ) {
                     mainActionsWidgetsActivate();
+                    $mainActionsWidgetsWidgetGroup.scrollTop(0);
                 }
                 else if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOnCSS ) ) {
                     mainActionsWidgetsDeactivate();
@@ -2027,6 +2044,7 @@
             });
 
 
+            /*
             // ------------ Wrap text nodes in <span>
             // https://stackoverflow.com/a/18727318
             $( '.data-format--img, .excerpt-link, .post-password-form label' )
@@ -2047,6 +2065,9 @@
                     return this.nodeType === 3;
                 } )
                 .wrap( '<p class="p text-node"></p>' );
+                initRemoveEmpty( $( '.text-node' ) );
+            
+            */
 
          } )();
     
@@ -2061,7 +2082,6 @@
     initRemoveEmpty( $( '.post-content---ct_cr > *' ) );
     initRemoveEmpty( $( '.main-navi---a' ) );
     initRemoveEmpty( $( '.menu-item' ) );
-    initRemoveEmpty( $( '.text-node' ) );
     
     
     

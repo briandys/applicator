@@ -205,6 +205,14 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         }
         
         
+        // Main Name
+        if ( get_bloginfo( 'name', 'display' ) ) {
+            echo ' '. 'main-name--populated';
+        } else {
+            echo ' '. 'main-name--empty';
+        }
+        
+        
         // Main Description
         if ( get_bloginfo( 'description', 'display' ) ) {
             echo ' '. 'main-description--populated';

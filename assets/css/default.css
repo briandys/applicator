@@ -592,8 +592,8 @@ pre
     fill: currentColor;
 }
 
-.modernizr--inlinesvg .icon--raster,
-.modernizr--no-inlinesvg .icon--vector
+.support--inlinesvg .icon--raster,
+.support--no-inlinesvg .icon--vector
 {
     display: none;
 }
