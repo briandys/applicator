@@ -2866,8 +2866,12 @@ select
     position: absolute;
     left: 100%;
     top: 0;
-    
-    
+}
+
+/* Illusion to make the toggle look like below the overlay */
+.here.main-menu--inactive .main-menu-toggle .icon
+{
+    opacity: .25;
 }
 
 .main-menu--inactive .main-menu-dismiss
