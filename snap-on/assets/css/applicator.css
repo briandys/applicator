@@ -1419,7 +1419,7 @@
 /* ------------------ Main Header ------------------ */
 .applicator--theme--main-header .main-info,
 .applicator--theme--main-header.applicator--main-menu .main-hr-aside---hr_cr,
-.applicator--theme--main-header.applicator--main-actions-widgets .main-actions---ct_cr
+.applicator--theme--main-header .main-actions---ct_cr
 {
     position: relative;
     height: 3.5rem;
@@ -1428,7 +1428,7 @@
 .applicator--theme--main-header .main-info---cr,
 .applicator--theme--main-header .main-menu-toggle,
 .applicator--theme--main-header.applicator--main-search .main-search-func,
-.applicator--theme--main-header.applicator--main-actions-widgets .main-actions-widgets
+.applicator--theme--main-header .main-actions-widgets
 {
     position: absolute;
     top: 50%;
@@ -1436,12 +1436,12 @@
 }
 
 .applicator--theme--main-header .main-hr-aside---hr,
-.applicator--theme--main-header.applicator--main-actions-widgets .main-actions---ct
+.applicator--theme--main-header .main-actions---ct
 {
     position: absolute;
 }
 
-.applicator--theme--main-header.applicator--main-actions-widgets .main-actions---ct
+.applicator--theme--main-header .main-actions---ct
 {
     right: 0;
 }
