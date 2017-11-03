@@ -2417,6 +2417,11 @@ select
     top: 0;
 }
 
+.main-actions-widgets--active
+{
+    z-index: 100;
+}
+
 .applicator--main-search .main-actions-widgets
 {
     margin-right: 3rem;
@@ -2553,9 +2558,7 @@ select
     top: 0;
     
     width: 100%;
-    
     min-height: 3rem;
-    min-height: var(--elem--height--md);
 }
 
 /* Buttons */
