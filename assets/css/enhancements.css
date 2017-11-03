@@ -1772,26 +1772,19 @@ select
     margin: 0;
     
     padding-left: 1rem;
-    padding-left: var(--content--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--content--spacing-x);
 }
 
 .comment-subscription-form input
 {
-    flex: 1 2rem;
+    margin-right: .5rem;
     
-    width: 3rem;
     height: 3rem;
 }
 
 .comment-form .comment-subscription-form .subscribe-label
 {
-    flex: 1 100%;
     display: inline-flex !important;
-    justify-content: normal;
-    align-items: center;
 }
 
 
@@ -3196,15 +3189,15 @@ select
         margin-right: auto;
     }
     
-    .post-content---ct_cr > p.data-format--img
-    {
-        float: none;
-        margin: 0;
-    }
-    
-    .post-content---ct_cr .wp-caption.alignleft
+    .post-content---ct .wp-caption.alignleft
     {
         margin-right: 1rem;
+    }
+    
+    .applicator--theme--layout .post-content---ct_cr > .data-format--img--right-aligned,
+    .applicator--theme--layout .post-content---ct_cr > .alignright
+    {
+        margin-left: 1rem;
     }
     
     /* Search */

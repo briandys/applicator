@@ -2012,6 +2012,19 @@
             }
             
         }() );
+    
+    
+    
+    
+    
+        /* ------------------------ Remove Empty Elements ------------------------ */
+        ( function() {
+            
+            initRemoveEmpty( $( '.post-content---ct_cr > *' ) );
+            initRemoveEmpty( $( '.main-navi---a' ) );
+            initRemoveEmpty( $( '.menu-item' ) );
+            
+        }() );
         
         
         
@@ -2141,44 +2154,30 @@
             });
 
 
-            /*
             // ------------ Wrap text nodes in <span>
             // https://stackoverflow.com/a/18727318
             $( '.data-format--img, .excerpt-link, .post-password-form label' )
-                .contents()
-                .filter( function() {
-
+                .contents().filter( function() {
+                    
                     // Get only the text nodes
                     return this.nodeType === 3;
                 } )
                 .wrap( '<span class="span text-node"></span>' );
             
+            
             // ------------ Wrap text nodes in <p>
             $( '.post-content---ct_cr' )
-                .contents()
-                .filter( function() {
-
-                    // Get only the text nodes
+                .contents().filter( function() {
                     return this.nodeType === 3;
                 } )
                 .wrap( '<p class="p text-node"></p>' );
-                initRemoveEmpty( $( '.text-node' ) );
-            
-            */
+                
+            initRemoveEmpty( $( '.text-node' ) );
 
          } )();
     
     } );
     /* ------------------------ End DOM Ready ------------------------ */
-    
-    
-    
-    
-    
-    /* ------------------------ Remove Empty Elements ------------------------ */
-    initRemoveEmpty( $( '.post-content---ct_cr > *' ) );
-    initRemoveEmpty( $( '.main-navi---a' ) );
-    initRemoveEmpty( $( '.menu-item' ) );
     
     
     
@@ -2361,10 +2360,18 @@
 
         var $mainBanner = $( '#main-banner' );
 
-        if ( ! $mainBanner.length || $mainBanner.css( 'margin' ) == '-1px'  ) {
-            return;
-        }
+        
+        // Gatekeeper
+        ( function() {
+            
+            if ( ! $mainBanner.length || $mainBanner.css( 'margin' ) == '-1px'  ) {
+                return;
+            }
+            
+        }() );
+        
 
+        // Variables
         var scrollPosition,
             mainBannerScale,
             mainBannerTranslateY,
@@ -2378,40 +2385,46 @@
             mainBannerOffsetHeight = mainBannerOffset + mainBannerHeight,
             mainBannerOffsetHeightHalf = mainBannerOffset + ( mainBannerHeight / 2 );
 
-        $window.on( 'scroll.applicator', function() {
+        
+        ( function() {
+        
+            $window.on( 'scroll.applicator', function() {
 
-            scrollPosition = $( this ).scrollTop();
-            mainBannerScale = ( scrollPosition / ( mainBannerOffsetHeight / .3 ) ) + 1;
-            mainBannerTranslateY = ( 10 / mainBannerOffsetHeight ) * scrollPosition;
-            mainBannerOpacity = 1 - ( ( scrollPosition - mainBannerOffsetHeightHalf ) / mainBannerHeightHalf );
+                scrollPosition = $( this ).scrollTop();
+                mainBannerScale = ( scrollPosition / ( mainBannerOffsetHeight / .3 ) ) + 1;
+                mainBannerTranslateY = ( 10 / mainBannerOffsetHeight ) * scrollPosition;
+                mainBannerOpacity = 1 - ( ( scrollPosition - mainBannerOffsetHeightHalf ) / mainBannerHeightHalf );
 
-            /* Transform magic */
-            if ( scrollPosition <= mainBannerOffsetHeight ) {
-                $mainMediaBanner.css( {
-                    transform: "translateY(" + mainBannerTranslateY + "px) scale(" + mainBannerScale + ", " + mainBannerScale + ")"
-                } );
-            }
+                /* Transform magic */
+                if ( scrollPosition <= mainBannerOffsetHeight ) {
+                    $mainMediaBanner.css( {
+                        transform: "translateY(" + mainBannerTranslateY + "px) scale(" + mainBannerScale + ", " + mainBannerScale + ")"
+                    } );
+                }
 
-            /* Opacity magic */
-            if ( scrollPosition >= mainBannerOffsetHeightHalf ) {
-                $mainMediaBanner.css( {
-                    opacity: mainBannerOpacity
-                } );
-            }
+                /* Opacity magic */
+                if ( scrollPosition >= mainBannerOffsetHeightHalf ) {
+                    $mainMediaBanner.css( {
+                        opacity: mainBannerOpacity
+                    } );
+                }
 
-            else {
-                $mainMediaBanner.css( {
-                    opacity: 1
-                } );
-            }
+                else {
+                    $mainMediaBanner.css( {
+                        opacity: 1
+                    } );
+                }
 
-            if ( scrollPosition >= mainBannerOffsetHeight ) {
+                if ( scrollPosition >= mainBannerOffsetHeight ) {
 
-                $mainMediaBanner.css( {
-                    opacity: 0
-                } );
-            }
-        } );
+                    $mainMediaBanner.css( {
+                        opacity: 0
+                    } );
+                }
+            } );
+            
+        }() );
+    
     }() );
 
 } )( jQuery );

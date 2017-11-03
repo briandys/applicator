@@ -536,7 +536,8 @@
     vertical-align: bottom;
 }
 
-.applicator--theme--table .post-content td
+.applicator--theme--table .post-content td,
+.applicator--theme--table .post-content tbody th
 {
     border: var(--table-line--sm);
     
@@ -1185,21 +1186,6 @@
 
 
 
-/* ------------------ Container Width ------------------ */
-.applicator--theme--container-width .comment-respond
-{
-    max-width: 48rem;
-}
-
-.applicator--theme--container-width .comment-md---ct_cr > .comment-respond
-{   
-    margin: auto;
-}
-
-
-
-
-
 /* ------------------ Caption ------------------ */
 .applicator--theme--caption .wp-caption-text
 {
@@ -1437,21 +1423,9 @@
     z-index: 100;
 }
 
-
-
-
-
-/* ------------------ Viewport Width: 768 ------------------ */
-
-@media only screen and ( min-width: 48em )
+.main-banner
 {
-    
-    /* ------------ Layout ------------ */
-    .applicator--theme--layout .post-content---ct_cr > .data-format--img--right-aligned
-    {
-        margin-left: 1rem;
-    }
-    
+    transform: translateZ(0);
 }
 
 
