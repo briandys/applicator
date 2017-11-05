@@ -3165,20 +3165,50 @@ select
 @media only screen and ( min-width: 48em )
 {
     
-    .post-content---ct_cr > .data-format--img--left-aligned
+    /* Data Format <img> */
+    
+    /* Left-aligned */
+    .post-content---ct_cr > .data-format--img--left-aligned,
+    .post-content---ct_cr > .data-format--img .alignleft
     {
         float: left;
         
         margin-right: 1rem;
     }
-
-    .post-content---ct_cr > .data-format--img--right-aligned
+    
+    .post-content---ct_cr > p.data-format--img .alignleft
+    {
+        margin-left: -1rem;
+    }
+    
+    /* Right-aligned */
+    .post-content---ct_cr > .data-format--img--right-aligned,
+    .post-content---ct_cr > .data-format--img.alignright,
+    .post-content---ct_cr > .data-format--img .alignright
     {
         float: right;
         
         margin-left: 1rem;
     }
-
+    
+    .post-content---ct_cr > p.data-format--img .alignright
+    {
+        margin-right: -1rem;
+    }
+    
+    /* Reformatting layout */
+    .post-content---ct_cr > p.data-format--img--left-aligned,
+    .post-content---ct_cr > p.data-format--img--right-aligned
+    {
+        float: none;
+        
+        margin-right: 0;
+        
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    /* Center-aligned */
     .post-content---ct_cr > .data-format--img--center-aligned
     {
         clear: both;
@@ -3195,12 +3225,6 @@ select
     .post-content---ct .wp-caption.alignleft
     {
         margin-right: 1rem;
-    }
-    
-    .applicator--theme--layout .post-content---ct_cr > .data-format--img--right-aligned,
-    .applicator--theme--layout .post-content---ct_cr > .alignright
-    {
-        margin-left: 1rem;
     }
     
     /* Search */
