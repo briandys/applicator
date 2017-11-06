@@ -355,11 +355,6 @@ select
     margin-bottom: calc( var(--content--spacing-y) * -1);
 }
 
-.data-format--img br
-{
-    display: none;
-}
-
 
 
 
@@ -2748,6 +2743,7 @@ select
 /* In order to transition during inactive and active */
 .main-menu-func .main-hr-aside---ct
 {
+    transform: translateZ(0);
     transition: transform .3s ease-in-out;
 }
 
@@ -2759,7 +2755,7 @@ select
     top: 0;
     z-index: 1;
     
-    transform: translateX(-100%);
+    transform: translateX(-100%) translateZ(0);
 }
 
 .main-menu--active .main-hr-aside---ct,
@@ -2852,7 +2848,8 @@ select
     transition: opacity .3s ease-in-out;
 }
 
-.main-menu--inactive .main-menu-dismiss
+.main-menu--inactive .main-menu-dismiss,
+.main-menu--active .main-menu-dismiss
 {
     opacity: 0;
 }
@@ -3201,8 +3198,6 @@ select
     .post-content---ct_cr > p.data-format--img--right-aligned
     {
         float: none;
-        
-        margin-right: 0;
         
         padding-left: 1rem;
         padding-right: 1rem;

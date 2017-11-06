@@ -1461,13 +1461,8 @@
 
 
 /* ------------------ GPU Hack ------------------ */
-.main-menu--active
-{
-    transform: translateZ(0);
-    z-index: 100;
-}
-
-.main-banner
+.main-banner,
+.main-hr-aside---ct
 {
     transform: translateZ(0);
 }
