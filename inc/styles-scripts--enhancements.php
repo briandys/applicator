@@ -110,6 +110,12 @@ if ( ! function_exists( 'applicator_functionalities_css_class_names' ) ) {
             $main_menu_term = 'main-menu';
         }
         
+        // Main Logo
+        $main_logo_term = '';
+        if ( has_custom_logo() ) {
+            $main_logo_term = 'main-logo';
+        }
+        
         $r = array(
             
             // Functionalities
@@ -120,6 +126,7 @@ if ( ! function_exists( 'applicator_functionalities_css_class_names' ) ) {
             'go-content-nav',
             'go-start-nav',
             'main-actions-widgets',
+            $main_logo_term,
             $main_menu_term,
             'main-search',
             'page-nav',

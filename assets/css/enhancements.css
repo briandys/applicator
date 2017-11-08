@@ -1129,7 +1129,6 @@ select
 .main-header
 {
     background-color: hsl(200, 100%, 50%);
-    background-color: var(--main-header--bg-color);
 }
 
 .main-header---cr
@@ -1137,7 +1136,7 @@ select
     display: flex;
     flex-wrap: wrap;
     
-    min-height: 3rem;
+    /* min-height: 3rem; */
 }
 
 /* Match the outline color of active elements with the background color */
@@ -1207,7 +1206,7 @@ select
     padding-left: 1rem;
     padding-right: 1rem;
     
-    min-height: 3rem;
+    /* min-height: 3rem; */
 }
 
 /* With Main Search */
@@ -1223,7 +1222,12 @@ select
 }
 
 /* With Main Search */
-.applicator--main-search .main-info---cr,
+.applicator--main-search .main-info---cr
+{
+    padding-right: 3rem;
+}
+
+/* With Main Actions */
 .applicator--main-actions-widgets .main-info---cr
 {
     padding-right: 3rem;
@@ -1246,7 +1250,7 @@ select
 .main-logo--enabled .main-name,
 .main-logo--enabled .main-description
 {
-    margin-left: calc( var(--main-logo--height) + .5rem);
+    margin-left: 2.75rem;
 }
 
 /* With Main Menu */
@@ -1376,6 +1380,12 @@ select
 
 
 /* ------------------ Main Logo  ------------------ */
+.applicator--main-logo.dom--unready .main-name,
+.applicator--main-logo.dom--unready .main-description
+{
+    visibility: hidden;
+}
+
 .main-logo
 {
     position: absolute;

@@ -1336,7 +1336,7 @@
         }() );
         
         
-        // // Move to content markup
+        // Move to content markup
         ( function() {
             
             $mainActionsWidgetsWidgetGroup
@@ -2202,6 +2202,34 @@
             wrapTextNode( $( '.post-content---ct_cr' ) );
             
             initRemoveEmpty( $( '.text-node' ) );
+            
+        }() );
+        
+        
+        
+        
+        
+        /* ------------------------ Main Logo ------------------------ */
+        ( function(){
+        
+            var $mainLogoWidth,
+                $mainLogoheight,
+                $mainName,
+                $mainDescription,
+                $mainLogoWidthRem;
+
+            $mainLogoWidth = $( '.main-logo' ).width();
+            $mainLogoheight = $( '.main-logo' ).height();
+
+            $mainName = $( '.main-logo--enabled .main-name' );
+            $mainDescription = $( '.main-logo--enabled .main-description' );
+            
+            $mainLogoWidthRem = ( ( $mainLogoWidth / 16 ) + .5 ) + 'rem';
+
+            if ( $mainLogoWidth !== $mainLogoheight ) {
+                $mainName.css( 'margin-left', $mainLogoWidthRem );
+                $mainDescription.css( 'margin-left', $mainLogoWidthRem );
+            }
             
         }() );
     
