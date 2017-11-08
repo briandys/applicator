@@ -520,20 +520,12 @@
     border-right-width: 1px;
 }
 
-.applicator--theme--table .post-content tfoot
-{
-    border: var(--table-line--md);
-    border-left: 0;
-    border-right: 0;
-}
-
 /* Table Header */
 .applicator--theme--table .post-content th
 {
     border: 0;
     
     text-align: left;
-    vertical-align: bottom;
 }
 
 .applicator--theme--table .post-content td,
@@ -550,12 +542,85 @@
     border-left: 0;
 }
 
-/* Table Footer */
 .applicator--theme--table .post-content tfoot
 {
+    border: var(--table-line--md);
+    border-left: 0;
+    border-right: 0;
     border-top: 0;
-    border-color: var(--table-line--md);
 }
+
+
+
+
+
+/* ------------------ Calendar ------------------ */
+.applicator--theme--calendar .widget_calendar tbody
+{
+    border: 2px solid lightgray;
+    border-left-width: 1px;
+    border-right-width: 1px;
+}
+
+.applicator--theme--calendar .widget_calendar th
+{
+    border: 0;
+}
+
+.applicator--theme--calendar .widget_calendar tbody th
+{
+    text-align: left;
+}
+
+.applicator--theme--calendar .widget_calendar td,
+.applicator--theme--calendar .widget_calendar tbody th
+{
+    border: 1px solid lightgray;
+    
+    border-right: 0;
+    border-bottom: 0;
+}
+
+/* Dates */
+.applicator--theme--calendar .widget_calendar tbody td
+{
+    text-align: right;
+    white-space: nowrap;
+}
+
+.applicator--theme--calendar .widget_calendar td:first-child
+{
+    border-left: 0;
+}
+
+/* Navigation */
+.applicator--theme--calendar .widget_calendar tfoot
+{
+    border-top: 2px solid lightgray;
+}
+
+.applicator--theme--calendar .widget_calendar tfoot td
+{
+    border: 0;
+}
+
+.applicator--theme--calendar .widget_calendar #prev
+{
+    text-align: right;
+}
+
+/* Days */
+.applicator--theme--calendar .widget_calendar thead th
+{
+    font-weight: normal;
+}
+
+/* Month Label */
+.applicator--theme--calendar .widget_calendar caption
+{
+    font-weight: bold;
+}
+
 
 
 
@@ -1363,7 +1428,9 @@
 .applicator--theme--layout .entry-nav---cr,
 .applicator--theme--layout .type-attachment .post-nav---cr,
 .applicator--theme--layout.applicator--theme--post-format--status .format-status .post---cr,
-.applicator--theme--layout .copyright
+.applicator--theme--layout .copyright,
+.applicator--theme--layout .main-content-header-aside .widget-content---ct_cr,
+.applicator--theme--layout.main-content-aside--enabled .main-content---ct_cr
 {
     margin-left: auto;
     margin-right: auto;
@@ -1430,7 +1497,7 @@
 .applicator--theme--main-header.applicator--main-search .main-search-func,
 .applicator--theme--main-header .main-actions-widgets
 {
-    position: absolute;
+    position: relative;
     top: 50%;
     transform: translateY(-50%);
 }

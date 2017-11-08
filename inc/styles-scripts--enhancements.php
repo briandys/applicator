@@ -108,6 +108,7 @@ if ( ! function_exists( 'applicator_functionalities_css_class_names' ) ) {
             
             // Functionalities
             'breadcrumbs',
+            'calendar',
             'comments',
             'easy-access-nav',
             'go-content-nav',

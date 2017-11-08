@@ -222,7 +222,9 @@ input[type="submit"],
 .main-nav a,
 .main-navi---a_l,
 .widget_nav_menu a,
-.widget_pages a
+.widget_pages a,
+.widget_calendar a,
+.widget_calendar .text-node
 {
     display: inline-flex;
     justify-content: center;
@@ -2187,6 +2189,37 @@ select
 
 
 
+/* ------------------ Calendar ------------------ */
+.dom--unready .widget_calendar
+{
+    visibility: hidden;
+}
+
+.applicator--calendar .widget_calendar a,
+.applicator--calendar .widget_calendar .text-node
+{
+    min-width: 2.25rem;
+    min-height: 2.25rem;   
+}
+
+.applicator--calendar .widget-calendar-active-date
+{
+    background-color: #005fe6;
+    border: 0;
+}
+
+.applicator--calendar .widget-calendar-active-date a
+{
+    display: flex;
+    
+    color: white;
+    font-weight: bold;
+}
+
+
+
+
+
 /* ------------------ Go to Content Nav - Function ------------------ */
 .applicator--go-content-nav.dom--unready .go-content-nav
 {
@@ -2857,6 +2890,12 @@ select
 .here.main-menu--active .main-menu-dismiss
 {
     opacity: 1;
+}
+
+/* Hide action immediately upon activating */
+.here.main-menu--inactive .main-menu-dismiss
+{
+    visibility: hidden;
 }
 
 /* Illusion to make the toggle look like below the overlay */

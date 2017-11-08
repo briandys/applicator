@@ -271,6 +271,24 @@
     
     
     
+    /* ------------------------ Wrap Text Nodes ------------------------ */
+    function wrapTextNode( $elem ) {
+                
+        var $textNodeMU = $( '<span />', { 'class': 'text-node' } );
+
+        // https://stackoverflow.com/a/18727318
+        $elem.contents().filter( function() {
+
+            // Get only the text nodes
+            return this.nodeType === 3;
+        } ).wrap( $textNodeMU );
+
+    }
+    
+    
+    
+    
+    
     // ------------------------- Go to Content Nav
     function initGoContentNav( $cp ) {
         
@@ -2041,6 +2059,7 @@
                 dataFormatImage = dataFormatPrefixCss + 'img',
 
                 postContent = '.post-content---ct_cr > *',
+                postContentChild = '.post-content---ct_cr > *',
                 postContentCtCrCss = '.post-content---ct_cr',
 
                 alignedTerm = 'aligned',
@@ -2059,6 +2078,31 @@
             } );
 
 
+            // ------------ <img>
+            $( postContentChild + ':has( img )' )
+                .addClass( dataFormatTerm + ' ' + dataFormatImage );
+
+            $( postContentChild + ':has( img.alignnone )' )
+                .addClass( dataFormatTerm + ' ' + dataFormatImage + ' ' + dataFormatImage + '--not-' + alignedTerm );
+
+            $( postContentChild + ':has( img.alignleft )' )
+                .addClass( dataFormatTerm + ' ' + dataFormatImage + ' ' + dataFormatImage + '--left-' + alignedTerm );
+
+            $( postContentChild + ':has( img.alignright )' )
+                .addClass( dataFormatTerm + ' ' + dataFormatImage + ' ' + dataFormatImage + '--right-' + alignedTerm );
+
+            $( postContentChild + ':has( img.aligncenter )' )
+                .addClass( dataFormatTerm + ' ' + dataFormatImage + ' ' + dataFormatImage + '--center-' + alignedTerm );
+
+            
+            $( '.post-content---ct_cr > img' ).each(function() {
+                var $this = $( this );
+                $this.wrap( dataFormatInlineCpMu )
+                    .closest( dataFormatCss )
+                        .addClass( dataFormatPrefixCss + 'img' );
+            });
+
+
             // ------------ <pre>
             $( postContentCtCrCss + ' ' + '> *:has( pre )' ).each(function() {
                 var $this = $( this ),
@@ -2074,32 +2118,6 @@
                 $this.wrap( dataFormatBlockCpMu )
                     .closest( dataFormatCss )
                         .addClass( dataFormatPrefixCss + 'pre' );
-            });
-
-
-            
-            // ------------ <img>
-            $( postContent + ':has( img )' )
-                .addClass( dataFormatTerm + ' ' + dataFormatImage );
-
-            $( postContent + ':has( img.alignnone )' )
-                .addClass( dataFormatTerm + ' ' + dataFormatImage + ' ' + dataFormatImage + '--not-' + alignedTerm );
-
-            $( postContent + ':has( img.alignleft )' )
-                .addClass( dataFormatTerm + ' ' + dataFormatImage + ' ' + dataFormatImage + '--left-' + alignedTerm );
-
-            $( postContent + ':has( img.alignright )' )
-                .addClass( dataFormatTerm + ' ' + dataFormatImage + ' ' + dataFormatImage + '--right-' + alignedTerm );
-
-            $( postContent + ':has( img.aligncenter )' )
-                .addClass( dataFormatTerm + ' ' + dataFormatImage + ' ' + dataFormatImage + '--center-' + alignedTerm );
-
-            
-            $( '.post-content---ct_cr > img' ).each(function() {
-                var $this = $( this );
-                $this.wrap( dataFormatInlineCpMu )
-                    .closest( dataFormatCss )
-                        .addClass( dataFormatPrefixCss + 'img' );
             });
 
 
@@ -2152,29 +2170,41 @@
                     .closest( dataFormatCss )
                         .addClass( dataFormatPrefixCss + 'iframe' );
             });
-
-
-            // ------------ Wrap text nodes in <span>
-            // https://stackoverflow.com/a/18727318
-            $( '.data-format--img, .excerpt-link, .post-password-form label' )
-                .contents().filter( function() {
-                    
-                    // Get only the text nodes
-                    return this.nodeType === 3;
-                } )
-                .wrap( '<span class="span text-node"></span>' );
             
-            
-            // ------------ Wrap text nodes in <p>
-            $( '.post-content---ct_cr' )
-                .contents().filter( function() {
-                    return this.nodeType === 3;
-                } )
-                .wrap( '<p class="p text-node"></p>' );
-                
-            initRemoveEmpty( $( '.text-node' ) );
 
          } )();
+        
+        
+        
+        
+        
+        /* ------------------------ Calendar ------------------------ */
+        ( function(){
+            
+            wrapTextNode( $( '.widget_calendar td, .widget_calendar th' ) );
+            
+            $( '.widget_calendar tbody td:has( a )' ).each( function() {
+
+                $( this ).addClass( 'widget-calendar-active-date' );
+
+            } );
+
+        }() );
+        
+        
+        
+        
+        
+        /* ------------------------ Wrap in Text Nodes ------------------------ */
+        ( function(){
+            
+            
+            wrapTextNode( $( '.data-format--img, .excerpt-link, .post-password-form label' ) );
+            wrapTextNode( $( '.post-content---ct_cr' ) );
+            
+            initRemoveEmpty( $( '.text-node' ) );
+            
+        }() );
     
     } );
     /* ------------------------ End DOM Ready ------------------------ */
