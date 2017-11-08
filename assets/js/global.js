@@ -35,18 +35,18 @@
     
     
     
-        // Widget Content
+    // Widget Content
     $( '.widget-content---ct_cr > *:not( img )' ).each( function() {
         var $this = $( this );
-        
+
         if ( $this.html().replace(/\s|&nbsp;/g, '' ).length == 0 ) {
             $this.closest( '.widget' ).addClass( 'widget--zero-length' );
         }
     } );
-    
+
     $( '.widget_categories .widget-content---ct_cr > *:has( .cat-item-none )' ).each( function() {
         var $this = $( this );
-        
+
         $this.closest( '.widget' ).addClass( 'widget--empty' );
     } );
     

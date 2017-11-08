@@ -2212,25 +2212,37 @@
         /* ------------------------ Main Logo ------------------------ */
         ( function(){
         
-            var $mainLogoWidth,
-                $mainLogoheight,
-                $mainName,
-                $mainDescription,
-                $mainLogoWidthRem;
-
-            $mainLogoWidth = $( '.main-logo' ).width();
-            $mainLogoheight = $( '.main-logo' ).height();
-
-            $mainName = $( '.main-logo--enabled .main-name' );
-            $mainDescription = $( '.main-logo--enabled .main-description' );
+            var $mainLogoWidth = $( '.main-logo' ).width(),
+                $mainLogoHeight = $( '.main-logo' ).height(),
+                $mainName = $( '.main-logo--enabled .main-name' ),
+                $mainDescription = $( '.main-logo--enabled .main-description' ),
+                $rootFontSize = $( ':root' ).css( 'font-size' ),
+                $mainLogoWidthRem = ( ( $mainLogoWidth / parseInt( $rootFontSize ) ) + .5 ) + 'rem';
             
-            $mainLogoWidthRem = ( ( $mainLogoWidth / 16 ) + .5 ) + 'rem';
-
-            if ( $mainLogoWidth !== $mainLogoheight ) {
+            // If logo is not square
+            if ( $mainLogoWidth !== $mainLogoHeight ) {
                 $mainName.css( 'margin-left', $mainLogoWidthRem );
                 $mainDescription.css( 'margin-left', $mainLogoWidthRem );
             }
             
+        }() );
+        
+        
+        
+        
+        
+        /* ------------------------ If Main Description is visually-hidden ------------------------ */
+        ( function() {
+            
+            if ( ! $( '.main-desc---l' ).length || $( '.main-description' ).html().replace(/\s|&nbsp;/g, '' ).length == 0 ) {
+                
+                $html
+                    .addClass( 'main-description--empty' )
+                    .removeClass( 'main-description--populated' );
+                
+                return;
+            }
+        
         }() );
     
     } );
@@ -2255,26 +2267,6 @@
         
         
         
-        
-        
-        /* ------------------------ If Main Description is visually-hidden ------------------------ */
-        ( function() {
-            
-            if ( ! $( '.main-description' ).length ) {
-                return;
-            }
-            
-            if ( $( '.main-description' ).css( 'margin' ) == '-1px' ) {
-                $html
-                    .addClass( 'main-description--empty' )
-                    .removeClass( 'main-description--populated' );
-            }
-            else {
-                $html
-                    .addClass( 'main-description--populated' )
-                    .removeClass( 'main-description--empty' );
-            }
-        }() );
         
         
         /* ------------------------ Page Length ------------------------ */

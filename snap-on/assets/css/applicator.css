@@ -1486,7 +1486,8 @@
 /* ------------------ Main Header ------------------ */
 .applicator--theme--main-header .main-info,
 .applicator--theme--main-header.applicator--main-menu .main-hr-aside---hr_cr,
-.applicator--theme--main-header.applicator--main-actions-widgets .main-actions---ct_cr
+.applicator--theme--main-header.applicator--main-actions-widgets .main-actions---ct_cr,
+.applicator--theme--main-header.applicator--main-menu .main-menu-dismiss
 {
     height: 3.5rem;
 }
@@ -1525,6 +1526,13 @@
 .applicator--theme--main-header.applicator--main-search .main-search-func
 {   
     min-height: 3rem;
+}
+
+.applicator--theme--main-header.applicator--main-menu .main-menu-dismiss---b
+{   
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 
