@@ -124,9 +124,10 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         // Enable or display Sidebars via Appearance > Widgets
             
         $main_header_aside = 'main-header-aside';
-        $main_header_content_aside = ' '. 'main-header-content-aside';
-        $main_content_aside = ' '. 'main-content-aside';
-        $main_footer_aside = ' '. 'main-footer-aside';
+        $main_actions_aside = 'main-actions-aside';
+        $main_header_content_aside = 'main-header-content-aside';
+        $main_content_aside = 'main-content-aside';
+        $main_footer_aside = 'main-footer-aside';
         
         $on = '--enabled';
         $off = '--disabled';
@@ -139,6 +140,14 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
             echo ' '. $main_header_aside. $off;
         }
         
+        // Main Actions Aside
+        if ( is_active_sidebar( $main_actions_aside ) ) {
+            echo ' '. $main_actions_aside. $on;
+        }
+        else {
+            echo ' '. $main_actions_aside. $off;
+        }
+        
         // Main Content Header Aside
         if ( is_active_sidebar( $main_header_content_aside ) ) {
             echo ' '. $main_header_content_aside. $on;
@@ -147,7 +156,7 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
             echo ' '. $main_header_content_aside. $off;
         }
         
-        // Main Content Aside
+        // Secondary Content Aside
         if ( is_active_sidebar( $main_content_aside ) ) {
             echo ' '. $main_content_aside. $on;
         }

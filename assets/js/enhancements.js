@@ -37,6 +37,7 @@
         pageLongCss = 'page--long',
         
         applicatorMainSearchTerm = 'applicator--main-search',
+        applicatorMainMenuTerm = 'applicator--main-menu',
         aplApplicatorMainActionsWidgetsTerm = 'applicator--main-actions-widgets',
         
         $aplWildcard = $( '#applicator-wildcard' ),
@@ -505,18 +506,16 @@
     
     
     /* ------------------------ Main Menu ------------------------ */
-    function initMainMenu( $cp ) {
+    function applicatorMainMenu( $cp ) {
         
         
         // Gatekeeper
         ( function() {
+            
             if ( ! $aplApplicatorMainMenu.length ) {
                 return;
             }
-
-            if ( ! $html.closest( '.main-header-aside--enabled' ).length ) {
-                return;
-            }
+        
         }() );
         
         
@@ -763,7 +762,7 @@
         }() );
         
     }
-    initMainMenu( $( '#main-header-aside' ) );
+    applicatorMainMenu( $( '#main-header-aside' ) );
     
     
     

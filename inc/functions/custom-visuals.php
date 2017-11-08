@@ -25,6 +25,8 @@ if ( ! function_exists( 'applicator_custom_visuals_setup' ) ) {
         add_theme_support( 'custom-logo', apply_filters( 'applicator_custom_logo_args', array(
             'width'       => 480,
             'height'      => 480,
+            'flex-width'  => true,
+            'flex-height' => true,
         ) ) );
         
         // Custom Background

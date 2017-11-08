@@ -145,7 +145,7 @@ if ( ! function_exists( 'applicator_main_footer_aside' ) ) {
 if ( ! function_exists( 'applicator_main_actions' ) ) {
     function applicator_main_actions() {
         
-        $main_actions_term = 'main-actions';
+        $main_actions_term = 'main-actions-aside';
         
         if ( is_active_sidebar( $main_actions_term )  ) {
             

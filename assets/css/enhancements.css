@@ -344,7 +344,17 @@ select
 
 
 
-/* ------------------ Data Format - Image ------------------ */
+/* ------------------ Data Format - <img> ------------------ */
+
+/* For dynamic images that load the optimum size based on the width of their containers */
+.dom--unready .post-content---ct_cr > p
+{
+    padding-left: 0;
+    padding-right: 0;
+    
+    visibility: hidden;
+}
+
 .window--unloaded .post-content img
 {
     visibility: hidden;
@@ -360,7 +370,7 @@ select
 
 
 
-/* ------------------ Data Format - Preformatted Text ------------------ */
+/* ------------------ Data Format - <pre> ------------------ */
 .data-format > pre
 {
     padding: .75em 1rem;
@@ -1128,7 +1138,6 @@ select
     flex-wrap: wrap;
     
     min-height: 3rem;
-    min-height: var(--elem--height--md);
 }
 
 /* Match the outline color of active elements with the background color */
@@ -1143,6 +1152,46 @@ select
     outline-color: white;
 }
 
+/* Height Adjustment
+.main-info,
+.applicator--main-menu .main-hr-aside---hr_cr,
+.main-actions---ct_cr
+{
+    position: relative;
+    height: 3.5rem;
+}
+
+.applicator--theme--main-header .main-info---cr,
+.applicator--theme--main-header .main-menu-toggle,
+.applicator--theme--main-header.applicator--main-search .main-search-func,
+.applicator--theme--main-header .main-actions-widgets
+{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.applicator--theme--main-header .main-hr-aside---hr,
+.applicator--theme--main-header .main-actions---ct
+{
+    position: absolute;
+}
+
+.applicator--theme--main-header .main-actions---ct
+{
+    right: 0;
+}
+
+.applicator--theme--main-header.applicator--main-search--active .main-actions---ct
+{
+    width: 100%;
+}
+
+.applicator--theme--main-header.applicator--main-search .main-search-func
+{   
+    min-height: 3rem;
+}
+ */
 
 
 
@@ -1150,29 +1199,25 @@ select
 /* ------------------ Main Info ------------------ */
 .main-info
 {
-    flex: 1 30rem;
+    flex: 1;
 }
 
 .main-info---cr
 {
-    min-height: var(--elem-dimension--md);
-    
     padding-left: 1rem;
-    padding-left: var(--component--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--component--spacing-x);
+    
+    min-height: 3rem;
 }
 
 /* With Main Search */
 .applicator--main-search .main-info---cr
 {
-    padding-left: 1rem;
     padding-right: 1rem;
 }
 
 /* With Main Menu */
-.applicator--main-menu.main-header-aside--enabled .main-info---cr
+.applicator--main-menu .main-info---cr
 {
     padding-left: 3rem;
 }
@@ -1190,17 +1235,11 @@ select
     padding-right: 6rem;
 }
 
-/* With Main Logo */
-.main-logo--enabled .main-info---cr
-{
-    padding-left: 1rem;
-}
-
 .main-info---ct_cr
 {
     position: relative;
     
-    min-height: var(--elem-dimension--md);
+    min-height: 3rem;
 }
 
 /* With Main Logo and Main Name, Main Description */
@@ -1211,8 +1250,8 @@ select
 }
 
 /* With Main Menu */
-.applicator--main-menu.main-header-aside--enabled .main-name---a_l,
-.applicator--main-menu.main-header-aside--enabled .main-desc---a_l
+.applicator--main-menu .main-name---a_l,
+.applicator--main-menu .main-desc---a_l
 {
     padding-left: 0;
 }
@@ -2166,7 +2205,7 @@ select
     height: auto;
 }
 
-/* Zero Length Widgets (no content or empty element is detected like <img>) */
+/* Zero Length Widgets (no content) */
 .widget_calendar.widget--zero-length,
 .widget_recent_comments.widget--zero-length
 {

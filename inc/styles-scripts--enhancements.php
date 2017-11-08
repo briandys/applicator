@@ -104,6 +104,12 @@ if ( ! function_exists( 'applicator_functionalities_css_class_names' ) ) {
         
         $applicator_term = 'applicator';
         
+        // Main Header Aside
+        $main_menu_term = '';
+        if ( is_active_sidebar( 'main-header-aside' ) ) {
+            $main_menu_term = 'main-menu';
+        }
+        
         $r = array(
             
             // Functionalities
@@ -114,7 +120,7 @@ if ( ! function_exists( 'applicator_functionalities_css_class_names' ) ) {
             'go-content-nav',
             'go-start-nav',
             'main-actions-widgets',
-            'main-menu',
+            $main_menu_term,
             'main-search',
             'page-nav',
             'sub-nav',

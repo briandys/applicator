@@ -65,7 +65,7 @@ function applicator_aside_init() {
     
     register_sidebar( array(
 		'name'          => __( '2. Main Actions', 'applicator' ),
-		'id'            => 'main-actions',
+		'id'            => 'main-actions-aside',
 		'description'   => __( 'Located after Main Nav', 'applicator' ),
 		'before_widget' => $widget_start_mu,
 		'after_widget'  => $widget_end_mu,
