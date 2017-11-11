@@ -119,6 +119,7 @@ function applicator_htmlok( $args = array() ) {
     
     // Attributes
     $p_attr = '';
+    $p_elem_label_attr = '';
     $p_custom_attr = '';
     $p_title_attr = '';
     $p_id_attr = '';
@@ -692,6 +693,26 @@ function applicator_htmlok( $args = array() ) {
             $p_obj_a_elem_attr .= ' '.$clean_key.'="'.$clean_val.'"';
         }
     }
+    
+    
+    // Attributes of Element Label (h_l, g_l, a_l)
+    if ( ! empty( $r['structure']['attr']['elem_label'] ) ) {
+        $r_attr_elem_label = $r['structure']['attr']['elem_label'];
+            
+        $p_elem_label_attr = '';
+        
+        foreach ( ( array ) $r_attr_elem_label as $key => $val ) {
+            
+            $clean_key = '';
+            $clean_val = '';
+            
+            $clean_key = substr( strtolower( preg_replace( $pat_no_space, $rep_no_space, trim( $key ) ) ), $substr_start, $substr_end );
+            
+            $clean_val = preg_replace( $pat_space, $rep_space, trim( $val ) );
+            
+            $p_elem_label_attr .= ' '.$clean_key.'="'.$clean_val.'"';
+        }
+    }
 
 
     
@@ -794,6 +815,8 @@ function applicator_htmlok( $args = array() ) {
     
     // Output
     $o_obj_elem = $p_obj_elem;
+    
+    $o_elem_label_attr = $p_elem_label_attr;
     
     $o_obj_label_elem = $p_obj_label_elem;
     
@@ -1550,7 +1573,7 @@ function applicator_htmlok( $args = array() ) {
     // Anchor Markup
     $a_smu = '';
     $a_smu .= '<a'.$o_obj_a_id_attr.' class="a '.$o_obj_a_elem_css.'---a'.$o_obj_a_root_css.'" '.$o_obj_a_elem_attr. $p_obj_elem_root_title.'>';
-    $a_smu .= '<'.$o_obj_label_elem.' class="a_l '.$o_obj_a_elem_css.'---a_l">';
+    $a_smu .= '<'.$o_obj_label_elem.' class="a_l '.$o_obj_a_elem_css.'---a_l"'. $o_elem_label_attr. '>';
     $a_smu .= '<'.$o_obj_label_elem.' class="l '.$o_obj_a_elem_css.'---l">';
     
     $a_emu = '';
@@ -1571,7 +1594,7 @@ function applicator_htmlok( $args = array() ) {
     }
     
     else {
-        $obj_cr_smu .= '<'.$o_obj_label_elem.' class="'.$o_obj_label_elem_css.'">';
+        $obj_cr_smu .= '<'.$o_obj_label_elem.' class="'.$o_obj_label_elem_css.'"'. $o_elem_label_attr. '>';
         $obj_cr_smu .= '<'.$o_obj_label_elem.' class="'.$o_obj_label_l_elem_css.'">';
         
         $obj_cr_emu = '';

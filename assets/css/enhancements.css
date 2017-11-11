@@ -42,7 +42,6 @@ Enhancements Style
 .widget .screen-reader-text,
 .post-content .search-form-reset-axn,
 .aside .search-form-reset-axn,
-.main-media-banner img,
 .applicator--comments .post-header-aside .comments-actions-snippet .comments-population,
 .applicator--comments .comments-actions-snippet.comments-population--empty .add-comment-axn,
 .applicator--comments--active .comments-toggle .comments-count---txt,
@@ -693,6 +692,22 @@ select
 
 
 /* ------------------ Main Banner ------------------ */
+.window--unloaded .main-media-banner
+{
+    visibility: hidden;
+}
+
+.main-media-banner
+{
+    opacity: 0;
+    transition: opacity .125s ease-in-out;
+}
+
+.window--loaded .main-media-banner
+{
+    opacity: 1;
+}
+
 .main-banner
 {
     flex: 1 100%;
@@ -704,8 +719,10 @@ select
     overflow: hidden;
 }
 
-.main-media-banner---g
+.main-media-banner---g_l
 {
+    display: block;
+    
     padding-bottom: 56.25%;
     padding-bottom: calc( var(--aspect-ratio--16-9) );
     
@@ -720,8 +737,7 @@ select
 
 .main-media-banner img
 {
-    width: 100%;
-    height: auto;
+    display: none;
 }
 
 
@@ -3364,7 +3380,7 @@ select
         height: 15.82%;
     }
 
-    .main-media-banner---g
+    .main-media-banner---g_l
     {
         padding-bottom: 15.82%;
         padding-bottom: calc( var(--aspect-ratio--16-9) / 2);

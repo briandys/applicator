@@ -28,7 +28,7 @@ if ( ! function_exists( 'applicator_post_banner_visual' ) ) {
                         'a'         => array(
                             'href'      => get_the_permalink(),
                         ),
-                        'elem'  => array(
+                        'elem_label'  => array(
                             'style'     => $style_attr_content,
                         ),
                     ),

@@ -78,7 +78,7 @@
 .applicator--theme--page-nav .page-nav .ellipsis--delimiter,
 .applicator--theme--page-nav .blog .page-navi:not( .adjacent-navi ),
 .applicator--theme--post-format--status .format-status .published-post-author,
-.view--inner .main-banner,
+
 .applicator--theme--post-format--status .blog .format-status .post-title,
 .applicator--theme--post-format--status .single .format-status .post-title,
 .applicator--theme--post-format--status .format-status .apl-post-categories,
@@ -396,7 +396,7 @@
     position: relative;
 }
 
-.view--multisite-directory .post-banner-vis---g
+.view--multisite-directory .post-banner-vis---a_l
 {
     background-size: cover;
     background-position: center;
@@ -1465,18 +1465,15 @@
     display: none;
 }
 
-.applicator--theme--layout .post-banner-vis---g
-{
-    background-size: cover;
-    background-position: center;
-}
-
-.applicator--theme--layout .post-banner-vis---a
+.applicator--theme--layout .post-banner-vis---a_l
 {
     display: block;
     
     width: 100%;
     height: 20rem;
+    
+    background-size: cover;
+    background-position: center;
 }
 
 
@@ -1533,6 +1530,11 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+}
+
+.applicator--theme--main-header.view--inner .main-banner
+{
+    display: none;
 }
 
 

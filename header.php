@@ -220,7 +220,7 @@
                         'structure' => array(
                             'type'      => 'object',
                             'attr'      => array(
-                                'elem'         => array(
+                                'elem_label'         => array(
                                     'style'      => 'background-image: url('. esc_url( get_header_image() ). ')',
                                 ),
                             ),
