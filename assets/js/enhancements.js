@@ -528,6 +528,34 @@
         $goStartNaviAL.append( $goStartNavArrowIco );
         
         
+        // Consistent rate of page scrolling
+        ( function() {
+            
+            $window.on( 'scroll.applicator', function() {
+                
+                var msMultiplier = 800 / 125,
+                    scrollTime;
+
+                $( '#go-start-navi---a' ).on( 'click.applicator', function() {
+                    
+                    var href = $.attr( this, 'href' );
+                    
+                    scrollTime = window.pageYOffset / msMultiplier;
+
+                    $htmlBody.stop().animate( {
+                        scrollTop: $( href ).offset().top
+                    }, scrollTime, 'easeInOutCirc', function() {
+                        window.location.hash = href;                
+                    } );
+
+                    return false;
+                } );
+                
+            } );
+    
+        }() );
+        
+        
         // Resize Sensor
         new ResizeSensor( $webProduct, function() {
             goStartNav();
@@ -996,11 +1024,12 @@
                 if ( $cp.hasClass( commentsOffCSS ) ) {
                     commentsActivate();
                     
-                    var href = $.attr( this, 'href' );
+                    var href = $.attr( this, 'href' ),
+                        scrollTime = window.innerHeight / ( 800 / 125 );
 
                     $htmlBody.stop().animate( {
                         scrollTop: $( href ).offset().top
-                    }, 300, 'easeInOutCirc', function() {
+                    }, scrollTime, 'easeInOutCirc', function() {
                         window.location.hash = href;
                     } );
 
@@ -2427,17 +2456,20 @@
     /* ------------------------ Smooth Scrolling ------------------------ */
     // https://stackoverflow.com/a/7717572
     ( function() {
-        $( 'a[href^="#"]' ).on( 'click.applicator', function() {
-            var href = $.attr( this, 'href' );
+        
+        $( 'a[href^="#"]:not( #go-start-navi---a )' ).on( 'click.applicator', function() {
+            var href = $.attr( this, 'href' ),
+                scrollTime = window.innerHeight / ( 800 / 125 );
 
             $htmlBody.stop().animate( {
                 scrollTop: $( href ).offset().top
-            }, 300, 'easeInOutCirc', function() {
+            }, scrollTime, 'easeInOutCirc', function() {
                 window.location.hash = href;                
             } );
 
             return false;
         } );
+    
     }() );
     
     
