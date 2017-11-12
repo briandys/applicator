@@ -1483,10 +1483,9 @@
 /* ------------------ Main Header ------------------ */
 .applicator--theme--main-header .main-info,
 .applicator--theme--main-header.applicator--main-menu .main-hr-aside---hr_cr,
-.applicator--theme--main-header .main-actions---ct_cr,
-.applicator--theme--main-header.applicator--main-menu .main-menu-dismiss
+.applicator--theme--main-header .main-actions---ct_cr
 {
-    height: 3.5rem;
+    height: 6.5rem;
 }
 
 .applicator--theme--main-header .main-info---cr,
@@ -1525,13 +1524,6 @@
     min-height: 3rem;
 }
 
-.applicator--theme--main-header.applicator--main-menu .main-menu-dismiss---b
-{   
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
 .applicator--theme--main-header.view--inner .main-banner
 {
     display: none;
@@ -1543,9 +1535,26 @@
 
 /* ------------------ GPU Hack ------------------ */
 .main-banner,
-.main-hr-aside---ct
+.main-hr-aside---ct,
+.main-actions-widgets---widget-grp
 {
     transform: translateZ(0);
+}
+
+
+
+
+
+/* ------------------ Viewport Width: 768 ------------------ */
+
+@media only screen and ( min-width: 48em )
+{
+    
+    .applicator--theme--main-header.applicator--main-search--active .main-actions---ct
+    {
+        width: auto;
+    }
+    
 }
 
 

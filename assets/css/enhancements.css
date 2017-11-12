@@ -47,7 +47,6 @@ Enhancements Style
 .applicator--comments--active .comments-toggle .comments-count---txt,
 .applicator--page-nav .adjacent-navi---l,
 .main-actions .widget-heading,
-.applicator--main-search--active .main-actions---ct_cr > *:not( .main-search-func ),
 .applicator--comments--active .comments-toggle .show-hide---txt,
 .main-actions-widgets---h,
 .main-actions-widgets-toggle---l,
@@ -100,6 +99,7 @@ Enhancements Style
 
 /* Overlay Inactive */
 .applicator--main-menu .overlay--main-menu-func,
+.applicator--main-actions-widgets .overlay--main-actions-widgets-func,
 .applicator--go-content-nav .overlay--go-content-nav-func
 {
     position: fixed;
@@ -119,6 +119,9 @@ Enhancements Style
 .applicator--main-menu--active .overlay--main-menu-func,
 .applicator--main-menu .here.overlay--main-menu-func,
 
+.applicator--main-actions-widgets--active .overlay--main-actions-widgets-func,
+.applicator--main-actions-widgets .here.overlay--main-actions-widgets-func,
+
 .applicator--go-content-nav--active .overlay--go-content-nav-func,
 .applicator--go-content-nav .here.overlay--go-content-nav-func
 {
@@ -132,6 +135,7 @@ Enhancements Style
 
 /* Exit Transition */
 .applicator--main-menu--inactive .there.overlay--main-menu-func,
+.applicator--main-actions-widgets--inactive .there.overlay--main-actions-widgets-func,
 .applicator--go-content-nav--inactive .there.overlay--go-content-nav-func
 {
     opacity: 0;
@@ -140,6 +144,11 @@ Enhancements Style
 .applicator--go-content-nav .overlay--go-content-nav-func
 {   
     background-color: white;
+}
+
+.applicator--main-actions-widgets .overlay--main-actions-widgets-func
+{   
+    background-color: transparent;
 }
 
 
@@ -700,12 +709,18 @@ select
 .main-media-banner
 {
     opacity: 0;
-    transition: opacity .125s ease-in-out;
+    transition: opacity .3s ease-in-out;
 }
 
 .window--loaded .main-media-banner
 {
     opacity: 1;
+}
+
+.main-media-banner.here,
+.main-media-banner.there
+{
+    transition: none;
 }
 
 .main-banner
@@ -2542,10 +2557,12 @@ select
     z-index: 100;
 }
 
-.applicator--main-search .main-actions-widgets
+
+.applicator--main-actions-widgets .main-search-func
 {
     margin-right: 3rem;
 }
+
 
 /* Positioning */
 .main-actions-widgets---ct
@@ -2561,7 +2578,7 @@ select
     position: relative;
     
     width: 30rem;
-    max-width: 100vw;
+    max-width: calc( 100vw - 3rem );
     
     transform: translateY(-.5rem);
 }
@@ -2573,6 +2590,7 @@ select
     position: absolute;
     right: 0;
     top: 0;
+    z-index: 1;
     
     margin-top: 1px;
     
@@ -2588,11 +2606,6 @@ select
     transform-origin: 0 0;
     transform: rotate(135deg) scale(.75);
     box-shadow: -2px 2px 1px -1px hsla(0, 0%, 25%, .25);
-}
-
-.applicator--main-search .main-actions-widgets---ct_cr
-{
-    max-width: calc( 100vw - 6rem );
 }
 
 .main-actions-widgets .main-actions-widgets---ct
@@ -2633,8 +2646,8 @@ select
 .main-actions-widgets---widget-grp
 {
     width: 100%;
-    height: 20rem;
-    max-height: calc( 100vh - ( ( 3rem - .5rem ) * 2 ) );
+    height: 100%;
+    max-height: calc( 100vh - ( 3.5rem * 2 ) );
     
     background-color: white;
     
@@ -2642,6 +2655,10 @@ select
     box-shadow: 0 0 0 1px hsla(0, 0%, 0%, .1), 0 .5rem 1rem hsla(0, 0%, 0%, .05);
     
     overflow-y: auto;
+}
+
+.main-actions-widgets---widget-grp > *:first-child{
+    margin-top: 1rem;
 }
 
 .main-actions-widgets .b_l
@@ -2654,11 +2671,18 @@ select
     position: absolute;
     right: 0;
     top: 0;
+    z-index: 1;
 }
 
 .main-actions-widgets-dismiss---b
 {
     color: black;
+}
+
+.applicator--main-actions-widgets--active
+{
+    /* Prevent Scroll on Root */
+    overflow: hidden;
 }
 
 
@@ -2677,7 +2701,6 @@ select
     left: 0;
     top: 0;
     
-    width: 100%;
     min-height: 3rem;
 }
 
@@ -2988,12 +3011,6 @@ select
 .here.main-menu--inactive .main-menu-dismiss
 {
     visibility: hidden;
-}
-
-/* Illusion to make the toggle look like below the overlay */
-.here.main-menu--inactive .main-menu-toggle .icon
-{
-    opacity: .25;
 }
 
 .applicator--main-menu--active
@@ -3356,7 +3373,7 @@ select
     /* Search */
     .main-search-func .search-term-crt-search-text-input
     {
-        max-width: 30rem;
+        width: 30rem;
     }
     
     .main-search--active .search-term-crt-search-text-input

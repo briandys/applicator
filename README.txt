@@ -48,6 +48,9 @@ Source: https://unsplash.com/photos/yEOCA6oiVqg
 
 == Changelog ==
 
+= 2.0.8 =
+Just keeps getting better.
+
 = 0 =
 * Released: March 22, 2017
 

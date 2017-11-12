@@ -167,19 +167,51 @@
     
     /* ------------------------ Transition Here and There ------------------------ */
     
+    // Variables
+    var hereTerm = 'here',
+        thereTerm = 'there',
+        transitionEnd = 'transitionend.applicator webkitTransitionEnd.applicator oTransitionEnd.applicator otransitionend.applicator';
+    
+    
     // Transition Entrance
-    function transHere( $elem ) {
+    function transHereCSS( $elem ) {
         $elem
-            .addClass( 'here' )
-            .removeClass( 'there' );
+            .addClass( hereTerm )
+            .removeClass( thereTerm );
     }
     
     // Transition Exit
-    function transThere( $elem ) {
+    function transThereCSS( $elem ) {
         $elem
-            .addClass( 'there' )
-            .removeClass( 'here' );
+            .addClass( thereTerm )
+            .removeClass( hereTerm );
     }
+    
+    function transHere( $elem, $property, $target ) {
+        
+        $elem.on( transitionEnd, function() {
+            if ( event.propertyName == $property ) {
+                transHereCSS( $target );
+            }
+        } );
+        
+    }
+    
+    function transThere( $elem, $property, $target ) {
+        
+        if ( $target.hasClass( hereTerm ) ) {
+        
+            $elem.on( transitionEnd, function() {
+                if ( event.propertyName == $property ) {
+                    transThereCSS( $target );
+                }
+            } );
+
+        }
+    
+    }
+    
+    
     
     
     
@@ -647,20 +679,15 @@
         
         
         // Activate and TransHere
-        function mainMenuOnTransHere() {
+        function mainMenuOntransHereCSS() {
             
             if ( $cp.hasClass( mainMenuInactCss ) ) {
-            
                 mainMenuActivate();
-                
             }
-
-            $mainHrAsCt.on( 'transitionend.applicator webkitTransitionEnd.applicator oTransitionEnd.applicator otransitionend.applicator', function() {
-                if ( event.propertyName == 'transform' ) {
-                    transHere( $cp );
-                    transHere( $mainMenuOverlay );
-                }
-            } );
+            
+            transHere( $mainHrAsCt, 'transform', $cp );
+            transHere( $mainHrAsCt, 'transform', $mainMenuOverlay );
+            
         }
         
         
@@ -686,18 +713,14 @@
         
         
         // Deactivate and TransThere
-        function mainMenuOffTransThere() {
+        function mainMenuOfftransThereCSS() {
             
-            if ( $cp.hasClass( mainMenuActCss + ' ' + 'here' ) ) {
+            if ( $cp.hasClass( mainMenuActCss ) ) {
             
                 mainMenuDeactivate();
-
-                $mainHrAsCt.on( 'transitionend.applicator webkitTransitionEnd.applicator oTransitionEnd.applicator otransitionend.applicator', function() {
-                    if ( event.propertyName == 'transform' ) {
-                        transThere( $cp );
-                        transThere( $mainMenuOverlay );
-                    }
-                } );
+                
+                transThere( $mainHrAsCt, 'transform', $cp );
+                transThere( $mainHrAsCt, 'transform', $mainMenuOverlay );
             
             }
         }
@@ -707,12 +730,12 @@
         function mainMenuToggle() {
             
             if ( $cp.hasClass( mainMenuInactCss ) ) {
-                mainMenuOnTransHere();
+                mainMenuOntransHereCSS();
                 $mainHeaderAsideWidgetGroup.scrollTop( 0 );
             }
             
             else if ( $cp.hasClass( mainMenuActCss ) ) {
-                mainMenuOffTransThere();
+                mainMenuOfftransThereCSS();
             }
         }
         
@@ -730,7 +753,7 @@
         ( function() {
             $mainMenuDismissButton.on( 'click.applicator', function( e ) {
                 e.preventDefault();
-                mainMenuOffTransThere();
+                mainMenuOfftransThereCSS();
             } );
         }() );
         
@@ -738,7 +761,7 @@
         // Deactivate via external click
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             if ( ! $( e.target ).closest( $mainMenuTog ).length && ! $( e.target ).closest( $mainHrAsCt ).length ) {
-                mainMenuOffTransThere();
+                mainMenuOfftransThereCSS();
             }
         } );
           
@@ -747,7 +770,7 @@
         $window.load( function() {
             $document.on( 'keyup.applicator', function ( e ) {
                 if ( e.keyCode == 27 ) {
-                    mainMenuOffTransThere();
+                    mainMenuOfftransThereCSS();
                 }
             } );
         } );
@@ -757,7 +780,7 @@
         ( function() {
             $mainMenuOverlay.on( 'click.applicator', function( e ) {
                 e.preventDefault();
-                mainMenuOffTransThere();
+                mainMenuOfftransThereCSS();
             } );
         }() );
         
@@ -1021,12 +1044,12 @@
         
         $mainSearch = $( '#main-search' );
         
-        if ( ! $mainSearch.length ) {
-            $html.removeClass( applicatorMainSearchTerm );
+        if ( ! $aplApplicatorMainSearch.length ) {
 			return;
 		}
         
-        if ( ! $aplApplicatorMainSearch.length ) {
+        if ( ! $mainSearch.length ) {
+            $html.removeClass( applicatorMainSearchTerm );
 			return;
 		}
         
@@ -1285,17 +1308,6 @@
             $mainActionsWidgetsWidgetGroup;
         
         
-        // Initializing
-        ( function() {
-            
-            funcName = 'main-actions-widgets-func';
-            
-            $mainActionsWidgets
-                .addClass( funcTerm )
-                .addClass( funcName );
-        } );
-        
-        
         // Create Main Actions Widgets
         ( function() {
 
@@ -1333,6 +1345,19 @@
             $mainActionsWidgetsH = $mainActionsWidgets.find( '.main-actions-widgets---h' );
             $mainActionsWidgetsWidgetGroup = $mainActionsWidgets.find( '.main-actions-widgets---widget-grp' );
             
+        }() );
+        
+        
+        // Initializing
+        ( function() {
+            
+            funcName = 'main-actions-widgets-func';
+            
+            $mainActionsWidgets
+                .addClass( funcTerm )
+                .addClass( funcName );
+            
+            overlayActivate( funcName );
         }() );
         
         
@@ -1400,18 +1425,6 @@
         }
 
 
-        // TransHere
-        function mainActionsWidgetsTransHere() {
-
-            $mainActionsWidgetsCt.on( 'transitionend.applicator webkitTransitionEnd.applicator oTransitionEnd.applicator otransitionend.applicator', function() {
-                if ( event.propertyName == 'opacity' ) {
-                    transHere( $mainActionsWidgets );
-                }
-            } );
-
-        }
-
-
         // Deactivate
         function mainActionsWidgetsDeactivate() {
             $mainActionsWidgets
@@ -1434,33 +1447,24 @@
         mainActionsWidgetsDeactivate();
 
 
-        // TransThere
-        function mainActionsWidgetsTransThere() {
-
-            if ( $mainActionsWidgets.hasClass( 'here' ) ) {
-
-                $mainActionsWidgetsCt.on( 'transitionend.applicator webkitTransitionEnd.applicator oTransitionEnd.applicator otransitionend.applicator', function() {
-                    if ( event.propertyName == 'opacity' ) {
-                        transThere( $mainActionsWidgets );
-                    }
-                } );
-
-            }
-        }
-
-
         // Toggle
         function mainActionsWidgetsToggle() {
 
             if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOffCSS ) ) {
+                
                 mainActionsWidgetsActivate();
-                mainActionsWidgetsTransHere();
+                
+                transHere( $mainActionsWidgetsCt, 'opacity', $mainActionsWidgets );
+                
                 $mainActionsWidgetsWidgetGroup.scrollTop( 0 );
+            
             }
-
             else if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOnCSS ) ) {
+                
                 mainActionsWidgetsDeactivate();
-                mainActionsWidgetsTransThere();
+                
+                transThere( $mainActionsWidgetsCt, 'opacity', $mainActionsWidgets );
+            
             }
         }
 
@@ -1477,9 +1481,13 @@
         // Dismiss Click
         ( function() {
             $mainActionsWidgetsDismissButton.on( 'click.applicator', function( e ) {
+                
                 e.preventDefault();
+                
                 mainActionsWidgetsDeactivate();
-                mainActionsWidgetsTransThere();
+                
+                transThere( $mainActionsWidgetsCt, 'opacity', $mainActionsWidgets );
+            
             } );
         }() );
 
@@ -1487,8 +1495,11 @@
         // Deactivate via external click
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOnCSS ) && ( ! $( e.target ).closest( $mainActionsWidgetsToggle ).length ) && ( ! $( e.target ).closest( $mainActionsWidgetsCt ).length ) ) {
+                
                 mainActionsWidgetsDeactivate();
-                mainActionsWidgetsTransThere();
+                
+                transThere( $mainActionsWidgetsCt, 'opacity', $mainActionsWidgets );
+            
             }
         } );
 
@@ -1497,8 +1508,11 @@
         $window.load( function() {
             $document.on( 'keyup.applicator', function ( e ) {
                 if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOnCSS ) && e.keyCode == 27 ) {
+                    
                     mainActionsWidgetsDeactivate();
-                    mainActionsWidgetsTransThere();
+                    
+                    transThere( $mainActionsWidgetsCt, 'opacity', $mainActionsWidgets );
+                
                 }
             } );
         } );
@@ -2433,8 +2447,23 @@
             mainBannerHeightHalf = mainBannerHeight / 2,
             mainBannerOffsetHeight = mainBannerOffset + mainBannerHeight,
             mainBannerOffsetHeightHalf = mainBannerOffset + ( mainBannerHeight / 2 );
-
         
+        
+        // Detect Main Banner Scroll Position
+        function detectMainBannerScrollPosition() {
+            
+            if ( scrollPosition <= mainBannerOffsetHeightHalf ) {
+                transHereCSS( $mainMediaBanner );
+            }
+
+            if ( scrollPosition >= mainBannerOffsetHeight ) {
+                transThereCSS( $mainMediaBanner );
+            }
+            
+        }
+        
+        
+        // On scroll
         ( function() {
         
             $window.on( 'scroll.applicator', function() {
@@ -2446,6 +2475,7 @@
 
                 /* Transform magic */
                 if ( scrollPosition <= mainBannerOffsetHeight ) {
+                    
                     $mainMediaBanner.css( {
                         transform: "translateY(" + mainBannerTranslateY + "px) scale(" + mainBannerScale + ", " + mainBannerScale + ")"
                     } );
@@ -2453,23 +2483,33 @@
 
                 /* Opacity magic */
                 if ( scrollPosition >= mainBannerOffsetHeightHalf ) {
+                    
                     $mainMediaBanner.css( {
                         opacity: mainBannerOpacity
                     } );
+                
                 }
-
                 else {
+                    
                     $mainMediaBanner.css( {
                         opacity: 1
                     } );
+                
                 }
 
                 if ( scrollPosition >= mainBannerOffsetHeight ) {
-
+                    
                     $mainMediaBanner.css( {
                         opacity: 0
                     } );
                 }
+                
+                setTimeout( function() {
+                    
+                    detectMainBannerScrollPosition();
+                
+                }, 10 );
+            
             } );
             
         }() );
