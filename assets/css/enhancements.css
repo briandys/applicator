@@ -41,12 +41,11 @@ Enhancements Style
 .widget-content---h,
 .widget .screen-reader-text,
 .post-content .search-form-reset-axn,
-.aside .search-form-reset-axn,
 .applicator--comments .post-header-aside .comments-actions-snippet .comments-population,
 .applicator--comments .comments-actions-snippet.comments-population--empty .add-comment-axn,
 .applicator--comments--active .comments-toggle .comments-count---txt,
 .applicator--page-nav .adjacent-navi---l,
-.main-actions .widget-heading,
+.main-actions-aside .widget-heading,
 .applicator--comments--active .comments-toggle .show-hide---txt,
 .main-actions-widgets---h,
 .main-actions-widgets-toggle---l,
@@ -461,7 +460,7 @@ select
 }
 
 /* Root Nav Item Indicator */
-.main-nav---ct_cr > .menu > ul > li > a:hover > .main-navi---a_l
+.main-nav---ct_cr > .menu > ul > li > a .main-navi---a_l
 {
     position: relative;
 }
@@ -556,8 +555,7 @@ select
 }
 
 /* Branch Nav Item Indicator */
-.main-nav---ct_cr > .menu > ul > li > ul a:hover,
-.main-nav---ct_cr > .menu > ul > li > ul a:hover
+.main-nav---ct_cr > .menu > ul > li > ul a
 {
     position: relative;
 }
@@ -638,6 +636,18 @@ select
     border-bottom: 0;
 }
 
+.main-nav .page_item_has_children > ul > li > a,
+.main-nav .menu-item-has-children > ul > li > a
+{
+    transition: background-color .125s ease-in-out;
+}
+
+.main-nav .page_item_has_children > ul > li > a:hover,
+.main-nav .menu-item-has-children > ul > li > a:hover
+{
+    background-color: whitesmoke;
+}
+
 .main-nav .page_item_has_children > ul > li:first-child > a,
 .main-nav .menu-item-has-children > ul > li:first-child > a
 {
@@ -672,6 +682,11 @@ select
 .main-nav .menu-item-has-children > ul > .current-menu-item > a
 {
     border-left-color: #005fe6;
+}
+
+.main-navi--hash---a
+{
+    cursor: default;
 }
 
 
@@ -874,14 +889,16 @@ select
 
 
 /* ------------------ Search ------------------ */
+.aside .search-form-reset-axn---b,
+.post-content .search-form-reset-axn---b
+{
+    color: hsla(0, 0%, 0%, .75);
+}
+
 .aside .search-form-reset-axn---b_l,
 .post-content .search-form-reset-axn---b_l
 {
     background-color: hsla(0, 0%, 75%, .25);
-    background-color: var(--sec-axn-bg-color);
-    
-    color: hsla(0, 0%, 0%, .75);
-    color: var(--sec-axn-fg-color);
 }
 
 .post-content .search-term-crt-search-text-input,
@@ -1158,10 +1175,22 @@ select
     padding-bottom: 1em;
 }
 
+.search-results .post-excerpt---ct_cr,
+.archive .post-excerpt---ct_cr
+{
+    padding: .75em 1rem;
+}
+
 .search-results .excerpt-link,
 .archive .excerpt-link
 {
-    display: block;
+    display: inline;
+}
+
+.search-results .post-excerpt---ct_cr > .excerpt-link,
+.archive .post-excerpt---ct_cr > .excerpt-link
+{
+    padding: 0;
 }
 
 
@@ -1194,46 +1223,6 @@ select
     outline-color: white;
 }
 
-/* Height Adjustment
-.main-info,
-.applicator--main-menu .main-hr-aside---hr_cr,
-.main-actions---ct_cr
-{
-    position: relative;
-    height: 3.5rem;
-}
-
-.applicator--theme--main-header .main-info---cr,
-.applicator--theme--main-header .main-menu-toggle,
-.applicator--theme--main-header.applicator--main-search .main-search-func,
-.applicator--theme--main-header .main-actions-widgets
-{
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.applicator--theme--main-header .main-hr-aside---hr,
-.applicator--theme--main-header .main-actions---ct
-{
-    position: absolute;
-}
-
-.applicator--theme--main-header .main-actions---ct
-{
-    right: 0;
-}
-
-.applicator--theme--main-header.applicator--main-search--active .main-actions---ct
-{
-    width: 100%;
-}
-
-.applicator--theme--main-header.applicator--main-search .main-search-func
-{   
-    min-height: 3rem;
-}
- */
 
 
 
@@ -2277,6 +2266,11 @@ select
     padding-bottom: 0;
 }
 
+.aside .search-form-reset-axn
+{
+    display: none;
+}
+
 
 
 
@@ -2511,7 +2505,7 @@ select
 
 
 /* ------------------ Main Actions ------------------ */
-.main-actions
+.main-actions-aside
 {
     position: absolute;
     left: 0;
@@ -2520,17 +2514,17 @@ select
     width: 100%;
 }
 
-.main-actions---cr
+.main-actions-aside---cr
 {
     position: relative;
 }
 
-.main-actions a
+.main-actions-aside a
 {
     color: white;
 }
 
-.applicator--main-search--active .main-actions
+.applicator--main-search--active .main-actions-aside
 {
     width: 100%;
 }
@@ -2540,7 +2534,7 @@ select
 
 
 /* ------------------ Main Actions Widgets ------------------ */
-.dom--unready .main-actions
+.dom--unready .main-actions-aside
 {
     display: none;
 }
@@ -2647,7 +2641,7 @@ select
 {
     width: 100%;
     height: 100%;
-    max-height: calc( 100vh - ( 3.5rem * 2 ) );
+    max-height: calc( 100vh - ( ( 3rem * 2 ) - .5rem ) );
     
     background-color: white;
     
@@ -2661,7 +2655,12 @@ select
     margin-top: 1rem;
 }
 
-.main-actions-widgets .b_l
+.main-actions-widgets .main-actions-widgets-toggle---b_l
+{
+    background-color: transparent;
+}
+
+.main-actions-widgets .main-actions-widgets-dismiss---b_l
 {
     background-color: transparent;
 }
@@ -2685,12 +2684,51 @@ select
     overflow: hidden;
 }
 
+.main-actions-aside .main-search-func .widget---cr
+{
+    /* Negation */
+    padding: 0;
+}
+
+.main-actions-aside .main-search-func .widget-content---ct_cr > *
+{
+    /* Negation */
+    padding: 0;
+    line-height: inherit;
+}
+
+.main-actions-aside .main-search-func .search-term-crt-search-text-input,
+.main-actions-aside .main-search-func .search-form-search-axn,
+.main-actions-aside .main-search-func .search-form-reset-axn
+{
+    /* Negation */
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.main-actions-aside .main-search-func .search-form-reset-axn
+{
+    /* Negation */
+    display: block;
+}
+
+.main-actions-aside .main-search-func .search-form-reset-axn---b_l
+{
+    /* Negation */
+    color: unset;
+}
+
+.main-actions-aside .main-search-func .search-form-reset-axn---b
+{
+    color: white;
+}
+
 
 
 
 /* ------------------ Main Search ------------------ */
-.applicator--main-search.dom--unready .main-actions---ct_cr > .search,
-.applicator--main-search.dom--unready .main-actions---ct_cr > .widget_search
+.applicator--main-search.dom--unready .main-actions-aside---ct_cr > .search,
+.applicator--main-search.dom--unready .main-actions-aside---ct_cr > .widget_search
 {
     display: none;
 }

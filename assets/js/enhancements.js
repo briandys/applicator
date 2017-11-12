@@ -46,6 +46,10 @@
         overlayMu,
         
         $mainActions = $( '#main-actions' ),
+        
+        $mainNav = $( '#main-nav' ),
+        $navParentItems = $( '.page_item, .menu-item' ),
+            
         $mainSearch;
     
     
@@ -1035,7 +1039,7 @@
 		}
         
         $mainActions
-            .find( $( '.main-actions---ct_cr' ) )
+            .find( $( '.main-actions-aside---ct_cr' ) )
                 .children( '.search:first, .widget_search:first' )
                     .attr( 'id', 'main-search' );
     }() );
@@ -1266,7 +1270,7 @@
     function initMainActions() {
         
         
-        var $mainActionsWidgetItems = $mainActions.find( '.main-actions---ct_cr > .widget:not( .widget_search )' );
+        var $mainActionsWidgetItems = $mainActions.find( '.main-actions-aside---ct_cr > .widget:not( .main-search-func )' );
         
         // Gatekeeper
         ( function() {
@@ -1548,8 +1552,6 @@
             navHoverInactiveCss = 'nav-hover--inactive',
             aplSubNavActCss = 'applicator--sub-nav--active',
             aplSubNavInactCss = 'applicator--sub-nav--inactive',
-            
-            $navParentItems = $( '.page_item, .menu-item' ),
             
             $mainNavItem = $cp.find( $navParentItems ),
             
@@ -2214,6 +2216,7 @@
             
             wrapTextNode( $( '.data-format--img, .excerpt-link, .post-password-form label' ) );
             wrapTextNode( $( '.post-content---ct_cr' ) );
+            wrapTextNode( $( '.wp-caption-text' ) );
             
             initRemoveEmpty( $( '.text-node' ) );
             
@@ -2256,6 +2259,29 @@
                 
                 return;
             }
+        
+        }() );
+        
+        
+        
+        
+        
+        /* ------------------------ If Main Description is visually-hidden ------------------------ */
+        ( function() {
+            
+            var $mainNavAnchor = $mainNav.find( 'a' );
+            
+            $mainNavAnchor.each( function() {
+                
+                var $this = $( this );
+                
+                if ( $this.attr( 'href' ) == '#' ) {
+                    $this.addClass( 'main-navi--hash---a' );
+                }
+                
+            } );
+            
+            
         
         }() );
     
