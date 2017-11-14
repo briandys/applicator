@@ -84,10 +84,14 @@ Enhancements Style
 {
     text-rendering: geometricPrecision;
     
-    background-color: white;
+    background-color: black;
     
     color: hsl(0, 0%, 15%);
-    color: var(--wbp--fg-color);
+}
+
+.body
+{
+    background-color: white;
 }
 
 
@@ -749,6 +753,22 @@ select
     overflow: hidden;
 }
 
+.window--unloaded .main-banner
+{
+    animation: 1s infinite alternate ease-in-out breathing-color--dark;
+}
+
+@keyframes breathing-color--dark {
+    from
+    {
+        background-color: black;
+    }
+    to
+    {
+        background-color: hsl(0, 0%, 10%);
+    }
+}
+
 .main-media-banner---g_l
 {
     display: block;
@@ -766,6 +786,30 @@ select
 }
 
 .main-media-banner img
+{
+    display: none;
+}
+
+/* Do not show Main Banner after Page 1 of Blog */
+.blog.paged .main-banner
+{
+    display: none;
+}
+
+/* Do not show Main Banner in Inner Pages */
+.view--inner.view--page .main-banner
+{
+    display: none;
+}
+
+/* Do not show Main Banner in Posts */
+.view--inner.view--detail .main-banner
+{
+    display: none;
+}
+
+/* Do not show Main Banner in No Search Results */
+.search .main-banner
 {
     display: none;
 }
@@ -1090,13 +1134,12 @@ select
 }
 
 /* Caption */
-.post-content---ct_cr .wp-caption-text
+.post-content---ct_cr .wp-caption-text,
+.widget-content---ct_cr .wp-caption-text
 {
     padding: .75em 1rem;
-    padding: var(--content--spacing);
     
     font-size: .875em;
-    font-size: var(--caption--font-size);
 }
 
 .post-content---ct_cr .content--table,
@@ -1783,15 +1826,15 @@ select
 #comments *:target,
 #respond *:target
 {
-    animation: fade-highlight 2s ease;
+    animation: 2s ease-in-out fade-highlight;
 }
 
 @keyframes fade-highlight {
-    0%
+    from
     {
         background-color: ghostwhite;
     }
-    100%
+    to
     {
         background-color: transparent;
     }
@@ -2200,6 +2243,11 @@ select
     padding: var(--object--spacing--md);
 }
 
+.aside .widget_media_image .widget-content---ct_cr > .widget-heading
+{
+    margin-bottom: 0;
+}
+
 .aside .widget a:hover
 {
     text-decoration: none;
@@ -2269,6 +2317,13 @@ select
 .aside .search-form-reset-axn
 {
     display: none;
+}
+
+.aside .wp-caption
+{
+    padding: 0;
+    
+    width: auto !important;
 }
 
 
@@ -2807,9 +2862,12 @@ select
     left: auto;
     opacity: 1;
     
-    padding-left: 2rem;
-    
     background-color: hsl(200, 100%, 50%);
+}
+
+.applicator--main-menu .main-search--active .search-term-crt-search-text-input
+{
+    padding-left: 2rem;
 }
 
 /* Main Search Form Actions */
@@ -3425,7 +3483,7 @@ select
 
 
 
-/* ------------------ Viewport Width: 1024 ------------------ */
+/* ------------------ Viewport Width: 1024 ------------------ 
 
 @media only screen and ( min-width: 64em )
 {
@@ -3438,8 +3496,7 @@ select
     .main-media-banner---g_l
     {
         padding-bottom: 15.82%;
-        padding-bottom: calc( var(--aspect-ratio--16-9) / 2);
 
     }
 
-}
+}*/

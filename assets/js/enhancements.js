@@ -50,7 +50,12 @@
         $mainNav = $( '#main-nav' ),
         $navParentItems = $( '.page_item, .menu-item' ),
             
-        $mainSearch;
+        $mainSearch,
+        
+        $goStartNaviA = $( '#go-start-navi---a' ),
+        
+        scrollMsFactor = 800 / 125,
+        scrollTime;
     
     
     
@@ -455,9 +460,7 @@
             .addClass( funcName )
             .addClass( funcTerm );
         
-        var $goStartNaviA = $( '#go-start-navi---a' ),
-            
-            goStartNavActCss = 'go-start-nav--active',
+        var goStartNavActCss = 'go-start-nav--active',
             goStartNavInactCss = 'go-start-nav--inactive',
             
             aplgoStartNavActCss = 'applicator--go-start-nav--active',
@@ -526,34 +529,6 @@
         // Add Icon to Button
         $goStartNaviAL = $goStartNaviA.find( '.go-start-navi---a_l' );
         $goStartNaviAL.append( $goStartNavArrowIco );
-        
-        
-        // Consistent rate of page scrolling
-        ( function() {
-            
-            $window.on( 'scroll.applicator', function() {
-                
-                var msMultiplier = 800 / 125,
-                    scrollTime;
-
-                $( '#go-start-navi---a' ).on( 'click.applicator', function() {
-                    
-                    var href = $.attr( this, 'href' );
-                    
-                    scrollTime = window.pageYOffset / msMultiplier;
-
-                    $htmlBody.stop().animate( {
-                        scrollTop: $( href ).offset().top
-                    }, scrollTime, 'easeInOutCirc', function() {
-                        window.location.hash = href;                
-                    } );
-
-                    return false;
-                } );
-                
-            } );
-    
-        }() );
         
         
         // Resize Sensor
@@ -953,10 +928,16 @@
         function commentsScrollTop() {
             
             $comments = $( '#comments' );
+            
+            if ( ! $comments.length ) {
+                return;
+            }
+            
+            scrollTime = 300;
 
             $('html,body').stop().animate( {
                 scrollTop: $comments.offset().top
-            }, 300, 'easeInOutCirc', function() {
+            }, scrollTime, 'easeInOutCirc', function() {
                 window.location.hash = '#comments';
             } );
         }
@@ -1024,8 +1005,9 @@
                 if ( $cp.hasClass( commentsOffCSS ) ) {
                     commentsActivate();
                     
-                    var href = $.attr( this, 'href' ),
-                        scrollTime = window.innerHeight / ( 800 / 125 );
+                    var href = $.attr( this, 'href' );
+                    
+                    scrollTime = 3000;
 
                     $htmlBody.stop().animate( {
                         scrollTop: $( href ).offset().top
@@ -1886,7 +1868,6 @@
                 if ( ! event.target.checkValidity() ) {
                     event.preventDefault();
 
-                    //$('#commentform :input:visible[required="required"]').each( function () {
                     $('#commentform :input:visible').each( function () {
                         
                         var $this = $( this );
@@ -2458,8 +2439,9 @@
     ( function() {
         
         $( 'a[href^="#"]:not( #go-start-navi---a )' ).on( 'click.applicator', function() {
-            var href = $.attr( this, 'href' ),
-                scrollTime = window.innerHeight / ( 800 / 125 );
+            var href = $.attr( this, 'href' );
+            
+            scrollTime = window.innerHeight / scrollMsFactor;
 
             $htmlBody.stop().animate( {
                 scrollTop: $( href ).offset().top
@@ -2468,6 +2450,34 @@
             } );
 
             return false;
+        } );
+        
+        $( 'a[href^="#"]:not( #go-start-navi---a )' ).each( function() {
+            
+            var $this = $( this );
+            
+            console.log( $this );
+            
+        } );
+        
+        
+        $window.on( 'scroll.applicator', function() {
+                
+            $goStartNaviA.on( 'click.applicator', function() {
+
+                var href = $.attr( this, 'href' );
+
+                scrollTime = window.pageYOffset / scrollMsFactor;
+
+                $htmlBody.stop().animate( {
+                    scrollTop: $( href ).offset().top
+                }, scrollTime, 'easeInOutCirc', function() {
+                    window.location.hash = href;                
+                } );
+
+                return false;
+            } );
+
         } );
     
     }() );
