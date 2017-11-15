@@ -2238,7 +2238,23 @@
         
         /* ------------------------ Main Logo ------------------------ */
         ( function(){
+            
+            // Gatekeeper
+            ( function(){
+                
+                if ( ! $( '#main-logo' ).length ) {
+
+                    $html
+                        .removeClass( 'main-logo--enabled' )
+                        .addClass( 'main-logo--disabled' );
+
+                    return;
+                }
+            
+            }() );
         
+            
+            // Variables
             var $mainLogoWidth = $( '.main-logo' ).width(),
                 $mainLogoHeight = $( '.main-logo' ).height(),
                 $mainName = $( '.main-logo--enabled .main-name' ),
@@ -2246,11 +2262,15 @@
                 $rootFontSize = $( ':root' ).css( 'font-size' ),
                 $mainLogoWidthRem = ( ( $mainLogoWidth / parseInt( $rootFontSize ) ) + .5 ) + 'rem';
             
-            // If logo is not square
-            if ( $mainLogoWidth !== $mainLogoHeight ) {
-                $mainName.css( 'margin-left', $mainLogoWidthRem );
-                $mainDescription.css( 'margin-left', $mainLogoWidthRem );
-            }
+            // If logo is not square, compute its width
+            ( function(){
+                
+                if ( $mainLogoWidth !== $mainLogoHeight ) {
+                    $mainName.css( 'margin-left', $mainLogoWidthRem );
+                    $mainDescription.css( 'margin-left', $mainLogoWidthRem );
+                }
+            
+            }() );
             
         }() );
         

@@ -791,25 +791,11 @@ select
 }
 
 /* Do not show Main Banner after Page 1 of Blog */
-.blog.paged .main-banner
-{
-    display: none;
-}
-
-/* Do not show Main Banner in Inner Pages */
-.view--inner.view--page .main-banner
-{
-    display: none;
-}
-
-/* Do not show Main Banner in Posts */
-.view--inner.view--detail .main-banner
-{
-    display: none;
-}
-
-/* Do not show Main Banner in No Search Results */
-.search .main-banner
+.blog.paged .main-banner,
+.view--inner.view--page .main-banner,
+.view--inner.view--detail .main-banner,
+.search .main-banner,
+.error404 .main-banner
 {
     display: none;
 }
@@ -957,6 +943,11 @@ select
     
     padding-bottom: .5em;
     padding-bottom: var(--object--spacing-y--sm);
+}
+
+.apl-search .search---ct_cr
+{
+    max-width: 30rem;
 }
 
 
@@ -2958,6 +2949,11 @@ select
     transition-property: opacity;
 }
 
+.main-search-func .search---ct_cr
+{
+    max-width: none;
+}
+
 
 
 
@@ -3483,20 +3479,14 @@ select
 
 
 
-/* ------------------ Viewport Width: 1024 ------------------ 
+/* ------------------ Viewport Width: 1024 ------------------ */
 
 @media only screen and ( min-width: 64em )
 {
     
-    .main-banner
+    .dom--unready .post-content---ct_cr > p
     {
-        height: 15.82%;
+        width: 120rem;
     }
 
-    .main-media-banner---g_l
-    {
-        padding-bottom: 15.82%;
-
-    }
-
-}*/
+}

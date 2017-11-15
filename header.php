@@ -150,6 +150,7 @@
                             'type'          => 'object',
                             'subtype'       => 'wordpress generated content',
                         ),
+                        'id'        => 'main-logo',
                         'title'     => get_bloginfo( 'name' ),
                         'content'   => array(
                             'object'        => get_custom_logo(),

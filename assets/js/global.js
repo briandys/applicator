@@ -32,6 +32,19 @@
 ( function( $ ) {
     
     
+    // Remove Empty Element
+    function removeEmptyElement( $elem, $target ) {
+        
+        if ( $elem.html().replace(/\s|&nbsp;/g, '' ).length == 0 ) {
+            $target.remove();
+        }
+    
+    }
+    
+    // If there is no logo, remove the object
+    removeEmptyElement( $( '.custom-logo-link' ), $( '#main-logo' ) );
+    
+    
     
     
     
@@ -49,6 +62,8 @@
 
         $this.closest( '.widget' ).addClass( 'widget--empty' );
     } );
+    
+    
     
     
     

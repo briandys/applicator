@@ -189,10 +189,10 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         
         
         // Customizer: Custom Logo
-        if ( has_custom_logo() ) {
-            echo ' '. 'main-logo'. $on;
-        } else {
+        if ( ! has_custom_logo() ) {
             echo ' '. 'main-logo'. $off;
+        } else {
+            echo ' '. 'main-logo'. $on;
         }
         
         
