@@ -61,7 +61,7 @@ if ( is_multisite() ) {
             ?> 
 
         </div>
-    </div><!-- Main Content Header -->
+    </div>
 
     <div class="ct main-content---ct">
         <div class="ct_cr main-content---ct_cr">
@@ -330,7 +330,7 @@ if ( is_multisite() ) {
             ?>
 
         </div>
-    </div><!-- Main Content Content -->
+    </div>
 
     <?php get_footer();
     

@@ -311,4 +311,4 @@ $post_classes = implode( ' ', $post_classes );
         ?>  
 
     </div>
-</article><!-- Post CP -->
+</article>

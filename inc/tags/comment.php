@@ -369,7 +369,7 @@ if ( ! function_exists( 'applicator_comment' ) ) {
         ?>           
                         
                     </div>
-                </div><!-- comment--hr -->
+                </div>
                 <div class="ct comment---ct">
                     <div class="ct_cr comment---ct_cr">
                         
@@ -412,7 +412,7 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                         ?>
                     
                     </div>
-                </div><!-- ct -->
+                </div>
                 
                 <?php if ( is_singular() && comments_open() && get_option( 'thread_comments' ) && $depth < $args['max_depth'] ) { ?>
                 <div class="fr comment---fr">

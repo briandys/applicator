@@ -76,10 +76,10 @@ $post_classes = implode( ' ', $post_classes );
                 
                 $search_spiel = '';
                 if ( is_404() ) {
-                    $search_spiel = esc_html__( 'Please try searching.', 'applicator' );
+                    $search_spiel = esc_html__( 'Please try searching:', 'applicator' );
                 }
                 else {
-                    $search_spiel = esc_html__( 'Please try another search term.', 'applicator' );
+                    $search_spiel = esc_html__( 'Please try another search term:', 'applicator' );
                 }
                     
                 // E: Post Content
@@ -102,7 +102,7 @@ $post_classes = implode( ' ', $post_classes );
             </div>
         </div>
     </div>
-</article><!-- Post CP -->
+</article>
 
 <?php
 $entry_content = ob_get_contents();

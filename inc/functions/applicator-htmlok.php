@@ -192,7 +192,7 @@ function applicator_htmlok( $args = array() ) {
     $t_object_mu .= '%1$s';
     $t_object_mu .= '</span>';
     $t_object_mu .= '</%8$s>';
-    $t_object_mu .= '</div><!-- %2$s OBJ -->';
+    $t_object_mu .= '</div>';
     
     
     // Text Markup Structure Template
@@ -1333,25 +1333,25 @@ function applicator_htmlok( $args = array() ) {
                     // Form Label
                     $content_val .= '<'.$o_content_compound_layout_elem.' class="obj flabel'.$o_content_compound_group_branch_css.'-flabel" data-name="'.$o_felems_obj_name.' Form Label OBJ">';
                     $content_val .= '<label class="label'.$o_content_compound_group_branch_css.'-flabel---label" for="'.$o_group_label_for.'"><span class="label_l'.$o_content_compound_group_branch_css.'-flabel---label_l"><span class="txt'.$o_content_compound_group_name_txt.'">'.$o_content_compound_group_name.'</span></span></label>';
-                    $content_val .= '</'.$o_content_compound_layout_elem.'><!-- '.$o_content_compound_complete_group_name.' Form Label OBJ -->';
+                    $content_val .= '</'.$o_content_compound_layout_elem.'>';
                     
                     // Form Element (Created Element)
                     $content_val .= '<'.$o_content_compound_layout_elem.' class="obj felem'.$o_content_compound_group_branch_css.'-'.$o_felem_type_css.'" data-name="'.$o_felems_obj_name. $o_felem_type_name.' OBJ">';
                     $content_val .= '<'.$o_content_compound_layout_elem.' class="ce'.$o_content_compound_group_branch_css.'-'.$o_felem_type_css.'---ce">';
                     $content_val .= $o_form_type;
                     $content_val .= '</'.$o_content_compound_layout_elem.'>';
-                    $content_val .= '</'.$o_content_compound_layout_elem.'><!-- '.$o_felems_obj_name. $o_felem_type_name.' OBJ -->';
+                    $content_val .= '</'.$o_content_compound_layout_elem.'>';
                     
                     
                     $content_val .= '</div>';
-                    $content_val .= '</div><!-- '.$o_content_compound_complete_group_name.' Form Elements CP -->';
+                    $content_val .= '</div>';
                 }
             }
             
             $content_val .= '</div>';
             $content_val .= '</div>';
             $content_val .= '</fieldset>';
-            $content_val .= '</div><!-- '.$o_content_compound_name.' Fieldset Item CP -->';
+            $content_val .= '</div>';
         }
     }
     
@@ -1553,7 +1553,7 @@ function applicator_htmlok( $args = array() ) {
     $subtype_form_actions_cr_emu .= '</div>';
     $subtype_form_actions_cr_emu .= '</div>';
     $subtype_form_actions_cr_emu .= '</div>';
-    $subtype_form_actions_cr_emu .= '</div><!-- '.$p_name. $p_subtype_name.' Actions CP -->';
+    $subtype_form_actions_cr_emu .= '</div>';
     
     
     // Form Elements Structure Markup
@@ -1566,7 +1566,7 @@ function applicator_htmlok( $args = array() ) {
     $subtype_form_elements_cr_emu = '';
     $subtype_form_elements_cr_emu .= '</div>';
     $subtype_form_elements_cr_emu .= '</label>';
-    $subtype_form_elements_cr_emu .= '</div><!-- Object Name -->';
+    $subtype_form_elements_cr_emu .= '</div>';
     $subtype_form_elements_cr_emu .= $cr_emu;
     
     
@@ -1803,7 +1803,7 @@ function applicator_htmlok( $args = array() ) {
         
         }
         
-        $output .= '</'.$o_root_elem.'><!-- '.$o_structure_name.' -->';
+        $output .= '</'.$o_root_elem.'>';
         
         $output .= $o_content_after;
     

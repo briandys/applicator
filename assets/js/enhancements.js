@@ -2263,7 +2263,7 @@
                 $mainLogoWidthRem = ( ( $mainLogoWidth / parseInt( $rootFontSize ) ) + .5 ) + 'rem';
             
             // If logo is not square, compute its width
-            ( function(){
+            ( function() {
                 
                 if ( $mainLogoWidth !== $mainLogoHeight ) {
                     $mainName.css( 'margin-left', $mainLogoWidthRem );

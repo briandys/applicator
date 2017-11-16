@@ -113,7 +113,7 @@ else {
         ?> 
         
     </div>
-</div><!-- Main Content Header -->
+</div>
 
 <div class="ct main-content---ct">
     <div class="ct_cr main-content---ct_cr">
@@ -245,7 +245,7 @@ else {
         ?>
 
     </div>
-</div><!-- Main Content Content -->
+</div>
 
 <div class="fr main-content---fr">
     <div class="fr_cr main-content---fr_cr">
@@ -255,6 +255,6 @@ else {
         ?>
     
     </div>
-</div><!-- Main Content Footer -->
+</div>
 
 <?php get_footer();

@@ -37,7 +37,7 @@ function applicator_aside_init() {
                                 $widget_end_mu = '</div>';
                             $widget_end_mu .= '</div>';
                         $widget_end_mu .= '</div>';
-                    $widget_end_mu .= '</div><!-- Widget Content CP -->';
+                    $widget_end_mu .= '</div>';
                 $widget_end_mu .= '</div>';
             $widget_end_mu .= '</div>';
         $widget_end_mu .= '</div>';
@@ -51,7 +51,7 @@ function applicator_aside_init() {
                 $widget_h_end_mu = '</span>';
             $widget_h_end_mu = '</span>';
         $widget_h_end_mu .= '</h4>';
-    $widget_h_end_mu .= '</div><!-- Widget Heading OBJ -->';
+    $widget_h_end_mu .= '</div>';
     
     register_sidebar( array(
 		'name'          => __( '1. Main Header Aside', 'applicator' ),

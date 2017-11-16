@@ -1,5 +1,5 @@
                     </div>
-                </section><!-- Main Content CN -->
+                </section>
 
                 <?php
 
@@ -151,7 +151,7 @@
                 ?>
             
             </div>
-        </div><!-- Web Product -->
+        </div>
 
         <?php
 

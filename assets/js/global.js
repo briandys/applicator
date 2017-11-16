@@ -35,35 +35,68 @@
     // Remove Empty Element
     function removeEmptyElement( $elem, $target ) {
         
+        // Gatekeeper
+        if ( ! $elem.length ) {
+            return;
+        }
+        
         if ( $elem.html().replace(/\s|&nbsp;/g, '' ).length == 0 ) {
-            $target.remove();
+            
+            $elem.closest( $target ).remove();
+        
         }
     
     }
     
+    
+    // Tag Empty Element
+    function tagEmptyElement( $elem, $target, $class ) {
+        
+        // Gatekeeper
+        if ( ! $elem.length ) {
+            return;
+        }
+        
+        $elem.each( function() {
+            
+            var $this = $( this );
+            
+            if ( $this.html().replace(/\s|&nbsp;/g, '' ).length == 0 ) {
+                $this.closest( $target ).addClass( $class );
+            }
+            
+        } );
+    
+    }
+    
+    
     // If there is no logo, remove the object
     removeEmptyElement( $( '.custom-logo-link' ), $( '#main-logo' ) );
     
+    // removeEmptyElement( $( '#calendar_wrap' ), $( '.widget_calendar' ) );
     
     
     
+    // Tag Empty Widgets like Calendar Widgets
+    ( function() {
+        
+        var $element = $( '.widget-content---ct_cr > *:not( img ):not( .widget-heading )' ),
+            $target = $( '.widget' ),
+            $class = 'widget--zero-length';
+        
+        tagEmptyElement( $element, $target, $class );
     
-    // Widget Content
-    $( '.widget-content---ct_cr > *:not( img )' ).each( function() {
-        var $this = $( this );
+    } )();
+    
+    
+    // Tag Empty Categories Widgets
+    ( function() {
 
-        if ( $this.html().replace(/\s|&nbsp;/g, '' ).length == 0 ) {
-            $this.closest( '.widget' ).addClass( 'widget--zero-length' );
-        }
-    } );
-
-    $( '.widget_categories .widget-content---ct_cr > *:has( .cat-item-none )' ).each( function() {
-        var $this = $( this );
-
-        $this.closest( '.widget' ).addClass( 'widget--empty' );
-    } );
+        $( '.widget_categories .widget-content---ct_cr > *:has( .cat-item-none )' ).each( function() {
+            $( this ).closest( '.widget' ).addClass( 'widget--empty' );
+        } );
     
-    
+    } )();
     
     
     

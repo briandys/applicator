@@ -40,7 +40,7 @@ if ( ! function_exists( 'applicator_breadcrumbs_nav' ) ) {
                             $breadcrumbs_navi_a_mu .= '</span>';
                         $breadcrumbs_navi_a_mu .= '</span>';
                     $breadcrumbs_navi_a_mu .= '</a>';
-                $breadcrumbs_navi_a_mu .= '</div><!-- %8$s '.$breadcrumbs_data_name_term.' -->';
+                $breadcrumbs_navi_a_mu .= '</div>';
                 
                 
                 // Navi <g>
@@ -55,7 +55,7 @@ if ( ! function_exists( 'applicator_breadcrumbs_nav' ) ) {
                             $breadcrumbs_navi_g_mu .= '</span>';
                         $breadcrumbs_navi_g_mu .= '</span>';
                     $breadcrumbs_navi_g_mu .= '</span>';
-                $breadcrumbs_navi_g_mu .= '</div><!-- %8$s '.$breadcrumbs_data_name_term.' -->';
+                $breadcrumbs_navi_g_mu .= '</div>';
                 
                 
                 // Page must have a parent

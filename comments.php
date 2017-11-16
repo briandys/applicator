@@ -111,7 +111,7 @@ $comment_creation_header_mu .= '<div class="obj %2$s-heading" data-name="Comment
             $comment_creation_header_mu .= '%1$s';
         $comment_creation_header_mu .= '</span>';
     $comment_creation_header_mu .= '</div>';
-$comment_creation_header_mu .= '</div><!-- Comment Creation Heading OBJ -->';
+$comment_creation_header_mu .= '</div>';
 
 $comment_creation_term = esc_html__( 'Comment Creation', 'applicator' );
 $comment_creation_term_css = sanitize_title( $comment_creation_term );

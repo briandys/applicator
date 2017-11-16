@@ -9,6 +9,7 @@ if ( ! function_exists( 'applicator_custom_visuals_setup' ) ) {
             'default_text_color' => 'black',
             'width'              => 1280,
             'height'             => 800,
+            'flex-width'         => true,
             'flex-height'        => true,
             'wp-head-callback'   => 'applicator_style_custom_header_colors',
         ) ) );
