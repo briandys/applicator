@@ -125,6 +125,7 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
             
         $main_header_aside = 'main-header-aside';
         $main_actions_aside = 'main-actions-aside';
+        $main_banner_aside = 'main-banner-aside';
         $main_header_content_aside = 'main-header-content-aside';
         $main_content_aside = 'main-content-aside';
         $main_footer_aside = 'main-footer-aside';
@@ -146,6 +147,14 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         }
         else {
             echo ' '. $main_actions_aside. $off;
+        }
+        
+        // Main Banner Aside
+        if ( is_active_sidebar( $main_banner_aside ) ) {
+            echo ' '. $main_banner_aside. $on;
+        }
+        else {
+            echo ' '. $main_banner_aside. $off;
         }
         
         // Main Content Header Aside

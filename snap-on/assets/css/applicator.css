@@ -513,7 +513,8 @@
     --table-line--sm: 1px solid var(--table-stroke--color--min);
 }
 
-.applicator--theme--table .post-content tbody
+.applicator--theme--table .post-content tbody,
+.applicator--theme--table .comment-content tbody
 {
     border: var(--table-line--md);
     border-left-width: 1px;
@@ -521,7 +522,8 @@
 }
 
 /* Table Header */
-.applicator--theme--table .post-content th
+.applicator--theme--table .post-content th,
+.applicator--theme--table .comment-content th
 {
     border: 0;
     
@@ -529,7 +531,9 @@
 }
 
 .applicator--theme--table .post-content td,
-.applicator--theme--table .post-content tbody th
+.applicator--theme--table .post-content tbody th,
+.applicator--theme--table .comment-content td,
+.applicator--theme--table .comment-content tbody th
 {
     border: var(--table-line--sm);
     
@@ -537,12 +541,14 @@
     border-bottom: 0;
 }
 
-.applicator--theme--table .post-content td:first-child
+.applicator--theme--table .post-content td:first-child,
+.applicator--theme--table .comment-content td:first-child
 {
     border-left: 0;
 }
 
-.applicator--theme--table .post-content tfoot
+.applicator--theme--table .post-content tfoot,
+.applicator--theme--table .comment-content tfoot
 {
     border: var(--table-line--md);
     border-left: 0;
@@ -1524,7 +1530,6 @@
 
 
 /* ------------------ GPU Hack ------------------ */
-.main-banner,
 .main-hr-aside---ct,
 .main-actions-widgets---widget-grp
 {

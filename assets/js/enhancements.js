@@ -2165,11 +2165,18 @@
 
 
             // ------------ <table>
-            $( postContentCtCrCss + ' ' + '> *:has( table )' ).each(function() {
+            $( '.post-content---ct_cr > *:has( table ), .comment-content---ct_cr > *:has( table )' ).each(function() {
                 var $this = $( this ),
                     $table = $this.find( 'table' );
 
                 $table.wrap( dataFormatBlockCpMu )
+                    .closest( dataFormatCss )
+                        .addClass( dataFormatPrefixCss + 'table' );
+            });
+
+            $( postContentCtCrCss + ' ' + '> table, .comment-content---ct_cr > table' ).each(function() {
+                var $this = $( this );
+                $this.wrap( dataFormatBlockCpMu )
                     .closest( dataFormatCss )
                         .addClass( dataFormatPrefixCss + 'table' );
             });

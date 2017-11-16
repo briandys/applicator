@@ -210,9 +210,9 @@
                 
                 
                 // Custom Header | Customizer > Custom Header | inc > functions > custom-header.php
+                
                 $main_media_banner_obj = '';
-                $main_banner_cp = '';
-
+                
                 if ( has_header_image() ) {
                     
                     // R: Main Media Banner
@@ -231,6 +231,11 @@
                         ),
                     ) );
                 
+                }
+
+                $main_banner_cp = '';
+                
+                if ( has_header_image() || is_active_sidebar( 'main-banner-aside' ) ) {
                     
                     // R: Main Banner
                     $main_banner_cp = applicator_htmlok( array(
@@ -242,6 +247,7 @@
                         'content'   => array(
                             'component' => array(
                                 
+                                applicator_main_banner(),
                                 $main_media_banner_obj,
                             
                             ),

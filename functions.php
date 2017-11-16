@@ -141,9 +141,9 @@ $custom_visuals = get_parent_theme_file_path( '/inc/functions/custom-visuals.php
 if ( file_exists( $custom_visuals ) ) { require_once( $custom_visuals ); }
 
 
-// Widgets Init
-$widgets_init = get_parent_theme_file_path( '/inc/functions/widgets-init.php' );
-if ( file_exists( $widgets_init ) ) { require_once( $widgets_init ); }
+// Widgets
+$widgets = get_parent_theme_file_path( '/inc/functions/widgets.php' );
+if ( file_exists( $widgets ) ) { require_once( $widgets ); }
 
 
 // Excerpt

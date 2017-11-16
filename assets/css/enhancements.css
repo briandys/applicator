@@ -45,7 +45,6 @@ Enhancements Style
 .applicator--comments .comments-actions-snippet.comments-population--empty .add-comment-axn,
 .applicator--comments--active .comments-toggle .comments-count---txt,
 .applicator--page-nav .adjacent-navi---l,
-.main-actions-aside .widget-heading,
 .applicator--comments--active .comments-toggle .show-hide---txt,
 .main-actions-widgets---h,
 .main-actions-widgets-toggle---l,
@@ -89,9 +88,20 @@ Enhancements Style
     color: hsl(0, 0%, 15%);
 }
 
+
+
+
+
+/* ------------------ Body ------------------ */
 .body
 {
     background-color: white;
+}
+
+.body.custom-background
+{
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 
@@ -270,7 +280,7 @@ h1, h2, h3, h4, h5, h6
 input[type="password"],
 input[type="submit"],
 select,
-.b
+button
 {
     /* Reset */
     padding: 0;
@@ -296,24 +306,23 @@ select
     width: 100%;
     
     border: 1px solid hsla( 0, 0%, 0%, .5 );
-    border: 1px solid var(--input-text--border-color);
 }
 
 /* Buttons */
-.b,
+button,
 input[type="submit"]
 {
     color: white;
 }
 
 .b_l,
-input[type="submit"]
+input[type="submit"],
+.widget_custom_html button
 {
     padding: .5em 1em;
     width: 100%;
     
     background-color: hsl(215, 100%, 45%);
-    background-color: var(--button--pri--bg-color);
 }
 
 select
@@ -327,13 +336,13 @@ select
 
 /* ------------------ Focusing, Tap Highlight ------------------ */
 .tab-key--inactive .input-text:focus,
-.tab-key--inactive .b:focus
+.tab-key--inactive button:focus
 {
     outline: none;
 }
 
 .input-text,
-.b
+button
 {
     -webkit-tap-highlight-color: transparent;
 }
@@ -343,7 +352,8 @@ select
 
 
 /* ------------------ Data Format ------------------ */
-.post-content---ct_cr > .data-format
+.post-content---ct_cr > .data-format,
+.comment-content---ct_cr > .data-format
 {
     padding-left: 0;
     padding-right: 0;
@@ -720,6 +730,39 @@ select
 
 
 /* ------------------ Main Banner ------------------ */
+.main-banner
+{
+    flex: 1 100%;
+    
+    background-color: black;
+}
+
+.main-banner---cr
+{
+    position: relative;
+}
+
+.main-banner-aside--disabled .main-banner---cr
+{
+    min-height: calc( ( 1080 / 2560 ) * 100vw );
+}
+
+.window--unloaded .main-banner
+{
+    animation: 1s infinite alternate ease-out breathing-color--dark;
+}
+
+@keyframes breathing-color--dark {
+    from
+    {
+        background-color: black;
+    }
+    to
+    {
+        background-color: hsl(0, 0%, 10%);
+    }
+}
+
 .window--unloaded .main-media-banner
 {
     visibility: hidden;
@@ -736,53 +779,17 @@ select
     opacity: 1;
 }
 
-.main-media-banner.here,
-.main-media-banner.there
-{
-    transition: none;
-}
-
-.main-banner
-{
-    flex: 1 100%;
-    
-    height: 56.25%;
-    
-    background-color: black;
-    
-    overflow: hidden;
-}
-
-.window--unloaded .main-banner
-{
-    animation: 1s infinite alternate ease-in-out breathing-color--dark;
-}
-
-@keyframes breathing-color--dark {
-    from
-    {
-        background-color: black;
-    }
-    to
-    {
-        background-color: hsl(0, 0%, 10%);
-    }
-}
-
 .main-media-banner---g_l
 {
-    display: block;
-    
-    padding-bottom: 56.25%;
-    padding-bottom: calc( ( 1080 / 2560 ) * 100% );
+    position: absolute;
+    left: 0;
+    top: 0;
     
     width: 100%;
-    height: 0;
+    height: 100%;
     
     background-size: cover;
     background-position: center;
-    
-    overflow: hidden;
 }
 
 .main-media-banner img
@@ -798,6 +805,78 @@ select
 .error404 .main-banner
 {
     display: none;
+}
+
+.main-banner-aside--enabled .main-media-banner
+{
+    opacity: .5;
+}
+
+
+
+
+
+/* ------------------ Main Banner Aside ------------------ */
+.main-banner-aside
+{
+    position: relative;
+    z-index: 1;
+    
+    color: white;
+}
+
+.main-banner-aside---ct
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    min-height: calc( ( 1080 / 2560 ) * 100vw );
+}
+
+.main-banner-aside---ct_cr
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.main-banner-aside---ct_cr > *
+{
+    flex: 1 100%;
+    
+    display: flex;
+    justify-content: center;
+}
+
+.main-banner-aside .widget .input-text,
+.main-banner-aside .widget input[type="text"],
+.main-banner-aside .widget input[type="password"],
+.main-banner-aside .widget select
+{
+    border-color: white;
+}
+
+/* Placeholder Text */
+.main-banner-aside .widget .input-text::-webkit-input-placeholder
+{
+    color: hsla(0, 100%, 100%, .75);
+}
+
+.main-banner-aside .widget .input-text::-moz-placeholder
+{
+    color: hsla(0, 100%, 100%, .75);
+}
+
+.main-banner-aside .widget .input-text:-moz-placeholder
+{
+    color: hsla(0, 100%, 100%, .75);
+}
+
+.main-banner-aside .widget .input-text:-ms-input-placeholder
+{
+    color: hsla(0, 100%, 100%, .75);
 }
 
 
@@ -833,7 +912,8 @@ select
 
 
 /* ------------------ Table ------------------ */
-.post-content table
+.post-content table,
+.comment-content table
 {
     width: 100%;
     
@@ -1133,13 +1213,6 @@ select
     font-size: .875em;
 }
 
-.post-content---ct_cr .content--table,
-.comment-content---ct_cr .content--table
-{
-    padding-left: 0;
-    padding-right: 0;
-}
-
 .post-content td,
 .post-content th,
 .comment-content td,
@@ -1250,7 +1323,7 @@ select
 .main-desc---a,
 .main-logo a,
 .main-search-func .input-text,
-.main-search-func .b,
+.main-search-func button,
 .main-menu--inactive .main-menu-toggle---b,
 .main-actions-widgets-toggle---b
 {
@@ -1694,7 +1767,7 @@ select
     transition-property: width, height, opacity;
 }
 
-.b:hover .dismiss-icon
+button:hover .dismiss-icon
 {
     width: .85rem;
     height: .85rem;
@@ -2920,25 +2993,21 @@ select
 .main-search-func .search-term-crt-search---input-text::-webkit-input-placeholder
 {
     color: hsla(0, 100%, 100%, .5);
-    color: var(--placeholder-reverse-color);
 }
 
 .main-search-func .search-term-crt-search---input-text::-moz-placeholder
 {
     color: hsla(0, 100%, 100%, .5);
-    color: var(--placeholder-reverse-color);
 }
 
 .main-search-func .search-term-crt-search---input-text:-moz-placeholder
 {
     color: hsla(0, 100%, 100%, .5);
-    color: var(--placeholder-reverse-color);
 }
 
 .main-search-func .search-term-crt-search---input-text:-ms-input-placeholder
 {
     color: hsla(0, 100%, 100%, .5);
-    color: var(--placeholder-reverse-color);
 }
 
 .main-search-toggle .search-icon
