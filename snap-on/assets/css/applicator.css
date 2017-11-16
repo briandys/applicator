@@ -1461,22 +1461,6 @@
     position: relative;
 }
 
-.applicator--theme--layout .post-banner-visual img
-{
-    display: none;
-}
-
-.applicator--theme--layout .post-banner-vis---a_l
-{
-    display: block;
-    
-    width: 100%;
-    height: 20rem;
-    
-    background-size: cover;
-    background-position: center;
-}
-
 
 
 
