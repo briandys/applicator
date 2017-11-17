@@ -50,7 +50,6 @@
 #cancel-comment-reply-link .comment---txt,
 .logged-in .commenter-comment-creation-flabel,
 .comments---hr .comments-nav,
-.site-preview .main-media-banner,
 .site--root .site-main-info,
 .view--multisite-directory .post-banner-visual img,
 .view--multisite-directory .entry-content,
@@ -378,6 +377,11 @@
 .site-preview .post-title---h
 {
     font-size: 1.5rem;
+}
+
+.site-preview .main-banner
+{
+    display: none;
 }
 
 
