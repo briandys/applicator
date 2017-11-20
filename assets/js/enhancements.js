@@ -2317,8 +2317,29 @@
                 }
                 
             } );
+        
+        }() );
+        
+        
+        
+        
+        
+        /* ------------------------ Add Anchor to Content Headings ------------------------ */
+        ( function() {
             
+            if ( ! $html.hasClass( 'view--inner' ) ) {
+                return;
+            }
             
+            var $postContentHeadings = $( '.post-content---ct_cr' ).find( 'h1, h2, h3, h4, h5, h6' );
+            
+            $.each( $postContentHeadings, function( index, value ) {
+                
+                $( this )
+                    .attr( 'id', 'section' + ( index + 1 ) )
+                    .wrapInner( '<a href="#section' + ( index + 1 ) + '" />' );
+            
+            } );
         
         }() );
     

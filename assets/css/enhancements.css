@@ -744,23 +744,7 @@ button
 
 .main-banner-aside--disabled .main-banner---cr
 {
-    min-height: calc( ( 1080 / 2560 ) * 100vw );
-}
-
-.window--unloaded .main-banner
-{
-    animation: 1s infinite alternate ease-out breathing-color--dark;
-}
-
-@keyframes breathing-color--dark {
-    from
-    {
-        background-color: black;
-    }
-    to
-    {
-        background-color: hsl(0, 0%, 10%);
-    }
+    min-height: 42vw;
 }
 
 .window--unloaded .main-media-banner
@@ -831,7 +815,7 @@ button
     justify-content: center;
     align-items: center;
     
-    min-height: calc( ( 1080 / 2560 ) * 100vw );
+    min-height: 42vw;
 }
 
 .main-banner-aside---ct_cr
@@ -1277,6 +1261,16 @@ button
 
 
 /* ------------------ Post Banner Visual ------------------ */
+.window--unloaded .post-banner-vis---a_l
+{
+    visibility: hidden;
+}
+
+.window--loaded .post-banner-vis---a_l
+{
+    opacity: 1;
+}
+
 .post-banner-visual img
 {
     display: none;
@@ -1286,7 +1280,9 @@ button
 {
     position: relative;
     
-    min-height: calc( ( 1080 / 2560 ) * 100vw );
+    min-height: 42vw;
+    
+    background-color: black;
 }
 
 .post-banner-vis---a_l
@@ -1300,6 +1296,9 @@ button
     
     background-size: cover;
     background-position: center;
+    
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
 }
 
 
@@ -3586,6 +3585,23 @@ button:hover .dismiss-icon
     .dom--unready .post-content---ct_cr > p
     {
         width: 120rem;
+    }
+    
+    .main-banner-aside--disabled .main-banner---cr
+    {
+        min-height: 28vw;
+    }
+
+    .main-banner-aside---ct
+    {
+        min-height: 28vw;
+    }
+    
+    .post-banner-visual
+    {
+        position: relative;
+
+        min-height: 28vw;
     }
 
 }
