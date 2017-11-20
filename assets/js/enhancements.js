@@ -420,6 +420,16 @@
         }() );
         
         
+        // // Focus Out > Deactivate
+        ( function() {
+            
+            $( '#go-ct-navi---a' ).on( 'click.applicator', function() {
+                $( '#go-ct-navi---a' ).blur();
+            } );
+            
+        }() );
+        
+        
         // Deactivate via keyboard ESC key
         ( function() {
             $window.load( function() {
