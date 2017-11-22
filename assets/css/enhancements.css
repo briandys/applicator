@@ -269,6 +269,11 @@ h1, h2, h3, h4, h5, h6
     margin: 0;
 }
 
+.heading--anchored a
+{
+    color: inherit;
+}
+
 
 
 
@@ -955,6 +960,11 @@ button
     padding: var(--object--spacing--md);
 }
 
+.apl-categories a
+{
+    color: #005fe6;
+}
+
 
 
 
@@ -1029,12 +1039,6 @@ button
     background-color: transparent;
 }
 
-.main-content a
-{
-    color: #005fe6;
-    color: var(--links--fg-color);
-}
-
 .main-content a:hover
 {
     text-decoration: none;
@@ -1043,7 +1047,6 @@ button
 .main-content-heading
 {
     padding: 1em 1rem;
-    padding: var(--object--spacing--md);
 }
 
 .main-content-heading---h_l
@@ -1059,6 +1062,11 @@ button
 .post-title---h_l
 {
     word-break: break-word;
+}
+
+.post-title---a
+{
+    color: #005fe6;
 }
 
 .post-title---a_l
@@ -1247,6 +1255,11 @@ button
 
 
 /* ------------------ Post ------------------ */
+.post-content a
+{
+    color: #005fe6;
+}
+
 .post---cr
 {
     padding-top: 1em;
@@ -2250,9 +2263,19 @@ button:hover .dismiss-icon
     padding-right: var(--component--spacing-x);
 }
 
+.author-name---a
+{
+    color: #005fe6;
+}
+
 .author-name---a_l
 {
     word-break: break-word;
+}
+
+.author-avatar---a
+{
+    color: #005fe6;
 }
 
 .author-avatar---a_l

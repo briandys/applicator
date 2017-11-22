@@ -2346,7 +2346,10 @@
             $.each( $postContentHeadings, function( index, value ) {
                 
                 $( this )
-                    .attr( 'id', 'section' + ( index + 1 ) )
+                    .attr( {
+                        'id': 'section' + ( index + 1 ),
+                        'class': 'heading--anchored'
+                    } )
                     .wrapInner( '<a href="#section' + ( index + 1 ) + '" />' );
             
             } );
