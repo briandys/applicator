@@ -565,6 +565,17 @@ img
 
 
 
+/* ------------------ Video ------------------ */
+video
+{
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+
+
+
+
 /* ------------------ Preformatted Text ------------------ */
 pre
 {

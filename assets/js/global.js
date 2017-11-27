@@ -31,6 +31,8 @@
 
 ( function( $ ) {
     
+    var $html = $( document.documentElement );
+    
     
     // Remove Empty Element
     function removeEmptyElement( $elem, $target ) {
@@ -97,6 +99,22 @@
         } );
     
     } )();
+    
+    
+    /* ------------------------ Remove remnants of <!--more--> tag ------------------------ */
+    ( function() {
+
+        if ( ! $html.closest( '.view--detail' ) ) {
+            return;
+        }
+
+        $( '.post-content---ct_cr span[id^="more-"]' ).each( function() {
+
+            $( this ).closest( '.post-content---ct_cr > *' ).remove();
+
+        } );
+
+    }() );
     
     
     

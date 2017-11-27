@@ -2200,18 +2200,31 @@
 
 
             // ------------ <iframe>
-            $( postContentCtCrCss + ' ' + '> *:has( iframe )' ).each(function() {
+            $( '.post-content---ct_cr > *:has( iframe )' ).each( function() {
                 var $this = $( this );
-
-                $this.addClass( dataFormatTerm + ' ' + dataFormatPrefixCss + 'iframe' );
-            });
-
-            $( postContentCtCrCss + ' ' + '> iframe' ).each(function() {
+                $this.addClass( 'data-format data-format--iframe' );
+            } );
+            
+            $( '.post-content---ct_cr > iframe' ).each( function() {
                 var $this = $( this );
                 $this.wrap( dataFormatInlineCpMu )
-                    .closest( dataFormatCss )
-                        .addClass( dataFormatPrefixCss + 'iframe' );
-            });
+                    .closest( 'data-format' )
+                        .addClass( 'data-format--iframe' );
+            } );
+            
+            
+            // ------------ <embed>
+            $( '.post-content---ct_cr > *:has( embed )' ).each( function() {
+                var $this = $( this );
+                $this.addClass( 'data-format data-format--embed' );
+            } );
+            
+            $( '.post-content---ct_cr > embed' ).each( function() {
+                var $this = $( this );
+                $this.wrap( dataFormatInlineCpMu )
+                    .closest( 'data-format' )
+                        .addClass( 'data-format--embed' );
+            } );
             
 
          } )();
@@ -2355,6 +2368,57 @@
             } );
         
         }() );
+        
+        
+        
+        
+        
+        /* ------------------------ Video Fluid Widths ------------------------ */
+        // https://css-tricks.com/NetMag/FluidWidthVideo/demo.php
+        ( function() {
+
+            var $videos = $( 'iframe[src*="//player.vimeo.com"], iframe[src*="//www.youtube.com"], embed[src*="//v.wordpress.com"], object, embed' ),
+                $container = $( '.post-content---ct_cr' ),
+                $containerChild = $( '.post-content---ct_cr > *' );
+            
+            
+            // Add Data Aspect Ratio
+            $videos.each( function() {
+                $( this )
+                    .attr( 'data-aspect-ratio', this.height / this.width )
+                    .removeAttr( 'width' )
+                    .removeAttr( 'height' )
+                    .closest( $containerChild ).addClass( 'data-format--video' );
+            } );
+
+            
+            // Define New Width and Height
+            $( window ).resize( function() {
+                var newWidth = $container.width(),
+                    $hdVideos = $( 'iframe[data-aspect-ratio], embed[data-aspect-ratio]' );
+            
+                $videos.each(function() {
+                    var $this = $( this );
+                    
+                    $this
+                        .width( newWidth )
+                        .height( newWidth * $this.attr( 'data-aspect-ratio' ) );
+                } );
+                
+                // Define HD Videos
+                $hdVideos.each( function() {
+                    var $this = $( this );
+
+                    if ( $this.attr( 'data-aspect-ratio' ) >= '0.5' && $this.attr( 'data-aspect-ratio' ) <= '0.6' ) {
+                        $this.closest( $containerChild ).addClass( 'data-format--video--hd' );
+                    }
+
+                } );
+
+            } ).resize();
+
+        }() );
+        
     
     } );
     /* ------------------------ End DOM Ready ------------------------ */

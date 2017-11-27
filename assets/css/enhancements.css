@@ -356,6 +356,16 @@ button
 
 
 
+/* ------------------ Text Link ------------------ */
+a
+{
+    color: #005fe6;
+}
+
+
+
+
+
 /* ------------------ Data Format ------------------ */
 .post-content---ct_cr > .data-format,
 .comment-content---ct_cr > .data-format
@@ -393,6 +403,11 @@ button
     margin-bottom: calc( var(--content--spacing-y) * -1);
 }
 
+img.size-medium
+{
+    max-width: 1024px;
+}
+
 
 
 
@@ -406,19 +421,6 @@ button
 .data-format--pre
 {
     overflow-y: hidden;
-}
-
-
-
-
-
-/* ------------------ Data Format - Iframe ------------------ */
-.data-format iframe[src*="youtube.com/"]
-{
-    width: 100vw;
-    
-    height: calc( (9/16) * 100);
-    height: calc( var(--aspect-ratio--hd) * 1vw);
 }
 
 
@@ -960,11 +962,6 @@ button
     padding: var(--object--spacing--md);
 }
 
-.apl-categories a
-{
-    color: #005fe6;
-}
-
 
 
 
@@ -1062,11 +1059,6 @@ button
 .post-title---h_l
 {
     word-break: break-word;
-}
-
-.post-title---a
-{
-    color: #005fe6;
 }
 
 .post-title---a_l
@@ -1255,11 +1247,6 @@ button
 
 
 /* ------------------ Post ------------------ */
-.post-content a
-{
-    color: #005fe6;
-}
-
 .post---cr
 {
     padding-top: 1em;
@@ -1340,6 +1327,16 @@ button
 .archive .post-excerpt---ct_cr > .excerpt-link
 {
     padding: 0;
+}
+
+.show-more-glabel---g
+{
+    color: white;
+}
+
+.show-more-glabel:hover .l
+{
+    text-decoration: underline;
 }
 
 
@@ -2263,19 +2260,9 @@ button:hover .dismiss-icon
     padding-right: var(--component--spacing-x);
 }
 
-.author-name---a
-{
-    color: #005fe6;
-}
-
 .author-name---a_l
 {
     word-break: break-word;
-}
-
-.author-avatar---a
-{
-    color: #005fe6;
 }
 
 .author-avatar---a_l
@@ -2329,11 +2316,6 @@ button:hover .dismiss-icon
     
     padding-bottom: 1em;
     padding-bottom: var(--component--spacing-y);
-}
-.aside .widget a
-{
-    color: #005fe6;
-    color: var(--links--fg-color);
 }
 
 .aside .widget_nav_menu a,
@@ -2614,14 +2596,13 @@ button:hover .dismiss-icon
 .applicator--comments .comments-toggle---b
 {
     width: auto;
+    
+    color: #005fe6;
 }
 
 .applicator--comments .comments-toggle---b_l
 {
     background-color: transparent;
-    
-    color: #005fe6;
-    color: var(--links--fg-color);
 }
 
 .applicator--comments .show-hide---txt
@@ -3627,4 +3608,19 @@ button:hover .dismiss-icon
         min-height: 28vw;
     }
 
+}
+
+@media only screen and ( min-width: 64em ) and ( min-height: 35em )
+{
+    
+    .main-banner-aside--disabled .main-banner---cr
+    {
+        min-height: 42vw;
+    }
+    
+    .main-banner-aside---ct
+    {
+        min-height: 42vw;
+    }
+    
 }
