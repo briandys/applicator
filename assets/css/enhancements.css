@@ -1346,7 +1346,7 @@ img.size-medium
 /* ------------------ Main Header ------------------ */
 .main-header
 {
-    background-color: hsl(200, 100%, 50%);
+    background-color: #005fe6;
 }
 
 .main-header---cr
@@ -2962,7 +2962,7 @@ button:hover .dismiss-icon
     left: auto;
     opacity: 1;
     
-    background-color: hsl(200, 100%, 50%);
+    background-color: #005fe6;
 }
 
 .applicator--main-menu .main-search--active .search-term-crt-search-text-input

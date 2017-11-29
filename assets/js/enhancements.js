@@ -37,7 +37,6 @@
         pageLongCss = 'page--long',
         
         applicatorMainSearchTerm = 'applicator--main-search',
-        applicatorMainMenuTerm = 'applicator--main-menu',
         aplApplicatorMainActionsWidgetsTerm = 'applicator--main-actions-widgets',
         
         $aplWildcard = $( '#applicator-wildcard' ),
@@ -54,7 +53,7 @@
         
         $goStartNaviA = $( '#go-start-navi---a' ),
         
-        scrollMsFactor = 800 / 125,
+        scrollMsFactor = 300,
         scrollTime;
     
     
@@ -2563,36 +2562,35 @@
     // https://stackoverflow.com/a/7717572
     ( function() {
         
-        $( 'a[href^="#"]:not( #go-start-navi---a )' ).on( 'click.applicator', function() {
-            var href = $.attr( this, 'href' );
-            
-            scrollTime = window.innerHeight / scrollMsFactor;
-
-            $htmlBody.stop().animate( {
-                scrollTop: $( href ).offset().top
-            }, scrollTime, 'easeInOutCirc', function() {
-                window.location.hash = href;                
-            } );
-
-            return false;
-        } );
-        
-        $( 'a[href^="#"]:not( #go-start-navi---a )' ).each( function() {
-            
-            var $this = $( this );
-            
-            console.log( $this );
-            
-        } );
-        
         
         $window.on( 'scroll.applicator', function() {
+            
+            $( 'a[href^="#"]:not( #go-start-navi---a )' ).on( 'click.applicator', function() {
+                var href = $.attr( this, 'href' ),
+                    pageYOffset = window.pageYOffset,
+                    innerHeight = window.innerHeight,
+                    howManyPagesOffset = pageYOffset / innerHeight;
+
+                scrollTime = howManyPagesOffset * scrollMsFactor;
+
+                $htmlBody.stop().animate( {
+                    scrollTop: $( href ).offset().top
+                }, scrollTime, 'easeInOutCirc', function() {
+                    window.location.hash = href;                
+                } );
+
+                return false;
+            } );
                 
+            
             $goStartNaviA.on( 'click.applicator', function() {
 
-                var href = $.attr( this, 'href' );
+                var href = $.attr( this, 'href' ),
+                    pageYOffset = window.pageYOffset,
+                    innerHeight = window.innerHeight,
+                    howManyPagesOffset = pageYOffset / innerHeight;
 
-                scrollTime = window.pageYOffset / scrollMsFactor;
+                scrollTime = howManyPagesOffset * scrollMsFactor;
 
                 $htmlBody.stop().animate( {
                     scrollTop: $( href ).offset().top
