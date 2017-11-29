@@ -232,12 +232,9 @@ h6
     text-transform: capitalize;
 }
 
-.commenter-url-creation-flabel---l
+.commenter-url-creation-flabel .optional---txt
 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    margin-left: .5rem;
 }
 
 .comment-form .creation--invalid .input-text
@@ -316,8 +313,7 @@ h6
 {
     background-color: white;
     
-    color: hsla(0, 0%, 0%, .5);
-    color: var(--copyright-info--fg-color);
+    color: #505050
 }
 
 .copyright .wbp-name---txt
@@ -814,7 +810,7 @@ h6
 .applicator--theme--post-meta .post-mod-d-stamp-dtstamp---a,
 .applicator--theme--comment-meta .comment-pub-d-stamp-dtstamp---a
 {
-    color: var(--post-meta--fg-color);
+    color: #505050;
 }
 
 .applicator--theme--post-meta .post-pub-d-stamp-dtstamp---a:hover,
@@ -834,8 +830,7 @@ h6
     
     line-height: 1;
     
-    border: 1px solid lightgray;
-    border: var(--post-meta--border);
+    border: 1px solid #505050;
 }
 
 .applicator--theme--post-meta .post-published,
@@ -898,7 +893,7 @@ h6
 {
     margin-bottom: .5rem;
     
-    color: gray;
+    color: #505050;
     
     font-size: .875rem;
 }

@@ -22,6 +22,11 @@ if ( ! function_exists( 'applicator_main_header_aside' ) ) {
                     'elem'          => 'aside',
                     'hr_structure'  => true,
                     'h_elem'        => 'h2',
+                    'attr'          => array(
+                        'elem'          => array(
+                            'role'          => 'complementary',
+                        ),
+                    ),
                 ),
                 'id'        => $main_header_aside_term,
                 'css'       => 'main-hr',
@@ -176,6 +181,11 @@ if ( ! function_exists( 'applicator_main_content_aside' ) ) {
                     'elem'          => 'aside',
                     'hr_structure'  => true,
                     'h_elem'        => 'h2',
+                    'attr'          => array(
+                        'elem'          => array(
+                            'role'          => 'complementary',
+                        ),
+                    ),
                 ),
                 'id'        => $main_content_aside_term,
                 'css'       => 'main-ct',

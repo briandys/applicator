@@ -2916,9 +2916,12 @@ button:hover .dismiss-icon
     border: 0;
     border-radius: 0;
     
-    padding-left: 1rem;
-    
     color: white;
+}
+
+.main-search-func .search-term-crt-search-text-input---ce
+{
+    padding-left: 1rem;
 }
 
 .main-search--inactive .input-text
@@ -3025,22 +3028,22 @@ button:hover .dismiss-icon
 /* Placeholder Text */
 .main-search-func .search-term-crt-search---input-text::-webkit-input-placeholder
 {
-    color: hsla(0, 100%, 100%, .5);
+    color: hsla(0, 100%, 100%, .75);
 }
 
 .main-search-func .search-term-crt-search---input-text::-moz-placeholder
 {
-    color: hsla(0, 100%, 100%, .5);
+    color: hsla(0, 100%, 100%, .75);
 }
 
 .main-search-func .search-term-crt-search---input-text:-moz-placeholder
 {
-    color: hsla(0, 100%, 100%, .5);
+    color: hsla(0, 100%, 100%, .75);
 }
 
 .main-search-func .search-term-crt-search---input-text:-ms-input-placeholder
 {
-    color: hsla(0, 100%, 100%, .5);
+    color: hsla(0, 100%, 100%, .75);
 }
 
 .main-search-toggle .search-icon

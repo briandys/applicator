@@ -343,7 +343,6 @@ function applicator_htmlok( $args = array() ) {
                 $subtype_name_abbr = 'aside';
                 
                 $p_subtype_css = ' '.$subtype_name_abbr;
-                $p_custom_attr = ' '.'role="complementary"';
                 
                 $p_subtype_name = ' '.$subtype_name;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
