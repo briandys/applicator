@@ -77,9 +77,7 @@
 
 .applicator--theme--post-format--status .blog .format-status .post-title,
 .applicator--theme--post-format--status .single .format-status .post-title,
-.applicator--theme--post-format--status .format-status .apl-post-categories,
-.page .comment-md,
-.comment-creation-ability--disabled.comments-population--empty .comment-md
+.applicator--theme--post-format--status .format-status .apl-post-categories
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -282,6 +280,12 @@ h6
 .signed-in-account a:hover
 {
     text-decoration: underline;
+}
+
+.page .comment-md,
+.comment-creation-ability--disabled.comments-population--empty .comment-md
+{
+    display: none;
 }
 
 

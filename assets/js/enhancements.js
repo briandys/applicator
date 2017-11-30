@@ -501,20 +501,16 @@
         }
         goStartNavDeactivate();
         
+        
         function goStartNav() {
             
-            bodyOffsetCriteriaHeight = document.body.offsetHeight / 2;
-            bodyOffsetHeight = document.body.offsetHeight;
+            if ( document.body.offsetHeight > window.innerHeight ) {
             
-            if ( ( window.innerHeight ) <= ( bodyOffsetCriteriaHeight ) ) {
-
-                // http://stackoverflow.com/a/40370876
                 $window.on( 'scroll.applicator', function() {
-                    if ( ( ( window.innerHeight + window.pageYOffset ) >= ( bodyOffsetHeight / 4 ) ) && ( ! window.pageYOffset == 0 ) ) {
+                    if ( window.pageYOffset >= window.innerHeight ) {
                         goStartNavActivate();
                     }
-                    
-                    else if ( ( ( window.innerHeight + window.pageYOffset ) < ( bodyOffsetHeight / 4 ) ) || ( window.pageYOffset == 0 ) ) {
+                    else {
                         goStartNavDeactivate();
                     }
                 } );
@@ -1008,6 +1004,12 @@
         
         // Link Clicks
         ( function() {
+            
+            var $commentModule = $( '#comment-md' );
+            
+            if ( ! $commentModule.length ) {
+                return;
+            }
             
             $( 'a[href*="#comment"]' ).on( 'click.applicator', function() {
                 
@@ -2355,15 +2357,21 @@
             
             var $postContentHeadings = $( '.post-content---ct_cr' ).find( 'h1, h2, h3, h4, h5, h6' );
             
-            $.each( $postContentHeadings, function( index, value ) {
+            $.each( $postContentHeadings, function( index ) {
                 
+                // https://stackoverflow.com/a/18727318
+                // https://api.jquery.com/contents/
                 $( this )
                     .attr( {
                         'id': 'section' + ( index + 1 ),
                         'class': 'heading--anchored'
                     } )
-                    .wrapInner( '<a href="#section' + ( index + 1 ) + '" />' );
-            
+                    
+                    .contents().filter( function() {
+
+                        // Get only the text nodes
+                        return this.nodeType !== 1;
+                    } ).wrap( '<a href="#section' + ( index + 1 ) + '" />' );
             } );
         
         }() );
@@ -2565,7 +2573,7 @@
         
         $window.on( 'scroll.applicator', function() {
             
-            $( 'a[href^="#"]:not( #go-start-navi---a )' ).on( 'click.applicator', function() {
+            $( 'a[href^="#"]:not( #go-start-navi---a ):not( a[href*="#comment"] )' ).on( 'click.applicator', function() {
                 var href = $.attr( this, 'href' ),
                     pageYOffset = window.pageYOffset,
                     innerHeight = window.innerHeight,
