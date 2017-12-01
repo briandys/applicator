@@ -2596,8 +2596,13 @@
                     pageYOffset = window.pageYOffset,
                     innerHeight = window.innerHeight,
                     howManyPagesOffset = pageYOffset / innerHeight;
-
+                
                 scrollTime = howManyPagesOffset * scrollMsFactor;
+                
+                // If offset is greater than 4 pages, turbo speed
+                if ( howManyPagesOffset > 4 ) {
+                    scrollTime = 300;
+                }
 
                 $htmlBody.stop().animate( {
                     scrollTop: $( href ).offset().top
