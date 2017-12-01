@@ -35,7 +35,7 @@ if ( ! function_exists( 'applicator_page_nav' ) ) {
         
         // MU: Page Number Navigation Item Start
         $page_navi_smu = '';
-        $page_navi_smu .= '<span class="a_l %2$s---a_l">';
+        $page_navi_smu .= '<span class="a_l %2$s---a_l"%5$s>';
         $page_navi_smu .= '<span class="l %2$s---l">';
         $page_navi_smu .= '<span class="txt %3$s---txt">';
         $page_navi_smu .= '%1$s';
@@ -55,7 +55,8 @@ if ( ! function_exists( 'applicator_page_nav' ) ) {
             $page_term,
             $page_navi_css,
             sanitize_title( $page_term ),
-            'num page-number'
+            'num page-number',
+            ''
         );
         
         
@@ -64,7 +65,8 @@ if ( ! function_exists( 'applicator_page_nav' ) ) {
             $next_term,
             $adjacent_navi_css,
             sanitize_title( $next_term ),
-            sanitize_title( $page_term )
+            sanitize_title( $page_term ),
+            'title="'. $next_term. ' '. $page_term. '"'
         );
         
         
@@ -80,7 +82,8 @@ if ( ! function_exists( 'applicator_page_nav' ) ) {
             $previous_term,
             $adjacent_navi_css,
             sanitize_title( $previous_term ),
-            sanitize_title( $page_term )
+            sanitize_title( $page_term ),
+            'title="'. $previous_term. ' '. $page_term. '"'
         );
         
         

@@ -925,6 +925,21 @@ img.size-medium
 
 
 
+/* ------------------ Video ------------------ */
+.window--unloaded .data-format--video
+{
+    opacity: 0;
+}
+
+.data-format--video
+{
+    transition: opacity .3s  ease-in-out;
+}
+
+
+
+
+
 /* ------------------ Embed ------------------ */
 .post-content embed
 {
@@ -1335,6 +1350,11 @@ img.size-medium
 }
 
 .show-more-glabel:hover .l
+{
+    text-decoration: underline;
+}
+
+.excerpt-link > .text-node:hover
 {
     text-decoration: underline;
 }
@@ -3444,6 +3464,16 @@ button:hover .dismiss-icon
 .page-nav
 {
     background-color: white;
+}
+
+.page-nav a
+{
+    text-decoration: none;
+}
+
+.page-nav a:hover
+{
+    text-decoration: underline;
 }
 
 .page-nav li
