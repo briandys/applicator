@@ -1660,10 +1660,9 @@ img.size-medium
 
 
 /* ------------------ Breadcrumbs Nav ------------------ */
-.applicator--breadcrumbs.support--inlinesvg .breadcrumbs-navi--ancestor .icon--raster,
-.applicator--breadcrumbs.support--no-inlinesvg .breadcrumbs-navi--ancestor .icon--vector
+.dom--unready .breadcrumbs-nav
 {
-    display: none;
+    visibility: hidden;
 }
 
 .applicator--breadcrumbs .breadcrumbs-nav---grp

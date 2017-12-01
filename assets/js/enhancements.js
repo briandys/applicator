@@ -505,8 +505,8 @@
         function goStartNav() {
             
             if ( document.body.offsetHeight > window.innerHeight ) {
-            
-                $window.on( 'scroll.applicator', function() {
+                
+                $window.scrolled( function() {
                     if ( window.pageYOffset >= window.innerHeight ) {
                         goStartNavActivate();
                     }
@@ -2570,8 +2570,7 @@
     // https://stackoverflow.com/a/7717572
     ( function() {
         
-        
-        $window.on( 'scroll.applicator', function() {
+        $window.scrolled( function() {
             
             $( 'a[href^="#"]:not( #go-start-navi---a ):not( a[href*="#comment"] )' ).on( 'click.applicator', function() {
                 var href = $.attr( this, 'href' ),
@@ -2608,7 +2607,7 @@
 
                 return false;
             } );
-
+        
         } );
     
     }() );
