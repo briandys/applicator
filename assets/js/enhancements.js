@@ -804,17 +804,13 @@
     
     
     /* ------------------------ Comments ------------------------ */
-    function initComments( $cp ) {
+    function applicatorComments( $cp ) {
         
         
-        // Proceed only in Detail View and the Applicator CSS class name is present
+        // Proceed only if Detail View and the Applicator CSS class name is present
         if ( ! $html.closest( '.view--detail' ) && ! $applicatorComments.length ) {
             return;
         }
-
-        
-        // Functionality Name
-        funcName = 'comments-func';
 
         
         // Variables
@@ -827,7 +823,6 @@
             $comments,
             
             $commentModuleH,
-            $commentsCountAction,
             $commentsToggleButton,
             $commentsToggleButtonTextLabel,
             $commentsToggleButtonTextLabelTxt,
@@ -844,10 +839,17 @@
             commentsOnCSS = 'comments--active',
             commentsOffCSS = 'comments--inactive'
         ;
-
         
-        // Add CSS Class names to Component
-        $cp.addClass( funcTerm + ' ' + funcName );
+        
+        // Initializing
+        ( function() {
+            
+            funcName = 'comments-func';
+            
+            $cp
+                .addClass( funcTerm )
+                .addClass( funcName );
+        }() );
 
         
         // Build Markup
@@ -1047,7 +1049,7 @@
         } );
 
     }
-    initComments( $( '#comment-md' ) );
+    applicatorComments( $( '#comment-md' ) );
     
     
     
