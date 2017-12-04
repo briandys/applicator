@@ -87,6 +87,8 @@ $post_classes = implode( ' ', $post_classes );
                     'name'      => 'Post Content',
                     'structure' => array(
                         'type'      => 'component',
+                        'elem'      => 'section',
+                        'h_elem'    => 'h1',
                     ),
                     'content'   => array(
                         'component'     => array(

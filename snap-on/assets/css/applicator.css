@@ -184,7 +184,7 @@ h6
 
 .view--detail .post-title---a
 {
-    color: black;
+    color: #262626;
 }
 
 
@@ -204,7 +204,7 @@ h6
 
 .comments-header-aside .comments-actions-snippet .comments-count-axn---a
 {
-    color: black;
+    color: #262626;
 }
 
 .comments-header-aside .comments-actions-snippet .comments-count-axn---a:hover{
@@ -360,7 +360,7 @@ h6
 
 .site-preview .site-main-name---a
 {
-    color: black;
+    color: #262626;
     
     text-decoration: none;
 }
@@ -1265,7 +1265,7 @@ h6
 
 .applicator--theme--excerpt .excerpt-link
 {
-    color: black;
+    color: #262626;
     text-decoration: none;
 }
 

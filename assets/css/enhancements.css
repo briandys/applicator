@@ -83,7 +83,7 @@ Enhancements Style
 {
     text-rendering: geometricPrecision;
     
-    background-color: black;
+    background-color: #262626;
     
     color: hsl(0, 0%, 15%);
 }
@@ -121,7 +121,7 @@ Enhancements Style
     top: 0;
     bottom: 100%;
     
-    background-color: black;
+    background-color: #262626;
     
     opacity: 0;
     
@@ -458,8 +458,7 @@ img.size-medium
 
 .main-nav a
 {
-    color: black;
-    color: var(--easy-access-nav-func--main-nav--fg-color);
+    color: #262626;
     
     white-space: nowrap;
 }
@@ -741,7 +740,7 @@ img.size-medium
 {
     flex: 1 100%;
     
-    background-color: black;
+    background-color: #262626;
 }
 
 .main-banner---cr
@@ -1297,7 +1296,7 @@ img.size-medium
     
     min-height: 42vw;
     
-    background-color: black;
+    background-color: #262626;
 }
 
 .post-banner-vis---a_l
@@ -2639,7 +2638,7 @@ button:hover .dismiss-icon
 
 .applicator--comments .comments-toggle .icon
 {
-    color: black;
+    color: #262626;
     opacity: .25;
     
     transition: opacity .125s ease-in-out;
@@ -2846,7 +2845,7 @@ button:hover .dismiss-icon
 
 .main-actions-widgets-dismiss---b
 {
-    color: black;
+    color: #262626;
 }
 
 .applicator--main-actions-widgets--active
@@ -3361,7 +3360,7 @@ button:hover .dismiss-icon
 {
     padding: 0;
     background-color: transparent;
-    color: black;
+    color: #262626;
 }
 
 .main-nav .children .sub-nav--others--active,
@@ -3394,7 +3393,7 @@ button:hover .dismiss-icon
 
 .applicator--page-nav .page-nav .adjacent-navi a
 {
-    color: black;
+    color: #262626;
 }
 
 .applicator--page-nav .page-nav .next-page-navi .icon--vector
