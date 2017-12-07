@@ -55,7 +55,7 @@ function applicator_get_svg( $args = array() ) {
 	}
 
 	// Begin SVG markup.
-	$svg = '<svg class="svg icon icon--vector' . ' ' . esc_attr( $args['icon'] ) . '"' . $aria_hidden . $aria_labelledby . ' role="img">';
+	$svg = '<svg class="svg icon icon--vector' . ' ' . esc_attr( $args['icon'] ) . '" width="16px" height="16px" ' . $aria_hidden . $aria_labelledby . ' role="img">';
 
 	// Display the title.
 	if ( $args['title'] ) {

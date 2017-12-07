@@ -1545,6 +1545,49 @@ h6
 
 
 
+/* ------------------ Focus and Hover on Main Header UI Elements ------------------ */
+.tab-key--active .main-menu-toggle---b_l,
+.tab-key--active .main-search--inactive .main-search-toggle---b_l
+{
+    position: relative;
+}
+
+.tab-key--active .main-menu-toggle---b:focus,
+.tab-key--active .main-search--inactive .main-search-toggle---b:focus
+{
+    outline: 0;
+}
+
+.tab-key--active .main-menu-toggle---b_l:before,
+.tab-key--active .main-search--inactive .main-search-toggle---b_l:before
+{
+    content: '';
+    position: absolute;
+    z-index: 0;
+    
+    width: 100%;
+    height: 100%;
+    
+    background-color: #262626;
+    border-radius: 50%;
+    
+    opacity: 0;
+    transform: scale(0);
+    
+    transition: opacity .3s ease-in-out, transform .1s ease-in-out;
+}
+
+.tab-key--active .main-menu-toggle---b:focus .b_l:before,
+.tab-key--active .main-search--inactive .main-search-toggle---b:focus .b_l:before
+{
+    opacity: .25;
+    transform: scale(.85);
+}
+
+
+
+
+
 /* ------------------ Viewport Width: 768 ------------------ */
 
 @media only screen and ( min-width: 48em )

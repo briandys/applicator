@@ -80,12 +80,8 @@ Enhancements Style
 
 /* ------------------ HTML ------------------ */
 .html
-{
-    text-rendering: geometricPrecision;
-    
+{   
     background-color: #262626;
-    
-    color: hsl(0, 0%, 15%);
 }
 
 
@@ -96,6 +92,11 @@ Enhancements Style
 .body
 {
     background-color: white;
+    color: #262626;
+    
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .body.custom-background
@@ -343,7 +344,7 @@ select
 .tab-key--inactive .input-text:focus,
 .tab-key--inactive button:focus
 {
-    outline: none;
+    outline: 0;
 }
 
 .input-text,
@@ -792,7 +793,8 @@ img.size-medium
 .view--inner.view--page .main-banner,
 .view--inner.view--detail .main-banner,
 .search .main-banner,
-.error404 .main-banner
+.error404 .main-banner,
+.archive .main-banner
 {
     display: none;
 }
@@ -2590,8 +2592,7 @@ button:hover .dismiss-icon
 {   
     display: block;
     
-    color: hsl(0, 0%, 15%);
-    color: var(--go-start-nav-func--fg-color);
+    color: #262626;
     
     text-decoration: none;
 }
@@ -3346,14 +3347,12 @@ button:hover .dismiss-icon
 .children .sub-nav-tog---b_l,
 .sub-menu .sub-nav-tog---b_l
 {
-    color: hsl(0, 0%, 15%);
-    color: var(--sub-nav-func-branches--toggle-button--fg-color);
+    color: #262626;
 }
 
 .widget-content---ct_cr > * > ul > li > .sub-nav-toggle .sub-nav-tog---b_l
 {
-    color: hsl(0, 0%, 15%);
-    color: var(--sub-nav-func-branches--toggle-button--fg-color);
+    color: #262626;
 }
 
 .sub-nav-tog---b_l
