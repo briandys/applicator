@@ -1117,7 +1117,6 @@ img.size-medium
 .comment-content
 {
     font-size: 1.125em;
-    font-size: var(--content--font-size);
 }
 
 .post-content,
@@ -1131,24 +1130,30 @@ img.size-medium
 .post-content---ct_cr > *,
 .post-excerpt---ct_cr > *,
 .comment-content---ct_cr > *,
-.aside .widget-content---ct_cr > *
+.aside .widget-content---ct_cr > *,
+.widget-content---ct_cr > .textwidget > *
 {
     margin: 0;
     
     padding: .75em 1rem;
-    padding: var(--content--spacing);
     
     line-height: 1.67;
 }
 
 .post-content---ct_cr > ul,
 .post-content---ct_cr > ol,
+
 .post-excerpt---ct_cr > ul,
 .post-excerpt---ct_cr > ol,
+
 .comment-content---ct_cr > ul,
 .comment-content---ct_cr > ol,
+
 .aside .widget-content---ct_cr > ul,
-.aside .widget-content---ct_cr > ol
+.aside .widget-content---ct_cr > ol,
+
+.widget-content---ct_cr > .textwidget > ul,
+.widget-content---ct_cr > .textwidget > ol
 {
     padding-left: 2.25em;
 }
@@ -1159,16 +1164,12 @@ img.size-medium
 .aside .widget-content---ct_cr li
 {
     padding-top: .25em;
-    padding-top: var(--list--spacing-y--xsm);
-    
     padding-bottom: .25em;
-    padding-bottom: var(--list--spacing-y--xsm);
 }
 
 .aside .widget-content---ct_cr > select
 {
     margin: .75em 1rem;
-    margin: var(--content--spacing);
 }
 
 .aside .widget-content---ct_cr > img
@@ -1198,10 +1199,7 @@ img.size-medium
 .post-content---ct_cr .gallery-item
 {
     padding-top: .5em;
-    padding-top: var(--content--spacing-y);
-    
     padding-bottom: .5em;
-    padding-bottom: var(--content--spacing-y);
 }
 
 /* Caption */
@@ -1240,10 +1238,7 @@ img.size-medium
     margin: 0;
     
     padding-top: .5em;
-    padding-top: var(--content--spacing-y);
-    
     padding-bottom: .5em;
-    padding-bottom: var(--content--spacing-y);
 }
 
 .post-content---ct_cr blockquote > *:only-child
@@ -1256,6 +1251,13 @@ img.size-medium
 .post-content pre
 {
     margin: 0;
+}
+
+/* Text */
+.widget-content---ct_cr > .textwidget
+{
+    padding: 0;
+    line-height: normal;
 }
 
 
@@ -2414,8 +2416,7 @@ button:hover .dismiss-icon
 }
 
 /* Zero Length Widgets (no content) */
-.widget_calendar.widget--zero-length,
-.widget_recent_comments.widget--zero-length
+.widget--zero-length
 {
     display: none;
 }

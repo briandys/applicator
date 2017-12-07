@@ -42,11 +42,15 @@
             return;
         }
         
-        if ( $elem.html().replace(/\s|&nbsp;/g, '' ).length == 0 ) {
+        $elem.each( function() {
             
-            $elem.closest( $target ).remove();
-        
-        }
+            var $this = $( this );
+            
+            if ( $this.html().replace(/\s|&nbsp;/g, '' ).length == 0 ) {
+                $this.closest( $target ).remove();
+            }
+            
+        } );
     
     }
     
@@ -72,14 +76,11 @@
     }
     
     
-    // If there is no logo, remove the object
+    // Removing components with empty content
     removeEmptyElement( $( '.custom-logo-link' ), $( '#main-logo' ) );
     
-    // removeEmptyElement( $( '#calendar_wrap' ), $( '.widget_calendar' ) );
     
-    
-    
-    // Tag Empty Widgets like Calendar Widgets
+    // Tag Empty Widgets as zero-length
     ( function() {
         
         var $element = $( '.widget-content---ct_cr > *:not( img ):not( .widget-heading )' ),

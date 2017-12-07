@@ -2261,6 +2261,8 @@
             wrapTextNode( $( '.post-content---ct_cr' ) );
             wrapTextNode( $( '.wp-caption-text' ) );
             
+            wrapTextNode( $( '.custom-html-widget' ) );
+            
             initRemoveEmpty( $( '.text-node' ) );
             
         }() );
