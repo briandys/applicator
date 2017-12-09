@@ -2159,6 +2159,7 @@
             });
 
 
+            /*
             // ------------ <code>
             $( postContentCtCrCss + ' ' + '> *:has( code )' ).each(function() {
                 var $this = $( this ),
@@ -2168,6 +2169,7 @@
                     .closest( dataFormatCss )
                         .addClass( dataFormatPrefixCss + 'code' );
             });
+            */
 
             $( postContentCtCrCss + ' ' + '> code' ).each(function() {
                 var $this = $( this );
@@ -2429,6 +2431,14 @@
             } ).resize();
 
         }() );
+        
+        
+        // highlight.js
+        $( 'pre code' ).each( function( i, block ) {
+            hljs.highlightBlock( block );
+        });
+        
+        hljs.configure({useBR: true});
         
     
     } );

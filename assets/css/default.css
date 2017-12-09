@@ -575,18 +575,6 @@ video
 
 
 
-/* ------------------ Preformatted Text ------------------ */
-pre
-{
-    word-wrap: normal;
-    word-break: normal;
-    white-space: pre;
-}
-
-
-
-
-
 /* ------------------ Icons ------------------ */
 .icon--vector,
 .icon--raster
