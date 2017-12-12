@@ -2432,14 +2432,6 @@
 
         }() );
         
-        
-        // highlight.js
-        $( 'pre code' ).each( function( i, block ) {
-            hljs.highlightBlock( block );
-        });
-        
-        hljs.configure({useBR: true});
-        
     
     } );
     /* ------------------------ End DOM Ready ------------------------ */
