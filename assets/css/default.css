@@ -257,7 +257,7 @@ Default Style
     --aspect-ratio--hd: var(--ratio--16-9);
     
     /* Buttons */
-    --button--pri--bg-color: var(--accent-color--pri);
+    --button--pri--bg-color: #005fe6;
     --button--pri--fg-color: var(--fg-color--reverse);
     
     --button--padding: .5em 1em;
@@ -269,7 +269,7 @@ Default Style
     --main-header--bg-color: var(--main-color--pri);
     
     /* Button - Colors */
-    --button--bg-color: var(--accent-color--pri);
+    --button--bg-color: #005fe6;
     --button--fg-color: var(--fg-color--reverse);
     
     /* Selection - Colors */
@@ -321,7 +321,7 @@ Default Style
     --wbp--fg-color: var(--fg-color);
     
     /* Links - Colors */
-    --links--fg-color: var(--accent-color--pri);
+    --links--fg-color: #005fe6;
     
     /* Main Nav */
     --main-nav--bg-color: var(--color--white);

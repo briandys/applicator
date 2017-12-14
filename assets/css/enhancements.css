@@ -81,7 +81,7 @@ Enhancements Style
 /* ------------------ HTML ------------------ */
 .html
 {   
-    background-color: #262626;
+    background-color: #fff;
 }
 
 
@@ -254,10 +254,7 @@ input[type="submit"],
     flex-wrap: wrap;
     
     min-width: 3rem;
-    min-width: var(--elem--width--md);
-    
     min-height: 3rem;
-    min-height: var(--elem--height--md);
 }
 
 
@@ -434,7 +431,6 @@ img.size-medium
     flex: 1 100%;
     
     background-color: white;
-    background-color: var(--main-nav--bg-color);
 }
 
 .main-nav---ct_cr > .menu > ul
@@ -1268,10 +1264,7 @@ img.size-medium
 .post---cr
 {
     padding-top: 1em;
-    padding-top: var(--component--spacing-y);
-    
     padding-bottom: 1em;
-    padding-bottom: var(--component--spacing-y);
 }
 
 
@@ -2481,7 +2474,6 @@ button:hover .dismiss-icon
 {
     display: flex;
     
-    color: #005fe6;
     font-weight: bold;
 }
 
@@ -2979,8 +2971,42 @@ button:hover .dismiss-icon
 {
     left: auto;
     opacity: 1;
-    
+}
+
+.main-search--active .search-term-crt-search-text-input---ce
+{
     background-color: #005fe6;
+}
+
+.main-search--active .search-form-axns---ct
+{
+    background-color: #005fe6;
+}
+
+.main-search--active .main-search-toggle
+{
+    background-color: #005fe6;
+}
+
+.main-search--active .search-term-crt-search-text-input---ce
+{
+    position: relative;
+}
+
+.main-search--active .search-term-crt-search-text-input---ce:before
+{
+    content: '';
+    
+    position: absolute;
+    right: 100%;
+    
+    width: 2rem;
+    height: 100%;
+    
+    background: -moz-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(215,100%,45%,1) 100%);
+    background: -webkit-linear-gradient(left, hsla(0,0%,100%,0) 0%,hsla(215,100%,45%,1) 100%);
+    background: linear-gradient(to right, hsla(0,0%,100%,0) 0%,hsla(215,100%,45%,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#005fe6',GradientType=1 );
 }
 
 .applicator--main-menu .main-search--active .search-term-crt-search-text-input

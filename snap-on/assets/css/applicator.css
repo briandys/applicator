@@ -5,7 +5,7 @@
     
     --category--padding: .5em 1em;
     --category--min-height: 2.25rem;
-    --category--border: 1px solid var(--accent-color--pri);
+    --category--border: 1px solid #005fe6;
     --category-item--spacing: calc( var(--content--spacing) / 2 );
     --category-item--spacing-x: calc( var(--content--spacing-x) / 2 );
     
@@ -970,7 +970,7 @@ h6
     min-height: 1.5rem;
     min-height: calc( var(--active-area--width--md) / 2 );
     
-    background-color: var(--accent-color--pri);
+    background-color: #005fe6;
     color: var(--color--white);
 }
 
@@ -1211,7 +1211,7 @@ h6
     min-width: 2rem;
     min-height: 2rem;
     
-    background-color: var(--accent-color--pri);
+    background-color: #005fe6;
     color: var(--color--white);
     
     font-size: 1rem;
@@ -1236,8 +1236,8 @@ h6
 {
     display: inline-block;
     
-    margin-top: var(--object--spacing-y);
-    margin-bottom: var(--object--spacing-y);
+    margin-top: 1em;
+    margin-bottom: 1em;
     
     padding-top: 0;
     padding-bottom: 0;
@@ -1246,10 +1246,10 @@ h6
 .applicator--theme--excerpt .show-more-glabel---g_l,
 .applicator--theme--excerpt .show-more-axn---a_l
 {
-    padding-left: var(--content--spacing-x);
-    padding-right: var(--content--spacing-x);
+    padding-left: 1rem;
+    padding-right: 1rem;
     
-    background-color: var(--accent-color--pri);
+    background-color: #005fe6;
 }
 
 .show-more-axn---a
@@ -1447,6 +1447,7 @@ h6
 .applicator--theme--layout .main-post-title---cr,
 .applicator--theme--layout .post-meta---cr,
 .applicator--theme--layout .post-content---ct_cr,
+.applicator--theme--layout .post-nav---cr,
 .applicator--theme--layout .comment-md---cr,
 .applicator--theme--layout .breadcrumbs-nav---cr,
 .applicator--theme--layout .post-excerpt---cr,
