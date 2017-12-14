@@ -285,6 +285,10 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
             foreach ( ( get_the_category( $post->ID ) ) as $category ) {
                 echo ' '.'category--'. $category->category_nicename;
             }
+            
+            if ( ! has_category( '', $post->ID ) ) {
+                echo ' '. 'category-population--empty';
+            }
         }
         
         

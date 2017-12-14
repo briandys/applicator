@@ -43,7 +43,7 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
         $comments_count_axn_css = 'comments-count-axn';
         $comments_count_css = 'comments-count';
         
-        $comments_count_single_text = '1';
+        $comments_count_single_text = '&#49;';
         $comments_count_multi_text = '%';
         $comments_count_zero_text = '&#48;';
         
@@ -115,8 +115,10 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
         if ( $comments_count_int >= 1 ) {
             
             $comments_count_obj_a_link = '';
-
-            $comments_count_obj_a = sprintf( applicator_get_comments_popup_link(
+            
+            // OB: Comments Popup Link
+            ob_start();
+            sprintf( comments_popup_link(
                 // Comments Count: Zero
                 '',
 
@@ -127,11 +129,13 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
                 $comments_count_multi_txt,
 
                 // Class Name for <a> (WP-Generated or WPG)
-                'a'.' '.$comments_count_axn_css.'---a',
+                'a'. ' '. $comments_count_axn_css. '---a',
 
                 // Comment Creation Disabled
                 ''
             ) );
+            $comments_count_obj_a = ob_get_contents();
+            ob_end_clean();
             
             $wpg_setting = true;
             

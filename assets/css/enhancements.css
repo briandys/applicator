@@ -381,7 +381,7 @@ a
 /* ------------------ Data Format - <img> ------------------ */
 
 /* For dynamic images that load the optimum size based on the width of their containers */
-.dom--unready .post-content---ct_cr > p
+.dom--unready .post-content---ct_cr > *
 {
     padding-left: 0;
     padding-right: 0;
@@ -959,6 +959,11 @@ img.size-medium
 
 
 /* ------------------ Categories ------------------ */
+.view .category-population--empty .apl-post-categories
+{
+    display: none;
+}
+
 .apl-categories .categories---cr
 {
     padding-top: .5em;

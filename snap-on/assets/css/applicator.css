@@ -1067,8 +1067,7 @@ h6
 /* ------------------ Comments ------------------ */
 .applicator--theme--comments.applicator--comments .comments-toggle---b_l
 {
-    background-color: transparent;
-    color: var(--links--fg-color);
+    
 }
 
 .applicator--theme--comments.applicator--comments .comments-toggle---b .show-hide---txt

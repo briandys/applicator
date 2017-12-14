@@ -101,11 +101,6 @@ $main_content_headings = get_parent_theme_file_path( '/inc/tags/main-content-hea
 if ( file_exists( $main_content_headings ) ) { require_once( $main_content_headings ); }
 
 
-// Comments
-$comments = get_parent_theme_file_path( '/inc/functions/get-comments.php' );
-if ( file_exists( $comments ) ) { require_once( $comments ); }
-
-
 // Comments Actions Snippet
 $comments_actions_snippet = get_parent_theme_file_path( '/inc/tags/comments-actions-snippet.php' );
 if ( file_exists( $comments_actions_snippet ) ) { require_once( $comments_actions_snippet ); }

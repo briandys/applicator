@@ -25,6 +25,15 @@ else {
     $excerpt_class = ' '. $post_excerpt_term. $off;
 }
 
+
+// Category
+if ( ! has_category( '', $post->ID ) ) {
+    $category_class = ' '. 'category-population--empty';
+}
+else {
+    $category_class = ' '. 'category-population--populated';
+}
+
 // Post Classes Array
 $post_classes = array(
     'cp',
@@ -32,6 +41,7 @@ $post_classes = array(
     'post',
     $post_thumbnail_class,
     $excerpt_class,
+    $category_class,
 );
 
 // Array Implode
@@ -50,10 +60,12 @@ $post_classes = implode( ' ', $post_classes );
                 $post_title = get_the_title();
                 
                 if ( $post_title ) {
-                    $post_title = get_the_title();
+                    $post_title = esc_html( get_the_title() );
+                    $post_title_attr = the_title_attribute( 'echo=0' );
                 }
                 else {
                     $post_title = __( 'Post No.', 'applicator' ). ' '. get_the_ID();
+                    $post_title_attr = $post_title;
                 }
                 
                 
@@ -68,12 +80,12 @@ $post_classes = implode( ' ', $post_classes );
                             'a'         => array(
                                 'href'      => esc_url( get_permalink() ),
                                 'rel'       => 'bookmark',
-                                'title'     => esc_attr( $post_title ),
+                                'title'     => $post_title_attr,
                             ),
                         ),
                     ),
                     'content'   => array(
-                        'object'        => esc_html( $post_title ),
+                        'object'        => $post_title,
                     ),
                 ) );
                 
