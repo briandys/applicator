@@ -146,7 +146,7 @@ Initial release
                         ******* post-banner-visual-obj (obj)
                         
                         ******* comments-actions-snippet (cp)
-                            ******** comments-population (cp)
+                            ******** comments--populated (cp)
                             ******** comments-ability (cp)
                     
                     ****** edit-post-axn (axn)

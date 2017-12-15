@@ -808,7 +808,7 @@
         
         
         // Proceed only if Detail View and the Applicator CSS class name is present
-        if ( ! $html.closest( '.view--detail' ) && ! $applicatorComments.length ) {
+        if ( ! $html.closest( '.view-granularity--detail' ) && ! $applicatorComments.length ) {
             return;
         }
 

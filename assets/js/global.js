@@ -105,7 +105,7 @@
     /* ------------------------ Remove remnants of <!--more--> tag ------------------------ */
     ( function() {
 
-        if ( ! $html.closest( '.view--detail' ) ) {
+        if ( ! $html.closest( '.view-granularity--detail' ) ) {
             return;
         }
 

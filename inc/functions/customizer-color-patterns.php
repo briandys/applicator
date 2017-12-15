@@ -13,8 +13,8 @@ if ( ! function_exists( 'applicator_customizer_color_patterns' ) ) {
 
         $css = '
 
-        .applicator--theme--customizer-colors--custom .main-header---cr,
-        .applicator--theme--customizer-colors--custom .main-search--active .search-term-crt-search-text-input
+        .customizer-color-scheme--custom .main-header---cr,
+        .customizer-color-scheme--custom .main-search--active .search-term-crt-search-text-input
         {
             background-color: hsl( '. $hue. ', '. $saturation. ', 50% );
         }

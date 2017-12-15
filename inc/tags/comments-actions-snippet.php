@@ -1,44 +1,12 @@
 <?php // Comments Actions Snippet | content.php
 
-/*
-Structure
-
-* Comments Actions Snippet (cp) | $comments_actions_snippet
-
-    ** Comments Population (cp) | $comments_population
-    
-        *** Comments Count (obj) | $comments_count_obj
-
-            • Populated (status) | comments-population--populated
-                
-                • Single: 1 Comment | $comments_count_single_txt | comments-population--populated--single
-                • Multiple: 2 Comments | $comments_count_multi_txt | comments-population--populated--multiple
-        
-            • Empty (status) | comments-population--empty
-                
-                • Zero: 0 Comment | $comments_count_zero_txt | comments-population--empty--zero
-
-    
-    ** Comment Creation Ability (cp) | $comment_creation_ability
-    
-        *** Enabled (status) | comment-creation-ability--enabled
-        
-            **** Add Comment Action (obj) | $add_comment_axn
-                
-                • Add Comment
-        
-        *** Disabled (status) | comment-creation-ability--disabled
-        
-            **** Comment Creation Disabled Note (obj) | $commenting_disabled_note_obj
-                
-                • Commenting is disabled.
-*/
 
 if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
+
     function applicator_comments_actions_snippet() {
         
-        $comments_population_pri_css = 'comments-population';
-        $comment_creation_ability_pri_css = 'comment-creation-ability';
+        $comments_population_pri_css = 'comments';
+        $comment_creation_ability_pri_css = 'comment-creation';
         
         $comments_count_axn_css = 'comments-count-axn';
         $comments_count_css = 'comments-count';
@@ -267,7 +235,7 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
                 $sign_in_required_label_obj = '';
             }
 
-            $comment_creation_ability_content = $add_comment_axn_obj. $sign_in_required_label_obj;
+            $comment_creation_content = $add_comment_axn_obj. $sign_in_required_label_obj;
 
         // Comment Creation Disabled
         } else {
@@ -284,20 +252,20 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
                 ),
             ) );
             
-            $comment_creation_ability_content = $commenting_disabled_note_obj;
+            $comment_creation_content = $commenting_disabled_note_obj;
             
         }
         
         
-        // R: Comment Creation Ability
-        $comment_creation_ability_cp = applicator_htmlok( array(
-            'name'      => 'Comment Creation Ability',
+        // R: Comment Creation
+        $comment_creation_cp = applicator_htmlok( array(
+            'name'      => 'Comment Creation',
             'structure' => array(
                 'type'      => 'component',
             ),
-            'css'       => 'comment-crt-ability',
+            'css'       => 'comment-crt',
             'content'   => array(
-                'component' => $comment_creation_ability_content,
+                'component' => $comment_creation_content,
             ),
         ) );
         
@@ -353,12 +321,12 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
             'content'   => array(
                 'component' => array(
                     $comments_population_cp,
-                    $comment_creation_ability_cp,
+                    $comment_creation_cp,
                 ),
             ),
         ) );
         
         return $comments_actions_snippet_cp;
-        
     }
+
 }

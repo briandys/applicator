@@ -56,8 +56,8 @@
 		value.bind( function( to ) {
             
 			$html
-				.addClass( 'applicator--theme--customizer-colors--default' )
-				.removeClass( 'applicator--theme--customizer-colors--custom' );
+				.addClass( 'customizer-color-scheme--default' )
+				.removeClass( 'customizer-color-scheme--custom' );
 		} );
 	} );
 
@@ -67,8 +67,8 @@
 		value.bind( function( to ) {
             
             $html
-				.addClass( 'applicator--theme--customizer-colors--custom' )
-				.removeClass( 'applicator--theme--customizer-colors--default' );
+				.addClass( 'customizer-color-scheme--custom' )
+				.removeClass( 'customizer-color-scheme--default' );
 
 			// Update custom color CSS.
 			var style = $( '#applicator-style--custom-theme-colors' ),

@@ -29,7 +29,7 @@ Enhancements Style
 .single-post .main-content-heading,
 .attachment .main-content-heading,
 .page .main-content-heading,
-.view--multisite-directory .main-content-heading,
+.multisite-directory--in .main-content-heading,
 .page-nav---h,
 .entry-nav---h,
 .post-nav---h,
@@ -41,8 +41,8 @@ Enhancements Style
 .widget-content---h,
 .widget .screen-reader-text,
 .post-content .search-form-reset-axn,
-.applicator--comments .post-header-aside .comments-actions-snippet .comments-population,
-.applicator--comments .comments-actions-snippet.comments-population--empty .add-comment-axn,
+.applicator--comments .post-header-aside .comments-actions-snippet .comments--populated,
+.applicator--comments .comments-actions-snippet.comments--empty .add-comment-axn,
 .applicator--comments--active .comments-toggle .comments-count---txt,
 .applicator--page-nav .adjacent-navi---l,
 .applicator--comments--active .comments-toggle .show-hide---txt,
@@ -786,8 +786,8 @@ img.size-medium
 
 /* Do not show Main Banner after Page 1 of Blog */
 .blog.paged .main-banner,
-.view--inner.view--page .main-banner,
-.view--inner.view--detail .main-banner,
+.view-level--inner.entry--page .main-banner,
+.view-level--inner.view-granularity--detail .main-banner,
 .search .main-banner,
 .error404 .main-banner,
 .archive .main-banner
@@ -959,7 +959,7 @@ img.size-medium
 
 
 /* ------------------ Categories ------------------ */
-.view .category-population--empty .apl-post-categories
+.view .category--empty .apl-post-categories
 {
     display: none;
 }

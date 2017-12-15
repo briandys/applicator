@@ -30,12 +30,13 @@
 .visually-hidden,
 .page .post-published-modified,
 .page .published-post-author,
-.page .comments-actions-snippet,
 .edit-post-action .post-title---txt,
 .edit-comment-action .comment-title---txt,
-.post-header-aside .comment-creation-ability,
-.post-header-aside .comments-population--empty .comments-population,
-.comments-population--empty .comments-empty-note,
+.post-header-aside .comment-creation,
+.post-header-aside .comments--empty .comments--populated,
+.post-header-aside .comments-actions-snippet.comments--empty.comment-creation--disabled,
+.post-header-aside .comments-actions-snippet.comments--empty,
+.comments--empty .comments-empty-note,
 .comment-creation-glabel,
 .comment-form .open-parenthesis---txt,
 .comment-form .close-parenthesis---txt,
@@ -48,8 +49,8 @@
 .logged-in .commenter-comment-creation-flabel,
 .comments---hr .comments-nav,
 .site--root .site-main-info,
-.view--multisite-directory .post-banner-visual img,
-.view--multisite-directory .entry-content,
+.multisite-directory--in .post-banner-visual img,
+.multisite-directory--in .entry-content,
 
 .applicator--theme--post-meta .post-published-glabel,
 .applicator--theme--post-meta .post-modified-glabel,
@@ -72,7 +73,6 @@
 .applicator--theme--excerpt .show-more-action .property---line .of---txt,
 .applicator--theme--excerpt .show-more-action .value---line,
 .applicator--theme--page-nav .page-nav .ellipsis--delimiter,
-.applicator--theme--page-nav .blog .page-navi:not( .adjacent-navi ),
 .applicator--theme--post-format--status .format-status .published-post-author,
 
 .applicator--theme--post-format--status .blog .format-status .post-title,
@@ -182,7 +182,7 @@ h6
     text-decoration: underline;
 }
 
-.view--detail .post-title---a
+.view-granularity--detail .post-title---a
 {
     color: #262626;
 }
@@ -214,7 +214,6 @@ h6
 .comments-header-aside .comments-actions-snippet .comments-count-axn---a .comments-label---txt
 {
     margin-right: .3em;
-    margin-right: var(--glabel--between--spacing);
     
     font-size: 1.5rem;
     font-weight: bold;
@@ -280,12 +279,6 @@ h6
 .signed-in-account a:hover
 {
     text-decoration: underline;
-}
-
-.page .comment-md,
-.comment-creation-ability--disabled.comments-population--empty .comment-md
-{
-    display: none;
 }
 
 
@@ -405,18 +398,18 @@ h6
 
 
 /* ------------------ Multisite Directory - Post Banner Visual ------------------ */
-.view--multisite-directory .post-banner-visual
+.multisite-directory--in .post-banner-visual
 {
     position: relative;
     z-index: -1;
 }
 
-.view--multisite-directory .post-banner-visual--enabled .post---hr_cr
+.multisite-directory--in .post-banner-visual--enabled .post---hr_cr
 {
     position: relative;
 }
 
-.view--multisite-directory .post-banner-vis---a_l
+.multisite-directory--in .post-banner-vis---a_l
 {
     background-size: cover;
     background-position: center;
@@ -424,7 +417,7 @@ h6
     background-color: var(--image--bg-color);
 }
 
-.view--multisite-directory .post .post-banner-vis---a
+.multisite-directory--in .post .post-banner-vis---a
 {
     position: relative;
     
@@ -433,7 +426,7 @@ h6
     height: 10rem;
 }
 
-.view--multisite-directory .post-banner-vis---a::before
+.multisite-directory--in .post-banner-vis---a::before
 {
     content: '';
     position: absolute;
@@ -457,18 +450,18 @@ h6
 
 
 /* ------------------ Multisite Directory - Main Post Title ------------------ */
-.view--multisite-directory .main-post-title---ct_cr
+.multisite-directory--in .main-post-title---ct_cr
 {
     text-align: center;
 }
 
-.view--multisite-directory .post-banner-visual--enabled .post-title
+.multisite-directory--in .post-banner-visual--enabled .post-title
 {
     display: block;
     padding: 0;
 }
 
-.view--multisite-directory .post-banner-visual--enabled .post-title---a
+.multisite-directory--in .post-banner-visual--enabled .post-title---a
 {
     position: absolute;
     left: 0;
@@ -480,7 +473,7 @@ h6
     overflow: hidden;
 }
 
-.view--multisite-directory .post-banner-visual--enabled .post-title---a_l
+.multisite-directory--in .post-banner-visual--enabled .post-title---a_l
 {   
     position: absolute;
     left: 50%;
@@ -494,12 +487,12 @@ h6
     color: white;
 }
 
-.view--multisite-directory .post-title---a
+.multisite-directory--in .post-title---a
 {
     text-decoration: none;
 }
 
-.view--multisite-directory .post-banner-visual--enabled .post-title---a_l
+.multisite-directory--in .post-banner-visual--enabled .post-title---a_l
 {
     display: flex;
 }
@@ -509,12 +502,12 @@ h6
 
 
 /* ------------------ Multisite Directory - Post ------------------ */
-.view--multisite-directory .post---cr
+.multisite-directory--in .post---cr
 {
     padding: 0;
 }
 
-.view--multisite-directory .post-title---a
+.multisite-directory--in .post-title---a
 {
     color: var(--links--fg-color);
 }
@@ -962,13 +955,12 @@ h6
 {
     order: 1;
     
+    margin-left: .3em;
+    
     padding: calc( var(--content--spacing-y) / 3 ) calc( var(--content--spacing-x) / 1.5 );
     
     min-width: 1.5rem;
-    min-width: calc( var(--active-area--width--md) / 2 );
-    
     min-height: 1.5rem;
-    min-height: calc( var(--active-area--width--md) / 2 );
     
     background-color: #005fe6;
     color: var(--color--white);
@@ -1065,11 +1057,6 @@ h6
 
 
 /* ------------------ Comments ------------------ */
-.applicator--theme--comments.applicator--comments .comments-toggle---b_l
-{
-    
-}
-
 .applicator--theme--comments.applicator--comments .comments-toggle---b .show-hide---txt
 {
     text-decoration: none;
@@ -1407,7 +1394,7 @@ h6
     flex: 1 100%;
 }
 
-.applicator--theme--post-format--status.view--multisite-directory .format-status .post---cr
+.applicator--theme--post-format--status.multisite-directory--in .format-status .post---cr
 {
     justify-content: center;
 }
@@ -1696,17 +1683,17 @@ h6
     
     
     /* ------------ Layout - Multisite Directory ------------ */
-    .applicator--theme--layout.main-content-aside--enabled.view--multisite-directory .main-content---ct_cr
+    .applicator--theme--layout.main-content-aside--enabled.multisite-directory--in .main-content---ct_cr
     {
         display: block;
     }
 
-    .applicator--theme--layout.main-content-aside--enabled.view--multisite-directory .primary-content 
+    .applicator--theme--layout.main-content-aside--enabled.multisite-directory--in .primary-content 
     {
         flex: none;
     }
 
-    .applicator--theme--layout.main-content-aside--enabled.view--multisite-directory .secondary-content 
+    .applicator--theme--layout.main-content-aside--enabled.multisite-directory--in .secondary-content 
     {
         flex: none;
     }

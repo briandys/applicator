@@ -3,26 +3,32 @@
 if ( ! function_exists( 'applicator_html_class' ) ) {
     function applicator_html_class() {
 		
-        // Global Variables
+        // Variables
         global $is_lynx, $is_gecko, $is_IE, $is_macIE, $is_winIE, $is_edge, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
+        
         global $post;
         
         $useragent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "";
+        
         $is_ipad = preg_match('/ipad/i',$useragent);
         
         
-        // View (Front, Inner)
-        if ( is_front_page() ) {
-        // if ( is_front_page() && ! is_home() )
-        // if ( is_front_page() && 'posts' !== get_option( 'show_on_front' ) )
-            echo ' '. 'view--front';
+        
+        
+        
+        // Generic Properties
+        
+        
+        // Authorship
+        if ( is_multi_author() ) {
+            echo ' '. 'authorship--multi';
         }
         else {
-            echo ' '. 'view--inner';
+            echo ' '. 'authorship--single';
         }
         
         
-        // Browser Detection
+        // Browser
         if ( $is_chrome ) {
             echo ' '. 'browser--chrome';
         }
@@ -53,76 +59,88 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         elseif ( $is_edge ) {
             echo ' '. 'browser--edge';
         }
-        elseif ( $is_iphone ) {
-            echo ' '. 'browser--iphone';
-        }
-        elseif ( $is_ipad ) {
-            echo ' '. 'browser--ipad';
-        }
         else {
             echo ' '. 'browser--unlisted';
         }
         
         
-        // Device Detection
+        // Device
+        if ( $is_iphone ) {
+            echo ' '. 'device--iphone';
+        }
+        elseif ( $is_ipad ) {
+            echo ' '. 'device--ipad';
+        }
+        
+        
+        // Form Factor
         if ( wp_is_mobile() ) {
-            echo ' '. 'device--mobile';
+            echo ' '. 'form-factor--mobile';
         }
         else {
-            echo ' '. 'device--not-mobile';
+            echo ' '. 'form-factor--non-mobile';
         }
         
         
-        // Theme Detection
-        if ( ! is_child_theme() ){
-            echo ' '. 'theme--parent';
-        }
-        else {
-            echo ' '. 'theme--child';
-        }
-        
-        
-        // Menu Type Detection
-        // If Default Menu or Custom Menu is used as Main Navigation
-        if ( ! has_nav_menu( 'main-nav' ) ) {
-            echo ' '. 'main-nav--default';
-        }
-        else {
-            echo ' '. 'main-nav--custom';
-        }
-        
-        
-        // Authorship Type
-        if ( is_multi_author() ) {
-            echo ' '. 'authorship--multi';
-        }
-        else {
-            echo ' '. 'authorship--single';
-        }
-        
-        
-        // Non-Singular Pages
-        if ( ! is_singular() ) {
-            echo ' '. 'view--category hfeed';
-        }
-        else {
-            echo ' '. 'view--detail';
-        }
-        
-        // Password Protection
+        // Security
         if ( is_singular() ) {
             
             if ( ! post_password_required() ) {
-                echo ' '. 'password--not-required';
+                echo ' '. 'security--password-unprotected';
             }
             else {
-                echo ' '. 'password--required';
+                echo ' '. 'security--password-protected';
             }
+        
         }
         
-        // Aside Status
-        // Enable or display Sidebars via Appearance > Widgets
-            
+        
+        // Theme Hierarchy
+        if ( ! is_child_theme() ){
+            echo ' '. 'theme-hierarchy--parent';
+        }
+        else {
+            echo ' '. 'theme-hierarchy--child';
+        }
+        
+        
+        // View Granularity
+        if ( is_singular() ) {
+            echo ' '. 'view-granularity--detail';
+        }
+        else {
+            echo ' '. 'view-granularity--category hfeed';
+        }
+        
+        
+        // View Level
+        if ( is_front_page() ) {
+            echo ' '. 'view-level--front';
+        }
+        else {
+            echo ' '. 'view-level--inner';
+        }
+        
+        
+        
+        
+        
+        // Specific Properties
+        
+        
+        // Admin Bar
+        if ( is_admin_bar_showing() ) {
+            echo ' '. 'wp-admin-bar--enabled';
+        }
+        else {
+            echo ' '. 'wp-admin-bar--disabled';
+        }
+        
+        
+        // Aside
+        // Enable or display Asides via Admin > Appearance > Widgets
+        
+        // Variables
         $main_header_aside = 'main-header-aside';
         $main_actions_aside = 'main-actions-aside';
         $main_banner_aside = 'main-banner-aside';
@@ -182,136 +200,163 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         }
         
         
-        // In Customizer
-        if ( is_customize_preview() ) {
-            echo ' '. 'view--customizer';
+        // Category
+        if ( is_singular() ) {
+        
+            foreach ( ( get_the_category( $post->ID ) ) as $category ) {
+                echo ' '.'category--'. $category->category_nicename;
+            }
+            
+            if ( has_category( '', $post->ID ) ) {
+                echo ' '. 'category--populated';
+            }
+            else {
+                echo ' '. 'category--empty';
+            }
+        
         }
         
         
-        // Customizer: Custom Header
-        if ( has_header_image() ) {
-            echo ' '. 'main-media-banner'. $on;
+        // Customizer Color Scheme
+        $colors = applicator_sanitize_colorscheme( get_theme_mod( 'colorscheme', 'default' ) );
+        echo ' '. 'customizer-color-scheme--'. $colors;
+        
+        
+        // Customizer
+        if ( is_customize_preview() ) {
+            echo ' '. 'customizer-view--in';
         }
         else {
-            echo ' '. 'main-media-banner'. $off;
+            echo ' '. 'customizer-view--out';
         }
         
         
-        // Customizer: Custom Logo
-        if ( ! has_custom_logo() ) {
-            echo ' '. 'main-logo'. $off;
-        } else {
-            echo ' '. 'main-logo'. $on;
-        }
-        
-        
-        // Post Type
-        if ( isset( $post ) ) {
-            echo ' '. 'view--'. $post->post_type;
-        }
-        
+        // Comments
         if ( is_singular() ) {
-            echo ' '. 'view--'. $post->post_type . '--'. $post->post_name;
-        }
-
+            
+            $comments_count_int = (int) get_comments_number( get_the_ID() );
+            
+            // Comments
+            if ( $comments_count_int > 1 ) {
+                echo ' '.'comments--populated';
+            }
+            else {
+                echo ' '.'comments--empty';
+            }
+            
+            // Comments Population
+            if ( $comments_count_int == 1 ) {
+                echo ' '.'comments-population--single';
+            }
+            elseif ( $comments_count_int > 1 ) {
+                echo ' '.'comments-population--multiple';
+            }
+            elseif ( $comments_count_int == 0 ) {
+                echo ' '.'comments-population--zero';
+            }
+            
+            // Comment Creation
+            if ( comments_open() ) {
+                echo ' '.'comment-creation--enabled';
+            }
+            else {
+                echo ' '.'comment-creation--disabled';
+            }
         
-        // Main Name, Description
-        if ( 'blank' === get_header_textcolor() ) {
-            echo ' '. 'main-name-description'. $off;
-        } else {
-            echo ' '. 'main-name-description'. $on;
+        }
+        
+        
+        // Entry
+        if ( is_singular() ) {
+            
+            if ( isset( $post ) ) {
+                echo ' '. 'entry--'. $post->post_type;
+                echo ' '. 'entry--'. $post->post_type. '--'. $post->post_name;
+            }
+        
+        }
+        
+        
+        // Main Logo
+        if ( ! has_custom_logo() ) {
+            echo ' '. 'main-logo--disabled';
+        }
+        else {
+            echo ' '. 'main-logo--enabled';
+        }
+        
+        
+        // Main Media Banner
+        if ( has_header_image() ) {
+            echo ' '. 'main-media-banner--enabled';
+        }
+        else {
+            echo ' '. 'main-media-banner--disabled';
         }
         
         
         // Main Name
         if ( get_bloginfo( 'name', 'display' ) ) {
             echo ' '. 'main-name--populated';
-        } else {
+        }
+        else {
             echo ' '. 'main-name--empty';
+        }
+
+        
+        // Main Name, Main Description
+        if ( 'blank' === get_header_textcolor() ) {
+            echo ' '. 'main-name-description--disabled';
+        }
+        else {
+            echo ' '. 'main-name-description--enabled';
+        }
+        
+        
+        // Main Nav
+        if ( ! has_nav_menu( 'main-nav' ) ) {
+            echo ' '. 'main-nav--default';
+        }
+        else {
+            echo ' '. 'main-nav--custom';
         }
         
         
         // Main Description
         if ( get_bloginfo( 'description', 'display' ) ) {
             echo ' '. 'main-description--populated';
-        } else {
+        }
+        else {
             echo ' '. 'main-description--empty';
         }
         
         
-        // Admin Bar
-        if ( is_admin_bar_showing() ) {
-            echo ' '. 'wp-admin-bar'. $on;
-        } else {
-            echo ' '. 'wp-admin-bar'. $off;
+        // Multisite
+        if ( is_multisite() && is_page_template( 'page-templates/multisite-directory.php' ) ) {
+            echo ' ' . 'multisite-directory--in';
         }
-        
-        
-        // Comments
-        if ( is_singular() ) {
-            $comments_count_int = (int) get_comments_number( get_the_ID() );
-            
-            // Comments Population Count
-            if ( $comments_count_int == 1 ) {
-                echo ' '.'comments-population--populated--single';
-            }
-            elseif ( $comments_count_int > 1 ) {
-                echo ' '.'comments-population--populated--multiple';
-            }
-            elseif ( $comments_count_int == 0 ) {
-                echo ' '.'comments-population--populated--zero';
-            }
-            
-            // Comment Creation Ability
-            if ( comments_open() ) {
-                echo ' '.'comment-creation-ability--enabled';
-            }
-            else {
-                echo ' '.'comment-creation-ability--disabled';
-            }
-            
-            // Comments Population Status
-            if ( $comments_count_int > 1 ) {
-                echo ' '.'comments-population--populated';
-            }
-            else {
-                echo ' '.'comments-population--empty';
-            }
-        }
-        
-        
-        // Category
-        if ( is_singular() ) {
-            foreach ( ( get_the_category( $post->ID ) ) as $category ) {
-                echo ' '.'category--'. $category->category_nicename;
-            }
-            
-            if ( ! has_category( '', $post->ID ) ) {
-                echo ' '. 'category-population--empty';
-            }
+        else {
+            echo ' '. 'multisite-directory--out';
         }
         
         
         // Page Template
-        $template_file = get_post_meta( get_the_ID(), '_wp_page_template', TRUE );
-        $page_template_term = 'page-template';
-        if ( $template_file ) {
-            echo ' '. $page_template_term. ' '. $page_template_term. '--'. sanitize_title( $template_file );
+        if ( is_page() ) {
+        
+            $template_file = get_post_meta( get_the_ID(), '_wp_page_template', TRUE );
+        
+            if ( $template_file ) {
+                echo ' '. 'page-template--specific';
+                echo ' '. 'page-template'. '--'. sanitize_title( $template_file );
+            }
+            else {
+                echo ' '. 'page-template--generic';
+            }
+            
         }
-        else {
-            echo ' '. $page_template_term. '--none';
-        }
         
         
-        // Customizer Colors
-        $colors = applicator_sanitize_colorscheme( get_theme_mod( 'colorscheme', 'default' ) );
-        echo ' '. 'applicator--theme--customizer-colors--'. $colors;
         
-        
-        // Multisite
-        if ( is_multisite() && is_page_template( 'page-templates/multisite-directory.php' ) ) {
-            echo ' ' . 'view--multisite-directory';
-        }
     }
     add_action( 'applicator_hook_html_class', 'applicator_html_class');
 }
@@ -319,6 +364,7 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
 
 // Body Class
 if ( ! function_exists( 'applicator_body_class' ) ) {
+    
     function applicator_body_class( $classes ) {
 
         $classes[] = 'body';
@@ -326,4 +372,5 @@ if ( ! function_exists( 'applicator_body_class' ) ) {
     
     }
     add_filter( 'body_class', 'applicator_body_class' );
+
 }

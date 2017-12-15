@@ -27,11 +27,11 @@ else {
 
 
 // Category
-if ( ! has_category( '', $post->ID ) ) {
-    $category_class = ' '. 'category-population--empty';
+if ( has_category( '', $post->ID ) ) {
+    $category_class = ' '. 'category--populated';
 }
 else {
-    $category_class = ' '. 'category-population--populated';
+    $category_class = ' '. 'category--empty';
 }
 
 // Post Classes Array
