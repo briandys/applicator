@@ -10,9 +10,9 @@
     --category-item--spacing-x: calc( var(--content--spacing-x) / 2 );
     
     --post-meta--border: 1px solid lightgray;
-    --post-meta--fg-color: var(--color--transparent-black);
+    --post-meta--fg-color: hsla(0, 0%, 0%, .5);
     
-    --note--fg-color: var(--color--transparent-black);
+    --note--fg-color: hsla(0, 0%, 0%, .5);
     --note-font-size: .875rem;
     
     /* Edit Post Action */
@@ -213,8 +213,6 @@ h6
 
 .comments-header-aside .comments-actions-snippet .comments-count-axn---a .comments-label---txt
 {
-    margin-right: .3em;
-    
     font-size: 1.5rem;
     font-weight: bold;
 }
@@ -233,14 +231,12 @@ h6
 
 .comment-form .creation--invalid .input-text
 {
-    border-color: #f20c0c;
-    border-color: var(--color--record-red);
+    border-color: hsl(0, 91%, 50%);
 }
 
 .comment-form .creation--valid .input-text
 {
-    border-color: #14cc14;
-    border-color: var(--color--go-green);
+    border-color: hsl(120, 82%, 44%);
 }
 
 .comment-title,
@@ -963,7 +959,7 @@ h6
     min-height: 1.5rem;
     
     background-color: #005fe6;
-    color: var(--color--white);
+    color: hsl(0, 100%, 100%);
 }
 
 .applicator--theme--comments-count-action .comments-count-axn .txt .comments-label---txt
@@ -1198,7 +1194,7 @@ h6
     min-height: 2rem;
     
     background-color: #005fe6;
-    color: var(--color--white);
+    color: hsl(0, 100%, 100%);
     
     font-size: 1rem;
 }

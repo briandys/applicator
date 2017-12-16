@@ -991,6 +991,10 @@
             }
         }
         
+        if ( $( '.comments-actions-snippet' ).hasClass( 'comment-creation--disabled' ) && $( '.comments-actions-snippet' ).hasClass( 'comments--empty' ) ) {
+            commentsActivate();
+        }
+        
         
         // Button Clicks
         ( function() {

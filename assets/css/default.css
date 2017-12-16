@@ -15,201 +15,30 @@ Default Style
 /* ------------------ CSS Variables ------------------ */
 .html
 {
-    /* ------------ Level 1 - Absolutes ------------ */
-    
-    
-    /* Superhero Blue */
-    --color--superhero-blue: hsl(200, 100%, 50%) /* #00aaff */;
-    
-    
-    /* Go Green Color */
-    --color--go-green: hsl(120, 82%, 44%) /* #14cc14 */;
-    --color--go-green-dark: hsl(120, 82%, 39%);
-    
-    
-    /* Panda Blue */
-    --color--panda-blue: hsl(215, 100%, 45%) /* #005fe6 */;
-    --color--panda-blue-dark: hsl(215, 100%, 40%) /* #0054cc */;
-    
-    
-    /* Chikka Orange */
-    --color--chikka-orange: hsl(30, 100%, 50%) /* #ff7f00 */;
-    
-    
-    /* Record Red */
-    --color--record-red: hsl(0, 91%, 50%) /* #f20c0c */;
-    
-    
-    /* Uhog Green */
+    --color--panda-blue: hsl(215, 100%, 45%);
+    --color--chikka-orange: hsl(30, 100%, 50%);
+    --color--record-red: hsl(0, 91%, 50%);
     --color--uhog-green: hsl(120, 82%, 38%);
-    --color--uhog-green-dark: hsl(120, 82%, 33%);
     
     
-    /* Black */
-    --color--black: hsl(0, 0%, 0%);
     
     
-    /* Gray */
-    --color--gray: hsl(0, 0%, 50%);
-    
-    
-    /* White */
-    --color--white: hsl(0, 100%, 100%);
-    
-    
-    /* Off White */
-    --color--off-white: hsla(0, 100%, 100%, .9);
-    
-    
-    /* Off Black */
-    --color--off-black: hsl(0, 0%, 15%);
-    --color--off-black-a: hsla(0, 0%, 0%, .85);
-    
-    
-    /* Transparent Black */
-    --color--transparent-black: hsla(0, 0%, 0%, .5);
-    
-    
-    /* Transparent White */
-    --color--transparent-white: hsla(0, 100%, 100%, .5);
-    
-    
-    
-    
-    
-    
-    /* Dash of Darkness */
-    --dash-of-darkness--color: hsl(0, 0%, 98%);
-    --dash-of-darkness--color-a: hsla(0, 0%, 0%, .0325);
-    
-    /* Black Eighth */
-    --black-eighth--color: hsla( 0, 0%, 0%, .125 );
-    
-    /* Black Fourth */
-    --black-fourth--color: hsla( 0, 0%, 0%, .25 );
-    
-    /* Black Half */
-    --black-half--color: hsla( 0, 0%, 0%, .5 );
-    --black-half--color-a: hsla( 0, 0%, 0%, .5 );
-    
-    /* White Eighth */
-    --white-eighth--color: hsla( 0, 0%, 98%);
-    --white-eighth--color: hsla( 0, 0%, 100%, .125 );
-    
-    /* White Fourth */
-    --white-fourth--color: hsla( 0, 0%, 100%, .25 );
-    
-    /* White Half */
-    --white-half--color: hsla( 0, 0%, 100%, .5 );
-    --white-half--color-a: hsla( 0, 0%, 100%, .5 );
-    
-    /* Dimensions */
-    --dimension--md: 3rem;
-    
-    
-    /* Framework */
-    --wbp-pri-color: var(--color--superhero-blue);
-    
-    --wbp-accent-pri-color: var(--color--panda-blue);
-    --wbp-accent-pri-color--dark: var(--color--panda-blue-dark);
-    
-    --wbp-accent-sec-color: var(--color--uhog-green);
-    --wbp-accent-sec-color--dark: var(--color--uhog-green-dark);
-    
-    --wbp-negative-pri-color: var(--color--record-red);
-    
-    --highlight-pri-color: var(--color--go-green);
-    
-    --light-max-color: white;
-    --gray-max-color: gray;
-    --dark-max-color: black;
-    
-    --placeholder-reverse-color: var(--color--transparent-white);
-    
-    --transition-duration: .125s;
-    --transition-easing: ease-in-out;
-    
-    /* Reverse Color Combo */
-    --pri-bg-reverse-color: var(--wbp-pri-color);
-    --pri-fg-reverse-color: var(--light-max-color);
-    
-    --sec-axn-bg-color: hsla(0, 0%, 75%, .25);
-    --sec-axn-fg-color: hsla(0, 0%, 0%, .75);
-    
-    
-    --link-generic--color: var(--color--panda-blue);
-    --link-generic--color--hover: var(--color--panda-blue-dark);
-    
-    
-    
-    /* Spacing */
-    --corner-radius--sm: .125em;
-    
-    --content-gutter--sm: 1rem;
-    --content-gutter--md: 2rem;
-    --content-gutter--lg: 4rem;
-    
-    --spacing--toggle-allowance: var(--elem-dimension--md);
-    
-    --spacing--x-gutter: 1rem;
-    --spacing--section-y-gutter: 1rem;
-    --spacing--content-y-gutter: .5em;
-    
-    --spacing--heading-y-gutter: 1em;
-    
-    
-    
-    
-    
-    
-    
-    /* Copyright */
-    --copyright-info-fg-color: var(--color--transparent-black);
-    
-    
-    
-    /* Aspect Ratio */
-    --aspect-ratio--16-9: calc( ( ( 9 / 16 ) * 100% ) );
-    --aspect-ratio--4-3: calc( ( ( 3 / 4 ) * 100% ) );
-    
-    --ratio--16-9: calc( (9/16) * 100 );
-    
-    /* Main Menu */
-    --main-menu-func--height: 100%;
-    --main-menu-func--max-width: 30rem;
-    
-    
-    
-    
-    
-    /* ------------ Level 2: Generics ------------ */
-    
-    /* Main Color */
-    --main-color--pri: var(--color--superhero-blue);
-    --main-color--sec: var(--color--uhog-green);
-    
-    /* Accent Color */
-    --accent-color--pri: var(--color--panda-blue);
-    --accent-color--sec: var(--color--chikka-orange);
-    
-    /* Background Color */
-    --bg-color: var(--dash-of-darkness--color);
     
     /* Foreground Color */
-    --fg-color: var(--color--off-black);
+    --fg-color: hsl(0, 0%, 15%);
     
     /* Image Placeholder Color */
-    --image-placeholder--bg-color: var(--color--off-black-a);
+    --image-placeholder--bg-color: hsla(0, 0%, 0%, .85);
     
     
     /* Foreground Color - Reverse (use with a dark background) */
-    --fg-color--reverse: var(--color--white);
+    --fg-color--reverse: hsl(0, 100%, 100%);
     
     /* Faint Color */
-    --faint-color--pri: var(--color--transparent-black);
+    --faint-color--pri: hsla(0, 0%, 0%, .5);
     
     /* Border Color */
-    --border-color: var(--black-half--color-a);
+    --border-color: hsla( 0, 0%, 0%, .5 );
     
     /* Gutter */
     --gutter-x--base: 1rem;
@@ -248,13 +77,13 @@ Default Style
     --font-size--lg: 1.5em;
     
     /* Element Dimensions */
-    --elem-dimension--md: var(--dimension--md);
+    --elem-dimension--md: 3rem;
     
     /* Transition */
     --transition--generic: all .125s ease-in-out;
     
     /* Aspect Ratio */
-    --aspect-ratio--hd: var(--ratio--16-9);
+    --aspect-ratio--hd: calc( (9/16) * 100 );
     
     /* Buttons */
     --button--pri--bg-color: #005fe6;
@@ -263,17 +92,11 @@ Default Style
     --button--padding: .5em 1em;
     
     
-    /* ------------ Level 3 - Specifics ------------ */
-    
-    /* Main Header - Colors */
-    --main-header--bg-color: var(--main-color--pri);
-    
-    /* Button - Colors */
     --button--bg-color: #005fe6;
     --button--fg-color: var(--fg-color--reverse);
     
     /* Selection - Colors */
-    --selection--bg-color: var(--main-color--sec);
+    --selection--bg-color: hsl(120, 82%, 38%);
     --selection--fg-color: var(--fg-color--reverse);
     
     /* Section - Spacing */
@@ -307,7 +130,7 @@ Default Style
     --copyright-info--fg-color: var(--faint-color--pri);
     
     /* Generic Text - Colors */
-    --generic-text--fg-color: var(--main-color--sec);
+    --generic-text--fg-color: hsl(120, 82%, 38%);
     
     /* List - Spacing */
     --list--spacing--xsm: var(--spacing-y--xsm) var(--gutter-x--xsm);
@@ -324,7 +147,7 @@ Default Style
     --links--fg-color: #005fe6;
     
     /* Main Nav */
-    --main-nav--bg-color: var(--color--white);
+    --main-nav--bg-color: hsl(0, 100%, 100%);
     
     /* Sub Nav - Toggle Button - Colors */
     --sub-nav-func-root--toggle-button--fg-color: var(--fg-color);
@@ -377,8 +200,8 @@ Default Style
     --glabel--between--spacing: .3em;
     
     /* Overlays */
-    --overlay--light: var(--color--white);
-    --overlay--dark: var(--color--black);
+    --overlay--light: hsl(0, 100%, 100%);
+    --overlay--dark: hsl(0, 0%, 0%);
     
     /* Note */
     --note--font-size: var(--font-size--sm);
@@ -389,20 +212,20 @@ Default Style
     --go-content-nav--fg-color: var(--button--pri--fg-color);
     
     /* Easy Access Nav - Main Nav - Colors */
-    --easy-access-nav-func--main-nav--fg-color: var(--color--black);
+    --easy-access-nav-func--main-nav--fg-color: hsl(0, 0%, 0%);
     
     /* Sub Nav - Colors */
-    --easy-access-nav-func--sub-nav--bg-color: var(--color--white);
-    --easy-access-nav-func--sub-nav--fg-color: var(--color--black);
+    --easy-access-nav-func--sub-nav--bg-color: hsl(0, 100%, 100%);
+    --easy-access-nav-func--sub-nav--fg-color: hsl(0, 0%, 0%);
     
     /* Easy Access Nav - Sub Nav - Indicator - Colors */
-    --easy-access-nav-func--navi--root--indicator: var(--black-eighth--color);
+    --easy-access-nav-func--navi--root--indicator: hsla( 0, 0%, 0%, .125 );
     
-    --easy-access-nav-func--navi--current-ancestor--indicator: var(--black-fourth--color);
-    --easy-access-nav-func--navi--branch--indicator: var(--black-eighth--color);
+    --easy-access-nav-func--navi--current-ancestor--indicator: hsla( 0, 0%, 0%, .25 );
+    --easy-access-nav-func--navi--branch--indicator: hsla( 0, 0%, 0%, .125 );
     
     /* Easy Access Nav - Sub Nav - Border Color */
-    --easy-access-nav-func--sub-nav--border-color: var(--black-eighth--color);
+    --easy-access-nav-func--sub-nav--border-color: hsla( 0, 0%, 0%, .125 );
     
     /* Easy Access Nav - Indicator - Dimensions */
     --easy-access-nav-func--indicator--height: .125rem;

@@ -1073,6 +1073,11 @@ img.size-medium
 
 
 /* ------------------ Main Post Title ------------------ */
+.dom--unready .post-title
+{
+    visibility: hidden;
+}
+
 .post-title---h_l
 {
     word-break: break-word;
@@ -1750,10 +1755,12 @@ img.size-medium
 .page--short .copyright
 {
     position: fixed;
-    left: 0;
+    left: 50%;
     bottom: 0;
     
     width: 100%;
+    
+    transform: translateX(-50%);
 }
 
 
@@ -2622,9 +2629,6 @@ button:hover .dismiss-icon
 
 .applicator--comments .show-hide---txt
 {
-    margin-right: .3em;
-    margin-right: var(--glabel--between--spacing);
-    
     text-decoration: underline;
 }
 
@@ -3312,7 +3316,6 @@ button:hover .dismiss-icon
 .applicator--sub-nav .menu-item-has-children > a
 {
     padding-right: 3rem;
-    padding-right: var(--spacing--toggle-allowance);
     
     width: 100%;
 }
