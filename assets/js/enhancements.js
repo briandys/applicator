@@ -991,7 +991,7 @@
             }
         }
         
-        if ( $( '.comments-actions-snippet' ).hasClass( 'comment-creation--disabled' ) && $( '.comments-actions-snippet' ).hasClass( 'comments--empty' ) ) {
+        if ( $( '.comments-actions-snippet' ).hasClass( 'comments--empty' ) ) {
             commentsActivate();
         }
         
@@ -2361,7 +2361,7 @@
         /* ------------------------ Add Anchor to Content Headings ------------------------ */
         ( function() {
             
-            if ( ! $html.hasClass( 'view--inner' ) ) {
+            if ( ! $html.hasClass( 'view-level--inner' ) ) {
                 return;
             }
             

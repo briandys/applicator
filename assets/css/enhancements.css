@@ -1,12 +1,10 @@
 /*
-
 Enhancements Style
 
 • Contains usability enhancements on Active Areas (AAs)
 • Visually hides headings for visual purposes
 • Contains styles of functionalities
 • Contains Generic CSS Variables
-
 */
 
 
@@ -49,7 +47,8 @@ Enhancements Style
 .main-actions-widgets---h,
 .main-actions-widgets-toggle---l,
 .main-actions-widgets-dismiss---l,
-.main-menu-dismiss---l
+.main-menu-dismiss---l,
+.main-search-func .widget-heading
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -173,10 +172,8 @@ Enhancements Style
 ::selection
 {
     background: hsl(120, 82%, 38%);
-    background: var(--selection--bg-color);
     
     color: white;
-    color: var(--selection--fg-color);
     
     text-shadow: none;
 }
@@ -184,10 +181,8 @@ Enhancements Style
 ::-moz-selection
 {
     background: hsl(120, 82%, 38%);
-    background: var(--selection--bg-color);
     
     color: white;
-    color: var(--selection--fg-color);
     
     text-shadow: none;
 }
@@ -357,7 +352,7 @@ button
 /* ------------------ Text Link ------------------ */
 a
 {
-    color: #005fe6;
+    color: hsl(215, 100%, 45%);
 }
 
 
@@ -398,7 +393,7 @@ a
 .data-format--img .text-node:last-child
 {
     margin-bottom: -.5em;
-    margin-bottom: calc( var(--content--spacing-y) * -1);
+    margin-bottom: calc( .5em * -1);
 }
 
 img.size-medium
@@ -413,7 +408,6 @@ img.size-medium
 .data-format > pre
 {
     padding: .75em 1rem;
-    padding: var(--content--spacing);
 }
 
 .data-format--pre
@@ -557,7 +551,7 @@ img.size-medium
     
     height: 100%;
     
-    background-color: #005fe6;
+    background-color: hsl(215, 100%, 45%);
 }
 
 /* Branch Nav Item - Current Indicator - Hover */
@@ -566,7 +560,7 @@ img.size-medium
 .main-nav---ct_cr > .menu > ul > li > ul .current_page_item > a:hover:before,
 .main-nav---ct_cr > .menu > ul > li > ul .current-menu-item > a:hover:before
 {
-    background-color: #005fe6;
+    background-color: hsl(215, 100%, 45%);
     
     opacity: 1;
 }
@@ -605,7 +599,7 @@ img.size-medium
 .main-nav---ct_cr > .menu > ul > li.current_page_item > a > .main-navi---a_l:before,
 .main-nav---ct_cr > .menu > ul > li.current-menu-item > a > .main-navi---a_l:before
 {
-    background-color: #005fe6;
+    background-color: hsl(215, 100%, 45%);
     
     opacity: 1;
 }
@@ -698,7 +692,7 @@ img.size-medium
 .main-nav .page_item_has_children > ul > .current_page_item > a,
 .main-nav .menu-item-has-children > ul > .current-menu-item > a
 {
-    border-left-color: #005fe6;
+    border-left-color: hsl(215, 100%, 45%);
 }
 
 .main-navi--hash---a
@@ -714,10 +708,7 @@ img.size-medium
 .main-nav a
 {   
     padding-left: 1rem;
-    padding-left: var(--content--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--content--spacing-x);
     
     text-decoration: none;
 }
@@ -875,10 +866,7 @@ img.size-medium
 .edit-post-action
 {
     padding-left: 1rem;
-    padding-left: var(--object--spacing-x);
-
     padding-right: 1rem;
-    padding-right: var(--object--spacing-x);
 }
 
 
@@ -889,10 +877,7 @@ img.size-medium
 .edit-comment-action
 {
     padding-left: 1rem;
-    padding-left: var(--object--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--object--spacing-x);
 }
 
 
@@ -967,16 +952,12 @@ img.size-medium
 .apl-categories .categories---cr
 {
     padding-top: .5em;
-    padding-top: calc( var(--component--spacing-y) / 2);
-    
     padding-bottom: .5em;
-    padding-bottom: calc( var(--component--spacing-y) / 2);
 }
 
 .post-categories-glabel
 {
     padding: 1em 1rem;
-    padding: var(--object--spacing--md);
 }
 
 
@@ -987,19 +968,13 @@ img.size-medium
 .post-tags---cr
 {
     padding-top: 1em;
-    padding-top: var(--component--spacing-y);
-    
     padding-bottom: 1em;
-    padding-bottom: var(--component--spacing-y);
 }
 
 .post-tags-glabel
 {
     padding-left: 1rem;
-    padding-left: var(--object--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--object--spacing-x);
 }
 
 
@@ -1027,10 +1002,7 @@ img.size-medium
 .aside .search-form-reset-axn
 {
     padding-top: .5em;
-    padding-top: var(--object--spacing-y--sm);
-    
     padding-bottom: .5em;
-    padding-bottom: var(--object--spacing-y--sm);
 }
 
 .apl-search .search---ct_cr
@@ -1093,7 +1065,6 @@ img.size-medium
 .post-title
 {
     padding: 1em 1rem;
-    padding: var(--object--spacing--md);
 }
 
 
@@ -1104,13 +1075,11 @@ img.size-medium
 .site-main-name
 {
     padding: 1em 1rem;
-    padding: var(--object--spacing--md);
 }
 
 .site-main-description
 {
     padding: 1em 1rem;
-    padding: var(--object--spacing--md);
 }
 
 
@@ -1144,6 +1113,16 @@ img.size-medium
     padding: .75em 1rem;
     
     line-height: 1.67;
+}
+
+.post-content---ct_cr > h1,
+.post-content---ct_cr > h2,
+.post-content---ct_cr > h3,
+.post-content---ct_cr > h4,
+.post-content---ct_cr > h5,
+.post-content---ct_cr > h6
+{
+    margin-bottom: -.75em;
 }
 
 .post-content---ct_cr > ul,
@@ -1372,7 +1351,7 @@ img.size-medium
 /* ------------------ Main Header ------------------ */
 .main-header
 {
-    background-color: #005fe6;
+    background-color: hsl(215, 100%, 45%);
 }
 
 .main-header---cr
@@ -1632,10 +1611,7 @@ img.size-medium
 .type-page .post-navi
 {
     padding-left: 1rem;
-    padding-left: var(--object--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--object--spacing-x);
 }
 
 .parent-post-navigation-glabel
@@ -1644,7 +1620,6 @@ img.size-medium
     vertical-align: middle;
     
     margin-right: .3em;
-    margin-right: var(--glabel--between--spacing);
 }
 
 .type-attachment .post-navi
@@ -1656,10 +1631,7 @@ img.size-medium
 .type-attachment .post-nav---cr
 {
     padding-left: 1rem;
-    padding-left: var(--component--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--component--spacing-x);
 }
 
 
@@ -1675,10 +1647,7 @@ img.size-medium
 .entry-nav---cr
 {
     padding-top: 1em;
-    padding-top: var(--component--spacing-y);
-    
     padding-bottom: 1em;
-    padding-bottom: var(--component--spacing-y);
 }
 
 
@@ -1737,10 +1706,7 @@ img.size-medium
 .copyright
 {
     padding-left: 1rem;
-    padding-left: var(--section--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--section--spacing-x);
 }
 .copyright---g
 {
@@ -1849,10 +1815,7 @@ button:hover .dismiss-icon
 .entry-navi
 {
     padding-left: 1rem;
-    padding-left: var(--object--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--object--spacing-x);
 }
 
 
@@ -1871,10 +1834,7 @@ button:hover .dismiss-icon
 .comment---cr
 {
     padding-top: 1em;
-    padding-top: var(--component--spacing-y);
-    
     padding-bottom: 1em;
-    padding-bottom: var(--component--spacing-y);
 }
 
 .published-comment-glabel
@@ -1883,7 +1843,6 @@ button:hover .dismiss-icon
     vertical-align: middle;
     
     margin-right: .3em;
-    margin-right: var(--glabel--between--spacing);
 }
 
 .comment-published-date-and-time-stamp
@@ -1907,22 +1866,17 @@ button:hover .dismiss-icon
 .comment-pub---cr
 {
     padding-left: 1rem;
-    padding-left: var(--component--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--component--spacing-x);
 }
 
 .comments-heading
 {
     padding: 1em 1rem;
-    padding: var(--object--spacing--md);
 }
 
 .comment-title
 {
     padding: 1em 1rem;
-    padding: var(--object--spacing--md);
 }
 
 .commenter-comment-creation-text-input
@@ -1982,20 +1936,17 @@ button:hover .dismiss-icon
 .comment-form .flabel
 {
     padding-left: 1rem;
-    padding-left: var(--content--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--content--spacing-x);
 }
 
 .comment-form .felem
 {
     padding: .5em 1rem;
     
-    padding-left: var(--object--spacing-x);
-    padding-right: var(--object--spacing-x);
-    padding-top: var(--object--spacing-y--sm);
-    padding-bottom: var(--object--spacing-y--sm);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: .5em;
+    padding-bottom: .5em;
 }
 
 .comment-form .form-submit
@@ -2003,16 +1954,12 @@ button:hover .dismiss-icon
     margin: 0;
     
     padding: 1em 1rem;
-    padding: var(--component--spacing--md);
 }
 
 #cancel-comment-reply-link
 {
     padding-left: 1rem;
-    padding-left: var(--object--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--object--spacing-x);
 }
 
 .comment-subscription-form
@@ -2049,7 +1996,6 @@ button:hover .dismiss-icon
     vertical-align: middle;
     
     margin-right: .3em;
-    margin-right: var(--glabel--between--spacing);
 }
 
 .commenter,
@@ -2068,11 +2014,8 @@ button:hover .dismiss-icon
 {
     display: block;
     
-    width: calc( 3rem - 1 );
-    width: var(--commenter-avatar--width);
-    
-    height: calc( 3rem - 1 );
-    height: var(--commenter-avatar--height);
+    width: 2rem;
+    height: 2rem;
 }
 
 .commenter-avatar .avatar
@@ -2086,25 +2029,18 @@ button:hover .dismiss-icon
 .published-com-commenter---cr
 {
     padding-left: 1rem;
-    padding-left: var(--component--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--component--spacing-x);
 }
 
 .comment-reply-axn
 {
     padding-left: 1rem;
-    padding-left: var(--object--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--object--spacing-x);
 }
 
 .comment-creation-glabel
 {
     padding: 1em 1rem;
-    padding: var(--object--spacing--md);
 }
 
 .comment-form .validity-note
@@ -2126,10 +2062,7 @@ button:hover .dismiss-icon
 .comments-navi
 {
     padding-left: 1rem;
-    padding-left: var(--object--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--object--spacing-x);
 }
 
 
@@ -2140,16 +2073,13 @@ button:hover .dismiss-icon
 .signed-in-acct---ct_cr
 {
     padding-left: 1rem;
-    padding-left: var(--component--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--component--spacing-x);
 }
 
 .signed-in-acct---fr_cr
 {
-    padding-left: var(--component--spacing-x);
-    padding-right: var(--component--spacing-x);
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .signed-in-account-glabel
@@ -2158,7 +2088,6 @@ button:hover .dismiss-icon
     vertical-align: middle;
     
     margin-right: .3em;
-    margin-right: var(--glabel--between--spacing);
 }
 
 .signed-in-account-name
@@ -2174,17 +2103,14 @@ button:hover .dismiss-icon
 /* ------------------ Post Password Form ------------------ */
 .post-password-form input[type="password"]
 {
-    margin-top: var(--object--spacing-y--sm);
-    margin-bottom: var(--object--spacing-y--sm);
+    margin-top: .5em;
+    margin-bottom: .5em;
 }
 
 .post-password-form input[type="submit"]
 {
     margin-top: .5em;
-    margin-top: var(--content--spacing-y);
-    
     margin-bottom: .5em;
-    margin-bottom: var(--content--spacing-y);
 }
 
 .post-password-form label .text-node
@@ -2199,10 +2125,7 @@ button:hover .dismiss-icon
 .note
 {
     padding-top: .5em;
-    padding-top: var(--object--spacing-y--sm);
-    
     padding-bottom: .5em;
-    padding-bottom: var(--object--spacing-y--sm);
 }
 
 .note p
@@ -2221,7 +2144,6 @@ button:hover .dismiss-icon
     margin: 0;
     
     padding: .75em 1rem;
-    padding: var(--content--spacing);
 }
 
 
@@ -2232,10 +2154,7 @@ button:hover .dismiss-icon
 .post-mod---cr
 {
     padding-left: 1rem;
-    padding-left: var(--component--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--component--spacing-x);
 }
 
 .post-published-date-and-time-stamp,
@@ -2252,7 +2171,6 @@ button:hover .dismiss-icon
     vertical-align: middle;
     
     margin-right: .3em;
-    margin-right: var(--glabel--between--spacing);
 }
 
 
@@ -2268,7 +2186,6 @@ button:hover .dismiss-icon
     vertical-align: middle;
     
     margin-right: .3em;
-    margin-right: var(--glabel--between--spacing);
 }
 
 .post-author,
@@ -2281,10 +2198,7 @@ button:hover .dismiss-icon
 .published-post-author---cr
 {
     padding-left: 1rem;
-    padding-left: var(--component--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--component--spacing-x);
 }
 
 .author-name---a_l
@@ -2297,10 +2211,7 @@ button:hover .dismiss-icon
     display: block;
     
     width: 3rem;
-    width: var(--author-avatar--width);
-    
     height: 3rem;
-    height: var(--author-avatar--height);
 }
 
 .author-avatar .avatar
@@ -2325,10 +2236,7 @@ button:hover .dismiss-icon
 .add-comment-axn
 {
     padding-left: 1rem;
-    padding-left: var(--object--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--object--spacing-x);
 }
 
 
@@ -2339,10 +2247,7 @@ button:hover .dismiss-icon
 .aside .widget---cr
 {
     padding-top: 1em;
-    padding-top: var(--component--spacing-y);
-    
     padding-bottom: 1em;
-    padding-bottom: var(--component--spacing-y);
 }
 
 .aside .widget_nav_menu a,
@@ -2351,10 +2256,7 @@ button:hover .dismiss-icon
     justify-content: unset;
     
     padding-left: 1rem;
-    padding-left: var(--content--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--content--spacing-x);
     
     text-decoration: none;
 }
@@ -2365,7 +2267,6 @@ button:hover .dismiss-icon
     margin-bottom: -1em;
     
     padding: 1em 1rem;
-    padding: var(--object--spacing--md);
 }
 
 .aside .widget_media_image .widget-content---ct_cr > .widget-heading
@@ -2386,7 +2287,6 @@ button:hover .dismiss-icon
 .aside .widget select
 {
     width: calc( 100% - ( 1rem * 2 ) );
-    width: calc( 100% - (var(--content--spacing-x) * 2));
 }
 
 .aside .widget_nav_menu .widget-content---ct_cr > *
@@ -2512,7 +2412,6 @@ button:hover .dismiss-icon
     transform: translate(-50%, -50%);
     
     transition: all .125s ease-in-out;
-    transition: var(--transition--generic);
     
     transition-property: opacity;
 }
@@ -2538,7 +2437,6 @@ button:hover .dismiss-icon
 .go-ct-navi---a
 {
     color: white;
-    color: var(--go-content-nav--fg-color);
     
     text-decoration: none;
 }
@@ -2549,8 +2447,7 @@ button:hover .dismiss-icon
     
     min-width: 10rem;
     
-    background-color: #005fe6;
-    background-color: var(--go-content-nav--bg-color);
+    background-color: hsl(215, 100%, 45%);
 }
 
 
@@ -2570,7 +2467,6 @@ button:hover .dismiss-icon
     bottom: 0;
     
     transition: all .125s ease-in-out;
-    transition: var(--transition--generic);
     
     transition-property: opacity transform;
 }
@@ -2619,7 +2515,7 @@ button:hover .dismiss-icon
 {
     width: auto;
     
-    color: #005fe6;
+    color: hsl(215, 100%, 45%);
 }
 
 .applicator--comments .comments-toggle---b_l
@@ -2924,7 +2820,6 @@ button:hover .dismiss-icon
 .main-search--active .main-search-toggle
 {
     margin-right: 3rem;
-    margin-right: var(--elem--dimension);
 }
 
 /* Main Search - Input Text */
@@ -2970,7 +2865,6 @@ button:hover .dismiss-icon
     opacity: 0;
     
     transition: all .125s ease-in-out;
-    transition: var(--transition--generic);
     
     transition-property: opacity;
 }
@@ -2984,17 +2878,17 @@ button:hover .dismiss-icon
 
 .main-search--active .search-term-crt-search-text-input---ce
 {
-    background-color: #005fe6;
+    background-color: hsl(215, 100%, 45%);
 }
 
 .main-search--active .search-form-axns---ct
 {
-    background-color: #005fe6;
+    background-color: hsl(215, 100%, 45%);
 }
 
 .main-search--active .main-search-toggle
 {
-    background-color: #005fe6;
+    background-color: hsl(215, 100%, 45%);
 }
 
 .main-search--active .search-term-crt-search-text-input---ce
@@ -3102,7 +2996,6 @@ button:hover .dismiss-icon
 .main-search-toggle .search-icon
 {
     transition: all .125s ease-in-out;
-    transition: var(--transition--generic);
     
     transition-property: opacity;
 }
@@ -3273,7 +3166,6 @@ button:hover .dismiss-icon
 .applicator--main-menu .main-header-aside .widget:first-of-type .widget---cr
 {
     margin-top: -1em;
-    margin-top: calc( var(--component--spacing-y) * -1);
 }
 
 .applicator--main-menu .main-header-aside .widget_media_image:first-of-type .widget---cr
@@ -3516,19 +3408,13 @@ button:hover .dismiss-icon
 .page-navi--current
 {
     padding-left: 1rem;
-    padding-left: var(--object--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--object--spacing-x);
 }
 
 .page-navi
 {
     padding-left: 1rem;
-    padding-left: var(--object--spacing-x);
-    
     padding-right: 1rem;
-    padding-right: var(--object--spacing-x);
 }
 
 .page-nav .adjacent-navi

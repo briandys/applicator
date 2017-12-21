@@ -94,7 +94,7 @@ if ( ! function_exists( 'applicator_inline_scripts' ) ) {
             ( function( html ) {
                 
                 // Replace no-js with js if JavaScript is supported
-                html.className = html.className.replace( /\bno-js\b/,'js' );
+                html.className = html.className.replace( /\bfeature--js--none\b/,'feature--js' );
 
                 // DOM Unready (will be removed on document.ready)
                 html.classList.add( 'dom--unready' );
@@ -104,10 +104,10 @@ if ( ! function_exists( 'applicator_inline_scripts' ) ) {
 
                 // CSS Variables CSS inserted via JS
                 if ( supportCssVariables() ) {
-                    html.classList.add( 'css-variables--supported' );
+                    html.classList.add( 'feature--css-variables--supported' );
                 }
                 else {
-                    html.classList.add( 'css-variables--unsupported' );
+                    html.classList.add( 'feature--css-variables--unsupported' );
                 }
 
                 // Detect Viewport Width

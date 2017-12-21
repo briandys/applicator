@@ -1,31 +1,3 @@
-/* ------------------ Variables ------------------ */
-.html
-{
-    /* ------------ Level 3 - Specifics ------------ */
-    
-    --category--padding: .5em 1em;
-    --category--min-height: 2.25rem;
-    --category--border: 1px solid #005fe6;
-    --category-item--spacing: calc( var(--content--spacing) / 2 );
-    --category-item--spacing-x: calc( var(--content--spacing-x) / 2 );
-    
-    --post-meta--border: 1px solid lightgray;
-    --post-meta--fg-color: hsla(0, 0%, 0%, .5);
-    
-    --note--fg-color: hsla(0, 0%, 0%, .5);
-    --note-font-size: .875rem;
-    
-    /* Edit Post Action */
-    --edit-post-action--bg-color: var(--button--pri--bg-color);
-    --edit-post-action--fg-color: var(--button--pri--fg-color);
-    
-    --post-banner-vis--height: 10rem;
-}
-
-
-
-
-
 /* ------------------ Visually Hidden ------------------ */
 .visually-hidden,
 .page .post-published-modified,
@@ -132,10 +104,7 @@
     flex-wrap: wrap;
     
     min-width: 3rem;
-    min-width: var(--active-area--width--md);
-    
     min-height: 3rem;
-    min-height: var(--active-area--width--md);
 }
 
 
@@ -249,10 +218,7 @@ h6
 .comments-header-aside---cr
 {
     padding-top: 1em;
-    padding-top: var(--component--spacing-y);
-    
     padding-bottom: 1em;
-    padding-bottom: var(--component--spacing-y);
 }
 
 .signed-in-acct---cr
@@ -331,10 +297,7 @@ h6
 .site-preview---cr
 {
     padding-top: 1em;
-    padding-top: var(--component--spacing-y);
-    
     padding-bottom: 1em;
-    padding-bottom: var(--component--spacing-y);
 }
 
 .site--root .site-preview---cr
@@ -344,7 +307,7 @@ h6
 
 .site-preview a
 {
-    color: var(--links--fg-color);
+    color: hsl(215, 100%, 45%);
 }
 
 .site-preview .site-main-name---a
@@ -356,25 +319,25 @@ h6
 
 .site-preview .site-main-desc---a
 {
-    color: var(--faint-color--pri);
+    color: hsla(0, 0%, 0%, .5);
     
     text-decoration: none;
 }
 
 .site-main-name
 {
-    padding: var(--object--spacing--md);
+    padding: 1rem;
     
     text-align: center;
 }
 
 .site-main-description
 {
-    margin-top: calc( (var(--object--spacing-y) * 3) * -1 ) ;
-    padding-left: var(--object--spacing-x);
-    padding-right: var(--object--spacing-x);
+    margin-top: calc( ( 1rem * 3) * -1 ) ;
+    padding-left: 1rem;
+    padding-right: 1rem;
     
-    font-size: var(--font-size--sm);
+    font-size: .875em;
     
     text-align: center;
 }
@@ -410,7 +373,7 @@ h6
     background-size: cover;
     background-position: center;
     
-    background-color: var(--image--bg-color);
+    background-color: hsla(0, 0%, 0%, .85);
 }
 
 .multisite-directory--in .post .post-banner-vis---a
@@ -476,7 +439,7 @@ h6
     top: 50%;
     transform: translate( -50%, -50% );
     
-    padding: var(--content--spacing);
+    padding: .75em 1rem;
     
     width: 100%;
     
@@ -505,7 +468,7 @@ h6
 
 .multisite-directory--in .post-title---a
 {
-    color: var(--links--fg-color);
+    color: hsl(215, 100%, 45%);
 }
 
 
@@ -513,19 +476,10 @@ h6
 
 
 /* ------------------ Table ------------------ */
-.applicator--theme--table
-{
-    --table-stroke--color--max: hsla( 0, 0%, 0%, .25 );
-    --table-stroke--color--med: hsla( 0, 0%, 0%, .125 );
-    --table-stroke--color--min: hsla( 0, 0%, 0%, .0625 );
-    --table-line--md: 2px solid var(--table-stroke--color--med);
-    --table-line--sm: 1px solid var(--table-stroke--color--min);
-}
-
 .applicator--theme--table .post-content tbody,
 .applicator--theme--table .comment-content tbody
 {
-    border: var(--table-line--md);
+    border: 2px solid hsla( 0, 0%, 0%, .125 );
     border-left-width: 1px;
     border-right-width: 1px;
 }
@@ -544,7 +498,7 @@ h6
 .applicator--theme--table .comment-content td,
 .applicator--theme--table .comment-content tbody th
 {
-    border: var(--table-line--sm);
+    border: 1px solid hsla( 0, 0%, 0%, .0625 );
     
     border-right: 0;
     border-bottom: 0;
@@ -559,7 +513,7 @@ h6
 .applicator--theme--table .post-content tfoot,
 .applicator--theme--table .comment-content tfoot
 {
-    border: var(--table-line--md);
+    border: 2px solid hsla( 0, 0%, 0%, .125 );
     border-left: 0;
     border-right: 0;
     border-top: 0;
@@ -655,8 +609,8 @@ h6
 /* ------------------ Note ------------------ */
 .applicator--theme--note .note
 {
-    color: var(--note--fg-color);
-    font-size: var(--note--font-size);
+    color: hsla(0, 0%, 0%, .5);
+    font-size: .875em;
 }
 
 
@@ -666,8 +620,8 @@ h6
 /* ------------------ Categories ------------------ */
 .applicator--theme--categories .apl-categories .post-categories
 {
-    padding-left: var(--category-item--spacing-x);
-    padding-right: var(--category-item--spacing-x);
+    padding-left: .5rem;
+    padding-right: .5rem;
 }
 
 .applicator--theme--categories .apl-categories .post-categories li
@@ -675,19 +629,19 @@ h6
     display: inline-block;
     vertical-align: middle;
     
-    padding-left: calc( var(--content--spacing-x) / 2 );
-    padding-right: calc( var(--content--spacing-x) / 2 );
-    padding-top: var(--content--spacing-y);
-    padding-bottom: var(--content--spacing-y);
+    padding-left: .5rem;
+    padding-right: .5rem;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 .applicator--theme--categories .apl-categories a
 {    
-    padding: var(--category--padding);
+    padding: .5em 1em;
     
-    min-height: var(--category--min-height);
+    min-height: 2.25rem;
     
-    border: var(--category--border);
+    border: 1px solid hsl(215, 100%, 45%);
 }
 
 .applicator--theme--categories .apl-categories .post-categories
@@ -704,8 +658,8 @@ h6
 /* ------------------ Tags ------------------ */
 .applicator--theme--tags .apl-tags .post-tags---grp
 {
-    padding-left: var(--category-item--spacing-x);
-    padding-right: var(--category-item--spacing-x);
+    padding-left: .5rem;
+    padding-right: .5rem;
 }
 
 .applicator--theme--tags .apl-tags .post-tag
@@ -717,8 +671,8 @@ h6
     
     padding-left: .5rem;
     padding-right: .5rem;
-    padding-top: var(--content--spacing-y);
-    padding-bottom: var(--content--spacing-y);
+    padding-top: 1em;
+    padding-bottom: 1em;
     
     font-size: .875rem;
 }
@@ -732,7 +686,7 @@ h6
     
     margin-left: 1.25rem;
     
-    color: var(--links--fg-color););
+    color: hsl(215, 100%, 45%););
     
     line-height: 1;
     
@@ -743,14 +697,14 @@ h6
 
 .applicator--theme--tags .apl-tags a
 {    
-    padding: var(--category--padding);
+    padding: .5em 1em;
     padding-left: 1.5em;
     
-    min-height: var(--category--min-height);
+    min-height: 2.25rem;
     
     line-height: 1;
     
-    border: var(--category--border);
+    border: 1px solid hsl(215, 100%, 45%);
 }
 
 .applicator--theme--tags .apl-tags .post-tags---grp
@@ -910,7 +864,7 @@ h6
 .applicator--theme--name-avatar .author-avatar,
 .applicator--theme--name-avatar .commenter-avatar
 {
-    margin-right: var(--glabel--between--spacing);
+    margin-right: .3em;
 }
 
 
@@ -920,7 +874,7 @@ h6
 .applicator--theme--edit-action .post-edit-link,
 .applicator--theme--edit-action .comment-edit-link
 {
-    color: var(--edit-post-action--fg-color);
+    color: hsl(0, 100%, 100%);
 }
 
 .applicator--theme--edit-action .edit-post-axn---a_l,
@@ -933,7 +887,7 @@ h6
     
     font-size: .875rem;
     
-    background-color: #005fe6;
+    background-color: hsl(215, 100%, 45%);
 }
 
 
@@ -953,18 +907,18 @@ h6
     
     margin-left: .3em;
     
-    padding: calc( var(--content--spacing-y) / 3 ) calc( var(--content--spacing-x) / 1.5 );
+    padding: calc( 1em / 3 ) calc( 1rem / 1.5 );
     
     min-width: 1.5rem;
     min-height: 1.5rem;
     
-    background-color: #005fe6;
+    background-color: hsl(215, 100%, 45%);
     color: hsl(0, 100%, 100%);
 }
 
 .applicator--theme--comments-count-action .comments-count-axn .txt .comments-label---txt
 {
-    margin-right: var(--glabel--between--spacing);
+    margin-right: .3em;
 }
 
 
@@ -992,6 +946,10 @@ h6
 .applicator--theme--rounded-rectangles select,
 .applicator--theme--rounded-rectangles .b_l,
 .applicator--theme--rounded-rectangles input[type="submit"],
+.applicator--theme--rounded-rectangles .widget_custom_html button,
+
+.applicator--theme--rounded-rectangles.applicator--theme--excerpt .show-more-glabel---g_l,
+.applicator--theme--rounded-rectangles.applicator--theme--excerpt .show-more-axn---a_l,
 
 /* Date Time Stamp */
 .applicator--theme--rounded-rectangles.applicator--theme--post-meta .post-pub-d-stamp-dtstamp---a_l,
@@ -1118,13 +1076,13 @@ h6
     padding-left: 2em;
     
     font-size: 1.5rem;
-    font-family: monospace;
+    font-family: serif;
 }
 
 .applicator--theme--quote blockquote > *
 {
-    margin-top: var(--content--spacing-y);
-    margin-bottom: var(--content--spacing-y);
+    margin-top: 1em;
+    margin-bottom: 1em;
     
     padding: 0;
 }
@@ -1193,7 +1151,7 @@ h6
     min-width: 2rem;
     min-height: 2rem;
     
-    background-color: #005fe6;
+    background-color: hsl(215, 100%, 45%);
     color: hsl(0, 100%, 100%);
     
     font-size: 1rem;
@@ -1201,12 +1159,12 @@ h6
 
 .applicator--theme--search-result .search-results .main-content-heading .property---line
 {
-    margin-right: var(--glabel--between--spacing);
+    margin-right: .3em;
 }
 
 .applicator--theme--search-result .search-results .main-content-heading .value---line
 {
-    margin-right: var(--glabel--between--spacing);
+    margin-right: .3em;
 }
 
 
@@ -1231,7 +1189,7 @@ h6
     padding-left: 1rem;
     padding-right: 1rem;
     
-    background-color: #005fe6;
+    background-color: hsl(215, 100%, 45%);
 }
 
 .show-more-axn---a
@@ -1342,20 +1300,14 @@ h6
 .applicator--theme--post .post-published-date-and-time-stamp
 {
     padding-top: 1em;
-    padding-top: var(--component--spacing-y);
-    
     padding-bottom: 1em;
-    padding-bottom: var(--component--spacing-y);
 }
 
 .applicator--theme--post .author-name,
 .applicator--theme--post .author-avatar
 {
     padding-top: 1em;
-    padding-top: var(--component--spacing-y);
-    
     padding-bottom: 1em;
-    padding-bottom: var(--component--spacing-y);
 }
 
 
@@ -1403,20 +1355,14 @@ h6
 .comment-published-date-and-time-stamp
 {
     padding-top: 1em;
-    padding-top: var(--component--spacing-y);
-    
     padding-bottom: 1em;
-    padding-bottom: var(--component--spacing-y);
 }
 
 .commenter-name,
 .commenter-avatar
 {
     padding-top: 1em;
-    padding-top: var(--component--spacing-y);
-    
     padding-bottom: 1em;
-    padding-bottom: var(--component--spacing-y);
 }
 
 

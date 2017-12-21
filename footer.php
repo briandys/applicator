@@ -41,16 +41,12 @@
                                             'txt'       => esc_html__( '2017', 'applicator' ),
                                             'css'       => 'year---txt',
                                         ),
-                                        array(
-                                            'txt'       => esc_html__( '.', 'applicator' ),
-                                            'css'       => 'delimiter---txt',
-                                        ),
                                     ),
                                     array(
-                                        'css'   => 'reserved-rights---line',
+                                        'css'   => 'applicator---line',
                                         array(
                                             'sep'       => $GLOBALS['space_sep'],
-                                            'txt'       => esc_html__( 'Olrayt reserved.', 'applicator' ),
+                                            'txt'       => esc_html( 'Applicator by DysineLab', 'applicator' ),
                                             'linked'    => true,
                                             'attr'      => array(
                                                 'a'         => array(
@@ -60,10 +56,6 @@
                                                     'title'     => esc_attr( 'Applicator on DysineLab' ),
                                                 ),
                                             ),
-                                        ),
-                                        array(
-                                            'txt'       => esc_html__( '&trade;', 'applicator' ),
-                                            'css'       => 'trademark-symbol---txt',
                                         ),
                                     ),
                                 ),

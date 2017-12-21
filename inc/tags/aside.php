@@ -54,36 +54,26 @@ if ( ! function_exists( 'applicator_main_actions' ) ) {
             $aside = ob_get_contents();
             ob_end_clean();
             
-        }
-        else {
-            
-            // OB: Search
-            ob_start();
-            get_search_form();
-            $search_ob_content = ob_get_contents();
-            ob_end_clean();
-            
-            $aside = $search_ob_content;
+            // E: Main Actions
+            $main_actions_cp = applicator_htmlok( array(
+                'name'      => 'Main Actions',
+                'structure' => array(
+                    'type'          => 'constructor',
+                    'subtype'       => 'aside',
+                    'elem'          => 'aside',
+                    'hr_structure'  => true,
+                    'h_elem'        => 'h3',
+                ),
+                'id'        => 'main-actions',
+                'content'   => array(
+                    'constructor'   => $aside,
+                ),
+            ) );
+
+            return $main_actions_cp;
             
         }
         
-        // E: Main Actions
-        $main_actions_cp = applicator_htmlok( array(
-            'name'      => 'Main Actions',
-            'structure' => array(
-                'type'          => 'constructor',
-                'subtype'       => 'aside',
-                'elem'          => 'aside',
-                'hr_structure'  => true,
-                'h_elem'        => 'h3',
-            ),
-            'id'        => 'main-actions',
-            'content'   => array(
-                'constructor'   => $aside,
-            ),
-        ) );
-        
-        return $main_actions_cp;
     }
 }
 

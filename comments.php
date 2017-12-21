@@ -1,13 +1,5 @@
 <?php // Comments
-/*
 
-Structure:
-
-Comment Module
-* Comments
-* Comment Form
-
-*/
 
 if ( post_password_required() ) {
 	return;
