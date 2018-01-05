@@ -68,7 +68,7 @@ if ( ! function_exists( 'applicator_css_class_names' ) ) {
         );
 
         foreach ( ( array ) $r as $css_class_name ) {
-            echo ' '. $applicator_theme_term. '--'. $css_class_name;
+            echo ' '. esc_attr( $applicator_theme_term ). '--'. esc_attr( $css_class_name );
         }
     }
     add_action( 'applicator_hook_html_class', 'applicator_css_class_names');

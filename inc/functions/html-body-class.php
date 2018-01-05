@@ -8,7 +8,7 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         
         global $post;
         
-        $useragent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "";
+        $useragent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) : "";
         
         $is_ipad = preg_match('/ipad/i',$useragent);
         
@@ -153,50 +153,50 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         
         // Main Header Aside
         if ( is_active_sidebar( $main_header_aside ) ) {
-            echo ' '. $main_header_aside. $on;
+            echo ' '. esc_attr( $main_header_aside ). esc_attr( $on );
         }
         else {
-            echo ' '. $main_header_aside. $off;
+            echo ' '. esc_attr( $main_header_aside ). esc_attr( $off );
         }
         
         // Main Actions Aside
         if ( is_active_sidebar( $main_actions_aside ) ) {
-            echo ' '. $main_actions_aside. $on;
+            echo ' '. esc_attr( $main_actions_aside ). esc_attr( $on );
         }
         else {
-            echo ' '. $main_actions_aside. $off;
+            echo ' '. esc_attr( $main_actions_aside ). esc_attr( $off );
         }
         
         // Main Banner Aside
         if ( is_active_sidebar( $main_banner_aside ) ) {
-            echo ' '. $main_banner_aside. $on;
+            echo ' '. esc_attr( $main_banner_aside ). esc_attr( $on );
         }
         else {
-            echo ' '. $main_banner_aside. $off;
+            echo ' '. esc_attr( $main_banner_aside ). esc_attr( $off );
         }
         
         // Main Content Header Aside
         if ( is_active_sidebar( $main_header_content_aside ) ) {
-            echo ' '. $main_header_content_aside. $on;
+            echo ' '. esc_attr( $main_header_content_aside ). esc_attr( $on );
         }
         else {
-            echo ' '. $main_header_content_aside. $off;
+            echo ' '. esc_attr( $main_header_content_aside ). esc_attr( $off );
         }
         
         // Secondary Content Aside
         if ( is_active_sidebar( $main_content_aside ) ) {
-            echo ' '. $main_content_aside. $on;
+            echo ' '. esc_attr( $main_content_aside ). esc_attr( $on );
         }
         else {
-            echo ' '. $main_content_aside. $off;
+            echo ' '. esc_attr( $main_content_aside ). esc_attr( $off );
         }
 
         // Main Footer Aside
         if ( is_active_sidebar( $main_footer_aside ) ) {
-            echo ' '. $main_footer_aside. $on;
+            echo ' '. esc_attr( $main_footer_aside ). esc_attr( $on );
         }
         else {
-            echo ' '. $main_footer_aside. $off;
+            echo ' '. esc_attr( $main_footer_aside ). esc_attr( $off );
         }
         
         
@@ -204,7 +204,7 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         if ( is_singular() ) {
         
             foreach ( ( get_the_category( $post->ID ) ) as $category ) {
-                echo ' '.'category--'. $category->category_nicename;
+                echo ' '. 'category--'. esc_attr( $category->category_nicename );
             }
             
             if ( has_category( '', $post->ID ) ) {
@@ -219,7 +219,7 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         
         // Customizer Color Scheme
         $colors = applicator_sanitize_colorscheme( get_theme_mod( 'colorscheme', 'default' ) );
-        echo ' '. 'customizer-color-scheme--'. $colors;
+        echo ' '. 'customizer-color-scheme--'. esc_attr( $colors );
         
         
         // Customizer
@@ -270,8 +270,8 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         if ( is_singular() ) {
             
             if ( isset( $post ) ) {
-                echo ' '. 'entry--'. $post->post_type;
-                echo ' '. 'entry--'. $post->post_type. '--'. $post->post_name;
+                echo ' '. 'entry--'. esc_attr( $post->post_type );
+                echo ' '. 'entry--'. esc_attr( $post->post_type ). '--'. esc_attr( $post->post_name );
             }
         
         }
@@ -347,7 +347,7 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         
             if ( $template_file ) {
                 echo ' '. 'page-template--specific';
-                echo ' '. 'page-template'. '--'. sanitize_title( $template_file );
+                echo ' '. 'page-template'. '--'. esc_attr( sanitize_title( $template_file ) );
             }
             else {
                 echo ' '. 'page-template--generic';

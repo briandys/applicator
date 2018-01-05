@@ -133,10 +133,10 @@ if ( ! function_exists( 'applicator_functionalities_css_class_names' ) ) {
             'sub-nav',
         ); 
         
-        echo ' ' . $applicator_term;
+        echo ' ' . esc_attr( $applicator_term );
         
         foreach ( ( array ) $r as $css_class_name ) {
-            echo ' '. $applicator_term. '--'. $css_class_name;
+            echo ' '. esc_attr( $applicator_term ). '--'. esc_attr( $css_class_name );
         }
     }
     add_action( 'applicator_hook_html_class', 'applicator_functionalities_css_class_names');

@@ -60,11 +60,11 @@ $post_classes = implode( ' ', $post_classes );
                 $post_title = get_the_title();
                 
                 if ( $post_title ) {
-                    $post_title = esc_html( get_the_title() );
+                    $post_title = get_the_title();
                     $post_title_attr = the_title_attribute( 'echo=0' );
                 }
                 else {
-                    $post_title = __( 'Post No.', 'applicator' ). ' '. get_the_ID();
+                    $post_title = __( 'Post', 'applicator' ). ' '. get_the_ID();
                     $post_title_attr = $post_title;
                 }
                 

@@ -54,7 +54,7 @@ $post_classes = implode( ' ', $post_classes );
                     $post_title = get_the_title();
                 }
                 else {
-                    $post_title = __( 'Post No.', 'applicator' ). ' '. get_the_ID();
+                    $post_title = __( 'Post', 'applicator' ). ' '. get_the_ID();
                 }
                 
                 
