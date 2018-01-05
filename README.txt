@@ -9,7 +9,7 @@ Tags: right-sidebar, custom-menu, footer-widgets, sticky-post, translation-ready
 
 == Description ==
 
-A WordPress Theme that is mobile-friendly.
+Your mobile-friendly WordPress Theme.
 
 For more information about Applicator please go to http://applicator.dysinelab.com.
 
