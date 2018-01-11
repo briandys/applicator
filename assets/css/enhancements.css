@@ -1713,6 +1713,12 @@ img.size-medium
     font-size: .75rem;
 }
 
+.applicator---line
+{
+    margin-left: .5em;
+    margin-right: .5em;
+}
+
 .page--short .copyright
 {
     position: fixed;
@@ -2304,11 +2310,6 @@ button:hover .dismiss-icon
     text-decoration: none;
 }
 
-.aside .widget_tag_cloud a:hover
-{
-    text-decoration: underline;
-}
-
 .aside .widget_media_image img
 {
     width: 100%;
@@ -2343,6 +2344,29 @@ button:hover .dismiss-icon
     padding: 0;
     
     width: auto !important;
+}
+
+.aside .widget_categories .widget-content---ct_cr a,
+.aside .widget_recent_entries .widget-content---ct_cr a,
+.aside .widget_tag_cloud .widget-content---ct_cr a,
+.aside .widget_archive .widget-content---ct_cr a,
+.aside .widget_meta .widget-content---ct_cr a,
+.aside .widget_recent_comments .widget-content---ct_cr a
+{
+    border-bottom: 0 solid transparent;
+    
+    transition: border-color .125s ease-in-out;
+}
+
+.aside .widget_categories .widget-content---ct_cr a:hover,
+.aside .widget_recent_entries .widget-content---ct_cr a:hover,
+.aside .widget_tag_cloud .widget-content---ct_cr a:hover,
+.aside .widget_archive .widget-content---ct_cr a:hover,
+.aside .widget_meta .widget-content---ct_cr a:hover,
+.aside .widget_recent_comments .widget-content---ct_cr a:hover
+{
+    border-bottom: 2px solid hsl(215, 100%, 45%);
+    opacity: 1;
 }
 
 
@@ -2463,7 +2487,7 @@ button:hover .dismiss-icon
     
     transition: all .125s ease-in-out;
     
-    transition-property: opacity transform;
+    transition-property: opacity, transform;
 }
 
 .go-start-nav--inactive .go-to-start-navi
@@ -2579,11 +2603,6 @@ button:hover .dismiss-icon
 .main-actions-aside---cr
 {
     position: relative;
-}
-
-.main-actions-aside a
-{
-    color: white;
 }
 
 .applicator--main-search--active .main-actions-aside

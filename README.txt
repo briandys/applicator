@@ -1,7 +1,7 @@
 === Applicator ===
 Contributors: Brian Dys Sahagun
 Requires at least: WordPress 4.7
-Tested up to: WordPress 4.7
+Tested up to: WordPress 4.9
 Version: 0
 License: GNU General Public License
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -9,13 +9,13 @@ Tags: right-sidebar, custom-menu, footer-widgets, sticky-post, translation-ready
 
 == Description ==
 
-Your mobile-friendly WordPress Theme.
+Your springboard to creating functional WordPress themes
 
 For more information about Applicator please go to http://applicator.dysinelab.com.
 
 == Copyright ==
 
-Applicator WordPress Theme, Copyright 2017 DysineLab
+Applicator WordPress Theme, Copyright 2018 DysineLab
 Applicator is distributed under the terms of the GNU GPL
 
 This program is free software: you can redistribute it and/or modify
@@ -47,6 +47,9 @@ License: CC0 1.0 Universal (CC0 1.0)
 Source: https://unsplash.com/photos/yEOCA6oiVqg
 
 == Changelog ==
+
+= 2.2.5.16 =
+Complying to Theme Check.
 
 = 2.0.8 =
 Just keeps getting better.
