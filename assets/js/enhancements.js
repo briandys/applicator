@@ -2394,7 +2394,7 @@
         // https://css-tricks.com/NetMag/FluidWidthVideo/demo.php
         ( function() {
 
-            var $videos = $( 'iframe[src*="//player.vimeo.com"], iframe[src*="//www.youtube.com"], embed[src*="//v.wordpress.com"], object, embed' ),
+            var $videos = $( 'iframe[src*="//player.vimeo.com"], iframe[src*="//www.youtube.com"], iframe[src*="//www.facebook.com"], embed[src*="//v.wordpress.com"], object, embed' ),
                 $container = $( '.post-content---ct_cr' ),
                 $containerChild = $( '.post-content---ct_cr > *' );
             

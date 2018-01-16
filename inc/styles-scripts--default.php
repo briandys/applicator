@@ -1,17 +1,15 @@
 <?php // Default Styles and Scripts
 
 
-
-
-
 /* ------------------------ Default Applicator Styles ------------------------ */
-if ( ! function_exists( 'applicator_default_styles_scripts' ) ) {
+if ( ! function_exists( 'applicator_default_styles_scripts' ) )
+{
     
-    function applicator_default_styles_scripts() {
+    function applicator_default_styles_scripts()
+    {
         
         
         /* ------------ Styles ------------ */
-        
         
         // Editor Style
         add_editor_style( array( 'assets/css/editor-style.css' ) );
@@ -44,7 +42,8 @@ if ( ! function_exists( 'applicator_default_styles_scripts' ) ) {
         
         
         // Comment Reply
-        if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+        if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
+        {
             wp_enqueue_script( 'comment-reply' );
         }
         
@@ -57,41 +56,61 @@ if ( ! function_exists( 'applicator_default_styles_scripts' ) ) {
 
 
 /* ------------------------ Default Applicator Inline Scripts ------------------------ */
-if ( ! function_exists( 'applicator_inline_scripts' ) ) {
+if ( ! function_exists( 'applicator_inline_scripts' ) )
+{
     
-    function applicator_inline_scripts() { ?>
+    function applicator_inline_scripts()
+    { ?>
         
         <script type="text/javascript">
             
             
             /* ------------------------ Debounce ------------------------ */
             // https://davidwalsh.name/javascript-debounce-function
-            function debounce( func, wait, immediate ) {
+            function debounce( func, wait, immediate )
+            {
                 var timeout;
-                return function () {
-                    var context = this, args = arguments;
-                    var later = function () {
+                
+                return function()
+                {
+                    var context = this,
+                        args = arguments;
+                    
+                    var later = function()
+                    {
                         timeout = null;
-                        if (!immediate) func.apply(context, args);
-                    };
+                        if ( !immediate )
+                        {
+                            func.apply( context, args );
+                        }
+                    }
+                    
                     var callNow = immediate && !timeout;
-                    clearTimeout(timeout);
-                    timeout = setTimeout(later, wait);
-                    if (callNow) func.apply(context, args);
-                };
-            };
+                    
+                    clearTimeout( timeout );
+                    
+                    timeout = setTimeout( later, wait );
+                    
+                    if ( callNow )
+                    {
+                        func.apply( context, args );
+                    }
+                }
+            }
             var applicatorDebounceTimeout = 250;
             
             
             /* ------------------------ CSS Variables Feature Detection ------------------------ */
             // https://stackoverflow.com/a/26633844
-            function supportCssVariables() {
-              return window.CSS && window.CSS.supports && window.CSS.supports('--var', 0);
+            function supportCssVariables()
+            {
+                return window.CSS && window.CSS.supports && window.CSS.supports( '--var', 0 );
             }
 
 
             /* ------------------------ HTMl CSS Classes ------------------------ */
             ( function( html ) {
+             
                 
                 // Replace no-js with js if JavaScript is supported
                 html.className = html.className.replace( /\bfeature--js--none\b/,'feature--js' );
@@ -126,21 +145,32 @@ if ( ! function_exists( 'applicator_inline_scripts' ) ) {
                         vpWPAdminBarWideCss = 'vp--wp-admin-bar--wide',
                         mqWPAdminBarNarrow = window.matchMedia( "( max-width: 782px )" );
 
-                    if ( mqWide.matches ) {
+                    if ( mqWide.matches )
+                    {
                         html.classList.add( vpNarrowUpCss, vpMediumUpCss, vpWideCss, vpWideUpCss );
                         html.classList.remove( vpNarrowCss, vpMediumCss );
-                    } else if ( mqMedium.matches ) {
+                    }
+                    
+                    else if ( mqMedium.matches )
+                    {
                         html.classList.add( vpNarrowUpCss, vpMediumCss, vpMediumUpCss );
                         html.classList.remove( vpNarrowCss, vpWideCss, vpWideUpCss );
-                    } else {
+                    }
+                    
+                    else
+                    {
                         html.classList.add( vpNarrowCss, vpNarrowUpCss );
                         html.classList.remove( vpMediumCss, vpMediumUpCss, vpWideCss, vpWideUpCss );
                     }
                     
-                    if ( mqWPAdminBarNarrow.matches ) {
+                    if ( mqWPAdminBarNarrow.matches )
+                    {
                         html.classList.add( vpWPAdminBarNarrowCss );
                         html.classList.remove( vpWPAdminBarWideCss );
-                    } else {
+                    }
+                    
+                    else
+                    {
                         html.classList.add( vpWPAdminBarWideCss );
                         html.classList.remove( vpWPAdminBarNarrowCss );
                     }
@@ -148,9 +178,7 @@ if ( ! function_exists( 'applicator_inline_scripts' ) ) {
                 vpWidth();
 
                 // Viewport Width Debounce
-                var vpWidthDebounce = debounce( function () {
-                    vpWidth();
-                }, applicatorDebounceTimeout );
+                var vpWidthDebounce = debounce( function() { vpWidth(); }, applicatorDebounceTimeout );
 
                 window.addEventListener( 'resize', vpWidthDebounce );
 
