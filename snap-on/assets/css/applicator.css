@@ -479,7 +479,7 @@ h6
 .applicator--theme--table .post-content tbody,
 .applicator--theme--table .comment-content tbody
 {
-    border: 2px solid hsla( 0, 0%, 0%, .125 );
+    border: 2px solid hsl( 0, 0%, 90% );
     border-left-width: 1px;
     border-right-width: 1px;
 }
@@ -498,7 +498,7 @@ h6
 .applicator--theme--table .comment-content td,
 .applicator--theme--table .comment-content tbody th
 {
-    border: 1px solid hsla( 0, 0%, 0%, .0625 );
+    border: 1px solid hsl( 0, 0%, 90% );
     
     border-right: 0;
     border-bottom: 0;
@@ -513,7 +513,7 @@ h6
 .applicator--theme--table .post-content tfoot,
 .applicator--theme--table .comment-content tfoot
 {
-    border: 2px solid hsla( 0, 0%, 0%, .125 );
+    border: 2px solid hsl( 0, 0%, 90% );
     border-left: 0;
     border-right: 0;
     border-top: 0;
@@ -774,7 +774,7 @@ h6
     
     line-height: 1;
     
-    border: 1px solid #505050;
+    border: 1px solid hsla( 0, 0%, 0%, .125 );
 }
 
 .applicator--theme--post-meta .post-published,

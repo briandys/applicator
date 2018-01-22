@@ -2365,8 +2365,25 @@
                 return;
             }
             
-            var $postContentHeadings = $( '.post-content---ct_cr' ).find( 'h1, h2, h3, h4, h5, h6' );
+            var $postContentCtCr = $( '.post-content---ct_cr' ),
+                $postContentHeadings = $postContentCtCr.find( 'h1:not([id]), h2:not([id]), h3:not([id]), h4:not([id]), h5:not([id]), h6:not([id])' ),
+                $postContentHeadingsID = $postContentCtCr.find( 'h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]' ),
+                headingAnchoredCSS = 'heading--anchored';
             
+            
+            // Look for headings with ID and add class
+            $.each( $postContentHeadingsID, function() {
+                
+                if ( $(this).has( 'a' ) ) {
+                    $( this )
+                        .attr( {
+                            'class': headingAnchoredCSS
+                        } );
+                }
+            } );
+            
+            
+            // Look for headings without ID
             $.each( $postContentHeadings, function( index ) {
                 
                 // https://stackoverflow.com/a/18727318
@@ -2374,7 +2391,7 @@
                 $( this )
                     .attr( {
                         'id': 'section' + ( index + 1 ),
-                        'class': 'heading--anchored'
+                        'class': headingAnchoredCSS
                     } )
                     
                     .contents().filter( function() {
