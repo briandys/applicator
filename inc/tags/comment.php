@@ -55,7 +55,7 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                         'txt'       => esc_html__( 'Comment', 'applicator' ),
                     ),
                     array(
-                        'sep'       => $GLOBALS['space_sep'],
+                        'sep'       => $GLOBALS['applicator_space_sep'],
                         'txt'       => get_comment_ID(),
                     ),
                 ),
@@ -90,7 +90,7 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                         'txt'   => $comment_published_term,
                     ),
                     array(
-                        'sep' => $GLOBALS['space_sep'],
+                        'sep' => $GLOBALS['applicator_space_sep'],
                         'txt'   => $on_term,
                     ),
                 ),
@@ -124,12 +124,12 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                         'css' => 'day',
                     ),
                     array(
-                        'sep' => $GLOBALS['space_sep'],
+                        'sep' => $GLOBALS['applicator_space_sep'],
                         'txt' => get_comment_date( 'M' ),
                         'css' => 'month',
                     ),
                     array(
-                        'sep' => $GLOBALS['space_sep'],
+                        'sep' => $GLOBALS['applicator_space_sep'],
                         'txt' => get_comment_date( 'Y' ),
                         'css' => 'year',
                     ),
@@ -164,17 +164,17 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                         'css' => 'hours',
                     ),
                     array(
-                        'sep' => $GLOBALS['colon_sep'],
+                        'sep' => $GLOBALS['applicator_colon_sep'],
                         'txt' => get_comment_time( 'i' ),
                         'css' => 'minutes',
                     ),
                     array(
-                        'sep' => $GLOBALS['colon_sep'],
+                        'sep' => $GLOBALS['applicator_colon_sep'],
                         'txt' => get_comment_time( 's' ),
                         'css' => 'seconds',
                     ),
                 ),
-                'before'    => $GLOBALS['comma_sep'],
+                'before'    => $GLOBALS['applicator_comma_sep'],
             ),
         ) );
         
@@ -240,11 +240,11 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                         'txt'   => $comment_term,
                     ),
                     array(
-                        'sep'   => $GLOBALS['space_sep'],
+                        'sep'   => $GLOBALS['applicator_space_sep'],
                         'txt'   => $by_term,
                     ),
                 ),
-                'after'     => $GLOBALS['space_sep'],
+                'after'     => $GLOBALS['applicator_space_sep'],
             ),
         ) );
 
@@ -295,7 +295,7 @@ if ( ! function_exists( 'applicator_comment' ) ) {
             'title'     => $commented_by_content,
             'content'   => array(
                 'object'    => get_avatar( $comment, $args['avatar_size'], '', $comment_author ),
-                'before'    => $GLOBALS['space_sep'],
+                'before'    => $GLOBALS['applicator_space_sep'],
             ),
         ) );
         

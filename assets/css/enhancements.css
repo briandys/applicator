@@ -48,7 +48,8 @@ Enhancements Style
 .main-actions-widgets-toggle---l,
 .main-actions-widgets-dismiss---l,
 .main-menu-dismiss---l,
-.main-search-func .widget-heading
+.main-search-func .widget-heading,
+.comment-respond .sign-in-required-note
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -2039,6 +2040,22 @@ button:hover .dismiss-icon
     padding-right: 1rem;
 }
 
+.comment-reply-axn .sign-in-required---line
+{
+    color: hsla(0, 0%, 0%, .5);
+    font-size: .875em;
+}
+
+.comments .comment-reply-login:hover
+{
+    text-decoration: none;
+}
+
+.comments .comment-reply-login:hover .reply---txt
+{
+    text-decoration: underline;
+}
+
 .comment-creation-glabel
 {
     padding: 1em 1rem;
@@ -2238,6 +2255,24 @@ button:hover .dismiss-icon
 {
     padding-left: 1rem;
     padding-right: 1rem;
+}
+
+.add-comment-axn,
+.comment-creation .sign-in-required-note
+{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.comment-creation .sign-in-required-note
+{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.comment-creation .add-comment-axn
+{
+    margin-right: -1.7rem;
 }
 
 

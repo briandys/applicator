@@ -30,7 +30,7 @@ if ( ! function_exists( 'applicator_comment_form' ) ) {
                 array(
                     'css'   => 'note---line',
                     array(
-                        'sep'   => $GLOBALS['space_sep'],
+                        'sep'   => $GLOBALS['applicator_space_sep'],
                         'txt'   => '(',
                         'css'   => 'open-parenthesis---txt',
                     ),
@@ -151,7 +151,7 @@ if ( ! function_exists( 'applicator_comment_form' ) ) {
                                     'txt'   => $email_term,
                                 ),
                                 array(
-                                    'sep'   => $GLOBALS['space_sep'],
+                                    'sep'   => $GLOBALS['applicator_space_sep'],
                                     'txt'   => $address_term,
                                 ),
                             ),
@@ -231,7 +231,7 @@ if ( ! function_exists( 'applicator_comment_form' ) ) {
                                     'txt'   => $website_term,
                                 ),
                                 array(
-                                    'sep'   => $GLOBALS['space_sep'],
+                                    'sep'   => $GLOBALS['applicator_space_sep'],
                                     'txt'   => $url_term,
                                 ),
                             ),

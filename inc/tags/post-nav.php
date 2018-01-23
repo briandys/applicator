@@ -130,7 +130,7 @@ if ( ! function_exists('applicator_post_nav' ) ) {
                     ),
                     'content'   => array(
                         'object'    => 'Posted in',
-                        'after'     => $GLOBALS['space_sep'],
+                        'after'     => $GLOBALS['applicator_space_sep'],
                     ),
                 ) );
                 

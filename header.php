@@ -56,34 +56,6 @@
         ) );
 
 
-        // R: Browser Upgrade Note Text
-        $browser_upgrade_note_txt = sprintf( '<p>%1$s <a href="%3$s">%2$s</a></p>',
-            esc_html__( 'You are using an outdated browser. Please upgrade your browser to improve your experience.', 'applicator' ),
-            esc_html__( 'Upgrade Browser', 'applicator' ),
-            esc_url( 'http://browsehappy.com/' )
-        );
-
-
-        // R: Browser Upgrade Note
-        $browser_upgrade_obj = applicator_htmlok( array(
-            'name'      => 'Browser Upgrade',
-            'structure' => array(
-                'type'      => 'object',
-                'subtype'   => 'note',
-                'layout'    => 'inline',
-            ),
-            'content'       => array(
-                'object'        => array(
-                    array(
-                        'txt'   => $browser_upgrade_note_txt,
-                    ),
-                ),
-                'before'    => '<!--[if lt IE 8]>',
-                'after'    => '<![endif]-->',
-            ),
-        ) );
-
-
         // E: Web Product Start
         $web_product_start_cn = applicator_htmlok( array(
             'name'      => 'Web Product Start',
@@ -95,7 +67,6 @@
             'content'   => array(
                 'constructor'   => array(
                     $go_to_content_nav_cp,
-                    $browser_upgrade_obj,
                 ),
             ),
             'echo'      => true,

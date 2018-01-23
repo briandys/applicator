@@ -82,7 +82,7 @@ if ( ! function_exists( 'applicator_show_more' ) ) {
         
         else {
             
-            return $GLOBALS['ellipsis_sep']. $show_more_label;
+            return $GLOBALS['applicator_ellipsis_sep']. $show_more_label;
         
         }
     

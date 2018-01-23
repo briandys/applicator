@@ -26,7 +26,7 @@ if ( is_multisite() ) {
             $line_array = array(
                 'css'   => 'value---line',
                 array(
-                    'sep'       => $GLOBALS['space_sep'],
+                    'sep'       => $GLOBALS['applicator_space_sep'],
                     'txt'       => $value_text,
                 ),
             );

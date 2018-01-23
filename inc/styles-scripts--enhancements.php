@@ -33,7 +33,7 @@ if ( ! function_exists( 'applicator_enhancements_styles_scripts' ) ) {
         
         // Go to Start Nav Icons
         $applicator_l10n['goStartNavArrowIco'] = $arrow_up_2_icon;
-        wp_localize_script( 'applicator-script--functionalities', 'aplDataGoStartNav', $applicator_l10n );
+        wp_localize_script( 'applicator-script--functionalities', 'applicatorDataGoStartNav', $applicator_l10n );
         
         
         // Main Menu Icons
@@ -41,7 +41,7 @@ if ( ! function_exists( 'applicator_enhancements_styles_scripts' ) ) {
         $applicator_l10n['mainMenuHideL'] = __( 'Hide Menu', 'applicator' );
         $applicator_l10n['mainMenuShowIco'] = $burger_icon;
         $applicator_l10n['mainMenuHideIco'] = $dismiss_icon;
-        wp_localize_script( 'applicator-script--functionalities', 'aplDataMainMenu', $applicator_l10n );
+        wp_localize_script( 'applicator-script--functionalities', 'applicatorDataMainMenu', $applicator_l10n );
         
         
         // Main Actions Widgets Icons
@@ -50,7 +50,7 @@ if ( ! function_exists( 'applicator_enhancements_styles_scripts' ) ) {
         $applicator_l10n['mainActionsWidgetsToggleLabel'] = __( 'Toggle Menu', 'applicator' );
         $applicator_l10n['mainActionsWidgetsToggleIcon'] = $more_icon;
         $applicator_l10n['mainActionsWidgetsHideIcon'] = $dismiss_icon;
-        wp_localize_script( 'applicator-script--functionalities', 'aplDataMainActionsWidgets', $applicator_l10n );
+        wp_localize_script( 'applicator-script--functionalities', 'applicatorDataMainActionsWidgets', $applicator_l10n );
         
         
         // Main Search Icons
@@ -60,7 +60,7 @@ if ( ! function_exists( 'applicator_enhancements_styles_scripts' ) ) {
         $applicator_l10n['mainSearchTogDismissIco'] = $dismiss_icon;
         $applicator_l10n['mainSearchSearchIco'] = $search_icon;
         $applicator_l10n['mainSearchDismissIco'] = $dismiss_icon;
-        wp_localize_script( 'applicator-script--functionalities', 'aplDataMainSearch', $applicator_l10n );
+        wp_localize_script( 'applicator-script--functionalities', 'applicatorDataMainSearch', $applicator_l10n );
         
         
         // Comments Icons
@@ -69,24 +69,24 @@ if ( ! function_exists( 'applicator_enhancements_styles_scripts' ) ) {
         
         $applicator_l10n['commentsToggleIco'] = $search_icon;
         $applicator_l10n['commentsDismissIco'] = $dismiss_icon;
-        wp_localize_script( 'applicator-script--functionalities', 'aplDataComments', $applicator_l10n );
+        wp_localize_script( 'applicator-script--functionalities', 'applicatorDataComments', $applicator_l10n );
         
         
         // Sub-Nav Icons
         $applicator_l10n['subNavTogBtnShowL']    = __( 'Show Sub-Nav', 'applicator' );
 		$applicator_l10n['subNavTogBtnHideL']    = __( 'Hide Sub-Nav', 'applicator' );
         $applicator_l10n['subNavTogBtnIco']      = $arrow_icon;
-        wp_localize_script( 'applicator-script--functionalities', 'aplDataSubNav', $applicator_l10n );
+        wp_localize_script( 'applicator-script--functionalities', 'applicatorDataSubNav', $applicator_l10n );
         
         
         // Breadcrumbs Icons
         $applicator_l10n['breadcrumbsIco']      = $arrow_icon;
-        wp_localize_script( 'applicator-script--functionalities', 'aplDataBreadcrumbs', $applicator_l10n );
+        wp_localize_script( 'applicator-script--functionalities', 'applicatorDataBreadcrumbs', $applicator_l10n );
         
         
         // Page-Nav
         $applicator_l10n['pageNavArrowIco']      = $arrow_icon;
-        wp_localize_script( 'applicator-script--functionalities', 'aplDataPageNav', $applicator_l10n );
+        wp_localize_script( 'applicator-script--functionalities', 'applicatorDataPageNav', $applicator_l10n );
     }
     add_action( 'wp_enqueue_scripts', 'applicator_enhancements_styles_scripts' );
 }

@@ -40,26 +40,9 @@ function applicator_settings() {
     add_image_size( 'applicator-image-size--image--thumbnail-hd', 640, 360, true );
     
     
-    // Sets the default sizes of images in Admin > Settings
-    update_option('thumbnail_size_w', 640);
-    update_option('thumbnail_size_h', 640);
-    update_option('thumbnail_crop', 1);
-    
-    update_option('medium_size_w', 1280);
-    update_option('medium_size_h', 1280);
-    
-    update_option('large_size_w', 1920);
-    update_option('large_size_h', 1920);
-    
-    
-    // Sets the default link of images to None
-    update_option('image_default_link_type','none');
-
-	
     // Switch default core markup for search form, comment form, and comments to output valid HTML5.
 	add_theme_support( 'html5', array(
 		'search-form',
-		'comment-form',
 		'comment-list',
 		'gallery',
 		'caption',

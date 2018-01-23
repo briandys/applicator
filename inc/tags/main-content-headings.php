@@ -20,7 +20,7 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
             $line_array = array(
                 'css'   => $value_line_term,
                 array(
-                    'sep'       => $GLOBALS['space_sep'],
+                    'sep'       => $GLOBALS['applicator_space_sep'],
                     'txt'       => $value_text,
                 ),
             );
@@ -35,7 +35,7 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
             $line_array = array(
                 'css'   => $value_line_term,
                 array(
-                    'sep'       => $GLOBALS['space_sep'],
+                    'sep'       => $GLOBALS['applicator_space_sep'],
                     'txt'       => $value_text,
                 ),
             );
@@ -50,7 +50,7 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
             $line_array = array(
                 'css'   => $value_line_term,
                 array(
-                    'sep'       => $GLOBALS['space_sep'],
+                    'sep'       => $GLOBALS['applicator_space_sep'],
                     'txt'       => $value_text,
                 ),
             );
@@ -66,7 +66,7 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
             $line_array = array(
                 'css'   => $value_line_term,
                 array(
-                    'sep'       => $GLOBALS['space_sep'],
+                    'sep'       => $GLOBALS['applicator_space_sep'],
                     'txt'       => $value_text,
                 ),
             );
@@ -81,7 +81,7 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
             $line_array = array(
                 'css'   => $value_line_term,
                 array(
-                    'sep'       => $GLOBALS['space_sep'],
+                    'sep'       => $GLOBALS['applicator_space_sep'],
                     'txt'       => $value_text,
                 ),
             );
@@ -96,7 +96,7 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
             $line_array = array(
                 'css'   => $value_line_term,
                 array(
-                    'sep'       => $GLOBALS['space_sep'],
+                    'sep'       => $GLOBALS['applicator_space_sep'],
                     'txt'       => $value_text,
                 ),
             );
@@ -111,7 +111,7 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
             $line_array = array(
                 'css'   => $value_line_term,
                 array(
-                    'sep'       => $GLOBALS['space_sep'],
+                    'sep'       => $GLOBALS['applicator_space_sep'],
                     'txt'       => $value_text,
                 ),
             );
@@ -132,15 +132,15 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
                 $line_array = array(
                     'css'   => $value_line_term,
                     array(
-                        'sep'       => $GLOBALS['space_sep'],
+                        'sep'       => $GLOBALS['applicator_space_sep'],
                         'txt'       => $date_day,
                     ),
                     array(
-                        'sep'       => $GLOBALS['space_sep'],
+                        'sep'       => $GLOBALS['applicator_space_sep'],
                         'txt'       => $date_month,
                     ),
                     array(
-                        'sep'       => $GLOBALS['space_sep'],
+                        'sep'       => $GLOBALS['applicator_space_sep'],
                         'txt'       => $date_year,
                     ),
                 );
@@ -154,11 +154,11 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
                 $line_array = array(
                     'css'   => $value_line_term,
                     array(
-                        'sep'       => $GLOBALS['space_sep'],
+                        'sep'       => $GLOBALS['applicator_space_sep'],
                         'txt'       => $date_month,
                     ),
                     array(
-                        'sep'       => $GLOBALS['space_sep'],
+                        'sep'       => $GLOBALS['applicator_space_sep'],
                         'txt'       => $date_year,
                     ),
                 );
@@ -172,7 +172,7 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
                 $line_array = array(
                     'css'   => $value_line_term,
                     array(
-                        'sep'       => $GLOBALS['space_sep'],
+                        'sep'       => $GLOBALS['applicator_space_sep'],
                         'txt'       => $date_year,
                     ),
                 );
@@ -194,7 +194,7 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
             $line_array = array(
                 'css'   => $value_line_term,
                 array(
-                    'sep'       => $GLOBALS['space_sep'],
+                    'sep'       => $GLOBALS['applicator_space_sep'],
                     'txt'       => $value_text,
                 ),
             );
@@ -216,7 +216,7 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
             $line_array = array(
                 'css'   => $value_line_term,
                 array(
-                    'sep'       => $GLOBALS['space_sep'],
+                    'sep'       => $GLOBALS['applicator_space_sep'],
                     'txt'       => $value_text,
                 ),
             );
@@ -236,7 +236,7 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
             $line_array = array(
                 'css'   => $value_line_term,
                 array(
-                    'sep'       => $GLOBALS['space_sep'],
+                    'sep'       => $GLOBALS['applicator_space_sep'],
                     'txt'       => $value_text,
                 ),
             );
@@ -260,7 +260,7 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
             $line_array = array(
                 'css'   => $value_line_term,
                 array(
-                    'sep'       => $GLOBALS['space_sep'],
+                    'sep'       => $GLOBALS['applicator_space_sep'],
                     'txt'       => $value_text,
                 ),
             );
@@ -276,7 +276,7 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
             $line_array = array(
                 'css'   => $value_line_term,
                 array(
-                    'sep'       => $GLOBALS['space_sep'],
+                    'sep'       => $GLOBALS['applicator_space_sep'],
                     'txt'       => $value_text,
                 ),
             );
@@ -291,7 +291,7 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
             $line_array = array(
                 'css'   => $value_line_term,
                 array(
-                    'sep'       => $GLOBALS['space_sep'],
+                    'sep'       => $GLOBALS['applicator_space_sep'],
                     'txt'       => $value_text,
                 ),
             );

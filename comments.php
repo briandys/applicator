@@ -128,7 +128,7 @@ $comment_creation_label_obj = applicator_htmlok( array(
                 'txt'   => esc_html__( 'Compose', 'applicator' ),
             ),
             array(
-                'sep'   => $GLOBALS['space_sep'],
+                'sep'   => $GLOBALS['applicator_space_sep'],
                 'txt'   => esc_html__( 'Comment', 'applicator' ),
             ),
         ),
@@ -150,7 +150,7 @@ $signed_in_account_label_obj = applicator_htmlok( array(
     ),
     'content'   => array(
         'object'    => $signed_in_as_term,
-        'after'     => $GLOBALS['space_sep'],
+        'after'     => $GLOBALS['applicator_space_sep'],
     ),
 ) );
 
@@ -210,7 +210,7 @@ $signed_in_account_cp = applicator_htmlok( array(
 
 
 // must_log_in
-$sign_in_req_note_content = '<p><a href="'.wp_login_url( get_permalink() ).'">'.esc_html__( 'Sign in', 'applicator' ).'</a> '.esc_html__( 'to comment.', 'applicator' ).'</p>';
+$sign_in_req_note_content = '<p><a href="'. esc_url( wp_login_url( get_permalink() ) ). '">'. esc_html__( 'Sign in', 'applicator' ). '</a> '. esc_html__( 'to comment.', 'applicator' ). '</p>';
 
 $sign_in_req_note_obj = applicator_htmlok( array(
     'name'      => 'Sign In Required',

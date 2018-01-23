@@ -1,20 +1,17 @@
 <?php // Global Variables
 
 
-
-
-
 // Colon
-$GLOBALS['colon_sep'] = '<span class="sep colon---sep">:</span>';
+$GLOBALS['applicator_colon_sep'] = '<span class="sep colon---sep">:</span>';
 
 
 // Comma
-$GLOBALS['comma_sep'] = '<span class="sep comma---sep">, </span>';
+$GLOBALS['applicator_comma_sep'] = '<span class="sep comma---sep">, </span>';
 
 
 // Space
-$GLOBALS['space_sep'] = ' ';
+$GLOBALS['applicator_space_sep'] = ' ';
 
 
 // Ellipsis
-$GLOBALS['ellipsis_sep'] = '<span class="sep ellipsis---sep">&hellip;</span>';
+$GLOBALS['applicator_ellipsis_sep'] = '<span class="sep ellipsis---sep">&hellip;</span>';

@@ -68,11 +68,11 @@ if ( ! function_exists( 'applicator_post_published_modified' ) ) {
                         'txt'   => $published_term,
                     ),
                     array(
-                        'sep' => $GLOBALS['space_sep'],
+                        'sep' => $GLOBALS['applicator_space_sep'],
                         'txt'   => $on_term,
                     ),
                 ),
-                'after'     => $GLOBALS['space_sep'],
+                'after'     => $GLOBALS['applicator_space_sep'],
             ),
         ) );
         
@@ -103,12 +103,12 @@ if ( ! function_exists( 'applicator_post_published_modified' ) ) {
                         'css' => 'day',
                     ),
                     array(
-                        'sep' => $GLOBALS['space_sep'],
+                        'sep' => $GLOBALS['applicator_space_sep'],
                         'txt' => get_the_date( 'M' ),
                         'css' => 'month',
                     ),
                     array(
-                        'sep' => $GLOBALS['space_sep'],
+                        'sep' => $GLOBALS['applicator_space_sep'],
                         'txt' => get_the_date( 'Y' ),
                         'css' => 'year',
                     ),
@@ -143,17 +143,17 @@ if ( ! function_exists( 'applicator_post_published_modified' ) ) {
                         'css' => 'hours',
                     ),
                     array(
-                        'sep' => $GLOBALS['colon_sep'],
+                        'sep' => $GLOBALS['applicator_colon_sep'],
                         'txt' => get_the_date( 'i' ),
                         'css' => 'minutes',
                     ),
                     array(
-                        'sep' => $GLOBALS['colon_sep'],
+                        'sep' => $GLOBALS['applicator_colon_sep'],
                         'txt' => get_the_date( 's' ),
                         'css' => 'seconds',
                     ),
                 ),
-                'before'    => $GLOBALS['comma_sep'],
+                'before'    => $GLOBALS['applicator_comma_sep'],
             ),
         ) );
         
@@ -206,11 +206,11 @@ if ( ! function_exists( 'applicator_post_published_modified' ) ) {
                         'txt'   => $modified_term,
                     ),
                     array(
-                        'sep' => $GLOBALS['space_sep'],
+                        'sep' => $GLOBALS['applicator_space_sep'],
                         'txt'   => $on_term,
                     ),
                 ),
-                'after'     => $GLOBALS['space_sep'],
+                'after'     => $GLOBALS['applicator_space_sep'],
             ),
         ) );
         
@@ -241,12 +241,12 @@ if ( ! function_exists( 'applicator_post_published_modified' ) ) {
                         'css' => 'day',
                     ),
                     array(
-                        'sep' => $GLOBALS['space_sep'],
+                        'sep' => $GLOBALS['applicator_space_sep'],
                         'txt' => get_the_modified_time( 'M' ),
                         'css' => 'month',
                     ),
                     array(
-                        'sep' => $GLOBALS['space_sep'],
+                        'sep' => $GLOBALS['applicator_space_sep'],
                         'txt' => get_the_modified_time( 'Y' ),
                         'css' => 'year',
                     ),
@@ -281,17 +281,17 @@ if ( ! function_exists( 'applicator_post_published_modified' ) ) {
                         'css' => 'hours',
                     ),
                     array(
-                        'sep' => $GLOBALS['colon_sep'],
+                        'sep' => $GLOBALS['applicator_colon_sep'],
                         'txt' => get_the_modified_time( 'i' ),
                         'css' => 'minutes',
                     ),
                     array(
-                        'sep' => $GLOBALS['colon_sep'],
+                        'sep' => $GLOBALS['applicator_colon_sep'],
                         'txt' => get_the_modified_time( 's' ),
                         'css' => 'seconds',
                     ),
                 ),
-                'before'    => $GLOBALS['comma_sep'],
+                'before'    => $GLOBALS['applicator_comma_sep'],
             ),
         ) );
         

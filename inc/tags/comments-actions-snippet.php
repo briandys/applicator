@@ -170,17 +170,19 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
             $comment_hash = '#comment';
 
             // Add Comment Action Anchor Href
-            if ( ! is_user_logged_in() && get_option( 'comment_registration' ) ) {
-                if ( is_singular() ) {
-                    $add_comment_axn_a_href = $respond_hash;
-                } else {
-                    $add_comment_axn_a_href = esc_url( get_permalink() ) . $respond_hash;
-                }
-            } else {
-                if ( is_singular() ) {
+            if ( ! is_user_logged_in() && get_option( 'comment_registration' ) )
+            {   
+                $add_comment_axn_a_href = esc_url( wp_login_url( get_permalink(). $comment_hash ) );
+            }
+            else
+            {
+                if ( is_singular() )
+                {
                     $add_comment_axn_a_href = $comment_hash;
-                } else {
-                    $add_comment_axn_a_href = esc_url( get_permalink() ) . $comment_hash;
+                }
+                else
+                {
+                    $add_comment_axn_a_href = esc_url( get_permalink(). $comment_hash );
                 }
             }
                 
@@ -205,11 +207,11 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
                             'txt' => esc_html__( 'Add', 'applicator' ),
                         ),
                         array(
-                            'sep' => $GLOBALS['space_sep'],
+                            'sep' => $GLOBALS['applicator_space_sep'],
                             'txt' => esc_html__( 'Comment', 'applicator' ),
                         ),
                     ),
-                    'before'    => $GLOBALS['space_sep'],
+                    'before'    => $GLOBALS['applicator_space_sep'],
                 ),
             ) );
 
@@ -226,7 +228,7 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
                     ),
                     'content'   => array(
                         'object'    => esc_html__( '(requires Sign In)', 'applicator' ),
-                        'before'    => $GLOBALS['space_sep'],
+                        'before'    => $GLOBALS['applicator_space_sep'],
                         
                     ),
                 ) );

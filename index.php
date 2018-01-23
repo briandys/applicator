@@ -1,11 +1,5 @@
 <?php
-if ( function_exists( 'get_header' ) ) {
-    get_header();
-}
-
-else {
-    die();
-}
+get_header();
 ?>
 
 <div class="hr main-content---hr">
@@ -51,18 +45,18 @@ else {
                 array(
                     'css'   => 'property---line',
                     array(
-                        'sep'       => $GLOBALS['space_sep'],
+                        'sep'       => $GLOBALS['applicator_space_sep'],
                         'txt'       => $property_text,
                     ),
                     array(
-                        'sep'       => $GLOBALS['space_sep'],
+                        'sep'       => $GLOBALS['applicator_space_sep'],
                         'txt'       => 'for',
                     ),
                 ),
                 array(
                     'css'   => 'value---line',
                     array(
-                        'sep'       => $GLOBALS['space_sep'],
+                        'sep'       => $GLOBALS['applicator_space_sep'],
                         'txt'       => $value_text,
                         'css'       => 'search-results-term---txt',
                     ),
@@ -70,7 +64,7 @@ else {
                 array(
                     'css'   => 'count---line',
                     array(
-                        'sep'       => $GLOBALS['space_sep'],
+                        'sep'       => $GLOBALS['applicator_space_sep'],
                         'txt'       => $entry_search_count,
                         'css'       => 'search-results-count---txt',
                     ),

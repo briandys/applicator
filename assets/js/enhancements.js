@@ -475,7 +475,7 @@
             aplgoStartNavActCss = 'applicator--go-start-nav--active',
             aplgoStartNavInactCss = 'applicator--go-start-nav--inactive',
             
-            $goStartNavArrowIco = aplDataGoStartNav.goStartNavArrowIco,
+            $goStartNavArrowIco = applicatorDataGoStartNav.goStartNavArrowIco,
             
             $goStartNaviAL,
             
@@ -571,11 +571,11 @@
             aplMainMenuActCss = 'applicator--main-menu--active',
             aplMainMenuInactCss = 'applicator--main-menu--inactive',
             
-            $mainMenuTogBtnHideIco = $( aplDataMainMenu.mainMenuHideIco ),
-            $mainMenuTogBtnShowIco = $( aplDataMainMenu.mainMenuShowIco ),
+            $mainMenuTogBtnHideIco = $( applicatorDataMainMenu.mainMenuHideIco ),
+            $mainMenuTogBtnShowIco = $( applicatorDataMainMenu.mainMenuShowIco ),
             
-            $mainMenuShowL = aplDataMainMenu.mainMenuShowL,
-            $mainMenuHideL = aplDataMainMenu.mainMenuHideL,
+            $mainMenuShowL = applicatorDataMainMenu.mainMenuShowL,
+            $mainMenuHideL = applicatorDataMainMenu.mainMenuHideL,
             
             $mainHrAsH,
             $mainHrAsCt,
@@ -829,9 +829,9 @@
             
             $commentsCount,
             
-            $commentsShowL = aplDataComments.commentsShowL,
-            $commentsHideL = aplDataComments.commentsHideL,
-            $commentsDismissIco = $( aplDataComments.commentsDismissIco ),
+            $commentsShowL = applicatorDataComments.commentsShowL,
+            $commentsHideL = applicatorDataComments.commentsHideL,
+            $commentsDismissIco = $( applicatorDataComments.commentsDismissIco ),
             
             aplCommentsOnCSS = 'applicator--comments--active',
             aplCommentsOffCSS = 'applicator--comments--inactive',
@@ -1097,14 +1097,14 @@
             mainSearchInputEmpCss = 'main-search-input--empty',
             mainSearchInputPopCss = 'main-search-input--populated',
             
-            $mainSearchTogSearchIco = $( aplDataMainSearch.mainSearchTogCtrlSearchIco ),
-            $mainSearchTogDismissIco = $( aplDataMainSearch.mainSearchTogDismissIco ),
+            $mainSearchTogSearchIco = $( applicatorDataMainSearch.mainSearchTogCtrlSearchIco ),
+            $mainSearchTogDismissIco = $( applicatorDataMainSearch.mainSearchTogDismissIco ),
             
-            $mainSearchSearchIco = $( aplDataMainSearch.mainSearchSearchIco ),
-            $mainSearchDismissIco = $( aplDataMainSearch.mainSearchDismissIco ),
+            $mainSearchSearchIco = $( applicatorDataMainSearch.mainSearchSearchIco ),
+            $mainSearchDismissIco = $( applicatorDataMainSearch.mainSearchDismissIco ),
             
-            $mainSearchShowL = aplDataMainSearch.mainSearchShowL,
-            $mainSearchHideL = aplDataMainSearch.mainSearchHideL,
+            $mainSearchShowL = applicatorDataMainSearch.mainSearchShowL,
+            $mainSearchHideL = applicatorDataMainSearch.mainSearchHideL,
             
             $mainSearchH,
             $mainSearchCt,
@@ -1320,11 +1320,11 @@
             $mainActionsWidgetsCtCr,
             $mainActionsWidgetsH,
 
-            $mainActionsWidgetsToggleShowLabel = aplDataMainActionsWidgets.mainActionsWidgetsShowLabel,
-            $mainActionsWidgetsToggleHideLabel = aplDataMainActionsWidgets.mainActionsWidgetsHideLabel,
-            $mainActionsWidgetsToggleLabel = aplDataMainActionsWidgets.mainActionsWidgetsToggleLabel,
-            $mainActionsWidgetsToggleIcon = $( aplDataMainActionsWidgets.mainActionsWidgetsToggleIcon ),
-            $mainActionsWidgetsToggleHideIcon = $( aplDataMainActionsWidgets.mainActionsWidgetsHideIcon ),
+            $mainActionsWidgetsToggleShowLabel = applicatorDataMainActionsWidgets.mainActionsWidgetsShowLabel,
+            $mainActionsWidgetsToggleHideLabel = applicatorDataMainActionsWidgets.mainActionsWidgetsHideLabel,
+            $mainActionsWidgetsToggleLabel = applicatorDataMainActionsWidgets.mainActionsWidgetsToggleLabel,
+            $mainActionsWidgetsToggleIcon = $( applicatorDataMainActionsWidgets.mainActionsWidgetsToggleIcon ),
+            $mainActionsWidgetsToggleHideIcon = $( applicatorDataMainActionsWidgets.mainActionsWidgetsHideIcon ),
 
             $mainActionsWidgetsToggle,
             $mainActionsWidgetsToggleButton,
@@ -1594,10 +1594,10 @@
             
             $navParent,
             
-            $subNavTogBtnIco = $( aplDataSubNav.subNavTogBtnIco ),
+            $subNavTogBtnIco = $( applicatorDataSubNav.subNavTogBtnIco ),
             
-            $subNavTogBtnShowL = aplDataSubNav.subNavTogBtnShowL,
-            $subNavTogBtnHideL = aplDataSubNav.subNavTogBtnHideL;
+            $subNavTogBtnShowL = applicatorDataSubNav.subNavTogBtnShowL,
+            $subNavTogBtnHideL = applicatorDataSubNav.subNavTogBtnHideL;
         
         
         if ( $cp.has( $subNavParentItems ) ) {
@@ -1972,7 +1972,7 @@
             
             $prevPageNavi,
             $nextPageNavi,
-            $pageNavArrowIco = aplDataPageNav.pageNavArrowIco;
+            $pageNavArrowIco = applicatorDataPageNav.pageNavArrowIco;
         
         funcName = 'page-nav-func';
             
@@ -2052,7 +2052,7 @@
     /* ------------------------ Breadcrumbs ------------------------ */
     var $breadcrumbsNaviAncestor = $( '.breadcrumbs-navi--ancestor' ),
         $breadcrumbsLink = $breadcrumbsNaviAncestor.find( '.breadcrumbs-navi---a' ),
-        $breadcrumbsIco = $( aplDataBreadcrumbs.breadcrumbsIco );
+        $breadcrumbsIco = $( applicatorDataBreadcrumbs.breadcrumbsIco );
     
     $breadcrumbsLink.after( $breadcrumbsIco );
     
