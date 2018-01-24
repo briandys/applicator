@@ -2,16 +2,16 @@
 Contributors: Brian Dys Sahagun
 Requires at least: WordPress 4.7
 Tested up to: WordPress 4.9
-Version: 0
+Version: 2.2.5.25
 License: GNU General Public License
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: right-sidebar, custom-menu, footer-widgets, sticky-post, translation-ready
 
 == Description ==
 
-Your springboard to creating functional WordPress themes
+Your springboard to creating functional WordPress themes.
 
-For more information about Applicator please go to http://applicator.dysinelab.com.
+For more information about Applicator please go to http://applicator.dysinelab.com/.
 
 == Copyright ==
 

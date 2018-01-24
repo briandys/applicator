@@ -180,7 +180,7 @@
                 
                 
                 
-                // Custom Header | Customizer > Custom Header | inc > functions > custom-header.php
+                // Custom Header | Customizer > Custom Header | inc > functions > custom-visuals.php
                 
                 $main_media_banner_obj = '';
                 

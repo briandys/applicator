@@ -5,7 +5,7 @@ if ( ! function_exists( 'applicator_custom_visuals_setup' ) ) {
         
         // Custom Header
         add_theme_support( 'custom-header', apply_filters( 'applicator_custom_header_args', array(
-            'default-image'      => get_parent_theme_file_uri( '/assets/img/main-media-banner.jpg' ),
+            'default-image'      => '',
             'default_text_color' => 'black',
             'width'              => 1280,
             'height'             => 800,
@@ -13,14 +13,6 @@ if ( ! function_exists( 'applicator_custom_visuals_setup' ) ) {
             'flex-height'        => true,
             'wp-head-callback'   => 'applicator_style_custom_header_colors',
         ) ) );
-
-        register_default_headers( array(
-            'default-image' => array(
-                'url'           => '%s/assets/img/main-media-banner.jpg',
-                'thumbnail_url' => '%s/assets/img/main-media-banner--tn.jpg',
-                'description'   => __( 'Main Media Banner', 'applicator' ),
-            ),
-        ) );
         
         // Custom Logo
         add_theme_support( 'custom-logo', apply_filters( 'applicator_custom_logo_args', array(
