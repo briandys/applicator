@@ -27,6 +27,13 @@ if ( ! function_exists( 'applicator_main_nav' ) ) {
         if ( wp_nav_menu( array( 'theme_location' => $main_nav_term, 'echo' => false ) ) !== false) {
         
             ob_start();
+                
+            function escape_html_the_title( $title, $id = null )
+            {
+                return esc_html( $title );
+            }
+            add_filter( 'the_title', 'escape_html_the_title', 10, 2 );
+            
             if ( ! has_nav_menu( $main_nav_term ) ) {
 
                 // Default Menu
@@ -54,7 +61,7 @@ if ( ! function_exists( 'applicator_main_nav' ) ) {
                     'container_class'   => $main_nav_ct_cr_css, // <div> class
                     'link_before'       => $main_nav_a_l_start_mu,
                     'link_after'        => $main_nav_a_l_end_mu,
-                    'items_wrap'        => $main_nav_group_start_mu.'%3$s'.$main_nav_group_end_mu,
+                    'items_wrap'        => $main_nav_group_start_mu. '%3$s'. $main_nav_group_end_mu,
                 ) );
 
             }

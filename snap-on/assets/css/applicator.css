@@ -1194,6 +1194,11 @@ h6
     border: 1px solid hsl(215, 100%, 45%);
 }
 
+.applicator--theme--excerpt .show-more-glabel---g
+{
+    color: hsl(215, 100%, 45%);
+}
+
 .applicator--theme--excerpt .excerpt-link .ellipsis---sep::after
 {
     content: '';

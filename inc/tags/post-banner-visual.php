@@ -34,7 +34,7 @@ if ( ! function_exists( 'applicator_post_banner_visual' ) ) {
                     ),
                 ),
                 'css'       => 'post-banner-vis',
-                'title'     => get_the_title(),
+                'title'     => esc_html( get_the_title() ),
                 'content'   => array(
                     'object'    => $post_thumbnail_ob_content,
                 ),

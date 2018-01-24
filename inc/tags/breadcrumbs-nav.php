@@ -73,15 +73,17 @@ if ( ! function_exists( 'applicator_breadcrumbs_nav' ) ) {
                     }
                     
                     foreach ( $anc as $ancestor ) {
+                    
+                        $post_title_ancestor = get_the_title( $ancestor );
                         
                         // R: Breadcrumbs Navigation Item Ancestors
                         $breadcrumbs_navi_ancestors = '';
                         $breadcrumbs_navi_ancestors .= sprintf( $breadcrumbs_navi_a_mu,
-                            get_the_title( $ancestor ),
+                            esc_html( $post_title_ancestor ),
                             sanitize_title( get_the_title( $ancestor ) ),
                             $breadcrumbs_navi_css,
                             get_permalink( $ancestor ),
-                            get_the_title( $ancestor ),
+                            esc_attr( $post_title_ancestor ),
                             $breadcrumbs_term_css,
                             $breadcrumbs_navi_css. '--'. 'ancestor',
                             $breadcrumbs_term
@@ -93,14 +95,15 @@ if ( ! function_exists( 'applicator_breadcrumbs_nav' ) ) {
                         $breadcrumbs_ancestors .= $breadcrumbs_navi_ancestors;
                     }
                     
+                    $post_title = get_the_title();                    
                     
                     // R: Breadcrumbs Navigation Item Current
                     $breadcrumbs_navi_current = '';
                     $breadcrumbs_navi_current .= sprintf( $breadcrumbs_navi_g_mu,
-                        get_the_title(),
-                        sanitize_title( get_the_title( $ancestor ) ),
-                        $breadcrumbs_navi_css.'-'. $post->ID,
-                        get_the_title(),
+                        esc_html( $post_title ),
+                        sanitize_title( get_the_title() ),
+                        $breadcrumbs_navi_css,
+                        esc_attr( $post_title ),
                         $breadcrumbs_navi_css,
                         $breadcrumbs_term_css,
                         $breadcrumbs_navi_css. '--'. 'current',

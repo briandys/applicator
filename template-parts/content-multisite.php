@@ -130,7 +130,7 @@ $post_classes = implode( ' ', $post_classes );
             $show_more_term = 'Show More';
 
             $show_more_axn = sprintf( $show_more_axn_mu,
-                get_the_title( get_the_ID() ),
+                esc_html( get_the_title( get_the_ID() ) ),
                 $show_more_css.'-axn',
                 $show_term,
                 $more_term,
@@ -157,7 +157,7 @@ $post_classes = implode( ' ', $post_classes );
                 $excerpt_ob_content,
                 'excerpt-link',
                 esc_url( get_permalink( get_the_ID() ) ),
-                esc_attr__( 'Show More of', 'applicator' ).' '.get_the_title( get_the_ID() )
+                esc_attr__( 'Show More of', 'applicator' ). ' '. get_the_title( get_the_ID() )
             );
 
 

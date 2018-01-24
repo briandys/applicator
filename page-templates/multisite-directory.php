@@ -3,15 +3,9 @@
 // Template Name: Multisite Directory
 // Displays the preview of all sites in a Multisite
 
-if ( is_multisite() ) {
-
-    if ( function_exists( 'get_header' ) ) {
-        get_header();
-    }
-
-    else {
-        die();
-    }
+if ( is_multisite() )
+{
+    get_header();
     ?>
 
     <div class="hr main-content---hr">
@@ -75,8 +69,9 @@ if ( is_multisite() ) {
 
                 switch_to_blog( $site->blog_id );
 
-                $site_id = get_object_vars($site)['blog_id'];
-                $site_details = get_blog_details( $site_id );
+                $site_id = get_object_vars( $site );
+                
+                $site_details = get_blog_details( $site_id['blog_id'] );
 
                 $site_number = $site_details->blog_id;
                 $site_name = $site_details->blogname;
@@ -254,7 +249,7 @@ if ( is_multisite() ) {
 
                 wp_reset_postdata();
                 
-                if ( $site_id == 1 ) {
+                if ( $site_id['blog_id'] == 1 ) {
                     $site_type_css = ' '. 'site--root';
                 }
                 else {

@@ -2668,13 +2668,6 @@ button:hover .dismiss-icon
     z-index: 100;
 }
 
-
-.applicator--main-actions-widgets .main-search-func
-{
-    margin-right: 3rem;
-}
-
-
 /* Positioning */
 .main-actions-widgets---ct
 {
@@ -3053,6 +3046,16 @@ button:hover .dismiss-icon
 .main-search-func .search---ct_cr
 {
     max-width: none;
+}
+
+.applicator--main-actions-widgets .main-search-func
+{
+    margin-right: 3rem;
+}
+
+.applicator--main-actions-widgets--active .main-search-func
+{
+    z-index: 100;
 }
 
 

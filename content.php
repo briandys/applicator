@@ -61,7 +61,7 @@ $post_classes = implode( ' ', $post_classes );
                 
                 if ( $post_title ) {
                     $post_title = get_the_title();
-                    $post_title_attr = the_title_attribute( 'echo=0' );
+                    $post_title_attr = $post_title;
                 }
                 else {
                     $post_title = __( 'Post', 'applicator' ). ' '. get_the_ID();
@@ -80,12 +80,12 @@ $post_classes = implode( ' ', $post_classes );
                             'a'         => array(
                                 'href'      => esc_url( get_permalink() ),
                                 'rel'       => 'bookmark',
-                                'title'     => $post_title_attr,
+                                'title'     => esc_attr( $post_title_attr ),
                             ),
                         ),
                     ),
                     'content'   => array(
-                        'object'        => $post_title,
+                        'object'        => esc_html( $post_title ),
                     ),
                 ) );
                 

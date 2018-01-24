@@ -42,13 +42,13 @@ Font Awesome icons, Copyright Dave Gandy
 License: SIL Open Font License, version 1.1.
 Source: http://fontawesome.io/
 
-Bundled image, Copyright Tim Marshall on Unsplash
-License: CC0 1.0 Universal (CC0 1.0)
-Source: https://unsplash.com/photos/yEOCA6oiVqg
+Bundled image, Copyright Brian Dys Sahagun
+License: https://creativecommons.org/publicdomain/zero/1.0/
+Source: https://flic.kr/p/23Knxix
 
 == Changelog ==
 
-= 2.2.5.23 =
+= 2.2.5.24 =
 Complying to Theme Review.
 
 = 2.2.5.16 =

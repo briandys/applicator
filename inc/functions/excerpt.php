@@ -14,7 +14,7 @@ if ( ! function_exists( 'applicator_show_more' ) ) {
         
         // Action Item Markup
         $show_more_axn_mu = '<div class="obj axn %9$s %2$s" data-name="%8$s Action Item OBJ">';
-            $show_more_axn_mu .= '<a class="a %2$s---a more-link" href="%6$s#content" title="%7$s %1$s">';
+            $show_more_axn_mu .= '<a class="a %2$s---a more-link" href="%6$s#content" title="%7$s %10$s">';
                 $show_more_axn_mu .= '<span class="a_l %2$s---a_l">';
                     $show_more_axn_mu .= '<span class="l %2$s---l">';
                         $show_more_axn_mu .= '<span class="line property---line"><span class="txt show---txt">%3$s</span> <span class="txt more---txt">%4$s</span> <span class="txt of---txt">%5$s</span></span>';
@@ -26,7 +26,7 @@ if ( ! function_exists( 'applicator_show_more' ) ) {
         
         // Generic Label Markup
         $show_more_label_mu = '<div class="obj %8$s %2$s" data-name="%7$s Generic Label OBJ">';
-            $show_more_label_mu .= '<span class="g %2$s---g" title="%6$s %1$s">';
+            $show_more_label_mu .= '<span class="g %2$s---g" title="%6$s %9$s">';
                 $show_more_label_mu .= '<span class="g_l %2$s---g_l">';
                     $show_more_label_mu .= '<span class="l %2$s---l">';
                         $show_more_label_mu .= '<span class="line property---line"><span class="txt show---txt">%3$s</span> <span class="txt more---txt">%4$s</span> <span class="txt of---txt">%5$s</span></span>';
@@ -38,6 +38,7 @@ if ( ! function_exists( 'applicator_show_more' ) ) {
         
         // Variables
         $show_more_css = 'show-more';
+        $post_title = get_the_title( get_the_ID() );
         $show_term = esc_html__( 'Show', 'applicator' );
         $more_term =  esc_html__( 'More', 'applicator' );
         $of_term = esc_html__( 'of', 'applicator' );
@@ -46,7 +47,7 @@ if ( ! function_exists( 'applicator_show_more' ) ) {
         
         // R: Show More Action
         $show_more_axn = sprintf( $show_more_axn_mu,
-            get_the_title( get_the_ID() ),
+            esc_html( $post_title ),
             $show_more_css.'-axn',
             $show_term,
             $more_term,
@@ -54,19 +55,21 @@ if ( ! function_exists( 'applicator_show_more' ) ) {
             esc_url( get_permalink( get_the_ID() ) ),
             $show_more_of_term,
             $show_more_term,
-            $show_more_css.'-action'
+            $show_more_css.'-action',
+            esc_attr( $post_title )
         );
         
         // R: Show More Label
         $show_more_label = sprintf( $show_more_label_mu,
-            get_the_title( get_the_ID() ),
+            esc_html( $post_title ),
             $show_more_css.'-glabel',
             $show_term,
             $more_term,
             $of_term,
             $show_more_of_term,
             $show_more_term,
-            $show_more_css.'-action'
+            $show_more_css.'-action',
+            esc_attr( $post_title )
         );
         
         
@@ -114,7 +117,7 @@ function applicator_the_excerpt( $excerpt ) {
             $excerpt,
             'excerpt-link',
             esc_url( get_permalink( get_the_ID() ) ),
-            esc_attr__( 'Show More of', 'applicator' ).' '.get_the_title( get_the_ID() )
+            esc_attr__( 'Show More of', 'applicator' ). ' '. get_the_title( get_the_ID() )
         );
         
         echo $excerpt_link_content;
