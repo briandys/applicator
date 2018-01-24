@@ -48,7 +48,8 @@ if ( ! function_exists( 'applicator_comment_form' ) ) {
         $optional_line_content = ( $req ? '' : $optional_line_array );
         
         // Commenter Name
-        $name_term = esc_attr( 'Name', 'applicator' );
+        $name_term = esc_html__( 'Name', 'applicator' );
+        $name_term_attr = esc_attr__( 'Name', 'applicator' );
         $commenter_name_creation_term = 'Commenter Name Creation';
         $commenter_name_creation_css = 'commenter-name-crt';
         $commenter_name_creation_input_text_css = $commenter_name_creation_css.'-input-text';
@@ -88,8 +89,8 @@ if ( ! function_exists( 'applicator_comment_form' ) ) {
             'author',
             $commenter['comment_author'],
             '64',
-            $name_term,
-            $name_term,
+            $name_term_attr,
+            $name_term_attr,
             $aria_req
         );
 
@@ -123,9 +124,10 @@ if ( ! function_exists( 'applicator_comment_form' ) ) {
         
         
         // Commenter Email
-        $email_term = esc_attr( 'Email', 'applicator' );
-        $address_term = esc_attr( 'Address', 'applicator' );
-        $email_address_term = esc_attr( 'Email Address', 'applicator' );
+        $email_term = esc_html__( 'Email', 'applicator' );
+        $email_term_attr = esc_attr__( 'Email', 'applicator' );
+        $address_term = esc_html__( 'Address', 'applicator' );
+        $email_address_term_attr = esc_attr__( 'Email Address', 'applicator' );
         $commenter_email_creation_term = 'Commenter Email Creation';
         $commenter_email_creation_css = 'commenter-email-crt';
         $commenter_email_creation_input_text_css = $commenter_email_creation_css.'-input-text';
@@ -168,8 +170,8 @@ if ( ! function_exists( 'applicator_comment_form' ) ) {
             'email',
             esc_attr( $commenter['comment_author_email'] ),
             '64',
-            $email_address_term,
-            $email_term,
+            $email_address_term_attr,
+            $email_term_attr,
             ' '.'required'
         );
 
@@ -203,9 +205,9 @@ if ( ! function_exists( 'applicator_comment_form' ) ) {
         
         
         // Commenter URL
-        $website_term = esc_attr( 'Website', 'applicator' );
-        $url_term = esc_attr( 'URL', 'applicator' );
-        $website_url_term = esc_attr( 'Website URL', 'applicator' );
+        $website_term = esc_html__( 'Website', 'applicator' );
+        $url_term = esc_html__( 'URL', 'applicator' );
+        $website_url_term_attr = esc_attr__( 'Website URL', 'applicator' );
         $commenter_url_creation_term = 'Commenter URL Creation';
         $commenter_url_creation_css = 'commenter-url-crt';
         $commenter_url_creation_input_text_css = $commenter_url_creation_css.'-input-text';
@@ -249,8 +251,8 @@ if ( ! function_exists( 'applicator_comment_form' ) ) {
             'url',
             esc_attr( $commenter['comment_author_url'] ),
             '64',
-            $website_url_term,
-            $website_url_term,
+            $website_url_term_attr,
+            $website_url_term_attr,
             '',
             ''
         );

@@ -1808,7 +1808,7 @@ function applicator_htmlok( $args = array() ) {
     
     }
     
-    $html = apply_filters( 'htmlok', $output, $args );
+    $html = apply_filters( 'applicator_htmlok', $output, $args );
     
     if ( $r_echo ) {
         echo $html;

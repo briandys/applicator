@@ -48,6 +48,9 @@ Source: https://unsplash.com/photos/yEOCA6oiVqg
 
 == Changelog ==
 
+= 2.2.5.23 =
+Complying to Theme Review.
+
 = 2.2.5.16 =
 Complying to Theme Check.
 
