@@ -1,11 +1,8 @@
 === Applicator ===
 Contributors: Brian Dys Sahagun
 Requires at least: WordPress 4.7
-Tested up to: WordPress 4.9
-Version: 2.2.5.25
 License: GNU General Public License
 License URI: http://www.gnu.org/licenses/gpl.html
-Tags: right-sidebar, custom-menu, footer-widgets, sticky-post, translation-ready
 
 == Description ==
 
@@ -42,13 +39,9 @@ Font Awesome icons, Copyright Dave Gandy
 License: SIL Open Font License, version 1.1.
 Source: http://fontawesome.io/
 
-Bundled image, Copyright Brian Dys Sahagun
-License: https://creativecommons.org/publicdomain/zero/1.0/
-Source: https://flic.kr/p/23Knxix
-
 == Changelog ==
 
-= 2.2.5.24 =
+= 2.2.5.26 =
 Complying to Theme Review.
 
 = 2.2.5.16 =

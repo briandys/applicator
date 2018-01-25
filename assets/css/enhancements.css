@@ -505,6 +505,11 @@ img.size-medium
     opacity: 1;
 }
 
+.main-navi--hash---a
+{
+    pointer-events: none;
+}
+
 /* Root Nav Item - Current Indicator */
 .main-nav---ct_cr > .menu > ul > .current_page_item > a > .main-navi---a_l
 {
