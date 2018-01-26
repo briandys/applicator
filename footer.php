@@ -38,7 +38,7 @@
                                         ),
                                         array(
                                             'sep'       => $GLOBALS['applicator_space_sep'],
-                                            'txt'       => date('Y'),
+                                            'txt'       => date_i18n( __( 'Y', 'applicator' ) ),
                                             'css'       => 'year---txt',
                                         ),
                                     ),

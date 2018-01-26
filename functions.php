@@ -72,8 +72,8 @@ if ( file_exists( $post_actions ) ) { require_once( $post_actions ); }
 
 
 // Post Published, Modified
-$post_published_modified_cp = get_parent_theme_file_path( '/inc/tags/post-published-modified-cp.php' );
-if ( file_exists( $post_published_modified_cp ) ) { require_once( $post_published_modified_cp ); }
+$post_published_modified = get_parent_theme_file_path( '/inc/tags/post-published-modified.php' );
+if ( file_exists( $post_published_modified ) ) { require_once( $post_published_modified ); }
 
 
 // Post Author

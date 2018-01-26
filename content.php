@@ -129,7 +129,7 @@ $post_classes = implode( ' ', $post_classes );
                         'component'     => array(
                             
                             // Date and Time Stamp
-                            // inc > tags > post-published-modified-cp.php
+                            // inc > tags > post-published-modified.php
                             applicator_post_published_modified(),
                             
                             // Author

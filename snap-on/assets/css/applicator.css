@@ -909,7 +909,7 @@ h6
     
     margin-left: .3em;
     
-    padding: calc( 1em / 3 ) calc( 1rem / 1.5 );
+    padding: calc( 1em / 4 ) calc( 1rem / 1.5 );
     
     min-width: 1.5rem;
     min-height: 1.5rem;
@@ -944,10 +944,12 @@ h6
 /* Form Elements */
 .applicator--theme--rounded-rectangles .input-text,
 .applicator--theme--rounded-rectangles input[type="text"],
+.applicator--theme--rounded-rectangles textarea,
 .applicator--theme--rounded-rectangles input[type="password"],
 .applicator--theme--rounded-rectangles select,
 .applicator--theme--rounded-rectangles .b_l,
 .applicator--theme--rounded-rectangles input[type="submit"],
+.applicator--theme--rounded-rectangles input[type="reset"],
 .applicator--theme--rounded-rectangles .widget_custom_html button,
 
 .applicator--theme--rounded-rectangles.applicator--theme--excerpt .show-more-glabel---g_l,

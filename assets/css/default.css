@@ -145,6 +145,12 @@ label[for]:hover
     cursor: pointer;
 }
 
+acronym[title]
+{
+    text-decoration: none;
+    border: 1px dotted;
+}
+
 
 
 

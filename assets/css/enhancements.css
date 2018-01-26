@@ -41,7 +41,6 @@ Enhancements Style
 .widget .screen-reader-text,
 .post-content .search-form-reset-axn,
 .applicator--comments .post-header-aside .comments-actions-snippet .comments--populated,
-.applicator--comments .comments-actions-snippet.comments--empty .add-comment-axn,
 .applicator--comments--active .comments-toggle .comments-count---txt,
 .applicator--page-nav .adjacent-navi---l,
 .applicator--comments--active .comments-toggle .show-hide---txt,
@@ -203,6 +202,9 @@ Enhancements Style
 input[type="text"],
 input[type="password"],
 input[type="submit"],
+input[type="reset"],
+input[type="file"],
+textarea,
 .comment-form-submit-axn---b,
 .go-start-navi---a_l,
 .go-ct-navi---a_l,
@@ -277,8 +279,11 @@ h1, h2, h3, h4, h5, h6
 
 /* ------------------ Forms, Active Objects ------------------ */
 .input-text,
+input[type="text"],
 input[type="password"],
 input[type="submit"],
+input[type="reset"],
+textarea,
 select,
 button
 {
@@ -286,9 +291,18 @@ button
     padding: 0;
     margin: 0;
     border: 0;
-    background-color: transparent;
     
     width: 100%;
+}
+
+input[type="checkbox"],
+input[type="radio"]
+{
+    margin-right: .5rem;
+    
+    height: 3rem;
+    
+    vertical-align: middle;
 }
 
 
@@ -300,6 +314,7 @@ button
 .input-text,
 input[type="text"],
 input[type="password"],
+textarea,
 select
 {
     padding: .5em;
@@ -309,6 +324,11 @@ select
 }
 
 /* Buttons */
+button
+{
+    background-color: transparent;
+}
+
 button,
 input[type="submit"]
 {
@@ -325,9 +345,36 @@ input[type="submit"],
     background-color: hsl(215, 100%, 45%);
 }
 
+input[type="reset"]
+{
+    padding: .5em 1em;
+    width: 100%;
+    
+    background-color: #e5e5e5;
+    color: #404040;
+}
+
 select
 {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+    padding-right: 2rem;
+    
     height: 3rem;
+    
+    background-color: white;
+    
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M6.8 10.7a1.6 1.6 0 0 0 2.2 0l7-7 7 7a1.6 1.6 0 0 0 2.2 0 1.6 1.6 0 0 0 0-2.2L17 .5a1.5 1.5 0 0 0-1-.5 1.4 1.4 0 0 0-1.2.5l-8 8a1.6 1.6 0 0 0 0 2.2zm18.4 10.6a1.6 1.6 0 0 0-2.2 0l-7 7-7-7a1.6 1.6 0 0 0-2.1 0 1.6 1.6 0 0 0 0 2.2l8 8a1.5 1.5 0 0 0 1.1.5 1.4 1.4 0 0 0 1.1-.5l8-8a1.6 1.6 0 0 0 .1-2.2z'/%3E%3C/svg%3E");
+	background-position: calc(100% - .5rem) 50%;
+	background-repeat: no-repeat;
+	background-size: 1rem;
+}
+
+input[type="file"]
+{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 
@@ -335,13 +382,13 @@ select
 
 
 /* ------------------ Focusing, Tap Highlight ------------------ */
-.tab-key--inactive .input-text:focus,
+.tab-key--inactive input:focus,
 .tab-key--inactive button:focus
 {
     outline: 0;
 }
 
-.input-text,
+input,
 button
 {
     -webkit-tap-highlight-color: transparent;
@@ -839,28 +886,29 @@ img.size-medium
 .main-banner-aside .widget .input-text,
 .main-banner-aside .widget input[type="text"],
 .main-banner-aside .widget input[type="password"],
-.main-banner-aside .widget select
+.main-banner-aside .widget select,
+.main-banner-aside .widget textarea
 {
     border-color: white;
 }
 
 /* Placeholder Text */
-.main-banner-aside .widget .input-text::-webkit-input-placeholder
+.main-banner-aside .widget input::-webkit-input-placeholder
 {
     color: hsla(0, 100%, 100%, .75);
 }
 
-.main-banner-aside .widget .input-text::-moz-placeholder
+.main-banner-aside .widget input::-moz-placeholder
 {
     color: hsla(0, 100%, 100%, .75);
 }
 
-.main-banner-aside .widget .input-text:-moz-placeholder
+.main-banner-aside .widget input:-moz-placeholder
 {
     color: hsla(0, 100%, 100%, .75);
 }
 
-.main-banner-aside .widget .input-text:-ms-input-placeholder
+.main-banner-aside .widget input:-ms-input-placeholder
 {
     color: hsla(0, 100%, 100%, .75);
 }
@@ -1069,6 +1117,16 @@ img.size-medium
     padding: 1em 1rem;
 }
 
+.view-granularity--detail.feature--no-touchevents .post-title---h
+{
+    cursor: text;
+}
+
+.view-granularity--detail.feature--no-touchevents .post-title---a
+{
+    pointer-events: none;
+}
+
 
 
 
@@ -1165,6 +1223,8 @@ img.size-medium
 }
 
 .post-content input,
+.post-content textarea,
+.post-content select,
 .post-content button
 {
     font-size: initial;
@@ -1980,13 +2040,6 @@ button:hover .dismiss-icon
     padding-right: 1rem;
 }
 
-.comment-subscription-form input
-{
-    margin-right: .5rem;
-    
-    height: 3rem;
-}
-
 .comment-form .comment-subscription-form .subscribe-label
 {
     display: inline-flex !important;
@@ -2533,15 +2586,14 @@ button:hover .dismiss-icon
 
 .go-start-nav--inactive .go-to-start-navi
 {
-    transform: translateY( 100%);
+    transform: translateY(100%);
     
     opacity: 0;
-    z-index: -1;
 }
 
 .go-start-nav--active .go-to-start-navi
 {
-    transform: translateY( 0);
+    transform: translateY(0);
     
     opacity: 1;
     z-index: 100;

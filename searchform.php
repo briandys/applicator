@@ -18,7 +18,7 @@ $search_form_cp = applicator_htmlok( array(
     'content'   => array(
         'compound'  => array(
             array(
-                'name'      => esc_html__( 'Search Term Creation', 'applicator' ),
+                'name'      => 'Search Term Creation',
                 'css'       => 'search-term-crt',
                 'group'     => array(
                     array(

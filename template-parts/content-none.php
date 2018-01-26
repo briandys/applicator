@@ -92,7 +92,7 @@ $post_classes = implode( ' ', $post_classes );
                     ),
                     'content'   => array(
                         'component'     => array(
-                            '<p>'.esc_html__( 'It seems we can&rsquo;t find what you&rsquo;re looking for.', 'applicator' ).'</p>',
+                            '<p>'.esc_html__( 'It seems we can not find what you are looking for.', 'applicator' ).'</p>',
                             '<p>'. $search_spiel. '</p>',
                             $search_ob_content,
                         ),

@@ -25,12 +25,12 @@ get_header();
 
             
             // Text Labels
-            $no_search_result_term = esc_html__( 'No', 'applicator' );
+            $no_search_result_term = esc_html__( 'No Search Result', 'applicator' );
             $search_result_term = esc_html__( 'Search Result', 'applicator' );
             $search_results_term = esc_html__( 'Search Results', 'applicator' );
             
             if ( $entry_search_count == 0 ) {
-                $property_text = $no_search_result_term.' '.$search_result_term;
+                $property_text = $no_search_result_term;
             } elseif ( $entry_search_count == 1 ) {
                 $property_text = $search_result_term;
             } else {

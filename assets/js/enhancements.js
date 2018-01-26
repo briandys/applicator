@@ -477,10 +477,7 @@
             
             $goStartNavArrowIco = applicatorDataGoStartNav.goStartNavArrowIco,
             
-            $goStartNaviAL,
-            
-            bodyOffsetCriteriaHeight,
-            bodyOffsetHeight;
+            $goStartNaviAL;
         
         function goStartNavActivate() {
             $cp
@@ -502,15 +499,17 @@
         goStartNavDeactivate();
         
         
-        function goStartNav() {
-            
-            if ( document.body.offsetHeight > window.innerHeight ) {
-                
+        function goStartNav()
+        {   
+            if ( document.body.offsetHeight > window.innerHeight )
+            {   
                 $window.scrolled( function() {
-                    if ( window.pageYOffset >= window.innerHeight ) {
+                    if ( ( window.innerHeight + window.pageYOffset ) >= document.body.offsetHeight )
+                    {
                         goStartNavActivate();
                     }
-                    else {
+                    else
+                    {
                         goStartNavDeactivate();
                     }
                 } );
