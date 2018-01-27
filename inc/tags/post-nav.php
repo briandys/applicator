@@ -1,5 +1,8 @@
-<?php // Post Navigation | index.php
+<?php
+
+// Post Navigation | index.php
 // Created via <!--nextpage-->
+
 // For Attachment Page, show which Post it belongs
 // https://bavotasan.com/2012/a-better-wp_link_pages-for-wordpress/
 
@@ -45,10 +48,13 @@ if ( ! function_exists('applicator_post_nav' ) ) {
         $r = apply_filters( 'wp_link_pages_args', $r );
         extract( $r, EXTR_SKIP );
 
-        global $page, $numpages, $multipage, $more, $pagenow;
-
-        $output = '';
+        global $post, $page, $numpages, $multipage, $more, $pagenow;
+        
+        
         if ( $multipage ) {
+
+            $output = '';
+
             if ( 'number' == $next_or_number ) {
                 $output .= $before;
                 for ( $i = 1; $i < ( $numpages + 1 ); $i = $i + 1 ) {
@@ -101,59 +107,8 @@ if ( ! function_exists('applicator_post_nav' ) ) {
                     $output .= $after;
                 }
             }
-        }
-        
-        elseif ( is_singular( 'attachment' ) ) {
-            
-            if ( get_previous_post_link() ) {
-                
-                
-                // Terms Variables
-                $post_terms = esc_html__( 'Post', 'applicator' );
-                $post_terms_css = sanitize_title( $post_terms );
-                
-                
-                // MU: Parent Post Navigation Item
-                $parent_post_navi_mu = '';
-                $parent_post_navi_mu .= '<span class="obj navi %2$s-navi" data-name="%3$s Navigation Item OBJ">';
-                $parent_post_navi_mu .= '%1$s';
-                $parent_post_navi_mu .= '</span>';
-                
-                
-                // R: Parent Post Navigation Label
-                $parent_post_nav_label_obj = applicator_htmlok( array(
-                    'name'      => 'Parent Post Navigation',
-                    'structure' => array(
-                        'type'      => 'object',
-                        'subtype'   => 'generic label',
-                        'layout'    => 'inline',
-                    ),
-                    'content'   => array(
-                        'object'    => 'Posted in',
-                        'after'     => $GLOBALS['applicator_space_sep'],
-                    ),
-                ) );
-                
-                
-                // R: Parent Post Navigation Item
-                $parent_post_navi = sprintf( $parent_post_navi_mu,
-                    get_previous_post_link( '%link', '%title' ),
-                    $post_terms_css,
-                    $post_terms
-                );
-                
-                
-                // R: Post Navigation Content
-                $post_nav_content= '';
-                $post_nav_content .= $parent_post_nav_label_obj;
-                $post_nav_content .= $parent_post_navi;
-                
-                
-                $output = $post_nav_content;
-            }
-        }
 
-        if ( $multipage || is_singular( 'attachment' ) ) {
+        
             // E: Post Navigation
             $post_nav_cp = applicator_htmlok( array(
                 'name'      => 'Post',
@@ -166,7 +121,7 @@ if ( ! function_exists('applicator_post_nav' ) ) {
                 ),
                 'echo'      => true,
             ) );
+            
         }
-        
     }
 }

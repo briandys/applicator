@@ -130,25 +130,22 @@ Default Style
 
 
 /* ------------------ Resets ------------------ */
-abbr[title]
-{
-    text-decoration: none;
-}
-
-abbr[title]:hover
-{
-    border-bottom: 0;
-}
-
 label[for]:hover
 {
     cursor: pointer;
 }
 
+abbr[title],
 acronym[title]
 {
     text-decoration: none;
-    border: 1px dotted;
+    border-bottom: 1px dotted gray;
+}
+
+abbr[title]:hover,
+acronym[title]:hover
+{
+    border-bottom: 0;
 }
 
 

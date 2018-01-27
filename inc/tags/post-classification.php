@@ -8,7 +8,7 @@ if ( ! function_exists( 'applicator_post_categories' ) ) {
             
             $categories_list = get_the_category_list();
             
-            if ( $categories_list && applicator_categorized_blog() ) {
+            if ( $categories_list ) {
                 
                 
                 // R: Post Categories Label
@@ -127,36 +127,3 @@ if ( ! function_exists( 'applicator_post_tags' ) ) {
         }  
     }
 }
-
-// Determine whether site has more than one category.
-function applicator_categorized_blog() {
-	
-    $category_count = get_transient( 'applicator_categories' );
-    
-    if ( false === $category_count ) {
-		// Create an array of all the categories that are attached to posts.
-		$categories = get_categories( array(
-			'fields'     => 'ids',
-			'hide_empty' => 1,
-			// We only need to know if there is more than one category.
-			'number'     => 2,
-		) );
-
-		// Count the number of categories that are attached to the posts.
-		$category_count = count( $categories );
-
-		set_transient( 'applicator_categories', $category_count );
-	}
-
-	return $category_count > 1;
-}
-
-
-function applicator_category_transient_flusher() {
-    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-		return;
-	}
-	delete_transient( 'applicator_categories' );
-}
-add_action( 'edit_category', 'applicator_category_transient_flusher' );
-add_action( 'save_post',     'applicator_category_transient_flusher' );

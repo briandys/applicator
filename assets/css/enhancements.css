@@ -336,8 +336,7 @@ input[type="submit"]
 }
 
 .b_l,
-input[type="submit"],
-.widget_custom_html button
+input[type="submit"]
 {
     padding: .5em 1em;
     width: 100%;
@@ -375,6 +374,11 @@ input[type="file"]
 {
     padding-top: 1rem;
     padding-bottom: 1rem;
+}
+
+textarea
+{
+    margin-bottom: -5px; /* To remove the extra space under textarea */
 }
 
 
@@ -829,17 +833,6 @@ img.size-medium
     display: none;
 }
 
-/* Do not show Main Banner after Page 1 of Blog */
-.blog.paged .main-banner,
-.view-level--inner.entry--page .main-banner,
-.view-level--inner.view-granularity--detail .main-banner,
-.search .main-banner,
-.error404 .main-banner,
-.archive .main-banner
-{
-    display: none;
-}
-
 .main-banner-aside--enabled .main-media-banner
 {
     opacity: .5;
@@ -869,6 +862,8 @@ img.size-medium
 
 .main-banner-aside---ct_cr
 {
+    flex: 1 100%;
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -878,9 +873,6 @@ img.size-medium
 .main-banner-aside---ct_cr > *
 {
     flex: 1 100%;
-    
-    display: flex;
-    justify-content: center;
 }
 
 .main-banner-aside .widget .input-text,
@@ -892,25 +884,9 @@ img.size-medium
     border-color: white;
 }
 
-/* Placeholder Text */
-.main-banner-aside .widget input::-webkit-input-placeholder
+.main-banner-aside .input-text
 {
-    color: hsla(0, 100%, 100%, .75);
-}
-
-.main-banner-aside .widget input::-moz-placeholder
-{
-    color: hsla(0, 100%, 100%, .75);
-}
-
-.main-banner-aside .widget input:-moz-placeholder
-{
-    color: hsla(0, 100%, 100%, .75);
-}
-
-.main-banner-aside .widget input:-ms-input-placeholder
-{
-    color: hsla(0, 100%, 100%, .75);
+    color: #262626;
 }
 
 
@@ -1165,8 +1141,7 @@ img.size-medium
 .post-content---ct_cr > *,
 .post-excerpt---ct_cr > *,
 .comment-content---ct_cr > *,
-.aside .widget-content---ct_cr > *,
-.widget-content---ct_cr > .textwidget > *
+.aside .widget-content---ct_cr > *
 {
     margin: 0;
     
@@ -1243,12 +1218,6 @@ img.size-medium
     padding-right: 0;
 }
 
-.post-content---ct_cr .gallery-item
-{
-    padding-top: .5em;
-    padding-bottom: .5em;
-}
-
 /* Caption */
 .post-content---ct_cr .wp-caption-text,
 .widget-content---ct_cr .wp-caption-text
@@ -1300,11 +1269,9 @@ img.size-medium
     margin: 0;
 }
 
-/* Text */
-.widget-content---ct_cr > .textwidget
+.post-thumbnail--enabled .post---ct_cr
 {
-    padding: 0;
-    line-height: normal;
+    padding-top: 1rem;
 }
 
 
@@ -1371,6 +1338,11 @@ img.size-medium
     
     opacity: 0;
     transition: opacity .3s ease-in-out;
+}
+
+.view-granularity--detail .post-banner-vis---a
+{
+    pointer-events: none;
 }
 
 
@@ -1905,8 +1877,6 @@ button:hover .dismiss-icon
 {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    
-    background-color: white;
 }
 
 .comment---cr
@@ -2020,19 +1990,28 @@ button:hover .dismiss-icon
 .comment-form .felem
 {
     padding: .5em 1rem;
-    
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: .5em;
-    padding-bottom: .5em;
 }
 
 .comment-form .form-submit
 {
     margin: 0;
-    
     padding: 1em 1rem;
 }
+
+
+/* Compress the form if user is logged in */
+.logged-in .comment-form .form-submit
+{
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
+.logged-in .commenter-comment-creation-text-input
+{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 
 #cancel-comment-reply-link
 {
@@ -2940,6 +2919,7 @@ button:hover .dismiss-icon
     border: 0;
     border-radius: 0;
     
+    background-color: transparent;
     color: white;
 }
 
@@ -3083,22 +3063,22 @@ button:hover .dismiss-icon
 }
 
 /* Placeholder Text */
-.main-search-func .search-term-crt-search---input-text::-webkit-input-placeholder
+.main-search-func input::-webkit-input-placeholder
 {
     color: hsla(0, 100%, 100%, .75);
 }
 
-.main-search-func .search-term-crt-search---input-text::-moz-placeholder
+.main-search-func input::-moz-placeholder
 {
     color: hsla(0, 100%, 100%, .75);
 }
 
-.main-search-func .search-term-crt-search---input-text:-moz-placeholder
+.main-search-func input:-moz-placeholder
 {
     color: hsla(0, 100%, 100%, .75);
 }
 
-.main-search-func .search-term-crt-search---input-text:-ms-input-placeholder
+.main-search-func input:-ms-input-placeholder
 {
     color: hsla(0, 100%, 100%, .75);
 }
@@ -3450,6 +3430,11 @@ button:hover .dismiss-icon
     transform: rotate( 90deg);
 }
 
+.page-nav---cr
+{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
 
 
 

@@ -949,8 +949,7 @@ h6
 .applicator--theme--rounded-rectangles select,
 .applicator--theme--rounded-rectangles .b_l,
 .applicator--theme--rounded-rectangles input[type="submit"],
-.applicator--theme--rounded-rectangles input[type="reset"],
-.applicator--theme--rounded-rectangles .widget_custom_html button,
+.applicator--theme--rounded-rectangles input[type="reset"]
 
 .applicator--theme--rounded-rectangles.applicator--theme--excerpt .show-more-glabel---g_l,
 .applicator--theme--rounded-rectangles.applicator--theme--excerpt .show-more-axn---a_l,
@@ -1225,7 +1224,7 @@ h6
 /* ------------------ Caption ------------------ */
 .applicator--theme--caption .wp-caption-text
 {
-    color: gray;
+    color: #505050;
 }
 
 
@@ -1375,42 +1374,6 @@ h6
 
 /* ------------------ Layout ------------------ */
 
-/* Main Content */
-.applicator--theme--layout .main-post-title---cr,
-.applicator--theme--layout .post-meta---cr,
-.applicator--theme--layout .post-header-aside .comments-axns-snip---cr,
-.applicator--theme--layout .post-content---ct_cr,
-.applicator--theme--layout .post-nav---cr,
-.applicator--theme--layout .comment-md---cr,
-.applicator--theme--layout .breadcrumbs-nav---cr,
-.applicator--theme--layout .post-excerpt---cr,
-.applicator--theme--layout .show-more-action,
-.applicator--theme--layout .main-content-heading,
-.applicator--theme--layout .entry-nav---cr,
-.applicator--theme--layout .type-attachment .post-nav---cr,
-.applicator--theme--layout.applicator--theme--post-format--status .format-status .post---cr,
-.applicator--theme--layout .copyright,
-.applicator--theme--layout .main-content-header-aside .widget-content---ct_cr,
-.applicator--theme--layout.main-content-aside--enabled .main-content---ct_cr
-{
-    margin-left: auto;
-    margin-right: auto;
-    
-    max-width: 100vw;
-}
-
-/* Main Header */
-.applicator--theme--layout .main-info---cr,
-.applicator--theme--layout .main-nav---cr,
-.applicator--theme--layout .main-actions-aside---cr,
-.applicator--theme--layout .main-menu-func .main-hr-aside---cr
-{
-    margin-left: auto;
-    margin-right: auto;
-    
-    max-width: 100vw;
-}
-
 .applicator--theme--layout .main-menu-func .main-hr-aside---cr
 {
     position: relative;
@@ -1518,6 +1481,48 @@ h6
         width: 30%;
     }
     
+    /* Main Content */
+    .applicator--theme--layout .main-post-title---cr,
+    .applicator--theme--layout .post-meta---cr,
+    .applicator--theme--layout .post-header-aside .comments-axns-snip---cr,
+    .applicator--theme--layout .post-content---ct_cr,
+    .applicator--theme--layout .post-nav---cr,
+    .applicator--theme--layout .comment-md---cr,
+    .applicator--theme--layout .breadcrumbs-nav---cr,
+    .applicator--theme--layout .post-excerpt---cr,
+    .applicator--theme--layout .show-more-action,
+    .applicator--theme--layout .main-content-heading,
+    .applicator--theme--layout .entry-nav---cr,
+    .applicator--theme--layout .type-attachment .post-nav---cr,
+    .applicator--theme--layout.applicator--theme--post-format--status .format-status .post---cr,
+    .applicator--theme--layout .copyright,
+
+    /* Asides */
+    .applicator--theme--layout .main-content-header-aside .widget-content---ct_cr,
+    .applicator--theme--layout .main-banner-aside .widget-content---ct_cr,
+    .applicator--theme--layout .main-footer-aside .widget-content---ct_cr,
+
+    /* Secondary Content enabled */
+    .applicator--theme--layout.main-content-aside--enabled .main-content---ct_cr
+    {
+        margin-left: auto;
+        margin-right: auto;
+
+        max-width: 80vw;
+    }
+
+    /* Main Header */
+    .applicator--theme--layout .main-info---cr,
+    .applicator--theme--layout .main-nav---cr,
+    .applicator--theme--layout .main-actions-aside---cr,
+    .applicator--theme--layout .main-menu-func .main-hr-aside---cr
+    {
+        margin-left: auto;
+        margin-right: auto;
+
+        max-width: 80vw;
+    }
+    
     
     
     
@@ -1580,6 +1585,28 @@ h6
     {
         width: calc( 100% / 9 );
         width: 11.11%;
+    }
+    
+    .main-actions-widgets-func .gallery .gallery-item
+    {
+        display: inline-block;
+        vertical-align: top;
+        
+        margin: 0;
+        width: 100%;
+    }
+    
+    /* Testing Object Fit */
+    .gallery-columns-3.gallery-size-full .gallery-icon
+    {
+        height: 240px;
+        overflow: hidden;
+    }
+    
+    .gallery-columns-3.gallery-size-full img
+    {
+        height: 240px;
+        object-fit: cover;
     }
     
     

@@ -54,9 +54,9 @@ function applicator_aside_init() {
     $widget_h_end_mu .= '</div>';
     
     register_sidebar( array(
-		'name'          => __( '1. Main Header Aside', 'applicator' ),
+		'name'          => __( '1. Main Header', 'applicator' ),
 		'id'            => 'main-header-aside',
-		'description'   => __( 'Located at the Main Header', 'applicator' ),
+		'description'   => __( 'Aside located at the Main Header', 'applicator' ),
 		'before_widget' => $widget_start_mu,
 		'after_widget'  => $widget_end_mu,
 		'before_title'  => $widget_h_start_mu,
@@ -66,7 +66,7 @@ function applicator_aside_init() {
     register_sidebar( array(
 		'name'          => __( '2. Main Actions', 'applicator' ),
 		'id'            => 'main-actions-aside',
-		'description'   => __( 'Located after Main Nav', 'applicator' ),
+		'description'   => __( 'Aside located after Main Nav', 'applicator' ),
 		'before_widget' => $widget_start_mu,
 		'after_widget'  => $widget_end_mu,
 		'before_title'  => $widget_h_start_mu,
@@ -76,7 +76,7 @@ function applicator_aside_init() {
     register_sidebar( array(
 		'name'          => __( '3. Main Banner', 'applicator' ),
 		'id'            => 'main-banner-aside',
-		'description'   => __( 'Located at the Main Banner', 'applicator' ),
+		'description'   => __( 'Aside located at the Main Banner', 'applicator' ),
 		'before_widget' => $widget_start_mu,
 		'after_widget'  => $widget_end_mu,
 		'before_title'  => $widget_h_start_mu,
@@ -84,9 +84,9 @@ function applicator_aside_init() {
 	) );
     
     register_sidebar( array(
-		'name'          => __( '4. Main Content Header Aside', 'applicator' ),
+		'name'          => __( '4. Main Content Header', 'applicator' ),
 		'id'            => 'main-content-header-aside',
-		'description'   => __( 'Located at the Main Content Header', 'applicator' ),
+		'description'   => __( 'Aside located at the Main Content Header', 'applicator' ),
 		'before_widget' => $widget_start_mu,
 		'after_widget'  => $widget_end_mu,
 		'before_title'  => $widget_h_start_mu,
@@ -94,9 +94,9 @@ function applicator_aside_init() {
 	) );
     
     register_sidebar( array(
-		'name'          => __( '5. Secondary Content Aside', 'applicator' ),
+		'name'          => __( '5. Secondary Content', 'applicator' ),
 		'id'            => 'main-content-aside',
-		'description'   => __( 'Located after Primary Content', 'applicator' ),
+		'description'   => __( 'Aside located after Primary Content', 'applicator' ),
 		'before_widget' => $widget_start_mu,
 		'after_widget'  => $widget_end_mu,
 		'before_title'  => $widget_h_start_mu,
@@ -104,9 +104,9 @@ function applicator_aside_init() {
 	) );
     
     register_sidebar( array(
-		'name'          => __( '6. Main Footer Aside', 'applicator' ),
+		'name'          => __( '6. Main Footer', 'applicator' ),
 		'id'            => 'main-footer-aside',
-		'description'   => __( 'Located at the Main Footer', 'applicator' ),
+		'description'   => __( 'Aside located at the Main Footer', 'applicator' ),
 		'before_widget' => $widget_start_mu,
 		'after_widget'  => $widget_end_mu,
 		'before_title'  => $widget_h_start_mu,

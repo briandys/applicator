@@ -501,14 +501,20 @@
         
         function goStartNav()
         {   
-            if ( document.body.offsetHeight > window.innerHeight )
+            var documentHeight = document.body.offsetHeight,
+                windowHeight = window.innerHeight,
+                windowHeightCriteria = windowHeight * 2;
+            
+            if ( documentHeight > windowHeightCriteria )
             {   
                 $window.scrolled( function() {
-                    if ( ( window.innerHeight + window.pageYOffset ) >= document.body.offsetHeight )
+                    
+                    if ( $cp.hasClass( goStartNavInactCss ) && ( ( windowHeight + window.pageYOffset ) >= documentHeight ) )
                     {
                         goStartNavActivate();
                     }
-                    else
+                    
+                    if ( $cp.hasClass( goStartNavActCss ) && window.pageYOffset == 0 )
                     {
                         goStartNavDeactivate();
                     }
@@ -528,6 +534,12 @@
         $goStartNaviA.on( 'focusout.applicator', function() {
             goStartNavDeactivate();
         } );
+
+        
+        // Click > Deactivate
+        $goStartNaviA.on( 'click.applicator', function() {
+            goStartNavDeactivate();
+        } );
         
         
         // Add Icon to Button
@@ -536,7 +548,7 @@
         
         
         // Resize Sensor
-        new ResizeSensor( $webProduct, function() {
+        new ResizeSensor( $html, function() {
             goStartNav();
         } );
     }
@@ -2508,7 +2520,7 @@
             pageHeightCSS();
             
             
-            new ResizeSensor( $webProduct, function() {
+            new ResizeSensor( $html, function() {
                 pageHeightCSS();
             } );
         
