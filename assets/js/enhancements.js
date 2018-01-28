@@ -2371,7 +2371,7 @@
         
         /* ------------------------ Add Anchor to Content Headings ------------------------ */
         
-        ( function( id ) {
+        ( function( $id ) {
             
             if ( ! $html.hasClass( 'view-granularity--detail' ) ) {
                 return;
@@ -2402,9 +2402,11 @@
                 
                 var $this = $( this );
                 
+                $id = sanitizeTitle( $this.text() ) + '-section-' + ( index + 1 );
+                
                 $this
                     .attr( {
-                        'id': id = sanitizeTitle( $this.text() ) + '-section-' + ( index + 1 ),
+                        'id': $id,
                         'class': headingAnchoredCSS
                     } )
                     
@@ -2412,7 +2414,7 @@
 
                         // Get only the text nodes
                         return this.nodeType !== 1;
-                    } ).wrap( '<a href="#' + id + '" />' );
+                    } ).wrap( '<a href="#' + $id + '" />' );
             } );
         
         }() );

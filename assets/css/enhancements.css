@@ -2030,6 +2030,11 @@ button:hover .dismiss-icon
     display: inline-flex !important;
 }
 
+.post-thumbnail--enabled .post-header-aside .comments-axns-snip---cr
+{
+    padding-top: 1rem;
+}
+
 
 
 
