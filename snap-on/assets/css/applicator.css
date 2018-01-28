@@ -200,7 +200,7 @@ h6
 
 .comment-form .creation--invalid .input-text
 {
-    border-color: hsl(0, 91%, 50%);
+    border-color: hsl(0, 100%, 45%);
 }
 
 .comment-form .creation--valid .input-text
@@ -669,10 +669,7 @@ h6
     display: inline-block;
     vertical-align: middle;
     
-    padding-left: .5rem;
-    padding-right: .5rem;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding: .5rem;
     
     font-size: .875rem;
 }
@@ -1387,7 +1384,11 @@ h6
 
 
 /* ------------------ Main Header ------------------ */
-.applicator--theme--main-header .main-info,
+.applicator--theme--main-header .main-info
+{
+    min-height: 3.5rem;
+}
+
 .applicator--theme--main-header.applicator--main-menu .main-hr-aside---hr_cr,
 .applicator--theme--main-header .main-actions-aside---ct_cr
 {

@@ -2370,15 +2370,16 @@
         
         
         /* ------------------------ Add Anchor to Content Headings ------------------------ */
-        ( function() {
+        
+        ( function( id ) {
             
-            if ( ! $html.hasClass( 'view-level--inner' ) ) {
+            if ( ! $html.hasClass( 'view-granularity--detail' ) ) {
                 return;
             }
             
             var $postContentCtCr = $( '.post-content---ct_cr' ),
-                $postContentHeadings = $postContentCtCr.find( 'h1:not([id]), h2:not([id]), h3:not([id]), h4:not([id]), h5:not([id]), h6:not([id])' ),
-                $postContentHeadingsID = $postContentCtCr.find( 'h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]' ),
+                $postContentHeadings = $postContentCtCr.children( 'h1:not([id]), h2:not([id]), h3:not([id]), h4:not([id]), h5:not([id]), h6:not([id])' ),
+                $postContentHeadingsID = $postContentCtCr.children( 'h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]' ),
                 headingAnchoredCSS = 'heading--anchored';
             
             
@@ -2395,13 +2396,15 @@
             
             
             // Look for headings without ID
+            // https://stackoverflow.com/a/18727318
+            // https://api.jquery.com/contents/
             $.each( $postContentHeadings, function( index ) {
                 
-                // https://stackoverflow.com/a/18727318
-                // https://api.jquery.com/contents/
-                $( this )
+                var $this = $( this );
+                
+                $this
                     .attr( {
-                        'id': 'section' + ( index + 1 ),
+                        'id': id = sanitizeTitle( $this.text() ) + '-section-' + ( index + 1 ),
                         'class': headingAnchoredCSS
                     } )
                     
@@ -2409,7 +2412,7 @@
 
                         // Get only the text nodes
                         return this.nodeType !== 1;
-                    } ).wrap( '<a href="#section' + ( index + 1 ) + '" />' );
+                    } ).wrap( '<a href="#' + id + '" />' );
             } );
         
         }() );

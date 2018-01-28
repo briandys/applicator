@@ -172,7 +172,7 @@ Enhancements Style
 /* ------------------ Highlight ------------------ */
 ::selection
 {
-    background: hsl(120, 82%, 38%);
+    background: hsl(215, 100%, 45%);
     
     color: white;
     
@@ -181,7 +181,7 @@ Enhancements Style
 
 ::-moz-selection
 {
-    background: hsl(120, 82%, 38%);
+    background: hsl(215, 100%, 45%);
     
     color: white;
     
@@ -1402,8 +1402,6 @@ img.size-medium
 {
     display: flex;
     flex-wrap: wrap;
-    
-    /* min-height: 3rem; */
 }
 
 /* Match the outline color of active elements with the background color */
@@ -1432,8 +1430,6 @@ img.size-medium
 {
     padding-left: 1rem;
     padding-right: 1rem;
-    
-    /* min-height: 3rem; */
 }
 
 /* With Main Search */
@@ -1543,7 +1539,7 @@ img.size-medium
 {
     font-weight: normal;
     
-    font-size: 1.125rem;
+    font-size: 1.125em;
 }
 
 .main-description--populated .main-name
@@ -3065,22 +3061,22 @@ button:hover .dismiss-icon
 /* Placeholder Text */
 .main-search-func input::-webkit-input-placeholder
 {
-    color: hsla(0, 100%, 100%, .75);
+    color: hsla(0, 0%, 100%, .75);
 }
 
 .main-search-func input::-moz-placeholder
 {
-    color: hsla(0, 100%, 100%, .75);
+    color: hsla(0, 0%, 100%, .75);
 }
 
 .main-search-func input:-moz-placeholder
 {
-    color: hsla(0, 100%, 100%, .75);
+    color: hsla(0, 0%, 100%, .75);
 }
 
 .main-search-func input:-ms-input-placeholder
 {
-    color: hsla(0, 100%, 100%, .75);
+    color: hsla(0, 0%, 100%, .75);
 }
 
 .main-search-toggle .search-icon

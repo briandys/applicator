@@ -15,3 +15,7 @@ $GLOBALS['applicator_space_sep'] = ' ';
 
 // Ellipsis
 $GLOBALS['applicator_ellipsis_sep'] = '<span class="sep ellipsis---sep">&hellip;</span>';
+
+
+// Applicator Kid
+$GLOBALS['applicator_applicator_kid_term'] = 'Applicator Kid';

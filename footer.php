@@ -4,6 +4,30 @@
                 <?php
 
                 // ------------------------ Main Footer
+                
+                if ( ! function_exists( 'applicator_copyright_applicator_line_term' ) )
+                {
+                    function applicator_copyright_applicator_line_term()
+                    {
+                        $theme_name = 'Applicator';
+                        return $theme_name;
+                    }
+                }
+                
+                if ( ! function_exists( 'applicator_copyright_applicator_line_url' ) )
+                {
+                    function applicator_copyright_applicator_line_url()
+                    {
+                        $theme_url = '';
+                        return $theme_url;
+                    }
+                }
+
+                $applicator_line_term = applicator_copyright_applicator_line_term();
+                $applicator_line_url = '//applicator.dysinelab.com/'. applicator_copyright_applicator_line_url();
+                $applicator_line_by_dysinelab_term ='by DysineLab';
+                $applicator_line_text = $applicator_line_term. ' '. $applicator_line_by_dysinelab_term;
+
 
                 // Copyright
                 $copyright_obj = applicator_htmlok( array(
@@ -46,14 +70,14 @@
                                         'css'   => 'applicator---line',
                                         array(
                                             'sep'       => $GLOBALS['applicator_space_sep'],
-                                            'txt'       => esc_html( 'Applicator by DysineLab', 'applicator' ),
+                                            'txt'       => esc_html( $applicator_line_text ),
                                             'linked'    => true,
                                             'attr'      => array(
                                                 'a'         => array(
-                                                    'href'      => esc_url( '//applicator.dysinelab.com/' ),
+                                                    'href'      => esc_url( $applicator_line_url ),
                                                     'target'    => '_blank',
                                                     'rel'       => 'noopener',
-                                                    'title'     => esc_attr( 'Applicator by DysineLab' ),
+                                                    'title'     => esc_attr( $applicator_line_text ),
                                                 ),
                                             ),
                                         ),
