@@ -118,19 +118,10 @@ get_header();
         if ( is_singular() ) {
             
             while ( have_posts() ) {
-                
-                // OB: Entry Nav
-                ob_start();
-                // inc > tags > entry-nav.php
-                applicator_entry_nav();
-                $entry_nav_ob_content = ob_get_contents();
-                ob_end_clean();
-                
+                the_post();
                 
                 // OB: Entry Content
                 ob_start();
-                
-                the_post();
                 
                 // template-parts > post-content.php
                 applicator_post_content();

@@ -200,7 +200,6 @@ $post_classes = implode( ' ', $post_classes );
                     ),
                 ) );
                 
-                
                 // OB: Content
                 ob_start();
                 the_content();
