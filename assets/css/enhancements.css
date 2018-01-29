@@ -556,9 +556,11 @@ img.size-medium
     opacity: 1;
 }
 
-.main-navi--hash---a
+.main-nav .main-navi--hash---a
 {
     pointer-events: none;
+    
+    color: #808080;
 }
 
 /* Root Nav Item - Current Indicator */
@@ -751,11 +753,6 @@ img.size-medium
 .main-nav .menu-item-has-children > ul > .current-menu-item > a
 {
     border-left-color: hsl(215, 100%, 45%);
-}
-
-.main-navi--hash---a
-{
-    cursor: default;
 }
 
 

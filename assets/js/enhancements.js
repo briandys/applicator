@@ -2380,7 +2380,8 @@
             var $postContentCtCr = $( '.post-content---ct_cr' ),
                 $postContentHeadings = $postContentCtCr.children( 'h1:not([id]), h2:not([id]), h3:not([id]), h4:not([id]), h5:not([id]), h6:not([id])' ),
                 $postContentHeadingsID = $postContentCtCr.children( 'h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]' ),
-                headingAnchoredCSS = 'heading--anchored';
+                headingAnchoredCSS = 'heading--anchored',
+                seen = {};
             
             
             // Look for headings with ID and add class
@@ -2400,19 +2401,30 @@
             // https://api.jquery.com/contents/
             $.each( $postContentHeadings, function( index ) {
                 
-                var $this = $( this );
+                var $this = $( this ),
+                    $txt = $this.text(),
+                    $sectionNumber;
                 
-                $id = sanitizeTitle( $this.text() ) + '-section-' + ( index + 1 );
+                
+                // Check for duplicate text content
+                // https://stackoverflow.com/a/2822974/4038774
+                if ( seen[$txt] ) {
+                    $sectionNumber = '-' + ( index + 1 );
+                }
+                else {
+                    seen[$txt] = true;
+                    $sectionNumber = '';
+                }
+                
+                // The ID Attribute
+                $id = 's-' + sanitizeTitle( $txt ) + $sectionNumber;
                 
                 $this
                     .attr( {
                         'id': $id,
                         'class': headingAnchoredCSS
                     } )
-                    
                     .contents().filter( function() {
-
-                        // Get only the text nodes
                         return this.nodeType !== 1;
                     } ).wrap( '<a href="#' + $id + '" />' );
             } );
