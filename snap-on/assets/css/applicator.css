@@ -161,7 +161,7 @@ h6
 
 
 /* ------------------ Mod: Pretty Post Links ------------------ */
-.post-content---ct_cr a
+.post-content---ct_cr a:not(.more-link)
 {
     color: #262626;
     text-decoration: none;
@@ -172,13 +172,20 @@ h6
     transition: background-color .2s ease-in-out;
 }
 
-.post-content---ct_cr a:hover
+.post-content---ct_cr a:not(.more-link):hover,
+.excerpt-link > .text-node:hover
 {
     background-color: #d8e8ff;
     
     text-decoration: none;
 }
 
+
+
+.excerpt-link > .text-node
+{
+    transition: background-color .2s ease-in-out;
+}
 
 
 
@@ -972,7 +979,7 @@ h6
 .applicator--theme--rounded-rectangles select,
 .applicator--theme--rounded-rectangles .b_l,
 .applicator--theme--rounded-rectangles input[type="submit"],
-.applicator--theme--rounded-rectangles input[type="reset"]
+.applicator--theme--rounded-rectangles input[type="reset"],
 
 .applicator--theme--rounded-rectangles.applicator--theme--excerpt .show-more-glabel---g_l,
 .applicator--theme--rounded-rectangles.applicator--theme--excerpt .show-more-axn---a_l,
