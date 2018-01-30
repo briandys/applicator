@@ -2380,7 +2380,7 @@
             var $postContentCtCr = $( '.post-content---ct_cr' ),
                 $postContentHeadings = $postContentCtCr.children( 'h1:not([id]), h2:not([id]), h3:not([id]), h4:not([id]), h5:not([id]), h6:not([id])' ),
                 $postContentHeadingsID = $postContentCtCr.children( 'h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]' ),
-                headingAnchoredCSS = 'heading--anchored',
+                headingAnchoredCSS = 'identified-heading',
                 seen = {};
             
             
@@ -2429,7 +2429,7 @@
                     } )
                     .contents().filter( function() {
                         return this.nodeType !== 1;
-                    } ).wrap( '<a href="#' + $id + '" />' );
+                    } ).wrap( $( '<a/>', { 'href': '#' + $id + '', 'class': headingAnchoredCSS + '---a'  } ) );
             } );
         
         }() );

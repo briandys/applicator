@@ -161,7 +161,7 @@ h6
 
 
 /* ------------------ Mod: Pretty Post Links ------------------ */
-.post-content---ct_cr a:not(.more-link)
+.post-content---ct_cr a:not(.more-link):not(.identified-heading---a)
 {
     color: #262626;
     text-decoration: none;
@@ -172,7 +172,7 @@ h6
     transition: background-color .2s ease-in-out;
 }
 
-.post-content---ct_cr a:not(.more-link):hover,
+.post-content---ct_cr a:not(.more-link):not(.identified-heading---a):hover,
 .excerpt-link > .text-node:hover
 {
     background-color: #d8e8ff;

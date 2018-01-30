@@ -266,7 +266,7 @@ h1, h2, h3, h4, h5, h6
     margin: 0;
 }
 
-.heading--anchored a
+.identified-heading---a
 {
     color: inherit;
 }
@@ -3473,7 +3473,12 @@ button:hover .dismiss-icon
     padding: 0 !important;
 }
 
-/* Web Product */
+/* ------------------ Web Product ------------------ */
+.web-product
+{
+    position: relative;
+}
+
 .wp-admin-bar--enabled.vp--wp-admin-bar--narrow .web-product
 {
     margin-top: 46px;

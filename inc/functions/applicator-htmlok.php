@@ -464,7 +464,7 @@ function applicator_htmlok( $args = array() ) {
 
                 $p_obj_elem_root_css_val = '';
                 foreach ( ( array ) $r_obj_elem_root_css as $val ) {
-                    $p_obj_elem_root_css_val .= ' '.preg_replace( $pat_space, $rep_space, trim( $val ) );
+                    $p_obj_elem_root_css_val .= ' '. trim( $val );
                 }
             }
     
@@ -668,7 +668,7 @@ function applicator_htmlok( $args = array() ) {
             
             $clean_key = substr( strtolower( preg_replace( $pat_no_space, $rep_no_space, trim( $key ) ) ), $substr_start, $substr_end );
             
-            $clean_val = preg_replace( $pat_space, $rep_space, trim( $val ) );
+            $clean_val = trim( $val );
             
             $p_attr .= ' '.$clean_key.'="'.$clean_val.'"';
         }
@@ -687,7 +687,7 @@ function applicator_htmlok( $args = array() ) {
             
             $clean_key = substr( strtolower( preg_replace( $pat_no_space, $rep_no_space, trim( $key ) ) ), $substr_start, $substr_end );
             
-            $clean_val = preg_replace( $pat_space, $rep_space, trim( $val ) );
+            $clean_val = trim( $val );
             
             $p_obj_a_elem_attr .= ' '.$clean_key.'="'.$clean_val.'"';
         }
@@ -707,7 +707,7 @@ function applicator_htmlok( $args = array() ) {
             
             $clean_key = substr( strtolower( preg_replace( $pat_no_space, $rep_no_space, trim( $key ) ) ), $substr_start, $substr_end );
             
-            $clean_val = preg_replace( $pat_space, $rep_space, trim( $val ) );
+            $clean_val = trim( $val );
             
             $p_elem_label_attr .= ' '.$clean_key.'="'.$clean_val.'"';
         }
@@ -839,7 +839,7 @@ function applicator_htmlok( $args = array() ) {
         
         $hr_content_val = '';
         foreach ( ( array ) $r_hr_content as $val ) {
-            $hr_content_val .= preg_replace( $pat_space, $rep_space, trim( $val ) );
+            $hr_content_val .= trim( $val );
         }
         
         // Output
@@ -852,7 +852,7 @@ function applicator_htmlok( $args = array() ) {
         
         $fr_content_val = '';
         foreach ( ( array ) $r_fr_content as $val ) {
-            $fr_content_val .= preg_replace( $pat_space, $rep_space, trim( $val ) );
+            $fr_content_val .= trim( $val );
         }
         
         // Output
@@ -867,7 +867,7 @@ function applicator_htmlok( $args = array() ) {
 
             $content_val = '';
             foreach ( ( array ) $r_content as $val ) {
-                $content_val .= preg_replace( $pat_space, $rep_space, trim( $val ) );
+                $content_val .= trim( $val );
             }
         }
     }
@@ -880,7 +880,7 @@ function applicator_htmlok( $args = array() ) {
 
             $content_val = '';
             foreach ( ( array ) $r_content as $val ) {
-                $content_val .= preg_replace( $pat_space, $rep_space, trim( $val ) );
+                $content_val .= trim( $val );
             }
         }
     }
@@ -1477,7 +1477,7 @@ function applicator_htmlok( $args = array() ) {
 
                                             $clean_key = substr( strtolower( preg_replace( $pat_no_space, $rep_no_space, trim( $key ) ) ), $substr_start, $substr_end );
 
-                                            $clean_val = preg_replace( $pat_space, $rep_space, trim( $val ) );
+                                            $clean_val = trim( $val );
 
                                             $p_line_txt_attr_a .= ' '.$clean_key.'="'.$clean_val.'"';
                                         }
@@ -1501,7 +1501,7 @@ function applicator_htmlok( $args = array() ) {
             }
             
             else {
-                $content_val .= preg_replace( $pat_space, $rep_space, trim( $val ) );
+                $content_val .= trim( $val );
             }
         }
         
