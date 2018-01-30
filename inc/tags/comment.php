@@ -250,8 +250,7 @@ if ( ! function_exists( 'applicator_comment' ) ) {
 
         ob_start();
         get_comment_author_url();
-        $get_comment_author_url_ob_content = ob_get_contents();
-        ob_end_clean();
+        $get_comment_author_url_ob_content = ob_get_clean();
 
         // Commenter URL
         if ( get_comment_author_url() ) {
@@ -394,8 +393,7 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                         // OB: Content
                         ob_start();
                         comment_text();
-                        $content_ob_content = ob_get_contents();
-                        ob_end_clean();
+                        $content_ob_content = ob_get_clean();
         
                         // E: Comment Content
                         $comment_content = applicator_htmlok( array(
@@ -479,8 +477,7 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                     'login_text'    => $login_text_content
                 )
             ) );
-            $comment_reply_axn_content = ob_get_contents();
-            ob_end_clean();
+            $comment_reply_axn_content = ob_get_clean();
 
             $comment_reply_axn_obj = applicator_htmlok( array(
                 'name'      => 'Comment Reply',

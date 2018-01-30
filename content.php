@@ -185,8 +185,7 @@ $post_classes = implode( ' ', $post_classes );
                 // OB: Excerpt
                 ob_start();
                 the_excerpt();
-                $excerpt_ob_content = ob_get_contents();
-                ob_end_clean();
+                $excerpt_ob_content = ob_get_clean();
                 
                 
                 // R: Post Excerpt
@@ -203,8 +202,7 @@ $post_classes = implode( ' ', $post_classes );
                 // OB: Content
                 ob_start();
                 the_content();
-                $content_ob_content = ob_get_contents();
-                ob_end_clean();
+                $content_ob_content = ob_get_clean();
                 
                 if ( is_home() || is_singular() || ( is_front_page() && ! is_page() ) ) {
                     
@@ -263,8 +261,7 @@ $post_classes = implode( ' ', $post_classes );
                             $the_query->the_post();
                             get_template_part( 'content', get_post_format() );
                         }
-                        $query_sub_post_ob_content = ob_get_contents();
-                        ob_end_clean();
+                        $query_sub_post_ob_content = ob_get_clean();
                         
                         
                         // E: Sub-Post Content

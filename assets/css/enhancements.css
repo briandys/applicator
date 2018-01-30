@@ -559,8 +559,6 @@ img.size-medium
 .main-nav .main-navi--hash---a
 {
     pointer-events: none;
-    
-    color: #808080;
 }
 
 /* Root Nav Item - Current Indicator */
@@ -1098,6 +1096,11 @@ img.size-medium
 .view-granularity--detail.feature--no-touchevents .post-title---a
 {
     pointer-events: none;
+}
+
+.page-template--sub-pages.feature--no-touchevents .sub-post-content .post-title---a
+{
+    pointer-events: auto;
 }
 
 
@@ -2343,11 +2346,16 @@ button:hover .dismiss-icon
     text-decoration: none;
 }
 
-.aside .widget-content---ct_cr > .widget-heading,
-.aside .widget_nav_menu .widget-content---ct_cr > .widget-heading
+.aside .widget-content---ct_cr > .widget-heading
 {
     margin-bottom: -1em;
     
+    padding: 1em 1rem;
+}
+
+.aside .widget_nav_menu .widget-content---ct_cr > .widget-heading
+{
+    margin-bottom: 0;
     padding: 1em 1rem;
 }
 

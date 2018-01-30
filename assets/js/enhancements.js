@@ -2387,8 +2387,11 @@
             // Look for headings with ID and add class
             $.each( $postContentHeadingsID, function() {
                 
-                if ( $(this).has( 'a' ) ) {
-                    $( this )
+                var $this = $( this );
+                    
+                if ( $this.has( 'a' ) )
+                {
+                    $this
                         .attr( {
                             'class': headingAnchoredCSS
                         } );

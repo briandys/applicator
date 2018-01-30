@@ -150,8 +150,7 @@ $post_classes = implode( ' ', $post_classes );
             // OB: Excerpt
             ob_start();
             the_excerpt();
-            $excerpt_ob_content = ob_get_contents();
-            ob_end_clean();
+            $excerpt_ob_content = ob_get_clean();
 
             $excerpt_link_content = sprintf( $excerpt_link_mu,
                 $excerpt_ob_content,

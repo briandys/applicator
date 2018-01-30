@@ -405,8 +405,7 @@ comment_form( array(
     'comment_notes_after'       => '',
 
 ) );
-$comment_form_ob_content = ob_get_contents();
-ob_end_clean();
+$comment_form_ob_content = ob_get_clean();
 
 
 // E: Comment

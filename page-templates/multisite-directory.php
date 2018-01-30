@@ -230,8 +230,7 @@ if ( is_multisite() )
 
                         get_template_part( 'template-parts/content', 'multisite' );
                     }
-                    $site_entries_ob_content = ob_get_contents();
-                    ob_end_clean();
+                    $site_entries_ob_content = ob_get_clean();
 
                     // Entries
                     $site_entries_cp = applicator_htmlok( array(

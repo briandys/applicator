@@ -160,6 +160,29 @@ h6
 
 
 
+/* ------------------ Mod: Pretty Post Links ------------------ */
+.post-content---ct_cr a
+{
+    color: #262626;
+    text-decoration: none;
+    
+    border-bottom: 1px solid #d8e8ff;
+    box-shadow: inset 0 -0.25em 0 #d8e8ff;
+    
+    transition: background-color .2s ease-in-out;
+}
+
+.post-content---ct_cr a:hover
+{
+    background-color: #d8e8ff;
+    
+    text-decoration: none;
+}
+
+
+
+
+
 /* ------------------ Comments ------------------ */
 .comments a
 {
@@ -863,7 +886,7 @@ h6
 .applicator--theme--name-avatar .author-avatar,
 .applicator--theme--name-avatar .commenter-avatar
 {
-    margin-right: .3em;
+    margin-right: .5em;
 }
 
 

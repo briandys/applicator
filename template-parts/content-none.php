@@ -71,8 +71,7 @@ $post_classes = implode( ' ', $post_classes );
                 // OB: Search
                 ob_start();
                 get_search_form();
-                $search_ob_content = ob_get_contents();
-                ob_end_clean();
+                $search_ob_content = ob_get_clean();
                 
                 $search_spiel = '';
                 if ( is_404() ) {
@@ -107,8 +106,7 @@ $post_classes = implode( ' ', $post_classes );
 </article>
 
 <?php
-$entry_content = ob_get_contents();
-ob_end_clean();
+$entry_content = ob_get_clean();
 
 
 

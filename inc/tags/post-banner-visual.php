@@ -10,8 +10,7 @@ if ( ! function_exists( 'applicator_post_banner_visual' ) ) {
             // OB: Post Thumbnail
             ob_start();
             the_post_thumbnail( 'applicator-image-size--post-banner-visual--thumbnail', array( 'class' => 'img post-banner-vis---img' ) );
-            $post_thumbnail_ob_content = ob_get_contents();
-            ob_end_clean();
+            $post_thumbnail_ob_content = ob_get_clean();
             
             
             // Variables

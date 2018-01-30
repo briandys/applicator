@@ -129,8 +129,7 @@ get_header();
                 // comments.php
                 comments_template();
                 
-                $entry_content = ob_get_contents();
-                ob_end_clean();
+                $entry_content = ob_get_clean();
                 
                 // Entry (for single.php)
                 $entry_entries_cp = applicator_htmlok( array(
@@ -159,8 +158,7 @@ get_header();
                     // template-parts > post-content.php
                     applicator_post_content();
                 }
-                $entries_ob_content = ob_get_contents();
-                ob_end_clean();
+                $entries_ob_content = ob_get_clean();
 
 
                 // Entries (for posts page)
@@ -186,8 +184,7 @@ get_header();
                 // Entries Content
                 ob_start();
                 get_template_part( 'template-parts/content', 'none' );
-                $content_none_content = ob_get_contents();
-                ob_end_clean();
+                $content_none_content = ob_get_clean();
                 
                 $entry_entries_cp = $content_none_content;
             }

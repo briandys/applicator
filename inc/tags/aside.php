@@ -11,8 +11,7 @@ if ( ! function_exists( 'applicator_main_header_aside' ) ) {
             
             ob_start();
             dynamic_sidebar( $main_header_aside_term );
-            $aside = ob_get_contents();
-            ob_end_clean();
+            $aside = ob_get_clean();
             
             $main_header_aside = applicator_htmlok( array(
                 'name'      => 'Main Header',
@@ -51,8 +50,7 @@ if ( ! function_exists( 'applicator_main_actions' ) ) {
             
             ob_start();
             dynamic_sidebar( $main_actions_term );
-            $aside = ob_get_contents();
-            ob_end_clean();
+            $aside = ob_get_clean();
             
             // E: Main Actions
             $main_actions_cp = applicator_htmlok( array(
@@ -88,8 +86,7 @@ if ( ! function_exists( 'applicator_main_banner' ) ) {
         
             ob_start();
             dynamic_sidebar( $main_banner_term );
-            $aside = ob_get_contents();
-            ob_end_clean();
+            $aside = ob_get_clean();
             
             
             // E: Main Banner
@@ -125,8 +122,7 @@ if ( ! function_exists( 'applicator_main_content_header_aside' ) ) {
             
             ob_start();
             dynamic_sidebar( $main_content_header_aside_term );
-            $aside = ob_get_contents();
-            ob_end_clean();
+            $aside = ob_get_clean();
             
             $main_content_header_aside = applicator_htmlok( array(
                 'name'      => 'Main Content Header',
@@ -160,8 +156,7 @@ if ( ! function_exists( 'applicator_main_content_aside' ) ) {
             
             ob_start();
             dynamic_sidebar( $main_content_aside_term );
-            $aside = ob_get_contents();
-            ob_end_clean();
+            $aside = ob_get_clean();
             
             $main_content_aside = applicator_htmlok( array(
                 'name'      => 'Main Content',
@@ -200,8 +195,7 @@ if ( ! function_exists( 'applicator_main_footer_aside' ) ) {
             
             ob_start();
             dynamic_sidebar( $main_footer_aside_term );
-            $aside = ob_get_contents();
-            ob_end_clean();
+            $aside = ob_get_clean();
             
             $main_footer_aside = applicator_htmlok( array(
                 'name'      => 'Main Footer',

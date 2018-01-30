@@ -230,8 +230,7 @@
                 // OB: Hook After Main Nav
                 ob_start();
                 applicator_hook_after_main_nav();
-                $hook_after_main_nav_ob_content = ob_get_contents();
-                ob_end_clean();
+                $hook_after_main_nav_ob_content = ob_get_clean();
                 
                 
                 

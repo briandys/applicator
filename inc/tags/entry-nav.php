@@ -81,15 +81,13 @@ if ( ! function_exists('applicator_entry_nav' ) ) {
             // OB: Next Entry Link
             ob_start();
             next_post_link( '%link', $next_entry_navi );
-            $next_entry_link_ob_content = ob_get_contents();
-            ob_end_clean();
+            $next_entry_link_ob_content = ob_get_clean();
             
             
             // OB: Previous Entry Link
             ob_start();
             previous_post_link( '%link', $previous_entry_navi );
-            $previous_entry_link_ob_content = ob_get_contents();
-            ob_end_clean();
+            $previous_entry_link_ob_content = ob_get_clean();
             
             
             // R:

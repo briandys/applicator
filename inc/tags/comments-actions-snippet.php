@@ -102,8 +102,7 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
                 // Comment Creation Disabled
                 ''
             ) );
-            $comments_count_obj_a = ob_get_contents();
-            ob_end_clean();
+            $comments_count_obj_a = ob_get_clean();
             
             $wpg_setting = true;
             

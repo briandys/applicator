@@ -13,10 +13,15 @@ Default Style
 /* ------------------ CSS Variables ------------------ */
 .feature--css-variables--supported
 {
+    /* Checked against white background */
+    /* https://webaim.org/resources/contrastchecker/ */
     --color--chikka-orange: hsl(30, 100%, 50%); /* #ff7f00 */
     --color--panda-blue: hsl(215, 100%, 45%); /* #005fe6 */
     --color--record-red: hsl(0, 100%, 45%); /* #e60000*/
     --color--uhog-green: hsl(120, 100%, 25%); /* #008000 */
+    
+    /* Unchecked */
+    --color--misty-blue: hsl(215, 100%, 93%); /* #d8e8ff */
 }
 
 

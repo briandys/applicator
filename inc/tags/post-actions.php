@@ -32,8 +32,7 @@ if ( ! function_exists( 'applicator_post_actions' ) ) {
             // OB: Edit Post Link
             ob_start();
             edit_post_link( $edit_post_action_content, '', '' );
-            $edit_post_link_ob_content = ob_get_contents();
-            ob_end_clean();
+            $edit_post_link_ob_content = ob_get_clean();
             
             // Edit Post Action
             $edit_post_action_obj = applicator_htmlok( array(
@@ -89,8 +88,7 @@ if ( ! function_exists( 'applicator_comment_actions' ) ) {
             // OB: Edit Comment Link
             ob_start();
             edit_comment_link( $edit_comment_action_content, '', '' );
-            $edit_comment_link_ob_content = ob_get_contents();
-            ob_end_clean();
+            $edit_comment_link_ob_content = ob_get_clean();
             
             // Edit Post Action
             $edit_comment_action_obj = applicator_htmlok( array(

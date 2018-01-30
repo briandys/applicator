@@ -65,8 +65,7 @@ if ( ! function_exists( 'applicator_main_nav' ) ) {
                 ) );
 
             }
-            $main_nav_ob_content = ob_get_contents();
-            ob_end_clean();
+            $main_nav_ob_content = ob_get_clean();
 
             // Main Navigation
             $main_navigation_cp = applicator_htmlok( array(
