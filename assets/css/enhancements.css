@@ -49,7 +49,8 @@ Enhancements Style
 .main-actions-widgets-dismiss---l,
 .main-menu-dismiss---l,
 .main-search-func .widget-heading,
-.comment-respond .sign-in-required-note
+.comment-respond .sign-in-required-note,
+.secondary-content
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }

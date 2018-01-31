@@ -48,6 +48,10 @@
         
         $mainNav = $( '#main-nav' ),
         $navParentItems = $( '.page_item, .menu-item' ),
+        
+        mainContentAsideEnabled = 'main-content-aside--enabled',
+        mainContentAsideDisabled = 'main-content-aside--disabled',
+        $secondaryContent = $( '.secondary-content' ),
             
         $mainSearch,
         
@@ -2512,7 +2516,7 @@
         /* ------------------------ Page Length ------------------------ */
         ( function() {
 
-            if ( ! $webProductCopyright.length || $webProductCopyright.css( 'margin' ) == '-1px' ) {
+            if ( ! $webProductCopyright.length || $webProductCopyright.css( 'margin' ) == '-1px' || $webProductCopyright.is( ':hidden' ) ) {
                 return;
             }
             
@@ -2543,6 +2547,21 @@
             new ResizeSensor( $html, function() {
                 pageHeightCSS();
             } );
+        
+        }() );
+        
+        
+        
+        
+        
+        /* ------------------------ Secondary Content ------------------------ */
+        ( function() {
+
+            if ( $secondaryContent.css( 'margin' ) == '-1px' || $secondaryContent.is( ':hidden' ) ) {
+                $html
+                    .addClass( mainContentAsideDisabled )
+                    .removeClass( mainContentAsideEnabled );
+            }
         
         }() );
     

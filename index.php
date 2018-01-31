@@ -118,10 +118,11 @@ get_header();
         if ( is_singular() ) {
             
             while ( have_posts() ) {
-                the_post();
                 
                 // OB: Entry Content
                 ob_start();
+                
+                the_post();
                 
                 // template-parts > post-content.php
                 applicator_post_content();

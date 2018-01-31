@@ -8,6 +8,8 @@
 .post-header-aside .comments--empty .comments--populated,
 .post-header-aside .comments-actions-snippet.comments--empty.comment-creation--disabled,
 .post-header-aside .comments-actions-snippet.comments--empty,
+.comments-header-aside .comments-actions-snippet.comments--empty.comment-creation--disabled .comments-population,
+.comments--empty.comment-creation--disabled .comments-toggle,
 .comments--empty .comments-empty-note,
 .comment-creation-glabel,
 .comment-form .open-parenthesis---txt,
@@ -1416,6 +1418,7 @@ h6
 /* ------------------ Main Header ------------------ */
 .applicator--theme--main-header .main-info
 {
+    max-width: 100%;
     min-height: 3.5rem;
 }
 
