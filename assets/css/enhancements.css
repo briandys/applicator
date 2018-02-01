@@ -200,6 +200,7 @@ Enhancements Style
 .input-text,
 .b_l,
 input[type="text"],
+input[type="email"],
 input[type="password"],
 input[type="submit"],
 input[type="reset"],
@@ -280,6 +281,7 @@ h1, h2, h3, h4, h5, h6
 /* ------------------ Forms, Active Objects ------------------ */
 .input-text,
 input[type="text"],
+input[type="email"],
 input[type="password"],
 input[type="submit"],
 input[type="reset"],
@@ -313,6 +315,7 @@ input[type="radio"]
 /* Textboxes */
 .input-text,
 input[type="text"],
+input[type="email"],
 input[type="password"],
 textarea,
 select
@@ -379,6 +382,9 @@ input[type="file"]
 textarea
 {
     margin-bottom: -5px; /* To remove the extra space under textarea */
+    
+    height: 4em;
+    min-height: 4em;
 }
 
 

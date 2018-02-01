@@ -41,6 +41,11 @@ Source: http://fontawesome.io/
 
 == Changelog ==
 
+Found a bug? Please report it at: http://applicator.dysinelab.com/report-a-bug/
+
+= 2.2.5.53 =
+Developing Child Themes.
+
 = 2.2.5.26 =
 Complying to Theme Review.
 

@@ -169,3 +169,8 @@ if ( file_exists( $customizer ) ) { require_once( $customizer ); }
 // Customizer Custom Colors
 $customizer_custom_colors = get_parent_theme_file_path( '/inc/functions/customizer-custom-colors.php' );
 if ( file_exists( $customizer_custom_colors ) ) { require_once( $customizer_custom_colors ); }
+
+
+// Meta Description
+$meta_description = get_parent_theme_file_path( '/inc/functions/meta-description.php' );
+if ( file_exists( $meta_description ) ) { require_once( $meta_description ); }

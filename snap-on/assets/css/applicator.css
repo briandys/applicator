@@ -976,6 +976,7 @@ h6
 /* Form Elements */
 .applicator--theme--rounded-rectangles .input-text,
 .applicator--theme--rounded-rectangles input[type="text"],
+.applicator--theme--rounded-rectangles input[type="email"],
 .applicator--theme--rounded-rectangles textarea,
 .applicator--theme--rounded-rectangles input[type="password"],
 .applicator--theme--rounded-rectangles select,
@@ -1468,6 +1469,90 @@ h6
 
 
 
+/* ------------------ Mod: Jetpack / Grunion Contact Form ------------------ */
+.contact-form.commentsblock
+{
+    font-size: 1rem;
+}
+
+.contact-form.commentsblock textarea
+{
+    margin-top: .5em;
+    margin-bottom: .5em;
+    
+    width: 100%;
+    height: 4.5em;
+}
+
+.contact-form.commentsblock input[type=email],
+.contact-form.commentsblock input[type=text],
+.contact-form.commentsblock input[type=url]
+{
+    margin-top: .5em;
+    margin-bottom: .5em;
+    
+    width: 100%;
+    max-width: none;
+}
+
+.contact-form.commentsblock > div
+{
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+
+.contact-form.commentsblock label
+{
+    display: inline-block;
+    
+    margin-bottom: auto;
+    
+    font-weight: normal;
+}
+
+.contact-form.commentsblock label span
+{
+    margin-left: .5em;
+    
+    color: gray;
+    
+    font-size: .75em;
+    font-weight: normal;
+    
+    text-transform: capitalize;
+}
+
+.contact-form.commentsblock .contact-submit
+{
+    margin: 0;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+div[id^="contact-form-"] > h3
+{
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+div[id^="contact-form-"] > h3 > a
+{
+    font-weight: normal;
+    
+    text-transform: capitalize;
+}
+
+div[id^="contact-form-"] > .contact-form-submission
+{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
+
 /* ------------------ GPU Hack ------------------ */
 .main-hr-aside---ct,
 .main-actions-widgets---widget-grp
@@ -1667,47 +1752,3 @@ h6
     }
 
 }
-
-
-
-
-
-/* ------------------ Focus and Hover on Main Header UI Elements ------------------ 
-.tab-key--active .main-menu-toggle---b_l,
-.tab-key--active .main-search--inactive .main-search-toggle---b_l
-{
-    position: relative;
-}
-
-.tab-key--active .main-menu-toggle---b:focus,
-.tab-key--active .main-search--inactive .main-search-toggle---b:focus
-{
-    outline: 0;
-}
-
-.tab-key--active .main-menu-toggle---b_l:before,
-.tab-key--active .main-search--inactive .main-search-toggle---b_l:before
-{
-    content: '';
-    position: absolute;
-    z-index: 0;
-    
-    width: 100%;
-    height: 100%;
-    
-    background-color: #262626;
-    border-radius: 50%;
-    
-    opacity: 0;
-    transform: scale(0);
-    
-    transition: opacity .3s ease-in-out, transform .1s ease-in-out;
-}
-
-.tab-key--active .main-menu-toggle---b:focus .b_l:before,
-.tab-key--active .main-search--inactive .main-search-toggle---b:focus .b_l:before
-{
-    opacity: .25;
-    transform: scale(.85);
-}
-*/
