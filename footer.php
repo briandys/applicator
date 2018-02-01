@@ -44,14 +44,14 @@
                                     array(
                                         'css'   => 'copyright---line',
                                         array(
-                                            'txt'       => get_bloginfo( 'name' ),
+                                            'txt'       => get_bloginfo( 'name', 'display' ),
                                             'css'       => 'wbp-name---txt',
                                             'linked'    => true,
                                             'attr'      => array(
                                                 'a'         => array(
                                                     'href'      => esc_url( home_url( '/' ) ),
                                                     'rel'       => 'home',
-                                                    'title'     => get_bloginfo( 'name' ),
+                                                    'title'     => get_bloginfo( 'name', 'display' ),
                                                 ),
                                             ),
                                         ),

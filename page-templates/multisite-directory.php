@@ -77,7 +77,7 @@ if ( is_multisite() )
                 $site_name = $site_details->blogname;
                 $site_name_css = 'site--'. sanitize_title( $site_details->blogname );
                 $site_path = $site_details->path;
-                $site_description = get_bloginfo( 'description' );
+                $site_description = get_bloginfo( 'description', 'display' );
 
                 // Site Main Name Heading
                 $site_preview_heading_obj = applicator_htmlok( array(

@@ -122,7 +122,7 @@
                             'subtype'       => 'wordpress generated content',
                         ),
                         'id'        => 'main-logo',
-                        'title'     => get_bloginfo( 'name' ),
+                        'title'     => get_bloginfo( 'name', 'display' ),
                         'content'   => array(
                             'object'        => get_custom_logo(),
                         ),

@@ -26,7 +26,6 @@ if ( ! function_exists( 'applicator_meta_description' ) )
             <meta name="description" content="<?php echo esc_attr( strip_tags( stripslashes( $content ) ) ); ?>">
         <?php
         }
-
     }
     add_action( 'wp_head', 'applicator_meta_description' );
 }
