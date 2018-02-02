@@ -1617,7 +1617,7 @@ function applicator_htmlok( $args = array() ) {
     
     if ( ! in_array( $r_subtype, $subtype_article_terms, true ) ) {
     
-        $hr_mu .= '<'.$o_h_elem.' class="h'.$o_branch_css.'---h"><span class="h_l'.$o_branch_css.'---h_l">'.$o_heading_name.'</span></'.$o_h_elem.'>';
+        $hr_mu .= '<'.$o_h_elem.' class="h'.$o_branch_css.'---h" aria-hidden="true"><span class="h_l'.$o_branch_css.'---h_l">'.$o_heading_name.'</span></'.$o_h_elem.'>';
     }
 
     $hr_mu .= $o_hr_content_val;

@@ -1,29 +1,36 @@
 <?php // Meta Description
+// Uses the Content or the Excerpt of a Post or Page for the Meta Description in <head>
 
 
 if ( ! function_exists( 'applicator_meta_description' ) )
 {
     function applicator_meta_description()
     {
-        if ( is_single() )
+        if ( is_single() || is_page() )
         {
-            global $post;
+            $queried_object = get_queried_object();
 
-            if ( ! empty( $post->post_excerpt ) )
+            // Check for Content
+            if ( ! empty( $queried_object->post_content ) )
             {
-                $content = $post->post_excerpt;
+                $content = $queried_object->post_content;
             }
-            elseif ( ! empty( $post->post_content ) )
+            
+            // Check for Excerpt
+            elseif ( ! empty( $queried_object->post_excerpt ) )
             {
-                $content = wp_trim_words( $post->post_content, 55, '&hellip;' );
+                $content = $queried_object->post_excerpt;
             }
+            
             else
             {
                 return;
             }
+            
+            $content = wp_trim_words( wp_strip_all_tags( $content ), 55, '&hellip;' );
             ?>
 
-            <meta name="description" content="<?php echo esc_attr( strip_tags( stripslashes( $content ) ) ); ?>">
+            <meta name="description" content="<?php echo esc_attr( $content ); ?>">
         <?php
         }
     }
