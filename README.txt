@@ -43,6 +43,9 @@ Source: http://fontawesome.io/
 
 Found a bug? Please report it at: http://applicator.dysinelab.com/report-a-bug/
 
+= 2.2.5.60 =
+New feature: Meta Description for Posts and Pages from Content or Excerpt.
+
 = 2.2.5.53 =
 Developing Child Themes.
 

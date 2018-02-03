@@ -251,7 +251,7 @@ if ( ! function_exists( 'applicator_comment_form' ) ) {
             'url',
             esc_attr( $commenter['comment_author_url'] ),
             '64',
-            $website_url_term_attr,
+            'http://',
             $website_url_term_attr,
             '',
             ''
