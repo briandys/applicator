@@ -19,3 +19,7 @@ $GLOBALS['applicator_ellipsis_sep'] = '<span class="sep ellipsis---sep">&hellip;
 
 // Applicator Kid
 $GLOBALS['applicator_applicator_kid_term'] = 'Applicator Kid';
+
+
+// Snap-On
+$GLOBALS['applicator_snap_on_term'] = 'Snap-On';

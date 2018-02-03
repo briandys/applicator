@@ -455,109 +455,6 @@
         }() );
     }
     initGoContentNav( $( '#go-content-nav' ) );
-    
-    
-    
-    
-    
-    // ------------------------- Go to Start Nav
-    function initGoStartNav( $cp ) {
-        
-        if ( ! $aplApplicatorGoStartNav.length ) {
-			return;
-		}
-        
-        funcName = 'go-start-nav-func';
-        
-        $cp
-            .addClass( funcName )
-            .addClass( funcTerm );
-        
-        var goStartNavActCss = 'go-start-nav--active',
-            goStartNavInactCss = 'go-start-nav--inactive',
-            
-            aplgoStartNavActCss = 'applicator--go-start-nav--active',
-            aplgoStartNavInactCss = 'applicator--go-start-nav--inactive',
-            
-            $goStartNavArrowIco = applicatorDataGoStartNav.goStartNavArrowIco,
-            
-            $goStartNaviAL;
-        
-        function goStartNavActivate() {
-            $cp
-                .addClass( goStartNavActCss )
-                .removeClass( goStartNavInactCss );
-            $html
-                .addClass( aplgoStartNavActCss )
-                .removeClass( aplgoStartNavInactCss );
-        }
-        
-        function goStartNavDeactivate() {
-            $cp
-                .addClass( goStartNavInactCss )
-                .removeClass( goStartNavActCss );
-            $html
-                .addClass( aplgoStartNavInactCss )
-                .removeClass( aplgoStartNavActCss );
-        }
-        goStartNavDeactivate();
-        
-        
-        function goStartNav()
-        {   
-            var documentHeight = document.body.offsetHeight,
-                windowHeight = window.innerHeight,
-                windowHeightCriteria = windowHeight * 2;
-            
-            if ( documentHeight > windowHeightCriteria )
-            {   
-                $window.scrolled( function() {
-                    
-                    if ( $cp.hasClass( goStartNavInactCss ) && ( ( windowHeight + window.pageYOffset ) >= documentHeight ) )
-                    {
-                        goStartNavActivate();
-                    }
-                    
-                    if ( $cp.hasClass( goStartNavActCss ) && window.pageYOffset == 0 )
-                    {
-                        goStartNavDeactivate();
-                    }
-                } );
-            }
-        }
-        goStartNav();
-        
-        
-        // Focus In > Activate
-        $goStartNaviA.on( 'focusin.applicator', function() {
-            goStartNavActivate();
-        } );
-
-        
-        // Focus Out > Deactivate
-        $goStartNaviA.on( 'focusout.applicator', function() {
-            goStartNavDeactivate();
-        } );
-
-        
-        // Click > Deactivate
-        $goStartNaviA.on( 'click.applicator', function() {
-            goStartNavDeactivate();
-        } );
-        
-        
-        // Add Icon to Button
-        $goStartNaviAL = $goStartNaviA.find( '.go-start-navi---a_l' );
-        $goStartNaviAL.append( $goStartNavArrowIco );
-        
-        
-        // Resize Sensor
-        new ResizeSensor( $html, function() {
-            goStartNav();
-        } );
-    }
-    
-    initGoStartNav( $( '#go-start-nav' ) );
 
     
     
@@ -2508,6 +2405,117 @@
                 .removeClass( 'window--unloaded' );
             
         }() );
+    
+    
+    
+    
+    
+        // ------------------------- Go to Start Nav
+        function initGoStartNav( $cp ) {
+
+            if ( ! $aplApplicatorGoStartNav.length ) {
+                return;
+            }
+
+            funcName = 'go-start-nav-func';
+
+            $cp
+                .addClass( funcName )
+                .addClass( funcTerm );
+
+            var goStartNavActCss = 'go-start-nav--active',
+                goStartNavInactCss = 'go-start-nav--inactive',
+
+                aplgoStartNavActCss = 'applicator--go-start-nav--active',
+                aplgoStartNavInactCss = 'applicator--go-start-nav--inactive',
+
+                $goStartNavArrowIco = applicatorDataGoStartNav.goStartNavArrowIco,
+
+                $goStartNaviAL;
+
+            function goStartNavActivate() {
+                $cp
+                    .addClass( goStartNavActCss )
+                    .removeClass( goStartNavInactCss );
+                $html
+                    .addClass( aplgoStartNavActCss )
+                    .removeClass( aplgoStartNavInactCss );
+            }
+
+            function goStartNavDeactivate() {
+                $cp
+                    .addClass( goStartNavInactCss )
+                    .removeClass( goStartNavActCss );
+                $html
+                    .addClass( aplgoStartNavInactCss )
+                    .removeClass( aplgoStartNavActCss );
+            }
+            goStartNavDeactivate();
+
+
+            function goStartNav()
+            {   
+                var documentHeight = document.body.offsetHeight,
+                    windowHeight = window.innerHeight,
+                    windowHeightCriteria = windowHeight * 2;
+
+                if ( documentHeight > windowHeightCriteria )
+                {   
+                    
+                    function goStartNavActivateCriteriaCheck()
+                    {
+                        if ( $cp.hasClass( goStartNavInactCss ) && ( ( windowHeight + window.pageYOffset ) >= documentHeight ) )
+                        {
+                            goStartNavActivate();
+                        }
+                    }
+                    goStartNavActivateCriteriaCheck();
+                    
+                    
+                    $window.scrolled( function() {
+
+                        goStartNavActivateCriteriaCheck();
+
+                        if ( $cp.hasClass( goStartNavActCss ) && window.pageYOffset == 0 )
+                        {
+                            goStartNavDeactivate();
+                        }
+                    } );
+                }
+            }
+            goStartNav();
+
+
+            // Focus In > Activate
+            $goStartNaviA.on( 'focusin.applicator', function() {
+                goStartNavActivate();
+            } );
+
+
+            // Focus Out > Deactivate
+            $goStartNaviA.on( 'focusout.applicator', function() {
+                goStartNavDeactivate();
+            } );
+
+
+            // Click > Deactivate
+            $goStartNaviA.on( 'click.applicator', function() {
+                goStartNavDeactivate();
+            } );
+
+
+            // Add Icon to Button
+            $goStartNaviAL = $goStartNaviA.find( '.go-start-navi---a_l' );
+            $goStartNaviAL.append( $goStartNavArrowIco );
+
+
+            // Resize Sensor
+            new ResizeSensor( $html, function() {
+                goStartNav();
+            } );
+        }
+
+        initGoStartNav( $( '#go-start-nav' ) );
         
         
         
@@ -2516,7 +2524,8 @@
         /* ------------------------ Page Length ------------------------ */
         ( function() {
 
-            if ( ! $webProductCopyright.length || $webProductCopyright.css( 'margin' ) == '-1px' || $webProductCopyright.is( ':hidden' ) ) {
+            if ( ! $webProductCopyright.length || $webProductCopyright.css( 'margin' ) == '-1px' || $webProductCopyright.is( ':hidden' ) )
+            {
                 return;
             }
             
@@ -2524,16 +2533,16 @@
                 
                 pageHeight = $webProduct.height();
 
-                if ( ( pageHeight ) <= ( window.innerHeight ) ) {
-
+                if ( ( pageHeight ) <= ( window.innerHeight ) )
+                {
                     $html
                         .addClass( pageShortCss )
                         .removeClass( pageLongCss );
 
                     $webProductContainer.css( 'padding-bottom', copyrightHeight + 'px' );
                 }
-                else {
-
+                else
+                {
                     $html
                         .addClass( pageLongCss )
                         .removeClass( pageShortCss );

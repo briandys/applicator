@@ -2375,11 +2375,6 @@ button:hover .dismiss-icon
     width: 100%;
 }
 
-.aside .widget select
-{
-    width: calc( 100% - ( 1rem * 2 ) );
-}
-
 .aside .widget_nav_menu .widget-content---ct_cr > *
 {
     padding: 0;
@@ -2564,7 +2559,7 @@ button:hover .dismiss-icon
 
 
 /* ------------------ Go to Start Nav - Function ------------------ */
-.applicator--go-start-nav.dom--unready .go-start-nav
+.applicator--go-start-nav.window--unloaded .go-start-nav
 {
     display: none;
 }

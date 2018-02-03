@@ -31,9 +31,9 @@ $enhancements_styles_scripts = get_parent_theme_file_path( '/inc/styles-scripts-
 if ( file_exists( $enhancements_styles_scripts ) ) { require_once( $enhancements_styles_scripts ); }
 
 
-// Snap-on
-$snapon = get_parent_theme_file_path( '/snap-on/index.php' );
-if ( file_exists( $snapon ) ) { require_once( $snapon ); }
+// Snap-On
+$snap_on = get_parent_theme_file_path( '/snap-on/index.php' );
+if ( file_exists( $snap_on ) ) { require_once( $snap_on ); }
 
 
 // Main Nav
@@ -116,8 +116,8 @@ $comment_form = get_parent_theme_file_path( '/inc/functions/comment-form.php' );
 if ( file_exists( $comment_form ) ) { require_once( $comment_form ); }
 
 
-// Post Content
-$post_content = get_parent_theme_file_path( '/inc/functions/post-content.php' );
+// Entry Content
+$post_content = get_parent_theme_file_path( '/inc/functions/entry-content.php' );
 if ( file_exists( $post_content ) ) { require_once( $post_content ); }
 
 
@@ -151,11 +151,6 @@ $icons = get_parent_theme_file_path( '/inc/functions/icons.php' );
 if ( file_exists( $icons ) ) { require_once( $icons ); }
 
 
-// Snap-ons
-$snapons = get_parent_theme_file_path( '/snap-ons.php' );
-if ( file_exists( $snapons ) ) { require_once( $snapons ); }
-
-
 // Custom Fonts
 $custom_fonts = get_parent_theme_file_path( '/inc/functions/custom-fonts.php' );
 if ( file_exists( $custom_fonts ) ) { require_once( $custom_fonts ); }
@@ -174,3 +169,13 @@ if ( file_exists( $customizer_custom_colors ) ) { require_once( $customizer_cust
 // Meta Description
 $meta_description = get_parent_theme_file_path( '/inc/functions/meta-description.php' );
 if ( file_exists( $meta_description ) ) { require_once( $meta_description ); }
+
+
+// Main Content Header
+$main_content_header = get_parent_theme_file_path( '/inc/functions/main-content-header.php' );
+if ( file_exists( $main_content_header ) ) { require_once( $main_content_header ); }
+
+
+// Main Content Footer
+$main_content_footer = get_parent_theme_file_path( '/inc/functions/main-content-footer.php' );
+if ( file_exists( $main_content_footer ) ) { require_once( $main_content_footer ); }
