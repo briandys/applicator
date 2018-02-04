@@ -1099,11 +1099,6 @@ img.size-medium
     cursor: text;
 }
 
-.view-granularity--detail.feature--no-touchevents .post-title---a
-{
-    pointer-events: none;
-}
-
 .page-template--sub-pages.feature--no-touchevents .sub-post-content .post-title---a
 {
     pointer-events: auto;

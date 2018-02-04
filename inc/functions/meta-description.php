@@ -9,17 +9,17 @@ if ( ! function_exists( 'applicator_meta_description' ) )
         if ( is_single() || is_page() )
         {
             $queried_object = get_queried_object();
-
-            // Check for Content
-            if ( ! empty( $queried_object->post_content ) )
-            {
-                $content = $queried_object->post_content;
-            }
             
             // Check for Excerpt
-            elseif ( ! empty( $queried_object->post_excerpt ) )
+            if ( ! empty( $queried_object->post_excerpt ) )
             {
                 $content = $queried_object->post_excerpt;
+            }
+
+            // Check for Content
+            elseif ( ! empty( $queried_object->post_content ) )
+            {
+                $content = $queried_object->post_content;
             }
             
             else

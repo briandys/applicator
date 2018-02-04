@@ -341,7 +341,8 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
         
         
         // Page Template
-        if ( is_page() ) {
+        if ( is_page() )
+        {
         
             $template_file = get_post_meta( get_the_ID(), '_wp_page_template', TRUE );
         
@@ -353,11 +354,13 @@ if ( ! function_exists( 'applicator_html_class' ) ) {
                 echo ' '. 'page-template--generic';
             }
             
-            if ( is_page_template( 'page-templates/sub-pages.php' ) )
-            {
-                echo ' '. 'page-template--sub-pages';
-            }
-            
+        }
+        
+        
+        // Specific Page Template            
+        if ( is_page_template( 'page-templates/sub-pages.php' ) )
+        {
+            echo ' '. 'page-template--sub-pages';
         }
         
         
