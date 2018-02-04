@@ -1,3 +1,5 @@
+<?php get_header(); ?>
+
 <div class="hr main-content---hr">
     <div class="hr_cr main-content---hr_cr">
 

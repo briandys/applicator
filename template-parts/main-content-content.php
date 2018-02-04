@@ -3,19 +3,19 @@
         
         <?php
         
-        // single.php
-        if ( is_singular() ) {
-            
-            while ( have_posts() ) {
-                
+        // Entry
+        if ( is_singular() )
+        {
+            while ( have_posts() )
+            {
                 the_post();
-                
+
                 // ------ OB: Entry Content
                 ob_start();
                 applicator_entry_content(); // template-parts > entry-content.php
                 comments_template(); // comments.php
                 $entry_content = ob_get_clean();
-                
+
                 // Entry (for single.php)
                 $entry_entries_cp = applicator_htmlok( array(
                     'name'      => 'Entry',
@@ -26,18 +26,18 @@
                         'component'     => $entry_content,
                     ),
                 ) );
-                
             }
         }
-        
+
         // Entries
-        else {
-            
-            if ( have_posts() ) {
-                
+        else
+        {
+            if ( have_posts() )
+            {
                 // OB: Entries Content
                 ob_start();
-                while ( have_posts() ) {
+                while ( have_posts() )
+                {
                     the_post();
 
                     // template-parts > entry-content.php
@@ -59,18 +59,17 @@
                         ),
                     ),
                 ) );
-                
             }
-            
+
             // content-none.php
-            else {
-                
+            else
+            {
                 // OB: Content None Content
                 // Entries Content
                 ob_start();
                 get_template_part( 'template-parts/content', 'none' );
                 $content_none_content = ob_get_clean();
-                
+
                 $entry_entries_cp = $content_none_content;
             }
         }

@@ -1341,11 +1341,6 @@ img.size-medium
     transition: opacity .3s ease-in-out;
 }
 
-.view-granularity--detail .post-banner-vis---a
-{
-    pointer-events: none;
-}
-
 
 
 
