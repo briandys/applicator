@@ -27,7 +27,7 @@ Enhancements Style
 .single-post .main-content-heading,
 .attachment .main-content-heading,
 .page .main-content-heading,
-.multisite-directory--in .main-content-heading,
+.page-template--multisite-directory .main-content-heading,
 .page-nav---h,
 .page-nav .screen-reader-text,
 .entry-nav---h,
@@ -1094,7 +1094,7 @@ img.size-medium
     padding: 1em 1rem;
 }
 
-.view-granularity--detail.feature--no-touchevents .post-title---h
+.page-template--sub-pages.feature--no-touchevents .sub-post-content .post-title---h
 {
     cursor: text;
 }
@@ -1186,11 +1186,6 @@ img.size-medium
 {
     padding-top: .25em;
     padding-bottom: .25em;
-}
-
-.aside .widget-content---ct_cr > select
-{
-    margin: .75em 1rem;
 }
 
 .aside .widget-content---ct_cr > img
@@ -1320,7 +1315,7 @@ img.size-medium
 {
     position: relative;
     
-    min-height: 42vw;
+    min-height: 320px;
     
     background-color: #262626;
 }
@@ -3639,41 +3634,19 @@ button:hover .dismiss-icon
 @media only screen and ( min-width: 64em )
 {
     
-    .dom--unready .post-content---ct_cr > p
-    {
-        width: 120rem;
-    }
-    
     .main-banner-aside--disabled .main-banner---cr
     {
-        min-height: 28vw;
+        min-height: 320px;
     }
 
     .main-banner-aside---ct
     {
-        min-height: 28vw;
+        min-height: 320px;
     }
     
     .post-banner-visual
     {
         position: relative;
-
-        min-height: 28vw;
     }
 
-}
-
-@media only screen and ( min-width: 64em ) and ( min-height: 35em )
-{
-    
-    .main-banner-aside--disabled .main-banner---cr
-    {
-        min-height: 42vw;
-    }
-    
-    .main-banner-aside---ct
-    {
-        min-height: 42vw;
-    }
-    
 }

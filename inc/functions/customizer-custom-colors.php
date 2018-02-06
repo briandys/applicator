@@ -8,7 +8,7 @@ if ( ! function_exists( 'applicator_colors_css_wrap' ) ) {
             return;
         }
 
-        require_once( get_parent_theme_file_path( '/inc/functions/customizer-color-patterns.php' ) );
+        require( get_parent_theme_file_path( '/inc/functions/customizer-color-patterns.php' ) );
 
         $hue = absint( get_theme_mod( 'colorscheme_hue', 250 ) );
         ?>

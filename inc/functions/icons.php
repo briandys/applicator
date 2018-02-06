@@ -3,11 +3,7 @@
 
 function applicator_include_svg_icons() {
         
-    $svg_icons = get_parent_theme_file_path( '/assets/img/vector-icons.svg' );
-
-    if ( file_exists( $svg_icons ) ) {
-        require_once( $svg_icons );
-    }
+    require_once( get_parent_theme_file_path( '/assets/img/vector-icons.svg' ) );
 
 }
 add_action( 'wp_footer', 'applicator_include_svg_icons', 9999 );

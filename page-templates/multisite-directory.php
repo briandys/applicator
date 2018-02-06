@@ -3,6 +3,7 @@
 // Template Name: Multisite Directory
 // Displays the preview of all sites in a Multisite
 
+
 if ( is_multisite() )
 {
     get_header();
@@ -331,6 +332,7 @@ if ( is_multisite() )
 }
 
 // If Multisite is not enabled, use Index
-else {
+else
+{
     get_template_part( 'index' );
 }

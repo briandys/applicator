@@ -21,8 +21,8 @@
 .logged-in .commenter-comment-creation-flabel,
 .comments---hr .comments-nav,
 .site--root .site-main-info,
-.multisite-directory--in .post-banner-visual img,
-.multisite-directory--in .entry-content,
+.page-template--multisite-directory .post-banner-visual img,
+.page-template--multisite-directory .entry-content,
 
 .applicator--theme--post-meta .post-published-glabel,
 .applicator--theme--post-meta .post-modified-glabel,
@@ -151,7 +151,7 @@ h6
     text-decoration: underline;
 }
 
-.view-granularity--detail .post-title---a
+.post-title---a
 {
     color: #262626;
 }
@@ -408,18 +408,18 @@ h6
 
 
 /* ------------------ Multisite Directory - Post Banner Visual ------------------ */
-.multisite-directory--in .post-banner-visual
+.page-template--multisite-directory .post-banner-visual
 {
     position: relative;
     z-index: -1;
 }
 
-.multisite-directory--in .post-banner-visual--enabled .post---hr_cr
+.page-template--multisite-directory .post-banner-visual--enabled .post---hr_cr
 {
     position: relative;
 }
 
-.multisite-directory--in .post-banner-vis---a_l
+.page-template--multisite-directory .post-banner-vis---a_l
 {
     background-size: cover;
     background-position: center;
@@ -427,7 +427,7 @@ h6
     background-color: hsla(0, 0%, 0%, .85);
 }
 
-.multisite-directory--in .post .post-banner-vis---a
+.page-template--multisite-directory .post .post-banner-vis---a
 {
     position: relative;
     
@@ -436,7 +436,7 @@ h6
     height: 10rem;
 }
 
-.multisite-directory--in .post-banner-vis---a::before
+.page-template--multisite-directory .post-banner-vis---a::before
 {
     content: '';
     position: absolute;
@@ -460,18 +460,18 @@ h6
 
 
 /* ------------------ Multisite Directory - Main Post Title ------------------ */
-.multisite-directory--in .main-post-title---ct_cr
+.page-template--multisite-directory .main-post-title---ct_cr
 {
     text-align: center;
 }
 
-.multisite-directory--in .post-banner-visual--enabled .post-title
+.page-template--multisite-directory .post-banner-visual--enabled .post-title
 {
     display: block;
     padding: 0;
 }
 
-.multisite-directory--in .post-banner-visual--enabled .post-title---a
+.page-template--multisite-directory .post-banner-visual--enabled .post-title---a
 {
     position: absolute;
     left: 0;
@@ -483,7 +483,7 @@ h6
     overflow: hidden;
 }
 
-.multisite-directory--in .post-banner-visual--enabled .post-title---a_l
+.page-template--multisite-directory .post-banner-visual--enabled .post-title---a_l
 {   
     position: absolute;
     left: 50%;
@@ -497,12 +497,12 @@ h6
     color: white;
 }
 
-.multisite-directory--in .post-title---a
+.page-template--multisite-directory .post-title---a
 {
     text-decoration: none;
 }
 
-.multisite-directory--in .post-banner-visual--enabled .post-title---a_l
+.page-template--multisite-directory .post-banner-visual--enabled .post-title---a_l
 {
     display: flex;
 }
@@ -512,12 +512,12 @@ h6
 
 
 /* ------------------ Multisite Directory - Post ------------------ */
-.multisite-directory--in .post---cr
+.page-template--multisite-directory .post---cr
 {
     padding: 0;
 }
 
-.multisite-directory--in .post-title---a
+.page-template--multisite-directory .post-title---a
 {
     color: hsl(215, 100%, 45%);
 }
@@ -1397,7 +1397,7 @@ h6
     flex: 1 100%;
 }
 
-.applicator--theme--post-format--status.multisite-directory--in .format-status .post---cr
+.applicator--theme--post-format--status.page-template--multisite-directory .format-status .post---cr
 {
     justify-content: center;
 }
@@ -1785,17 +1785,17 @@ div[id^="contact-form-"] > .contact-form-submission
     
     
     /* ------------ Layout - Multisite Directory ------------ */
-    .applicator--theme--layout.main-content-aside--enabled.multisite-directory--in .main-content---ct_cr
+    .applicator--theme--layout.main-content-aside--enabled.page-template--multisite-directory .main-content---ct_cr
     {
         display: block;
     }
 
-    .applicator--theme--layout.main-content-aside--enabled.multisite-directory--in .primary-content 
+    .applicator--theme--layout.main-content-aside--enabled.page-template--multisite-directory .primary-content 
     {
         flex: none;
     }
 
-    .applicator--theme--layout.main-content-aside--enabled.multisite-directory--in .secondary-content 
+    .applicator--theme--layout.main-content-aside--enabled.page-template--multisite-directory .secondary-content 
     {
         flex: none;
     }
