@@ -1572,6 +1572,36 @@ div[id^="contact-form-"] > .contact-form-submission
 
 
 
+/* ------------------ Mod: Table Interactivity ------------------ */
+.post-content tr,
+.post-content td,
+.post-content th
+{
+    transition: background-color .2s ease-in-out;
+}
+
+.post-content tr:hover
+{
+    background-color: hsla(0, 0%, 0%, .0625);
+}
+
+.post-content td:hover,
+.post-content th:hover
+{
+    background-color: hsla(0, 0%, 0%, .0625);
+}
+
+.post-content .cell--clicked,
+.post-content .cell--clicked:hover
+{
+    background-color: hsl(215, 100%, 45%);
+    color: white;
+}
+
+
+
+
+
 /* ------------------ GPU Hack ------------------ */
 .main-hr-aside---ct,
 .main-actions-widgets---widget-grp

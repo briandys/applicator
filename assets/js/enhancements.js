@@ -2385,6 +2385,82 @@
 
         }() );
         
+        
+        
+        
+        
+        // ------------------------------------ Table Cell Clicks
+        ( function() {
+            
+            var $postContent = $( '.post-content' ),
+                $cell = $postContent.find( 'td, th' ),
+                cellOnCSS = 'cell--clicked',
+                cellOffCSS = 'cell--unclicked';
+            
+            
+            // On
+            function cellOn()
+            {
+                var $this = $( this );
+                
+                $this
+                    .addClass( cellOnCSS )
+                    .removeClass( cellOffCSS );
+            }
+            
+            
+            // Off
+            function cellOff()
+            {
+                var $this = $( this );
+                
+                $this
+                    .addClass( cellOffCSS )
+                    .removeClass( cellOnCSS );
+            }
+            
+            
+            // Toggle
+            function cellToggle()
+            {
+                var $this = $( this );
+                
+                if ( $this.hasClass( cellOffCSS ) )
+                {
+                    cellOn.apply( $this );
+                }
+                else if ( $this.hasClass( cellOnCSS ) )
+                {
+                    cellOff.apply( $this );
+                }
+            }
+            
+            
+            // Internal Click
+            $cell.each( function() {
+                
+                var $this = $( this );
+                
+                cellOff.apply( this );
+                
+                $this.on( 'click.applicator', function() {
+                    
+                    var $this = $( this );
+                    
+                    cellToggle.apply( $this );
+                } );
+            } );
+            
+
+            // External Click
+            $document.on( 'touchmove.applicator click.applicator', function ( e ) {
+                if ( $cell.hasClass( cellOnCSS ) && ! $( e.target ).closest( $( 'table' ) ).length ) {
+                    cellOff.apply( $cell );
+                }
+            } );
+            
+        }() );
+        
     
     } );
     /* ------------------------ End DOM Ready ------------------------ */

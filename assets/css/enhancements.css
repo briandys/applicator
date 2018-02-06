@@ -1517,6 +1517,11 @@ img.size-medium
 
 
 /* ------------------ Main Name ------------------ */
+.dom--unready .main-name
+{
+    visibility: hidden;
+}
+
 .main-name
 {
     display: flex;
@@ -1559,6 +1564,11 @@ img.size-medium
 
 
 /* ------------------ Main Description ------------------ */
+.dom--unready .main-description
+{
+    visibility: hidden;
+}
+
 .main-description
 {
     display: flex;
@@ -1594,12 +1604,6 @@ img.size-medium
 
 
 /* ------------------ Main Logo  ------------------ */
-.applicator--main-logo.dom--unready .main-name,
-.applicator--main-logo.dom--unready .main-description
-{
-    visibility: hidden;
-}
-
 .main-logo
 {
     position: absolute;
@@ -3101,8 +3105,6 @@ button:hover .dismiss-icon
 
 
 /* ------------------ Main Menu ------------------ */
-
-/* Hide while DOM Unready */
 .applicator--main-menu.dom--unready .main-header-aside
 {
     display: none;
