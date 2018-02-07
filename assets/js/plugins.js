@@ -59,7 +59,13 @@
 function sanitizeTitle( text ) {
     return text.replace( /[^a-z0-9]/g, function( s ) {
         var c = s.charCodeAt( 0 );
-        if ( c == 32 ) return '-';
+        if ( c == 32 ) return '-'; // Space
+        if ( c >= 33 && c <= 47 ) return ''; // Symbols
+        if ( c >= 91 && c <= 96 ) return ''; // Symbols
+        if ( c >= 160 && c <= 255 ) return ''; // Symbols
+        if ( c >= 338 && c <= 402 ) return ''; // Symbols
+        if ( c >= 8211 && c <= 8212 ) return '-'; // En and Em Dash
+        if ( c >= 8216 && c <= 8482 ) return '-'; // Symbols
         if ( c >= 65 && c <= 90 ) return s.toLowerCase();
         return ( '000' + c.toString( 16 ) ).slice( -4 );
     } );
