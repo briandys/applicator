@@ -535,6 +535,11 @@ h6
     border-right-width: 1px;
 }
 
+.post-content table .section
+{
+    border-top: 2px solid hsl( 0, 0%, 90% );
+}
+
 /* Table Header */
 .applicator--theme--table .post-content th,
 .applicator--theme--table .comment-content th

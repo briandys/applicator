@@ -63,113 +63,115 @@
     
     
     // ------------------------------------ HTML_OK Component Markup
-    function htmlokCP( $cp, $name, $css ) {
+    var htmlOkFn = {
+        
+        cp: function( $cp, $name, $css )
+        {
                 
-        var cpMU,
-            crMU,
-            hrMU,
-            hrCrMU,
-            hMU,
-            hLMU,
-            ctMU,
-            ctCrMU;
+            var cpMU,
+                crMU,
+                hrMU,
+                hrCrMU,
+                hMU,
+                hLMU,
+                ctMU,
+                ctCrMU;
 
-        // Content Markup
-        ctCrMU = $( '<div />', {
-            'class': 'ct_cr ' + $cp + '---ct_cr'
-        } );
+            // Content Markup
+            ctCrMU = $( '<div />', {
+                'class': 'ct_cr ' + $cp + '---ct_cr'
+            } );
 
-        ctMU = $( '<div />', {
-            'class': 'ct ' + $cp + '---ct'
-        } )
-            .append( ctCrMU);
+            ctMU = $( '<div />', {
+                'class': 'ct ' + $cp + '---ct'
+            } )
+                .append( ctCrMU);
+
+            // Header Markup
+            hLMU = $( '<span />', {
+                'class': 'h_l ' + $cp + '---h_l'
+            } )
+            .text( $name );
+
+            hMU = $( '<div />', {
+                'class': 'h ' + $cp + '---h'
+            } )
+                .append( hLMU);
+
+            hrCrMU = $( '<div />', {
+                'class': 'hr_cr ' + $cp + '---hr_cr'
+            } )
+                .append( hMU);
+
+            hrMU = $( '<div />', {
+                'class': 'hr ' + $cp + '---hr'
+            } )
+                .append( hrCrMU);
+
+            // Container Markup
+            crMU = $( '<div />', {
+                'class': 'cr ' + $cp + '---cr'
+            } )
+                .append( hrMU)
+                .append( ctMU);
+
+            // Component Markup
+            cpMU = $( '<div />', {
+                'id': $cp,
+                'class': 'cp ' + $css + ' ' + $cp,
+                'data-name': $name + ' ' + 'CP'
+            } )
+                .append( crMU );
+
+            return cpMU;
+        },
         
-        // Header Markup
-        hLMU = $( '<span />', {
-            'class': 'h_l ' + $cp + '---h_l'
-        } )
-        .text( $name );
         
-        hMU = $( '<div />', {
-            'class': 'h ' + $cp + '---h'
-        } )
-            .append( hLMU);
-        
-        hrCrMU = $( '<div />', {
-            'class': 'hr_cr ' + $cp + '---hr_cr'
-        } )
-            .append( hMU);
+        buttonObj: function( $obj, $name, $label, $icon, $css )
+        {
 
-        hrMU = $( '<div />', {
-            'class': 'hr ' + $cp + '---hr'
-        } )
-            .append( hrCrMU);
+            var toggleObjMU,
+                toggleButtonObjMU,
+                toggleButtonLabelObjMU,
+                toggleButtonTextLabelObjMU,
+                toggleButtonLabelTextObjMU;
 
-        // Container Markup
-        crMU = $( '<div />', {
-            'class': 'cr ' + $cp + '---cr'
-        } )
-            .append( hrMU)
-            .append( ctMU);
-        
-        // Component Markup
-        cpMU = $( '<div />', {
-            'id': $cp,
-            'class': 'cp ' + $css + ' ' + $cp,
-            'data-name': $name + ' ' + 'CP'
-        } )
-            .append( crMU );
+            toggleButtonLabelTextObjMU = $( '<span />', {
+                'class': 'txt ' + showHideTxtCss,
+                'text': $label
+            } );
 
-        return cpMU;
+            toggleButtonTextLabelObjMU = $( '<span />', {
+                'class': 'l ' + $obj + '---l'
+            } )
+                .append( toggleButtonLabelTextObjMU );
+
+            toggleButtonLabelObjMU = $( '<span />', {
+                'class': 'b_l ' + $obj + '---b_l'
+            } )
+                .append( toggleButtonTextLabelObjMU )
+                .append( $icon );
+
+            // Button
+            toggleButtonObjMU = $( '<button />', {
+                'id' : $obj + '---b',
+                'class': 'b ' + $obj + '---b',
+                'title': $label
+            } )
+                .append( toggleButtonLabelObjMU );
+
+            // Object
+            toggleObjMU = $( '<div />', {
+                'class': 'obj ' + $css + ' ' + $obj,
+                'data-name': $name + ' OBJ'
+            } )
+                .append( toggleButtonObjMU );
+
+            return toggleObjMU;
+
+        }
     }
     
-    
-    
-    
-    
-    // ------------------------------------ HTML_OK Button Object Markup
-    function htmlokButtonOBJ( $obj, $name, $label, $icon, $css ) {
-        
-        var toggleObjMU,
-            toggleButtonObjMU,
-            toggleButtonLabelObjMU,
-            toggleButtonTextLabelObjMU,
-            toggleButtonLabelTextObjMU;
-        
-        toggleButtonLabelTextObjMU = $( '<span />', {
-            'class': 'txt ' + showHideTxtCss,
-            'text': $label
-        } );
-
-        toggleButtonTextLabelObjMU = $( '<span />', {
-            'class': 'l ' + $obj + '---l'
-        } )
-            .append( toggleButtonLabelTextObjMU );
-
-        toggleButtonLabelObjMU = $( '<span />', {
-            'class': 'b_l ' + $obj + '---b_l'
-        } )
-            .append( toggleButtonTextLabelObjMU )
-            .append( $icon );
-
-        // Button
-        toggleButtonObjMU = $( '<button />', {
-            'id' : $obj + '---b',
-            'class': 'b ' + $obj + '---b',
-            'title': $label
-        } )
-            .append( toggleButtonLabelObjMU );
-
-        // Object
-        toggleObjMU = $( '<div />', {
-            'class': 'obj ' + $css + ' ' + $obj,
-            'data-name': $name + ' OBJ'
-        } )
-            .append( toggleButtonObjMU );
-        
-        return toggleObjMU;
-        
-    }
     
     
     
@@ -259,9 +261,7 @@
     // https://stackoverflow.com/a/21811463
     
     
-    var cycleTabbingFn;
-    
-    cycleTabbingFn = {
+    var cycleTabbingFn = {
         
         // On
         tabOn: function( $cp ) {
@@ -553,7 +553,7 @@
             
             // Toggle
             $mainHrAsH.after(
-                htmlokButtonOBJ(
+                htmlOkFn.buttonObj(
                     'main-menu-toggle',
                     'Main Menu Toggle',
                     $mainMenuShowL,
@@ -564,7 +564,7 @@
             
             // Dismiss
             $mainHeaderAsideCtCr.prepend(
-                htmlokButtonOBJ(
+                htmlOkFn.buttonObj(
                     'main-menu-dismiss',
                     'Main Menu Dismiss',
                     $mainMenuHideL,
@@ -1058,7 +1058,7 @@
             $mainSearchH = $cp.find( $( '.search---h' ) );
             
             $mainSearchH.after(
-                htmlokButtonOBJ(
+                htmlOkFn.buttonObj(
                     'main-search-toggle',
                     'Main Search Toggle',
                     $mainSearchHideL,
@@ -1275,7 +1275,7 @@
         // Create Main Actions Widgets
         ( function() {
 
-            $mainActionsWidgetsMU = htmlokCP(
+            $mainActionsWidgetsMU = htmlOkFn.cp(
                 'main-actions-widgets',
                 'Main Actions Widgets',
                 'aside'
@@ -1339,7 +1339,7 @@
             
             // Create Toggle Button
             $mainActionsWidgetsH.after(
-                htmlokButtonOBJ(
+                htmlOkFn.buttonObj(
                     'main-actions-widgets-toggle',
                     'Main Actions Widgets Toggle',
                     $mainActionsWidgetsToggleLabel,
@@ -1350,7 +1350,7 @@
 
             // Create Dismiss Button
             $mainActionsWidgetsCtCr.prepend(
-                htmlokButtonOBJ(
+                htmlOkFn.buttonObj(
                     'main-actions-widgets-dismiss',
                     'Main Actions Widgets Dismiss',
                     $mainActionsWidgetsToggleHideLabel,

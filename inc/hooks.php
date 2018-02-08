@@ -23,3 +23,9 @@ function applicator_hook_after_main_post_title() {
 function applicator_hook_after_post_header_aside() {
     do_action( 'applicator_hook_after_post_header_aside' );
 }
+
+
+// content.php
+function applicator_hook_after_post_meta_header_aside() {
+    do_action( 'applicator_hook_after_post_meta_header_aside' );
+}

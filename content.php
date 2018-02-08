@@ -156,11 +156,9 @@ $post_classes = implode( ' ', $post_classes );
                     'content'   => array(
                         'constructor'   => array(
                             
-                            // Post Meta
                             $post_meta,
                             
-                            // Post Banner Visual | inc/tags/post-banner-visual.php
-                            applicator_post_banner_visual(),
+                            applicator_hook_after_post_meta_header_aside(),
                             
                             // inc/tags/comments-actions-snippet-cp.php
                             applicator_comments_actions_snippet(),
