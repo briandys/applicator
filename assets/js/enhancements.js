@@ -170,7 +170,7 @@
             return toggleObjMU;
 
         }
-    }
+    };
     
     
     
@@ -179,79 +179,66 @@
     
     // ------------------------------------ Transition Here and There
     
-    // Variables
-    var hereTerm = 'here',
+    var transitionFn,
+        hereTerm = 'here',
         thereTerm = 'there',
         transitionEnd = 'transitionend.applicator webkitTransitionEnd.applicator oTransitionEnd.applicator otransitionend.applicator';
-    
-    
-    // Transition Entrance
-    function transHereCSS( $elem ) {
-        $elem
-            .addClass( hereTerm )
-            .removeClass( thereTerm );
-    }
-    
-    // Transition Exit
-    function transThereCSS( $elem ) {
-        $elem
-            .addClass( thereTerm )
-            .removeClass( hereTerm );
-    }
-    
-    function transHere( $elem, $property, $target ) {
+
+
+    transitionFn = {
         
-        $elem.on( transitionEnd, function() {
-            if ( event.propertyName == $property ) {
-                transHereCSS( $target );
-            }
-        } );
         
-    }
-    
-    function transThere( $elem, $property, $target ) {
+        // Entrance CSS
+        hereCSS: function( $elem )
+        {
+            $elem
+                .addClass( hereTerm )
+                .removeClass( thereTerm );
+        },
+
         
-        if ( $target.hasClass( hereTerm ) ) {
+        // Exit CSS
+        thereCSS: function( $elem )
+        {
+            $elem
+                .addClass( thereTerm )
+                .removeClass( hereTerm );
+        },
+
         
+        // Entrance
+        here: function( $elem, $property, $target )
+        {
             $elem.on( transitionEnd, function() {
-                if ( event.propertyName == $property ) {
-                    transThereCSS( $target );
+                if ( event.propertyName == $property )
+                {
+                    transitionFn.hereCSS( $target );
                 }
             } );
+        },
 
+        
+        // Exit
+        there: function( $elem, $property, $target )
+        {
+            if ( $target.hasClass( hereTerm ) ) {
+
+                $elem.on( transitionEnd, function() {
+                    if ( event.propertyName == $property )
+                    {
+                        transitionFn.thereCSS( $target );
+                    }
+                } );
+            }
         }
-    
-    }
-    
+    };
     
     
     
     
     
     
-    // ------------------------------------ Remove Hash
-    // https://stackoverflow.com/a/5298684
-    function removeHash() { 
-        window.history.pushState( '', document.title, window.location.pathname );
-    }
-        
     
-    
-    
-    
-    
-    // ------------------------------------ Overlay
-    function overlayActivate( funcName ) {
-        
-        overlayMu = $( '<div />', {
-            'id'   : overlayTerm + '--' + funcName,
-            'class': overlayTerm + ' ' + overlayTerm + '--' + funcName,
-            'role' : 'presentation'
-        } );
-        
-        $aplWildcardCr.append( overlayMu );
-        
-    }
     
     
     
@@ -259,7 +246,6 @@
     
     // ------------------------------------ Cycle Tabbing
     // https://stackoverflow.com/a/21811463
-    
     
     var cycleTabbingFn = {
         
@@ -300,7 +286,7 @@
             firstInput.off( 'keydown.applicator' );
         }
         
-    }
+    };
     
     
     
@@ -308,41 +294,67 @@
     
     
     
-    // ------------------------------------ Remove Empty Containers
-    function removeEmptyInit( $elem ) {
-        $( $elem ).each( function() {
-            var $this = $( this );
+    // ------------------------------------ Generic Functions
+    
+    var genericFn = {
+        
+        
+        // Remove Empty Elements
+        removeEmptyElements: function( $elem ) {
+            $( $elem ).each( function() {
+                var $this = $( this );
 
-            if ( $this.html().replace(/\s|&nbsp;/g, '' ).length == 0 ) {
-                $this.remove();
-            }
-        } );
-    }
-    
-    
-    
-    
-    
-    // ------------------------------------ Wrap Text Nodes
-    function wrapTextNode( $elem ) {
+                if ( $this.html().replace(/\s|&nbsp;/g, '' ).length == 0 ) {
+                    $this.remove();
+                }
+            } );
+        },
+        
+        
+        // Wrap Text Nodes
+        wrapTextNode: function( $elem ) {
                 
-        var $textNodeMU = $( '<span />', { 'class': 'text-node' } );
+            var $textNodeMU = $( '<span />', { 'class': 'text-node' } );
 
-        // https://stackoverflow.com/a/18727318
-        $elem.contents().filter( function() {
+            // https://stackoverflow.com/a/18727318
+            $elem.contents().filter( function() {
 
-            // Get only the text nodes
-            return this.nodeType === 3;
-        } ).wrap( $textNodeMU );
+                // Get only the text nodes
+                return this.nodeType === 3;
+            } ).wrap( $textNodeMU );
 
-    }
+        },
+        
+        
+        // Remove Hash
+        // https://stackoverflow.com/a/5298684
+        removeHash: function() { 
+            window.history.pushState( '', document.title, window.location.pathname );
+        },
+        
+        
+        // Overlay Activate
+        overlayActivate: function( funcName ) {
+
+            overlayMu = $( '<div />', {
+                'id'   : overlayTerm + '--' + funcName,
+                'class': overlayTerm + ' ' + overlayTerm + '--' + funcName,
+                'role' : 'presentation'
+            } );
+
+            $aplWildcardCr.append( overlayMu );
+
+        }
+        
+    };
+    
     
     
     
     
     
     // ------------------------------------ Go to Content Nav
-    function goContentNavInit( $cp ) {
+    function applicatorGoContentNav( $cp ) {
         
         
         // Gatekeeper
@@ -374,7 +386,7 @@
                 .addClass( funcName )
                 .addClass( funcTerm );
 
-            overlayActivate( funcName );
+            genericFn.overlayActivate( funcName );
             
         }() );
         
@@ -387,34 +399,39 @@
         }() );
         
         
-        // On
-        function goCtNavActivate() {
-            $cp
-                .addClass( goCtNavActCss )
-                .removeClass( goCtNavInactCss );
-            $html
-                .addClass( aplGoCtNavActCss )
-                .removeClass( aplGoCtNavInactCss );
-        }
+        var goContentNavFn = {
+            
+            // On
+            on: function() {
+                $cp
+                    .addClass( goCtNavActCss )
+                    .removeClass( goCtNavInactCss );
+                $html
+                    .addClass( aplGoCtNavActCss )
+                    .removeClass( aplGoCtNavInactCss );
+            },
+
+
+            // Off
+            off: function() {
+                $cp
+                    .addClass( goCtNavInactCss )
+                    .removeClass( goCtNavActCss );
+                $html
+                    .addClass( aplGoCtNavInactCss )
+                    .removeClass( aplGoCtNavActCss );
+            }
+        };
+        goContentNavFn.off();
         
         
-        // Off
-        function goCtNavDeactivate() {
-            $cp
-                .addClass( goCtNavInactCss )
-                .removeClass( goCtNavActCss );
-            $html
-                .addClass( aplGoCtNavInactCss )
-                .removeClass( aplGoCtNavActCss );
-        }
-        goCtNavDeactivate();
         
         
         // Focus In > Activate
         ( function() {
             
             $goCtNaviA.on( 'focusin.applicator', function() {
-                goCtNavActivate();
+                goContentNavFn.on();
             } );
             
         }() );
@@ -424,7 +441,7 @@
         ( function() {
             
             $goCtNaviA.on( 'focusout.applicator', function() {
-                goCtNavDeactivate();
+                goContentNavFn.off();
             } );
             
         }() );
@@ -441,27 +458,22 @@
         
         
         // Deactivate via keyboard ESC key
-        ( function() {
-            $window.load( function() {
-                $document.on( 'keyup.applicator', function ( e ) {
-                    if ( $cp.hasClass( goCtNavActCss ) && e.keyCode == 27 ) {
-                        goCtNavDeactivate();
-                    }
-                } );
+        $window.load( function() {
+            $document.on( 'keyup.applicator', function ( e ) {
+                if ( $cp.hasClass( goCtNavActCss ) && e.keyCode == 27 ) {
+                    goContentNavFn.off();
+                }
             } );
-            
-        }() );
+        } );
         
         
         // Click Overlay
-        ( function() {
-            $goContentNavOverlay.on( 'click.applicator', function( e ) {
-                e.preventDefault();
-                goCtNavDeactivate();
-            } );
-        }() );
+        $goContentNavOverlay.on( 'click.applicator', function( e ) {
+            e.preventDefault();
+            goContentNavFn.off();
+        } );
     }
-    goContentNavInit( $( '#go-content-nav' ) );
+    applicatorGoContentNav( $( '#go-content-nav' ) );
 
     
     
@@ -523,7 +535,7 @@
                 .addClass( funcName )
                 .addClass( funcTerm );
 
-            overlayActivate( funcName );
+            genericFn.overlayActivate( funcName );
         }() );
         
         
@@ -623,8 +635,8 @@
                     mainMenuFn.menuOn();
                 }
 
-                transHere( $mainHrAsCt, 'transform', $cp );
-                transHere( $mainHrAsCt, 'transform', $mainMenuOverlay );
+                transitionFn.here( $mainHrAsCt, 'transform', $cp );
+                transitionFn.here( $mainHrAsCt, 'transform', $mainMenuOverlay );
             },
 
 
@@ -657,8 +669,8 @@
 
                     mainMenuFn.menuOff();
 
-                    transThere( $mainHrAsCt, 'transform', $cp );
-                    transThere( $mainHrAsCt, 'transform', $mainMenuOverlay );
+                    transitionFn.there( $mainHrAsCt, 'transform', $cp );
+                    transitionFn.there( $mainHrAsCt, 'transform', $mainMenuOverlay );
 
                 }
             },
@@ -678,7 +690,7 @@
                 }
             }
             
-        }
+        };
         mainMenuFn.menuOff();
         
         
@@ -719,12 +731,10 @@
         
         
         // Click Overlay
-        ( function() {
-            $mainMenuOverlay.on( 'click.applicator', function( e ) {
-                e.preventDefault();
-                mainMenuFn.menuOffTransHere();
-            } );
-        }() );
+        $mainMenuOverlay.on( 'click.applicator', function( e ) {
+            e.preventDefault();
+            mainMenuFn.menuOffTransHere();
+        } );
         
     }
     applicatorMainMenu( $( '#main-header-aside' ) );
@@ -839,103 +849,106 @@
         $commentsCount.clone().insertAfter( $commentsToggleButtonTextLabelTxt );
         
         
-        // Activate Comments
-        function commentsActivate() {
+        var commentsFn = {
             
-            $cp
-                .addClass( commentsOnCSS )
-                .removeClass( commentsOffCSS );
             
-            $html
-                .addClass( aplCommentsOnCSS )
-                .removeClass( aplCommentsOffCSS );
-            
-            $commentsToggleButton.attr( {
-                 'aria-expanded': 'true',
-                 'title': $commentsHideL
-                
-            } );
-            
-            // Swap text label and icon
-            $commentsToggleButtonTextLabelTxt.text( $commentsHideL );
-            $commentsToggleButtonTextLabel.append( $commentsDismissIco );
-        }
-        
-        
-        function commentsScrollTop() {
-            
-            $comments = $( '#comments' );
-            
-            if ( ! $comments.length ) {
-                return;
-            }
-            
-            scrollTime = 300;
+            // Comments On
+            on: function() {
 
-            $('html,body').stop().animate( {
-                scrollTop: $comments.offset().top
-            }, scrollTime, 'easeInOutCirc', function() {
-                window.location.hash = '#comments';
-            } );
-        }
-        
-        
-        // Deactivate Comments
-        function commentsDeactivate() {
+                $cp
+                    .addClass( commentsOnCSS )
+                    .removeClass( commentsOffCSS );
+
+                $html
+                    .addClass( aplCommentsOnCSS )
+                    .removeClass( aplCommentsOffCSS );
+
+                $commentsToggleButton.attr( {
+                     'aria-expanded': 'true',
+                     'title': $commentsHideL
+
+                } );
+
+                // Swap text label and icon
+                $commentsToggleButtonTextLabelTxt.text( $commentsHideL );
+                $commentsToggleButtonTextLabel.append( $commentsDismissIco );
+            },
             
-            $cp
-                .addClass( commentsOffCSS )
-                .removeClass( commentsOnCSS );
             
-            $html
-                .addClass( aplCommentsOffCSS )
-                .removeClass( aplCommentsOnCSS );
+            // Comments Scroll Top
+            scrollTop: function() {
             
-            $commentsToggleButton.attr( {
-                 'aria-expanded': 'false',
-                 'title': $commentsShowL
-                
-            } );
+                $comments = $( '#comments' );
+
+                if ( ! $comments.length ) {
+                    return;
+                }
+
+                scrollTime = 300;
+
+                $('html,body').stop().animate( {
+                    scrollTop: $comments.offset().top
+                }, scrollTime, 'easeInOutCirc', function() {
+                    window.location.hash = '#comments';
+                } );
+            },
             
-            // Swap text label and icon
-            $commentsToggleButtonTextLabelTxt.text( $commentsShowL );
-            $commentsDismissIco.remove();
-        }        
-        // Initialize Deactivate
-        commentsDeactivate();
-        
-        
-        // Toggle from generated button clicks
-        function commentsToggle() {
             
-            if ( $cp.hasClass( commentsOffCSS ) ) {
-                commentsActivate();
-                commentsScrollTop();
-                cycleTabbingFn.tabOn( $cp ); 
+            // Comments Off
+            off: function() {
+
+                $cp
+                    .addClass( commentsOffCSS )
+                    .removeClass( commentsOnCSS );
+
+                $html
+                    .addClass( aplCommentsOffCSS )
+                    .removeClass( aplCommentsOnCSS );
+
+                $commentsToggleButton.attr( {
+                     'aria-expanded': 'false',
+                     'title': $commentsShowL
+
+                } );
+
+                // Swap text label and icon
+                $commentsToggleButtonTextLabelTxt.text( $commentsShowL );
+                $commentsDismissIco.remove();
+            },
+            
+            
+            // Toggle from generated button clicks
+            toggle: function() {
+
+                if ( $cp.hasClass( commentsOffCSS ) ) {
+                    commentsFn.on();
+                    commentsFn.scrollTop();
+                    cycleTabbingFn.tabOn( $cp ); 
+                }
+
+                else if ( $cp.hasClass( commentsOnCSS ) ) {
+                    commentsFn.off();
+                    genericFn.removeHash();
+                    cycleTabbingFn.tabOff( $cp );
+                }
             }
             
-            else if ( $cp.hasClass( commentsOnCSS ) ) {
-                commentsDeactivate();
-                removeHash();
-                cycleTabbingFn.tabOff( $cp );
-            }
-        }
+        };    
+        commentsFn.off();
+        
+        
+        
         
         if ( $( '.comments-actions-snippet' ).hasClass( 'comments--empty' ) ) {
-            commentsActivate();
+            commentsFn.on();
         }
         
         
         // Button Clicks
-        ( function() {
-            
-            $commentsToggleButton.on( 'click.applicator', function( e ) {
-                e.preventDefault();
-                
-                commentsToggle();
-            } );
-        
-        }() );
+        $commentsToggleButton.on( 'click.applicator', function( e ) {
+            e.preventDefault();
+            commentsFn.toggle();
+        } );
         
         
         // Link Clicks
@@ -950,7 +963,7 @@
             $( 'a[href*="#comment"]' ).on( 'click.applicator', function() {
                 
                 if ( $cp.hasClass( commentsOffCSS ) ) {
-                    commentsActivate();
+                    commentsFn.on();
                     
                     var href = $.attr( this, 'href' );
                     
@@ -976,7 +989,7 @@
             // https://stackoverflow.com/a/19889034
             if ( window.location.hash ) {
                 if ( window.location.hash.indexOf( 'comment' ) != -1 && $cp.hasClass( commentsOffCSS ) ) {
-                    commentsActivate();
+                    commentsFn.on();
                 }
             }
         
@@ -1002,7 +1015,7 @@
                     .attr( 'id', 'main-search' );
     }() );
     
-    function mainSearchInit( $cp ) {
+    function applicatorMainSearch( $cp ) {
         
         $mainSearch = $( '#main-search' );
         
@@ -1085,82 +1098,89 @@
         $mainSearchBL.append( $mainSearchSearchIco );
         $mainSearchResetBL.append( $mainSearchDismissIco );
         
-        // Activate
-        function mainSearchActivate() {
-            $cp
-                .addClass( mainSearchActCss )
-                .removeClass( mainSearchInactCss );
-            $html
-                .addClass( aplmainSearchActCss )
-                .removeClass( aplmainSearchInactCss );
-            
-            $mainSearchTogBtn.attr( {
-                 'aria-expanded': 'true',
-                 'title': $mainSearchHideL
-            } );
-            
-            $mainSearchTogBtnLTxt.text( $mainSearchHideL );
-            $mainSearchTogBtnL.append( $mainSearchTogDismissIco );
-            $mainSearchTogSearchIco.remove();
-            
-            cycleTabbingFn.tabOn( $cp );
-            
-            // Focus on input and select content if any
-            $mainSearchInput.focus().select();
-        }
         
-        // Deactivate
-        function mainSearchDeactivate() {
-            $cp
-                .addClass( mainSearchInactCss )
-                .removeClass( mainSearchActCss );
-            $html
-                .addClass( aplmainSearchInactCss )
-                .removeClass( aplmainSearchActCss );
+        var mainSearchFn = {
             
-            $mainSearchTogBtn.attr( {
-                 'aria-expanded': 'false',
-                 'title': $mainSearchShowL
-            } );
-            
-            $mainSearchTogBtnLTxt.text( $mainSearchShowL );
-            $mainSearchTogBtnL.append( $mainSearchTogSearchIco );
-            $mainSearchTogDismissIco.remove();
-            
-            cycleTabbingFn.tabOff( $cp );
-        }
-        
-        // Initialize
-        mainSearchDeactivate();
-        
-        // Toggle
-        function mainSearchToggle() {
-            if ( $cp.hasClass( mainSearchInactCss ) ) {
-                mainSearchActivate();
-            }
-            else if ( $cp.hasClass( mainSearchActCss ) ) {
-                mainSearchDeactivate();
-            }
-        }
-        
-        // Input Status
-        function mainSearchInputStatus() {
-            
-            // Empty Input
-            if ( $mainSearchInput.val() == '' ) {
+            // On
+            on: function() {
                 $cp
-                    .addClass( mainSearchInputEmpCss )
-                    .removeClass( mainSearchInputPopCss );
-            }
+                    .addClass( mainSearchActCss )
+                    .removeClass( mainSearchInactCss );
+                $html
+                    .addClass( aplmainSearchActCss )
+                    .removeClass( aplmainSearchInactCss );
 
-            // Populated Input (as displayed by default in the input in Search Results page)
-            else if ( ! $mainSearchInput.val() == '' ) {
+                $mainSearchTogBtn.attr( {
+                     'aria-expanded': 'true',
+                     'title': $mainSearchHideL
+                } );
+
+                $mainSearchTogBtnLTxt.text( $mainSearchHideL );
+                $mainSearchTogBtnL.append( $mainSearchTogDismissIco );
+                $mainSearchTogSearchIco.remove();
+
+                cycleTabbingFn.tabOn( $cp );
+
+                // Focus on input and select content if any
+                $mainSearchInput.focus().select();
+            },
+            
+            
+            // Deactivate
+            off: function() {
                 $cp
-                    .addClass( mainSearchInputPopCss )
-                    .removeClass( mainSearchInputEmpCss );
+                    .addClass( mainSearchInactCss )
+                    .removeClass( mainSearchActCss );
+                $html
+                    .addClass( aplmainSearchInactCss )
+                    .removeClass( aplmainSearchActCss );
+
+                $mainSearchTogBtn.attr( {
+                     'aria-expanded': 'false',
+                     'title': $mainSearchShowL
+                } );
+
+                $mainSearchTogBtnLTxt.text( $mainSearchShowL );
+                $mainSearchTogBtnL.append( $mainSearchTogSearchIco );
+                $mainSearchTogDismissIco.remove();
+
+                cycleTabbingFn.tabOff( $cp );
+            },
+            
+            
+            // Toggle
+            toggle: function() {
+                if ( $cp.hasClass( mainSearchInactCss ) ) {
+                    mainSearchFn.on();
+                }
+                else if ( $cp.hasClass( mainSearchActCss ) ) {
+                    mainSearchFn.off();
+                }
+            },
+            
+            
+            // Input Status
+            inputStatus: function() {
+
+                // Empty Input
+                if ( $mainSearchInput.val() == '' ) {
+                    $cp
+                        .addClass( mainSearchInputEmpCss )
+                        .removeClass( mainSearchInputPopCss );
+                }
+
+                // Populated Input (as displayed by default in the input in Search Results page)
+                else if ( ! $mainSearchInput.val() == '' ) {
+                    $cp
+                        .addClass( mainSearchInputPopCss )
+                        .removeClass( mainSearchInputEmpCss );
+                }
             }
-        }
-        mainSearchInputStatus();
+            
+        };
+        mainSearchFn.off();
+        mainSearchFn.inputStatus();
+        
         
         // Clicks
         ( function() {
@@ -1168,14 +1188,14 @@
             $mainSearchTogBtn.on( 'click.applicator', function( e ) {
                 e.preventDefault();
                 
-                mainSearchToggle();
+                mainSearchFn.toggle();
             } );
             
             $mainSearchResetBtn.on( 'click.applicator', function( e ) {
                 e.preventDefault();
                 
                 $mainSearchInput.val( '' ).focus();
-                mainSearchInputStatus();
+                mainSearchFn.inputStatus();
             } );
             
         }() );
@@ -1183,14 +1203,14 @@
         
         // Upon entering content in input
         $mainSearchInput.on( 'keypress.applicator input.applicator', function() {
-            mainSearchInputStatus();
+            mainSearchFn.inputStatus();
             cycleTabbingFn.tabOff( $cp );
         } );
         
         // Deactivate via external click
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             if ( $cp.hasClass( mainSearchActCss ) && ( ! $( e.target ).closest( $mainSearchTog ).length && ! $( e.target ).closest( $mainSearchCt ).length ) ) {
-                mainSearchDeactivate();
+                mainSearchFn.off();
             }
         } );
 
@@ -1198,7 +1218,7 @@
         $window.load( function() {
             $document.on( 'keyup.applicator', function ( e ) {
                 if ( $cp.hasClass( mainSearchActCss ) && e.keyCode == 27 ) {
-                    mainSearchDeactivate();
+                    mainSearchFn.off();
                 }
             } );
         } );
@@ -1212,21 +1232,20 @@
             setTimeout( function() {
                 var hasFocus = !! ( $this.find( ':focus' ).length > 0 );
                 if ( $html.hasClass( tabKeyActCss ) && ! hasFocus ) {
-                    mainSearchDeactivate();
+                    mainSearchFn.off();
                 }
             }, 10 );
         } );
         
     }
-    mainSearchInit( $( '#main-search' ) );
+    applicatorMainSearch( $( '#main-search' ) );
     
     
     
     
     
     // ------------------------------------ Main Actions
-    function mainActionsInit() {
-        
+    function applicatorMainActions() {
         
         var $mainActionsWidgetItems = $mainActions.find( '.main-actions-aside---ct_cr > .widget:not( .main-search-func )' );
         
@@ -1321,7 +1340,7 @@
                 .addClass( funcTerm )
                 .addClass( funcName );
             
-            overlayActivate( funcName );
+            genericFn.overlayActivate( funcName );
         }() );
         
         
@@ -1419,17 +1438,17 @@
                 if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOffCSS ) )
                 {
                     mainActionsFn.widgetsOn();
-                    transHere( $mainActionsWidgetsCt, 'opacity', $mainActionsWidgets );
+                    transitionFn.here( $mainActionsWidgetsCt, 'opacity', $mainActionsWidgets );
                     $mainActionsWidgetsWidgetGroup.scrollTop( 0 );
                 }
                 else if ( $mainActionsWidgets.hasClass( mainActionsWidgetsOnCSS ) )
                 {
                     mainActionsFn.widgetsOff();
-                    transThere( $mainActionsWidgetsCt, 'opacity', $mainActionsWidgets );
+                    transitionFn.there( $mainActionsWidgetsCt, 'opacity', $mainActionsWidgets );
                 }
             }
             
-        }
+        };
         mainActionsFn.widgetsOff();
 
         
@@ -1447,7 +1466,7 @@
             $mainActionsWidgetsDismissButton.on( 'click.applicator', function( e ) {
                 e.preventDefault();
                 mainActionsFn.widgetsOff();
-                transThere( $mainActionsWidgetsCt, 'opacity', $mainActionsWidgets );
+                transitionFn.there( $mainActionsWidgetsCt, 'opacity', $mainActionsWidgets );
             } );
         }() );
 
@@ -1458,7 +1477,7 @@
                 
                 mainActionsFn.widgetsOff();
                 
-                transThere( $mainActionsWidgetsCt, 'opacity', $mainActionsWidgets );
+                transitionFn.there( $mainActionsWidgetsCt, 'opacity', $mainActionsWidgets );
             
             }
         } );
@@ -1471,20 +1490,20 @@
                     
                     mainActionsFn.widgetsOff();
                     
-                    transThere( $mainActionsWidgetsCt, 'opacity', $mainActionsWidgets );
+                    transitionFn.there( $mainActionsWidgetsCt, 'opacity', $mainActionsWidgets );
                 
                 }
             } );
         } );
         
     }
-    mainActionsInit();
+    applicatorMainActions();
     
     
     
     
     // ------------------------------------ Sub-Nav
-    function subNavInit( $cp ) {
+    function applicatorSubNav( $cp ) {
         
         if ( ! $aplApplicatorSubNav.length ) {
 			return;
@@ -1580,7 +1599,7 @@
         subNavFn = {
             
             // On
-            navOn: function()
+            on: function()
             {
                 var $this = $( this );
 
@@ -1603,7 +1622,7 @@
             
             
             // Hover On
-            navHoverOn: function()
+            hoverOn: function()
             {
                 var $this = $( this );
                 $this.closest( $navParentItems )
@@ -1613,7 +1632,7 @@
             
             
             // Hover Off
-            navHoverOff: function()
+            hoverOff: function()
             {
                 var $this = $( this );
                 $this.closest( $navParentItems )
@@ -1623,7 +1642,7 @@
             
             
             // HTML Nav Off
-            htmlNavOff: function()
+            htmlOff: function()
             {
                 if ( ! $subNavParentItems.hasClass( subNavActCss ) ) {
                     $html
@@ -1634,7 +1653,7 @@
             
             
             // Nav Off
-            navOff: function()
+            off: function()
             {
                 var $this = $( this );
                 $subNavParent = $this.closest( $subNavParentItems );
@@ -1643,7 +1662,7 @@
                     .addClass( subNavInactCss )
                     .removeClass( subNavActCss );
 
-                subNavFn.htmlNavOff();
+                subNavFn.htmlOff();
 
                 $this.attr( {
                      'aria-expanded': 'false',
@@ -1655,7 +1674,7 @@
             
             
             // Deactivate all Sub-Nav
-            navAllOff: function()
+            allOff: function()
             {
 
                 $cp.find( $subNavParentItems ).each( function() {
@@ -1664,7 +1683,7 @@
                         .addClass( subNavInactCss )
                         .removeClass( subNavActCss );
 
-                    subNavFn.htmlNavOff();
+                    subNavFn.htmlOff();
 
                     $subNavTogBtn.attr( {
                         'aria-expanded': 'false',
@@ -1686,7 +1705,7 @@
             
             
             // Deactivate Siblings
-            navSiblingsOff: function()
+            siblingsOff: function()
             {
                 var $this = $( this );
 
@@ -1721,8 +1740,8 @@
                     .addClass( subNavOthersActiveCSS )
                     .removeClass( subNavOthersInactiveCSS );
             }
-        }
-        subNavFn.navAllOff();
+        };
+        subNavFn.allOff();
         
         
         // Click
@@ -1739,7 +1758,7 @@
                 if ( $subNavParent.hasClass( subNavInactCss ) )
                 {
                     
-                    subNavFn.navOn.apply( this );
+                    subNavFn.on.apply( this );
                     
                     if ( $cp.hasClass( mainNavCSS ) ) {
                         subNavFn.subNavSiblingsOff.apply( this );
@@ -1750,7 +1769,7 @@
                 else if ( $subNavParent.hasClass( subNavActCss ) )
                 {
                     
-                    subNavFn.navOff.apply( this );
+                    subNavFn.off.apply( this );
                     
                     if ( $cp.hasClass( mainNavCSS ) )
                     {
@@ -1760,7 +1779,7 @@
                 
                 if ( $cp.hasClass( mainNavCSS ) )
                 {
-                    subNavFn.navSiblingsOff.apply( this );
+                    subNavFn.siblingsOff.apply( this );
                 }
             } );
             
@@ -1770,9 +1789,9 @@
         ( function() {
             
             $( $mainNavItem ).hover( function () {
-                subNavFn.navHoverOn.apply( this );
+                subNavFn.hoverOn.apply( this );
             }, function() {
-                subNavFn.navHoverOff.apply( this );
+                subNavFn.hoverOff.apply( this );
             } );
         
         }() );
@@ -1781,7 +1800,7 @@
         // Deactivate via external click
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             if ( $html.hasClass( aplSubNavActCss ) && ! $( e.target ).closest( $subNavParentItems ).length && ! $( e.target ).is( 'a' ).length ) {
-                subNavFn.navAllOff();
+                subNavFn.allOff();
             }
         } );
         
@@ -1790,16 +1809,15 @@
         $window.load( function() {
             $document.on( 'keyup.applicator', function ( e ) {
                 if ( $html.hasClass( aplSubNavActCss ) && e.keyCode == 27 ) {
-                    subNavFn.navAllOff();
+                    subNavFn.allOff();
                 }
             } );
         } );
         
     }
-    
-    subNavInit( $( '#main-nav' ) );
-    subNavInit( $( '.widget_nav_menu' ) );
-    subNavInit( $( '.widget_pages' ) );
+    applicatorSubNav( $( '#main-nav' ) );
+    applicatorSubNav( $( '.widget_nav_menu' ) );
+    applicatorSubNav( $( '.widget_pages' ) );
     
     
     
@@ -1998,7 +2016,7 @@
 
         $breadcrumbsLink.after( $breadcrumbsIco );
     
-    } );
+    } )();
     
     
     
@@ -2037,9 +2055,9 @@
         // ------------------------------------ Remove Empty Elements
         ( function() {
             
-            removeEmptyInit( $( '.post-content---ct_cr > *' ) );
-            removeEmptyInit( $( '.main-navi---a' ) );
-            removeEmptyInit( $( '.menu-item' ) );
+            genericFn.removeEmptyElements( $( '.post-content---ct_cr > *' ) );
+            genericFn.removeEmptyElements( $( '.main-navi---a' ) );
+            genericFn.removeEmptyElements( $( '.menu-item' ) );
             
         }() );
         
@@ -2198,7 +2216,7 @@
         // ------------------------------------ Calendar
         ( function(){
             
-            wrapTextNode( $( '.widget_calendar td, .widget_calendar th' ) );
+            genericFn.wrapTextNode( $( '.widget_calendar td, .widget_calendar th' ) );
             
             $( '.widget_calendar tbody td:has( a )' ).each( function() {
 
@@ -2216,13 +2234,13 @@
         ( function(){
             
             
-            wrapTextNode( $( '.data-format--img, .excerpt-link, .post-password-form label' ) );
-            wrapTextNode( $( '.post-content---ct_cr' ) );
-            wrapTextNode( $( '.wp-caption-text' ) );
+            genericFn.wrapTextNode( $( '.data-format--img, .excerpt-link, .post-password-form label' ) );
+            genericFn.wrapTextNode( $( '.post-content---ct_cr' ) );
+            genericFn.wrapTextNode( $( '.wp-caption-text' ) );
             
-            wrapTextNode( $( '.custom-html-widget' ) );
+            genericFn.wrapTextNode( $( '.custom-html-widget' ) );
             
-            removeEmptyInit( $( '.text-node' ) );
+            genericFn.removeEmptyElements( $( '.text-node' ) );
             
         }() );
         
@@ -2520,7 +2538,7 @@
                         tableClicksFn.cellOff.apply( $this.children() );
                     }
                 }
-            }
+            };
             
             
             // Internal Click
@@ -2667,7 +2685,7 @@
                         } );
                     }
                 }
-            }
+            };
             goStartNavFn.navOff();
             goStartNavFn.pageCriteria();
 
@@ -2746,7 +2764,7 @@
                     }
                 }
                 
-            }
+            };
             pageLengthFn.heightCSS();
             
             
