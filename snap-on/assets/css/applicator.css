@@ -1331,10 +1331,26 @@ h6
 /* ------------------ Post ------------------ */
 
 /* ------------ Juxtapose Post Title and Edit Action ------------ */
-.applicator--theme--post .post-title,
+.applicator--theme--post .main-post-title---ct_cr
+{
+    padding: 1rem;
+}
+
+.applicator--theme--post .post-title
+{
+    display: inline;
+    padding: 0;
+}
+
 .applicator--theme--post .edit-post-action
 {
-    display: inline-block;
+    display: inline;
+    margin-right: -1rem;
+}
+
+.applicator--theme--post .post-title---h
+{
+    display: inline;
     vertical-align: middle;
 }
 
