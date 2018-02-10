@@ -344,8 +344,23 @@
 
             $aplWildcardCr.append( overlayMu );
 
-        }
+        },
         
+        hiddenElements: function( $elem, $onCSS, $offCSS )
+        {
+            if ( $elem.css( 'margin' ) == '-1px' || $elem.is( ':hidden' ) )
+            {
+                $body
+                    .addClass( $offCSS )
+                    .removeClass( $onCSS );
+            }
+            else
+            {   
+                $body
+                    .addClass( $onCSS )
+                    .removeClass( $offCSS );
+            }
+        }
     };
     
     
@@ -875,25 +890,6 @@
             },
             
             
-            // Comments Scroll Top
-            scrollTop: function() {
-            
-                $comments = $( '#comments' );
-
-                if ( ! $comments.length ) {
-                    return;
-                }
-
-                scrollTime = 300;
-
-                $('html,body').stop().animate( {
-                    scrollTop: $comments.offset().top
-                }, scrollTime, 'easeInOutCirc', function() {
-                    window.location.hash = '#comments';
-                } );
-            },
-            
-            
             // Comments Off
             off: function() {
 
@@ -917,6 +913,17 @@
             },
             
             
+            // Comments Scroll Top
+            scrollTop: function() {
+            
+                var $comments = $( '#comments' );
+
+                if ( $comments.length ) {
+                    $window.scrollTop( $comments.offset().top );
+                }
+            },
+            
+            
             // Toggle from generated button clicks
             toggle: function() {
 
@@ -937,6 +944,22 @@
         commentsFn.off();
         
         
+        // Clicking links starting with #comment must activate Comment Module
+        ( function() {
+            
+            var $commentModule = $( '#comment-md' );
+            
+            if ( $commentModule.length )
+            {
+                $( 'a[href*="#comment"]' ).on( 'click.applicator', function() {
+                    if ( $cp.hasClass( commentsOffCSS ) )
+                    {
+                        commentsFn.on();
+                    }
+                } );
+            }
+            
+        }() );
         
         
         if ( $( '.comments-actions-snippet' ).hasClass( 'comments--empty' ) ) {
@@ -949,37 +972,6 @@
             e.preventDefault();
             commentsFn.toggle();
         } );
-        
-        
-        // Link Clicks
-        ( function() {
-            
-            var $commentModule = $( '#comment-md' );
-            
-            if ( ! $commentModule.length ) {
-                return;
-            }
-            
-            $( 'a[href*="#comment"]' ).on( 'click.applicator', function() {
-                
-                if ( $cp.hasClass( commentsOffCSS ) ) {
-                    commentsFn.on();
-                    
-                    var href = $.attr( this, 'href' );
-                    
-                    scrollTime = 3000;
-
-                    $htmlBody.stop().animate( {
-                        scrollTop: $( href ).offset().top
-                    }, scrollTime, 'easeInOutCirc', function() {
-                        window.location.hash = href;
-                    } );
-
-                    return false;
-                    
-                }
-            } );
-        }() );
         
         
         // Hash
@@ -2290,17 +2282,28 @@
         
         
         
-        // ------------------------------------ If Main Description is visually-hidden
+        // ------------------------------------ If Main Description is Empty
         ( function() {
             
-            if ( ! $( '.main-desc---l' ).length || $( '.main-description' ).html().replace(/\s|&nbsp;/g, '' ).length == 0 ) {
+            
+            var $mainDescription = $( '.main-description' ),
+                $mainDescriptionL = $mainDescription.find( '.main-desc---l' ),
+                mainDescriptionCSS = 'main-description',
+                descOnCSS = mainDescriptionCSS + '--' + 'populated',
+                descOffCSS = mainDescriptionCSS + '--' + 'empty';
+            
+            
+            new ResizeSensor( $webProduct, function() {
                 
-                $html
-                    .addClass( 'main-description--empty' )
-                    .removeClass( 'main-description--populated' );
-                
-                return;
-            }
+                genericFn.hiddenElements( $mainDescription, descOnCSS, descOffCSS );
+            
+                if ( ! $( $mainDescriptionL ).length || $mainDescription.html().replace(/\s|&nbsp;/g, '' ).length == 0 ) {
+                    $body
+                        .addClass( descOffCSS )
+                        .removeClass( descOnCSS );
+                }
+            } );
+            
         
         }() );
         
@@ -2848,60 +2851,6 @@
         } );
         
     }() );
-    
-    
-    
-    
-    
-    // ------------------------------------ Smooth Scrolling
-    // https://stackoverflow.com/a/7717572
-    ( function() {
-        
-        $window.scrolled( function() {
-            
-            $( 'a[href^="#"]:not( #go-start-navi---a ):not( a[href*="#comment"] )' ).on( 'click.applicator', function() {
-                var href = $.attr( this, 'href' ),
-                    pageYOffset = window.pageYOffset,
-                    innerHeight = window.innerHeight,
-                    howManyPagesOffset = pageYOffset / innerHeight;
 
-                scrollTime = howManyPagesOffset * scrollMsFactor;
-
-                $htmlBody.stop().animate( {
-                    scrollTop: $( href ).offset().top
-                }, scrollTime, 'easeInOutCirc', function() {
-                    window.location.hash = href;                
-                } );
-
-                return false;
-            } );
-                
-            
-            $goStartNaviA.on( 'click.applicator', function() {
-
-                var href = $.attr( this, 'href' ),
-                    pageYOffset = window.pageYOffset,
-                    innerHeight = window.innerHeight,
-                    howManyPagesOffset = pageYOffset / innerHeight;
-                
-                scrollTime = howManyPagesOffset * scrollMsFactor;
-                
-                // If offset is greater than 4 pages, turbo speed
-                if ( howManyPagesOffset > 4 ) {
-                    scrollTime = 300;
-                }
-
-                $htmlBody.stop().animate( {
-                    scrollTop: $( href ).offset().top
-                }, scrollTime, 'easeInOutCirc', function() {
-                    window.location.hash = href;                
-                } );
-
-                return false;
-            } );
-        
-        } );
-    
-    }() );
 
 } )( jQuery );

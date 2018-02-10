@@ -1,0 +1,24 @@
+/* Optimizing the size of Search */
+
+/* ------------------ Viewport Width: 768 ------------------ */
+
+@media only screen and ( min-width: 48em )
+{
+    
+    /* Search */
+    .main-search-func .search-term-crt-search-text-input
+    {
+        width: 30rem;
+    }
+    
+    .main-search--active .search-term-crt-search-text-input
+    {
+        padding-left: 0;
+    }
+    
+    .applicator--theme--main-header.applicator--main-search--active .main-actions-aside---ct
+    {
+        width: auto;
+    }
+    
+}

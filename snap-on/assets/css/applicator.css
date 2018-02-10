@@ -1634,22 +1634,6 @@ div[id^="contact-form-"] > .contact-form-submission
 
 
 
-/* ------------------ Viewport Width: 768 ------------------ */
-
-@media only screen and ( min-width: 48em )
-{
-    
-    .applicator--theme--main-header.applicator--main-search--active .main-actions-aside---ct
-    {
-        width: auto;
-    }
-    
-}
-
-
-
-
-
 /* ------------------ Viewport Width: 1024 ------------------ */
 
 @media only screen and ( min-width: 64em )

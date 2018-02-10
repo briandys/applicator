@@ -321,15 +321,6 @@ function applicator_html_class() {
     }
 
 
-    // Main Description
-    if ( get_bloginfo( 'description', 'display' ) ) {
-        echo ' '. 'main-description--populated';
-    }
-    else {
-        echo ' '. 'main-description--empty';
-    }
-
-
     // Page Template
     if ( is_page() )
     {
@@ -361,9 +352,22 @@ add_action( 'applicator_hook_html_class', 'applicator_html_class');
 
 
 // Body Class
-function applicator_body_class( $classes ) {
+function applicator_body_class( $classes )
+{
 
     $classes[] = 'body';
+
+    
+    // Main Description
+    if ( get_bloginfo( 'description', 'display' ) )
+    {
+        $classes[] = 'main-description--populated';
+    }
+    else
+    {
+        $classes[] = 'main-description--empty';
+    }
+    
     return $classes;
 
 }
