@@ -1297,13 +1297,13 @@ img.size-medium
 
 /* ------------------ Post Banner Visual ------------------ */
 .window--unloaded .post-banner-vis---a_l,
-.window--unloaded.post-banner-visual-custom-field--enabled .post-banner-visual img
+.window--unloaded .post-banner-visual-custom-field--enabled .post-banner-visual img
 {
     visibility: hidden;
 }
 
 .window--loaded .post-banner-vis---a_l,
-.window--loaded.post-banner-visual-custom-field--enabled .post-banner-visual img
+.window--loaded .post-banner-visual-custom-field--enabled .post-banner-visual img
 {
     opacity: 1;
 }
@@ -1896,8 +1896,6 @@ img.size-medium
     width: .75rem;
     height: .75rem;
     
-    opacity: .5;
-    
     transition: all .3s ease-in-out;
     transition-property: width, height, opacity;
 }
@@ -1906,8 +1904,6 @@ button:hover .dismiss-icon
 {
     width: .85rem;
     height: .85rem;
-    
-    opacity: .75;
 }
 
 
