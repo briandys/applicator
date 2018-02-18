@@ -56,11 +56,6 @@ $post_nav = get_parent_theme_file_path( '/inc/tags/post-nav.php' );
 if ( file_exists( $post_nav ) ) { require( $post_nav ); }
 
 
-// Breadcrumbs Nav
-$breadcrumbs_nav = get_parent_theme_file_path( '/inc/tags/breadcrumbs-nav.php' );
-if ( file_exists( $breadcrumbs_nav ) ) { require( $breadcrumbs_nav ); }
-
-
 // Aside
 $aside = get_parent_theme_file_path( '/inc/tags/aside.php' );
 if ( file_exists( $aside ) ) { require( $aside ); }
@@ -121,11 +116,6 @@ $post_content = get_parent_theme_file_path( '/inc/functions/entry-content.php' )
 if ( file_exists( $post_content ) ) { require( $post_content ); }
 
 
-// HTML, Body CSS
-$html_body_class = get_parent_theme_file_path( '/inc/functions/html-body-class.php' );
-if ( file_exists( $html_body_class ) ) { require( $html_body_class ); }
-
-
 // Custom Visuals
 $custom_visuals = get_parent_theme_file_path( '/inc/functions/custom-visuals.php' );
 if ( file_exists( $custom_visuals ) ) { require( $custom_visuals ); }
@@ -137,8 +127,7 @@ if ( file_exists( $widgets ) ) { require( $widgets ); }
 
 
 // Excerpt
-$excerpt = get_parent_theme_file_path( '/inc/functions/excerpt.php' );
-if ( file_exists( $excerpt ) ) { require( $excerpt ); }
+
 
 
 // Pingback Header
@@ -179,3 +168,22 @@ if ( file_exists( $main_content_header ) ) { require( $main_content_header ); }
 // Main Content Footer
 $main_content_footer = get_parent_theme_file_path( '/inc/functions/main-content-footer.php' );
 if ( file_exists( $main_content_footer ) ) { require( $main_content_footer ); }
+
+
+// ------------------------------------ Tags
+
+
+require( get_parent_theme_file_path( '/inc/tags/breadcrumbs.php' ) );
+
+
+
+
+
+// ------------------------------------ Functions
+
+
+require( get_parent_theme_file_path( '/inc/functions/html-class.php' ) );
+require( get_parent_theme_file_path( '/inc/functions/body-class.php' ) );
+require( get_parent_theme_file_path( '/inc/functions/post-class.php' ) );
+
+require( get_parent_theme_file_path( '/inc/functions/excerpt.php' ) );

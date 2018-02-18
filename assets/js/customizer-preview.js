@@ -27,7 +27,7 @@
 		value.bind( function( to ) {
 			
             if ( 'blank' === to ) {
-				$html
+				$body
                     .addClass( 'main-name-description--disabled' )
                     .removeClass( 'main-name-description--enabled' );
 			}
@@ -43,7 +43,7 @@
 					color: to
 				} );
 				
-                $html
+                $body
                     .addClass( 'main-name-description--enabled' )
                     .removeClass( 'main-name-description--disabled' );
 			}
@@ -55,7 +55,7 @@
 	wp.customize( 'colorscheme', function( value ) {
 		value.bind( function( to ) {
             
-			$html
+			$body
 				.addClass( 'customizer-color-scheme--default' )
 				.removeClass( 'customizer-color-scheme--custom' );
 		} );
@@ -66,7 +66,7 @@
 	wp.customize( 'colorscheme_hue', function( value ) {
 		value.bind( function( to ) {
             
-            $html
+            $body
 				.addClass( 'customizer-color-scheme--custom' )
 				.removeClass( 'customizer-color-scheme--default' );
 

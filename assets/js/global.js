@@ -31,7 +31,9 @@
 
 ( function( $ ) {
     
-    var $html = $( document.documentElement );
+    var $html = $( document.documentElement ),
+        $body = $( document.body ),
+        viewGranularityDetailClassSelector = '.view-granularity--detail';
     
     
     // Remove Empty Element
@@ -105,7 +107,7 @@
     /* ------------------------ Remove remnants of <!--more--> tag ------------------------ */
     ( function() {
 
-        if ( ! $html.closest( '.view-granularity--detail' ) ) {
+        if ( ! $body.closest( viewGranularityDetailClassSelector ) ) {
             return;
         }
 

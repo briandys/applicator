@@ -1,3 +1,22 @@
+/* Blurring the background */
+
+
+
+.dollhouse-diary-home-featured-content .post-banner-visual
+{
+    overflow: hidden;
+}
+
+.dollhouse-diary-home-featured-content .post-banner-vis---a_l
+{
+    filter: blur(4px);
+    transform: scale(1.04);
+}
+
+
+
+
+
 /* Optimizing the size of Search */
 
 /* ------------------ Viewport Width: 768 ------------------ */

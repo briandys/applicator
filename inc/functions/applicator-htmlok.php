@@ -1571,9 +1571,9 @@ function applicator_htmlok( $args = array() ) {
     
     // Anchor Markup
     $a_smu = '';
-    $a_smu .= '<a'.$o_obj_a_id_attr.' class="a '.$o_obj_a_elem_css.'---a'.$o_obj_a_root_css.'" '.$o_obj_a_elem_attr. $p_obj_elem_root_title.'>';
-    $a_smu .= '<'.$o_obj_label_elem.' class="a_l '.$o_obj_a_elem_css.'---a_l"'. $o_elem_label_attr. '>';
-    $a_smu .= '<'.$o_obj_label_elem.' class="l '.$o_obj_a_elem_css.'---l">';
+    $a_smu .= '<a'.$o_obj_a_id_attr.' class="a'.$o_obj_a_elem_css.'---a'.$o_obj_a_root_css.'" '.$o_obj_a_elem_attr. $p_obj_elem_root_title.'>';
+    $a_smu .= '<'.$o_obj_label_elem.' class="a_l'.$o_obj_a_elem_css.'---a_l"'. $o_elem_label_attr. '>';
+    $a_smu .= '<'.$o_obj_label_elem.' class="l'.$o_obj_a_elem_css.'---l">';
     
     $a_emu = '';
     $a_emu .= '</'.$o_obj_label_elem.'>';

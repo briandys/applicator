@@ -1,19 +1,29 @@
-<?php // Main Content Headings | index.php
+<?php
 
-if ( ! function_exists( 'applicator_main_content_headings' ) ) {
-    function applicator_main_content_headings() {
+// Main Content Headings | index.php
+
+
+
+
+
+if ( ! function_exists( 'applicator_main_content_headings' ) )
+{
+    function applicator_main_content_headings()
+    {
         
         // Initialize
         $property_text = '';
         $value_text = '';
         $line_array = '';
         $value_line_term = 'value---line';
+        
+        
+        
              
         
-        // Home (default)
-        // Settings > Reading > Your Latest Posts
-        if ( is_front_page() && ! is_page() ) {
-
+        // Blog Posts
+        if ( is_home() )
+        {
             $property_text = esc_html__( 'Entries', 'applicator' );
             $value_text = esc_html__( 'Posts', 'applicator' );
             
@@ -25,41 +35,11 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
                 ),
             );
         }
-        
-        // Settings > Reading > Posts Page
-        if ( is_home() ) {
-
-            $property_text = esc_html__( 'Entries', 'applicator' );
-            $value_text = esc_html__( 'Posts', 'applicator' );
-            
-            $line_array = array(
-                'css'   => $value_line_term,
-                array(
-                    'sep'       => $GLOBALS['applicator_space_sep'],
-                    'txt'       => $value_text,
-                ),
-            );
-        }
-        
-        // Settings > Reading > Front Page
-        if ( is_front_page() && is_page() ) {
-
-            $property_text = esc_html__( 'Front Page', 'applicator' );
-            $value_text = esc_html__( 'Page', 'applicator' );
-            
-            $line_array = array(
-                'css'   => $value_line_term,
-                array(
-                    'sep'       => $GLOBALS['applicator_space_sep'],
-                    'txt'       => $value_text,
-                ),
-            );
-        } 
                 
         
         // Single
-        if ( is_single() && ! is_attachment() ) {
-
+        if ( is_single() && ! is_attachment() )
+        {
             $property_text = esc_html__( 'Entry', 'applicator' );
             $value_text = esc_html__( 'Post', 'applicator' );
             
@@ -71,25 +51,11 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
                 ),
             );
         }
-        
-        // Attachment
-        elseif ( is_attachment() ) {
-
-            $property_text = esc_html__( 'Entry', 'applicator' );
-            $value_text = esc_html__( 'Attachment', 'applicator' );
-            
-            $line_array = array(
-                'css'   => $value_line_term,
-                array(
-                    'sep'       => $GLOBALS['applicator_space_sep'],
-                    'txt'       => $value_text,
-                ),
-            );
-        }
                 
+        
         // Page
-        if ( is_page() && ! is_front_page() ) {
-
+        elseif ( is_page() && ! is_front_page() )
+        {
             $property_text = esc_html__( 'Entry', 'applicator' );
             $value_text = esc_html__( 'Page', 'applicator' );
             
@@ -101,10 +67,59 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
                 ),
             );
         }
+        
+        
+        // Settings > Reading > A Static Page > Homepage
+        elseif ( is_front_page() )
+        {
+            $property_text = esc_html__( 'Front Page', 'applicator' );
+            $value_text = esc_html__( 'Page', 'applicator' );
+            
+            $line_array = array(
+                'css'   => $value_line_term,
+                array(
+                    'sep'       => $GLOBALS['applicator_space_sep'],
+                    'txt'       => $value_text,
+                ),
+            );
+        }
+        
+        
+        // Attachment
+        elseif ( is_attachment() )
+        {
+            $property_text = esc_html__( 'Entry', 'applicator' );
+            $value_text = esc_html__( 'Attachment', 'applicator' );
+            
+            $line_array = array(
+                'css'   => $value_line_term,
+                array(
+                    'sep'       => $GLOBALS['applicator_space_sep'],
+                    'txt'       => $value_text,
+                ),
+            );
+        }
+        
+        
+        // Error 404
+        elseif ( is_404() )
+        {
+            $property_text = esc_html__( 'Page', 'applicator' );
+            $value_text = esc_html__( 'Error 404', 'applicator' );
+            
+            $line_array = array(
+                'css'   => $value_line_term,
+                array(
+                    'sep'       => $GLOBALS['applicator_space_sep'],
+                    'txt'       => $value_text,
+                ),
+            );
+        }
                 
-        // Singular
-        if ( is_singular() && ! is_single() && ! is_page() ) {
-
+        
+        // Other
+        else
+        {
             $property_text = esc_html__( 'Entry', 'applicator' );
             $value_text = esc_html__( 'Other', 'applicator' );
             
@@ -117,16 +132,17 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
             );
         }
 
+        
         // Archive
-        if ( is_archive() && ( is_day() || is_month() || is_year() ) ) {
-            
+        if ( is_day() || is_month() || is_year() )
+        {   
             $date_day = get_the_date( 'j' );
             $date_month = get_the_date( 'F' );
             $date_year = get_the_date( 'Y' );
 
             // Daily Archive
-            if ( is_day() ) {
-
+            if ( is_day() )
+            {
                 $archive_type = esc_html__( 'Daily', 'applicator' );
 
                 $line_array = array(
@@ -146,9 +162,10 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
                 );
             }
 
+            
             // Monthly Archive
-            if ( is_month() ) {
-
+            elseif ( is_month() )
+            {
                 $archive_type = esc_html__( 'Monthly', 'applicator' );
 
                 $line_array = array(
@@ -164,9 +181,10 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
                 );
             }
 
+            
             // Yearly Archive
-            if ( is_year() ) {
-
+            elseif ( is_year() )
+            {
                 $archive_type = esc_html__( 'Yearly', 'applicator' );
 
                 $line_array = array(
@@ -181,9 +199,10 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
             $property_text = $archive_type.' '.esc_html__( 'Archive', 'applicator' );
         }
 
+        
         // Author
-        if ( is_author() && ! is_post_type_archive() ) {
-            
+        if ( is_author() && ! is_post_type_archive() )
+        {   
             $property_text = esc_html__( 'Entries Published by', 'applicator' );
             
             $author = get_queried_object();
@@ -200,14 +219,18 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
             );
         }
 
+        
         // Category or Tag
-        if ( is_category() || is_tag() ) {
+        if ( is_category() || is_tag() )
+        {
             
-            if ( is_category() ) {
+            if ( is_category() )
+            {
                 $property_text = esc_html__( 'Category', 'applicator' );
             }
             
-            elseif ( is_tag() ) {
+            
+            if ( is_tag() ) {
                 $property_text = esc_html__( 'Tag', 'applicator' );
             }
             
@@ -222,9 +245,10 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
             );
         }
 
+        
         // Taxonomy
-        if ( is_tax() ) {
-            
+        if ( is_tax() )
+        {   
             $property_text = esc_html__( 'Taxonomy', 'applicator' );
             
             $term = get_queried_object();
@@ -242,9 +266,10 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
             );
         }
 
+        
         // Post Type Archive
-        if ( is_post_type_archive() ) {
-            
+        if ( is_post_type_archive() )
+        {   
             $property_text = esc_html__( 'Post Type Archive', 'applicator' );
             
             $post_type = get_query_var( 'post_type' );
@@ -266,28 +291,14 @@ if ( ! function_exists( 'applicator_main_content_headings' ) ) {
             );
         }
 
+        
         // Post Type Archive with has_archive should override terms.
-        if ( is_post_type_archive() && $post_type_object->has_archive ) {
-            
+        if ( is_post_type_archive() && $post_type_object->has_archive )
+        {   
             $property_text = esc_html__( 'Post Type Archive', 'applicator' );
             
             $value_text = post_type_archive_title( '', false );
 
-            $line_array = array(
-                'css'   => $value_line_term,
-                array(
-                    'sep'       => $GLOBALS['applicator_space_sep'],
-                    'txt'       => $value_text,
-                ),
-            );
-        }
-        
-        // Error 404
-        if ( is_404() ) {
-
-            $property_text = esc_html__( 'Error 404', 'applicator' );
-            $value_text = esc_html__( 'Page', 'applicator' );
-            
             $line_array = array(
                 'css'   => $value_line_term,
                 array(

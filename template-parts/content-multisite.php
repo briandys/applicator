@@ -1,45 +1,4 @@
-<?php
-
-// Post Classes
-
-// Variables
-$on = '--enabled';
-$off = '--disabled';
-$post_thumbnail_term = 'post-banner-visual';
-$post_excerpt_term = 'post-excerpt';
-
-// Post Thumbnail Class
-if ( '' !== get_the_post_thumbnail() ) {
-    $post_thumbnail_class = ' '. $post_thumbnail_term. $on;
-}
-else {
-    $post_thumbnail_class = ' '. $post_thumbnail_term. $off;
-}
-
-
-// Excerpt Class
-if ( has_excerpt() ) {
-    $excerpt_class = ' '. $post_excerpt_term. $on;
-}
-else {
-    $excerpt_class = ' '. $post_excerpt_term. $off;
-}
-
-// Post Classes Array
-$post_classes = array(
-    'cp',
-    'article',
-    'post',
-    'post--site-preview',
-    $post_thumbnail_class,
-    $excerpt_class,
-);
-
-// Array Implode
-$post_classes = implode( ' ', $post_classes );
-?>
-
-<article <?php post_class( $post_classes ); ?> data-name="Post CP">
+<article <?php post_class(); ?> data-name="Post CP">
     <div class="cr post---cr">
         <header class="hr post---hr entry-header">
             <div class="hr_cr post---hr_cr">

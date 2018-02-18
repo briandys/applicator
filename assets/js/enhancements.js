@@ -55,8 +55,8 @@
         
         $goStartNaviA = $( '#go-start-navi---a' ),
         
-        scrollMsFactor = 300,
-        scrollTime;
+        viewGranularityDetailClassName = 'view-granularity--detail',
+        viewGranularityDetailClassSelector = '.view-granularity--detail';
     
     
     
@@ -362,6 +362,241 @@
             }
         }
     };
+    
+    
+    
+    
+    
+    // ------------------------------------ Comments
+    function applicatorComments( $cp ) {
+        
+        
+        // Gatekeeper
+        if ( ! $body.closest( viewGranularityDetailClassSelector ) && ! $applicatorComments.length ) {
+            return;
+        }
+        
+        
+        // Initialization
+        ( function() {
+            
+            funcName = 'comments-feature';
+            
+            $cp
+                .addClass( funcTerm )
+                .addClass( funcName );
+        }() );
+
+        
+        // Variables
+        var commentsToggleObjectMU,
+            commentsToggleButtonMU,
+            commentsToggleButtonLabelMU,
+            commentsToggleButtonTextLabelMU,
+            commentsToggleButtonTextLabelTxtMU,
+            
+            $commentModuleH,
+            $commentsToggleButton,
+            $commentsToggleButtonTextLabel,
+            $commentsToggleButtonTextLabelTxt,
+            
+            $commentsCount,
+            
+            $commentsShowL = applicatorDataComments.commentsShowL,
+            $commentsHideL = applicatorDataComments.commentsHideL,
+            $commentsDismissIco = $( applicatorDataComments.commentsDismissIco ),
+            
+            aplCommentsOnCSS = 'applicator--comments--active',
+            aplCommentsOffCSS = 'applicator--comments--inactive',
+            
+            commentsOnCSS = 'comments--active',
+            commentsOffCSS = 'comments--inactive',
+            
+            commentsFn;
+
+        
+        // Build Markup
+        ( function() {
+            
+            var commentsToggleTerm = 'comments-toggle';
+            
+            commentsToggleButtonTextLabelTxtMU = $( '<span />', {
+                'class': 'txt ' + showHideTxtCss,
+                'text': $commentsHideL
+            } );
+
+            // Text Label
+            commentsToggleButtonTextLabelMU = $( '<span />', {
+                'class': 'l' + ' ' + showHideTxtLabelCss
+            } )
+                .append( commentsToggleButtonTextLabelTxtMU );
+
+            // Button Label
+            commentsToggleButtonLabelMU = $( '<span />', {
+                'class': 'b_l' + ' ' + commentsToggleTerm + '---b_l'
+            } )
+                .append( commentsToggleButtonTextLabelMU );
+
+            // Button
+            commentsToggleButtonMU = $( '<button />', {
+                'id' : commentsToggleTerm + '---b',
+                'class': 'b' + ' ' + commentsToggleTerm + '---b',
+                'title': $commentsHideL
+            } ).append( commentsToggleButtonLabelMU );
+
+            // Object
+            commentsToggleObjectMU = $( '<div />', {
+                'class': 'obj toggle' + ' ' + commentsToggleTerm,
+                'data-name': 'Comments Toggle OBJ'
+            } ).append( commentsToggleButtonMU );
+
+        }() );
+        
+        
+        // Define existing elements
+        $commentModuleH = $cp.find( '.comment-md---h' );
+        $commentsCountAction = $( '.comments-actions-snippet' ).find( '.comments-count-axn---a' );
+
+        
+        // Insert Markup
+        $commentModuleH.after( commentsToggleObjectMU );
+        
+        
+        // Define elements after inserting the markup
+        $commentsToggleButton = $( '#comments-toggle---b' );
+        $commentsToggleButtonTextLabel = $commentsToggleButton.find( '.show-hide---l' );
+        $commentsToggleButtonTextLabelTxt = $commentsToggleButton.find( '.show-hide---txt' );
+        
+        // To insert beside the button label
+        $commentsCount = $( '#comments-header-aside' ).find( '.comments-count---txt' );
+        $commentsCount.clone().insertAfter( $commentsToggleButtonTextLabelTxt );
+        
+        
+        commentsFn = {
+            
+            
+            // Comments On
+            on: function() {
+
+                $cp
+                    .addClass( commentsOnCSS )
+                    .removeClass( commentsOffCSS );
+
+                $html
+                    .addClass( aplCommentsOnCSS )
+                    .removeClass( aplCommentsOffCSS );
+
+                $commentsToggleButton.attr( {
+                     'aria-expanded': 'true',
+                     'title': $commentsHideL
+
+                } );
+
+                // Swap text label and icon
+                $commentsToggleButtonTextLabelTxt.text( $commentsHideL );
+                $commentsToggleButtonTextLabel.append( $commentsDismissIco );
+            },
+            
+            
+            // Comments Off
+            off: function() {
+
+                $cp
+                    .addClass( commentsOffCSS )
+                    .removeClass( commentsOnCSS );
+
+                $html
+                    .addClass( aplCommentsOffCSS )
+                    .removeClass( aplCommentsOnCSS );
+
+                $commentsToggleButton.attr( {
+                     'aria-expanded': 'false',
+                     'title': $commentsShowL
+
+                } );
+
+                // Swap text label and icon
+                $commentsToggleButtonTextLabelTxt.text( $commentsShowL );
+                $commentsDismissIco.remove();
+            },
+            
+            
+            // Comments Scroll Top
+            scrollTop: function() {
+            
+                var $comments = $( '#comments' );
+
+                if ( $comments.length ) {
+                    $window.scrollTop( $comments.offset().top );
+                }
+            },
+            
+            
+            // Toggle from generated button clicks
+            toggle: function() {
+
+                if ( $cp.hasClass( commentsOffCSS ) ) {
+                    commentsFn.on();
+                    commentsFn.scrollTop();
+                    cycleTabbingFn.tabOn( $cp ); 
+                }
+
+                else if ( $cp.hasClass( commentsOnCSS ) ) {
+                    commentsFn.off();
+                    genericFn.removeHash();
+                    cycleTabbingFn.tabOff( $cp );
+                }
+            }
+            
+        };    
+        commentsFn.off();
+        
+        
+        // Clicking links starting with #comment must activate Comment Module
+        ( function() {
+            
+            var $commentModule = $( '#comment-md' );
+            
+            if ( $commentModule.length )
+            {
+                $( 'a[href*="#comment"]' ).on( 'click.applicator', function() {
+                    if ( $cp.hasClass( commentsOffCSS ) )
+                    {
+                        commentsFn.on();
+                    }
+                } );
+            }
+            
+        }() );
+        
+        
+        if ( $( '.comments-actions-snippet' ).hasClass( 'comments--empty' ) ) {
+            commentsFn.on();
+        }
+        
+        
+        // Button Clicks
+        $commentsToggleButton.on( 'click.applicator', function( e ) {
+            e.preventDefault();
+            commentsFn.toggle();
+        } );
+        
+        
+        // Hash
+        $document.ready( function () {
+            
+            // Activate Comments if URL activated has #comment
+            // https://stackoverflow.com/a/19889034
+            if ( window.location.hash ) {
+                if ( window.location.hash.indexOf( 'comment' ) != -1 && $cp.hasClass( commentsOffCSS ) ) {
+                    commentsFn.on();
+                }
+            }
+        
+        } );
+
+    }
+    applicatorComments( $( '#comment-md' ) );
     
     
     
@@ -679,14 +914,11 @@
             // Deactivate and TransThere
             menuOffTransHere: function()
             {
-
-                if ( $cp.hasClass( mainMenuActCss ) ) {
-
+                if ( $cp.hasClass( mainMenuActCss ) )
+                {
                     mainMenuFn.menuOff();
-
                     transitionFn.there( $mainHrAsCt, 'transform', $cp );
                     transitionFn.there( $mainHrAsCt, 'transform', $mainMenuOverlay );
-
                 }
             },
 
@@ -694,13 +926,13 @@
             // Toggle
             menuToggle: function()
             {
-
-                if ( $cp.hasClass( mainMenuInactCss ) ) {
+                if ( $cp.hasClass( mainMenuInactCss ) )
+                {
                     mainMenuFn.menuOnTransHere();
                     $mainHeaderAsideWidgetGroup.scrollTop( 0 );
                 }
-
-                else if ( $cp.hasClass( mainMenuActCss ) ) {
+                else if ( $cp.hasClass( mainMenuActCss ) )
+                {
                     mainMenuFn.menuOffTransHere();
                 }
             }
@@ -758,237 +990,7 @@
     
     
     
-    // ------------------------------------ Comments
-    function applicatorComments( $cp ) {
-        
-        
-        // Proceed only if Detail View and the Applicator CSS class name is present
-        if ( ! $html.closest( '.view-granularity--detail' ) && ! $applicatorComments.length ) {
-            return;
-        }
-
-        
-        // Variables
-        var commentsToggleObjectMU,
-            commentsToggleButtonMU,
-            commentsToggleButtonLabelMU,
-            commentsToggleButtonTextLabelMU,
-            commentsToggleButtonTextLabelTxtMU,
-            
-            $comments,
-            
-            $commentModuleH,
-            $commentsToggleButton,
-            $commentsToggleButtonTextLabel,
-            $commentsToggleButtonTextLabelTxt,
-            
-            $commentsCount,
-            
-            $commentsShowL = applicatorDataComments.commentsShowL,
-            $commentsHideL = applicatorDataComments.commentsHideL,
-            $commentsDismissIco = $( applicatorDataComments.commentsDismissIco ),
-            
-            aplCommentsOnCSS = 'applicator--comments--active',
-            aplCommentsOffCSS = 'applicator--comments--inactive',
-            
-            commentsOnCSS = 'comments--active',
-            commentsOffCSS = 'comments--inactive'
-        ;
-        
-        
-        // Initializing
-        ( function() {
-            
-            funcName = 'comments-func';
-            
-            $cp
-                .addClass( funcTerm )
-                .addClass( funcName );
-        }() );
-
-        
-        // Build Markup
-        ( function() {
-            
-            var commentsToggleTerm = 'comments-toggle';
-            
-            commentsToggleButtonTextLabelTxtMU = $( '<span />', {
-                'class': 'txt ' + showHideTxtCss,
-                'text': $commentsHideL
-            } );
-
-            // Text Label
-            commentsToggleButtonTextLabelMU = $( '<span />', {
-                'class': 'l' + ' ' + showHideTxtLabelCss
-            } )
-                .append( commentsToggleButtonTextLabelTxtMU );
-
-            // Button Label
-            commentsToggleButtonLabelMU = $( '<span />', {
-                'class': 'b_l' + ' ' + commentsToggleTerm + '---b_l'
-            } )
-                .append( commentsToggleButtonTextLabelMU );
-
-            // Button
-            commentsToggleButtonMU = $( '<button />', {
-                'id' : commentsToggleTerm + '---b',
-                'class': 'b' + ' ' + commentsToggleTerm + '---b',
-                'title': $commentsHideL
-            } ).append( commentsToggleButtonLabelMU );
-
-            // Object
-            commentsToggleObjectMU = $( '<div />', {
-                'class': 'obj toggle' + ' ' + commentsToggleTerm,
-                'data-name': 'Comments Toggle OBJ'
-            } ).append( commentsToggleButtonMU );
-
-        }() );
-        
-        
-        // Define existing elements
-        $commentModuleH = $cp.find( '.comment-md---h' );
-        $commentsCountAction = $( '.comments-actions-snippet' ).find( '.comments-count-axn---a' );
-
-        
-        // Insert Markup
-        $commentModuleH.after( commentsToggleObjectMU );
-        
-        
-        // Define elements after inserting the markup
-        $commentsToggleButton = $( '#comments-toggle---b' );
-        $commentsToggleButtonTextLabel = $commentsToggleButton.find( '.show-hide---l' );
-        $commentsToggleButtonTextLabelTxt = $commentsToggleButton.find( '.show-hide---txt' );
-        
-        // To insert beside the button label
-        $commentsCount = $( '#comments-header-aside' ).find( '.comments-count---txt' );
-        $commentsCount.clone().insertAfter( $commentsToggleButtonTextLabelTxt );
-        
-        
-        var commentsFn = {
-            
-            
-            // Comments On
-            on: function() {
-
-                $cp
-                    .addClass( commentsOnCSS )
-                    .removeClass( commentsOffCSS );
-
-                $html
-                    .addClass( aplCommentsOnCSS )
-                    .removeClass( aplCommentsOffCSS );
-
-                $commentsToggleButton.attr( {
-                     'aria-expanded': 'true',
-                     'title': $commentsHideL
-
-                } );
-
-                // Swap text label and icon
-                $commentsToggleButtonTextLabelTxt.text( $commentsHideL );
-                $commentsToggleButtonTextLabel.append( $commentsDismissIco );
-            },
-            
-            
-            // Comments Off
-            off: function() {
-
-                $cp
-                    .addClass( commentsOffCSS )
-                    .removeClass( commentsOnCSS );
-
-                $html
-                    .addClass( aplCommentsOffCSS )
-                    .removeClass( aplCommentsOnCSS );
-
-                $commentsToggleButton.attr( {
-                     'aria-expanded': 'false',
-                     'title': $commentsShowL
-
-                } );
-
-                // Swap text label and icon
-                $commentsToggleButtonTextLabelTxt.text( $commentsShowL );
-                $commentsDismissIco.remove();
-            },
-            
-            
-            // Comments Scroll Top
-            scrollTop: function() {
-            
-                var $comments = $( '#comments' );
-
-                if ( $comments.length ) {
-                    $window.scrollTop( $comments.offset().top );
-                }
-            },
-            
-            
-            // Toggle from generated button clicks
-            toggle: function() {
-
-                if ( $cp.hasClass( commentsOffCSS ) ) {
-                    commentsFn.on();
-                    commentsFn.scrollTop();
-                    cycleTabbingFn.tabOn( $cp ); 
-                }
-
-                else if ( $cp.hasClass( commentsOnCSS ) ) {
-                    commentsFn.off();
-                    genericFn.removeHash();
-                    cycleTabbingFn.tabOff( $cp );
-                }
-            }
-            
-        };    
-        commentsFn.off();
-        
-        
-        // Clicking links starting with #comment must activate Comment Module
-        ( function() {
-            
-            var $commentModule = $( '#comment-md' );
-            
-            if ( $commentModule.length )
-            {
-                $( 'a[href*="#comment"]' ).on( 'click.applicator', function() {
-                    if ( $cp.hasClass( commentsOffCSS ) )
-                    {
-                        commentsFn.on();
-                    }
-                } );
-            }
-            
-        }() );
-        
-        
-        if ( $( '.comments-actions-snippet' ).hasClass( 'comments--empty' ) ) {
-            commentsFn.on();
-        }
-        
-        
-        // Button Clicks
-        $commentsToggleButton.on( 'click.applicator', function( e ) {
-            e.preventDefault();
-            commentsFn.toggle();
-        } );
-        
-        
-        // Hash
-        $document.ready( function () {
-            
-            // Activate Comments if URL activated has #comment
-            // https://stackoverflow.com/a/19889034
-            if ( window.location.hash ) {
-                if ( window.location.hash.indexOf( 'comment' ) != -1 && $cp.hasClass( commentsOffCSS ) ) {
-                    commentsFn.on();
-                }
-            }
-        
-        } );
-
-    }
-    applicatorComments( $( '#comment-md' ) );
+    
     
     
     
@@ -1020,9 +1022,18 @@
 			return;
 		}
         
-        funcName = 'main-search-func';
         
-        $cp.addClass( funcTerm + ' ' + funcName );
+        // Initializing
+        ( function() {
+            
+            funcName = 'main-search-func';
+        
+            $cp.addClass( funcTerm + ' ' + funcName );
+
+            genericFn.overlayActivate( funcName );
+            
+        }() );
+        
         
         var mainSearchActCss = 'main-search--active',
             mainSearchInactCss = 'main-search--inactive',
@@ -1999,31 +2010,56 @@
     
     
     
-    // ------------------------------------ Breadcrumbs
-    ( function() {
-        
-        var $breadcrumbsNaviAncestor = $( '.breadcrumbs-navi--ancestor' ),
-            $breadcrumbsLink = $breadcrumbsNaviAncestor.find( '.breadcrumbs-navi---a' ),
-            $breadcrumbsIco = $( applicatorDataBreadcrumbs.breadcrumbsIco );
-
-        $breadcrumbsLink.after( $breadcrumbsIco );
-    
-    } )();
+    // ------------------------------------------------------------------------ DOM Ready
     
     
-    
-    
-    
-    // ------------------------------------ DOM Ready ------------------------------------ //
     $document.ready( function() {
         
         
-        // ------------------------------------Remove DOM Unready CSS
-        ( function(){
+        // ------------------------------------ DOM Ready / Unready
+        ( function() {
 
             $html
                 .addClass( 'dom--ready' )
                 .removeClass( 'dom--unready' );
+
+        }() );
+        
+        
+        
+        
+        
+        // ------------------------------------ Breadcrumbs
+        // inc/tags/breadcrumbs.php
+
+        ( function() {
+
+            if ( ! $body.hasClass( 'breadcrumbs---a8r_f' ) )
+            {
+                return;
+            }
+
+            var $breadcrumbsNaviAncestor = $( '.breadcrumbs-navi--ancestor' ),
+                $breadcrumbsChildLink = $breadcrumbsNaviAncestor.find( '.breadcrumbs-navi---a' ),
+                $breadcrumbsIco = $( applicatorDataBreadcrumbs.breadcrumbsIco );
+
+            $breadcrumbsChildLink.after( $breadcrumbsIco );
+
+        } )();
+        
+        
+        
+        
+        
+        // ------------------------------------ Calendar
+        
+        ( function() {
+            
+            $( '.widget_calendar td:has( a )' ).each( function() {
+                $( this ).addClass( 'widget-calendar-active-date' );
+            } );
+            
+            genericFn.wrapTextNode( $( '.widget_calendar td, .widget_calendar th' ) );
 
         }() );
         
@@ -2205,18 +2241,7 @@
         
         
         
-        // ------------------------------------ Calendar
-        ( function(){
-            
-            genericFn.wrapTextNode( $( '.widget_calendar td, .widget_calendar th' ) );
-            
-            $( '.widget_calendar tbody td:has( a )' ).each( function() {
-
-                $( this ).addClass( 'widget-calendar-active-date' );
-
-            } );
-
-        }() );
+        
         
         
         
@@ -2248,7 +2273,7 @@
                 
                 if ( ! $( '#main-logo' ).length ) {
 
-                    $html
+                    $body
                         .removeClass( 'main-logo--enabled' )
                         .addClass( 'main-logo--disabled' );
 
@@ -2335,7 +2360,7 @@
         // ------------------------------------ Add Anchor to Content Headings
         ( function( $id ) {
             
-            if ( ! $html.hasClass( 'view-granularity--detail' ) ) {
+            if ( ! $body.hasClass( viewGranularityDetailClassName ) ) {
                 return;
             }
             
@@ -2785,7 +2810,7 @@
         ( function() {
 
             if ( $secondaryContent.css( 'margin' ) == '-1px' || $secondaryContent.is( ':hidden' ) ) {
-                $html
+                $body
                     .addClass( mainContentAsideDisabled )
                     .removeClass( mainContentAsideEnabled );
             }

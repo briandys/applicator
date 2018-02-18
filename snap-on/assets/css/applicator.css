@@ -42,8 +42,10 @@
 .applicator--theme--comment-meta .published-commenter-glabel,
 .applicator--theme--comment-meta .comment-meta .comma---sep,
 .applicator--theme--private-post-title .post-title---l .colon---sep,
-.applicator--theme--excerpt .show-more-action .property---line .of---txt,
-.applicator--theme--excerpt .show-more-action .value---line,
+
+.applicator--theme--excerpt .show-more-axn .property---line .of---txt,
+.applicator--theme--excerpt .show-more-axn .value---line,
+
 .applicator--theme--page-nav .page-nav .ellipsis--delimiter,
 .applicator--theme--post-format--status .format-status .published-post-author,
 
@@ -154,57 +156,6 @@ h6
 .post-title---a
 {
     color: #262626;
-}
-
-
-
-
-
-/* ------------------ Mod: Pretty Post Links ------------------ */
-.post-content---ct_cr a
-{
-    color: #262626;
-    
-    border-bottom: 1px solid #d8e8ff;
-    box-shadow: inset 0 -0.25em 0 #d8e8ff;
-    
-    transition: background-color .2s ease-in-out;
-}
-
-.post-content---ct_cr a:hover,
-.excerpt-link > .text-node:hover
-{
-    background-color: #d8e8ff;
-    
-    text-decoration: none;
-}
-
-.excerpt-link > .text-node
-{
-    transition: background-color .2s ease-in-out;
-}
-
-/* Reversion */
-.post-content---ct_cr .more-link,
-.post-content---ct_cr .identified-heading---a
-{
-    border-bottom: 0;
-    box-shadow: none;
-    
-    transition: none;
-}
-
-.post-content---ct_cr .more-link
-{
-    color: hsl(215, 100%, 45%);
-}
-
-.post-content---ct_cr .more-link:hover,
-.post-content---ct_cr .identified-heading---a:hover
-{
-    background-color: transparent;
-    
-    text-decoration: underline;
 }
 
 
@@ -579,72 +530,7 @@ h6
 
 
 
-/* ------------------ Calendar ------------------ */
-.applicator--theme--calendar .widget_calendar tbody
-{
-    border: 2px solid lightgray;
-    border-left-width: 1px;
-    border-right-width: 1px;
-}
 
-.applicator--theme--calendar .widget_calendar th
-{
-    border: 0;
-}
-
-.applicator--theme--calendar .widget_calendar tbody th
-{
-    text-align: left;
-}
-
-.applicator--theme--calendar .widget_calendar td,
-.applicator--theme--calendar .widget_calendar tbody th
-{
-    border: 1px solid lightgray;
-    
-    border-right: 0;
-    border-bottom: 0;
-}
-
-/* Dates */
-.applicator--theme--calendar .widget_calendar tbody td
-{
-    text-align: right;
-    white-space: nowrap;
-}
-
-.applicator--theme--calendar .widget_calendar td:first-child
-{
-    border-left: 0;
-}
-
-/* Navigation */
-.applicator--theme--calendar .widget_calendar tfoot
-{
-    border-top: 2px solid lightgray;
-}
-
-.applicator--theme--calendar .widget_calendar tfoot td
-{
-    border: 0;
-}
-
-.applicator--theme--calendar .widget_calendar #prev
-{
-    text-align: right;
-}
-
-/* Days */
-.applicator--theme--calendar .widget_calendar thead th
-{
-    font-weight: normal;
-}
-
-/* Month Label */
-.applicator--theme--calendar .widget_calendar caption
-{
-    font-weight: bold;
-}
 
 
 
@@ -685,10 +571,7 @@ h6
     display: inline-block;
     vertical-align: middle;
     
-    padding-left: .5rem;
-    padding-right: .5rem;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding: .5rem;
 }
 
 .applicator--theme--categories .apl-categories a
@@ -1328,27 +1211,26 @@ h6
 
 
 
-/* ------------------ Post ------------------ */
+/* ------------------------------------ Mod: Post ------------------------------------ */
 
-/* ------------ Juxtapose Post Title and Edit Action ------------ */
-.applicator--theme--post .main-post-title---ct_cr
+/* Juxtapose Post Title and Edit Action */
+.main-post-title---ct_cr
 {
     padding: 1rem;
 }
 
-.applicator--theme--post .post-title
+.post-title
 {
     display: inline;
-    padding: 0;
+    padding-right: 1rem;
 }
 
-.applicator--theme--post .edit-post-action
+.edit-post-action
 {
     display: inline;
-    margin-right: -1rem;
 }
 
-.applicator--theme--post .post-title---h
+.post-title---h
 {
     display: inline;
     vertical-align: middle;
@@ -1418,7 +1300,7 @@ h6
     flex: 1 100%;
 }
 
-.applicator--theme--post-format--status.page-template--multisite-directory .format-status .post---cr
+.applicator--theme--post-format--status .page-template--multisite-directory .format-status .post---cr
 {
     justify-content: center;
 }
@@ -1477,6 +1359,17 @@ h6
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+}
+
+.applicator--theme--main-header.applicator--main-search--active .main-search-func
+{
+    z-index: 100;
+}
+
+.applicator--theme--main-header.applicator--main-search--active .main-info
+{
+    position: relative;
+    z-index: 100;
 }
 
 .applicator--theme--main-header.applicator--main-actions-widgets .main-actions-widgets
@@ -1593,7 +1486,7 @@ div[id^="contact-form-"] > .contact-form-submission
 
 
 
-/* ------------------ Mod: Table Interactivity ------------------ */
+/* ------------------------------------ Mod: Table Interactivity */
 .post-content tr,
 .post-content td,
 .post-content th
@@ -1623,6 +1516,101 @@ div[id^="contact-form-"] > .contact-form-submission
 
 
 
+/* ------------------------------------ Mod: Calendar */
+.dom--unready .widget_calendar
+{
+    visibility: hidden;
+}
+
+.widget_calendar a,
+.widget_calendar .text-node
+{
+    min-width: 2.25rem;
+    min-height: 2.25rem;   
+}
+
+.widget-calendar-active-date a
+{
+    display: flex;
+    
+    font-weight: bold;
+}
+
+.widget-calendar-active-date a:hover
+{
+    text-decoration: underline;
+}
+
+.widget_calendar tbody
+{
+    border: 2px solid #dcdcdc;
+    border-left-width: 1px;
+    border-right-width: 1px;
+}
+
+.widget_calendar th
+{
+    border: 0;
+}
+
+.widget_calendar tbody th
+{
+    text-align: left;
+}
+
+.widget_calendar td,
+.widget_calendar tbody th
+{
+    border: 1px solid #dcdcdc;
+    
+    border-right: 0;
+    border-bottom: 0;
+}
+
+/* Dates */
+.widget_calendar tbody td
+{
+    text-align: center;
+    white-space: nowrap;
+}
+
+.widget_calendar td:first-child
+{
+    border-left: 0;
+}
+
+/* Navigation */
+.widget_calendar tfoot
+{
+    border-top: 2px solid #dcdcdc;
+}
+
+.widget_calendar tfoot td
+{
+    border: 0;
+}
+
+.widget_calendar #prev
+{
+    text-align: right;
+}
+
+/* Days */
+.widget_calendar thead th
+{
+    font-weight: normal;
+}
+
+/* Month Label */
+.widget_calendar caption
+{
+    font-weight: bold;
+}
+
+
+
+
+
 /* ------------------ GPU Hack ------------------ */
 .main-hr-aside---ct,
 .main-actions-widgets---widget-grp
@@ -1640,18 +1628,18 @@ div[id^="contact-form-"] > .contact-form-submission
 {
 
     /* ------------ Layout ------------ */
-    .applicator--theme--layout.main-content-aside--enabled .main-content---ct_cr
+    .applicator--theme--layout .main-content-aside--enabled .main-content---ct_cr
     {
         display: flex;
     }
 
-    .applicator--theme--layout.main-content-aside--enabled .primary-content 
+    .applicator--theme--layout .main-content-aside--enabled .primary-content 
     {
         flex: 1 70%;
         width: 70%;
     }
 
-    .applicator--theme--layout.main-content-aside--enabled .secondary-content 
+    .applicator--theme--layout .main-content-aside--enabled .secondary-content 
     {
         flex: 1 30%;
         width: 30%;
@@ -1790,17 +1778,17 @@ div[id^="contact-form-"] > .contact-form-submission
     
     
     /* ------------ Layout - Multisite Directory ------------ */
-    .applicator--theme--layout.main-content-aside--enabled.page-template--multisite-directory .main-content---ct_cr
+    .applicator--theme--layout .main-content-aside--enabled.page-template--multisite-directory .main-content---ct_cr
     {
         display: block;
     }
 
-    .applicator--theme--layout.main-content-aside--enabled.page-template--multisite-directory .primary-content 
+    .applicator--theme--layout .main-content-aside--enabled.page-template--multisite-directory .primary-content 
     {
         flex: none;
     }
 
-    .applicator--theme--layout.main-content-aside--enabled.page-template--multisite-directory .secondary-content 
+    .applicator--theme--layout .main-content-aside--enabled.page-template--multisite-directory .secondary-content 
     {
         flex: none;
     }

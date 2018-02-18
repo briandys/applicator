@@ -1,6 +1,6 @@
 /*!
  * modernizr v3.5.0
- * Build https://modernizr.com/download?-csstransitions-flexbox-inlinesvg-touchevents-setclasses-shiv-dontmin-cssclassprefix:feature--
+ * Build https://modernizr.com/download?-csstransitions-flexbox-inlinesvg-touchevents-setclasses-shiv-dontmin
  *
  * Copyright (c)
  *  Faruk Ates
@@ -44,7 +44,7 @@
     // Any settings that don't work as separate modules
     // can go in here as configuration.
     _config: {
-      'classPrefix': "feature--",
+      'classPrefix': '',
       'enableClasses': true,
       'enableJSClass': true,
       'usePrefixes': true
@@ -918,40 +918,6 @@ This test will also return `true` for Firefox 4 Multitouch support.
   ModernizrProto._domPrefixes = domPrefixes;
   
 
-
-  /**
-   * contains checks to see if a string contains another string
-   *
-   * @access private
-   * @function contains
-   * @param {string} str - The string we want to check for substrings
-   * @param {string} substr - The substring we want to search the first string for
-   * @returns {boolean}
-   */
-
-  function contains(str, substr) {
-    return !!~('' + str).indexOf(substr);
-  }
-
-  ;
-
-  /**
-   * cssToDOM takes a kebab-case string and converts it to camelCase
-   * e.g. box-sizing -> boxSizing
-   *
-   * @access private
-   * @function cssToDOM
-   * @param {string} name - String name of kebab-case prop we want to convert
-   * @returns {string} The camelCase version of the supplied name
-   */
-
-  function cssToDOM(name) {
-    return name.replace(/([a-z])-([a-z])/g, function(str, m1, m2) {
-      return m1 + m2.toUpperCase();
-    }).replace(/^-/, '');
-  }
-  ;
-
   /**
    * fnBind is a super small [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) polyfill.
    *
@@ -1009,34 +975,39 @@ This test will also return `true` for Firefox 4 Multitouch support.
 
   ;
 
+
   /**
-   * Create our "modernizr" element that we do most feature tests on.
+   * contains checks to see if a string contains another string
    *
    * @access private
+   * @function contains
+   * @param {string} str - The string we want to check for substrings
+   * @param {string} substr - The substring we want to search the first string for
+   * @returns {boolean}
    */
 
-  var modElem = {
-    elem: createElement('modernizr')
-  };
+  function contains(str, substr) {
+    return !!~('' + str).indexOf(substr);
+  }
 
-  // Clean up this element
-  Modernizr._q.push(function() {
-    delete modElem.elem;
-  });
+  ;
 
-  
+  /**
+   * cssToDOM takes a kebab-case string and converts it to camelCase
+   * e.g. box-sizing -> boxSizing
+   *
+   * @access private
+   * @function cssToDOM
+   * @param {string} name - String name of kebab-case prop we want to convert
+   * @returns {string} The camelCase version of the supplied name
+   */
 
-  var mStyle = {
-    style: modElem.elem.style
-  };
-
-  // kill ref for gc, must happen before mod.elem is removed, so we unshift on to
-  // the front of the queue.
-  Modernizr._q.unshift(function() {
-    delete mStyle.style;
-  });
-
-  
+  function cssToDOM(name) {
+    return name.replace(/([a-z])-([a-z])/g, function(str, m1, m2) {
+      return m1 + m2.toUpperCase();
+    }).replace(/^-/, '');
+  }
+  ;
 
   /**
    * domToCSS takes a camelCase string and converts it to kebab-case
@@ -1133,6 +1104,35 @@ This test will also return `true` for Firefox 4 Multitouch support.
     return undefined;
   }
   ;
+
+  /**
+   * Create our "modernizr" element that we do most feature tests on.
+   *
+   * @access private
+   */
+
+  var modElem = {
+    elem: createElement('modernizr')
+  };
+
+  // Clean up this element
+  Modernizr._q.push(function() {
+    delete modElem.elem;
+  });
+
+  
+
+  var mStyle = {
+    style: modElem.elem.style
+  };
+
+  // kill ref for gc, must happen before mod.elem is removed, so we unshift on to
+  // the front of the queue.
+  Modernizr._q.unshift(function() {
+    delete mStyle.style;
+  });
+
+  
 
   // testProps is a generic CSS / DOM property test.
 

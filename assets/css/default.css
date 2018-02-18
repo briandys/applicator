@@ -11,7 +11,7 @@ Default Style
 
 
 /* ------------------ CSS Variables ------------------ */
-.feature--css-variables--supported
+.cssvariables
 {
     /* Checked against white background */
     /* https://webaim.org/resources/contrastchecker/ */
@@ -208,8 +208,8 @@ video
     fill: currentColor;
 }
 
-.feature--inlinesvg .icon--raster,
-.feature--no-inlinesvg .icon--vector
+.inlinesvg .icon--raster,
+.no-inlinesvg .icon--vector
 {
     display: none;
 }

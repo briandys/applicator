@@ -23,3 +23,7 @@ $GLOBALS['applicator_applicator_kid_term'] = 'Applicator Kid';
 
 // Snap-On
 $GLOBALS['applicator_snap_on_term'] = 'Snap-On';
+
+
+// Applicator Feature Term
+$GLOBALS['applicator_feature_class_name'] = 'a8r_f';

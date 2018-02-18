@@ -76,7 +76,7 @@ function applicator_inline_scripts()
 
         // ------------------------------------ CSS Variables Feature Detection
         // https://stackoverflow.com/a/26633844
-        function supportCssVariables()
+        function supportCSSVariables()
         {
             return window.CSS && window.CSS.supports && window.CSS.supports( '--var', 0 );
         }
@@ -89,7 +89,7 @@ function applicator_inline_scripts()
         ( function( html ) {
 
             // Replace no-js with js if JavaScript is supported
-            html.className = html.className.replace( /\bfeature--js--none\b/,'feature--js' );
+            html.className = html.className.replace( /\bno-js\b/,'js' );
 
             // DOM Unready (will be removed on document.ready)
             html.classList.add( 'dom--unready' );
@@ -98,13 +98,13 @@ function applicator_inline_scripts()
             html.classList.add( 'window--unloaded' );
 
             // CSS Variables CSS inserted via JS
-            if ( supportCssVariables() )
+            if ( supportCSSVariables() )
             {
-                html.classList.add( 'feature--css-variables--supported' );
+                html.classList.add( 'cssvariables' );
             }
             else
             {
-                html.classList.add( 'feature--css-variables--unsupported' );
+                html.classList.add( 'no-cssvariables' );
             }
 
             // Detect Viewport Width

@@ -119,8 +119,6 @@ if ( ! function_exists( 'applicator_functionalities_css_class_names' ) ) {
         $r = array(
             
             // Functionalities
-            'breadcrumbs',
-            'calendar',
             'comments',
             'easy-access-nav',
             'go-content-nav',
@@ -135,9 +133,27 @@ if ( ! function_exists( 'applicator_functionalities_css_class_names' ) ) {
         
         echo ' ' . esc_attr( $applicator_term );
         
-        foreach ( ( array ) $r as $css_class_name ) {
+        foreach ( $r as $css_class_name ) {
             echo ' '. esc_attr( $applicator_term ). '--'. esc_attr( $css_class_name );
         }
     }
-    add_action( 'applicator_hook_html_class', 'applicator_functionalities_css_class_names');
+    add_action( 'applicator_hook_html_css', 'applicator_functionalities_css_class_names');
 }
+
+// Body Class
+function applicator_features_body_class( $classes )
+{
+    $app_feature_class_name = $GLOBALS['applicator_feature_class_name'];
+    
+    $r = array(
+        'calendar'. '---'. $app_feature_class_name ,
+    );
+    
+    foreach ( $r as $class_name )
+    {
+        $classes[] = esc_attr( $class_name );
+    }
+    
+    return $classes;
+}
+add_filter( 'body_class', 'applicator_features_body_class' );

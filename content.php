@@ -1,54 +1,4 @@
-<?php
-
-// Post Classes
-
-// Variables
-$on = '--enabled';
-$off = '--disabled';
-$post_thumbnail_term = 'post-thumbnail';
-$post_excerpt_term = 'post-excerpt';
-
-// Post Thumbnail Class
-if ( '' !== get_the_post_thumbnail() ) {
-    $post_thumbnail_class = ' '. $post_thumbnail_term. $on;
-}
-else {
-    $post_thumbnail_class = ' '. $post_thumbnail_term. $off;
-}
-
-
-// Excerpt Class
-if ( has_excerpt() ) {
-    $excerpt_class = ' '. $post_excerpt_term. $on;
-}
-else {
-    $excerpt_class = ' '. $post_excerpt_term. $off;
-}
-
-
-// Category
-if ( has_category( '', $post->ID ) ) {
-    $category_class = ' '. 'category--populated';
-}
-else {
-    $category_class = ' '. 'category--empty';
-}
-
-// Post Classes Array
-$post_classes = array(
-    'cp',
-    'article',
-    'post',
-    $post_thumbnail_class,
-    $excerpt_class,
-    $category_class,
-);
-
-// Array Implode
-$post_classes = implode( ' ', $post_classes );
-?>
-
-<article <?php post_class( $post_classes ); ?> data-name="Post CP">
+<article <?php post_class(); ?> data-name="Post CP">
     <div class="cr post---cr">
         <header class="hr post---hr entry-header">
             <div class="hr_cr post---hr_cr">
@@ -116,7 +66,7 @@ $post_classes = implode( ' ', $post_classes );
                 
                 
                 // Breadcrumbs Navigation | inc > tags > breadcumbs-nav.php
-                applicator_breadcrumbs_nav();
+                applicator_breadcrumbs();
                 
                 
                 // E: Post Meta
@@ -202,7 +152,7 @@ $post_classes = implode( ' ', $post_classes );
                 the_content();
                 $content_ob_content = ob_get_clean();
                 
-                if ( is_home() || is_singular() || ( is_front_page() && ! is_page() ) ) {
+                if ( is_home() || is_singular() || is_archive() ) {
                     
                     if ( has_excerpt() ) {
                         
