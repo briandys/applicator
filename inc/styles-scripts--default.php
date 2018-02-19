@@ -1,4 +1,9 @@
-<?php // Default Styles and Scripts
+<?php
+
+// Default Styles and Scripts
+
+
+
 
 
 // ------------------------------------ Default Applicator Styles

@@ -139,6 +139,7 @@ Enhancements Style
 .applicator--main-menu .here.overlay--main-menu-func,
 
 .applicator--main-search--active .overlay--main-search-func,
+.applicator--main-search .here.overlay--main-search-func,
 
 .applicator--main-actions-widgets--active .overlay--main-actions-widgets-func,
 .applicator--main-actions-widgets .here.overlay--main-actions-widgets-func,
@@ -156,6 +157,12 @@ Enhancements Style
 .applicator--main-menu--inactive .there.overlay--main-menu-func,
 .applicator--main-actions-widgets--inactive .there.overlay--main-actions-widgets-func
 {
+    opacity: 0;
+}
+
+.applicator--main-search--inactive .there.overlay--main-search-func
+{
+    z-index: auto;
     opacity: 0;
 }
 
@@ -238,7 +245,6 @@ textarea,
 .account-log-out-axn---a_l,
 .comments-navi---a_l,
 .type-attachment .post-navi a,
-.show-more-glabel---g_l,
 .breadcrumbs-navi---a_l,
 .breadcrumbs-navi---g_l,
 .comment-reply-cancel-axn---a_l,
@@ -429,6 +435,8 @@ a
 {
     padding-left: 0;
     padding-right: 0;
+    
+    max-width: 100%;
     
     overflow-x: auto;
 }
@@ -1366,44 +1374,6 @@ img.size-medium
     width: 100%;
     height: 320px;
     object-fit: cover;
-}
-
-
-
-
-/* ------------------ Post Excerpt ------------------ */
-.show-more-glabel
-{
-    padding-top: 1em;
-    padding-bottom: 1em;
-}
-
-.search-results .post-excerpt---ct_cr,
-.archive .post-excerpt---ct_cr
-{
-    padding: .75em 1rem;
-}
-
-.search-results .excerpt-link,
-.archive .excerpt-link
-{
-    display: inline;
-}
-
-.search-results .post-excerpt---ct_cr > .excerpt-link,
-.archive .post-excerpt---ct_cr > .excerpt-link
-{
-    padding: 0;
-}
-
-.show-more-glabel---g
-{
-    color: white;
-}
-
-.show-more-glabel:hover .l
-{
-    text-decoration: underline;
 }
 
 
@@ -2973,9 +2943,7 @@ button:hover .dismiss-icon
     
     opacity: 0;
     
-    transition: all .125s ease-in-out;
-    
-    transition-property: opacity;
+    transition: opacity .125s ease-in-out;
 }
 
 /* Input Text - Visible */
@@ -3074,9 +3042,7 @@ button:hover .dismiss-icon
 
 .main-search-toggle .search-icon
 {
-    transition: all .125s ease-in-out;
-    
-    transition-property: opacity;
+    transition: opacity .125s ease-in-out;
 }
 
 .main-search-func .search---ct_cr

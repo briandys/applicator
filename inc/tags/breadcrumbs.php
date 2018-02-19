@@ -13,7 +13,7 @@ if ( ! function_exists( 'applicator_breadcrumbs' ) )
     {
         global $post;
         
-        if ( $post->post_parent )
+        if ( is_page() && $post->post_parent )
         {
             // Terms Variables
             $breadcrumbs_term = __( 'Breadcrumbs', 'applicator' );
@@ -151,9 +151,8 @@ if ( ! function_exists( 'applicator_breadcrumbs_body_class' ) )
         if ( is_page() && $post->post_parent )
         {
             $classes[] = 'breadcrumbs'. '---'. $GLOBALS['applicator_feature_class_name'];
-
-            return $classes;
         }
+        return $classes;
     }
     add_filter( 'body_class', 'applicator_breadcrumbs_body_class' );
 }

@@ -1065,7 +1065,10 @@
             $mainSearchResetBL,
             
             $mainSearchInput,
-            $mainSearchResetBtn;
+            $mainSearchResetBtn,
+            
+            $mainSearchTextInput,
+            $mainSearchOverlay;
         
         
         // Create the toggle button
@@ -1093,6 +1096,9 @@
         
         $mainSearchInput = $cp.find( '.search-term-crt-search---input-text' );
         $mainSearchResetBtn = $cp.find( '.search-form-reset-axn---b' );
+        
+        $mainSearchTextInput = $cp.find( '.search-term-crt-search-text-input' ),
+        $mainSearchOverlay = $( '#overlay--' + funcName ),
         
         // Add Icons to Buttons
         $mainSearchFormAxns = $cp.find( '.search-form-axns' );
@@ -1151,13 +1157,33 @@
             },
             
             
-            // Toggle
-            toggle: function() {
+            onTransHere: function()
+            {
                 if ( $cp.hasClass( mainSearchInactCss ) ) {
                     mainSearchFn.on();
                 }
-                else if ( $cp.hasClass( mainSearchActCss ) ) {
+                transitionFn.here( $mainSearchTextInput, 'opacity', $mainSearchOverlay );
+                transitionFn.here( $mainSearchTextInput, 'opacity', $body );
+            },
+            
+            
+            offTransThere: function()
+            {
+                if ( $cp.hasClass( mainSearchActCss ) ) {
                     mainSearchFn.off();
+                }
+                transitionFn.there( $mainSearchTextInput, 'opacity', $mainSearchOverlay );
+                transitionFn.there( $mainSearchTextInput, 'opacity', $body );
+            },
+            
+            
+            // Toggle
+            toggle: function() {
+                if ( $cp.hasClass( mainSearchInactCss ) ) {
+                    mainSearchFn.onTransHere();
+                }
+                else if ( $cp.hasClass( mainSearchActCss ) ) {
+                    mainSearchFn.offTransThere();
                 }
             },
             
@@ -1213,7 +1239,7 @@
         // Deactivate via external click
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
             if ( $cp.hasClass( mainSearchActCss ) && ( ! $( e.target ).closest( $mainSearchTog ).length && ! $( e.target ).closest( $mainSearchCt ).length ) ) {
-                mainSearchFn.off();
+                mainSearchFn.offTransThere();
             }
         } );
 
@@ -1221,7 +1247,7 @@
         $window.load( function() {
             $document.on( 'keyup.applicator', function ( e ) {
                 if ( $cp.hasClass( mainSearchActCss ) && e.keyCode == 27 ) {
-                    mainSearchFn.off();
+                    mainSearchFn.offTransThere();
                 }
             } );
         } );
@@ -1235,7 +1261,7 @@
             setTimeout( function() {
                 var hasFocus = !! ( $this.find( ':focus' ).length > 0 );
                 if ( $html.hasClass( tabKeyActCss ) && ! hasFocus ) {
-                    mainSearchFn.off();
+                    mainSearchFn.offTransThere();
                 }
             }, 10 );
         } );
@@ -2248,17 +2274,14 @@
         
         
         // ------------------------------------ Wrap in Text Nodes
-        ( function(){
-            
-            
-            genericFn.wrapTextNode( $( '.data-format--img, .excerpt-link, .post-password-form label' ) );
+        ( function() {
+            genericFn.wrapTextNode( $( '.data-format--img' ) );
+            genericFn.wrapTextNode( $( '.post-password-form label' ) );
             genericFn.wrapTextNode( $( '.post-content---ct_cr' ) );
             genericFn.wrapTextNode( $( '.wp-caption-text' ) );
-            
             genericFn.wrapTextNode( $( '.custom-html-widget' ) );
             
             genericFn.removeEmptyElements( $( '.text-node' ) );
-            
         }() );
         
         

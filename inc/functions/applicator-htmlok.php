@@ -1368,32 +1368,39 @@ function applicator_htmlok( $args = array() ) {
             $r_content_obj_sep = '';
             
             // Text Content
-            if ( ! empty( $val['txt'] ) ) {
+            if ( ! empty( $val['txt'] ) )
+            {
                 $r_content_obj_txt = preg_replace( $pat_space, $rep_space, trim( $val['txt'] ) );
                 
                 $clean_txt = substr( sanitize_title( $r_content_obj_txt ), $substr_start, $substr_end );
                 
                 // If characters can't be converted
-                if ( '' == $clean_txt ) {
+                if ( '' == $clean_txt )
+                {
                     $txt_auto_css = '';
-                } else {
+                }
+                else
+                {
                     $txt_auto_css = ' '.$clean_txt.'---txt';
                 }
                 
                 // CSS
-                if ( ! empty( $val['css'] ) ) {
+                if ( ! empty( $val['css'] ) )
+                {
                     $r_content_obj_css = preg_replace( $pat_space, $rep_space, trim( $val['css'] ) );
 
                     $txt_css = ' '.$r_content_obj_css.'---txt';
                 }
                 
                 // Numeric Text
-                if ( is_numeric( $r_content_obj_txt[0] ) ) {
+                if ( is_numeric( $r_content_obj_txt[0] ) )
+                {
                     $txt_auto_css = ' '.'num'.' '.'n-'.$clean_txt.'---txt';
                 }
                 
                 // Separator
-                if ( ! empty( $val['sep'] ) ) {
+                if ( ! empty( $val['sep'] ) )
+                {
                     $r_content_obj_sep = preg_replace( $pat_space, $rep_space, $val['sep'] );
                 }
                 
@@ -1403,7 +1410,8 @@ function applicator_htmlok( $args = array() ) {
             }
             
             // Lines
-            elseif ( ! empty( $val['line'] ) ) {
+            elseif ( ! empty( $val['line'] ) )
+            {
                 $r_content_obj_line = $val['line'];
 
                 foreach ( (array) $r_content_obj_line as $line_val ) {
@@ -1500,7 +1508,8 @@ function applicator_htmlok( $args = array() ) {
                 }
             }
             
-            else {
+            else
+            {
                 $content_val .= trim( $val );
             }
         }

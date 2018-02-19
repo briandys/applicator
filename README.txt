@@ -43,20 +43,7 @@ Source: http://fontawesome.io/
 
 Found a bug? Please report it at: http://applicator.dysinelab.com/report-a-bug/
 
-= 2.2.5.60 =
-New feature: Meta Description for Posts and Pages from Content or Excerpt.
-
-= 2.2.5.53 =
-Developing Child Themes.
-
-= 2.2.5.26 =
-Complying to Theme Review.
-
-= 2.2.5.16 =
-Complying to Theme Check.
-
-= 2.0.8 =
-Just keeps getting better.
+Beta Testing: Please do not create a Child Theme for Applicator yet.
 
 = 0 =
 Released on March 22, 2017

@@ -312,6 +312,34 @@ function applicator_body_class( $classes )
     $classes[] = esc_attr( 'customizer-color-scheme--'. esc_attr( $colors ) );
     
     
+    // Add class of hfeed to non-singular pages.
+	if ( ! is_singular() )
+    {
+		$classes[] = 'hfeed';
+	}
+
+	
+    // Add class if we're viewing the Customizer for easier styling of theme options.
+	if ( is_customize_preview() )
+    {
+		$classes[] = 'applicator-customizer';
+	}
+
+	
+    // Add class on front page.
+	if ( is_front_page() && 'posts' !== get_option( 'show_on_front' ) ) {
+		$classes[] = 'applicator-front-page';
+	}
+    
+    if ( current_user_can('edit_others_pages') )
+    {
+        $classes[] = 'user-role--editor';
+    }
+    else
+    {
+        $classes[] = 'user-role--non-editor';
+    }
+    
     return $classes;
 
 }
