@@ -113,7 +113,7 @@
 
         $( '.post-content---ct_cr span[id^="more-"]' ).each( function() {
 
-            $( this ).closest( '.post-content---ct_cr > *' ).remove();
+            $( this ).closest( '.post-content--main > *' ).remove();
 
         } );
 

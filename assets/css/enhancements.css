@@ -37,7 +37,7 @@ Enhancements Style
 .widget---h,
 .widget-content---h,
 .widget .screen-reader-text,
-.post-content .search-form-reset-axn,
+.post-content--main .search-form-reset-axn,
 .applicator--comments .post-header-aside .comments-actions-snippet .comments--populated,
 .applicator--comments--active .comments-toggle .comments-count---txt,
 .applicator--page-nav .adjacent-navi---l,
@@ -430,7 +430,7 @@ a
 
 
 /* ------------------ Data Format ------------------ */
-.post-content---ct_cr > .data-format,
+.post-content--main > .data-format,
 .comment-content---ct_cr > .data-format
 {
     padding-left: 0;
@@ -448,7 +448,7 @@ a
 /* ------------------ Data Format - <img> ------------------ */
 
 /* For dynamic images that load the optimum size based on the width of their containers */
-.dom--unready .post-content---ct_cr > *
+.dom--unready .post-content--main > *
 {
     padding-left: 0;
     padding-right: 0;
@@ -919,11 +919,9 @@ img.size-medium
 
 
 /* ------------------ Table ------------------ */
-.post-content table,
-.comment-content table
-{
-    width: 100%;
-    
+.post-content--main table,
+.comment-content--main table
+{   
     word-break: normal;
 }
 
@@ -1136,7 +1134,7 @@ img.size-medium
     word-break: break-word;
 }
 
-.post-content---ct_cr > *,
+.post-content--main > *,
 .post-excerpt---ct_cr > *,
 .comment-content---ct_cr > *,
 .aside .widget-content---ct_cr > *
@@ -1148,18 +1146,18 @@ img.size-medium
     line-height: 1.67;
 }
 
-.post-content---ct_cr > h1,
-.post-content---ct_cr > h2,
-.post-content---ct_cr > h3,
-.post-content---ct_cr > h4,
-.post-content---ct_cr > h5,
-.post-content---ct_cr > h6
+.post-content--main > h1,
+.post-content--main > h2,
+.post-content--main > h3,
+.post-content--main > h4,
+.post-content--main > h5,
+.post-content--main > h6
 {
     margin-bottom: -.75em;
 }
 
-.post-content---ct_cr > ul,
-.post-content---ct_cr > ol,
+.post-content--main > ul,
+.post-content--main > ol,
 
 .post-excerpt---ct_cr > ul,
 .post-excerpt---ct_cr > ol,
@@ -1205,19 +1203,17 @@ img.size-medium
 }
 
 /* Gallery */
-.post-content---ct_cr > .gallery
+.post-content--main > .gallery
 {
     padding-left: 0;
     padding-right: 0;
 }
 
 /* Caption */
-.post-content---ct_cr .wp-caption-text,
-.widget-content---ct_cr .wp-caption-text
+.wp-caption-text,
+.post-content--main figcaption
 {
     padding: .75em 1rem;
-    
-    font-size: .875em;
 }
 
 .post-content td,
@@ -1228,7 +1224,7 @@ img.size-medium
     padding: .5rem 1rem;
 }
 
-.post-content---ct_cr > figure
+.post-content--main > figure
 {
     max-width: 100%;
     
@@ -1237,7 +1233,7 @@ img.size-medium
 }
 
 /* WP Audio Shortcode */
-.post-content---ct_cr > .wp-audio-shortcode
+.post-content--main > .wp-audio-shortcode
 {
     padding: 0;
 }
@@ -3498,37 +3494,37 @@ button:hover .dismiss-icon
     /* Data Format <img> */
     
     /* Left-aligned */
-    .post-content---ct_cr > .data-format--img--left-aligned,
-    .post-content---ct_cr > .data-format--img .alignleft
+    .post-content--main > .data-format--img--left-aligned,
+    .post-content--main > .data-format--img .alignleft
     {
         float: left;
         
         margin-right: 1rem;
     }
     
-    .post-content---ct_cr > p.data-format--img .alignleft
+    .post-content--main > p.data-format--img .alignleft
     {
         margin-left: -1rem;
     }
     
     /* Right-aligned */
-    .post-content---ct_cr > .data-format--img--right-aligned,
-    .post-content---ct_cr > .data-format--img.alignright,
-    .post-content---ct_cr > .data-format--img .alignright
+    .post-content--main > .data-format--img--right-aligned,
+    .post-content--main > .data-format--img.alignright,
+    .post-content--main > .data-format--img .alignright
     {
         float: right;
         
         margin-left: 1rem;
     }
     
-    .post-content---ct_cr > p.data-format--img .alignright
+    .post-content--main > p.data-format--img .alignright
     {
         margin-right: -1rem;
     }
     
     /* Reformatting layout */
-    .post-content---ct_cr > p.data-format--img--left-aligned,
-    .post-content---ct_cr > p.data-format--img--right-aligned
+    .post-content--main > p.data-format--img--left-aligned,
+    .post-content--main > p.data-format--img--right-aligned
     {
         float: none;
         
@@ -3537,12 +3533,12 @@ button:hover .dismiss-icon
     }
     
     /* Center-aligned */
-    .post-content---ct_cr > .data-format--img--center-aligned
+    .post-content--main > .data-format--img--center-aligned
     {
         clear: both;
     }
 
-    .post-content---ct_cr > .data-format--img--center-aligned img
+    .post-content--main > .data-format--img--center-aligned img
     {
         display: block;
         

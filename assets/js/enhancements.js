@@ -2109,7 +2109,7 @@
         // ------------------------------------ Remove Empty Elements
         ( function() {
             
-            genericFn.removeEmptyElements( $( '.post-content---ct_cr > *' ) );
+            genericFn.removeEmptyElements( $( '.post-content--main > *' ) );
             genericFn.removeEmptyElements( $( '.main-navi---a' ) );
             genericFn.removeEmptyElements( $( '.menu-item' ) );
             
@@ -2129,8 +2129,8 @@
 
                 dataFormatImage = dataFormatPrefixCss + 'img',
 
-                postContent = '.post-content---ct_cr > *',
-                postContentChild = '.post-content---ct_cr > *',
+                postContent = '.post-content--main > *',
+                postContentChild = '.post-content--main > *',
                 postContentCtCrCss = '.post-content---ct_cr',
 
                 alignedTerm = 'aligned',
@@ -2166,7 +2166,7 @@
                 .addClass( dataFormatTerm + ' ' + dataFormatImage + ' ' + dataFormatImage + '--center-' + alignedTerm );
 
             
-            $( '.post-content---ct_cr > img' ).each(function() {
+            $( '.post-content--main > img' ).each(function() {
                 var $this = $( this );
                 $this.wrap( dataFormatInlineCpMu )
                     .closest( dataFormatCss )
@@ -2200,7 +2200,7 @@
 
 
             // ------------ <table>
-            $( '.post-content---ct_cr > *:has( table ), .comment-content---ct_cr > *:has( table )' ).each(function() {
+            $( '.post-content--main > *:has( table ), .comment-content---ct_cr > *:has( table )' ).each(function() {
                 var $this = $( this ),
                     $table = $this.find( 'table' );
 
@@ -2235,12 +2235,12 @@
 
 
             // ------------ <iframe>
-            $( '.post-content---ct_cr > *:has( iframe )' ).each( function() {
+            $( '.post-content--main > *:has( iframe )' ).each( function() {
                 var $this = $( this );
                 $this.addClass( 'data-format data-format--iframe' );
             } );
             
-            $( '.post-content---ct_cr > iframe' ).each( function() {
+            $( '.post-content--main > iframe' ).each( function() {
                 var $this = $( this );
                 $this.wrap( dataFormatInlineCpMu )
                     .closest( 'data-format' )
@@ -2249,12 +2249,12 @@
             
             
             // ------------ <embed>
-            $( '.post-content---ct_cr > *:has( embed )' ).each( function() {
+            $( '.post-content--main > *:has( embed )' ).each( function() {
                 var $this = $( this );
                 $this.addClass( 'data-format data-format--embed' );
             } );
             
-            $( '.post-content---ct_cr > embed' ).each( function() {
+            $( '.post-content--main > embed' ).each( function() {
                 var $this = $( this );
                 $this.wrap( dataFormatInlineCpMu )
                     .closest( 'data-format' )
@@ -2454,7 +2454,7 @@
 
             var $videos = $( 'iframe[src*="//player.vimeo.com"], iframe[src*="//www.youtube.com"], iframe[src*="//www.facebook.com"], embed[src*="//v.wordpress.com"], object, embed' ),
                 $container = $( '.post-content---ct_cr' ),
-                $containerChild = $( '.post-content---ct_cr > *' );
+                $containerChild = $( '.post-content--main > *' );
             
             
             // Add Data Aspect Ratio

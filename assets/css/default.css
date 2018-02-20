@@ -223,17 +223,17 @@ video
 {
 
     /* ------------------ Alignments ------------------ */
-    .post-content---ct_cr > .alignleft
+    .post-content--main > .alignleft
     {
         float: left;
     }
 
-    .post-content---ct_cr > .alignright
+    .post-content--main > .alignright
     {
         float: right;
     }
 
-    .post-content---ct_cr > .aligncenter
+    .post-content--main > .aligncenter
     {
         clear: both;
         margin-left: auto;

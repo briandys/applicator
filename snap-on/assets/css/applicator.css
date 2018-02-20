@@ -114,7 +114,7 @@
 
 
 /* ------------------ Main Heading ------------------ */
-.main-content-heading .value---line
+.main-content-heading .property---line
 {
     font-weight: normal;
 }
@@ -1010,7 +1010,7 @@ h6
 
 
 /* ------------------ Quote ------------------ */
-.applicator--theme--quote .post-content---ct_cr > blockquote
+.applicator--theme--quote .post-content--main > blockquote
 {
     position: relative;
     z-index: 1;
@@ -1113,10 +1113,13 @@ h6
 
 
 
-/* ------------------ Caption ------------------ */
-.applicator--theme--caption .wp-caption-text
+/* ------------------------------------ Mod: Captions ------------------------------------ */
+.wp-caption-text,
+.post-content--main figcaption
 {
     color: #505050;
+    
+    font-size: .875em;
 }
 
 
@@ -1225,23 +1228,23 @@ h6
 
 
 /* ------------------ Post Format - Status ------------------ */
-.applicator--theme--post-format--status .format-status .post-content---ct_cr > *,
+.applicator--theme--post-format--status .format-status .post-content--main > *,
 .applicator--theme--post-format--status .format-status .post-excerpt---ct_cr > *
 {
     font-size: 2em;
 }
 
-.applicator--theme--post-format--status .format-status .post-content---ct_cr > *:first-child
+.applicator--theme--post-format--status .format-status .post-content--main > *:first-child
 {
     margin-top: -.35em; 
 }
 
-.user-role--editor .format-status .post-content---ct_cr > *:first-child
+.user-role--editor .format-status .post-content--main > *:first-child
 {
     margin-top: -.65em; 
 }
 
-.user-role--non-editor .main-post-title---ct_cr
+.user-role--non-editor .format-status .main-post-title---ct_cr
 {
     padding: 0;
 }
@@ -1484,6 +1487,12 @@ div[id^="contact-form-"] > .contact-form-submission
 .post-content .cell--clicked a:hover
 {
     text-decoration: none;
+}
+
+.post-content table ul,
+.post-content table ol
+{
+    padding-left: 1.5em;
 }
 
 

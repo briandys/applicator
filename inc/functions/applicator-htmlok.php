@@ -1529,7 +1529,7 @@ function applicator_htmlok( $args = array() ) {
     // Generic Container Structure Markup
     $cr_smu = '';
     $cr_smu .= '<div class="%1$s'.$o_branch_css.'---%1$s">';
-    $cr_smu .= '<div class="%1$s_cr'.$o_branch_css.'---%1$s_cr">';
+    $cr_smu .= '<div class="%1$s_cr'.$o_branch_css.'---%1$s_cr'.$o_branch_css.'--main" data-main-name="'.$p_name. $p_subtype_name.' Main">';
     
     $cr_emu = '';
     $cr_emu .= '</div>';
@@ -1797,18 +1797,15 @@ function applicator_htmlok( $args = array() ) {
         
         //------------------------ Constructor, Component Structure
         if ( in_array( $r_structure, $structure_constructor_terms, true ) || in_array( $r_structure, $structure_component_terms, true ) ) {
-            
             $output .= '<div class="cr'.$o_branch_css.'---cr">';
             $output .= $o_content;
             $output .= '</div>';
-            
         }
         
         //------------------------ Object Structure
-        elseif ( in_array( $r_structure, $structure_object_terms, true ) ) {
-            
+        elseif ( in_array( $r_structure, $structure_object_terms, true ) )
+        {
             $output .= $o_content;
-        
         }
         
         $output .= '</'.$o_root_elem.'>';
