@@ -111,7 +111,7 @@
             return;
         }
 
-        $( '.post-content---ct_cr span[id^="more-"]' ).each( function() {
+        $( '.post-content--main span[id^="more-"]' ).each( function() {
 
             $( this ).closest( '.post-content--main > *' ).remove();
 

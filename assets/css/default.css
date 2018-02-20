@@ -117,15 +117,15 @@ Default Style
 /* ------------------ Clearfix ------------------ */
 .clearfix:before,
 .clearfix:after,
-.post-content---ct_cr:before,
-.post-content---ct_cr:after
+.post-content--main:before,
+.post-content--main:after
 {
     content: " ";
     display: table;
 }
 
 .clearfix:after,
-.post-content---ct_cr:after
+.post-content--main:after
 {
     clear: both;
 }

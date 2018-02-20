@@ -1174,7 +1174,7 @@ img.size-medium
     padding-left: 2.25em;
 }
 
-.post-content---ct_cr li,
+.post-content--main li,
 .post-excerpt---ct_cr li,
 .comment-content---ct_cr li,
 .aside .widget-content---ct_cr li
@@ -1238,7 +1238,7 @@ img.size-medium
     padding: 0;
 }
 
-.post-content---ct_cr blockquote > *
+.post-content--main blockquote > *
 {
     margin: 0;
     
@@ -1246,7 +1246,7 @@ img.size-medium
     padding-bottom: .5em;
 }
 
-.post-content---ct_cr blockquote > *:only-child
+.post-content--main blockquote > *:only-child
 {
     padding-top: 0;
     padding-bottom: 0;

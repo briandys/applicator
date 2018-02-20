@@ -2131,7 +2131,7 @@
 
                 postContent = '.post-content--main > *',
                 postContentChild = '.post-content--main > *',
-                postContentCtCrCss = '.post-content---ct_cr',
+                postContentCtCrCss = '.post-content--main',
 
                 alignedTerm = 'aligned',
 
@@ -2277,7 +2277,7 @@
         ( function() {
             genericFn.wrapTextNode( $( '.data-format--img' ) );
             genericFn.wrapTextNode( $( '.post-password-form label' ) );
-            genericFn.wrapTextNode( $( '.post-content---ct_cr' ) );
+            genericFn.wrapTextNode( $( '.post-content--main' ) );
             genericFn.wrapTextNode( $( '.wp-caption-text' ) );
             genericFn.wrapTextNode( $( '.custom-html-widget' ) );
             
@@ -2387,7 +2387,7 @@
                 return;
             }
             
-            var $postContentCtCr = $( '.post-content---ct_cr' ),
+            var $postContentCtCr = $( '.post-content--main' ),
                 $postContentHeadings = $postContentCtCr.children( 'h1:not([id]), h2:not([id]), h3:not([id]), h4:not([id]), h5:not([id]), h6:not([id])' ),
                 $postContentHeadingsID = $postContentCtCr.children( 'h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]' ),
                 headingAnchoredCSS = 'identified-heading',
@@ -2453,7 +2453,7 @@
         ( function() {
 
             var $videos = $( 'iframe[src*="//player.vimeo.com"], iframe[src*="//www.youtube.com"], iframe[src*="//www.facebook.com"], embed[src*="//v.wordpress.com"], object, embed' ),
-                $container = $( '.post-content---ct_cr' ),
+                $container = $( '.post-content--main' ),
                 $containerChild = $( '.post-content--main > *' );
             
             
