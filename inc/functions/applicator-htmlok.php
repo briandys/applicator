@@ -1536,6 +1536,12 @@ function applicator_htmlok( $args = array() ) {
     $cr_emu .= '</div>';
     
     
+    // Generic Container Structure Markup for Header Container
+    $hr_cr_smu = '';
+    $hr_cr_smu .= '<div class="%1$s'.$o_branch_css.'---%1$s">';
+    $hr_cr_smu .= '<div class="%1$s_cr'.$o_branch_css.'---%1$s_cr">';
+    
+    
     // Form Structure Markup
     $subtype_form_fieldsets_cr_smu = '';
     $subtype_form_fieldsets_cr_smu .= '<div class="grp %1$s'.$o_branch_css.'-%1$s">';
@@ -1620,7 +1626,7 @@ function applicator_htmlok( $args = array() ) {
     
     //------------------------ Header Markup
     $hr_mu = '';
-    $hr_mu .= sprintf( $cr_smu,
+    $hr_mu .= sprintf( $hr_cr_smu,
         'hr'
     );
     
