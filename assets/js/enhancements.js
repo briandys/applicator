@@ -2498,7 +2498,22 @@
         
         
         
-        // ------------------------------------ Table Cell Clicks
+        // ------------------------------------ Table Enhancements
+        
+        // Classifying Table with Heads
+        ( function() {
+            
+            $( 'table:has( thead )' ).each( function() {
+                $( this ).addClass( 'table-headed' );
+            } );
+            
+        }() );
+        
+        
+        
+        
+        
+        // Table Highlights
         ( function() {
             
             var $postContent = $( '.post-content' ),

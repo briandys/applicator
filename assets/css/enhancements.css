@@ -922,7 +922,13 @@ img.size-medium
 .post-content--main table,
 .comment-content--main table
 {   
+    width: 100%;
     word-break: normal;
+}
+.post-content--main .table-headed,
+.comment-content--main .table-headed
+{   
+    width: calc( 100% - 1px );
 }
 
 
