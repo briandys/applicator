@@ -2500,29 +2500,21 @@
         
         // ------------------------------------ Table Enhancements
         
-        // Classifying Table with Heads
-        ( function() {
-            
-            $( 'table:has( thead )' ).each( function() {
-                $( this ).addClass( 'table-headed' );
-            } );
-            
-        }() );
-        
-        
-        
-        
-        
         // Table Highlights
         ( function() {
             
-            var $postContent = $( '.post-content' ),
-                $cell = $postContent.find( 'td, th' ),
-                $row = $postContent.find( 'tr' ),
+            var $postContent = $( '.post-content--main' ),
+                $cell = $postContent.find( 'td, th:not( thead th )' ),
+                $row = $postContent.find( 'tr:not( thead tr )' ),
+                $theadCell = $postContent.find( 'thead th' ),
+                $theadRow = $postContent.find( 'thead tr' ),
+                $colGroup = $postContent.find( 'colgroup' ),
                 cellOnCSS = 'cell--clicked',
                 cellOffCSS = 'cell--unclicked',
                 rowOnCSS = 'row--clicked',
                 rowOffCSS = 'row--unclicked',
+                colOnCSS = 'column--clicked',
+                colOffCSS = 'column--unclicked',
                 tableClicksFn;
             
             
@@ -2603,14 +2595,59 @@
                         tableClicksFn.rowOff.apply( $this );
                         tableClicksFn.cellOff.apply( $this.children() );
                     }
+                },
+                
+                
+                // Colummn On
+                colOn: function()
+                {
+                    var $this = $( this );
+
+                    $this
+                        .addClass( colOnCSS )
+                        .removeClass( colOffCSS );
+                },
+                
+                
+                // Column Off
+                colOff: function()
+                {
+                    var $this = $( this );
+
+                    $this
+                        .addClass( colOffCSS )
+                        .removeClass( colOnCSS );
+                },
+                
+                
+                // Column Toggle
+                colToggle: function()
+                {
+                    var $this = $( this );
+
+                    if ( $this.hasClass( colOffCSS ) )
+                    {
+                        tableClicksFn.colOn.apply( $this );
+                    }
+                    else if ( $this.hasClass( colOnCSS ) )
+                    {
+                        tableClicksFn.colOff.apply( $this );
+                    }
                 }
             };
             
             
-            // Internal Click
+            // Priming Rows
             $row.each( function() {
                 var $this = $( this );
                 tableClicksFn.rowOff.apply( $this );
+            } );
+            
+            
+            // Priming Column Groups
+            $colGroup.each( function() {
+                var $this = $( this );
+                tableClicksFn.colOff.apply( $this );
             } );
             
             
@@ -2637,12 +2674,46 @@
                 } );
             } );
             
+            
+            // Table Head
+            $theadCell.each( function() {
+                
+                var $this = $( this );
+                
+                
+                $this.on( 'dblclick.applicator', function() {
+                    
+                    var $this = $( this ),
+                        dataCellName = $this.data( 'cell-name' );
+                    
+                    $.each( $( 'colgroup'), function() {
+                        
+                        var $this = $( this );
+                        
+                        if ( $this.data( 'colgroup-name' ) == dataCellName )
+                        {
+                            tableClicksFn.colToggle.apply( $this );
+                        }
+                        
+                    } );
+                } );
+            
+            } );
+            
 
-            // External Click
+            // External Click for Cells
             $document.on( 'touchmove.applicator click.applicator', function ( e ) {
-                if ( $cell.hasClass( cellOnCSS ) && ! $( e.target ).closest( $( 'table' ) ).length ) {
+                if ( $cell.hasClass( cellOnCSS ) && ! $( e.target ).closest( $( 'td' ) ).length && ! $( e.target ).closest( $( 'th:not( thead th )' ) ).length ) {
                     tableClicksFn.cellOff.apply( $cell );
                     tableClicksFn.rowOff.apply( $cell.closest( $row ) );
+                }
+            } );
+            
+
+            // External Click for Column Groups
+            $document.on( 'touchmove.applicator click.applicator', function ( e ) {
+                if ( $colGroup.hasClass( colOnCSS ) && ! $( e.target ).closest( $( 'table' ) ).length ) {
+                    tableClicksFn.colOff.apply( $colGroup );
                 }
             } );
             

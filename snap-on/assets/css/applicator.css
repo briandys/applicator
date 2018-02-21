@@ -477,59 +477,6 @@ h6
 
 
 
-/* ------------------ Table ------------------ */
-.applicator--theme--table .post-content tbody,
-.applicator--theme--table .comment-content tbody
-{
-    border: 2px solid hsl( 0, 0%, 90% );
-    border-left-width: 1px;
-    border-right-width: 1px;
-}
-
-.post-content table .section
-{
-    border-top: 2px solid hsl( 0, 0%, 90% );
-}
-
-/* Table Header */
-.applicator--theme--table .post-content th,
-.applicator--theme--table .comment-content th
-{
-    border: 0;
-    
-    text-align: left;
-}
-
-.applicator--theme--table .post-content td,
-.applicator--theme--table .post-content tbody th,
-.applicator--theme--table .comment-content td,
-.applicator--theme--table .comment-content tbody th
-{
-    border: 1px solid hsl( 0, 0%, 90% );
-    
-    border-right: 0;
-    border-bottom: 0;
-}
-
-.applicator--theme--table .post-content td:first-child,
-.applicator--theme--table .comment-content td:first-child
-{
-    border-left: 0;
-}
-
-.applicator--theme--table .post-content tfoot,
-.applicator--theme--table .comment-content tfoot
-{
-    border: 2px solid hsl( 0, 0%, 90% );
-    border-left: 0;
-    border-right: 0;
-    border-top: 0;
-}
-
-
-
-
-
 
 
 
@@ -1451,46 +1398,132 @@ div[id^="contact-form-"] > .contact-form-submission
 
 
 
+/* ------------------------------------ Mod: Table Style ------------------------------------ */
+.post-content--main tbody,
+.comment-content--main tbody
+{
+    border: 2px solid hsl( 0, 0%, 90% );
+    border-left-width: 1px;
+    border-right-width: 1px;
+}
 
-/* ------------------------------------ Mod: Table Interactivity */
-.post-content tr,
-.post-content td,
-.post-content th
+.post-content--main thead,
+.comment-content--main thead
+{
+    border-bottom: 2px solid hsl( 0, 0%, 90% );
+}
+
+.post-content--main th,
+.comment-content--main th
+{
+    border: 0;
+}
+
+.post-content--main tbody th,
+.comment-content--main tbody th
+{
+    text-align: left;
+}
+
+.post-content--main td,
+.post-content--main th,
+.comment-content--main td,
+.comment-content--main th
+{
+    border: 1px solid hsl( 0, 0%, 90% );
+    
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.post-content--main thead
+{
+    border-top: 2px solid hsl( 0, 0%, 90% );
+    border-bottom-width: 4px;
+}
+
+.post-content--main thead th:last-child,
+.comment-content--main thead th:last-child
+{
+    border-right: 1px solid hsl( 0, 0%, 90% );
+}
+
+.post-content--main td:first-child,
+.comment-content--main td:first-child
+{
+    border-left: 0;
+}
+
+.post-content--main tfoot,
+.comment-content--main tfoot
+{
+    border: 2px solid hsl( 0, 0%, 90% );
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+}
+
+.post-content--main .row-heading---colgroup
+{
+    border-right: 4px solid hsl( 0, 0%, 90% );
+}
+
+
+
+
+
+
+/* ------------------------------------ Mod: Table Interactivity ------------------------------------ */
+.post-content--main tr,
+.post-content--main td,
+.post-content--main th,
+.post-content--main colgroup
 {
     transition: background-color .2s ease-in-out;
 }
 
-.post-content tr:hover
+.post-content--main tr:hover
 {
     background-color: hsla(0, 0%, 0%, .0625);
 }
 
-.post-content td:hover,
-.post-content th:hover
+.post-content--main td:hover,
+.post-content--main th:hover
 {
     background-color: hsla(0, 0%, 0%, .0625);
 }
 
-.post-content .cell--clicked,
-.post-content .cell--clicked:hover
+.post-content--main thead tr:hover,
+.post-content--main thead th:hover
+{
+    background-color: transparent;
+}
+
+.post-content--main .cell--clicked,
+.post-content--main .cell--clicked:hover
 {
     background-color: hsl(215, 100%, 45%);
     color: white;
 }
 
-.post-content .cell--clicked a
+.post-content--main .column--clicked
+{
+    background-color: hsla(0, 0%, 50%, .0625);
+}
+
+.post-content--main .cell--clicked a
 {
     color: white;
     text-decoration: underline;
 }
 
-.post-content .cell--clicked a:hover
+.post-content--main .cell--clicked a:hover
 {
     text-decoration: none;
 }
 
-.post-content table ul,
-.post-content table ol
+.post-content--main table ul,
+.post-content--main table ol
 {
     padding-left: 1.5em;
 }
@@ -1499,7 +1532,7 @@ div[id^="contact-form-"] > .contact-form-submission
 
 
 
-/* ------------------------------------ Mod: Calendar */
+/* ------------------------------------ Mod: Calendar ------------------------------------ */
 .dom--unready .widget_calendar
 {
     visibility: hidden;
@@ -1594,7 +1627,7 @@ div[id^="contact-form-"] > .contact-form-submission
 
 
 
-/* ------------------ Mod: Excerpt Snippet and Show More Action ------------------ */
+/* ------------------------------------ Mod: Excerpt Snippet and Show More Action ------------------------------------ */
 .show-more-action
 {
     display: inline-block;
@@ -1623,6 +1656,46 @@ div[id^="contact-form-"] > .contact-form-submission
 .excerpt-snippet---a:hover
 {
     text-decoration: none;
+}
+
+
+
+
+
+/* ------------------------------------ Mod: Citation ------------------------------------ */
+.citation-link
+{
+    position: relative;
+}
+
+.citation-link---a_l
+{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    padding: .5em 1em;
+    margin-top: -.5em;
+    
+    font-size: .75em;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.footnote-grp
+{
+    list-style: none;
+    padding-left: 0;
+}
+
+.citation-index---a_l
+{
+    display: inline-block;
+    
+    padding: .5em 1em;
+    
+    font-weight: bold;
 }
 
 
