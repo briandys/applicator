@@ -2889,17 +2889,6 @@ button:hover .dismiss-icon
     color: white;
 }
 
-.main-search-func .search-term-crt-search---input-text
-{
-    text-align: right;
-}
-
-.main-search-func .search-term-crt-search-text-input---ce
-{
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-
 .main-search--inactive .input-text
 {
     display: none;
@@ -3549,7 +3538,7 @@ button:hover .dismiss-icon
 
 
 
-/* ------------------ Viewport Width: 768 (Max) ------------------ */
+/* ------------------ Viewport Width: 768 and narrower ------------------ */
 
 @media only screen and ( max-width: 48em )
 {
@@ -3565,7 +3554,23 @@ button:hover .dismiss-icon
 
 
 
-/* ------------------ Viewport Width: 1024 ------------------ */
+/* ------------------ Viewport Width: 768 and wider ------------------ */
+
+@media only screen and ( min-width: 48em )
+{
+    
+    .main-search-func .search-term-crt-search-text-input
+    {
+        max-width: 480px;
+    }
+    
+}
+
+
+
+
+
+/* ------------------ Viewport Width: 1024 and wider ------------------ */
 
 @media only screen and ( min-width: 64em )
 {
