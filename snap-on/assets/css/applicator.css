@@ -141,26 +141,6 @@ h6
 
 
 
-
-/* ------------------ Post ------------------ */
-.post a
-{
-    text-decoration: none;
-}
-
-.post a:hover
-{
-    text-decoration: underline;
-}
-
-.post-title---a
-{
-    color: #262626;
-}
-
-
-
-
 /* ------------------ Comments ------------------ */
 .comments a
 {
@@ -1253,6 +1233,8 @@ h6
 /* ------------------ Main Header ------------------ */
 .applicator--theme--main-header .main-info
 {
+    position: relative;
+    
     max-width: 100%;
     min-height: 3.5rem;
 }
@@ -1263,7 +1245,15 @@ h6
     height: 3.5rem;
 }
 
-.applicator--theme--main-header .main-info---cr,
+.applicator--theme--main-header .main-info---cr
+{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    width: 100%;
+}
+
 .applicator--theme--main-header.applicator--main-menu .main-menu-toggle,
 .applicator--theme--main-header.applicator--main-search .main-search-func,
 .applicator--theme--main-header.applicator--main-actions-widgets .main-actions-widgets
@@ -1655,7 +1645,27 @@ div[id^="contact-form-"] > .contact-form-submission
 
 .excerpt-snippet---a:hover
 {
+    text-decoration: underline;
+}
+
+
+
+
+
+/* ------------------------------------ Mod: Post Anchor ------------------------------------ */
+.post-content--main a
+{
     text-decoration: none;
+}
+
+.post-content--main a:hover
+{
+    text-decoration: underline;
+}
+
+.post-title---a
+{
+    color: #262626;
 }
 
 
@@ -1675,7 +1685,7 @@ div[id^="contact-form-"] > .contact-form-submission
     top: 50%;
     transform: translateY(-50%);
     
-    padding: .5em 1em;
+    padding: 1em;
     margin-top: -.5em;
     
     font-size: .75em;

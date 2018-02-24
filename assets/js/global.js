@@ -32,8 +32,10 @@
 ( function( $ ) {
     
     var $html = $( document.documentElement ),
-        $body = $( document.body ),
-        viewGranularityDetailClassSelector = '.view-granularity--detail';
+        $body = $( document.body );
+        
+    
+    
     
     
     // Remove Empty Element
@@ -104,16 +106,20 @@
     } )();
     
     
-    /* ------------------------ Remove remnants of <!--more--> tag ------------------------ */
+    
+    
+    
+    // ------------------------------------ Remove remnants of <!--more--> tag
     ( function() {
 
-        if ( ! $body.closest( viewGranularityDetailClassSelector ) ) {
+        if ( ! $body.hasClass( 'view-granularity--detail' ) )
+        {
             return;
         }
 
         $( '.post-content--main span[id^="more-"]' ).each( function() {
 
-            $( this ).closest( '.post-content--main > *' ).remove();
+            $( this ).closest( 'p' ).remove();
 
         } );
 
@@ -123,7 +129,7 @@
     
     
     
-    // Private and Protected Post Titles
+    // ------------------------------------ Private and Protected Post Titles
     ( function() {
         
         var $main = $( '#main' ),

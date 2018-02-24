@@ -1163,7 +1163,6 @@
                     mainSearchFn.on();
                 }
                 transitionFn.here( $mainSearchTextInput, 'opacity', $mainSearchOverlay );
-                transitionFn.here( $mainSearchTextInput, 'opacity', $body );
             },
             
             
@@ -1173,7 +1172,6 @@
                     mainSearchFn.off();
                 }
                 transitionFn.there( $mainSearchTextInput, 'opacity', $mainSearchOverlay );
-                transitionFn.there( $mainSearchTextInput, 'opacity', $body );
             },
             
             

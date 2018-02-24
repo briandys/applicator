@@ -112,7 +112,7 @@ Enhancements Style
 
 
 
-/* ------------------ Overlay ------------------ */
+/* ------------------------------------ Overlay ------------------------------------ */
 
 /* Overlay Inactive */
 .applicator--main-menu .overlay--main-menu-func,
@@ -160,7 +160,7 @@ Enhancements Style
     opacity: 0;
 }
 
-.applicator--main-search--inactive .there.overlay--main-search-func
+.applicator--main-search--inactive .overlay--main-search-func
 {
     z-index: auto;
     opacity: 0;
@@ -727,7 +727,7 @@ img.size-medium
 .main-nav .page_item_has_children > ul > li > a,
 .main-nav .menu-item-has-children > ul > li > a
 {
-    transition: background-color .125s ease-in-out;
+    transition: background-color .2s ease-in-out;
 }
 
 .main-nav .page_item_has_children > ul > li > a:hover,
@@ -799,8 +799,6 @@ img.size-medium
 .main-banner
 {
     flex: 1 100%;
-    
-    background-color: #262626;
 }
 
 .main-banner---cr
@@ -861,8 +859,6 @@ img.size-medium
 {
     position: relative;
     z-index: 1;
-    
-    color: white;
 }
 
 .main-banner-aside---ct
@@ -880,13 +876,7 @@ img.size-medium
     
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.main-banner-aside---ct_cr > *
-{
-    flex: 1 100%;
+    flex-direction: column;
 }
 
 .main-banner-aside .widget .input-text,
@@ -1381,6 +1371,7 @@ img.size-medium
 .main-header---cr
 {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
 }
 
@@ -1403,7 +1394,7 @@ img.size-medium
 /* ------------------ Main Info ------------------ */
 .main-info
 {
-    flex: 1;
+    flex: 1 100%;
     
     background-color: hsl(215, 100%, 45%);
 }
@@ -1553,19 +1544,11 @@ img.size-medium
     display: flex;
 }
 
-.main-name,
-.main-description,
-.main-logo
-{
-    opacity: 1;
-    transition: opacity .2s ease-in-out;
-}
-
 .applicator--main-search--active .main-name,
 .applicator--main-search--active .main-description,
 .applicator--main-search--active .main-logo
 {
-    opacity: 0;
+    visibility: hidden;
 }
 
 
@@ -2445,7 +2428,7 @@ button:hover .dismiss-icon
 {
     border-bottom: 0 solid transparent;
     
-    transition: border-color .125s ease-in-out;
+    transition: border-color .2s ease-in-out;
 }
 
 .aside .widget_categories .widget-content---ct_cr a:hover,
@@ -2466,7 +2449,7 @@ button:hover .dismiss-icon
 /* ------------------ Custom Menu ------------------ */
 .aside .widget_nav_menu a
 {
-    transition: background-color .125s ease-in-out;
+    transition: background-color .2s ease-in-out;
 }
 
 .aside .widget_nav_menu a:hover
@@ -2498,9 +2481,7 @@ button:hover .dismiss-icon
     
     transform: translate(-50%, -50%);
     
-    transition: all .125s ease-in-out;
-    
-    transition-property: opacity;
+    transition: opacity .2s ease-in-out;
 }
 
 .go-content-nav--inactive .go-to-content-navi
@@ -2553,7 +2534,7 @@ button:hover .dismiss-icon
     right: 0;
     bottom: 0;
     
-    transition: all .125s ease-in-out;
+    transition: all .2s ease-in-out;
     
     transition-property: opacity, transform;
 }
@@ -2624,7 +2605,7 @@ button:hover .dismiss-icon
     color: #262626;
     opacity: .25;
     
-    transition: opacity .125s ease-in-out;
+    transition: opacity .2s ease-in-out;
 }
 
 .applicator--comments .comments-toggle---b:hover .icon
@@ -2945,7 +2926,7 @@ button:hover .dismiss-icon
     
     opacity: 0;
     
-    transition: opacity .125s ease-in-out;
+    transition: opacity .2s ease-in-out;
 }
 
 /* Input Text - Visible */
@@ -3044,7 +3025,7 @@ button:hover .dismiss-icon
 
 .main-search-toggle .search-icon
 {
-    transition: opacity .125s ease-in-out;
+    transition: opacity .2s ease-in-out;
 }
 
 .main-search-func .search---ct_cr
@@ -3239,6 +3220,11 @@ button:hover .dismiss-icon
 .there.main-menu--inactive .main-hr-aside---ct_cr
 {
     display: none;
+}
+
+.applicator--main-search--active .main-menu-func
+{
+    visibility: hidden;
 }
 
 

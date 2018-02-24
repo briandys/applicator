@@ -54,7 +54,7 @@ function applicator_show_more( $show_more_action_obj )
         ),
     ) );
     
-    if ( is_home() || is_archive() )
+    if ( is_home() || is_page() || is_archive() )
     {   
         return $show_more_action_obj;
     }
