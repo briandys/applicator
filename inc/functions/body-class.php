@@ -326,6 +326,27 @@ function applicator_body_class( $classes )
 	}
 
 	
+    // Day Archive
+	if ( is_day() )
+    {
+		$classes[] = 'view--day-archive';
+	}
+
+	
+    // Month Archive
+	if ( is_month() )
+    {
+		$classes[] = 'view--month-archive';
+	}
+
+	
+    // Year Archive
+	if ( is_year() )
+    {
+		$classes[] = 'view--year-archive';
+	}
+
+	
     // Add class on front page.
 	if ( is_front_page() && 'posts' !== get_option( 'show_on_front' ) ) {
 		$classes[] = 'applicator-front-page';

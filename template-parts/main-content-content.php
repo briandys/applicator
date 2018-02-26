@@ -9,9 +9,7 @@
             while ( have_posts() )
             {
                 the_post();
-                
 
-                // ------ OB: Entry Content
                 ob_start();
                 applicator_entry_content(); // template-parts > entry-content.php
                 comments_template(); // comments.php
@@ -41,8 +39,7 @@
                 {
                     the_post();
 
-                    // template-parts > entry-content.php
-                    applicator_entry_content();
+                    applicator_entry_content(); // template-parts > entry-content.php
                 }
                 $entries_ob_content = ob_get_clean();
 
@@ -65,8 +62,6 @@
             // content-none.php
             else
             {
-                // OB: Content None Content
-                // Entries Content
                 ob_start();
                 get_template_part( 'template-parts/content', 'none' );
                 $content_none_content = ob_get_clean();
@@ -106,8 +101,7 @@
         ) );
         
         
-        // Secondary Content
-        get_sidebar();
+        get_sidebar(); // Secondary Content
         
         ?>
 

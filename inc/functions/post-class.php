@@ -56,6 +56,12 @@ function applicator_post_class( $classes )
     }
     
     
+    if ( get_option( 'show_avatars' ) == 0 )
+    {
+        $classes[] = 'author-avatar--disabled';
+    }
+    
+    
     $r = array(
         'cp',
         'article',

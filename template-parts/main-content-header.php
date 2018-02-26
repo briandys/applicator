@@ -5,9 +5,9 @@
 
         <?php
         
-        // Main Content Headings - Search
-        if ( is_search() ) {
-
+        // Main Content Heading - Search
+        if ( is_search() )
+        {
             // Initialize
             $property_text = '';
             $value_text = '';
@@ -19,20 +19,23 @@
                 's'         => $s,
                 'showposts' => -1,
             ) );
+            
             $entry_search_count = $entry_search->post_count;
 
 
-            // Text Labels
-            $no_search_result_term = esc_html__( 'No Search Result', 'applicator' );
-            $search_result_term = esc_html__( 'Search Result', 'applicator' );
-            $search_results_term = esc_html__( 'Search Results', 'applicator' );
-
-            if ( $entry_search_count == 0 ) {
-                $property_text = $no_search_result_term;
-            } elseif ( $entry_search_count == 1 ) {
-                $property_text = $search_result_term;
-            } else {
-                $property_text = $search_results_term;
+            if ( $entry_search_count == 0 )
+            {
+                $property_text = esc_html__( 'No Search Result', 'applicator' );
+            }
+            
+            elseif ( $entry_search_count == 1 )
+            {
+                $property_text = esc_html__( 'Search Result', 'applicator' );
+            }
+            
+            else
+            {
+                $property_text = esc_html__( 'Search Results', 'applicator' );
             }
 
 
@@ -72,19 +75,25 @@
 
             // Main Content Heading
             $main_content_heading_obj = applicator_htmlok( array(
-                    'name'      => 'Main Content',
-                    'structure' => array(
-                        'type'          => 'object',
-                        'subtype'       => 'heading',
-                        'elem'          => 'h2'
-                    ),
-                    'content'   => array(
-                        'object'        => array(
-                            array(
-                                'line'      => $line_array,
-                            ),
+                'name'      => 'Main Content',
+                'structure' => array(
+                    'type'          => 'object',
+                    'subtype'       => 'heading',
+                    'elem'          => 'h2',
+                    'linked'        => true,
+                    'attr'          => array(
+                        'a'             => array(
+                            'href'          => esc_url( get_search_link() ),
                         ),
                     ),
+                ),
+                'content'   => array(
+                    'object'        => array(
+                        array(
+                            'line'      => $line_array,
+                        ),
+                    ),
+                ),
                 'echo'  => true,
             ) );
 

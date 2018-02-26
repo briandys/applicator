@@ -95,7 +95,7 @@ function applicator_main_banner()
                 'hr_structure'  => true,
                 'h_elem'        => 'h3',
             ),
-            'id'        => 'main-banner',
+            'id'        => $main_banner_term,
             'content'   => array(
                 'constructor'   => $aside,
             ),

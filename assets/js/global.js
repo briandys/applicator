@@ -32,7 +32,8 @@
 ( function( $ ) {
     
     var $html = $( document.documentElement ),
-        $body = $( document.body );
+        $body = $( document.body ),
+        $post = $( '.post' );
         
     
     
@@ -121,6 +122,24 @@
 
             $( this ).closest( 'p' ).remove();
 
+        } );
+
+    }() );
+    
+    
+    
+    
+    
+    // ------------------------------------ Remove remnants of empty Author Avatar tag
+    ( function() {
+
+        if ( ! $post.hasClass( 'author-avatar--disabled' ) )
+        {
+            return;
+        }
+
+        $( '.author-avatar' ).each( function() {
+            $( this ).remove();
         } );
 
     }() );
