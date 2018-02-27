@@ -16,8 +16,8 @@ function applicator_aside_init() {
                     $widget_start_mu .= '</div>';
                 $widget_start_mu .= '</div>';
             $widget_start_mu .= '</div>';
-            $widget_start_mu .= '<div class="ct widget---ct">';
-                $widget_start_mu .= '<div class="ct_cr widget---ct_cr widget--main" data-main-name="Widget Main">';
+            $widget_start_mu .= '<div class="mn widget---mn">';
+                $widget_start_mu .= '<div class="mn_cr widget---mn_cr widget--main" data-main-name="Widget MN">';
                     $widget_start_mu .= '<div class="cp widget-content" data-name="Widget Content CP">';
                         $widget_start_mu .= '<div class="cr widget-content---cr">';
                             $widget_start_mu .= '<div class="hr widget-content---hr">';
@@ -31,8 +31,8 @@ function applicator_aside_init() {
                                     $widget_start_mu .= '</div>';
                                 $widget_start_mu .= '</div>';
                             $widget_start_mu .= '</div>';
-                            $widget_start_mu .= '<div class="ct widget-content---ct">';
-                                $widget_start_mu .= '<div class="ct_cr widget-content---ct_cr widget-content--main" data-main-name="Widget Content Main">';
+                            $widget_start_mu .= '<div class="mn widget-content---mn">';
+                                $widget_start_mu .= '<div class="mn_cr widget-content---mn_cr widget-content--main" data-main-name="Widget Content MN">';
 
                                 $widget_end_mu = '</div>';
                             $widget_end_mu .= '</div>';

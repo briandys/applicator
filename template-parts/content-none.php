@@ -51,8 +51,8 @@ ob_start();
                 
             </div>
         </header>
-        <div class="ct post---ct entry-content">
-            <div class="ct_cr post---ct_cr">
+        <div class="mn post---mn entry-content">
+            <div class="mn_cr post---mn_cr">
                 <?php
                 
                 // OB: Search

@@ -46,7 +46,7 @@
 .applicator--theme--excerpt .show-more-axn .property---line .of---txt,
 .applicator--theme--excerpt .show-more-axn .value---line,
 
-.applicator--theme--page-nav .page-nav .ellipsis--delimiter,
+.page-nav .ellipsis--delimiter,
 .applicator--theme--post-format--status .format-status .published-post-author,
 
 .applicator--theme--post-format--status .blog .format-status .post-title,
@@ -391,7 +391,7 @@ h6
 
 
 /* ------------------ Multisite Directory - Main Post Title ------------------ */
-.view--multisite-directory .main-post-title---ct_cr
+.view--multisite-directory .main-post-title---mn_cr
 {
     text-align: center;
 }
@@ -712,8 +712,8 @@ h6
 
 
 /* ------------ Name and Avatar ------------ */
-.applicator--theme--name-avatar .post-author---ct_cr,
-.applicator--theme--name-avatar .commenter---ct_cr
+.applicator--theme--name-avatar .post-author---mn_cr,
+.applicator--theme--name-avatar .commenter---mn_cr
 {
     display: inline-flex;
     align-items: center;
@@ -890,7 +890,7 @@ h6
     text-decoration: underline;
 }
 
-.applicator--theme--comments .comment-meta---ct_cr
+.applicator--theme--comments .comment-meta---mn_cr
 {
     display: flex;
     justify-content: space-between;
@@ -1059,36 +1059,25 @@ h6
     display: none;
 }
 
-.applicator--theme--page-nav .page-nav---ct_cr
+.page-nav---mn_cr
 {
     text-align: center;
 }
 
-.applicator--theme--page-nav .page-nav ul
+.page-nav ul
 {
     display: inline-block;
 }
 
-.applicator--theme--page-nav .page-nav--no-prev .page-navi--current
+.page-nav--no-prev .page-navi--current
 {
     margin-left: 3rem;
 }
 
-.applicator--theme--page-nav .page-nav--no-next .page-navi--current
+.page-nav--no-next .page-navi--current
 {
     margin-right: 3rem;
 }
-
-.applicator--theme--page-nav .next-page-navi
-{
-    float: right;
-}
-
-.applicator--theme--page-nav .prev-page-navi
-{
-    float: left;
-}
-
 
 
 
@@ -1096,7 +1085,7 @@ h6
 /* ------------------------------------ Mod: Post ------------------------------------ */
 
 /* Juxtapose Post Title and Edit Action */
-.main-post-title---ct_cr
+.main-post-title---mn_cr
 {
     padding: 1rem;
 }
@@ -1156,7 +1145,7 @@ h6
 
 /* ------------------ Post Format - Status ------------------ */
 .applicator--theme--post-format--status .format-status .post-content--main > *,
-.applicator--theme--post-format--status .format-status .post-excerpt---ct_cr > *
+.applicator--theme--post-format--status .format-status .post-excerpt---mn_cr > *
 {
     font-size: 2em;
 }
@@ -1171,7 +1160,7 @@ h6
     margin-top: -.65em; 
 }
 
-.user-role--non-editor .format-status .main-post-title---ct_cr
+.user-role--non-editor .format-status .main-post-title---mn_cr
 {
     padding: 0;
 }
@@ -1182,7 +1171,7 @@ h6
     flex-wrap: wrap;
 }
 
-.applicator--theme--post-format--status .format-status .post---ct
+.applicator--theme--post-format--status .format-status .post---mn
 {
     flex: 1;
 }
@@ -1221,7 +1210,7 @@ h6
 
 /* ------------------ Layout ------------------ */
 
-.applicator--theme--layout .main-menu-func .main-hr-aside---cr
+.applicator--theme--layout .main-menu-func .main-header-aside---cr
 {
     position: relative;
 }
@@ -1239,8 +1228,8 @@ h6
     min-height: 3.5rem;
 }
 
-.applicator--theme--main-header.applicator--main-menu .main-hr-aside---hr_cr,
-.applicator--theme--main-header .main-actions-aside---ct_cr
+.applicator--theme--main-header.applicator--main-menu .main-header-aside---hr_cr,
+.applicator--theme--main-header .main-actions-aside---mn_cr
 {
     height: 3.5rem;
 }
@@ -1280,18 +1269,18 @@ h6
     position: absolute;
 }
 
-.applicator--theme--main-header.applicator--main-menu .main-hr-aside---hr,
-.applicator--theme--main-header .main-actions-aside---ct
+.applicator--theme--main-header.applicator--main-menu .main-header-aside---hr,
+.applicator--theme--main-header .main-actions-aside---mn
 {
     position: absolute;
 }
 
-.applicator--theme--main-header .main-actions-aside---ct
+.applicator--theme--main-header .main-actions-aside---mn
 {
     right: 0;
 }
 
-.applicator--theme--main-header.applicator--main-search--active .main-actions-aside---ct
+.applicator--theme--main-header.applicator--main-search--active .main-actions-aside---mn
 {
     width: 100%;
 }
@@ -1713,7 +1702,7 @@ div[id^="contact-form-"] > .contact-form-submission
 
 
 /* ------------------ GPU Hack ------------------ */
-.main-hr-aside---ct,
+.main-header-aside---mn,
 .main-actions-widgets---widget-grp
 {
     transform: translateZ(0);
@@ -1729,7 +1718,7 @@ div[id^="contact-form-"] > .contact-form-submission
 {
 
     /* ------------ Layout ------------ */
-    .applicator--theme--layout .main-content-aside--enabled .main-content---ct_cr
+    .applicator--theme--layout .main-content-aside--enabled .main-content---mn_cr
     {
         display: flex;
     }
@@ -1762,12 +1751,12 @@ div[id^="contact-form-"] > .contact-form-submission
     .applicator--theme--layout .copyright,
 
     /* Asides */
-    .applicator--theme--layout .main-content-header-aside .widget-content---ct_cr,
-    .applicator--theme--layout .main-banner-aside .widget-content---ct_cr,
-    .applicator--theme--layout .main-footer-aside .widget-content---ct_cr,
+    .applicator--theme--layout .main-content-header-aside .widget-content---mn_cr,
+    .applicator--theme--layout .main-banner-aside .widget-content---mn_cr,
+    .applicator--theme--layout .main-footer-aside .widget-content---mn_cr,
 
     /* Secondary Content enabled */
-    .applicator--theme--layout.main-content-aside--enabled .main-content---ct_cr
+    .applicator--theme--layout.main-content-aside--enabled .main-content---mn_cr
     {
         margin-left: auto;
         margin-right: auto;
@@ -1779,7 +1768,7 @@ div[id^="contact-form-"] > .contact-form-submission
     .applicator--theme--layout .main-info---cr,
     .applicator--theme--layout .main-nav---cr,
     .applicator--theme--layout .main-actions-aside---cr,
-    .applicator--theme--layout .main-menu-func .main-hr-aside---cr
+    .applicator--theme--layout .main-menu-func .main-header-aside---cr
     {
         margin-left: auto;
         margin-right: auto;
@@ -1877,7 +1866,7 @@ div[id^="contact-form-"] > .contact-form-submission
     
     
     /* ------------ Layout - Multisite Directory ------------ */
-    .applicator--theme--layout .main-content-aside--enabled.view--multisite-directory .main-content---ct_cr
+    .applicator--theme--layout .main-content-aside--enabled.view--multisite-directory .main-content---mn_cr
     {
         display: block;
     }

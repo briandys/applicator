@@ -369,8 +369,8 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                         
                     </div>
                 </div>
-                <div class="ct comment---ct">
-                    <div class="ct_cr comment---ct_cr">
+                <div class="mn comment---mn">
+                    <div class="mn_cr comment---mn_cr">
                         
                         <?php
 

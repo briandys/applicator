@@ -1,5 +1,5 @@
-<div class="ct main-content---ct">
-    <div class="ct_cr main-content---ct_cr">
+<div class="mn main-content---mn">
+    <div class="mn_cr main-content---mn_cr">
         
         <?php
         

@@ -88,7 +88,7 @@
     // Tag Empty Widgets as zero-length
     ( function() {
         
-        var $element = $( '.widget-content---ct_cr > *:not( img ):not( .widget-heading )' ),
+        var $element = $( '.widget-content---mn_cr > *:not( img ):not( .widget-heading )' ),
             $target = $( '.widget' ),
             $class = 'widget--zero-length';
         
@@ -100,7 +100,7 @@
     // Tag Empty Categories Widgets
     ( function() {
 
-        $( '.widget_categories .widget-content---ct_cr > *:has( .cat-item-none )' ).each( function() {
+        $( '.widget_categories .widget-content---mn_cr > *:has( .cat-item-none )' ).each( function() {
             $( this ).closest( '.widget' ).addClass( 'widget--empty' );
         } );
     

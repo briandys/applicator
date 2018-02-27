@@ -942,8 +942,8 @@ function applicator_htmlok( $args = array() ) {
             $content_val .= '<div class="item fs-item cp'.$o_content_compound_css.'" data-name="'.$o_content_compound_name.' Fieldset Item CP">';
             $content_val .= '<fieldset class="cr'.$o_content_compound_branch_css.'---cr">';
             $content_val .= '<legend class="h'.$o_content_compound_branch_css.'---h"><span class="h_l'.$o_content_compound_branch_css.'---h_l">'.$o_content_compound_name.'</span></legend>';
-            $content_val .= '<div class="ct'.$o_content_compound_branch_css.'---ct">';
-            $content_val .= '<div class="ct_cr'.$o_content_compound_branch_css.'---ct_cr">';
+            $content_val .= '<div class="mn'.$o_content_compound_branch_css.'---mn">';
+            $content_val .= '<div class="mn_cr'.$o_content_compound_branch_css.'---mn_cr">';
             
             
             $actions_content_val = '';
@@ -1520,7 +1520,7 @@ function applicator_htmlok( $args = array() ) {
     // Generic Container Structure Markup
     $cr_smu = '';
     $cr_smu .= '<div class="%1$s'.$o_branch_css.'---%1$s">';
-    $cr_smu .= '<div class="%1$s_cr'.$o_branch_css.'---%1$s_cr'.$o_branch_css.'--main" data-main-name="'.$p_name. $p_subtype_name.' Main">';
+    $cr_smu .= '<div class="%1$s_cr'.$o_branch_css.'---%1$s_cr'.$o_branch_css.'--main" data-main-name="'.$p_name. $p_subtype_name.' MN">';
     
     $cr_emu = '';
     $cr_emu .= '</div>';
@@ -1551,8 +1551,8 @@ function applicator_htmlok( $args = array() ) {
     $subtype_form_actions_cr_smu .= '<span class="h'.$o_branch_css.'-%1$s---h">Actions</span>';
     $subtype_form_actions_cr_smu .= '</div>';
     $subtype_form_actions_cr_smu .= '</div>';
-    $subtype_form_actions_cr_smu .= '<div class="ct'.$o_branch_css.'-%1$s---ct">';
-    $subtype_form_actions_cr_smu .= '<div class="ct_cr'.$o_branch_css.'-%1$s---ct_cr">';
+    $subtype_form_actions_cr_smu .= '<div class="mn'.$o_branch_css.'-%1$s---mn">';
+    $subtype_form_actions_cr_smu .= '<div class="mn_cr'.$o_branch_css.'-%1$s---mn_cr">';
     
     $subtype_form_actions_cr_emu = '';
     $subtype_form_actions_cr_emu .= '</div>';
@@ -1643,72 +1643,72 @@ function applicator_htmlok( $args = array() ) {
     
     //------------------------ Constructor, Object Content Markup
     if ( in_array( $r_structure, $structure_constructor_terms, true ) ) {
-        $ct_mu = '';
-        $ct_mu .= $o_content_val;
+        $mn_mu = '';
+        $mn_mu .= $o_content_val;
     }
     
     //------------------------ Component Content Markup
     if ( in_array( $r_structure, $structure_component_terms, true ) || in_array( $r_subtype, $subtype_aside_terms, true ) ) {
         
         if ( $r_cn_structure ) {
-            $ct_mu = '';
-            $ct_mu .= $o_content_val;
+            $mn_mu = '';
+            $mn_mu .= $o_content_val;
         }
         
         else {
-            $ct_mu = '';
-            $ct_mu .= sprintf( $cr_smu,
-                'ct'
+            $mn_mu = '';
+            $mn_mu .= sprintf( $cr_smu,
+                'mn'
             );
-            $ct_mu .= $o_content_val;
-            $ct_mu .= $cr_emu;
+            $mn_mu .= $o_content_val;
+            $mn_mu .= $cr_emu;
         }
     }
     
     //------------------------ Form Content Markup
     if ( in_array( $r_subtype, $subtype_form_terms, true ) ) {
-        $ct_mu = '';
-        $ct_mu .= sprintf( $subtype_form_fieldsets_cr_smu,
+        $mn_mu = '';
+        $mn_mu .= sprintf( $subtype_form_fieldsets_cr_smu,
             'fieldsets'
         );
-        $ct_mu .= $o_content_val;
-        $ct_mu .= $subtype_form_fieldsets_cr_emu;
+        $mn_mu .= $o_content_val;
+        $mn_mu .= $subtype_form_fieldsets_cr_emu;
         
         
-        $ct_mu .= sprintf( $subtype_form_actions_cr_smu,
+        $mn_mu .= sprintf( $subtype_form_actions_cr_smu,
             'axns'
         );
-        $ct_mu .= $o_actions_content_val;
-        $ct_mu .= $subtype_form_actions_cr_emu;
+        $mn_mu .= $o_actions_content_val;
+        $mn_mu .= $subtype_form_actions_cr_emu;
     }
     
     
     //------------------------ Object Content Markup
     if ( in_array( $r_structure, $structure_object_terms, true ) ) {
-        $obj_ct_mu = '';
-        $obj_ct_mu .= $obj_cr_smu;
-        $obj_ct_mu .= $o_content_val;
-        $obj_ct_mu .= $obj_cr_emu;
+        $obj_mn_mu = '';
+        $obj_mn_mu .= $obj_cr_smu;
+        $obj_mn_mu .= $o_content_val;
+        $obj_mn_mu .= $obj_cr_emu;
         
         // WordPress Generated Content
         if ( in_array( $r_subtype, $subtype_wpg_terms, true ) || $r_ce || $r_wpg ) {
-            $obj_ct_mu = '';
-            $obj_ct_mu .= $o_content_val;
+            $obj_mn_mu = '';
+            $obj_mn_mu .= $o_content_val;
         }
         
         // Navigation Item or Action Item
         elseif ( in_array( $r_subtype, $subtype_navi_terms, true ) || in_array( $r_subtype, $subtype_axn_terms, true ) ) {
             
             if ( $r_wpg ) {
-                $obj_ct_mu = '';
-                $obj_ct_mu .= $o_content_val;
+                $obj_mn_mu = '';
+                $obj_mn_mu .= $o_content_val;
             }
             
             else {
-                $obj_ct_mu = '';
-                $obj_ct_mu .= $a_smu;
-                $obj_ct_mu .= $o_content_val;
-                $obj_ct_mu .= $a_emu;
+                $obj_mn_mu = '';
+                $obj_mn_mu .= $a_smu;
+                $obj_mn_mu .= $o_content_val;
+                $obj_mn_mu .= $a_emu;
             }
         }
     }
@@ -1719,16 +1719,16 @@ function applicator_htmlok( $args = array() ) {
     
     // Constructor and Component
     if ( ! empty( $r['content']['constructor'] ) || ! empty( $r['content']['component'] ) || ! empty( $r['content']['compound'] ) ) {
-        $ct_mu = $ct_mu;
+        $mn_mu = $mn_mu;
     } else {
-        $ct_mu = '';
+        $mn_mu = '';
     }
 
     // Object
     if ( ! empty( $r['content']['object'] ) ) {
-        $obj_ct_mu = $obj_ct_mu;
+        $obj_mn_mu = $obj_mn_mu;
     } else {
-        $obj_ct_mu = '';
+        $obj_mn_mu = '';
     }
     
     // Footer Content
@@ -1749,7 +1749,7 @@ function applicator_htmlok( $args = array() ) {
             $hr_mu = '';
         }
         
-        $o_content = $hr_mu. $ct_mu. $fr_mu;
+        $o_content = $hr_mu. $mn_mu. $fr_mu;
     }
     
     if ( in_array( $r_structure, $structure_component_terms, true ) ) {
@@ -1759,12 +1759,12 @@ function applicator_htmlok( $args = array() ) {
             $fr_mu = '';
         }
         
-        $o_content = $hr_mu. $ct_mu. $fr_mu;
+        $o_content = $hr_mu. $mn_mu. $fr_mu;
     }
     
     if ( in_array( $r_structure, $structure_object_terms, true ) ) {
         
-        $o_content = $obj_ct_mu;
+        $o_content = $obj_mn_mu;
     }
     
     if ( in_array( $r_subtype, $subtype_header_terms, true ) ) {

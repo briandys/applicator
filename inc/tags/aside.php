@@ -1,13 +1,18 @@
-<?php // Asides
+<?php
+
+// Asides
+
+
+
 
 
 // Main Header Aside
 function applicator_main_header_aside()
 {
-
     $main_header_aside_term = 'main-header-aside';
 
-    if ( is_active_sidebar( $main_header_aside_term )  ) {
+    if ( is_active_sidebar( $main_header_aside_term )  )
+    {
 
         ob_start();
         dynamic_sidebar( $main_header_aside_term );
@@ -28,7 +33,6 @@ function applicator_main_header_aside()
                 ),
             ),
             'id'        => $main_header_aside_term,
-            'css'       => 'main-hr',
             'content'   => array(
                 'constructor'   => $aside,
             ),
@@ -128,7 +132,7 @@ function applicator_main_content_header_aside()
                 'h_elem'        => 'h3',
             ),
             'id'        => $main_content_header_aside_term,
-            'css'       => 'main-ct-hr',
+            'css'       => 'main-content-header',
             'content'   => array(
                 'constructor'   => $aside,
             ),
@@ -165,7 +169,6 @@ function applicator_main_content_aside()
                 ),
             ),
             'id'        => $main_content_aside_term,
-            'css'       => 'main-ct',
             'content'   => array(
                 'constructor'   => $aside,
             ),

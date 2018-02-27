@@ -9,7 +9,7 @@ if ( ! function_exists( 'applicator_main_nav' ) ) {
         // Variables
         $main_nav_term = 'main-nav';
         $main_nav_css = $main_nav_term;
-        $main_nav_ct_cr_css = 'menu';
+        $main_nav_mn_cr_css = 'menu';
         $main_nav_group_start_mu = '<ul class="grp '. $main_nav_css . '---grp' .'">';
         $main_nav_group_end_mu = '</ul>';
         
@@ -41,7 +41,7 @@ if ( ! function_exists( 'applicator_main_nav' ) ) {
                 // Current Nav Item <li class="current_page_item">
                 // Sub Navigation <ul class="children">
                 wp_page_menu( array(
-                    'menu_class'        => $main_nav_ct_cr_css, // <div> class
+                    'menu_class'        => $main_nav_mn_cr_css, // <div> class
                     'link_before'       => $main_nav_a_l_start_mu,
                     'link_after'        => $main_nav_a_l_end_mu,
                     'show_home'         => true,
@@ -58,7 +58,7 @@ if ( ! function_exists( 'applicator_main_nav' ) ) {
                 wp_nav_menu( array(
                     'theme_location'    => $main_nav_term,
                     'container'         => 'div',
-                    'container_class'   => $main_nav_ct_cr_css, // <div> class
+                    'container_class'   => $main_nav_mn_cr_css, // <div> class
                     'link_before'       => $main_nav_a_l_start_mu,
                     'link_after'        => $main_nav_a_l_end_mu,
                     'items_wrap'        => $main_nav_group_start_mu. '%3$s'. $main_nav_group_end_mu,

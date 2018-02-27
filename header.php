@@ -291,4 +291,4 @@
                 ?>
                 
                 <section id="main-content" class="section cn main-content site-content" data-name="Main Content CN">
-                    <div class="cr main-content---cr">
+                    <div id="content" class="cr main-content---cr">
