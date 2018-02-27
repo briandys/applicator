@@ -144,7 +144,7 @@ function applicator_features_body_class( $classes )
     $app_feature_class_name = $GLOBALS['applicator_feature_class_name'];
     
     $r = array(
-        'calendar'. '---'. $app_feature_class_name ,
+        'calendar'. '---'. $app_feature_class_name,
     );
     
     foreach ( $r as $class_name )

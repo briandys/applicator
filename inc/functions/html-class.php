@@ -80,5 +80,17 @@ function applicator_html_class() {
     {
         echo ' '. 'form-factor--non-mobile';
     }
+    
+    
+    
+    // WordPress Admin Bar
+    if ( is_admin_bar_showing() )
+    {
+        echo ' '. 'wp-admin-bar--enabled';
+    }
+    else
+    {
+        echo ' '. 'wp-admin-bar--disabled';
+    }
 }
 add_action( 'applicator_hook_html_css', 'applicator_html_class');

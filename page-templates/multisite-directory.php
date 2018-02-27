@@ -211,7 +211,7 @@ if ( is_multisite() )
                     ),
                 ) );
 
-                /* WP QUery */
+                
                 $args = array(
                     'post_type'         => 'post',
                     'post_status'       => 'publish',

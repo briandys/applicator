@@ -25,7 +25,7 @@ Enhancements Style
 .main-name-description--disabled .main-description,
 .single-post .main-content-heading,
 .attachment .main-content-heading,
-.page-template--multisite-directory .main-content-heading,
+.view--multisite-directory .main-content-heading,
 .page-nav---h,
 .page-nav .screen-reader-text,
 .entry-nav---h,
@@ -1077,12 +1077,12 @@ img.size-medium
     word-break: break-word;
 }
 
-.feature--no-touchevents .page-template--sub-pages .sub-post-content .post-title---h
+.feature--no-touchevents .view--sub-pages .sub-post-content .post-title---h
 {
     cursor: text;
 }
 
-.feature--no-touchevents .page-template--sub-pages .sub-post-content .post-title---a
+.feature--no-touchevents .view--sub-pages .sub-post-content .post-title---a
 {
     pointer-events: auto;
 }
@@ -3406,12 +3406,12 @@ button:hover .dismiss-icon
     position: relative;
 }
 
-.vp--wp-admin-bar--narrow .wp-admin-bar--enabled .web-product
+.vp--wp-admin-bar--narrow.wp-admin-bar--enabled .web-product
 {
     margin-top: 46px;
 }
 
-.vp--wp-admin-bar--wide .wp-admin-bar--enabled .web-product
+.vp--wp-admin-bar--wide.wp-admin-bar--enabled .web-product
 {
     margin-top: 32px;
 }

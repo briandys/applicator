@@ -37,14 +37,14 @@ function applicator_body_class( $classes )
     // Page Template: Multisite Directory
     if ( is_multisite() && is_page_template( 'page-templates/multisite-directory.php' ) )
     {
-        $classes[] = 'page-template--multisite-directory';
+        $classes[] = 'view--multisite-directory';
     }
     
     
     // Page Template: Sub-Pages
     if ( is_page_template( 'page-templates/sub-pages.php' ) )
     {
-        $classes[] = 'page-template--sub-pages';
+        $classes[] = 'view--sub-pages';
     }
     
     
@@ -56,17 +56,6 @@ function applicator_body_class( $classes )
     else
     {
         $classes[] = 'theme-hierarchy--child';
-    }
-
-
-    // Admin Bar
-    if ( is_admin_bar_showing() )
-    {
-        $classes[] = 'wp-admin-bar--enabled';
-    }
-    else
-    {
-        $classes[] = 'wp-admin-bar--disabled';
     }
 
 

@@ -14,7 +14,6 @@
             $line_array = '';
 
 
-            // WP Query
             $entry_search = new WP_Query( array(
                 's'         => $s,
                 'showposts' => -1,
