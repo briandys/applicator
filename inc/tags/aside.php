@@ -142,7 +142,6 @@ function applicator_main_content_header_aside()
 // Main Content Aside
 function applicator_main_content_aside()
 {
-
     $main_content_aside_term = 'main-content-aside';
 
     if ( is_active_sidebar( $main_content_aside_term )  ) {

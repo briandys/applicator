@@ -22,7 +22,7 @@ if ( ! function_exists( 'applicator_main_content_headings' ) )
         // Blog Posts
         if ( is_home() )
         {
-            $property_text = esc_html__( 'Entries', 'applicator' );
+            $property_text = esc_html__( 'Entry', 'applicator' );
             $value_text = esc_html__( 'Posts', 'applicator' );
             
             $line_array = array(

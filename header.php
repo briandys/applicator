@@ -34,8 +34,8 @@
         
         ?>
                         
-        <div id="web-product" class="cn web-product wbp site" data-name="Web Product CN">
-            <div class="cr wbp---cr">
+        <div id="web-product" class="cn web-product site" data-name="Web Product CN">
+            <div class="cr web-product---cr">
                 
                 <?php
         
@@ -90,7 +90,6 @@
                         'type'      => 'constructor',
                     ),
                     'id'        => 'web-product-start',
-                    'css'       => 'wbp-start',
                     'content'   => array(
                         'constructor'   => array(
                             $go_to_content_nav_cp,
@@ -291,5 +290,5 @@
                 
                 ?>
                 
-                <section id="content" class="cn main-content site-content" data-name="Main Content CN">
+                <section id="main-content" class="section cn main-content site-content" data-name="Main Content CN">
                     <div class="cr main-content---cr">

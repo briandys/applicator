@@ -27,7 +27,7 @@
         tabKeyInactCss = 'tab-key--inactive',
         
         $webProduct = $( '#web-product' ),
-        $webProductContainer = $webProduct.find( '.wbp---cr' ),
+        $webProductContainer = $webProduct.find( '.web-product---cr' ),
         
         $webProductCopyright = $( '#copyright' ),
         copyrightHeight = $webProductCopyright.height(),
@@ -47,9 +47,6 @@
         $mainNav = $( '#main-nav' ),
         $navParentItems = $( '.page_item, .menu-item' ),
         
-        mainContentAsideEnabled = 'main-content-aside--enabled',
-        mainContentAsideDisabled = 'main-content-aside--disabled',
-        $secondaryContent = $( '.secondary-content' ),
             
         $mainSearch,
         
@@ -2915,13 +2912,15 @@
         
         // ------------------------------------ Secondary Content
         ( function() {
+            
+            var $mainContentAside = $( '.main-content-aside' );
 
-            if ( $secondaryContent.css( 'margin' ) == '-1px' || $secondaryContent.is( ':hidden' ) ) {
+            if ( $mainContentAside.css( 'margin' ) == '-1px' || $mainContentAside.is( ':hidden' ) )
+            {
                 $body
-                    .addClass( mainContentAsideDisabled )
-                    .removeClass( mainContentAsideEnabled );
+                    .addClass( 'main-content-aside--disabled' )
+                    .removeClass( 'main-content-aside--enabled' );
             }
-        
         }() );
     
     

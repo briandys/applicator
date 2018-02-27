@@ -45,7 +45,7 @@
                                         'css'   => 'copyright---line',
                                         array(
                                             'txt'       => get_bloginfo( 'name', 'display' ),
-                                            'css'       => 'wbp-name---txt',
+                                            'css'       => 'web-product-name---txt',
                                             'linked'    => true,
                                             'attr'      => array(
                                                 'a'         => array(
@@ -153,7 +153,6 @@
                         'type'      => 'constructor',
                     ),
                     'id'        => 'web-product-end',
-                    'css'       => 'wbp-end',
                     'content'   => array(
                         'constructor'       => $go_to_start_nav_cp,
                     ),

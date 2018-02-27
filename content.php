@@ -40,11 +40,9 @@
                 ) );
                 
                 
-                // Post Actions | inc > tags > post-actions.php
-                applicator_post_actions();
+                applicator_post_actions(); // Post Actions | inc > tags > post-actions.php
                 
                 
-                // E: Main Post Title
                 $main_post_title = applicator_htmlok( array(
                     'name'      => 'Main Post Title',
                     'structure' => array(
@@ -61,15 +59,12 @@
                 ) );
                 
                 
-                // After Main Post Title Hook | inc > hooks.php
-                applicator_hook_after_main_post_title();
+                applicator_hook_after_main_post_title(); // After Main Post Title Hook | inc > hooks.php
                 
                 
-                // Breadcrumbs Navigation | inc > tags > breadcumbs-nav.php
-                applicator_breadcrumbs();
+                applicator_breadcrumbs(); // Breadcrumbs Navigation | inc > tags > breadcumbs-nav.php
                 
                 
-                // E: Post Meta
                 $post_meta = applicator_htmlok( array(
                     'name'      => 'Post Meta',
                     'structure' => array(
@@ -94,7 +89,6 @@
                 ) );
                 
                 
-                // E: Post Header Aside
                 $post_header_aside = applicator_htmlok( array(
                     'name'      => 'Post Header',
                     'structure' => array(
@@ -110,16 +104,14 @@
                             
                             applicator_hook_after_post_meta_header_aside(),
                             
-                            // inc/tags/comments-actions-snippet-cp.php
-                            applicator_comments_actions_snippet(),
+                            applicator_comments_actions_snippet(), // inc/tags/comments-actions-snippet-cp.php
                         ),
                     ),
                     'echo'      => true,
                 ) );
                 
                 
-                // After Post Header Aside Hook
-                applicator_hook_after_post_header_aside();
+                applicator_hook_after_post_header_aside(); // After Post Header Aside Hook
                 
                 ?>
 
@@ -130,13 +122,11 @@
                 
                 <?php
                 
-                // OB: Excerpt
                 ob_start();
                 the_excerpt();
                 $excerpt_ob_content = ob_get_clean();
                 
                 
-                // R: Post Excerpt
                 $post_excerpt = applicator_htmlok( array(
                     'name'      => 'Post Excerpt',
                     'structure' => array(
@@ -147,10 +137,11 @@
                     ),
                 ) );
                 
-                // OB: Content
+                
                 ob_start();
                 the_content();
                 $content_ob_content = ob_get_clean();
+                
                 
                 if ( is_home() || is_singular() || is_archive() )
                 {   
@@ -159,7 +150,7 @@
                         echo $post_excerpt;
                     }
                     
-                    // E: Post Content
+                    
                     $post_content = applicator_htmlok( array(
                         'name'      => 'Post Content',
                         'structure' => array(
@@ -173,15 +164,15 @@
                         'echo'      => true,
                     ) );
                 }
+                
                 else
                 {
                     echo $post_excerpt;
                 }
                 
                 
-                // Entry Page Navigation
-                // inc > tags > post-nav.php
-                applicator_post_nav();
+                applicator_post_nav(); // Entry Page Navigation | inc > tags > post-nav.php
+                
                 
                 // Sub-Post
                 if ( is_page_template( 'page-templates/sub-pages.php' ) )
@@ -198,7 +189,6 @@
 
                     if ( $the_query->have_posts() )
                     {   
-                        // OB: Query Sub-Post Content
                         ob_start();
                         while ( $the_query->have_posts() )
                         {
@@ -208,7 +198,6 @@
                         $query_sub_post_ob_content = ob_get_clean();
                         
                         
-                        // E: Sub-Post Content
                         $sub_post_cp = applicator_htmlok( array(
                             'name'      => 'Sub-Post Content',
                             'structure' => array(

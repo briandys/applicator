@@ -254,7 +254,7 @@ h6
     color: #505050
 }
 
-.copyright .wbp-name---txt
+.copyright .web-product-name---txt
 {
     font-weight: bold;
 }
@@ -1740,7 +1740,7 @@ div[id^="contact-form-"] > .contact-form-submission
         width: 70%;
     }
 
-    .applicator--theme--layout .main-content-aside--enabled .secondary-content 
+    .applicator--theme--layout .main-content-aside--enabled .main-content-aside 
     {
         flex: 1 30%;
         width: 30%;
@@ -1887,7 +1887,7 @@ div[id^="contact-form-"] > .contact-form-submission
         flex: none;
     }
 
-    .applicator--theme--layout .main-content-aside--enabled.view--multisite-directory .secondary-content 
+    .applicator--theme--layout .main-content-aside--enabled.view--multisite-directory .main-content-aside
     {
         flex: none;
     }

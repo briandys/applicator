@@ -91,8 +91,7 @@
                 'type'      => 'constructor',
                 'elem'      => 'main',
             ),
-            'id'        => 'main',
-            'css'       => 'pri-content',
+            'id'        => 'primary-content',
             'root_css'  => 'site-main',
             'content'   => array(
                 'constructor'   => $entry_module_cp,

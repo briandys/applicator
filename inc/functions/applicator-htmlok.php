@@ -48,7 +48,6 @@ function applicator_htmlok( $args = array() ) {
     
     // Constructor Subtypes
     $subtype_main_header_terms = array( 'main header', 'mh', );
-    $subtype_main_content_terms = array( 'main content', 'mc', );
     $subtype_main_footer_terms = array( 'main footer', 'mf', );
     $subtype_aside_terms = array( 'aside', 'as', );
     $subtype_header_terms = array( 'header', 'hr', );
@@ -317,14 +316,6 @@ function applicator_htmlok( $args = array() ) {
                 
                 $subtype_elem = 'header';
                 $p_custom_attr = ' '.'role="banner"';
-                
-            }
-            
-            // Main Content Subtype
-            elseif ( in_array( $r_subtype, $subtype_main_content_terms, true ) ) {
-                
-                $subtype_elem = 'section';
-                $r_hr_structure = true;
                 
             }
             

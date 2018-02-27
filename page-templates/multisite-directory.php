@@ -309,8 +309,7 @@ if ( is_multisite() )
                     'type'      => 'constructor',
                     'elem'      => 'main',
                 ),
-                'id'        => 'main',
-                'css'       => 'pri-content',
+                'id'        => 'primary-content',
                 'root_css'  => 'site-main',
                 'content'   => array(
                     'constructor'   => $entry_module_cp,
@@ -319,8 +318,7 @@ if ( is_multisite() )
             ) );
 
 
-            // Secondary Content
-            get_sidebar();
+            get_sidebar(); // Main Content Aside
 
             ?>
 
