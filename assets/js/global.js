@@ -110,26 +110,6 @@
     
     
     
-    // ------------------------------------ Remove remnants of <!--more--> tag
-    ( function() {
-
-        if ( ! $body.hasClass( 'view-granularity--detail' ) )
-        {
-            return;
-        }
-
-        $( '.post-content--main span[id^="more-"]' ).each( function() {
-
-            $( this ).closest( 'p' ).remove();
-
-        } );
-
-    }() );
-    
-    
-    
-    
-    
     // ------------------------------------ Remove remnants of empty Author Avatar tag
     ( function() {
 
