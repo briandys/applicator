@@ -1,28 +1,32 @@
 <?php
 
-// Default Styles and Scripts
+/**
+ * Default Styles and Scripts
+ *
+ * @package WordPress
+ * @subpackage Applicator
+ * @since 1.0
+ */
 
 
 
 
-
-// ------------------------------------ Default Applicator Styles
+/**
+ * Default Styles and Scripts
+ */
 function applicator_default_styles_scripts()
 {
-    // ------------------------------------ Styles
     add_editor_style( array( 'assets/css/editor-style.css' ) );
     wp_enqueue_style( 'applicator-style', get_stylesheet_uri() );
     wp_enqueue_style( 'applicator-style--h5bp', get_template_directory_uri(). '/assets/css/h5bp.css' );
     wp_enqueue_style( 'applicator-style--default', get_template_directory_uri(). '/assets/css/default.css' );
 
 
-    // ------------------------------------ Scripts
-    wp_enqueue_script( 'applicator-script--modernizr', get_template_directory_uri(). '/assets/js/modernizr.min.js', array(), '1.0.0', true );
-    wp_enqueue_script( 'applicator-script--plugins', get_template_directory_uri(). '/assets/js/plugins.js', array( 'jquery' ), '1.0.0', true );
-    wp_enqueue_script( 'applicator-script--global', get_template_directory_uri(). '/assets/js/global.js', array( 'jquery', 'applicator-script--plugins' ), '3.8.4', true );
+    wp_enqueue_script( 'applicator-script--modernizr', get_template_directory_uri(). '/assets/js/modernizr.min.js', array(), '1.0', true );
+    wp_enqueue_script( 'applicator-script--plugins', get_template_directory_uri(). '/assets/js/plugins.js', array( 'jquery' ), '1.0', true );
+    wp_enqueue_script( 'applicator-script--global', get_template_directory_uri(). '/assets/js/global.js', array( 'jquery', 'applicator-script--plugins' ), '1.0', true );
 
 
-    // ------------------------------------ Comment Reply
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
     {
         wp_enqueue_script( 'comment-reply' );
@@ -33,16 +37,18 @@ add_action('wp_enqueue_scripts', 'applicator_default_styles_scripts', 0);
 
 
 
-
-// ------------------------------------ Default Applicator Inline Scripts
+/**
+ * Default Inline Scripts
+ */
 function applicator_inline_scripts()
 {
-?>  
-
+?>
     <script type="text/javascript">
 
-        // ------------------------------------ Debounce
-        // https://davidwalsh.name/javascript-debounce-function
+        /*
+         * Debounce
+         * @link https://davidwalsh.name/javascript-debounce-function
+         */
         function debounce( func, wait, immediate )
         {
             var timeout;
@@ -74,23 +80,21 @@ function applicator_inline_scripts()
             }
         }
         var applicatorDebounceTimeout = 640;
-
-
-
-
-
-        // ------------------------------------ CSS Variables Feature Detection
-        // https://stackoverflow.com/a/26633844
+        
+        
+        /*
+         * CSS Variables Feature Detection
+         * @link https://stackoverflow.com/a/26633844
+         */
         function supportCSSVariables()
         {
             return window.CSS && window.CSS.supports && window.CSS.supports( '--var', 0 );
         }
-
-
-
-
-
-        // ------------------------------------ HTMl CSS Classes
+        
+        
+        /*
+         * HTMl CSS Classes
+         */
         ( function( html ) {
 
             // Replace no-js with js if JavaScript is supported
@@ -102,7 +106,7 @@ function applicator_inline_scripts()
             // Window Unloaded (will be removed on window.load)
             html.classList.add( 'window--unloaded' );
 
-            // CSS Variables CSS inserted via JS
+            // CSS Variables
             if ( supportCSSVariables() )
             {
                 html.classList.add( 'cssvariables' );

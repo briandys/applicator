@@ -147,10 +147,12 @@ if ( ! function_exists( 'applicator_breadcrumbs_body_class' ) )
     function applicator_breadcrumbs_body_class( $classes )
     {
         global $post;
+        
+        $a8r_f = $GLOBALS['applicator_feature_class_name'];
 
         if ( is_page() && $post->post_parent && ! is_attachment() )
         {
-            $classes[] = 'breadcrumbs'. '---'. $GLOBALS['applicator_feature_class_name'];
+            $classes[] = 'breadcrumbs'. '---'. $a8r_f;
         }
         return $classes;
     }

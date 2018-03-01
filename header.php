@@ -12,9 +12,7 @@
     <body id="start" <?php body_class(); ?>>
 
         <?php
-
         
-        // ------------------------------------ Wildcard
         $wildcard_cn = applicator_htmlok( array(
             'name'      => 'Applicator Wildcard',
             'structure' => array(
@@ -39,10 +37,6 @@
                 
                 <?php
         
-                
-                // ------------------------------------ Web Product Start
-
-                // R: Go to Content Navi
                 $go_to_content_navi_obj = applicator_htmlok( array(
                     'name'      => 'Go to Content',
                     'structure' => array(
@@ -67,7 +61,7 @@
                     ),
                 ) );
 
-                // R: Go to Content Nav
+                
                 $go_to_content_nav_cp = applicator_htmlok( array(
                     'name'      => 'Go to Content',
                     'structure' => array(
@@ -83,7 +77,6 @@
                 ) );
 
 
-                // E: Web Product Start
                 $web_product_start_cn = applicator_htmlok( array(
                     'name'      => 'Web Product Start',
                     'structure' => array(
@@ -99,15 +92,11 @@
                 ) );
                 
                 
-                /* ------------------------ Main Header ------------------------ */
-                
-                
-                /* ------------------------ Main Info ------------------------ */
-                
-                // R: Main Name
                 $main_name_obj = '';
                 $main_name = get_bloginfo( 'name', 'display' );
-                if ( $main_name || is_customize_preview() ) {
+                
+                if ( $main_name || is_customize_preview() )
+                {
                     $main_name_obj = applicator_htmlok( array(
                         'name'      => 'Main Name',
                         'structure' => array(
@@ -129,11 +118,10 @@
                 }
 
                 
-                // R: Main Logo
-                // inc > settings.php | Customizer > Site Identity
-                $main_logo_obj = '';
+                $main_logo_obj = ''; // inc > settings.php | Customizer > Site Identity
 
-                if ( has_custom_logo() ) {
+                if ( has_custom_logo() )
+                {
                     $main_logo_obj = applicator_htmlok( array(
                         'name'      => 'Main Logo',
                         'structure' => array(
@@ -149,11 +137,11 @@
                 }
 
                 
-                // R: Main Description
                 $main_description_obj = '';
                 $main_description = get_bloginfo( 'description', 'display' );
 
-                if ( $main_description || is_customize_preview() ) {
+                if ( $main_description || is_customize_preview() )
+                {
                     $main_description_obj = applicator_htmlok( array(
                         'name'      => 'Main Description',
                         'structure' => array(
@@ -175,7 +163,6 @@
                 }
 
                 
-                // R: Main Info
                 $main_info_cp = applicator_htmlok( array(
                     'name'      => 'Main Info',
                     'structure' => array(
@@ -198,14 +185,10 @@
                 ) );
                 
                 
+                $main_media_banner_obj = ''; // Custom Header | Customizer > Custom Header | inc > functions > custom-visuals.php
                 
-                // Custom Header | Customizer > Custom Header | inc > functions > custom-visuals.php
-                
-                $main_media_banner_obj = '';
-                
-                if ( has_header_image() ) {
-                    
-                    // R: Main Media Banner
+                if ( has_header_image() )
+                {
                     $main_media_banner_obj = applicator_htmlok( array(
                         'name'      => 'Main Media Banner',
                         'structure' => array(
@@ -223,11 +206,11 @@
                 
                 }
 
+                
                 $main_banner_cp = '';
                 
-                if ( has_header_image() || is_active_sidebar( 'main-banner-aside' ) ) {
-                    
-                    // R: Main Banner
+                if ( has_header_image() || is_active_sidebar( 'main-banner-aside' ) )
+                {
                     $main_banner_cp = applicator_htmlok( array(
                         'name'      => 'Main Banner',
                         'structure' => array(
@@ -246,16 +229,11 @@
                 }
                 
                 
-                // OB: Hook After Main Nav
                 ob_start();
                 applicator_hook_after_main_nav();
                 $hook_after_main_nav_ob_content = ob_get_clean();
                 
                 
-                
-                
-                
-                // E: Main Header
                 $main_header_cn = applicator_htmlok( array(
                     'name'      => 'Main Header',
                     'structure' => array(

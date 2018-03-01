@@ -141,10 +141,10 @@ add_action( 'applicator_hook_html_css', 'applicator_functionalities_css_class_na
 // Body Class
 function applicator_features_body_class( $classes )
 {
-    $app_feature_class_name = $GLOBALS['applicator_feature_class_name'];
+    $a8r_f = $GLOBALS['applicator_feature_class_name'];
     
     $r = array(
-        'calendar'. '---'. $app_feature_class_name,
+        'calendar'. '---'. $a8r_f,
     );
     
     foreach ( $r as $class_name )

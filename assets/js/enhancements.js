@@ -2382,9 +2382,9 @@
                 return;
             }
             
-            var $postContentCtCr = $( '.post-content--main' ),
-                $postContentHeadings = $postContentCtCr.children( 'h1:not([id]), h2:not([id]), h3:not([id]), h4:not([id]), h5:not([id]), h6:not([id])' ),
-                $postContentHeadingsID = $postContentCtCr.children( 'h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]' ),
+            var $postContentMain = $( '.post-content--main' ),
+                $postContentHeadings = $postContentMain.find( 'h1:not([id]), h2:not([id]), h3:not([id]), h4:not([id]), h5:not([id]), h6:not([id])' ),
+                $postContentHeadingsID = $postContentMain.find( 'h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]' ),
                 headingAnchoredCSS = 'identified-heading',
                 seen = {};
             

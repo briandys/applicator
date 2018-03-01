@@ -109,10 +109,11 @@ function sanitizeTitle( text )
     text = text.replace(/\-\-+/g, "-");
     
     // If first character is a dash, remove it
-    return text = text.indexOf('-') == 0 ? text.substring(1) : text;
+    text = text.indexOf('-') == 0 ? text.substring(1) : text;
+    
+    // If last character is a dash, remove it
+    return text = text.slice(-1) == '-' ? text.slice(0, -1) : text;
 }
-
-
 
 
 
