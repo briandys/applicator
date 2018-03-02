@@ -1,15 +1,28 @@
-<?php // Comments
+<?php
+
+/**
+ * Comments
+ *
+ * @package WordPress
+ * @subpackage Applicator
+ * @since 1.0
+ */
 
 
-if ( post_password_required() ) {
+
+
+
+if ( post_password_required() )
+{
 	return;
 }
         
+
 $comments_content = '';
 
-// With Comments
-if ( have_comments() ) {
-    
+
+if ( have_comments() )
+{   
     $comments_nav_content = applicator_comments_nav();
 
     $comments_content = '<ul class="grp comments---grp">';
@@ -22,9 +35,8 @@ if ( have_comments() ) {
     $comments_content .= '</ul>';
 }
 
-// No Comments
-else {
-    
+else
+{   
     $comments_nav_content = '';
     
     $comments_empty_note_obj = applicator_htmlok( array(
@@ -41,7 +53,7 @@ else {
     $comments_content = $comments_empty_note_obj;
 }
 
-// R: Comments Heading
+
 $comments_heading_obj = applicator_htmlok( array(
     'name'      => 'Comments',
     'structure' => array(
@@ -51,14 +63,13 @@ $comments_heading_obj = applicator_htmlok( array(
     'content'   => array(
         'object'        => array(
             array(
-                'txt'           => esc_html__( 'Comments', 'applicator' ),
+                'txt'       => esc_html__( 'Comments', 'applicator' ),
             ),
         ),
     ),
 ) );
 
 
-// R: Comments Header Aside
 $comments_header_aside_cn = applicator_htmlok( array(
     'name'          => 'Comments Header',
     'structure'     => array(
@@ -72,7 +83,6 @@ $comments_header_aside_cn = applicator_htmlok( array(
 ) );
 
 
-// R: Comments
 $comments_cp = applicator_htmlok( array(
     'name'          => 'Comments',
     'structure'     => array(
@@ -92,26 +102,33 @@ $comments_cp = applicator_htmlok( array(
 ) );
 
 
-//------------ inc > functions > comment-form.php
+
+
+
+/**
+ * inc > functions > comment-form.php
+ */
+
 
 // title_reply
 $comment_creation_header_mu = '';
+$comment_creation_term = 'Comment Creation';
 
 $comment_creation_header_mu .= '<div class="obj %2$s-heading" data-name="Comment Creation Heading OBJ">';
     $comment_creation_header_mu .= '<div class="h %3$s---h">';
         $comment_creation_header_mu .= '<span class="h_l %3$s---h_l">';
-            $comment_creation_header_mu .= '%1$s';
+            $comment_creation_header_mu .= '<span class="l %3$s---l">';
+                $comment_creation_header_mu .= '%1$s';
+            $comment_creation_header_mu .= '</span>';
         $comment_creation_header_mu .= '</span>';
     $comment_creation_header_mu .= '</div>';
 $comment_creation_header_mu .= '</div>';
 
-$comment_creation_term = esc_html__( 'Comment Creation', 'applicator' );
-$comment_creation_term_css = sanitize_title( $comment_creation_term );
 
 $comment_creation_header = sprintf( $comment_creation_header_mu,
-    $comment_creation_term,
-    $comment_creation_term_css,
-    'comment-crt-hd'
+    esc_html__( $comment_creation_term, 'applicator' ),
+    sanitize_title( $comment_creation_term ),
+    'comment-creation-heading'
 );
 
 
@@ -128,7 +145,7 @@ $comment_creation_label_obj = applicator_htmlok( array(
                 'txt'   => esc_html__( 'Compose', 'applicator' ),
             ),
             array(
-                'sep'   => $GLOBALS['applicator_space_sep'],
+                'sep'   => ' ',
                 'txt'   => esc_html__( 'Comment', 'applicator' ),
             ),
         ),
@@ -150,7 +167,7 @@ $signed_in_account_label_obj = applicator_htmlok( array(
     ),
     'content'   => array(
         'object'    => $signed_in_as_term,
-        'after'     => $GLOBALS['applicator_space_sep'],
+        'after'     => ' ',
     ),
 ) );
 
@@ -225,10 +242,11 @@ $sign_in_req_note_obj = applicator_htmlok( array(
 ) );
 
 
-//------------ Comment Author > Comment Creation
+/**
+ * Comment Author > Comment Creation
+ */
 
 // comment_field
-
 $commenter_comment_creation_term = 'Commenter Comment Creation';
 $commenter_comment_creation_short_css = 'commenter-com-crt';
 $commenter_comment_id_attr = 'comment';
@@ -362,7 +380,10 @@ $comment_recipient_note_obj = applicator_htmlok( array(
 ) );
 
 
-// OB: Comment Form
+/**
+ * Comment Form
+ */
+
 ob_start();
 comment_form( array(
 
@@ -408,7 +429,6 @@ comment_form( array(
 $comment_form_ob_content = ob_get_clean();
 
 
-// E: Comment
 $comment_module_cp = applicator_htmlok( array(
     'name'      => 'Comment',
     'structure' => array(

@@ -1,34 +1,28 @@
-<?php // Functions
+<?php
+
+/**
+ * Functions
+ *
+ * @package WordPress
+ * @subpackage Applicator
+ * @since 1.0
+ */
 
 
-// Applicator HTML_OK
-$applicator_htmlok = get_parent_theme_file_path( '/inc/functions/applicator-htmlok.php' );
-if ( file_exists( $applicator_htmlok ) ) { require( $applicator_htmlok ); }
 
 
-// Globals
-$globals = get_parent_theme_file_path( '/inc/globals.php' );
-if ( file_exists( $globals ) ) { require( $globals ); }
+
+require( get_parent_theme_file_path( '/inc/globals.php' ) );
+
+require( get_parent_theme_file_path( '/inc/settings.php' ) );
+
+require( get_parent_theme_file_path( '/inc/hooks.php' ) );
 
 
-// Settings
-$settings = get_parent_theme_file_path( '/inc/settings.php' );
-if ( file_exists( $settings ) ) { require( $settings ); }
+require( get_parent_theme_file_path( '/inc/styles-scripts--default.php' ) );
 
 
-// Hooks
-$hooks = get_parent_theme_file_path( '/inc/hooks.php' );
-if ( file_exists( $hooks ) ) { require( $hooks ); }
-
-
-// Default Styles and Scripts
-$default_styles_scripts = get_parent_theme_file_path( '/inc/styles-scripts--default.php' );
-if ( file_exists( $default_styles_scripts ) ) { require( $default_styles_scripts ); }
-
-
-// Enhancements Styles and Scripts
-$enhancements_styles_scripts = get_parent_theme_file_path( '/inc/styles-scripts--enhancements.php' );
-if ( file_exists( $enhancements_styles_scripts ) ) { require( $enhancements_styles_scripts ); }
+require( get_parent_theme_file_path( '/inc/styles-scripts--enhancements.php' ) );
 
 
 // Snap-On
@@ -155,19 +149,8 @@ $customizer_custom_colors = get_parent_theme_file_path( '/inc/functions/customiz
 if ( file_exists( $customizer_custom_colors ) ) { require( $customizer_custom_colors ); }
 
 
-// Meta Description
-$meta_description = get_parent_theme_file_path( '/inc/functions/meta-description.php' );
-if ( file_exists( $meta_description ) ) { require( $meta_description ); }
 
 
-// Main Content Header
-$main_content_header = get_parent_theme_file_path( '/inc/functions/main-content-header.php' );
-if ( file_exists( $main_content_header ) ) { require( $main_content_header ); }
-
-
-// Main Content Footer
-$main_content_footer = get_parent_theme_file_path( '/inc/functions/main-content-footer.php' );
-if ( file_exists( $main_content_footer ) ) { require( $main_content_footer ); }
 
 
 // ------------------------------------ Tags
@@ -181,9 +164,21 @@ require( get_parent_theme_file_path( '/inc/tags/breadcrumbs.php' ) );
 
 // ------------------------------------ Functions
 
-
-require( get_parent_theme_file_path( '/inc/functions/html-class.php' ) );
+require( get_parent_theme_file_path( '/inc/functions/applicator-htmlok.php' ) );
 require( get_parent_theme_file_path( '/inc/functions/body-class.php' ) );
+require( get_parent_theme_file_path( '/inc/functions/excerpt.php' ) );
+require( get_parent_theme_file_path( '/inc/functions/html-class.php' ) );
+require( get_parent_theme_file_path( '/inc/functions/main-content-footer.php' ) );
+require( get_parent_theme_file_path( '/inc/functions/main-content-header.php' ) );
+require( get_parent_theme_file_path( '/inc/functions/meta-description.php' ) );
 require( get_parent_theme_file_path( '/inc/functions/post-class.php' ) );
 
-require( get_parent_theme_file_path( '/inc/functions/excerpt.php' ) );
+
+
+
+
+
+
+
+
+

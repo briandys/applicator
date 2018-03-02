@@ -1,6 +1,12 @@
 <?php
 
-// Body Class
+/**
+ * Body Class
+ *
+ * @package WordPress
+ * @subpackage Applicator
+ * @since 1.0
+ */
 
 
 
@@ -8,7 +14,6 @@
 
 function applicator_body_class( $classes )
 {
-
     $classes[] = 'body view';
 
     
@@ -48,7 +53,7 @@ function applicator_body_class( $classes )
     }
     
     
-        // Theme Hierarchy
+    // Theme Hierarchy
     if ( ! is_child_theme() )
     {
         $classes[] = 'theme-hierarchy--parent';

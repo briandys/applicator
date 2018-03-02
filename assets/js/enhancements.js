@@ -8,7 +8,6 @@
         $htmlBody = $( 'html, body' ),
         
         // Functionalities
-        $applicatorComments = $html.closest( '.applicator--comments' ),
         $aplApplicatorGoCtNav = $html.closest( '.applicator--go-content-nav' ),
         $aplApplicatorGoStartNav = $html.closest( '.applicator--go-start-nav' ),
         $aplApplicatorMainActionsWidgets = $html.closest( '.applicator--main-actions-widgets' ),
@@ -22,6 +21,10 @@
         
         funcTerm = 'func',
         funcName,
+        
+        a8r_feature_class,
+        a8r_f_class = 'a8r_f',
+        a8r_feature_suffix_class = '--' + a8r_f_class,
         
         tabKeyActCss = 'tab-key--active',
         tabKeyInactCss = 'tab-key--inactive',
@@ -52,8 +55,7 @@
         
         $goStartNaviA = $( '#go-start-navi---a' ),
         
-        viewGranularityDetailClassName = 'view-granularity--detail',
-        viewGranularityDetailClassSelector = '.view-granularity--detail';
+        view_granularity_detail_class = 'view-granularity--detail';
     
     
     
@@ -364,27 +366,30 @@
     
     
     
-    // ------------------------------------ Comments
-    function applicatorComments( $cp ) {
-        
+    /**
+     * Comments Enhancements
+     *
+     * @version 1.0
+     */
+    
+    function comments( $elem ) {
         
         // Gatekeeper
-        if ( ! $body.closest( viewGranularityDetailClassSelector ) && ! $applicatorComments.length ) {
+        if ( ! $body.hasClass( view_granularity_detail_class ) && ! $body.hasClass( 'comments---a8r_f' ) ) {
             return;
         }
         
         
-        // Initialization
+        // Header
         ( function() {
+            a8r_feature_class = 'comments' + a8r_feature_suffix_class;
             
-            funcName = 'comments-feature';
-            
-            $cp
-                .addClass( funcTerm )
-                .addClass( funcName );
+            $elem
+                .addClass( a8r_f_class )
+                .addClass( a8r_feature_class );    
         }() );
-
         
+
         // Variables
         var commentsToggleObjectMU,
             commentsToggleButtonMU,
@@ -403,11 +408,11 @@
             $commentsHideL = applicatorDataComments.commentsHideL,
             $commentsDismissIco = $( applicatorDataComments.commentsDismissIco ),
             
-            aplCommentsOnCSS = 'applicator--comments--active',
-            aplCommentsOffCSS = 'applicator--comments--inactive',
+            comments_active_class = 'comments--active',
+            comments_inactive_class = 'comments--inactive',
             
-            commentsOnCSS = 'comments--active',
-            commentsOffCSS = 'comments--inactive',
+            comments_active_gs_class = 'comments--active---gs',
+            comments_inactive_gs_class = 'comments--inactive---gs',
             
             commentsFn;
 
@@ -451,7 +456,7 @@
         
         
         // Define existing elements
-        $commentModuleH = $cp.find( '.comment-md---h' );
+        $commentModuleH = $elem.find( '.comment-md---h' );
         $commentsCountAction = $( '.comments-actions-snippet' ).find( '.comments-count-axn---a' );
 
         
@@ -475,13 +480,13 @@
             // Comments On
             on: function() {
 
-                $cp
-                    .addClass( commentsOnCSS )
-                    .removeClass( commentsOffCSS );
+                $elem
+                    .addClass( comments_active_class )
+                    .removeClass( comments_inactive_class );
 
-                $html
-                    .addClass( aplCommentsOnCSS )
-                    .removeClass( aplCommentsOffCSS );
+                $body
+                    .addClass( comments_active_gs_class )
+                    .removeClass( comments_inactive_gs_class );
 
                 $commentsToggleButton.attr( {
                      'aria-expanded': 'true',
@@ -498,13 +503,13 @@
             // Comments Off
             off: function() {
 
-                $cp
-                    .addClass( commentsOffCSS )
-                    .removeClass( commentsOnCSS );
+                $elem
+                    .addClass( comments_inactive_class )
+                    .removeClass( comments_active_class );
 
-                $html
-                    .addClass( aplCommentsOffCSS )
-                    .removeClass( aplCommentsOnCSS );
+                $body
+                    .addClass( comments_inactive_gs_class )
+                    .removeClass( comments_active_gs_class );
 
                 $commentsToggleButton.attr( {
                      'aria-expanded': 'false',
@@ -532,16 +537,16 @@
             // Toggle from generated button clicks
             toggle: function() {
 
-                if ( $cp.hasClass( commentsOffCSS ) ) {
+                if ( $elem.hasClass( comments_inactive_class ) ) {
                     commentsFn.on();
                     commentsFn.scrollTop();
-                    cycleTabbingFn.tabOn( $cp ); 
+                    cycleTabbingFn.tabOn( $elem ); 
                 }
 
-                else if ( $cp.hasClass( commentsOnCSS ) ) {
+                else if ( $elem.hasClass( comments_active_class ) ) {
                     commentsFn.off();
                     genericFn.removeHash();
-                    cycleTabbingFn.tabOff( $cp );
+                    cycleTabbingFn.tabOff( $elem );
                 }
             }
             
@@ -557,7 +562,7 @@
             if ( $commentModule.length )
             {
                 $( 'a[href*="#comment"]' ).on( 'click.applicator', function() {
-                    if ( $cp.hasClass( commentsOffCSS ) )
+                    if ( $elem.hasClass( comments_inactive_class ) )
                     {
                         commentsFn.on();
                     }
@@ -585,7 +590,7 @@
             // Activate Comments if URL activated has #comment
             // https://stackoverflow.com/a/19889034
             if ( window.location.hash ) {
-                if ( window.location.hash.indexOf( 'comment' ) != -1 && $cp.hasClass( commentsOffCSS ) ) {
+                if ( window.location.hash.indexOf( 'comment' ) != -1 && $elem.hasClass( comments_inactive_class ) ) {
                     commentsFn.on();
                 }
             }
@@ -593,7 +598,7 @@
         } );
 
     }
-    applicatorComments( $( '#comment-md' ) );
+    comments( $( '#comment-md' ) );
     
     
     
@@ -2072,12 +2077,16 @@
         
         
         
-        // ------------------------------------ Calendar
+        
+
+        /**
+         * Calendar Enhancements
+         */
         
         ( function() {
             
             $( '.widget_calendar td:has( a )' ).each( function() {
-                $( this ).addClass( 'widget-calendar-active-date' );
+                $( this ).addClass( 'widget-calendar-date--active' );
             } );
             
             genericFn.wrapTextNode( $( '.widget_calendar td, .widget_calendar th' ) );
@@ -2378,7 +2387,7 @@
         // ------------------------------------ Add Anchor to Content Headings
         ( function( $id ) {
             
-            if ( ! $body.hasClass( viewGranularityDetailClassName ) ) {
+            if ( ! $body.hasClass( view_granularity_detail_class ) ) {
                 return;
             }
             

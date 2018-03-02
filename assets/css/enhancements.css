@@ -37,10 +37,10 @@ Enhancements Style
 .widget-content---h,
 .widget .screen-reader-text,
 .post-content--main .search-form-reset-axn,
-.applicator--comments .post-header-aside .comments-actions-snippet .comments--populated,
-.applicator--comments--active .comments-toggle .comments-count---txt,
+.comments---a8r_f .post-header-aside .comments-actions-snippet .comments--populated,
+.comments--active---gs .comments-toggle .comments-count---txt,
 .applicator--page-nav .adjacent-navi---l,
-.applicator--comments--active .comments-toggle .show-hide---txt,
+.comments--active---gs .comments-toggle .show-hide---txt,
 .main-actions-widgets---h,
 .main-actions-widgets-toggle---l,
 .main-actions-widgets-dismiss---l,
@@ -2567,7 +2567,7 @@ button:hover .dismiss-icon
 
 
 /* ------------------ Comments - Function ------------------ */
-.applicator--comments.dom--unready .comment-md---mn
+.dom--unready .comments---a8r_f .comment-md---mn
 {
     display: none;
 }
@@ -2577,29 +2577,29 @@ button:hover .dismiss-icon
     display: none;
 }
 
-.applicator--comments .comments-toggle---b
+.comments---a8r_f .comments-toggle---b
 {
     width: auto;
     
     color: hsl(215, 100%, 45%);
 }
 
-.applicator--comments .comments-toggle---b_l
+.comments---a8r_f .comments-toggle---b_l
 {
     background-color: transparent;
 }
 
-.applicator--comments .show-hide---txt
+.comments---a8r_f .show-hide---txt
 {
     text-decoration: underline;
 }
 
-.applicator--comments .comments-toggle---b:hover .show-hide---txt
+.comments---a8r_f .comments-toggle---b:hover .show-hide---txt
 {
     text-decoration: none;
 }
 
-.applicator--comments .comments-toggle .icon
+.comments---a8r_f .comments-toggle .icon
 {
     color: #262626;
     opacity: .25;
@@ -2607,17 +2607,17 @@ button:hover .dismiss-icon
     transition: opacity .2s ease-in-out;
 }
 
-.applicator--comments .comments-toggle---b:hover .icon
+.comments---a8r_f .comments-toggle---b:hover .icon
 {
     opacity: .5;
 }
 
-.applicator--comments .comment-md---cr
+.comments---a8r_f .comment-md---cr
 {
     position: relative;
 }
 
-.applicator--comments--active .comments-toggle
+.comments--active---gs .comments-toggle
 {
     position: absolute;
     right: 0;
@@ -2626,7 +2626,7 @@ button:hover .dismiss-icon
     margin-top: 1rem;
 }
 
-.applicator--comments--inactive .comment-md---hr_cr
+.comments--inactive---gs .comment-md---hr_cr
 {
     padding-top: 1rem;
     padding-bottom: 1rem;

@@ -880,12 +880,12 @@ h6
 
 
 /* ------------------ Comments ------------------ */
-.applicator--theme--comments.applicator--comments .comments-toggle---b .show-hide---txt
+.applicator--theme--comments .comments---a8r_f .comments-toggle---b .show-hide---txt
 {
     text-decoration: none;
 }
 
-.applicator--theme--comments.applicator--comments .comments-toggle---b:hover .show-hide---txt
+.applicator--theme--comments .comments---a8r_f .comments-toggle---b:hover .show-hide---txt
 {
     text-decoration: underline;
 }
@@ -1524,18 +1524,6 @@ div[id^="contact-form-"] > .contact-form-submission
     min-height: 2.25rem;   
 }
 
-.widget-calendar-active-date a
-{
-    display: flex;
-    
-    font-weight: bold;
-}
-
-.widget-calendar-active-date a:hover
-{
-    text-decoration: underline;
-}
-
 .widget_calendar tbody
 {
     border: 2px solid #dcdcdc;
@@ -1600,6 +1588,18 @@ div[id^="contact-form-"] > .contact-form-submission
 .widget_calendar caption
 {
     font-weight: bold;
+}
+
+.widget-calendar-date--active a
+{
+    display: flex;
+    
+    font-weight: bold;
+}
+
+.widget-calendar-date--active a:hover
+{
+    text-decoration: underline;
 }
 
 

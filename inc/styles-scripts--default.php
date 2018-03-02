@@ -14,6 +14,7 @@
 /**
  * Default Styles and Scripts
  */
+
 function applicator_default_styles_scripts()
 {
     add_editor_style( array( 'assets/css/editor-style.css' ) );
@@ -40,6 +41,7 @@ add_action('wp_enqueue_scripts', 'applicator_default_styles_scripts', 0);
 /**
  * Default Inline Scripts
  */
+
 function applicator_inline_scripts()
 {
 ?>
@@ -49,6 +51,7 @@ function applicator_inline_scripts()
          * Debounce
          * @link https://davidwalsh.name/javascript-debounce-function
          */
+        
         function debounce( func, wait, immediate )
         {
             var timeout;
@@ -86,6 +89,7 @@ function applicator_inline_scripts()
          * CSS Variables Feature Detection
          * @link https://stackoverflow.com/a/26633844
          */
+        
         function supportCSSVariables()
         {
             return window.CSS && window.CSS.supports && window.CSS.supports( '--var', 0 );
@@ -95,6 +99,7 @@ function applicator_inline_scripts()
         /*
          * HTMl CSS Classes
          */
+        
         ( function( html ) {
 
             // Replace no-js with js if JavaScript is supported

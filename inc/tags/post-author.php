@@ -37,11 +37,11 @@ if ( ! function_exists( 'applicator_post_author' ) ) {
                         'txt'   => $published_term,
                     ),
                     array(
-                        'sep'   => $GLOBALS['applicator_space_sep'],
+                        'sep'   => ' ',
                         'txt'   => $by_term,
                     ),
                 ),
-                'after'     => $GLOBALS['applicator_space_sep'],
+                'after'     => ' ',
             ),
         ) );
         
@@ -92,7 +92,7 @@ if ( ! function_exists( 'applicator_post_author' ) ) {
                     $default = '',
                     $alt = get_the_author_meta( 'display_name' ) . ' ' . esc_attr__( 'Author Avatar', 'applicator' )
                 ),
-                'before'    => $GLOBALS['applicator_space_sep'],
+                'before'    => ' ',
             ),
         ) );
         

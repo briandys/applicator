@@ -1,17 +1,34 @@
-<?php // Settings
+<?php
+
+/**
+ * Settings
+ *
+ * @package WordPress
+ * @subpackage Applicator
+ * @since 1.0
+ */
 
 
-// Applicator only works in WordPress 4.7 or later.
-if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
+
+
+
+/**
+ * Applicator only works in WordPress 4.7 or later.
+ */
+
+if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) )
+{
     require get_template_directory() . '/inc/functions/back-compatibility.php';
 	return;
 }
 
 
-// Sets up theme defaults and registers support for various WordPress features.
-function applicator_settings() {
-    
-    
+/**
+ * Sets up theme defaults and registers support for various WordPress features.
+ */
+
+function applicator_settings()
+{   
     // Make theme available for translation.
 	load_theme_textdomain( 'applicator' );
 	
@@ -25,7 +42,8 @@ function applicator_settings() {
 	
     
     // Set the maximum content width
-	if ( ! isset( $content_width ) ) {
+	if ( ! isset( $content_width ) )
+    {
         $content_width = 1920;
     }
     
@@ -69,15 +87,15 @@ function applicator_settings() {
 add_action( 'after_setup_theme', 'applicator_settings' );
 
 
-// Add the size as one of the options in Admin
-if ( ! function_exists( 'applicator_custom_image_size_option' ) ) {
-    function applicator_custom_image_size_option( $sizes ) {
-        
-        $custom_sizes = array(
-            'applicator-image-size--image--thumbnail-hd' => 'Thumbnail (16:9)'
-        );
-        return array_merge( $sizes, $custom_sizes );
-    
-    }
-    add_filter( 'image_size_names_choose', 'applicator_custom_image_size_option' );
+/**
+ * Add the size as one of the options in Admin
+ */
+
+function applicator_custom_image_size_option( $sizes )
+{       
+    $custom_sizes = array(
+        'applicator-image-size--image--thumbnail-hd' => 'Thumbnail (16:9)',
+    );
+    return array_merge( $sizes, $custom_sizes );
 }
+add_filter( 'image_size_names_choose', 'applicator_custom_image_size_option' );

@@ -55,7 +55,7 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                         'txt'       => esc_html__( 'Comment', 'applicator' ),
                     ),
                     array(
-                        'sep'       => $GLOBALS['applicator_space_sep'],
+                        'sep'       => ' ',
                         'txt'       => get_comment_ID(),
                     ),
                 ),
@@ -90,7 +90,7 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                         'txt'   => $comment_published_term,
                     ),
                     array(
-                        'sep' => $GLOBALS['applicator_space_sep'],
+                        'sep' => ' ',
                         'txt'   => $on_term,
                     ),
                 ),
@@ -124,12 +124,12 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                         'css' => 'day',
                     ),
                     array(
-                        'sep' => $GLOBALS['applicator_space_sep'],
+                        'sep' => ' ',
                         'txt' => get_comment_date( 'M' ),
                         'css' => 'month',
                     ),
                     array(
-                        'sep' => $GLOBALS['applicator_space_sep'],
+                        'sep' => ' ',
                         'txt' => get_comment_date( 'Y' ),
                         'css' => 'year',
                     ),
@@ -240,11 +240,11 @@ if ( ! function_exists( 'applicator_comment' ) ) {
                         'txt'   => $comment_term,
                     ),
                     array(
-                        'sep'   => $GLOBALS['applicator_space_sep'],
+                        'sep'   => ' ',
                         'txt'   => $by_term,
                     ),
                 ),
-                'after'     => $GLOBALS['applicator_space_sep'],
+                'after'     => ' ',
             ),
         ) );
 
@@ -294,7 +294,7 @@ if ( ! function_exists( 'applicator_comment' ) ) {
             'title'     => $commented_by_content,
             'content'   => array(
                 'object'    => get_avatar( $comment, $args['avatar_size'], '', $comment_author ),
-                'before'    => $GLOBALS['applicator_space_sep'],
+                'before'    => ' ',
             ),
         ) );
         

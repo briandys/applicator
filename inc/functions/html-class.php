@@ -1,15 +1,19 @@
 <?php
 
-// HTML and Body Classes
+/**
+ * HTML Class
+ *
+ * @package WordPress
+ * @subpackage Applicator
+ * @since 1.0
+ */
 
 
 
 
 
-// HTML Class
-function applicator_html_class() {
-		
-    
+function applicator_html_class()
+{   
     global $is_lynx, $is_gecko, $is_IE, $is_macIE, $is_winIE, $is_edge, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
     $useragent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) : "";
     $is_ipad = preg_match('/ipad/i',$useragent);

@@ -206,11 +206,11 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
                             'txt' => esc_html__( 'Add', 'applicator' ),
                         ),
                         array(
-                            'sep' => $GLOBALS['applicator_space_sep'],
+                            'sep' => ' ',
                             'txt' => esc_html__( 'Comment', 'applicator' ),
                         ),
                     ),
-                    'before'    => $GLOBALS['applicator_space_sep'],
+                    'before'    => ' ',
                 ),
             ) );
 
@@ -227,7 +227,7 @@ if ( ! function_exists( 'applicator_comments_actions_snippet' ) ) {
                     ),
                     'content'   => array(
                         'object'    => esc_html__( '(requires Sign In)', 'applicator' ),
-                        'before'    => $GLOBALS['applicator_space_sep'],
+                        'before'    => ' ',
                         
                     ),
                 ) );

@@ -1,7 +1,20 @@
-<?php // Applicator HTML_OK (Overkill)
-// Constructor-Component-Object-Text HTML Structure
+<?php
 
-function applicator_htmlok( $args = array() ) {
+/**
+ * Applicator HTML_OK
+ *
+ * @package WordPress
+ * @subpackage Applicator
+ * @since 1.0
+ */
+
+
+
+
+
+
+function applicator_htmlok( $args = array() )
+{
     
     //------------ Requirements
     

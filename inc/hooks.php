@@ -1,6 +1,12 @@
 <?php
 
-// Hooks
+/**
+ * Hooks
+ *
+ * @package WordPress
+ * @subpackage Applicator
+ * @since 1.0
+ */
 
 
 

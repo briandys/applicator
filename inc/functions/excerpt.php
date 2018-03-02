@@ -1,12 +1,21 @@
 <?php
 
-// Excerpt
+/**
+ * Excerpt
+ *
+ * @package WordPress
+ * @subpackage Applicator
+ * @since 1.0
+ */
 
 
 
 
 
-// <!--more-->
+/**
+ * <!--more-->
+ */
+
 function applicator_show_more( $show_more_action_obj )
 {
     $show_more_action_obj = applicator_htmlok( array(
@@ -32,18 +41,18 @@ function applicator_show_more( $show_more_action_obj )
                                 'txt'       => esc_html__( 'Show', 'applicator' ),
                             ),
                             array(
-                                'sep'       => $GLOBALS['applicator_space_sep'],
+                                'sep'       => ' ',
                                 'txt'       => esc_html__( 'More', 'applicator' ),
                             ),
                             array(
-                                'sep'       => $GLOBALS['applicator_space_sep'],
+                                'sep'       => ' ',
                                 'txt'       => esc_html__( 'of', 'applicator' ),
                             ),
                         ),
                         array(
                             'css'   => 'value---line',
                             array(
-                                'sep'       => $GLOBALS['applicator_space_sep'],
+                                'sep'       => ' ',
                                 'txt'       => esc_html( get_the_title( get_the_ID() ) ),
                                 'css'       => 'post-title---txt',
                             ),
@@ -65,17 +74,24 @@ add_filter( 'the_content_more_link', 'applicator_show_more' );
 
 
 
-// Auto-Excerpt
-function applicator_excerpt_ellipsis( $more ) {
+/**
+ * Auto-Excerpt
+ */
+
+function applicator_excerpt_more_suffix( $more )
+{
     return $GLOBALS['applicator_ellipsis_sep'];
 }
-add_filter( 'excerpt_more', 'applicator_excerpt_ellipsis' );
+add_filter( 'excerpt_more', 'applicator_excerpt_more_suffix' );
 
 
 
 
 
-// Excerpt Box
+/**
+ * Excerpt Box
+ */
+
 function applicator_the_excerpt( $excerpt )
 {
     $excerpt_snippet_obj = applicator_htmlok( array(
@@ -118,18 +134,18 @@ function applicator_the_excerpt( $excerpt )
                                 'txt'       => esc_html__( 'Show', 'applicator' ),
                             ),
                             array(
-                                'sep'       => $GLOBALS['applicator_space_sep'],
+                                'sep'       => ' ',
                                 'txt'       => esc_html__( 'More', 'applicator' ),
                             ),
                             array(
-                                'sep'       => $GLOBALS['applicator_space_sep'],
+                                'sep'       => ' ',
                                 'txt'       => esc_html__( 'of', 'applicator' ),
                             ),
                         ),
                         array(
                             'css'   => 'value---line',
                             array(
-                                'sep'       => $GLOBALS['applicator_space_sep'],
+                                'sep'       => ' ',
                                 'txt'       => esc_html( get_the_title( get_the_ID() ) ),
                                 'css'       => 'post-title---txt',
                             ),
@@ -143,7 +159,8 @@ function applicator_the_excerpt( $excerpt )
     
     if ( is_search() )
     {
-        echo $excerpt_snippet_obj. $show_more_action_obj;
+        echo $excerpt_snippet_obj;
+        echo $show_more_action_obj;
     }
     else
     {

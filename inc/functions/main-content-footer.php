@@ -1,11 +1,19 @@
-<?php // Main Content Footer
+<?php
 
-if ( ! function_exists( 'applicator_main_content_footer' ) )
+/**
+ * Main Content Footer
+ *
+ * @package WordPress
+ * @subpackage Applicator
+ * @since 1.0
+ */
+
+
+
+
+
+function applicator_main_content_footer()
 {
-    function applicator_main_content_footer()
-    {
-        echo applicator_entry_nav();
-        
-        echo applicator_page_nav();
-    }
+    echo applicator_entry_nav();
+    echo applicator_page_nav();
 }

@@ -3,8 +3,6 @@
 
                 <?php
 
-                // ------------------------ Main Footer
-                
                 if ( ! function_exists( 'applicator_copyright_applicator_line_term' ) )
                 {
                     function applicator_copyright_applicator_line_term()
@@ -25,11 +23,10 @@
 
                 $applicator_line_term = applicator_copyright_applicator_line_term();
                 $applicator_line_url = '//applicator.dysinelab.com/'. applicator_copyright_applicator_line_url();
-                $applicator_line_by_dysinelab_term ='by DysineLab';
+                $applicator_line_by_dysinelab_term = 'by DysineLab';
                 $applicator_line_text = $applicator_line_term. ' '. $applicator_line_by_dysinelab_term;
 
 
-                // Copyright
                 $copyright_obj = applicator_htmlok( array(
                     'name'      => 'Copyright',
                     'structure' => array(
@@ -56,12 +53,12 @@
                                             ),
                                         ),
                                         array(
-                                            'sep'       => $GLOBALS['applicator_space_sep'],
+                                            'sep'       => ' ',
                                             'txt'       => esc_html( '&copy;' ),
                                             'css'       => 'copyright-symbol---txt',
                                         ),
                                         array(
-                                            'sep'       => $GLOBALS['applicator_space_sep'],
+                                            'sep'       => ' ',
                                             'txt'       => date_i18n( __( 'Y', 'applicator' ) ),
                                             'css'       => 'year---txt',
                                         ),
@@ -69,7 +66,7 @@
                                     array(
                                         'css'   => 'applicator---line',
                                         array(
-                                            'sep'       => $GLOBALS['applicator_space_sep'],
+                                            'sep'       => ' ',
                                             'txt'       => esc_html( $applicator_line_text ),
                                             'linked'    => true,
                                             'attr'      => array(
@@ -88,6 +85,7 @@
                     ),
                 ) );
 
+                
                 $main_footer_cn = applicator_htmlok( array(
                     'name'      => 'Main Footer',
                     'structure' => array(
@@ -106,9 +104,6 @@
                 ) );
 
 
-                // ------------------------ Web Product End
-
-                // Go to Start Navi
                 $go_to_start_navi_obj = applicator_htmlok( array(
                     'name'      => 'Go to Start',
                     'structure' => array(
@@ -132,7 +127,7 @@
                     ),
                 ) );
 
-                // Go to Start Nav
+                
                 $go_to_start_nav_cp = applicator_htmlok( array(
                     'name'      => 'Go to Start',
                     'structure' => array(
@@ -146,7 +141,7 @@
                     ),
                 ) );
 
-                // Web Product End
+                
                 $web_product_end_cn = applicator_htmlok( array(
                     'name'      => 'Web Product End',
                     'structure' => array(

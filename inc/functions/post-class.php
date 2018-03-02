@@ -1,6 +1,12 @@
 <?php
 
-// Post Class
+/**
+ * Post Class
+ *
+ * @package WordPress
+ * @subpackage Applicator
+ * @since 1.0
+ */
 
 
 

@@ -45,18 +45,18 @@
                 array(
                     'css'   => 'property---line',
                     array(
-                        'sep'       => $GLOBALS['applicator_space_sep'],
+                        'sep'       => ' ',
                         'txt'       => $property_text,
                     ),
                     array(
-                        'sep'       => $GLOBALS['applicator_space_sep'],
+                        'sep'       => ' ',
                         'txt'       => 'for',
                     ),
                 ),
                 array(
                     'css'   => 'value---line',
                     array(
-                        'sep'       => $GLOBALS['applicator_space_sep'],
+                        'sep'       => ' ',
                         'txt'       => $value_text,
                         'css'       => 'search-results-term---txt',
                     ),
@@ -64,7 +64,7 @@
                 array(
                     'css'   => 'count---line',
                     array(
-                        'sep'       => $GLOBALS['applicator_space_sep'],
+                        'sep'       => ' ',
                         'txt'       => $entry_search_count,
                         'css'       => 'search-results-count---txt',
                     ),

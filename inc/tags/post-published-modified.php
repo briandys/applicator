@@ -68,11 +68,11 @@ if ( ! function_exists( 'applicator_post_published_modified' ) ) {
                         'txt'   => $published_term,
                     ),
                     array(
-                        'sep' => $GLOBALS['applicator_space_sep'],
+                        'sep' => ' ',
                         'txt'   => $on_term,
                     ),
                 ),
-                'after'     => $GLOBALS['applicator_space_sep'],
+                'after'     => ' ',
             ),
         ) );
         
@@ -103,12 +103,12 @@ if ( ! function_exists( 'applicator_post_published_modified' ) ) {
                         'css' => 'day',
                     ),
                     array(
-                        'sep' => $GLOBALS['applicator_space_sep'],
+                        'sep' => ' ',
                         'txt' => get_the_date( 'M' ),
                         'css' => 'month',
                     ),
                     array(
-                        'sep' => $GLOBALS['applicator_space_sep'],
+                        'sep' => ' ',
                         'txt' => get_the_date( 'Y' ),
                         'css' => 'year',
                     ),
@@ -206,11 +206,11 @@ if ( ! function_exists( 'applicator_post_published_modified' ) ) {
                         'txt'   => $modified_term,
                     ),
                     array(
-                        'sep' => $GLOBALS['applicator_space_sep'],
+                        'sep' => ' ',
                         'txt'   => $on_term,
                     ),
                 ),
-                'after'     => $GLOBALS['applicator_space_sep'],
+                'after'     => ' ',
             ),
         ) );
         
@@ -241,12 +241,12 @@ if ( ! function_exists( 'applicator_post_published_modified' ) ) {
                         'css' => 'day',
                     ),
                     array(
-                        'sep' => $GLOBALS['applicator_space_sep'],
+                        'sep' => ' ',
                         'txt' => get_the_modified_time( 'M' ),
                         'css' => 'month',
                     ),
                     array(
-                        'sep' => $GLOBALS['applicator_space_sep'],
+                        'sep' => ' ',
                         'txt' => get_the_modified_time( 'Y' ),
                         'css' => 'year',
                     ),

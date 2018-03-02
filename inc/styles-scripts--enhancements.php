@@ -1,34 +1,56 @@
 <?php
 
-// Enhancements Styles and Scripts
+/**
+ * Styles and Scripts for Enhancements
+ *
+ * @package WordPress
+ * @subpackage Applicator
+ * @since 1.0
+ */
 
 
 
 
 
-// Scripts
 function applicator_enhancements_styles_scripts()
 {       
-    /* ------------ Styles ------------ */
-
-    // Enhancements
     wp_enqueue_style( 'applicator-style--enhancements', get_theme_file_uri( '/assets/css/enhancements.css' ), array( 'applicator-style--default' ) );
-
-
-    /* ------------ Scripts ------------ */
-
-
-    // Enhancements
     wp_enqueue_script( 'applicator-script--functionalities', get_theme_file_uri( '/assets/js/enhancements.js' ), array( 'jquery', 'applicator-script--global' ), '25.6.0', true );
 
 
-    // SVG Icons
-    $arrow_icon = applicator_get_svg( array( 'icon' => 'arrow-icon', 'fallback' => true, ) );
-    $arrow_up_2_icon = applicator_get_svg( array( 'icon' => 'arrow-up-2-icon', 'fallback' => true, ) );
-    $burger_icon = applicator_get_svg( array( 'icon' => 'burger-icon', 'fallback' => true, ) );
-    $dismiss_icon = applicator_get_svg( array( 'icon' => 'dismiss-icon', 'fallback' => true, ) );
-    $search_icon = applicator_get_svg( array( 'icon' => 'search-icon', 'fallback' => true, ) );
-    $more_icon = applicator_get_svg( array( 'icon' => 'more-icon', 'fallback' => true, ) );
+    /**
+     * SVG Icons
+     */
+    
+    $arrow_icon = applicator_get_svg( array(
+        'icon'      => 'arrow-icon',
+        'fallback'  => true,
+    ) );
+    
+    $arrow_up_2_icon = applicator_get_svg( array(
+        'icon'      => 'arrow-up-2-icon',
+        'fallback'  => true,
+    ) );
+    
+    $burger_icon = applicator_get_svg( array(
+        'icon'      => 'burger-icon',
+        'fallback'  => true,
+    ) );
+    
+    $dismiss_icon = applicator_get_svg( array(
+        'icon'      => 'dismiss-icon',
+        'fallback'  => true,
+    ) );
+    
+    $search_icon = applicator_get_svg( array(
+        'icon'      => 'search-icon',
+        'fallback'  => true,
+    ) );
+    
+    $more_icon = applicator_get_svg( array(
+        'icon'      => 'more-icon',
+        'fallback'  => true,
+    ) );
 
 
     // Go to Start Nav Icons
@@ -94,7 +116,10 @@ add_action( 'wp_enqueue_scripts', 'applicator_enhancements_styles_scripts' );
 
 
 
-// Functionalities CSS Class Names
+/**
+ * Functionalities CSS Class Names
+ */
+
 function applicator_functionalities_css_class_names()
 {       
     $applicator_term = 'applicator';
@@ -138,13 +163,17 @@ add_action( 'applicator_hook_html_css', 'applicator_functionalities_css_class_na
 
 
 
-// Body Class
+/**
+ * Applicator Features added via PHP
+ */
+
 function applicator_features_body_class( $classes )
 {
-    $a8r_f = $GLOBALS['applicator_feature_class_name'];
+    $a8r_f = '---'. $GLOBALS['applicator_feature_class_name'];
     
     $r = array(
-        'calendar'. '---'. $a8r_f,
+        'calendar'. $a8r_f,
+        'comments'. $a8r_f,
     );
     
     foreach ( $r as $class_name )
