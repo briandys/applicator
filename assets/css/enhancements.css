@@ -160,6 +160,12 @@ Enhancements Style
     opacity: 0;
 }
 
+.applicator--main-search--active .overlay--main-search-func,
+.applicator--main-search .here.overlay--main-search-func
+{
+    opacity: 0;
+}
+
 .applicator--main-search--inactive .overlay--main-search-func
 {
     z-index: auto;
