@@ -2937,7 +2937,7 @@ button:hover .dismiss-icon
 
 .main-search--active .search-term-crt-search-text-input
 {
-    padding-left: 1rem;
+    padding-left: 3rem;
 }
 
 /* Main Search Form Actions */
@@ -3054,11 +3054,6 @@ button:hover .dismiss-icon
     top: 0;
     
     width: 100%;
-}
-
-.there.main-menu--inactive
-{
-    z-index: auto;
 }
 
 /* In order to transition during inactive and active */
@@ -3219,11 +3214,6 @@ button:hover .dismiss-icon
 .there.main-menu--inactive .main-header-aside---mn_cr
 {
     display: none;
-}
-
-.applicator--main-search--active .main-menu-func
-{
-    visibility: hidden;
 }
 
 

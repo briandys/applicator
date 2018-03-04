@@ -1264,6 +1264,11 @@ h6
     z-index: 99;
 }
 
+.applicator--main-search--active .main-menu-func
+{
+    z-index: 100;
+}
+
 .applicator--theme--main-header.applicator--main-actions-widgets .main-actions-widgets
 {
     position: absolute;
