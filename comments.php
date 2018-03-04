@@ -112,8 +112,6 @@ $comments_cp = applicator_htmlok( array(
 
 // title_reply
 $comment_creation_header_mu = '';
-$comment_creation_term = 'Comment Creation';
-
 $comment_creation_header_mu .= '<div class="obj %2$s-heading" data-name="Comment Creation Heading OBJ">';
     $comment_creation_header_mu .= '<div class="h %3$s---h">';
         $comment_creation_header_mu .= '<span class="h_l %3$s---h_l">';
@@ -126,8 +124,8 @@ $comment_creation_header_mu .= '</div>';
 
 
 $comment_creation_header = sprintf( $comment_creation_header_mu,
-    esc_html__( $comment_creation_term, 'applicator' ),
-    sanitize_title( $comment_creation_term ),
+    esc_html__( 'Comment Creation', 'applicator' ),
+    sanitize_title( 'comment-creation' ),
     'comment-creation-heading'
 );
 
