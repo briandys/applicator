@@ -3,7 +3,8 @@
 
 ( function( $ ) {
     
-    var $html = $( document.documentElement );
+    var $html = $( document.documentElement ),
+        $body = $( document.body );
 
 	
     // Main Name

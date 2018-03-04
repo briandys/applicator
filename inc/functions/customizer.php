@@ -1,8 +1,8 @@
 <?php // Applicator: Customizer
 // From twentyseventeen
 
-function applicator_customize_register( $wp_customize ) {
-	
+function applicator_customize_register( $wp_customize )
+{	
     $wp_customize->get_setting( 'blogname' )->transport          = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport   = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport  = 'postMessage';
@@ -30,27 +30,28 @@ function applicator_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_control( 'colorscheme', array(
-		'type'    => 'radio',
-		'label'    => __( 'Color Scheme', 'applicator' ),
-		'choices'  => array(
-			'default'  => __( 'Default', 'applicator' ),
-			'custom' => __( 'Custom', 'applicator' ),
+		'type'        => 'radio',
+		'label'       => __( 'Color Scheme', 'applicator' ),
+		'choices'     => array(
+			'default'    => __( 'Default', 'applicator' ),
+			'custom'     => __( 'Custom', 'applicator' ),
 		),
-		'section'  => 'colors',
-		'priority' => 5,
+		'section'     => 'colors',
+		'priority'    => 5,
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'colorscheme_hue', array(
-		'mode' => 'hue',
-		'section'  => 'colors',
-		'priority' => 6,
+		'mode'        => 'hue',
+		'section'     => 'colors',
+		'priority'    => 6,
 	) ) );
 }
 add_action( 'customize_register', 'applicator_customize_register' );
 
 
 // Sanitize the colorscheme
-function applicator_sanitize_colorscheme( $input ) {
+function applicator_sanitize_colorscheme( $input )
+{
 	$valid = array( 'default', 'custom' );
 
 	if ( in_array( $input, $valid ) ) {
@@ -75,7 +76,7 @@ function applicator_customize_partial_blogdescription() {
 
 // Bind JS handlers to instantly live-preview changes.
 function applicator_customizer_preview() {
-	wp_enqueue_script( 'applicator-script--customizer-preview', get_theme_file_uri( '/assets/js/customizer-preview.js' ), array( 'customize-preview' ), '1.4', true );
+	wp_enqueue_script( 'applicator-script--customizer-preview', get_theme_file_uri( '/assets/js/customizer-preview.js' ), array( 'customize-preview' ), '1.5', true );
 }
 add_action( 'customize_preview_init', 'applicator_customizer_preview' );
 
