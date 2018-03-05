@@ -1002,7 +1002,6 @@
      * Main Search
      *
      */
-    
     ( function() {
         
         $mainActions
@@ -2345,7 +2344,7 @@
             
             
             var $mainDescription = $( '.main-description' ),
-                $mainDescriptionL = $mainDescription.find( '.main-desc---l' ),
+                $mainDescriptionL = $mainDescription.find( '.main-description---l' ),
                 mainDescriptionCSS = 'main-description',
                 descOnCSS = mainDescriptionCSS + '--' + 'populated',
                 descOffCSS = mainDescriptionCSS + '--' + 'empty';

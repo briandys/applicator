@@ -12,7 +12,7 @@ function applicator_customize_register( $wp_customize )
 		'render_callback' => 'applicator_customize_partial_blogname',
 	) );
 	$wp_customize->selective_refresh->add_partial( 'blogdescription', array(
-		'selector' => '.main-desc---l',
+		'selector' => '.main-description---l',
 		'render_callback' => 'applicator_customize_partial_blogdescription',
 	) );
 

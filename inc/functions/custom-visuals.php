@@ -45,7 +45,7 @@ if ( ! function_exists( 'applicator_style_custom_header_colors' ) ) {
         if ( 'blank' !== $header_text_color ) { ?>
 
         .main-name---a,
-        .main-desc---a
+        .main-description---a
         {
             color: #<?php echo esc_attr( $header_text_color ); ?>;
         }

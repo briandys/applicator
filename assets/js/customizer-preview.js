@@ -18,7 +18,7 @@
     // Main Description
     wp.customize( 'blogdescription', function( value ) {
 		value.bind( function( to ) {
-			$( '.main-desc---l' ).text( to );
+			$( '.main-description---l' ).text( to );
 		} );
 	} );
 
@@ -40,7 +40,7 @@
 					$( '#applicator-style--custom-header-colors' ).remove();
 				}
 				
-                $( '.main-name---a, .main-desc---a' ).css( {
+                $( '.main-name---a, .main-description---a' ).css( {
 					color: to
 				} );
 				

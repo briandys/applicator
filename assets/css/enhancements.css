@@ -1381,7 +1381,7 @@ img.size-medium
 
 /* Match the outline color of active elements with the background color */
 .main-name---a,
-.main-desc---a,
+.main-description---a,
 .main-logo a,
 .main-search-func .input-text,
 .main-search-func button,
@@ -1462,28 +1462,28 @@ img.size-medium
 
 /* With Main Menu */
 .applicator--main-menu .main-name---a_l,
-.applicator--main-menu .main-desc---a_l
+.applicator--main-menu .main-description---a_l
 {
     padding-left: 0;
 }
 
 /* With Main Logo */
 .main-logo--enabled .main-name---a_l,
-.main-logo--enabled .main-desc---a_l
+.main-logo--enabled .main-description---a_l
 {
     padding-left: 0;
 }
 
 /* With Main Search */
 .applicator--main-search .main-name---a_l,
-.applicator--main-search .main-desc---a_l
+.applicator--main-search .main-description---a_l
 {
     padding-right: 0;
 }
 
 /* With Main Search and No Logo and Main Menu */
 .applicator--main-search.main-header-aside--disabled.main-logo--disabled .main-name---a_l,
-.applicator--main-search.main-header-aside--disabled.main-logo--disabled .main-desc---a_l
+.applicator--main-search.main-header-aside--disabled.main-logo--disabled .main-description---a_l
 {
     padding-left: 0;
     padding-right: 0;
@@ -1491,14 +1491,14 @@ img.size-medium
 
 /* Text Truncate */
 .main-name---h,
-.main-desc---g
+.main-description---g
 {
     max-width: 100%;
 }
 
 /* Text Truncate */
 .main-name---a_l,
-.main-desc---a_l
+.main-description---a_l
 {
     display: block;
     overflow: hidden;
@@ -1596,14 +1596,14 @@ img.size-medium
 }
 
 
-.main-desc---a
+.main-description---a
 {
     text-decoration: none;
     
     color: hsla( 100, 100%, 100%, .75);
 }
 
-.main-desc---a_l
+.main-description---a_l
 {
     font-size: .75rem;
 }

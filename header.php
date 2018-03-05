@@ -14,20 +14,17 @@
         <?php
         
         $wildcard_cn = applicator_htmlok( array(
-            'name'      => 'Applicator Wildcard',
-            'structure' => array(
-                'type'      => 'constructor',
-                'attr'      => array(
-                    'elem'      => array(
-                        'role'      => 'presentation',
-                    ),
-                ),
+            'name'          => 'Applicator Wildcard',
+            'description'   => 'Contains any type of UI like Overlays.',
+            'purpose'       => 'Enables the extension of the UI into a separate structure.',
+            'structure'     => array(
+                'type'          => 'constructor',
             ),
-            'id'        => 'applicator-wildcard',
-            'content'   => array(
+            'id'            => 'applicator-wildcard',
+            'content'       => array(
                 'constructor'       => '',
             ),
-            'echo'      => true,
+            'echo'          => true,
         ) );
         
         ?>
@@ -38,21 +35,23 @@
                 <?php
         
                 $go_to_content_navi_obj = applicator_htmlok( array(
-                    'name'      => 'Go to Content',
-                    'structure' => array(
-                        'type'      => 'object',
-                        'subtype'   => 'navigation item',
-                        'attr'      => array(
-                            'a'         => array(
-                                'href'      => esc_url( '#content' ),
+                    'name'          => 'Go to Content',
+                    'description'   => 'Takes the user to the content.',
+                    'purpose'       => 'Enables the user to go to the content immediately.',
+                    'structure'     => array(
+                        'type'          => 'object',
+                        'subtype'       => 'navigation item',
+                        'attr'          => array(
+                            'a'             => array(
+                                'href'          => esc_url( '#content' ),
                             ),
                         ),
-                        'id'        => 'go-ct-navi---a',
-                        'title'     => 'Go to Content',
-                        'root_css'  => 'skip-link',
+                        'id'            => 'go-ct-navi---a',
+                        'title'         => 'Go to Content',
+                        'root_css'      => 'skip-link',
                     ),
-                    'css'       => 'go-ct',
-                    'content'   => array(
+                    'css'           => 'go-ct',
+                    'content'       => array(
                         'object'        => array(
                             array(
                                 'txt'       => esc_html__( 'Go to Content', 'applicator' ),
@@ -153,7 +152,6 @@
                                 ),
                             ),
                         ),
-                        'css'       => 'main-desc',
                         'root_css'  => 'site-description',
                         'title'     => $main_description,
                         'content'   => array(
@@ -245,21 +243,11 @@
                     'content'   => array(
                         'constructor'   => array(
                             
-                            // Main Info
                             $main_info_cp,
-                            
-                            // Main Nav
                             applicator_main_nav(),
-                            
-                            // Hook After Main Nav
-                            // $hook_after_main_nav_ob_content,
-                            
+                            $hook_after_main_nav_ob_content,
                             applicator_main_actions(),
-                            
-                            // Main Banner
                             $main_banner_cp,
-                            
-                            // Main Header Aside
                             applicator_main_header_aside(),
                         ),
                     ),

@@ -121,6 +121,12 @@ function applicator_htmlok( $args = array() )
     $p_name = '';
     $p_clean_name = '';
     
+    $p_description = '';
+    $p_purpose = '';
+    
+    $o_structure_description = '';
+    $o_structure_purpose = '';
+    
     // CSS
     $p_css = '';
     $r_css = '';
@@ -229,6 +235,23 @@ function applicator_htmlok( $args = array() )
         $p_clean_name = $clean_name;
     }
     
+    // Description
+    if ( ! empty( $r['description'] ) ) {
+        $r_description = substr( preg_replace( $pat_space, $rep_space, trim( $r['description'] ) ), $substr_start, $substr_end );
+        
+        // Processed
+        $p_description = $r_description;
+        $o_structure_description = ' '. 'data-description="'. $p_description. '"';
+    }
+    
+    // Purpose
+    if ( ! empty( $r['purpose'] ) ) {
+        $r_purpose = substr( preg_replace( $pat_space, $rep_space, trim( $r['purpose'] ) ), $substr_start, $substr_end );
+        
+        // Processed
+        $p_purpose = $r_purpose;
+        $o_structure_purpose = ' '. 'data-purpose="'. $p_purpose. '"';
+    }
     
     // CSS (one class name only)
     if ( ! empty( $r['css'] ) ) {
@@ -1803,7 +1826,7 @@ function applicator_htmlok( $args = array() )
         
         $output .= $o_content_before;
         
-        $output .= '<'.$o_root_elem. $o_id_attr.' class="'.$o_css.'"'.$o_attr.' data-name="'.$o_structure_name.'">';
+        $output .= '<'.$o_root_elem. $o_id_attr.' class="'.$o_css.'"'.$o_attr.' data-name="'.$o_structure_name.'"'. $o_structure_description. $o_structure_purpose.'>';
         
         //------------------------ Constructor, Component Structure
         if ( in_array( $r_structure, $structure_constructor_terms, true ) || in_array( $r_structure, $structure_component_terms, true ) ) {
