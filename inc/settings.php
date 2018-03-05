@@ -3,9 +3,7 @@
 /**
  * Settings
  *
- * @package WordPress
- * @subpackage Applicator
- * @since 1.0
+ * @package WordPress\Applicator\PHP
  */
 
 
@@ -15,7 +13,6 @@
 /**
  * Applicator only works in WordPress 4.7 or later.
  */
-
 if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) )
 {
     require get_template_directory() . '/inc/functions/back-compatibility.php';
@@ -24,42 +21,29 @@ if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) )
 
 
 /**
- * Sets up theme defaults and registers support for various WordPress features.
+ * Settings
  */
-
 function applicator_settings()
 {   
-    // Make theme available for translation.
-	load_theme_textdomain( 'applicator' );
+    load_theme_textdomain( 'applicator' );
+    add_theme_support( 'automatic-feed-links' );
+    add_theme_support( 'title-tag' );
 	
     
-    // Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
-
-	
-    // Let WordPress manage the document title.
-	add_theme_support( 'title-tag' );
-	
-    
-    // Set the maximum content width
-	if ( ! isset( $content_width ) )
+    if ( ! isset( $content_width ) )
     {
         $content_width = 1920;
     }
     
 	
-    // Enable support for Post Thumbnails on posts and pages.
     add_theme_support( 'post-thumbnails' );
     
-    
-    // Add Image Sizes
     add_image_size( 'applicator-image-size--post-banner-visual--large', 1920, 1920, true );
     add_image_size( 'applicator-image-size--post-banner-visual--thumbnail', 1280 );
     add_image_size( 'applicator-image-size--image--thumbnail-hd', 640, 360, true );
     
     
-    // Switch default core markup for search form, comment form, and comments to output valid HTML5.
-	add_theme_support( 'html5', array(
+    add_theme_support( 'html5', array(
 		'search-form',
 		'comment-list',
 		'gallery',
@@ -67,8 +51,7 @@ function applicator_settings()
 	) );
     
     
-    // Enable support for Post Formats.
-	add_theme_support( 'post-formats', array(
+    add_theme_support( 'post-formats', array(
 		'aside',
 		'gallery',
 		'link',
@@ -81,16 +64,16 @@ function applicator_settings()
 	) );
 
 	
-    // Add theme support for selective refresh for widgets.
-	add_theme_support( 'customize-selective-refresh-widgets' );
+    add_theme_support( 'customize-selective-refresh-widgets' );
 }
 add_action( 'after_setup_theme', 'applicator_settings' );
 
 
 /**
- * Add the size as one of the options in Admin
+ * Custom Image Size
+ *
+ * Adds an option in Dashboard
  */
-
 function applicator_custom_image_size_option( $sizes )
 {       
     $custom_sizes = array(

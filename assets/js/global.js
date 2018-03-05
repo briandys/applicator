@@ -1,5 +1,8 @@
-// Helps with accessibility for keyboard only users.
-// https://git.io/vWdr2
+/**
+ * Accessibility for keyboard users
+ *
+ * @link https://git.io/vWdr2
+ */
 (function() {
 	var isIe = /(trident|msie)/i.test( navigator.userAgent );
 
@@ -29,75 +32,107 @@
 
 
 
+/**
+ * Global
+ *
+ * @package WordPress\Applicator\JS
+ */
 ( function( $ ) {
     
+    // Variables
     var $html = $( document.documentElement ),
         $body = $( document.body ),
         $post = $( '.post' );
+    
+    
+    
+    
+    
+    /**
+     * Generic Functions
+     *
+     * @package WordPress\Applicator\JS\Generic Functions
+     */
+    var genericFn = {
         
-    
-    
-    
-    
-    // Remove Empty Element
-    function removeEmptyElement( $elem, $target ) {
+        // Remove Empty Element
+        removeEmptyElement: function( $elem, $target )
+        {   
+            // Gatekeeper
+            if ( ! $elem.length ) {
+                return;
+            }
+
+            $elem.each( function() {
+
+                var $this = $( this );
+
+                if ( $this.html().replace(/\s|&nbsp;/g, '' ).length == 0 )
+                {
+                    $this.closest( $target ).remove();
+                }
+
+            } );
+        },
         
-        // Gatekeeper
-        if ( ! $elem.length ) {
-            return;
+        // Tag Empty Element
+        tagEmptyElement: function( $elem, $target, $class ) {
+
+            // Gatekeeper
+            if ( ! $elem.length )
+            {
+                return;
+            }
+
+            $elem.each( function() {
+                var $this = $( this );
+
+                if ( $this.html().replace(/\s|&nbsp;/g, '' ).length == 0 )
+                {
+                    $this.closest( $target ).addClass( $class );
+                }
+            } );
+
         }
         
-        $elem.each( function() {
-            
-            var $this = $( this );
-            
-            if ( $this.html().replace(/\s|&nbsp;/g, '' ).length == 0 ) {
-                $this.closest( $target ).remove();
-            }
-            
-        } );
-    
-    }
-    
-    
-    // Tag Empty Element
-    function tagEmptyElement( $elem, $target, $class ) {
+    };
         
-        // Gatekeeper
-        if ( ! $elem.length ) {
-            return;
-        }
-        
-        $elem.each( function() {
-            
-            var $this = $( this );
-            
-            if ( $this.html().replace(/\s|&nbsp;/g, '' ).length == 0 ) {
-                $this.closest( $target ).addClass( $class );
-            }
-            
-        } );
-    
-    }
     
     
-    // Removing components with empty content
-    removeEmptyElement( $( '.custom-logo-link' ), $( '#main-logo' ) );
     
     
-    // Tag Empty Widgets as zero-length
+    
+    
+    
+    /**
+     * Remove components with empty content
+     */
+    genericFn.removeEmptyElement( $( '.custom-logo-link' ), $( '#main-logo' ) );
+    
+    
+    
+    
+    
+    /**
+     * Tag Empty Widgets as zero-length
+     */
     ( function() {
         
         var $element = $( '.widget-content---mn_cr > *:not( img ):not( .widget-heading )' ),
             $target = $( '.widget' ),
             $class = 'widget--zero-length';
         
-        tagEmptyElement( $element, $target, $class );
+        genericFn.tagEmptyElement( $element, $target, $class );
     
     } )();
     
     
-    // Tag Empty Categories Widgets
+    
+    
+    
+    /**
+     * Tag Empty Categories Widgets
+     */
     ( function() {
 
         $( '.widget_categories .widget-content---mn_cr > *:has( .cat-item-none )' ).each( function() {
@@ -110,7 +145,9 @@
     
     
     
-    // ------------------------------------ Remove remnants of empty Author Avatar tag
+    /**
+     * Remove remnants of empty Author Avatar tag
+     */
     ( function() {
 
         if ( ! $post.hasClass( 'author-avatar--disabled' ) )
@@ -128,7 +165,24 @@
     
     
     
-    // ------------------------------------ Private and Protected Post Titles
+    /**
+     * Remove remnants of More Tag
+     */
+    ( function() {
+        
+        $( '.post-content--main' ).children( 'p:has( [id*=more-]:only-child )' ).each( function() {
+            $( this ).remove();
+        } );
+
+    }() );
+    
+    
+    
+    
+    
+    /**
+     * Private and Protected Post Titles
+     */
     ( function() {
         
         var $main = $( '#main' ),

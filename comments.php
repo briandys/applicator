@@ -113,7 +113,7 @@ $comments_cp = applicator_htmlok( array(
 // title_reply
 $comment_creation_header_mu = '';
 $comment_creation_header_mu .= '<div class="obj %2$s-heading" data-name="Comment Creation Heading OBJ">';
-    $comment_creation_header_mu .= '<div class="h %3$s---h">';
+    $comment_creation_header_mu .= '<div class="h %3$s---h" aria-hidden="true">';
         $comment_creation_header_mu .= '<span class="h_l %3$s---h_l">';
             $comment_creation_header_mu .= '<span class="l %3$s---l">';
                 $comment_creation_header_mu .= '%1$s';

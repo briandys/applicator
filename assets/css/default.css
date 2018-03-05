@@ -1,20 +1,26 @@
-/*
-Default Style
-
-• Contains Absolute CSS Variables
-• Visually hides HTML Structure headings
-• Sets basic element visual styles
-*/
+/**
+ * Default Styles
+ *
+ * @package WordPress\Applicator\CSS
+ */
 
 
 
 
 
-/* ------------------ CSS Variables ------------------ */
+/**
+ * CSS Variables
+ *
+ * Checked against white background
+ *
+ * @package WordPress\Applicator\CSS\Variables
+ *
+ * @version 1.0
+ *
+ * @link https://webaim.org/resources/contrastchecker/
+ */
 .cssvariables
 {
-    /* Checked against white background */
-    /* https://webaim.org/resources/contrastchecker/ */
     --color--chikka-orange: hsl(30, 100%, 50%); /* #ff7f00 */
     --color--panda-blue: hsl(215, 100%, 45%); /* #005fe6 */
     --color--record-red: hsl(0, 100%, 45%); /* #e60000*/
@@ -28,62 +34,18 @@ Default Style
 
 
 
-/* ------------------ Visually Hidden ------------------ */
+/**
+ * Visually Hidden
+ *
+ * @package WordPress\Applicator\CSS\Hacks
+ *
+ * @version 1.0
+ */
 .visually-hidden,
-.go-ct-nav---h,
-.main-info---h,
-.main-actions-aside---h,
-.search-term-crt---h,
 .search-term-crt-search-flabel,
-.search-form-axns---h,
-.main-header-aside---h,
-.main-content-header-aside---h,
-.main-content-aside---h,
-.main-fr-aside---h,
-.entry-md---h,
-.entries---h,
-.entry---h,
-.post-hr-aside---h,
-.post-meta---h,
-.post-pub-mod---h,
-.post-pub---h,
-.post-pub-d-t-stamp---h,
-.post-mod---h,
-.post-mod-d-t-stamp---h,
-.published-post-author---h,
-.post-author---h,
-.post-categories---h,
-.categories---h,
-.post-tags---h,
-.tags---h,
-.comments-axns-snip---h,
-.comments-population---h,
-.comment-crt---h,
-.post-content---h,
-.go-start-nav---h,
-.comment-md---h,
-.comment-hr-aside---h,
-.comment-meta---h,
-.comment-pub---h,
-.comment-pub-d-t-stamp---h,
-.published-com-commenter---h,
-.commenter---h,
-.comment-creation-heading---h,
-.signed-in-acct---h,
-.post-excerpt---h,
-.sub-post-content---h,
-.search---h,
-.widget---h,
-.widget-content---h,
-.multisite---h,
-.site-preview---h,
-.site-main-info---h,
-.comment-content---h,
-.comments---h,
-.main-banner---h,
-.main-banner-aside---h,
-.main-post-title---h,
-.copyright---line .delimiter---txt
+.copyright---line .delimiter---txt,
+.h[aria-hidden=true]
+
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }

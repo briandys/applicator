@@ -977,7 +977,7 @@ function applicator_htmlok( $args = array() )
             // Output: Fieldset Item
             $content_val .= '<div class="item fs-item cp'.$o_content_compound_css.'" data-name="'.$o_content_compound_name.' Fieldset Item CP">';
             $content_val .= '<fieldset class="cr'.$o_content_compound_branch_css.'---cr">';
-            $content_val .= '<legend class="h'.$o_content_compound_branch_css.'---h"><span class="h_l'.$o_content_compound_branch_css.'---h_l">'.$o_content_compound_name.'</span></legend>';
+            $content_val .= '<legend class="h'.$o_content_compound_branch_css.'---h" aria-hidden="true"><span class="h_l'.$o_content_compound_branch_css.'---h_l">'.$o_content_compound_name.'</span></legend>';
             $content_val .= '<div class="mn'.$o_content_compound_branch_css.'---mn">';
             $content_val .= '<div class="mn_cr'.$o_content_compound_branch_css.'---mn_cr">';
             
@@ -1584,7 +1584,7 @@ function applicator_htmlok( $args = array() )
     $subtype_form_actions_cr_smu .= '<div class="cr'.$o_branch_css.'-%1$s---cr">';
     $subtype_form_actions_cr_smu .= '<div class="hr'.$o_branch_css.'-%1$s---hr">';
     $subtype_form_actions_cr_smu .= '<div class="hr_cr'.$o_branch_css.'-%1$s---hr_cr">';
-    $subtype_form_actions_cr_smu .= '<span class="h'.$o_branch_css.'-%1$s---h">Actions</span>';
+    $subtype_form_actions_cr_smu .= '<span class="h'.$o_branch_css.'-%1$s---h" aria-hidden="true">Actions</span>';
     $subtype_form_actions_cr_smu .= '</div>';
     $subtype_form_actions_cr_smu .= '</div>';
     $subtype_form_actions_cr_smu .= '<div class="mn'.$o_branch_css.'-%1$s---mn">';

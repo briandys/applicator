@@ -3,9 +3,7 @@
 /**
  * Functions
  *
- * @package WordPress
- * @subpackage Applicator
- * @since 1.0
+ * @package WordPress\Applicator\PHP
  */
 
 

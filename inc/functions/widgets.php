@@ -1,5 +1,18 @@
-<?php // Aside Registrations
+<?php
 
+/**
+ * Widgets
+ *
+ * @package WordPress\Applicator\PHP
+ */
+
+
+
+
+
+/**
+ * Aside Initialization
+ */
 function applicator_aside_init() {
     
     // Widget HTML Markup
@@ -7,7 +20,7 @@ function applicator_aside_init() {
         $widget_start_mu .= '<div class="cr widget---cr">';
             $widget_start_mu .= '<div class="hr widget---hr">';
                 $widget_start_mu .= '<div class="hr_cr widget---hr_cr">';
-                    $widget_start_mu .= '<div class="h widget---h">';
+                    $widget_start_mu .= '<div class="h widget---h" aria-hidden="true">';
                         $widget_start_mu .= '<span class="h_l widget---h_l">';
                             $widget_start_mu .= '<span class="l widget---l">';
                                 $widget_start_mu .= esc_html__( 'Widget', 'applicator' );
@@ -22,7 +35,7 @@ function applicator_aside_init() {
                         $widget_start_mu .= '<div class="cr widget-content---cr">';
                             $widget_start_mu .= '<div class="hr widget-content---hr">';
                                 $widget_start_mu .= '<div class="hr_cr widget-content---hr_cr">';
-                                    $widget_start_mu .= '<div class="h widget-content---h">';
+                                    $widget_start_mu .= '<div class="h widget-content---h" aria-hidden="true">';
                                         $widget_start_mu .= '<span class="h_l widget-content---h_l">';
                                             $widget_start_mu .= '<span class="l widget-content---l">';
                                                 $widget_start_mu .= esc_html__( 'Widget Content', 'applicator' );
@@ -44,7 +57,7 @@ function applicator_aside_init() {
     $widget_end_mu .= '</div>';
     
     $widget_h_start_mu = '<div class="obj widget-heading" data-name="Widget Heading OBJ">';
-        $widget_h_start_mu .= '<h4 class="h widget-heading---h">';
+        $widget_h_start_mu .= '<h4 class="h widget-heading---h" aria-hidden="true">';
             $widget_h_start_mu .= '<span class="h_l widget-heading---h_l">';
                 $widget_h_start_mu .= '<span class="l widget-heading---l">';
 
@@ -114,3 +127,21 @@ function applicator_aside_init() {
 	) );
 }
 add_action( 'widgets_init', 'applicator_aside_init' );
+
+
+
+
+
+/**
+ * Widget Tag Cloud Arguments
+ */
+function applicator_widget_tag_cloud_args( $args )
+{
+	$args['largest']  = 1;
+	$args['smallest'] = 1;
+	$args['unit']     = 'em';
+	$args['format']   = 'list';
+
+	return $args;
+}
+add_filter( 'widget_tag_cloud_args', 'applicator_widget_tag_cloud_args' );
