@@ -998,63 +998,65 @@
     
     
     
-    // ------------------------------------ Main Search
+    /**
+     * Main Search
+     *
+     */
+    
     ( function() {
-        
-        if ( ! $aplApplicatorMainSearch.length ) {
-			return;
-		}
         
         $mainActions
             .find( $( '.main-actions-aside---mn_cr' ) )
                 .children( '.search:first, .widget_search:first' )
                     .attr( 'id', 'main-search' );
+    
     }() );
     
-    function applicatorMainSearch( $cp ) {
+    
+    function applicatorMainSearch( $elem ) {
         
         $mainSearch = $( '#main-search' );
         
-        if ( ! $aplApplicatorMainSearch.length ) {
-			return;
-		}
         
+        // Gatekeeper
         if ( ! $mainSearch.length ) {
-            $html.removeClass( applicatorMainSearchTerm );
+            $body.removeClass( 'main-search---a8r_f' );
 			return;
 		}
         
         
-        // Initializing
+        // Header
         ( function() {
             
             funcName = 'main-search-func';
         
-            $cp.addClass( funcTerm + ' ' + funcName );
+            $elem.addClass( funcTerm + ' ' + funcName );
 
             genericFn.overlayActivate( funcName );
             
         }() );
         
         
-        var mainSearchActCss = 'main-search--active',
-            mainSearchInactCss = 'main-search--inactive',
-            aplmainSearchActCss = 'applicator--main-search--active',
-            aplmainSearchInactCss = 'applicator--main-search--inactive',
+        // Variables
+        var main_search_active_class = 'main-search--active',
+            main_search_inactive_class = 'main-search--inactive',
             
-            mainSearchInputEmpCss = 'main-search-input--empty',
-            mainSearchInputPopCss = 'main-search-input--populated',
+            main_search_active_gs_class = 'main-search--active---gs',
+            main_search_inactive_gs_class = 'main-search--inactive---gs',
             
-            $mainSearchTogSearchIco = $( applicatorDataMainSearch.mainSearchTogCtrlSearchIco ),
-            $mainSearchTogDismissIco = $( applicatorDataMainSearch.mainSearchTogDismissIco ),
+            main_search_input_empty_class = 'main-search-input--empty',
+            main_search_input_populated_class = 'main-search-input--populated',
             
-            $mainSearchSearchIco = $( applicatorDataMainSearch.mainSearchSearchIco ),
-            $mainSearchDismissIco = $( applicatorDataMainSearch.mainSearchDismissIco ),
+            $main_search_toggle_search_icon = $( applicatorDataMainSearch.mainSearchTogCtrlSearchIco ),
+            $main_search_toggle_dismiss_icon = $( applicatorDataMainSearch.mainSearchTogDismissIco ),
             
-            $mainSearchShowL = applicatorDataMainSearch.mainSearchShowL,
-            $mainSearchHideL = applicatorDataMainSearch.mainSearchHideL,
+            $main_search_search_icon = $( applicatorDataMainSearch.mainSearchSearchIco ),
+            $main_search_dismiss_icon = $( applicatorDataMainSearch.mainSearchDismissIco ),
             
-            $mainSearchH,
+            $main_search_show_label = applicatorDataMainSearch.mainSearchShowL,
+            $main_search_hide_label = applicatorDataMainSearch.mainSearchHideL,
+            
+            
             $mainSearchCt,
             
             $mainSearchTog,
@@ -1076,61 +1078,64 @@
         // Create the toggle button
         ( function() {
             
-            $mainSearchH = $cp.find( $( '.search---h' ) );
+            var $mainSearchH;
+            
+            $mainSearchH = $elem.find( $( '.search---h' ) );
             
             $mainSearchH.after(
                 htmlOkFn.buttonObj(
                     'main-search-toggle',
                     'Main Search Toggle',
-                    $mainSearchHideL,
-                    $mainSearchTogDismissIco,
+                    $main_search_hide_label,
+                    $main_search_toggle_dismiss_icon,
                     'toggle'
                 )
             );
         }() );
         
-        $mainSearchCt = $cp.find( '.search---mn' );
+        $mainSearchCt = $elem.find( '.search---mn' );
         
-        $mainSearchTog = $cp.find( '.main-search-toggle' );
+        $mainSearchTog = $elem.find( '.main-search-toggle' );
         $mainSearchTogBtn = $( '#main-search-toggle---b' );
         $mainSearchTogBtnL = $mainSearchTogBtn.find( $( '.main-search-toggle---b_l' ) );
         $mainSearchTogBtnLTxt = $mainSearchTogBtn.find( $( '.show-hide---txt' ) );
         
-        $mainSearchInput = $cp.find( '.search-term-crt-search---input-text' );
-        $mainSearchResetBtn = $cp.find( '.search-form-reset-axn---b' );
+        $mainSearchInput = $elem.find( '.search-term-crt-search---input-text' );
+        $mainSearchResetBtn = $elem.find( '.search-form-reset-axn---b' );
         
-        $mainSearchTextInput = $cp.find( '.search-term-crt-search-text-input' ),
+        $mainSearchTextInput = $elem.find( '.search-term-crt-search-text-input' ),
         $mainSearchOverlay = $( '#overlay--' + funcName ),
         
         // Add Icons to Buttons
-        $mainSearchFormAxns = $cp.find( '.search-form-axns' );
+        $mainSearchFormAxns = $elem.find( '.search-form-axns' );
         $mainSearchBL = $mainSearchFormAxns.find( '.search-form-search-axn---b_l' );
         $mainSearchResetBL = $mainSearchFormAxns.find( '.search-form-reset-axn---b_l' );
-        $mainSearchBL.append( $mainSearchSearchIco );
-        $mainSearchResetBL.append( $mainSearchDismissIco );
+        $mainSearchBL.append( $main_search_search_icon );
+        $mainSearchResetBL.append( $main_search_dismiss_icon );
         
         
         var mainSearchFn = {
             
             // On
             on: function() {
-                $cp
-                    .addClass( mainSearchActCss )
-                    .removeClass( mainSearchInactCss );
-                $html
-                    .addClass( aplmainSearchActCss )
-                    .removeClass( aplmainSearchInactCss );
+                $elem
+                    .addClass( main_search_active_class )
+                    .removeClass( main_search_inactive_class );
+                
+                $body
+                    .addClass( main_search_active_gs_class )
+                    .removeClass( main_search_inactive_gs_class );
 
                 $mainSearchTogBtn.attr( {
                      'aria-expanded': 'true',
-                     'title': $mainSearchHideL
+                     'title': $main_search_hide_label
                 } );
 
-                $mainSearchTogBtnLTxt.text( $mainSearchHideL );
-                $mainSearchTogBtnL.append( $mainSearchTogDismissIco );
-                $mainSearchTogSearchIco.remove();
+                $mainSearchTogBtnLTxt.text( $main_search_hide_label );
+                $mainSearchTogBtnL.append( $main_search_toggle_dismiss_icon );
+                $main_search_toggle_search_icon.remove();
 
-                cycleTabbingFn.tabOn( $cp );
+                cycleTabbingFn.tabOn( $elem );
 
                 // Focus on input and select content if any
                 $mainSearchInput.focus().select();
@@ -1139,29 +1144,30 @@
             
             // Deactivate
             off: function() {
-                $cp
-                    .addClass( mainSearchInactCss )
-                    .removeClass( mainSearchActCss );
-                $html
-                    .addClass( aplmainSearchInactCss )
-                    .removeClass( aplmainSearchActCss );
+                $elem
+                    .addClass( main_search_inactive_class )
+                    .removeClass( main_search_active_class );
+                
+                $body
+                    .addClass( main_search_inactive_gs_class )
+                    .removeClass( main_search_active_gs_class );
 
                 $mainSearchTogBtn.attr( {
                      'aria-expanded': 'false',
-                     'title': $mainSearchShowL
+                     'title': $main_search_show_label
                 } );
 
-                $mainSearchTogBtnLTxt.text( $mainSearchShowL );
-                $mainSearchTogBtnL.append( $mainSearchTogSearchIco );
-                $mainSearchTogDismissIco.remove();
+                $mainSearchTogBtnLTxt.text( $main_search_show_label );
+                $mainSearchTogBtnL.append( $main_search_toggle_search_icon );
+                $main_search_toggle_dismiss_icon.remove();
 
-                cycleTabbingFn.tabOff( $cp );
+                cycleTabbingFn.tabOff( $elem );
             },
             
             
             onTransHere: function()
             {
-                if ( $cp.hasClass( mainSearchInactCss ) ) {
+                if ( $elem.hasClass( main_search_inactive_class ) ) {
                     mainSearchFn.on();
                 }
                 transitionFn.here( $mainSearchTextInput, 'opacity', $mainSearchOverlay );
@@ -1170,7 +1176,7 @@
             
             offTransThere: function()
             {
-                if ( $cp.hasClass( mainSearchActCss ) ) {
+                if ( $elem.hasClass( main_search_active_class ) ) {
                     mainSearchFn.off();
                 }
                 transitionFn.there( $mainSearchTextInput, 'opacity', $mainSearchOverlay );
@@ -1179,10 +1185,10 @@
             
             // Toggle
             toggle: function() {
-                if ( $cp.hasClass( mainSearchInactCss ) ) {
+                if ( $elem.hasClass( main_search_inactive_class ) ) {
                     mainSearchFn.onTransHere();
                 }
-                else if ( $cp.hasClass( mainSearchActCss ) ) {
+                else if ( $elem.hasClass( main_search_active_class ) ) {
                     mainSearchFn.offTransThere();
                 }
             },
@@ -1193,16 +1199,16 @@
 
                 // Empty Input
                 if ( $mainSearchInput.val() == '' ) {
-                    $cp
-                        .addClass( mainSearchInputEmpCss )
-                        .removeClass( mainSearchInputPopCss );
+                    $elem
+                        .addClass( main_search_input_empty_class )
+                        .removeClass( main_search_input_populated_class );
                 }
 
                 // Populated Input (as displayed by default in the input in Search Results page)
                 else if ( ! $mainSearchInput.val() == '' ) {
-                    $cp
-                        .addClass( mainSearchInputPopCss )
-                        .removeClass( mainSearchInputEmpCss );
+                    $elem
+                        .addClass( main_search_input_populated_class )
+                        .removeClass( main_search_input_empty_class );
                 }
             }
             
@@ -1233,12 +1239,12 @@
         // Upon entering content in input
         $mainSearchInput.on( 'keypress.applicator input.applicator', function() {
             mainSearchFn.inputStatus();
-            cycleTabbingFn.tabOff( $cp );
+            cycleTabbingFn.tabOff( $elem );
         } );
         
         // Deactivate via external click
         $document.on( 'touchmove.applicator click.applicator', function ( e ) {
-            if ( $cp.hasClass( mainSearchActCss ) && ( ! $( e.target ).closest( $mainSearchTog ).length && ! $( e.target ).closest( $mainSearchCt ).length ) ) {
+            if ( $elem.hasClass( main_search_active_class ) && ( ! $( e.target ).closest( $mainSearchTog ).length && ! $( e.target ).closest( $mainSearchCt ).length ) ) {
                 mainSearchFn.offTransThere();
             }
         } );
@@ -1246,7 +1252,7 @@
         // Deactivate via keyboard ESC key
         $window.load( function() {
             $document.on( 'keyup.applicator', function ( e ) {
-                if ( $cp.hasClass( mainSearchActCss ) && e.keyCode == 27 ) {
+                if ( $elem.hasClass( main_search_active_class ) && e.keyCode == 27 ) {
                     mainSearchFn.offTransThere();
                 }
             } );
@@ -1256,7 +1262,7 @@
         // Find if a Child Element Has Focus
         // Deactivate if no focus is present and if user is Tab key is active
         // http://ub4.underblob.com/find-if-a-child-element-has-focus/
-        $cp.on( 'focusout.applicator', function() {
+        $elem.on( 'focusout.applicator', function() {
             var $this = $( this );
             setTimeout( function() {
                 var hasFocus = !! ( $this.find( ':focus' ).length > 0 );

@@ -174,6 +174,7 @@ function applicator_features_body_class( $classes )
     $r = array(
         'calendar'. $a8r_f,
         'comments'. $a8r_f,
+        'main-search'. $a8r_f,
     );
     
     foreach ( $r as $class_name )

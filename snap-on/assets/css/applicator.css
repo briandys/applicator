@@ -1252,19 +1252,18 @@ h6
     transform: translateY(-50%);
 }
 
-.applicator--theme--main-header.applicator--main-search--active .main-search-func
+.main-search--active---gs .main-search-func
 {
     z-index: 100;
 }
 
-.applicator--main-search--active .main-info,
-.applicator--main-search .here .main-info
+.main-search--active---gs .main-info
 {
     position: relative;
     z-index: 99;
 }
 
-.applicator--main-search--active .main-menu-func
+.main-search--active---gs .main-menu-func
 {
     z-index: 100;
 }
@@ -1285,7 +1284,7 @@ h6
     right: 0;
 }
 
-.applicator--theme--main-header.applicator--main-search--active .main-actions-aside---mn
+.main-search--active---gs .main-actions-aside---mn
 {
     width: 100%;
 }

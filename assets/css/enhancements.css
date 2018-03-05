@@ -138,7 +138,7 @@ Enhancements Style
 .applicator--main-menu--active .overlay--main-menu-func,
 .applicator--main-menu .here.overlay--main-menu-func,
 
-.applicator--main-search--active .overlay--main-search-func,
+.main-search--active---gs .overlay--main-search-func,
 .applicator--main-search .here.overlay--main-search-func,
 
 .applicator--main-actions-widgets--active .overlay--main-actions-widgets-func,
@@ -160,13 +160,13 @@ Enhancements Style
     opacity: 0;
 }
 
-.applicator--main-search--active .overlay--main-search-func,
+.main-search--active---gs .overlay--main-search-func,
 .applicator--main-search .here.overlay--main-search-func
 {
     opacity: 0;
 }
 
-.applicator--main-search--inactive .overlay--main-search-func
+.main-search--inactive---gs .overlay--main-search-func
 {
     z-index: auto;
     opacity: 0;
@@ -1401,6 +1401,13 @@ img.size-medium
     flex: 1 100%;
     
     background-color: hsl(215, 100%, 45%);
+    
+    transition: background-color .2s ease-in-out;
+}
+
+.main-search--active---gs .main-info
+{
+    background-color: hsl(215, 100%, 35%);
 }
 
 .main-info---cr
@@ -1548,9 +1555,9 @@ img.size-medium
     display: flex;
 }
 
-.applicator--main-search--active .main-name,
-.applicator--main-search--active .main-description,
-.applicator--main-search--active .main-logo
+.main-search--active---gs .main-name,
+.main-search--active---gs .main-description,
+.main-search--active---gs .main-logo
 {
     visibility: hidden;
 }
@@ -2653,11 +2660,6 @@ button:hover .dismiss-icon
     width: 100%;
 }
 
-.applicator--main-search--inactive .here .main-actions-aside
-{
-    z-index: 100;
-}
-
 .main-actions-aside---cr
 {
     position: relative;
@@ -2680,9 +2682,9 @@ button:hover .dismiss-icon
     top: 0;
 }
 
-.applicator--main-search--active .main-actions-widgets
+.main-search--active---gs .main-actions-widgets
 {
-    z-index: 99;
+    z-index: 100;
 }
 
 .main-actions-widgets--active
@@ -2958,7 +2960,7 @@ button:hover .dismiss-icon
     display: none;
 }
 
-.applicator--main-search--active
+.main-search--active---gs
 {
     /* Prevent Scroll on Root */
     overflow: hidden;
@@ -3562,6 +3564,11 @@ button:hover .dismiss-icon
     .main-search-func .search-term-crt-search-text-input
     {
         max-width: 480px;
+    }
+    
+    .main-search--active .search-term-crt-search-text-input
+    {
+        padding-left: 0;
     }
     
 }
