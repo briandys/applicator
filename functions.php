@@ -13,7 +13,6 @@
 /**
  * Includes
  */
-
 $r_includes = array(
     'globals',
     'hooks',
@@ -35,7 +34,6 @@ foreach ( $r_includes as $file_name )
 /**
  * Functions
  */
-
 $r_functions = array(
     'applicator-htmlok',
     'body-class',
@@ -69,7 +67,6 @@ foreach ( $r_functions as $file_name )
 /**
  * Tags
  */
-
 $r_tags = array(
     'aside',
     'breadcrumbs',
@@ -101,5 +98,4 @@ foreach ( $r_tags as $file_name )
 /**
  * Snap-Ons
  */
-
 require( get_parent_theme_file_path( '/snap-on/index.php' ) );

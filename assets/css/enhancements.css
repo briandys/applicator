@@ -3469,8 +3469,9 @@ button:hover .dismiss-icon
 
 
 
-/* ------------------ Viewport Width: 768 ------------------ */
-
+/**
+ * Viewport Width: 768 and wider
+ */
 @media only screen and ( min-width: 48em )
 {
     
@@ -3540,8 +3541,9 @@ button:hover .dismiss-icon
 
 
 
-/* ------------------ Viewport Width: 768 and narrower ------------------ */
-
+/**
+ * Viewport Width: 768 and narrower
+ */
 @media only screen and ( max-width: 48em )
 {
     
@@ -3556,29 +3558,9 @@ button:hover .dismiss-icon
 
 
 
-/* ------------------ Viewport Width: 768 and wider ------------------ */
-
-@media only screen and ( min-width: 48em )
-{
-    
-    .main-search-func .search-term-crt-search-text-input
-    {
-        max-width: 480px;
-    }
-    
-    .main-search--active .search-term-crt-search-text-input
-    {
-        padding-left: 0;
-    }
-    
-}
-
-
-
-
-
-/* ------------------ Viewport Width: 1024 and wider ------------------ */
-
+/**
+ * Viewport Width: 1024 and wider
+ */
 @media only screen and ( min-width: 64em )
 {
     

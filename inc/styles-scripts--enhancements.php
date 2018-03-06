@@ -1,11 +1,9 @@
 <?php
 
 /**
- * Styles and Scripts for Enhancements
+ * Enhancements Styles and Scripts
  *
- * @package WordPress
- * @subpackage Applicator
- * @since 1.0
+ * @package WordPress\Applicator\PHP
  */
 
 
@@ -14,14 +12,13 @@
 
 function applicator_enhancements_styles_scripts()
 {       
-    wp_enqueue_style( 'applicator-style--enhancements', get_theme_file_uri( '/assets/css/enhancements.css' ), array( 'applicator-style--default' ) );
-    wp_enqueue_script( 'applicator-script--functionalities', get_theme_file_uri( '/assets/js/enhancements.js' ), array( 'jquery', 'applicator-script--global' ), '25.6.0', true );
+    wp_enqueue_style( 'applicator-enhancements--style', get_theme_file_uri( '/assets/css/enhancements.css' ), array( 'applicator-defaults--style' ) );
+    wp_enqueue_script( 'applicator-enhancements--script', get_theme_file_uri( '/assets/js/enhancements.js' ), array( 'jquery', 'applicator-globals--script' ), '25.6.0', true );
 
 
     /**
      * SVG Icons
      */
-    
     $arrow_icon = applicator_get_svg( array(
         'icon'      => 'arrow-icon',
         'fallback'  => true,
@@ -55,7 +52,7 @@ function applicator_enhancements_styles_scripts()
 
     // Go to Start Nav Icons
     $applicator_l10n['goStartNavArrowIco'] = $arrow_up_2_icon;
-    wp_localize_script( 'applicator-script--functionalities', 'applicatorDataGoStartNav', $applicator_l10n );
+    wp_localize_script( 'applicator-enhancements--script', 'applicatorDataGoStartNav', $applicator_l10n );
 
 
     // Main Menu Icons
@@ -63,7 +60,7 @@ function applicator_enhancements_styles_scripts()
     $applicator_l10n['mainMenuHideL'] = __( 'Hide Menu', 'applicator' );
     $applicator_l10n['mainMenuShowIco'] = $burger_icon;
     $applicator_l10n['mainMenuHideIco'] = $dismiss_icon;
-    wp_localize_script( 'applicator-script--functionalities', 'applicatorDataMainMenu', $applicator_l10n );
+    wp_localize_script( 'applicator-enhancements--script', 'applicatorDataMainMenu', $applicator_l10n );
 
 
     // Main Actions Widgets Icons
@@ -72,7 +69,7 @@ function applicator_enhancements_styles_scripts()
     $applicator_l10n['mainActionsWidgetsToggleLabel'] = __( 'Toggle Menu', 'applicator' );
     $applicator_l10n['mainActionsWidgetsToggleIcon'] = $more_icon;
     $applicator_l10n['mainActionsWidgetsHideIcon'] = $dismiss_icon;
-    wp_localize_script( 'applicator-script--functionalities', 'applicatorDataMainActionsWidgets', $applicator_l10n );
+    wp_localize_script( 'applicator-enhancements--script', 'applicatorDataMainActionsWidgets', $applicator_l10n );
 
 
     // Main Search Icons
@@ -82,7 +79,7 @@ function applicator_enhancements_styles_scripts()
     $applicator_l10n['mainSearchTogDismissIco'] = $dismiss_icon;
     $applicator_l10n['mainSearchSearchIco'] = $search_icon;
     $applicator_l10n['mainSearchDismissIco'] = $dismiss_icon;
-    wp_localize_script( 'applicator-script--functionalities', 'applicatorDataMainSearch', $applicator_l10n );
+    wp_localize_script( 'applicator-enhancements--script', 'applicatorDataMainSearch', $applicator_l10n );
 
 
     // Comments Icons
@@ -91,24 +88,24 @@ function applicator_enhancements_styles_scripts()
 
     $applicator_l10n['commentsToggleIco'] = $search_icon;
     $applicator_l10n['commentsDismissIco'] = $dismiss_icon;
-    wp_localize_script( 'applicator-script--functionalities', 'applicatorDataComments', $applicator_l10n );
+    wp_localize_script( 'applicator-enhancements--script', 'applicatorDataComments', $applicator_l10n );
 
 
     // Sub-Nav Icons
     $applicator_l10n['subNavTogBtnShowL']    = __( 'Show Sub-Nav', 'applicator' );
     $applicator_l10n['subNavTogBtnHideL']    = __( 'Hide Sub-Nav', 'applicator' );
     $applicator_l10n['subNavTogBtnIco']      = $arrow_icon;
-    wp_localize_script( 'applicator-script--functionalities', 'applicatorDataSubNav', $applicator_l10n );
+    wp_localize_script( 'applicator-enhancements--script', 'applicatorDataSubNav', $applicator_l10n );
 
 
     // Breadcrumbs Icons
     $applicator_l10n['breadcrumbsIco']      = $arrow_icon;
-    wp_localize_script( 'applicator-script--functionalities', 'applicatorDataBreadcrumbs', $applicator_l10n );
+    wp_localize_script( 'applicator-enhancements--script', 'applicatorDataBreadcrumbs', $applicator_l10n );
 
 
     // Page-Nav
     $applicator_l10n['pageNavArrowIco']      = $arrow_icon;
-    wp_localize_script( 'applicator-script--functionalities', 'applicatorDataPageNav', $applicator_l10n );
+    wp_localize_script( 'applicator-enhancements--script', 'applicatorDataPageNav', $applicator_l10n );
 }
 add_action( 'wp_enqueue_scripts', 'applicator_enhancements_styles_scripts' );
 

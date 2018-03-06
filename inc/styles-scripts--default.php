@@ -3,9 +3,7 @@
 /**
  * Default Styles and Scripts
  *
- * @package WordPress
- * @subpackage Applicator
- * @since 1.0
+ * @package WordPress\Applicator\PHP
  */
 
 
@@ -14,18 +12,17 @@
 /**
  * Default Styles and Scripts
  */
-
 function applicator_default_styles_scripts()
 {
     add_editor_style( array( 'assets/css/editor-style.css' ) );
     wp_enqueue_style( 'applicator-style', get_stylesheet_uri() );
     wp_enqueue_style( 'applicator-style--h5bp', get_template_directory_uri(). '/assets/css/h5bp.css' );
-    wp_enqueue_style( 'applicator-style--default', get_template_directory_uri(). '/assets/css/default.css' );
+    wp_enqueue_style( 'applicator-defaults--style', get_template_directory_uri(). '/assets/css/default.css' );
 
 
-    wp_enqueue_script( 'applicator-script--modernizr', get_template_directory_uri(). '/assets/js/modernizr.min.js', array(), '1.0', true );
-    wp_enqueue_script( 'applicator-script--plugins', get_template_directory_uri(). '/assets/js/plugins.js', array( 'jquery' ), '1.0', true );
-    wp_enqueue_script( 'applicator-script--global', get_template_directory_uri(). '/assets/js/global.js', array( 'jquery', 'applicator-script--plugins' ), '1.0', true );
+    wp_enqueue_script( 'applicator-modernizr--script', get_template_directory_uri(). '/assets/js/modernizr.min.js', array(), '1.0', true );
+    wp_enqueue_script( 'applicator-plugins--script', get_template_directory_uri(). '/assets/js/plugins.js', array( 'jquery' ), '1.0', true );
+    wp_enqueue_script( 'applicator-globals--script', get_template_directory_uri(). '/assets/js/global.js', array( 'jquery', 'applicator-plugins--script' ), '1.0', true );
 
 
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
@@ -41,17 +38,16 @@ add_action('wp_enqueue_scripts', 'applicator_default_styles_scripts', 0);
 /**
  * Default Inline Scripts
  */
-
 function applicator_inline_scripts()
 {
 ?>
-    <script type="text/javascript">
+    <script>
 
         /*
          * Debounce
+         *
          * @link https://davidwalsh.name/javascript-debounce-function
          */
-        
         function debounce( func, wait, immediate )
         {
             var timeout;
@@ -87,9 +83,9 @@ function applicator_inline_scripts()
         
         /*
          * CSS Variables Feature Detection
+         *
          * @link https://stackoverflow.com/a/26633844
          */
-        
         function supportCSSVariables()
         {
             return window.CSS && window.CSS.supports && window.CSS.supports( '--var', 0 );
@@ -99,7 +95,6 @@ function applicator_inline_scripts()
         /*
          * HTMl CSS Classes
          */
-        
         ( function( html ) {
 
             // Replace no-js with js if JavaScript is supported

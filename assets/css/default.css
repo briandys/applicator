@@ -21,13 +21,10 @@
  */
 .cssvariables
 {
-    --color--chikka-orange: hsl(30, 100%, 50%); /* #ff7f00 */
-    --color--panda-blue: hsl(215, 100%, 45%); /* #005fe6 */
-    --color--record-red: hsl(0, 100%, 45%); /* #e60000*/
-    --color--uhog-green: hsl(120, 100%, 25%); /* #008000 */
-    
-    /* Unchecked */
-    --color--misty-blue: hsl(215, 100%, 93%); /* #d8e8ff */
+    --chikka-orange--color: hsl(30, 100%, 50%); /* #ff7f00 */
+    --panda-blue--color: hsl(215, 100%, 45%); /* #005fe6 */
+    --record-red--color: hsl(0, 100%, 45%); /* #e60000*/
+    --uhog-green--color: hsl(120, 100%, 25%); /* #008000 */
 }
 
 
@@ -42,10 +39,9 @@
  * @version 1.0
  */
 .visually-hidden,
+.h[aria-hidden=true],
 .search-term-crt-search-flabel,
-.copyright---line .delimiter---txt,
-.h[aria-hidden=true]
-
+.copyright---line .delimiter---txt
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -54,7 +50,9 @@
 
 
 
-/* ------------------ Stuff ------------------ */
+/**
+ * High Levels
+ */
 *,
 :after,
 :before
@@ -76,7 +74,9 @@
 
 
 
-/* ------------------ Clearfix ------------------ */
+/**
+ * Clearfix
+ */
 .clearfix:before,
 .clearfix:after,
 .post-content--main:before,
@@ -96,7 +96,9 @@
 
 
 
-/* ------------------ Resets ------------------ */
+/**
+ * Resets
+ */
 label[for]:hover
 {
     cursor: pointer;
@@ -119,20 +121,29 @@ acronym[title]:hover
 
 
 
-/* ------------------ WordPress Required CSS Selectors ------------------ */
+/**
+ * WordPress Required CSS Selectors
+ */
+.wp-caption,
 .wp-caption-text,
 .sticky,
 .screen-reader-text,
 .gallery-caption,
 .bypostauthor,
+.alignright,
+.alignleft,
 .aligncenter
-{}
+{
+    
+}
 
 
 
 
 
-/* ------------------ Image ------------------ */
+/**
+ * Images
+ */
 img
 {
     max-width: 100%;
@@ -143,7 +154,9 @@ img
 
 
 
-/* ------------------ Video ------------------ */
+/**
+ * Videos
+ */
 video
 {
     max-width: 100% !important;
@@ -154,7 +167,9 @@ video
 
 
 
-/* ------------------ Icons ------------------ */
+/**
+ * Icons
+ */
 .icon--vector,
 .icon--raster
 {
@@ -180,11 +195,15 @@ video
 
 
 
-/* ------------------ Viewport Width: 768 ------------------ */
+/**
+ * Viewport Width: 768 and wider
+ */
 @media only screen and ( min-width: 48em )
 {
 
-    /* ------------------ Alignments ------------------ */
+    /**
+     * Alignments
+     */
     .post-content--main > .alignleft
     {
         float: left;
