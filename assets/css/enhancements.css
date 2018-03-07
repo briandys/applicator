@@ -901,20 +901,6 @@ img.size-medium
     flex-direction: column;
 }
 
-.main-banner-aside .widget .input-text,
-.main-banner-aside .widget input[type="text"],
-.main-banner-aside .widget input[type="password"],
-.main-banner-aside .widget select,
-.main-banner-aside .widget textarea
-{
-    border-color: white;
-}
-
-.main-banner-aside .input-text
-{
-    color: #262626;
-}
-
 
 
 

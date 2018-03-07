@@ -165,6 +165,8 @@ function applicator_htmlok( $args = array() )
     $p_subtype_name = '';
     $p_subtype_css = '';
     $p_subtype_postfix_css = '';
+    
+    $subtype_name = '';
     $subtype_name_abbr = '';
     
     // Structure
@@ -366,12 +368,12 @@ function applicator_htmlok( $args = array() )
             // Aside Subtype
             elseif ( in_array( $r_subtype, $subtype_aside_terms, true ) ) {
                 
-                $subtype_name = 'Aside';
+                $subtype_name = ' '. 'Aside';
                 $subtype_name_abbr = 'aside';
                 
                 $p_subtype_css = ' '.$subtype_name_abbr;
                 
-                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_name = $subtype_name;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
                 
             }
@@ -390,11 +392,11 @@ function applicator_htmlok( $args = array() )
             // Navigation Subtype
             if ( in_array( $r_subtype, $subtype_nav_terms, true ) ) {
                 
-                $subtype_name = 'Navigation';
+                $subtype_name = ' '. 'Navigation';
                 $subtype_name_abbr = 'nav';
                 
                 $p_custom_attr = ' '.'role="navigation"';
-                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_name = $subtype_name;
                 $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
             }
@@ -402,10 +404,10 @@ function applicator_htmlok( $args = array() )
             // Fieldset Item Subtype
             elseif ( in_array( $r_subtype, $subtype_fieldset_item_terms, true ) ) {
                 
-                $subtype_name = 'Fieldset Item';
+                $subtype_name = ' '. 'Fieldset Item';
                 $subtype_name_abbr = 'fs-item';
                 
-                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_name = $subtype_name;
                 $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
             
@@ -414,11 +416,11 @@ function applicator_htmlok( $args = array() )
             // Form Subtype
             elseif ( in_array( $r_subtype, $subtype_form_terms, true ) ) {
                 
-                $subtype_name = 'Form';
+                $subtype_name = ' '. 'Form';
                 $subtype_name_abbr = 'form';
                 $subtype_elem = 'form';
                 
-                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_name = $subtype_name;
                 $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
                 
@@ -427,7 +429,7 @@ function applicator_htmlok( $args = array() )
             // Article Subtype
             elseif ( in_array( $r_subtype, $subtype_article_terms, true ) ) {
                 
-                $subtype_name = 'Article';
+                $subtype_name = ' '. 'Article';
                 $subtype_name_abbr = 'article';
                 $subtype_elem = 'article';
                 
@@ -438,10 +440,10 @@ function applicator_htmlok( $args = array() )
             // Module Subtype
             elseif ( in_array( $r_subtype, $subtype_module_terms, true ) ) {
                 
-                $subtype_name = 'Module';
+                $subtype_name = ' '. 'Module';
                 $subtype_name_abbr = 'md';
                 
-                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_name = $subtype_name;
                 $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
                 
@@ -510,7 +512,7 @@ function applicator_htmlok( $args = array() )
             // WordPress Generated Content Subtype
             if ( in_array( $r_subtype, $subtype_wpg_terms, true ) ) {
                 
-                $subtype_name = 'WordPress Generated Content';
+                $subtype_name = ' '. 'WordPress Generated Content';
                 $subtype_name_abbr = 'wpg';
                 
                 $p_subtype_css = ' '.$subtype_name_abbr;
@@ -520,10 +522,10 @@ function applicator_htmlok( $args = array() )
             // Heading Subtype
             elseif ( in_array( $r_subtype, $subtype_heading_terms, true ) ) {
                
-                $subtype_name = 'Heading';
+                $subtype_name = ' '. 'Heading';
                 $subtype_name_abbr = 'heading';
                 
-                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_name = $subtype_name;
                 $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
                 
@@ -532,13 +534,13 @@ function applicator_htmlok( $args = array() )
             // Time Subtype
             elseif ( in_array( $r_subtype, $subtype_time_terms, true ) ) {
                
-                $subtype_name = 'Stamp';
+                $subtype_name = ' '. 'Stamp';
                 $subtype_name_abbr = 'dtstamp';
                 
                 $obj_elem = 'time';
                 $obj_elem_css = $obj_elem;
                 
-                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_name = $subtype_name;
                 $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
                 
@@ -547,10 +549,10 @@ function applicator_htmlok( $args = array() )
             // Navigation Subtype
             elseif ( in_array( $r_subtype, $subtype_navi_terms, true ) ) {
                
-                $subtype_name = 'Navigation Item';
+                $subtype_name = ' '. 'Navigation Item';
                 $subtype_name_abbr = 'navi';
                 
-                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_name = $subtype_name;
                 $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
                 
@@ -559,10 +561,10 @@ function applicator_htmlok( $args = array() )
             // Action Item Subtype
             elseif ( in_array( $r_subtype, $subtype_axn_terms, true ) ) {
                
-                $subtype_name = 'Action';
+                $subtype_name = ' '. 'Action';
                 $subtype_name_abbr = 'axn';
                 
-                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_name = $subtype_name;
                 $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
                 
@@ -571,10 +573,10 @@ function applicator_htmlok( $args = array() )
             // Note Subtype
             elseif ( in_array( $r_subtype, $subtype_note_terms, true ) ) {
                
-                $subtype_name = 'Note';
+                $subtype_name = ' '. 'Note';
                 $subtype_name_abbr = 'note';
                 
-                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_name = $subtype_name;
                 $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
                 
@@ -588,10 +590,10 @@ function applicator_htmlok( $args = array() )
             // Generic Label Subtype
             elseif ( in_array( $r_subtype, $subtype_generic_label_terms, true ) ) {
                 
-                $subtype_name = 'Generic Label';
+                $subtype_name = ' '. 'Generic Label';
                 $subtype_name_abbr = 'glabel';
                 
-                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_name = $subtype_name;
                 $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
                 
@@ -601,13 +603,13 @@ function applicator_htmlok( $args = array() )
             // Form Label Subtype
             elseif ( in_array( $r_subtype, $subtype_form_label_terms, true ) ) {
                 
-                $subtype_name = 'Form Label';
+                $subtype_name = ' '. 'Form Label';
                 $subtype_name_abbr = 'flabel';
                 
                 $obj_elem = 'label';
                 $obj_elem_css = $obj_elem;
                 
-                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_name = $subtype_name;
                 $p_subtype_css = ' '.$subtype_name_abbr;
                 $p_subtype_postfix_css = '-'.$subtype_name_abbr;
                 
@@ -617,22 +619,20 @@ function applicator_htmlok( $args = array() )
             // Form Element Subtype
             elseif ( in_array( $r_subtype, $subtype_form_element_terms, true ) ) {
                 
-                $subtype_name = 'Form Element';
+                $subtype_name = ' '. 'Form Element';
                 $subtype_name_abbr = 'felem';
                 
-                $p_subtype_name = ' '.$subtype_name;
+                $p_subtype_name = $subtype_name;
                 $p_subtype_css = ' '.$subtype_name_abbr;
                 
             }
             
             // Generic Subtype
-            else {
-                
-                $subtype_name = 'Generic';
+            else
+            {   
                 $subtype_name_abbr = 'gen';
                 
-                $p_subtype_name = ' '.$subtype_name;
-
+                $p_subtype_name = $subtype_name;
             }
         }
     }
@@ -1556,7 +1556,7 @@ function applicator_htmlok( $args = array() )
     // Generic Container Structure Markup
     $cr_smu = '';
     $cr_smu .= '<div class="%1$s'.$o_branch_css.'---%1$s">';
-    $cr_smu .= '<div class="%1$s_cr'.$o_branch_css.'---%1$s_cr'.$o_branch_css.'--main" data-main-name="'.$p_name. $p_subtype_name.' MN">';
+    $cr_smu .= '<div class="%1$s_cr'.$o_branch_css.'---%1$s_cr'.$o_branch_css.'--main" data-main-name="'.$p_name. $p_subtype_name.' MAIN">';
     
     $cr_emu = '';
     $cr_emu .= '</div>';
