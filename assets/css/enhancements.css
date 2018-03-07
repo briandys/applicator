@@ -2938,11 +2938,6 @@ img.size-medium
     padding-left: 0;
 }
 
-.main-search .search-term-crt-search-text-input
-{
-    padding-right: calc( 3rem * 2);
-}
-
 /* Input Text - Hidden */
 .main-search .search-term-crt-search-text-input
 {
@@ -2950,23 +2945,26 @@ img.size-medium
     left: 100%;
     right: 0;
     
-    width: 100%;
+    padding-right: 6rem;
+    
+    width: 75%;
     
     opacity: 0;
     
-    transition: opacity .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    transition-property: width, opacity;
 }
 
 /* Input Text - Visible */
 .main-search--active .search-term-crt-search-text-input
 {
     left: auto;
-    opacity: 1;
-}
-
-.main-search--active .search-term-crt-search-text-input
-{
+    
     padding-left: 3rem;
+    
+    width: 100%;
+    
+    opacity: 1;
 }
 
 /* Main Search Form Actions */
