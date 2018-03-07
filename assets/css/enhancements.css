@@ -2960,11 +2960,16 @@ img.size-medium
 {
     left: auto;
     
-    padding-left: 3rem;
+    padding-left: 1rem;
     
     width: 100%;
     
     opacity: 1;
+}
+
+.main-header-aside--enabled .main-search--active .search-term-crt-search-text-input
+{
+    padding-left: 3rem;
 }
 
 /* Main Search Form Actions */
