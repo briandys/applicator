@@ -1,44 +1,42 @@
 ( function( $ ) {
     
-    var $html = $( document.documentElement ),
-        $document = $( document ),
+    var $document = $( document ),
         $window = $( window ),
+        $html = $( document.documentElement ),
         $body = $( document.body ),
         
-        $htmlBody = $( 'html, body' ),
+        $webProduct = $( '#web-product' ),
+        $go_to_content_nav_item_a = $( '#go-ct-navi---a' ),
         
-        // Functionalities
-        $aplApplicatorGoCtNav = $html.closest( '.applicator--go-content-nav' ),
-        $aplApplicatorGoStartNav = $html.closest( '.applicator--go-start-nav' ),
-        $aplApplicatorMainActionsWidgets = $html.closest( '.applicator--main-actions-widgets' ),
-        $aplApplicatorMainMenu = $html.closest( '.applicator--main-menu' ),
-        $aplApplicatorMainSearch = $html.closest( '.applicator--main-search' ),
-        $applicatorPageNav = $html.closest( '.applicator--page-nav' ),
-        $aplApplicatorSubNav = $html.closest( '.applicator--sub-nav' ),
-        
-        showHideTxtCss = 'show-hide---txt',
-        showHideTxtLabelCss = 'show-hide---l',
-        
-        funcTerm = 'func',
-        funcName,
-        
+        feature_class,
         a8r_feature_class,
         a8r_f_class = 'a8r_f',
         a8r_feature_suffix_class = '--' + a8r_f_class,
         
-        tabKeyActCss = 'tab-key--active',
-        tabKeyInactCss = 'tab-key--inactive',
+        show_hide_text_class = 'show-hide---txt',
+        show_hide_label_class = 'show-hide---l',
         
-        $webProduct = $( '#web-product' ),
-        $webProductContainer = $webProduct.find( '.web-product---cr' ),
+        tab_key_active_class = 'tab-key--active',
+        tab_key_inactive_class = 'tab-key--inactive',
         
-        $webProductCopyright = $( '#copyright' ),
-        copyrightHeight = $webProductCopyright.height(),
-        pageShortCss = 'page--short',
-        pageLongCss = 'page--long',
+        view_granularity_detail_class = 'view-granularity--detail',
         
-        applicatorMainSearchTerm = 'applicator--main-search',
-        aplApplicatorMainActionsWidgetsTerm = 'applicator--main-actions-widgets',
+        
+        
+        $aplApplicatorGoCtNav = $html.closest( '.applicator--go-content-nav' ),
+        $aplApplicatorGoStartNav = $html.closest( '.applicator--go-start-nav' ),
+        
+        $aplApplicatorMainMenu = $html.closest( '.applicator--main-menu' ),
+        
+        $applicatorPageNav = $html.closest( '.applicator--page-nav' ),
+        $aplApplicatorSubNav = $html.closest( '.applicator--sub-nav' ),
+        
+        
+        
+        funcTerm = 'func',
+        funcName,
+        
+        
         
         $aplWildcard = $( '#applicator-wildcard' ),
         $aplWildcardCr = $aplWildcard.find( '.applicator-wildcard---cr' ),
@@ -53,20 +51,25 @@
             
         $mainSearch,
         
-        $goStartNaviA = $( '#go-start-navi---a' ),
+        $goStartNaviA = $( '#go-start-navi---a' );
         
-        view_granularity_detail_class = 'view-granularity--detail';
+        
     
     
     
     
     
-    // ------------------------------------ HTML_OK Component Markup
+    /**
+     * HTML_OK
+     *
+     * @package WordPress\Applicator\JS\Functions
+     *
+     * @version 1.0
+     */
     var htmlOkFn = {
         
         cp: function( $cp, $name, $css )
-        {
-                
+        {       
             var cpMU,
                 crMU,
                 hrMU,
@@ -78,7 +81,8 @@
 
             // Content Markup
             ctCrMU = $( '<div />', {
-                'class': 'mn_cr ' + $cp + '---mn_cr'
+                'class': 'mn_cr' + ' ' + $cp + '---mn_cr' + ' ' + $cp + '--main',
+                'data-main-name': $name + ' ' + 'MN'
             } );
 
             ctMU = $( '<div />', {
@@ -93,7 +97,8 @@
             .text( $name );
 
             hMU = $( '<div />', {
-                'class': 'h ' + $cp + '---h'
+                'class': 'h ' + $cp + '---h',
+                'aria-hidden': 'true'
             } )
                 .append( hLMU);
 
@@ -136,7 +141,7 @@
                 toggleButtonLabelTextObjMU;
 
             toggleButtonLabelTextObjMU = $( '<span />', {
-                'class': 'txt ' + showHideTxtCss,
+                'class': 'txt ' + show_hide_text_class,
                 'text': $label
             } );
 
@@ -175,57 +180,52 @@
     
     
     
-    
-    // ------------------------------------ Transition Here and There
-    
-    var transitionFn,
-        hereTerm = 'here',
-        thereTerm = 'there',
-        transitionEnd = 'transitionend.applicator webkitTransitionEnd.applicator oTransitionEnd.applicator otransitionend.applicator';
+    /**
+     * Here and There Transition
+     *
+     * @package WordPress\Applicator\JS\Functions
+     *
+     * @version 1.0
+     */
+    var here_class = 'here',
+        there_class = 'there',
+        transition_end_event = 'transitionend.applicator webkitTransitionEnd.applicator oTransitionEnd.applicator otransitionend.applicator';
 
 
-    transitionFn = {
+    var transitionFn = {
         
-        
-        // Entrance CSS
-        hereCSS: function( $elem )
+        hereClass: function( $elem )
         {
             $elem
-                .addClass( hereTerm )
-                .removeClass( thereTerm );
+                .addClass( here_class )
+                .removeClass( there_class );
         },
-
         
-        // Exit CSS
-        thereCSS: function( $elem )
+        thereClass: function( $elem )
         {
             $elem
-                .addClass( thereTerm )
-                .removeClass( hereTerm );
+                .addClass( there_class )
+                .removeClass( here_class );
         },
 
-        
-        // Entrance
         here: function( $elem, $property, $target )
         {
-            $elem.on( transitionEnd, function() {
+            $elem.on( transition_end_event, function() {
                 if ( event.propertyName == $property )
                 {
-                    transitionFn.hereCSS( $target );
+                    transitionFn.hereClass( $target );
                 }
             } );
         },
 
-        
-        // Exit
         there: function( $elem, $property, $target )
         {
-            if ( $target.hasClass( hereTerm ) ) {
+            if ( $target.hasClass( here_class ) ) {
 
-                $elem.on( transitionEnd, function() {
+                $elem.on( transition_end_event, function() {
                     if ( event.propertyName == $property )
                     {
-                        transitionFn.thereCSS( $target );
+                        transitionFn.thereClass( $target );
                     }
                 } );
             }
@@ -236,22 +236,20 @@
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    // ------------------------------------ Cycle Tabbing
-    // https://stackoverflow.com/a/21811463
-    
-    var cycleTabbingFn = {
+    /**
+     * Tab Cycle
+     *
+     * @package WordPress\Applicator\JS\Functions
+     *
+     * @version 1.0
+     *
+     * @link https://stackoverflow.com/a/21811463
+     */
+    var tabCycleFn = {
         
-        // On
-        tabOn: function( $cp ) {
-
-            var inputs = $cp.find( 'a, button, input, object, select, textarea' ).filter( ':visible' ),
+        on: function( $elem )
+        {
+            var inputs = $elem.find( 'a, button, input, object, select, textarea' ).filter( ':visible' ),
                 firstInput = inputs.first(),
                 lastInput = inputs.last();
 
@@ -275,9 +273,9 @@
             } );
         },
 
-        // Off
-        tabOff: function( $cp ) {
-            var inputs = $cp.find( 'a, button, input, object, select, textarea' ).filter( ':visible' ),
+        off: function( $elem )
+        {
+            var inputs = $elem.find( 'a, button, input, object, select, textarea' ).filter( ':visible' ),
                 firstInput = inputs.first(),
                 lastInput = inputs.last();
 
@@ -293,48 +291,71 @@
     
     
     
-    // ------------------------------------ Generic Functions
-    
-    var genericFn = {
+    /**
+     * Applicator Functions
+     */
+    var fn = {
         
-        
-        // Remove Empty Elements
-        removeEmptyElements: function( $elem ) {
+        /**
+         * Remove Empty Elements
+         */
+        removeEmptyElements: function( $elem )
+        {
             $( $elem ).each( function() {
                 var $this = $( this );
 
-                if ( $this.html().replace(/\s|&nbsp;/g, '' ).length == 0 ) {
+                if ( $this.html().replace(/\s|&nbsp;/g, '' ).length == 0 )
+                {
                     $this.remove();
                 }
             } );
         },
         
         
-        // Wrap Text Nodes
-        wrapTextNode: function( $elem ) {
-                
+        /**
+         * Wrap Text Nodes
+         *
+         * @package WordPress\Applicator\JS\Function
+         *
+         * @version 1.0
+         *
+         * @link https://stackoverflow.com/a/18727318
+         */
+        wrapTextNode: function( $elem )
+        {       
             var $textNodeMU = $( '<span />', { 'class': 'text-node' } );
 
-            // https://stackoverflow.com/a/18727318
             $elem.contents().filter( function() {
-
-                // Get only the text nodes
                 return this.nodeType === 3;
             } ).wrap( $textNodeMU );
 
         },
         
         
-        // Remove Hash
-        // https://stackoverflow.com/a/5298684
-        removeHash: function() { 
+        /**
+         * Remove Hash
+         *
+         * @package WordPress\Applicator\JS\Function
+         *
+         * @version 1.0
+         *
+         * @link https://stackoverflow.com/a/5298684
+         */
+        removeHash: function()
+        { 
             window.history.pushState( '', document.title, window.location.pathname );
         },
         
         
-        // Overlay Activate
-        overlayActivate: function( funcName ) {
-
+        /**
+         * Overlay Activate
+         *
+         * @package WordPress\Applicator\JS\Function
+         *
+         * @version 1.0
+         */
+        overlayOn: function( funcName )
+        {
             overlayMu = $( '<div />', {
                 'id'   : overlayTerm + '--' + funcName,
                 'class': overlayTerm + ' ' + overlayTerm + '--' + funcName,
@@ -345,6 +366,14 @@
 
         },
         
+        
+        /**
+         * Hidden Elements
+         *
+         * @package WordPress\Applicator\JS\Function
+         *
+         * @version 1.0
+         */
         hiddenElements: function( $elem, $onCSS, $offCSS )
         {
             if ( $elem.css( 'margin' ) == '-1px' || $elem.is( ':hidden' ) )
@@ -359,6 +388,22 @@
                     .addClass( $onCSS )
                     .removeClass( $offCSS );
             }
+        },
+        
+        
+        /**
+         * Is Hidden
+         *
+         * @package WordPress\Applicator\JS\Function
+         *
+         * @version 1.0
+         */
+        isHidden: function( $elem )
+        {
+            if ( ! $elem.length || $elem.css( 'margin' ) == '-1px' || $elem.is( ':hidden' ) )
+            {
+                return true;
+            }
         }
     };
     
@@ -369,10 +414,12 @@
     /**
      * Comments Enhancements
      *
+     * @package WordPress\Applicator\JS\Feature
+     *
      * @version 1.0
      */
     
-    function comments( $elem ) {
+    function applicatorComments( $elem ) {
         
         // Gatekeeper
         if ( ! $body.hasClass( view_granularity_detail_class ) && ! $body.hasClass( 'comments---a8r_f' ) ) {
@@ -423,13 +470,13 @@
             var commentsToggleTerm = 'comments-toggle';
             
             commentsToggleButtonTextLabelTxtMU = $( '<span />', {
-                'class': 'txt ' + showHideTxtCss,
+                'class': 'txt ' + show_hide_text_class,
                 'text': $commentsHideL
             } );
 
             // Text Label
             commentsToggleButtonTextLabelMU = $( '<span />', {
-                'class': 'l' + ' ' + showHideTxtLabelCss
+                'class': 'l' + ' ' + show_hide_label_class
             } )
                 .append( commentsToggleButtonTextLabelTxtMU );
 
@@ -540,13 +587,13 @@
                 if ( $elem.hasClass( comments_inactive_class ) ) {
                     commentsFn.on();
                     commentsFn.scrollTop();
-                    cycleTabbingFn.tabOn( $elem ); 
+                    tabCycleFn.on( $elem ); 
                 }
 
                 else if ( $elem.hasClass( comments_active_class ) ) {
                     commentsFn.off();
-                    genericFn.removeHash();
-                    cycleTabbingFn.tabOff( $elem );
+                    fn.removeHash();
+                    tabCycleFn.off( $elem );
                 }
             }
             
@@ -598,7 +645,7 @@
         } );
 
     }
-    comments( $( '#comment-md' ) );
+    applicatorComments( $( '#comment-md' ) );
     
     
     
@@ -620,9 +667,7 @@
         
         
         // Variables
-        var $goCtNaviA = $( '#go-ct-navi---a' ),
-            
-            goCtNavActCss = 'go-content-nav--active',
+        var goCtNavActCss = 'go-content-nav--active',
             goCtNavInactCss = 'go-content-nav--inactive',
             aplGoCtNavActCss = 'applicator--go-content-nav--active',
             aplGoCtNavInactCss = 'applicator--go-content-nav--inactive',
@@ -638,7 +683,7 @@
                 .addClass( funcName )
                 .addClass( funcTerm );
 
-            genericFn.overlayActivate( funcName );
+            fn.overlayOn( funcName );
             
         }() );
         
@@ -674,36 +719,24 @@
                     .removeClass( aplGoCtNavActCss );
             }
         };
+        
         goContentNavFn.off();
         
         
         
         
-        // Focus In > Activate
         ( function() {
             
-            $goCtNaviA.on( 'focusin.applicator', function() {
+            $go_to_content_nav_item_a.on( 'focusin.applicator', function() {
                 goContentNavFn.on();
             } );
             
-        }() );
-        
-        
-        // // Focus Out > Deactivate
-        ( function() {
-            
-            $goCtNaviA.on( 'focusout.applicator', function() {
+            $go_to_content_nav_item_a.on( 'focusout.applicator', function() {
                 goContentNavFn.off();
             } );
             
-        }() );
-        
-        
-        // // Focus Out > Deactivate
-        ( function() {
-            
-            $( '#go-ct-navi---a' ).on( 'click.applicator', function() {
-                $( '#go-ct-navi---a' ).blur();
+            $go_to_content_nav_item_a.on( 'click.applicator', function() {
+                $( this ).blur();
             } );
             
         }() );
@@ -787,7 +820,7 @@
                 .addClass( funcName )
                 .addClass( funcTerm );
 
-            genericFn.overlayActivate( funcName );
+            fn.overlayOn( funcName );
         }() );
         
         
@@ -875,7 +908,7 @@
 
                 $mainMenuToggleLabelText.text( $mainMenuHideL );
 
-                cycleTabbingFn.tabOn( $mainHeaderAsideCtCr );
+                tabCycleFn.on( $mainHeaderAsideCtCr );
             },
 
 
@@ -909,7 +942,7 @@
 
                 $mainMenuToggleLabelText.text( $mainMenuShowL );
 
-                cycleTabbingFn.tabOff( $mainHeaderAsideCtCr );
+                tabCycleFn.off( $mainHeaderAsideCtCr );
             },
         
             
@@ -1001,13 +1034,18 @@
     /**
      * Main Search
      *
+     * @package WordPress\Applicator\JS\Feature
+     *
+     * @version 1.0
      */
     ( function() {
         
         $mainActions
-            .find( $( '.main-actions-aside---mn_cr' ) )
+            .find( $( '.main-actions-aside--main' ) )
                 .children( '.search:first, .widget_search:first' )
-                    .attr( 'id', 'main-search' );
+                    .attr( 'id', 'main-search' )
+                    .attr( 'class', 'cp main-search' )
+                    .attr( 'data-name', 'Main Search CP' );
     
     }() );
     
@@ -1027,11 +1065,15 @@
         // Header
         ( function() {
             
-            funcName = 'main-search-func';
+            feature_class = 'main-search';
+            
+            a8r_feature_class = feature_class + a8r_feature_suffix_class;
         
-            $elem.addClass( funcTerm + ' ' + funcName );
+            $elem
+                .addClass( a8r_f_class )
+                .addClass( a8r_feature_class ); 
 
-            genericFn.overlayActivate( funcName );
+            fn.overlayOn( 'main-search' );
             
         }() );
         
@@ -1103,7 +1145,7 @@
         $mainSearchResetBtn = $elem.find( '.search-form-reset-axn---b' );
         
         $mainSearchTextInput = $elem.find( '.search-term-crt-search-text-input' ),
-        $mainSearchOverlay = $( '#overlay--' + funcName ),
+        $mainSearchOverlay = $( '#overlay--' + feature_class ),
         
         // Add Icons to Buttons
         $mainSearchFormAxns = $elem.find( '.search-form-axns' );
@@ -1134,7 +1176,7 @@
                 $mainSearchTogBtnL.append( $main_search_toggle_dismiss_icon );
                 $main_search_toggle_search_icon.remove();
 
-                cycleTabbingFn.tabOn( $elem );
+                tabCycleFn.on( $elem );
 
                 // Focus on input and select content if any
                 $mainSearchInput.focus().select();
@@ -1160,7 +1202,7 @@
                 $mainSearchTogBtnL.append( $main_search_toggle_search_icon );
                 $main_search_toggle_dismiss_icon.remove();
 
-                cycleTabbingFn.tabOff( $elem );
+                tabCycleFn.off( $elem );
             },
             
             
@@ -1238,7 +1280,7 @@
         // Upon entering content in input
         $mainSearchInput.on( 'keypress.applicator input.applicator', function() {
             mainSearchFn.inputStatus();
-            cycleTabbingFn.tabOff( $elem );
+            tabCycleFn.off( $elem );
         } );
         
         // Deactivate via external click
@@ -1265,7 +1307,7 @@
             var $this = $( this );
             setTimeout( function() {
                 var hasFocus = !! ( $this.find( ':focus' ).length > 0 );
-                if ( $html.hasClass( tabKeyActCss ) && ! hasFocus ) {
+                if ( $html.hasClass( tab_key_active_class ) && ! hasFocus ) {
                     mainSearchFn.offTransThere();
                 }
             }, 10 );
@@ -1281,16 +1323,18 @@
     // ------------------------------------ Main Actions
     function applicatorMainActions() {
         
-        var $mainActionsWidgetItems = $mainActions.find( '.main-actions-aside---mn_cr > .widget:not( .main-search-func )' );
+        var $mainActionsWidgetItems = $mainActions.find( '.main-actions-aside--main > .widget:not( .main-search )' );
         
         // Gatekeeper
         ( function() {
-            if ( ! $mainActionsWidgetItems.length ) {
-                $html.removeClass( aplApplicatorMainActionsWidgetsTerm );
+            if ( ! $mainActionsWidgetItems.length )
+            {
+                $html.removeClass( 'applicator--main-actions-widgets' );
                 return;
             }
 
-            if ( ! $aplApplicatorMainActionsWidgets.length ) {
+            if ( ! $html.closest( '.applicator--main-actions-widgets' ).length )
+            {
                 return;
             }
         }() );
@@ -1374,7 +1418,7 @@
                 .addClass( funcTerm )
                 .addClass( funcName );
             
-            genericFn.overlayActivate( funcName );
+            fn.overlayOn( funcName );
         }() );
         
         
@@ -1441,7 +1485,7 @@
 
                 $mainActionsWidgetsToggleButtonLabelText.text( $mainActionsWidgetsToggleHideLabel );
 
-                cycleTabbingFn.tabOn( $mainActionsWidgetsCtCr );
+                tabCycleFn.on( $mainActionsWidgetsCtCr );
             },
 
 
@@ -1462,7 +1506,7 @@
 
                 $mainActionsWidgetsToggleButtonLabelText.text( $mainActionsWidgetsToggleShowLabel );
 
-                cycleTabbingFn.tabOff( $mainActionsWidgetsCtCr );
+                tabCycleFn.off( $mainActionsWidgetsCtCr );
             },
 
 
@@ -1596,7 +1640,7 @@
         ( function() {
             
             subNavTogBtnLTxtMu = $( '<span />', {
-                'class': 'txt ' + showHideTxtCss,
+                'class': 'txt ' + show_hide_text_class,
                 'text': $subNavTogBtnHideL
             } );
             
@@ -2094,7 +2138,7 @@
                 $( this ).addClass( 'widget-calendar-date--active' );
             } );
             
-            genericFn.wrapTextNode( $( '.widget_calendar td, .widget_calendar th' ) );
+            fn.wrapTextNode( $( '.widget_calendar td, .widget_calendar th' ) );
 
         }() );
         
@@ -2118,9 +2162,9 @@
         // ------------------------------------ Remove Empty Elements
         ( function() {
             
-            genericFn.removeEmptyElements( $( '.post-content--main > *' ) );
-            genericFn.removeEmptyElements( $( '.main-navi---a' ) );
-            genericFn.removeEmptyElements( $( '.menu-item' ) );
+            fn.removeEmptyElements( $( '.post-content--main > *' ) );
+            fn.removeEmptyElements( $( '.main-navi---a' ) );
+            fn.removeEmptyElements( $( '.menu-item' ) );
             
         }() );
         
@@ -2223,9 +2267,7 @@
             $( '.widget-content---mn_cr select' ).each(function() {
                 var $this = $( this );
 
-                $this.wrap( dataFormatBlockCpMu )
-                    .closest( dataFormatCss )
-                        .addClass( dataFormatPrefixCss + 'select' );
+                $this.addClass( 'select' + ' ' + dataFormatPrefixCss + 'select' );
             });
 
             $( postContentCtCrCss + ' ' + '> table, .comment-content---mn_cr > table' ).each(function() {
@@ -2284,13 +2326,13 @@
         
         // ------------------------------------ Wrap in Text Nodes
         ( function() {
-            genericFn.wrapTextNode( $( '.data-format--img' ) );
-            genericFn.wrapTextNode( $( '.post-password-form label' ) );
-            genericFn.wrapTextNode( $( '.post-content--main' ) );
-            genericFn.wrapTextNode( $( '.wp-caption-text' ) );
-            genericFn.wrapTextNode( $( '.custom-html-widget' ) );
+            fn.wrapTextNode( $( '.data-format--img' ) );
+            fn.wrapTextNode( $( '.post-password-form label' ) );
+            fn.wrapTextNode( $( '.post-content--main' ) );
+            fn.wrapTextNode( $( '.wp-caption-text' ) );
+            fn.wrapTextNode( $( '.custom-html-widget' ) );
             
-            genericFn.removeEmptyElements( $( '.text-node' ) );
+            fn.removeEmptyElements( $( '.text-node' ) );
         }() );
         
         
@@ -2352,7 +2394,7 @@
             
             new ResizeSensor( $webProduct, function() {
                 
-                genericFn.hiddenElements( $mainDescription, descOnCSS, descOffCSS );
+                fn.hiddenElements( $mainDescription, descOnCSS, descOffCSS );
             
                 if ( ! $( $mainDescriptionL ).length || $mainDescription.html().replace(/\s|&nbsp;/g, '' ).length == 0 ) {
                     $body
@@ -2368,7 +2410,6 @@
         
         
         
-        // ------------------------------------ If Main Description is visually-hidden
         ( function() {
             
             var $mainNavAnchor = $mainNav.find( 'a' );
@@ -2871,51 +2912,60 @@
         
         
         
-        // ------------------------- Page Length
+        /**
+         * View
+         *
+         * @package WordPress\Applicator\JS\Function
+         *
+         * @version 1.0
+         */
         ( function() {
-
-            if ( ! $webProductCopyright.length || $webProductCopyright.css( 'margin' ) == '-1px' || $webProductCopyright.is( ':hidden' ) )
+            
+            var $web_product_copyright = $( '#copyright' ),
+                web_product_copyright_height = $web_product_copyright.height(),
+                page_short_class = 'page--short',
+                page_long_class = 'page--long';
+            
+            if ( fn.isHidden( $web_product_copyright ) )
             {
                 return;
             }
             
-            var pageLengthFn;
-            
-            
-            // Functions
-            pageLengthFn = {
+            var viewFn = {
                 
-                heightCSS: function() {
-                    
-                    var pageHeight = $webProduct.height();
+                dimensionClass: function()
+                {   
+                    var pageHeight = $webProduct.height(),
+                        $web_product_container = $webProduct.find( '.web-product---cr' );
 
                     if ( ( pageHeight ) <= ( window.innerHeight ) )
                     {
                         $html
-                            .addClass( pageShortCss )
-                            .removeClass( pageLongCss );
+                            .addClass( page_short_class )
+                            .removeClass( page_long_class );
 
-                        $webProductContainer
-                            .css( 'padding-bottom', copyrightHeight + 'px' );
+                        $web_product_container
+                            .css( 'padding-bottom', web_product_copyright_height + 'px' );
                     }
                     else
                     {
                         $html
-                            .addClass( pageLongCss )
-                            .removeClass( pageShortCss );
+                            .addClass( page_long_class )
+                            .removeClass( page_short_class );
 
-                        $webProductContainer
+                        $web_product_container
                             .css( 'padding-bottom', '' )
                             .removeAttr( 'style' );
                     }
                 }
                 
             };
-            pageLengthFn.heightCSS();
+            
+            viewFn.dimensionClass();
             
             
             new ResizeSensor( $webProduct, function() {
-                pageLengthFn.heightCSS();
+                viewFn.dimensionClass();
             } );
         
         }() );
@@ -2924,17 +2974,22 @@
         
         
         
-        // ------------------------------------ Secondary Content
+        /**
+         * Main Content Aside
+         *
+         * @package WordPress\Applicator\JS\Function
+         *
+         * @version 1.0
+         */
         ( function() {
             
-            var $mainContentAside = $( '.main-content-aside' );
-
-            if ( $mainContentAside.css( 'margin' ) == '-1px' || $mainContentAside.is( ':hidden' ) )
+            if ( fn.isHidden( $( '.main-content-aside' ) ) )
             {
                 $body
                     .addClass( 'main-content-aside--disabled' )
                     .removeClass( 'main-content-aside--enabled' );
             }
+        
         }() );
     
     
@@ -2945,14 +3000,22 @@
     
     
     
-    // ------------------------------------ Avoid tabbing on Visually Hidden elements
-    // https://stackoverflow.com/q/2239567
+    /**
+     * Avoid tabbing on Visually Hidden elements
+     *
+     * @package WordPress\Applicator\JS\Function
+     *
+     * @version 1.0
+     *
+     * @link https://stackoverflow.com/q/2239567
+     */
     ( function() {
 
         $( 'a:not( #go-ct-navi---a ), button' ).each( function() {
             var $this = $( this );
 
-            if ( $this.parents().filter( function() { return $( this ).css( 'margin' ) == '-1px'; } ).eq( 0 ).css( 'margin' ) ) {
+            if ( $this.parents().filter( function() { return $( this ).css( 'margin' ) == '-1px'; } ).eq( 0 ).css( 'margin' ) )
+            {
                 $this.attr( 'tabindex', -1 );
             }
             
@@ -2969,18 +3032,18 @@
         
         // Initialize Tab Key CSS
         $html
-            .addClass( tabKeyInactCss )
-            .removeClass( tabKeyActCss );
+            .addClass( tab_key_inactive_class )
+            .removeClass( tab_key_active_class );
 
 
         // No Tab Key
         $document.on( 'keydown.applicator', function ( e ) {
             var keyCode = e.keyCode || e.which; 
 
-            if ( $html.hasClass( tabKeyInactCss ) && keyCode == 9 ) {
+            if ( $html.hasClass( tab_key_inactive_class ) && keyCode == 9 ) {
                 $html
-                    .addClass( tabKeyActCss )
-                    .removeClass( tabKeyInactCss );
+                    .addClass( tab_key_active_class )
+                    .removeClass( tab_key_inactive_class );
               }
         } );
 
@@ -2988,10 +3051,10 @@
         // Tab Key - Deactivate upon any interaction
         $document.on( 'touchmove.applicator click.applicator', function () {
 
-            if ( $html.hasClass( tabKeyActCss ) ) {
+            if ( $html.hasClass( tab_key_active_class ) ) {
                 $html
-                    .addClass( tabKeyInactCss )
-                    .removeClass( tabKeyActCss );
+                    .addClass( tab_key_inactive_class )
+                    .removeClass( tab_key_active_class );
             }
         } );
         

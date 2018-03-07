@@ -1,24 +1,16 @@
-/*
-Enhancements Style
-
-• Contains usability enhancements on Active Areas (AAs)
-• Visually hides headings for visual purposes
-• Contains styles of functionalities
-• Contains Generic CSS Variables
-*/
-
-
-
-
-
-/* ------------------ Visually Hidden ------------------ */
+/**
+ * Visually Hidden
+ *
+ * @package WordPress\Applicator\CSS\Hacks
+ *
+ * @version 1.0
+ */
 .visually-hidden,
 .main-menu-toggle---b_l .show-hide---txt,
 .sub-nav-tog---b_l .show-hide---txt,
-.main-nav---h,
 .main-search-toggle---b_l .show-hide---txt,
-.main-search-func .search-form-search-axn .go---txt,
-.main-search-func .search-form-reset-axn .reset---txt,
+.main-search .search-form-search-axn .go---txt,
+.main-search .search-form-reset-axn .reset---txt,
 .go-start-nav-func .go-to-start---txt,
 .go-content-nav--inactive,
 .main-name-description--disabled .main-name,
@@ -26,42 +18,55 @@ Enhancements Style
 .single-post .main-content-heading,
 .attachment .main-content-heading,
 .view--multisite-directory .main-content-heading,
-.page-nav---h,
 .page-nav .screen-reader-text,
-.entry-nav---h,
-.post-nav---h,
-.comments-nav---h,
-.comments---h,
-.comment-content---h,
-.widget---h,
-.widget-content---h,
 .widget .screen-reader-text,
 .post-content--main .search-form-reset-axn,
 .comments---a8r_f .post-header-aside .comments-actions-snippet .comments--populated,
 .comments--active---gs .comments-toggle .comments-count---txt,
 .applicator--page-nav .adjacent-navi---l,
 .comments--active---gs .comments-toggle .show-hide---txt,
-.main-actions-widgets---h,
 .main-actions-widgets-toggle---l,
 .main-actions-widgets-dismiss---l,
 .main-menu-dismiss---l,
-.main-search-func .widget-heading,
+.main-search .widget-heading,
 .comment-respond .sign-in-required-note
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
 
-.primary-content---h,
-.breadcrumbs-nav---h
+
+
+
+
+/**
+ * Clearfix
+ *
+ * @package WordPress\Applicator\CSS\Hacks
+ *
+ * @version 1.0
+ */
+.clearfix:before,
+.clearfix:after
 {
-    display: none;
+    content:" ";display:table;
+}
+
+.clearfix:after
+{
+    clear:both;
 }
 
 
 
 
 
-/* ------------------ Unlist ------------------ */
+/**
+ * Unlist
+ *
+ * @package WordPress\Applicator\CSS\Ruleset
+ *
+ * @version 1.0
+ */
 .unlist,
 .entry-nav---grp,
 .page-nav ul,
@@ -81,141 +86,14 @@ Enhancements Style
 
 
 
-/* ------------------ HTML ------------------ */
-.html
-{   
-    background-color: #fff;
-}
-
-
-
-
-
-/* ------------------ Body ------------------ */
-.body
-{
-    background-color: white;
-    color: #262626;
-    
-    text-rendering: geometricPrecision;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.body.custom-background
-{
-    background-size: cover;
-    background-attachment: fixed;
-}
-
-
-
-
-
-/* ------------------------------------ Overlay ------------------------------------ */
-
-/* Overlay Inactive */
-.applicator--main-menu .overlay--main-menu-func,
-.applicator--main-search .overlay--main-search-func,
-.applicator--main-actions-widgets .overlay--main-actions-widgets-func,
-.applicator--go-content-nav .overlay--go-content-nav-func
-{
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 100%;
-    z-index: 99;
-    
-    background-color: black;
-    
-    opacity: 0;
-    
-    transition: opacity .2s ease-in-out, bottom 0s .2s ease-in-out;
-}
-
-/* Overlay Active */
-.applicator--main-menu--active .overlay--main-menu-func,
-.applicator--main-menu .here.overlay--main-menu-func,
-
-.main-search--active---gs .overlay--main-search-func,
-.applicator--main-search .here.overlay--main-search-func,
-
-.applicator--main-actions-widgets--active .overlay--main-actions-widgets-func,
-.applicator--main-actions-widgets .here.overlay--main-actions-widgets-func,
-
-.applicator--go-content-nav--active .overlay--go-content-nav-func
-{
-    bottom: 0%;
-    
-    opacity: .75;
-    
-    transition: opacity .2s ease-in-out;
-}
-
-/* Exit Transition */
-.applicator--main-menu--inactive .there.overlay--main-menu-func,
-.applicator--main-actions-widgets--inactive .there.overlay--main-actions-widgets-func
-{
-    opacity: 0;
-}
-
-.main-search--active---gs .overlay--main-search-func,
-.applicator--main-search .here.overlay--main-search-func
-{
-    opacity: 0;
-}
-
-.main-search--inactive---gs .overlay--main-search-func
-{
-    z-index: auto;
-    opacity: 0;
-}
-
-.applicator--go-content-nav .overlay--go-content-nav-func,
-.applicator--main-search .overlay--main-search-func
-{   
-    background-color: white;
-}
-
-.applicator--main-actions-widgets .overlay--main-actions-widgets-func
-{   
-    background-color: transparent;
-}
-
-
-
-
-
-/* ------------------ Highlight ------------------ */
-::selection
-{
-    background: hsl(215, 100%, 45%);
-    
-    color: white;
-    
-    text-shadow: none;
-}
-
-::-moz-selection
-{
-    background: hsl(215, 100%, 45%);
-    
-    color: white;
-    
-    text-shadow: none;
-}
-
-
-
-
-
-/* ------------------ Active Area (AA) ------------------ */
+/**
+ * Active Area
+ *
+ * @package WordPress\Applicator\CSS\Ruleset
+ *
+ * @version 1.0
+ */
 .active-area,
-.comments-count-axn---a_l,
-.entry-navi---a_l,
-.post-title---a_l,
-.input-text,
 button,
 input[type="submit"],
 input[type="reset"],
@@ -225,6 +103,10 @@ input[type="email"],
 input[type="password"],
 input[type="file"],
 textarea,
+.comments-count-axn---a_l,
+.entry-navi---a_l,
+.post-title---a_l,
+.input-text,
 .comment-form-submit-axn---b,
 .go-start-navi---a_l,
 .go-ct-navi---a_l,
@@ -273,6 +155,142 @@ textarea,
     
     min-width: 3rem;
     min-height: 3rem;
+}
+
+
+
+
+
+/**
+ * Start
+ */
+
+
+
+
+
+/**
+ * High Levels
+ */
+.html
+{   
+    background-color: #fff;
+}
+
+.body
+{
+    background-color: white;
+    color: #262626;
+    
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.body.custom-background
+{
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+
+
+
+/**
+ * Overlay
+ */
+
+/* Overlay Inactive */
+.applicator--main-menu .overlay--main-menu-func,
+.applicator--main-search .overlay--main-search,
+.applicator--main-actions-widgets .overlay--main-actions-widgets-func,
+.applicator--go-content-nav .overlay--go-content-nav-func
+{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 100%;
+    z-index: 99;
+    
+    background-color: black;
+    
+    opacity: 0;
+    
+    transition: opacity .2s ease-in-out, bottom 0s .2s ease-in-out;
+}
+
+/* Overlay Active */
+.applicator--main-menu--active .overlay--main-menu-func,
+.applicator--main-menu .here.overlay--main-menu-func,
+
+.main-search--active---gs .overlay--main-search,
+.applicator--main-search .here.overlay--main-search,
+
+.applicator--main-actions-widgets--active .overlay--main-actions-widgets-func,
+.applicator--main-actions-widgets .here.overlay--main-actions-widgets-func,
+
+.applicator--go-content-nav--active .overlay--go-content-nav-func
+{
+    bottom: 0%;
+    
+    opacity: .75;
+    
+    transition: opacity .2s ease-in-out;
+}
+
+/* Exit Transition */
+.applicator--main-menu--inactive .there.overlay--main-menu-func,
+.applicator--main-actions-widgets--inactive .there.overlay--main-actions-widgets-func
+{
+    opacity: 0;
+}
+
+.main-search--active---gs .overlay--main-search,
+.applicator--main-search .here.overlay--main-search
+{
+    opacity: 0;
+}
+
+.main-search--inactive---gs .overlay--main-search
+{
+    z-index: auto;
+    opacity: 0;
+}
+
+.applicator--go-content-nav .overlay--go-content-nav-func,
+.applicator--main-search .overlay--main-search
+{   
+    background-color: white;
+}
+
+.applicator--main-actions-widgets .overlay--main-actions-widgets-func
+{   
+    background-color: transparent;
+}
+
+
+
+
+
+/* ------------------ Highlight ------------------ */
+::selection
+{
+    background: hsl(215, 100%, 45%);
+    
+    color: white;
+    
+    text-shadow: none;
+}
+
+::-moz-selection
+{
+    background: hsl(215, 100%, 45%);
+    
+    color: white;
+    
+    text-shadow: none;
 }
 
 
@@ -1383,8 +1401,8 @@ img.size-medium
 .main-name---a,
 .main-description---a,
 .main-logo a,
-.main-search-func .input-text,
-.main-search-func button,
+.main-search .input-text,
+.main-search button,
 .main-menu--inactive .main-menu-toggle---b,
 .main-actions-widgets-toggle---b
 {
@@ -1401,13 +1419,31 @@ img.size-medium
     flex: 1 100%;
     
     background-color: hsl(215, 100%, 45%);
-    
-    transition: background-color .2s ease-in-out;
 }
 
 .main-search--active---gs .main-info
 {
-    background-color: hsl(215, 100%, 35%);
+    position: relative;
+}
+
+.main-info:before
+{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    
+    width: 100%;
+    height: 100%;
+    
+    background-color: transparent;
+    
+    transition: background-color .2s ease-in-out;
+}
+
+.main-search--active---gs .main-info:before
+{
+    background-color: hsla(0, 0%, 0%, .125);
 }
 
 .main-info---cr
@@ -1823,7 +1859,7 @@ img.size-medium
     background-position: -36px 0;
 }
 
-.main-search-func .icon--raster.dismiss-icon
+.main-search .icon--raster.dismiss-icon
 {
     background-position: -36px -12px;
 }
@@ -1842,15 +1878,6 @@ img.size-medium
 {
     width: .75rem;
     height: .75rem;
-    
-    transition: all .3s ease-in-out;
-    transition-property: width, height, opacity;
-}
-
-button:hover .dismiss-icon
-{
-    width: .85rem;
-    height: .85rem;
 }
 
 
@@ -2818,41 +2845,41 @@ button:hover .dismiss-icon
     overflow: hidden;
 }
 
-.main-actions-aside .main-search-func .widget---cr
+.main-actions-aside .main-search .widget---cr
 {
     /* Negation */
     padding: 0;
 }
 
-.main-actions-aside .main-search-func .widget-content---mn_cr > *
+.main-actions-aside .main-search .widget-content---mn_cr > *
 {
     /* Negation */
     padding: 0;
     line-height: inherit;
 }
 
-.main-actions-aside .main-search-func .search-term-crt-search-text-input,
-.main-actions-aside .main-search-func .search-form-search-axn,
-.main-actions-aside .main-search-func .search-form-reset-axn
+.main-actions-aside .main-search .search-term-crt-search-text-input,
+.main-actions-aside .main-search .search-form-search-axn,
+.main-actions-aside .main-search .search-form-reset-axn
 {
     /* Negation */
     padding-top: 0;
     padding-bottom: 0;
 }
 
-.main-actions-aside .main-search-func .search-form-reset-axn
+.main-actions-aside .main-search .search-form-reset-axn
 {
     /* Negation */
     display: block;
 }
 
-.main-actions-aside .main-search-func .search-form-reset-axn---b_l
+.main-actions-aside .main-search .search-form-reset-axn---b_l
 {
     /* Negation */
     color: unset;
 }
 
-.main-actions-aside .main-search-func .search-form-reset-axn---b
+.main-actions-aside .main-search .search-form-reset-axn---b
 {
     color: white;
 }
@@ -2877,7 +2904,7 @@ button:hover .dismiss-icon
 }
 
 /* Buttons */
-.main-search-func .b_l
+.main-search .b_l
 {
     padding: 0;
     background-color: transparent;
@@ -2890,7 +2917,7 @@ button:hover .dismiss-icon
 }
 
 /* Main Search - Input Text */
-.main-search-func .input-text
+.main-search .input-text
 {
     /* Reset */
     padding: 0;
@@ -2906,18 +2933,18 @@ button:hover .dismiss-icon
     display: none;
 }
 
-.applicator--main-search.applicator--main-menu.main-header-aside--disabled .main-search-func .search-term-crt-search-text-input
+.applicator--main-search.applicator--main-menu.main-header-aside--disabled .main-search .search-term-crt-search-text-input
 {
     padding-left: 0;
 }
 
-.main-search-func .search-term-crt-search-text-input
+.main-search .search-term-crt-search-text-input
 {
     padding-right: calc( 3rem * 2);
 }
 
 /* Input Text - Hidden */
-.main-search-func .search-term-crt-search-text-input
+.main-search .search-term-crt-search-text-input
 {
     position: absolute;
     left: 100%;
@@ -2948,7 +2975,7 @@ button:hover .dismiss-icon
     z-index: 0;
 }
 
-.main-search-func .search-form-axns
+.main-search .search-form-axns
 {
     position: absolute;
     right: 0;
@@ -2977,13 +3004,13 @@ button:hover .dismiss-icon
 }
 
 /* Main Search Action Items */
-.main-search-func .search-form-axns---mn_cr
+.main-search .search-form-axns---mn_cr
 {
     display: flex;
 }
 
 /* Main Search Action Items - Swap Positions of Search and Reset buttons */
-.main-search-func .search-form-search-axn
+.main-search .search-form-search-axn
 {
     order: 1;
 }
@@ -2996,7 +3023,7 @@ button:hover .dismiss-icon
 }
 
 /* Main Search Toggle */
-.main-search-func .main-search-toggle
+.main-search .main-search-toggle
 {
     position: absolute;
     right: 0;
@@ -3004,22 +3031,22 @@ button:hover .dismiss-icon
 }
 
 /* Placeholder Text */
-.main-search-func input::-webkit-input-placeholder
+.main-search input::-webkit-input-placeholder
 {
     color: hsla(0, 0%, 100%, .75);
 }
 
-.main-search-func input::-moz-placeholder
+.main-search input::-moz-placeholder
 {
     color: hsla(0, 0%, 100%, .75);
 }
 
-.main-search-func input:-moz-placeholder
+.main-search input:-moz-placeholder
 {
     color: hsla(0, 0%, 100%, .75);
 }
 
-.main-search-func input:-ms-input-placeholder
+.main-search input:-ms-input-placeholder
 {
     color: hsla(0, 0%, 100%, .75);
 }
@@ -3029,12 +3056,12 @@ button:hover .dismiss-icon
     transition: opacity .2s ease-in-out;
 }
 
-.main-search-func .search---mn_cr
+.main-search .search---mn_cr
 {
     max-width: none;
 }
 
-.applicator--main-actions-widgets .main-search-func
+.applicator--main-actions-widgets .main-search
 {
     margin-right: 3rem;
 }

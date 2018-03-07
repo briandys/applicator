@@ -1244,15 +1244,16 @@ h6
 }
 
 .applicator--theme--main-header.applicator--main-menu .main-menu-toggle,
-.applicator--theme--main-header.applicator--main-search .main-search-func,
-.applicator--theme--main-header.applicator--main-actions-widgets .main-actions-widgets
+.applicator--theme--main-header.applicator--main-search .main-search,
+.applicator--theme--main-header.applicator--main-actions-widgets .main-actions-widgets,
+.main-search---a8r_f .main-search
 {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
 }
 
-.main-search--active---gs .main-search-func
+.main-search--active---gs .main-search
 {
     z-index: 100;
 }
@@ -1289,7 +1290,8 @@ h6
     width: 100%;
 }
 
-.applicator--theme--main-header.applicator--main-search .main-search-func
+.applicator--theme--main-header.applicator--main-search .main-search,
+.main-search---a8r_f .main-search
 {   
     min-height: 3rem;
 }

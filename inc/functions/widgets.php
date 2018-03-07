@@ -69,7 +69,7 @@ function applicator_aside_init() {
     register_sidebar( array(
 		'name'          => __( '1. Main Header', 'applicator' ),
 		'id'            => 'main-header-aside',
-		'description'   => __( 'Aside located at the Main Header', 'applicator' ),
+		'description'   => __( 'Aside located in Main Header', 'applicator' ),
 		'before_widget' => $widget_start_mu,
 		'after_widget'  => $widget_end_mu,
 		'before_title'  => $widget_h_start_mu,
@@ -89,7 +89,7 @@ function applicator_aside_init() {
     register_sidebar( array(
 		'name'          => __( '3. Main Banner', 'applicator' ),
 		'id'            => 'main-banner-aside',
-		'description'   => __( 'Aside located at the Main Banner', 'applicator' ),
+		'description'   => __( 'Aside located in Main Banner', 'applicator' ),
 		'before_widget' => $widget_start_mu,
 		'after_widget'  => $widget_end_mu,
 		'before_title'  => $widget_h_start_mu,
@@ -99,7 +99,7 @@ function applicator_aside_init() {
     register_sidebar( array(
 		'name'          => __( '4. Main Content Header', 'applicator' ),
 		'id'            => 'main-content-header-aside',
-		'description'   => __( 'Aside located at the Main Content Header', 'applicator' ),
+		'description'   => __( 'Aside located in Main Content Header', 'applicator' ),
 		'before_widget' => $widget_start_mu,
 		'after_widget'  => $widget_end_mu,
 		'before_title'  => $widget_h_start_mu,
@@ -107,9 +107,9 @@ function applicator_aside_init() {
 	) );
     
     register_sidebar( array(
-		'name'          => __( '5. Secondary Content', 'applicator' ),
+		'name'          => __( '5. Main Content', 'applicator' ),
 		'id'            => 'main-content-aside',
-		'description'   => __( 'Aside located after Primary Content', 'applicator' ),
+		'description'   => __( 'Aside located in Main Content', 'applicator' ),
 		'before_widget' => $widget_start_mu,
 		'after_widget'  => $widget_end_mu,
 		'before_title'  => $widget_h_start_mu,
@@ -119,7 +119,7 @@ function applicator_aside_init() {
     register_sidebar( array(
 		'name'          => __( '6. Main Footer', 'applicator' ),
 		'id'            => 'main-footer-aside',
-		'description'   => __( 'Aside located at the Main Footer', 'applicator' ),
+		'description'   => __( 'Aside located in Main Footer', 'applicator' ),
 		'before_widget' => $widget_start_mu,
 		'after_widget'  => $widget_end_mu,
 		'before_title'  => $widget_h_start_mu,
@@ -127,21 +127,3 @@ function applicator_aside_init() {
 	) );
 }
 add_action( 'widgets_init', 'applicator_aside_init' );
-
-
-
-
-
-/**
- * Widget Tag Cloud Arguments
- */
-function applicator_widget_tag_cloud_args( $args )
-{
-	$args['largest']  = 1;
-	$args['smallest'] = 1;
-	$args['unit']     = 'em';
-	$args['format']   = 'list';
-
-	return $args;
-}
-add_filter( 'widget_tag_cloud_args', 'applicator_widget_tag_cloud_args' );
