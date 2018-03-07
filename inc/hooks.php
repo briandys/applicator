@@ -27,9 +27,9 @@ function applicator_hook_after_main_nav()
 
 
 // content.php
-function applicator_hook_after_main_post_title()
+function applicator_after_post_title_hook()
 {
-    do_action( 'applicator_hook_after_main_post_title' );
+    do_action( 'applicator_after_post_title_hook' );
 }
 
 
@@ -41,9 +41,9 @@ function applicator_hook_after_post_header_aside()
 
 
 // content.php
-function applicator_hook_after_post_meta_header_aside()
+function applicator_after_post_meta_header_aside_hook()
 {
-    do_action( 'applicator_hook_after_post_meta_header_aside' );
+    do_action( 'applicator_after_post_meta_header_aside_hook' );
 }
 
 

@@ -28,7 +28,11 @@ ob_start();
                 ) );
                 
                 
-                // E: Main Post Title
+                ob_start();
+                applicator_after_post_title_hook();
+                $after_post_title_hook_ob = ob_get_clean();
+                
+                
                 $main_post_title = applicator_htmlok( array(
                     'name'      => 'Main Post Title',
                     'structure' => array(
@@ -36,16 +40,12 @@ ob_start();
                     ),
                     'content'   => array(
                         'component'     => array(
-                            
                             $post_title_obj,
+                            $after_post_title_hook_ob,
                         ),
                     ),
                     'echo'      => true,
                 ) );
-                
-                
-                // After Main Post Title Hook | inc > hooks.php
-                applicator_hook_after_main_post_title();
                 
                 ?>
                 

@@ -40,7 +40,9 @@
                 ) );
                 
                 
-                applicator_post_actions(); // Post Actions | inc > tags > post-actions.php
+                ob_start();
+                applicator_after_post_title_hook();
+                $after_post_title_hook_ob = ob_get_clean();
                 
                 
                 $main_post_title = applicator_htmlok( array(
@@ -52,14 +54,12 @@
                         'component'     => array(
                             
                             $post_title_obj,
+                            $after_post_title_hook_ob,
                             applicator_post_actions(),
                         ),
                     ),
                     'echo'      => true,
                 ) );
-                
-                
-                applicator_hook_after_main_post_title(); // After Main Post Title Hook | inc > hooks.php
                 
                 
                 applicator_breadcrumbs(); // Breadcrumbs Navigation | inc > tags > breadcumbs-nav.php
@@ -89,6 +89,11 @@
                 ) );
                 
                 
+                ob_start();
+                applicator_after_post_meta_header_aside_hook();
+                $after_post_meta_header_aside_hook_ob = ob_get_clean();
+                
+                
                 $post_header_aside = applicator_htmlok( array(
                     'name'      => 'Post Header',
                     'structure' => array(
@@ -102,7 +107,7 @@
                             
                             $post_meta,
                             
-                            applicator_hook_after_post_meta_header_aside(),
+                            $after_post_meta_header_aside_hook_ob,
                             
                             applicator_comments_actions_snippet(), // inc/tags/comments-actions-snippet-cp.php
                         ),

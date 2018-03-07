@@ -60,4 +60,4 @@ function applicator_post_banner_visual_hooked()
 {
     echo applicator_post_banner_visual();
 }
-add_action( 'applicator_hook_after_post_meta_header_aside', 'applicator_post_banner_visual_hooked' );
+add_action( 'applicator_after_post_meta_header_aside_hook', 'applicator_post_banner_visual_hooked' );

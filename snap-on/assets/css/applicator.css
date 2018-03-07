@@ -1096,15 +1096,28 @@ h6
     padding-right: 1rem;
 }
 
-.edit-post-action
-{
-    display: inline;
-}
-
+.post-version,
+.post-version---g,
+.edit-post-action,
 .post-title---h
 {
     display: inline;
     vertical-align: middle;
+}
+
+.post-version
+{
+    padding-right: 1rem;
+}
+
+.post-title---h
+{
+    font-size: 2em;
+}
+
+.post-version---g
+{
+    font-size: 1.5em;
 }
 
 
