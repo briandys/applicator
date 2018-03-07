@@ -174,7 +174,7 @@ textarea,
  */
 .html
 {   
-    background-color: #fff;
+    background-color: white;
 }
 
 .body
@@ -3479,6 +3479,24 @@ img.size-medium
 .page-nav .adjacent-nav---a
 {
     display: inline-block;
+}
+
+
+.dt
+{
+    display: inline-block;
+}
+
+.dt:after
+{
+    content: ':';
+    margin-right: .5em;
+}
+
+.dd
+{
+    display: inline-block;
+    margin-left: 0;
 }
 
 

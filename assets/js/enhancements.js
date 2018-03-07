@@ -2146,6 +2146,54 @@
         
         
         
+        
+
+        /**
+         * Definition Lists Enhancements
+         */
+        
+        ( function() {
+            
+            var $post_content_main = $( '.post-content--main' ),
+                $dl = $post_content_main.find( 'dl' ),
+                $dt = $post_content_main.find( 'dt' ),
+                $dd = $post_content_main.find( 'dd' );
+
+            var definitionListFn = {
+
+                item: function( $elem ) {
+                    $elem.each( function() {
+                        var $this = $( this );
+                        $this
+                            .nextUntil( $elem )
+                            .addBack()
+                            .wrapAll( $( '<div />', { 'class': 'item' } ) );
+                    } );
+                }
+            };
+            
+            definitionListFn.item( $dt );
+            
+            $dl.each( function() {
+                $( this ).addClass( 'grp' );
+            } );
+            
+            $dt.each( function() {
+                $( this ).addClass( 'dt definition-term' );
+            } );
+            
+            $dd.each( function() {
+                $( this ).addClass( 'dd definition-description' );
+            } );
+            
+            fn.wrapTextNode( $( '.post-content--main dt, .post-content--main dd' ) );
+
+        }() );
+        
+        
+        
+        
+        
         // ------------------------------------ Alias for WP Admin Bar
         ( function() {
             
