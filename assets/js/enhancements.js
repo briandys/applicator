@@ -404,6 +404,24 @@
             {
                 return true;
             }
+        },
+        
+        
+        /**
+         * Segregate
+         *
+         * @package WordPress\Applicator\JS\Function
+         *
+         * @version 1.0
+         */
+        segregate: function( $elem, $class )
+        {
+            $elem.each( function() {
+                $( this )
+                    .nextUntil( $elem )
+                    .addBack()
+                    .wrapAll( $( '<div />', { 'class': $class } ) );
+            } );
         }
     };
     
@@ -2146,45 +2164,34 @@
         
         
         
-        
-
         /**
-         * Definition Lists Enhancements
+         * Description List Enhancements
          */
-        
         ( function() {
             
             var $post_content_main = $( '.post-content--main' ),
                 $dl = $post_content_main.find( 'dl' ),
                 $dt = $post_content_main.find( 'dt' ),
                 $dd = $post_content_main.find( 'dd' );
-
-            var definitionListFn = {
-
-                item: function( $elem ) {
-                    $elem.each( function() {
-                        var $this = $( this );
-                        $this
-                            .nextUntil( $elem )
-                            .addBack()
-                            .wrapAll( $( '<div />', { 'class': 'item' } ) );
-                    } );
-                }
-            };
             
-            definitionListFn.item( $dt );
+            
+            fn.segregate( $dt, 'item' );
+            
             
             $dl.each( function() {
-                $( this ).addClass( 'grp' );
+                $( this ).addClass( 'group' );
             } );
+            
             
             $dt.each( function() {
-                $( this ).addClass( 'dt definition-term' );
+                $( this ).addClass( 'description-term' );
             } );
             
+            
             $dd.each( function() {
-                $( this ).addClass( 'dd definition-description' );
+                $( this ).addClass( 'description-details' );
             } );
+            
             
             fn.wrapTextNode( $( '.post-content--main dt, .post-content--main dd' ) );
 

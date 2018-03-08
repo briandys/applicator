@@ -20,8 +20,8 @@ function applicator_default_styles_scripts()
     wp_enqueue_style( 'applicator-defaults--style', get_template_directory_uri(). '/assets/css/default.css' );
 
 
-    wp_enqueue_script( 'applicator-modernizr--script', get_template_directory_uri(). '/assets/js/modernizr.min.js', array(), '1.0', true );
-    wp_enqueue_script( 'applicator-plugins--script', get_template_directory_uri(). '/assets/js/plugins.js', array( 'jquery' ), '1.0', true );
+    wp_enqueue_script( 'applicator-modernizr--script', get_template_directory_uri(). '/assets/js/modernizr.min.js', array( 'jquery' ), '1.0', true );
+    wp_enqueue_script( 'applicator-plugins--script', get_template_directory_uri(). '/assets/js/plugins.js', array( 'applicator-modernizr--script' ), '1.0', true );
     wp_enqueue_script( 'applicator-globals--script', get_template_directory_uri(). '/assets/js/global.js', array( 'jquery', 'applicator-plugins--script' ), '1.0', true );
 
 

@@ -1266,17 +1266,6 @@ img.size-medium
 
 
 
-/* ------------------ Post ------------------ */
-.post---cr
-{
-    padding-top: 1em;
-    padding-bottom: 1em;
-}
-
-
-
-
-
 /* ------------------ Sub-Post Content ------------------ */
 .sub-post-content .breadcrumbs-nav
 {
@@ -3482,20 +3471,26 @@ img.size-medium
 }
 
 
-.dt
+
+
+
+/**
+ * Mod: Description List Enhancments
+ */
+.description-term
 {
-    display: inline-block;
+    display: inline;
 }
 
-.dt:after
+.description-term:after
 {
     content: ':';
     margin-right: .5em;
 }
 
-.dd
+.description-details
 {
-    display: inline-block;
+    display: inline;
     margin-left: 0;
 }
 
