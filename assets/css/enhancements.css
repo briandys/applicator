@@ -456,13 +456,19 @@ a
 
 
 
-/* ------------------ Data Format ------------------ */
+/**
+ * Data Format
+ */
 .post-content--main > .data-format,
-.comment-content---mn_cr > .data-format
+.comment-content---main > .data-format
 {
     padding-left: 0;
     padding-right: 0;
-    
+}
+
+.post-content--main .data-format,
+.comment-content---main .data-format
+{
     max-width: 100%;
     
     overflow-x: auto;
@@ -1135,7 +1141,7 @@ img.size-medium
 
 .post-content--main > *,
 .post-excerpt---mn_cr > *,
-.comment-content---mn_cr > *,
+.comment-content---main > *,
 .aside .widget-content---mn_cr > *
 {
     margin: 0;
@@ -1161,8 +1167,8 @@ img.size-medium
 .post-excerpt---mn_cr > ul,
 .post-excerpt---mn_cr > ol,
 
-.comment-content---mn_cr > ul,
-.comment-content---mn_cr > ol,
+.comment-content---main > ul,
+.comment-content---main > ol,
 
 .aside .widget-content---mn_cr > ul,
 .aside .widget-content---mn_cr > ol,
@@ -1175,7 +1181,7 @@ img.size-medium
 
 .post-content--main li,
 .post-excerpt---mn_cr li,
-.comment-content---mn_cr li,
+.comment-content---main li,
 .aside .widget-content---mn_cr li
 {
     padding-top: .25em;
@@ -3480,11 +3486,6 @@ img.size-medium
 .description-term
 {
     display: inline;
-}
-
-.description-term:after
-{
-    content: ':';
     margin-right: .5em;
 }
 

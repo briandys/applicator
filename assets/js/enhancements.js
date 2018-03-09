@@ -404,24 +404,6 @@
             {
                 return true;
             }
-        },
-        
-        
-        /**
-         * Segregate
-         *
-         * @package WordPress\Applicator\JS\Function
-         *
-         * @version 1.0
-         */
-        segregate: function( $elem, $class )
-        {
-            $elem.each( function() {
-                $( this )
-                    .nextUntil( $elem )
-                    .addBack()
-                    .wrapAll( $( '<div />', { 'class': $class } ) );
-            } );
         }
     };
     
@@ -2175,7 +2157,10 @@
                 $dd = $post_content_main.find( 'dd' );
             
             
-            fn.segregate( $dt, 'item' );
+            $dt.segregate( {
+                'element': $dt,
+                'class': 'item'
+            } );
             
             
             $dl.each( function() {
@@ -2308,7 +2293,7 @@
 
 
             // ------------ <table>
-            $( '.post-content--main > *:has( table ), .comment-content---mn_cr > *:has( table )' ).each(function() {
+            $( '.post-content--main > *:has( table ), .comment-content---main > *:has( table )' ).each(function() {
                 var $this = $( this ),
                     $table = $this.find( 'table' );
 
@@ -2325,7 +2310,7 @@
                 $this.addClass( 'select' + ' ' + dataFormatPrefixCss + 'select' );
             });
 
-            $( postContentCtCrCss + ' ' + '> table, .comment-content---mn_cr > table' ).each(function() {
+            $( postContentCtCrCss + ' ' + '> table, .comment-content---main > table' ).each(function() {
                 var $this = $( this );
                 $this.wrap( dataFormatBlockCpMu )
                     .closest( dataFormatCss )
@@ -2506,10 +2491,7 @@
                     
                 if ( $this.has( 'a' ) )
                 {
-                    $this
-                        .attr( {
-                            'class': headingAnchoredCSS
-                        } );
+                    $this.addClass( headingAnchoredCSS );
                 }
             } );
             
@@ -2539,9 +2521,9 @@
                 
                 $this
                     .attr( {
-                        'id': $id,
-                        'class': headingAnchoredCSS
+                        'id': $id
                     } )
+                    .addClass( headingAnchoredCSS )
                     .contents().filter( function() {
                         return this.nodeType !== 1;
                     } ).wrap( $( '<a/>', { 'href': '#' + $id + '', 'class': headingAnchoredCSS + '---a'  } ) );
