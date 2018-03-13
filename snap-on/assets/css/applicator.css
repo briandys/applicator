@@ -47,11 +47,10 @@
 .applicator--theme--excerpt .show-more-axn .value---line,
 
 .page-nav .ellipsis--delimiter,
-.applicator--theme--post-format--status .format-status .published-post-author,
 
-.applicator--theme--post-format--status .blog .format-status .post-title,
-.applicator--theme--post-format--status .single .format-status .post-title,
-.applicator--theme--post-format--status .format-status .apl-post-categories
+.format-status .published-post-author,
+.blog .format-status .post-title,
+.single .format-status .post-title
 {
     position:absolute;margin:-1px;padding:0;width:1px;min-width:auto;height:1px;min-height:auto;overflow:hidden;clip:rect(0,0,0,0);border:0;word-wrap:normal;
 }
@@ -1156,47 +1155,15 @@ h6
 
 
 
-/* ------------------ Post Format - Status ------------------ */
-.applicator--theme--post-format--status .format-status .post-content--main > *,
-.applicator--theme--post-format--status .format-status .post-excerpt---mn_cr > *
+/**
+ * Mod: Status Post Format
+ *
+ * @package WordPress\Applicator\Content
+ */
+.format-status .post-content--main > *,
+.format-status .post-excerpt---mn_cr > *
 {
     font-size: 2em;
-}
-
-.applicator--theme--post-format--status .format-status .post-content--main > *:first-child
-{
-    margin-top: -.35em; 
-}
-
-.user-role--editor .format-status .post-content--main > *:first-child
-{
-    margin-top: -.65em; 
-}
-
-.user-role--non-editor .format-status .main-post-title---mn_cr
-{
-    padding: 0;
-}
-
-.applicator--theme--post-format--status .format-status .post---cr
-{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.applicator--theme--post-format--status .format-status .post---mn
-{
-    flex: 1;
-}
-
-.applicator--theme--post-format--status .format-status .post---fr
-{
-    flex: 1 100%;
-}
-
-.applicator--theme--post-format--status .view--multisite-directory .format-status .post---cr
-{
-    justify-content: center;
 }
 
 
@@ -1766,7 +1733,7 @@ div[id^="contact-form-"] > .contact-form-submission
     .applicator--theme--layout .show-more-action,
     .applicator--theme--layout .entry-nav---cr,
     .applicator--theme--layout .type-attachment .post-nav---cr,
-    .applicator--theme--layout.applicator--theme--post-format--status .format-status .post---cr,
+    .format-status .post---cr,
     .applicator--theme--layout .copyright,
 
     /* Asides */

@@ -1390,8 +1390,6 @@
             // Wrap in markup
             $mainActionsWidgetItems
                 .wrapAll( $mainActionsWidgetsWidgetGroupMU );
-
-            
         
         }() );
         
