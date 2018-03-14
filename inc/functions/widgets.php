@@ -57,7 +57,7 @@ function applicator_aside_init() {
     $widget_end_mu .= '</div>';
     
     $widget_h_start_mu = '<div class="obj widget-heading" data-name="Widget Heading OBJ">';
-        $widget_h_start_mu .= '<h4 class="h widget-heading---h" aria-hidden="true">';
+        $widget_h_start_mu .= '<h4 class="h widget-heading---h">';
             $widget_h_start_mu .= '<span class="h_l widget-heading---h_l">';
                 $widget_h_start_mu .= '<span class="l widget-heading---l">';
 
