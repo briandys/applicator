@@ -1,7 +1,11 @@
-<?php // Page Navigation | index.php
+<?php
 
-if ( ! function_exists( 'applicator_page_nav' ) ) {
-    function applicator_page_nav() {
+// Page Navigation | index.php
+
+if ( ! function_exists( 'applicator_page_nav' ) )
+{
+    function applicator_page_nav()
+    {
         
         
         // Terms Definitions
@@ -86,23 +90,21 @@ if ( ! function_exists( 'applicator_page_nav' ) ) {
             'prev_text'             => $adjacent_navi_previous_mu,
             'next_text'             => $adjacent_navi_next_mu,
         ) );
+        
+        $page_navigation_cp = applicator_htmlok( array(
+            'name'      => 'Page',
+            'structure' => array(
+                'type'      => 'component',
+                'subtype'   => 'navigation',
+            ),
+            'content'   => array(
+                'component' => $page_nav_grp,
+            ),
+        ) );
 
         
         if ( $page_nav_grp )
-        {
-            
-            // R: Page Navigation
-            $page_navigation_cp = applicator_htmlok( array(
-                'name'      => 'Page',
-                'structure' => array(
-                    'type'      => 'component',
-                    'subtype'   => 'navigation',
-                ),
-                'content'   => array(
-                    'component' => $page_nav_grp,
-                ),
-            ) );
-            
+        {   
             return $page_navigation_cp;
         }
     }

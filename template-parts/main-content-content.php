@@ -39,7 +39,7 @@
                 {
                     the_post();
 
-                    applicator_entry_content(); // template-parts > entry-content.php
+                    applicator_entry_content();
                 }
                 $entries_ob_content = ob_get_clean();
 
