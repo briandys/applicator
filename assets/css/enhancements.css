@@ -1227,6 +1227,7 @@ img.size-medium
 .comment-content--main th
 {
     padding: .5rem 1rem;
+    vertical-align: top;
 }
 
 .post-content--main > figure
