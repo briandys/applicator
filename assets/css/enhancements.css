@@ -1230,6 +1230,13 @@ img.size-medium
     vertical-align: top;
 }
 
+
+.post-content--main thead th,
+.comment-content--main thead th
+{
+    vertical-align: middle;
+}
+
 .post-content--main > figure
 {
     max-width: 100%;
